@@ -6,6 +6,7 @@ import os
 from urllib.parse import quote_plus
 
 import shutil
+import random
 
 RAW_PDF_DIR = "raw_pdf"
 RAW_REF_DIR = "raw_references"
@@ -105,5 +106,26 @@ def main_run():
             st.write("Unable to download the paper.")
             move_file(os.path.join(RAW_REF_DIR, file), "errored_ref")
 
+
+def random_run():
+    filecount=st.number_input("Number of files",min_value=1, value=1)
+    if st.button("Start processing"):
+        for i in range(filecount):
+            files = os.listdir(RAW_REF_DIR)
+            file = random.choice(files)
+            with open(os.path.join(RAW_REF_DIR, file)) as f:
+                paper_info = json.load(f)
+
+            downloaded_file = search_and_download_paper(paper_info, serp_api_key)
+            if downloaded_file:
+                st.write(f"File downloaded: {downloaded_file}")
+                move_file(os.path.join(RAW_REF_DIR, file), "downloaded_ref")
+            else:
+                st.write("Unable to download the paper.")
+                move_file(os.path.join(RAW_REF_DIR, file), "errored_ref")
+
+
+random_run()
+st.divider()
 main_run()
     
