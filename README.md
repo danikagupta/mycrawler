@@ -1,19 +1,14 @@
 # 🎈 Blank app template
 
-A simple Streamlit app template for you to modify!
+Overall structure:
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
-
-### How to run it on your own machine
-
-1. Install the requirements
-
-   ```
-   $ pip install -r requirements.txt
-   ```
-
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+1. Load a set of starting PDFs into "raw" directory.
+2. For each of the "raw" PDFs:
+  a. Read PDF
+  b. Obtain the list of references from PDF.
+  c. Put each reference in a separate file in "raw-references" directory.
+  d. Move PDF to "processed" directory.
+3. For each PDF in "raw-references" directory:
+   a. Try to find the PDF file on the web.
+   b. If successful, add to "raw" directory.
+   c. Move reference to "success" or "fail" directories
