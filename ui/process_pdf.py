@@ -6,11 +6,20 @@ import io
 import base64
 import json
 
+import shutil
+
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 
 RAW_PDF_DIR = "raw_pdf"
 PDF_PAGES_DIR = "pdf_pages"
+
+def move_file(source_path, destination_dir):
+    if not os.path.exists(destination_dir):
+        os.makedirs(destination_dir)
+    destination_path = os.path.join(destination_dir, os.path.basename(source_path))
+    shutil.move(source_path, destination_path)
+    print(f"File {source_path} moved to {destination_path}")
 
 def encode_image_path(png_path):
     with Image.open(png_path) as image:
@@ -65,28 +74,28 @@ def onerun_llm_pages(paper, pages,model):
     (3) Only return the table with no additional information - no preamble or concluding remarks.
     (4) Please be thorough. Ensure that you have captured all references cited in the paper.
     """
-    question=st.text_area("Ask question",value=default_question)
-    if st.button("Run Analysis"):
-        #st.write("You asked: ", question)
-        chat = ChatOpenAI(model_name="gpt-4o-mini", max_tokens=3000)
+    question=default_question
 
-        messages = [
-            SystemMessage(content="You are an AI assistant capable of analyzing images and text."),
-            HumanMessage(content=[
-                {
-                    "type": "text",
-                    "text": f"Analyze the following images and respond to the user's prompt: {question}"
-                }
-            ]),
-            encode_multiple_images(encoded_images)
-        ]
+    #st.write("You asked: ", question)
+    chat = ChatOpenAI(model_name="gpt-4o-mini", max_tokens=3000)
 
-        response = chat(messages)
-        print(f"\n\n* * * * *\nResponse: \n\n{response}\n\n*********\n")
-        #st.write(response)
-        st.subheader("Analysis Result:")
-        st.write(response.content)
-        return response.content
+    messages = [
+        SystemMessage(content="You are an AI assistant capable of analyzing images and text."),
+        HumanMessage(content=[
+            {
+                "type": "text",
+                "text": f"Analyze the following images and respond to the user's prompt: {question}"
+            }
+        ]),
+        encode_multiple_images(encoded_images)
+    ]
+
+    response = chat(messages)
+    print(f"\n\n* * * * *\nResponse: \n\n{response}\n\n*********\n")
+    #st.write(response)
+    st.subheader("Analysis Result:")
+    st.write(response.content)
+    return response.content
     
 def create_ref_json_files(paper,rc):
     #with open("output.txt") as f:
@@ -117,7 +126,7 @@ def create_ref_json_files(paper,rc):
     paper_name = paper.replace(".pdf","")
 
     response = chat(messages)  
-    st.write(response.content)
+    #st.write(response.content)
     print(response.content)
     clean_response=response.content.strip()
     clean_response=clean_response.replace("`", "")
@@ -137,10 +146,16 @@ def create_ref_json_files(paper,rc):
 def process_one_pdf(paper):
     pages = os.listdir(os.path.join(PDF_PAGES_DIR, paper))
     pages.sort()
-    rc=onerun_llm_pages(paper, pages, model="gpt-4o-mini")
-    with open("output.txt","w") as f:
-        f.write(rc)
-    create_ref_json_files(paper,rc)    
+    if st.button("Run Analysis"):
+        rc=onerun_llm_pages(paper, pages, model="gpt-4o-mini")
+        if rc is not None:
+            with open("output.txt","w") as f:
+                f.write(rc)
+            create_ref_json_files(paper,rc)
+            move_file(os.path.join(RAW_PDF_DIR, paper), "processed_pdf")
+        else:
+            st.write("Error in response from AI model")
+            move_file(os.path.join(RAW_PDF_DIR, paper), "error_pdf")    
 
 
 st.header("Process a PDF file")

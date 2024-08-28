@@ -5,8 +5,17 @@ import json
 import os
 from urllib.parse import quote_plus
 
+import shutil
+
 RAW_PDF_DIR = "raw_pdf"
 RAW_REF_DIR = "raw_references"
+
+def move_file(source_path, destination_dir):
+    if not os.path.exists(destination_dir):
+        os.makedirs(destination_dir)
+    destination_path = os.path.join(destination_dir, os.path.basename(source_path))
+    shutil.move(source_path, destination_path)
+    print(f"File {source_path} moved to {destination_path}")
 
 def search_and_download_paper(paper_info, serp_api_key):
     # Construct the search query
@@ -91,8 +100,10 @@ def main_run():
         downloaded_file = search_and_download_paper(paper_info, serp_api_key)
         if downloaded_file:
             st.write(f"File downloaded: {downloaded_file}")
+            move_file(os.path.join(RAW_REF_DIR, file), "downloaded_ref")
         else:
             st.write("Unable to download the paper.")
+            move_file(os.path.join(RAW_REF_DIR, file), "errored_ref")
 
 main_run()
     
