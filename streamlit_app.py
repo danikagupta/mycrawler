@@ -41,7 +41,7 @@ def main():
     }
     pg = st.navigation(pages)
     pg.run()
-    st.title("My crawler")
+
 
 if __name__ == "__main__":
     main()
