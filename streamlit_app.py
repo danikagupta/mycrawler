@@ -10,7 +10,7 @@ def main():
 
     upload_pages=[
         st.Page("streamlit_app.py", title="Home", icon="🏠"),
-        #st.Page("ui/upload_files.py", title="Upload Files", icon="1️⃣"),
+        st.Page("ui/upload_files.py", title="Upload Files", icon="1️⃣"),
         #st.Page("ui/view_uploads.py", title="View Uploads", icon="1️⃣"),
         #st.Page("ui/41_one_video_e2e.py", title="Process One Video", icon="2️⃣"),
         #st.Page("ui/14_transcript_yt_video.py", title="Transcript YT Video", icon="2️⃣"),
