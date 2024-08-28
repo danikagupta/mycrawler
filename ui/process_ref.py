@@ -21,7 +21,7 @@ def search_and_download_paper(paper_info, serp_api_key):
     # Construct the search query
     title = paper_info['Title']
     authors = paper_info['Authors']
-    year = paper_info['Year']
+    year = paper_info.get('Year','')
     query = f"{title} {authors} {year} filetype:pdf"
     
     # SERP API endpoint
