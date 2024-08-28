@@ -13,6 +13,8 @@ import PyPDF2
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 
+import random
+
 RAW_PDF_DIR = "raw_pdf"
 PDF_PAGES_DIR = "pdf_pages"
 
@@ -29,6 +31,12 @@ def select_one_pdf():
     # Get the list of papers - this will be a list of directories under pdf_pages
     papers = os.listdir(RAW_PDF_DIR)
     paper = st.selectbox("Select paper", papers,key="processs-one-pdf")
+    return paper
+
+def select_random_pdf():
+    # Get the list of papers - this will be a list of directories under pdf_pages
+    papers = os.listdir(RAW_PDF_DIR)
+    paper = random.choice(papers)
     return paper
 
 def pdf_to_text(uploaded_file):
@@ -138,22 +146,40 @@ def create_ref_json_files(paper,rc):
             f.write(response.content)
 
 def process_one_pdf(paper,text_content):
+    rc=onerun_llm_text(paper, text_content, model="gpt-4o-mini")
+    if rc is not None:
+        with open("output.txt","w") as f:
+            f.write(rc)
+        create_ref_json_files(paper,rc)
+        move_file(os.path.join(RAW_PDF_DIR, paper), "processed_pdf")
+    else:
+        st.write("Error in response from AI model")
+        move_file(os.path.join(RAW_PDF_DIR, paper), "error_pdf")    
 
+
+def named_run():
+    st.header("Process a PDF file")
+    paper=select_one_pdf()
     if st.button("Run Analysis"):
-        rc=onerun_llm_text(paper, text_content, model="gpt-4o-mini")
-        if rc is not None:
-            with open("output.txt","w") as f:
-                f.write(rc)
-            create_ref_json_files(paper,rc)
-            move_file(os.path.join(RAW_PDF_DIR, paper), "processed_pdf")
-        else:
-            st.write("Error in response from AI model")
-            move_file(os.path.join(RAW_PDF_DIR, paper), "error_pdf")    
+        txt=extract_text_from_pdf(paper)
+        with st.expander("Text"):
+            st.write(txt)
+        process_one_pdf(paper,txt)
+
+def bulk_run():
+    st.header("Process multiple PDF files")
+    filecount=st.number_input("Number of files to process",min_value=1,step=1)
+    if st.button("Run Bulk Analysis"):
+        for i in range(filecount):
+            paper=select_random_pdf()
+            txt=extract_text_from_pdf(paper)
+            with st.expander("Text"):
+                st.write(txt)
+            process_one_pdf(paper,txt)
 
 
-st.header("Process a PDF file")
-paper=select_one_pdf()
-txt=extract_text_from_pdf(paper)
-with st.expander("Text"):
-    st.write(txt)
-process_one_pdf(paper,txt)
+
+bulk_run()
+st.divider()
+named_run()
+st.divider()
