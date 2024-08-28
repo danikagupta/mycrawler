@@ -27,8 +27,8 @@ def main():
     ]
 
     stat_pages=[
-        st.Page("ui/stats.py", title="Test", icon="🌎"),
-        #st.Page("ui/1_upload_videos.py", title="Upload URL", icon="1️⃣"),
+        st.Page("ui/stats.py", title="Interesting data points", icon="🌎"),
+        st.Page("ui/test.py", title="Testing 1-2-3", icon="1️⃣"),
         #st.Page("ui/2_transcribe_videos.py", title="Transcribe", icon="2️⃣"),
         #st.Page("ui/3_qna.py", title="Q & A", icon="🌎"),
     ]

@@ -4,6 +4,7 @@ from pdf2image import convert_from_bytes
 from PIL import Image
 import io
 import base64
+import json
 
 from langchain.chat_models import ChatOpenAI
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
@@ -86,13 +87,60 @@ def onerun_llm_pages(paper, pages,model):
         st.subheader("Analysis Result:")
         st.write(response.content)
         return response.content
+    
+def create_ref_json_files(paper,rc):
+    #with open("output.txt") as f:
+    #    content = f.read()
+    content=rc
+
+    chat = ChatOpenAI(model_name="gpt-4o-mini", max_tokens=3000)
+
+    messages = [
+        SystemMessage(content="You are an AI assistant capable of precisely formatting text to JSON."),
+        HumanMessage(content=[
+            {
+                "type": "text",
+                "text": f"""Given the following text block containing a table:: 
+                {content}
+                Convert this table into a JSON object with an array of dictionaries, where each dictionary represents a row of data. 
+                The keys should be the column headers, and the values should be the corresponding cell values. 
+                Return only the JSON object, without any additional text or explanation.
+                """
+            }
+        ]),
+    ]
+
+    OUTPUT_DIR = "raw_references"
+    if not os.path.exists(OUTPUT_DIR):
+        os.makedirs(OUTPUT_DIR)
+
+    paper_name = paper.replace(".pdf","")
+
+    response = chat(messages)  
+    st.write(response.content)
+    print(response.content)
+    clean_response=response.content.strip()
+    clean_response=clean_response.replace("`", "")
+    if clean_response.startswith("json"):
+        clean_response = clean_response[5:]
+    try:
+        json_data = json.loads(clean_response)
+        for i,record in enumerate(json_data):
+            fname=os.path.join(OUTPUT_DIR, f"{paper_name}_{i:02}.txt")
+            with open(fname,"w") as f:
+                f.write(json.dumps(record))
+    except Exception as e:
+        print("Error parsing JSON: ", e)
+        with open("output_error.txt","w") as f:
+            f.write(response.content)
 
 def process_one_pdf(paper):
     pages = os.listdir(os.path.join(PDF_PAGES_DIR, paper))
     pages.sort()
     rc=onerun_llm_pages(paper, pages, model="gpt-4o-mini")
     with open("output.txt","w") as f:
-        f.write(rc)    
+        f.write(rc)
+    create_ref_json_files(paper,rc)    
 
 
 st.header("Process a PDF file")
