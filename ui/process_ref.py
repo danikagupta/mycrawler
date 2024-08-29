@@ -24,6 +24,7 @@ def search_and_download_paper(paper_info, serp_api_key):
     authors = paper_info['Authors']
     year = paper_info.get('Year','')
     query = f"{title} {authors} {year} filetype:pdf"
+    st.write(f"Searching for: {query}")
     
     # SERP API endpoint
     url = "https://api.serpstack.com/search"
@@ -50,7 +51,7 @@ def search_and_download_paper(paper_info, serp_api_key):
                     pdf_response = requests.get(pdf_url)
                     if pdf_response.status_code == 200:
                         # Generate a filename
-                        filename = f"{quote_plus(title)}_{year}.pdf"
+                        filename = f"{quote_plus(title[:200])}_{year}.pdf"
                         fqfn = os.path.join(RAW_PDF_DIR, filename)
                         
                         # Save the PDF
@@ -110,7 +111,10 @@ def main_run():
 def random_run():
     filecount=st.number_input("Number of files",min_value=1, value=1)
     if st.button("Start processing"):
+        progress_bar = st.sidebar.progress(0)
+        status_text = st.sidebar.empty()
         for i in range(filecount):
+            progress_bar.progress(i / filecount, text=f"Processing file {i+1} of {filecount}")
             files = os.listdir(RAW_REF_DIR)
             file = random.choice(files)
             with open(os.path.join(RAW_REF_DIR, file)) as f:
@@ -118,11 +122,13 @@ def random_run():
 
             downloaded_file = search_and_download_paper(paper_info, serp_api_key)
             if downloaded_file:
-                st.write(f"File downloaded: {downloaded_file}")
+                #st.write(f"File downloaded: {downloaded_file}")
                 move_file(os.path.join(RAW_REF_DIR, file), "downloaded_ref")
             else:
                 st.write("Unable to download the paper.")
                 move_file(os.path.join(RAW_REF_DIR, file), "errored_ref")
+        progress_bar.empty()
+        status_text.write("Processing completed")
 
 
 random_run()
