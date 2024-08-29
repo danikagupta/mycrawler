@@ -173,8 +173,8 @@ def bulk_run():
         for i in range(filecount):
             paper=select_random_pdf()
             txt=extract_text_from_pdf(paper)
-            with st.expander("Text"):
-                st.write(txt)
+            #with st.expander(f"Text: {i+1}"):
+            #    st.write(txt)
             process_one_pdf(paper,txt)
 
 
