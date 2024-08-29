@@ -19,24 +19,25 @@ def move_file(source_path, destination_dir):
     print(f"File {source_path} moved to {destination_path}")
 
 def search_and_download_paper(paper_info, serp_api_key):
-    # Construct the search query
-    title = paper_info['Title']
-    authors = paper_info['Authors']
-    year = paper_info.get('Year','')
-    query = f"{title} {authors} {year} filetype:pdf"
-    st.write(f"Searching for: {query}")
-    
-    # SERP API endpoint
-    url = "https://api.serpstack.com/search"
-    
-    # Parameters for the SERP API request
-    params = {
-        "access_key": serp_api_key,
-        "query": query,
-        "num": 5,  # Number of results to retrieve
-    }
-    
     try:
+        # Construct the search query
+        title = paper_info['Title']
+        authors = paper_info['Authors']
+        year = paper_info.get('Year','')
+        query = f"{title} {authors} {year} filetype:pdf"
+        st.write(f"Searching for: {query}")
+        
+        # SERP API endpoint
+        url = "https://api.serpstack.com/search"
+        
+        # Parameters for the SERP API request
+        params = {
+            "access_key": serp_api_key,
+            "query": query,
+            "num": 5,  # Number of results to retrieve
+        }
+    
+    #try:
         # Make the API request
         response = requests.get(url, params=params)
         response.raise_for_status()
@@ -64,8 +65,8 @@ def search_and_download_paper(paper_info, serp_api_key):
         else:
             st.write(f"No search results found for {title}.")
     
-    except requests.RequestException as e:
-        print(f"An error occurred during the search: {e}")
+    except Exception as e:
+        st.write(f"An error occurred during the search: {e}")
     
     return None
 
