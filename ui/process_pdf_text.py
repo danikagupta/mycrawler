@@ -85,7 +85,7 @@ def onerun_llm_text(paper, text_content,model):
                 "text": f"""Respond to the user's ask: 
                 {question}
                 based on the following text block:
-                {text_content}  
+                {text_content[-100000:]}  
                 """
             }
         ]),
