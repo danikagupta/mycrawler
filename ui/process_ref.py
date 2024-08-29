@@ -56,7 +56,7 @@ def search_and_download_paper(paper_info, serp_api_key):
                         # Save the PDF
                         with open(fqfn, 'wb') as f:
                             f.write(pdf_response.content)
-                        st.write(f"PDF downloaded successfully: {filename}")
+                        #st.write(f"PDF downloaded successfully: {filename}")
                         return filename
             
             st.write(f"No suitable PDF link found in the search results for {title}.")
