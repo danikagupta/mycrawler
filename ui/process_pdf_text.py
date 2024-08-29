@@ -170,12 +170,17 @@ def bulk_run():
     st.header("Process multiple PDF files")
     filecount=st.number_input("Number of files to process",min_value=1,step=1)
     if st.button("Run Bulk Analysis"):
+        progress_bar = st.sidebar.progress(0)
+        status_text = st.sidebar.empty()
         for i in range(filecount):
+            progress_bar.progress(i / filecount, text=f"Processing file {i+1} of {filecount}")
             paper=select_random_pdf()
             txt=extract_text_from_pdf(paper)
             #with st.expander(f"Text: {i+1}"):
             #    st.write(txt)
             process_one_pdf(paper,txt)
+        progress_bar.empty()
+        status_text.write("Processing completed")
 
 
 
