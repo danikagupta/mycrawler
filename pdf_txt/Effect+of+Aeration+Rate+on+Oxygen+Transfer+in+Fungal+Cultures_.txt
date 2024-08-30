@@ -1,0 +1,1815 @@
+EVALUATION OF OXYGEN MASS TRANSFER IN FUNGAL  
+FERMENTATION USING AIRLIFT/BUBBLE COLUMN BIOREACTORS  
+ 
+ 
+A THESIS SUBMITTED TO THE GRADUATE DIVISION OF THE  
+UNIVERSITY OF HAWAI‘I AT MĀNOA IN PARTIAL FULFILLMENT  
+OF THE REQUIREMENTS FOR THE DEGREE OF  
+ 
+ 
+MASTER OF SCIENCE  
+ 
+IN 
+ 
+MOLECULAR BIOSCIENCES  AND BIOENGINEERING  
+ 
+DECEMBER 2013 
+  
+By 
+Matthew Raymond Wong 
+ 
+Thesis Committee:  
+Samir Kumar Khanal, Chairperson  
+Wei-Wen Winston Su  
+Eun Sung Kan 
+ 
+ 
+ 
+Keywords: Biofuel , fungal fermentation,  oxygen mass transfer, airlift/ bubble column 
+bioreactors , volumetric mass transfer coefficient ( 𝑘
+𝐿𝑎), vinasse  
+  
+i 
+ ABSTRACT 
+Submerged fungal fermentation using bubble column and airlift bioreactors 
+was investigated for converting bioethanol liquid waste, vinasse into high- value 
+fungal protein for fish or animal feed applications.  Previous studies suggested that 
+fungal biomass yields are dependent on many environmental parameters such as: pH, 
+nutrients, temperature, aeration rate, and colony morphology among others. There is a 
+lack of studies that examine the oxygen mass transfer in fungal fermentation. This 
+research closely examined the air -to-liquid oxygen mass transfer coefficient, 𝑘𝐿𝑎; an 
+important factor affecting fungal biomass yield. Laboratory -scale, 2.5 L working 
+volume  bubble column and air lift bioreactors with sugarcane ethanol process derived 
+vinasse as a su bstrate  and the fungal species Rhizopus microsporus  var. oligosporus  
+were used for oxygen mass transfer studies. Results show ed that 𝑘𝐿𝑎 followed a 
+power curve for both airlift and bubble column configurations using water -only media  
+for air flow rates ranging from 0.5 to 2.0 volume of air/volume of liquid /minute 
+(vvm) . Power regression equations 𝑘𝐿𝑎𝐴𝐿𝑅 = 37.9∗𝑣𝑣𝑚0.949 and 𝑘𝐿𝑎𝐵𝐿𝑅 = 39.0∗
+𝑣𝑣𝑚0.941 correspond to airlift and bubble column configurations, respectively.We 
+determined that 𝑘𝐿𝑎 for vinasse media alone (i.e., without fungus), increased for 
+increasing aeration rates  as expected  for the bubble column configuration from  10.1 
+±0.2 h-1  to 59.4 ±1.9 h-1, respectively at aeration rates of 0.5 to 3.0 vvm. The 𝑘𝐿𝑎 for 
+vinasse media was on average 34.1±17.7 % lower than water  at each aeration rate 
+when operated without fungus. Results show ed that the presence of fungi in vinasse 
+media resulted in decreases and increases of 𝑘 𝐿𝑎 compared to vinasse alone at 1.5 
+vvm. A maximum biological enhancement of +30.7% at 6.53 g was observed. 
+Knowledge of the oxygen mass transfer properties in complex media fermentation is 
+crucial  for process scale- up and commercialization of the  fungal  technology.  
+ii 
+ ACKNOWLEDGMETNS  
+  I would like to express my deep gratitude to my advisor, Dr. Samir K. Khanal 
+and this research would not have been possible  without his guidance . His constant 
+guidance and encouragement  has helped me through my academic, laboratory, and 
+general life. He will always have a racquetball partner in me.  
+I would like to acknowledge Dr. Wei -Wen Winston Su and Dr. Eun Sung Kan 
+for their willingnes s to serve on my thesis committee.  
+ I would like to give special recognition to the Graduate Chair of Molecular 
+Biosciences and Bioengineering, Dr. Dulal Borthakur, who has been a proponent of 
+me the minute I walked in his door and shook hands. You are doing an amazing job. 
+I would also like to thank the people who have touched my life in the 
+Bioenergy and Environment Research Group: Dr. Devin Takara, Dr. Pradeep 
+Munasinghe, Dr. Saoharit Nitayavardhana (Pikky) , Sur endra K.C., Ed Dr ielak, Dr. 
+Zhen Hu, and Dr. Rakshit  Devappa. My friends and lunch buddies, I will never forget 
+our good times in the lab. I would like to distinguish  Dr. Saoharit Nitayavardhana for 
+her mentorship in fungal fermentation and for her critical review of my manuscript . 
+Pikky, I am in your debt for everything I know about fungus and vinasse.  
+I would like to acknowledge Mr. Lee Jakeway, Director of Energy 
+Development at Hawaiian Commercial & Sugar Company (HC&S) for supplying the sugarcane syrup sample for this study. 
+I would like to thank the staff at Agr icultural Engineering Workshop, Charles 
+Nelson and Ryan Kurasaki. Your expertise in fabrications and reactor designs have been an invaluable asset to my research.  
+ Last but not least, my family. Thank you Mom, Dad, Sister, Brother, and 
+Friends, for being behind me  as I plow through the mysteries of nature. 
+Bioengineering research is such an exciting field, I wish you all could understand and feel the passion I have for unearthing new ideas .  
+iii 
+ TABLE OF CONTENTS  
+ABSTRACT  ……………………………………………………………………….…i  
+ACKNO WLEDGMENTS  ………………………………………………….…….….ii  
+TABLE OF CONT ENTS  ………………………………………….…………………i ii 
+LIST OF TABLES  …………………………………………….…………………....vi  
+LIST OF FIGURES  ………………………………………………………………..vii  
+NOMENCLATURE  …………………………………………………………….....viii  
+CHAPTER 1  INTRODUCTION ...........................................................................…..1 
+CHAPTER 2  LITERATURE REVIEW  ……………………………………………..6 
+2.1  Fermentation Technology ...............................................………………..6 
+2.1.1 Submerged Fermentation  …………………………….…………6 
+2.1.2 Solid -State Fermentation  …....………………………………...9 
+2.1.3 Other Fermentation  Configurations  …………………...……...10 
+2.2  Airlift /Bubble Column Reactors and  Pellet Morphology ….…………11 
+2.3  Modes of Oxygen Transport  .…………………………………………12 
+2.4  Volumetric Oxygen Mass Transfer Coefficient, kLa, and its  
+Measurement  ……………………………………..................................14 
+2.5  Modeling  the Volumetric Mass Transfer Coefficient  ……..…………18 
+2.6  Biological Enhancement Factor  ……..………………………………..18 
+2.7 Volumetric Surface A rea, Air Bub ble Size, Gas Bubble Velocity, 
+Kinematic Viscosity, and Diffusivity  ………..………………………..19 
+2.8  Gas Hold Up  ………………………………………………………....21 
+2.9  Foaming ……………………………………………………………...22 
+2.10 Yeast Contamination of Vinass e ……………………………................23 
+2.11 Fungal Growth in Industrial Fermentation  …………………………….24 
+CHAPTER 3  MATERIALS AND METHODS  ...………………………………….25 
+3.1 Sugarcane Vinasse Preparation  ………………………………………....25  
+iv 
+ 3.1.1 Ethanol  Fermentation  …………………………………………25 
+3.1.2 Ethanol  Recovery  ……………………………………………..26 
+3.2 Airlift and Bubble Column Reactor  Fermentation  ….…………………26 
+3.2.1 Fungal Spores  ………………………………………………...26 
+3.2.2 Fungal Starter  ..……………………………………………….27 
+3.2.3 Bioreactor Dimensions and Materials  …………………….......27 
+3.2.4 Fungal Culture on Vinasse Substrate (With -Fungus)  ……….29 
+3.2.5 Water -only Operation …………………………………………29 
+3.2.6 Vinasse -only Operation  ……………………………………….30 
+3.3 Analytical Methods  ……………………………………………………..30 
+3.3.1 Dissolved Oxygen Measurement and Volumetric Mass T ransfer 
+ Coefficient Determination  ……………………………….…….30 
+3.3.2 Volumetric Mass Transfer Coefficient Calculations  ………….31 
+3.3.3 Statistical Analysis and Measurement Error  …………………..32 
+CHAPTER 4  RESULTS AND DISCUSSION: OXYGEN MASS TRANSFER 
+PROPERTIES IN FUNGAL FERMENTATION  …………………...33 
+4.1  Rationale  ………………………………………………………………..33 
+4.2 Dynamic Method Data and Volumetric Mass Transfer Coefficient Calculations  ……………………………….…………………….……..35 
+4.3 Water -only Airlift and Bubble Column Volumetric Mass Transfer 
+Coefficient  …………………………………………………………….40 
+4.4 Vinasse -only Bubble Column Volumetric Mass Transfer Coefficient  …43 
+4.5 With- fungus Volumetric Mass Transfer Coefficient for Aeration 1.5 vvm
+ …45 
+4.5 Observations  …………………………………………………………….47 
+4.5.1 Airlift Reactor and Sparger Fouling  …………………………..47 
+4.5.2 Foaming ………………………………………………………49 
+CHAPTER 5  CONCLUSIONS  ...…………………………………………………50 
+CHAPTER 6  FUTURE RESEARCH AND DIRECTIONS  ……………………..53  
+v 
+ REFERENCES ………………………………………………………………………55 
+APPENDIX  ………………………………………………………………………….60 
+ A.1 Data  Analysis  ………………………………………………………….60 
+ A.2 The Current State of Ethanol Production  .................................................66 
+ A.3 Photos  …………………………………………………………………..68 
+  
+vi 
+ LIST OF TABLES  
+Table 4.1  Volumetric oxygen mass transfer  values for water -only airlift bioreactor 
+experiments  ……………………………………………...……………..38 
+Table 4.2  Volumetric oxygen mass transfer  values for water -only bubble column 
+experiments ………………………………………….......…….………..38 
+Table 4.3  Volumetric oxygen mass transfer  values for vinasse -only bubble column 
+experiments …………………………………………………….….…….39 
+Table 4.4  Volumetric oxygen mass transfer  values for varying cultivation time in 
+bubble column fungal fermentation; aeration rate of 1.5 vvm  ………39 
+Table A.1 Comparison of water -only to vinasse -only in bubble column: t -test 
+assuming equal variances………………………………………………..60 
+Table A.2 Comparison of fungal volumetric oxygen mass transfer  to vinasse- only 
+volumetric oxygen mass transfer  in bubble column  bioreactor: t -test: two -
+sample assuming equal variances  ………………..……………………..63 
+ 
+ 
+ 
+  
+ 
+  
+vii 
+ LIST OF FIGURES  
+Figure 2.1  Oxygen concentration profile from air bubble to liquid media (adapted 
+from Garcia -Ochoa and Gomez, 2009)  ………………………………..13 
+Figure 3.1  Schematic diagram of bubble column reactor configuration  ...................28 
+Figure 4.1  Plugged a irlift bioreactor ...…………………………………………….34 
+Figure 4.2  Summary of volumetric oxygen mass transfer  data to be presented for 
+media, bioreactor configuration, and aerat ion rate   ……………………35 
+Figure 4.3  Dissolved oxygen (DO) vs. t ime c urve obtained from bioreactor 
+experiment. Conditions: water -only, bubble column configuration, 
+aeration rate 1.5 vvm  ………....................……………………………...36 
+Figure 4.4  Typical 𝑙𝑛(1−𝐷𝑂) vs. time (s) Curve to obtain 𝑠𝑙𝑜𝑝𝑒  =−𝑘𝐿𝑎.  
+Conditions: water -only, bubble column configuration, aeration rate 1.5 
+vvm, sample rate 1 Hz  ………………………………………………….37 
+Figure 4.5  Water -only volumetric oxygen mass transfer coefficient for aeration rates 
+0.5, 0.75, 1.0, 1.25, 1.5, 2.0, and 3.0 vvm. n≥3  .……………………….41 
+Figure 4.6  Power regression for water -only, airlift reactor volumetric oxygen mass 
+transfer  values at aeration rates 0.5 to 2.0 vvm  ….……………………42 
+Figure 4.7  Power regression for water -only, bubble column reactor  volumetric 
+oxygen mass transfer  values at aeration rates 0.5 to 2.0 vvm  ....……....42 
+Figure 4.8  Vinasse only scatter plot for bubble column, aeration rates 0.5 -3.0 vvm. 
+n=3 ………………………………………………………….…………..44 
+Figure 4.9   With -fungus volumetric oxygen mass transfer coefficient (solid circles) 
+for varying biomass dry weights (g) on the left hand axis. Enhancement 
+factor (open circles) is on the right hand axis. Conditions : bubble column 
+experiment with -fungus at 1.5 vvm. 𝐾𝐿𝑎0 is 47.64 h- 1. Vertical error bars 
+represent 1 s tandard deviation from the mean  ………………..…..........45 
+Figure 4.10 Air diffuser fouling in airlift reactor  ……..………………………….….48 
+Figure A .1 Worldwide ethanol production 2006 -2012 .………………………….….66 
+Figure A .2 US ethanol production from 1980 to 2012 .………………………….….67  
+viii 
+ NOMENCLATURE  
+𝑎,𝑎𝑠 Volumetric surface area (m2) 
+𝐶∗ Saturated dissolved oxygen concentration (%)  
+𝐶 Dissolved oxygen concentration (%)  
+𝐶0∗ Steady state dissolved oxygen concentration in the presence of oxygen 
+uptake (%) 
+𝐶𝑋,𝑚,𝐶𝑋,𝐿 Cell concentration in monolayer and liquid films (cells/mL) 
+𝑑𝐶
+𝑑𝑡 Change in dissolved oxygen per unit time (mg/ (L·s))  
+𝑑𝑠 Bubble diameter (m)  
+D Oxygen gas diffusivity (cm2/s) 
+𝐸 Biological enhancement factor ( dimensionless ) 
+𝐹𝑂2𝑖𝑛,𝐹𝑂2𝑜𝑢𝑡 Oxygen concentration in inlet and outlet streams (mg/L)  
+𝑘𝐿 Oxygen mass transfer coefficient (m2/h) 
+𝑘𝐿𝑎 Volumetric oxygen mass transfe r coefficient (h-1) 
+𝐾𝐿𝑎 Volumetric oxygen mass transfer coefficient in the presence of respiring 
+organism  (h-1) 
+𝑁 Stirred speed (rpm) 
+𝑄 Aeration rate (L/min) 
+𝑞𝑋 Specific oxygen consumption rate (mg O 2/g biomass)  
+𝑢𝐿 Superficial liquid velocity (m/s) 
+𝑈𝑠 Terminal rise velocity of the bubble  (m/s)  
+𝑣𝑔 Air bubble superficial velocity (m/s) 
+𝑣𝑠𝑙𝑖𝑝 Bubble slip velocity (m/s)  
+𝑣𝑡𝑖𝑝 Impeller tip speed (m/s) 
+𝑣𝑠 Superficial gas velocity (m/s) 
+𝑋 Cell concentration (g)  
+V Bioreactor volume (L)  
+ix 
+ vvm Volume of gas/volume of liquid/minute (L/L/min)  
+𝑉𝐿𝐶, 𝑉�𝐿𝑅 Average velocity in the core region and average linear velocity  (m/s) 
+𝑧𝑚,𝑧𝐿 Cell and liquid monolayer thickness ( 𝜇m) 
+ 
+Greek Symbols   
+ε Gas hold- up (dimensionless ) 
+𝜇 Viscosity (kg/(s·m)) 
+𝜏𝑅𝑇 Dissolved oxygen probe response time (s)  
+𝜏𝑡𝑖𝑝 Shear stress at the impeller tip (pascal)  
+𝜈 Kinematic viscosity (m2/s) 
+𝜃 Mixing time (s)
+ 
+Acronyms 
+SSF Solid -state fermentation  
+SmF  Submerged fermentation  
+ALR  Airlift bio reactor  
+BLR  Bubble column bioreactor  
+STR Stirred -tank bioreactor  
+OTR  Oxygen transfer rate (mg/ (L·s)) 
+OUR  Oxygen uptake rate (mg/ (L·s)) 
+DO Dissolved o xygen (%)  
+ 
+  
+1 
+ CHAPTER 1 INTRODUCTION  
+Ethanol production by yeast fermentation  does not fully uti lize the potential 
+energy of the starting raw material. The protein, lipids, and carbohydrates of biomass 
+feedstocks such as corn, sugarcane, sweet sorghum, and sugarbe et are complex and 
+not 100% utilized by yeast fermentation alone . Ethanol production's solid and liquid 
+waste streams are rich in biological potential energy --the liquid waste stream is 
+especially rich in nutrients because of yeast cells left over from fermentation.  
+Developing co-products help to utilize the “waste” streams. Thus, co -products help to 
+decrease the net cost and increase the energy  efficiency of ethanol production by 
+finding a source of revenue and purpose for the waste stream . For example, the U nited 
+State's 2012 corn- ethanol industry produced 13.3 billion gallons of ethanol while co -
+producing 36.7 metric tons of high- quality lives tock feed from 4.8 billion bushels of 
+corn. (Renewable Fuels Association, 2013)  
+Other r esearchers have investigated generating co -products from sugar -based 
+ethanol waste streams. Two  examples of co -products are, yeast protein concentrate 
+(YPC) for carp fee d from bioethanol waste  and fungal biomass for protein feed 
+ingredient from bioethanol waste, etc. ( Nitayavardhana and Khanal, 2010; Omar et 
+al., 2011)  
+The focus of this research is based on  the study from Nitayavardhana and 
+Khanal  (2010) , in which they pr oposed an "innovative biorefinery concept" to 
+increase the value of vinasse. They proposed adding a processing step  which involves 
+fungal  fermentation using Rhizopus microsporus  (var. oligosporus ) on vinasse.   
+Nitayavardhana and Khanal  (2010) conducted optimization studies using a series of 
+250 mL shaker flasks containing 100 mL of media .  However, industry processing  
+2 
+ volumes for vinasse are on the order of 1x1010 L/year. Thus the re exists a  need for 
+industrial scale f ermentation strategies. 
+Sugarcane e thanol is distilled from the broth  of yeast fermentation on 
+sugarcane syrup. Distillation leaves a waste,  an aqueous solution, known as vinasse , 
+which consists of spent sugar -syrup, yeast cells, minerals and salts. Nitayavardhana 
+(2012)  reported  that vinasse from sugarcane juice has the following characteristics: 
+chemical oxygen demand of 30.4 g/L, biochemical oxygen demand of 16.7 g/L, total 
+nitrogen of 628 mg/L, total phosphorous of 130 mg/L, sulfate of 1.4 g/L, and potassium of 2.0 g/L.  
+Vinas se has hazardous effects when disposed of improperly to the 
+environment. Traditionally vinasse is disposed by fertirrigation to the agricultur al 
+lands. This practice,  however , has serious environmental concerns including 
+increasing biological oxygen demand (BOD), causing nitrogen pollution and 
+decreasing the alkalinity of soil . High levels of nitrogen in the water leads to algal 
+blooms and lowered dissolved oxygen (DO) in streams, rivers, and gulfs. Decreased alkalinity of land leads to lower crop yield (Martinelli and Filoso, 2008) . 
+In 2013, Nitayavardhana et al. investigated fungal fermentation using an airlift 
+(ALR) and bubble column bioreactor (BLR) configurations.  The use of an ALR and BLR was more ideal because there is no mechanical mixing compared to the traditional stirred tank reactor. A  lower shear rate is essential to maintaining the 
+desired morphology of the fungus in pellet form (versus mycelia hair -like structure).  
+Other benefits of the ALRs and BLRs are lower operational cost for bulk liqui d 
+mixing (versus mechanical impeller agitation) and lower maintenance costs due to lack of moving parts within the reactor (Smart and Fowler, 1984) .  
+3 
+ The aerobic nature of Rhizopus microsporus  requires supply of sufficient 
+oxygen to the media to ensure non- growth limiting conditions in the reactor. 
+Nitayavardhana et al. (2013) 2.5 L working volume ALR and BLR experiments 
+showed that an aeration rate of 1.5 vvm (volumes of air per volume of liquid  per 
+minute) resulted in the highest fungal yield:  8.04 ± 0.80 (g biomass increase/g  initial 
+biomass) . At lower aeration rates (0.5 and 1.0 vvm) dissolved oxygen (DO) 
+concentrations  were reduced to near 0 mg O 2/L after 24 hours of fermentation. This 
+coincidence of lower yields at lower aeration rates suggests that insufficient DO reduces biomass yield .  
+The optimal DO for fungal fermentations is 20- 50% of air saturation or about 
+1.6-4.0 mg O
+2/L (Su and He, 1997; Fadenza et al. 2010) .  DO concentrations can drop 
+substantially during fungal growth w ith oxygen uptake rate  increasing directly with 
+exponential growth phase and increased biomass concentration . Sufficient oxygen 
+mass transfer from gas to liquid (i.e. from air bubble to vinasse) is essential to sustain fungal growth and maximize biomass yield (Rajagopalan and Modak, 1993; Garcia -
+Ochoa et al., 2010) . 
+One important parameter that describes the oxygen mass transfer in 
+bioreactors is the volumetric oxygen mass transfer coefficient, 𝑘
+𝐿𝑎. 𝑘𝐿𝑎  is a 
+coefficient which is determined by the physical and operational  properties of the 
+bioreactor. When 𝑘𝐿𝑎 is known, the oxygen mass transfer rate  (OTR)  can be known. 
+However, no studies have measured 𝑘 𝐿𝑎 for fungal fermentation on vinasse.  
+Chemical and biological engineers have researched the many aspects and 
+impa cts of 𝑘𝐿𝑎 in airlift and bubble column bioreactors.  The lumped volumetric 
+oxygen mass transfer coefficient ( 𝑘𝐿𝑎) and it's dependent parameters:  liquid   
+4 
+ viscosity, gas bubble diameter, gas hold- up, gas -vector -liquid transfer, antifoaming 
+agents, oxygen transfer efficiency, concentration gradients, exposure time, reactor 
+geometry, and biomass oxygen uptake rate, are all subject areas well documented.  (Garcia- Ochoa et al., 2000; Garcia- Ochoa and Castro, 2001 ; Christi and Jauregui -
+Haza, 2002;  Galactio n et al., 2004;  Kilonzo and Margaritis, 2004; Junker, 2007;  
+Pilarek and Szewczyk, 2008;  Garcia- Ochoa and Gomez, 2009;  Suresh et al, 2009; 
+Quijano et al., 2010; Garcia -Ochoa et al., 2010) However, how these topics pertain 
+specifically to fungal fermentation in vinasse is yet to be determined. The importance  
+of 𝑘
+𝐿𝑎 and  𝑘𝐿𝑎 with  fungus  (𝐾𝐿𝑎) on bioreactor design and its effects on biomass 
+yield warrants the investigation of 𝑘𝐿𝑎 and 𝐾𝐿𝑎 in fungal fermentations on vinasse 
+substrate in airlift and bubble column bioreactors.   
+By understanding the oxygen mass transfer properties of ALRs and BLRs in 
+fungal fermentations, engineers can reduce aeration costs by only supplying the 
+minimum amount of oxygen required to produce the maximal amount of  fungus. 
+Reducing the operating costs of the co- product production is a crucial step to making 
+it economical for use in the ethanol industry. Furthermore , by including a fungal 
+fermentation step in the ethanol process, the e nvironmental impact of vinasse on the 
+water quality  will be reduced  
+The objectives of this study was to investigate the oxygen mass transfer of 
+fungal fermentation using Rhizopus micros porus  (var. oligosporus ) on vinasse in 2.5 
+L laboratory scale  airlift and bubble column bioreactor s.  First by  measuring 𝑘 𝐿𝑎 
+under water -only and vinasse -only conditions at various aeration rates in ALR and 
+BLR configurations, 𝑘𝐿𝑎 values can be estimated for the abiotic media. The second 
+objective was  to measure the volumetric oxygen mass transfer coefficient during  
+5 
+ fungal fermentation 𝐾𝐿𝑎. 𝐾𝐿𝑎 is denoted with a capital K to signify there is a fungus 
+present (i.e. there is oxygen consumption)  in the media.   
+6 
+ CHAPTER 2 LITERATURE REVIEW  
+2.1  Fermentation Technology  
+2.1.1  Submerged Fermentation 
+Erlenmeyer Flasks  
+The Erlenmeyer  flask is a small, laboratory scale cultivation vessel  (0.25-
+1.00L) that can be used for fungal growth on vinasse. The Erlenmeyer flask can 
+maintain  a closed environment at a low cost  which makes it ideal for primary 
+experiments . Within an incubator shaker, a n Erlenmeyer flask can maintain a desired 
+temperatu re, sterile environment, and at low volumes (<1L) , have  sufficient oxygen 
+mass transfer rates ( 2.0-20.0 h-1 at 100 -160 rpm , 0.250- 2.000 L flasks, with 0.125-
+1.200 L media ) (Nikakhtari and Hill,  2005) . However, drawbacks  of flasks  include 
+lack of pH control  and reduced aeration  in scale- up—as aeration only occurs in the 
+liquid -headspace  interface which ratio with the volume decreases with larger 
+volumes. Another consideration is if the liquid is too high up the neck of the flask 
+then the aeration will be significantly reduced  as well.  
+Stirred Tank Bioreactors  
+The stirred tank reactor (STR) is the most commonly used for microbial, 
+single cell c ultivations. It scales from 1  L to 10,000 L . Submerged impellers are the 
+standard mixing practice for STRs. The aspect ratio and the impeller type are designed to establish  to the mixing profile required for culturing microbial species . 
+The two most common types of impellers are the radial -mixing Rus hton type and 
+axial -mixing marine type.  With larger reactors, a mix of the two types of impellers is 
+usually required to avoid stagnation zones and ensure good mixing. Baffles are  
+7 
+ installed to prevent vortexing, a phenomena which reduces mixing. Aeration is 
+usually provided by a ring sparger at the bottom of the tank; the diameter of the ring, 
+the height position, and orifice size are all variable design parameters for spargers (Doran, 2013) . 
+Oxygen mass transfer is well characterized in this type of react or with 
+literature suggesting the general form for predicting the volumetric mass transfer 
+coefficient  (Nikakhtari and Hill, 2005) : 
+𝑘
+𝐿𝑎=𝐴0∗𝑁𝐴1∗𝑄𝐴2           (2 ) 
+Where  𝐴0,𝐴1,𝐴2 are empirically derived constants unique to each stirred tank 
+biore actor configuration, 𝑁 is stirrer speed in rpm, and 𝑄  is aeratio n rate in L/min. A 
+major drawback to STRs is similar to the shaker flask is that the energy required to properly mix the stirred tank bioreactor increases exponentially with volume. The 
+second major drawback is increased shear stress at the impeller tip, τ
+tip, which 
+increases linearly with both impeller length and stirrer speed  (Metzner and Otto, 
+1957) :  
+τtip∝𝑣𝑡𝑖𝑝=𝑟∗𝑁           (3 ) 
+Shear stress is major concern because it can cause cell  death by rupturing the cell 
+membrane  (Garcia -Ochoa and Gomez, 2009; Fontana and Silveira, 2012) . 
+Airlift and Bubble Column Reactors  
+Airlift and Bubble Column bioreactors (ALR and BLR) have been thoroughly 
+researched and are characterized similar to stirre d tank bioreactors. Their ability to 
+elicit growth curves and product yields  have been verified for bacteria, acti nomyectes, 
+and filamentous mold ( Gavrilescu and Roman, 1993; Alesieva and Peeva, 2000) .  
+8 
+ There is no shortage of literature describing the phys ical configurations and models 
+for airlift and bubble column bioreactors. A schematic of airlift and bubble column 
+bioreactors is presented in the methods section Figure 3.1. To discuss the general configuration briefly, a vertical column (high aspect rati o) is closed at the top and 
+bottom with forced aeration at the bottom of the tank. The gas bubbles from the  
+bottom of the tank rise to the top, creating a convective force for mixing and provides  
+gas exchange (O
+2, CO 2, CO, etc.)  In conventional  ALR and BLR, there is no 
+mechanical mixing.  However, configurations of ALRs and BLRs, which have added mechanical agitation or forced -liquid, have also been investigated  (Christi and 
+Jauregui -Haza, 2002; Yazdian et al., 2010) . 
+Mixing time , 𝜃, for ALRs a nd BLRs is  increased with height according to the 
+following proportionality.:  
+𝜃∝𝐻
+1.7         (4 ) 
+This means during the scale up of ALRs and BLRs, non- homogenous zones will 
+appear  with noticeably reduced DO concentrations  and will not be replenished unt il 
+the next pass th rough the riser zone. However, bubble residenc e time is increased with 
+larger heights, resulting in an increase in oxygen mass transfer rates. Conversely bubble size is also inversely proportional to oxygen mass transfer rates (Smart and  
+Fowler, 1984) . 
+The use of ALRs and BLRs as bioreacto rs has encompassed mostly plant -cell 
+and bacterial cultures . However , fungal experiments have also been investigated . 
+Srivastava and Kundu (1999) reported using an ALR to produce cephalosporin- C in a 
+fungus, Cephalosporium acremonium . Their objective was to produce fungal pellets, 
+as opposed to the conventional mycelia form. They cite enhanced mass transfer using  
+9 
+ a bioparticle —Siran carrier. They reported 𝐾𝐿𝑎 = 100 h-1 and 70 h-1 for Siran  carrier 
+and pellet modes, respectively.  
+The viscosity of the media is a great concern for ALRs and BLRs. As 
+viscosity  of the media  increases, momentum transfer is reduced and energy 
+dissipation is increased.  ALRs and BLRs only source of mixing is the bubble rise 
+velocity momentum transfer to the bulk liquid. While, operational power costs can be 
+reduced by 17- 64% in ALRs and BLRs over STRs, aeration must be sufficient not 
+only to oxygenate the system but to have the system well mixed as well  (Gavrilescu 
+and Roman, 1993) . To achieve good mixing, the us e of a low viscosity liquid is  
+recommended.   
+2.1.2  Solid -State Fermentation  
+Solid -state fermentation (SSF) is a less frequent strategy  of fungal cultivation 
+compared to submerged fermentation (SmF).  SSF is c onducted by seeding 
+filamentous fungi onto  a solid media , usually an agricultural residue such as cereal 
+straw, which acts as physical support as well as a nutrient source . Three main 
+configurations for this approach are the tray, packed bed, and rotating drum. The 
+former two have no mechanical mixing and have low operating costs. Aeration is 
+provided by either ambient air or forced air from the bottom of the reactor.   The rotating drum has minimal energy requirements, as the bioreactor is turned over  only  
+periodically to mix the contents  (Dhillon et al., 2013) . SSF has no discernible liquid 
+phase, however low levels of moisture are required for supporting the  growth. 
+(Robinson and Nigam , 2003) . 
+Pand ey et al. (2003) noted that f ilamentous fungi have been identified as the 
+most successful organism to grown on solid media because of their ability to penetrate  
+10 
+ through the pores of the substrate .  SSF is considered the closest physical environment  
+(i.e. damp wood)  for a fungus , but l arge-scale practice difficult to obtain because of a 
+lack of process control.  
+SSF in tray or packed bed configurations is  an un -mixed, non- homogenous 
+fermentation strategy, which leads to a loss of control over culture parameters such as 
+pH, temperature, nutrient concentration, moisture, and oxygen transfer. High moisture 
+causes low oxygen mass transfer, and is thought to promote  anaerobic  bacterial 
+contamination. Heat generation during the exponential  growth phase causes 
+temperature build up in the SSF bio reactor . Increase temperature can denature 
+products  and hinder fungal growth. Measurement of bioreactor performance is also 
+very difficult given the non- homogeneity of the culture and general lack of analytical 
+techniques. Correlating headspace gas composi tion (CO 2 and O 2) is the most reliable 
+tool for characterizing the growth (Pand ey et al. , 2003; Robinson and Nigam, 2003) . 
+2.1.3  Other Fermen tation  Configurations   
+Coutte et al. (2010) used a bubbleless membrane bioreactor where a ho llow 
+fiber membrane (e xternal and internal) was used for aeration in a conventional STR.  
+An noteworthy advantage  of bubbleless membrane bioreactors is that they do not 
+foam.  
+Microbioreactors  are a small scale alternative to the industry standard 
+submerged fermentations . They are casually defined as fermentation in less than 1 
+mL. M aterials for microbioreactors are usually plastic which allows for complete 
+fluidic design into 'one piece'. The small scale and plastic materials also makes microbioreactors disposable which removes a requirement for sterilization and 
+decreases setup time. Proper mixing is a concern in the microbioreactor as turbulent  
+11 
+ mixing is difficult to achieve because of the small characteristic length. A lack of 
+mixing does not mean a lack of gas exchange as it does in larger submerged fermentation . This is because at the small scale, membrane diffusion  is sufficient for 
+gas exchange (Schapper et al., 2009) . 
+2.2  Airlift/Bubble Column Reactors and  Pellet Morphology 
+Researchers reported the benefits of specific fungal pellet morphologies in 
+terms of product yields and biomass growth (Aleksieva and Peeva, 2000; Srivastava and Kundu, 1999). Fungal pellet morphology is suitable for submerged fermentation because of the hi gh surface area to volume ratio  (Nitayavardhana, 2013).  Fungal  
+morphology can change  from pellet to hairy -like which cause  the fungus to grow over 
+the impeller of a stirred tank reactor  and other fittings , reducing mixing characteristics 
+(Pilarek and Szewczyk, 2008) . In ALR and BLR experiments  conducted by 
+Nitayavardhana et al. (201 3), an aeration  rate of 2.0 vvm resulted in a lower biomass 
+yield coinciding with a morphological change to filamentous  from pellet form .  
+The ability of ALRs and BLRs to combine oxygen mass transfer and bulk 
+mixin g with aeration allows them to provide a lower sheer environment while 
+maintaining good aeration when compared to stir red tank reactors. Lower sheer is 
+difficult to achieve  in larger, mixed bioreactors  due to the need for mixing.  The she ar 
+stress cause by  bubbles on the fluid and the walls on the fluid are very low compared 
+to the impeller on the fluid in a stirred tank bioreactor (Wood and Thompson, 1986) . 
+However, since oxygen transfer is directly proportional to the aeration rate in ALRs and BLRs, oxyge n transfer will be limited by the highest tolerated aeration rate which 
+does not cause a morphological change.   
+12 
+ ALR and BLR use also  avoids the use of impellers, which can cause cell 
+mortality  (Coutte et al., 2010). 
+Ethanol concentrations can cause changes in morphology. Ethanol 
+concentrations less than 3% do not adversely affect fungal biomass yields. At 5% 
+ethanol concentrations, fungal pellets agglomerate causing mass transfer problems 
+that inhibit growth (Nitayavardhana, 2013) . In commercial vinasse, et hanol 
+concentrations are lower due to higher recovery yields of ethanol (Nitayavardhana, 
+2013) . This makes dilution not necessary for fungal fermentation on commercial 
+vinasse.  However, if the vinasse is non -diluted there will be unknown implications on 
+the oxygen mass transfer properties due to a higher concentration of solutes in the 
+vinasse.  
+2.3  Modes of Oxygen Transport  
+The first and primary mode of oxygen transport in fungal fermentations  is 
+through air bubbles forced through the liquid. The driving force of oxygen mass 
+transfer is the concentration gradient, (𝐶∗−𝐶) of Equation 1, between the saturated 
+air and the dissolved oxygen in the bulk liquid. Oxygen gas must diffuse through each 
+film in order to reach the bulk liquid —gas bulk to gas film to liquid film, to liquid 
+bulk—as shown in Figure 2.1.  
+  
+13 
+  
+Figure 2.1 Oxygen concentration profile from air bubble to liquid media 
+(adapted from Garcia -Ochoa and Gomez, 2009)  
+The mass transfer through the gas bulk and film is very fast compared to the  
+mass dif fusion through the liquid film  and the liquid bulk. In engineering practice, the 
+mass transfer rate  is measured  from t he rate limiting step, the  mass transfer through 
+the liquid film , (i.e. 𝑘𝐿(𝐶∗−𝐶)). The assumption made for this calculation  is that 
+oxygen concentration at  the gas-liquid interface  equals the oxygen saturation 
+concentration for the bulk liquid (determined by the maximal steady state oxygen 
+concentration with no microbes present in the media ) While  this method lump s the 
+gas film resistance, 𝑘𝐺, into  𝑘𝐿, there are studies which look at the two film 
+resistances separately. For the gas mass transfer rate, the driving force  is the 
+difference between the gas bulk concentration and the gas -liquid interface 
+concentration, 𝑘 𝐺(𝑃𝐺−𝑃∗).  Where 𝑃∗ and 𝑃𝐺 are the interface and bulk gas 
+concentrations, respectively (Garcia -Ochoa and Gomez, 2010 ). 
+ 
+14 
+ Aeration through the head space -liquid interface can  also contribute to the 
+dissolved oxygen concentrations in the bulk media, but this effec t is minimal.  Christi 
+and Jauregui -Haza (2002) reported that a maximum of  12% of the total oxygen found 
+in solution originated from the head space of a reactor . The experiments of this 
+research lumped together the gas bubble and surface aeration together t o obtain the 
+volumetric oxygen mass transfer coefficient, 𝑘𝐿𝑎, for the total reactor configuration.  
+The concern for this research is only to identify the oxygen mass transfer contribution 
+by the entire system —sparger and head space— thus lumping together  these two areas 
+is defensible.  
+2.4  Volumetric Oxygen Mass Transfer Coefficient, kLa, and i ts Measurement  
+The 𝑘𝐿𝑎 can be empirically measured using the following differential equation 
+represents the transient oxygen mass transfer in chemical reactions:  
+𝑑𝐶
+𝑑𝑡=𝑘𝐿𝑎(𝐶∗−𝐶)           (1 )  
+Where 𝑑𝐶
+𝑑𝑡 is the change in liquid phase oxygen gas concentration over time, 
+𝑘𝐿𝑎  is the volumetric mass transfer coefficient, 𝐶∗ is the saturated liquid oxygen 
+concentration, and  𝐶  is the liquid ox ygen concentration.  
+The volumetric oxygen mass transfer coefficient, k La, is a lumped parameter 
+of the oxygen mass transfer coefficient, k L, and the total volumetric gas -bubble 
+surface area, a.  k La represents the proportional ity coefficient that when mul tiplied by 
+the driving force, ( C*- C), gives the oxygen mass transfer rate (OTR) from air bubble 
+to liquid solution. There have been countless studies and proposed theories which try 
+to analytically determine  these two parameters and the numerous variables required 
+for calculating k La for ALRs and BLRs  (Vasconcelos et al., 2003) . The  variables  
+15 
+ which influence  kLa be classified into four families  of variables: physical properties, 
+geometric parameters, operatio nal conditions, and biomass concentration and type  
+(Garcia- Ochoa and Gomez, 2009) . It is clear that  kLa is unique depending on 
+bioreactor  configuration and media combination. In addition, the transient nature of 
+biological fermentations al so causes physica l properties to change which in turn 
+affects the k La value  (i.e. K La).  Therefore, m odels that predict  kLa are only applicable 
+to small changes in the family of variables  or mono- varia nt studies (i.e. changing the 
+temperature only while leaving other variables like aeration rate constant) .   
+Understanding the OTR of the bioreactor is important because it directly 
+impacts the dissolved oxygen concentration in the bioreactor and ultimate the growth 
+of the fungus. 
+If the  geometric parameters (heights, dia meter, sparger height, draft tube 
+height, etc.) are fixed, including the sparger type. Then operational conditions that can 
+be varied are temperature, aeration rate, and pH. Physical properties (viscosity, density, etc.) are dependent on the biomass and me dia type and will have transient 
+values over the course of fermentation. Biomass weight and specific oxygen uptake rate will also be transient.  
+kLa  can be determined by several different  methods including chemical 
+methods, sodium sulfite oxidation method, adsorption of CO 2, physical methods, and 
+dynamic methods  (Garcia -Ochoa and Gomez, 2009) . By far the most widely used to 
+determine k La in ALRs and BLRs is the dynamic method where k La mea surement 
+follows the following equation:   
+𝑑𝐶
+𝑑𝑡=𝑘𝐿𝑎(𝐶∗−𝐶)−𝑞𝑋∗𝑋          (5 )  
+16 
+ Where , 𝑞𝑋∗𝑋 is the oxygen uptake rate.  
+For abiotic  conditions  𝑞𝑋∗𝑋=0 and the equation can be integrated to:  
+ln (𝐶∗−𝐶)=𝑘𝐿𝑎∗𝑡          (6 )  
+A plot of ln  (𝐶) vs t will give a slope of 𝑘 𝐿𝑎. 
+When using polargraphic DO probes for measurements, the following 
+equation corrects for probe response lag if the oxygen transfer rate is sufficiently high.  
+𝐶=𝐶∗−𝐶0
+1−𝜏𝑅𝑇∗𝑘𝐿𝑎∗�𝜏𝑅𝑇∗𝑘𝐿𝑎∗𝑒−𝑡
+𝜏𝑅𝑇−𝑒−𝑘𝐿𝑎∗𝑡�           (7) 
+Where , 𝜏 is the electrode response time and C is the measured oxygen concentration. 
+It can be seen from Eqn. 7 that the first term in brackets is becomes negligible as t 
+increases and for smaller values of  𝜏𝑅𝑇(i.e.𝑒−𝑡
+𝜏𝑅𝑇→0).  
+The elect rode response time, 𝜏𝑅𝑇, is used to determine if this correction 
+equation is required.  𝜏𝑅𝑇 is the experimentally recorded time for a probe to measure a 
+step change in concentration up to 63.2% of the final value (Tribe et al., 1995) . If 𝜏  is 
+of the  same order of magnitude as 1
+𝑘𝐿𝑎 then the correction equation should be used 
+(Van’t Riet, 1979) . For example, if the 𝑘 𝐿𝑎= 0.01 s−1 then 1
+𝑘𝐿𝑎 = 100 s which is  
+almost  two orders of magnitude greater tha n the typical response time in most cases:  𝜏 
+≈ 5-6 s. ALRs and BLRs with only aeration and no mechanical mixing produce 𝑘𝐿𝑎 
+values between 0.0027 and 0.0277 s-1, which corresponds to 1/ 𝑘𝐿𝑎 values from 360 
+and 60, respectively. Thus , for 𝑘𝐿𝑎 ≤ 0.0277 s-1, probe response lag can be neglected. 
+The correction equation can also be avoided if the first 30% of DO concentration data  
+is truncated (Merchuk et al., 1990) .  
+17 
+ Measurement of 𝑘 𝐿𝑎 with respiring biological components active in the media 
+is more involved.  When reporting the 𝑘 𝐿𝑎 of a biological system, the volumetric 
+mass transfer coefficient is written with a capital K (i.e.  𝐾𝐿𝑎) to signify the presence 
+of  third dispersed phase (in this case the fungus). When the oxygen concentration 
+cannot be increased from  low level s, such as when the fungal OUR is greater than the 
+OTR,  a modification to the dynamic method has been developed. This method use s 
+varying concentrations of oxygen in the inlet streams  (i.e. air and pure oxygen) , which 
+will produce two pseudo steady- states fo r which  𝐾 𝐿𝑎 can be determined  (Garcia -
+Ochoa and Gomez, 2009) . This method is useful for on- line 𝐾𝐿𝑎 measurements when 
+microbes present in the bioreactor cannot tolerate low oxygen levels, or the normal aeration cannot sustain a detectable DO concent ration (i.e. DO = 0%)  
+Another  method to determine the 𝐾 𝐿𝑎 in bioactive fermentation is to 
+determine a mass balance of the inlet and outlet air streams ( 𝐹𝑂2𝑖𝑛,𝐹𝑂2𝑜𝑢𝑡) near steady 
+state (𝑑𝐶𝑂2
+𝑑𝑡=0). Any oxygen loss in the air therefore is c ontributed to transfer to the 
+media or oxygen uptake by the organism.  A third probe in the liquid can determine 
+the steady -state liquid oxygen concentration (𝐶𝐿). Finally:  
+𝐾𝐿𝑎=𝐹𝑂2𝑖𝑛−𝐹𝑂2𝑜𝑢𝑡
+𝑉∗(𝐶∗− 𝐶)          (8) 
+Where , 𝑉 is volume of the reactor.  For very small reactors where there are minute 
+changes in 𝐹𝑂2𝑖𝑛 and 𝐹𝑂2𝑜𝑢𝑡, very sensitive oxygen probe for the gas streams is required. 
+On the other hand, if the liquid volume is large and a significant amount of oxygen is 
+transferred to  the liquid media  from the bubble, less sensitive equipment is needed.   
+18 
+ There are even more developed chemical and physical methods for 
+determining 𝑘𝐿𝑎 outside the conventional methods. Pedersen et al. (1994) also 
+reported using radioisotopes for 𝑘 𝐿𝑎measurement. However, these methods are 
+undesirable  for fungal growth experiments because of the toxic effect  on fungal 
+growth and unknown reactions with solutes in vinasse.  
+2.5  Modeling the volumetric oxygen mass transfer coefficient  
+Numerous authors ha ve proposed models for predicting  𝑘𝐿𝑎 in ALRs and 
+BLRs ( Kantarci et al, 2005 ; Garcia- Ochoa and Gomez, 2009) . Most models require 
+the knowledge of many physical and operation parameters including: Diffusivity, 
+viscosity, density, superficial gas velocity, and gas hold- up (𝐷,𝜇,𝜌,𝑣,𝜀).  Garcia -
+Ochoa and Gomez (2009) presented the general form of predicting  𝑘𝐿𝑎 by taking the 
+common terms from multiple researchers’ empirical equations for ALRs and BLRs:  
+𝑘𝐿𝑎=𝑐∗𝑣𝑠𝑎∗𝜇𝑎𝑏          (9 ) 
+Where , 𝐶,𝑎,𝑏 are empirical constants, 𝑣 𝑠is superficial gas velocity, and 𝜇 𝑎 is apparent 
+viscosity. Values for 𝐶 and 𝑎  in pure water have been determined: 𝑐=0.47,𝑎=0.82 
+(Deckwer et al., 1974, 1983) . When the fluid is non- Newtonian, apparent viscosit y 
+influences the calculation. Godbole et al. (1984) report ed values between - 0.8 and - 1 
+for the exponent 𝑏.  Geometric properties, such as height and diameter of the 
+bioreactor, have less influence on prediction of 𝑘 𝐿𝑎 in ALRs and BLRs because they 
+do not affect the boundary layer between the air bubble and the liquid stream.  
+2.6  Biological Enhancement Factor  
+The biological enhancement factor,  𝐸, is a phenomenon that either increases or 
+decreases 𝑘𝐿𝑎 because of a microorganism physical presence and  oxygen uptake rate.  
+19 
+ 𝐸 is defined as the ratio of oxygen mass transfer rate in the presence of cells 𝐾 𝐿𝑎 to 
+the oxygen mass transfer rate without cells,  𝑘𝐿𝑎.  
+𝐸=𝐾𝐿𝑎
+𝑘𝐿𝑎           (10) 
+When the cell concentration is high enough, the bubbles do not interact with the bulk 
+liquid velocity. Instead, they are exposed to the microorganism first (along with a thin surfactant layer) and the film resistance changes due to this phenomenon  (Garcia -
+Ochoa et al., 2010) . A model predicting 𝐸  was proposed by Garcia -Ochoa and Gomez 
+(2005):  
+𝐸=�1+𝑞
+𝑋𝐶𝑋,𝑚
+2𝐷𝑚(𝐶∗−𝐶)∗�1+2∗𝑧𝐿𝐷𝑚
+𝑧𝑚𝐷𝐿+2𝑧𝐿2
+3𝑧𝑚2�+1
+3𝑞𝑋𝐶𝑋,𝐿𝑧𝐿2
+2𝐷𝐿(𝐶∗−𝐶𝐿)�∗�𝑧𝐿
+𝐷𝐿
+∑𝑧𝑖
+𝐷𝑖𝑖�  (11)  
+Where 𝐶 𝑥,𝑚 and 𝐶𝑥,𝐿 are the cell concentrations in the monolayer and stagnant liqui d 
+layer, respectively. Where 𝑞𝑂2 is the specific oxygen uptake rate and 𝐶 𝐿 is the oxygen 
+concentration in the liquid. 𝑧 𝑖 and 𝐷𝑖 are the film thicknesses and diffusivities, 
+respectively. This model predicts that 𝐸  will increase for increases in bot h cell 
+concentrations and cell specific oxygen uptake rates.  The value of E  has been 
+reported to range from 0. 9 to 2 for bacterial cultures.  (Garcia -Ochoa and Gomez, 
+2005). However no fungal enhancement factors have been reported.  
+2.7  Volumetric Surface A rea, Air Bubble Size, Gas Bubble Velocity, 
+Kinematic Viscosity, and Diffusivity  
+Many of the physical properties are functions of the operational parameters and other 
+physical properties. For example if you decrease your bubble size you will increase your surface area and increase your gas hold up. Bubble size is a function of sparger  
+20 
+ type, aeration rate, physical properties  of the broth, and biomass properties. Bubble 
+size is very difficult to maintain uniform throughout a fungal fermentations , however 
+average bubble size equations have been deemed sufficient for calculating the 
+volumetric surface area, 𝑎.  Smaller bubbles have an increased surface area to volume 
+ratio, which enhances the exposed interface between gas and liquid.  Reducing bubble 
+size will generally lead to increases in 𝑎  and thus increases in 𝑘𝐿𝑎 in pure water. 
+Kantarci et al ( 2005)  proposed an equation relating the superficial area to gas hold up 
+and bubble diameter :  
+𝑎𝑠=6𝜀
+𝑑𝑠           (12)  
+For solution s with contaminants or substances that can adhere to the gas- liquid 
+monolayer, Vasconcelos et al. (2003) hypothesized and tested that smaller bubble 
+radii can decrease 𝑘𝐿from the  resist ance caused by rigid interfaces at the rear of rising 
+bubbles. Thus, when there is physical blocking in the media, l arger bubbles have 
+greater 𝑘𝐿 due to a more mobile interface with the liquid. Vasconcelos et al. (2003) 
+presented theoretical equations for  𝑘𝐿𝑟𝑖𝑑𝑔𝑒𝑑𝑎𝑛𝑑  𝑘𝐿𝑚𝑜𝑏𝑖𝑙𝑒: 
+ 𝑘𝐿𝑟𝑖𝑑𝑔𝑒𝑑=0.6�𝑣𝑆
+𝑑𝐷2
+3
+𝜈16            (13)  
+ 𝑘𝐿𝑚𝑜𝑏𝑖𝑙𝑒=1.13�𝑣𝑆
+𝑑𝐷12           (14) 
+From these equations, the effects of slip velocity, (𝑣𝑆), kinematic viscosity,( 𝜈), bubble 
+diameter, ( 𝑑), and gas diffusivity, (𝐷), can be observed. Slip velocity, (𝑣𝑆) is defined 
+as 𝑣𝑆=𝑣𝐺
+𝜀−𝑢𝐿, where 𝑣𝐺 and 𝑢𝐿 are superficial air bubble velocity and free stream 
+liquid velocity, respectively.   
+21 
+ Although bubble size and film resistance is an important parameter for fungal 
+fermentations, calculating the lumped parameter 𝑘𝐿𝑎 does not require calculating the 
+two individual separately. On the other hand, many experiments will calculate the 
+lumped parameter first, estimate one of the parameters and solve for the last unknown 
+(i.e.  𝑘𝐿=𝑘𝐿𝑎
+𝑎). The importance of c alculating the individual parameter a is that 
+researchers can pinpoint the changes in 𝑘 𝐿𝑎 to either 𝑘𝐿 or 𝑎 . For example if a can be 
+estimated, a researcher can test how a bioreactor component such as decreased 
+sparger orifice affects 𝑘𝐿, independe ntly from a.  
+2.8  Gas Hold Up  
+Gas hold up is a measurement of the colloidal entrapment of gas within the 
+liquid phase. This entrapment of gas adds volume to the bioreactor working volume 
+and is defined generally as 𝜀 =∆𝑉
+𝑉𝑜+∆𝑉, where ∆𝑉 is the volume change after aeration 
+and 𝑉𝑜 is the volume without aeration. Increase s in gas hold up are due to many 
+physical, geometric, and operational conditions and can lead to increases in k La due to 
+increases in  interfacial time as well as volumetric interfacial area, 𝑎. For increases in 
+aeration rates, gas hold- up will necessary increase along the equation (Garcia -Calvo 
+and Leton, 1991):  
+𝜀=𝑣𝑠
+𝑈𝑠+1
+2𝑉𝐿𝐶+𝑉�𝐿𝑅         (15) 
+Where 𝑈 𝑠, 𝑉𝐿𝐶, and 𝑉�𝐿𝑅 are terminal rise velocity of the bubble, average velocity in 
+the core region, and average linear velocity, respectively. The consequence of 
+increased gas hold up is increased k La, by means of an increase in volumetric 
+interfacial area (section 2.7).   
+22 
+  We have discussed what kLa is, how to measure k La, parameters that affect 
+kLa. Now we will discuss problems that occur during bioreactor operation that may 
+influence, distort, under -represent or over -represent the k La.   
+2.9  Foaming  
+Foaming is a primary concern for fungal fermentation in ALRs and BLRs. 
+Foaming can lead to lower culture yield due to the organism  being entrapped in the 
+foam bubbles  as well as increase risk of contamination . Junker (2007) outlined many 
+adverse consequences due t o foaming, such as lower product yield and damage to 
+instruments of the reactor.  
+The strongest way to mitigate foam is to modify the media being used, most 
+often by dilution because dilution lowers the surface tension-- the cause of bubble 
+formation. There  are also antifoam reagents and foam breaker methods.  However, the  
+addition of antifoams can be toxic to fungal species and foam breaking systems add 
+capital and  operation costs to bioreactors  (Junker, 2007) .  
+On the other hand, there is a benefit to foam ing. Foaming can increase oxygen 
+mass transfer by increasing the volumetric area at the surface, allowing for more 
+headspace oxygen mass transfer (Junker, 2007) . Howev er foam that entraps the 
+organism must be avoided.  
+Higher electrolyte concentrations and lower bubble rise velocities contribute 
+to lower bubble coalesc ence at the liquids top surface (Del Castillo et al., 2011). 
+Lower bubble coalescence will increase foaming, gas hold up, and the volumetric 
+mass transfer coefficient ( 𝑘𝐿𝑎). 
+  
+23 
+ 2.10  Yeast Contamination of Vinasse  
+Nitayavardhana et al. (2013) discussed yeast contamination of the fungal 
+cultivation on vinasse in ALR and BLR (2.5 L) experiments. They  showed that either 
+vinasse was not completely sterilized or the yeast was reactivated af ter 8 hours of 
+fermentation. A maximal soluble oxygen uptake rate of the contamination was a 
+maximum at 24 hours. The yeast cell activation and growth competes for oxygen with 
+the fungus  and can transiently change the K La and biological enhancement factor, E . 
+It can also be inferred that y east cells also increase  the viscosity  and physical blocking  
+of oxygen mass transfer  in vinasse media, reducing K La.  
+Junker et al. (2006) outlines sources of contaminations, as well as design and 
+procedures for minimizing contamination at the pilot plant scale.  Factors that can 
+increase contamination likeliness are: temperature in 20 -40°C range, pH of 5, rich 
+complex medium with high nutrients, and high pre -sterilization burden (due to ye ast 
+growth for ethanol fermentation ). They suggest nine methods for reducing 
+contamination, but many would also kill the fungal species or are not applicable to the industrial fungal processing of vinasse. Two methods to combat contamination would be low dissolved oxygen and addition of antibiotics. Both are unfeasible because 1. lowering DO would cause the aerobic fungal cultivation to collapse 2. Antibiotics are added costs that cannot  be sustained by a co -product generation unit process. In any 
+fermentat ion, contamination will lead lower growth rates and fungal yields by a 
+competition for nutrients and oxygen. Best efforts should be made to reduce contamination prior to and during fermentation.  
+ 
+  
+24 
+ 2.11  Fungal Grow th for Industrial Fermentations  
+The estim ated value of fungal biomass as a feed ingredient  is $515- 1,537 per 
+metric ton  (USDA, 2012) . With fungal biomass yield about  3.79 g/L  and 40 billion 
+gallons of vinasse available through Brazil’s sugarcane ethanol production ( US DOE, 
+2006; Nitayavardhana  et al., 2013;) , the estimated gross value of a fungal 
+fermentation unit process could be $11- 32 billion dollars . 
+40∗109 𝑔𝑎𝑙∗3.785𝐿
+𝑔𝑎𝑙∗3.79 𝑔 𝑏𝑖𝑜𝑚𝑎𝑠𝑠
+𝐿∗1 𝑘𝑔
+1000  𝑔∗$515  𝑡𝑜 1537
+1000  𝑘𝑔=$11 𝑡𝑜 32 𝑏𝑖𝑙𝑙𝑖𝑜𝑛  
+In order  to realize this unit process, the industrial fermentation must efficient and 
+economical.  Lowering the operational costs of fungal fermentation at the industrial 
+scale should be a priority. The oxygen mass transfer rate is controlled by the aeration 
+rate w hich is the only operation costs other than pumping of liquids in airlift and 
+bubble column bioreactors.  Thus an investigation into ways to reduce aeration will lead to a more efficient and less costly fungal fermentation. For  fungal  fermentation 
+on a vinasse substrate, there have been no studies which look at the oxygen mass transfer properties in this system. The OTR is governed by the volumetric oxygen 
+mass transfer coefficient,  𝑘
+𝐿𝑎. Insight into the OTR given by measuring the  𝑘𝐿𝑎 will 
+allow aera tion to be tailor ed to the oxygen uptake rate of the fungus. Maintaining the 
+minimum aeration for maximal yields will lower operational costs and provide 
+maximal profit for a fungal fermentation unit process in ethanol production and vinasse disposal. Opti mal use of vinasse substrate will also reduce the environmental 
+impact when the waste water is released into the water table.  
+25 
+ CHAPTER 3 MATERIALS AND METHODS  
+3.1  Sugarcane Vinasse Preparation  
+The sugarcane vinasse was prepared in the laboratory by ethanol fermentation  
+of sugarcane syrup by yeast followed by ethanol recovery.  
+3.1.1 Ethanol  Fermentation  
+Sugarcane syrup was obtained fresh from Hawaiian Commercial and Sugar 
+Company (Puunene, Hawaii, USA) and stored at - 10 °C. The syrup was diluted with 
+distilled water to a sugar concentration of 15 g sucrose/g solution ( °brix ) and used as a 
+substrate for ethanol fermentation  by yeast .  The pH was adjusted to 4.0 0 ± 0.05 using 
+10% ( w/v) NaOH or 10% ( v/v) H 2SO 4. The media was sterilized in an autoclave 
+(HICLAVE™ HVE -50, Hirayama, Japan ) for 20 min at 121 °C . 
+A 7.5 L stirred tank bioreactor with control unit (Bio Flo 110, New Brunswick 
+Scientific Co., Inc., NJ, USA) was used for the ethanol fermentation. The working 
+volume was 5.50 L sugarcane syrup media. The bioreactor was  first washed with soap 
+and water then all surfaces were sterilized with 70% (v/v) ethanol.  A 1  g/L  inoculum  
+was prepared by adding 5.50  g Dry Brewer’s Yeast, Saccharomyces cerevisiae,   
+(Muntons Plc., Cedars Maltings, Stowmarket, S uffolt, IP14 2AG, England) to 20 m L 
+deionized water. The yeast inoculum was reactivated in an incubator shaker (Inova™4 
+230 and Excella E25, New Brunswick Scientific Co., Inc., NJ, USA) for 15 min at 150 rpm at 37 °C.  The reactivated yeast was inoculated to the stirred tank bioreactor at the 0
+th hour  with operating conditions of 30 °C, agitation  speed of 300 rpm, and 
+aeration rate of 2.5 L min . The pH was maintained at 4.0 using 2% ( w/v) NaOH or 
+2% ( v/v) H 2SO 4.  The aerobic fermentation time was 6 hours to allow the yeast  
+26 
+ population to acclimate and grow.  Anaerobic conditions were impl emented after the 
+6th hour.  A eration was removed and the agitation  was reduced to 100 rpm; pH and 
+temperature remained constan t. The fermentation beer was collected  after 72 hours.  
+3.1.2  Ethanol Recovery  
+Distillation of ethanol from the yeast fermentation broth was carried out using 
+a rotary evaporator (Rotavapor R -215, Buchi Laborte chnik AG, Flawil, Switzerland). 
+The operating c onditions were 50 °C, 120 rpm for 30 min. Ethanol recovery was done 
+using ~1 L of fermentation broth at a time. Vacuum pump was used to maintain a 
+pressure of 96 kPa  (Nitayavardhana et al., 2013) . Recovered ethanol/water was 
+discarded and the remaining fe rmentation broth called vinasse was sterilized via 
+autoclave d at 121°C for 20 min and stored at 4 °C until further use  in airlift and 
+bubble column reactor experiments.  
+3.2  Airlift and Bubble Column Bioreactor Fermentation  
+3.2.1  Fungal Spores  
+An initial fungal spore suspension of Rhizopus microsporus (var. oligosporus ) 
+was obtained from American Type Culture Collection (ATCC # 22959, Rockville, 
+MD, USA). A stock spore suspension was created by propagating the fungus on sterile potato dextrose a gar Petri dishes (Difco Laboratories, Sparks, MD, USA), and 
+the plates were incubated at 24 °C for 5- 7 days; until black fungal spores were formed 
+as per protocol reported by Nitayavardhana et al. (2013) . Plated fungal spores were 
+harvested with a solution  of 0.1% (w/v) peptone and 0.2% (v/v) Tween 80 (Fisher 
+Scientific, Fair Lawn, NJ, USA). Then, all the spores harvested were pooled together 
+to maintain a homogeneous spore count. Glycerol was added to the harvested spores  
+27 
+ in a 20% (v/v) before storage at - 20 °C. A 5.28 x 106 spores/ml concentration was 
+obtained via hemocytometer (Hausser Scientific, Horsham, PA, USA).  
+3.2.2  Fungal Starter  
+A 500 mL , 0.2 % (v/v) fungal spore/yeast mold (YM broth) solution was 
+prepared for inoculating the bioreactor with fungus. YM broth was prepared via Difco 
+following manufacturer’s protocols . Briefly, 10.5 g YM Broth (Difco Laboratories, 
+Sparks, MD, USA) was added to 500  m L deionized water in a 1 L Erlenmeyer flask. 
+For sterilization, the YM broth was autoclaved for 20 min at 12 1 °C. After the YM 
+broth cooled to room temperature, 1 mL stock fungal spore suspension (section 3.2.1 ) 
+was added to the sterile media. The fung al starter was incubated in an incubator 
+shaker for 72 hours at 3 7 °C and 150 rpm.  
+3.2.3  Bioreactor Dimensions and Materials  
+A 3.5 L cylindrical column bioreactor was fabricated in- house from clear 
+acrylic 0.5 cm thickness. The height of the reactor was 4 0 cm from base to head. The 
+inner diameter was 14 cm. For airlift experiments, a circular draft tube (0.5 cm acrylic) was inserted to the bioreactor at 3.5 cm from the base and 17 cm from the head. The draft tube was 16 cm in height, had a 9 cm inner diame ter, and 10 cm outer 
+diameter. The resulting riser/downcomer area ratio was 0.96. For bubble column configuration, the draft tube was removed from the same airlift reactor. The air sparger  was located at the center of the base, protruding 3.75 cm above the base, with 
+four evenly spaced air diffusers. The air diffusers were Lee's Discard -A-Stone, Fine 
+(Lee's Aquarium & Pet Products, San Marcos, CA, USA). Air  was supplied by a liner 
+air pump (Super Pond, Kennewick, WA , USA) and regulated with a 65 mm rotameter 
+(Omega Engineering Inc., Stamford, CT, USA). Inlet air was filtered through a 0.1  
+28 
+ µm pore size polytetrafluoroethylene membrane (Whatman, Florham Park, NJ, USA). 
+The pH was measured with  a pH probe (#405- DPAS,   Mettler Toledo -Ingold Inc., 
+Bedford MA, USA ), controlled by Eutech Instruments pH 200 Series controller 
+(Cole -Parmer Instrument Company , Vernon Hills, IL, USA)  and acid and base was 
+pumped by a Pulsafeeder® (Punta Gorda, FL, USA). The temperature was maintained 
+by submerging the bioreactor in a temperature controlled water bath. Figure 3.1 shows 
+a schematic of the bioreactor setup. The superficial gas velocity is calculated below 
+for 1.5 vvm.  
+Gas �low  rate  (L
+min) =1.5 𝐿/𝐿/min∗2.5 𝐿=3.75𝐿
+𝑚𝑖𝑛 
+𝑣𝑠=3.75 𝐿
+𝑚𝑖𝑛∗1 𝑚𝑖𝑛
+60 𝑠∗1000  𝑐𝑚3
+1 𝐿1
+𝜋�14 𝑐𝑚
+2�2∗1 𝑚
+100 𝑐𝑚=0.00406 𝑚 /𝑠 
+ 
+Figure 3.1 Bioreactor schematic in bubble column configuration  
+ 
+29 
+ 3.2.4  Fungal Culture on Vinasse Substrate ( with-fungus)  
+The working volume of the fungal fermentation was 2.5 L. A 2.0 L 75% (v/v) 
+vinasse media was prepared by diluting 1.5 L vinasse with 0.5 L distilled water. The 
+vinasse media was sterilized in an autoclave and added to the bioreactor.  The 500 ml fungal sta rter (section 3.2.2) was added directly (residual YM broth and fungal 
+pellets) to the bioreactor. The pH was brought to 5.0 with 10% (w/v) NaOH and maintained by 2% H
+2SO 4 or NaOH  solutions. Temperature was maintained at 30° C. 
+The reactor working volume wa s constant. No nutrient supplementation was added. 
+Airflow was 1.0 vvm until 𝐾𝐿𝑎 measurements were taken.  
+𝐾𝐿𝑎 was measured at aeration rates of 0.5, 0.75, 1.0, 1.25, 1.5, 2.0 vvm. Each 
+𝐾𝐿𝑎 measurement was done successively, one after another. Imm ediately after 𝐾 𝐿𝑎  
+measurements were done, the reactor was harvested, and a dry weight of fungal biomass was recorded. Different cultivation times were used ( ~12, ~ 24, ~48 hours ) 
+and resulted in varying, though not correlated, biomass dry weights. Th is allowed the 
+experiment to compare  the changes in 𝐾
+𝐿𝑎 versus final biomass dry weight.  
+The fungal biomass dry weight was used as indicator of fungal biomass in the 
+reactor as the fungus is sponge -like and measurements of wet weight would be 
+inaccurate. The fungal biomass was harvested ( after 𝐾 𝐿𝑎 measurements)  by passing 
+the fermentation b roth over a #60 sieve (VWR, Radnor, PA, USA). The fungal 
+biomass was dried at 70 °C for 48 hours  or until a constant weight was achieved.  
+3.2.5  Water -only Operation  
+The working volume for water only experiments was 2.5 L. All initial factors 
+(pH, temperat ure, sterility) but one were identical to the ‘With -fungus’ (section 3.2.4)  
+30 
+ experiments. Instead of vinasse media, 2.5 L distilled water was used as the control 
+media for determining baseline oxygen mass transfer properties of the bioreactor 
+configuration.  
+3.2.6  Vinasse- only Operation  
+The working volume of vinasse -only experiments was 2.5 L. All initial factors 
+(pH, temperature, sterility) but one were identical to the ‘With -fungus’ (section 3.2.4) 
+experiments. The fungal starter was replaced with 500 m L sterilized deionized ( DI) 
+water. No fungal harvest was needed for these experiments. No maintenance of pH 
+was required as well.  
+3.3  Analytical Methods  
+3.3.1  Dissolved Oxygen Measurement and  Volumetric Mass Transfer 
+Coefficient Determination  
+The dissolved oxygen was measured with a polargraphic dissolved oxygen 
+probe (P0720- 6283, Mettler Toledo- Ingold Inc., Bedford, MA, USA) . The probe was 
+placed off- center of the bioreactor, 3 cm above the base  to prevent bubble fouling the 
+membrane . The analog dissolved oxygen percent ( DO) was recorded using the BioF lo 
+110 controller and the signal was converted to a digital format using a data acquisition card (Measurement Computing  Corporation, Norton, MA, USA) with a sampling rate 
+of 1 Hz.  
+To determine  𝑘
+𝐿𝑎 in water- only and vinasse experiments  according the 
+dynamic method ( Section 2.4) , a DO curve was created  (Figure 4.3) . The  DO was 
+reduced to a low value (0- 40%) using nitrogen gas sparged through the air diffuser. 
+The air was introduced at the low DO level simulta neously with the closure of the  
+31 
+ nitrogen supply (using a T joint and ball valves). The DO was allowed to reach its 
+saturation point and the experiment was repeated to obtain n ≥3.  
+3.3.2  Volumetric Mass Transfer Coefficient C alculations  
+The DO (% saturation) curves were imported as delimited  values into Excel 
+2007 (Microsoft C orporation, Redmond, WA, USA). For water- only and vinasse -only 
+experiments, a scatter plot of ln (1−𝐷𝑂) vs. time (s) was created to linearize the 
+curve according to E qn. 6. To take into account the oxygen uptake rate by the fungus, 
+the maximum oxygen concentration, 𝐶 𝑚𝑎𝑥, replaces 𝐶∗ in Eqn. 6. For with -fungus 
+experiments, a scatter plot of 𝑙𝑛 (𝐶𝑚𝑎𝑥−𝐷𝑂) vs time (s) was created to linearize the 
+curve according to dynamic method for 𝑘 𝐿𝑎 calculations. A linear regression line was 
+fitted in Excel 2007 a nd the slope =  −𝑘𝐿𝑎 for each case. 𝑘 𝐿𝑎 was recorded in s-1 and 
+converted to h-1 by multiplying by 3600 𝑠
+ℎ.  
+For water -only, ALR and BLR configurations, 𝑘𝐿𝑎 values were fit with a 
+power regression according to the model . The coefficient and exponent was found for 
+a modified Eqn. 9 ( Section 2.5) which we have lumped the apparent viscosity term 
+into t he coefficient, c , since there was no physical changes to the media during these 
+measurements:  
+𝑘𝐿𝑎=𝑐∗𝑣𝑣𝑚𝑎          (16)  
+Where 𝑐  is a proportionality constant with units 𝑚𝑖𝑛
+ℎ , 𝑣𝑣𝑚  is the aeration rate in 𝐿
+𝐿
+𝑚𝑖𝑛 
+and 𝑎  is empirical consta nt. 
+ 
+  
+32 
+ 3.3.3  Statistical Analysis and Measurement Error  
+Sample variance was checked for consistency with an F -test in order to 
+assume equal variance for the t -test. One-way analys es of variance, t -test assuming 
+equal variance was performed on between group measurements.  A confidence interval 
+of 0.05 was used. Excel 2007 Analysis Toolpack Add- in (Microsoft Corporation, 
+Redmond, WA, USA) was used for this analysis.   
+33 
+ CHAPTER 4  RESULTS AND DISCUSSION  
+4.1  Rationale  
+Vinasse is a highly complex m edium with many organic and inorganic solutes 
+(Nitayavardhana and Khanal , 2010). Complex solutes in solution can have a 
+detrimental effect on bioreactor properties such as viscosity, density, gas hold up, 
+foaming, and additional resistance in the liquid fi lm resistance. In order to determine 
+the effects of these so lutes on oxygen mass transfer, baseline  𝑘𝐿𝑎 values for water -
+only and vinasse -only fermentations was needed for comparison. A water -only 
+control curve of 𝑘 𝐿𝑎 values at varying aeration rates  will prove useful  when 
+determining if further studies  on solute effects on 𝑘 𝐿𝑎 are warranted.  
+𝑘𝐿𝑎 values for vinasse -only ALR and BLR configurations are also needed to 
+provide  engineers with an idea of the mass transfer properties to expect when vinasse 
+is the chosen media. Different aeration rates will promote  different 𝑘𝐿𝑎 values which 
+can be tailored to the oxygen uptake rate of the fungus during fermentation. 
+Fungal growth within the bioreactor adds additional complexity to the medium 
+and oxygen mass transfer properties. The results from measuring 𝐾 𝐿𝑎 when fungus is 
+growing in the reactor will give us information regarding actual effect of live growth on oxygen mass transfer properties.  
+The experimental design was to look at abiotic and f ungal systems using ALR  
+and BLR configuration s with water and vinasse media. However, there are no results 
+for the airlift configuration with vinasse media because there was bioreactor fowling during the fungal fermentation in the ALR configuration with vi nasse media.  In the 
+2.5 L airlift bioreactor, it is nearly impossible to prevent plugging of downcomer area  
+34 
+ when fungal biomass agglomerates. Figure  4.1 is an example of plugged airlift 
+bioreactor.  Only a larger area for passage would allow for the agglome rated fungus to 
+pass through. Higher she ar rates also cause a more hairy like protrusion of the fungal 
+pellet, which was observed visually. During bubble column operation, the pellets were 
+able to grow in a denser pellet which prevents fungal biomass agglomeration.  
+ 
+Figure 4.1 Plugged airlift b ioreactor 
+  
+ 
+ 
+35 
+ 4.2  Dynamic Method Data and Volumetric Mass Transfer Coefficient 
+Calculations  
+Dynamic method measurement of DO versus time curves was obtained for 
+𝑘𝐿𝑎 calculations (Section 3.3.2). At least three  peaks were obtained for each 
+configuration. The configurations obtained are summarized in Figure 4.2. Fungal 
+biomass fouling in the space between the side wall and draft tube is consistent with 
+the findings of Nitayavardhana et al. (2013). Fungal biomass was also found to foul 
+the DO probe by attaching at the tip, preventing a steady stream of bulk liquid to pass over the membrane. A consequence of reactor plugging and DO probe fouling is that no airlift data for with -fungus and vinasse- only are presented for this research.  There 
+are methods discussed to combat this issue in Chapter 6.   
+ 
+ 
+Figure 4.2 Summary of volumetric oxygen mass transfer coefficient  data to be 
+presented for media, bioreactor configuration, and aeration rate.   
+ 
+Dissolved oxygen versus time plots were obtained from the ALR and BLR 
+configurations at varying aerations rates for water -only. A typical DO versus time 
+curve is presented in Figure 4.3. The downward sloped data were  obtained during 
+nitrogen sparging and the upward sloping data w ere obtained during air sparging. Water -only  
+•ALR and BLR  
+•0.5-3.0 vvm Vinasse-only  
+•BLR 
+•0.5-3.0 vvm With -fungus  
+•BLR  
+•1.5 vvm 
+•biomass dry 
+weight   
+36 
+ Next, at least 30 data points were used  to plot ln(1- DO) versus time. A linear 
+regression gave the values of  𝑘𝐿𝑎. A typical linear curve for 𝑘 𝐿𝑎 calculations is 
+presented in Figure 4.4. The 𝑘𝐿𝑎 and  𝐾𝐿𝑎 values f or all experiments are found in 
+Tables 4.1-4.5.  
+ 
+ 
+Figure 4.3 Dissolved oxygen vs. time curve obtained from bioreactor experiment. 
+Conditions: water -only, bubble column configuration, aeration rate 1.5 vvm, 
+sample rate 1 Hz   0.0 0.2 0.4 0.6 0.8 1.0 1.2 
+0 500 1000 1500 2000 DO (%) 
+time (s)  Nitrogen Gas On 
+Air On  
+37 
+  
+ 
+Figure 4.4 Typical 𝒍𝒏 (𝟏−𝑫𝑶) vs. time curve to obtain  𝒔𝒍𝒐𝒑𝒆  =−𝒌𝑳𝒂.  Conditions: water -only, bubble column configuration, aeration  
+rate 1.5 vvm, sample rate 1 Hz  y = -1.48E -02x - 8.75E -01 
+R² = 9.98E -01 y = -1.68E -02x - 9.38E -01 
+R² = 9.98E -01 y = -1.57E -02x - 8.90E -01 
+R² = 9.98E -01 y = -1.55E -02x - 8.59E -01 
+R² = 9.97E -01 
+-2.00 -1.80 -1.60 -1.40 -1.20 -1.00 -0.80 -0.60 -0.40 -0.20 0.00 
+0 10 20 30 40 50 60 ln(1-DO) 
+time (s)  peak 1  peak 2  peak 3  peak 4   
+38 
+ Table 4.1 V olumetric oxygen mass transfer coefficient  values for 
+water -only airlift bioreactor experiments  
+Aeration Rate (vvm)  𝑘𝐿𝑎 (h-1) Mean (h-1) Std. Dev. (h-1) 
+0.5 19.5 17.8 1.5 
+0.5 17.4   0.5 16.6   
+0.8 34.9 32.6 2.0 
+0.8 31.4   0.8 31.4   
+1.0 41.0 39.6 1.4 
+1.0 39.6   1.0 38.2   
+1.3 47.9 46.8 1.0 
+1.3 46.4   1.3 46.1   
+1.5 56.5 53.0 2.8 
+1.5 53.6   1.5 51.8   1.5 50.0   
+2.0 70.6 71.9 2.9 
+2.0 69.8   2.0 75.2   
+3.0 104.8  100.8  4.2 
+3.0 101.2    3.0 96.5    Table 4.2 Volumetric oxygen mass transfer coefficient  values 
+values for water -only bubble column experiments  
+Aeration Rate (vvm)  𝑘𝐿𝑎 (h-1) Mean (h-1) Std. Dev.  (h-1) 
+0.5 18.0 18.6 0.6 
+0.5 18.8   0.5 19.1   0.8 31.5 32.0 0.8 
+0.8 31.7   0.8 32.9   1.0 43.6 43.3 0.7 
+1.0 43.9   1.0 42.5   
+1.3 46.4 45.8 0.5 
+1.3 45.7   1.3 45.4   1.5 55.8 56.5 3.0 
+1.5 56.5   1.5 53.3   1.5 60.5   2.0 72.4 72.4 2.5 
+2.0 74.9   2.0 69.8   
+3.0 77.8 79.4 2.2 
+3.0 82.4   3.0 79.6   3.0 77.8    
+39 
+ Table 4.3 V olumetric oxygen mass transfer coefficient values 
+values for vinasse- only bubble column experiments  
+Aeration Rate (vvm)  𝑘𝐿𝑎 (h-1) Mean (h-1) Std. Dev. (h-1) 
+0.5 10.2 10.1 0.2 
+0.5 9.9   0.5 10.2   
+0.8 13.4 13.2 0.3 
+0.8 13.3   0.8 12.8   
+1.0 19.9 20.7 0.8 
+1.0 20.8   1.0 21.6   
+1.3 37.4 36.6 2.8 
+1.3 38.9   1.3 33.4   
+1.5 45.4 47.6 3.6 
+1.5 45.7   1.5 51.8   
+2.0 58.0 57.6 1.0 
+2.0 56.5   2.0 58.3   
+3.0 58.3 59.4 1.9 
+3.0 58.3   3.0 61.6    Table 4.4 Volumetric oxygen mass transfer coefficient  values 
+values for varying cultivation time in bubble column fungal 
+ferment ation; aeration rate of 1.5 vvm  
+Biomass Dry Weight (g)  Mean (h-1) Std. Dev. (h-1) N 
+0.00  47.6 3.6 3 
+4.93 49.4 2.3 3 
+5.77 48.1 3.0 3 
+5.82 56.6 4.0 4 
+6.53 62.2 0.8 4 
+7.39 40.9 2.6 3 
+7.89 51.9 2.9 3  
+40 
+ 4.3  Water -only Airlift and Bubble Column V olumetric O xygen M ass 
+Transfer C oefficient  
+Water -only ALR and BLR 𝑘𝐿𝑎 values are presented in Table s 4.1 and 4.2. A 
+scatter plot of 𝑘𝐿𝑎 values  versus aeration rate for air lift and bubbl e column 
+configurations using water is shown in Figure 4.5. The plot shows that for 0.5 to 2.0 
+vvm, airlift and bubble column configurations share similar 𝑘𝐿𝑎 values. A t -test 
+performed for each aeration rate confirmed no statistical difference (p ≤0.05) between 
+the two configurations at each aeration rate, excluding 3.0 vvm.  
+The range for 𝑘 𝐿𝑎 values in ALR configuration was 17.1 ±  1.5 h-1 for 0.5 vvm 
+to 100.8  ±  4.2 h-1 for 3.0 vvm. The range for 𝑘 𝐿𝑎 values in BLR configuration was 
+18.0 ±  0.6 h-1 for 0.5 vvm to 79.4  ±  2.2 h-1 for 3.0 vvm. Figures 4.6 and 4.7 shows a 
+power regression between aeration rates 0.5 to 2.0 vvm for both configurations, with 
+the best -fit equations being:  
+𝑘𝐿𝑎𝐴𝐿𝑅 = 37.9∗𝑣𝑣𝑚0.949 ;𝑅² = 0.9748  
+𝑘𝐿𝑎𝐵𝐿𝑅 = 39.0∗𝑣𝑣𝑚0.941 ;𝑅² = 0.9754  
+These power regressions correspond to the model, Equation 16 , with 𝑐 =37.9 and 
+𝑎=0.949 for ALR and 𝑐 =39.0 and 𝑎 =0.941 for BLR. Both exponents are less 
+than 1, comparable to Deckwer et al. (1983) who reported values for a between 0.72 
+and 1.28 for saline solutions  in a bubble column. The different units of 𝑣𝑠 and vvm 
+will cause the proportionality constant c  to be dissimilar to Deckwer et al., however 
+the two variables can be interchanged based on knowledge of the volume and cross sectional area of the bioreactor: 𝑣
+𝑠=𝑣𝑣𝑚∗𝑉/𝐴𝐶𝑟𝑜𝑠𝑠 .  
+41 
+  
+Figure 4. 5 Water -only volumetric mass transfer coefficients  for aeration rates 0.5-  3.0 vvm. n≥3. Vertical error bars represent 1 
+standard deviation from the mean0 20 40 60 80 100 120 
+0.0 0.5 1.0 1.5 2.0 2.5 3.0 3.5 kLa (h-1) 
+Aeration rate (vvm)   Water -only 
+Airlift  Bubble Column  
+42 
+  
+Figure 4.6 Power regression for water- only, airlift reactor,  volumetric oxygen 
+mass transfer coefficient  values at aeration rates 0.5 to 2.0 vvm. Vertical error 
+bars represent 1 standard deviation from the mean  
+ 
+Figure 4.7 Power regression for water- only, bubble column reactor, volumetric 
+oxygen mass transfer coefficient  values at aeration rates 0.5 to 2.0 vvm. Vertical 
+error bars represent 1 st andard deviation from the meany = 37.907x0.9487 
+R² = 0.9748 
+0 10 20 30 40 50 60 70 80 
+0.0 0.5 1.0 1.5 2.0 2.5 kLa (h-1)  
+n≥3 
+Aeration rate (vvm)  
+y = 39.0x0.941 
+R² = 0.9754 
+0 10 20 30 40 50 60 70 80 
+0.0 0.5 1.0 1.5 2.0 2.5 kLa (h-1) 
+n≥3 
+Aeration rate (vvm)   
+43 
+ 4.4  Vinasse- only Bubble Column Reactor Volumetric Oxygen Mass Transfer 
+Coefficient  
+Vinasse- only BLR 𝑘𝐿𝑎 values are presented in Table 4.3.  A maximum 𝑘 𝐿𝑎 of 
+59.4 ±  1.9 h-1 was achieved at 3.0 vvm. All vinasse -only BLR 𝑘 𝐿𝑎 values were  
+statistically lower (p ≤0.01) when compared to water -only BLR  𝑘𝐿𝑎 value, with a 
+mean difference of 34.1 ±  17.7 % lower than the water- only value. Results from 
+statistical analyses can be found in T able A.1. 
+Figure 4.8 shows a  scatter plot of 𝑘 𝐿𝑎 values versus aeration rates  for BLR 
+configurations using vinasse -only. The S -curve type pattern suggests that at lower 
+aeration rates, 0.5 to 1.25 vvm , 𝑘𝐿𝑎 is suppressed and that as aeration incr eases 
+greater than 1.25 vvm 𝑘𝐿𝑎 tapers off to a maximum. The cause of lower 𝑘𝐿𝑎 at lower 
+aerations could be due to a multitude of factors including lower bubble rise velocity 
+which increases the stagnant boundary layer, less bubbles which reduces the  mixing 
+force and turbulence which reduces  gas hold up.   
+There were no experiments which measured the 𝑘𝐿𝑎 values for aeration rates 
+greater than 1.5 vvm because of the detrimental effects shea ring h ad on fungal 
+biomass  morphology/ yield (Nitayavardhana et al., 2013). However, the optimization 
+experiments  of Nitayavardhana et al. (2013) only studied 1.5 and 2.0 vvm. Possible 
+future experiments could investigate if there is a more optimal aeration rate above 1.5 
+vvm and below 2.0 vvm, such as 1.75 vvm. Thi s being said, u nderstanding that 
+increasing aeration will not increase 𝑘𝐿𝑎 proportionally is important. While  increased 
+aeration increases power consumption  (Blanch and Clark, 1997) , there is a lso a limit 
+to increasing 𝑘 𝐿𝑎 simply by increasing the aeration rate.  This knowledge directly  
+44 
+ impact costs consideration for commercial processes looking to increase oxygen mass 
+transfer  by increasing aeration rate (Mueller et al., 2002).  
+45 
+  
+Figure 4.8 Vinasse only oxygen mass transfer coefficients for bubble column n =3. Vertical error bars  represent 1 standard 
+deviation from the mean.  0.0 10.0 20.0 30.0 40.0 50.0 60.0 70.0 
+0.0 0.5 1.0 1.5 2.0 2.5 3.0 kLa (h-1) 
+vvm Vinasse- only  
+46 
+ 4.5  With -fungus Volumetric Oxygen Mass Transfer Coefficient  for Aeration 
+Rate 1.5 vvm  
+𝐾𝐿𝑎  is presented as a function of biomass dry weight to illustrate the effect of 
+fungal growth on oxygen mass transfer characteristics (i.e. biological enhancement 
+factor).  Figure 4.9 is  a plot of 𝐾𝐿𝑎 versus fungal biomass (g) dry weight  and the 
+enhancement factor, 𝐸 (Equation 10), for each dry weight. Where , 𝑘𝐿𝑎= 47.64 h−1 for 
+vinasse -only at 1.5 vvm, determined from Section 4.3.  
+ 
+†Values statistically different from water -only, 1.5 vvm.  
+Figure 4.9 With -fungus volumetric oxygen mass transfer coefficient (solid circles) 
+for varying biomass dry weights (g) on the left hand axis. Enhancement factor (open 
+circles) is on the right hand axis. Conditions : bubble column experiment with-
+fungus at 1.5 vvm. 𝑲 𝑳𝒂𝟎 is 47.64 h -1. Vertical error bars represent 1 standard 
+deviation from the mean  
+Three biomass dry weights  produced significant differences (p≤0.02) when 
+comparing the 𝐾 𝐿𝑎 to 𝑘𝐿𝑎 in BLR configurations  at 1.5 vvm. When compared to vinasse -
+only 𝑘𝐿𝑎, biomass dry weights 7.39 g had 14.1% reduction, 6.53 g a 30.7% increase, and 0.0 0.2 0.4 0.6 0.8 1.0 1.2 1.4 
+0 10 20 30 40 50 60 70 
+4.0 4.5 5.0 5.5 6.0 6.5 7.0 7.5 8.0 8.5 
+E KLa (h-1)  
+Biomass Dry Weight (g)  Bubble Column, With- fungus, 1.5 vvm   
+KLAt  
+E † 
+† † 
+𝐾𝐿𝑎  
+47 
+ 5.82 g and 18.8% increase  at 1.5 vvm . It is important to highlight that for 6.53 g, the 
+highest 𝐾𝐿𝑎 measured at 62.3 h-1 is also significantly different from the mean water -only 
+1.5 vvm value, 55.2 h-1.  Table A.2 presents the statistical analysis for these claims.  
+When interpreting these results it is important to take into consideration the 
+oxygen uptake rate of the fungus and yeast in the bioreactor. Higher biomass 
+concentration and/or high specific oxygen uptake rate can increase the oxygen uptake 
+rate. Both of these factors increase 𝐾𝐿𝑎 according to Eqn. 11. This suggests that for 5.82 
+g and 6.53 g there was biologi cal enhancement  by either fungal biomass or yeast 
+contamination. In Figure 4.9 the first five 𝐾𝐿𝑎 values, which include 5.82 g and 6.53 g, 
+correspond to growth times between 12- 24 hours. This suggest s that the fungus (and/or 
+yeast) had significant speci fic oxygen uptake rate to increases 𝑘 𝐿𝑎because compared to 
+higher biomass concentrations, 7.89 and 7.39 g, there was no significant biological enhancement over 𝑘
+𝐿𝑎.  
+There was significant reduction ( -14.1%) in oxygen mass transfer at the 7.39 g 
+and 48 h of cultivation. This however does not rule out that 𝑘𝐿𝑎 was increased by 
+microbe OUR. It does however, mean that other factors reduced more than it was enhanced by microbe OUR. 𝐾
+𝐿𝑎 is also dependent  on other transient factors such as broth 
+viscos ity, bubble coalescence, bubble size, among others. This means  that for instances 
+where there is no ne or reduced biological enhancement, there are other reducing forces  
+acting in tandem with microbe OUR. Observations during bioreactor operation such as 
+increase bubble coalescence from the converging streamtubes caused by fungal biomass 
+is present in the medium  or increased broth viscosity from fungal and yeast cell biomass 
+are possible causes of reduced 𝑘 𝐿𝑎.  
+48 
+ Physical blocking effects by the fungal  and ye ast cells likely  cause the reduction 
+in 𝐾𝐿𝑎 for fungal fermenation. For the fungal biomass dry weights 7.89 and 7.39 g, t he 
+fungus was harvested at or near the maximum biomass dry  weight  in this  batch 
+experiment —harvested at or after 48 h of cultivation  (Nitayavardhana et al., 2013) . If 
+growth is limited  at this time , this could mark a l ower specific oxygen uptake rate which 
+would correspond to lower biological enhancement. In addition, observations suggest that 
+higher fungal biomass concentrations lead to increased bubble coalescence, increased contact with fungal pellets, and decreased physical contact with the bulk liquid. Increased 
+apparent viscosity could have  also lowered  the 𝐾
+𝐿𝑎. More studies are needed to 
+differentiate between physical blocking and OUR consequences  on 𝑘𝐿𝑎 variance in 
+fungal fermentation.  
+It was not possible to do 𝐾 𝐿𝑎 calculations past 48 hours of fermentation because 
+oxygen uptake rate (Fungus and Yeast) would be greater tha n oxygen mass transfer 
+leading to negative oxygen flux ( Eqn. 5). When the oxygen flux is negative, the dynamic 
+method is incapable of measuring  𝐾𝐿𝑎. Pure oxygen was unavai lable for this research, 
+future experiments might consider  using pure oxygen supplementation to investigate 𝐾 𝐿𝑎 
+when oxygen uptake rate outpaces oxygen mass transfer.  
+4.5  Observations 
+4.5.1  Airlift Reactor and Sparger Fouling  
+Bioreactor fowling during ALR operation caused results to be unreliable. During 
+ALR operation, fungal biomass clumps would lodge in the spa ce between the inner  
+49 
+ reactor wall and draft tube. Fungal biomass also grew on and around the air diffusers as 
+shown in Figure 4.10.  
+ 
+Figure 4.10 Air diffuser fouling in airlift reactor 
+DO probe fouling occurred when either bubbles or fungal biomass adhere s to the 
+oxygen membrane. This leads to either erratic DO readings or false 𝐾𝐿𝑎 values. Possible 
+solutions to this problem is  to orient the DO probe membrane away from the liquid 
+stream direction so the membrane does not create a stagnation point for bubbles or fungal clumps. A mesh could also be used to cover the membrane and prevent particulates from clogging the liquid/membra ne interface.  
+ 
+ 
+50 
+ 4.5.2  Foaming  
+Foaming occurred at all aeration rates utilizing vinasse as a substrate (i.e. vinasse -
+only and fungal fermentations). If aeration rates were greater than 1.0 vvm  at the 
+beginning of fermentation, foaming would be excessive —filling the foam trap, 
+entrapping the fungal pellets in the foam layer, and depositing pellets to the sidewalls, 
+cap, and foam trap. Foaming could be controlled by keeping the aeration rate low during 
+the beginning of the fungal cultiva tion (t<12- 24 h). A chem ical analysis of the vinasse 
+before and after aeration should be done to verify what molecules are present before and after sterilization to confirm the claims by Junker (2007) . After 12 -24 hours of lower 
+aeration, the aeration was increased to 1.5 vvm and the bioreactor had a stable foam height.  
+Junker (2007) notes that foam can be increased in the presence of cells due to 
+increasing foam stability. In order to rule out the yeast cells as t he cause for excessive 
+foaming, yeast cells were removed by sedimentation. Even after yeast cell removal, the 
+supernatant vinasse would still foam excessively at high aeration rates. This suggests that it is the soluble components of vinasse, sugars and et hanol left over from ethanol 
+fermentation, cause excessive foaming in vinasse. Junker (2007) noted that 1- 22% 
+glucose concentrations stabilize foam and that sugar containing medias foam excessively when sterilized with high temperature treatment.  Van't Rei t and Tramper  (1991)  report ed 
+that foaminess is a maximum at 1 -2% (v/v) short chain alcohols.   
+51 
+ CHAPTER 5 CONCLUSIONS  
+This research investigated the volumetric oxygen mass transfer coefficient, 
+𝑘𝐿𝑎 and  𝐾𝐿𝑎, in abiotic and fungal fermentation. The fungus grew in a bubble column 
+bioreactor with vinasse as the substrate. Nitayavardhana et al. (2013) reported 1.5 vvm 
+being the optimal aeration rate and this research measured an oxygen mass transfer 
+coefficient for the same aera tion rate, with results ranging from 40.9 ±  2.6 h-1 to 62.2 ±  
+0.8 h-1. These values are in the comparable to  previous BLR experiments within the same 
+superficial gas velocity (Vandu and Krishna, 2004) . Conditions were identical to 
+Nitayavardhana et al . (2013) with the exception that there was no nutrient 
+supplementation in this research . The deciding factor for whether nutrient 
+supplementation should be used is an economic analysis, which should be done in the future.  
+In an effort to be familiar with how a eration rate affects 𝑘
+𝐿𝑎 in the bioreactor, the 
+research measured water -only and vinasse -only 𝑘𝐿𝑎 values for varying aeration rates in 
+the range of 0.5 to 3.0 vvm. We obtained empirical equations for ALR and BLR configurations using water -only media:  
+𝑘
+𝐿𝑎𝐴𝐿𝑅 = 37.9∗𝑣𝑣𝑚0.949 ;𝑅² = 0.9748  
+𝑘𝐿𝑎𝐵𝐿𝑅 = 39.0∗𝑣𝑣𝑚0.941 ;𝑅² = 0.9754  
+These equations are a guide to determining the  range of 𝑘 𝐿𝑎 values for a ny aeration rate  
+within the range of aeration rates for this experiment (0.5 to 2.0 vvm) . Future  
+experiments  should test the  robustness at  aeration rates between this experiment’s 
+measurements (i.e. 1.33 vvm)  to validate the model’s robustness . While the model is  
+52 
+ based on using superficial gas  velocity a successfully scaled -up BLR experiment by 
+Deckwer et al. (1974), the geometry of the BLR does not allow these specific equations 
+based on vvm to be used during scale -up. However, using the method from this research 
+to determine a relationship based on aeration rate should be done before the act ual fungal 
+fermentation to give a range of 𝑘 𝐿𝑎 values at each aeration rate.  
+Vinasse- only experiments did not show power curves at lower aeration rates. On 
+the other hand, we observed a logistical growth curve —exponential increasing at first 
+then approa ching a limiting value. The  minimum 𝑘 𝐿𝑎 was 10.1 ±  0.2 h-1 at 0.5 vvm and 
+maximum 𝑘𝐿𝑎 of 59.4 ±  1.9 h-1 at 3.0 vvm for  the BLR configuration. When comparing 
+water -only to vinasse -only aeration rates for BLR configuration, it was shown that 𝑘𝐿𝑎  
+for vinasse media was on average 34.1±  17.7 % lower than water. The reduction in 
+oxygen mass transfer is very significant, as good dissolved oxygen levels are crucial for 
+promoting high biomass yields.  
+This research did not investigate the exact cause o f the decreases  in 𝑘𝐿𝑎. It was 
+not feasible to conduct enough controlled studies to determine the independent causes of 
+reduced 𝑘𝐿𝑎 values, such as changes in bubble size, viscosity, and gas hold -up. More 
+research is needed to determine the underlyin g causes that reduce  𝑘𝐿𝑎. Through 
+observations, we suspected that low oxygen mass transfer was  a limiting factor to fungal 
+growth. This researched did determine that the presence of fungal biomass (and yeast 
+cells) can enhance or  reduce 𝐾 𝐿𝑎 at certai n stages of growth. If the fungal biomass is high 
+in concentration and specific oxygen uptake rate, 𝐾 𝐿𝑎 will be enhanced  in this situation . 
+However , if the fungal biomass is in a declin ing phase of growth, and there is a lower 
+OUR, the factors that redu ce 𝐾𝐿𝑎 will outweigh the increases due to OUR  (Kilonzo and  
+53 
+ Margaritis, 2004) . Yeast contamination may also enhance 𝐾𝐿𝑎, however a sterilization 
+study needs to be done to confirm overall effects of yeast cells on 𝐾𝐿𝑎. 
+We did not investigate the ALR configuration for vinasse media because we 
+observed reactor fouling and fungal pellet clumping in this configura tion. Chapter 6 
+discusses possible solutions and future research with airlift reactors.  
+The objective to obtaining a  standard curve of  𝑘𝐿𝑎 values for varying aeration 
+rates through empirical methods was successful. This is the first step in plan ning a 
+commercial fungal fermentation  unit process . Armed with  this knowledge of oxygen 
+mass transfer in fungal fermentation, engineers and future rese archers can  possibly tailor 
+aeration rates to match the fungal oxygen uptake rate. This will allow engineers to set 
+optimal growth conditions of minimizing  shear and maintaining  sufficient  DO levels 
+resulting in the most efficient bioreactor operation. Fin ally, by reducing the aeration costs 
+for fungal fermentation, it will further increase the chances for the unit process to replace the traditional method of disposing vinasse directly into the environment.  
+54 
+ CHAPTER 6 FUTURE RESEARCH AND DIRECTIONS  
+This research investigated oxygen mass transfer in airlift and bubble column 
+bioreactors growing a mycelia fungus on a complex liquid biofuel residue , vinasse. It als o 
+focused on the effects of aeration on the volumetric oxygen mass transfer 
+coefficient s, 𝑘𝐿𝑎 and 𝐾𝐿𝑎. However, there are variables other than aeration that influence 
+ 𝑘𝐿𝑎 and 𝐾𝐿𝑎 values. Future research should include:  
+1. The effects of transient changes in broth viscosity on 𝐾 𝐿𝑎.  Broth viscosity can be 
+reduced by the uptake and utilization of sugars in vinasse  during fungal 
+fermentation . This would lead to increased  𝐾𝐿𝑎. However, reduced sugar levels 
+correspond to increase d fungal biomass concentrations and yeast concentrations, 
+which are likely to increase broth viscosity. A n investigation into effluent vinasse 
+compared to influent vinasse broth viscosity should be done .  
+2. The effects of bubble sizes on fungal yields and other bioreactor performance 
+measures. Bubble size has a dramatic effect on oxygen mass transfer as well as other fermentation conditions such as bubble rise velocity, she ar rates, and bulk 
+mixing. Effects for different spargers and aeration rates should be investigated for effects on bioreactor performance and fungal biomass yield.  
+3. An investigation to fungal c ultivation in a larger ALR . The ALR can improve 
+mixing and increase gas hold- up. However due to fungal growth, the oxygen mass 
+transfer could not be investigated for the 2.5 L ALR used in this experiment. 
+Future experiments should scale up and include larger ALR designs, which can 
+have larger spaces in downcomer and riser sections.  Fungal pellets have limited 
+maximal size, while the downcomer and riser sections will increase with scale -up,  
+55 
+ which should prevent fouling and allow for 𝐾𝐿𝑎 measurements.  DO p robe 
+placement with the membrane  pointing in the same direction as the liquid flow 
+(i.e. right side up in the downcomer or upside down in the riser) will prevent 
+probe fouling by preventing fungal attachment and bubble entrapment. 
+4. Currently no method is available to characterize the cell concentration filamentous fungi. This makes prediction of the biological enhancement factor nearly impossible. A method needs to be developed that measures the specific oxygen uptake rate based on fermentation time  
+5. Use of  other methods to improve 𝐾
+𝐿𝑎 . 𝐾𝐿𝑎 can be improved by using 
+mechanically agitating  ALRs and BLRs or using hollow -fiber membranes for 
+oxygen mass transfer.  Nevertheless, precautions to prevent morphology changes and fouling should be planned before entering into these advanced methods of oxygen mass transfer.  
+6. An economic analysis of aeration costs should be investigated to determine if 
+scale -up of fungal fermentation is feasible. Larger scale data is also required for 
+this analysis.  
+7. A costs- benefit analysis of nutrient supplementation should also be investigated to 
+determine whether it is appropriate to supplement nutrients. Whether or not to supplement nutrients may affect fungal protein profiles along with macromolecule composition, which impacts t he feed value/potential of the fungal biomass  
+8. Regarding vinasse -only operation (Section 3.2.6), 500 mL of YM broth would be 
+a better control than 500 mL of water due to solutes present in YM broth for with-fungus experiments.   
+56 
+ REFERENCES  
+Aleksieva a, Penka, and Ludmila Peeva. 2000. “Investigation of Acid Proteinase Biosynthesis 
+by the Fungus Humicola Lutea 120- 5 in an Airlift Bioreactor.” Enzyme and Microbial 
+Technology  26 (5- 6) (March 1): 402 –405. 
+Chisti, Yusuf, and Ulises J. Jauregui -Haza. 2002. “ Oxygen Transfer and Mixing in 
+Mechanically Agitated Airlift Bioreactors.” Biochemical Engineering Journal  10 (2): 
+143–153. doi:10.1016/S1369- 703X(01)00174- 7. 
+Clark, Douglas S., and Harvey W. Blanch. 1997. Biochemical Engineering, Second Edition. 
+CRC Press.  
+Coutte, François, Didier Lecouturier, Saliha Ait Yahia, Valérie Leclère, Max Béchet, Philippe 
+Jacques, and Pascal Dhulster. 2010. “Production of Surfactin and Fengycin by Bacillus 
+Subtilis in a Bubbleless Membrane Bioreactor.” Applied Microbiology and Biotechnology  
+87 (2) (June): 499–507. doi:10.1007/s00253- 010-2504- 8. 
+Deckwer, W. -D., R. Burckhart, and G. Zoll. 1974. “Mixing and Mass Transfer in Tall Bubble 
+Columns.” Chemical Engineering Science  29 (11) (November): 2177–2188. 
+doi:10.1016/0009- 2509(74)80025- 4. 
+Deckwer, W. -D., K. Nguyen- Tien, B. G. Kelkar, and Y. T. Shah. 1983. “Applicability of 
+Axial Dispersion Model to Analyze Mass Transfer Measurements in Bubble Columns.” AIChE Journal  29 (6): 915–922. doi:10.1002/aic.690290607. 
+Del Castillo, Lorena A., Satomi Ohnishi, and Roger G. Horn. 2011. “Inhibition of Bubble 
+Coalescence: Effects of Salt Concentration and Speed of Approach.” Journal of Colloid and Interface Science  356 (1) (April 1): 316–324. doi:10.1016/j.jcis.2010.12.057. 
+Dhillon, Gurpreet Singh, Satinder Kaur Brar, Surinder Kaur, and Mausam Verma. 2013. 
+“Bioproduction and Extraction Optimization of Citric Acid from Aspergillus Niger by Rotating Drum Type Solid- state Bioreactor.” Industrial Crops and Products  41 
+(January): 7 8–84. doi:10.1016/j.indcrop.2012.04.001. 
+Doran, Pauline M. 2013. “Chapter 8 - Mixing.” In Bioprocess Engineering Principles (Second 
+Edition) , 255–332. London: Academic Press. 
+http://www.sciencedirect.com/science/article/pii/B9780122208515000083. 
+Galaction,  A.-I., D. Cascaval, C. Oniscu, and M. Turnea. 2004. “Prediction of Oxygen Mass 
+Transfer Coefficients in Stirred Bioreactors for Bacteria, Yeasts and Fungus Broths.” Biochemical Engineering Journal  20 (1) (August 1): 85–94. 
+doi:10.1016/j.bej.2004.02.005. 
+Garcı́a-Ochoa, Felix, and E.G omez Castro. 2001. “Estimation of Oxygen Mass Transfer 
+Coefficient in Stirred Tank Reactors Using Artificial Neural Networks.” Enzyme and 
+Microbial Technology  28 (6) (April 5): 560 –569. doi:10.1016/S0141- 0229(01)00297- 6.  
+57 
+ Garcı ́a-Ochoa, Felix, E.G omez Castro, and V.E Santos. 2000. “Oxygen Transfer and Uptake 
+Rates During Xanthan Gum Production.” Enzyme and Microbial Technology  27 (9) 
+(November 15): 680–690. doi:10.1016/S0141- 0229(00)00272- 6. 
+Garcia -Ochoa, Felix, and Emilio Gomez. 2005. “Prediction of Gas -liquid Mass Transfer 
+Coefficient in Sparged Stirred Tank Bioreactors.” Biotechnology and Bioengineering 92 
+(6) (December 20): 761– 772. doi:10.1002/bit.20638. 
+Garcia -Ochoa, Felix, and Emilio Gomez. 2009. “Bioreactor Scale -up and Oxygen Transfer 
+Rate in Microbial Processes: An Overview.” Biotechnology Advances  27 (2) (March): 
+153–176. doi:10.1016/j.biotechadv.2008.10.006. 
+Garcia -Ochoa, Felix, Emilio Gomez, Victoria E. Santos, and Jose C. Merchuk. 2010. “Oxygen 
+Uptake Rate in Microbial Processes: An Overview.” Biochemical Engineering Journal  
+49 (3) (May 15): 289–307. doi:10.1016/j.bej.2010.01.011. 
+Gavrilescu, M., and R.- V. Roman. 1993. “Investigation of the Bacitracin Biosynthesis in an 
+Airlift Bioreactor.” Acta Biotechnologica 13 (2): 161–175. doi:10.1002/abio.370130215. 
+Godbole, S. P., A. Schumpe, Y. T. Shah, and N. L. Carr. 1984. “Hydrodynamics and Mass 
+Transfer in non- Newtonian Solutions in a Bubble Column.” AIChE Journal  30 (2): 213–
+220. doi:10.1002/aic.690300207. 
+Goldember g, José. 2007. “Ethanol for a Sustainable Energy Future.” Science  315 (5813) 
+(February 9): 808–810. doi:10.2307/20038951. 
+Junker, Beth. 2007. “Foam and Its Mitigation in Fermentation Systems.” Biotechnology 
+Progress 23 (4): 767 –784. doi:10.1021/bp070032r. 
+Junker, Beth, Michael Lester, James Leporati, John Schmitt, Michael Kovatch, Stan 
+Borysewicz, Waldemar Maciejak, et al. 2006. “Sustainable Reduction of Bioreactor 
+Contamination in an Industrial Fermentation Pilot Plant.” Journal of Bioscience and Bioengine ering  102 (4) (October): 251–268. doi:10.1263/jbb.102.251. 
+Kantarci, Nigar, Fahir Borak, and Kutlu O. Ulgen. 2005. “Bubble Column Reactors.” Process 
+Biochemistry 40 (7) (June): 2263–2283. doi:10.1016/j.procbio.2004.10.004. 
+Kilonzo, Peter M., and Argyrios M argaritis. 2004. “The Effects of non- Newtonian 
+Fermentation Broth Viscosity and Small Bubble Segregation on Oxygen Mass Transfer in Gas -lift Bioreactors: a Critical Review.” Biochemical Engineering Journal  17 (1) 
+(January): 27 –40. doi:10.1016/S1369- 703X(03)00121- 9. 
+Martinelli, Luiz A, and Solange Filoso. 2008. “Expansion of Sugarcane Ethanol Production in 
+Brazil: Environmental and Social Challenges.” Ecological Applications: a Publication of 
+the Ecological Society of America 18 (4) (June): 885–898. 
+Merchuk , J. C., S. Yona, M. H. Siegel, and A. Ben Zvi. 1990. “On the First -order 
+Approximation to the Response of Dissolved Oxygen Electrodes for Dynamic KLa Estimation.” Biotechnology and Bioengineering 35 (11): 1161 –1163. 
+doi:10.1002/bit.260351113.  
+58 
+ Metzner, A. B., and R. E. Otto. 1957. “Agitation of non- Newtonian Fluids.” AIChE Journal  3 
+(1): 3 –10. doi:10.1002/aic.690030103. 
+Mueller, James, William C. Boyle, and Ing H. Johannes Popel. 2002. Aeration: Principles and 
+Practice. CRC Press.  
+Nikakhtari, Hossein, and G ordon A. Hill. 2005. “Modelling Oxygen Transfer and Aerobic 
+Growth in Shake Flasks and Well -Mixed Bioreactors.” The Canadian Journal of 
+Chemical Engineering 83 (3): 493–499. doi:10.1002/cjce.5450830312. 
+Nitayavardhana, Saoharit. 2013. “Protein -rich Fungal Biomass Production on Sugarcane 
+Vinasse for Animal Feed Applications with Concomitant Water Reclamation”. University 
+of Hawaii at Manoa. http://gradworks.umi.com/35/69/3569103.html.  
+ Nitayavardhana, Saoharit, Kerati Issarapayup, Prasert Pavasant, and Samir  Kumar Khanal. 
+2013. “Production of Protein -rich Fungal Biomass in an Airlift Bioreactor Using Vinasse 
+as Substrate.” Bioresource Technology  133C (January 30): 301–306. 
+doi:10.1016/j.biortech.2013.01.073. 
+Nitayavardhana, Saoharit, and Samir Kumar Khanal. 2010. “Innovative Biorefinery Concept 
+for Sugar -based Ethanol Industries: Production of Protein -rich Fungal Biomass on 
+Vinasse as an Aquaculture Feed Ingredient.” Bioresource Technology  101 (23) 
+(December): 9078–9085. doi:10.1016/j.biortech.2010.07.048. 
+Oma r, Samad S., Daniel L. Merrifield, Holger Kühlwein, Peter E.V. Williams, and Simon J. 
+Davies. 2012. “Biofuel Derived Yeast Protein Concentrate (YPC) as a Novel Feed Ingredient in Carp Diets.” Aquaculture  330–333 (February 17): 54–62. 
+doi:10.1016/j.aquacult ure.2011.12.004. 
+Pandey, Ashok, Carlos R Soccol, and David Mitchell. 2000. “New Developments in Solid 
+State Fermentation: I -bioprocesses and Products.” Process Biochemistry 35 (10) (July): 
+1153–1169. doi:10.1016/S0032- 9592(00)00152- 7. 
+Pedersen, Annemarie G ade, Henrik Andersen, Jens Nielsen, and John Villadsen. 1994. “A 
+Novel Technique Based on 85Kr for Quantification of Gas —liquid Mass Transfer in 
+Bioreactors.”  Chemical Engineering Science  49 (6): 803 –810. doi: 10.1016/0009-
+2509(94)80016- 2. 
+Pilarek, Maciej, and Krzysztof W. Szewczyk. 2008. “Effects of Perfluorinated Oxygen Carrier 
+Application in Yeast, Fungi and Plant Cell Suspension Cultures.” Biochemical Engineering Journal  41 (1) (August 1): 38 –42. doi:10.1016/j.bej.2008.03.004. 
+Quijano, Guillermo, José Rocha -Ríos, Maria Hernández, Santiago Villaverde, Sergio Revah, 
+Raúl Muñoz, and Frédéric Thalasso. 2010. “Determining the Effect of Solid and Liquid Vectors on the Gaseous Interfacial Area and Oxygen Transfer Rates in Two -phase 
+Partitioning Bioreactors.” Journal of Hazardous Materials  175 (1- 3) (March 15): 1085–
+1089. doi:10.1016/j.jhazmat.2009.10.020.  
+59 
+ Rajagopalan, S., and Jayant M. Modak. 1995. “Evaluation of Relative Growth Limitation Due 
+to Depletion of Glucose and Oxygen During Fungal Growth on a Spherical Solid 
+Particle.” Chemical Engineering Science  50 (5) (March): 803 –811. doi:10.1016/0009-
+2509(94)00452- W. 
+Ramjeawon, Toolseeram. 2008. “Life Cycle Ass essment of Electricity Generation from 
+Bagasse in Mauritius.” Journal of Cleaner Production 16 (16) (November): 1727–1734. doi:10.1016/j.jclepro.2007.11.001. 
+Renewable Fuels Association. 2013 Battling for The Barrel 2013 Ethanol Industry Outlook  
+ Renewable Fuels Association. 2013. “Battling for The Barrel 2013 Ethanol Industry Outlook.” 
+http://ethanolrfa.org/page/-/PDFs/RFA%202013%20Ethanol%20Industry%20Outlook.pdf?nocdn=1. 
+ Robinson, Campbell W., and Charles R. Wilke. 1973. “Oxygen Absorption in Stirred Ta nks: 
+A Correlation for Ionic Strength Effects.” Biotechnology and Bioengineering 15 (4): 755–782. doi:10.1002/bit.260150409. 
+Robinson, Tim, and Poonam Nigam. 2003. “Bioreactor Design for Protein Enrichment of 
+Agricultural Residues by Solid State Fermentation.” Biochemical Engineering Journal  13 
+(2–3) (March): 197 –203. doi:10.1016/S1369- 703X(02)00132- 8. 
+Schäpper, Daniel, Muhd Nazrul Hisham Zainal Alam, Nicolas Szita, Anna Eliasson Lantz, and 
+Krist V. Gernaey. 2009. “Application of Microbioreactors in Ferment ation Process 
+Development: a Review.” Analytical and Bioanalytical Chemistry  395 (3) (October 1): 
+679–695. doi:10.1007/s00216- 009-2955- x. 
+ Smart, N. J., and M. W. Fowler. 1984. “An Airlift Column Bioreactor Suitable for Large -Scale 
+Cultivation of Plant Cell Suspensions.” Journal of Experimental Botany  35 (4) (April 1): 
+531–537. doi:10.1093/jxb/35.4.531. 
+Srivastava, Pradeep, and Subir Kundu. 1999. “Studies on cephalosporin- C Production in an 
+Air Lift Reactor Using Different Growth Modes of Cephalosporium Acr emonium.” 
+Process Biochemistry 34 (4) (June): 329–333. doi:10.1016/S0032- 9592(98)00059- 4. 
+Suresh, S, Vc Srivastava, and Im Mishra. 2009. “Techniques for Oxygen Transfer 
+Measurement in Bioreactors: a Review.” Journal of Chemical Technology & Biotechnology  84 (8): 1091–1103. doi:10.1002/jctb.2154.  
+Tribe, L. A., C. L. Briens, and A. Margaritis. 1995. “Determination of the Volumetric Mass 
+Transfer Coefficient (kLa) Using the Dynamic ‘gas Out –gas in’ Method: Analysis of 
+Errors Caused by Dissolved Oxygen Probes.”  Biotechnology and Bioengineering 46 (4): 
+388–392. doi:10.1002/bit.260460412. 
+US Department of Energy. 2009. “Vehicle Technologies Office: Fact #447: December 11, 
+2006 World Ethanol Production”. Government. Energy Efficiency and Renewable Energy . July 22. 
+http://www1.eere.energy.gov/vehiclesandfuels/facts/2006_fcvt_fotw447.html.   
+60 
+ ———. 2012. “How Much Gasoline Does the United States Consume?” Government. US 
+Energy Information Administration . July 18. 
+http://www.eia.gov/tools/faqs/faq.cfm?id=23&t=10. 
+Van’t Rie t, Klaas. 1979. “Review of Measuring Methods and Results in Nonviscous Gas -
+Liquid Mass Transfer in Stirred Vessels.” Industrial & Engineering Chemistry Process 
+Design and Development  18 (3) (July 1): 357–364. doi:10.1021/i260071a001. 
+Van’t Riet, Klaas, and  Tramper , Johannes . 1991. Basic Bioreactor Design . CRC Press,  
+ Vasconcelos, J.M.T, J.M.L Rodrigues, S.C.P Orvalho, S.S Alves, R.L Mendes, and A Reis. 
+2003. “Effect of Contaminants on Mass Transfer Coefficients in Bubble Column and Airlift Contactors.” Chem ical Engineering Science  58 (8) (April): 1431– 1440. 
+doi:10.1016/S0009- 2509(02)00675- 9. 
+Su, Wei  Wen , and He , Bing Jun. 1997. “Secreted Enzyme Production by Fungal Pellets in a 
+Perfusion Bioreactor.” Journal of Biotechnology  54 (1) (April 4): 43–52. 
+doi:10.1016/S0168- 1656(97)01690- 8. 
+Winterburn, J. B., and P. J. Martin. 2012. “Foam Mitigation and Exploitation in Biosurfactant 
+Production.” Biotechnology Letters 34 (2) (February 1): 187 –195. doi:10.1007/s10529-
+011-0782- 6. 
+Wood, L. A., and P. W. Thompson. 1987. “Applications of the Air Lift Fermenter.” Applied 
+Biochemistry and Biotechnology  15 (2) (August 1): 131–143. doi:10.1007/BF02801314. 
+Yazdian, F., M. Pesaran Hajiabbas, S.A. Shojaosadati, M. Nosrati, E. Vasheghani -Farahani, 
+and M.R. Mehrnia. 2010. “Study of  Hydrodynamics, Mass Transfer, Energy 
+Consumption, and Biomass Production from Natural Gas in a Forced- liquid Vertical 
+Tubular Loop Bioreactor.” Biochemical Engineering Journal  49 (2) (April 15): 192–200. 
+doi:10.1016/j.bej.2009.12.013. 
+  
+61 
+ APPENDIX 
+A.1  Data Anaylsis  
+Table  A.1 Comparison of water -only to vinasse -only volumetric oxygen mass 
+transfer coefficients in bubble column: t- test assuming equal variances  
+0.5 vvm  
+    Water -Only  Vinasse -Only  
+Mean  18.6 10.1 
+Variance  0.3 0.0 
+Observations  3 3 
+Pooled Variance  0.2 
+ Hypothesized Mean Difference  0 
+ df 4 
+ t Stat  24.39 
+ P(T<=t) one -tail 8.38E -06 
+ t Critical one -tail 2.13 
+ P(T<=t) two -tail 1.68E-05 
+ t Critical two -tail 2.77   
+0.75 vvm  
+    Water -Only  Vinasse -Only  
+Mean  32.0 13.2 
+Variance  0.6 0.1 
+Observations  3 3 
+Pooled Variance  0.4 
+ Hypothesized Mean Difference  0 
+ df 4 
+ t Stat  37.79  
+ P(T<=t) one -tail 1.46E -06 
+ t Critical one -tail 2.13 
+  
+62 
+ P(T<=t) two -tail 2.93E-06 
+ t Critical two -tail 2.78   
+1.0 vvm  
+    Water -Only  Vinasse -Only  
+Mean  43.3 20.7 
+Variance  0.6 0.7 
+Observations  3 3 
+Pooled Variance  0.6 
+ Hypothesized Mean Difference  0 
+ df 4 
+ t Stat  34.60 
+ P(T<=t) one- tail 2.08E -06 
+ t Critical one -tail 2.13 
+ P(T<=t) two -tail 4.16E-06 
+ t Critical two -tail 2.78   
+1.25 vvm  
+    Water -Only  Vinasse -Only  
+Mean  45.8 36.6 
+Variance  0.3 7.9 
+Observations  3 3 
+Pooled Variance 4.1 
+ Hypothesized Mean Difference  0 
+ df 4 
+ t Stat  5.58 
+ P(T<=t) one- tail 0.0025 
+ t Critical one -tail 2.13 
+ P(T<=t) two -tail 0.0050  
+ t Critical two -tail 2.77   
+1.5 vvm  
+   
+63 
+ t-Test: Two -Sample Assuming Equal Variances  
+   Water -Only  Vinasse -Only  
+Mean  56.5 47.6 
+Variance  8.9 13.3 
+Observations  4 3 
+Pooled Variance  10.6 
+ Hypothesized Mean Difference  0 
+ df 5 
+ t Stat  3.56 
+ P(T<=t) one -tail 0.008 1 
+ t Critical one-tail 2.02 
+ P(T<=t) two -tail 0.016 2 
+ t Critical two -tail 2.57   
+2.0 vvm  
+    Water -Only  Vinasse -Only  
+Mean  72.4 57.6 
+Variance  6.4 0.9 
+Observations  3 3 
+Pooled Variance 3.6 
+ Hypothesized Mean Difference  0 
+ df 4 
+ t Stat  9.49 
+ P(T<=t) one -tail 0.0003  
+ t Critical one -tail 2.13 
+ P(T<=t) two -tail 0.0006 
+ t Critical two -tail 2.78   
+3.0 vvm  
+    Water -Only  Vinasse -Only  
+Mean  79.4 59.4  
+64 
+ Variance  4.9 3.5 
+Observations  4 3 
+Pooled Variance  4.3 
+ Hypothesized Mean Difference  0 
+ df 5 
+ t Stat  12.5 
+ P(T<=t) one- tail 3E-05 
+ t Critical one -tail 2.01 
+ P(T<=t) two -tail 6E-05 
+ t Critical two -tail 2.57   
+ 
+Table A. 2 Comparison of with -fungus volumetric oxygen mass transfer coefficient  
+to vinasse -only oxygen mass transfer coefficient in bubble column reactor: t-test: 
+two-sample assuming equal variances  
+  Vinasse -Only  4.93 g  
+Mean  47.6 49.4 
+Variance  13.3 5.5 
+Observations  3 3 
+Pooled Variance  9.4 
+ Hypothesized Mean Difference  0 
+ df 4 
+ t Stat  -0.720  
+ P(T<=t) one -tail 0.255  
+ t Critical one -tail 2.13 
+ P(T<=t) two -tail 0.511  
+ t Critical two -tail 2.77   
+  Vinasse -Only  7.89 g  
+Mean  47.6 52.0 
+Variance  13.3 8.5 
+Observations  3 3  
+65 
+ Pooled Variance  10.9 
+ Hypothesized Mean Difference  0 
+ df 4 
+ t Stat  -1.60 
+ P(T<=t) one- tail 0.091 9 
+ t Critical one -tail 2.13 
+ P(T<=t) two -tail 0.184 
+ t Critical two -tail 2.778   
+  Vinasse -Only  7.39 g  
+Mean  47.6 40.9 
+Variance  13.3 6.4 
+Observations  3 3 
+Pooled Variance 9.8 
+ Hypothesized Mean Difference  0 
+ df 4 
+ t Stat  2.62 
+ P(T<=t) one- tail 0.029  
+ t Critical one-tail 2.13 
+ P(T<=t) two -tail 0.058  
+ t Critical two -tail 2.78   
+  Vinasse -Only  6.53 g  
+Mean  47.6 62.3 
+Variance  13.3 0.8 
+Observations  3 4 
+Pooled Variance 5.8 
+ Hypothesized Mean Difference  0 
+ df 5 
+ t Stat  -7.97 
+ P(T<=t) one- tail 0.0002 
+  
+66 
+ t Critical one -tail 2.02 
+ P(T<=t) two -tail 0.0004  
+ t Critical two -tail 2.57   
+  Vinasse -Only  5.77 g  
+Mean  47.6 48.1 
+Variance  13.3 9.1 
+Observations  3 3 
+Pooled Variance  11.2 
+ Hypothesized Mean Difference 0 
+ df 4 
+ t Stat  -0.176  
+ P(T<=t) one -tail 0.435 
+ t Critical one -tail 2.13 
+ P(T<=t) two -tail 0.869  
+ t Critical two -tail 2.78   
+  Vinasse -Only  5.82 g  
+Mean  47.6 56.6 
+Variance  13.3 16.1 
+Observations  3 4 
+Pooled Variance  15.0 
+ Hypothesized Mean Difference 0 
+ df 5 
+ t Stat  -3.03 
+ P(T<=t) one -tail 0.014  
+ t Critical one -tail 2.01 
+ P(T<=t) two -tail 0.029  
+ t Critical two -tail 2.57   
+ 
+  
+67 
+  
+A.2  The Current State of Ethanol Production   
+ Currently, more than 20 billion gallons  of bioethanol is produced annually 
+worldwide. Ethanol is a primary replacement for transportation fuel with E10 (10% 
+ethanol blends) in 96% of United States gasoline as of 2012. (Renewable Fuels 
+Association, 2013) Figure A. 1 shows  the growth ethanol production since 2006.   
+ 
+Figure A.1 Worldwide e thanol production from  2006 to 2012 ( Renewable Fuels 
+Association, 2013)  
+ 2006 2007 2008 2009 2010 2011 2012 2013*  
+Brazil  12698 16203 19584 22823 22162 19290 20000 21700 
+World  39252 49625 66075 73088 85047 84501 85088   0 10000 20000 30000 40000 50000 60000 70000 80000 90000 Million Liters  Ethanol Production  
+68 
+  
+Figure A.2 US ethanol production from 1980 to 2012 (Renewable Fuels Association, 
+2013)  
+In an effort to gain energy independence the US government passed the Energy 
+Independence and Sec urity Act of 2007. In the legislation, the US is required to increase 
+biofuels added to the gasoline supply to 36 billion gallons in year 2022 from 4.7 billion 
+gallons in 2007. The legislation also specifies that 22 billion gallons of the biofuel must come  from non -cornstarch products (i.e. sugar and cellulose) (P.L.110- 140, H.R. 6). 
+ The legislation lead to the exponential growth of US ethanol production from 
+1980 to 2010 (Figure A. 2). However, the past three years, 2010- 2012 has seen the 
+production stagna te at nearly 20 billion barrels worldwide, and 14 billion barrels 
+domestically.  However, in a 2012 report, the US EIA noted that currently the US ethanol production has met all demand for E10 gasoline (i.e. 10% ethanol blended into petroleum gasoline). It  is now, during a stagnation in ethanol production growth, that the US, and 175 215 350 415 510 617 712 819 831 843 848 866 985 1,154 1,289 1,358 1,088 1,288 1,405 1,465 1,622 1,765 2,140 2,810 3,404 3,904 4,884 6,521 9,309 10,938 13,298 13,948 13,300 
+0 2000 4000 6000 8000 10000 12000 14000 16000 Million gallons  
+year  US Ethanol Proudction  
+69 
+ the world must develop new co- product technologies which will increase the value of the 
+co-products generated.  
+A.3  Photos  
+ 
+Fungal plugging between draft tube and sidewall. 
+ 
+70 
+  
+Rotovapor : For ethanol distillation  
+ 
+71 
+  
+Hawaiian Commercial and Sugar Co., Maui Sugar Mill, molasses storage tanks in front 
+and power plant  in the background (2011)  
+ 
+Harvested Fungal pellets  
+ 
+72 
+  
+Fungal growth over and around the sparger  
+ 
+73 
+  
+Fungal fermentation in airlift bioreactor in water bath, vinasse media  
+ 
+74 
+  
+Freeze Dried Fungal Pellets  
+ 
+75 
+  
+Prototype external loop airlift bioreactor, PVC pipe. Could not be heated, leaked, fungus 
+probably would get stuck in the 1" downcomer tube. 
+ 
+76 
+  
+Top of airlift bioreactor. pH  probe (orange) and DO probe, lower right  
+ 
+77 
+  
+Washed and compressed fungal pellets  
+ 
+  
+ 
+ 

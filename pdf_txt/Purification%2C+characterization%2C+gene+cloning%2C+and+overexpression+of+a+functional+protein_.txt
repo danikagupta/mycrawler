@@ -1,0 +1,1267 @@
+1 
+ Mutations in Rv2983 as a novel determinant of resistance to nitroimidazol e drugs in
+Mycobacterium tuberculosis
+Dalin Rifat1,S i - Y a n gL i1, Thomas Ioerger2, Jean-Philippe Lanoix3, Jin Lee1, Ghader Bashiri4,
+James Sacchettini5and Eric Nuermberger1,*
+1Center for Tuberculosis Research, Johns Hopkins University School of Medicine, 1550
+Orleans Street, Baltimore, MD 21287, USA
+2Department of Computer Science, Texas A&M University, College S tation, TX, 77843, USA
+3Department of Infectious Diseases, Amiens University Hospital, Amiens, France
+4Laboratory of Structural Biology and Maurice Wilkins Center for  Molecular Biodiscovery,       
+School of Biological Sciences, University of Auckland, Auckland  1010, New Zealand
+5Department of Biochemistry and Biophysics, Texas A&M University , College Station, TX,     
+77843, USA
+*Corresponding author. Email: enuermb@jhmi.edu     Tel: 410-502-7683
+SIGNIFICANCE
+Nitroimidazole pro-drugs represent a promising new class of anti-tuberc ulosis drugs. Reliable
+methods to assure nitroimidazole susceptibility are critical to assure t heir optimal use. Yet, the
+spectrum of nitroimidazole resistance mutations remains incompletely c haracterized. Using 161
+pretomanid-resistant Mycobacterium tuberculosis isolates selected in pretomanid-treated mice,
+we discovered a novel resistance determinant, Rv2983 , required for cofactor F 420biosynthesis
+and characterized the remarkable diversity of mutations in this and 5 othe r genes involved incertified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 2 
+ nitroimidazole activation. We show that F 420H2–deficient nitroimidazole-resistant mutants are
+hypersusceptible to the selective decontaminant malachite green used in solid media to isolate
+mycobacteria and may evade detection on such media. These results have imp ortant implications
+for development and clinical use of genotypic and phenotypic methods for n itroimidazole
+susceptibility testing.
+ABSTRACT
+Delamanid represents one of two novel antimicrobial classes approved to treat tuberculosis in
+over 40 years. Pretomanid is another promising nitroimidazole pro-drug in clinical development.
+Characterization of the full spectrum of mutations conferring res istance to nitroimidazoles and 
+their related phenotypes in Mycobacterium tuberculosis will inform development of suitable 
+genotypic and phenotypic drug susceptibility tests. Here, we used a range of pretomanid doses
+to select pretomanid-resistant mutants in two pathologically dis tinct murine TB models. The 
+frequency of spontaneous pretomanid resistance mutations was ap proximately 10-5CFU.
+Pretomanid demonstrated dose-dependent bactericidal activity and  selective amplification of 
+resistant mutants. Whole genome sequencing of 161 resistant isolates from 47 mice revealed 99
+unique mutations, 90% of which were found in 1 of 5 genes previo usly associated with 
+nitroimidazole activation and resistance. The remaining 10% harbor ed isolated mutations in 
+Rv2983 . Complementing an Rv2983 mutant with a wild-type copy of Rv2983 restored wild-type 
+susceptibility to pretomanid and delamanid, confirming that loss of Rv2983 function causes
+nitroimidazole resistance. By quantifying F 420and its precursor Fo in Mycobacterium smegmatis
+overexpressing Rv2983 and an M. tuberculosis Rv2983 mutant, we provide evidence that Rv2983
+is necessary for F 420 biosynthesis and nitroimidazole activation, perhaps as the 
+guanylyltransferase CofC. F 420H2-deficient mutants displayed hypersusceptibility to malachite 
+green (MG), a selective decontaminant present in solid media used to isolate and propagate 
+mycobacteria from clinical samples. The wide diversity of mutatio ns causing high-level certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 3 
+ pretomanid resistance and MG hypersusceptibility of most mutants poses significant challenges
+to clinical detection of nitroimidazole resistance using either gen otypic or phenotypic methods. 
+INTRODUCTION
+Despite decades of efforts to end the global tuberculosis (TB) e pidemic, Mycobacterium 
+tuberculosis is the leading killer among infectious agents plaguing mankind ( 1). The emergence 
+and spread of multidrug-resistant (MDR) and extensively drug-re sistant (XDR) M. tuberculosis
+makes the eradication effort much more difficult because treatment  requires administration of 
+more toxic and less effective second- and third-line drugs for u p to 2 years ( 1, 2). Delamanid and 
+pretomanid are promising new bicyclic 4-nitroimidazole drugs that have shown potential in pre-
+clinical and clinical studies to shorten and simplify the treatment of TB, including drug-resistant 
+forms ( 3-9). Delamanid received conditional approval by the European Medic ines Agency (EMA) 
+to treat MDR-TB in 2014 ( 10) and pretomanid is currently being evaluated in Phase 2/3 clinical  
+trials ( ClinicalTrials.gov Identifiers: NCT03338621, NCT02589782, NCT0233 3799,
+NCT03086486 ). Particularly notable is a novel regimen comprised of bedaquili ne, pretomanid 
+and linezolid that may represent a highly efficacious oral, shor t-course regimen for treatment of 
+MDR/XDR-TB ( 4)(ClinicalTrials.gov Identifiers: NCT02333799, NCT03086486) .
+Two non-exclusive mechanisms of action have been described for th ese bicyclic 4-nitroimidazole
+drugs: inhibition of cell wall biosynthesis through inhibition of my colic acid synthesis and 
+respiratory poisoning through release of nitric oxide during bac terial drug metabolism ( 11, 12 ).
+Pretomanid and delamanid are prodrugs that require bioreductive activation of an aromatic nitro 
+group by the 8-hydroxy-5-deazaflavin (coenzyme F 420)-dependent nitroreductase Ddn in order to 
+exert bactericidal activity ( 13). The reaction involves the transfer of two electrons from the reduced 
+form of F 420(F420H2) produced by an F 420-dependent glucose-6-phosphate dehydrogenase (Fgd1)
+(12, 14 ). Therefore, F 420biosynthesis and reduction are essential for the activation of de lamanid, 
+pretomanid and other nitroimidazole prodrugs. Three genes are ide ntified as essential for F 420certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 4 
+ biosynthesis in M. tuberculosis complex ( 15, 16 ).fbiC encodes a 7,8-didemethyl-8-hydroxy-5-
+deazariboflavin (Fo) synthase that catalyzes the condensation of 5- amino-6-ribitylamino-2,4 (1 H,
+3H)-pyrimidinedione and tyrosine to form the F 420precursor Fo ( 17, 18 ).fbiA encodes a
+transferase that is believed to catalyze the transfer of a phospholactyl moiety to Fo to generate 
+F420-0, while fbiBencodes a F 420-Ȗ-L-glutamyl ligase that catalyzes the sequential addition of a
+variable number of glutamate residues to F 420-0 to yield coenzyme F 420-5 or -6 in mycobacteria 
+(12). In the methanogen Methanocaldococcus jannaschii , a guanylyltransferase termed CofC is 
+believed to generate an intermediate (L-lactyl-2-diphospho-5’-guanosine, LPPG) in the F 420
+biosynthesis pathway ( 19). A homologous enzyme, MSMEG_2392, is shown to be necessary for 
+F420synthesis in Mycobacterium smegmatis through transposon mutagenesis studies ( 20). An
+ortholog, Rv2983 , is present in M. tuberculosis . However, the role of MSMEG-2392 and Rv2983 
+in F 420biosynthesis has remained unexplored.
+Loss-of-function mutations in ddn,fgd1 and fbiA-C causing delamanid and pretomanid resistance
+are readily selected in vitro in M. tuberculosis complex ( 16, 18, 21-23 ). However, the genetic 
+spectrum of mutations emerging during in vivo selection has not been characterized. In order to 
+study bacterial genetic, host and pharmacological factors associ ated with emergence of 
+nitroimidazole resistance in vivo , we selected pretomanid-resistant mutants using a wide range 
+of pretomanid doses in two mouse models of TB and characterized them by whole genome 
+sequencing (WGS). Because the lungs of TB patients feature a hete rogeneous array of lesion 
+types associated with diversified immune responses and drug penet ration ( 24, 25 ), we used both 
+C3HeB/FeJ mice, which develop caseating lung lesions in respons e to M. tuberculosis infection, 
+and BALB/c mice, which do not, to investigate the impact of these  caseating lesions and their 
+associated micro-environments on mutant selection. In the present study, we found that 
+pretomanid-resistant mutants were readily selected by monotherap y in both mouse strains. While 
+the majority of resistant isolates harbored isolated mutations in  genes previously associated with certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 5 
+ nitroimidazole resistance, all the resistant isolates lacking such  mutations had mutations in 
+Rv2983 . We went on to confirm that loss-of-function mutations in Rv2983 cause high-level 
+pretomanid and delamanid resistance through disruption of F 420biosynthesis, supporting the 
+hypothesis that Rv2983 plays a role similar to cofC in M. tuberculosis . Furthermore, F 420H2-
+deficient nitroimidazole-resistant M. tuberculosis mutants, including Rv2983 mutants, were found 
+to be hypersensitive to malachite green (MG), an organic compound used as a selective 
+decontaminant in solid media for culturing M. tuberculosis , which may have important implications 
+for their detection in clinical samples.
+MATERIALS AND METHODS
+Bacterial strains, media, antimicrobials and reagents. Wild type M. tuberculosis H37Rv 
+(ATCC 27294) was mouse-passaged, frozen in aliquots and used in  all the experiments. The wild 
+type M. smegmatis strain mc2155 was obtained from the stock in the lab. Unless stated otherw ise, 
+Middlebrook 7H9 medium (Difco, BD) supplemented with 10% oleic acid-albumin-dextrose-
+catalase (OADC) complex (BD), 0.5% glycerol and 0.05% Tween 80 (Sigma-Aldrich) (7H9 broth)
+was used for cultivation. Middlebrook 7H10 agar and selective 7H11  agar (Difco, BD), prepared 
+from powder and containing 10% OADC and 0.5% glycerol, were used for comparison of strain
+recovery on commercially available agar plates. Lowenstein Jensen  (LJ) slants were purchased
+from BD. Pretomanid and delamanid were kindly provided by the Globa l Alliance for TB Drug 
+Development (New York, NY).
+Mouse infection models and pretomanid treatment. All animal procedures were approved by 
+the Animal Care and Use Committee of Johns Hopkins University. A erosol infections were 
+performed using the Inhalation Exposure System (Glas-col Inc., Terre Haute, IN), as previously 
+described ( 26). Briefly, 6-week-old female BALB/c mice (Charles River, Wilming t o n ,  M A )  a n dcertified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 6 
+ C3HeB/FeJ mice (Jackson Laboratories Bar Harbor, ME) were infec ted with a log phase culture 
+of M. tuberculosis that was grown in 7H9 broth to O.D.600 nm= 1.0 and then diluted in the same 
+medium prior to infection to deliver 50-100 CFU to the lungs. Pret omanid was formulated for oral 
+administration as previously described ( 27). Beginning 8 weeks after aerosol infection, mice were 
+randomly allocated into groups and treated once daily (5 days per  week) for up to 8 weeks with 
+pretomanid at doses of 10, 30, 100, 300 and 1000 mg/kg. Untreated mice were sacrificed on the 
+day after aerosol infection and on the day of treatment initiatio n to determine the number of CFU 
+implanted in the lungs and pretreatment CFU counts, respectively . Additional mice were sacrificed 
+after 3 and 8 weeks of treatment to evaluate the treatment respo nse. Serial 10-fold dilutions of 
+lung homogenates were plated on 7H11 agar. Week 8 samples includi ng those from untreated 
+mice were also plated in parallel on 7H11 plates containing 0.2 5, 1 and 10 μg/ml of pretomanid
+to quantify the resistant CFU. Plates were incubated at 37°C for  28 days before final CFU counts 
+were determined.
+Whole genome sequencing. For each mouse lung that yielded growth on pretomanid-containing
+plates, individual colonies and, for a subset of mice, pools of up to 15 colo nies, were randomly
+selected from pretomanid-containing plates and sub-cultured in 7H9 brot h prior to extraction of
+genomic DNA using the cetyltrimethylammonium bromide (CTAB) pro tocol ( 28) and vortexing
+(Genegate, Inc.). 2- ȝJRI genomic DNA was sheared by a nebulizer to generate DNA fragment s. 
+The DNA library was prepared using a genomic DNA sample prepara tion kit (Illumina, Inc.), in 
+which adapter-ligated DNA fragments were 250-350 bp in length, a nd carried out on an Illumina 
+Genome Analyzer II (Illumina, Inc). The sequencer was operated i n paired-end mode to collect 
+pairs of reads of 51-bp from opposite ends of each fragment. Ima ge analysis and base-calling 
+were done by using the Illumina GA Pipeline software (v0.3). Th e reads that were generated for 
+each strain were aligned to the reference genome of M. tuberculosis H37Rv ( 29). Based on 
+alignment to the corresponding region in the reference genome, single nucleotide polymorphism certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 7 
+ (SNP), insertion and deletion were identified on the genome of resistant strains by using a contig-
+building algorithm to construct a local ~200 bp sequence spanni ng the site of mutagenesis ( 30).
+Distribution of mutation type and mutation frequency in genes i nvolved in nitroimidazole
+resistance was calculated by counting the total number of unique mutations isolated from each
+mouse in the same treatment group.
+Complementation of an Rv2983 mutation. A 1,044-bp DNA fragment containing the open 
+reading frame (ORF) of the wild type Rv2983 gene, including 340 bp of 5’-flanking sequence and 
+59 bp of 3’-flanking sequence, was PCR-amplified from M. tuberculosis H37Rv genomic DNA 
+using primers Rv2983 -1F and Rv2983 -1R (Table S1). The Rv2983 PCR product was ligated into 
+XbaI-digested E.coli-mycobacterium shuttle vector pMH94 ( 31) using NE builder HiFi DNA 
+assembly kit (NE Biolabs) to generate the recombinant pMH94- Rv2983 vector. Similarly, a 388-
+bp DNA fragment containing the hsp60 promoter and a 645-bp DNA fragment of Rv2983 open 
+reading frame were amplified from M. tuberculosis H37Rv genomic DNA using primer sets hsp60 -
+F and hsp60 -R and Rv2983 -2F and Rv2983 -2R, respectively (Table S1), and ligated into XbaI-
+digested E.coli-mycobacterium shuttle vector pMH94 to yield pMH94- hsp60 -Rv2983 .A  s m a l l  
+amount of ligation reaction was transferred into E. coli competent cells, followed by DNA 
+sequencing of the inserts in the corresponding recombinants. The  recombinants pMH94- Rv2983 
+and pMH94- hsp60 -Rv2983 were electroporated into competent cells of Rv2983 mutant strain
+BA_101 (B101), harboring an A198P substitution, to enable selection of complemented
+candidates B101p Rv2983 and B101p hsp60-Rv2983 o n  7 H 1 0  a g a r  c o n t a i n i n g  2 5  μ g / m l  o f  
+kanamycin. To confirm the complementation genetically, Southern b lotting was performed using 
+a digoxigenin (DIG) DNA labeling and detection kit according to t he manufacturer’s protocol 
+(Sigma). Briefly, a 448-bp Rv2983 probe was generated by addition of DIG-dUTP (Sigma) to PCR 
+reactions containing primer pairs Rv2983 -3F and Rv2983 -3R (Table S1). Acc65I-digested (NE 
+biolabs) genomic DNA of the wild type, the B101 mutant and the B10 1pRv2983 and B101p hsp60-certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 8 
+ Rv2983 complemented strains was separated on agarose gel and transferre d onto positively-
+charged nylon-membrane (GE). After pre-hybridization, the membra ne was hybridized with the 
+DIG-labeled Rv2983 probe at 68°C overnight, followed by addition of anti-DIG alkaline  
+phosphatase conjugate. After stringent washes, the membrane was incubated wi th the 
+chemiluminescence substrate disodium 3-(4-methoxyspiro {1,2-dio xetane-ƍ-
+chloro)tricycloecan}-4-yl)phenyl phosphate (CSPD) and exposed on X-ra y  fi l m i n a  da r k roo m  
+prior to development using a developer (AFP imaging)( 32).
+MIC determination. Log-phase cultures were diluted to achieve a bacterial density of  
+approximately 105CFU/ml in conical tubes containing 7H9 broth without Tween 80. Ser ial 10-fold 
+dilutions were plated on 7H11 agar containing stepwise 2-fold incre asing pretomanid
+concentrations ranging from 0.015 to 64 μg/ml or delamanid concentra tions from 0.001 to 1.024
+μg/ml. Drugs were initially dissolved in dimethylsulfoxide (DMSO ) (Sigma) prior to further dilution 
+in 7H9 broth or 7H11 agar. Cultures were incubated at 37°C for 14  days or 28 days after plating.
+MIC was defined as the lowest drug concentration that inhibited visible M. tuberculosis growth in 
+conical tubes or that inhibited 99% of CFU growth on pretomanid-c ontaining plates ( 33, 34 ). The 
+experiments were repeated twice.
+Construction of recombinants overexpressing Rv2983 , with or without fbiC,i n  M. 
+smegmatis .A 645-bp DNA fragment containing the Rv2983 ORF was PCR-amplified from M. 
+tuberculosis H37Rv genomic DNA using primers Rv2983 -4F and Rv2983 -4R (Table S1). The 
+amplified PCR product was ligated into the NdeI- and PacI-digeste d E.coli-mycobacterium
+shuttle vector pYUBDuet ( 35) using NE builder HiFi DNA assembly kit (NE Biolabs) and then
+transferred into Turbo-competent E. coli cells (NE Biolabs) prior to plating on LB agar plates 
+containing 100 μg/ml of hygromycin B for selection of recombinants .The Rv2983 PCR product 
+was also similarly ligated into the same NdeI- and PacI-digested  pYUBDuet vector harboring certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 9 
+ fbiC(termed p fbiC)(35) to overexpress both Rv2983 andfbiC. After confirmation by restriction 
+digestion and DNA sequencing, the constructs were electroporated into competent M. 
+smegmatis cells prior to selecting recombinants on 7H10 agar plates contain ing 100 μg/ml of 
+hygromycin B. PCR amplification wa s used to confirm the inserts on the M. smegmatis genome.
+pYUBDuet and pYUBDuet harboring fbiA, fbiB and fbiC (termed p fbiABC)( 35)w e r ea l s o
+transferred into competent M. smegmatis cells to serve as controls.
+Measurement of Fo and F 420.Extraction of Fo and F 420was performed in M. smegmatis andM. 
+tuberculosis strains according to a previous study ( 35), with minor modifications. Briefly, M. 
+smegmatis strains harboring different constructs and pYUBDuet were grown i n 7H9 broth in a 
+shaker to mid-log phase (O.D. 600nm = 0.7-1.0), followed by induction using 1mM i VRSURS\Oȕ -D-1-
+thiogalactopyranoside (IPTG) for 6 and 26 hours. After centrifugat ion for 15 min at 16000 x g, the 
+supernatants were removed for detection of Fo, which is principally found in culture supernatant 
+whereas F 420 with 5 or 6 glutamate residues is largely retained inside cells ( 15, 35, 36 ). The cell 
+pellets were washed with 25mM sodium phosphate buffer (pH 7.0) a nd re-suspended at 100
+mg/mL in the same buffer, then autoclaved at 121°C for 15 min. Afte r centrifugation at 16000 x g
+for 15 min at 4°C, the cell extracts were harvested for detection of F 420(35). Fluorescence of the 
+supernatant and cell extracts was measured using an excitation wa velength of 410 nm and an 
+emission wavelength of 465 nm. Fluorescent signals of Fo were nor malized using the O.D. at 
+600nm. The small portion of Fo (1-7%) retained inside cells was ig nored when quantifying F 420in 
+cell extracts ( 37). Relative fluorescent signals were calculated in M. smegmatis harboring each of 
+recombinants relative to pYUBDuet alone. Similarly, cell extracts  and supernatant were extracted 
+from M. tuberculosis strains grown in 7H9 broth for 6 days at initial O.D. 600nm of 0.1. Relative 
+fluorescent signals of F 420 and Fo were calculated using cell extracts and supernatant relat ive to 
+25 mM phosphate buffer and 7H9 broth, respectively. M. smegmatis harboring pYUBDuet- fbiABC certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 10 
+ was used as a positive signal control for Fo and F 420due to their commercial unavailability ( 35).
+The experiment was repeated twice.
+Quantification of gene expression in M. tuberculosis .6-day-old M. tuberculosis strains grown 
+in 7H9 broth as described above were sub-cultured in fresh 7H9 at  O.D. 600nm = 0.05 followed by 
+incubation at 37 °C in a shaker for 2 and 4 days. Bacterial pellets were collected by centrifugation 
+at 3500 rpm at 4°C for purification of total RNA using Trizol ( Thermo Fisher Scientific) according 
+to the manufacturer’s protocol followed by removal of DNA conta mination with Turbo DNAse 
+(Ambion). Following cDNA synthesis with random hexamers and olig o(dT)20 primer and 
+superscript III reverse transcriptase (Invitrogen), quantitativ e PCR was performed to measure
+gene expression of M. tuberculosis using  SYBR Green PCR master mix (Thermo scientific) and 
+StepOneTM system (Applied biosystems) with primer sets listed in Table S1. T he cycle threshold 
+value (C T) measured for each gene was normalized to that of the housekeep ing gene sigA ¨& T)
+amplified by the primers sigA-F and sigA-R (Table S1). ¨¨& Twas calculated in each of 
+pretomanid-resistant strains relative to the wild-type H37Rv prior to calculation of the fold-change 
+in gene expression (2^- ¨¨& T)(38). All samples were prepared in duplicate. PCR was performed 
+from an equal amount of cDNA samples synthesized with oligo(dT)2 0 with primers fbiC-5-7_F
+andfbiC-5-7_R (Table S1) using the Q 5High-fidelity PCR kit (New England Biolabs) and C1000 
+Thermal cycler (Biorad). The PCR product was examined by electro phoresis on a 1% agarose 
+gel.
+Malachite green susceptibility testing. 7H9 media supplemented with 10% OADC, 0.5% 
+glycerol, 1.5% BactoTM Agar (BD) and malachite green (MG) oxalate (Alfa Aesar) was used to 
+prepare solid 7H9 media with differing MG concentrations. M. tuberculosis strains were grown to 
+mid-log phase and diluted to OD 600nm = 0.1 in 7H9 broth before serial 10-fold dilutions were plated 
+in 100 or 500 μl aliquots on 7H9 agar containing MG concentration s of 0, 0.1, 0.3, 1, 3, 10, 30, certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 11 
+ 100, 300, 1000 μg/ml or 0, 3, 6, 12 μg/ml. CFU were counted after 28, 35 and 49 days of 
+incubation. The same cultures were also plated on 7H10 and 7H11 agar plates and LJ slants.
+Serially diluted cultures were inoculated onto LJ slants using cal ibrated disposable inoculating 
+loops (10 μl per loop, BD) as one l oop per LJ slant. Plates were incubated at 37°C for 21, 28 and 
+35 days for CFU counts. Colony size was observed weekly until day 35, beginning 21 days after 
+plating. The experiment was repeated two times under similar condi tions.
+Statistical analysis. Log 10-transformed CFU counts, fold-change values of gene expression and  
+absorbance (A 410) values of fluorescent signals were used to calculate means and standard 
+deviations for each data set. Differences between means were compared by the Student’s ttest
+in Microsoft Excel. Differences in mutation frequencies between t wo mouse models were 
+evaluated by Fisher’s exact test in GraphPad Prism 6. A p-value of < 0.05 was considered 
+statistically significant.
+RESULTS
+Spontaneous pretomanid-resistant mutants exist at a relatively h igh frequency in 
+infected mice and are selectively amplified by treatment with ac tive doses of pretomanid.
+To study the dose-response of pretomanid and explore the genetic s pectrum of nitroimidazole 
+resistance selected in vivo , we established chronic M. tuberculosis infections in BALB/c and 
+C3HeB/FeJ mice and then treated with a range of pretomanid doses f or up to 8 weeks. Despite 
+lower CFU counts on the day after infection (W-8) in C3HeB/FeJ mice  (1.67 log 10CFU per lung) 
+compared to BALB/c (2.26 log 10) (p<0.001), higher CFU counts were observed in C3HeB/FeJ 
+mice 8 weeks later on the day treatment started (D0) and after 3 weeks of treatment in almost all 
+groups ( p<0.001 - 0.05) (Fig. 1A). Three C3HeB/FeJ mice treated with 1000 mg /kg required 
+euthanasia during the second week of treatment, prompting a dose  reduction from 1000 mg/kg to 
+600 mg/kg in both strains. Nevertheless, a clear pretomanid dose -response relationship was certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 12 
+ observed in both mouse strains after 3 weeks of treatment (Fig. 1 A). The three remaining 
+C3HeB/FeJ mice treated with 600 mg/kg beyond the week 3 time po int were euthanized after 5 
+ZHHNVRIWUHDWPHQWGXHWRWR[LFLW\2QHKDGQRGHWHFWDEOH&)8D QGWZRKDGORJ 10CFU of 
+pretomanid-resistant M. tuberculosis . After 8 weeks of treatment, total CFU counts fell in a dose-
+dependent manner in BALB/c PLFHEHIRUHDSODWHDXZDVUHDFKHGDWGRVHVPJNJZKHUH
+resistant CFU were higher and replaced the susceptible CFU ( p< 0.05) (Fig. 1B). Spontaneous 
+pretomanid-resistant CFU comprised approximately 10-5of the total CFU in the absence of drug 
+pressure in untreated BALB/c mice and the proportion of the tot al CFU that was comprised of 
+pretomanid-resistant CFU increased with dose up to the 300 mg/k g dose group. Dose-dependent 
+bactericidal activity was also observed in C3HeB/FeJ mice (Fig. 1C). However, selective 
+amplification of pretomanid-resistant mutants was more extensive and occurred at lower doses 
+than in BALB/c mice (Fig. 1B and 1C). We were not able to measure  the spontaneous frequency 
+of resistant mutants in untreated C3HeB/FeJ mice because they su ccumbed to infection prior to 
+week 8. Pretomanid-resistant CFU replaced susceptible CFU in C3 HeB/FeJ mice receiving doses 
+as low as 30 mg/kg and pretomanid-resistant CFU counts were rou ghly 10 times higher in 
+C3HeB/FeJ mice compared to BALB/c mice (Fig. 1B and C), which in dicates greater potential for 
+selective amplification of pretomanid resistance with monothera py in this strain. Most resistant 
+isolates grew on plates containing 10 μg/ml of pretomanid, but some had fewer CFU on plates 
+containing 10 μg/ml than on those containing 1 μg/ml of pretoman id.
+Whole genome sequencing of pretomanid-resistant mutants revealed  diverse mutations in 
+Rv2983 or in one of five other genes required for pretomanid activation.
+To characterize mutations associated with pretomanid resistance in vivo , we performed WGS on 
+136 individual pretomanid-resistant colonies and 25 colony pools picked from 47 individual mice
+harboring pretomanid-resistant CFU after 8 weeks of treatment (Ta ble S2 and S3). Each 
+individual isolate had an isolated mutation in Rv2983 or one of the 5 genes previously shown to certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 13 
+ be required for pretomanid activation. Overall, 99 unique mutati ons in these 6 genes were 
+identified from individual and pooled isolates (Table 1 and 2). E xcept for mutations K9N ( fgd1), 
+R322L ( fbiC) and Q120P ( fbiA), which were shared by two mice each, no two mice harbored the 
+same mutation, which emphasizes the large target size for resist ance-conferring mutations. In
+both BALB/c and C3HeB/FeJ mice, more than half of the resistant isolates were fbiCmutants (54 
+and 56%, respectively) (Table 3). For the other five genes, the ran k order by mutation frequency 
+was Rv2983 (15%) > fbiA(13%) > ddn(9%) > fbiB(6%) > fgd1 (4%) in BALB/c mice and fbiA
+(18%) > ddn (16%) > fgd1 orRv2983 (4%) > fbiB (2%) in C3HeB/FeJ mice. No significant 
+differences in mutation frequencies between BALB/c and C3HeB/FeJ m ice were observed, 
+although a trend towards more Rv2983 mutations in BALB/c mice (8/54, 15% of all mutations)
+compared to C3HeB/FeJ mice (2/45, 4%) was detected. The mutations i dentified in Rv2983
+included 8 point mutations resulting in the following amino acid  substitutions: R25S, R25G, A68E,
+A132V, G147C, C152R, Q114R and A198P , as well as an insertion of C  after A27 and a deletion 
+of I129 (-ATC) (Tables 1 and 2). The overall frequency distribution of unique mutations was as 
+follows: fbiC (55%, n= 54), fbiA(15%, n = 15), ddn (12%, n = 12), Rv2983 (10%, n=10), fgd1 (4%, 
+n= 4), and fbiB (4%, n=4) (Fig. 2 and Table S4). There were no clear associations  between 
+pretomanid dose and the mutated gene. Mutations in fbiCcomprised a higher proportion of those 
+selected in our in vivo study compared to the proportion selected in a previous in vitro study (26%, 
+p= 0.0001)( 22). On the other hand, mutations in ddn(29%) were more frequent after in vitro
+selection than in our mouse models (12%) ( p=0.001). In vitro mutation frequencies for fbiA,fgd1
+andfbiB(19%, 7% and 2%, respectively) were similar to our findings in m ice.
+Among the 99 unique mutations, all but one (an IS6110 insertion loc ated in 85-bp upstream of 
+the fbiCcoding sequence in isolate KA-026a (Table 2 and Table S2) were found within the coding 
+regions of the six genes. In total, 54% (53/99) were non-synonymou s point mutations (no 
+synonymous point mutations were identified), 35% (35/99) were insertions or deletions (indels),certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 14 
+ and 11% (11/99) were substitutions resulting in a stop codon. No sig nificant difference in the
+distribution of point mutation and indels was found between our s and the in vitro study by Haver, 
+et al, in which non-synonymous point mutations and indels were 50% (7 5/151) and 24% (36/151),
+respectively. However, the frequency of stop codon substitutions in the latter study (26%, 40/151) 
+was higher than that observed in the present study (11%, 11/99) ( p= 0.004), 85% (34/40) of which 
+were in ddnin the latter study ( 22). Non-synonymous point mutations predominated relative to 
+indels and stop codon mutations overall and in each gene except  for ddn(Fig. 2 and Table S4). 
+The frequency of point mutations was similar between BALB/c and C 3HeB/FeJ mice (56% versus 
+51%) (Table 3). A higher frequency of indels occurred in C3HeB/FeJ compared to BALB/c mice 
+(44% versus 28%), while more stop codon mutations occurred in BALB/ c, but these differences 
+were not statistically significant. There was no clear associati on between dose of pretomanid and 
+the type of mutation selected.
+Comparing the 99 unique mutations identified in our study with th e 151 unique mutations in 5 of 
+the same genes selected in vitro (22), only 4 mutations were found in the same position. Only
+W79 stop ( fbiA) and N336K ( fbiC) mutations were found in both datasets while both T273 and 
+H190 ( fbiC) were mutated in the same position but with different mutations. As expected from the 
+fact that most mutants could be isolated on plates containing 1 0 μg/ml of pretomanid, MICs 
+determined against a small subset of isolates indicated high-level pretomanid resistance (Table 
+S5 and Table 1 and 2). Taken together, these data illustrate the tremendous diversity of mutations
+capable of conferring high-level pretomanid resistance.
+Mutations in Rv2983 cause resistance to pretomanid and delamanid.
+To prove that mutations in Rv2983 are sufficient for nitroimidazole resistance, merodiploid 
+complemented strains were constructed by introducing a copy of t he wild type Rv2983 gene into 
+B101, an Rv2983 mutant (A198P), through site-specific integration ( 31, 32 ). Following certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 15 
+ confirmation of successful integration by Southern blot using a DIG-labeled Rv2983 probe (Figs.
+S1A and S1B), susceptibility testing by 7H9 broth dilution confirmed  significantly higher 
+nitroimidazole MICs against the Rv2983 mutant (pretomanid and delamanid MICs of 32 μg/ml 
+and 0.064-0.128 μg/ml, respectively) and full restoration of susceptibility in the complemented 
+strains (pretomanid and delamanid MICs of 0.25 μg/ml and 0.008 μg/m l, respectively).
+Rv2983 is required for F 420biosynthesis.
+To demonstrate that Rv2983 is required for F 420biosynthesis, we measured the production of Fo
+and F 420inM. smegmatis strains overexpressing Rv2983 and in M. tuberculosis Rv2983 mutant
+strains compared with their corresponding control strains. Rv2983 andfbiC were successfully 
+cloned into pYUBDuet and p fbiC(designated p Rv2983 and pfbiC -Rv2983 , respectively), followed 
+by successful transformation of M. smegmatis , along with pYUBDuet and p fbiABC , which were 
+confirmed by restriction enzyme digestion, DNA sequencing and P CR amplification (data not 
+shown). Overexpression of Rv2983 in M. smegmatis increased F 420production but resulted in 
+little change in Fo production compared to the control strain after 6 and 26 hours of induction with 
+IPTG (Figs. 3A and 3B). As expected, mutation of Rv2983 in the M. tuberculosis B101 mutant 
+markedly reduced F 420production, resulting in accumulation of Fo. Complementation ful ly 
+restored the wild-type phenotype (Figs. 3C and 3D). In order to evaluate the method, we also 
+overexpressed fbiC, which encodes the Fo synthase, with and without concomitant 
+overexpression of Rv2983 in M. smegmatis . As expected, overexpression of fbiC increased Fo 
+and, consequently, F 420concentrations. Relative to the control strain, F 420concentrations were
+similar when either fbiC orRv2983 was over-expressed alone (Fig. 3A). Interestingly, when 
+Rv2983 was co-overexpressed with fbiC, a dramatic increase in F 420was observed relative to 
+over-expression of either gene alone (3.4 and 3.1-fold, respectiv ely) after 6 hours of IPTG 
+induction ( p<0.001), with corresponding significant decreases of Fo levels afte r 6 and 26 hours of 
+IPTG induction (5.8 and 3.1-fold; p<0.005 and 0.05, respectively) (Fig. 3A and 3B). These resultscertified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 16 
+ suggest that the excess Fo produced by fbiC over-expression was efficiently converted to F 420by 
+over-expressed Rv2983. On the other hand, although a small amount of F 420 was observed in cell 
+extracts of two Rv2983 point mutants (B101 [A198P] and KA016 [Q114R]), their F 420content was
+significantly lower than that of the wild type (7.3 and 7.7-fold )(p< 0.001) and complemented B101 
+mutant (Fig. 3C). As expected, Fo accumulated in the two Rv2983 mutant strains relative the wild-
+type (6.7 and 6.5-fold; p<0.05 and 0.005, respectively) (Fig. 3D), indicating that Fo was not 
+efficiently converted to F 420 in the presence of a mutated Rv2983 . Two other pretomanid-resistant 
+strains were also assessed as controls. The KA026 mutant with an IS6110 insertion 85 bp 
+upstream of fbiChad undetectable Fo and very little F 420content, while the KA91 mutant with an
+IS6110 insertion at amino acid position 108 of Ddn showed a wild-type phenotype with respect to
+F420 and Fo concentrations (Fig.3C and D). 
+To understand the effect of mutations on gene expression and it s regulation, we performed RT-
+qPCR after sub-culturing the M. tuberculosis strains in fresh 7H9 broth. Expression of Rv2983
+andfbiCincreased 2.4- and 1.6-fold, respectively, in the Rv2983 mutant B101 relative to the wild-
+type H37Rv parent after 4 days of incubation in 7H9 broth. Simila r increases were observed in
+other genes such as fbiA (2.3-fold), fbiB(2.0-fold) and fgd1 (2.2-fold) involved in F 420biosynthesis, 
+suggesting that the reduced F 420content caused by the Rv2983 A198P mutation resulted in 
+upregulation of the F 420biosynthesis pathway (Fig. S2A). Expression of fbiC in the KA026 mutant  
+decreased 114-fold compared to that in the wild-type H37Rv parent after 2 days of incubation in 
+7H9 broth, likely resulting from interrupted fbiCtranscription as a result of the insertion IS6110 at 
+85-bp upstream and explaining the low levels of both Fo and F 420in that mutant (Fig. S2 B). A
+faint band representing the fbiC DNA fragment of 937-bp from the fbiCKA026 mutant relative to 
+H37Rv further supports this conclusion (Fig. S2C).
+F420-deficient pretomanid-resistant mutants are attenuated for grow th in the presence of 
+malachite green.certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 17 
+ Previous work using M. smegmatis showed that mutations in MSMEG_5126 (homolog of fbiC)
+and MSMEG_2392 (which shares 69% homology with Rv2983 ) reduce the ability to decolorize
+and detoxify MG, indicating that F 420is necessary for this process ( 20). To evaluate the role of 
+each gene associated with nitroimidazole activation in the susce ptibility to MG, log-phase cultures 
+of 10 selected mutants were plated on 7H9 agar supplemented with a range of MG
+concentrations. All mutants deficient in F 420synthesis or reduction ( i.e., those with mutations in 
+fbiA-C ,Rv2983 or fgd1) were more susceptible to MG, while the ddnmutant retained the same 
+susceptibility as the wild type H37Rv parent, whose growth was al most completely inhibited at
+0*FRQFHQWUDWLRQVJPO (Fig. 4A). The lability of F 420H2and lack of a commercial source for 
+F420made it unfeasible to attempt to test whether provision of F 420H2could rescue the MG-
+hypersusceptible phenotype of the F 420H2-deficient mutants. To confirm that Rv2983 is necessary 
+for the intrinsic resistance of M. tuberculosis to MG, we compared the growth of the B101 mutant 
+to that of the wild type and complemented strains on MG. Again, grow th of this Rv2983 mutant 
+was inhibited by lower concentrations of MG than the wild type st rain and required longer 
+incubation times before colonies appeared on MG-containing plates (Fig. 4B-D). Plating at higher 
+bacterial density (500 μl rather than 100 μl of cell suspension per plate) significantly increased
+recovery (Fig. S3A and B). Complementation of Rv2983 fully restored the wild-type growth 
+phenotype on MG concentrations up to 6 μg/ml. Interestingly, at MG  concentrations above 6 
+μg/ml, greater recovery was observed when Rv2983 was expressed behind the native promoter 
+compared to the hsp60 promoter (Fig. 4B-D). Smaller colony size was observed in the Rv2983
+mutant relative to the wild type and the complemented strains on plates without MG after 21 days 
+of incubation but not after 28 days of incubation (Fig. 5). Howeve r, smaller colony size and 
+deficient decolorization was observed for the Rv2983 mutant on plates containing MG
+concentrations as low as 0.25 and 1 μg/ml, even after 28 days of incubation (Fig. 5). At MG
+concentrations of 6-12 μg/ml, even more-concentrated aliquots of  the B101 mutant culture 
+showed markedly reduced recovery despite 42 days of incubation (Fi g. 5).certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 18 
+ Because all solid media commonly used to isolate and cultivate M. tuberculosis in clinical 
+laboratories contain MG as a selective decontaminant, the increa sed MG susceptibility conferred 
+by mutations in fbiA-C,Rv2983 and fgd1 could compromise the isolation and propagation (and 
+hence identification) of nitroimidazole-resistant mutants from c linical samples. Commercial 7H10
+agar, 7H11 agar and LJ medium contain 0.25, 1 and 400 μg/ml, res pectively, of MG. To assess 
+the potential impact of these media on the isolation of an F 420H2-deficient nitroimidazole-resistant
+Rv2983 mutant relative to an F 420H2-sufficient, but still nitroimidazole-resistant, ddn mutant and 
+the nitroimidazole-susceptible wild type and Rv2983- complemented mutant, we inoculated these 
+media in parallel using serial dilutions of each strain. The Rv2983 mutant exhibited 10 times lower 
+CFU counts and smaller colony size relative to other strains af ter 21 and 28 days of incubation 
+on 7H10 agar plates ( p<0.01) (Figs. 6A and C(a)). The result after 35 days of incubat ion was
+generally similar between the mutant and the control strains (F ig. 6A and C(b)). A similar semi-
+quantitative growth assessment of the Rv2983 mutant on LJ media compared to other strains 
+including a ddnmutant (K91, IS6110 ins in D108) revealed growth inhibition of t he Rv2983 mutant 
+that was ameliorated by increasing the size of the bacterial in oculum from 102to 106CFU/ml and 
+increasing the incubation time from 28 to 35 days (Fig. 6D). In terestingly, no difference in growth 
+was found on 7H11 agar (Fig. 6B), even when comparing colony si ze after just 21 days of 
+incubation (Fig. 6C(c)), despite higher MG concentrations in th at medium compared to 7H10. 
+Unlike 7H10, 7H11 medium contains hydrolysate of casein, which may somehow mitigate against 
+the MG toxicity. Taken together, these results indicate that use  of 7H10 and LJ could compromise
+the recovery and propagation of F 420H2-deficient nitroimidazole-resistant mutants from clinical 
+specimens and that 7H11 agar may be the preferred solid media for processing specimens
+propagating any isolates from nitroimidazole-treated patients.certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 19 
+ DISCUSSION
+As representatives of one of only two new drug classes approved for use against TB in roughly 
+50 years, delamanid and pretomani d are important and promising n ew drugs ( 3, 4, 6, 7, 39 ). The 
+former received accelerated approval from the EMA for treatment  of MDR-TB and is now used 
+clinically, albeit sparingly, while a phase 3 trial is being co mpleted. The latter is being evaluated 
+in clinical trials as a component of highly promising regimens for both drug-susceptible and 
+MDR/XDR-TB. Comprehensive knowledge of genetic mutations conferring nitroimidazole 
+resistance in M. tuberculosis and the resultant mutant phenotypes are critical for timely and 
+accurate diagnosis of resistance and, therefore, the safe and effective use of these drugs in the 
+clinical setting. Previous work identified 5 genes ( fbiA-C ,fgd1, and ddn) involved in the activation 
+pathway of nitroimidazole prodrugs in which mutations may confe r drug resistance in M. 
+tuberculosis complex ( 16, 18, 21-23, 40 ). In a prior study of the spectrum of nitroimidazole 
+resistance-conferring mutations, Haver, et al found that 151 (83%) of 183 pretomanid-
+resistant isolates selected in vitro harbored a single mutation in one of these 5 genes ( 22).
+However, 17% of the selected strains harbored no mutations in t hese genes. The present study 
+has several important new findings. First, we identified a novel nitroimidazole resistance 
+determinant—mutations in Rv2983 —that explained, in the case of our study, all of the pretomanid 
+resistance that was not attributable to mutations in the 5 prev iously described genes. Second, we 
+demonstrate for the first time that Rv2983 is required for F 420biosynthesis and likely plays a role 
+similar to cofC in the methanogen M. jannaschii (19). Third, we show that Rv2983 and the ability 
+to produce F 420H2are essential for full tolerance of M. tuberculosis to the selective decontaminant 
+MG, which raises serious concerns about the ability to reliably recover most nitroimidazole-
+resistant mutants from clinical samples on the most widely used microbiology media.
+Our study provides the first comprehensive analysis of the spec trum of nitroimidazole-resistant 
+mutants selected in vivo and, because we used WGS, it represents the most comprehensive certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 20 
+ analysis made to-date. Despite the insignificant differences in m utation frequencies between the 
+two mouse strains for other genes related to nitroimidazole acti vation, Rv2983 mutations were 
+observed with a somewhat higher frequency in BALB/c mice, indica ting a possible host-specific 
+fitness cost that warrants further dedicated study. Like the in vitro study by Haver et al (22), we 
+found that isolated mutations in fbiA-C ,fgd1, orddnexplained the majority of the pretomanid-
+resistant isolates we selected. However, whereas their study le ft 17% of resistant isolates 
+unexplained, we found that all of the remaining resistant isolate s, representing 10% of the total 
+number of unique mutations, harbored mutations in Rv2983 , a gene not previously implicated in 
+nitroimidazole resistance. Indeed, the proportion of resistant isolates explained by Rv2983 (10%) 
+was similar to the proportion explained by fbiA (15%) and ddn(12%) mutations, which lagged 
+only mutations in fbiC (55%) as the predominant cause of pretomanid resistance in our m ice.
+Although the Rv2983 A198T mutation caused a smaller upward shift in the delamanid M IC 
+compared to the pretomanid MIC, the delamanid MIC of 0.064-0.12 8 μg/ml against the mutant 
+was still significantly higher than the recently proposed criti cal concentration of 0.016 μg/ml ( 41).
+Thus, the identification of Rv2983 mutations should be included in rapid molecular drug 
+susceptibility tests and algorithms for the diagnosis of nitroim idazole resistance from genome 
+sequence data. The 10 mutations in Rv2983 identified in this study (Table 1 and 2) represent the 
+first step in the process of identifying specific resistance-co nferring mutations to inform test 
+development.
+Rv2983 has 22% amino acid sequence identity to CofC (MJ0887) of M. jannaschii , a putative 
+guanylyltransferase involved in the biosynthesis of coenzyme F 420from the precursor Fo. CofC is 
+believed to catalyze the condensation of 2-phospho-L-lactate (LP )  a n d  G T P  t o  f o r m  l a c t y l - 2 -
+diphospho-5’-guanosine (LPPG) and PP i(19). Subsequent condensation of LPPG with Fo
+catalyzed by CofD (FbiA) forms F 420–0 and is followed by sequential addition of glutamate
+residues by CofE (FbiB) to produce F 420with a poly-glutamate tail ( 19). Up to now, a CofC homolog certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 21 
+ has not been identified in M. tuberculosis . It is known that Fo biosynthesis is catalyzed by FbiC,
+but it is not clear how Fo is modified by FbiA to form F 420–0. Bashiri, et al tried to understand the 
+mechanism by overexpressing fbiC in the saprophyte M. smegmatis , which did not dramatically 
+increase F 420biosynthesis, suggesting that an additional intermediate is req uired to form F 420–0
+from Fo ( 35). Using overexpression of Rv2983 in M. smegmatis and M. tuberculosis Rv2983 
+mutants, we provide initial evidence that Rv2983 catalyzes an important step required for 
+synthesis of F 420from Fo in the pathogen M. tuberculosis , which adds to previous evidence that
+its ortholog MSMEG_2392 is involved in F 420biosynthesis in M. smegmatis (20). The validity of 
+the method used in this study for detection of F 420and Fo was demonstrated by showing the 
+expected results with two pretomanid-resistant strains, KA016 and KA026, harboring mutations 
+infbiC andddn, respectively. Although the role of Rv2983 remains to be confirmed, our results 
+confirm that expression of Rv2983 is necessary for efficient conversion of Fo to F 420(Fig. 3G).
+Our results confirm and significantly extend prior in vitro work demonstrating the remarkable 
+diversity of mutations capable of conferring high-level nitroim idazole resistance. Among the 99
+unique mutations we identified in 47 mice, only 3 mutations (K9N in  fgd1, R322L in fbiC and
+Q120P in fbiA) were found in more than one mouse. Furthermore, by comparing t he 99 unique 
+mutations observed in our mice with the 151 unique mutations sele cted in vitro (22), the same 
+mutation occurred only twice. Thus, each of the 6 genes now impli cated in nitroimidazole 
+resistance appears to be devoid of “hot spots” for such mutations.  The frequency of spontaneous
+mutations conferring nitroimidazole resistance in M. tuberculosis has been investigated in vitro by 
+several studies and found to range from 1 in 105to 7 in 107CFU ( 21-23, 27, 40, 42 ), which is 
+consistent with our findings in the lungs of untreated BALB/c mi ce. The large “target size” for 
+mutations in 6 non-essential genes drives these high frequencies o f spontaneous nitroimidazole-
+resistant mutants in M. tuberculosis populations, which is as high or higher than that for isoniazid 
+and other TB drugs in clinical use. Our unpublished observations s uggest that similar frequencies certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 22 
+ of nitroimidazole-resistant mutants exist in sputum isolates co llected from treatment-naïve, drug-
+susceptible TB patients. Delamanid-resistant M. tuberculosis has been recovered from patients 
+both before and after delamanid treatment ( 10, 43-45 ). To date, emergence of resistance has not 
+been described during use of pretomanid in clinical trials, but s uch use has been restricted to 
+relatively short treatment durations and/or use of highly activ e companion drugs. Pretomanid 
+resistance has emerged during combination therapy in mouse model s(3, 46 ). Thus, the relatively 
+high frequency of spontaneous mutations conferring nitroimidazole resistance and available pre-
+clinical and clinical data underscore the importance of making validated drug susceptibility testing 
+for this class widely available as clinical usage expands. The u nprecedented number and diversity 
+of resistance-conferring mutations demonstrated for nitroimidaz ole drugs here and by Haver et al
+(22), clearly challenges the development and interpretation of rapi d molecular susceptibility tests,
+especially considering that polymorphisms in nitroimidazole res istance genes that represent 
+phylogenetic markers but do not confer pretomanid resistance are w ell-described ( 47, 48 ). A
+similar situation exists for pncA mutations and pyrazinamide (PZA) resistance, where an efficient, 
+yet comprehensive method based on saturating mutagenesis for dis tinguishing single nucleotide 
+polymorphisms conferring resistance was recently described ( 49). A similar analysis of 
+substitutions in the 6 genes related to nitroimidazole resistance would similarly advance the 
+development of drug susceptibility testing using genome sequencin g technology. 
+Amino acid substitutions in the PZA-activating PncA protein tha t confer PZA resistance are 
+associated with diminished enzymatic activity or reduced abundan ce of the protein (49 ). Similar 
+mechanisms could explain the overall mechanisms of the 99 mutatio ns we identified in the six 
+genes conferring nitroimidazole resistance. The Rv2983 A198P or Q114R substitutions may 
+change the conformation of Rv2983 protein structure and reduce its enzymatic activity given that 
+it has no effect on Rv2983 gene transcription. F 420biosynthesis is dramatically decreased while 
+expression of Rv2983 and other genes increases, perhaps indicating an unknown regulator y certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 23 
+ mechanism triggered by reduced F 420biosynthesis. Mutations identified in Rv2983 in this study 
+will provide useful information for future studies on structure -function associations of the potential 
+M. tuberculosis CofC homolog. The KA026 mutant harboring an IS6110 insertion 85 b p upstream 
+offbiC exhibited significantly decreased expression of fbiC, possibly due to interruption of the 
+promoter region, and, consequently, almost complete loss of Fo syn thase activity. Hence, the 
+upstream regulatory regions of the six genes also should be con sidered in future identification of 
+resistance-conferring mutations, although their prevalence in th is study was only 1%.
+Our findings regarding the heightened susceptibility of F 420H2-deficient mutants to MG pose a 
+previously unappreciated challenge to the development and use o f phenotypic testing methods. 
+Indeed, we observed reduced or delayed recovery of a nitroimidaz ole-resistant Rv2983 mutant 
+on commercial 7H10 and LJ media that include MG as a selective decontaminant ( 50). Since fbiA-
+Candfgd1 mutants, as well as a second Rv2983 mutant, exhibited similar hypersusceptibility to 
+MG in 7H9 agar supplemented with MG, their recovery on 7H10 and L J is also likely to be affected.
+Selective growth inhibition of nitroimidazole-resistant strains  on media that are commonly used in 
+clinical microbiology laboratories around the world raises seri ous concern that their recovery from 
+clinical specimens may be impaired to such an extent that it reduc es the sensitivity and accuracy 
+of phenotypic drug susceptibility testing, especially for isola tes comprised of mixed wild-type and 
+resistant populations. This concern is further amplified by the common practice of performing 
+susceptibility testing (including molecular testing), not on pr imary samples but, on isolates that 
+have been sub-cultured one or more times on solid media. Such p ractices may drastically reduce 
+the proportion of (or eradicate) F 420H2-deficient mutants present in the original sample. In addition, 
+efforts to develop MG decolorization assays for detection of dr ug-resistant TB are expected to be 
+fruitless for these mutants ( 51-54 ). We did not determine the basis for the greater recovery of 
+F420H2-deficient mutants on 7H11 vs. 7H10 media despite 4x higher tot al MG concentrations in 
+the former. The principal differences between these media are t he presence of pancreatic digest certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 24 
+ of casein in 7H11 and lower concentrations of magnesium sulfate countered by the addition of 
+copper sulfate, zinc sulfate and calcium chloride in 7H10. Alth ough this issue clearly requires 
+further study, we presently believe that 7H10 and LJ should not be employed for phenotypic 
+nitroimidazole susceptibility testing and that primary isolation  or subculture of any isolate on such 
+media prior to either phenotypic or genotypic susceptibility te sting should be avoided whenever 
+possible. When it cannot be avoided, larger inoculum sizes and l onger incubation times may 
+increase recovery on 7H10 and LJ. Based on our study, 7H11 agar  appears to be the preferred 
+solid medium for recovery of F 420H2-deficient nitroimidazole-resistant M. tuberculosis .
+A role for cofactor F 420H2in tolerance of was previously demonstrated ( 20). Whereas 
+mycobacteria are normally capable of decolorizing and detoxifyi ng MG, mutations in the 
+saprophyte M. smegmatis orthologs of fgd1,fbiC andRv2983 disrupt this ability and/or reduce 
+the MIC of MG ( 20, 55 ). We now extend these observations to the pathogen M. tuberculosis and 
+also implicate fbiA andfbiB, but not ddn, in MG tolerance. In Citrobacter species, an NADH-
+dependent triphenylmethane reductase catalyzes reduction of MG to colorless leucoMG that lacks 
+antimicrobial activity and is sequestered in the lipid fraction  of the cells ( 56, 57 ). Triphenylmethane 
+reductase has not been identified in mycobacteria. However, the enhanced MG susceptibility of 
+the F 420H2-deficient mutants, but not ddnmutants, suggests that one or more analogous, yet 
+unidentified, F 420H2-dependent reductases is responsible for decolorizing and detox ifying MG in 
+mycobacteria. 
+Prior studies indicated other fitness costs associated with F 420H2deficiency, such as 
+hypersusceptibility to oxidative and nitrosative stresses ( 12, 58, 59 ). Nevertheless, we observed 
+selective amplification of F 420H2-deficient mutants in mice over a range of pretomanid doses tha t 
+included doses producing much higher drug exposures than those p roduced in patients. 
+Amplification was especially pronounced at higher drug doses, w hich eliminated the majority of 
+nitroimidazole-susceptible population more effectively, and in C3HeB/FeJ mice. The lack of certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 25 
+ marked in vivo fitness defects is also supported by the fact that the proportio n of all unique 
+resistance mutations explained by each mutation did not differ much between the in vitro and in 
+vivo conditions, except that a higher proportion of fbiCmutations predominated in mice, somewhat 
+at the expense of ddnmutations ( 22). Likewise, indels and stop codon mutations comprised nearly 
+50% of the mutations responsible for resistance. This proportion  may be biased due to the high 
+drug doses tested in some mice because such mutations are more likely to result in complete 
+loss-of-function and therefore more complete resistance. However , the frequency of such 
+mutations did not appear to change in a dose-dependent manner. I nterestingly, most Rv2983 
+mutants were selected in BALB/c rather than C3HeB/FeJ mice despi te similar mutation rates in 
+other genes between the two mouse strains. Whether this represe nts a real or a random 
+difference will require further study. Clearly, clinicians must  rely on effective combination drug 
+therapy to prevent the selective amplification of nitroimidazol e-resistant mutants. Heightened 
+susceptibility to agents causing oxidative stress has been demo nstrated for F 420H2-deficient M. 
+tuberculosis and M. smegmatis mutants ( 58). A more complete understanding of the unique 
+vulnerabilities of such mutants should aid in the design of effec tive combination regimens that 
+also optimally restrict selection of nitroimidazole-resistant mut ants.
+In conclusion, using BALB/c and C3HeB/FeJ mice and WGS, we character ized the pretomanid 
+dose-response relationships for bactericidal effect and suppres sion of drug-resistant mutants and 
+profiled the genetic spectrum of pretomanid resistance emerging in vivo . A novel resistance 
+determinant, Rv2983, was identified as essential for F 420biosynthesis and activation of the novel 
+TB pro-drugs delamanid and pretomanid. Furthermore, we provide e vidence that F 420H2-deficient,
+nitroimidazole-resistant M. tuberculosis mutants are hypersensitive to MG, raising concern that
+using MG-containing medium coul d compromise the isolation and p ropagation of M. tuberculosis
+from clinical samples and therefore hinder the clinical diagnos is of nitroimidazole resistance.
+These findings have important implications for both genotypic and phenotypic susceptibility certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 26 
+ testing to detect nitroimidazole resistance, which will be of in creasing importance as wider use of 
+delamanid and, if approved, pretomanid, ensues.
+LIST OF SUPPLEMENTARY MATERIALS
+Table S1
+Table S2
+Table S3
+Table S4
+Table S5
+Figure S1
+Figure S2
+Figure S3
+Acknowledgements: The Global Alliance for TB Drug Development kindly provided pre tomanid 
+and delamanid. Funding: The authors gratefully acknowledge support in the form of fundi ng from 
+the Bill and Melinda Gates Foundation (OPP1037174) (ELN) and the National Institutes of Health 
+(R01-AI111992) (ELN). G.B. is supported by a Sir Charles Hercus Fellowship through the Health 
+Research Council of New Zealand. Author contributions: D.R. and E.N. conceived the study 
+and designed the experiments. S.L. and J.L. assisted with the de sign and conduct of the in vivo 
+experiment. Whole genome sequencing was performed and analyzed by T.I., J.S., D.R. and E.N.
+In vitro experiments were performed and analyzed by D.R., J.L. and E.N. The manuscript was 
+drafted by D.R. and E.N. with critical input from T.I., J.S., a nd G.B. Competing interests: All 
+authors declare that they have no competing interests. Data and materials availability: All data 
+necessary for evaluation of the conclusions are present in the paper and/or the Supplementary 
+Materials. Pretomanid and delamanid were provided under a materi al transfer agreement.certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 27 
+ REFERENCES
+1. WHO, Global Tuberculosis report. World Health Organization Geneva ,  (2017).
+2. WHO, Guidelines for the programmatic management of drug-resis tant tuberculosis. . 
+World Health Organization Geneva ,  (2011).
+3. S. Y. Li, R. Tasneen, S. Tyagi, H. Soni, P. J. Converse, K. M dluli, E. L. Nuermberger, 
+Bactericidal and Sterilizing Activity of a Novel Regimen with B edaquiline, Pretomanid, 
+Moxifloxacin, and Pyrazinamide in a Murine Model of Tuberculosi s.Antimicrobial agents 
+and chemotherapy 61,  (2017).
+4. R. Tasneen, F. Betoudji, S. Tyagi, S. Y. Li, K. Williams, P. J. Converse, V. Dartois, T. 
+Yang, C. M. Mendel, K. E. Mdluli, E. L. Nuermberger, Contributi on of Oxazolidinones to 
+the Efficacy of Novel Regimens Containing Bedaquiline and Preto manid in a Mouse 
+Model of Tuberculosis. Antimicrobial agents and chemotherapy 60, 270-277 (2015).
+5. V. Skripconoka, M. Danilovits, L. Pehme, T. Tomson, G. Skende rs, T. Kummik, A. 
+Cirule, V. Leimane, A. Kurve, K. Levina, L. J. Geiter, D. Manis sero, C. D. Wells, 
+Delamanid improves outcomes and reduces mortality in multidrug- resistant tuberculosis. 
+Eur Respir J 41, 1393-1400 (2013).
+6. M. T. Gler, V. Skripconoka, E. Sanchez-Garavito, H. Xiao, J. L. Cabrera-Rivero, D. E. 
+Vargas-Vasquez, M. Gao, M. Awad, S. K. Park, T. S. Shim, G. Y. Suh, M. Danilovits, H. 
+Ogata, A. Kurve, J. Chang, K. Suzuki, T. Tupasi, W. J. Koh, B. Seaworth, L. J. Geiter, C. 
+D. Wells, Delamanid for multidrug-resistant pulmonary tuberculo sis. N Engl J Med 366,
+2151-2160 (2012).
+7. A. H. Diacon, R. Dawson, F. von Groote-Bidlingmaier, G. Symons, A. Venter, P. R. 
+Donald, C. van Niekerk, D. Everitt, H. Winter, P. Becker, C. M. Mendel, M. K. Spigelman, 
+14-day bactericidal activity of PA-824, bedaquiline, pyrazinamide, and moxifloxacin 
+combinations: a randomised trial. Lancet 380, 986-993 (2012).
+8. R. Dawson, A. H. Diacon, D. Everitt, C. van Niekerk, P. R. Do nald, D. A. Burger, R. 
+Schall, M. Spigelman, A. Conradie, K. Eisenach, A. Venter, P. I ve, L. Page-Shipp, E.
+Variava, K. Reither, N. E. Ntinginya, A. Pym, F. von Groote-Bidlingmaier, C. M. Mendel, 
+Efficiency and safety of the combination of moxifloxacin, preto manid (PA-824), and 
+pyrazinamide during the first 8 weeks of antituberculosis treat ment: a phase 2b, open-
+label, partly randomised trial in patients with drug-susceptibl e or drug-resistant 
+pulmonary tuberculosis. Lancet 385, 1738-1747 (2015).
+9. M. Matsumoto, H. Hashizume, T. Tomishige, M. Kawasaki, H. Tsu bouchi, H. Sasaki, Y. 
+Shimokawa, M. Komatsu, OPC-67683, a nitro-dihydro-imidazooxazole derivative with 
+promising action against tuberculosis in vitro and in mice. PLoS medicine 3, e466 
+(2006).
+10. European Medicines Agency, Summary of the European public as sessment report 
+(EPAR) for Deltyba. Found at 
+http://www.ema.europa.eu/docs/en_GB/document_library/EPAR_-
+_Public_assessment_report/human/002552/WC500166234.pdf (2013). Last accessed 
+on 18 June 2018.
+11. U. Manjunatha, H. I. Boshoff, C. E. Barry, The mechanism of action of PA-824: Novel 
+insights from transcriptional profiling. Commun Integr Biol 2, 215-218 (2009).
+12. C. Greening, F. H. Ahmed, A. E. Mohamed, B. M. Lee, G. Pande y , A. C. Warden, C. 
+Scott, J. G. Oakeshott, M. C. Taylor, C. J. Jackson, Physiology , Biochemistry, and 
+Applications of F420- and Fo-Dependent Redox Reactions. Microbiol Mol Biol Rev 80,
+451-493 (2016).
+13. S. E. Cellitti, J. Shaffer, D. H. Jones, T. Mukherjee, M. Gu rumurthy, B. Bursulaya, H. I. 
+Boshoff, I. Choi, A. Nayyar, Y. S. Lee, J. Cherian, P. Niyomrat tanakit, T. Dick, U. H. 
+Manjunatha, C. E. Barry, 3rd, G. Spraggon, B. H. Geierstanger, Structure of Ddn, the certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 28 
+ deazaflavin-dependent nitroreductase from Mycobacterium tubercu losis involved in 
+bioreductive activation of PA-824. Structure 20, 101-112 (2012).
+14. G. Bashiri, C. J. Squire, N. J. Moreland, E. N. Baker, Crysta l structures of F420-
+dependent glucose-6-phosphate dehydrogenase FGD1 involved in th e activation of the 
+anti-tuberculosis drug candidate PA-824 reveal the basis of coe nzyme and substrate 
+binding. The Journal of biological chemistry 283, 17531-17541 (2008).
+15. D. E. Graham, H. Xu, R. H. White, Identification of the 7,8- didemethyl-8-hydroxy-5-
+deazariboflavin synthase required for coenzyme F(420) biosynthe sis. Arch Microbiol
+180, 455-464 (2003).
+16. K. P. Choi, T. B. Bair, Y. M. Bae, L. Daniels, Use of transp oson Tn5367 mutagenesis 
+and a nitroimidazopyran-based selection system to demonstrate a  requirement for fbiA 
+and fbiB in coenzyme F(420) biosynthesis by Mycobacterium bovis  BCG. J Bacteriol
+183, 7058-7066 (2001).
+17. L. Decamps, B. Philmus, A. Benjdia, R. White, T. P. Begley, O. Berteau, Biosynthesis of 
+F0, precursor of the F420 cofactor, requires a unique two radic al-SAM domain enzyme 
+and tyrosine as substrate. J Am Chem Soc 134, 18173-18176 (2012).
+18. K. P. Choi, N. Kendrick, L. Daniels, Demonstration that fbiC  is required by 
+Mycobacterium bovis BCG for coenzyme F(420) and FO biosynthesis . J Bacteriol 184,
+2420-2428 (2002).
+19. L. L. Grochowski, H. Xu, R. H. White, Identification and characterization of the 2-
+phospho-L-lactate guanylyltransferase involved in coenzyme F420  biosynthesis. 
+Biochemistry 47, 3033-3037 (2008).
+20. D. Guerra-Lopez, L. Daniels, M. Rawat, Mycobacterium smegmat is mc2 155 fbiC and 
+MSMEG_2392 are involved in triphenylmethane dye decolorization and coenzyme F420 
+biosynthesis. Microbiology 153, 2724-2732 (2007).
+21. C. K. Stover, P. Warrener, D. R. VanDevanter, D. R. Sherman,  T. M. Arain, M. H. 
+Langhorne, S. W. Anderson, J. A. Towell, Y. Yuan, D. N. McMurra y, B. N. Kreiswirth, C. 
+E. Barry, W. R. Baker, A small-molecule nitroimidazopyran drug candidate for the 
+treatment of tuberculosis. Nature 405, 962-966 (2000).
+22. H. L. Haver, A. Chua, P. Ghode, S. B. Lakshminarayana, A. Si nghal, B. Mathema, R. 
+Wintjens, P. Bifani, Mutations in genes for the F420 biosynthet ic pathway and a 
+nitroreductase enzyme are the primary resistance determinants i n spontaneous in vitro-
+selected PA-824-resistant mutants of Mycobacterium tuberculosis . Antimicrobial agents 
+and chemotherapy 59, 5316-5323 (2015).
+23. M. Fujiwara, M. Kawasaki, N. Hariguchi, Y. Liu, M. Matsumoto , Mechanisms of 
+resistance to delamanid, a drug for Mycobacterium tuberculosis.  Tuberculosis (Edinb)
+108, 186-194 (2018).
+24. S. Subbian, L. Tsenova, M. J. Kim, H. C. Wainwright, A. Viss er, N. Bandyopadhyay, J. 
+S. Bader, P. C. Karakousis, G. B. Murrmann, L. G. Bekker, D. G.  Russell, G. Kaplan, 
+Lesion-Specific Immune Response in Granulomas of Patients with Pulmonary 
+Tuberculosis: A Pilot Study. PLoS One 10, e0132249 (2015).
+25. D. Rifat, B. Prideaux, R. M. Savic, M. E. Urbanowski, T. L. Parsons, B. Luna, M. A. 
+Marzinke, A. A. Ordonez, V. P. DeMarco, S. K. Jain, V. Dartois,  W. R. Bishai, K. E. 
+Dooley, Pharmacokinetics of rifapentine and rifampin in a rabbi t model of tuberculosis 
+and correlation with clinical trial data. Science translational medicine 10,  (2018).
+26. E. L. Nuermberger, T. Yoshimatsu, S. Tyagi, K. Williams, I. Rosenthal, R. J. O'Brien, A. 
+A. Vernon, R. E. Chaisson, W. R. Bishai, J. H. Grosset, Moxiflo xacin-containing 
+regimens of reduced duration produce a stable cure in murine tu berculosis. American 
+journal of respiratory and critical care medicine 170, 1131-1134 (2004).certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 29 
+ 27. S. Tyagi, E. Nuermberger, T. Yoshimatsu, K. Williams, I. Ros enthal, N. Lounis, W. 
+Bishai, J. Grosset, Bactericidal activity of the nitroimidazopy ran PA-824 in a murine 
+model of tuberculosis. Antimicrobial agents and chemotherapy 49, 2289-2293 (2005).
+28. M. H. Larsen, K. Biermann, S. Tandberg, T. Hsu, W. R. Jacobs , Jr., Genetic 
+Manipulation of Mycobacterium tuberculosis. Current protocols in microbiology Chapter 
+10, Unit 10A 12 (2007).
+29. T. R. Ioerger, Y. Feng, K. Ganesula, X. Chen, K. M. Dobos, S . Fortune, W. R. Jacobs, 
+Jr., V. Mizrahi, T. Parish, E. Rubin, C. Sassetti, J. C. Sacche ttini, Variation among 
+genome sequences of H37Rv strains of Mycobacterium tuberculosis  from multiple 
+laboratories. J Bacteriol 192, 3645-3653 (2010).
+30. T. R. Ioerger, T. O'Malley, R. Liao, K. M. Guinn, M. J. Hick ey, N. Mohaideen, K. C. 
+Murphy, H. I. Boshoff, V. Mizrahi, E. J. Rubin, C. M. Sassetti,  C. E. Barry, 3rd, D. R. 
+Sherman, T. Parish, J. C. Sacchettini, Identification of new dr ug targets and resistance 
+mechanisms in Mycobacterium tuberculosis. PLoS One 8, e75245 (2013).
+31. M. H. Lee, L. Pascopella, W. R. Jacobs, Jr., G. F. Hatfull, Site-specific integration of 
+mycobacteriophage L5: integration-proficient vectors for Mycoba cterium smegmatis, 
+Mycobacterium tuberculosis, and bacille Calmette-Guerin. Proceedings of the National 
+Academy of Sciences of the United States of America 88, 3111-3115 (1991).
+32. D. Rifat, D. A. Belchis, P. C. Karakousis, senX3-independent  contribution of regX3 to 
+Mycobacterium tuberculosis virulence. BMC microbiology 14, 265 (2014).
+33. D. Almeida, T. Ioerger, S. Tyagi, S. Y. Li, K. Mdluli, K. An dries, J. Grosset, J. Sacchettini, 
+E. Nuermberger, Mutations in pepQ Confer Low-Level Resistance to Bedaquiline and 
+Clofazimine in Mycobacterium tuberculosis. Antimicrobial agents and chemotherapy 60,
+4590-4599 (2016).
+34. Z. Ahmad, C. A. Peloquin, R. P. Singh, H. Derendorf, S. Tyag i, A. Ginsberg, J. H. 
+Grosset, E. L. Nuermberger, PA-824 exhibits time-dependent activity in a murine model 
+of tuberculosis. Antimicrobial agents and chemotherapy 55, 239-245 (2011).
+35. G. Bashiri, A. M. Rehan, D. R. Greenwood, J. M. Dickson, E. N. Baker, Metabolic
+engineering of cofactor F420 production in Mycobacterium smegma tis. PLoS One 5,
+0015803 (2010).
+36. D. Isabelle, D. R. Simpson, L. Daniels, Large-Scale Producti on of Coenzyme F(420)-5,6 
+by Using Mycobacterium smegmatis. Applied and environmental microbiology 68, 5750-
+5755 (2002).
+37. T. B. Bair, D. W. Isabelle, L. Daniels, Structures of coenzy me F(420) in Mycobacterium 
+species. Arch Microbiol 176, 37-43 (2001).
+38. D. Rifat, P. C. Karakousis, Differential regulation of the t wo-component regulatory 
+system senX3-regX3 in Mycobacterium tuberculosis. Microbiology 160, 1125-1133
+(2014).
+39. R. Dawson, A. H. Diacon, D. Everitt, C. van Niekerk, P. R. D onald, D. A. Burger, R. 
+Schall, M. Spigelman, A. Conradie, K. Eisenach, A. Venter, P. I ve, L. Page-Shipp, E. 
+Variava, K. Reither, N. E. Ntinginya, A. Pym, F. von Groote-Bid ling maier, C. M. Mendel, 
+Efficiency and safety of the combination of moxifloxacin, preto manid (PA-824), and 
+pyrazinamide during the first 8 weeks of antituberculosis treat ment: a phase 2b, open-
+label, partly randomised trial in patients with drug-susceptibl e or drug-resistant 
+pulmonary tuberculosis. Lancet 385, 1738-1747 (2015).
+40. U. H. Manjunatha, H. Boshoff, C. S. Dowd, L. Zhang, T. J. Albert, J. E. Norton, L. 
+Daniels, T. Dick, S. S. Pang, C. E. Barry, 3rd, Identification o f a nitroimidazo-oxazine-
+specific protein involved in PA-824 resistance in Mycobacterium tuberculosis. Proceedings of the National Academy of Sciences of the United States of America 103,
+431-436 (2006).certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 30 
+ 41. WHO, Technical report on critical concentrations for TB drug  susceptibility testing of 
+medicines used in the treatment of drug-resistant TB. 
+http://www.who.int/tb/publications/2018/WHO_technical_report_concentrations_TB_drug
+_susceptibility ,  (2018).
+42. J. G. Hurdle, R. B. Lee, N. R. Budha, E. I. Carson, J. Qi, M . S. Scherman, S. H. Cho, M. 
+R. McNeil, A. J. Lenaerts, S. G. Franzblau, B. Meibohm, R. E. L ee, A microbiological 
+assessment of novel nitrofuranylamides as anti-tuberculosis age nts. J Antimicrob 
+Chemother 62, 1037-1045 (2008).
+43. G. V. Bloemberg, P. M. Keller, D. Stucki, A. Trauner, S. Bor rell, T. Latshang, M. 
+Coscolla, T. Rothe, R. Homke, C. Ritter, J. Feldmann, B. Schult hess, S. Gagneux, E. C. 
+Bottger, Acquired Resistance to Bedaquiline and Delamanid in Therapy for Tuberculosis .
+(N Engl J Med. 2015 Nov 12;373(20):1986-8. doi: 10.1056/NEJMc15 05196.).
+44. K. Stinson, N. Kurepina, A. Venter, M. Fujiwara, M. Kawasaki , J. Timm, E. Shashkina, B. 
+N. Kreiswirth, Y. Liu, M. Matsumoto, L. Geiter, MIC of Delamanid (OPC-67683) against 
+Mycobacterium tuberculosis Clinical Isolates and a Proposed Cri tical Concentration. 
+Antimicrobial agents and chemotherapy 60, 3316-3322 (2016).
+45. H. Hoffmann, T. A. Kohl, S. Hofmann-Thiel, M. Merker, P. Bec kert, K. Jaton, L. 
+Nedialkova, E. Sahalchyk, T. Rothe, P. M. Keller, S. Niemann, D elamanid and 
+Bedaquiline Resistance in Mycobacterium tuberculosis Ancestral Beijing Genotype 
+Causing Extensively Drug-Resistant Tuberculosis in a Tibetan Re fugee. American 
+journal of respiratory and critical care medicine 193, 337-340 (2016).
+46. J. Harper, C. Skerry, S. L. Davis, R. Tasneen, M. Weir, I. K ramnik, W. R. Bishai, M. G. 
+Pomper, E. L. Nuermberger, S. K. Jain, Mouse model of necrotic tuberculosis 
+granulomas develops hypoxic lesions. The Journal of infectious diseases 205, 595-602
+(2012).
+47. E. Schena, L. Nedialkova, E. Borroni, S. Battaglia, A. M. Ca bibbe, S. Niemann, C. 
+Utpatel, M. Merker, A. Trovato, S. Hofmann-Thiel, H. Hoffmann, D. M. Cirillo, Delamanid 
+susceptibility testing of Mycobacterium tuberculosis using the resazurin microtitre assay 
+and the BACTEC MGIT 960 system. J Antimicrob Chemother 71, 1532-1539 (2016).
+48. S. Feuerriegel, C. U. Koser, D. Bau, S. Rusch-Gerdes, D. K. Summers, J. A. Archer, M. 
+A. Marti-Renom, S. Niemann, Impact of Fgd1 and ddn diversity in  Mycobacterium 
+tuberculosis complex on in vitro susceptibility to PA-824. Antimicrobial agents and 
+chemotherapy 55, 5718-5722 (2011).
+49. A. N. Yadon, K. Maharaj, J. H. Adamson, Y. P. Lai, J. C. Sac chettini, T. R. Ioerger, E. J. 
+Rubin, A. S. Pym, A comprehensive characterization of PncA poly morphisms that confer 
+resistance to pyrazinamide. Nature communications 8, 588 (2017).
+50. D. V. Cousins, B. R. Francis, B. L. Gow, Advantages of a new  agar medium in the 
+primary isolation of Mycobacterium bovis. Veterinary microbiology 20, 89-95 (1989).
+51. N. C. Mirabal, S. L. Yzquierdo, D. Lemus, M. Madruga, Y. Mil ian, M. Echemendia, H. 
+Takiff, A. Martin, P. Van der Stuyf, J. C. Palomino, E. Montoro , Evaluation of colorimetric 
+methods using nicotinamide for rapid detection of pyrazinamide r esistance in 
+Mycobacterium tuberculosis. J Clin Microbiol 48, 2729-2733 (2010).
+52. A. Y. Coban, M. Uzun, Rapid detection of multidrug-resistant  Mycobacterium 
+tuberculosis using the malachite green decolourisation assay. Mem Inst Oswaldo Cruz
+108, 1021-1023 (2013).
+53. A. Martin, F. Portaels, J. C. Palomino, Colorimetric redox-indicator methods for the rapid 
+detection of multidrug resistance in Mycobacterium tuberculosis : a systematic review 
+and meta-analysis. J Antimicrob Chemother 59, 175-183 (2007).
+54. P. Farnia, F. Mohammadi, M. Mirsaedi, A. Z. Zarife, J. Tabat abee, K. Bahadori, M. 
+Bahadori, M. R. Masjedi, A. A. Velayati, Application of oxidati on-reduction assay for certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 31 
+ monitoring treatment of patients with pulmonary tuberculosis. J Clin Microbiol 42, 3324-
+3325 (2004).
+55. T. Jirapanjawat, B. Ney, M. C. Taylor, A. C. Warden, S. Afro ze, R. J. Russell, B. M. Lee, 
+C. J. Jackson, J. G. Oakeshott, G. Pandey, C. Greening, The red ox cofactor F420 
+protects mycobacteria from diverse antimicrobial compounds and mediates a reductive 
+detoxification system. Applied and environmental microbiology ,  (2016).
+56. M. S. Jang, Y. M. Lee, C. H. Kim, J. H. Lee, D. W. Kang, S. J. Kim, Y. C. Lee, 
+Triphenylmethane reductase from Citrobacter sp. strain KCTC 180 61P: purification, 
+characterization, gene cloning, and overexpression of a functio nal protein in Escherichia 
+coli. Applied and environmental microbiology 71, 7955-7960 (2005).
+57. V. Fessard, T. Godard, S. Huet, A. Mourot, J. M. Poul, Mutagenicity of malachite green 
+and leucomalachite green in in vitro tests. J Appl Toxicol 19, 421-430 (1999).
+58. M. Gurumurthy, M. Rao, T. Mukherjee, S. P. Rao, H. I. Boshoff, T. Dick, C. E. Barry, 3rd, 
+U. H. Manjunatha, A novel F(420) -dependent anti-oxidant mechan ism protects 
+Mycobacterium tuberculosis against oxidative stress and bacteri cidal agents. Molecular 
+microbiology 87, 744-755 (2013).
+59. K. H. Darwin, S. Ehrt, J. C. Gutierrez-Ramos, N. Weich, C. F . Nathan, The proteasome 
+of Mycobacterium tuberculosis is required for resistance to nit ric oxide. Science 302,
+1963-1966 (2003).
+TABLES
+Table 1. Mutations identified in 89 individual colonies and poo led isolates of pretomanid-
+resistant M. tuberculosis selected in BALB/c mice certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 32 
+ Pretomanid No. of
+treatment Mouse single isolates Rv3261 (fbiA ) Rv3262 (fbiB ) Rv1173 (fbiC ) Rv3547 (ddn) Rv0407 (fgd1 ) Rv2983 (cofC )
+(mg/kg) ID (n=89) 331aa (n=7) 448aa (n=3) 856aa (n=29) 151aa (n=5) 336aa (n=2) 214aa (n=8)
+0M - 1 2 -G in aa 38 K9N
+M-2 4 R133P (2); -A in aa 503 K9N
+M-4 1 W690*
+M-5 4 +A in aa 426 (4)
+10 M-1 8 A212V L702R (4); C562W -GC in aa 39  +C in aa 27 
+M-2 2 9 bp del (aa 307-309);
+-TCCCCGATG del in aa 306-308
+M-3 4 L15P L772W; -C in aa 252 (2)M-4 5 G147C (5)
+M-5 2 A632V  R25G
+30 M-1 1 S169P
+M-2 3 L211P W20* A132V
+M-3 2 R278P (2)
+M-4 1 W155*
+M-5 3 Q400*; +T in aa 188 (2)
+100 M-1 1 -ATC in aa 129
+M-2 3 K682E; Y170*; L187RM-3 2 W397R; L173P
+M-4 2 F744S -C in aa 93
+M-5 4 S219G  M776T (3)
+300 M-1 7 R25S (7)
+M-2 4 Q27* (3); -G in aa 248M-3 4 H190N; Q20*; -GC in aa 846 (2) 
+M-4 4 T707M; T301A; -C in aa 247 9345 bp del (Rv3540-Rv3550)
+M-5 7 W79* (6)  A198P
+600 M-1 1 N336K
+M-2 5 R500* (5)
+M-3 1 D49GM-4 2 C152R (2)
+Note: * : stop codon: + or ins: insertion; - or del: deletion; no. in parenthesis next to a mutation: no. of isolates with the  same mutation.Gene name, amino acid (aa) length and no. of unique mutations s elected (n=54)certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 33 
+ Table 2. Mutations identified in 64 individual colonies and poo led isolates of 
+nitrioimidazole-resistant M. tuberculosis selected in C3HeB/FeJ mice 
+Table 3. Distribution of mutation types and frequencies in gene s associated with 
+pretomanid resistance, by mouse strain
+ Pretomanid No. of
+treatment Mouse single isolates Rv3261  (fbiA )Rv3262  (fbiB ) Rv1173  (fbiC ) Rv3547  (ddn ) Rv0407  (fgd1 ) Rv2983  (cofC )
+(mg/kg) ID (n=64) 331aa (n=8) 448aa (n=1) 856aa (n=25) 151aa (n=7) 336aa (n=2) 214aa (n=2)
+10 M-1 4 -A in aa 331;G194D; W198* A68E
+M-2 4 -T in aa 353 -C in aa 363 +A in aa 214 (2)
+M-3 2 -C in aa 20 L49P 
+M-4 2 K684T Q114R
+M-5 1 del 42 bp (aa 680-693)
+30 M-1 5 -A in aa 225;+G in aa 107 (2) W27* 
+IS6110 in 85bp upstream of  fbiC
+M-2 5 -GC in aa 140 L377P (2); L377P (2, het, p)
+M-4 3 G148D; W354R C149Y
+M-5 3 G273D (2) 1 kb del (fbiC+PE12)
+100 M-1 5 IS6110 ins. in aa 131 G191D (5)
+M-2 1 del 4 bp in aa 75-76
+M-3 3 -G in aa 47 (2) L685R
+M-4 5 +C in aa 125 A588P (2): -G in aa 52; R322L
+M-5 2 L308P (2)
+300 M-1 5 A591D (2); A827G; +C in aa 328 (2)
+M-2 5 Q120P (3) R322L; -T in aa 627
+M-3 2 Q120P (2)
+M-4 3 R112W (2); IS6110 ins. in D108
+M-5 4 D286A T273K (2) -G in aa 39
+Note: * : stop codon: + or ins: insertion; - or del: deletion; no. in parenthesis next to a mutation: no. of isolates with the  same mutation.Gene name, amino acid (aa) length and no. of unique mutations s elected (n=45)
+Frequency
+Rv3261 (fbiA )Rv3262 (fbiB )Rv1173 (fbiC )Rv3547 (ddn)Rv0407 (fgd1 )Rv2983 (cofC )No. of       of
+331aa 448aa 856aa 151aa 336aa 214aa mutation  mutation
+BALB/c no. of point mutation 4 3 15 0 2 6 30 56%
+no. of indels (ins+del) 1 0 8 4 0 2 15 28%
+no. of stop codon 2 0 6 1 0 0 9 17%
+no. of total mutation 7 3 29 5 2 8 54 100%
+frequency of mutation 13% 6% 54% 9% 4% 15% 100%
+C3HeB/FeJ no of point mutation 5 0 12 31 2 2 3 5 1 %
+no of indels (ins+del) 3 1 12 3 1 0 20 44%
+no. of stop codon 0 0 1 1 0 0 2 4%
+no. of total mutation 8 1 25 7 2 2 45 100%
+frequency of mutation 18% 2% 56% 16% 4% 4% 100%
+Note:  ins: insertion; del: deletion.Mouse 
+modelType of mutationGene name and amino acid (aa) lengthcertified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 34 
+ FIGURES
+Fig. 1. Selective amplification of spontaneous pretomanid-resis tant mutants during
+pretomanid monotherapy in mice is dose-dependent and is more pronounced in 
+C3HeB/FeJ mice. After aerosol infection with M. tuberculosis H37Rv, BALB/c and C3HeB/FeJ
+mice were treated with a range of doses of pretomanid for 8 weeks and sacrificed at different time points before and after treatment for lung CFU counts. A. Mean ( ± S.D.) total lung CFU counts on 
+the day after infection (W-8), on the day of treatment initiation ( D0), and after 3 weeks of treatment 
+with the indicated pretomanid dose (in mg/kg body weight). Dose -dependent bactericidal activity 
+was observed in both strains; B. Mean (± S.D.) total and PMD-re sistant lung CFU counts in 
+BALB/c mice on day 0 and after 8 weeks of treatment with the in dicated pretomanid dose. Dose-
+dependent bactericidal activity and selection of PMD-resistant bacteria was observed, with the 
+resistant population overtaking the susceptible population at d oses PJNJ ; C. Mean (± S.D.)
+total and PMD-resistant lung CFU counts in C3HeB/FeJ mice on da y 0 and after 8 weeks of 
+treatment with the indicated pretomanid dose. Dose-dependent bactericidal activity and selection 
+of PMD-resistant bacteria was observed, with the resistant popu lation overtaking the susceptible 
+population at doses PJNJ .* p < 0.05, *** p < 0.001
+certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 35 
+ Fig. 2. Overall mutation frequencies of genes associated with pre tomanid resistance. WGS 
+was performed with 136 pretomanid-resistant colonies and 25 colon y pools picked from 47 
+individual mice harboring pretomanid-resistant CFU after 8 week s of treatment and identified 99
+unique mutations in these 6 genes. Mutations in fbiC (55%) were the predominant cause of 
+pretomanid resistance. For the other 5 genes, the rank order by mu tation frequency was 
+fbiA(15%), ddn (12%), Rv2983 (10%), fgd1 (4%) and fbiB(4%).
+certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 36 
+ E.
+Fig. 3. Rv2983 is required for efficient F 420synthesis from Fo. F420and Fo content was 
+measured in M. smegmatis strains harboring different recombinants relative to the contro l strain
+containing the empty vector pYUBDuet after 6 (A) and 26 (B) hours of 1mM IPTG induction; F 420
+(C) and Fo (D) content was measured in Rv2983 mutant strains of M. tuberculosis and control 
+certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 37 
+ strains including B101 ( ¨Rv2983 , A198P), KA016 ¨Rv2983 , Q114R), H37Rv (wild-type), B101
+complemented strain (pMH94-Rv2983), B101 complemented strain (p MH94-hsp60- Rv2983 ), 
+KA026 (¨fbiC, IS6110 insertion in 85-bp upstream of fbiC), and K91 ( ¨ddn, IS6110 insertion in aa
+D108), after growth in 7H9 broth for 6 days. Schematic diagram (E)  of proposed nitroimidazole 
+activation pathway showing Rv2983 as putative CofC catalyzing LPPG  biosynthesis. Fo, 7,8-
+didemethyl-8-hydroxy-5-deazariboflavin; LP, 2-phospho-L-lactate ; GTP, guanosine triphosphate;
+LPPG, L-lactyl-2-diphospho-5’-guanosine.certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 38 
+ Fig. 4. F 420H2-deficient pretomanid- resistant mutants of M. tuberculosis are more 
+susceptible to growth inhibition by malachite green. A. Growth of wild-type M. tuberculosis
+on 7H9 agar is inhibited by malachite green (MG) in a concentratio n-dependent manner. F 420H2-
+deficient, pretomanid-resistant M. tuberculosis mutants ( fbiA-C ,fgd1,Rv2983 ) are inhibited at 
+lower MG concentrations relative to the wild type and the F 420H2-sufficient, pretomanid-resistant
+ddnmutant. B-D. Complementation of the B101 mutant with wild-type Rv2983 restores tolerance 
+to MG and the proportional recovery of the mutant on 6 μg/ml of MG increases as the duration of 
+incubation increases from 28 (B), to 35 (C) to 49 (D) days of incub ation. The proportional recovery 
+of the mutant on plates containing 12 μg/ml of MG does not incr ease with time.
+certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 39 
+ Fig. 5. Mutation of Rv2983 causes growth inhibition and defective decolorization of 
+malachite green. Aliquots (100 μl) of M. tuberculosis cultures (1, H37Rv wild type; 2, Rv2983 
+mutant B101; 3, B101 mutant complemented with Rv2983 behind native promoter; 4, B101 
+mutant complemented with Rv2983 behind hsp60 promoter) were spread on 7H9 agar plates 
+containing increasing concentrations of malachite green (MG) aft er serial 10-fold dilutions. Colony
+size and MG decolorization are depicted after different incubati on times. Numbers on plate labels 
+(e.g., 0, 3, 4, 5) indicate the number of 10-fold dilutions perfo rmed before an aliquot was plated.
+Although the B101 mutant grows more slowly on plates without MG , growth is further slowed in 
+WKHSUHVHQFHRIJPORI0*DQGWKHSURSRUWLRQRI&)8UHFRYHUHGGHFOLQHVZLWKLQFUHDVLQJ
+MG concentrations above 0.25 μg/ml. For plates containing 6 and 1 2  μ g / m l  o f  M G ,  p l a t e s  
+receiving more-concentrated aliquots of the B101 mutant culture  are shown to demonstrate the 
+markedly reduced recovery of the mutant at these MG concentrations.
+certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 40 
+ C.
+D.
+certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 41 
+ Fig. 6.  Mutation of Rv2983 causes growth inhibition on commercial 7H10 agar and LJ 
+slants, but not on commercial 7H11 agar. Aliquots of M. tuberculosis cultures were spread on 
+various solid media purchased commercially after serial 10-fold dilutions. A-B. Mean CFU counts 
+on 7H10 (A) and 7H11 (B) agar plates; C. Colonies on 7H10 agar plates after 21 (a) and 35 (b) 
+days of incubation, and on 7H11 agar plates after 21 (c) days o f incubation; D. Colonies on LJ 
+slants inoculated with serially diluted aliquots after 28 and 35 days of incubation. 1: H37Rv wild 
+W\SH%PXWDQW¨ Rv2983 , A198P); 3: B101 mutant complemented with Rv2983 behind the 
+native promoter; 4: B101 mutant complemented with Rv2983 behind the hsp60 promoter; 5. K91 
+PXWDQW¨ ddn, IS6110 ins in D108).    
+.certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 42 
+ SUPPLEMENTARY MATERIALS
+Table S1. List of the primers used in the study  
+Table S2. WGS results for 136 individual pretomanid-resistant colonies se lected with different 
+doses of pretomanid in M. tuberculosis -infected BALB/c and C3HeB/FeJ mice  
+Table S3. WGS results for 25 pooled pretomanid-resistant isolates selecte d with different doses 
+of pretomanid in M. tuberculosis -infected BALB/c and C3HeB/FeJ mice
+Table S4. Distribution of overall mutation types and frequencies in genes  associated with 
+pretomanid resistance 
+Table S5. Pretomanid MICs against selected pretomanid-resistant M. tuberculosis mutants
+Figure S1. Complementation of B101 mutant with Rv2983 . A. Schematic diagram of genomic 
+DNA of M. tuberculosis strains after digestion with restriction enzyme Acc65I; B. Resu lt of 
+southern blot confirmed expected DNA fragments after Acc65I dig estion using DIG-labeled 
+Rv2983 probe (H37Rv: 6.3 kb; Rv2983 mutant: 6.3 kb; complemented strain s: 6.3 and 3.5 kb).
+Figure S2. Expression of Rv2983 and other genes involved in nitroimidazole activation. A. 
+Expression of Rv2983 and other genes involved in nitroimidazole activation is higher  i n  t h e  
+Rv2983 mutant B101 relative to the wild-type H37Rv after 4 days of incu bation in 7H9 broth; B. 
+fbiC expression is dramatically lower in the fbiC mutant KA026 relative to the wild-type after 2 
+days of incubation in 7H9 broth; C. A faint band representing t he 937-bp fbiC DNA fragment is 
+evident in the sample from the KA026 mutant (lane 2) relative t o that in H37Rv (lane 3). Lane 1 
+is the 1-kb DNA marker. 
+Figure S3. Complementation of the B101 mutant with wild-type Rv2983 restores tolerance to MG. 
+The proportional recovery of the mutant on 6 μg/ml of MG increas es with the volume of culture 
+plated and the duration of incubation: 28-day incubation of 500 μl (A) aliquots/plate; 35-day 
+incubation of 500 μl (B) aliquots/plate. certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 43 
+ SUPPLEMENTARY MATERIALS
+Table S1. List of the primers used in the study  
+Table S2. WGS results for 136 individual p retomanid-resistant colonies se lected with different 
+doses of pretomanid in M. tuberculosis -infected BALB/c and C3HeB/FeJ mice  Primer name  Primer sequence Purpose of amplification
+Rv2983 -1F GCTCGGTACCCGGGGATCCTCCCAAGTGCCTCCTCGGC Rv2983  OFR and flanking sequences
+Rv2983 -1R GGTGCCCTTGGTGGTCGACTGTTCGCCGTTGGTCTGCC
+hsp60 - F GCTCGGTACCCGGGGATCCTTCGGCCATGACAAGAATCTG hsp60  promoter
+hsp60 - R TGCCGCTCATGCATGTTTGGGCGCATCC
+Rv2983 - 2F CCAAACATGCATGAGCGGCACACCGGAC Rv2983  ORF
+Rv2983 - 2R GGTGCCCTTGGTGGTCGACTTCAACGATGTGCGACCGC
+Rv2983 - 3F GACTCGCGAGAACGTGGT Rv2983  DNA probe
+Rv2983 - 3R CCAGGCTCCTGTCAGCTC
+Rv2983 - 4F GTATAAGAAGGAGATATACAATGAGCGGCACACCGGAC Rv2983  ORF
+Rv2983 - 4R TGGCAGCAGCCTAGGTTAATTCAACGATGTGCGACCGC
+Rv2983 -RT-F CGATTTGCCGGCATTACAGA expression of Rv2983 
+Rv2983 -RT-R CGAACGCACACAGTACCG
+fbiC-RT-F GTCCATTCCGTTTACCACCG expression of fbiC
+fbiC-RT-R CGGAAGTTCTGCACGATCAC
+fbiA-RT-1F        CCAGTTTGCTGCCAATTCTG expression of fbiA
+fbiA-RT-1R        ACATGCAGGTGTCCAGATCC
+fbiB-RT-F GGATGAAAGACAAGTGGCGG expre ssion of fbiB
+fbiB-RT-R ACTTCGGGTGCGTCATAGAG
+fgd1-RT-F GTACCCGAACCGTGTTTTCC expression of fgd1
+fgd1-RT-R CATTAGCCCCACCGATTCAC
+sigA- F CTACGCTACGTGGTGGATTC expression of sigA
+sigA-R GGTGATGTCCATGTCTTTGG 
+fbiC-5-7_F GCAAGGTGTTTATCCCGGTC fbiC DNA fragment
+fbiC-5-7_R TGTACGTATTTGGGTTGCGCcertified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 44 
+ Pretomanid Pretomanid
+Mouse treatment dose Mouse  selection concentration Name of  Sample Sequencing Rv3261 (fbiA ) Rv3262 (fbiB ) Rv1173 (fbiC ) Rv3547 (ddn ) Rv0407 (fgd1 ) Rv2983 (cofC )
+model (mg/kg) ID (μg/ml) isolates ID (DNA) coverage 331aa (n=24, 17.6%) 448aa (n=4, 2.9%) 856aa (n=77, 56.6%) 151aa (n=9, 6.6%) 336aa (n=5, 3.7%) 214aa (n=17, 12.5%)
+BALB/c 0 M-1 0.25 BA_002 1963 37.2 K9N
+1 BA_003 1964 37.9 -G in aa 38 NuoM:P26S
+M-2 0.25 BA_004 1965 35.1 -A in aa 503 PPE31:S12L; gabT:L361V
+0.25 BA_005 1966 39.6 R133P
+0.25 BA_006 1967 32.7 R133P
+10 BA_007 1968 57.7 K9N Rv3235:G41D
+M-4 1 BA_009 1969 46.5 W690*
+M-5 0.25 BA_010 1970 27 +A in aa 426
+1 BA_011 1971 49.2 +A in aa 426
+10 BA_012 1972 49.5 +A in aa 426
+10 BA_013 1973 39.2 +A in aa 426
+10 M-1 0.25 BA_014 1974 41.6 L702R
+0.25 BA_015 1975 54.9 L702R
+1 BA_016 1976 45.6 L702R
+10 BA_017 1977 40.5 C562W
+10 BA_018a 1978 42 L702R
+10 BA_019a 1979 28.5 +C in aa 27 citA:R293R; cya:V141F; Rv3541c:V108V; Rv3689:Q425R
+M-2 0.25 BA_020 1980 56.8 9 bp del (aa 307-309)
+0.25 BA_021 1981 43.7 -GC in aa 39
+1 BA_022 1982 53.6 A212V nc230580:G>A
+10 BA_024 1984 76 -TCCCCGATG, del aa 306-308
+M-3 0.25 BA_025 1985 93.9 -C in aa 252 fadD24:A364A
+0.25 BA_026a 1986 87.1 L15P Rv1230c:C360G; trpA:Y35C; cycA:T433A; hflx:L435P
+10 BA_028 1988 59 -C in aa 252 fadD24:A364A
+10 BA_029 1989 49.5 L772W Rv3254:A225S; Rv3805c:A417A
+M-4 1 BA_031 1991 93.9 G147C Rv3254:A225S; Rv3805c:A417A
+1 BA_032 1992 83.7 G147C Rv3254:A225S; Rv3805c:A417A
+10 BA_033 1993 114.2 G147C Rv3254:A225S; Rv3805c:A417A
+M-5 0.25 BA_035 1995 80 A632V fprB:V58F; secD:T232S
+1 BA_036 1996 47.8 R25G
+30 M-1 10 BA_041 2001 28.3 S169P Rv3792:V600F
+M-2 0.25 BA_043 2003 50.8 A132V
+1 BA_044 2004 44.9 W20* Rv1230c:C360G; trpA:Y35C; cycA:T433A
+10 BA_045 2005 47.9 L211P ppsB:A354S
+M-3 1 BA_048 2008 37.9 R278P Rv1129c:Y301Y; Rv1314c:P80P
+1 BA_049a 2009 69.3 R278P Rv1129c:Y301Y; Rv1314c:P80P
+M-4 10 BA_053 2013 49 W155* Rv3792:V600F
+M-5 0.25 BA_055 2015 66.5 Q400* Rv1230c:C360G; nc3134222:C>T (41 bp downstream from Rv2825c)
+10 BA_058 2017 77.8 +T in aa 188 Rv1871c:G48D
+10 BA_059 2018 60.7 +T in aa 188 Rv1871c:G48D
+100
+M-1 0.25 BA_060 2019 65.8 -ATC in aa 129 Rv3792:V600F
+M-2 0.25 BA_062 2021 75.6 K682E Rv1230c:C360G
+10 BA_064 2023 72.4 Y170* Rv1931c:A172A
+10 BA_065 2024 56.5 L187R Rv0609A:G64S; rc789981:GG>AC; Rv2969c:S132A
+M-3 10 BA_069 2028 66.5 W397R Rv3254:A225S; Rv3805c:A417A
+10 BA_070 2029 75.2 L173P mprB:A491A; nadB:P332S; nc2639032:C>T (24bp downstream from PPE 40)
+M-4 1 BA_071 2030 74.9 F744S
+10 BA_072 2031 61.2 -C in aa 93
+M-5 0.25 BA_074a 2033 69.6 S219G bioF2:C450F
+1 BA_075 2034 67.4 M776T fadD24:A364A; Rv1749c:W171R
+10 BA_076 2035 59.7 M776T fadD24:A364A; Rv1749c:W171R
+10 BA_077 2036 64.3 M776T fadD24:A364A; Rv1749c:W171R
+300 M-1 1 BA_078 2037 55 R25S NarK3:A338A
+1 BA_079 2038 76.8 R25S NarK3:A338A
+1 BA_080 2039 92.3 R25S NarK3:A338A
+10 BA_081a 2040 125.5 R25S NarK3:A338A
+10 BA_082 2041 86.9 R25S NarK3:A338A
+M-2 1 BA_084 2043 77.5 Q27* Rv0312:P510A, citA:R293R, Rv3541c:V108V, plus 3 other heterogeneous sites
+10 BA_086a 2045 62.3 -G in aa 248 Rv0102:Y176Y'; Rv0579:L142P; Rv1230c:C360G
+10 BA_087 2046 49.1 Q27* Rv0312:P510A; citA:R293R; Rv3541c:V108V
+M-3 0.25 BA_089 2048 78.3 H190N nc3383560:G>A
+1 BA_090 2049 75.9 -GC in aa 846
+10 BA_091 2050 56.3 -GC in aa 846
+10 BA_092 2051 85.2 Q20* fadE4:K33R(het)
+M-4 0.25 BA_093 2052 85.3 T707M
+1 BA_095 2054 45.1 9345 bp del (Rv3540-Rv3550) Rv2993c:P56Q
+10 BA_096 2055 84.3 T301A Rv2993c:P56Q
+10 BA_097 2056 97.7 -C in aa 247 nc4020443:C>A (2bp downstream. of lppH)
+M-5 0.25 BA_098 2057 100.8 W79*
+0.25 BA_099 2058 77 W79*
+0.25 BA_100 2059 112.9 W79*
+1B A_101 2 060 7 6.2 A198P
+1 BA_102 2061 57.9 W79*
+600 M-1 1 BA_103 2062 43.8 N336K
+M-2 0.25 BA_106a 2063 100.8 R500* pks7:V338L; lipN:C976G; lipN:I96R
+0.25 BA_107 2064 78.6 R500* pks7:V338L; lipN:C976G; lipN:I96R
+1 BA_108 2065 60.9 R500* pks7:V338L; lipN:C976G; lipN:I96R
+10 BA_109 2066 81.8 R500* pks7:V338L; lipN:C976G; lipN:I96R
+10 BA_110 2067 90.2 R500* pks7:V338L; lipN:C976G; lipN:I96R
+M-3 10 BA_114 2071 63.5 D49G
+M-4 10 BA_119 2076 47.7 C152R Rv3090:S254S
+10 BA_120 2077 76.1 C152R Rv3090:S254S
+C3HeB/FeJ 10 M-1 1 KA_001 1873 32.3 -A in aa 331 nrp:V1705A, pknD:T633N
+1 KA_003 1875 27.6 A68E atpH:A439E;Rv2009:E12D
+10 KA_004 1876 23.1 G194D
+10 KA_005 1877 42.2 W198*
+M-2 1 KA_006 1878 39.2 -T in aa 353 nirB:V29A, xseA:V202V, nc3382560:G>A, Rv3242c:L73R
+1 KA_008 1879 87.2 +A in aa 214
+10 KA_009 1880 58.8 -C in aa 363 lpqM:G3G
+10 KA_010 1881 84.7 +A in aa 214
+M-3 10 KA_014 1885 29.8 -C in aa 20
+M-4 0.25 KA_016 1887 94 Q114R Rv0686:T90A; Rv3792:V600F
+1 KA_017 1888 81.8 K684T fadE7:L103V; Rv1347c:F143L
+M-5 0.25 KA_022 1892 91.1 del 42 bp (aa 680-693) nc3382560:G>A
+30 M-1 1 KA_026a 1896 41.9 IS6110 in 85bp upstream of fbiC Rv0628c:A 310S; Rv1975:A170S
+1 KA_028 1898 57.3 -A in aa 225 nadB:P332S
+10 KA_029 1899 36.5 +G in aa 107
+10 KA_030 1900 43.6 +G in aa 107
+M-2 1 KA_031 1901 40.6 L377P R3831:P23P
+1 KA_032 1902 88.5 L377P R3831:P23P
+10 KA_034 1904 33.1 -GC in aa 140 R3831:P23P
+M-4 0.25 KA_037 1907 85.9 G148D Rv1230c:C360G; lipB:D101E
+1 KA_039 1909 82.2 W354R Rv1230c:C360G
+M-5 0.25 KA_041 1911 103.7 1 kb del (fbiC+PE12)
+0.25 KA_043 1913 122.8 G273D lppN:L9F; Rv0669c:Q537R(53%)
+1 KA_044 1914 42.1 G273D lppN:L9F
+100 M-1 1 KA_047 1916 34.8 IS6110 ins. in aa 131 cobN:M1045I
+10 KA_050 1919 83.3 G191D
+M-2 0.25 KA_052 1921 94.9 del 4 bp in aa 75-76 ctpE:A448A; Rv1685c:T188N
+M-3 1 KA_057 1926 40.3 L685R pta:L406R; uvrD1:D273D
+1 KA_058 1927 33.4 -G in aa 47
+10 KA_059 1928 107.8 -G in aa 47
+M-4 0.25 KA_061 1930 31.5 A588P mca:T113A
+0.25 KA_062 1931 94.5 -G in aa 52 alkB:Y391D
+1 KA_063 1932 37.8 R322L pks7:V338L; Rv3312A:D67H
+10 KA_064 1933 35.4 +C in aa 125 mca:T113A
+10 KA_065 1934 93.2 A588P mca:T113A;Rv2817c:A280A
+M-5 10 KA_067 1961 42.2 L308P Rv0609A:G64S; nc789981:GG>AC 45 bp downstream from Rv0690c; Rv2 969c:S132A
+1 KA_068 1936 97.4 L308P Rv0609c:G64S; nc789981:GG>AC; Rv2969c:S132A
+300 M-1 0.25 KA_071 1939 40.6 A591D xseA:D388E
+0.25 KA_072 1940 96.2 +C in aa 328 pknI:L455R
+0.25 KA_073 1941 45.5 A827G
+1 KA_074 1942 53.4 A591D xseA:D388E
+1 KA_075 1943 45.7 +C in aa 328 pknI:L455R
+M-2 0.25 KA_076 1944 102.8 R322L pks7:V338L; Rv3312A:D67H
+1 KA_078 1946 75.1 -T in aa 627
+1 KA_079 1947 69.2 Q120P acrA1:R161C; -G in PPE13 (9 aa from C-term); Rv3168:A182T
+10 KA_080 1948 73.8 Q120P -G in PPE13 (9 aa from C-term)
+10 KA_081 1949 211.2 Q120P Rv0285/PE5:V63G
+M-3 10 KA_085 1951 111.4 Q120P acrA1:R161C; -G in PPE13 (9 aa from C-term)
+M-4 0.25 KA_088a 1953 41.5 R112W
+1 KA_091 1955 63 IS6110 ins. in D108
+M-5 1 KA_093 1957 194.5 -G in aa 39 nuoM:P26S
+1 KA_094 1958 44 T273K Rv2842c:V153V
+10 KA_095 1959 119.4 T273K Rv2842c:V153V
+10 KA_096 1960 119.7 D286A Rv3867:D47N
+Note: aa: amino acid;  n: number of isolate and isolation rate among all the individule isolates; * : stop codon: +: insertion; -: deletion; ins: insertion: del: deletion; unknown: no mutat ion found in the six genes; >: substitution.   Gene name, amino acid length and no. of isolates (n=136, 100%)
+Other mutationscertified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 45 
+ Table S3. WGS results for 25 pooled pretomanid-resistant isolates selecte d with different doses 
+of pretomanid in M. tuberculosis -infected BALB/c and C3HeB/FeJ mice
+Table S4. Distribution of overall mutation types and frequencies in genes  associated with 
+pretomanid resistance Pretomanid Pretomanid Name of 
+Mouse treatment dose Mouse  selection concentration pooled  Sample Sequencing Rv3261 (fbiA)Rv3262 (fbiB)Rv1173 (fbiC)Rv3547 (ddn)Rv0407 (fgd1)Rv2983 (cofC)
+model (mg/kg) ID (μg/ml) isolates ID (DNA) coverage 331aa 448aa 856aa 151aa 336aa 214aa
+Balbc 10 M-4 1 P1 2084 103.4 G147C Rv3254:A225S; Rv3805c:A417A
+10 P2 2085 140.3 G147C Rv3254:A225S; Rv3805c:A417A
+300 M-1 1 P3 2086 123.1 R25S narK3:A338A(het)
+10 P4 2087 74.5 R25S(het) narK3:A338A(het)
+M-2 10 P6 2089 44.6 Q27*(het) Rv3541c:V108V; Rv0312:P510A(het); citA:R293R(het)
+M-5 0.25 P7 2090 44.6 W79*
+1 P8 2091 67.8 W79*
+600 M-5 1 P9 2092 55.3 Rv2310:E94A; Rv3792:V600F(het); proS:A524E(het)
+C3HeB/FeJ 10 M-1 10 P11 2094 39.5 nrp:V1705A; pknD:T633N
+M-3 1 P12 2095 34.4 L49P(het)
+30 M-1 1 P13 2096 65.9 W27*(het) Rv0628c:A310S(het); Rv1975:A170S(het)
+10 P14 2097 66.2 Rv0628c:A310S(het); Rv1975:A170S(het)
+M-2 1 P15 2098 35.5 L377P(het) Rv3831:P23P
+10 P16 2099 53.1 L377P(het) Rv3831:P23P
+M-4 0.25 P17 2100 53 C149Y(het) Rv1230c:C360G(het); ureG:L58L(het); Rv2567:A728A(het); Rv3229c:T133A(het); nadB:P322S(het); Rv3447c: het
+1 P18 2101 67.7 Rv1230c:C360G(het); ureG:L58L(het); Rv2567:A728A(het); Rv3229c:T133A(het);nadB:P322S(het)
+100 M-1 0.25 P19 2102 73 G191D(het) cobN:M1045I(het); groEL:G171G(het)
+1 P20 2103 33.8 G191D(het) cobN:M1045I(het); groEL:G171G(het); Rv0987:indel?
+10 P21 2104 75 G191D(het) groEL:G171G(het)
+M-4 1 P24 2107 48.6
+300 M-1 1 P26 2108 44.4 pknI:L455R(het)
+M-3 1 P27 2109 30.8 Q120P(het)
+M-4 0.25 P28 2110 93.4 R112W(het)
+1 P29 2111 142.9
+M-5 10 P31 2113 139.5
+Note: * : stop codon; het: heterogeneous. Gene name and amino acid (aa) length 
+Other mutations
+Frequency
+Rv3261 (fbiA )Rv3262 (fbiB )Rv1173 (fbiC )Rv3547 (ddn)Rv0407 (fgd1 )Rv2983 (cofC )  No. of       of
+331aa 448aa 856aa 151aa 336aa 214aa mutation   mutation
+no. of point mutation 9 3 27 3 3 8 53 54%
+no. of indels (ins+del) 4 1 20 7 1 2 35 35%
+no. of stop codon 2 0 7 2 0 0 11 11%
+no. of total mutation 15 4 54 12 4 10 99 100%
+frequency of mutation 15% 4% 55% 12% 4% 10% 100%
+Note:  ins: insertion; del: deletion.Type of mutationGene name and amino acid (aa) lengthcertified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 46 
+ Table S5. Pretomanid MICs against selected pretomanid-resistant M. tuberculosis mutants   
+Mouse Isolate Pretomanid treatment Pretomanid selection Gene Mutati on  Agar-based MIC Broth-based MIC
+model  dose (mg/kg) concentration (μg/ml ) (μg/ml)   (μg/ml)
+H37Rv parent wild-type 0.06 0.25
+BALB/c BA_002 0 0.25 fgd1 K9N >32
+BA_016 10 1 fbiC L702R >32
+BA_101 300 1 Rv2983 A198P 32
+C3HeB/FeJ KA_006 10 1 fbiB del of T684 8
+KA_058 100 1 fbiA del of G47 >32
+KA_091 300 1 ddn D108 (IS6110 ins) 32
+KA-016 10 0.25 Rv2983 Q114R >32
+KA-026a 30 1 fbiC IS6110 ins. in 85bp upstream of fbiC >32certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 47 
+ Figure S1. Complementation of B101 mutant with Rv2983 . A. Schematic diagram of genomic 
+DNA of M. tuberculosis strains after digestion with restriction enzyme Acc65I; B. Resu lt of 
+southern blot confirmed expected DNA fragments after Acc65I digestion using DIG-labeled 
+Rv2983 probe (H37Rv: 6.3 kb; Rv2983 mutant: 6.3 kb; complemented strai ns: 6.3 and 3.5 kb).
+certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 48 
+ Figure S2. Expression of Rv2983 and other genes involved in nitroimidazole activation. A. 
+Expression of Rv2983 and other genes involved in nitroimidazole activation is higher  i n  t h e  
+Rv2983 mutant B101 relative to the wild-type H37Rv after 4 days of inc ubation in 7H9 broth; B. 
+fbiC expression is dramatically lower in the fbiC mutant KA026 relative to the wild-type after 2 
+days of incubation in 7H9 broth; C. A faint band representing t he 937-bp fbiC DNA fragment is 
+evident in the sample from the KA026 mutant (lane 2) relative t o that in H37Rv (lane 3). Lane 1 
+is the 1-kb DNA marker. 
+certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 49 
+ Figure S3. Complementation of the B101 mutant with wild-type Rv2983 restores tolerance to MG. 
+The proportional recovery of the mutant on 6 μg/ml of MG increa ses with the volume of culture 
+plated and the duration of incubation: 28-day incubation of 500 μl (A) aliquots/plate; 35-day 
+incubation of 500 μl (B) aliquots/plate. 
+certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 50 
+ certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which was not this version posted October 31, 2018. ; https://doi.org/10.1101/457754doi: bioRxiv preprint 

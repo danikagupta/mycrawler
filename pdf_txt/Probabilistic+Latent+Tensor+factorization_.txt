@@ -1,0 +1,413 @@
+2011 IEEE Workshop on Applications of Signal Processing to A udio and Acoustics October 16-19, 2011, New Paltz, NY
+PROBABILISTIC LATENT TENSOR FACTORIZATION FRAMEWORK FOR A UDIO
+MODELING
+Ali Taylan Cemgil†∗, Umut S ¸ims ¸ekli†, Yusuf Cem S ¨ubakan⋆
+Dept. of Computer Engineering†,
+Dept. of Electrical and Electronics Engineering⋆,
+Bo˘ gazic ¸i University,
+34342 Bebek, ˙Istanbul, Turkey
+{taylan.cemgil,umut.simsekli,cem.subakan }@boun.edu.tr
+ABSTRACT
+This paper introduces probabilistic latent tensor factori zation
+(PLTF) as a general framework for hierarchical modeling of a u-
+dio. This framework combines practical aspects of graphica l mod-
+eling of machine learning with tensor factorization models . Once
+a model is constructed in the PLTF framework, the estimation al-
+gorithm is immediately available. We illustrate our approa ch using
+several popular models such as NMF or NMF2D and provide exten -
+sions with simulation results on real data for key audio proc essing
+tasks such as restoration and source separation.
+Index Terms —Audio Modeling, Probabilistic Latent Tensor
+Factorization, Factor graphs, Statistical Inference, Mes sage Passing
+1. INTRODUCTION
+The last decade has witnessed a rapid development of statist ical
+modeling techniques for various audio applications relate d to music
+information retrieval and content analysis, such as transc ription or
+source separation.
+A particularly useful modeling paradigm, leading to practi cal
+and useful algorithms has been based on matrix factorizatio n. As
+a particular example, given an observed audio spectrogram Xas a
+matrix of frequency and time indices fandt, one searches for a
+decomposition of form
+X(f,t)≈ˆX(f,t) =/summationdisplay
+iD(f,i)E(i,t) (1)
+Typically, the goal is to ﬁnd optimal matrices D∗andE∗such that
+(D∗,E∗) = argmin
+D,Ed(X,ˆX) (2)
+wheredis a divergence (a quasi-squared-distance) typically take n
+as Euclidian, Kullback-Leibler (KL) or Itakura-Saito (IS) . Theβ-
+divergence generalizes all this divergences and enables a uniﬁed
+treatment [1, 2, 3]
+dβ(x,y) =
+
+1
+β(β−1)/parenleftBig
+xβ+(β−1)yβ−βxyβ−1/parenrightBig
+β/ne}ationslash∈{0,1}
+x(logx−logy)+(y−x) β= 1
+x/y−log(x/y)−1 β= 0
+(3)
+∗Funded by the scientiﬁc and technological research council of Turkey
+(T¨UB˙ITAK) grant number 110E292, project “Bayesian matrix and te nsor
+factorizations (BAYTEN)”. U.S ¸. is also supported by a Ph.D . scholarship
+from T ¨UB˙ITAK.Pioneering work on Nonnegative Matrix Factorization (NMF) for
+audio processing [4] has demonstrated that, provided that m odel
+order is properly chosen, the computed factors DandEtend to
+be semantically meaningful as they correlate well with the i ntu-
+itive notion of spectral templates and a musical score. Foll owing
+the various extensions and improvements have been proposed for
+transcription or source separation [2]. NMF and related ext ensions
+have also a natural interpretation as probabilistic genera tive models
+[5, 3].
+This paper introduces probabilistic latent tensor factori zation
+(PLTF) as a general framework for hierarchical modeling of a u-
+dio. PLTF derives inspiration from two apparently independ ently
+developed tools, namely probabilistic graphical models of statisti-
+cal machine learning [6] and tensor decompositions of multi way
+analysis [7]. The key motivation behind PLTF is that many use -
+ful models scattered in the audio and music processing liter ature
+can be expressed compactly using a tensor factorization and con-
+traction (summing over a set of indices) formalism; we will g ive
+several examples later in the paper. In statistical machine learning
+literature, it is standard to represent a multivariate prob ability distri-
+bution as a product of local potential functions that descri be interac-
+tions between random variables. A popular graphical repres entation
+for such objects is a factor graph ; this is a bipartite graph of factor
+nodes (typically shown as black squares) and variable nodes (shown
+as white circles). Each factor node corresponds to a local fu nction
+and each variable node corresponds to a random variable. The in-
+ference algorithm (e.g. for computing marginal distributi ons and
+moments) can be implemented as a message passing algorithm o n
+the factor graph [6].
+In PLTF, we represent a tensor model by a factor graph, where
+now factor tensors correspond to factor nodes and indices co rre-
+spond to variable nodes. An index iis connected to a tensor node
+Zif it appears as an index of Z. One novel contribution of PLTF
+is that, once a model is represented in this form, the inferen ce al-
+gorithm to estimate the tensor factorization can also be der ived au-
+tomatically from the factor graph speciﬁcation. Note that, unlike in
+probabilistic graphical models, in PLTF, the factor graph d oes not
+represent a probability measure; only the algebraic repres entation
+is analogous. Yet, this analogy enables us to derive novel me ssage
+passing algorithm. Perhaps more importantly, this gives a ﬂ exibility
+for building increasingly more complex hierarchical model s easily
+without much extra effort; we believe that this is both of pra ctical
+and theoretical interest to the audio processing community .2011 IEEE Workshop on Applications of Signal Processing to A udio and Acoustics October 16-19, 2011, New Paltz, NY
+1.1. Probabilistic Latent Tensor Factorization
+The latent tensor factorization model [8] is given as a natur al exten-
+sion of the matrix factorization model of (1)
+X(v0)≈ˆX(v0) =/summationdisplay
+¯v0/productdisplay
+αZα(vα), (4)
+where our goal is computing an approximate factorization of a given
+a multiway array Xin terms of a product of individual factors Zα,
+some of which are possibly ﬁxed. The product/producttext
+αZα(vα)is col-
+lapsed over a set of indices, hence the factorization is late nt. The
+optimization problem is again minimization of d(X,ˆX). Here, we
+deﬁne
+V set of all indices in a model
+V0 set of visible indices
+Vα set of indices in Zα
+¯Vα=V−Vα set of all indices not in Zα
+We use small letters as vαto refer to a particular setting of indices
+inVα. For example, in this framework, the NMF model of [9],
+introduced in (1) would be represented via the dictionary ma trix
+Z1≡D, the excitations Z2≡E, and the index sets V={i,j,k},
+V0={f,t},V1={f,i}, andV2={i,t}. The factor graph
+corresponding to the NMF model is shown in Table 2.
+1.2. Inference
+The inference, i.e., estimation of the latent factors Zαcan be
+achieved via iterative optimization (see [8]). One can obta in the
+following compact ﬁxed point equation where each Zαis updated
+in an alternating fashion ﬁxing the other factors Zα′forα′/ne}ationslash=α
+Zα←Zα◦∆α(M◦X◦ˆXβ−2)
+∆α/parenleftBig
+M◦ˆXβ−1/parenrightBig, (5)
+where◦is the Hadamard product (element-wise product) and M
+is a0−1mask array where M(v0) = 1 (M(v0) = 0 ) ifX(v0)
+is observed (missing). In this iteration, the key quantity i s the∆α
+function that is deﬁned as
+∆α(A)(vα)≡/summationdisplay
+¯vα
+A(v0)/productdisplay
+α′/negationslash=αZα′(vα′)
+. (6)
+For updating Zα, we need to compute this function twice for argu-
+mentsA=M◦X◦ˆXβ−2andA=M◦ˆXβ−1. As an example,
+it is easy to verify that the update equations for the KL-NMF p rob-
+lem (forβ= 1) are obtained as a special case of (5). Further cases
+are summarized in Table 1. A key observation is that the ∆αfunc-
+tion is computing a product of tensors and collapses this pro duct
+over indices not appearing in Zα. Algebraically, this is equivalent
+to computing a marginal sum; a task for which several graph ba sed
+algorithms exist.
+It is also easy to regularize the model or incorporate prior
+knowledge (such as sparsity). For example, in the case of the KL
+divergence, we can choose a gamma prior model
+Zα(vα)∼G(Zα(vα);Aα(vα),Bα(vα)/Aα(vα))Table 1: Update rules for different βvalues
+β Cost Function Multiplicative Update Rule
+0 Itakura-Saito Zα←Zα◦∆α(M◦X/ˆX2)
+∆α(M/ˆX)
+1 Kullback-Leibler Zα←Zα◦∆α(M◦X/ˆX)
+∆α(M)
+2 Euclidean Zα←Zα◦∆α(M◦X)
+∆α(M◦ˆX)
+whereGdenotes the gamma distribution G(x;a,b) =
+baxa−1exp(−bx)/Γ(a). In this case, the update equation is
+slightly altered and becomes
+Zα←(Aα−1)+Zα◦∆α(M◦X/ˆX)
+Aα/Bα+∆α(M)(7)
+For the general case of the βdivergence, the choice of priors are
+more delicate [10], which we omit from this publication.
+2. HIERARCHICAL FACTORIZATIONS FOR AUDIO
+The NMF model has obvious limitations due to unrealistic mod -
+elling assumptions; spectral template components at each f requency
+bin are weighted with the same coefﬁcient. To capture richer tem-
+poral variations observed in real audio signals, in [11], Sm aragdis
+introduced the non-negative matrix factor deconvolution (NMFD)
+that is deﬁned by
+ˆX(f,t) =/summationdisplay
+τ,iD(f,τ,i)E(i,d/bracehtipdownleft/bracehtipupright/bracehtipupleft/bracehtipdownright
+t−τ).
+=/summationdisplay
+τ,i,dD(f,τ,i)E(i,d)Z(d,t,τ) (8)
+Here, we have introduced a new dummy index dand deﬁne a new
+factorZ(d,t,τ) =δ(d−t+τ)to express this model in our frame-
+work. Here, Zis a constant factor not to be updated during the iter-
+ations. Again, the update equations are immediately availa ble from
+(5). For example, for KL cost, after straightforward simpli ﬁcations,
+one obtains the ∆functions required for the updates
+∆D(A)(f,τ,i) =/summationdisplay
+tA(f,t)E(i,t−τ) (9)
+∆E(A)(i,d) =/summationdisplay
+f,tA(f,t)D(f,t−d,i) (10)
+where each function need to be computed for A=M◦X/ˆXand
+A=M. These are convolutions, hence computation can be further
+accelerated via FFT.
+The convolutive model has been further extended by Schmidt
+and Mørup [12] as the Non-negative Matrix Factor 2D Deconvol u-
+tion (NMF2D) to factorize a log-frequency spectrogram (con stant-
+Q) using a model that can represent both temporal structure a nd the
+pitch changes when an instrument plays different notes. The key
+idea of this elegant model is that on log-frequency index, mo du-
+lations correspond to shifts. We can reformulate the model i n the2011 IEEE Workshop on Applications of Signal Processing to A udio and Acoustics October 16-19, 2011, New Paltz, NY
+Table 2: Models, index sets and factor graphs. For NMF, NMFD, NMF2D, D,Edenote the dictionary and the excitations; for SF-SSNTF
+Gare gains of sources, His a ﬁlter, Nis a harmonic dictionary and Ware harmonic weights. Gray shaded nodes are visible indices . In all
+modelsf,tcorrespond to frequency and time frame, In NMF* models, iis the template index and ν,τare the ‘local’ frequency and time
+indices of spectral templates. In SF-SSNTF, i,p,r,c correspond to instrument, harmonic, note label and channel indices.
+Symbol NMF NMFD NMF2D SF-SSNTF
+Model V{f,t,i} {f,t,τ,i,d} {f,t,ν,τ,i,φ,d} {c,t,f,i,p,r,τ,d}
+Observed V0{f,t} { f,t} { f,t} { c,t,f}
+Latent ¯V0{i} { τ,i,d} { ν,τ,i,φ,d} { i,p,r,τ,d}
+Factors{f,i} {f,τ,i}{d,i} {ν,τ,i}{φ,d,i} {c,i}{f,i}{f,p,r}
+{i,t} { d,t,τ} {ν,f,φ}{d,t,τ} {p,i,τ}{r,i,d}{d,t,τ}
+D
+Ef
+i
+tD
+EZf
+i
+d tτZ1
+E D
+Z2f
+φ νi
+t
+d τNG H
+E W
+Zfc
+r pi
+t
+d τ
+PLTF framework as
+ˆX(f,t) =/summationdisplay
+i,φ,τD(ν/bracehtipdownleft/bracehtipupright/bracehtipupleft/bracehtipdownright
+f−φ,τ,i)E(φ,d/bracehtipdownleft/bracehtipupright/bracehtipupleft/bracehtipdownright
+t−τ,i) (11)
+=/summationdisplay
+i,φ,τ,ν,dD(ν,τ,i)E(φ,d,i)Z1(ν,f,φ)Z2(d,t,τ)
+hereZ1=δ(ν−f+φ)andZ2=δ(d−t+τ)are ﬁxed. We
+don’t derive explicitly the update equations here; these fo llow again
+directly from (5). Both models are shown in Table 2.
+A related model, proposed by [13], FitzGerald et al. is the
+Source-Filter Sinusoidal Shifted Nonnegative Tensor Fact orization
+Model (SF-SSNTF). A model in the same spirit is also proposed in
+[14] by Klapuri et al. The model mimics physically inspired s ource-
+ﬁlter models of audio production in the spectral domain, suc h as a
+harmonic excitation multiplied by spectral envelope of a bo dy re-
+sponse ﬁlter and is deﬁned by
+ˆX(c,t,f) =/summationdisplay
+i,p,r,τG(c,i)H(f,i)N(f,p,r)W(p,i,τ)E(r,i,d/bracehtipdownleft/bracehtipupright/bracehtipupleft/bracehtipdownright
+t−τ)
+(12)
+whereGis the gain of each channel, His the formant ﬁlter, Nis
+the harmonic dictionary, Wis the harmonic weight tensor, and E
+is the excitation tensor. This model is fairly complex to des cribe as
+it contains both convolutive and hierarchical elements; a d erivation
+and implementation from scratch is also not straightforwar d. Again,
+by deﬁning a dummy index dand setting Z=δ(d−t+τ)we
+obtain the rightmost model given in Table 2, for which the upd ate
+equations are directly available in our framework.
+2.1. Extensions
+In this section, based on the PLTF framework, we will propose ex-
+tensions to the models introduced in the previous section. T hese
+concentrate mainly on modeling spectral templates hence fo cus
+on the dictionary but don’t exploit temporal continuity or s parsity.For example, in two dimensional non-negative factor deconv olu-
+tion model, we wish to interpret the excitation tensor E(φ,d,i)as a
+piano-roll like representation, where a large value indica tes the pres-
+ence of note φat timed, played by the i’th source. Hence, it seems
+more natural to model the elements of this tensor to reﬂect st atistical
+properties of piano rolls. For NMF models, temporal continu ity and
+smoothness can be enforced via Markovian priors such as Gamm a
+chains [15] or changepoint models [16]. Such hierarchical m odels
+also capture sparsity and continuity, but the inference sch emata can
+become fairly complicated to describe; here we develop two r elated
+approaches that ﬁt directly to the PLTF framework. The decom po-
+sitions are:
+E(φ,d,i) =/summationdisplay
+k,lB(k,l)C(k,d−l,φ,i) (I) (13)
+E(φ,d,i) =/summationdisplay
+k,lB(d,k)C(k,φ,i) (II) (14)
+The ﬁrst approach (I) is in the spirit of convolutive models, where
+we decompose the excitations as shifted and scaled versions of vec-
+tors from a predetermined excitation dictionary BwhereB(k,l)
+denotes the l’th element of k’th basis vector. Here, C(k,u,φ,i)is
+a tensor which dictates where the continuous basis function s will be
+replicated in time. Note that for each note φand source i, we con-
+volve two sequences to have the corresponding excitation ve ctor in
+time but the catalog is shared, reducing signiﬁcantly the nu mber of
+free parameters. The second decomposition (II) is a simpler and
+is based on a basis spline approach. Here we use a dictionary B
+where for each k, the basis vector B(k,:)has the shape of a lo-
+cally concentrated triangle: by superposition of these bas is vectors
+we can model piecewise linear functions with knot points loc ated
+at triangle centers. All the extended models and the corresp onding
+factor graphs are shown in Figure1. In the next section, we wi ll
+illustrate the performance of our models on two audio proces sing
+tasks, namely restoration and source separation.
+3. RESULTS AND CONCLUSIONS
+In our restoration experiments, we used a database of 50short mono
+audio examples sampled at 44.1kHz used in [13] (available online).2011 IEEE Workshop on Applications of Signal Processing to A udio and Acoustics October 16-19, 2011, New Paltz, NY
+D
+BC Z1
+Z2f
+i
+d αt
+k
+lτ
+(a)D
+C Z1
+Bf
+i τt
+k d
+(b)Z1
+BC D
+Z2Z3f
+φ
+τ αi
+k
+tν
+d l
+(c)Z1
+BC D
+Z2f
+νiφ
+t
+τ k
+d
+(d)
+Figure 1: Graphical representations of the extended models . a)
+NMFD+I b) NMFD+II c) NMF2D+I d) NMF2D+II
+Table 3: Evaluation of the models on missing audio restorati on
+SNR MSE
+IS KL EUC IS KL EUC
+NMFD 2.99 4.74 5.054.43 2.91 2.68
+SF-SSNTF−0.28 5.09 5.0615.00 2.57 2.59
+NMFD + I 3.01 6.00 6.915.89 2.23 1.68
+NMFD + II 5.00 5.79 5.802.74 2.20 2.17
+For each example, we compute a spectrogram with framelength of
+1024 samples with no overlap. Then, we remove randomly blocks
+of10consecutive time frames, corresponding to approx. 250ms
+gaps. In total, 20per cent of each audio ﬁle was removed but the
+gaps are quite long. We compute the signal-to-noise ratio (S NR)
+and the mean squared error (MSE) using the true and predicted
+magnitude spectrogram coefﬁcients. The performances of th e mod-
+els on restoration are given in Table 3, we see that our extens ions
+are effective. For source separation experiment we use the s ame
+database, where we simply sum pairs of examples. For each mix -
+ture, we compute a constant-Q-transform and iteratively es timate
+the sources. For performance evaluation, we compute the sou rce-
+to-distortion ratio (SDR), source-to-interference ratio (SIR), and
+source-to-artifact ratio (SAR). The results are shown in Ta ble 4.
+In this case, the extensions seem to be somewhat less effecti ve.
+The detailed derivations and the evaluation results are ava ilable on
+http://www.cmpe.boun.edu.tr/ ˜umut/pltf_audio
+3.1. Conclusion and Future Work
+We have introduced PLTF as a general framework for hierarchi cal
+modeling of audio. PLTF combines practical aspects of graph ical
+modelling such as ease of model construction and systematic de-
+velopment of an inference algorithm. The approach is partic ularly
+handy for the treatment of complicated tensor factorisatio n mod-
+els. We haven’t investigated Bayesian techniques for incor porating
+conjugate priors for regularization, as well as model selec tion and
+comparison issues, i.e., questions regarding the cardinal ity of latent
+Table 4: Evaluation of models on blind source separation
+Model SDR SIR SAR
+NMF2D 6.10 19 .00 7 .50
+SF-SSNTF≈8.00≈24.00≈8.00
+NMF2D + I 6.19 19 .84 6 .84indicies (such as choosing the number of spectral templates , the size
+of the catalog etc.) or comparing between two alternative TF mod-
+els. As the models get increasingly more complicated, model selec-
+tion and/or regularisation issues become central and we per ceive the
+need for a full Bayesian treatment. Fortunately, these comp utations
+can also be carried out in a mechanical fashion and this is our cur-
+rent active research. Other technical issues are automatic inference
+code generation from a model speciﬁcation and parallelizat ion.
+4. REFERENCES
+[1] A. Cichoki, R. Zdunek, A. Phan, and S. Amari, Nonnegative
+Matrix and Tensor Factorization . Wiley, 2009.
+[2] C. F´ evotte, N. Bertin, and J. L. Durrieu, “Nonnegative m a-
+trix factorization with the itakura-saito divergence. wit h ap-
+plication to music analysis,” Neural Computation , vol. 21, pp.
+793–830, 2009.
+[3] C. F´ evotte and A. T. Cemgil, “Nonnegative matrix factor isa-
+tions as probabilistic inference in composite models,” in EU-
+SIPCO , 2009.
+[4] P. Smaragdis and J. C. Brown, “Non-negative matrix fac-
+torization for polyphonic music transcription,” in WASPAA ,
+2003, pp. 177–180.
+[5] A. T. Cemgil, “Bayesian inference in non-negative matri x
+factorisation models,” Computational Intelligence and Neu-
+roscience , 2009.
+[6] F. R. Kschischang, B. J. Frey, and H.-A. Loeliger, “Facto r
+graphs and the sum-product algorithm.” IEEE Transactions on
+Information Theory , vol. 47, pp. 498–519, 2001.
+[7] T. G. Kolda and B. W. Bader, “Tensor decompositions and
+applications,” SIAM Review , vol. 51, pp. 455–500, 2009.
+[8] Y . K. Yilmaz and A. T. Cemgil, “Probabilistic latent tens or
+factorization,” in LVA/ICA , 2010, pp. 346–353.
+[9] D. D. Lee and H. S. Seung, “Learning the parts of objects by
+non-negative matrix factorization.” Nature , vol. 401, pp. 788–
+791, 1999.
+[10] Y . K. Yilmaz and A. T. Cemgil, “Algorithms for probabili stic
+latent tensor factorisation with beta divergence,” Submitted to
+Signal Processing , 2011.
+[11] P. Smaragdis, “Non-negative matrix factor deconvolut ion; ex-
+traction of multiple sound sources from monophonic inputs, ”
+inICA, 2004, pp. 494–499.
+[12] M. N. Schmidt and M. Mørup, “Nonnegative matrix factor 2 -
+D deconvolution for blind single channel source separation ,”
+inICA, 2006.
+[13] D. FitzGerald, M. Cranitch, and E. Coyle, “Extended non -
+negative tensor factorisation models for musical sound sou rce
+separation,” Computational Intelligence and Neuroscience ,
+2008.
+[14] A. Klapuri, T. Virtanen, and T. Heittola, “Sound source sepa-
+ration in monaural music signals using excitation-ﬁlter mo del
+and EM algorithm,” in ICASSP , 2010.
+[15] T. Virtanen, A. T. Cemgil, and S. Godsill, “Bayesian ext en-
+sions to non-negative matrix factorisation for audio signa l
+modelling,” in ICASSP , 2008, pp. 1825–1828.
+[16] U. S ¸ims ¸ekli and A. T. Cemgil, “Probabilistic models f or real-
+time acoustic event detection with application to pitch tra ck-
+ing,” JNMR , 2011 (to appear).

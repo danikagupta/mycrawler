@@ -1,0 +1,349 @@
+.2977
+Applications ofArtificial Intelligence forChemical Inference.
+II.1Interpretation ofLow-Resolution Mass Spectra ofKetones2
+A.M.Duffleld, A.V.Robertson, Carl Djerassi, B.G.Buchanan,G.L.Sutherland, E.A.Feigenbaum, andJ.Lederberg
+Contribution from theDepartments ofChemistry, Computer Science, andGenetics,Stanford University, Stanford, California 94305. Received November 18,1968
+Abstract: Ageneral approach tocomputer interpretation ofthemass spectra ofaliphatic ketones isdescribed.Given thelow-resolution mass spectrum plusthecomposition ofthemolecular ion,thecomputer program decidesupon themost probable structure(s) consistent with theunknown's mass spectrum. Theprogram makes extensiveuseolthedendral algorithm. l
+Theapplication ofdigital computers todatareduction problems inboth high-3"6and low-resolution7mass spectrometry has automated theaccumulation ofexperimental information, especiallyinthose instances where agaschromatograph isdirectly
+interfaced with amass spectrometer.7Interpretingthisvast amount ofdata isaformidable problem fortheresearch worker. Itssolution may ultimately
+reside intheability ofsuitably programmed computerstopresent adetailed interpretation ofany massspectrum. Preliminary results from other lab-oratories8-11have described methods whereby acom-
+puter participates intheinterpretation ofhigh- 8-10
+andlow-resolution >xmass spectra. Inaddition, specificprograms have been written forthedetermination oftheammo acid sequence insmall peptides from acom-puter interpretation oftheir high-resolution mass
+spectra. 12-14
+Another important contribution ofcomputers intheidentification ofunknown mass spectra isthedevel-
+opment15ofinformation retrieval systems where filesof
+(1)PartI:J.Lederberg, G.L.Sutherland, B.G.Buchanan, E.A.Feigenbaum, A.V.Robertson, A.M.Duffield, andC.Djerassi, J.Am.Chem. Soc, 91,2973 (1969).
+(2)This research was financed bytheAdvanced Research ProjectsAgency oftheOffice oftheSecretary ofDefense (Grant SD-183), theNational Aeronautics and Space Administration (NGR-05-020-004),and theNational Institutes ofHealth (Grants GM-11309 andAM-
+-04257). Theaward ofaFulbright Travel Grant (toA.V.R.)from theAustralian-American Educational Foundation isgratefully acknowl-edged.
+(3)K.Biemann, P.Bommer, andD.M.Desiderio, TetrahedronLetters, 1725(1964).
+(4)C.Merritt, Jr.,P.Issenberg, M.L.Bazinet, B.N.Green, T.O.Merron, andJ.G.Murray, Anal. Chem., 37,1037 (1965).(5)R.Venkataraghavan, F.W.McLafferty, and J.W.Amy, ibid.,39,178(1967).
+(7)R.A.Hites andK.Biemann, ibid., 39,965(1967): 40,1217(1968).
+(8)(a)K.Biemann andP.V.Fennessey, 14thAnnual Conference onMass Spectrometry, Dallas, Texas, May 1966, p322; (b)A.Mandelbaum, P.V.Fennessey, andK.Biemann, 15th Annual Con-ference onMass Spectrometry, Denver, Colo., May 1967,pill.(9)R.Venkataraghavan aridF.W.McLafferty, refBb,p98.(10)R.Venkataraghavan, G.E.VanLear, andF.W.McLafferty,16thAnnual Conference onMass Spectrometry, Pittsburgh,
+Pa.,May
+1968, p139.
+(11) B.Pettersson andR.Ryhage, Arkiv Kemi, 26,293(1967).(12)M.Senn, R.Venkataraghavan, andF.W.McLafferty, J.Am.Chem. Soc, 88,5593 (1966).
+(13)K.Biemann, C.Cone, B.R.Webster, and G.P.Arsenault,ibid., 88,5598 (1966).
+(14)M.Barber, P.Powers, P.Wallington, andW.A.Wolstenholme,Nature, 212,784(1966).mass spectra ofknown compounds areavailable for
+immediate comparison with spectra generated intheresearch laboratory.
+Wewish todescribe inthepresent communication ageneral approach directed toward the complete
+computer interpretation oflow-resolution mass
+spectra.16Ourapproach isbased onthecapability ofacomputer program (dendral)17tomanipulate struc-tural representations oforganic molecules and theirfunctional groups andtogenerate rigorously exhaustiveand irredundant lists ofstructures including thecandidates foragiven problem. lBAsfarasweknow,
+thisgeneral capability hasnotbeen embodied inotherwork attacking thisproblem. Aliphatic ketones werechosen asasuitable class ofcompounds with which tobegin acomputer interpretation ofmass spectra inview ofthefundamental knowledge available ontheir
+mass spectrometric fragmentation modes.19
+Thebasic approach wehave used inthecomputerinterpretation ofmass spectra isdiagramatically
+represented inScheme I.The dendral program can
+enumerate allthepossible acyclic chemical structures1'
+1Sofagiven empirical formula. Theprogram isfedalow-resolution mass spectrum of anunknowncompound (including any metastable transitions
+observed) andtheempirical composition ofthemolec-ularion.20Itthen employs atheory ofmass spectralfragmentation processes,19stored inthe preliminary
+inference maker,21todecide what functional groups
+are present within themolecular structure oftheunknown. The program now gives the inferred
+(15)L.R.Crawford and J.D.Morrison, Anal. Chem., 40,1464, 1469(1968); S.Abrahamsson, Science Tools, 14,29(1967).
+(16)Although theprogram iscurrently restricted totheutilization oflow-resolution mass spectra, nobasic problems areanticipated inthefuture useoftheir complete high-resolution counterparts.
+(17) J.Lederberg, inpreparation.
+(18) Theprogramming ofcyclic structures within dendral ispartiallycomplete." (19) Seeforinstance H.Budzikiewicz, C.Djerassi, andD.H.Wil-liams, "Mass Spectrometry ofOrganic Compounds," Holden-DayInc., SanFrancisco, Calif., 1967; F.W.McLafferty, "Interpretation ofMass Spectra," W.A.Benjamin, Inc., New York, N.V.,1967; XBiemann, "Mass Spectrometry," McGraw-Hill Book Co., Inc., NewYork, N.V.,1962.
+(20) Thedetermination ofmolecular formulas isadistinct problemassumed bydendral tohave been solved byother analytical approachesAtworst, asubroutine (the "change-making" algorithm) iscalled toproduce alistofhypothetical molecular formulas compatible with themass number ofthemolecular ion (J.Lederberg, "Computation ofMolecular Formulas forMass Spectrometry," Holden-Day Inc SanFrancisco,
+Calif.,1964).
+(2i)Program modules arelabeled inupper case.
+[Reprinted from theJournal oftheAmerican Chemical Society, 91,2977 (1969)1Copyright 1969 bytheAmerican Chemical Society andreprinted bypermission ofthe copyright owner.(6)A.L.Burlingame, D.H.Smith, andR.W.Olsen, ibid., 40, 13(1968).Scheme I
+«
+ac
+-°°(* -ooj.
+[R,CCC]+[R2CCC]+
+b d
+relative abundance) banddandifmetastable infor-
+mation isincluded each ofthese ions must beformed
+inassociation with ametastable ion.22Scheme II
+Oncompleting anexamination ofanunknown
+spectrum with reference tothese ketone rules, evenif
+aketone isrecognized tobepresent, theprogram then
+searches forthepossible presence ofaldehydes, ethers,
+oralcohols according toapreselected listofconditions.
+Forthesakeofbrevity thepresentation ofthese con-
+straints willbelefttoensuing publications.II(methyl ketone 3) i,mfc58
+o 6OH
+i
+Since 82ofthe1936 possible isomers ofC9Hi80are
+ketones, additional truncation isnow desirable. The
+program searches foradditional subgraphs after ithas
+inferred theketone group. Thefollowing four sub-
+graphs areeasily identified bytherecognition ofions
+derived from theMcLafferty rearrangement.23These
+have masses 58,72,86,86,and58corresponding tothe
+ions i,j,k,m,and g,respectively. Any substructure
+thus found isplaced ongoodlist and only those
+chemical graphs which contain thisunitareconstructed
+bythestructure generator. Should theprogram fail
+torecognize themass number corresponding tothe
+units represented by11-V (Scheme II),then these units
+areplaced onbadlist andallketones lacking these
+subgraphs aregenerated.CH a
+111(ethyl ketone 3) j,mfc72
+O OH
+(CH8)2CHCCH 2CCH<—*■(CH,)2CHC
+Figure 1.Mass spectrum ofunknown aliphatic ketone andtheconceptualization ofHeuristic dendral.CH,
+IV(isopropyl ketone 3) k,mfc86
+functional group highest priority, byplacing iton computed 1936 possible acyclic structures1cor-goodlist. Other variants ofthemolecular config- responding tothiscomposition. Thefirst taskoftheuration areplaced onbadlist and arenotfurther program istotrimthisnumber toamanagable level,
+considered. The structure generator, using the This isaccomplished within thepreliminary infer-
+dendral algorithm,"thenbuilds allpossible candidate ence maker bydrawing ontheaccumulated practical
+molecules within theconstraints inferred from the experience oforganic mass spectroscopists. 19For
+spectrum. Each ofthese structures issuccessively instance, ketone mass spectra canberecognized becausescrutinized bythepredictor which deduces thesignif- ofthefollowing simple fragmentation modes (Scheme
+icant peaks ofahypothetical mass spectrum foreach I).Cleavage adjacent tooxygen, followed bydecar-candidate structure. The program either rejects or bonylation oftheproduct, yields twoionfragmentation
+accepts anystructure onthebasis ofacomparison of pathways: I-*■a-*■bandI-*-c-*■ddepicted in
+theknown andpredicted mass spectra. Theadmissable Scheme I.The McLafferty rearrangement ions cmolecules arethen arranged inanordered listbythe andfcanyield thesecond rearrangement iongprovided
+scoring function. theappropriate "y-hydrogen ispresent. Asimple
+This approach also summarized inFigure 1,isbest mathematical relationship then exists between the
+understood bydescribing each major step ofthe masses oftheions aandcandthemolecular ionM,program foratypical example using thelow-resolution viz.Upon typing thesentence24OH
+(EXPLAIN (QUOTE C9H1B0)
+SIOM»3 .OUOTETESII) (OUOTE
+JUL-39-4S>>theprogram within thepreliminary inference maker
+responds withthefollowing output.26C
+CHg CH 2
+"GOODLIST >("KETONE.)
+"BADLIST"("C-2-ALCOHOL*
+*PRIMARY-ALCOHOL»*ETHYL-ETHER 2«»METHYL-ET
+HER2»»ETKER2» "ALDEHYDE*
+"ALCOHOL* "ISO-PROPYL-KETONE3t *N-PROPYL-KETONE3*"ETHYL-KETONE3*»METHY_-KETONE3»>
+"PARTITIONS »(Tl. 43.) willbeconstructed bythestructure generator exclud-ingthose which contain thesubgraphs represented byII-V.Inaddition theprogram hasbeen instructed torecog-
+nizetheionsbanddandtoconstruct only those ketonescontaining these groups ofatoms oneither sideofthe
+carbonyl group. Inthe present example this means
+those compounds containing C3H7andC6Huflanking
+theketo group. Ofthe82possible ketones ofcom-position C.HiaO, 19arepropylpentyl ketones andthefollowing eight candidate structures26areproduced byThus allpossible acyclic ketones ofcomposition C9Hi80
+(22)Itisourexperience that theprocesses represented bya-»bandc
+-►dinaliphatic ketones arealways accompanied bythepresence ofa
+metastable ion: seeW.Carpenter, A.M.Duffield, andC.Djerassi,
+J.Am. Chem. Soc, 89,6167 (1967).mass spectrum ofanaliphatic ketone ofcomposition ,„
+C9H180. a+c =M+2B.
+The first step istoidentify thetype ofmolecule Toidentify ketones thepreliminary inference maker
+represented bytheunknown mass spectrum (Figure 1). searches fortwo significant peaks inthe spectrum
+Theempirical composition C9Hi80could represent the which satisfy thisrelationship. Ifmore than onesuchmolecular ionofeither analdehyde, ketone, or pair exists, theprogram considers thatpairofpeaks
+unsaturated aliphatic alcohol orether (cyclic structures which arepresent inthehighest (combined) abundance,
+aredeferred forthepresent).18With noconstraints Next theprogram must recognize thedecarbonylation
+except atheory ofinstability 'thestructure generator products (whose abundance must beinexcess of10%(23) F.W.McLafferty, Anal. Chem., 31,82(1959).
+(24) S:09490isthecode number under which Figure lislisted.
+(25) The goodlist and badlist terminology refers tothefollowing
+subgraphs: Ketone (-CO-), C-2alcohol (>C(OH)CHs), primary al-
+cohol (-CH_OH), isopropyl ketone 3(i-PrCOCH2CCH<), n-propyl
+ketone 3(_-PrCOCH2CCH<), ethyl ketone 3(GiHsCOCHaCCHO,
+methyl ketone 3(CH3COCH_CCH<), aldehyde (-OCH), alcohol
+OCOH), ethyl ether-2 (C2H6OCH_-), methyl ether-2 (CHjOCHr-),
+ether-2 (-CH2OCH_-).(26)Itmay help thereader tointerpret dendral dotnotation ifwename atleast thefirsttwoentries. These are5-methyloctan-4-one and2.3-dimethylheptan-4-one, respectively.
+Journal oftheAmerican Chemical Society /91:11 /May 21,1969 Djerassi, etal./Interpretation ofMass Spectra ofKetones2979
+.. OH+OH | +OH
+RxC-^O-C.-Ch/^CH 2.R2C___^lc_
+(l
+~\^_ 1^ <.V,,
+6 g/ f
+_^ /''k/ *6r~\ HXV-, Ay ,~<N
+EiC— C—C-M.— C—C—CEs
+«*"_/ \ 0+
+RiCCCC r2cccc+6h
+O OH
+CH,CCH2CCH<—»»CH.C
+I \CH,
+C2H6CCH 2CCH<—*■CH 3CH 2C
+? I ?H
+CH»CH 2CH 2CCH 2CCH<—>CH 2CH 2CH 2C
+1 LH CH,
+V(//-propyl ketone 3) m,mfc86
+I
+g,mfc582981
+arrangement process23andthisfragmentation isabsent
+(nopeak atmfc 114)from Figure 1.Table I.Heuristic dendral's Interpretation oftheMass Spectra ofSome Aliphatic Ketonesthestructure generator indendral dotnotation (in
+noncanonical order). Each ofthese remaining eight No.ofcandidates from
+No.ofaliphatic Structure Consistency
+Isomers" Ketones generator check7.) "icucicciccaiocitccs
+CB.KETONE.HIBMOLECULES NO
+DOUBLE BONO EOUIVS Compound Ranking ofcandidates
+1. <
+CH..CH3C3H7 CO C3H7.
+2.
+'<CH..CH3 CH..CH3 CH3 C""0
+C3HT»
+3." <CH..C2HS
+C2HS C".OC3H7.
+ '*C...CH3 CH3 C2HS
+C"0 C3H7" 5.' <
+CH..CH3C3K7 C«.O CH..CH3
+CH3 t«.° <
+CH..CH3CH..CH3 CH3 C-.O CH..CH3
+CH37. <CH..C2HS C2HS -C».O
+CH..CH3CH3.
+8. «C...CH3 CH3
+C2HSC".O CH..GH3
+CH3.((43..50.) (71..130.>(99..50.) (IM..2.) (142."!-.)>
+"THIS
+CANDIDATE ISREJECTED BECAUSE OF(114.).a-Butanone6
+3-Pentanone*
+3-Hexanone"11 1 1 1 Ist,2-butanone
+14 3 1 1 Ist,3-pentanone
+Ist,3-hexanone A.i "ictiicccicc2iocnccs 91 6 1 1
+15 1 1 Ist,2-methylhexan-3-one
+TieforIst,3-heptanone and5-methylhexan-2-Methylhexan-3-onec
+3-Heptanoneb254
+254 15 2 2
+DCNE3-one
+ketones isnow examined indetail toeliminate some
+andrank therest. The predictor subroutine predicts
+anabbreviated low-resolution mass spectrum foreach
+candidate structure which isthen checked forpossible
+inconsistencies with theoriginal spectrum. Structures
+which show such inconsistencies are eliminated;
+finally, the scoring function ranks theremaining
+candidates. For instance the first candidate, s-
+methyloctan-4-one, iseliminated since onecanexpect
+toobserve adouble McLafferty rearrangement ion27of
+mass 72,whereas theprogram recognizes that the
+original spectrum (Figure 1)contains only the13C
+isotope peak from mfc 71atthis mass value. This
+incompatibility between thepredicted mass spectrum
+andFigure 1prompts thefollowing response bythe
+computer.28Atthisstage theprogram hasbeen able totruncate
+thelistofeight candidates (outof1936 possible acyclic
+isomers ofcomposition C9H180containing 82ketones)
+totwo candidates: 2,4-dimethylheptan-3-one (VI,
+entry 5)and 2,4,5-trimethylhexan-3-one (VII, entry
+6).The scoring function wasunable todistinguish
+between these twostructures andranked both asequally
+plausible. Inpoint offact thelow-resolution mass
+spectrum, depicted asFigure 1,corresponds toVI.3-Octanoneb
+'''4-Octanone"698 33 4
+2
+44
+1
+3Ist,3-octanone
+Ist,4-octanone
+TieforIst,2,4-dimethylflexan-3-one and2,2-698 33
+698 33 2,4-Dimethylhexan-3-one c
+dimethylhexan- 3-one
+Ist, 3-octanone; tiedfor2nd, 6-methyl-
+heptan-3-one, 5-methylheptan-3-one, and6-Methylheptan- 3-one6 698 33 4 4
+5,5-dimethylhexan-3-one
+82 7
+47
+3Ist,3-nonanone 3-Nonanone" 1936
+1936 82 Consistency check eliminated correct structure
+because noMcLafferty +1peak was
+present inoriginal mass spectrum2-Methyloctan- 3-one"
+"LIST OFRANKS.HO_ECU_E_IConsistency check eliminated allcandidates
+since nopeak was present atmfc 114(Mc-
+Lafferty rearrangement) inoriginal mass
+spectrum4-Nonanonec 1936 82 4 0
+I.-5.s»s.
+P«(43. ?».
+71,7i.tag,)v«NIL
+#4.
+°These numbers were computed byHeuristic dendral operating within theconstraints ofchemical stability (badlist) described inref1,
+orwereextrapolated byhandfrom semilog plotsofthetables generated bytheprogram.'bLiterature mass spectrum :A.G.Sharkey, J.L.
+Shultz,andR.A.Friedel, Anal.
+Chem.,28,934(1956). cMass spectrum determined atStanford University, Chemistry Department.
+S"5.
+J»"<43..».71.7t«100.)
+U-NIL
+«I.«N
+MEANSTHE
+FIRST RANKEO MOLECULE ISTHENTH IMTHE
+ORIGINALNUMBERED
+LIST ABOVE. S"THE
+SCORE(HIGHEST »BEST)
+BASEOONTHE NUMBER OF
+SIGNIFICANT PREOICTEO PEAKSINTHE
+ORIGINAL GRAPH.P*THE LIST OFSIGNIFICANT
+PREDICTED PEAKS.U»THE
+POSSIBLYSIGNIFICANT UNRECORDED PEAKS
+USED TORESOLVE SCORING TIES(THE FM__(SCORE (QUOTE TESTI)
+Sl-9493 )
+JUL- 30-48I.)
+»ICIICCICICC2IOCICICSTable Iallfour structures were rejected because ofthe Experimental Section
+absence ofapeak atmfc 114(M-28)due toThecomputer program described here, named Heuristic
+dendral,aMcLafferty rearrangement from then-propyl side rimsonthePDP-6 time-sharing computer attheStanford Univer-
+chain inthe mass spectrum of4-nonanone. To sityArtificial Intelligence Laboratory. Itiswritten inthelisp
+overcome this failure Heuristic DENDRAL has beenprogramming language intwolarge parts, shown astheleft-and. ,, , .-,T„.. . right-hand sides ofFigure 1.Each part requires approximatelyinstructed that when twoMcLafferty rearrangements4»Kofcore memory> aithou ghthere isanestimated 15-20Kof
+arepossible inanaliphatic ketone with onefrom a overlap between thetwoparts. Although many factors influence
+linear chain ofmore than fivecarbon atoms andthe thelength oftime theprogram takes from thetimeitreceives the
+other involving transfer ofaprimary hydrogen atom, initial spectrum andmolecular ioncomposition tothetimeit
+*i___i.__r_„._
+_____.__._;„.,i.„ .Ko__t outputs itsordered listofexplanatory structures, 4or 5mmatthethen thelatter rearrangement maybeabsent.usual,ysuffice f£examples ofthesjzedescribed hereInconclusion webelieve that although thepresentThe greatest amount oftime isusedbythepredictor; thusour
+capability ofHeuristic DENDRAL fortheinterpretation current efforts areconcentrated onreducing thelistofplausible
+ofunknown mass spectra islimited, this approach candidates bygiving more theoretical information tothepre-
+definitely merits further attention, especially whenliminary
+inferencemaker.
+,.J,, _.j
+<.",/, ", ,„ The program isnow confined tomonofunctional acyclic struc-additional selected spectroscopic data (infrared, ultra-tures However> wearecurren tlyworking onremoving theseviolet, and nuclear magnetic resonance spectra) arefundamental limitations aswell asonadding more mass spectrom-IN
+DOUBTTH_ BETTER).
+DONE((43..44.) (71."133.) (72*"13.) (99."55.) (1.8."13.) (142.
+"9.))
+"THIS CANDIDATE IS
+REJECTED BECAUSE OF<15072>" O O
+Candidate 2,2,3-dimethylheptan-4-one, from the
+output ofthestructure generator issummarily
+eliminated bytheprogram because ofthedisagreement
+between itspredicted mass spectrum and Figure 1
+while entries 3and4canalsobeexcluded from further
+consideration.(CH 3)2CHCCHCH 2CH 2CH 3 (CH3)2CHCCHCH(CH_)_
+'I ICH., CH 3
+VI VII
+Table Isummarizes theprogram's interpretations of
+mass spectra forseveral aliphatic ketones, including
+theexample just discussed indetail. Ifthescoring
+function ranks twoormore candidates equally, asin
+thisexample, allareshown.2.)
+*ICIICCIICCC2IOCICICS((43..44.) (71..100.1 (72... 4.)(99.
+"55.) (100..3.) (114.
+2.) (142..9.))
+"THISCANDIDATE ISREJECTED
+BECAUSEOF(15072 ISO7_ 114.)
+"Heuristic dendral was able tointerpret thelow-
+resolution mass spectra oftheketones listed inTable I
+byapplying therules enunciated earlier inthispaper,
+viz., identification ofthemasses corresponding tothe
+ions a-d and any McLafferty rearrangement ions
+present. Inaddition theprogram was instructed to
+search forthepresence ofthe"McLafferty plusone"
+rearrangement ion.29Todothisitwasnecessary for
+Heuristic dendral tocalculate the13C-isotope con-
+tribution oftheMcLafferty rearrangement species and
+tosubtract thisvalue from theabundance oftheion
+one mass unit higher. Furthermore thepresence of
+the"McLafferty plusone" rearrangement ionwastaken
+asevidence infavor ofalinear chain ofatleast five
+carbon atoms intheunknown ketone. This rule was
+responsible forthecorrect assignment ofstructure to
+themass spectra of3-octanone, 4-octanone, and 3-
+nonanone. However, itmust beadmitted that this
+rule failed inthecaseof2-methyloctan-3-one asthis
+compound lacked apeak initsmass spectrum attrib-
+utable tothe"McLafferty plusone" rearrangement.included.etrytheory tothepredictor andthepreliminary
+inferencemaker. "THIS CANDIDATE ISREJECTED BECAUSE OF(84. 114. 84.114.)"
+4.)
+"ICIIICCCICC2IOCICICS\((43.
+"42.) (71..100.) (84..-4.) (99..57.) (114..4.) (142." 9.))
+"THIS CANDIDATE
+ISREJECTED BECAUSE OF(84. 114. 84. 114.)
+Candidates 5and6showed noanomalous predicted
+peaks when compared toFigure 1,andthus remained
+viable candidates.
+5.)
+*ICIICCICICC2IOCIICCS((43..53.) (71..100.) (99."53.) (18-."15.) <_,«""10.))
+4.) "ICIICCI
+ICCC2IOCIICCS((43..50.) (71."183.) (99..50.) (100."_■> (142."10.))
+The consistency check eliminates thefinal two
+compounds suggested bythestructure generator
+since both would beexpected toexpel 28mass units
+(ethylene) bytheoperation oftheMcLafferty re-
+The elimination ofallfour candidate structures
+proposed bythestructure generator intheexample
+of4-nonanone merits abrief statement. Asnoted in(27)H.Budzikiewicz, C.Djerassi, andD.H.Williams, "Interpreta-
+tionofMass Spectra ofOrganic Compounds," Holden-Day, Inc., San
+Francisco, Calif., 1964, p7.
+(28) Thefirstlineofthisresponse isatransliteration oflinenumber 1
+oftheStructure Generator's output shown above. Next isthepre-
+dicted listofmass-intensity pairs forthisstructure. The reasons for
+eliminating thecandidate appear last.(29) W.Carpenter, A.M.
+Duffield,andCDjerassi, J.Am. Chem.
+Soc, 90,160(1968).
+Djerassi, etal.fInterpretation ofMass Spectra ofKetonesJournal oftheAmerican Chemical Society /91:11 /May 21,19692980
+((43..48.) (71..100.) (99..51.) (114..8.) (142*"10<>>
+♦THIS CANDIDATE IS
+REJECTED BECAUSEOF(114.)"
+3>> *ICIICICCICC2IOCICICS
+((43..44.) (71..100.) (84.'. 4.)(99."55.) (114."4.> (142." 9.))

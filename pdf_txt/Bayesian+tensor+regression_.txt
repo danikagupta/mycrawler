@@ -1,0 +1,936 @@
+Bayesian Methods for Tensor Regression
+Rajarshi Guhaniyogi,
+Department of Statistics, UC Santa Cruz, CA, USA
+June 25, 2020
+Abstract
+For many applications pertaining to neuroimaging, social science, international re-
+lations, chemometrics, genomics and molecular-omics, datasets often involve variables
+which are best represented in the form of a multi-dimensional array or tensor , which
+extends the familiar two-way data matrix into higher dimensions. Rather than vec-
+torizing tensor-valued variables prior to analysis which results in loss of inference, new
+methods have emerged developing regression relationships between variables with ei-
+ther tensor-valued response(s) or predictor(s). Bayesian approaches, in particular, have
+shown great promise in applications pertaining to tensor regressions. A remarkable fea-
+ture of fully Bayesian approaches is that they allow exible modeling of tensor-valued
+parameters in the regressions involving tensor variables and naturally oer characteri-
+zation of uncertainty in the parametric and predictive inferences. This paper provides
+a review of some relevant Bayesian models on tensor regressions developed in recent
+years. We divide methods according to the objective of the analysis. We begin with
+tensor regression approaches with a scalar response and a tensor-valued covariate, dis-
+cuss both parametric and nonparametric modeling options and applications in this
+framework. We then address the problem of making inference with a tensor response
+and a vector of covariates, with applications including task related brain activation
+and connectivity studies. Finally, we oer discussion on Bayesian models involving a
+tensor response and a tensor covariate. Discussion of each model is accompanied by
+available results on its posterior contraction properties, laying out restrictions on key
+model parameters (such as the tensor dimensions) to draw accurate posterior inference.
+1Keywords: Bayesian Statistics; Gaussian Process; Low Rank Decomposition; Multiway
+Shrinkage Prior; Posterior Convergence; Tensor Object.
+Introduction
+Of late, scientic applications in a variety of disciplines encounter datasets where one
+or more variables are multidimensional arrays or tensors, which are higher dimensional
+analogues of two dimensional matrices. For example, tensor objects are encountered in
+molecular-omics proling with high dimensional data involving multiple subjects, tissues,
+uids or time points within a single study [26]. Similarly, in functional magnetic resonance
+imaging (fMRI) or electroencephalogram (EEG) data, multidimensional arrays are common
+with dierent dimensions signifying time points, brain regions or frequencies [12]. Again,
+there can be time varying tensor valued objects in international relational data with dimen-
+sions signifying countries, time points, and diplomatic actions [25]. Scientic objective in
+such applications often pertains to developing regression relationships with either a tensor-
+valued response or a predictor.
+A few early approaches consider reshaping tensor variables to high dimensional vectors
+before employing them to regression analysis [67]. Reshaping tensors introduces massive
+dimensional unstructured vectors in the regression framework. Applying ordinary Bayesian
+variable selection (see stat05788 ) or shrinkage priors on coecients of high dimensional
+predictors causes computational havoc. Additionally, this may result in loss of spatial infor-
+mation in the tensor cells. An alternative approach within the regression framework envisions
+tensor variables as high dimensional functional variables to take into account the spatial in-
+formation in them. Several penalized functional regression approaches have emerged in the
+last decade or so, mainly with functional predictors [20, 48, 68, 30, 16, 14, 61, 49], though
+many of them may face computational issues with large tensors due to incorporating ex-
+pensive cross validation procedures for choosing the tuning parameters. Other important
+approaches include two stage procedures which rst conduct a dimension reduction step
+with a tensor variable, and then t a model using lower dimensional summaries of the tensor
+variable (t) [7]. Similar to the reshaping approach, two stage approaches may also lose
+inference due to somewhat ignoring the inherent spatial information in the tensor variables.
+2Rather than summarizing the tensor objects in one way or another, novel approaches have
+appeared to directly incorporate a tensor valued response or predictor in regression frame-
+works, mostly in the frequentist paradigm. To this end, [68] propose a generalized linear
+model framework involving a scalar response and a tensor predictor in which the tensor pre-
+dictor coecient is assumed to have a low-rank Cannonical Parallel Factor (CP/PARAFAC)
+decomposition [33], which is a higher dimensional analogue to factor modeling in two dimen-
+sions, formally introduced later. [39] extend the framework to incorporate a more general
+Tucker decomposition of the tensor regression parameter. Both these models allow for the
+incorporation of sparsity-inducing regularization for the tensor parameter. Various exten-
+sions of such tensor regression frameworks have appeared to address relevant practical issues.
+For example, a more ecient estimation algorithm of the tensor parameter is proposed in
+[63], while [60] propose regularization using the total variation penalty on the tensor pa-
+rameters and argue for it as a more suitable option when the tensor predictor is a piecewise
+smooth image with jumps and edges. There is also some literature on regressions with a
+tensor response and scalar predictors. For example, [44] consider an approach with a tensor
+response and scalar predictors. While they assume a low-rank structure on the tensor coef-
+cient, no sparsity is enforced on the tensor coecient. [38] propose an alternative strategy
+following the literature on envelope-based regression models [11], that utilizes a generalized
+sparsity principle to exploit the redundant information in the tensor response, by seeking
+linear combinations of the response that are irrelevant to the regression. In the same vein,
+[55] develop an approach that assumes low-rank decomposition of the tensor coecient and
+imposes element-wise sparsity on individual cells of the tensor coecient, thus oering vari-
+able selection in the tensor response regression paradigm. In the frequentist literature of
+tensor on tensor regression, [46] oer theoretical results under convex regularization with
+the tensor nuclear norm, though computation of tensor nuclear norm is NP-hard [55, 13].
+In comparison, there is a limited Bayesian literature on tensor regressions. Bayesian
+frameworks in tensor regressions have shown great promise in eective modeling of tensor
+valued parameters with careful construction of priors that naturally induces sparsity within
+and across tensor margins and provides model based estimation of tuning parameters. In
+addition, the need for valid measures of uncertainty on parameter (predictive) estimates is
+3crucial, especially in settings with low or moderate sample sizes, which naturally motivates
+a Bayesian approach. This article provides a review of the most relevant Bayesian modeling
+approaches to tensor regression, which have mostly appeared in the last few years. We
+divide the article into a few sections according to the modeling objective. We begin with
+the review of tensor regression approaches with a scalar response and a tensor covariate.
+Such settings are typically useful in neuroimaging studies which usually record resting state
+fMRI and brain related phenotype data over a number of subjects. The main objective of
+such studies pertains to understanding relationships between dierent brain regions with the
+phenotype of interest. We discuss the parametric tensor linear model under this setting,
+provide an overview of novel multiway structured shrinkage priors specically developed to
+draw inference, and then extend our discussion to the class of Bayesian non-parametric tensor
+regression models. Theoretical results laying out conditions for posterior consistency have
+also found brief mention in this section.
+Another important area of Bayesian tensor regression pertains to regression settings with
+a tensor response and either a vector or a tensor valued predictor. An application of a tensor
+response with a vector predictor is found in task related brain activation studies. In a typical
+task-related fMRI experiment, the brain is scanned at small intervals while a subject per-
+forms a series of tasks [32, 31, 62, 66, 64]. The objective is to identify brain regions activated
+by an external stimulus. The Bayesian tensor response regression framework having brain
+scans as the tensor response with task-related predictors directly ts into drawing inference
+in single- and multi-subject brain activation studies. The review discusses tensor response
+regression models and the development of shrinkage priors on tensor parameters to draw e-
+cient posterior inference. We extend the discussion on Bayesian tensor response regression to
+Bayesian mixed eect tensor response regression models which nd an important application
+in the joint estimation of brain activation and connectivity for multi-subject studies. Con-
+nectivity signies the interaction between brain regions to assess how information is shared
+across brain regions. We focus upon functional connectivity that seeks to determine brain
+regions with similar neuronal activity. We will additionally oer a brief discussion on some
+important theoretical developments in these models laying out sucient conditions on the
+tensor dimensions, sparsity, and magnitudes of cell entries to achieve optimal estimation of
+4tensor coecients.
+As part of the review, we briey mention some of the recent literature on Bayesian
+tensor-on-tensor regression. This regression framework is directly motivated by a plethora of
+important application, including temporal modeling of international relational data [25], the
+prediction of fMRI from EEG data [12] and the prediction of gene expression across multiple
+tissues from other genomic variables. We begin by reviewing tensor on tensor regression
+models which assume that the response and predictor tensors have the same number of
+modes. We also discuss a more general framework that allows response and predictor tensors
+to have dierent number of modes [41]. Finally, we briey review extensions of tensor on
+tensor regressions with a time varying tensor response. While the review draws motivations
+for various approaches mainly from neuro-scientic applications, the methods reviewed in this
+article lend themselves to the analysis of datasets emerging from various other applications.
+Figure 1 shows an outline of our review.
+Figure 1: Outline of the Bayesian methods for tensor regressions reviewed in this article.
+Methods are divided according to the objectives of the analysis.
+Notations
+We begin by introducing essential notations related to tensors which will appear re-
+peatedly in dierent sections. A tensor B2
+D
+d=1Rpd, referred to as a D-way tensor or
+D-mode tensor, is a multidimensional array whose ( v1;:::;vD)thcellis denoted by B(v1;:::;vD),
+1v1p1,...,1vDpD. WhenD= 2, a tensor corresponds to a matrix. A D-
+way outer product between vectors bd= (bd;1;:::;bd;pd)0, 1dD, is ap1pD
+5(a) CP/PARAFAC decomposition
+(b) Tucker decomposition
+Figure 2: Visualization of CP/PARAFAC decomposition of rank-R and Tucker decomposi-
+tion of ranks R1;R2;R3for a three dimensional tensor B.
+tensor denoted by B=b1b2bDwith the entry in the ( v1;::;vD)thcellgiven by
+B(v1;:::;vD)=QD
+d=1bd;vd. Dene avec(B) operator as one that stacks elements of this tensor
+into a column vector of lengthQD
+d=1pd. From the denition of outer products, it is easy to
+see thatvec(b1b2bD) =bD
+
+b1. As a higher order generalization of matrix
+singular value decomposition, the Tucker decomposition of a D-way tensorB2
+D
+d=1Rpdis
+often considered. The Tucker decomposition [57, 33] can be expressed as
+B=R1X
+r1=1R2X
+r2=1RDX
+rD=1r1;:::;rDb(r1)
+1b(r2)
+2b(rD)
+D; (1)
+whereb(rd)
+dis apddimensional vector, 1 dD, often referred to as the tensor margins
+and= (r1;:::;rD)R1;:::;R D
+r1;:::;rD=1, referred to as the core tensor . If one considers fb(rd)
+d; 1rd
+Rd;1dDgas \factor loadings" and r1;:::;rDto be the corresponding coecients, then
+the Tucker decomposition may be thought of as a multiway analogue to factor modeling.
+A rank-RCP/PARAFAC decomposition emerges as a special case of Tucker decomposition
+(1) whenR1=R2==RD=Randr1;:::;rD=rI(r1=r2==rD=r) [22, 33].
+Figure 2 provides a pictorial view of PARAFAC and Tucker decompositions for D= 3.
+A mode-dber of aD-way tensor is obtained by xing all dimensions of a tensor except
+thed-th one. For example, in a matrix (equivalently a 2-way tensor), a column is a mode-1
+6ber and a row is a mode-2 ber. A d-th mode vector product of a D-way tensorBand
+vectora2Rpd, denoted byBda, is a tensor of the order of p1pd 1pd+1pD,
+whose elements are the inner product of each mode- dber ofBwitha. The Tucker product
+[57] between a D-way tensorAof dimensions p1pDand matrices B1,B2,..,BDof
+dimensions m1p1,...,mDpDrespectively, denoted by AfB1;:::;BDg, is dened as a
+tensorCsuch thatvec(C) = (BD
+
+B1)vec(A). The Tucker product essentially maps
+ap1pDtensor to a m1mDtensor. For D= 2, it follows that C=B1AB0
+2.
+For two tensors AandBof dimensions p1pD1m1mD3andm1
+mD3q1qD2respectively, the contracted product between the two tensors is a tensor
+of dimension p1pD1q1qD2, whose (v1;:::;vD1;u1;:::;uD2)th element is given
+byPm1
+i1=1PmD3
+iD3=1A(v1;:::;vD1;i1;::;iD3)B(i1;::;iD3;u1;:::;uD2). Finally, we use jjjj andjjjj1to
+denote the L2andL1norms, respectively, for both vectors and higher order tensors.
+1 Bayesian Tensor on Scalar Regression Model
+1.1 Parametric Bayesian Tensor on Scalar Regression Model
+Neuroscientic studies often involve 3-dimensional resting state fMRI scans, along with
+age, gender and other behavioral variables and brain related phenotypes for a number of
+subjects [40, 34]. The phenotypes of interest can be continuous, binary (e.g., presence or
+absence of a neuronal disease) or categorical (e.g., dierent levels of a specic disorder).
+In these applications, the inferential interest lies in predicting the brain related phenotype
+based on the fMRI scan (treated as a tensor object) as well as from behavioral variables.
+Further, it is of specic interest to identify the regions in the brain (alternatively, the cells
+in the tensor predictor) that are predictive of the response. Let y2Y denotes a response
+variable, with z2 X  RpandX2 
+D
+d=1Rpdbeing the scalar and tensor predictors,
+respectively. Depending on the nature of the response (continuous, binary, categorical or
+count), a generalized tensor regression model is proposed in these contexts as below
+E[yjX;z] =g 1
+y(+z0+hX;Bi);hX;Bi= vec(X)0vec(B); (2)
+7wheregy() is an appropriate link function, is ap1 coecient for scalar predictors
+andB2
+D
+d=1Rpdis the tensor coecient corresponding to the measured tensor predictor
+X. [19] consider the tensor linear regression model with gy() as the identity link function,
+whereas [6] discuss binary tensor regression model with zero-inated logit link.
+Without imposing any additional structure on the coecient tensor B, its estimation
+involvesQD
+d=1pdparameters. To reduce the number of free parameters, a rank-R PARAFAC
+decomposed structure is commonly adopted for B[68, 19]. Under the assumed rank- R
+PARAFAC decomposition for B, model (2) requires estimating RPD
+d=1pdas opposed to
+QD
+d=1pdparameters for the unstructured B. To appreciate the extent of dimension reduction
+oered by the PARAFAC decomposition, notice that with a tensor predictor of dimension
+303030, the unstructured Brequires estimating 27000 parameters, whereas the rank-R
+PARAFAC structure involves only 90 Rfree parameters. In many applications, R5 15
+seems sucient, the number of free parameters ranges between a couple of hundreds to
+couples of thousands. As pointed out by [19], such a reduction in the number of parameters
+facilitates computationally ecient estimation of B. However, the imposed decomposition
+induces a nonlinear relationship between tensor margins and cell entries in B. In particular,
+thev= (v1;:::;vD)th cell entry of Bis given by B(v1;:::;vD)=PR
+r=1QD
+d=1b(r)
+d;vd. As one is
+interested in identifying geometric sub-regions of the tensor in which coecients are not
+close to zero, with the remaining elements being very close to zero, one wonders whether
+such a dramatic dimension reduction retains sucient exibility. We will return to this
+question in due course with sucient theoretical justication.
+Although the tensor coecient Bis identiable, [19] comments on non-identiability of
+tensor margins b(r)
+d,d= 1;::;D ,r= 1;:::;R . Constructing a prior distribution on the tensor
+margins after adding necessary identiability restrictions turns out to be inecient. Instead,
+[19] propose a new class of prior distributions on tensor margins to draw ecient posterior
+inference onB(rather than on tensor margins) ignoring any identiability constraints, and
+observe rapid convergence for the tensor parameter B. To elaborate, the multiway Dirichlet
+generalized double Pareto (M-DGDP) prior introduced in [19] induces two types of shrinkage
+in estimating B. Shrinkage across ranks (or summands in the PARAFAC decomposition)
+takes place in an exchangeable way, with global scale Ga(a;b) adjusted in each rank
+8asr=rforr= 1;:::;R , where  = ( 1;:::;R)Dirichlet(1;:::;R) encourages
+shrinkage towards lower ranks in the assumed PARAFAC decomposition. In addition, Wdr=
+diag(wdr;1;:::;wdr;pd),d= 1;:::;D andr= 1;:::;R are margin-specic scale parameters
+for each component. The hierarchical margin-level prior is given by
+b(r)
+dN 
+0;(r)Wdr
+; wdr;vdExp(2
+dr=2); drGa(a;b): (3)
+Collapsing over element-specic scales, notice that b(r)
+d;vdjdr;r;iidDE(dr=pr), 1vd
+pd. Further, integrating over dr,b(r)
+d;vdjr;can be shown to induce a Generalized Double
+Pareto shrinkage prior on the individual margin coecients, which in turn is a Bayesian
+analogue to an adaptive LASSO penalty [3] (see stat07543.pub2 ) and imparts shrinkage
+on tensor margins. Flexibility in estimating fb(r)
+d; 1dDgis accommodated by modeling
+within-margin heterogeneity via element-specic scaling wdr;vd. Common rate parameter dr
+shares information between margin elements, encouraging shrinkage at the local scale. The
+prior achieves shrinkage across ranks as well as within a margin, and hence is coined as a
+multiway shrinkage prior. Figure 3 shows a pictorial depiction of the prior. The choice of
+hyper-parameters 1;:::;R;a;bcrucial to impose adequate tail behavior of Ba apriori
+(see [19] for more details). Later, [6] prove that the imposed prior on B(v1;::;vD)has a thicker
+tail than the ordinary Bayesian LASSO [43] shrinkage prior. Advantage of the M-DGDP
+prior is that the posterior full conditionals of most parameters are in closed forms, leading
+to simple Gibbs sampling updates and rapid convergence [19].
+An important question posed earlier is that if the dimension reduction step using the
+low-rank factorization and subsequent prior structure on tensor margins limit exibility
+in estimating the tensor parameter B. To this end, [19] oer theoretical results proving
+consistency of the proposed model in estimating the regression function. The consistency
+of Bayesian models and estimators are determined using the notion of posterior consistency
+[15, 2, 4]. Let f(yjX;B) denotes the density of y, and assume that the true data generating
+model also belongs to the class of tensor regression models with density given by f(yjX;B0).
+9(a) M-DGDP prior shrinkage across ranks
+(b) M-DGDP prior shrinkage within a rank
+Figure 3: Multiway Dirichlet Generalized Double Pareto (M-DGDP) prior imposes exchange-
+able shrinkage across ranks for the model to opt for a lower rank structure of B. Within
+every rank, the elements in the tensor margin are assigned shrinkage priors for adequate
+estimation of B.
+10Dene a Kullback-Leibler (KL) neighborhood around the true tensor B0as
+Bn=(
+B:1
+nnX
+i=1KL(f(yijXi;B0);f(yijXi;B))<)
+:
+Further, let nand ndenote prior and posterior densities of Bwithnobservations,
+Figure 4: Visualization of posterior convergence. The yellow point presents the true parame-
+ter and blue ball presents a neighborhood of radius around the truth. Posterior consistency
+roughly means as nincreases, most of the posterior mass concentrates inside the blue ball
+for any choice of . In the limit (as n!1 ), the posterior probability inside the ball tends
+to 1, for any choice of . In the study of posterior contraction rate, is considered to be a
+decreasing function of n,n!0. The task remains to nd the fastest rate of decay to 0 for
+nas a function of n. The choice of the neighborhood has profound eect on the posterior
+convergence property of a model.
+respectively. [19] have established posterior consistency by showing that the following result
+holds for the proposed tensor regression model with gy() as the identity link
+n(Bc
+n)!0 underB0a.s. asn!1: (4)
+Figure 3 further claries the concept of posterior consistency. [19] have adopted a framework
+where the tensor dimensions pd;ns are considered to be increasing functions of the sample
+sizen. Such a framework allows investigating the maximum rate at which pd;ns can grow
+to maintain (4). It has been shown in [19] that posterior consistency of the model can be
+maintained withPD
+d=1pd;nlog(pd;n) =o(n) (see Theorem 2 in [19]). Notably, this condition
+11requiresP
+d=Dpd;nto grow sub-linearly with sample size n, though the number of cells
+QD
+d=1pd;nin the tensor can possibly grow at a rate much faster than the sample size n.
+Hence, the model ensures desirable performance for tensor covariates with a massive number
+of cells, even in presence of moderate sample size (refer to [19] for a more detailed discussion).
+The theorem also assumes that B0admits a rank- RPARAFAC decomposition and Mn=
+1
+nrnP
+i=1jjXijj2
+2grows slowly as a function of n. Later, [17] have established a much stronger
+\near optimal" convergence rate under similar assumptions. Specically, [17] have shown
+that the risk function
+1
+nnX
+i=1EB0Z
+KL(f(yijB0);f(yijB))n(Bjfyi;Xign
+i=1) (5)
+is bounded above by 2
+nwherencan be taken as n 1=2upto some log( n) factor. Importantly,
+[56] also showed decay of (5) to 0 at an \optimal" rate, with an alternative specication of
+prior distributions on the tensor margins, though the prior specied may appear to be less
+conducive to full scale Bayesian computation.
+Figure 5: Application to the ADHD data. Left panel is the regularized estimate overlaid
+on a randomly selected subject. Right panel is a selected slice of the regularized estimate
+overlaid on the template. Picture courtesy [68].
+To demonstrate practical application of tensor regression framework developed in this sec-
+tion, a brief analysis of tensor regression is presented in a neuroimaging data. The dataset
+records resting state fMRI and T1-weighted images of 776 subjects, either normal, or suf-
+fering from attention decit hyperactivity disorder (ADHD). Information on demographic
+and behavioral variables for the subjects are also available. A binary tensor regression with
+gy() as the logit link has been tted to the data considering binary indicators for subjects as
+12responses and brain images as tensor covariates. The analysis reveals two regions of interest
+signicantly associated with the ADHD: left temporal lobe white matter and the splenium
+that connects parietal and occipital cortices across the midline in the corpus callosum (see
+Figure 5); both these ndings are consistent with earlier studies. In fact, prior studies have
+revealed prominent volume reductions in the temporal and frontal cortices in children with
+ADHD compared with matched controls [53]. An earlier study has also recorded a reduced
+size of the splenium in the corpus callosum being responsible for ADHD [58]. We refer to
+[56] for more details on the data and analysis.
+1.2 Nonparametric Tensor on Scalar Regression
+In estimating regression relationships between a scalar response and a tensor predictor,
+the bias-variance tradeo is a central issue, both from theoretical and practical perspectives.
+In the parametric generalized tensor model discussed in Section 1.1, the function class that
+the model can represent is critically restricted due to its linearity in the mean function and
+the low-rank constraint, implying that the variance error is low but the bias error is high
+if the true functional relationship between yiandXiis either nonlinear or full rank. An
+alternative approach is to t the nonparametric tensor regression model to the data [67, 27]
+given by
+yi=f(Xi) +i;iiidN(0;2): (6)
+Heref() can represent a wide range of functions and the bias error can be close to zero,
+though at the expense of exibility due to the notorious high dimensionality associated with
+estimating (6). In order to mitigate the burden of high dimensionality, [29] propose a new
+class of additive-multiplicative nonparametric regression (AMNR) models. AMNR employs
+low-rank decomposition for both the tensor predictor Xand the function f(), and hence is
+referred to as a doubly decomposing nonparametric tensor regression framework.
+To elaborate, [29] propose decomposing the tensor predictor X=PS
+r=1sx(s)
+1x(s)
+D,
+1312 using a rank-S PARAFAC decomposition, with each x(s)
+da unit vector. Dene
+fAMNR(X) =RX
+r=1SX
+s=1sDY
+d=1f(r)
+d(x(s)
+d): (7)
+fAMNR() can be conceptualized as a rank-R PARAFAC decomposition of f() in an innite
+space. In fact, any function in a Sobolev space of order can be approximated to any
+degree by a function of this form, with each f(r)
+d() belonging to a Sobolev space of order 
+[21]. To estimate fAMNR(), each local function f(r)
+d() is assigned a Gaussian process prior
+distribution (see stat04542 ).
+Interestingly, AMNR is interpretable as a piecewise non-parametrization of the tensor
+model proposed in (2) with gy() as the identity link. Assuming BandXto have rank-R
+and rank-S PARAFAC decompositions respectively, hX;Bi=PR
+r=1PS
+s=1sQD
+d=1hb(r)
+d;x(s)
+di.
+Thus AMNR replaces hb(r)
+d;x(s)
+diby a local function f(r)
+d(x(s)
+d). [29] generalize a few earlier
+approaches on nonparametric tensor regression, such as [52], which use the same vector
+input for every f(r)
+d() and restrict S= 1. Other prominent approaches in the context of
+nonparametric tensor regression includes the Tensor Gaussian Process (TGP) model [67],
+which is essentially a GP regression model that reshapes a tensor into a high-dimensional
+vector and takes the high dimensional vector as a predictor. While tensor GP is found
+to demonstrate satisfactory practical performance, AMNR derives additional advantage by
+oering theoretical support for the class of nonparametric tensor regression models discussed
+below.
+Suppose ^fn() is the Bayes estimator for estimating f() with sample size n. Let the
+metricjjgjjnfor any function g() represents the quantity1
+nPn
+i=1g(Xi)2. Assume that the
+true data generating model is given by (6) with the true regression function f() belonging
+to the space of Sobolev functions of order . [29] mentioned two key assumptions in the
+theoretical development of AMNR: (a) the true data generating regression function f()
+and functions generated from the tted Gaussian process priors have the same degree of
+smoothness; (b) f() satises a rank additivity condition which essentially implies that for
+any tensorXadmitting a rank- RPARAFAC decomposition X=PR
+r=1rx(s)
+1 x(s)
+D,
+one hasf(X) =PR
+r=1f(rx(s)
+1 x(s)
+D) [29]. Rank-additivity has been crucially used
+14in developing multivariate additive model analysis, see [23], [47]. Assume that fadmits
+a rankSdecomposition in the sense of (7). [29] observed dierent convergence rates of
+estimatingfby^fn, depending on whether Sis nite or innite. When Sis nite, assuming
+S=S, [29] proved that Ejj^fn fjj2
+ndecays at the rate of n 2=(2+maxD
+d=1pd). On the other
+hand, when Sis innite, the convergence rate deteriorates by a factor due to a nite rank
+approximation of f, details of which can be found in [29].
+Before concluding this section, we would like to make an important observation. No-
+tice that the existing literature on Bayesian tensor regressions assumes low-rank PARAFAC
+decomposition either on the tensor parameter (Section 1.1) or on the regression function
+(Section 1.2). There is a scope of imposing a more exible and expressive Tucker decomposi-
+tion structure on them. While the dierence seems to be a minor one, it can have profound
+eects, especially on neuro-scientic applications. For example, the freedom in the choice of
+unequalRdsd= 1;::;D is essential when the tensor data are skewed in dimensions, which is
+pretty common in EEG, with the temporal dimension often exceeding the spatial dimension.
+Besides, the Tucker formulation may often be handy to achieve parsimony for datasets with
+small to moderate sample sizes [39]. Considering these facts, we expect to see in future a
+more exible Bayesian modeling with Tucker decomposition in the tensor regression contexts.
+2 Bayesian Tensor Regression Models with a Tensor
+Response
+While regression with a tensor predictor and a scalar response is able to deliver inference
+on many scientic problems in neuroscience and other disciplines, a variety of applications
+also motivate models with a tensor response and a vector or a tensor predictor. For example,
+detecting brain regions activated by an external stimulus or condition is probably the most
+common objective in fMRI studies [66]. Neuronal activation in response to a stimulus occurs
+in milliseconds and cannot be observed directly. However, neuronal activation is followed
+by the metabolic process which increases blood ow and volume in the activated areas, and
+can therefore be measured by fMRI. During the course of a task-related fMRI experiment, a
+series of brain images are acquired over multiple time points while a subject performs multiple
+15tasks, yielding three dimensional tensor responses over time points. The tensor response at
+each time point is presumed to be associated with the task related predictors and it is of
+scientic interest to delineate the nature and region of activation. Building a regression
+framework involving the tensor response and task related predictors is naturally motivated
+from such scientic problems. We also refer to applications in electroencephalography (EEG)
+studies, where voltage values are measured from numerous electrodes placed on the scalp
+over time. The resulting data is a two-dimensional matrix where the readings are both
+spatially and temporally correlated. These matrix responses are often regressed on a set
+of scalar predictors (e.g., if a subject is alcoholic or not) to identify their variation with
+the predictors. Similarly, tensor on tensor regressions have found applications including the
+prediction of fMRI from EEG data [12], prediction of gene expression across multiple tissues
+from other genomic variables [45] and temporal dynamics of international relational data
+[25], to name a few. In what follows, we provide a brief review of Bayesian models for both
+vector on tensor and tensor on tensor regressions.
+2.1 Bayesian Vector on Tensor Regression Models
+[18] formulate the Bayesian vector on tensor regression model, mainly from the motivation
+of a single-subject brain activation study, though the framework can be naturally adapted
+to other data application contexts. Let Yi= ((Yi;v))p1;::;pD
+v1;:::;vD=12
+D
+d=1Rpddenote a tensor
+valued response for the ith sample, where v= (v1;:::;vD)0represents the position of cell vin
+theDdimensional array of cells. Let xi= (x1;i;:::;xm;i)02X Rmbe them-dimensional
+measured vector predictor. Assuming that both response Yiand predictors xiare centered
+around their respective means, the proposed tensor response regression model of Yionxi
+is given by
+Yi= 1x1;i++ mxm;i+Ei; (8)
+fori= 1;:::;n . k2
+D
+d=1Rpd,k= 1;::;m; is the tensor coecient corresponding to the
+predictorxk;i.Ei2
+D
+d=1Rpdrepresents the error tensor corresponding to the ith sample.
+Flexibly modeling the distribution of Eiallows developing the correlation structure between
+samples and among the cells of Yi. In the context of single-subject brain activation studies,
+16theith tensor response represents the brain image observed at time i. In this specic context,
+the error tensor Eiis assumed to follow a component-wise AR(1) structure (see stat03473 )
+acrossi,vec(Ei) =vec(Ei 1)+vec(i), where2( 1;1) is the autocorrelation coecient,
+andi2 
+D
+d=1Rpd, with each cell in ifollowingN(0;2=(1 2)). This ensures both
+computational simplicity and stationarity in the AR(1) structure.
+To tackle the ultra-high dimensional modeling pursuit in estimating the  ks, [18] propose
+a rank-R PARAFAC decomposition of each  k, i.e.,  k=PR
+r=1(r)
+1;k(r)
+D;k, where
+(r)
+d;k= ((r)
+d;k;1;:::;(r)
+d;k;p d)0is apddimensional vector, 1 rR, 1dDandk= 1;::;m .
+Although the M-DGDP prior constructed on tensor margins in [19] becomes an obvious
+choice, [18] observe that a straightforward application of the M-DGDP prior on  kleads
+to less accurate uncertainty estimation, perhaps due to less desirable tail behavior of the
+posterior distribution of the   v;kparameters. Instead, [18] propose a new multiway stick
+breaking shrinkage (M-SB) prior on the tensor coecients  k. The proposed multiway
+shrinkage prior bears close connection with the M-DGDP prior, the main dierence being
+how it achieves shrinkage across ranks. More specically, set r;k=r;kk, as the scaling
+specic to rank r= 1;:::;R . Eective shrinkage across ranks is achieved in [18] by adopting
+a stick breaking construction for the rank-specic parameters r;ks,r;k=r;kr 1Q
+l=1(1 l;k),
+r= 1;:::;R 1, andR;k=R 1Q
+l=1(1 l;k), wherer;kiidBeta (1;k). In contrast with the
+exchangeable shrinkage oered by the M-DGDP prior across ranks, the M-SB prior imposes
+increasing shrinkage across ranks, favoring a low-rank solution. The global scale parameter
+is modeled as kIG(a;b). The prior specication is completed by specifying priors
+on tensor margins with local scale parameters Wdr;k= diag(wdr;k;1;:::;wdr;k;p d) to achieve
+adequate shrinkage,
+(r)
+d;kN(0;r;kWdr;k); wdr;k;k 1Exp(2
+dr;k=2); dr;kGa(a;b); k1= 1;:::;pd:
+[18] develop theoretical results providing more insights into the model and the proposed
+prior. Similar to Section 1.1, the theoretical framework of [18] assumes the number of
+predictors as well as dimensions of tensor margins as functions of the sample size n(hence
+using a subscript n). [18] derive restrictions on the growth of mnandpd;ns as functions of n
+17to ensure asymptotically consistent estimation of  .
+Let be amnp1;npD;ntensor whose kth slice is given by  k. Let the true data
+generating model be given by (8), with  0as the true tensor coecient. Since the shrinkage
+prior on  assigns zero probability at point zero, the exact number of nonzero elements of
+ is alwaysmnQD
+d=1pd;n. A meaningful comparison with the number of nonzero elements
+snof the true tensor coecient  0is made by considering ~ sn, the number of elements of
+ exceeding in absolute value a threshold an, which will be specied later. In other words,
+only elements with absolute values larger than anwill be treated as signicant and counted
+towards non-zero entries.
+DeneBn=n
+At least ~snabsolute values of  are greater than an=QD
+d=1pd;no
+,Cn=
+
+ :jj   0jj2>	
+andAn=Bn[Cn. [18] show that  n(An)!0;a.s., whenn!1
+under the assumptions given below:
+(a) 0
+kassumes a rank- R0PARAFAC decomposition,  0
+k=PR0
+r=10(r)
+1;k0(r)
+D;k, fork=
+1;::;mn, withR>R 0andjj0(r)
+d;kjj<1;
+(b)jj 0
+kjj0=sn, withsnlog(pn) =o(n);
+(c) ~sn=O(sn);
+(d)mnPD
+d=1pd;nlog(pd;n) =o(n);
+(e) There exists 0;1>0 s.t.emin(X0
+rR 1Xr)n2
+0andemax(X0
+rR 1Xr)n2
+1,
+for any setrf 1;:::;mng, whereXris a submatrix of X= [x0
+1::x0
+n]0with
+columns corresponding to the indices r.Ris annnmatrix with var(Ev) =R,
+Ev= (E1;v;:::;En;v)0.
+Importantly, the result proves accurate estimation of  , also ensuring that the true number
+of nonzero elements in  0and the number of elements identied as nonzero in  (i.e., above
+the threshold an) are of the same order. In fact the L2metric between  and 0is stronger
+than the KL-divergence metric used in Section 1.1. Similar to Section 1.1, assumptions on
+pd;nandmnallow the number of tensor cells to grow much faster than the sample size n
+without disturbing the desirable posterior consistency of the model.
+18Building on (8), [54] develop the mixed eect tensor response regression model with
+an application to modeling the joint estimation of brain activation at the voxel level and
+brain connectivity at the lobe level for multi-subject fMRI studies. Let Yi;g;tbe the tensor
+of observed fMRI data in brain region gfor theith subject at the tth time point. Yi;g;tis
+observed in the form of a tensor with dimensions p1;gpD;g. To simultaneously measure
+activation due to stimulus at voxels in the gth brain region and connectivity among Gbrain
+regions, [54] employ an additive mixed eect model with a tensor-valued fMRI response and
+activation-related predictors x1;i;t;:::;xm;i;t2R,
+Yi;g;t= 1;gx1;i;t++ m;gxm;i;t+di;g+Ei;g;t; (9)
+for subject i= 1;:::;n , in region g= 1;:::;G , and time t= 1;:::;T . k;g(k= 1;:::;m )
+represents activation due to the kth stimulus at the gth brain region, and hence multiway
+stick breaking priors are independently used for each  k;gto determine the nature of ac-
+tivation. Additionally, the connectivity between dierent regions is ascertained by jointly
+modelingdi;gs with a Gaussian graphical LASSO prior [59] given by,
+di= (di;1;::;di;G)0N(0; 1); i= 1;:::;n;
+p(j) =C 1Y
+g<g 1[DE(gg1j)]GY
+g=1
+Exp(ggj
+2)
+12P+; (10)
+whereP+is the class of all symmetric positive denite matrices and Cis a normalization
+constant. The covariance = (gg1:gg1) is a vector of upper triangular and diagonal
+entries of the precision matrix . Using properties of the multivariate Gaussian distribution
+(seestat05651,stat05654 ), a small value of gg1stands for weak connectivity between
+regionsgandg1, given the other regions. In fact, gg1= 0 (g < g 1) implies that there
+is no connectivity between regions gandg1, given the other regions. In practice, a double
+exponential prior on the o-diagonal entries will a priori favor shrinkage. An ecient Markov
+chain Monte Carlo algorithm has been developed for estimation of model parameters, even in
+presence of high resolution fMRI images, and post burn-in MCMC samples are processed to
+determine activated voxels in a brain region and connectivity between dierent brain regions.
+19(a) Brain connectivity map among lobes
+0306090
+0 25 50 75
+−0.015−0.010−0.0050.000 (b) Brain activation map in vox-
+els
+Figure 6: An example of brain activation and connectivity estimated jointly from the Balloon
+Analog Risk-Taking Task (BART) Experiment data.
+All details related to implementation and inference on (9) can be found in [54].
+[54] analyze data collected in a study examining the fMRI scans of individuals undergoing
+a test which introduces risk-taking scenarios. This study is known as the Balloon Analog
+Risk-Taking Task (BART) Experiment [50], which requires participants to make active de-
+cisions, and whose design has been found to correlate with real-world risk behavior such
+as alcohol use, cigarette and drug use, gambling, stealing, unsafe sex [36, 35, 37] and trait
+measures of risk-taking propensity like sensation seeking, trait impulsivity [36] and trait psy-
+chopathy [28]. [54], in particular, employed the model (9) for the joint inference on voxel level
+brain activation and connectivity between lobes related to the risk taking task. Figures 6b
+shows the estimated map of activated voxels which shows localized activation mainly in the
+frontal lobe. This localized pattern of activation in the frontal lobe while performing the
+higher-order processing task of risk assessment is consistent with various previous studies [5].
+Figure 6a shows estimates for the signicantly nonzero partial correlations between lobes.
+This gure also indicates that the frontal lobe plays an important role in this task showing
+nonzero partial correlations with the insula, caudate, putamen, and occipital lobes, placing
+the frontal lobe at the center of a connective network. This agrees with earlier experiments
+suggesting that the frontal lobe plays a role in the assessment of risk [42]. We emphasize that
+the Bayesian model shows rapid convergence of the MCMC chain and eciently analyzes
+fMRI data with more than 11 ;000 voxels.
+202.2 Bayesian Tensor on Tensor Regression Models
+In the realm of Bayesian modeling with a tensor response and a tensor predictor, one
+of the signicant earlier contributions comes from [25]. Let Yibe a tensor of dimension
+p1pDfor sample i= 1;:::;n , with the corresponding predictor Xiof dimension
+q1qD. [25] proposes the multilinear regression model given by
+Yi=XifC1;:::;CDg+Ei; (11)
+whereC1;::;CDare matrices of dimensions q1p1,...,qDpDrespectively, andrefers to
+the Tucker product. The error tensors Eiare i.i.d with dimensions q1qD, and are
+assumed to follow a tensor normal distribution (see stat02360 ), implying vec(Ei)N(0;)
+where is a (QD
+d=1qd)(QD
+d=1qd) dimensional covariance matrix. Estimating so many
+parameters from an unstructured without adding some restrictions on its form appears to
+be infeasible. As an alternative, a exible, reduced-parameter covariance model that retains
+the tensor structure of the data is the tensor normal model [1, 24], which assumes a separable
+(Kronecker structured) covariance matrix. Specically, the tensor normal distribution is
+denoted by Np1;:::;pD(0;1;:::;D) which essentially implies =1
+
+ D, where
+d2Rqdqd. [25] employs matrix normal priors for Cdjdford= 1;:::;D , and inverse
+wishart priors for dto deliver ecient posterior computation. Although the model is the
+rst of its kind in developing a Bayesian regression framework between two tensors, it comes
+with a restrictive assumption that YiandXiboth have Dmodes. This assumption is
+often violated in pertinent neuroscience applications, e.g., in the problem of developing a
+regression relationship between fMRI and EEG tensors for subjects. Later on, [41] develop
+another framework that relaxes this assumption.
+LetYibe the tensor response of dimension p1pD1for sample i= 1;::;n, with
+the corresponding tensor predictor Xiof dimension q1qD2. LetYbe a tensor of
+dimensionnp1pD1, obtained by stacking the Yi's overi= 1;::;n. A tensorXof
+dimensionnq1qD2is created in a similar fashion by stacking the Xis. [41] propose
+21a regression framework of XonYas follows
+Y=hX;BiL+E; E (v1;:::;vD1+1)N(0;2); (12)
+1v1n, 1v2p1,...,1vD1+1pD1.Bis the tensor coecient of dimension
+p1pD1q1qD2andh;iLrepresents the contracted tensor product. When
+D2= 1, i.e.,Xbecomes a vector, (12) reduces to (8). Reshaping each YiandXito vectors
+of dimensionsQD1
+d1=1pd1andQD2
+d2=1qd2, (12) can be rewritten in the standard multivariate
+linear regression form given below,
+Y(1)=X(1)B(1)+E(1);
+whereY(1)andX(1)arenQD1
+d1=1pd1andnQD2
+d2=1qd2matrices obtained by stacking
+reshaped vectors over all samples. B(1)is aQD1
+d1=1pd1QD2
+d2=1qd2matrix whose columns are
+obtained by vectorizing the rst D1modes ofB, and rows are obtained by vectorizing the
+lastD2modes ofB.
+EstimatingBinvolvesQD1
+d1=1pd1QD2
+d2=1qd2parameters. Hence [41] have adopted the
+low-rank PARAFAC decomposition for B. To estimate Bin a Bayesian framework, [41]
+have proposed
+(B)/8
+<
+:exp( ~
+22jjBjj2) ifrank (B)R
+0 o:w:
+This specication leads to  log((BjY;X)) =jjY X;bBiLjj2
+22 +~
+22jjBjj2, which resembles
+a penalized likelihood framework (see stat05934 ). Here ~acts as a tuning parameter,
+which is optimized within the Bayesian estimation of the model. Notice that the inferential
+framework in [41] is semi-Bayesian since the tuning parameter ~is chosen using a cross-
+validation procedure. Further, in contrast with the multiway shrinkage priors discussed
+earlier, the prior in [41] imposes a similar degree of shrinkage on every tensor cell. Later,
+[6] extend the modeling framework in [41] to develop dynamic tensor on tensor regression
+models and use M-DGDP prior as a more eective tool to impose shrinkage on the cells of
+22tensor coecients.
+IfYtrepresents the response tensor of dimension p1pD1at timet, andXtis the
+tensor predictor at time tof dimension q1qD2, the dynamic tensor on tensor regression
+model proposed in [6] is given by
+Yt=qX
+j=1h~Bj;Yt jiL+h~A;XtiL+Et;EtNp1;::;pD1(0;1;::;D1); (13)
+whereNp1;::;pD1(0;1;::;D1) represents a D1dimensional tensor normal distribution with
+jof dimension pjpj. Here ~Bj,j= 1;::;q, and ~Aare tensors of dimensions p1
+pD1p1pD1andp1pD1q1qD2, respectively. Using tensor calculus
+(ref), equation (13) can be rewritten as
+Yt=qX
+j=1BjD1+1vec(Yt j) +AD2+1vec(X) +Et;EtNp1;::;pD1(0;1;::;D1);(14)
+whereBjis of dimension p1pD1QD1
+d1=1pd1andAis of dimension q1aD2
+QD2
+d2=1qd2. The model presented in (14) emerges as a generalization of several econometric
+models, such as the seemingly unrelated regression (SUR) model [65], the VARX and panel
+VAR model [8, 9] and the vector error correlation model (VECM) [10, 51], to name a few. In
+order to achieve parsimony in estimating tensor coecients, [6] consider a rank-R PARAFAC
+decomposition of the tensor coecients, as discussed in earlier sections. The choice of the
+prior distribution on the PARAFAC margins is crucial for recovering the sparsity pattern of
+the coecient tensor and for the eciency of the inference. To this end, [6] follow the proposal
+of the multiway shrinkage prior in [19] (reviewed in Section 1.1) on tensor coecients. As
+discussed before, the global-local structure of the M-DGDP prior imposes a careful shrinkage
+on cell coecients and oers better scalability properties in high-dimensional settings.
+3 Conclusion
+Motivated by applications in neuroscience, genomics, social science, chemometrics and
+other physical and biological sciences, there has been an increasing interest in the use of
+tensor-valued objects within a regression setting. As opposed to summarizing tensors, us-
+23ing tensor valued objects within a regression framework reaps important modeling benets.
+These advantages include ecient computation, parsimony and importantly, accurate infer-
+ence due to accounting for the neighborhood structure in a tensor. As a consequence, this
+decade has witnessed rapid developments in statistical methods for tensor regression. In this
+review article, we have focused on Bayesian methods related to tensor regression. Although
+the literature on tensor regression is predominantly frequentist, Bayesian methods have made
+inroads into the literature in the last few years, with some additional benets. Unlike many
+of the classical frequentist techniques, Bayesian models allow for exibility, mainly via their
+choices of carefully structured prior distributions on tensor valued coecients that provide
+data dependent shrinkage of tensor coecients and model-based learning of tuning param-
+eters. Additionally, they oer uncertainty in parametric and predictive inferences, and can
+be easily implemented via full MCMC techniques. In this review article, we have divided
+methods according to the objective of the analysis. First, we have described tensor regression
+techniques with a tensor predictor and a scalar response. We have rst reviewed parametric
+tensor regression models, and then discussed nonparametric tensor regression models as well.
+The article then reviewed tensor regression models with a tensor response and a vector- or
+tensor-valued predictor. We mention applications in each case, mainly from neuroscience,
+relevant to the methodology reviewed. We also oer a brief discussion on available theoretical
+results regarding posterior convergence of these models.
+Even though the Bayesian tensor regression methods generally exhibit rapid convergence
+in model tting using MCMC, high dimensionality of the tensor data may limit the practical
+usage of Bayesian methodology. For example, fMRI experiments produce massive amount of
+correlated data over millions of brain voxels, which is dicult to be dealt with using Bayesian
+tensor regression. Such a computation issue is not unique to Bayesian methods for tensor
+regression, since frequentist tensor regression techniques also employ cross validation steps
+to estimate tuning parameters which are computationally costly. As noted before, tensor
+regression methods implicitly incorporate spatial information in the data, though combining
+tensor regression directly with spatial modeling techniques may draw additional inferential
+advantages. EEG or fMRI experiments are examples which produce high resolution spatially
+correlated data ready to be mined with Bayesian methodologies. The latter topic is quite
+24recent and is certainly an important area of research. In fact, Bayesian methods for big
+spatial and structured data still constitute a very active area of research and many more
+important contributions are expected. Finally, it needs to be mentioned that although there
+are open source codes available on Bayesian tensor regression methods, to the best of our
+knowledge, an open source user-friendly software package is still unavailable. More eort in
+disseminating codes and software in the public domain for tensor regression methods in the
+near future would be greatly benecial.
+4 Acknowledgement
+The author is partially supported by the Oce of Naval Research, award no. N00014-
+18-2741, and the National Science Foundation, grant DMS-1854662.
+References
+[1] D. Akdemir and A. K. Gupta. Array variate random variables with multiway kronecker
+delta covariance matrix structure. J. Algebr. Stat , 2(1):98{113, 2011.
+[2] M. Amewou-Atisso, S. Ghosal, J. K. Ghosh, and R. Ramamoorthi. Posterior consistency
+for semi-parametric regression problems. Bernoulli , 9(2):291{312, 2003.
+[3] A. Armagan, D. B. Dunson, and J. Lee. Generalized double Pareto shrinkage. Statistica
+Sinica , 23(1):119{143, 2013.
+[4] A. Armagan, D. B. Dunson, J. Lee, W. U. Bajwa, and N. Strawn. Posterior consistency
+in linear models under shrinkage priors. Biometrika , 100(4):1011{1018, 2013.
+[5] M. G. Berman, J. Jonides, and D. E. Nee. Studying mind and brain with fmri. Social
+cognitive and aective neuroscience , 1(2):158{161, 2006.
+[6] M. Billio, R. Casarin, S. Kaufmann, and M. Iacopini. Bayesian dynamic tensor regres-
+sion. University Ca'Foscari of Venice, Dept. of Economics Research Paper Series No ,
+13, 2018.
+[7] B. S. Cao, C. M. Crainiceanu, G. Verduzco, S. Joel, S. H. Mostofsky, S. S. Bassett, and
+25J. J. Pekar. Two-stage decompositions for the analysis of functional connectivity for
+fmri with application to alzheimer's disease risk. NeuroImage , 51(3):1140{1149, 2010.
+[8] F. Canova and M. Ciccarelli. Forecasting and turning point predictions in a Bayesian
+panel var model. Journal of Econometrics , 120(2):327{359, 2004.
+[9] F. Canova and M. Ciccarelli. Estimating multicountry var models. International eco-
+nomic review , 50(3):929{959, 2009.
+[10] F. Canova, M. Ciccarelli, and E. Ortega. Similarities and convergence in G-7 cycles.
+Journal of Monetary economics , 54(3):850{878, 2007.
+[11] R. D. Cook, B. Li, and F. Chiaromonte. Envelope models for parsimonious and ecient
+multivariate linear regression. Statistica Sinica , pages 927{960, 2010.
+[12] F. De Martino, A. W. De Borst, G. Valente, R. Goebel, and E. Formisano. Predicting eeg
+single trial responses with simultaneous fMRI and relevance vector machine regression.
+Neuroimage , 56(2):826{836, 2011.
+[13] S. Friedland and L.-H. Lim. Computational complexity of tensor nuclear norm. arXiv
+preprint arXiv:1410.6072 , 2014.
+[14] J. Gertheiss, A. Maity, and A.-M. Staicu. Variable selection in generalized functional
+linear models. Stat, 2(1):86{101, 2013.
+[15] S. Ghosal, J. K. Ghosh, and R. Ramamoorthi. Posterior consistency of dirichlet mixtures
+in density estimation. Ann. Statist , 27(1):143{158, 1999.
+[16] J. Goldsmith, J. Bobb, C. M. Crainiceanu, B. Cao, and D. Reich. Penalized functional
+regression. Journal of Computational and Graphical Statistics , 20(4):830{851, 2011.
+[17] R. Guhaniyogi. Convergence rate of Bayesian supervised tensor modeling with multiway
+shrinkage priors. Journal of Multivariate Analysis , 160:157{168, 2017.
+[18] R. Guhaniyogi and D. Spencer. Bayesian tensor response regression with an application
+to brain activation studies. Technical report, Technical report, UCSC. 2, 13, 2018.
+26[19] R. Guhaniyogi, S. Qamar, and D. B. Dunson. Bayesian tensor regression. The Journal
+of Machine Learning Research , 18(1):2733{2763, 2017.
+[20] S. Guillas and M.-J. Lai. Bivariate splines for spatial functional regression models.
+Journal of Nonparametric Statistics , 22(4):477{497, 2010.
+[21] W. Hackbusch. Tensor spaces and numerical tensor calculus , volume 42. Springer
+Science & Business Media, 2012.
+[22] R. A. Harshman and M. E. Lundy. PARAFAC: Parallel factor analysis. Computational
+Statistics & Data Analysis , 18(1):39{72, 1994.
+[23] J. Hastie Trevor and J. Tibshirani Robert. Generalized additive models. vol. 43, 1990.
+[24] P. D. Ho. Hierarchical multilinear models for multiway data. Computational Statistics
+& Data Analysis , 55(1):530{543, 2011.
+[25] P. D. Ho. Multilinear tensor regression for longitudinal relational data. The Annals
+of Applied Statistics , 9(3):1169, 2015.
+[26] V. Hore, A. Vi~ nuela, A. Buil, J. Knight, M. I. McCarthy, K. Small, and J. Marchini.
+Tensor decomposition for multiple-tissue gene expression experiments. Nature genetics ,
+48(9):1094, 2016.
+[27] M. Hou, Y. Wang, and B. Chaib-draa. Online local Gaussian process for tensor-variate
+regression: Application to fast reconstruction of limb movements from brain signal.
+In2015 IEEE International Conference on Acoustics, Speech and Signal Processing
+(ICASSP) , pages 5490{5494. IEEE, 2015.
+[28] M. K. Hunt, D. R. Hopko, R. Bare, C. Lejuez, and E. Robinson. Construct validity
+of the balloon analog risk task (BART) associations with psychopathy and impulsivity.
+Assessment , 12(4):416{428, 2005.
+[29] M. Imaizumi and K. Hayashi. Doubly decomposing nonparametric tensor regression.
+InInternational Conference on Machine Learning , pages 727{736, 2016.
+27[30] G. M. James, J. Wang, J. Zhu, et al. Functional linear regression that?s interpretable.
+The Annals of Statistics , 37(5A):2083{2108, 2009.
+[31] S. Kalus, P. G. S amann, and L. Fahrmeir. Classication of brain activation via spa-
+tial Bayesian variable selection in fMRI regression. Advances in Data Analysis and
+Classication , 8(1):63{83, 2014.
+[32] S. Kim, P. Smyth, and H. Stern. A nonparametric Bayesian approach to detecting
+spatial activation patterns in fMRI data. In International Conference on Medical Image
+Computing and Computer-Assisted Intervention , pages 217{224. Springer, 2006.
+[33] T. G. Kolda and B. W. Bader. Tensor decompositions and applications. SIAM review ,
+51(3):455{500, 2009.
+[34] N. Lazar. The statistical analysis of functional MRI data . Springer Science & Business
+Media, 2008.
+[35] C. Lejuez, W. M. Aklin, H. A. Jones, J. B. Richards, D. R. Strong, C. W. Kahler,
+and J. P. Read. The balloon analogue risk task (BART) dierentiates smokers and
+nonsmokers. Experimental and clinical psychopharmacology , 11(1):26, 2003.
+[36] C. W. Lejuez, J. P. Read, C. W. Kahler, J. B. Richards, S. E. Ramsey, G. L. Stuart,
+D. R. Strong, and R. A. Brown. Evaluation of a behavioral measure of risk taking: the
+balloon analogue risk task (bart). Journal of Experimental Psychology: Applied , 8(2):
+75, 2002.
+[37] C. W. Lejuez, W. M. Aklin, M. J. Zvolensky, and C. M. Pedulla. Evaluation of the
+balloon analogue risk task (BART) as a predictor of adolescent real-world risk-taking
+behaviours. Journal of adolescence , 26(4):475{479, 2003.
+[38] L. Li and X. Zhang. Parsimonious tensor response regression. Journal of the American
+Statistical Association , 112(519):1131{1146, 2017.
+[39] X. Li, D. Xu, H. Zhou, and L. Li. Tucker tensor regression and neuroimaging analysis.
+Statistics in Biosciences , 10(3):520{545, 2018.
+28[40] M. A. Lindquist. The statistical analysis of fmri data. Statistical science , 23(4):439{464,
+2008.
+[41] E. F. Lock. Tensor-on-tensor regression. Journal of Computational and Graphical Statis-
+tics, 27(3):638{647, 2018.
+[42] L. Miller and B. Milner. Cognitive risk-taking after frontal or temporal lobectomy-II.
+The synthesis of phonemic and semantic information. Neuropsychologia , 23(3):371{379,
+1985.
+[43] T. Park and G. Casella. The Bayesian lasso. Journal of the American Statistical Asso-
+ciation , 103(482):681{686, 2008.
+[44] G. Rabusseau and H. Kadri. Low-rank regression with tensor responses. In Advances
+in Neural Information Processing Systems , pages 1867{1875, 2016.
+[45] A. Ramasamy, D. Trabzuni, S. Guel, V. Varghese, C. Smith, R. Walker, T. De,
+J. Hardy, M. Ryten, M. E. Weale, et al. Genetic variability in the regulation of gene
+expression in ten regions of the human brain. Nature neuroscience , 17(10):1418, 2014.
+[46] G. Raskutti, M. Yuan, H. Chen, et al. Convex regularization for high-dimensional
+multiresponse tensor regression. The Annals of Statistics , 47(3):1554{1584, 2019.
+[47] P. Ravikumar, J. Laerty, H. Liu, and L. Wasserman. Sparse additive models. Journal
+of the Royal Statistical Society: Series B (Statistical Methodology) , 71(5):1009{1030,
+2009.
+[48] P. T. Reiss and R. T. Ogden. Functional generalized linear models with images as
+predictors. Biometrics , 66(1):61{69, 2010.
+[49] P. T. Reiss, L. Huo, Y. Zhao, C. Kelly, and R. T. Ogden. Wavelet-domain regression
+and predictive inference in psychiatric neuroimaging. The annals of applied statistics , 9
+(2):1076, 2015.
+29[50] T. Schonberg, C. R. Fox, J. A. Mumford, E. Congdon, C. Trepel, and R. A. Poldrack.
+Decreasing ventromedial prefrontal cortex activity during sequential risk-taking: an fmri
+investigation of the balloon analog risk task. Frontiers in neuroscience , 6:80, 2012.
+[51] P. Schotman and H. K. Van Dijk. A Bayesian analysis of the unit root in real exchange
+rates. Journal of Econometrics , 49(1-2):195{238, 1991.
+[52] M. Signoretto, L. De Lathauwer, and J. A. Suykens. Learning tensors in reproducing ker-
+nel Hilbert spaces with multilinear spectral penalties. arXiv preprint arXiv:1310.4977 ,
+2013.
+[53] E. R. Sowell, P. M. Thompson, S. E. Welcome, A. L. Henkenius, A. W. Toga, and
+B. S. Peterson. Cortical abnormalities in children and adolescents with attention-decit
+hyperactivity disorder. The Lancet , 362(9397):1699{1707, 2003.
+[54] D. Spencer, R. Guhaniyogi, and R. Prado. Bayesian mixed eect sparse tensor response
+regression model with joint estimation of activation and connectivity. arXiv preprint
+arXiv:1904.00148 , 2019.
+[55] W. W. Sun and L. Li. Store: sparse tensor response regression and neuroimaging
+analysis. The Journal of Machine Learning Research , 18(1):4908{4944, 2017.
+[56] T. Suzuki. Convergence rate of bayesian tensor estimator and its minimax optimality.
+InInternational Conference on Machine Learning , pages 1273{1282, 2015.
+[57] L. R. Tucker. The extension of factor analysis to three-dimensional matrices. Contri-
+butions to mathematical psychology , 110119, 1964.
+[58] E. M. Valera, S. V. Faraone, K. E. Murray, and L. J. Seidman. Meta-analysis of struc-
+tural imaging ndings in attention-decit/hyperactivity disorder. Biological psychiatry ,
+61(12):1361{1369, 2007.
+[59] H. Wang. Bayesian graphical lasso models and ecient posterior computation. Bayesian
+Analysis , 7(4):867{886, 2012.
+30[60] X. Wang, H. Zhu, and A. D. N. Initiative. Generalized scalar-on-image regression models
+via total variation. Journal of the American Statistical Association , 112(519):1156{1168,
+2017.
+[61] Y. Wang, P.-M. Jodoin, F. Porikli, J. Konrad, Y. Benezeth, and P. Ishwar. Cdnet
+2014: an expanded change detection benchmark dataset. In Proceedings of the IEEE
+conference on computer vision and pattern recognition workshops , pages 387{394, 2014.
+[62] L. Xu, T. D. Johnson, T. E. Nichols, and D. E. Nee. Modeling inter-subject variability
+in fmri activation location: a Bayesian hierarchical spatial model. Biometrics , 65(4):
+1041{1051, 2009.
+[63] R. Yu and Y. Liu. Learning from multiway data: Simple and ecient tensor regression.
+InInternational Conference on Machine Learning , pages 373{381, 2016.
+[64] Z. Yu, R. Prado, E. B. Quinlan, S. C. Cramer, and H. Ombao. Understanding the
+impact of stroke on brain motor function: a hierarchical Bayesian approach. Journal of
+the American Statistical Association , 111(514):549{563, 2016.
+[65] A. Zellner. An ecient method of estimating seemingly unrelated regressions and tests
+for aggregation bias. Journal of the American statistical Association , 57(298):348{368,
+1962.
+[66] L. Zhang, M. Guindani, and M. Vannucci. Bayesian models for functional magnetic reso-
+nance imaging data analysis. Wiley Interdisciplinary Reviews: Computational Statistics ,
+7(1):21{41, 2015.
+[67] Q. Zhao, G. Zhou, L. Zhang, and A. Cichocki. Tensor-variate Gaussian processes regres-
+sion and its application to video surveillance. In 2014 IEEE International Conference
+on Acoustics, Speech and Signal Processing (ICASSP) , pages 1265{1269. IEEE, 2014.
+[68] H. Zhou, L. Li, and H. Zhu. Tensor regression with applications in neuroimaging data
+analysis. Journal of the American Statistical Association , 108(502):540{552, 2013.
+31

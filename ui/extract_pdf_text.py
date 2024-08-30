@@ -6,12 +6,16 @@ import argparse
 import streamlit as st
 
 def extract_text_from_pdf(pdf_path):
-    with open(pdf_path, 'rb') as file:
-        reader = PyPDF2.PdfReader(file)
-        text = ''
-        for page in reader.pages:
-            text += page.extract_text()
-    return text
+    try:
+        with open(pdf_path, 'rb') as file:
+            reader = PyPDF2.PdfReader(file)
+            text = ''
+            for page in reader.pages:
+                text += page.extract_text()
+        return text
+    except Exception as e:
+        st.write(f"Error extracting text from PDF: {e}")
+        return f"PDF ERROR: {e} for file {pdf_path}"
 
 def process_pdf_dir(pdf_dir, txt_dir, limit=None):
     # Create txt_dir if it doesn't exist
@@ -42,7 +46,7 @@ def process_pdf_dir(pdf_dir, txt_dir, limit=None):
 def process_pdfs():
     filecount=st.number_input('Enter the number of files to process',min_value=1,value=10)
     if st.button("Start processing"):
-        pdf_directory = "processed_pdf"  # Replace with your PDF directory path
+        pdf_directory = "raw_pdf"  # Replace with your PDF directory path
         txt_directory = "pdf_txt"  # Replace with your TXT directory path
         process_pdf_dir(pdf_directory, txt_directory,filecount)
 

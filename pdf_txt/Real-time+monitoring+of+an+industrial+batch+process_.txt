@@ -1,0 +1,237 @@
+Computers and Chemical Engineering 30 (2006) 1476–1481
+Real-time monitoring of an industrial batch process
+Ognjen Marjanovica, Barry Lennoxb,∗, David Sandoza,
+Keith Smitha, Milton Croftsc
+aPerceptive Engineering Ltd., Lymm, Cheshire, UK
+bControl Systems Centre, University of Manchester , UK
+cAroma and Fine Chemicals, Widnes, Cheshire, UK
+Received 21 February 2006; received in revised form 8 May 2006; accepted 17 May 2006
+Available online 26 July 2006
+Abstract
+This paper describes the development of a real-time monitoring system for a batch process operated by Aroma and Fine Chemicals Limited.
+The process shares many similarities with other batch processes in that cycle times can vary considerably, instrumentation is limited and inefﬁcien t
+laboratory assays are required to determine the end-point of each batch. The aim of the work conducted in this study was to develop a data drivensystem to accurately identify the end-point of the batch. This information can then be used to reduce the overall cycle time of the process. Novelapproaches based upon multivariate statistical techniques are shown to provide a soft sensor that can estimate the product quality throughout thebatch and provide a long-term estimate of the likely cycle time. This system has been implemented on-line and initial results indicate that it offerspotential to signiﬁcantly reduce operating costs.© 2006 Elsevier Ltd. All rights reserved.
+Keywords: Multivariate statistics; Batch processing; Process monitoring
+1. Introduction
+The task of achieving optimal performance of industrial batch
+processes represents a very difﬁcult challenge to production andsystems engineers. Highly non-linear dynamics, large batch-to-batch variations and real-time measurement difﬁculties areproblematic for consistent operations. This can be a concern inmany industries, particularly the pharmaceutical and specialtychemical industries. For many applications, it is imperative thatoperation be maintained within strict limits, as improved con-sistency will result in reduced production costs.
+In recent years, a wide variety of techniques have been
+applied to provide improved monitoring and control of indus-trial batch processes. These studies have involved the applica-tion of predictive based strategies ( Shi, El-Farra, Mingheng,
+Mhaskar, & Christoﬁdes, 2006 ), neural networks ( Lennox,
+Hiden, Montague, Kornfeld, & Goulding, 2001 ), Kalman Filters
+(Clark-Pringle & MacGregor, 1997 ) and multivariate statistical
+process control (MSPC) techniques. For application to general
+∗Corresponding author. Tel.: +44 161 275 1234; fax: +44 161 275 3844.
+E-mail address: barry.lennox@man.ac.uk (B. Lennox).batch processes, MSPC techniques have proven to be very suc-
+cessful ( Martin & Morris, 1996 ).
+MSPC covers a wide variety of algorithms, with the princi-
+ple techniques applied to batch processes being parallel factoranalysis ( Bro, 1997 ), Tucker3 ( Smilde, 1992 ) and multi-way
+principal component analysis (MPCA) and multi-way partialleast squares (MPLS). Although successful applications involv-ing parallel factor analysis, Tucker3, MPCA and MPLS haveall been reported, a recent article by Westerhuis, Kourti, &
+MacGregor (1999) indicates that the multi-way techniques offer
+signiﬁcant advantages over parallel factor analysis and Tucker3.
+MPCA and MPLS have been used to address a variety of batch
+control and monitoring issues. In their original paper Nomikos
+and MacGregor (1994) illustrated how MPCA and MPLS could
+be used to provide an early indication of whether a batch wasperforming well or not. Lakshminarayanan, Gudi, Shah, and
+Nandakumar (1996) extended the application of MPCA and
+MPLS and showed how the techniques could be used to identifypoorly performing batches and provide a real-time estimate ofproduct quality (biomass concentration) when applied to a sim-ulation of a fermentation process. Lennox et al. (2001) showed
+how the techniques could be used in an industrial fermentationstudy to detect sensor failure and provide a real-time estimate
+0098-1354/$ – see front matter © 2006 Elsevier Ltd. All rights reserved.
+doi:10.1016/j.compchemeng.2006.05.040O. Marjanovic et al. / Computers and Chemical Engineering 30 (2006) 1476–1481 1477
+of product quality and also an estimate of the ﬁnal productivity
+of the batch. More recently, MPLS techniques have been inte-grated within advanced control frameworks to provide improvedcontrol of batch processes ( Flores-Cerrillo & MacGregor, 2002 ;
+Zhang & Lennox, 2003 ).
+This paper describes the application of MPLS to an indus-
+trial batch process operated by Aroma and Fine Chemicals inthe UK. This process is a multi-stage catalytic reaction whichconverts raw materials into a ﬁnal product. The purpose of theinvestigation conducted on this process was to provide a mecha-nism for estimating the conditions within the batch such that theend-point of the batch could be identiﬁed with greater accuracythan is currently available. As with many batch processes thatare reliant upon laboratory measurements, it is not clear withthe process under investigation when the exact end-point of thebatch is reached. It is however expected that substantial savingscan be made to operating costs if the precise end-point of thebatch could be identiﬁed.
+In conducting this case study, limitations with standard
+approaches for applying MPLS and MPCA were identiﬁed andnovel solutions were developed which enabled the techniquesto be applied to the process under investigation. It is believedthat the techniques developed in this study provide a genericapproach to estimating batch end-point in systems with variablecycle times.
+In the following section of this paper, a description of the pro-
+cess is provided. This is followed by a description of partial leastsquares and its multi-way extension. A novel multivariate sta-tistical formulation, based upon multi-way partial least squaresis then described and its application to the case study discussed.The developed system has now been implemented on-line andinitial results from this system are presented. Finally, a list ofconclusions from this work is provided.
+2. Process description
+The process considered in this study is part of a multiple-stage
+plant that produces a specialty chemical. The process operatesin batch form and is responsible for the hydrogenation of a rawmaterial, A, into a ﬁnal product, B.
+The operation of this batch process can be divided into three
+distinct phases: heating; gassing; cooling. During the heatingphase the reactor is ﬁlled with raw material and the temperatureis raised to a speciﬁc level. The duration of this phase varies,as it is dependent upon the characteristics of the raw material,principally its moisture content. Following the heating phase,the gassing phase begins as hydrogen gas is fed to the reactor.The hydrogen ﬂow causes the raw material to be hydrogenated,producing the ﬁnal product. During this phase the temperatureand pressure in the reactor is regulated within upper and lowerconstraints. The duration of the gassing phase also varies sig-niﬁcantly as a result of changes to the properties of the rawmaterial.
+Finally, when laboratory samples indicate that the gassing
+phase is complete, the process enters its ﬁnal stage, the cool-ing phase, where the contents of the reactor are cooled and thentransferred to downstream processing. The process variables thatare measured continuously through each batch cycle are as fol-
+lows:
+1. Output from the temperature controller (the manipulated
+variable is the ﬂow of cooling water).
+2. Temperature in the reactor.3. Output from the pressure controller (the manipulated variable
+is the ﬂow of hydrogen in to the reactor).
+4. Pressure in the reactor.5. Flow rate of hydrogen into the reactor.
+In addition to these measurements, a laboratory analysis is
+performed on the ﬁnal product. The ﬁnal product is analysedin the laboratory when experienced operators believe that thegassing phase is complete and the amount of material, A, remain-ing in the batch is below a speciﬁc target value. Depending uponthe results of this laboratory analysis, the batch may be cooled. Ifthe amount of material, A, in the sample exceeds a target value,the batch is held at an elevated temperature for another hour,delaying the cooling phase until the target for the concentrationof A is attained. Operators can use the measured rate of hydro-gen ﬂowing into the reactor to provide an indication of when thegassing phase is complete. Unfortunately, this simple analysisis not always accurate as the conversion of A continues for avarying period of time after the ﬂow of hydrogen into the reac-tor has ceased. Unfortunately, operations staff have been unableto identify the reason why some batches continue to react forlong periods after the hydrogen ﬂow ceases. There is thereforea reliance on laboratory measurements to determine when thereaction is complete.
+This reliance on intermittent laboratory measurements means
+that the process is not achieving optimal operation. Nearly allproduction batches will have been processed longer than nec-essary before they enter the cooling phase. Therefore there isthe potential to reduce the overall cycle time for this process ifthe end-point can be clearly identiﬁed. The ideal solution wouldbe to provide a real-time measurement of the concentrations ofA and B in the reactor. Unfortunately, such an instrument is notavailable and a key aim of this work was to provide a data drivenmechanism able to identify when the desired concentrations of Aand B in the reactor have been reached. The successful develop-ment of such a mechanism could lead to a substantial reductionin operating costs as the decision to terminate a batch could bemade earlier than is currently possible.
+3. Partial least squares (PLS)3.1. Basic algorithm
+PLS is a tool that can be applied whenever plant variables
+can be divided into cause ( X) and effect ( Y) values. The method
+is typically used in preference to alternative identiﬁcation algo-rithms, such as multiple linear regression (MLR) when devel-oping data-based models. Its advantage is that unlike certainother identiﬁcation algorithms it is able to produce accurate androbust models in situations where high levels of correlationsexist between the cause variables.1478 O. Marjanovic et al. / Computers and Chemical Engineering 30 (2006) 1476–1481
+PLS works by selecting factors of cause variables in a
+sequence which successively maximises the explained covari-ance between the cause and effect variables. Given a matrix ofcause data, X(of size m×nx, where mis the number of obser-
+vations and nxis the number of cause variables), and effect data,
+Y(of size m×ny, where nyis the number of effect variables), a
+factor of the cause data, t
+k(length m), and effect data, uk(length
+m), is evaluated, such that
+X=np<nx/summationdisplay
+k=1tkpT
+k+Eand Y=np<nx/summationdisplay
+k=1ukqT
+k+F (1)
+These equations are referred to as the outer relationships . The
+vectors tkare mutually orthogonal. These vectors and the uk
+vectors are selected so as to maximise the covariance between
+each pair ( tk,uk).Eand Fare errors and pkand ukare referred
+to as loading vectors.
+Linear regression is performed between the tkand the uk
+vectors, to produce the inner relationship , such that:
+uk=bktk+εk (2)
+where bkis a regression coefﬁcient, and εkrefers to the prediction
+error. The PLS method provides the potential for a regularisedmodel through selecting an appropriate number of scores, orlatent variables, u
+kin the model ( np). Furthermore, it is often
+found that a relatively small number of the low-index latentvariables can explain the greater part of the variation in both thecause and effect variables. Cross validation can be used to selectthe necessary number of latent variables. For further details ofthe PLS algorithm, the reader is referred to Geladi and Kowalski
+(1986) .
+3.1.1. Multi-way PLS
+PLS is a linear tool, which unfortunately limits its effec-
+tiveness when applied to batch processes which are typicallynon-linear in nature. For such processes, the multi-way dataunfolding techniques proposed by Nomikos and MacGregor
+(1994) tend to be used. Multi-way principal component analysis
+and multi-way partial least squares have been applied success-fully to a variety of processes, including fed-batch fermentationsystems ( Lakshminarayanan et al., 1996; Lennox et al., 2001 )
+and nuclear waste storage tanks ( Wise & Gallagher, 1996 ).
+The unfolding of process data is best explained using Fig. 1
+as an illustration. The data collected from the process can bethought of as a three-dimensional matrix of size I×J×K, where
+Iis the number of batches for which data is available, Jthe
+number of variables that are measured and Kis the number of
+samples collected during the batch. This matrix is transformed,or unfolded, into a two-dimensional matrix, with all measure-ments collected from each batch occupying a single row of theresulting two-dimensional matrix. The resulting matrix is thenof size I×J×K. This approach to unfolding assumes that there
+are an equal number of observations made during each batch.This assumption is quite restrictive and alternative approachesare discussed later.
+For many batch processes, only a single measurement of qual-
+ity is available for each batch. This measurement being made at
+Fig. 1. Unfolding process.
+the end of the batch. This data forms a vector yof size I×l. The
+columns of the unfolded matrix, X, and vector yare then nor-
+malised. This scaling serves to remove the trajectories that theprocess variables tend to follow. After scaling the data, PLS canbe applied to the unfolded data to generate a regression modelcapable of estimating the value of the quality variable given thevalues of the measurements during the entire batch. The size andnature of the unfolded matrices means that alternative regressiontechniques, such as ordinary least squares would not be suitableand therefore PLS is applied.
+3.2. Model development
+3.2.1. Data collection
+The ﬁrst stage in the development of the soft-sensor was to
+collect data from the process. Although a substantial amountof historical data was available, the data for each batch onlycontained a laboratory measurement at the end of the cycle. Inthose batches where this laboratory measurement indicated thatthe reaction was not complete a second and even third laboratorymeasurements were made. However, the purpose of this studywas to develop a model able to estimate the concentration ofA and B in the batch throughout the gassing phase. To developsuch a model it is necessary to have measurements of the A andB concentrations during the entire batch.
+Following consultation with plant engineers and operators,
+measurements of the concentrations of A and B in the batch weresampled at approximately 2-h intervals during a series of testbatches. The procedure, which was then followed to develop themodel meant that data from both the batches containing multiplesamples and the historical batches containing only one or twosamples could be utilised.
+3.2.2. Data preprocessing
+Process engineers familiar with the process are able to make
+a reasonable estimate of the likely duration of each batch byconsidering how exothermic the reaction is in the early stagesof the heating phase. This knowledge is important as it containsO. Marjanovic et al. / Computers and Chemical Engineering 30 (2006) 1476–1481 1479
+implicit information of the properties of the raw materials and
+consequently the progression of the batch. To capture this infor-mation in the model it was found that it was necessary to createtwo artiﬁcial variables: the cumulative sum of the output fromthe temperature controller and the cumulative sum of hydro-gen ﬂow into the reactor. The temperature within the reactor ismaintained within a ﬁxed upper and lower limit during the batchcycle. The cumulative sum of the output of the temperature con-trol system provides an indication of the rate at which heat isreleased from the reaction. This property provides a measureof the properties of the raw material used in the process. Theseproperties make an impact to the batch cycle time.
+In developing a multi-way partial least squares model it is
+typically necessary for the cycle time for each batch to be equal.This is necessary for the construction of the matrices describedearlier. Unfortunately, as with many batch processes, the processinvestigated in this study has cycle times that can vary by anorder of magnitude. In such situations there exist three possiblesolutions:
+1. Data collected from each batch is only considered up to the
+time of the shortest batch. Thus data collected during the laterstages of the longer batches are not considered.
+2. A secondary progression variable is identiﬁed and the process
+data is synchronised around this variable.
+3. Dynamic time-warping techniques are employed to equalise
+the length of each of the batches.
+Unfortunately, for the process investigated in this study it is
+the data collected at the end of the batch that is of greatest impor-tance as these measurements provide an indication of whether ornot the reaction is complete and the cycle has ﬁnished. There-fore, the ﬁrst option is unsuitable. Furthermore, no secondaryprogression variables were found to be suitable for this pro-cess. The technique for creating a progression signal discussedin for example Eriksson, Johansson, Kettaneh-Wold, and Wold
+(2001) andRothwell, Martin, and Morris (1998) was applied in
+this work. However the results were not satisfactory. Dynamictime warping ( Kassidas, MacGregor, & Taylor, 1998 ) is a rel-
+atively complex method for coping with variable cycle times,which has difﬁculties in its application in real time ( Westerhuis
+et al., 1999 ). In this work the decision was made to use a novel
+and simpler approach.
+The approach that was adopted in this work for catering for
+the variable cycle times was a two-stage process. In the ﬁrststage a series of pseudo batches were created. This is explained
+inFig. 2 . This ﬁgure shows data collected from two batches,
+batch 1 and batch 2. The data from each of these batches isunfolded into a vector, as described earlier. During batch 1, fourmeasurements of product quality are collected at various stagesduring the batch. These samples are labelled y
+1,1,y1,2,y1,3and
+y1,4. Only a single quality measurement is made during batch 2
+and this measurement was made at the end of the batch, labelledy
+2. As there are four quality measurements taken during batch
+1, this batch is divided into four pseudo batches. The unfoldeddata collected up to the ﬁrst quality measurement during batch1 is labelled batch la, the data collected between the ﬁrst and
+Fig. 2. Synchronisation of data.
+second quality measurements is labelled batch 1b and so on.In performing this operation it is clear that there will be largevariations in the time for each of the pseudo batches and fullbatches. To equalise the length of the unfolded vectors for eachbatch, the vectors are synchronised to the end-point, as showninFig. 2 and the batch with the minimum length is identiﬁed. In
+this study a minimum batch length of 2 h was used and the causematrix was created from this data. All the earlier measurementswere discarded.
+Following the generation of the unfolded cause and effect
+matrices, the coefﬁcients of the model were identiﬁed using thestandard PLS algorithm described earlier.
+In real-time, a vector of cause data, collected over a moving
+window of 2 h, will be applied to the model. This will mean thatno estimate of product quality will be available during the ﬁrst2 h of the batch. However, after this time a continuous estimateof product quality will be available.
+In addition to identifying a soft sensor to estimate the concen-
+tration of A and B in the reactor, a second model was identiﬁed.This model was developed to give operators and engineers anearly prediction of the likely cycle time for the batch. This modelwas created by using PLS to identify the relationship betweenan alternative cause matrix and effect vector. The cause matrixwas an unfolded matrix that contained all the process measure-ments recorded in the ﬁrst 2 h of the batch only and the effectvector contained the cycle times for each of the batches. The pur-pose of this model was to provide an early estimate of the likelycycle time of a batch. This estimate being made after the batchhad been in operation for 2 h. The availability of such a modeloffered the potential to provide process operators and engineerswith the ability to plan and schedule future operation of the plantwith greater accuracy.
+4. Results
+4.1. Off-line results for A/B concentration estimation
+Fig. 3 shows a comparison of the actual and estimated B
+concentrations in all the evaluation batches (i.e. those batches1480 O. Marjanovic et al. / Computers and Chemical Engineering 30 (2006) 1476–1481
+Fig. 3. Comparison of estimated and actual B concentrations.
+not used in the identiﬁcation of the model). This ﬁgure shows
+that the accuracy of the estimates is good with 95% of esti-mates accurate to within ±3%. The R
+2value for these data was
+0.97. Although this accuracy is considered to be sufﬁcient dur-ing the early stages of the batch, it will be necessary for thisaccuracy to be improved towards the end of the batch. The esti-mate at the end of the batch is critical as this is when the decisionneeds to be made as to whether the gassing phase is complete ornot.
+Fig. 4 shows the continuous estimates made of the concen-
+trations of A and B in the reactor for an evaluation batch. Thesquares and circles in this ﬁgure show the actual measurementsrecorded in the laboratory during the batch, with the solid linesthe continuous estimates of A and B concentration provided bythe developed model. The results from this batch are representa-tive of the results for other batches and show that good estimatesof A and B concentrations are achieved through the duration ofthe batch.
+4.2. Off-line results for batch time estimation
+Fig. 5 compares the estimated with the actual cycle times for
+each evaluation batch. The solid diagonal lines indicate that forthe vast majority of the batches, approximately 85% of them,the estimated cycle time is correct to within ±1 h. The R
+2value
+Fig. 4. Estimates of A and B concentrations.
+Fig. 5. Comparison of estimated and actual cycle time.
+for these data was 0.92. These results were considered by plant
+engineers to be an accurate and useful estimate of the cycle time,particularly as the estimate was made only 2 h after the start ofthe batch. The accuracy of the model is a result of the fact that thedata collected during the initial heating up phase of the reactionprovides an indication of how exothermic the reaction is, whichis closely related to the cycle time.
+It is difﬁcult to improve the accuracy of the cycle time esti-
+mator with the data that is currently available. The reason forthis is that the operating procedures on this process are suchthat the exact time at which the reaction is complete is unknownand only an approximate timing of the end-point is available.This estimate being when operations staff believe the reac-tion is complete and have ordered a sample to be analysed inthe laboratory, which is subsequently found to reveal that thebatch is complete. The next stage of this work will investi-gate whether performing more laboratory tests around the esti-mated end-point will allow a model with greater accuracy to berealised.
+In an attempt to identify the likely improvements that could
+be made to the cycle time estimates, with an improved knowl-edge of the precise end-point of the batch a model was developedto estimate hydrogen time. The ﬂow of hydrogen into the reac-tor is a purely process driven parameter. As hydrogenation takesplace, hydrogen is drawn into the reactor. As the hydrogena-tion reduces, so does the ﬂow of hydrogen into the reactor untilthe ﬂow of hydrogen stops completely. The time between thehydrogen ﬂow starting, the beginning of the gassing phase, andthe point at which the ﬂow stops is termed the hydrogen time.Fig. 6 compares the actual and estimated hydrogen time obtained
+from a MPLS model.
+Fig. 6 shows that compared with the estimates of overall
+cycle time, the accuracy of the hydrogen time estimate is muchimproved. In fact for 85% of batches the estimate is accurate towithin ±30 min. The R
+2value for these data was 0.94. The rea-
+son for the improved results is that unlike the cycle time thereis no uncertainty in the hydrogen time as it is clear when thehydrogen ﬂow has stopped. Although being able to estimate thehydrogen time has little signiﬁcance for process operations, itdoes indicate the likely improvements that could be made to thecycle time estimate if the end-point of the batch was known withgreater accuracy.O. Marjanovic et al. / Computers and Chemical Engineering 30 (2006) 1476–1481 1481
+Fig. 6. Estimated vs. actual hydrogen time.
+4.3. On-line results
+The system described above was installed on the process
+plant and for a period of 2 months providing real-time advice toprocess engineers. These trials produced estimates with similaraccuracy to those obtained in the off-line studies. In the nextstage of the trials, further laboratory tests were to be conductedduring the later stages of the batch so that a more accurate mea-sure of batch cycle time could be obtained. However, despite thesuccess of the preliminary trials, the development of the systemwas suspended after the trial period. The reason for this wasbecause, following a process review, Aroma and Fine Chemi-cals made changes to its operating practices which meant thatthe developed system became redundant. Studies are still ongo-ing at the site to see if the developed technology can be appliedto other batch processes.
+5. Conclusions
+This paper has described how multivariate statistics can be
+applied to a batch process as a means of extracting informationfrom the data that is routinely collected and logged. Existingmultivariate statistical tools were found to have limitations inthe application to the process under investigation and as a resultof this, novel techniques were developed to enable multi-wayPLS to be applied to a batch process which exhibited signiﬁcantvariation in cycle time. The resulting system has been shownto provide an accurate estimate of conditions within the reactorand is also able to provide a long-term prediction of the likelycycle time of the batch. This information can help operators andengineers manage the process better and identify the end-pointof the batch with improved accuracy. Following a successfuloff-line study, the developed system was installed and tested inreal-time. During these trials the system was shown to providebeneﬁts to process operations.Acknowledgements
+The authors of this paper would like to thank the Department
+of Trade and Industry and EPSRC for part-funding this work.Operations and engineering staff at Aroma and Fine Chemicalsare also thanked for their support and advice during the comple-tion of this work.
+References
+Bro, R. (1997). PARAFAC: Tutorial and applications. Chemometrics and Intel-
+ligent Laboratory Systems ,38, 149–171.
+Clark-Pringle, T., & MacGregor, J. F. (1997). Nonlinear adaptive temperature
+control of multi-product, semi-batch polymerization reactors. Computers
+and Chemical Engineering ,21(12), 1395–1409.
+Eriksson, L., Johansson, E., Kettaneh-Wold, N., & Wold, S. (2001). Multi- and
+megavariate data analysis: Principles and applications . Umetrics.
+Flores-Cerrillo, J., & MacGregor, J. F. (2002). Control of particle size dis-
+tributions in emulsion semi-batch polymerization using mid-course cor-rection policies. Industrial and Engineering Chemistry Research ,41,
+1805–1814.
+Geladi, P., & Kowalski, B. R. (1986). Partial least squares regression: A tutorial.
+Analytical Chimica Acta ,185, 1–17.
+Kassidas, A., MacGregor, J. F., & Taylor, P. A. (1998). Synchronization of batch
+trajectories using dynamic time warping. AIChE Journal ,44, 864–875.
+Lakshminarayanan, S., Gudi, R. D., Shah, S. L., & Nandakumar, K. (1996).
+Monitoring batch processes using multivariate statistical tools: Exten-sions and practical issues. In Proceedings of IF AC World Congress
+(pp. 241–246).
+Lennox, B., Hiden, H. G., Montague, G. A., Kornfeld, G., & Goulding, P. R.
+(2001). Process monitoring of an industrial fed-batch fermentation. Biotech-
+nology and Bioengineering ,74(2), 125–135.
+Martin, E. B., & Morris, A. J. (1996). An overview of multivariate statisti-
+cal process control in continuous and batch process performance mon-itoring. Transaction Instrument Measurement and Control ,18(1), 51–
+60.
+Nomikos, P., & MacGregor, J. F. (1994). Monitoring batch processes using
+multi-way principal component analysis. AIChE Journal ,40(8), 1361–
+1375.
+Rothwell, S. G., Martin, E. B., & Morris, A. J. (1998). Comparison of Methods
+Dealing with Uneven Length Batches with Application to MPCA Monitoringof a Batch Process . Osaka, Japan: CAB7.
+Shi, D., El-Farra, N. H., Mingheng, L., Mhaskar, P., & Christoﬁdes, P. D. (2006).
+Predictive control of particle size distribution in particulate processes. Chem-
+ical Engineering Science ,61, 268–281.
+Smilde, A. K. (1992). Three way analysis problems and prospects. Chemomet-
+rics and Intelligent Laboratory Systems ,15, 143–157.
+Westerhuis, J. A., Kourti, T., & MacGregor, J. F. (1999). Comparing alternative
+approaches in batch process data analysis. Journal of Chemometrics ,13,
+397–413.
+Wise, B. M., & Gallagher, N. B. (1996). The process chemometrics approach
+to process monitoring and fault detection. Journal of Proceedings Control ,
+6(6), 329–348.
+Zhang, H., & Lennox, B. (2003). Integrated condition monitoring and control
+of fed-batch fermentation processes. Journal of Proceedings Control ,14(1),
+41–50.
