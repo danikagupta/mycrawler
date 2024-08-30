@@ -1,0 +1,524 @@
+HAL Id: hal-02631222
+https://hal.inrae.fr/hal-02631222
+Submitted on 27 May 2020
+HAL is a multi-disciplinary open access
+archive for the deposit and dissemination of sci-
+entific research documents, whether they are pub-
+lished or not. The documents may come from
+teaching and research institutions in F rance or
+abroad, or from public or private research centers.L’archive ouverte pluridisciplinaire HAL , est
+destinée au dépôt et à la diffusion de documents
+scientifiques de niveau recherche, publiés ou non,
+émanant des établissements d’enseignement et de
+recherche français ou étrangers, des laboratoires
+publics ou privés.
+T rypanoCyc: a community-led biochemical pathways
+database for T rypanosoma brucei
+Sanu Shameer, Flora J. Logan-Klumpler, Florence Vinson, Ludovic Cottret,
+Benjamin Merlet, Fiona Achcar, Michael Boshart, Matthew Berriman, Rainer
+Breitling, F rédéric Bringaud, et al.
+T o cite this version:
+Sanu Shameer, Flora J. Logan-Klumpler, Florence Vinson, Ludovic Cottret, Benjamin Merlet, et al..
+T rypanoCyc: a community-led biochemical pathways database for T rypanosoma brucei. Nucleic Acids
+Research, 2015, 43 (D1), pp.D637 - D644. ￿10.1093/nar/gku944￿. ￿hal-02631222￿Publishedonline09October2014 NucleicAcidsResearch,2015,Vol.43,Databaseissue D637–D644
+doi:10.1093/nar/gku944
+TrypanoCyc: a community-led biochemical pathways
+database for Trypanosoma brucei
+Sanu Shameer1, Flora J. Logan-Klumpler2, Florence Vinson1, Ludovic Cottret3,
+Benjamin Merlet1, Fiona Achcar4, Michael Boshart5, Matthew Berriman2, Rainer Breitling6,
+Fr´ed´eric Bringaud7, Peter B ¨utikofer8, Amy M. Cattanach4, Bridget Bannerman-Chukualim2,
+Darren J. Creek9, Kathryn Crouch4, Harry P. de Koning4, Hubert Denise10,
+Charles Ebikeme11,A l a nH .F a i r l a m b12, Michael A. J. Ferguson12, Michael L. Ginger13,
+Christiane Hertz-Fowler14, Eduard J. Kerkhoven15, Pascal M ¨aser16, Paul A. M. Michels17,
+Archana Nayak4,D a v i dW .N e s18, Derek P. Nolan19, Christian Olsen20,
+Fatima Silva-Franco14, Terry K. Smith21,M a r t i nC .T a y l o r22, Aloysius G. M. Tielens23,24,
+Michael D. Urbaniak13, Jaap J. van Hellemond24, Isabel M. Vincent4, Shane R. Wilkinson25,
+Susan Wyllie12, Fred R. Opperdoes26, Michael P. Barrett4,*and Fabien Jourdan1,*
+1Institut National de la Recherche Agronomique (INRA), UMR1331, TOXALIM (Research Centre in Food Toxicology),
+Universit ´e de Toulouse, Toulouse, France,2The Wellcome Trust Sanger Institute, Hinxton, Cambridge CB10 1SA,
+UK,3Institut National de la Recherche Agronomique (INRA), UMR441, Laboratoire des Interactions
+Plantes-Microorganismes (LIPM), Auzeville, France,4University of Glasgow, Glasgow, Scotland, G12 8QQ, UK,
+5Ludwig-Maximilians-Universit ¨at M¨unchen, Biocenter, 82152-Martinsried, Germany,6Manchester Institute of
+Biotechnology, Faculty of Life Sciences, University of Manchester, Manchester, UK,7CNRS, Bordeaux, 33076,
+France,8University of Bern, Bern, CH-3012, Switzerland,9Monash Institute of Pharmaceutical Sciences, Monash
+University, Parkville 3052, Australia,10European Bioinformatics Institute (EMBL-EBI), Hinxton, Cambridge, CB10
+1SD, UK,11ISSC, UNESCO, F-75732 CEDEX 15, Paris, France,12University of Dundee, Dundee, Scotland, DD1
+4HN, UK,13Divisionof Biomedical and Life Sciences, Lancaster University, Bailrigg, Lancaster, LA1 4YG, UK,
+14University of Liverpool, Liverpool, Merseyside L69 3BX, UK,15Chalmers University of Technology, Kemiv ¨agen 10,
+412 96, G ¨oteborg, Sweden,16Swiss Tropical and Public Health Institute, Socinstr. 57, Basel 4051, Switzerland,
+17University of Edinburgh, Mayﬁeld Road, Edinburgh EH9 3JU, UK,18Texas Tech University, Lubbock, TX, USA,
+19Trinity College Dublin, Dublin 2, Ireland,20Biomatters Inc. 60 Park Place, Suite 2100, Newark, NJ, USA,21University
+of St Andrews, St Andrews, Scotland, KY16 9ST, UK,22LSHTM, London, WC1E 7HT, UK,23Utrecht University,
+Utrecht, 3508 TD, The Netherlands,24Erasmus University Medical Center, Rotterdam, 3015 CE, The Netherlands,
+25Queen Mary University of London, London E1 4NS, UK and26University of Louvain, Brussels, B-1200, Belgium
+Received August 13, 2014; Revised September 26, 2014; Accepted September 26, 2014
+ABSTRACT
+The metabolic network of a cell represents the
+catabolic and anabolic reactions that interconvertsmall molecules (metabolites) through the activity of
+enzymes, transporters and non-catalyzed chemical
+reactions. Our understanding of individual metabolicnetworks is increasing as we learn more about
+the enzymes that are active in particular cells un-
+der particular conditions and as technologies ad-vance to allow detailed measurements of the cellu-lar metabolome. Metabolic network databases areof increasing importance in allowing us to con-textualise data sets emerging from transcriptomic,
+proteomic and metabolomic experiments. Here we
+present a dynamic database, TrypanoCyc ( http:
+//www.metexplore.fr/trypanocyc/ ), which describes
+the generic and condition-speciﬁc metabolic networkof
+Trypanosoma brucei, a parasitic protozoan re-
+sponsible for human and animal African trypanoso-miasis. In addition to enabling navigation through the
+*Towhomcorrespondenceshouldbeaddressed.Tel: +33561285715;Fax:+33561285244;Email:Fabien.Jourdan@toulouse.inra.fr
+CorrespondencemayalsobeaddressedtoMichaelP. Barrett.Tel:+441413306904;Fax:+441413304077;Email:michael.barrett@glasgow.ac.uk
+C/circlecopyrtTheAuthor(s) 2014. Published by Oxford University Presson behalf of NucleicAcids Research.
+Thisisan Open Accessarticledistributed underthe termsof the Creative Commons Attribution License(http: //creativecommons.org/licenses/by-nc /4.0/), which
+permits non-commercial re-use, distribution, and reproduction in any medium, provided the original work is properly cited. For commercial re-use, please contact
+journals.permissions@oup.com at INRA Institut National de la Recherche Agronomique on August 12, 2015 http://nar.oxfordjournals.org/ Downloaded from D638NucleicAcidsResearch,2015,Vol.43,Databaseissue
+BioCyc-based TrypanoCyc interface, we have also
+implemented a network-based representation of theinformation through MetExplore, yielding a novel en-
+vironment in which to visualise the metabolism of
+this important parasite.
+INTRODUCTION
+Trypanosoma brucei is the causative agent of African try-
+panosomiasis(commonlyknownassleepingsicknessinhu-
+mans and Nagana in animals). The disease is fatal if un-
+treated in humans ( 1) and the economic impact of try-
+panosomes on agriculture in Africa is immense. The drugs
+availableforthetrypanosomiasesareinadequateforanum-
+ber of reasons and better therapeutic options are required(2).Manydrugsworkthroughinterferingwithenzymesin-
+volved incellular metabolism. The onlyanti-trypanosomal
+drug whose target is known is eflornithine, an inhibitor ofornithinedecarboxylase( 3),akeyenzymeinthepolyamine
+biosynthetic pathway. A comprehensive understanding ofparasitemetabolismthereforecontributestocurrenteffortsin drugdiscovery and understanding drug resistance( 4).
+Globaluntargetedmolecularprofilingdatasets(e.g.tran-
+criptomics,proteomicsandmetabolomicsdata)arenowbe-inggeneratedfortrypanosomesandtheeffectsoflifecycle,
+environmental perturbation, specific genetic manipulation
+and drug action are being dissected in a systematic man-
+ner(5).Interpretingandintegratingthesedatatoallowbio-
+logicalinferenceandhypothesisgenerationisamajorchal-lenge. Metabolic network-based methods offer a means to
+contextualiseandintegratedatatohelpinferenceofbiolog-
+ical function ( 6). Reliable, comprehensive databases collat-
+ing information on metabolic networks and pathways are
+therefore crucial to optimize understanding derived from
+postgenomic data sets. Metabolic databases such as Leish-Cyc(7)(f or Leishmania),andtheLibraryofApicomplexan
+Metabolic Pathways ( 8) (for apicomplexan parasites) are
+amongthefewexampleswherethisinformationisavailablein parasitology.
+Creation of a metabolic network database is achieved by
+gathering information on all of the metabolic transforma-tions an organism can perform (9). A first outline of this
+information is generally retrieved from genomic orthology.
+Genes coding for enzymes are identified through sequencesimilarity searches and then, using enzyme activity infor-
+mation,metabolicreactionscatalyzedbytheseenzymesare
+addedtothenetworkdatabase.Severalautomaticandsemi-automatic tools are available to perform these genome-
+based metabolic network reconstructions( 10–13).
+In spite of their undoubted utility, genome-based recon-
+struction has limitations since it is based primarily on se-quence homology comparisons between the organism of
+interest and databases encompassing information from amultitude of organisms (14). Incorrect annotations readily
+propagateacrossdatabases( 15).Moreover,evolutionworks
+through modification of function following alteration of
+genes encoding proteins. For instance, trypanosomes use
+N
+1,N8bis-glutathionyl spermidine (trypanothione) (16)a s
+a key cellular redox-associated metabolite. Trypanothioneis retained in its reduced form by the enzyme trypanoth-
+ione reductase (EC 1.8.1.12). This enzyme is evolutionar-ily derived from glutathione reductase (EC 1.8.1.7), withwhich it shows great homology. In the absence of accom-
+panying biochemical evidence, genome annotations would
+simplypredicttrypanosomesaspossessingaglutathionere-ductase, and metabolic reconstructions would assume try-
+panosomes employ canonical glutathione-based redox bal-
+ancing. Cases like this highlight the necessity of refininggenome-based metabolic reconstructions by incorporating
+advanced biochemical knowledge ( 15).
+Moreover, simple genome reconstructions do not take
+into account the sub-cellular localization of the enzymes(although various methods are now being developed to
+tacklethisissueascanonicalsignalsdeterminingcellularlo-calizationcometolight(17)).Finally,thegenomeprovides
+a view of the total metabolic capability of an organism, re-
+gardless of environmental and genetic conditions. In try-panosomes,however,differentmetabolicstrategiesareused
+at different points in the life cycle. In the tsetse fly, the try-
+panosome’s main carbon source is proline ( 18) while in the
+human-host it is glucose (19). Some reactions are active inone condition but not in another. This information is par-ticularlyimportantwhenlookingforpotentialdrugtargets.
+Web servers such as KEGG ( 20) and BioCyc (14)r e p -
+resent metabolism as a set of pathways, reflecting classicaltextbook views of biochemistry. However, the pathway ap-
+proach fragments metabolism in ways which constrain our
+abilitytodecipherthebroaderimpactonthemetabolicnet-work; hence, methods that also enable connected network
+views of metabolism are desirable. We have therefore com-
+binedbuildingapathway-basedTrypanoCycdatabasewithitsintegrationintotheMetExplorewebserver( 21),tooffer
+both pathway and network-based inference and visualiza-tion.
+A HIGHLY CURATED DATABASE OF
+T. BRUCEI
+METABOLISM
+TheT. brucei TREU 927 genome is 26 Mb in size, with a
+karyotype of 11 megabase chromosomes (22) and contain-
+ingapredicted9068protein-codinggenes.Inacollaborative
+projectbetweentheInternationalTrypanotoleranceCentrein The Gambia and the Sanger Institute, the genome se-
+quence was processed using the Pathologic metabolic net-
+work reconstruction tool of Pathway Tools ( 23), creating
+aP a t h w a y /Genome Database (PGDB) where gaps (called
+‘pathway holes’) in the predicted metabolic pathways werefilled by hypothetical reactions, even without an obviousgene association. The result of this first automatic recon-
+struction was the starting point of the current TrypanoCyc
+database.
+An international consortium of investigators, expert in
+variousaspectsoftrypanosomemetabolism,wasassembledto produce a highly annotated TrypanoCyc database. Asrecommended by Thiele & Palsson (24) we started the Try-
+panoCycinitiativein2012withatwo-day‘jamboree’.Each
+expert was offered a specific set of pathway(s) in his/herareaofexpertisetocurate.Adedicatedwebinterface,called
+TrypAnnot(apasswordprotectedpartofthewebsiteavail-
+able to annotators, not described here) stores submitted
+annotations in a curation database, making it possible to
+track all annotations, which are automatically taken from at INRA Institut National de la Recherche Agronomique on August 12, 2015 http://nar.oxfordjournals.org/ Downloaded from NucleicAcidsResearch,2015,Vol.43,Databaseissue D639
+Figure1. TrypanoCycpageforthe6-phosphogluconatedehydrogenase(1.1.1.44)reaction.( a)ReactionnameandGeneDBlink(specifictoTrypanoCyc),
+(b) Detailed description of the reaction, (c) Localizations of the reactions as suggested by annotators, ( d) Confidence score for the reaction (specific to
+TrypanoCyc),(e)AnnotationtablesdisplayingcontentoftheTrypAnnotdatabase(specifictoTrypanoCyc).
+thedatabaseandaddedtothewebpageofthecorrespond-
+ing reaction. The TrypanoCyc project has so far had 1368editing events, among which are 653 annotations made on
+464reactions.Furthermore,sincethefirstautomatedrecon-
+struction in 2008, 17 pathways, 35 enzymatic-reactions, 10transport reactions, 41 enzymes, 2 protein complexes and
+104metaboliteshavebeenaddedtoTrypanoCyc.Extended
+summaries for some pathways have also been made avail-able inthe database.
+T. brucei cells contain multiple membrane-bounded or-
+ganelles, including the mitochondrion and an unusualperoxisome-related organelle, the glycosome ( 25,26), in
+which the first seven steps of glycolysis occur, as well as aseries of other pathways ( 19). Annotators, therefore, spec-
+ify the sub-cellular localization of reactions, if known, in
+theannotationinterface.Lifecyclestagespecificityforeach
+reaction is also important, since trypanosomes use differ-ent metabolic pathways in different environments; hence
+annotators can specify one or more developmental stages
+in which reactions occur. Note that this information is notavailableinthereconstructionprovidedbyKEGG(seeTa-ble1forcomparison).Thelevelofknowledgeoneachreac-
+tionvariesfromexperimentallyverifiedtoindirectevidenceofactivityregardlessofmanualcuration.Toreflectthelevel
+of confidence of the annotation we have used the scoring
+system proposed by Thiele & Palsson ( 9)( s e eT a b l e 2). For
+instance,ofthe464annotatedreactions,84wereannotated
+based on direct evidence from protein purification, bio-
+chemicalassaysorcomparativegeneexpressionstudiesandhence can be considered with the highest confidence. Dur-
+ingcurationwefoundnumerousfalselypredictedreactions
+and pathways; 60 pathways, 14 enzymatic reactions, 20 en-zymesand56metaboliteshavebeenremovedfromtheorigi-
+nalreconstruction.Neverthelessweretainedsomereactions
+if they are known to occur in related trypanosomatids, orelse when they have been proposed to exist, erroneously, in
+the literature. Although such reactions are kept, they are
+not linked to any pathway and they are assigned a nega-tiveconfidencescoretohighlightthefactthataccordingto
+ourpresentknowledgetheyarenotactuallypresent.Forex-
+ample,amethioninecyclethatregeneratesmethioninefrommethylthioadenosine resulting from polyamine biosynthe- at INRA Institut National de la Recherche Agronomique on August 12, 2015 http://nar.oxfordjournals.org/ Downloaded from D640NucleicAcidsResearch,2015,Vol.43,Databaseissue
+Figure2. ProteomicsdataloadedinTrypanoCycusingthecellularoverviewtool.( a)Thediagramshowsallthemetabolicpathwaysingrayboxes.Colored
+squarescorrespondtoreactionswithassociatedproteomicsvalues.Thecolorscaleisdisplayedinthe‘OmicsViewerControlPanel’;itcanbetunedusing
+dedicatedparameters.The‘REACTION’dialogappearswhenclickingonareaction.( b)Itisthenpossibletogetbacktothecorrespondingreactionpage
+andreadtheannotators’comments.
+sis has been proposed (27). However, metabolic labelling
+experiments have subsequently indicated that the pathway
+is not active in trypanosomes, at least in the conditionsused (28). The reactions EC 4.2.1.109 (methylthioribulose
+1-phosphatedehydratase)andEC3.1.3.77(5-(methylthio)-
+2,3-dioxopentyl-phosphatephosphohydrolase),requiredtocomplete the pathway, are included in the database, but
+assigned negative scores to highlight that they are unde-
+tectableinspiteofpreviouspredictionsintheliterature( 27).
+Weconsideritusefultokeepsuchentriessuchthatusersof
+the database can find explicit reference to these reactions
+they might seek upon reading literature pertaining to thesereactions.
+Sincemetabolicdatabasesfocusmainlyonpathwaysand
+seldom consider sub-cellular compartments, they usuallylack information on intracellular transport reactions. Cur-
+rently,TrypanoCyccontainsonly35suchreactions.Thisis
+becausewedidnotincorporatetransportreactionsintoourannotation platform and because experimental knowledge
+onintracellulartransportprocessesisstillsparse.However,
+thedynamicnatureofTrypanoCycmeansadditionalanno-tation and incorporation of measured and probable trans-
+port reactions (e.g. taken from existing manually curated
+metabolic models of the closely related organism Leishma-
+nia major (29)) will form part of the iterative process of
+database refinement. We also perform gap filling in eachcompartmentusinggraphapproachesandtestingmetabolicscenariosassuggested(9,10)andsuccessfullyimplemented
+forotherorganisms ( 30).
+Manyadditionaldatabasesprovideinformationthatcan
+complementmetabolicnetworkdatabases.Linkingtothese
+other data sources enhances our ability to learn about
+an organism’s metabolism. TrypanoCyc, therefore, links tomultipledatabasesincludingBRENDA( 31,32),expasy.org
+(33), ExplorEnz ( 34), Pubmed and UniProt (35). The Trit-
+rypDB database ( 36) is the central resource for trypanoso-
+matid genomes and associated functional genomics data,
+while GeneDB houses the sequence information gathered
+andannotatedthroughtheWellcomeTrustSangerInstitute(37). For each gene, TrypanoCyc offers a direct link to the
+correspondingTritrypDB and GeneDBpages. at INRA Institut National de la Recherche Agronomique on August 12, 2015 http://nar.oxfordjournals.org/ Downloaded from NucleicAcidsResearch,2015,Vol.43,Databaseissue D641
+Figure3. NavigationbetweenpathwayandnetworkrepresentationusingMetExploreandTrypanoCyc.( a)Eachpathwaypagehasanhyperlinkallowing
+to load and visualize the pathway in MetExplore (circled in red on the pathway page screenshot). ( b) When clicking on this link in the Glycolysis page, it
+isloadedinMetExplore;theredboxcorrespondstothecytosolicpartandthegreenonetotheglycosomalpart.( c)UsingMetExplore,itisthenpossible
+togenerateacombinationofvariouspathways.TCAcycle,succinateshunt,glycolysisandthepentosephosphatepathwaywereselected.( d)Allreactions
+ofthesepathwaysareaddedtothecart(redboxontheright).Athirdcompartment,mitochondrion,appears(purplebox).Areactionallowingtranspor t
+betweencytosolandglycosomeappearsinthenetwork(redarrow).( e)InthetabularviewofMetExplore,aTrypanoCycbutton(visibleinthethirdcolumn
+of[c]table)allowstolinkbacktoTrypanoCyc.
+Table1. DescriptionoftheconfidencescoresystemusedinTrypanoCyctoevaluatethelevelofcurationofeachreaction
+Reconstruction Compartments Lifecyclestages Pathways Enzymaticreactions Uniquemetabolites
+Draftreconstruction
+20081 0 238 1120 796
+KEGGAugust2014 1 0 61 656 646TrypanoCycAugust
+20149 4 209 1025 842
+TheBioCyclibraryisacollectionof3563PGDBs.Based
+on the quality of the PGDBs and the level of manual cu-
+ration, this central repository classifies them into Tier 1
+(highly curated), Tier 2 (moderately curated) and Tier 3(non-curated) categories. Prior to the release of BioCyc
+v18.1,only6PGDBs(EcoCyc( 38),MetaCyc(14),Human-
+Cyc (39), AraCyc (40), YeastCyc and LeishCyc (7)) were
+published in the Tier 1 category. Due to the quality of in-formation being made available on TrypanoCyc, it was in-
+cluded in BioCyc’s Tier 1 category with the release of Bio-Cycv18.1 in June 2014.REACTIONS, PATHWAYS AND NETWORK MINING
+Browsing TrypanoCyc content and expert annotations
+As a Pathway Tools-based website, TrypanoCyc provides
+a dedicated web page for each metabolic network entity
+(pathways, reactions, metabolites, enzymes, proteins andgenes). The reaction page architecture was, however, mod-
+ified in order to allow additional annotation information.
+These include the annotation confidence score (Figure 1d),
+stagespecificityandcompartmentationwithlinkstokeylit-
+erature (Figure 1e). A comment box is also included, con-
+taining detailed free-text information on the reaction. Fig- at INRA Institut National de la Recherche Agronomique on August 12, 2015 http://nar.oxfordjournals.org/ Downloaded from D642NucleicAcidsResearch,2015,Vol.43,Databaseissue
+Table2. OverviewofTrypanoCyccontentbeforeandaftercurationandcomparisonwiththeKEGGdatabase
+Evidencetype Confidencescore Description
+Biochemicaldata 4 Directevidenceforgeneproductfunctionand
+biochemicalreaction:proteinpurification,
+biochemicalassays,experimentallysolvedproteinstructuresandcomparativegene-expression
+studies.
+Geneticdata 3 Directandindirectevidenceforgenefunction:
+knock-outcharacterization,knock-in
+characterizationandoverexpression.
+Physiologicaldata 2 Indirectevidenceforbiochemicalreactionbased
+onphysiologicaldata:secretionproductsordefinedmediumcomponentsserveasevidencefortransportandmetabolicreactions.
+Sequencedata 2 Evidenceforgenefunction:genomeannotation,
+SEEDannotation.
+Modellingdata 1 Noevidenceisavailablebutreactionisrequiredfor
+modelling.Theincludedfunctionisahypothesisandneedsexperimentalverification.Thereactionmechanismmaybedifferentfromtheincludedreaction(s).
+Notevaluated 0
+Negativehypothesis –1 Althoughthereisnoevidenceagainstthis
+reaction,it isexpectedtonotexist
+Evidenceagainstthereaction –2 Direct /indirectevidenceagainstthehypothesisis
+available
+ure1showsthewebpageforthepentosephosphatepathway
+enzyme,6-phosphogluconatedehydrogenase(EC.1.1.1.44).
+Search requests on database content can be made
+throughaquicksearchboxfoundatthetopright-handcor-
+ner of the interface page, as well as through the advanced
+search options available from the menu bar. Each pathway
+representationisavailablewithdifferentlevelsofdetail,thesimplestviewdisplayingonlythereactionsandmetabolites
+whilethedetailedviewdisplaysallavailableinformationin-
+cludingthemolecularstructureofallmetabolitesinvolved.Additionally,foreverypathwayinTrypanoCyc,weprovide
+alink to visualize thepathwayin MetExplore.
+Mining stage specificmetabolism using cellular overview
+To exemplify the integration of molecular profiling data in
+the TrypanoCyc database we used published results froma Stable Isotope Labelling of Amino acids in Cell culture
+experiment, comparing protein levels in bloodstream form
+(BSF) and procyclic form (PCF) trypanosomes (41). Thedata set contains 3552 gene IDs along with their relative
+proteinlevelsinthetwotestedstagesof T.brucei (expressed
+as log PCF/BSF values). A TrypanoCyc cellular overview
+shows enzymes that differ in abundance between the two
+life cycle forms (Figure 2; for step by step instructions see
+Supplementary DataS1).
+Mapping other molecular profiling data in TrypanoCyc
+canbeachievedusingthePathwayToolsOmicsViewer(42),
+whichdisplaysallpathwaysinasinglerepresentation.Datasetscanbeloadedusingtheoptionslistedontheright-hand
+sideofthepage(SupplementaryMaterialS2isaversionof
+thisdatasetinanOmicsViewer-compliantformat).Figure2a shows an image of the overview after loading the pro-
+teomicsdataof(41). Individual reactions canbe viewedby
+moving the mouse over them and clicking the link in the
+pop-up dialog box. This opens the related reaction page
+containing the annotation table, giving access to specificTrypanoCyc annotators’ comments about the enzyme andits activity as well as the generic information pertaining tothat reaction in the MetaCyc database. For example, the
+overlaid data clearly show that the respiratory chain is up-
+regulatedinprocyclicstages.Browsingthereactionpageof
+any of those up-regulated proteins shows additional infor-
+mation from the annotators. For example, for ubiquinone-cytochromeCreductase(EC1.10.2.2),twoTrypanoCycan-
+notators report that this reaction is active in the PCF but
+notinthelongslenderBSFof T.brucei (seeFigure 2b),thus
+agreeingwiththeobservationsfromtheproteomicsexperi-
+ment.
+Using MetExplore to create user-defined sub-networks from
+TrypanoCyc
+Tocomplementtheclassicalpathway-orientedBioCycrep-
+resentationofdata,wealsoofferanovelwaytovisualizethe
+contentofTrypanoCyc viaourMetExplorewebserver(21)
+(for step by step instructions see Supplementary Data S3).
+Each pathway page contains a hyperlink (Figure 3a), that
+opens MetExplore with the selected pathway (Figure 3b).
+Importantly,theMetExploreviewertakesintoaccountthelocalizationofreactions.Forexample,Figure 3bshowshow
+the glycolytic pathway is divided into two compartments(glycosomeandcytosolrepresentedbygreenandredboxes,respectively).
+Another advantage of MetExplore is that it provides a
+tabular representation of compartments, pathways, reac-tions, enzymes, genes and metabolites in the database. It is
+also possible to filter these tables by compartments, path-
+ways or reactions. For instance, by filtering simultaneouslyon the pentose phosphate pathway, TCA cycle, succinate
+shuntandglycolysis,onlyreactionsandmetabolitesrelated
+to these pathways are displayed in their respective tables
+(Figure3c).Theusercanalsoaddreactionsofinteresttoa
+‘cart’(redboxonFigure 3d).Itisthenpossibletovisualize at INRA Institut National de la Recherche Agronomique on August 12, 2015 http://nar.oxfordjournals.org/ Downloaded from NucleicAcidsResearch,2015,Vol.43,Databaseissue D643
+thecontentofthiscartinthenetworkrepresentation.From
+Figure3d,itisevidentthatthenetworkperspectiveismuch
+moreeffectiveinrepresentingcompartmentsandtransportreactions. Furthermore, the glycosome (green box) and cy-tosol (red box) are demonstrably connected by a reaction
+involved in the succinate shunt (marked by a red arrow on
+Figure3d). For a more flexible representation MetExplore
+alsooffersadownloadableversionoftheCytoscapevisual-
+izationsoftware (43),pre-loaded withthecart content.
+Finally, each MetExplore reaction /pathway with a de-
+scriptioninTrypanoCychasbeenhyperlinkedtothecorre-sponding reaction/pathway pages, allowing the user to go
+back tothe expertannotations anytime (Figure 3e).
+CONCLUSION
+Since 2012, TrypanoCyc has been under extensive cura-
+tion with the help of the scientific community and is now
+counted among the seven Tier 1 databases within the Bio-
+Cyc repository. Collaborative annotations help in improv-ing the quality of the database by reducing errors, reduc-
+ingtheworkloadforindividualannotatorsandalsoprovid-
+ing inferences from multiple perspectives given the varioustypes ofexpertsin thecommunity.
+T.brucei metabolicplasticityallowstheparasitetoadapt
+to divergent nutritional environments offered by different
+hosts. For drug target identification, for example, focus-
+ing on enzymes and metabolic pathways expressed in theparasite-stages that are replicative in the mammalian host
+iscritical.TrypanoCycisthefirstcomprehensivemetabolic
+networkdatabaseforparasitesincludingstagespecificityasa key component of the collected data. LeishCyc ( 7), for
+therelatedparasite L.major,hasalsobeenestablished,and
+in the future these two databases should, ideally, be linked,given the significant degree of similarity in the metabolic
+networksof theseevolutionarilyrelatedparasites.
+TrypanoCyc and the related annotation database allow
+anyone with an interest to join the annotation team. Thesize of the consortium helps guarantee the sustainabil-
+ity of TrypanoCyc as does the involvement of permanentstaff both at INRA, Toulouse, and the University of Glas-
+gow.TheToulousebioinformaticsfacilityprovidestheTry-
+panoCyc server. TrypanoCyc is freely available and is notpassword protected.
+TrypanoCyc database content can be mined in a
+pathway-oriented manner using the BioCyc-like web inter-facebutalsoinanetworkperspectiveusingtheMetExplore
+webserver,whichallowstailoredbuildingandvisualization
+ofsub-networks.Twooptionsareavailabletoprogrammati-callyaccessTrypanoCyc:throughpathwaytoolsusingJava-
+Cyc or PerlCyc and through MetExplore using its web ser-
+vice.
+TrypanoCycisauniqueknowledgesourceforpeoplein-
+vestigating T.brucei metabolism.TheavailabilityofSBML
+(44) files (provided as Supplementary Material S4) based
+on the curated network reconstruction in TrypanoCyc will
+underpin efforts to explore trypanosome metabolism using
+flux balance analysis (45) or other constraints-based tech-
+niques. It will also serve as a potential model organism for
+earlyeukaryotes.SUPPLEMENTARY DATA
+Supplementary Data are available at NAR Online.
+ACKNOWLEDGEMENT
+We are grateful to the genotoul bioinformatics platform
+ToulouseMidi-Pyreneesforprovidingcomputingandstor-
+ageresourcesrequiredbyTrypanoCycDatabase.Thisstudywas initiatedbytheBBSRC-ANR Systryp grant.
+FUNDING
+European Commission FP7 Marie Curie Initial Train-
+ing Network ‘ParaMet’ [290080 to S.S.]; ANR projectMetaboHub [ANR-11-INBS-0010 to B.M.]; Wellcome
+Trust [085349]; The work of Fiona Achcar was part of the
+SysMO SilicoTryp project coordinated by R.B. Fundingfor open access charge: European Commission FP7 Marie
+Curie Initial Training Network ‘ParaMet’[290080].
+Conflictofintereststatement. None declared.
+REFERENCES
+1. Brun,R.,Blum,J.,Chappuis,F.andBurri,C.(2010)HumanAfrican
+trypanosomiasis. Lancet,375,148–59.
+2. Barrett,M.P.(2010)PotentialnewdrugsforhumanAfrican
+trypanosomiasis:someprogressat last. Curr.Opin.Infect.Dis., 23,
+603–608.
+3. Vincent,I.M.,Creek,D.J.,Burgess,K.,Woods,D.J.,Burchmore,R.J.S.
+andBarrett,M.P.(2012)Untargetedmetabolomicsrevealsa lackof
+synergybetweennifurtimoxandeflornithineagainstTrypanosoma
+brucei.PLoSNegl.Trop.Dis. 6,e1618.
+4. Creek,D.J.andBarrett,M.P.(2014)Determinationofantiprotozoal
+drugmechanismsbymetabolomicsapproaches. Parasitology, 141,
+83–92.
+5. Achcar,F.,Kerkhoven,E.J.andBarrett,M.P.(2014)Trypanosoma
+brucei:meetthesystem. Curr.Opin.Microbiol. ,20C,162–169.
+6. Cottret,L.andJourdan,F.(2010)Graphmethodsfortheinvestigation
+ofmetabolicnetworksinparasitology. Parasitology, 137,1393–1407.
+7. Doyle,M.A.,MacRae,J.I.,DeSouza,D.P.,Saunders,E.C.,
+McConville,M.J.andLiki ´c,V.A.(2009)LeishCyc:abiochemical
+pathwaysdatabaseforLeishmaniamajor. BMCSyst.Biol., 3,57.
+8. Shanmugasundram,A.,Gonzalez-Galarza,F.F.,Wastling,J.M.,
+Vasieva,O.andJones,A.R.(2013)LibraryofApicomplexan
+MetabolicPathways:amanuallycurateddatabaseformetabolicpathwaysofapicomplexanparasites. NucleicAcidsRes., 41,
+D706–D713.
+9. Thiele,I.andPalsson,Ø.B.(2010)Aprotocolforgeneratinga
+high-qualitygenome-scalemetabolicreconstruction. Nat.Protoc., 5,
+93–121.
+10. DeJongh,M.,Formsma,K.,Boillot,P.,Gould,J.,Rycenga,M.and
+Best,A.(2007)Towardtheautomatedgenerationofgenome-scalemetabolicnetworksin theSEED. BMCBioinform., 8,139.
+11. Whitaker,J.W.,Letunic,I.,McConkey,G.A.andWesthead,D.R.
+(2009)metaTIGER:ametabolicevolutionresource. NucleicAcids
+Res.,37,D531–D538.
+12. Agren,R.,Liu,L.,Shoaie,S.,Vongsangnak,W.,Nookaew,I.and
+Nielsen,J.(2013)TheRAVENtoolboxanditsuseforgeneratinga
+genome-scalemetabolicmodelforPenicilliumchrysogenum. PLoS
+Comput.Biol., 9,e1002980.
+13. May,J.W.,James,A.G.andSteinbeck,C.(2013)Metingear:a
+developmentenvironmentforannotatinggenome-scalemetabolic
+models.Bioinformatics ,29,2213–2215.
+14. Caspi,R.,Altman,T.,Billington,R.,Dreher,K.,Foerster,H.,
+Fulcher,C.A.,Holland,T.A.,Keseler,I.M.,Kothari,A.,Kubo,A. etal.
+(2014)TheMetaCycdatabaseofmetabolicpathwaysandenzymesandtheBioCyccollectionofPathway /GenomeDatabases. Nucleic
+AcidsRes., 42,D459–D471. at INRA Institut National de la Recherche Agronomique on August 12, 2015 http://nar.oxfordjournals.org/ Downloaded from D644NucleicAcidsResearch,2015,Vol.43,Databaseissue
+15. Ginsburg,H.(2006)Progressininsilicofunctionalgenomics:the
+malariaMetabolicPathwaysdatabase. Trends.Parasitol., 22,238–240.
+16. Fairlamb,A.H.,Blackburn,P.,Ulrich,P.,Chait,B.T.andCerami,A.
+(1985)Trypanothione:anovelbis(glutathionyl)spermidinecofactor
+forglutathionereductaseintrypanosomatids. Science,227,
+1485–1487.
+17. Tardif,M.,Atteia,A.,Specht,M.,Cogne,G.,Rolland,N.,Brugi `ere,S.,
+Hippler,M.,Ferro,M.,Bruley,C.,Peltier,G. etal.(2012)PredAlgo:a
+newsubcellularlocalizationpredictiontooldedicatedtogreenalgae.Mol.Biol.Evol., 29,3625–3639.
+18. Lamour,N.,Rivi `ere,L.,Coustou,V.,Coombs,G.H.,Barrett,M.P.and
+Bringaud,F.(2005)Prolinemetabolismin procyclicTrypanosomabruceiis down-regulatedinthepresenceofglucose. J.Biol.Chem.,
+280,11902–11910.
+19. Michels,P.A.,Hannaert,V.andBringaud,F.(2000)Metabolicaspects
+ofglycosomesintrypanosomatidae- newdataandviews. Parasitol.
+Today,16,482–489.
+20. Kanehisa,M.,Goto,S.,Sato,Y.,Kawashima,M.,Furumichi,M.and
+Tanabe,M.(2014)Data,information,knowledgeandprinciple:backtometabolisminKEGG. NucleicAcidsRes., 42,D199–205.
+21. Cottret,L.,Wildridge,D.,Vinson,F.,Barrett,M.P.,Charles,H.,
+Sagot,M.-F.andJourdan,F.(2010)MetExplore:awebservertolinkmetabolomicexperimentsandgenome-scalemetabolicnetworks.NucleicAcidsRes., 38,W132–W137.
+22. Berriman,M.,Ghedin,E.,Hertz-Fowler,C.,Blandin,G.,Renauld,H.,
+Bartholomeu,D.C.,Lennard,N.J.,Caler,E.,Hamlin,N.E.,Haas,B.etal.(2005)ThegenomeoftheAfricantrypanosomeTrypanosoma
+brucei.Science,309,416–422.
+23. Karp,P.D.,Latendresse,M.andCaspi,R.(2011)Thepathwaytools
+pathwaypredictionalgorithm. Stand.GenomicSci. ,5, 424–429.
+24. Thiele,I.andPalsson,B.Ø.(2010)Reconstructionannotation
+jamborees:acommunityapproachtosystemsbiology. Mol.Syst.
+Biol.,6,361.
+25. Opperdoes,F.R.,Borst,P.andSpits,H.(1977)Particle-boundenzymes
+inthebloodstreamformofTrypanosomabrucei. Eur.J.Bioche., 76,
+21–28.
+26. Opperdoes,F.R.andBorst,P.(1977)Localizationofnineglycolytic
+enzymesinamicrobody-likeorganellein Trypanosomabrucei:theglycosome. FEBSLett., 80,360–364.
+27. Berger,B.J.,Dai,W.W.,Wang,H.,Stark,R.E.andCerami,A.(1996)
+Aromaticaminoacidtransaminationandmethioninerecyclingintrypanosomatids. Proc.Natl.Acad.Sci.U.S.A. ,93,4126–4130.
+28. Creek,D.J.,Chokkathukalam,A.,Jankevics,A.,Burgess,K.E.V,
+Breitling,R.andBarrett,M.P.(2012)Stableisotope-assisted
+metabolomicsfornetwork-widemetabolicpathwayelucidation. Anal.
+Chem.,84,
+8442–8447.
+29. Chavali,A.K.,Whittemore,J.D.,Eddy,J.a.,Williams,K.T.and
+Papin,J.a.(2008)SystemsanalysisofmetabolisminthepathogenictrypanosomatidLeishmaniamajor. Mol.Syst.Biol., 4, 177.
+30. Thiele,I.,Swainston,N.,Fleming,R.M.T.,Hoppe,A.,Sahoo,S.,
+Aurich,M.K.,Haraldsdottir,H.,Mo,M.L.,Rolfsson,O.,Stobbe,M.D.
+etal.(2013)Acommunity-drivenglobalreconstructionofhuman
+metabolism. Nat.Biotechnol., 31,419–425.31. Schomburg,I.,Chang,A.,Ebeling,C.,Gremse,M.,Heldt,C.,Huhn,G.
+andSchomburg,D.(2004)BRENDA,theenzymedatabase:updatesandmajornewdevelopments. NucleicAcidsRes., 32,D431–D433.
+32. Schomburg,I.,Chang,A.,Placzek,S.,S ¨ohngen,C.,Rother,M.,
+Lang,M.,Munaretto,C.,Ulas,S.,Stelzer,M.,Grote,A. etal.(2013)
+BRENDAin2013:integratedreactions,kineticdata,enzyme
+functiondata,improveddiseaseclassification:newoptionsand
+contentsin BRENDA. NucleicAcidsRes., 41,D764–D772.
+33. Artimo,P.,Jonnalagedda,M.,Arnold,K.,Baratin,D.,Csardi,G.,De
+Castro,E.,Duvaud,S.,Flegel,V.,Fortier,A.,Gasteiger,E. etal.(2012)
+ExPASy:SIBbioinformaticsresource portal. NucleicAcidsRes., 40,
+W597–W603.
+34. McDonald,A.G.,Boyce,S.andTipton,K.F.(2009)ExplorEnz:the
+primarysourceoftheIUBMBenzymelist. NucleicAcidsRes., 37,
+D593–D597.
+35. TheUniProtConsortium(2013)UpdateonactivitiesattheUniversal
+ProteinResource(UniProt)in2013. NucleicAcidsRes., 41,D43–D47.
+36. Aslett,M.,Aurrecoechea,C.,Berriman,M.,Brestelli,J., Brunk,B.P.,
+Carrington,M.,Depledge,D.P.,Fischer,S.,Gajria,B.,Gao,X. etal.
+(2010)TriTrypDB:afunctionalgenomicresourcefortheTrypanosomatidae. NucleicAcidsRes., 38,D457–D462.
+37. Logan-Klumpler,F.J.,DeSilva,N.,Boehme,U.,Rogers,M.B.,
+Velarde,G.,McQuillan,J.A.,Carver,T.,Aslett,M.,Olsen,C.,
+Subramanian,S. etal.(2012)GeneDB-anannotationdatabasefor
+pathogens. NucleicAcidsRes., 40,D98–D108.
+38. Keseler,I.M.,Mackie,A.,Peralta-Gil,M.,Santos-Zavaleta,A.,
+Gama-Castro,S.,Bonavides-Mart ´ınez,C.,Fulcher,C.,Huerta,A.M.,
+Kothari,A.,Krummenacker,M. etal.(2013)EcoCyc:fusingmodel
+organismdatabaseswithsystemsbiology. NucleicAcidsRes., 41,
+D605–D612.
+39. Romero,P.,Wagg,J.,Green,M.L.,Kaiser,D.,Krummenacker,M.and
+Karp,P.D.(2005)Computationalpredictionofhumanmetabolic
+pathwaysfromthecompletehumangenome. GenomeBiol., 6,R2.
+40. Zhang,P.,Foerster,H.,Tissier,C.P.,Mueller,L.,Paley,S.,Karp,P.D.
+andRhee,S.Y.(2005)MetaCycandAraCyc.Metabolicpathway
+databasesforplantresearch. PlantPhysiol. ,138,
+27–37.
+41. Urbaniak,M.D.,Guther,M.L.S.andFerguson,M.A.J.(2012)
+ComparativeSILACproteomicanalysisofTrypanosomabruceibloodstreamandprocycliclifecyclestages. PloSOne, 7,e36619.
+42. Paley,S.M.andKarp,P.D.(2006)ThePathwayToolscellularoverview
+diagramandOmicsViewer. NucleicAcidsRes. 34,3771–3778.
+43. Cline,M.S.,Smoot,M.,Cerami,E.,Kuchinsky,A.,Landys,N.,
+Workman,C.,Christmas,R.,Avila-Campilo,I.,Creech,M.,Gross,B.
+etal.(2007)Integrationofbiologicalnetworksandgeneexpression
+datausingCytoscape. Nat.Protoc., 2,2366–2382.
+44. Hucka,M.,Finney,A.,Sauro,H.M.,Bolouri,H.,Doyle,J.C.,
+Kitano,H.,Arkin,A.P.,Bornstein,B.J.,Bray,D.,Cornish-Bowden,A.etal.(2003)Thesystemsbiologymarkuplanguage(SBML):a
+mediumforrepresentationandexchangeofbiochemicalnetworkmodels.Bioinformatics ,19,524–531.
+45. Schellenberger,J.,Que,R.,Fleming,R.M.T.,Thiele,I.,Orth,J.D.,
+Feist,A.M.,Zielinski,D.C.,Bordbar,A.,Lewis,N.E.,Rahmanian,S.etal.(2011)Quantitativepredictionofcellularmetabolismwith
+constraint-basedmodels:theCOBRAToolboxv2.0. Nat.Protoc., 6,
+1290–1307. at INRA Institut National de la Recherche Agronomique on August 12, 2015 http://nar.oxfordjournals.org/ Downloaded from 

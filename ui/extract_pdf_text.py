@@ -57,11 +57,14 @@ def get_pdfs_to_process(pdf_dirs, txt_dir):
 #             st.write(f"Skipped: {filename} (TXT file already exists)")
 
 
+
 def process_pdf_dirs(pdf_dirs, txt_dir, limit=None):
     Path(txt_dir).mkdir(parents=True, exist_ok=True)
 
     pdfs_to_process = get_pdfs_to_process(pdf_dirs, txt_dir)
     random.shuffle(pdfs_to_process)
+
+    st.write(f"Backlog: {len(pdfs_to_process)} files")
 
     if limit is not None:
         pdfs_to_process = pdfs_to_process[:limit]

@@ -1,0 +1,902 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+University of Southern Denmark
+Proposal for a common nomenclature for fragment ions in mass spectra of lipids
+Pauling, Josch K; Hermansson, Martin; Hartler, Jürgen; Christiansen, Klaus; Gallego, Sandra
+F; Peng, Bing; Ahrends, Robert; Ejsing, Christer S
+Published in: 
+PLOS ONE
+DOI:
+10.1371/journal.pone.0188394
+Publication date: 
+2017
+Document version: 
+Final published version
+Document license: 
+CC BY
+Citation for pulished version (APA): 
+Pauling, J. K., Hermansson, M., Hartler, J., Christiansen, K., Gallego, S. F., Peng, B., Ahrends, R., & Ejsing, C.
+S. (2017). Proposal for a common nomenclature for fragment ions in mass spectra of lipids. PLOS ONE , 12(11), 
+Article e0188394. https://doi.org/10.1371/journal.pone.0188394
+Go to publication entry in University of Southern Denmark's Research Portal
+Terms of use
+This work is brought to you by the University of Southern Denmark.
+Unless otherwise specified it has been shared according to the terms for self-archiving.
+If no other license is stated, these terms apply:
+            • You may download this work for personal use only.
+            • You may not further distribute the material or use it for any profit-making activity or commercial gain
+            • You may freely distribute the URL identifying this open access version
+If you believe that this document breaches copyright please contact us providing details and we will investigate your claim.
+Please direct all enquiries to puresupport@bib.sdu.dk
+Download date: 29. Aug. 2024RESEA RCH ARTICL E
+Proposal foracommon nomenclature for
+fragment ions inmass spectra oflipids
+Josch K.Pauling1☯,Martin Hermansson1☯,JuÈrgen Hartler2,3,Klaus Christiansen1,Sandra
+F.Gallego1,Bing Peng4,Robert Ahrends4,Christer S.Ejsing1,5*
+1Department ofBiochemi stryandMolecular Biology, VILLUM Center forBioanaly tical Sciences, University
+ofSouthe rnDenm ark,Odense, Denm ark,2Institute ofComputat ional Biotechnology ,Graz University of
+Technolo gy,Graz, Austria, 3Omics Center Graz, BioTechMe d-Graz, Graz, Austria, 4Leibniz- Institut fuÈr
+Analytische Wisse nschaften-IS AS-e.V., Dortmund, Germany ,5Cell Biology andBiophysics Unit, European
+Molecular Biology Laboratory ,Heidelberg, Germa ny
+☯These authors contributed equally tothiswork.
+*cse@bmb .sdu.dk
+Abstract
+Advances inmass spectrome try-based lipidomics have inrecent years prompted efforts to
+standardize theannotation ofthevast number oflipid molecules thatcanbedetected inbio-
+logical systems. These efforts have focused oncataloguing, naming anddrawing chemical
+structures ofintact lipid molecules, buthave provided noguidelines forannotation oflipid
+fragment ions detected using tandem andmulti-stage mass spectrometry, albeit these frag-
+ment ions aremandatory forstructural elucidation andhigh confidence lipid identification,
+especially inhigh throughput lipidomics workflows. Here wepropose anomenclature forthe
+annotation oflipid fragment ions, describe itsimplementation andpresent afreely available
+web application, termed ALEX123lipid calculator, thatcanbeused toquery acomprehen-
+sive database featuring curated lipid fragmentation information formore than 430,000
+potential lipid molecules from 47lipid classes covering fivelipid categories. Wenote thatthe
+nomenclature isgeneric, extendable tostable isotope-labele dlipid molecules andapplicable
+toautomated annotation offragment ions detected bymost contemporary lipidomics plat-
+forms, including LC-MS/MS-bas edroutines.
+Introduction
+Advances inmass spectrometry (MS)-based lipidomics have enabled comprehensive lipidome
+analysis athigh throughput with generation oflarge amounts ofspectral data that canbehar-
+nessed toidentify and quantify several hundred lipid molecules inasingle sample [1±7]. Appli-
+cations ofthistechnology have proven useful forboth biological and medical sciences by
+providing mechanistic insights into theregulation oflipid metabolism [8,9], membrane-
+related processes [10,11], lipid-protein interactions [12±14] and pinpointing lipid biomarkers
+[15,16]. These advances have also prompted implementation ofmuch needed cheminfor-
+matics approaches toclassify, catalogue, annotate and depict structures oflipid molecules with
+complete molecular information about stereochemistry and positions ofhydrocarbon chains
+with locations and configurations ofdouble bonds, hydroxyl groups orother functional groups
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 1/21a1111111111
+a1111111111
+a1111111111
+a1111111111
+a1111111111
+OPEN ACCESS
+Citation: Pauling JK,Hermans sonM,Hartler J,
+Christiansen K,Gallego SF,Peng B,etal.(2017)
+Proposal foracommon nomenc lature forfragment
+ionsinmass spectra oflipids. PLoS ONE12(11):
+e0188394. https://d oi.org/10.1371/j ournal.
+pone.018839 4
+Editor: Colin Johnson, Oregon State University,
+UNITED STATES
+Received: July3,2017
+Accepted: October 20,2017
+Published: November 21,2017
+Copyright: ©2017 Pauling etal.Thisisanopen
+access article distributed under theterms ofthe
+Creative Commons Attribution License, which
+permits unrestricte duse,distribu tion,and
+reproduction inanymedium, provided theoriginal
+author andsource arecredited.
+Data Availabilit yStatement: Allrelevant dataare
+within thepaper, itsSupporting Information files
+andthewebapplication ALEX123 (http://alex 123.
+info/ALEX12 3/MS.php).
+Funding: Thiswork wassupported bytheVILLUM
+Foundation (VKR023439 ;CSE; http://vill umfonden.
+dk),theVILLUM Center forBioanalytical Sciences
+(VKR023179 ;Department ofBiochemi stryand
+Molecular Biology; http://villumf onden.dk) andthe
+Lundbeck fonden (R54-A5858; CSE; www.
+lundbeckfoun dation.com). Thefunders hadnorole[17±19]. However, lipidomics technology, even when combined with liquid chromatography
+(LC) orother separation techniques, israrely able toprovide spectral information that allows
+theexact structure ofalipid molecule tobedetermined. Toaddress thisdiscrepancy guidelines
+have recently been issued touseahierarchical nomenclature system that annotates lipid mole-
+cules with anappropriate shorthand notation that matches thestructural information pro-
+vided bytheapplied lipidomics technology [20,21]. These guidelines, however, focus only on
+thenaming ofintact lipid molecules and notontheunderlying lipid fragment ions that are
+mandatory forstructural elucidation and high confidence lipid identification. Notably, this
+strongly contrasts theconventions putforward inthefield ofproteomics where aconsensus
+nomenclature toannotate peptide fragment ions and elucidate their amino acid sequence has
+been ineffect formore than three decades [22,23].
+Structural characterization oflipid molecules ismost commonly performed bytandem
+MSanalysis (termed MS2orMS/MS) where anintact lipid precursor ionisisolated byamass
+analyzer, subjected tocollision-induced dissociation (CID) and generated fragment ions are
+subsequently detected using either aloworahigh mass resolution detector system [24±28].
+Furthermore, mass spectrometers with iontrapping capabilities support multi-stage activation
+(MSn3)where fragment ions canbesubjected toadditional rounds ofCID forin-depth struc-
+tural analysis [1,29,30]. Mechanistic studies oflipid fragmentation pathways have been carried
+outforawide range oflipid molecules, including fatty acyls (FAs), glycerolipids, glyceropho-
+spholipids, sphingolipids and sterol lipids (reviewed in[31±36]). These studies have shown
+that CID oflipid molecules occurs viatwopredominant mechanisms, namely charge-mediated
+processes that involve thecharge oftheprecursor ionand charge-remote processes that take
+place physically remote from thecharge site. These fragmentation mechanisms yield common
+and predictable fragment ions from lipid molecules having diverse chemical structures. For
+example, CID offormate adducts ofphosphatidylcholine (PC), lysophosphatidylcholine
+(LPC), ether-linked phosphatidylcholine (PC O-)and sphingomyelin (SM) innegative ion
+mode yields acommon lossof60.0211 Da,corresponding tocharge-mediated lossofmethyl
+formate (where themethyl group isderived from thecholine residue) [24,29]. CID ofthese lip-
+idsalso yield fragment ions attributed tothelossofmethyl formate combined with charge-
+mediated neutral lossofFAmoieties asketenes and charge-remote lossofFAmoieties asfatty
+acids (except forSM). Analogously, CID ofammonium adducts oftriacylglycerol (TAG), dia-
+cylglycerol (DAG), phosphatidic acid (PA) and steryl ester (SE) inpositive ionmode yields
+fragment ions matching thelossof17.0266 Da(i.e.lossofammonia) combined with charge-
+remote lossofFAmoieties asfatty acids. Notably, despite these commonalities infragmenta-
+tion pathways there isstillnoconsensus nomenclature forshorthand notation oflipid frag-
+ment ions.
+Annotation ofmass spectra ofintact precursor ions isbased onthetradition that uncharged
+molecules arerepresented bythesymbol Mand that charged derivatives corresponding to
+lossorgain ofaproton aredenoted as[M-H]-or[M+H]+,respectively. Similarly, association
+with positive and negative adduct ions such assodium and formate aredenoted as[M+Na]+
+and [M+HCOO]-,respectively. Forlipids thisconvention isoften adapted bysubstituting M
+with shorthand notation forintact lipid molecules (e.g. [PC 34:1+H]+).Incomparison, the
+annotation oflipid fragment ions ismuch more inconsistently implemented and ranges from
+graphical displays ofcomplex MSnspectra without anyshorthand notation touseofchemical
+formulas and nominal masses tosignify structures offragment ions (e.g. C5H15NO 4Pcanbe
+used toindicatem/z 184.0733 released from phosphocholine-containing lipids; [M-15]-is
+typically used toindicate lossofamethyl group from choline-containing lipids). While chemi-
+calformulas canserve asunique identifiers offragment ions and nominal masses canhelp
+indicate fragmentation pathways, these shorthand notations often make itunintuitive and
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 2/21instudy design, datacollection andanalysis ,
+decision topublish, orpreparation ofthe
+manuscript.
+Competing interests :Theauthors have declared
+thatnocompeting interests exist.complicated torelate fragment ions back tothestructure oftheintact lipid molecule. Amore
+informative approach istodenote fragment ions inreference tostructural attributes ofthe
+intact lipid molecule. Forexample, many glycerophospholipids, including phosphatidyletha-
+nolamine (PE) and phosphatidylserine (PS), lose their head groups toyield fragment ions with
+structures that resemble ªbiologicalº lipids such asDAG and PA,that inturn canbedenoted
+using shorthand notation resembling intact lipids (e.g. [DAG 36:1+H-18]+and [PA 38:4-H]-).
+Similarly, fragmentation ofmany lipids yield FAcarboxylate anions analogous todeproto-
+nated non-esterified fatty acids (e.g. [NEFA 16:0-H]-).However, using names ofintact lipids
+toannotate lipid fragment ions ismisleading as,forexample, FAcarboxylate fragment ions
+arenotproduced bysimple deprotonation butinstead derive from acharge-mediated frag-
+mentation process. Notably, implementation ofnomenclature forlipid fragment ions could
+help novice and experienced lipidomists tomore easily read fragment ionspectra and assess
+themerits oflipid identifications. Moreover, itwould also help toimplement reporting stan-
+dards that secure thequality ofhigh throughput lipidomics resource data that isbeing pro-
+duced atanaccelerated rate nowadays [21,37]. Inaddition, thiswould also help curate
+fragment ioninformation indatabases and search engines.
+Lipid fragments canbeclassified into several types depending ontheir structural attributes
+and relationship tothestructure oftheintact lipid precursor molecule (Fig 1).This classifica-
+tion hasyettobeimplemented into acheminformatics framework (aswedoherein), butexists
+today onamore unintuitive practical level that isimplicit intheguidelines forappropriate
+shorthand notation ofintact lipid molecules [20]. Assuch, onetype oflipid fragments is
+defined aslipidals--e-tltavift gnsomtuv- (LCFs) that arecharacterized bytheproperty that all
+lipid molecules belonging tothesame lipid class yield thesame fragment. Examples ofLCFs
+include thefragment ionm/z 184.0733 released from allprotonated LPC, PC,PCO-and SM
+molecules and neutral loss141.0191 released from protonated and sodiated PEand ether PE
+(PEO-)molecules. Based ontheguidelines forshorthand notation, lipid molecules detected
+byLCFs (and their intactm/z) must beannotated attheªlipid species levelº, where informa-
+tion onthelipid class followed bythetotal number ofcarbon atoms, double bonds and
+hydroxyl groups present inallhydrocarbon chains aredenoted (e.g. PC34:1, SM34:1;2, PEO-
+40:7, TAG 54:3, SE45:3; seesection ªAnnotation ofLipid Moleculesº under Materials and
+Methods fordetailed description ofnomenclature used forshorthand notation ofintact lipids).
+Fig1.CID oflipid molecules produce sseveral types offragment sthat can beused forannotating
+intact lipid molecules atthree different levels. The shorthan dnotation ofthefragment ions isdescribed in
+thesections :Results anddiscus sion, andS1Text. LCFs, lipid class-s elective fragments; MLFs, molecular
+lipid species-spe cific fragments; DBFs, double bond location-s pecific fragments.
+https://d oi.org/10.1371/j ournal.pon e.0188394.g0 01
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 3/21Another fragment type ismbltaSlsn lipid-ptait-e-ptaigia gnsomtuv- (MLFs) that provide infor-
+mation about thechemical composition ofthehydrocarbon chain ofindividual lipid mole-
+cules, such asFAs, alkanols and alkenols (i.e.plasmanyl orplasmenyl chains, respectively),
+long chain bases (LCBs) and sterols. Based ontheguidelines forshorthand notation, lipid mol-
+ecules detected byMLSs canbeannotated attheªmolecular lipid species levelº, where thelipid
+class, thenumber ofcarbon atoms, C-C double bonds and hydroxyl groups ineach ofthe
+hydrocarbon chain aredenoted (e.g. PC16:0±18:1, SM18:1;2/16:0, PEO-18:1p/22:6, TAG
+18:1±18:1±18:1, SE27:1/18:2). Notably, detection ofMLFs donotsupportdtgsavb inference of
+-u-1/-u-2/-u-3-positions ofFAmoieties inglycero(phospho)lipids. Inferring thisinformation
+requires validated assays based either onmonitoring ratios between MLFs released from posi-
+tional isomers [29,38] orseparating these byLC-MS orionmobility-MS [39±41]. When using
+validated assays lipids canbeannotated atªhydrocarbon chain position-defined molecular
+lipid species levelº, where the-u-positions ofthehydrocarbon chains attached totheglycerol-
+backbone ofglycero(phospho)lipids canbedenoted (e.g. PC16:0/18:1, PC18:1/16:0). Athird
+fragment type isªdbShlthbudlbasvibue-ptaigia gnsomtuv-º (DBFs). Detection ofsuch fragments,
+forexample byusing ozone-induced dissociation [42,43], allows annotation ofintact lipid
+molecules attheªdouble bond location-defined molecular lipid species levelº, where theposi-
+tion ofdouble bonds inthehydrocarbon chains aredenoted (e.g. PC16:0±18:1(9)). Notably,
+DBFs donotallow deciphering whether theorientation ofdouble bonds areai-(Z)orvnsu-
+(E).Importantly, theabove-described interdependencies between appropriate shorthand nota-
+tion ofintact lipid molecules and structural characteristics oflipid fragments posits that acom-
+mon nomenclature forannotation oflipid fragments should beable tocomply with the
+guidelines forshorthand notation ofintact lipid molecules while atthesame time being able to
+communicate thestructural relationship between fragments and theintact lipid precursor
+molecule.
+Here wepropose acommon nomenclature forannotation oflipid fragment ions. This
+nomenclature isdesigned toprovide anintuitive and consistent way ofpinpointing structural
+characteristics offragment ions and reconstructing intact lipid molecules from these without
+drawing chemical structures orusing extensive textdescription. Furthermore, thenomencla-
+ture wasconstructed tofacilitate curation ofdatabases with lipid fragmentation information
+and downstream computerized data analyses byproviding ªuniqueº fragment names foreach
+lipid class aswell asalink between thefragments and theprecursor molecule. This isachieved
+byreducing thefragmentation information tominimal structural attributes oflipid molecules
+that signify either thelipid class orvariable hydrocarbon chain features. Todemonstrate the
+utility ofthenomenclature weexemplify theannotation oflipid fragment ions derived from
+representative molecules belonging tofivemain lipid categories, detected byboth shotgun lipi-
+domics and LC-MS2-based routines. Moreover, wealso present afreely available web applica-
+tion, termed ALEX123lipid calculator, which canbeused toaccess curated lipid fragmentation
+information formore than 430,000 potential lipid molecules. Finally, wealso show that the
+nomenclature and theALEX123lipid calculator areapplicable forannotating fragments
+derived from stable isotope-labeled lipid molecules and thereby support high confidence lipid
+identification infunctional studies oflipid metabolic flux.
+Materials and methods
+Chemicals andlipid standards
+Chemicals, solvents, and synthetic lipid standards were purchased from Sigma-Aldrich
+(St.Louis, MO, USA), Rathburn Chemicals (Walkerburn, Scotland) and Avanti Polar Lipids
+(Alabaster, AL,USA).2H6-inositol wasfrom CDN isotopes (Essex, UK), and2H13-choline
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 4/21bromide and13C315N-serine were from Cambridge isotope laboratories (Cambridge, MA,
+USA). Yeast extract and peptone were from BD(Lyngby, Denmark). Lipid extract ofbovine
+liver waspurchased from Avanti Polar Lipids.
+Yeast cellculture, metabolic labeling andlipid extraction
+Exponentially growingS.atntfi-ist (strain BY4742, obtained from EUROSCARF) wascultured
+at30ÊC for4hrinYPD medium (1% w/vyeast extract, 2%w/vpeptone, 2%w/vglucose) con-
+taining 55μM2H6-inositol, 55μM2H13-choline bromide and 300μM13C315N-serine. Cells
+were killed byadding perchloric acid toafinal concentration of100mM. Yeast cells were har-
+vested inEppendorf tubes, washed with ice-cold 155mM ammonium acetate, frozen inliquid
+nitrogen and stored at-80ÊC. Yeast celllysis and lipid extraction were carried outat4ÊC as
+previously described [44].
+Mass spectrometric lipid analysis
+Lipid extracts and synthetic lipid standards were dissolved inchloroform/methanol (1:2, v/v)
+and subjected tomass spectrometric analysis using anOrbitrap Fusion Tribrid (Thermo Fisher
+Scientific) equipped with aTriVersa NanoMate (Advion Biosciences), aspreviously described
+[1].Inshort, aliquots oflipid extracts orsynthetic lipid standards were loaded in96-well plates,
+mixed with 13.3 mM or1.3mM ammonium acetate in2-propanol forpositive and negative
+ionmode analysis, respectively. Samples were infused using aback pressure of1.25 psiand
+ionization voltage of±0.95 kV.FTMS data were recorded using amax injection time of100
+ms,automated gain control at2e5, 2microscans and atarget resolution of500,000 (FWHM at
+m/z 200). FTMS2and FTMS3data were acquired using quadrupole-based CID and iontrap-
+based resonance-excitation CID with maximum injection time of100ms,automated gain con-
+trolat5e4, 1microscan and atarget resolution of30,000. ITMS3data were acquired using max
+injection time of200ms,automated gain control at1e4and 1microscan. AllFTMS and ITMS
+data were acquired using aniontransfer tube temperature of275ÊC. MSALLanalysis ofmouse
+plasma, mouse hippocampus and bovine liver wasperformed aspreviously described [1,2].
+Identification and quantification oflipid molecules detected byFTMS wasdone using ALEX
+software [1,2,45].
+Annotation oflipid molecules
+Lipid species areannotated aspreviously described [44,46,47]. Attheªlipid species levelº, gly-
+cero(phospho)lipids aredenoted as:<lipid class><total number ofCinhydrocarbon (acyl/
+alkyl) moieties>:<total number ofdouble bonds inhydrocarbon (acyl/alkyl) moieties> (e.g.
+PI34:1). Attheªlipid species levelº, sphingolipid species aredenoted as<lipid class><total
+number ofCinthelong-chain base and acyl moiety>:<total number ofdouble bonds inthe
+long-chain base and fatty acyl moiety>;<total number ofOH groups inthelong-chain base
+and acyl moiety> (e.g. SM35:1;2) [48]. Attheªlipid species levelº, steryl esters aredenoted as
+<lipid class><total number ofCinthesterol backbone and acyl moiety>:<total number of
+double bonds inthesterol backbone and acyl moiety> (e.g. SE45:3).
+Attheªmolecular lipid species levelº, glycero(phospho)lipids aredenoted as:<lipid class>
+<number ofCinthefirst hydrocarbon (acyl/alkyl) moiety>:<numbe rofdouble bonds inthe
+first (acyl/alkyl) moiety>-<numbe rofCinthesecond acyl moiety>:<numbe rofdouble
+bonds inthesecond acyl moiety> (e.g. PS16:0±22:6). Fortriacylglycerols and cardiolipins the
+third and fourth acyl groups areappended analogously. The acyl groups areindicated inthe
+order ofi)increasing carbon number and ii)increasing double bond number. Annotation at
+theªhydrocarbon chain position-defined molecular lipid species levelº iscarried outusing the
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 5/21expression described above, butreplacing thedash (-)separating theacyl moieties byaslash
+(/).Forsteryl esters thecompositions aredenoted as<lipid class><total number ofCin
+thesterol backbone>:<total number ofdouble bonds inthesterol backbone>/<total number
+ofCintheacyl moiety>:<total number ofdouble bonds intheacyl moiety> (e.g. SE27:1/
+18:2).
+ALEX123lipid calculator
+ALEX123lipid calculator isaweb application available athttp://alex123.info/ALEX 123/MS.
+php. Itisimplemented using PHP and designed forretrieving lipid ionization and fragmenta-
+tion information stored intheunderlying ALEX123lipid database. The ALEX123database is
+constructed using MySQL and features lipid ionization and fragmentation information (S1
+Table).
+Automated annotation offragment ions using lipid data analyzer
+Resource LC-MS2data available atMetaboLights (http://www.ebi.ac.uk/ metabolights/
+MTBLS394) were repurposed and processed using Lipid Data Analyzer (LDA) [49] version
+2.6.1 [50]. This version ofLDA wasadapted tosupport theherein described nomenclature for
+glycerolipids and glycerophospholipi ds.Fortheprovided examples wedownloaded and used
+thefollowing twodata files: Orbitrap_velos_CI D-50_Exp1_014.zip and Orbitrap_velos_CI D_-
+pos_50_Exp1_014.zip. These data files feature LC-MS2data onamixture of78synthetic lipid
+standards analyzed inboth positive and negative ionmode using anLTQ Orbitrap Velos Pro
+(Thermo Scientific) coupled toanreversed-phase LCsystem [51].
+Results and discussion
+Athree-step procedure forshorthand notation oflipid fragment ions
+Toestablish anomenclature forshorthand notation oflipid fragment ions wefirst undertook a
+study toidentify commonalities inthefragmentation pathways oflipid molecules. Tothisend,
+weperformed acomprehensive analysis oflipid fragmentation using structurally-defined lipid
+molecules from 47different lipid classes, covering fivelipid categories that arecommon to
+eukaryotic organisms (S1Table). Using anOrbitrap Fusion mass spectrometer, these lipid
+molecules were fragmented inboth negative and positive ionmode (except forTAG and sterol
+lipids) using high resolution MS2and MS3analysis with quadrupole-based CID and iontrap-
+based resonance-excitation CID [1].Assuch, therecorded lipid fragmentation data iscompa-
+rable tothat ofabroad range ofinstruments spanning lowresolution triple quadrupole and
+iontrap machines tohigh resolution hybrid quadrupole time-of-flight, iontrap- and quadru-
+pole-Orbitrap mass spectrometers.
+Tosystematically annotate detected fragment ions across thefivecategories oflipids and
+thedifferent analytical conditions wedevised aprocedure featuring three consecutive steps
+(Fig 2).This three-step procedure 1)generalizes lipid fragmentation using mass-balanced
+chemical reactions showing putative structures ofboth charged and neutral fragments, 2)
+annotates both charged and neutral fragments using ageneric rule set,and 3)prioritizes to
+denote detected lipid fragment ions (m/z values) using either theshorthand notation of
+charged fragments orthat ofneutral fragments. The rationales foreach ofthese steps and
+guideline fortheir implementation aredescribed infulldetail inS1Text and summarized in
+thefollowing sections. Fragment ionspectra with shorthand notation forrepresentative lipid
+molecules spanning fivedifferent lipid categories areshown inFigs 3and 4.
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 6/21Step 1:Recapitulate lipid fragmentation using mass-balanced chemical
+reactions
+The first step intheprocedure entails representation ofalldetected fragment ionm/z values
+with aseries ofmass-balanced chemical reactions that foreach detectedm/z value shows struc-
+tures ofthecharged fragment and also thecorresponding neutral fragment(s) (Fig 3Band S3
+Fig). Generalizing lipid fragmentation inthismanner highlights three fundamental concepts
+that areinherent toournomenclature rules. First, itbecomes evident that anyfragment ionm/
+zvalue canbedescribed inreference toboth acharged fragment structure and also tothecom-
+posite ofneutral fragment structures. This isexemplified inFig3showing, forexample, that
+thePC18:3±18:3-derived fragment ionwithm/z 502.2940 canbeexplained bycombined neu-
+trallosses ofmethyl acetate and anFA18:3 moiety asaketene and also asacharged fragment
+having aFA18:3 moiety linked toaglycerylphosphoryl-N,N-dimeth ylethanolamine residue.
+Second, inspecting thestructural attributes oflipid fragment structures shows that four types
+offragments canbeproduced byCID: LCFs (lipid class-selective fragments), MLFs (molecular
+lipid species-specific fragments), DBFs (double bond location-specific fragments) and inter-
+mediate molecular lipid species-selective fragments (iMLFs). Inbrief, LCFs encompass
+Fig2.Outline ofthree-step procedure forimplement ingshorthand notation oflipid fragment m/zvalues. Step 1:Detected
+fragment ionm/zvalues arefirstrecapitu lated using mass-balan cedchemical reaction sshowing putative structures ofboth charged and
+neutral fragments. Step 2:These fragments arethen annotate dusing fragment type-specific annotati onrules (describe dindetail inS1
+Text). Step 3:Prioritizing thenomenclatu retouseforshorthand notation ofdetected fragment ionm/zvalues isbased onfragment type,
+charge andmass differenc ebetween charged fragments andcompos itesofneutral fragments (also described indetail inS1Text). Note
+thattheshorthan dnotation offragment ionm/zvalues canbebased oncombinatio nsoffragment types (i.e.DBFs, MLFs, LCFs and
+iMLFs).
+https://doi.org/10 .1371/journal.p one.0188394. g002
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 7/21common structures that arereleased from alllipid molecules belonging tothesame lipid class,
+they have identical mass, and they donotcontain ahydrocarbon chain. MLFs arecharacter-
+ized bystructures having only onehydrocarbon chain with variations inthenumber ofcarbon
+atoms, double bonds and hydroxyl groups. Depending onthelipid class, these hydrocarbon
+chains canbeclassified asFA,alkanol and alkenol (i.e.plasmanyl and plasmenyl groups,
+respectively), LCB and sterol moieties. iMLFs arecharacterized bystructures having twoor
+Fig3.Use mass-balance dchemical reactions torecapitulat elipid fragment ation. A)Negative FTMS2spectrum ofm/z836.5, correspo nding tothe
+acetate adduct ofPC18:3±18 :3.The precurso rionisannotated atthelipid species level (i.e.PC36:6) since thatthecomposition ofFAmoieties cannot be
+inferred from them/zvalue. Prioritized shorthan dnotation offragment m/zvalues areinboldface andimplemente daccording tothethree-s tepprocedure
+shown inFig2.Non-prioritize d(redundan t)shorthan dnotation isshown non-boldface andseparate dfrom theprioritized shorthand notation byª|º.B)
+Overview offragmenta tionpathways for[PC18:3±18 :3+CH3COO ]-with putative structures ofneutral andcharged fragments. Note thateach chemical
+reaction ismass-balan ced(i.e.thetotal mass ofallfragments equal themass oftheintact precursor molecule) .Each structure isrepresent edwith charge,
+monoisotop icmass, shorthand notation andfragment type. Note thatneutra l(shown ontheright) andcharged (shown ontheleft)fragments areprefixed
+with andwithout aminus sign ª-ª,respectiv ely.The annotati onsshown inboldface (prioritized )arebased onannotation rules outlined inFig2(step 3).LCF,
+lipid class-selec tivefragment; MLF, molecular lipid species-s pecific fragment, iMLF, intermed iateMLF.
+https://do i.org/10.1371/j ournal.pone .0188394.g00 3
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 8/21more hydrocarbon chains (e.g.m/z 762.5091 inFig3Bshowing acharged fragment composed
+ofaDAG 36:6 moiety linked toaphosphorylethanolamine -N,N-dimethyl residue). DBFs are
+characterized byspecific cleavage ofaC-C double bond (Fig 4Eand S3E Fig). The third
+Fig4.Annotated fragment ionspectra ofrepresentat ivelipid molecules from five different lipid
+categories .Fragment ionm/zvalues aredenoted according tothethree-s tepprocedure outlined inFig2.
+The shorthand notation includes nomenclatu rebased onboth charged andneutral fragments (separated by
+ª|º)(step 2).Annotation shown inboldface isprioritized based ontheguidelines outlined inFig2(step 3).
+Non-pri oritized shorthand notation isoccasionall yomitted toavoid overly congeste dmass spectra. The
+represent ation offragment ionm/zvalues bymass-balan cedchemic alreactions andfragment structures are
+shown inS3Fig(step 1).A)Negative FTMS2spectrum ofdeprotonated ACoA 19:0. B)Positive FTMS2
+spectrum ofammoniated TAG 18:0±18:1± 18:2. C)Positive FTMS2spectrum ofprotonated PEO-18:1p/20 :4.
+D)Negative FTMS2spectrum ofdeprot onated anddoubly charged CL14:1±14 :1±14:-15:1. E)Negative
+FTMS3spectrum ofFA18:1 carboxylate anion m/z281.3 derived from PC16:0±18: 1(9). F)Positive FTMS2
+spectrum ofprotonated SM18:1;2/17 :0.G)Negative FTMS2spectrum ofdeprotonated Cer18:1;2/17: 0;1.H)
+Positive FTMS2spectrum ofammoniated SE27:1/19:0 (cholester ylester 19:0).
+https://d oi.org/10.1371/j ournal.pon e.0188394.g0 04
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 9/21concept that becomes evident isthat thethree fragment types, MLFs, iMLFs and DBFs, canall
+bedescribed inreference towhat weterm ªmiuimsl hydnbasnhbu ahsiuehs-td svvnihSvt-º
+(HCAs) (S1Fig). Ofnote, HCAs represent thevariable hydrocarbon-based building block of
+intact lipid molecules, they canbegrouped into different classes, and annotation oftheir struc-
+tural attributes provides amean todevise aconsistent fragment nomenclature that makes it
+more intuitive tocorrelate fragment ionm/z values back tothestructures ofintact lipid
+molecules.
+Step 2:Use fragment type-specific rules todenote both charged and
+neutral fragments
+The second step intheprocedure implements specific rules forshorthand notation ofboth
+charged and neutral fragment structures (i.e.notthefragment ionm/z value itself). Tothis
+end, wehave established ageneric rule setsforannotating structures ofLCFs, MLFs, iMLFs
+and DBFs. These rules arelisted infulldetail intheS1Text, and exemplified inFigs 3and 4
+and S3Figshowing MSnspectra and mass-balanced chemical reactions ofrepresentative mol-
+ecules from fivedifferent lipid categories. First, afundamental rule isthat uncharged fragment
+structures should always beprefixed with aminus sign ª-ºto indicate neutral lossand charged
+fragment structures should bedenoted without aminus sign. Second, structures ofLCFs
+should beannotated bythelipid class abbreviation and itsnominal mass inparentheses (e.g.
+-PEO-(141),m/z 611.5407, signifying theneutral lossphosphoethanolamine from anether
+PE,Fig4C). Third, MLFs should bedenoted bytheclass ofHCA, itsoriginal number ofcar-
+bon atoms, double bonds and potential hydroxyl groups, and followed byinparentheses speci-
+fication ofanychemical modification listed inaccordance toHill notation [52] (e.g. FA19:0
+(+C11H20N2O9P2S), m/z 699.3204, signifies acharged fragment structure containing aFA
+19:0 moiety linked toachemical residue derived from theintact ACoA precursor, Fig4A).
+Fourth, iMLFs should bedenoted bytheclass ofHCA, itsoriginal number ofcarbon atoms,
+double bonds and potential hydroxyl groups, and followed byinparentheses anychemical
+modifications (e.g. DAG 28:2(+C6H11O9P2), m/z 797.3993, signifies acharged fragment
+structure containing aDAG 28:2 moiety linked toachemical residue derived from theintact
+CLprecursor, Fig4D). Fifth, DBFs should bedenoted bytheclass ofHCA, itsoriginal number
+ofcarbon atoms, number ofdouble bonds and locations ofdouble bonds, followed byin
+parentheses anychemical modification (e.g. FA18:1(9)(+O -C7H15), m/z 182.1305, signifying
+acharged (radical) ionderived from anFA18:1(9) moiety, Fig4E). Notably, byusing the
+framework ofmass-balanced chemical reactions and annotating structures ofboth neutral and
+charged fragment structures itbecomes evident that aparticular fragment ionm/z value can
+bedescribed with dual nomenclature corresponding toboth thecharged fragment and the
+composite ofallneutral fragments. This possibility fordual shorthand notation offragment m/
+zvalues canlead toªcongestedº mass spectra overfilled with text-based shorthand notations
+which make itdifficult toappreciate thespectral profile. Hence, forspectral annotation itis
+advisable toprioritize theuseofnomenclature based onfragment type and whether thefrag-
+ment structure(s) ischarged orneutral.
+Step 3:Prioritize theshorthand notation touseforspectral annotation
+The third and final step intheprocedure prioritizes thenomenclature touseforshorthand
+notation oflipid fragment ionm/z values. Tothisend, weimplemented adecision tree-based
+routine where shorthand notation isprioritized according tofragment type inthefollowing
+order: DBFs, MLFs, LCFs and iMLFs (Fig 2).Forexample, afragment ionm/z value with spe-
+cific information ondouble bond location should beannotated with nomenclature according
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 10/21toDBFs instead of,forexample, nomenclature based oncomposites ofother fragment types.
+Similarly, afragment ionm/z value featuring MLF information, forexample, ª-FA 18:1(+HO)
+-TAG(17)º from intact TAG 54:3 should beprioritized over theiMLF ªDAG 36:2(-HO)º (Fig
+4Band S3B Fig). Afragment ionm/z value featuring LCF information, forexample, ªSM
+(184)º from intact SM35:1;2 should beprioritized over theiMLF ª-Cer 35:1;2(-H2O)º (Fig 4F
+and S3F Fig). Wenote that some fragment ionm/z values, derived forexample from CLmole-
+cules, corresponds totherelease oftwoiMLFs and noother fragment types. Hence, these frag-
+ment ionm/z values should beannotated with shorthand notation based only oniMLFs. For
+MLFs and iMLFs, thedecision tree-based routine also prioritizes whether touseshorthand
+notation based onnomenclature forcharged structures orthecomposite ofneutral losses. In
+cases where CID yields both acharged MLF and acombination ofneutral MLF and aneutral
+LCF thedecision tree-based procedure willprioritize tousethenomenclature according tothe
+fragment structure(s) having thelowest mass (notm/z). This scenario isexemplified bythePC
+18:3±18:3-derived fragment ionm/z 502.2940 that canbeannotated asacharged MLF ªFA
+18:3(+C7H16NO6P)º with mass 502.3 Daand asaneutral composite ofanMLF and anLCF
+ª-FA 18:3(-H) -PC(74)º with atotal mass of334.3 Da(Fig 3B). According tothedecision tree-
+based routine thefragment ionm/z 502.2940 should beannotated asthecomposite ofneutral
+losses (i.e.ª-FA 18:3(-H) -PC(74)º), asthishasthelowest mass.
+Taken together, thedevised three-step nomenclature procedure establishes, forthefirst
+time, ageneric framework forsystematic annotation ofdetected fragment ionm/zvalues in
+CID-based MS2andMS3spectra oflipid molecules. Moreover, thisframework also provides an
+avenue forautomatically andconsistently curating lipid fragmentation information indatabases
+andharnessing theinformation tosupport high confidence lipid identification. Wenote that
+theframework hasbeen devised tofacilitate thematching offragment ionm/zvalues tostruc-
+tures ofLCFs, MLFs, iMLFs andDBFsvhsvsntntlts-tdgnbmsoiftupntaSn-bn lipidSpbugnsoe
+mtuvsvibu. This strategy isdifferent tothat ofother, non-formalized annotations where lipid
+fragment ionm/zvalues aretypically denoted as`intact' lipid molecules using shorthand nota-
+tion such asªLPA(20:4)-H3Oº [53] orusing chemical formulas such asªfragment C3H6O5Pº
+[54] oralphabetical symbols (e.g. Y0')[55]; allofwhich make itdifficult torelate thestructure of
+afragment ionback tothestructure oftheintact lipid molecule (S2Fig). Furthermore, compar-
+ingournomenclature tothat ofLipidBlast [54] shows that thissoftware uses only thepositional
+descriptors sn-1, sn-2 andsn-3 todenote MLFs (e.g., ª[M-H-87]-sn2+H2Oº) andassuch does
+notspecify thenumber ofCatoms anddouble bonds inFA-containing fragments (S2Fig).
+This might beconsidered adequate foranalysis ofsynthetic lipid standards where thename and
+thestructure ofthelipid molecule areknown. However, thisnomenclature format willproduce
+misleading spectral annotations andfalse-positive lipid identifications when used foranalyzing
+complex biological samples where both positional- andstructural lipid isomers arepresent
+[29,38,41].
+ALEX123lipid calculator
+Having established ageneric framework forannotating lipid fragment ionm/z values wenext
+developed aweb-based application, termed ALEX123lipid calculator (Fig 5),which assists
+annotation oflipid fragment ions and also helps identify intact lipid molecules with high confi-
+dence. Currently, theALEX123lipid calculator provides ionization information forover 25,000
+lipid species from more than 89lipid classes attheMS1level. Furthermore, thedatabase also
+features curated MS2and MS3fragmentation information formore than 430,000 molecular
+lipid species covering 49different lipid classes (S1Table). Toourknowledge, thisiscurrently
+themost comprehensive freely available resource with curated information onlipid ionization
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 11/21and fragmentation. Atthelevel ofMS1analysis, lipid molecules areannotated attheªlipid spe-
+cieslevelº. Atthelevel ofMS2and MS3analysis, lipids areannotated attheªmolecular lipid
+species levelº when represented byMLFs and theªlipid species levelº when represented by
+LCFs oriMLFs. Available MS2information includesm/z values offragment ions and corre-
+sponding shorthand notations based ontheabove-described three-step procedure (Fig 2).We
+note that thespectral information intheALEX123lipid calculator also features additional
+metadata that foralllipid molecules and fragment ions specifies lipid category, lipid class,
+adduct ion, charge and chemical formula. Tosupport structural elucidation, theALEX123lipid
+calculator hasalso been equipped with various search fields that allow users tosimultaneously
+specify names oflipid molecules, measured m/z values ofintact lipid precursor ions and frag-
+ment ions, adduction, polarity andm/z tolerances.
+Spectral annotation facilitates high confidence lipid identification
+Toexemplify how thenomenclature forshorthand notation oflipid fragment ions facilitates
+confident lipid identification wemanually shortlisted asetoflowabundance lipid molecules
+forwhich fragment ionintensity isexpected tobeofpoorer quality ascompared tofragment
+ions derived from more abundant lipid molecules. These lipid molecules were detected by
+MSALLanalysis ofmouse plasma [2],mouse hippocampus [1]and bovine liver.
+First, high resolution FTMS1analysis ofmouse plasma detected alowabundance signal at
+m/z 424.3413, corresponding toprotonated acyl carnitine (ACar) 18:2 (-2ppm mass accuracy)
+(S4A Fig). FTMS2analysis ofm/z 424.3 detected twofragment ions listed intheALEX123data-
+base that match fragment ions expected tobederived from protonated ACar 18:2 (S4B Fig).
+The fragment ionwithm/z 263.2362 matches theMLF FA18:2 (-2.8 ppm mass accuracy) and
+theionatm/z 365.2667 matches theMLF FA18:2(+C4H6O3) (-5.3 ppm mass accuracy).
+Detection ofthese structure-specific fragment ions, and theintact lipid molecule byFTMS1,
+demonstrated specific detection ofACar 18:2 inmouse plasma.
+Second, high resolution FTMS1analysis ofmouse hippocampus detected alowabundance
+signal atm/z 854.4981, matching deprotonated PS42:10 (0.4 ppm mass accuracy) (Fig 6A). At
+Fig5.Screenshot oftheALEX123lipid calculato rshowing MS2information forthemolecular lipid
+species PS20:4±22:6 (MS2spectrum isshown inFig6).The applicati onisfreely availabl eatwww.
+alex123 .info/ALEX1 23/MS.ph p.
+https://d oi.org/10.1371/j ournal.pon e.0188394.g0 05
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 12/21first hand, thishighly unsaturated PSmolecule wassomewhat puzzling and difficult torecon-
+cilewith lipid metabolic pathways inmammalian cells. FTMS2analysis ofm/z 854.6 detected
+twoPS-derived LCFs atm/z 152.9956 andm/z 767.4591 annotated asªPS(153)º and ª-PS(87)º,
+respectively (Fig 6B). This spectral information confidently identifies themolecule asPS42:10
+attheªlipid species levelº. The FTMS2analysis also detected seven outofeight possible MLFs
+listed intheALEX123database forPS20:4±22:6 (Fig 5)with amass accuracy better than
+4.1ppm. These MLFs include theFAcarboxylate anions FA20:4(+O) and FA22:6(+O), their
+Fig6.Identific ation ofPS20:4±22:6 inmouse hippocam pus. A)Negative FTMS spectrum ofmouse hippoca mpus. The precurso rion
+matching deproton ated PS42:10 ishighlighted inboldface. B)Negative FTMS2spectrum ofm/z854.6 with detection ofMLFs andLCFs
+matching PS20:4±22 :6,annotated inboldface.
+https://d oi.org/10.1371/j ournal.pon e.0188394.g0 06
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 13/21decarboxylated counterparts (e.g. FA22:6(-CO)) and fragments corresponding totheneutral
+lossoftheFAmoieties (e.g. -FA 20:4(+HO) -PS(87)). This information univocally demon-
+strates that themouse hippocampus lipidome includes thehighly polyunsaturated and low
+abundance molecular glycerophospholipid species PS20:4±22:6 (corresponding to0.15% ofall
+PSmolecules, data notshown). Ofnote, ourdata iscorroborated byprevious report indicating
+thepresence ofPS20:4±22:6 PSinmouse brain [56] and raises themechanistic questions asto
+how itissynthesized and what itsmolecular functions are?
+Toexemplify theusehow thefragment nomenclature supports confident lipid identification
+using MS3fragmentation weselected alowabundance TAG species detected inbovine liver.
+High resolution FTMS1analysis detected ammoniated TAG 52:2 atm/z876.8015 (3.8 ppm
+mass accuracy, S5A Fig). FTMS2analysis ofm/z876.7 detected aLCF atm/z859.7749, corre-
+sponding toneutral lossofammonia andannotated asª-TAG(17)º (S5B Fig). The FTMS2anal-
+ysisalso detected ofnine outoftwelve possible MLFs matching lowabundance TAG 16:0±
+18:0±18:2 with amass accuracy better than 4.9ppm, andseven ofeight MLFs matching the
+much more abundant isomeric TAG 16:0±18:1±18:1 (not discussed infurther detail). The TAG
+16:0±18:0±18:2-derived MLFs includes theneutral loss-derived fragments ª-FA 18:0(+HO)
+-TAG(17)º atm/z575.5059, ª-FA 18:2(+HO) -TAG(17)º atm/z577.5215 andª-FA 16:0(+HO)
+-TAG(17)º atm/z603.5373. The MLFs also includes three lowabundance FA16:0, FA18:2 and
+FA18:0 acyliums. Moreover, theMLF FA18:2(-HO) wasalso detected, butthecomplementary
+FA16:0 andFA18:0 fragments were notdetected. Subjecting thefragment ions withm/z575.5
+andm/z603.5 toin-depth ITMS3analysis revealed theabove-mentioned FA16:0, FA18:2, FA
+18:0 acyliums andFA18:2(-HO) (S5C Figand S5D Fig). Taken together, these fragment ions
+confidently identify thelowabundance molecular lipid species TAG 16:0±18:0±18:2 intheback-
+ground ofthemuch more abundant isomeric species TAG 16:0±18:1±18:1.
+Automated annotation oflipid fragment ions detected byLC-MS2
+analysis
+Asaproof ofconcept wesubsequently embedded ournomenclature rules inLDA (Lipid Data
+Analyzer) [49], asoftware supporting automated high confidence lipid identification and
+quantification [50]. Inaddition tousing multiple lipid fragment ions tosupport lipid identifi-
+cation and outputting quantitative information oflipids identified atthemolecular lipid spe-
+cies-level thissoftware also features aconvenient user-interface forreviewing individual MS2
+spectra inwhich fragment ions canbeautomatically annotated (Fig 7).Toexemplify thepossi-
+bility toautomatically annotate detected lipid fragment ions wemade useofaresource dataset
+featuring LC-MS2data onalipid standard mixture containing 78different synthetic standards,
+including PE17:0±17:0 and DAG 18:0±20:0.
+Among thesignals detected inthenegative ionmode LC-MS data wasaprecursor ionwith
+m/z718.5379 eluting at28.12 min, which matches deprotonated PE34:0 (Fig 7A). ITMS2anal-
+ysisofthisprecursor ionshowed fragment ions atm/z 269.2, 448.2 and 466.2 which theLDA
+automatically annotated asFA17:0(+O), -FA 17:0(+HO) (fatty acid loss) and -FA 17:0(-H)
+(ketene loss), respectively (Fig 7B). Collectively, these fragment ions unequivocally identify the
+precursor ionasthemolecular lipid species PE17:0±17:0. Inthedata acquired from ofthe
+same lipid mixture inpositive ionmode weshortlisted aprecursor ionwithm/z 675.5897 elut-
+ingat36.0 min, which corresponds tosodiated DAG 38:0 (Fig 7C). ITMS2analysis ofthismol-
+ecule yielded fragment ions withm/z 391.3, 369.4, 363.3, 341.3, 335.4, 307.3 and 267.2, which
+LDA automatically annotated as-FA 18:0(+HO), -FA 18:0(+ONa), -FA 20:0(+HO), -FA 20:0
+(+ONa), FA20:0(+HONa), FA18:0(+HONa) and FA18:0, respectively. (Fig 7D). Collectively,
+these fragment ions unequivocally identify theprecursor ionasthemolecular lipid species
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 14/21DAG 18:0±20:0. Taken together, these examples demonstrate that theproposed nomenclature
+system notonly facilities manual lipid identification (asoutlined intheprevious section), but
+canalso beused inconjunction with software-based routines toeasily verify thefidelity of
+automated lipid identifications.
+The nomenclature isapplicable forannotation ofstable isotope-labeled
+lipids
+Toevaluate thegeneric nature ofthenomenclature system weinspected itsapplicability tothe
+emerging field ofªdynamic lipidomicsº, which uses metabolic incorporation ofstable isotope-
+labeled precursors and mass spectrometric analysis tomonitor lipid metabolic flux [57±59].
+Such investigations canbeperformed byfeeding cells oranimals with awide range ofmeta-
+bolic precursors labeled with13C,2H,15Nand18O.Depending ontheorganism, stable iso-
+tope-labeled precursors canbeincorporated into different structural attributes ofalipid
+molecule and when labeling with acocktails ofprecursors thestable isotope-labeled precursors
+canbeincorporated simultaneously into asingle lipid molecule. This yields anadditional
+dimension oflipid structural complexity that canbeharnessed using high resolution MSALL
+technology [1].However, theincreased lipid structural complexity also calls forimplementa-
+tion ofasystematic nomenclature that canadequately denote fragment ions derived from
+molecular lipid species having distinct structural attributes labeled with stable isotopes.
+Tosupport shorthand notation offragment ions derived from stable-isotope labeled lipids
+weextended therule setofthefragment nomenclature. Full details ofthese rules areprovided
+inS1Text. First weextended theguidelines forshorthand notation ofintact lipid molecules
+attheªlipid species levelº and theªmolecular lipid species levelº [20]. Totheguidelines for
+ªlipid speciesº weadded that stable isotopes should bespecified byusing therecommended
+Fig7.LDA softwar esupports automa tedannotatio noflipid fragment ions. A)Negative ionmode extracted ionchromatog ram ofm/z718.537 9
+±0.013, correspon ding todeprotonated PE34:0 (i.e., synthet icstandard PE17:0±17 :0).B)Negativ eionmode FTMS2spectrum ofm/z718.5. Fragmen t
+ions areautomatica llyannotated byLDA andcollectively used toidentify themolecular lipid species PE17:0±17:0. C)Positive ionmode extracted ion
+chromatog ram ofm/z675.589 7±0.013, corresponding tosodiated DAG 38:0 (i.e., synthetic standard DAG 18:0±20 :0).D)Positive ionmode FTMS2
+spectrum ofm/z675.6. Fragmen tions areautomatical lyannotate dbyLDA andcollectively used toidentify themolecular lipid species DAG 18:0±20:0.
+https://do i.org/10.1371/j ournal.pone .0188394.g00 7
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 15/21shorthand notation followed byinparentheses aª+ºsign, theheavy nuclei indicated bytheir
+isotope number insquared brackets, their atomic symbol and their numbers, listed inaccor-
+dance toHill notation (t.o. PC34:1(+[2]H9), Cer44:0;4(+[13]C2[15]N), Fig8).Totheguide-
+lines forªmolecular lipid speciesº weadded that thenaming convention forstable isotopes
+should follow thestructural attributes into which they areincorporated (t.o. PC(+[2]H13)
+16:0±181, PC16:0(+[2]H3)-16:0(+[2]H 3),Fig8).
+Forannotation offragment ions wesubsequently added thenaming convention forstable
+isotopes into therule setsforLCFs, MLFs, iMLFs and DBFs. This extension isexemplified in
+Fig7showing fragment ionspectra from four representative lipid molecules labeled with dif-
+ferent configurations ofheavy nuclei. Ofnote, LCFs aredenoted bythelipid class abbreviation
+followed first byspecification ofstable isotopes and then bythenominal mass inparentheses.
+Forexample, ªPC(+[2]H13)(197)º and ªPI(+[2]H6)(247)º indicate charged phosphocholine
+and phosphoinositol structures labeled with thirteen2Hatoms and six2Hatoms, respectively
+(Fig 8Aand 8C). Similarly, MLFs aredenoted byHCA abbreviation followed first byspecifica-
+tion ofstable isotopes and then byanychemical modifications inparentheses. Forexample,
+thefragment ionwithm/z 499.3572 inFig8Bisdenoted asª-FA 16:0(+[2]H3)(-H)º toindi-
+cates neutral lossofanFA16:0 moiety having three2Hatoms asaketene. Moreover, thefrag-
+ment ionwithm/z 268.2344 inFig8Disdenoted asLCB 18:0;3(+[13]C2[15]N)(- [13]CH8[15]
+NO) toindicate acharged LCB fragment originally having two13Cand one15Nincorporated
+butafter fragmentation having lostachemical feature corresponding toone13C,eight H,one
+15Nand oneO.
+Insummary, theability ofthefragment ionnomenclature toconsistently account forshort-
+hand notation ofalso stable-isotope labeled lipid fragment ions demonstrates itsgeneric
+Fig8.Annotatio noffragment ions from stable isotope- labeled lipids. A)Positive FTMS2spectrum of
+protonat edPC34:2(+[2]H 13). The fragment ions identify themolecular lipid species asPC(+[2]H1 3)16:1±
+18:1. B)Positive FTMS2spectrum ofprotonated PC32:0(+[2]H6). The fragment ions identify themolecular
+lipid species asPC16:0(+[2]H 3)-16:0(+[2] H3). C)Negativ eFTMS2spectrum ofdeproton ated PI34:1(+[2]
+H6). The fragment ions identify themolecular lipid species PI(+[2]H6) 16:0±18: 1.D)Negative FTMS2
+spectrum oftheformate adduct ofCer44:0;4(+[13 ]C2[15]N) .The annotated fragment ions identify the
+molecular species asCer18:0;3(+[13 ]C2[15]N) /26:0;1. Note thatnon-ann otated fragment ions derive from
+co-isolate dlipids. Fragmen tation diagram sforthelipid molecules andindicated fragment ionm/zvalues are
+shown inS6Fig.
+https://d oi.org/10.1371/j ournal.pon e.0188394.g0 08
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 16/21nature and highlight that itcanreadily beextended todescribe awide range offragment struc-
+tures and accurately match these tostructure-specific fragment ions detected byMSnanalysis.
+Wenote that theALEX123lipid calculator atthepresent features 28lipid classes labeled with
+stable isotopes that canbegenerated when feeding cells oranimals with thecommercially
+available metabolic precursors2H9-choline,2H3-methionine,2H6-inositol,13C315N-serine and
+their combinations (S1Table).
+Conclusions
+Inthisreport wehave outlined ageneric framework forshorthand notation oflipid fragment
+ions. The framework consists ofathree-step procedure that systematically recapitulates lipid
+fragmentation using mass-balanced chemical reactions showing charged and neutral fragment
+structures, uses defined rules forannotating specific types offragments, and uses adecision
+tree-based routine forimplementing shorthand notation ofdetected fragment ionm/z values
+inmass spectra. Wehave demonstrated that thenomenclature isable tosystematically and
+consistently describe structural details offragment ions released upon CID ofunlabeled and
+stable isotope-labeled molecular lipid species encompassing 47lipid classes and fivedifferent
+lipid categories. Furthermore, wehave shown that thenomenclature canbecomputerized and
+made searchable intheonline ALEX123lipid calculator tosupport both manual and automated
+high confidence lipid identification inbiological sample matrices. Notably, thefragment
+nomenclature framework also provides anavenue todevelop new algorithms forautomated
+high confidence lipid identification inhigh throughput lipidomics studies. Assuch, thetext-
+based fragment nomenclature and ªsubstringsº thereof canbequeried using algebraic string-
+based operators available inallprogramming languages (e.g., C++, SAS). This text-based infor-
+mation can, forexample, beharnessed forcounting thefrequency ofspecific fragment types
+across large number ofsamples and also forimplementing complementarily filters tosecure
+high confidence lipid identification (e.g., mandatory detection oftwoFA-based fragments
+either asmatching acyl anions, asmatching lossofketenes orasmatching lossoffatty acids).
+Based onitssystematic design and itsability tobeeasily computerized wedeem that ourpro-
+posed fragment nomenclature canbecome avaluable addition totheexpanding palette ofche-
+minformatics tools that arebeing developed toassist thecharacterization oflipid molecules in
+biological systems. Finally, wenote that thenomenclature isapplicable toannotation ofMSn
+spectra oflipid molecules acquired byboth direct infusion-based (i.e.shotgun) and LC-based
+lipidomics techniques, and also mass spectrometry imaging approaches.
+Supporting information
+S1Text. Detailed description ofrules and rationales forannotating lipid fragment ions.
+(DOCX)
+S1Table. List oflipid classes and lipid molecules forwhich MS1,MS2and MS3information
+isavailable intheonline ALEX123lipid calculator.
+(XLSX)
+S1Fig. Examples ofminimal HCAs (hydrocarbon chain attributes) used forannotating
+neutral and charged fragment structures.
+(PDF)
+S2Fig. Comparison ofnomenclatures forshorthand notation oflipid fragment ions.
+(PDF)
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 17/21S3Fig. Mass-balanced chemical reactions and annotation offragment structures related to
+MSnspectra oflipid molecules shown inFig3.
+(PDF)
+S4Fig. Identification oflow abundance ACar 18:2 inmouse plasma.
+(PDF)
+S5Fig. Identification oflow abundance TAG 16:0±18:0±18:2 inbovine liver.
+(PDF)
+S6Fig. Mass-balanced chemical reactions and annotation offragment structures related to
+MSnspectra ofstable isotope-labeled lipid molecules shown inFig6.
+(PDF)
+Acknowledgmen ts
+Wethank Dr.Gerhard Liebisch forthecritical reading ofthemanuscript and constructive
+comments. Wealso thank members oftheEjsing laboratory foradvice and helpful
+discussions.
+Author Contributions
+Conceptualization: Martin Hermansson, Christer S.Ejsing.
+Data curation: Martin Hermansson, JuÈrgen Hartler, Christer S.Ejsing.
+Formal analysis: Martin Hermansson, Christer S.Ejsing.
+Funding acquisition: Robert Ahrends, Christer S.Ejsing.
+Investigation: Josch K.Pauling, Martin Hermansson, Klaus Christiansen, Sandra F.Gallego,
+Bing Peng, Robert Ahrends, Christer S.Ejsing.
+Methodology: Josch K.Pauling, Martin Hermansson, Klaus Christiansen, Sandra F.Gallego,
+Christer S.Ejsing.
+Project administration: Robert Ahrends, Christer S.Ejsing.
+Resources: Robert Ahrends, Christer S.Ejsing.
+Software: Josch K.Pauling, JuÈrgen Hartler, Klaus Christiansen.
+Supervision: Martin Hermansson, Robert Ahrends, Christer S.Ejsing.
+Validation: Martin Hermansson, Christer S.Ejsing.
+Visualization: Martin Hermansson, JuÈrgen Hartler, Christer S.Ejsing.
+Writing ±original draft: Martin Hermansson, Christer S.Ejsing.
+Writing ±review &editing: Martin Hermansson, Christer S.Ejsing.
+References
+1. Almeida R,Pauling JK,Sokol E,Hannibal-Bac hHK,Ejsing CS(2015) Comprehen sive lipidome analy-
+sisbyshotgun lipidomics onahybrid quadrupole -orbitrap- linear iontrap mass spectrometer .JAmSoc
+Mass Spectro m26:133±148 .https://doi.or g/10.1007/ s13361-014- 1013-x PMID: 25391725
+2. Gallego SF,Sprenger RR, Neess D,Pauling JK,Faergeman NJ,Ejsing CS(2016) Quantitativ elipido-
+mics reveals age-depend entperturbation sofwhole-body lipid metabolism inACBP deficient mice. Bio-
+chim Biophys Acta 1862: 145±155.
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 18/213. Dennis EA,Deems RA,Harkew iczR,Quehenber gerO,Brown HA,Milne SB,etal.(2010) Amouse
+macropha gelipidome. JBiolChem 285: 39976±39985 .https://doi.or g/10.1074/ jbc.M110.18 2915
+PMID: 209237 71
+4. Casanov asA,Sprenger RR, Tarasov K,Ruckerbauer DE,Hannibal-Bac hHK,Zanghe lliniJ,etal.
+(2015) Quantitative analysis ofproteome andlipidome dynamics reveals functional regulation ofglobal
+lipid metabolism. Chem Biol 22:412±425. https://doi.or g/10.101 6/j.chembio l.2015.02 .007 PMID:
+25794437
+5. Surma MA, Herzog R,Vasilj A,Klose C,Christinat N,Morin-Rivr onD,etal.(2015) Anautomated shot-
+gunlipidomics platform forhigh throughput, comprehe nsive, andquantita tiveanalysis ofblood plasma
+intact lipids. EurJLipid SciTechnol 117: 1540±154 9.https://doi.or g/10.1002/ ejlt.20150014 5PMID:
+26494980
+6. Ovcacikov aM,Lisa M,Cifkova E,Holcapek M(2016) Retention behavio roflipids inreversed -phase
+ultrahigh-p erformanc eliquid chromatog raphy-e lectrospray ionizatio nmass spectrometr y.JChromatogr
+A1450: 76±85. https:// doi.org/10.10 16/j.chro ma.2016.0 4.082 PMID: 271796 77
+7. Sales S,Graessl erJ,Ciucci S,Al-Atrib R,Viherv aara T,Schuhman nK,etal.(2016) Gender, Contra-
+ceptives andIndividua lMetabolic Predisposit ionShape aHealthy Plasma Lipidome. SciRep 6:27710.
+https://doi.or g/10.103 8/srep27710 PMID: 27295977
+8. Breslow DK,Collins SR,Bodenmiller B,Aebersold R,Simons K,Shevchen koA,etal.(2010) Orm fam-
+ilyproteins mediate sphingo lipid homeostasis .Nature 463: 1048±1053. https://doi.or g/10.103 8/
+nature08787 PMID: 20182505
+9. Surma MA, Klose C,Peng D,Shales M,Mrejen C,Stefanko A,etal.(2013) Alipid E-MAP identifies
+Ubx2 asacritical regulator oflipid saturation andlipid bilayer stress .MolCell 51:519±530. https://doi.
+org/10.1016/ j.molcel.201 3.06.014 PMID: 23891562
+10. Klemm RW, Ejsing CS,Surma MA, Kaiser HJ,Gerl MJ,Sampai oJL,etal.(2009) Segregatio nofsphin-
+golipids andsterols during formation ofsecretory vesicles atthetrans-Golgi network .JCell Biol 185:
+601±612. https:// doi.org/10.10 83/jcb.200 901145 PMID: 194334 50
+11. Zech T,Ejsing CS,Gaus K,deWet B,Shevchen koA,Simons K,etal.(2009) Accumulatio nofraftlipids
+inT-cell plasma membrane domains engaged inTCR signalling. EMBO J28:466±476. https://doi.o rg/
+10.1038/ emboj.2009. 6PMID: 19177148
+12. Scholz C,Parcej D,Ejsing CS,Robenek H,Urbatsch IL,Tampe R(2011) Specific lipids modulate the
+transporte rassociat edwith antigen processing (TAP). JBiolChem 286: 13346±13356 .https://doi.or g/
+10.1074/ jbc.M110.21 6416 PMID: 213574 24
+13. Haberkant P,Stein F,Hoglinger D,Gerl MJ,Brugger B,Van Veldhoven PP,etal.(2016) Bifunctio nal
+Sphingosine forCell-Ba sedAnalysis ofProtein-S phingolipid Interactio ns.ACS Chem Biol 11:222±
+230. https://do i.org/10.1021 /acschem bio.5b00810 PMID: 26555438
+14. Contrera sFX,Ernst AM, Haberkant P,Bjorkholm P,Lindahl E,Gonen B,etal.(2012) Molecular recog-
+nition ofasingle sphingolipid species byaprotei n'stransmembr anedomain. Nature 481: 525±529.
+https://doi.or g/10.103 8/nature1074 2PMID: 22230960
+15. Tarasov K,Ekroos K,Suonie miM,Kauhanen D,Sylvanne T,Hurme R,etal.(2014) Molecular lipids
+identify cardiovascul arriskandareefficiently lowered bysimvastati nandPCSK9 deficiency. JClin
+Endocrinol Metab 99:E45±52. https://d oi.org/10.121 0/jc.2013- 2559 PMID: 24243630
+16. Cheng JM,Suoniemi M,Kardys I,Viherv aara T,deBoer SP,Akkerhuis KM, etal.(2015) Plasma con-
+centratio nsofmolecular lipid species inrelation tocoronary plaque character istics andcardiovasc ular
+outcome: Results oftheATHEROR EMO-IVU Sstudy. Athero sclerosis 243: 560±566. https:// doi.org/
+10.1016/ j.atheroscleros is.2015.10 .022 PMID: 26523994
+17. Fahy E,Subramaniam S,Brown HA,Glass CK,Merrill AH,Murphy RC, etal.(2005) Acomprehe nsive
+classifica tionsystem forlipids. Journal ofLipid Research 46:839±861. https://doi.or g/10.119 4/jlr.
+E400004-JLR 200PMID: 157225 63
+18. Fahy E,Subramaniam S,Murphy RC, Nishijima M,Raetz CR, Shimizu T,etal.(2009) Update ofthe
+LIPID MAPS comprehe nsive classification system forlipids. JLipid Res 50Suppl: S9±14.
+19. Aimo L,Liechti R,Hyka-Nou spikel N,Niknejad A,Gleizes A,Gotz L,etal.(2015) The SwissLipids
+knowledgeb aseforlipid biology. Bioinformat ics31:2860±2 866. https://doi.or g/10.109 3/bioinformatic s/
+btv285 PMID: 25943471
+20. Liebisch G,Vizcaino JA,Kofeler H,Trotzmuller M,Griffiths WJ, Schmitz G,etal.(2013) Shorthand
+notation forlipid structures derived from mass spectrom etry. JLipid Res 54:1523±1530. https://doi.
+org/10.1194/ jlr.M033506 PMID: 235493 32
+21. Liebisch G,Ejsing CS,Ekroos K(2015) Identificati onandAnnotation ofLipid Species inMetabolo mics
+Studies Need Improvem ent.Clin Chem 61:1542±1544. https://doi. org/10.1373/c linchem.20 15.244830
+PMID: 265537 90
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 19/2122. Roepstorff P,Fohlman J(1984) Propos alforacommo nnomenclatu reforsequence ions inmass spec-
+traofpeptides. Biomed Mass Spectrom 11:601. https://doi.or g/10.100 2/bms.12001 11109 PMID:
+6525415
+23. Biemann K(1988) Contribution sofmass spectrometr ytopeptide andprotein structure. Biomed Environ
+Mass Spectro m16:99±111. PMID: 3072035
+24. Han XL,Gross RW(1995) Structural determin ation ofpicomole amounts ofphospho lipids viaelectro-
+spray ionization tandem mass spectromet ry.JAmSoc Mass Spectro m6:1202±1210. https://doi.or g/
+10.1016/ 1044-0305( 95)00568-4 PMID: 24214071
+25. Brugger B,Erben G,Sandh offR,Wieland FT,Lehmann WD(1997) Quantitativ eanalysis ofbiological
+membrane lipids atthelowpicomole level bynanoelectros pray ionization tandem mass spectrom etry.
+Proc Natl Acad SciUSA94:2339±2344. PMID: 9122196
+26. Ekroos K,Chernushe vich IV,Simons K,Shevchen koA(2002) Quantitat iveprofiling ofphospho lipids by
+multiple precursor ionscanning onahybrid quadrupole time-of-f light mass spectrometer .Anal Chem
+74:941±949. PMID: 11924996
+27. Schwudke D,Hannich JT,Surendra nath V,Grimard V,Moehring T,Burton L,etal.(2007) Top-down
+lipidomic screens bymultivaria teanalysis ofhigh-resolu tionsurvey mass spectra. Anal Chem 79:
+4083±4093. https:/ /doi.org/10.10 21/ac062 455y PMID: 17474710
+28. Fauland A,Kofele rH,Trotzmuller M,Knopf A,Hartler J,Eberl A,etal.(2011) Acomprehe nsive method
+forlipid profiling byliquid chromatog raphy-ion cyclotron resonan cemass spectrom etry. JLipid Res 52:
+2314±2322. https:/ /doi.org/10.11 94/jlr.D01 6550 PMID: 219607 06
+29. Ekroos K,Ejsing CS,Bahr U,Karas M,Simons K,Shevchen koA(2003) Charting molecular composi-
+tionofphospha tidylcholin esbyfatty acid scanning andiontrap MS3 fragmenta tion. JLipid Res 44:
+2181±2192. https:/ /doi.org/10.11 94/jlr.D30 0020-JLR2 00PMID: 129232 35
+30. Hsu FF(2016) Complet estructural character ization ofceramides as[M-H]- ions bymultiple-s tage linear
+iontrap mass spectrom etry. Biochimie 130: 63±75. https://do i.org/10.1016 /j.biochi.2 016.07.012 PMID:
+27523779
+31. Cheng C,Gross ML(2000) Applicat ions andmechanism sofcharge-rem otefragmenta tion. Mass Spec-
+trom Rev 19:398±420. https://doi.or g/10.100 2/1098-2787 (2000)19:6 <398::AID -MAS3>3.0 .CO;2-B
+PMID: 111993 79
+32. Murphy RC, Fiedler J,Hevko J(2001) Analysis ofnonvola tilelipids bymass spectrometr y.Chem ical
+Reviews 101: 479±526. PMID: 11712255
+33. Griffiths WJ(2003) Tandem mass spectrometr yinthestudy offatty acids, bileacids, andsteroids.
+Mass Spectro metry Reviews 22:81±152. https://doi.or g/10.100 2/mas.10046 PMID: 128202 73
+34. Hsu FF,Turk J(2009) Electrosp rayionizatio nwith low-ene rgycollisiona llyactivated dissociation tan-
+dem mass spectrometr yofglycerophos pholipids: mechanis msoffragmenta tionandstructural charac-
+terization .JChromatogr BAnalyt Technol Biomed LifeSci877: 2673±2695. https:/ /doi.org/10.10 16/j.
+jchromb.2 009.02.03 3PMID: 19269264
+35. Blanksby SJ,Mitchell TW(2010) Advances inmass spectromet ryforlipidomics. Annu Rev Anal Chem
+(Palo Alto Calif) 3:433±46 5.
+36. Murphy RC, Axelsen PH(2011) Mass spectrom etric analysis oflong-chain lipids. Mass Spectrom Rev
+30:579±599. https://doi.or g/10.1002/ mas.20284 PMID: 21656842
+37. Liebisch G,Ekroos K,Hermans sonM,Ejsing CS(2017) Reporting oflipidomics data should bestan-
+dardized. Biochim Biophys Acta.
+38. Pham HT,Maccar oneAT,Thomas MC, Campb ellJL,Mitchell TW, Blanksby SJ(2014) Structural char-
+acterizatio nofglyceroph ospholipids bycombinatio nsofozone- andcollision-indu ceddissociation mass
+spectrometr y:thenext step towards "top-dow n"lipidomics. Analyst 139: 204±214. https://d oi.org/10.
+1039/c3a n01712e PMID: 242449 38
+39. Kozlowsk iRL,Campb ellJL,Mitchell TW, Blanksby SJ(2015) Combining liquid chromatog raphy with
+ozone-induc eddissociation fortheseparati onandidentificat ionofphosphat idylcholine double bond iso-
+mers. Anal Bioanal Chem 407: 5053±5064. https://doi.or g/10.1007/s 00216-014- 8430-3 PMID:
+25740545
+40. Nakanishi H,IidaY,Shimizu T,Taguchi R(2010) Separation andquantifi cation ofsn-1 andsn-2 fatty
+acid positiona lisomers inphosphat idylcholine byRPLC-ESI MS/MS. JBiochem 147: 245±256. https:/ /
+doi.org/10.10 93/jb/mvp17 1PMID: 19880374
+41. Maccarone AT,Duldig J,Mitchell TW, Blanksby SJ,Duchoslav E,Camp bellJL(2014) Character ization
+ofacyl chain position inunsatura tedphosphat idylcholines using differential mobility-ma ssspectrometr y.
+JLipid Res 55:1668±1 677. https://doi.or g/10.119 4/jlr.M046995 PMID: 24939921
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 20/2142. Thomas MC, Mitchell TW, Harman DG, Deeley JM,Nealon JR,Blanksby SJ(2008) Ozone-indu ceddis-
+sociation: elucidati onofdouble bond position within mass-se lected lipid ions. Anal Chem 80:303±311.
+https://doi.or g/10.102 1/ac7017 684PMID: 18062677
+43. Brown SH,Mitchell TW, Blanksby SJ(2011) Analysis ofunsaturat edlipids byozone-in duced dissocia-
+tion. Biochim Biophys Acta 1811: 807±81 7.https://doi.or g/10.101 6/j.bbalip.201 1.04.015 PMID:
+21571093
+44. Ejsing CS,Sampaio JL,Surendra nath V,Duchoslav E,Ekroos K,Klemm RW, etal.(2009) Global anal-
+ysis oftheyeast lipidome byquantita tiveshotgun mass spectrometr y.Proc Natl Acad SciUSA106:
+2136±2141. https:/ /doi.org/10.10 73/pnas.0 81170010 6PMID: 19174513
+45. Husen P,Tarasov K,Katafiasz M,Sokol E,Vogt J,Baumgart J,etal.(2013) Analysis oflipid experi-
+ments (ALEX): asoftware framework foranalysis ofhigh-resolu tionshotgun lipidomi csdata. PLoS One
+8:e79736. https://doi.or g/10.1371/jou rnal.pone.00 79736 PMID: 242445 51
+46. Klose C,Surma MA, Gerl MJ,Meyenhof erF,Shevchen koA,Simons K(2012) Flexibili tyofaeukaryotic
+lipidomeÐins ights from yeast lipidomics. PLoS One 7:e35063. https://doi. org/10.1371/j ournal.pone .
+0035063 PMID: 22529973
+47. Sampaio JL,Gerl MJ,Klose C,Ejsing CS,Beug H,Simons K,etal.(2011) Membrane lipidome ofan
+epithelial cellline. Proc Natl Acad SciUSA108: 1903±1 907. https://doi.or g/10.107 3/pnas.
+1019267108 PMID: 21245337
+48. Ejsing CS,Moehring T,Bahr U,Duchos lavE,Karas M,Simons K,etal.(2006) Collision-induc eddisso-
+ciation pathway sofyeast sphingo lipids andtheir molecular profiling intotal lipid extracts: astudy by
+quadrupole TOF andlinear iontrap-orbitr apmass spectrome try.JMass Spectrom 41:372±38 9.
+https://doi.or g/10.100 2/jms.997 PMID: 164986 00
+49. Hartler J,Trotzmuller M,Chitraju C,Spene rF,Kofeler HC, Thallinger GG(2011) Lipid Data Analyzer :
+unattend edidentification andquantita tionoflipids inLC-MS data. Bioinformatics 27:572±577. https://
+doi.org/10.10 93/bioinformati cs/btq 699PMID: 21169379
+50. Hartler J,Triebl A,Ziegl A,Trotzmuller M,Rechb erger GN, Zeleznik OA, etal.(2017) Decipherin glipid
+structures based onplatform-inde pendent decision rules. NatMethods .
+51. Triebl A,Trotzmuller M,Hartler J,Stojakovic T,Kofeler HC(2017) Lipidomics byultrahigh perform ance
+liquid chromatog raphy-high resoluti onmass spectrom etryanditsapplicati ontocomplex biological sam-
+ples. JChromatogr BAnalyt Technol Biomed LifeSci1053: 72±80. https://do i.org/10.1016 /j.jchromb.
+2017.03. 027PMID: 28415015
+52. HillEA(1900) ONASYSTEM OFINDEXING CHEMIC ALLITERATUR E;ADOPT EDBYTHE CLASSI-
+FICATION DIVISION OFTHE U.S.PATE NTOFFICE.1 .Journal oftheAmerican Chemical Society
+22:478±494.
+53. Taguchi R,Ishikawa M(2010) Precise andglobal identification ofphospholipid molecular species byan
+Orbitrap mass spectrometer andautomated search engine Lipid Search. JChromatogr A1217: 4229±
+4239. https://d oi.org/10.101 6/j.chroma.2 010.04.0 34PMID: 2045260 4
+54. Kind T,LiuKH,LeeDY,DeFelice B,Meissen JK,Fiehn O(2013) LipidBlas tinsilico tandem mass spec-
+trometry database forlipid identifi cation. NatMethods 10:755±75 8.https://doi.or g/10.103 8/nmeth.
+2551 PMID: 238170 71
+55. Costello CE,Vath JE(1990) Tandem mass spectrometr yofglycolipids. Methods Enzymol 193: 738±
+768. PMID: 207484 5
+56. Sato Y,Bernier F,Suzuki I,Kotani S,Nakagaw aM,Oda Y(2013) Comparativ elipidomics ofmouse
+brain exposed toenriched environ ment. JLipid Res 54:2687±2696. https://d oi.org/10.119 4/jlr.
+M038075 PMID: 23833247
+57. DeLong CJ,Shen YJ,Thomas MJ,CuiZ(1999) Molecular distinction ofphosphat idylcholine synthes is
+between theCDP- choline pathway andphosphat idylethanolam inemethylation pathway. JBiolChem
+274: 29683±2 9688. PMID: 10514439
+58. Kainu V,Hermanss onM,Somerh arjuP(2008) Electro spray ionizatio nmass spectrometr yandexoge-
+nous heavy isotope- labeled lipid species provide detailed informati ononaminoph ospholipid acyl chain
+remodeling. JBiolChem 283: 3676±3687. https://doi.or g/10.1074/jbc .M709176 200PMID: 18056998
+59. Ecker J,Liebisch G(2014) Applica tionofstable isotopes toinvestigat ethemetabolism offatty acids,
+glyceroph ospholipid andsphingo lipid species. Prog Lipid Res 54:14±31. https://doi.or g/10.101 6/j.
+plipres.2014 .01.002 PMID: 244625 86
+Shorthand notation oflipid fragment ions
+PLOS ONE |https://doi.or g/10.137 1/journal.po ne.01883 94 November 21,2017 21/21

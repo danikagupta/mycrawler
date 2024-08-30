@@ -1,0 +1,105 @@
+The Biopolymer Markup Language
+!’(
+#"%" %#$/C0067/C0056/C0056%%#%&"#/C0056
+  /C0079/C0098     /C0074  
+Abstract
+Summary:  An XML derived from a data model designed to
+be a hierarchical representation of an organism has beenspecified and a browser to use this language has beendeveloped.Availability:  The language definition is available in HTML
+form at http://www.proteometrics.com/BIOML/. The BioMLbrowser is available on request from the author.Contact: bioml@proteometrics.com
+The lack of a standard data communication format has li-
+mited the usefulness of biopolymer sequence databases.Each database uses its own data format to return informationto the user. In most cases, the data formats are sufficientlycryptic that they hamper access to this information by poten-tial users who are more familiar with the concepts taught inbiology than they are with the requirements of relationaldatabases.
+Even for computer programmers, the structure of the data
+output from these databases can be difficult to parse becausethe formats use the structure of the database as a data model.Lines frequently begin with a descriptor tag that indicateshow the data was stored in the database. However, these tagsdo not indicate when one piece of information ends andanother begins: readers are expected to determine these li-mits using their best judgement, which is often a difficulttask.
+We have chosen to adapt the concepts of the eXtensible
+Markup Language (XML, Bray  et al., 1998) as a general
+framework for building a logical, easy-to-parse data formatfor biopolymer sequence annotations. The design require-ments for the new language were that it must:1. be extensible,  i.e. it should conform to the XML for-
+mat;
+2. be able to precisely capture molecular biology informa-
+tion (e.g. about a protein or a gene) and provide a truerepresentation of the underlying biology;
+3. be easily and unambiguously read by humans and ma-
+chines;
+4. logically connect every element in a clearly expressed
+statement nesting structure;
+5. include data that is not ASCII as a basic data type; and6. support the simple conversion of existing data.The Biopolymer Markup Language (BioML) (Fenyö,
+1998) is the result of this design process. BioML allows theexpression of complex annotation for protein and nucleotidesequence information. BioML was designed to mimic thehierarchical structure of a living organism. XML-type lan-guages are hierarchical by their nature and the general con-cepts of biological organization make a suitable template forconstructing a simple, easy to comprehend XML.
+The most common model for an XML is to choose its el-
+ements so it can accurately model the structure of a printeddocument. The now familiar Hypertext Markup Language(HTML) is very similar to an XML of this type, althoughHTML itself does not strictly follow XML rules. The lessfamiliar Chemical Markup Language (CML) (Murray-Rustet al., 1998) and Bioinformatic Sequence Markup Language
+(BSML) (Spitzner, 1997) are also based on document mo-dels. These languages were all designed to layout text andimages on screens or paper and are well suited to this task.
+A simple example illustrating the way in which BioML can
+be used to mimic a biological structure is illustrated in thefollowing highly simplified code fragment that expresses theidea of a gene:
+<bioml>
+<organism>
+<chromosome>
+<gene></gene>
+</chromosome>
+</organism>
+</bioml>
+The elements are arranged so that objects contained within
+the physical boundaries of a larger object are enclosed by theelement tags representing that larger object. The appropriateannotation for a particular object is inserted between the startand end tags for a particular object. For example, the DNAsequence for the gene would be inserted between the <gene>and </gene> tags (verbally these tags can be read as ‘startgene’ and ‘end gene’). By a judicious choice of the set ofelements used to create the grammar, most common situ-ations requiring markup and annotation in biopolymer re-search can be expressed clearly in the context of the underly-ing physical structures that are being described. The indenta-tions in this example and the other shown below are strictly"/C0053!"
+$
+339  Oxford University PressBIOINFORMATICS APPLICATIONS NOTED.Fenyö
+340for the purposes of clarity: BioML handles white space in the
+same manner as other XMLs.
+Very complicated structures can be written down unam-
+biguously using this type of scheme. For example, a ribo-
+some could be described by the following code fragment.
+<bioml>
+<organism>
+<species>Homo sapiens</species><cell>
+<organelle type= “RER”>
+<particle type= “ribosome ”>
+<protein id= “1”>
+</protein><protein id= “2”>
+</protein>
+...
+<rna id= “1”>
+</rna><rna id= “2”>
+</rna>
+...
+</particle>
+</organelle>
+</cell>
+</organism>
+</bioml>
+All of the appropriate annotation, such as peptide and RNA
+sequences, post-translational modifications, general notesand literature references can be inserted between the ap-
+propriate start and end tags in this structure.
+BioML also contains a subset of elements that are used to
+express ideas useful for annotation, but which are not necess-
+arily fundamental physical properties of the object in ques-tion. These annotation elements allow the specification of
+crosslinking (such as disulphide bonds), domain structures in
+oligonucleotides and oligopeptides, or specific residue
+modifications.
+The language also contains a number of general purpose
+elements that are necessary to perform hyper-linking to other
+documents, such as those for describing literature references
+and for linking to HTML files held on any accessible server.
+There is also a general purpose ‘note’ element that can be
+used to insert parsed text information about the enclosingobject, a ‘form’ element for creating custom information
+input forms, and a ‘comment’ element that can be used to
+describe the code itself.
+BioML parts with the standard definition of an XML in
+that it allows the inclusion of non-text information. This in-formation can be any binary data that can be represented bya string of bytes. A string of 256 bytes of binary data would
+be represented by
+<binary format= “X” length= “256”>...</binary>
+where the ellipsis represents the non-character data. In a
+real example, the ‘X’ in the format attribute would be re-placed by a data format that a browser could decide to repre-sent or ignore (e.g. GIF or GZIP).
+BioML also contains a simple mechanism for accepting
+information in other data formats. The formatted data can bewrapped in a ‘data’ element if it is more convenient to main-tain it in that format rather than translating it into BioML. Forexample, three dimensional protein structure information inthe standard Protein Data Bank (PDB) format would bewrapped by the following tags:
+<data format= “PDB” length= “xxx”>...</data>.
+The length attribute is necessary here as well: it prevents
+confusing a parsing program with unexpected characterscontained within the ‘data’ element (‘xxx’ represents thenumber of bytes between the start and end data tags).
+An experimental browser for BioML documents has been
+written in C++ (Microsoft Visual C++, version 5) for Win-dows 95, 98 and NT 4.0 platforms. It uses the hierarchicalorganization of the language to construct an index tree thatallows the user to navigate through the document quickly.The logical structure of a BioML document allows it to con-tain considerably more information than a typical HTMLdocument, therefore implementing some type of indexeduser interface may be a necessary feature of any BioMLbrowser. A simple editor and code viewer are included withthe browser. CGI scripts that translate SWISSPROT and PIRformat data entries into BioML have been written. The datafrom these sources can be used to provide ‘bare-bones’ tem-plates for the further annotation of a selected sequence.
+Acknowledgements
+The author would like to thank Brian T. Chait and Ronald C.Beavis for their suggestions regarding both BioML and thismanuscript.
+References
+Bray,T., Paoli,J. and Sperberg-McQueen,C.M. (1998) Extensible
+Markup Lanuage (XML) 1.0. Available at http://www.w3.org/
+TR/1998/REC-xml-19980210.html.
+Fenyö,D. (1998) The Biopolymer Markup Language. Available at
+http://www.proteometrics.com/BIOML/index.html.
+Murray-Rust,P., Rzepa,H.S. and Leach,C. (1998) CML – Chemical
+Markup Language. Available at http://www.ch.ic.ac.uk/cml/.
+Spitzner,J.H. (1997) Bioinformatic Sequence Markup Language
+(BSML). Available at http://visualgenomics.com/sbir/rfc.htm.

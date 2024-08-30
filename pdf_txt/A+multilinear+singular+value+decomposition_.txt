@@ -1,0 +1,1093 @@
+A MULTILINEAR SINGULAR VALUE DECOMPOSITION∗
+LIEVEN DE LATHAUWER†, BART DE MOOR†,ANDJOOS VANDEWALLE†SIAM J. M ATRIXANAL.APPL. c/circlecopyrt2000 Society for Industrial and Applied Mathematics
+Vol. 21, No. 4, pp. 1253–1278
+Abstract. We discuss a multilinear generalization of the singular value decomposition. There is
+a strong analogy between several properties of the matrix and the higher-order tensor decomposition;uniqueness, link with the matrix eigenvalue decomposition, ﬁrst-order perturbation eﬀects, etc., areanalyzed. We investigate how tensor symmetries aﬀect the decomposition and propose a multilineargeneralization of the symmetric eigenvalue decomposition for pair-wise symmetric tensors.
+Key words. multilinear algebra, singular value decomposition, higher-order tensor
+AMS subject classiﬁcations. 15A18, 15A69
+PII.S0895479896305696
+1. Introduction. An increasing number of signal processing problems involve
+the manipulation of quantities of which the elements are addressed by more thantwo indices. In the literature these higher-order equivalents of vectors (ﬁrst order)and matrices (second order) are called higher-order tensors, multidimensional matri-ces, or multiway arrays. For a lot of applications involving higher-order tensors, theexisting framework of vector and matrix algebra appears to be insuﬃcient and/orinappropriate. In this paper we present a proper generalization of the singular valuedecomposition (SVD).
+Toalargeextent,higher-ordertensorsarecurrentlygainingimportanceduetothe
+developments in the ﬁeld of higher-order statistics (HOS): for multivariate stochasticvariables the basic HOS (higher-order moments, cumulants, spectra and cepstra) arehighly symmetric higher-order tensors, in the same way as, e.g., the covariance of astochastic vector is a symmetric (Hermitean) matrix. A brief enumeration of someopportunities oﬀered by HOS gives an idea of the promising role of higher-ordertensorsonthesignalprocessingscene. Itisclearthatstatisticaldescriptionsofrandomprocessesaremoreaccuratewhen,inadditiontoﬁrst-andsecond-orderstatistics,theytake HOS into account; from a mathematical point of view this is reﬂected by the factthat moments and cumulants correspond, within multiplication with a ﬁxed scalar,to the subsequent coeﬃcients of a Taylor series expansion of the ﬁrst, resp., second,characteristicfunctionofthestochasticvariable. InstatisticalnonlinearsystemtheoryHOS are even unavoidable (e.g., the autocorrelation of x
+2is a fourth-order moment).
+∗Received by the editors June 24, 1996; accepted for publication (in revised form) by B. Kagstrom
+January 4, 1999; published electronically April 18, 2000. This research was partially supported bythe Flemish Government (the Concerted Research Action GOA-MIPS, the FWO (Fund for ScientiﬁcResearch - Flanders) projects G.0292.95, G.0262.97, and G.0240.99, the FWO Research Communi-ties ICCoS (Identiﬁcation and Control of Complex Systems) and Advanced Numerical Methods forMathematical Modelling, the IWT Action Programme on Information Technology (ITA/GBO/T23)-IT-Generic Basic Research), the Belgian State, Prime Minister’s Oﬃce - Federal Oﬃce for Scientiﬁc,Technical and Cultural Aﬀairs (the Interuniversity Poles of Attraction Programmes IUAP P4-02 andIUAP P4-24) and the European Commission (Human Capital and Mobility Network SIMONET,SC1-CT92-0779). The ﬁrst author is a post-doctoral Research Assistant with the F.W.O. The sec-ond author is a senior Research Associate with the F.W.O. and an Associate Professor at the K.U.Leuven. The third author is a Full Professor at the K.U. Leuven. The scientiﬁc responsibility isassumed by the authors.
+http://www.siam.org/journals/simax/21-4/30569.html
+†K.U. Leuven, E.E. Dept., ESAT–SISTA/COSIC, Kard. Mercierlaan 94, B-3001 Leuven (Hever-
+lee), Belgium (Lieven.DeLathauwer@esat.kuleuven.ac.be, Bart.DeMoor@esat.kuleuven.ac.be, Joos.Vandewalle@esat.kuleuven.ac.be).
+12531254 L. DE LATHAUWER, B. DE MOOR, AND J. VANDEWALLE
+Moreover, higher-order cumulants and spectra of a random variable are insensitive
+to an additive Gaussian perturbation of that variable, which is exploited in higher-order-only techniques, conceptually blind for Gaussian noise. HOS make it possibleto solve the source separation (SS) problem by mere exploitation of the statisticalindependence of the sources, without knowledge of the array manifold; they alsocontain suﬃcient information to allow a blind identiﬁcation of linear ﬁlters, withoutmaking assumptions on the minimum/nonminimum phase character, etc. (for generalaspects of HOS, the interested reader is referred to the tutorial papers [34, 37, 38, 30]and the bibliography [41]; for the use of tensor decompositions as a basic tool inHOS-based signal processing, we refer to [11, 12, 9, 19]).
+Higher-order tensors do not merely play an important role in HOS. As a matter
+of fact they seem to be used in the most various disciplines, like chemometrics, psy-chometrics, econometrics, image processing, biomedical signal processing, etc. Mostoftentheyappearinfactoranalysis-typeproblemsofmultiwaydatasets[13]. Another,more trivial, use is as a formalism to describe linear vector-matrix, matrix-vector,matrix-matrix, ...transformations, in the same way as matrices describe linear trans-
+formations between vector spaces. Interesting also is the fact that higher-order termsin the Taylor series expansion of a multivariate function and higher-order Volterraﬁlter kernels have a tensor form.
+On the other hand, one of the most fruitful developments in the world of linear
+algebra and linear algebra-based signal processing is the concept of the SVD of ma-trices [21, 35, 44]. In this paper we will discuss a multilinear generalization that hasalso been investigated in psychometrics as the Tucker model, originally developed toobtain a “method for searching for relations in a body of data,” for the case “eachperson in a group of individuals is measured on each trait in a group of traits by eachof a number of methods,” or “when individuals are measured by a battery of measureson a number of occasions” [42, 43]. For three-way data, the Tucker model consists ofdecomposing a real ( I
+1×I2×I3)-tensor Aaccording to
+ai1i2i3=I1/summationdisplay
+j1I2/summationdisplay
+j2I3/summationdisplay
+j3sj1j2j3u(1)
+i1j1u(2)i
+2j2u(3)i
+3j3, (1)
+in whichu(1)
+i1j1,u(2)i
+2j2,u(3)i
+3j3are entries of orthogonal matrices, and Sis a real (I1×
+I2×I3)-tensor with the property of “all-orthogonality,” i.e.,/summationtext
+i1i2si1i2αsi1i2β=/summationtext
+i1i3si1αi3si1βi3=/summationtext
+i2i3sαi2i3sβi2i3= 0 whenever α/negationslash=β. This decomposition is
+virtually unknown in the communities of numerical algebra and signal processing; onthe other hand, the viewpoint and language in psychometrics is somewhat diﬀerentfrom what is common in our ﬁeld. It is the aim of this paper to derive the tensordecomposition in an SVD terminology, using a notation that is a natural extension ofthe notation used for matrices. As already mentioned, we will show that the Tuckermodel is actually a convincing multilinear generalization of the SVD concept itself.From our algebraic point of view, we will ask a number of inevitable questions such aswhatthegeometriclinkisbetweenthegeneralizedsingularvectors/valuesandthecol-umn, row, ...vectors (oriented energy), how the concept of rank lies to the structure
+of the decomposition, whether the best reduced-rank approximation property carriesover, and so on. Our derivations are valid for tensors of arbitrary order and holdfor the complex-valued case too. In view of the many striking analogies between thematrixSVD and its multilinear generalization, we use the term higher-order singular
+value decomposition (HOSVD) in this paper; note at this point that the existence ofA MULTILINEAR SINGULAR VALUE DECOMPOSITION 1255
+diﬀerent multilinear SVD extensions may not be excluded—as a matter of fact, focus-
+ing on diﬀerent properties of the matrixSVD does lead to the deﬁnition of diﬀerent(formally less striking) multilinear generalizations, as we will explain later on.
+In our own research the HOSVD has already proved its value. In [14] we showed
+that the decomposition is fundamentally related to the problem of blind source sep-aration, also known as independent component analysis (ICA). In [18] we used thedecomposition to compute an initial value for a tensorial equivalent of the powermethod, aiming at the computation of the best rank-1 approximation of a giventensor; a high-performant ICA-algorithm was based on this technique. In [19] theHOSVD was used in a dimensionality reduction for higher-order factor analysis-typeproblems, reducing the computational complexity. The current paper however is theﬁrst systematic, elaborated presentation of the HOSVD concept.
+The paper is organized as follows. In section 2 we introduce some preliminary
+material on multilinear algebra, needed for the further developments. The HOSVDmodel is presented in section 3 and compared to its matrixcounterpart. In section 4we discuss some well-known SVD properties and demonstrate that they have strikinghigher-order counterparts. In section 5 we investigate how the HOSVD is inﬂuencedby symmetry properties of the higher-order tensor; in analogy with the eigenvaluedecomposition (EVD) of symmetric (Hermitean) matrices we deﬁne a higher-order
+eigenvalue decomposition (HOEVD) for “pair-wise symmetric” higher-order tensors.
+Section 6 contains a ﬁrst-order perturbation analysis and section 7 quotes some alter-native ways to generalize the SVD.
+Before starting with the next section, we would like to add a comment on the
+notation that is used. To facilitate the distinction between scalars, vectors, matrices,and higher-order tensors, the type of a given quantity will be reﬂected by its rep-resentation: scalars are denoted by lower-case letters ( a,b, ...;α,β, ...), vectors
+are written as capitals ( A,B,...)(italic shaped), matrices correspond to bold-face
+capitals (A,B,...),and tensors are written as calligraphic letters ( A,B,...).This
+notation is consistently used for lower-order parts of a given structure. For example,theentrywithrowindex iandcolumnindex jinamatrix A, i.e., (A)
+ij, issymbolized
+byaij(also (A)i=aiand ( A)i1i2...iN=ai1i2...iN); furthermore, the ith column vector
+of a matrix Ais denoted as Ai, i.e.,A=(A1A2...). To enhance the overall read-
+ability, we have made one exception to this rule: as we frequently use the charactersi,j,r, andnin the meaning of indices (counters), I,J,R, andNwill be reserved to
+denote the indexupper bounds, unless stated otherwise.
+2. Basic deﬁnitions.2.1. Matrixrepresentationofahigher-ordertensor. Thestartingpointof
+our derivation of a multilinear SVD will be to consider an appropriate generalizationof the link between the column (row) vectors and the left (right) singular vectorsof a matrix. To be able to formalize this idea, we deﬁne “matrix unfoldings” ofa given tensor, i.e., matrixrepresentations of that tensor in which all the column(row,...) v ectors are stacked one after the other. To avoid confusion, we will stick
+to one particular ordering of the column (row, ...) vectors; for order three, these
+unfolding procedures are visualized in Figure 1. Notice that the deﬁnitions of thematrixunfoldings involve the tensor dimensions I
+1,I2,I3in a cyclic way and that,
+when dealing with an unfolding of dimensionality Ic×IaIb, we formally assume that
+the indexiavaries more slowly than ib. In general, we have the following deﬁnition.
+Definition 1. Assume anNth-order tensor A∈CI1×I2×...×IN. The matrix
+unfoldingA(n)∈CIn×(In+1In+2...INI1I2...In−1)contains the element ai1i2...iNat the1256 L. DE LATHAUWER, B. DE MOOR, AND J. VANDEWALLE
+Fig.1.Unfolding of the (I1×I2×I3)-tensor Ato the(I1×I2I3)-matrix A(1), the(I2×I3I1)-
+matrix A(2)and the (I3×I1I2)-matrix A(3)(I1=I2=I3=4 ).
+position with row number inand column number equal to
+(in+1−1)In+2In+3...I NI1I2...I n−1+(in+2−1)In+3In+4...I NI1I2...I n−1+···
++(iN−1)I1I2...I n−1+(i1−1)I2I3...I n−1+(i2−1)I3I4...I n−1+···+in−1.
+Example1.Deﬁne a tensor A∈R3×2×3bya111=a112=a211=−a212=1,
+a213=a311=a313=a121=a122=a221=−a222=2,a223=a321=a323=4,
+a113=a312=a123=a322=0. The matrix unfolding A(1)is given by
+A(1)=
+11 0 22 0
+1−122−24
+20 2 40 4
+.
+2.2. Rankpropertiesofahigher-ordertensor. There are major diﬀerences
+betweenmatricesandhigher-ordertensorswhenrankpropertiesareconcerned. Aswewillexplaininsection3,thesediﬀerencesdirectlyaﬀectthewayanSVDgeneralizationcould look. As a matter of fact, there is not a unique way to generalize the rankconcept.
+First, it is easy to generalize the notion of column and row rank. If we refer
+in general to the column, row, ...vectors of anNth-order tensor A∈C
+I1×I2×...×IN
+as its “n-mode vectors,” deﬁned as the In-dimensional vectors obtained from Aby
+varying the index inand keeping the other indices ﬁxed, then we have the following
+deﬁnition.A MULTILINEAR SINGULAR VALUE DECOMPOSITION 1257
+Definition2. Then-rankof A, denoted byRn= rank n(A), is the dimension of
+the vector space spanned by the n-mode vectors.
+Then-rank of a given tensor can be analyzed by means of matrixtechniques.
+Property 1. Then-mode vectors of Aare the column vectors of the matrix
+unfoldingA(n)and
+rank n(A) = rank(A(n)).
+A major diﬀerence with the matrixcase, however, is the fact that the diﬀerent
+n-ranks of a higher-order tensor are not necessarily the same, as can easily be veriﬁed
+by checking some examples (see further).
+Therank of a higher-order tensor is usually deﬁned in analogy with the fact that
+a rank-Rmatrixcan be decomposed as a sum of Rrank-1 terms [12, 29].
+Definition 3. AnNth-order tensor Ahas rank 1when it equals the outer
+product ofNvectorsU(1),U(2),...,U(N), i.e.,
+ai1i2...iN=u(1)
+i1u(2)i
+2...u(N)
+iN,
+for all values of the indices.
+Definition 4. The rankof an arbitrary Nth-order tensor A, denoted byR=
+rank( A), is the minimal number of rank- 1tensors that yield Ain a linear combina-
+tion.
+(With respect to the deﬁnition of a rank-1 tensor, a remark on the notation has to
+be made. For matrices, the vector-vector outer product of U(1)andU(2)is denoted as
+U(1)·U(2)T; to avoid an ad hoc notation based on “generalized transposes” (in which
+the fact that column vectors are transpose-free would not have an inherent meaning),we will further denote the outer product of U
+(1),U(2),...,U(N)byU(1)◦U(2)◦···◦
+U(N).)
+A second diﬀerence between matrices and higher-order tensors is the fact that the
+rank is not necessarily equal to an n-rank, even when all the n-ranks are the same.
+From the deﬁnitions it is clear that always Rn/lessorequalslantR.
+Example2.Consider the (2×2×2)-tensor Adeﬁned by
+/braceleftbigga111=a221=a112=1
+a211=a121=a212=a122=a222=0.
+It follows that R1=R2=2butR3=1.
+Example3.Consider the (2×2×2)-tensor Adeﬁned by
+/braceleftbigga211=a121=a112=1
+a111=a222=a122=a212=a221=0.
+The1-rank,2-rank, and 3-rankare equal to 2. The rank, however, equals 3, since
+A=X2◦Y1◦Z1+X1◦Y2◦Z1+X1◦Y1◦Z2,
+in which
+X1=Y1=Z1=/parenleftbigg1
+0/parenrightbigg
+,X 2=Y2=Z2=/parenleftbigg0
+1/parenrightbigg
+is a decomposition in a minimal linear combination of rank- 1tensors (a proof is given
+in[19]).1258 L. DE LATHAUWER, B. DE MOOR, AND J. VANDEWALLE
+2.3. Scalar product, orthogonality, norm of higher-order tensors. In
+the HOSVD deﬁnition of section 3, the structure constraint of diagonality of thematrixof singular values in the second-order case will be replaced by a number ofgeometrical conditions. This requires a generalization of the well-known deﬁnitionsof scalar product, orthogonality, and Frobenius-norm to tensors of arbitrary order.These generalizations can be deﬁned in a straightforward way as follows.
+Definition 5. The scalar product /angbracketleftA,B/angbracketrightof two tensors A,B∈C
+I1×I2×...×Nis
+deﬁned as
+/angbracketleftA,B/angbracketrightdef=/summationdisplay
+i1/summationdisplay
+i2.../summationdisplay
+iNb∗
+i1i2...iNai1i2...iN,
+in which ∗denotes the complex conjugation.
+Definition6. Arrays of which the scalar product equals 0are orthogonal.
+Definition7. The Frobenius-norm of a tensor Ais given by
+/bardblA/bardbldef=/radicalbig
+/angbracketleftA,A/angbracketright.
+2.4. Multiplication of a higher-order tensor by a matrix. Like for ma-
+trices, the HOSVD of a higher-order tensor A∈RI1×I2×...×INwill be deﬁned by
+looking for orthogonal coordinate transformations of RI1,RI2,...,RINthat induce a
+particular representation of the higher-order tensor. In this section we establish anotation for the multiplication of a higher-order tensor by a matrix. This will allowus to express the eﬀect of basis transformations.
+Let us ﬁrst have a look at the matrixproduct G=U·F·V
+T, involving matrices
+F∈RI1×I2,U∈RJ1×I1,V∈RJ2×I2, andG∈RJ1×J2. To avoid working with “gen-
+eralized transposes” in the multilinear case, we observe that the relationship betweenUandFand the relationship between V(notV
+T) andFare in fact completely
+similar: in the same way as Umakes linear combinations of the rows of F,Vmakes
+linear combinations of the columns of F; in the same way as the columns of Fare
+multiplied by U, the rows of Fare multiplied by V; in the same way as the columns
+ofUare associated with the column space of G, the columns of Vare associated
+with the row space of G. This typical relationship will be denoted by means of the
+×n-symbol:G=F×1U×2V. (For complexmatrices the product U·F·VHis
+consequently denoted as F×1U×2V∗.) In general, we have the following deﬁnition.
+Definition 8. Then-mode product of a tensor A∈CI1×I2×...×INby a matrix
+U∈CJn×In, denoted by A×nU,i sa n(I1×I2×···×In−1×Jn×In+1···×IN)-tensor
+of which the entries are given by
+(A× nU)i1i2...in−1jnin+1...iNdef=/summationdisplay
+inai1i2...in−1inin+1...iNujnin.
+Then-mode product satisﬁes the following properties.
+Property2. Given the tensor A∈CI1×I2×...×INand the matrices F∈CJn×In,
+G∈CJm×Im(n/negationslash=m), one has
+(A× nF)×mG=(A× mG)×nF=A× nF×mG.
+Property3. Given the tensor A∈CI1×I2×...×INand the matrices F∈CJn×In,
+G∈CKn×Jn, one has
+(A× nF)×nG=A× n(G·F).A MULTILINEAR SINGULAR VALUE DECOMPOSITION 1259
+Fig.2.Visualization of the multiplication of a third-order tensor B∈CI1×I2×I3with matrices
+U(1)∈CJ1×I1,U(2)∈CJ2×I2, and U(3)∈CJ3×I3.
+Figure 2 visualizes the equation A=B× 1U(1)×2U(2)×3U(3)for third-order
+tensors A∈CJ1×J2×J3andB∈CI1×I2×I3. Unlike the conventional way to visualize
+second-ordermatrixproducts, U(2)hasnotbeentransposed, forreasonsofsymmetry.
+Multiplication with U(1)involves linear combinations of the “horizontal matrices”
+(indexi1ﬁxed) in B. Stated otherwise, multiplication of BwithU(1)means that
+every column of B(indicesi2andi3ﬁxed) has to be multiplied from the left with
+U(1). Similarly, multiplication with U(2), resp.,U(3), involves linear combinations of
+matrices, obtained by ﬁxing i2, resp.,i3. This can be considered as a multiplication,
+from the left, of the vectors obtained by ﬁxing the indices i3andi1, resp.,i1andi2.
+Visualization schemes like Figure 2 have proven to be very useful to gain insight intensor techniques.
+Then-modeproductofatensorandamatrixisaspecialcaseoftheinnerproduct
+in multilinear algebra and tensor analysis [32, 26]. In the literature it often takes theform of an Einstein summation convention. Without going into details, this meansthat summations are written in full, but that the summation sign is dropped forthe indexthat is repeated. This is of course the most versatile way to write downtensor equations, and in addition, a basis-independent interpretation can be givento Einstein summations. On the other hand, the formalism is only rarely used insignal processing and numerical linear algebra, whereas using the ×
+n-symbol comes
+closer to the common way of dealing with matrixequations. It is our ex perience thatthe use of the ×
+n-symbol demonstrates more clearly the analogy between matrixand
+tensor SVD, and that, more in general, a conceptual insight in tensor decompositionsis easier induced by means of the ×
+n-notation and visualizations like Figure 2 than
+by the use of element-wise summations.
+3. A multilinear SVD. In this section an SVD model is proposed for Nth-
+order tensors. To facilitate the comparison, we ﬁrst repeat the matrixdecompositionin the same notation, as follows.
+Theorem1( matrixSVD).Every complex (I
+1×I2)-matrixFcan be written as
+the product
+F=U(1)·S·V(2)H=S×1U(1)×2V(2)∗=S×1U(1)×2U(2), (2)
+in which
+1.U(1)=/parenleftBig
+U(1)
+1U(1)
+2...U(1)
+I1/parenrightBig
+is a unitary (I1×I1)-matrix,1260 L. DE LATHAUWER, B. DE MOOR, AND J. VANDEWALLE
+Fig.3.Visualization of the matrix SVD.
+2.U(2)=/parenleftBig
+U(2)
+1U(2)
+2...U(2)
+I2/parenrightBig
+(=V(2)∗)is a unitary (I2×I2)-matrix,
+3.Sis an(I1×I2)-matrix with the properties of
+(i)pseudodiagonality :
+S= diag(σ1,σ2,...,σmin (I1,I2)), (3)
+(ii)ordering:
+σ1/greaterorequalslantσ2/greaterorequalslant.../greaterorequalslantσmin (I1,I2)/greaterorequalslant0. (4)
+Theσiare singular values of Fand the vectors U(1)
+iandU(2)
+iare, resp., an ith
+left and anith right singular vector. The decomposition is visualized in Figure 3.
+Now we state the following theorem.Theorem2( Nth-order SVD).Every complex (I
+1×I2×···×IN)-tensor Acan
+be written as the product
+A=S× 1U(1)×2U(2)···× NU(N), (5)
+in which
+1.U(n)=/parenleftBig
+U(n)
+1U(n)
+2...U(n)
+In/parenrightBig
+is a unitary (In×In)-matrix,
+2.Sis a complex (I1×I2×···×IN)-tensor of which the subtensors Sin=α,
+obtained by ﬁxing the nth index toα, have the properties of
+(i)all-orthogonality: two subtensors Sin=αandSin=βare orthogonal for all
+possible values of n,αandβsubject toα/negationslash=β:
+/angbracketleftSin=α,Sin=β/angbracketright=0whenα/negationslash=β, (6)
+(ii)ordering:
+/bardblSin=1/bardbl/greaterorequalslant/bardblSin=2/bardbl/greaterorequalslant.../greaterorequalslant/bardblSin=In/bardbl/greaterorequalslant0 (7)
+for all possible values of n.
+The Frobenius-norms /bardblSin=i/bardbl, symbolized by σ(n)
+i,a r en-mode singular values
+ofAand the vector U(n)
+iis anithn-mode singular vector. The decomposition is
+visualized for third-order tensors in Figure 4.
+Discussion. Applied to a tensor A∈RI1×I2×I3, Theorem 2 says that it is always
+possibletoﬁndorthogonaltransformationsofthecolumn,row,and3-modespacesuch
+thatS=A× 1U(1)T×2U(2)T×3U(3)Tis all-orthogonal and ordered (the new basis
+vectors are the columns of U(1),U(2), andU(3)). All-orthogonality means that the
+diﬀerent“horizontalmatrices”of S(theﬁrstindex i1iskeptﬁxed, whilethetwoother
+indices,i2andi3, are free) are mutually orthogonal with respect to the scalar productA MULTILINEAR SINGULAR VALUE DECOMPOSITION 1261
+Fig.4.Visualization of the HOSVD for a third-order tensor.
+of matrices (i.e., the sum of the products of the corresponding entries vanishes); at
+the same time, the diﬀerent “frontal” matrices ( i2ﬁxed) and the diﬀerent “vertical”
+matrices (i3ﬁxed) should be mutually orthogonal as well. The ordering constraint
+imposes that the Frobenius-norm of the horizontal (frontal, resp., vertical) matricesdoes not increase as the index i
+1(i2, resp.,i3) is increased. While the orthogonality
+ofU(1),U(2),U(3), and the all-orthogonality of Sare the basic assumptions of the
+model, the ordering condition should be regarded as a convention, meant to ﬁxaparticular ordering of the columns of U
+(1),U(2), andU(3)(or the horizontal, frontal,
+and vertical matrices of S, stated otherwise).
+Comparison of the matrixand tensor theorem shows a clear analogy between
+the two cases. First, the left and right singular vectors of a matrixare generalizedas then-mode singular vectors. Next, the role of the singular values is taken over
+by the Frobenius-norms of the ( N−1)th-order subtensors of the “core tensor” S;
+notice at this point that in the matrixcase, the singular values also correspond tothe Frobenius-norms of the rows and the columns of the “core matrix” S.F o rNth-
+order tensors, N(possibly diﬀerent) sets of n-mode singular values are deﬁned; in this
+respect, rememberfromsection2.2thatan Nth-ordertensorcanalsohave Ndiﬀerent
+n-rank values. The essential diﬀerence is that Sis in general a full tensor, instead of
+being pseudodiagonal (this would mean that nonzero elements could only occur whenthe indicesi
+1=i2=···=iN). Instead, Sobeys the condition of all-orthogonality;
+here we notice that in the matrixcase Sis all-orthogonal as well: due to the diagonal
+structure, the scalar product of two diﬀerent rows or columns also vanishes. We alsoremark that, by deﬁnition, the n-mode singular values are positive and real, like in
+the matrixcase. On the other hand the entries of Sare not necessarily positive in
+general; they can even be complex, when Ais a complex-valued tensor.
+One could wonder whether imposing the condition of pseudodiagonality on the
+core tensor Swould not be a better way to generalize the SVD of matrices. The
+answer is negative: in general, it is impossible to reduce higher-order tensors to apseudodiagonal form by means of orthogonal transformations. This is easily shown bycounting degrees of freedom: pseudodiagonality of a core tensor containing Inonzero
+elements would imply that the decomposition would exhibit not more than I(/summationtextI
+n+
+1−N(I+1 )/2) degrees of freedom, while the original tensor contains I1I2...I N
+independent entries. Only in the second-order case both quantities are equal for I=
+min(I1,I2)—only in the second-order case, the condition of pseudodiagonality makes
+sense. However, we will prove that relaxation of the pseudodiagonality condition1262 L. DE LATHAUWER, B. DE MOOR, AND J. VANDEWALLE
+to all-orthogonality yields a decomposition that always exists. As a matter of fact,
+“relaxation” is a too hard term: Property 5 in section 4 will show that the matrixSVD itself could have been deﬁned by requiring the rows/columns of the matrix S
+to be mutually orthogonal; apart from some trivial normalization conventions, theresulting decomposition is exactly the same as the conventional one, obtained via thepseudodiagonality condition.
+Equivalent representations. Amatrix representation of the HOSVD can be
+obtained by unfolding AandSin model equation (5):
+A
+(n)=U(n)·S(n)·/parenleftBig
+U(n+1)⊗U(n+2)⊗···⊗U(N)⊗U(1)⊗U(2)⊗···⊗U(n−1)/parenrightBigT
+,
+(8)
+in which ⊗denotes the Kronecker product [2, 40]. (The Kronecker product of two
+matricesF∈CI1×I2andG∈CJ1×J2is deﬁned according to
+F⊗Gdef=(fi1i2G)1/lessorequalslanti1/lessorequalslantI1;1/lessorequalslanti2/lessorequalslantI2.)
+Notice that the conditions (6) and (7) imply that S(n)has mutually orthogonal rows,
+having Frobenius-norms equal to σ(n)
+1,σ(n)
+2,...,σ(n)
+In. Let us deﬁne a diagonal matrix
+Σ(n)∈RIn×Inandacolumn-wiseorthonormalmatrix V(n)∈CIn+1In+2...INI1I2...In−1×In
+according to
+Σ(n)def= diag(σ(n)
+1,σ(n)
+2,...,σ(n)
+In), (9)
+V(n)Hdef=˜S(n)·/parenleftBig
+U(n+1)⊗U(n+2)⊗···⊗U(N)⊗U(1)⊗U(2)⊗···⊗U(n−1)/parenrightBig
+,
+(10)
+in which ˜S(n)is a normalized version of S(n), with the rows scaled to unit-length
+S(n)=Σ(n)·˜S(n). (11)
+Expressing (8) in terms of Σ(n)andV(n)shows that, at a matrixlevel, the HOSVD
+conditions lead to an SVD of the matrixunfoldings
+A(n)=U(n)·Σ(n)·V(n)H(12)
+(1/lessorequalslantn/lessorequalslantN). Below we will show that, on the other hand, the left singular matrices
+of the diﬀerent matrixunfoldings of Acorrespond to unitary transformations that
+induce the HOSVD structure. This strong link ensures that the HOSVD inherits allthe classical column/row space properties from the matrixSVD (see section 4).
+The dyadic decomposition could be generalized by expressing the HOSVD model
+as anexpansion of mutually orthogonal rank- 1tensors,
+A=/summationdisplay
+i1/summationdisplay
+i2.../summationdisplay
+iNsi1i2...iNU(1)
+i1◦U(2)
+i2◦···◦U(N)
+iN, (13)
+in which the coeﬃcients si1i2...iNare the entries of an ordered all-orthogonal tensor
+S. The orthogonality of the rank-1 terms follows from the orthogonality of the n-
+mode singular vectors. In connection with the discussion on pseudodiagonality versusall-orthogonality, we remark that the summation generally involves r
+1r2...r Nterms
+(instead of min( I1,I2,...,I N)), in whichrnis the highest indexfor which /bardblSin=rn/bardbl>A MULTILINEAR SINGULAR VALUE DECOMPOSITION 1263
+Fig.5.Visualization of a triadic decomposition.
+0in(7). InFigure5thisdecompositionisvisualizedforthird-ordertensors. Wherethe
+dyadic decomposition expresses a matrix in an essentially unique way as a minimallinear combination of products of column and row vectors that are each mutually
+orthonormal, the meaning of (13) is less outspoken. For example, the matrix U
+/prime(n)=
+U(n)·Q, in whichQis a unitary matrix, together with the tensor S/prime=S×nQHstill
+leads to an expansion in r1r2...r Nmutually orthogonal rank-1 tensors (however, S/prime
+is not all-orthogonal in general). The unitary matrix Qcould even be chosen in such
+a way that it induces zero entries in S/prime, thereby decreasing the number of terms in
+the rank-1 expansion (e.g., the unitary factor of a QR-decomposition of S(n)induces
+rn(rn−1)/2 zeros).
+Proof. The derivation of Theorem 2 establishes the connection between the
+HOSVD of a tensor Aand the matrixSVD of its matrixunfoldings. It is given
+in terms of real-valued tensors; the complexcase is completely analogous but morecumbersome from a notational point of view.
+Consider two ( I
+1×I2×···×IN) tensors AandS, related by
+S=A× 1U(1)T×2U(2)T···× NU(N)T, (14)
+inwhichU(1),U(2),...,U(N)areorthogonalmatrices. Equation(14)canbeexpressed
+in a matrixformat as
+A(n)=U(n)·S(n)·/parenleftBig
+U(n+1)⊗U(n+2)···U(N)⊗U(1)⊗U(2)···U(n−1)/parenrightBigT
+. (15)
+Now consider the particular case where U(n)is obtained from the SVD of A(n)as
+A(n)=U(n)·Σ(n)·V(n)T, (16)
+in whichV(n)is orthogonal and Σ(n)= diag(σ(n)
+1,σ(n)
+2,...,σ(n)
+In), where
+σ(n)
+1/greaterorequalslantσ(n)
+2/greaterorequalslant···/greaterorequalslantσ(n)
+In/greaterorequalslant0. (17)
+We callrnthe highest indexfor which σ(n)
+rn>0. Taking into account that the
+Kronecker factor in (15) is orthogonal, comparison of (15) and (16) shows that
+S(n)=Σ(n)·V(n)T·/parenleftBig
+U(n+1)⊗U(n+2)···U(N)⊗U(1)⊗U(2)···U(n−1)/parenrightBig
+. (18)1264 L. DE LATHAUWER, B. DE MOOR, AND J. VANDEWALLE
+This equation implies, for arbitrary orthogonal matrices U(1),U(2),...,U(n−1),
+U(n+1),...,U(N), that
+/angbracketleftSin=α,Sin=β/angbracketright= 0 when α/negationslash=β, (19)
+and
+/bardblSin=1/bardbl=σ(n)
+1/greaterorequalslant/bardblSin=2/bardbl=σ(n)
+2/greaterorequalslant···/greaterorequalslant/bardblSin=In/bardbl=σ(n)
+In/greaterorequalslant0, (20)
+and, ifrn<In,
+/bardblSin=rn+1/bardbl=σ(n)
+rn+1=···=/bardblSin=In/bardbl=σ(n)
+In=0. (21)
+Byconstructingthematrices U(1),U(2),...,U(n−1),U(n+1),...,U(N)inasimilar
+way asU(n),Scan be made to satisfy all the conditions of the HOSVD theorem. On
+the other hand, as can be seen from (12), all the matrices U(1),U(2),...,U(N)and
+tensors Ssatisfying the HOSVD theorem can be found by means of the SVD of A(1),
+A(2),...,A(N), where Sfollows from (14).
+Computation. Equation (12) and the preceding proof actually indicate how
+the HOSVD of a given tensor Acan be computed: the n-mode singular matrix U(n)
+(and then-mode singular values) can directly be found as the left singular matrix
+(and the singular values) of an n-mode matrixunfolding of A(any matrixof which
+the columns are given by the n-mode vectors can be resorted to, as the column
+ordering is of no importance). Hence computing the HOSVD of an Nth-order tensor
+leads to the computation of Ndiﬀerent matrixSVDs of matrices with size ( In×
+I1I2...I n−1In+1...I N)(1/lessorequalslantn/lessorequalslantN).
+Afterwards, the core tensor Scan be computed by bringing the matrices of sin-
+gular vectors to the left side of (5):
+S=A× 1U(1)H×2U(2)H···× NU(N)H. (22)
+This can be computed in a matrixformat, e.g.,
+S(n)=U(1)H·A(n)·/parenleftBig
+U(n+1)⊗U(n+2)⊗···⊗U(N)⊗U(1)⊗U(2)⊗···⊗U(n−1)/parenrightBig
+.
+(23)
+Equations (12) and (23) essentially form a square-root version of the “operational
+procedures,” discussed in [43]. As such they are numerically more reliable, especially
+for ill-conditioned tensors, i.e., tensors for which σ(n)
+1/greatermuchσ(n)
+Rn, for one or more values
+ofn[22].
+Example4.Consider the (3×3×3)tensor Adeﬁned by a matrix unfolding A(1),
+equal to
+/parenleftBigg
+0.9073 0 .7158 −0.36981.7842 1 .6970 0 .0151 2.1236 −0.0740 1 .4429
+0.8924 −0.4898 2 .42881.7753 −1.5077 4 .0337 −0.6631 1 .9103 −1.7495
+2.1488 0 .3054 2 .37534.2495 0 .3207 4 .7146 1.8260 2 .1335 −0.2716/parenrightBigg
+.
+The1-mode singular vectors are the columns of the left singular matrix of A(1);i n
+the same way, U(2)andU(3)can be obtained:
+U(1)=/parenleftBigg
+0.1121 −0.7739 −0.6233
+0.5771 0 .5613 −0.5932
+0.8090 −0.2932 0 .5095/parenrightBigg
+,A MULTILINEAR SINGULAR VALUE DECOMPOSITION 1265
+U(2)=/parenleftBigg
+0.4624 0 .0102 0 .8866
+0.8866 −0.0135 −0.4623
+−0.0072 −0.9999 0 .0152/parenrightBigg
+,
+U(3)=/parenleftBigg
+0.6208 −0.4986 0 .6050
+−0.0575 −0.7986 −0.5992
+0.7819 0 .3371 −0.5244/parenrightBigg
+.
+The core tensor of the HOSVD then follows from application of (23);its unfolding
+S(1)is equal to
+/parenleftBigg
+8.7088 0 .0489 −0.27970.1066 3 .2737 0 .3223 −0.0033 −0.1797 −0.2222
+−0.0256 3 .2546 −0.28533.1965 −0.2130 0 .7829 0.2948 −0.0378 −0.3704
+0.0000 0 .0000 0 .00000.0000 0 .0000 0 .0000 0.0000 0 .0000 0 .0000/parenrightBigg
+.
+The core tensor is all-orthogonal: the rows of S(1)are mutually orthogonal, but so
+also are the matrices formed by columns 1/2/3, 4/5/6, and7/8/9,as well as the three
+matrices formed by columns 1/4/7,2/5/8, and3/6/9. This boils down to orthogonality
+of, resp., the “horizontal,” “frontal,” and “vertical” matrices of A. The core tensor
+is also ordered: its matrices are put in order of decreasing Frobenius-norm. TheFrobenius-norms give the n-mode singular values of A:
+mode1: 9 .3187 ,4.6664 ,0,
+mode2: 9 .3058 ,4.6592 ,0.5543 ,
+mode3: 9 .2822 ,4.6250 ,1.0310 .
+4. Properties. Many properties of the matrixSVD have a very clear higher-
+order counterpart, because of the strong link between the HOSVD of a higher-ordertensor and the SVDs of its matrixunfoldings. In this section, we list the multilinearequivalents of a number of classical matrixSVD properties. The basic link itself isrepeated as Property 12. The proofs are outlined at the end of the section.
+Property4( uniqueness).
+(i)Then-mode singular values are uniquely deﬁned.
+(ii)When then-mode singular values are diﬀerent, then the n-mode singular
+vectors are determined up to multiplication with a unit-modulus factor. When U
+(n)
+αis
+multiplied by ejθ, then Sin=αhas to be multiplied by the inverse factor e−jθ.
+Then-mode singular vectors corresponding to the same n-mode singular value
+can be replaced by any unitary linear combination. The corresponding subtensors{S
+in=α}have to be combined in the inverse way. Formally, U(n)can be replaced by
+U(n)·Q, in whichQis a block-diagonal matrix, consisting of unitary blocks, where the
+block-partitioning corresponds to the partitioning of U(n)in sets ofn-mode singular
+vectors with identical n-mode singular value. At the same time Shas to be replaced
+byS× nQH.
+For real-valued tensors uniqueness is up to the sign, resp., multiplication with an
+orthogonal matrix.
+TheﬁrstpropertyimpliesthattheHOSVDshowsessentiallythesameuniqueness
+properties as the matrixSVD. The only diﬀerence consists of the fact that Theorem 2contains weaker normalization conventions. The equivalent situation for matriceswould be to allow that Sconsists of diagonal blocks, corresponding to the diﬀerent
+singular values, in which each block consists of a unitary matrix, multiplied with thesingular value under consideration.
+Property 5 ( generalization).The tensor SVD of a second-order tensor boils
+down (up to the underdetermination) to its matrix SVD.1266 L. DE LATHAUWER, B. DE MOOR, AND J. VANDEWALLE
+From the discussion in section 3 it is clear that the HOSVD is a formal equivalent
+of the matrixSVD. Moreover, according to Property 5, it is a true generalization inthe sense that, when Theorem 2 is applied to matrices (second-order tensors), it leadsto the classical matrixSVD. (Note however that, by convention, the 2-mode singularvectors are deﬁnedas the complexconjugates of the right matrixsingular vectors.)
+As such, Theorem 2 really establishes a multilinear SVD framework, containing thematrixdecomposition in the special case of second-order tensors.
+Property6( n-rank).Let the HOSVD of Abe given as in Theorem 2, and let
+r
+nbe equal to the highest index for which /bardblSin=rn/bardbl>0in(7); then one has
+Rn= rank n(A)=rn.
+The fact that the number of nonvanishing singular values of a given matrixequals
+its(column/row)rankcarriesovertothe n-modesingularvaluesandthe n-rankvalues
+of a given tensor (recall from section 2.2 that the n-rank values are not necessarily
+the same). Like for matrices, this link even holds in a numerical sense, as will beshown by the perturbation analysis in section 6: the number of signiﬁcant n-mode
+singular values of a given tensor equals its numerical n-rank. In a matrixcontex t, this
+property is of major concern for the estimation of “problem dimensionalities,” like theestimation of the number of sources in the source separation problem, the estimationof ﬁlter lengths in identiﬁcation, the estimation of the number of harmonics in theharmonic retrieval problem, etc. [45, 46]. Property 6 may play a similar role inmultilinear algebra. Let us illustrate this by means of a small example. Considerthe most elementary relationship in multivariate statistics, in which an I-dimensional
+stochastic vector Xconsists of a linear mixture of J/lessorequalslantIstochastic components.
+Whereas the number of components is usually estimated as the number of signiﬁcanteigenvalues of the covariance matrixof X, the number of skew or kurtic components
+might as well be estimated as the number of signiﬁcant n-mode singular values of the
+third-order, resp., fourth-order, cumulant tensor of X[17].
+Finally, we remember from section 2.2 that knowledge of the n-rank values of a
+given tensor does not allow us in general to make precise statements about the rank ofthat tensor. With this respect, other SVD generalizations might be more interesting(see section 7).
+Property7( structure).Let the HOSVD of Abe given as in Theorem 2; then
+one has
+(i)then-mode vector space R(A
+(n)) = span(U(n)
+1,...,U(n)
+Rn),
+(ii)the orthogonal complement of R(A(n)), the leftn-mode null space N(AH
+(n))=
+span(U(n)
+Rn+1,...,U(n)
+In).
+In the same way as the left and right singular vectors of a matrixgive an or-
+thonormal basis for its column and row space (and their orthogonal complements),then-mode singular vectors of a given tensor yield an orthonormal basis for its n-
+mode vector space (and its orthogonal complement). For matrices, the property wasthe starting-point for the development of subspace algorithms [45, 46, 47]; Property 7allows for an extension of this methodology in multilinear algebra.
+Property8( norm).Let the HOSVD of Abe given as in Theorem 2; then the
+following holds.
+/bardblA/bardbl
+2=R1/summationdisplay
+i=1/parenleftBig
+σ(1)
+i/parenrightBig2
+=···=RN/summationdisplay
+i=1/parenleftBig
+σ(N)
+i/parenrightBig2
+=/bardblS/bardbl2.A MULTILINEAR SINGULAR VALUE DECOMPOSITION 1267
+Inmultilinearalgebraaswellasinmatrixalgebra, theFrobenius-normisunitarily
+invariant. As a consequence, the well-known fact that the squared Frobenius-norm ofa matrixequals the sum of its squared singular values can be generalized.
+Definition9( n-modeorientedenergy ).Then-mode oriented energy of an Nth-
+order tensor A∈C
+I1×I2×...×INin the direction of a unit-norm vector X, denoted by
+OEn(X,A), is the oriented energy of the set of n-mode vectors, i.e.,
+OEn(X,A)def=/bardblXHA(n)/bardbl2.
+The concept of oriented energy of a given matrixand the link with the SVD of
+that matrix, which form the basis of SVD-based signal separation algorithms, caneasily be generalized as well. Whereas Property 8 merely states that the squaredFrobenius-norm of a tensor (i.e., the “energy” contained in the tensor) equals thesum of the squared n-mode singular values, the HOSVD actually gives a pretty de-
+tailed geometrical picture of the energy distribution over the n-mode vector space.
+Deﬁnition 9 generalizes the deﬁnition of oriented energy. We now state the followingproperty.
+Property9( oriented energy ).The directions of extremal n-mode oriented en-
+ergy correspond to the n-mode singular vectors, with extremal energy value equal to
+the corresponding squared n-mode singular value.
+This means that the n-mode vectors mainly contain contributions in the direction
+ofU
+(n)
+1; this particular direction accounts for an amount of σ(n)2
+1with respect to the
+total amount of energy in the tensor. Next, the n-mode oriented energy reaches an
+extremum in the direction of U(n)
+2, perpendicular to U(n)
+1, for a value of σ(n)2
+2, and so
+on. Discarding the components of the n-mode vectors in the direction of an n-mode
+singular vector U(n)
+in(e.g., the one corresponding to the smallest n-mode singular
+value) to obtain a tensor ˆAintroduces an error /bardblA −ˆA/bardbl2=σ(n)2
+in.
+Property10( approximation ).Let the HOSVD of Abe given as in Theorem 2
+and let then-mode rankof Abe equal toRn(1/lessorequalslantn/lessorequalslantN). Deﬁne a tensor ˆA
+by discarding the smallest n-mode singular values σ(n)
+I/primen+1,σ(n)
+I/primen+2,...,σ(n)
+Rnfor given
+values ofI/primen(1/lessorequalslantn/lessorequalslantN), i.e., set the corresponding parts of Sequal to zero. Then
+we have
+/bardblA −ˆA/bardbl2/lessorequalslantR1/summationdisplay
+i1=I/prime1+1σ(1)2
+i1+R2/summationdisplay
+i2=I/prime2+1σ(2)2
+i2+···+RN/summationdisplay
+iN=I/primeN+1σ(N)2
+iN. (24)
+This property is the higher-order equivalent of the link between the SVD of a
+matrixand its best approx imation, in a least-squares sense, by a matrixof lower rank.However,thesituationisquitediﬀerentfortensors. Bydiscardingthesmallest n-mode
+singularvalues,oneobtainsatensor ˆAwithacolumnrankequalto I
+/prime1,rowrankequal
+toI/prime2, etc. However, this tensor is in general not the best possible approximation
+under the given n-mode rank constraints (see, e.g., Example 5). Nevertheless, the
+ordering assumption (7) implies that the “energy” of Ais mainly concentrated in the
+part corresponding to low values of i1,i2,...,i N. Consequently, if σ(n)
+I/primen/greatermuchσ(n)
+I/primen+1
+(e.g.,I/primencorresponds to the numerical n-rank of A; the smaller n-mode singular
+values are not signiﬁcant (see also Property 6)), ˆAis still to be considered as a good
+approximation of A. The error is bounded as in (24). For procedures to enhance a
+given approximation, we refer to [28, 17].1268 L. DE LATHAUWER, B. DE MOOR, AND J. VANDEWALLE
+Fig.6.Construction of H(1)for(a)a matrix and (b)a third-order tensor.
+Property 11 ( link between HOSVD and matrixEVD ).Let the HOSVD of A
+be given as in Theorem 2. DeﬁneH(n)def=A(n)·AH
+(n), i.e.,H(n)contains on position
+(i,i/prime)the scalar product /angbracketleftAin=i,Ain=i/prime/angbracketright. If the EVD of H(n)is given by
+H(n)=U(n)·D(n)·U(n)H,
+thenU(n)contains then-mode singular vectors of A. Moreover the scalar product
+/angbracketleftSin=i,Sin=i/prime/angbracketrightis the(i,i/prime)th element of D(n). Diﬀerent subtensors of Sare mutually
+orthogonal.
+In the same way as the SVD of a matrix Fis related to the EVD of the Hermitean
+(real symmetric) positive (semi)deﬁnite matrices FFHandFHF, the HOSVD of a
+higher-order tensor Ais related to the EVD of Hermitean (real symmetric) positive
+(semi)deﬁnite matrices, constructed from A. The construction is clariﬁed in Figure 6:
+just like the entries of FFHconsist of the mutual scalar products of the rows of F, the
+matrixH(1)in Property 11 is computed from the scalar products of the “horizontal
+matrices” of A, in the third-order case. This property can, e.g., be useful for inter-
+pretations in a statistical context, where H(n)corresponds to the sample correlation
+matrixof the n-mode vectors of A.
+Property 12 ( link between HOSVD and matrixSVD ).Let the HOSVD of A
+be given as in Theorem 2. Then
+A(n)=U(n)·Σ(n)·V(n)H
+is an SVD of A(n), where the diagonal matrix Σ(n)∈RIn×Inand the column-wise
+orthonormal matrix V(n)∈CIn+1In+2...INI1I2...In−1×Inare deﬁned according to
+Σ(n)def= diag(σ(n)
+1,σ(n)
+2,...,σ(n)
+In),
+V(n)Hdef=˜S(n)·/parenleftBig
+U(n+1)⊗U(n+2)...U(N)⊗U(1)⊗U(2)···⊗U(n−1)/parenrightBigT
+,
+in which ˜S(n)is a normalized version of S(n), with the rows scaled to unit-length
+S(n)=Σ(n)·˜S(n).A MULTILINEAR SINGULAR VALUE DECOMPOSITION 1269
+Proof. The proofs are established by a further analysis of the derivation in section
+3; the key idea behind this derivation is explained in Property 12.
+Property 4 is proved by investigating the uniqueness conditions.Property 5 follows by applying the same procedure to second-order tensors.Property 6 follows from the combination of Property 12 and Property 1. In the
+same way the deduction of Property 7 and Property 9 is trivial.
+Property 8: We have /bardblA/bardbl
+2=/bardblA(n)/bardbl2which, in turn, equals/summationtextrn
+i=1/bardblSin=i/bardbl2=
+/bardblS/bardbl2.
+Property 10: We have
+/bardblA −ˆA/bardbl2=R1/summationdisplay
+i1=1R2/summationdisplay
+i2=1...RN/summationdisplay
+iN=1s2
+i1i2...iN−I/prime
+1/summationdisplay
+i1=1I/prime
+2/summationdisplay
+i2=1...I/prime
+N/summationdisplay
+iN=1s2
+i1i2...iN
+=R1/summationdisplay
+i1=I/prime1+1R2/summationdisplay
+i2=I/prime2+1...RN/summationdisplay
+iN=I/primeN+1s2
+i1i2...iN
+/lessorequalslantR1/summationdisplay
+i1=I/prime1+1R2/summationdisplay
+i2=1...RN/summationdisplay
+iN=1s2
+i1i2...iN+R1/summationdisplay
+i1=1R2/summationdisplay
+i2=I/prime2+1...RN/summationdisplay
+iN=1s2
+i1i2...iN
++···+R1/summationdisplay
+i1=1R2/summationdisplay
+i2=1...RN/summationdisplay
+iN=I/primeN+1s2
+i1i2...iN
+=R1/summationdisplay
+i1=I/prime1+1σ(1)2
+i1+R2/summationdisplay
+i2=I/prime2+1σ(2)2
+i2+···+RN/summationdisplay
+iN=I/primeN+1σ(N)2
+iN.
+Property 11 follows from the link between matrixSVD and HOSVD, combined
+with the relation between matrixSVD and EVD.
+Example5.Consider the tensor Aand its HOSVD components, which are given
+in Example 4.
+From then-mode singular values, we see that R2=R3=3, whileR1=2. Clearly,
+the column space of Ais only two-dimensional. The ﬁrst two columns of U(1)form an
+orthonormal basis for this vector space; the third 1-mode singular vector is orthogonal
+to the column space of A.
+The sum of the squared n-mode singular values is equal to 108.6136 for all three
+modes;108.6136 is the squared Frobenius-norm of A.
+Discardingσ(2)
+3andσ(3)
+3, i.e., replacing Sby a tensor ˆS, having a matrix unfolding
+ˆS(1)equal to
+/parenleftBigg
+8.7088 0 .0489 0 .00000.1066 3 .2737 0 .00000.0000 0 .0000 0 .0000
+−0.0256 3 .2546 0 .00003.1965 −0.2130 0 .00000.0000 0 .0000 0 .0000
+0.0000 0 .0000 0 .00000.0000 0 .0000 0 .00000.0000 0 .0000 0 .0000/parenrightBigg
+gives an approximation ˆAfor which /bardblA−ˆA/bardbl=1.0880. On the other hand, the tensor
+A/primethat best matches Awhile having three n-ranks equal to 2is deﬁned by the unfolding
+/parenleftBigg
+0.8188 0 .8886 −0.07841.7051 1 .7320 −0.0274 1.7849 0 .2672 1 .7454
+1.0134 −0.8544 2 .14551.9333 −1.5390 3 .9886 −0.2877 1 .5266 −2.0826
+2.1815 0 .0924 2 .40194.3367 0 .3272 4 .6102 1.8487 2 .1042 −0.2894/parenrightBigg
+.
+For this tensor, we have that /bardbl A−A/prime/bardbl=1.0848.1270 L. DE LATHAUWER, B. DE MOOR, AND J. VANDEWALLE
+5. AmultilinearsymmetricEVD. Manyapplicationsshowhighlysymmetric
+higher-order tensors. As an example, higher-order moments and cumulants of a realrandom vector are invariant under arbitrary indexpermutations. The same holds,e.g., for the symmetric tensorial representation of homogeneous polynomials [12]. Formatrices, this symmetry is reﬂected by the fact that the left and right singular vectorsare, up to the sign, identical; this leads to a particular form of the EVD, in which theeigenmatrixis an orthogonal (unitary) matrix . In this section, we will investigate ifsimilar properties hold for higher-order tensors as well.
+First, we prove that, if a tensor is invariant to (or mapped onto its complex
+conjugate by) a permutation of its indices, this symmetry is also reﬂected by theHOSVD components.
+Theorem 3. Let the HOSVD of a tensor A∈C
+I1×I2×···× INbe denoted as in
+Theorem 2. Consider a permutation Pof its indices and the decomposition of this
+permutation in a sequence of permutation cycles C1,C2,....We assume, without
+losing generality (possibly by redeﬁning the ordering of the indices of A), that
+P(i1,i2,...,i N)=( C1(i1,i2,...,i n1),C2(in1+1,in1+2,...,i n2),...)
+=(i2,i3,...,i n1,i1;in1+2,...,i n2,in1+1;...).
+Ifai1i2...iN=aP(i1i2...iN),,then one has
+U(1)=U(2)=···=U(n1);U(n1+1)=U(n1+2)=···=U(n2);....
+Ifai1i2...iN=a∗
+P(i1i2...iN),then one has
+U(1)=U(2)∗=U(3)=···;U(n1+1)=U(n1+2)∗=U(n1+3)=···;....
+For permutation cycles with an odd number of elements, the matrix of singular vectors
+is real.
+The core tensor Sexhibits the same permutation symmetry as A.
+Proof. Construct the higher-order tensors A/prime,A/prime/prime, ...byrep eatedly permuting
+the indices by P:
+a/prime
+i1,i2,...,iNdef=aP(i1,i2,...,iN);a/prime/prime
+i1,i2,...,iNdef=aP(P(i1,i2,...,iN));....
+For real symmetry, we have that A=A/prime=A/prime/prime=...; for Hermitean symmetry, we
+have that A=(A/prime)∗=A/prime/prime=....The same equalities hold for the matrixunfoldings
+A(n1),A/prime
+(n1),A/prime/prime
+(n1),...,aswellasfor A(n2),A/prime
+(n2),A/prime/prime
+(n2),...,etc. Hence the same
+symmetry is shown by the left singular matrices of these matrixunfoldings, whichcorrespond to U
+(1),U(2),...,resp.,U(n1+1),U(n1+2),...,etc.
+IfPcorresponds to Hermitean symmetry, and, e.g., C1is a cycle with an odd num-
+ber of elements, then it can be shown that U(1)=U(1)∗by repeating the construction
+aboven1times.
+For an analysis of the symmetry of S, we write down an element-wise form of
+(22) (we take the example of Hermitean symmetry):
+sj1j2...jN=/summationdisplay
+i1i2...iNai1i2...iNu(n1)∗
+i1j1u(n1)
+i2j2u(n1)∗
+i3j3...u(n2)∗
+in1+1jn1+1u(n2)
+in1+2jn1+2u(n2)∗
+in1+3jn1+3....
+(25)
+Permutation of the indices by Pyields the following element:
+sP(j1j2...jN)=/summationdisplay
+i1i2...iNai1i2...iNu(n1)∗
+i1j2u(n1)
+i2j3u(n1)∗
+i3j4...u(n2)∗
+in1+1jn1+2u(n2)
+in1+2jn1+3u(n2)∗
+in1+3jn1+4....
+(26)A MULTILINEAR SINGULAR VALUE DECOMPOSITION 1271
+Invoking the Hermitean symmetry of A, and comparing (26) to (25), it follows that
+sP(j1j2...jN)=s∗
+j1j2...jN.
+A consequence of Theorem 3 is that the i-mode singular vectors, for diﬀerent i,
+are fully related under a condition that we deﬁne as pair-wise symmetry .
+Definition 10. A higher-order tensor A∈CI×I×...×Iis called pair-wise sym-
+metric when, for every pair of indices (in1,in2), there exists a permutation Pn1n2
+such thatin1=Pn1n2(in2)and eitheraPn1n2(i1i2...iN)=ai1i2...iNoraPn1n2(i1i2...iN)=
+a∗
+i1i2...iN.
+Pair-wise symmetric higher-order tensors are a tensorial equivalent of symmetric
+and Hermitean matrices. Theorem 3 and Deﬁnition 10 lead in a very natural way to ageneralization of the orthogonal (unitary) EVD of symmetric (Hermitean) matrices.An HOEVD for pair-wise symmetric higher-order tensors can be deﬁned as follows.
+Theorem4( Nth-order pair-wise symmetric EVD ).Every pair-wise symmetric
+(I×I×···×I)-tensor Acan be written as the product
+A=S×
+1U(1)×2U(2)···× NU(N), (27)
+in which the following hold.
+1.Sis an all-orthogonal (I×I×···×I)-tensor with the same pair-wise symmetry
+asA.
+2.U(1)=U=(U1U2...U I)is a unitary (I×I)-matrix, equal to U(n)orU(n)∗
+(for alln,1/lessorequalslantn/lessorequalslantN), depending on the symmetry of Aas stated in Theorem 3.
+The Frobenius-norms of the subtensors of S, obtained by ﬁxing one index to i,a r e
+theNth-order eigenvalues and are symbolized by λi. The vectors Uiare theNth-order
+eigenvectors.
+Example6.Consider a complex third-order tensor Athat satisﬁes aP(i1i2i3)=
+ai2i3i1=a∗
+i1i2i3. According to Theorem 3, and taking into account that Pis a cycle
+with three elements, the HOSVD of Ais given by
+A=S× 1U×2U×3U,
+whereUis real and Ssatisﬁes the same symmetries as A. In fact, it is pretty obvious
+in this example that Uis real:ai1i2i3=a∗
+i2i3i1=ai3i1i2=a∗
+i1i2i3implies that Aitself,
+and hence the whole decomposition, is real.
+Example7.A common way to deal with the complex nature of a random vector
+Xin the deﬁnition of its fourth-order cumulant tensor Cis the following element-wise
+deﬁnition:
+ci1i2i3i4def= cum(xi1,x∗
+i2,x∗i
+3,xi4) (28)
+def=E{˜xi1˜x∗
+i2˜x∗
+i3˜xi4}−E{˜xi1˜x∗
+i2}E{˜x∗
+i3˜xi4}
+−E{˜xi1˜x∗
+i3}E{˜x∗
+i2˜xi4}−E{˜xi1˜xi4}E{˜x∗
+i2˜x∗
+i3},
+in which Edenotes the expectation operator and ˜xequalsx−E{x}.
+The permutation symmetries of Ccan be generated by the permutation pair P1
+andP2, satisfying
+cP1(i1i2i3i4)=ci4i2i3i1=ci1i2i3i4, (29)
+cP2(i1i2i3i4)=ci2i1i4i3=c∗
+i1i2i3i4. (30)
+Equation (30)implies that U(1)=U(2)∗and thatU(3)=U(4)∗;on the other hand
+(29)implies that U(1)=U(4). Hence the HOSVD of Creveals the structure of (28),
+C=S× 1U×2U∗×3U∗×4U,1272 L. DE LATHAUWER, B. DE MOOR, AND J. VANDEWALLE
+withSsatisfying (29)and(30)as well.
+6. First-order perturbation analysis. In this section, the ﬁrst-order deriva-
+tives of then-mode singular values and vectors with respect to the elements of the
+original tensor are computed. The expressions can be used to analyze the numericalsensitivity and the statistical performance of HOSVD-based signal processing algo-rithms (e.g., [14]), especially for high signal-to-noise ratios: if the output of thesealgorithms can be considered as a function of the n-mode singular values and vectors,
+then the derivatives of the output could be computed via the chain rule.
+An important application area is linked with the discussion on pseudodiagonality
+versus all-orthogonality (see section 3). In several applications, one has the a prioriknowledgethataparticulartensorcanbemadepseudoorthogonalbymeansofunitarytransformations (e.g., cumulants of a stochastic vector with statistically independentcomponents, after unitary transformation, like in a typical source separation context;cumulants of a stochastic vector with statistically independent components are pseu-dodiagonal). As pseudodiagonality is a special case of all-orthogonality, these unitarytransformations coincide with the matrices of n-mode singular vectors. However, due
+to an imperfect knowledge of the tensor under consideration, caused by measurementerrors, etc., the HOSVD of the estimated tensor will generally yield a core tensorthat is all-orthogonal yet not exactly pseudodiagonal. To investigate such eﬀects,ﬁrst-order perturbation analysis results are required.
+Due to the relationship between the matrixand tensor SVD, a perturbation anal-
+ysis of the HOSVD can be based on existing results that have been developed innumerical linear algebra. Let Abe a real or complexhigher-order tensor, the ele-
+ments of which are analytic functions of a real parameter p. Like for matrices, an
+n-mode singular value and vector are analytic functions of pin the neighborhood of a
+nominal parameter p
+0where that singular value is isolated and nonzero. In case of a
+zeron-mode singular value the n-mode singular value function need not be diﬀeren-
+tiable, let alone analytic, due to the deﬁnition of an n-mode singular value as a norm
+being a nonnegative number: the diﬀerentiability of a smooth function that becomesnegative in a neighborhood of p
+0may be lost by ﬂipping the negative parts around
+the zero axis. A similar eﬀect appears when several n-mode singular value functions
+cross each other, due to the ordering constraint on the HOSVD: the diﬀerentiabilityof the smooth functions that cross each other may be lost by combining the functionparts in order of magnitude. However, one can prove that analyticity can be guar-anteed by dropping the sign and ordering convention. With this goal we deﬁne, inanalogy to the “unordered-unsigned singular value decomposition” (USVD) of [20] anunordered-unsigned higher-order singular value decomposition (UHOSVD).
+Theorem5( UHOSVD).If the elements of A∈C
+I1×I2×...×INare analytic func-
+tions of a real parameter p, then there exist real analytic functions f(n)
+i:R→R
+(1/lessorequalslanti/lessorequalslantIn)such that, for all p∈R,
+{σ(n)
+i(p)(1/lessorequalslanti/lessorequalslantIn)}={|f(n)
+i|(1/lessorequalslanti/lessorequalslantIn)}.
+The functions f(n)
+iare called unordered, unsigned n-mode singular value functions.
+The analytic continuation of a set of n-mode singular vectors at a nominal pa-
+rameter value, where they correspond to a multiple n-mode singular value, will be
+denoted by the term preferredn-mode singular vectors . They are given by the follow-
+ing theorem.
+Theorem6( preferredn-mode singular vectors ).Let the HOSVD of Abe given
+as in Theorem 2, the ordering of the n-mode singular vectors being of no importance.A MULTILINEAR SINGULAR VALUE DECOMPOSITION 1273
+Letσ(n)be ann-mode singular value of multiplicity mand let an SVD of A(n)be
+given by
+A(n)=U(n)·Σ(n)·V(n)H=/parenleftBig
+U(n)
+1U(n)
+2/parenrightBig
+·/parenleftbigg
+σ(n)Im0
+0Σ2/parenrightbigg
+·/parenleftBigg
+V(n)H
+1
+V(n)H
+2/parenrightBigg
+, (31)
+in whichU(n),Σ(n), andV(n)are deﬁned in accordance to Property 12. In the
+partitioning, U(n)
+1andV(n)
+1correspond to the singular value σ(n).
+Consider a ﬁrst-order perturbation of AasA+/epsilon1B,/epsilon1∈R, and deﬁne the matrices
+Bj1j2,j1,j2=1,2,a s
+Bj1j2def=U(n)H
+j1·B(n)·V(n)
+j2.
+There are two cases.
+1.σ(n)/negationslash=0 :consider the eigenvalue problem
+B11+BH
+11
+2=X·Λ·XH.
+Then thempreferredn-mode singular vectors are given by the columns of U(n)
+1·X.
+(Thempreferred right singular vectors in (31)are given by the columns of V(n)
+1·X.)
+2.σ(n)=0 :consider an SVD of B11:
+B11=X·Λ·YH.
+Then thempreferredn-mode singular vectors are given by the columns of U(n)
+1·X.
+(Thempreferred right singular vectors in (31)are given by the columns of V(n)
+1·Y.)
+In analogy with [27, 20], we state now the following perturbation theorem.Theorem 7 ( ﬁrst-order perturbation of the HOSVD ).Consider a higher-order
+tensor A(/epsilon1), the elements of which are analytic functions of a real parameter /epsilon1. Rep-
+resent the ﬁrst-order approximation of the Taylor series expansion of A(/epsilon1)around
+/epsilon1=0byA+/epsilon1B. Let the HOSVD of Abe given as in Theorem 2. Let an SVD of
+A
+(n)be given by
+A(n)=U(n)·Σ(n)·V(n)H,
+in whichU(n),Σ(n), andV(n)are deﬁned in accordance to Property 12. In case
+of multiplen-mode singular values, U(n)andV(n)contain preferred basis vectors.
+Deﬁne the matrix Bas
+Bdef=U(n)H·B(n)·V(n).
+Then one has the following.
+1.The slopes of the n-mode unordered-unsigned singular value functions are
+given by the diagonal elements of B.
+2.The ﬁrst-order approximation of the Taylor series expansion of the n-mode
+singular vector functions is given by U(n)+/epsilon1U(n)·Ω, in whichΩis a skew-Hermitean
+matrix deﬁned by1274 L. DE LATHAUWER, B. DE MOOR, AND J. VANDEWALLE
+ωijdef=0
+ifi=j,
+ωijdef=(σ(n)
+ib∗
+ij+σ(n)
+jbji)/(σ(n)2
+i−σ(n)2
+j)
+ifσ(n)
+i/negationslash=σ(n)
+j,
+ωijdef=lim/epsilon1→0/bracketleftBig
+(σ(n)
+i(/epsilon1)b∗
+ij+σ(n)
+j(/epsilon1)bji)/(σ(n)2
+i(/epsilon1)−σ(n)2
+j(/epsilon1))/bracketrightBig
+ifσ(n)
+i(/epsilon1)=σ(n)
+j(/epsilon1)for the isolated value /epsilon1=0,
+ωijdef=−ωjidef=arbitrary
+ifσ(n)
+i(/epsilon1)=σ(n)
+j(/epsilon1)in a neighborhood of /epsilon1=0(i/negationslash=j).
+7. Related tensor decompositions. The SVD generalization we present in
+this paper is so clearly analogous to the SVD of matrices since the i-mode vectors
+play exactly the same role in the tensor decomposition as column and row vectors dofor the matrixSVD. However, it is still possible to focus on other properties of thematrixSVD when looking for an equivalent tensor decomposition. It appears that forhigher-order tensors diﬀerent properties may raise diﬀerent decompositions. Here welist three alternative approaches. The analogy with the matrixcase is less strikingthan for the HOSVD. Depending on the context, one can choose the appropriateapproach to address a certain problem.
+7.1. Linear mapping between higher-order spaces. In the same way as
+thereexistsanisomorphiclinkbetweenmatrixalgebraandthealgebraoflinearvectormappings, a higher-order tensor can be regarded as a formal representation of a linearmapping between a matrixand a vector space, a matrixand a matrixspace, a matrixand a higher-order tensor space, etc. For example, assuming a basis in the space ofN
+1th-order andN2th-order tensors, a linear transformation of B∈CJ1×J2×···× JN1to
+C∈CI1×I2×···× IN2can be represented by A∈CI1×···IN2×J1×···× JN1, according to the
+element-wise equation
+ci1i2...iN2=/summationdisplay
+j1j2...jN1ai1i2...iN2j1j2...jN1bj1j2...jN1
+for a particular choice of N1summation indices.
+Obviously, a tensorial SVD equivalent is the SVD of this linear mapping. We
+noticealinkwiththeHOSVD: U(n),Σ(n), andV(n)in (12)aretheSVDcomponents
+ofA, interpreted as a linear mapping from CIn+1×In+2×···× IN×I1×I2×···In−1toCIn,
+deﬁned by summation over the indices in+1,in+2,...,i N,i1,i2,...,i n−1.
+7.2. Optimal tensor diagonalization by unitary transformations. The
+fact that a generic higher-order tensor cannot be diagonalized by unitary transfor-mations could be remedied by weakening the condition of the diagonality of the coretensor to a condition of “maximal diagonality.” Formally, given a higher-order tensorA∈C
+I1×I2×···× IN, this new problem consists of the determination of unitary matri-
+cesU(1)∈CI1×I1,U(2)∈CI2×I2,...,U(N)∈CIN×INsuch that the least-squares
+diagonality criterion/summationtext
+i|sii...i|2is optimized, where the core tensor Sis still deﬁned
+by (5).
+For problems dealing with tensors that can theoretically be diagonalized (see also
+section 6), forcing the diagonal structure may be more robust (at the expense of aA MULTILINEAR SINGULAR VALUE DECOMPOSITION 1275
+higher computational cost) than the computation of the HOSVD, in which the devi-
+ation from diagonality is simply considered as a perturbation eﬀect. For algorithms,we refer to [11, 16], exploring Jacobi-type procedures.
+7.3. Canonical decomposition. A major diﬀerence between matrices and
+higher-order tensors is that the HOSVD does not provide precise information aboutrank-related issues. With this respect, the “canonical decomposition” (CANDE-COMP), or “parallel factors” model (PARAFAC) may be more informative [10, 24,1, 31, 39].
+Definition11( CANDECOMP ).A canonical decomposition or parallel factors
+decomposition of a tensor A∈C
+I1×I2×···× INis a decomposition of Aas a linear
+combination of a minimal number of rank- 1terms:
+A=R/summationdisplay
+rλrU(1)
+r◦U(2)
+r◦···◦U(N)
+r. (32)
+This decomposition is important for applications, as the diﬀerent rank-1 terms can
+often be related to diﬀerent “mechanisms” that have contributed to the higher-ordertensor; in addition, suﬃciently mild uniqueness conditions enable the actual compu-tation of these components (without imposing orthogonality constraints, as in thematrixcase).
+However, the practical determination of a tensor rank is a much harder problem
+than the determination of its n-ranks, since it involves the tensor as a global quan-
+tity, rather than as a collection of n-mode vectors. A fortiori, the computation of
+the CANDECOMP is much harder than the computation of the HOSVD, and manyproblems remain to be solved. By way of illustration, the determination of the maxi-mal rank value over the set of ( I
+1×I2×···×IN)-tensors is still an open problem in
+the literature (it is not bounded by min( I1,I2,...,I N)). We refer to [4] for a tutorial
+on the current state-of-the-art. In addition, [12] gives an overview of some partialresults obtained for symmetric tensors.
+8. Conclusion. In this paper the problem of generalizing the SVD of matrices
+to higher-order tensors is investigated. The point of departure is that the multilinearequivalent should address the so-called n-mode vectors in a similar way as the SVD
+does for column and row vectors. It is shown that this implies that the role of thematrixof singular values has to be assumed by a tensor with the property of all-orthogonality. The resulting decomposition, which is referred to as the HOSVD, isalwayspossibleforrealorcomplex Nth-ordertensors,andwhenappliedtomatrices,it
+reduces—uptosometrivialindeterminacies—tothematrixSVD.Inthepsychometricliterature, the decomposition is known as the Tucker model.
+Fromthefactthat n-modevectorsandcolumn(row)vectorsplaythesamerolein
+HOSVD, resp., SVD, it follows that the matrices of singular vectors can be computedfrom the sets of n-mode vectors in the same way as in the second-order case. In
+other words, the HOSVD of an Nth-order tensor boils down to NmatrixSVDs. As
+a consequence, several matrixproperties have a very clear higher-order counterpart.Uniqueness, link with EVD, directions and values of extremal oriented energy, etc.are investigated and explicit expressions for a ﬁrst-order perturbation analysis arepresented.
+The link between tensor symmetry and HOSVD is also investigated: if a higher-
+order tensor is transformed into itself or into its complexconjugate by a permutationof the indices, then this symmetry is reﬂected by the HOSVD components. It turns1276 L. DE LATHAUWER, B. DE MOOR, AND J. VANDEWALLE
+out that the most adequate way to analyze this relation is the decomposition of
+the permutation in a sequence of permutation cycles. When every pair of indices isconnected by some cycle, a property which is denoted as pair-wise symmetry, thenthe diﬀerent matrices of higher-order singular vectors are either equal or complexconjugated. In analogy to the HOEVD of a real symmetric or Hermitean matrixtheHOEVD of a pair-wise symmetric higher-order tensor is deﬁned. Its computation,for a pair-wise symmetric Nth-order (I×I×···×I)-tensor, reduces to the SVD of
+an (I×I
+N−1)-matrixunfolding. It remains an open problem if and how the high
+symmetry of this matrixcan be ex ploited to speed up the calculation of its SVD.
+The link with the SVD of matrices makes the HOSVD the proper tool for the
+analysisofn-modevectorspaceproperties. However, thefactthatthecoretensorisin
+general a full tensor, instead of being pseudodiagonal, results in two main diﬀerenceswith the matrixcase. First, the HOSVD of a given tensor allows us to estimate itsn-ranks, but these values give only a rough lower-bound on the rank; more in general,
+the HOSVD does not allow for an interpretation in terms of minimal expansions inrank-1 terms. This shortcoming is inherent in the structure of multilinear algebra;with respect to rank-related issues, the CANDECOMP may be informative. Second,discarding the smallest n-mode singular values does not necessarily lead to the best
+possible approximation with reduced n-rank values (1 /lessorequalslantn/lessorequalslantN). However, if there
+is a large gap between the n-mode singular values, then the approximation can still
+be qualiﬁed as accurate; if necessary, it can be used as a good starting value foran additional optimization algorithm. Finally, we remark that in some applicationsone knows a priori that the core tensor is pseudodiagonal. As pseudodiagonalityis a special case of all-orthogonality, analysis procedures may then be based on theHOSVD, up to perturbation eﬀects. If a higher accuracy is mandatory, it might bepreferable to determine unitary transformations that explicitly make the higher-ordertensor as diagonal as possible, rather than all-orthogonal.
+REFERENCES
+[1]C.J. Appellof and E.R. Davidson ,Strategies for analyzing data from video ﬂuoromatric
+monitoring of liquid chromatographic eﬄuents , Analytical Chemistry, 53 (1981), pp. 2053–
+2056.
+[2]R.E.Bellman ,Matrix Analysis , McGraw-Hill, NY, 1978.
+[3]R.M.BowenandC.-C.Wang ,Introduction to Vectors and Tensors. Linear and Multilinear
+Algebra, Plenum Press, NY, 1980.
+[4]R.Bro,PARAFAC. Tutorial and applications , Chemom. Intell. Lab. Syst., Special Issue 2nd
+Internet Conf. in Chemometrics (INCINC’96), 38 (1997), pp. 149–171.
+[5]J.-F. Cardoso ,Eigen-structure of the fourth-order cumulant tensor with application to the
+blind source separation problem , in Proceedings of the IEEE International Conference on
+Acoustics, Speech, and Signal Processing, Albuquerque, NM, 1990, pp. 2655–2658.
+[6]J.-F. Cardoso ,Super-symmetric decomposition of the fourth-order cumulant tensor. Blind
+identiﬁcation of more sources than sensors , in Proceedings of the IEEE International Con-
+ference on Acoustics, Speech, and Signal Processing, Toronto, Canada, 1991, pp. 3109–3112.
+[7]J.-F.Cardoso ,Fourth-order cumulant structure forcing. Application to blind array p rocessing.
+in Proceedings of the IEEE Signal Processing Workshop on Statistical Signal and ArrayProcessing, 1992, pp. 136–139.
+[8]J.-F.CardosoandP.Comon ,Tensor-based independent component analysis , in Signal Pro-
+cessing V: Theories and Applications, Proc. EUSIPCO-90, L. Torres, ed., Elsevier, Ams-terdam, 1990, pp. 673–676.
+[9]J.-F. Cardoso and P. Comon ,Independent component analysis, a survey of some algebraic
+methods , in Proceedings of the IEEE International Symposium on Circuits and Systems,
+Atlanta, GA, 1996, pp. 93–96.A MULTILINEAR SINGULAR VALUE DECOMPOSITION 1277
+[10]J.D. Carroll and S. Pruzansky ,The CANDECOMP-CANDELINC family of models and
+methods for multidimensional data analysis , in Research Methods for Multimode Data
+Analysis, H.G. Law, C.W. Snyder, J.A. Hattie, and R.P. McDonald, eds., Praeger, NY,1984, pp. 372–402.
+[11]P.Comon ,Independent component analysis, a new concept? , Signal Process., Special Issue on
+Higher Order Statistics, 36 (1994), pp. 287–314.
+[12]P. Comon and B. Mourrain ,Decomposition of quantics in sums of powers of linear forms ,
+Signal Process., Special Issue on Higher Order Statistics, 53 (1996), pp. 93–108.
+[13]R.CoppiandS.Bolasco,eds. ,Multiway Data Analysis , Elsevier, Amsterdam, 1989.
+[14]L. De Lathauwer, B. De Moor, and J. Vandewalle ,Blind source separation by higher-
+order singular value decomposition , in Signal Processing VII: Theories and Applications,
+Proc. EUSIPCO-94, Edinburgh, UK, 1994, pp. 175–178.
+[15]L.DeLathauwer,B.DeMoor,andJ.Vandewalle ,Independent component analysis based
+on higher-order statistics only , in Proceedings of the IEEE Signal Processing Workshop on
+Statistical Signal and Array Processing, Corfu, Greece, 1996, pp. 356–359.
+[16]L. De Lathauwer, B. De Moor, and J. Vandewalle ,Blind source separation by simulta-
+neous third-order tensor diagonalization , in Signal Processing VIII: Theories and Applica-
+tions, Proc. EUSIPCO-96, Trieste, Italy, 1996, pp. 2089–2092.
+[17]L. De Lathauwer, B. De Moor, and J. Vandewalle ,Dimensionality reduction in higher-
+order-only ICA , in Proceedings of the IEEE Signal Processing Workshop on HOS, Banﬀ,
+Alberta, Canada, 1997, pp. 316–320.
+[18]L. De Lathauwer, P. Comon, B. De Moor, and J. Vandewalle ,Higher-order power
+method—Application in independent component analysis , in Proceedings of the Interna-
+tional Symposium on Nonlinear Theory and Its Applications, Las Vegas, UT, 1995, pp. 91–96.
+[19]L.DeLathauwer ,Signal P rocessing Based on Multilinear Algebra , Ph.D. thesis, K.U. Leuven,
+E.E. Dept.-ESAT, Belgium, 1997.
+[20]B.DeMoorandS.Boyd ,Analytic Properties of Singular Values and Vectors , Tech. Report
+1989-28, SISTA, E.E. Dept.-ESAT, K.U. Leuven, 1989.
+[21]E.F. Deprettere, Ed. ,SVD and Signal P rocessing. Algorithms ,Applications and Architec-
+tures, North-Holland, Amsterdam, 1988.
+[22]G.H. Golub and C.F. Van Loan ,Matrix Computations , 3rd ed., Johns Hopkins University
+Press, Baltimore, MD, 1996.
+[23]W.Greub ,Multilinear Algebra , Springer-Verlag, NY, 1978.
+[24]R.A. Harshman and M.E. Lundy ,The PARAFAC model for three-way factor analysis and
+multidimensional scaling , in Research Methods for Multimode Data Analysis, H.G. Law,
+C.W. Snyder, J.A. Hattie, and R.P. McDonald, eds., Praeger, NY, 1984, pp. 122–215.
+[25]J.Hastad ,Tensor rank is NP-complete , J. Algorithms, 11 (1990), pp. 644–654.
+[26]D.C.Kay ,Theory and Problems of Tensor Calculus , McGraw-Hill, New York, 1988.
+[27]T.Kato ,A Short Introduction to Perturbation Theory for Linear Operators , Springer-Verlag,
+New York, 1982.
+[28]P.M. Kroonenberg ,Three-Mode Principal Component Analysis , DSWO Press, Leiden, The
+Netherlands, 1983.
+[29]J.B.Kruskal ,Rank, decomposition, and uniqueness for 3-way and N-way arrays , in Multiway
+Data Analysis, R. Coppi and S. Bolasco, eds., North-Holland, Amsterdam, 1989, pp. 7–18.
+[30]J.L. Lacoume, M.Gaeta, and P.O. Amblard ,From order 2to HOS: New tools and ap-
+plications , in Signal Processing VI: Theories and Applications, Proc. EUSIPCO-92, J.
+Vandewalle and R. Boite, eds., Elsevier, Amsterdam, 1992, pp. 91–98.
+[31]S.E.Leurgans,R.T.Ross,andR.B.Abel ,A decomposition for three-way arrays , SIAM J.
+Matrix Anal. Appl., 14 (1993), pp. 1064–1083.
+[32]M.Marcus ,Finite Dimensional Multilinear Algebra , Dekker, New York, 1975.
+[33]P.McCullagh ,Tensor Methods in Statistics , Chapman and Hall, London, UK, 1987.
+[34]J.M. Mendel ,Tutorial on higher-order statistics (spectra) in signal p rocessing and system
+theory: theoretical results and some applications , Proc. IEEE, 79 (1991), pp. 278–305.
+[35]M.MoonenandB.DeMoor,eds. ,SVD and Signal P rocessing , III. Algorithms ,Applications
+and Architectures , Elsevier, Amsterdam, 1995.
+[36]D.G.Nathcott ,Multilinear Algebra , Cambridge University Press, Cambridge, UK, 1984.
+[37]C.L. Nikias ,Higher order spectra in signal p rocessing , in Signal Processing V: Theories and
+Applications, Proc. EUSIPCO-90, L. Torres, ed., Elsevier, Amsterdam, 1990, pp. 35–41.
+[38]C.L.NikiasandJ.M.Mendel ,Signal p rocessing with higher-order spectra , IEEE Signal Pro-
+cess. Mag., 10 (1993), pp. 10–37.
+[39]P.Paatero ,A weighted non-negative least squares algorithm for three-way “PARAFAC” factor1278 L. DE LATHAUWER, B. DE MOOR, AND J. VANDEWALLE
+analysis , Chemom. Intell. Lab. Syst., Special Issue, 2nd Internet Conf. in Chemometrics
+(INCINC’96), 38 (1997), pp. 223–242.
+[40]P.A. Regalia and S.K. Mitra ,Kronecker products, unitary matrices and signal p rocessing
+applications , SIAM Rev., 31 (1989), pp. 586–613.
+[41]A.SwamiandG.Giannakis ,Bibliography on HOS , Signal Process., 60 (1997), pp. 65–126.
+[42]L.R.Tucker ,The extension of factor analysis to three-dimensional matrices , in Contributions
+to Mathematical Psychology, H. Gulliksen and N. Frederiksen, eds., Holt, Rinehart &Winston, New York, 1964, pp. 109–127.
+[43]L.R. Tucker ,Some mathematical notes on three-mode factor analysis , Psychometrika, 31
+(1966), pp. 279–311.
+[44]R.Vaccaro,ed. ,SVD and Signal P rocessing ,I I .Algorithms ,Applications and Architectures ,
+Elsevier, Amsterdam, 1991.
+[45]J. Vandewalle and D. Callaerts ,Singular value decomposition: A powerful concept and
+tool in signal p rocessing , in Mathematics in Signal Processing II, Clarendon Press, Oxford,
+1990, pp. 539–559.
+[46]J. Vandewalle and B. De Moor ,On the use of the singular value decomposition in iden-
+tiﬁcation and signal p rocessing , in NATO ASI Series: Numerical Linear Algebra, Digital
+Signal Processing and Parallel Algorithms, F70 (1991), pp. 321–360.
+[47]P. Van Overschee and B. De Moor ,Subspace Identiﬁcation for Linear Systems. Theory ,
+Implementation ,Applications , Kluwer Academic Publishers, Dordrecht, The Netherlands,
+1996.

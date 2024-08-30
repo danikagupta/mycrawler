@@ -1,0 +1,659 @@
+ 1 Frequency Response Analysis of the Unsteady -State 1 
+CO/CO 2 Methanation Reaction: An Experimental 2 
+Study  3 
+Dominik Meyer, Jannik Schumacher, Jens Friedland, Robert Güttel * 4 
+Ulm University, Albert -Einstein -Allee 11, 89081 Ulm, Germany  5 
+E-mail address: robert.guette l@uni -ulm.de  6 
+Abstract  7 
+The utilization of renewable electricity for power -to-gas (PtG) applications induces fluctuations in 8 
+the H 2 availability from water electrolysis. For subsequent methanation of CO or CO 2 the 9 
+unsteady -state operation of the respective reactor allows to minimize H 2 storage capacities. 10 
+However, the impact of temporal fluctuations in feed gas composition on the methanation reaction 11 
+and the respective transient kinetics has not yet been fully understood. We investigated the 12 
+methanation of v arious CO/CO 2 (CO x) feed gas mixtures under periodically changing gas 13 
+compositions with emphasis on the effect of the frequency on the reactor response. We show that 14 
+the frequency response of CH 4 exhibits a characteristic hysteresis, which depends on the s witching 15 
+direction between CO x-lean and CO x-rich feeds and their composition. From the shape of the 16 
+hysteresis we are able to conclude on the preferred CO x species being hydrogenated to CH 4 under 17 
+respective conditions, which also provides mechanistic insig hts. By applying high cycling 18  2 frequencies, the highly reactive species present under CO methanation conditions can even 1 
+selectively be activated, which explains the higher reactivity compared to steady -state conditions 2 
+reported, frequently.  3 
+List of Symbols  4 
+Symbol  Description  Unit 
+Latin letters    
+𝑑p Particle size  µm 
+𝐸 Rate enhancement factor  1 
+𝐹 Step response  1 
+𝑚cat Catalyst mass  mg 
+𝑀 Magnitude  dB 
+𝑁 Number  1 
+𝑛̇ Molar flow rate  mol s-1 
+𝑛̇̅ Average molar flow rate  mol s-1 
+𝑛̇̂ Amp litude of the molar flow rate  mol s-1 
+𝑝 Operating or partial pressure  bar 
+𝑅 Universal gas constant  J mol-1 K-1 
+𝑠 Cycle split  1 
+𝑡 Time  s 
+𝑇 Operating temperature  K 
+𝑡 Time  s 
+𝑉̇ Volumetric flow rate at standard temperature and pressure  mL STP min-1 
+𝑥 Molar fraction  1 
+𝑧 CO/CO 2 feed ratio  1 
+Greek letters    
+𝛼 Volume variation factor  1 
+𝜃 Normalized time within one limit cycle  1 
+𝜏 Cycle period duration  s 
+𝜏C Characteristic relaxation time  s 
+Subscripts    
+0 Initial   
+1, 2 Initial / fina l steady -state  
+dil Dilution   
+𝑖 Component 𝑖   3 in Inlet  
+𝑗 Number of limit cycle   
+LC Limit cycle   
+out Outlet   
+RTD  Residence time distribution   
+ref Reference   
+STP Standard temperature and pressure   
+ss Steady -state  
+trans  Transient   
+1 INTRODUCTION  1 
+With the Power -to-X technology the possibility arises to convert surplus fluctuating renewable 2 
+electricity into chemical energy. Especially the storage of electrical energy in synthetic natural gas 3 
+(SNG) via the Power -to-Gas process (PtG) is a promising o ption for temporal decoupling of energy 4 
+availability and demand.1–3 Therefore,  H2 is produced from electrical energy via water electrolysis, 5 
+which is subsequently used for methanation of carbon oxides available from various sources. For 6 
+instance, by utilizing industrial exhaust gases as carbon sources the potential to convert highly  7 
+concentrated CO 2 into CH 4 directly at the emitting spot reduces the effort for CO 2 separation prior 8 
+to hydrogenation. However, these exhaust gases may also contain CO, i.e. blast furnace or 9 
+converter gas in steel making.4 Both carbon oxides can be hydrogenated into CH 4 using solid 10 
+catalysts (e.g. Ni/Al 2O3) via the stoichiometric reactions (1) and (2).5 11 
+CO2+4H 2 ⇌CH4+2 H2O  (1) 
+CO+3H2⇌CH4+H2O (2) 
+From an economic viewpoint the implementation of decentralized small -scale methanation 12 
+plants in proximity of carbon point sources associated with available renewable energy sources is 13 
+advantageous.2 Such units, however, require minimal upstream buffer capacities to be cost - 14 
+effective. This consequently leads to a propagation of fluctuations in reactant availability and 15 
+comp osition into the reactor, which is the case for both H 2 and the CO/CO 2 source. Hence, the 16  4 methanation reactor needs to be operated under unsteady -state conditions for such cases with 1 
+respect to fluctuations in the feed gas composition and volumetric flowra te, which induce a 2 
+complex non -linear interaction of kinetic processes in the methanation reactor occurring at 3 
+different length scales.1,6 Moreover, the input fluctuations can appear stochastically over a wide 4 
+frequency range,1 which may result in a complex reactor behavior depending on the input 5 
+frequencies.7 Dynamic changes in the inlet composition, however, may also affect the thermal 6 
+behavior of the methanation reactor, since the hydrogenation of CO and CO 2 is highly exothermic. 7 
+In order to avoid unstable operation regimes induced by moving hot spots8–10 or wrong way 8 
+behavior,11 different temperature control strategies were developed for unsteady -state m ethanation 9 
+reactors .12–16 For instance, Theurich et al . used the product recycle in a loop reactor setup as an 10 
+additional control parameter , which is capable to dampen the temperature increase after step 11 
+changes of the flow rate .13–15 Bremer and Sundmacher showed theoretically that by adaptive 12 
+controlling the coolant temperature a CO 2 methanation reactor can be operated in an unstable 13 
+operation point yielding high CO 2 conversions at moderate  catalyst temperatures.12 On the catalyst 14 
+scale, the focus is on the stability of the active compound,17,18 as well as the optimal shape of the 15 
+pellets to buffer fluctuations.19 16 
+In order to unfold the unsteady -state reactor behavior, the evaluation of the frequency -dependent 17 
+reactor response, also referred to as frequency response, is in the focus of the present contribution  18 
+assuming is othermal conditions . The frequency response can, in principle, be classified based on 19 
+the ratio between the cycle period duration 𝜏 and the characteristic relaxation time 𝜏C into the 20 
+following three regimes:6,20,21 21 
+• quasi -steady -state (qss) regime ( 𝜏≫𝜏C): The reactor response is able to reach steady -state in 22 
+each half -period of the forced periodic input, since the kinetic processes are fast enough 23  5 compared to the cycle period. Thus, the amplitude of the forced input signal is not damped by 1 
+the system.  2 
+• relaxed steady -state (rss) regime ( 𝜏≪𝜏C): The large characterist ic time of relaxation 3 
+compared to that of the forced input leads to damping and thus to an averaging of the system 4 
+response over the duration of a period.  5 
+• full-transient state (fts) regime ( 𝜏≅𝜏C): The transition between the qss and the rss regime is 6 
+characterized by a strong sensitivity of the system response on the cycle period of the forced 7 
+input signal.  8 
+Based on the applied input frequency performance enhancement21–25 or even resonance effects26 9 
+can occur. The nonlinear frequency response (NFR) analysis, for example, allows an a piori  10 
+screening of possible rate enhancement with periodic reactor operation based on the prediction of 11 
+the average composition and flow rates of the reactor o utlet stream.27,28 Therefore, a validated 12 
+kinetic and reactor model applicable to dynamic operation conditions is required. The theoretica l 13 
+analysis of the resulting non -linear reactor model allows to determine the possible rate 14 
+enhancement depending on the applied frequency and the phase shift between two input 15 
+parameters (if two parameters are modulated). However, for experimental validati on of the 16 
+theoretical predictions a sophisticated experimental setup and respective procedures are required, 17 
+as we pointed out, recently .6 The aforementioned NFR method was applied to the methanation 18 
+reaction and predicts rate enhancement for CO and CO 2 methanation.29,30 For CO methanation 19 
+various authors have confirmed experimentally that a higher CH 4 yield is possible under periodic 20 
+operation compared to optimized steady -state conditions.31–33 For CO 2-methanation, in contrast, a 21 
+yield enhancement was not yet confir med experimentally.34,35  22  6 In all these experimental and theoretical studies, however, the underlying phenomena 1 
+responsible for the observed performance enhancement have not yet been fully understood. In 2 
+particular, the effect of the forcing frequency on the kinetic processes taking place on the catalyst 3 
+surface, e.g. ad -/desorption and surface reaction remains unclear. Consequently, the objective of 4 
+this study is the experimental inve stigation of the frequency response of the CO/CO 2 methanation 5 
+in order to correlate mechanistic effects on the catalyst surface to possible performance 6 
+enhancement. Therefore, we vary the frequency of the inlet gas composition by switching between 7 
+a CO x-rich and a CO x-lean feed gas and evaluate the corresponding reactor response using the 8 
+Periodic Transient Kinetics (PTK) method introduced in our recent work.6 In particular, the whole 9 
+range of CO/CO 2 ratios are covered experimentally in order to deduce the effect of competin g ad- 10 
+/desorption and reaction steps involved in simultaneous CO/CO 2 methanation on the dynamic 11 
+response. The observed effect of the forcing frequency is discussed with respect to mechanistic 12 
+aspects characteristic for both CO and CO 2 hydrogenation, whose b ehavior is considered to be 13 
+distinct from each other as presumed from our previous steady -state experiments5. 14 
+2 MATERIAL AND  METHODS  15 
+2.1. Catalyst  16 
+The 5  wt-% Ni/A 2O3 catalyst is synthesized via the incipient wetness impregnation method of 17 
+800 µm Al 2O3 particles (Puralox® Al 2O3-Spheres 0.8/160, Sasol Germany) by aqueous Ni(NO 3)2 18 
+solution. After crushing and sieving a particle size fr action of 150 – 200 µm is selected for the 19 
+experimental studies. The specific surface area of 167  m2gcat−1 and the average pore diameter of 20 
+8 nm is determined by N 2 physisorption measurements (3Flex, micromeritics). Based on 21 
+chemisorption measuremen ts (3Flex, micromeritics) the H 2 adsorption capacity is calculated to be 22 
+48 µmol  gcat−1. Assuming dissociative H 2 adsorption as well as spherical Ni nanoparticles, a metal 23  7 surface area of 3.7  m2 gcat–1, a crystallite size of 7.5  nm and a metal d ispersion of 14.2  % is 1 
+determined. Moreover, the measurements show that due to crushing the morphologic properties 2 
+do not change. More information about the catalyst synthesis and characterization can be found 3 
+elsewhere.5 4 
+2.2. Experimental setup 5 
+Since the experimental setup is described in detail previously,6 only a brief overview is given 6 
+here. The experiments are conducted in a stainless -steel fi xed-bed reactor with an inner diameter 7 
+of 4.5  mm and a total length of 30  cm. The catalyst sample of 50  mg is diluted with 100  mg of 8 
+inert material of the same size (Al 2O3, Sasol Puralox). The resulting packed -bed (ca. 2  cm length) 9 
+is placed in the center of the isothermal zone (ca. 10  cm length). For temperature measurement the 10 
+reactor tube is equipped with a concentric 1/16 -inch capillary containing a moveable 11 
+thermocouple. Isothermal conditions are ensured by dilution of the gas flow with He and of the 12 
+active catalyst particles by inert Al 2O3. Measure ments  in the catalyst bed under reactive conditions  13 
+confirm a constant temperature within a ±1.5 K range for all experiments . The catalyst packing is 14 
+framed by 1.2  g glass particles (150 – 200 µm) on top (ca.  5 cm length) and 0.6  g below (ca. 2.5  cm 15 
+length) to ensure homogenous flow pattern within the catalyst section. The whole packing is fixed 16 
+in place by quartz wool. The gases are continuously supplied by two separate lines, which can 17 
+automatically be switc hed by means of a pneumatic 4/2 way -valve (Fitok). The gases are provided 18 
+from top with separate mass flow controllers (EL -FLOW Prestige, Bronkhorst) for each 19 
+component and supply line. Hence, the feed gas compositions can individually be configured with 20 
+H2 (5.0 purity, MTI), CO/Ar (10  vol.-% Ar 5.0  purity in CO 3.8  purity , Air Liquide), CO 2 (4.8 21 
+purity, MTI), Ar (5.0  purity, MTI) and He (5.0  purity, MTI)  in all possible compositions.  22  8 Directly downflow the reactor the effluent is diluted with a mixture of H 2 (5.0, MTI) and Ne 1 
+(5.0, MTI) and subsequently subjected to the analytics consisting of a gas chromatograph (GC, 2 
+GC-2010, Shimadzu) and a mass spectrometer (MS, Cirrus 3 -XD, MKS). The section between 3 
+reactor and analytics is kept short and is  heated  to prevent condensation of H 2O. The MS analyzes 4 
+the calibrated  (regular calibration by auxiliary GC measurements)  mass -to charge ratios 2 (H 2), 15 5 
+(CH 4), 18 (H 2O), 28 (CO and CO 2), 40 (Ar), and 44 (CO 2) quantitatively, while higher 6 
+hydrocarbons (26: C 2H6 and C 3H8, 43: C 3H8) are monitored qualitatively, as well. The calibration 7 
+for H 2O is performed in situ  under pure CO methanation conditions at 556  K and in steady -state. 8 
+It is assumed that H 2O and CH 4 are produced in stoichiometric amounts, due to the absence of  the 9 
+water -gas-shift reaction and a CH 4 selectivity exceeding 94  %.5,36,37 Furthermore, adsorption of 10 
+H2O at the tubing walls is neglected.  11 
+2.3. Experimental procedure  12 
+The influence of the cycle period duration on t he methanation reaction is studied under the 13 
+reaction conditions given in Table 1, where a differential reactor operation is ensured by keeping 14 
+the total carbon oxide conversion below 20  %.38 The absence of intra - and inter -particle heat and 15 
+mass transport limitations is confirmed applying the Mears, Anderson and Carberry criterion 16 
+according to our previous study.5 Furthermore, equilibrium effects can be excluded in this 17 
+temperature range,37 rendering the reaction being irreversible under the conditions studied.  18 
+The forced concentration cycli ng is performed applying 50 step changes in the feed gas 19 
+composition periodically by switching between the feed gas line 1 and 2 and vice versa. The half - 20 
+period for each line to be contacted with the catalyst is equal, which corresponds to a cycle split 21 
+𝑠=0.5 for all experiments. The experimental procedure distinguishes between experimental runs 22  9 and single experiments. Experimental runs are conducted at different temperatures and CO x ratios, 1 
+each consisting of several single experiments at different cycle period durations 𝜏.  2 
+The compositions used in both gas feed lines are summarized in Table 2. Note that line 1 consists 3 
+of a CO x/H2 mixture, while line 2 is CO x free. The applied CO/CO 2 feed ratio is described with 4 
+the parameter 𝑧, according to eq. (3) with the constant reference partial pressure of 𝑝ref=0.2 bar. 5 
+The 𝑧 values of 0, 0.1, 0.5, and 1 are studied experimentally, since these values are characteristic 6 
+for diff erent regimes of the methanation reaction kinetics as reported in our previous work.5  7 
+𝑧=𝑝CO,in
+𝑝ref= 1−𝑝CO2,in
+𝑝ref (3) 
+In order to ensure a comparable catalyst state, the catalyst is treated with a H 2/He flow equivalent 8 
+to the composition of feed line 2 for 15  min between each single expe riment. Between the 9 
+experimental runs the catalyst is regenerated for 4  h under flowing H 2 (125  mLSTP min−1), where 10 
+the catalyst remained at least for 1  h at 603  K.  11 
+Table 1: Operating conditions.  12 
+Parameter  Symbol  Unit Value  
+Catalyst mass  𝑚cat mg 50 
+Particle size  𝑑p µm 200 
+Total inlet flow rate  𝑉̇in,STP mL STP min-1 250 
+Dilution flow rate (H 2/Ne) 𝑉̇dil,STP mL STP min-1 245/5  
+Operation temperature  𝑇 K 533-576 
+Operating pressure  𝑝 bar 2 
+Cycle period d uration  𝜏 s 6-240 
+Cycle split  𝑠 1 0.5  10 Table 2: Composition of gas feed line 1 and 2 (inlet partial pressure 𝑝𝑖,in of component 𝑖). 1 
+Component  Unit Inlet partial pressure 𝑝𝑖,in 
+  Feed gas line 1  
+He bar 0.98 
+H2 bar 0.80 
+COx bar 0.20 
+Ar bar 0.02 
+ Feed gas line 2  
+He bar 1.20 
+H2 bar 0.80 
+2.4. Data evaluation  2 
+The data evaluation is performed as described in detail in our recent publication introducing the 3 
+periodic transient kinetics method.6 In particular, the external standard Ne  is used for determining 4 
+the outlet molar flow rate. Therefore, the volume variation  factor 𝛼 is calculated from the measured 5 
+(𝑥Ne) and the initial ( 𝑥Ne,0) molar fraction of Ne at the reactor outlet according to eq. (4), which 6 
+describes the volume variation  during  the methanation reaction. The  outlet molar flow rate of each 7 
+component 𝑖 under reaction conditions, 𝑛̇𝑖,out, can now be obtained via eq. (5) based on measured 8 
+outlet molar fractions 𝑥𝑖,out. 𝑅 is the universal gas constant, while 𝑝STP, 𝑇STP and 𝑉̇STP ,in are the 9 
+pressure, the temperature and the inlet volumetric flow rate under standard conditions.  10 
+𝛼(𝑡)=𝑥Ne,0
+𝑥Ne(𝑡) (4) 
+𝑛̇𝑖,out(𝑡)=𝛼(𝑡) 𝑥𝑖,out(𝑡)𝑝STP 𝑉̇STP ,in  
+𝑅 𝑇STP (5)  11 For statistical analysis of the periodic response the last 𝑁LC consecutive limit cycles of each 1 
+single experiment are used, in order to calculate the average outlet molar flow rate of each 2 
+component 𝑛̇̅𝑖,out (𝑡) according to eq. (6). Typically, the outlet molar flow rate 𝑛̇𝑖,𝑗,out for 3 
+component 𝑖 in limit cycle 𝑗 is averaged over last 25 limit cycles. The obtained result thus 4 
+corresponds to the a verage limit cycle, which is subject to scientific discussion and denoted as 𝑛̇𝑖 5 
+in the following for simplification . 6 
+𝑛̇𝑖(𝑡)=𝑛̇̅𝑖,out (𝑡)=1
+𝑁LC∑𝑛̇𝑖,𝑗,out(𝑡)𝑁LC
+𝑗=1 (6) 
+Ar is used as inte rnal standard in order to measure the residence time distribution (RTD) in each 7 
+individual experiment. The application of eq. (7) than allows to discriminate the effect of the RTD 8 
+𝑛̇𝑖,RTD in the measured trans ient reactor response 𝑛̇𝑖 from the interaction of gaseous components 9 
+with the solid surface expressed by transient molar flow rate 𝑛̇𝑖,trans. 10 
+𝑛̇𝑖 (𝑡)= 𝑛̇𝑖,RTD(𝑡)+𝑛̇𝑖,trans (𝑡) (7) 
+𝑛̇𝑖,RTD(𝑡)=𝐹Ar(𝑡) (𝑛̇𝑖,ss,2−𝑛̇𝑖,ss,1)+𝑛̇𝑖,ss,1 (8) 
+𝐹𝑖(𝑡)=𝑛̇𝑖(𝑡)−𝑛̇𝑖,ss,1
+𝑛̇𝑖,ss,2−𝑛̇𝑖,ss,1 (9) 
+In order to determine the response for each component expe cted from RTD the step -response 11 
+𝐹Ar is required, according to eq. (8). Since Ar is assumed to not interact with the solid surface, due 12 
+to negligible ad -/desorption, 𝑛̇Ar,trans equals zero and hence Ar repre sents the RTD of the system. 13 
+Thus eq. (9) allows to determine the step -response of the system from the measured response of 14 
+the internal standard. The steady -state values for both half -periods 𝑛̇𝑖,ss,2 and 𝑛̇𝑖,ss,1 required in 15 
+eqs. (8) and (9) are determined from averaging the last 10  s for each half period at a period duration 16 
+of 240 s.  17  12 The rate enhancement factor 𝐸 is determined by eq. (11), which requires the average CH 4 outlet 1 
+molar flow rate  (𝑛̇CH4,LC) during the average limit cycle (eq. (10)) and the steady -state value 2 
+𝑛̇CH4 ,ss,2 corresponding to the CO x rich half period 1.  3 
+𝑛̇CH4,LC=1
+𝜏∫𝑛̇CH4(𝑡)𝜏
+0 𝑑𝑡 (10) 
+𝐸=𝑛̇CH4,LC
+𝑛̇CH4,ss,2 (11) 
+The magnitude 𝑀 of the frequency respon se is determined from the amplitude 𝑛̇̂𝑖 of the response . 4 
+for each individual component 𝑖. First, the amplitude is calculated from the outlet molar flow rates  5 
+via eq. (12). The magnitude is then obtained wit h eq. (13), which relates the amplitude to that of 6 
+the reference case 𝑛̇̂𝑖,ref with a cycle period duration of 240  s.  7 
+𝑛̇̂𝑖=max [𝑛̇𝑖(𝑡)]−𝑛̇𝑖,LC (12) 
+ 𝑀i= 20log𝑛̇̂𝑖
+𝑛̇̂𝑖,ref (13) 
+3 EXPERIMENTAL RESULTS AND DISCUSSION  8 
+3.1. Effect of cycle period duration on the reactant response  9 
+Figure 1 shows the individual outlet molar flow rat es of the reactants CO and CO 2, as well as 10 
+those of the products CH 4 and H 2O in the limit cycle for different cycle period durations in a range 11 
+between 6 and 240  s. The CO x mixture is chosen to fulfill 𝑧=0.1, since a simultaneous conversion 12 
+of CO and CO 2 can be expected for that value based on steady -state experiments.5 For 𝜏=240  𝑠 13 
+(blue lines) all components are reaching steady -state, which means that the system is in the qss 14 
+regime concerning all components and which also provides the reference for calculating the 15 
+magnitude in eq. (13). Reducing 𝜏 leads to a decreasing measured  amplitude , though the input 16 
+amplitude is constant. Furthermore, this affect is differently pronounced for the components 17  13 studied. For instance, the amplitude of CO and CO 2 shrinks only slightly upon reducing  the cycle 1 
+period duration to 30  s indicating that both components remain in the qss regime. In contrast, the 2 
+amplitudes of H 2O and CH 4 are clearly damped for 𝜏=30 s, already. Further reduction of the 3 
+cycle period durations leads to a shift for CO and CO 2 into the fts regime, while H2O appears to 4 
+even reach the rss regime for 𝜏=6 s indicated by the almost constant signal during the whole limit 5 
+cycle.  6 
+ 7 
+Figure 1: Outlet molar flow rate of the reactants 𝑛̇𝑖 for different cycle  period durations 𝜏 as function 8 
+of the normalized time within the limit cycle 𝜃=𝑡/𝜏 (reaction conditions: z  = 0.1, 556  K, 2 bar).  9 
+The effect of the cycle period duration on the reactant response is depicted in Figure 2 by plotting 10 
+the magnitude 𝑀𝑖 for each component. The response for the internal standard Ar represents the 11 
+real RTD including the dynamic transport processes at the macro and meso scale.6 It can be 12 
+observed that the magnitude is constant for cycle period durati ons above 30  s and decreases with 13 
+a constant slope of 6  dB/decade below durations of 30  s. This clearly indicates that the Ar response 14 
+is in the qss regime for long cycle periods and shifts into the fts regime below 30  s. The observed 15 
+ 14 trends for CO and CO 2 are rather similar Ar, particularly regarding the slope of ca. 6  dB/decade 1 
+for cycle period durations below 30  s. The similar slope in magnitude for CO, CO 2 and Ar suggests 2 
+that the respective response is governed by the systems RTD, which is expected for  reactants as 3 
+predicted by Meyer et al. for simplified cases.7 4 
+ 5 
+Figure 2: Magnitude 𝑀𝑖 of the outlet molar flow rate for each component as function of the cycle 6 
+period duration 𝜏 (reaction conditions: z  = 0.1, 2  bar, 556  K). 7 
+In contrast, the trends for CH 4 and H 2O differ si gnificantly. The H 2O magnitude decreases by 8 
+11 dB/decade over the whole range of cycle period durations, while the CH 4 magnitude seems to 9 
+exhibit different slopes, the average of 7  dB/decade being between those of H 2O and Ar. The 10 
+decreasing slopes for CH 4 and H 2O compared to Ar are expected from our theoretical 11 
+considerations,7 since both components are formed by reaction. Interestingly, the slopes of CH 4 12 
+and H 2O differ from each other, though both are formed simultaneously. This contradiction can be 13 
+explained by an instantaneous desorption of CH 4 from the  solid surface upon formation, while 14 
+H2O remains adsorbed for a certain time. In principle, this consideration agrees with our 15 
+ 15 experimental results obtained for a fixed cycle period duration of 240  s, where a delay of the H 2O 1 
+response is reported compared to CH 4.39 Furthermore, a high sorption capacity of the active and 2 
+support material is known for H 2O40, which is responsible for the delayed desorption.   3 
+From the effect of the cycle period duration on the magnitude of all components considered here 4 
+it can be concluded tha t the reactor system is capable for damping of the inlet fluctuations, in 5 
+particular for fast changes. The reactor volume, characterized by its RTD, acts as respective buffer 6 
+for that purpose. For the products, the solid surface provides additional buffer storage leading to 7 
+even more pronounced damping of the inlet fluctuations. An additional damping effect of the solid 8 
+surface for CO x species, however, was not observed in the present work. Therefore, an individual 9 
+characteristic time 𝜏𝑖,C obviously exists for each component.  10 
+3.2. Frequency response of CH 4 11 
+The impact of the cycle period duration on the CH 4 response in the limit cycle is depicted in 12 
+Figure 3. The steady -state values for each experimental run are determ ined from the experiments 13 
+with a cycle period duration of 240  s (see reference case for eq. (13)) and are displayed as black 14 
+and grey diamonds. The course of the CH 4 response within a limit cycle for each specific v alue for 15 
+𝜏 is characterized by a hysteresis between the CO x-lean (solid lines) and the CO x-rich phase 16 
+(dashed lines). Since the CH 4 response increases after switching to the CO x-rich phase and exhibits 17 
+a delay of the measured compared to the expected valu es, the trajectory in the state space plot 18 
+(Figure 3b)) develops in counter -clockwise direction as indicated by the black arrows. In order to 19 
+support the following discussion region of interests in the graphs are in dicated with red and orange 20 
+diamonds.  21  16   
+Figure 3: CH 4 outlet molar flow rate for different cycle period durations 𝜏 as function of the 1 
+normalized time within the limit cycle (a) and depicted in the corresponding state space plot (b) 2 
+(reaction conditions: z  = 0.5, 556  K, 2 bar). 3 
+It can be seen that the hysteresis is most pronounced for a cycle period duration of 240  s, since 4 
+the steady -state values are reached for both the CO x-lean and CO x-rich phase. This means that no 5 
+CH 4 is produced during the CO x-lean phase for over 50  s. For shorter cycle period durations the 6 
+steady -states are not reached, neither for the measured n or for the expected response, and thus the 7 
+hysteresis is compressed. As discussed above already, the magnitude decreases for all components 8 
+with shorter cycle periods, which directly relates to narrowing of the hysteresis. The comparison 9 
+of the 240 with th e 6 s cycle period reveals that the hysteresis is absent for low 𝑛̇CH4,RTD (grey 10 
+arrow) at short cycle periods, since CH 4 is also formed in the CO x-lean phase.  11 
+From Figure 3b it is apparent that the hystere sis branch  in the CO x-rich half -period exhibits only 12 
+a local maximum (red diamond) for a cycle period duration of 240  s. This maximum corresponds 13 
+to an overshoot in CH 4 formation rate, which is most likely caused by high H 2 coverage prior 14 
+ 17 switching to the CO x-rich phase as reported previously.39 Reduction of the cycle period duration 1 
+leads to shorter CO x-lean phases and therefore only partial conversion and subsequent desorption 2 
+of the reaction intermediates adsorbed at the catalyst surface. Consequently, a c ertain amount of 3 
+those intermediates is still adsorbed after switching to the CO x-rich phase occupying sorption sites 4 
+and thereby reducing the number of active sites available for H 2 to adsorb. Additionally, CO can 5 
+only desorb partially from the surface du ring shorter cycle periods, due to kinetic limitations of 6 
+the desorption. These effects lower the initial H 2 coverage prior to the CO x-rich phase and hence, 7 
+the CH 4 formation rate is reduced leading to a diminishing overshoot in that half -period. At the 8 
+same time the upper branch, corresponding to the CO x-lean half -period, remains rather unaffected 9 
+(orange diamond). Therefore, the CH 4 methanation rate exceeds the value of the steady -state 10 
+almost during the whole CO x-lean half -period  for short durations, whi le it approaches zero for long 11 
+durations. This means that CH 4 formation is favored during the CO x-lean phase.  12 
+This behavior can be explained by formation of two carbon containing intermediates on the 13 
+catalyst surface, which differ in their reactivity. In particular, upon switching to CO x-free mixtures 14 
+a highly reactive species is completely converted with a certain rate independent on the cycle 15 
+period duration, as indicated by the rather unaffected upper branch and the global maximum of the 16 
+hysteresis. Consequently, the generation and conversion of the highly reactive species has to be 17 
+faster than the shortest cycle periods, as enough CH 4 is provided to maintain the global maximum 18 
+in the response. The existence of a highly reactive species is supported by t he observations of 19 
+different authors.41–43 Fujita et al.41 investigated the tran sient CH 4 response by DRIFTS 20 
+measurements for CO and CO 2 hydrogenation. They conclude that  the maximum resp. overshoot 21 
+is caused by the hydrogenation of a  highly reactive, carbonaceous species adsorbed at the solid 22 
+surface, which is suggested to contain on ly carbon (C α). As the CO containing feed is switched 23  18 off, the linearly adsorbed CO molecules desorb releasing sites available for H 2 adsorption during 1 
+the CO x-lean half period. This causes a rapid hydrogenation of C α into CH 4 and therefore the 2 
+observed ov ershoot.  3 
+The hydrogenation of the less reactive species, in contrast, is strongly affected by the cycle 4 
+period duration. For 𝜏=240 s this species can be completely converted to CH 4 and, hence, the 5 
+respective outlet molar flow rate approaches zero at the e nd of each half -period. For shorter cycle 6 
+periods , however, the CO x-rich phase starts accompanied by adsorption of CO before full 7 
+conversion of the less reactive surface species into is CH 4 reached. Thus, CH 4 is detected in the 8 
+outlet stream during the who le limit cycle. The existence of such species is in accordance with the 9 
+observations of d ifferent authors.41–43 10 
+3.3. Effect of temperature and CO/CO 2 ratio 11 
+The response of CH 4 is depicted in Figure 4 for different cycle period durations, temperatures 12 
+and CO x feed compositions. Note, that the data of subfigures f and g correspond to those of Figure 13 
+1 and Figure 3, respectively.  14 
+From Figure 4 it is apparent that the hysteresis branch during CO x-rich feed composition (lower 15 
+branch) exhibits a local maximum only for 𝑧=1 and 0.5 and a cycle period duration of 240  s 16 
+(first two columns in Figure 4) before approaching the steady -state. The maximum diminishes for 17 
+shorter cycle periods and lower 𝑧 values. Furthermore, a global maximum in C H4 formation rate 18 
+occurs under CO x-lean feed gas composition. For decreasing 𝑧 values the maximum value 19 
+decreases, as well, and diminishes completely for small 𝑧=0 (pure CO 2 methanation) . Therefore, 20 
+the observed hysteresis for methanation of pure CO ( 𝑧=1) and CO 2 (𝑧=0) deviate significantly 21 
+with respect to the occurring maximum and two different reaction mechanisms are likely to occur 22 
+depending on the CO/CO 2 ratio. For CO methanation we have shown recently  that the dynamic 23  19 CH 4 response is governed by th e presence of a highly reactive carbide species (C α) assuming  the 1 
+carbide pathway mechanism .44 In particular, t he C α species are formed at the active surface during 2 
+the build -up phase under CO methanation conditions (high 𝑧 values) . After switching to the back - 3 
+transient phase, the C α compounds are hydrogenated very fast to CH 4, which causes the oversho ot 4 
+in the CH 4 response due to the surplus availability of H 2. Since, C α species are only formed under 5 
+CO methanation conditions (high 𝑧 values) , but not significantly for small 𝑧 values,41,43 the 6 
+overshoot is not observed under CO 2 methanation conditions . Specificall y, in case of CO 2 7 
+methanation Fujita et al.41 report hydrogenation of less reactive species after switching to pure H 2, 8 
+which is not accelerated sufficiently to c ause an overshoot. Therefore, the CH 4 formation rate 9 
+decreases monotonously with the CO 2 fraction in the gas phase. For 0<𝑧<1 the amount of C α 10 
+scales with 𝑧, which affects the extent of the observed overshoot.39 Consequently, based on the 11 
+form of the hyste resis the participation of CO and CO 2 during CO x methanation can be 12 
+differentiated.   13 
+This hypothesis is supported by the observed temperature dependency and the expected impact 14 
+of temperature on the sorption equilibrium and the surface reaction rates. At h igher temperatures 15 
+the amount of adsorbed carbonaceous species is reduced and, thus, more active sites are available 16 
+for H 2.43,45 Since the reaction r ate increases as well, as becomes apparent from the scale of the 17 
+ordinate axis, both factors lead to an enhanced hydrogenation rate of adsorbed carbonaceous 18 
+species  at the catalyst surface during the CO x-lean phase. Therefore, smaller coverage degrees 19 
+regarding those species remain at the end of the CO x-lean half -period, which correspond to lower 20 
+CH 4 formation rates. Hence, the hysteresis expands with increasing temperatures towards smaller 21 
+CH 4 outlet molar flow rates.  22  20  1 
+Figure 4: CH 4 outlet molar flow rates for different cycle period durations 𝜏, temperatures 𝑇 and 2 
+CO x feed compositions 𝑧 (reaction pressure: 2  bar). 3 
+In conclusion, the carbide pathway mechanism is evident due to the presence of C α species for 4 
+CO methanation, while the H 2 assisted pathway mechanism  is likely for CO 2 methanation , since 5 
+ 21 Cα species are not observed. These mechanistic findings are in agreement with literature on 1 
+CO/CO 2 hydrogenation on Ni catalyst.2,46,47 2 
+3.4. Performance enhancement  3 
+From the frequency response results one may hypothesize that it is possible to increase th e 4 
+average CH 4 formation rate by decreasing the cycle period duration, especially at low temperatures 5 
+and CO containing feed gas mixtures. Therefore, Figure 5 displays the reactor performance in 6 
+terms of the rate enh ancement factor 𝐸. Obviously, for 𝜏=240  s the lowest reactor performance 7 
+is achieved, while it increases for shorter durations. The extent of improvement, though, depends 8 
+on the CO/CO 2 ratio fed, increasing from pure CO 2 to pure CO methanation.  9 
+ 10 
+Figure 5: Rate enhancement factor  𝐸 as function of the cycle period duration 𝜏 and CO/CO 2 feed 11 
+gas ratio 𝑧 at a temperature of 556  K. 12 
+In comparison, Table 3 summarizes the rate enhancement factor 𝐸 for the hyd rogenation of CO 13 
+or CO 2 from various literature reports. For the CO methanation the CH 4 yield is reported to 14 
+ 22 increase by reducing the cycle period duration, regardless of the catalytic system.31–33 Hence, it is 1 
+likely that the observed rate enhancement is caused by the selective activation of the highly 2 
+reactive Cα intermediate species during the CO x lean phase . For example, Yadav and Ri nker31 3 
+observed a rate enhancement only for cycle periods shorter than 16  s with a comparable catalyst, 4 
+which suggests that they also primarily activate the highly reactive Cα species, while the less 5 
+reactive speci es remain in a dynamic equilibrium on the catalyst surface. For CO 2 methanation, in 6 
+contrast, the reaction rate can also be increased by shorter cycle periods, but hardly exceeds the 7 
+corresponding steady -state values,34,35 what we observe as well ( Figure 5).  8 
+Table 3: Rate enhancement reported in literature in comparison to the present work for 9 
+hydrogenation of CO or CO 2. 10 
+Gas mixtures  Reaction 
+system  Catalyst  𝜏 𝑠 𝐸  Reference  
+I II s 1 1 
+CO H2 CO 
+methanation  Ni/Al 2O3 12 - 24 0.25 - 
+0.45 0.58 - 
+1.06 Yadav and 
+Rinker31 
+H2/CO H2 Ni/SiO 2 6 - 100 0.5 1.33 - 
+1.66 Klusácek and 
+Stuchlý32 
+H2/CO/Ar  H2 Ni/Al 2O3 6 - 240 0.5 0.6 - 
+1.44 this work  
+H2/CO 2/He H2/He CO 2 
+methanation  Ru/T iO2 300 - 
+5700  0.5 0.79 - 
+1.02 Marwood et al.34 
+CO 2/Ar H2/He Ni/Al 2O3 10 - 
+120 0.2 - 
+0.8 0.08 - 
+0.87 Kreitz et al.35 
+H2/CO 2/Ar H2 Ni/Al 2O3 6 - 240 0.5 0.56 - 
+0.91 this work  
+H2/CO/He  H2/He Fischer -
+Tropsch  Co/SiO 2 60 - 
+600 0.5, 
+0.8 0.75 - 
+7 Adesina et al.33 
+The rate enhancement  potential is discussed for peri odic changes in the inlet gas composition, 11 
+which is most studied in literature  (see Table 3), as well. However, f rom the results reported in 12  23 Figure 4 a strong impact of tempe rature on the periodic response becomes evident. Hence, periodic 1 
+changes in temperature most probably  allow further enhancement in performance.  2 
+4 CONCLUSION  3 
+The influence of the cycle period duration of the inlet gas composition on the unsteady -state 4 
+CO x methanation reaction was investigated under realistic conditions. The dynamic experiments 5 
+were conducted by periodically exchanging a gas mixture containing H 2 and a certain CO/CO 2 6 
+ratio with a CO x-free gas feed keeping the H 2 concentration constant. Differen t CO/CO 2 ratios  7 
+were studied between pure CO and pure CO 2 in order to investigate the competing effects of both 8 
+carbon oxides and deduce experimental insights for flexible operation. The frequency response of 9 
+the components was evaluated  in the quasi -stead y-state (qss), full -transient state (fts) and relaxed 10 
+steady -state (rss) regime , putting emphasis on CH 4. The following conclusions can be deduced 11 
+from the obtained results:  12 
+• Based on the applied cycle period durations each component exhibits a characterist ic 13 
+dynamic behavior. For longer cycle periods the components remain in the  qss regime 14 
+approaching the respective steady -state values in each half -period. Reducing the cycle 15 
+period duration leads to a shift towards the fts are even the rss regime, which bec omes 16 
+most pronounced for H 2O and the shortest investigated cycle period.  17 
+• An analysis of the magnitude reveals that the frequency response of the reactants differ 18 
+from that of the products. While the reactants follow the internal standard and thus the 19 
+RTD, the products exhibit a decline of the magnitude with decreasing cycle period 20 
+durations with a larger slope. This low -pass behavior agrees with predictions for more 21 
+simple cases. Furthermore, storage of the formed products in the system by adsorption 22 
+at the  catalyst surface is also observed in the frequency response by an even more 23  24 pronounced damping of the input fluctuations, expressed by a steeper drop of the 1 
+magnitude.  2 
+• The form of the hysteresis in the state -space plot is significantly correlated with th e 3 
+presence of CO, the temperature and the cycle period duration. The interpretation of the 4 
+state space plots supports the presence of reactive Cα species at the catalyst surface. These 5 
+species cause CH 4 formation rates exceeding values expected from steady -state 6 
+experiments and appear to require CO in the gas phase.  7 
+• The highly reactive Cα species can selectively be hydrogenated into CH 4 by a redu ction 8 
+of the cycle period duration, since the less reactive surface species become rather inert. 9 
+This is likely to be the reason for the enhancement of the average CH 4 formation rate 10 
+under concentration forcing conditions with respect to the steady -state, which is reported 11 
+for methanation of CO, but not for CO 2.31,32 The results  obtained in this work for 12 
+simultaneous methanation of CO and CO 2 underline the importance of CO for the 13 
+enhancement in average methanation rate and therefore the hypothesis of reactive Cα 14 
+species, as well.  15 
+Our results are based on measuring the transient reactor response in form of the outlet gas 16 
+composition. The application of evaluation procedures based on material balances allows us to 17 
+deduce molar flow rates for the relevant component s present in the gas phase. Therefore, the 18 
+conclusions drawn regarding kinetic processes taking place or species present at the surface are 19 
+not directly verified by measurements. For this purpose,  complementary  in situ  and operando  20 
+experiments are required  for the unsteady -state CO x methanation, in order to verify the discussed 21 
+hypotheses  in future work . In particular, X -ray absorption spectroscopy combined with modulation 22 
+excitation spectroscopy (XAS -MES), recently reported by Serrer et al. ,48 appears to be promising 23  25 to link the periodic response of the gas phase measured via the periodic transient kinetics ( PTK ) 1 
+method with the dynamics of kinetic processes at the solid surfaces . Those combined experiments 2 
+provide the basis for the ful l kinetic understanding of the dynamic catalyst behavior including the 3 
+storage capacity of the reactants at the active and support material and, hence, for development 4 
+and validation of a micro kinetic model applicable to the unsteady -state methanation rea ction.  5 
+ 6 
+AUTHOR INFORMATION  7 
+Corresponding Author  8 
+Robert Güttel  9 
+Tel.: 49 731/50 -25700  10 
+E-mail address: robert.guettel@uni -ulm.de  11 
+Author Contributions  12 
+The manuscript was written through contributions of all authors  in the following manner: 13 
+Dominik Meyer : Conc eptualization, Conducting experiments, Data evaluation, Writing original 14 
+draft, Writing review and editing; Jannik Schumacher : Scientific discussion , Writing review and 15 
+editing;  Jens Friedland : Scientific discussion , Writing review and editing ; Robert Gütt el: 16 
+Scientific discussion, Conceptualization , Project administration, Supervision, Writing original 17 
+draft, Writing review and editing . All authors have given approval to the final version of the 18 
+manuscript.  19 
+ACKNOWLEDGMENT  20 
+The authors want to thank Sasol G ermany GmbH for providing the support material.  21  26 ABBREVATIONS  1 
+CO x, CO/CO 2; fts, full -transient state; MS, mass spectrometer; PtG, Power -to-Gas; PTK, 2 
+Periodic Transient Kinetics; qss, quasi -steady -state; SNG , Synthetic or Substitute Natural Gas;  rss, 3 
+relaxed  steady -state; RTD , residence time distribution  4 
+ 5 
+REFERENCES  6 
+(1) Kalz, K. F.; Kraehnert, R.; Dvoyashkin, M.; Dittmeyer, R.; Gläser, R.; Krewer, U.; Reuter, K.; 7 
+Grunwaldt, J. -D. Future challenges in heterogeneous catalysis:Understa nding catalysts under 8 
+dynamic reaction conditions. ChemCatChem  2017 , 9 (1), 17 –29. DOI: 10.1002/cctc.201600996.  9 
+(2) Vogt, C.; Monai, M.; Kramer, G. J.; Weckhuysen, B. M. The renaissance of the Sabatier reaction 10 
+and its applications on earth and in space. Nat. Catal.  2019 , 2 (3), 188 –197. DOI: 10.1038/s41929 - 11 
+019-0244 -4. 12 
+(3) Götz, M.; Lefebvre, J.; Mörs, F.; McDaniel Koch, A.; Graf, F.; Bajohr, S.; Reimert, R.; Kolb, T. 13 
+Renewable Power -to-Gas:A technological and economic review. Renew. Energy  2016 , 85, 1371 – 14 
+1390. DOI: 10.1016/j.renene.2015.07.066.  15 
+(4) Schöß, M. A.; Redenius, A.; Turek, T.; Güttel, R. Chemische Speicherung regenerativer 16 
+elektrischer Energie durch Methanisierung von Prozessgasen aus der Stahlindustrie. Chem. Ing. Tech.  17 
+2014 , 86 (5), 734 –739. DOI : 10.1002/cite.201300086.  18 
+(5) Meyer, D.; Schumacher, J.; Friedland, J.; Güttel, R. Hydrogenation of CO/CO 2 mixtures on 19 
+nickel catalysts: Kinetics and flexibility for nickel catalysts. Ind. Eng. Chem. Res.  2020 , 59 (33), 20 
+14668 –14678. DOI: 10.1021/acs.iecr.0 c02072.  21 
+(6) Meyer, D.; Friedland, J.; Schumacher, J.; Güttel, R. The periodic transient kinetics method for 22 
+investigation of kinetic process dynamics under realistic conditions: Methanation as an example. 23 
+Chem. Eng. Res. Des.  2021 , 173, 253 –266. DOI: 10.10 16/j.cherd.2021.07.011.  24 
+(7) Meyer, D.; Friedland, J.; Kohn, T.; Güttel, R. Transfer functions for periodic reactor 25 
+operation:Fundamental methodology for simple reaction networks. Chem. Eng. Technol.  2017 , 40 26 
+(11), 2096 –2103. DOI: 10.1002/ceat.201700122.  27 
+(8) Yakhnin, V. Z.; Menzinger, M. Moving hot spots and resonance in adiabatic packed -bed 28 
+reactors. AlChE J.  1998 , 44 (5), 1222 –1225. DOI: 10.1002/aic.690440521.  29 
+(9) van Doesburg, H.; Jong, W. A. de. Transient behaviour of an adiabatic fixed -bed methanator —II. 30 
+Chem. Eng. Sci.  1976 , 31 (1), 53 –58. DOI: 10.1016/0009 -2509(76)85008 -7. 31 
+(10) van Doesburg, H.; Jong, W. A. de. Transient behaviour of an adiabatic fixed -bed methanator — 32 
+I. Chem. Eng. Sci.  1976 , 31 (1), 45 –51. DOI: 10.1016/0009 -2509(76)85007 -5. 33 
+(11) Kulkar ni, M. S.; Dudukovic', M. P. Dynamics of gas phase and solid phase reactions in fixed 34 
+bed reactors. Chem. Eng. Sci.  1996 , 51 (11), 3083 –3088. DOI: 10.1016/0009 -2509(96)00201 -1. 35 
+(12) Bremer, J.; Sundmacher, K. Operation range extension via hot -spot control for catalytic CO 2 36 
+methanation reactors. React. Chem. Eng.  2019 , 4 (6), 1019 –1037. DOI: 10.1039/C9RE00147F.  37 
+(13) Theurich, S.; Rönsch, S.; Güttel, R. Transient Flow Rate Ramps for Methanation of Carbon 38 
+Dioxide in an Adiabatic Fixed‐Bed Recycle Reactor. Energy Technol.  2020 , 8 (3), 1901116. DOI: 39 
+10.1002/ente.201901116.  40  27 (14) Matthischke, S.; Rönsch, S.; Güttel, R. Start -up Time and Load Range for the Methanation of 1 
+Carbon Dioxide in a Fixed -Bed Recycle Reactor. Ind. Eng . Chem. Res.  2018 , 57 (18), 6391 –6400. 2 
+DOI: 10.1021/acs.iecr.8b00755.  3 
+(15) Matthischke, S.; Krüger, R.; Rönsch, S.; Güttel, R. Unsteady -state methanation of carbon 4 
+dioxide in a fixed -bed recycle reactor — Experimental results for transient flow rate ramps.  Fuel 5 
+Process. Technol.  2016 , 153, 87–93. DOI: 10.1016/j.fuproc.2016.07.021.  6 
+(16) Try, R.; Bengaouer, A.; Baurens, P.; Jallut, C. Dynamic modeling and simulations of the 7 
+behavior of a fixed -bed reactor -exchanger used for CO 2 methanation. AlChE J.  2017 , 38 (5), 2039. 8 
+DOI: 10.1002/aic.15874.  9 
+(17) Mutz, B.; Gänzler, A. M.; Nachtegaal, M.; Müller, O.; Frahm, R.; Kleist, W.; Grunwaldt, J. -D. 10 
+Surface oxidation of supported Ni particles and its impact on the catalytic performance during 11 
+dynamically operated methan ation of CO 2. Catalysts  2017 , 7 (9), 279. DOI: 10.3390/catal7090279.  12 
+(18) Soong, Y.; Krishna, K.; Biloen, P. Catalyst aging studied with isotopic transients: Methanation 13 
+over Raney Nickel. J. Catal.  1986 , 97 (2), 330 –343. 14 
+(19) Zimmermann, R. T.; Bremer, J. ; Sundmacher, K. Optimal catalyst particle design for flexible 15 
+fixed -bed CO 2 methanation reactors. Chem. Eng. J.  2020 , 387, 123704. DOI: 16 
+10.1016/j.cej.2019.123704.  17 
+(20) Hudgins, R. R.; Silveston, P. L.; Renken, A.; Matros, Y. S. Introduction. In Periodic o peration 18 
+of reactors, 1st ed.; Silveston, P. L., Hudgins, R. R., Eds.; Elsevier, 2013; pp 1 –22. DOI: 19 
+10.1016/B978 -0-12-391854 -3.00001 -2. 20 
+(21) Bailey, J. E. Periodic operation of chemical reactors:A Review. Chem. Eng. Commun.  1974 , 1 21 
+(3), 111 –124. DOI: 10.1 080/00986447408960421.  22 
+(22) Silveston, P. L.; Hudgins, R. R., Eds. Periodic operation of reactors , 1st ed.; Elsevier, 2013.  23 
+(23) Renken, A. The use of periodic operation to improve the performance of continuous stirred tank 24 
+reactors. Chem. Eng. Sci.  1972 , 27 (11), 1925 –1932. DOI: 10.1016/0009 -2509(72)87051 -9. 25 
+(24) Schädlich, K.; Hoffmann, U.; Hofmann, H. Periodical operation of chemical processes and 26 
+evaluation of conversion improvements. Chem. Eng. Sci.  1983 , 38 (9), 1375 –1384. DOI: 27 
+10.1016/0009 -2509(83)80 073-6. 28 
+(25) Matros, Y. S. Unsteady performance of heterogeneous catalytic reactions. React Kinet Catal 29 
+Lett 1987 , 35 (1-2), 425 –435. DOI: 10.1007/BF02062177.  30 
+(26) van Neer, F. J.; Kodde, A. J.; Den Uil, H.; Bliek, A. Understanding of resonance phenomena on  31 
+a catalyst under forced concentration and temperature oscillations. Can. J. Chem. Eng.  1996 , 74 (5), 32 
+664–673. 33 
+(27) Petkovska, M.; Nikolić, D.; Marković, A.; Seidel -Morgenstern, A. Fast evaluation of periodic 34 
+operation of a heterogeneous reactor based on nonlinear frequency response analysis. Chem. Eng. 35 
+Sci. 2010 , 65 (11), 3632 –3637. DOI: 10.1016/j.ces.2010.03.011.  36 
+(28) Petkovska, M.; Seidel -Morgenstern, A. Evaluation of periodic processes. In Periodic operation 37 
+of reactors, 1st ed.; Silveston, P. L., Hudgins, R. R., Eds.; Elsevier, 2013; pp 387 –413. DOI: 38 
+10.1016/B978 -0-12-391854 -3.00014 -0. 39 
+(29) Currie, R.; Nikolić,  D.; Petkovska, M.; Simakov, D. S. CO 2 conversion enhancement in a 40 
+periodically operated sabatier reactor:Nonlinear Frequency Response Analysis and Simulation -based 41 
+Study. Isr. J. Chem.  2018 , 58 (6-7), 762 –775. DOI: 10.1002/ijch.201700134.  42 
+(30) Nikačević, N.; Todić, B.; Mandić, M.; Petkovska, M.; Bukur, D. B. Optimization of forced 43 
+periodic operations in milli -scale fixed bed reactor for Fischer -Tropsch synthesis. Catal. Today  2020 , 44 
+343, 156 –164. DOI: 10.1016/j.cattod.2018.12.032.  45 
+(31) Yadav, R.; Rinker, R.  G. The efficacy of concentration forcing. Chem. Eng. Sci.  1989 , 44 (10), 46 
+2191 –2195. DOI: 10.1016/0009 -2509(89)85153 -X. 47  28 (32) Klusáček, K.; Stuchlý, V. Increasing of carbon monoxide methanation rate by forced feed 1 
+composition cycling. Catal. Today  1995 , 25 (2), 169 –174. DOI: 10.1016/0920 -5861(95)00106 -P. 2 
+(33) Adesina, A. A.; Hudgins, R. R.; Silveston, P. L. Influence of concentration waves on the 3 
+fischer -tropsch reaction. J. Chem. Technol. Biotechnol.  1991 , 50 (4), 535 –547. DOI: 4 
+10.1002/jctb.280500410.  5 
+(34) Marwood, M.; van Vyve, F.; Doepper, R.; Renken, A. Periodic operation applied to the kinetic 6 
+study of CO 2 methanation. Catal. Today  1994 , 20 (3), 437 –448. DOI: 10.1016/0920 -5861(94)80137 - 7 
+1. 8 
+(35) Kreitz, B.; Friedland, J.; Güttel, R.; Wehinger, G. D.; Turek , T. Dynamic methanation of CO 2 – 9 
+effect of concentration forcing. Chem. Ing. Tech.  2019 , 91 (5), 576 –582. DOI: 10 
+10.1002/cite.201800191.  11 
+(36) Klose, J.; Baerns, M. Kinetics of the methanation of carbon monoxide on an alumina -supported 12 
+nickel catalyst. J. Ca tal. 1984 , 85 (1), 105 –116. DOI: 10.1016/0021 -9517(84)90114 -3. 13 
+(37) Gao, J.; Wang, Y.; Ping, Y.; Hu, D.; Xu, G.; Gu, F.; Su, F. A thermodynamic analysis of 14 
+methanation reactions of carbon oxides for the production of synthetic natural gas. RSC Adv.  2012 , 2 15 
+(6), 2358 –2368. DOI: 10.1039/c2ra00632d.  16 
+(38) Shekhtman, S. O.; Yablonsky, G. S. Thin -Zone TAP reactor versus differential PFR: Analysis 17 
+of concentration nonuniformity for gas−solid systems. Ind. Eng. Chem. Res.  2005 , 44 (16), 6518 – 18 
+6522. DOI: 10.1021/ie05 0554g.  19 
+(39) Meyer, D.; Friedland, J.; Schumacher, J.; Güttel, R. Hydrogenation of CO/CO 2 mixtures under 20 
+unsteady -state conditions: Effect of the carbon oxides on the dynamic methanation process. In Press. 21 
+Chem. Eng. Sci.  2021 , 117405. DOI: 10.1016/j.ces.20 21.117405.  22 
+(40) Zarfl, J.; Ferri, D.; Schildhauer, T. J.; Wambach, J.; Wokaun, A. DRIFTS study of a 23 
+commercial Ni/ γ-Al2O3 CO methanation catalyst. Appl. Catal., A  2015 , 495, 104 –114. DOI: 24 
+10.1016/j.apcata.2015.02.005.  25 
+(41) Fujita, S. -I.; Nakamura, M.; Doi, T.; Takezawa, N. Mechanisms of methanation of carbon 26 
+dioxide and carbon monoxide over nickel/alumina catalysts. Appl. Catal., A  1993 , 104 (1), 87 –100. 27 
+DOI: 10.1016/0926 -860X(93)80212 -9. 28 
+(42) Efstathiou, A. M.; Bennett, C. O. Surface species on Rh/Al 2O3 during CO/H 2 reaction studied 29 
+by transient techniques. Chem. Eng. Commun.  1989 , 83 (1), 129 –146. DOI: 30 
+10.1080/009864 48908940658.  31 
+(43) Underwood, R. P.; Bennett, C. O. The COH 2 reaction over nickel -alumina studied by the 32 
+transient method. J. Catal.  1984 , 86 (2), 245 –253. DOI: 10.1016/0021 -9517(84)90370 -1. 33 
+(44) Meyer, D.; Friedland, J.; Schumacher, J.; Gäßler, M. G.; Gütt el, R. Hydrogenation of CO/CO2 34 
+mixtures under unsteady -state conditions: Effect of the carbon oxides on the dynamic methanation 35 
+process. Chem. Eng. Sci.  2021 , 117405. DOI: 10.1016/j.ces.2021.117405.  36 
+(45) Falbo, L.; Visconti, C. G.; Lietti, L.; Szanyi, J. T he effect of CO on CO 2 methanation over 37 
+Ru/Al 2O3 catalysts:A combined steady -state reactivity and transient DRIFT spectroscopy study. Appl. 38 
+Catal., B  2019 , 256, 117 –791. DOI: 10.1016/j.apcatb.2019.117791.  39 
+(46) Gao, J.; Liu, Q.; Gu, F.; Liu, B.; Zhong, Z.; Su, F. Recent advances in methanation catalysts for 40 
+the production of synthetic natural gas. RSC Adv  2015 , 5 (29), 22759 –22776. DOI: 41 
+10.1039/C4RA16114A.  42 
+(47) Miao, B.; Ma, S. S. K.; Wang, X.; Su, H.; Chan, S. H. Catalysis mechanisms of CO 2 and CO 43 
+methanati on. Catal. Sci. Technol.  2016 , 6 (12), 4048 –4058. DOI: 10.1039/C6CY00478D.  44 
+(48) Serrer, M. -A.; Gaur, A.; Jelic, J.; Weber, S.; Fritsch, C.; Clark, A. H.; Saraçi, E.; Studt, F.; 45 
+Grunwaldt, J. -D. Structural dynamics in Ni –Fe catalysts during CO 2 methanation – role of iron oxide 46 
+clusters. Catal. Sci. Technol.  2020 , 10 (22), 7542 –7554. DOI: 10.1039/D0CY01396J.  47 

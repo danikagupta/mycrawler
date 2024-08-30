@@ -1,0 +1,1615 @@
+UNIT 2C.1 Basic Confocal Microscopy
+INTRODUCTION
+Confocal microscopy is a powerful tool
+for visualizing ﬂuorescent specimens. The
+principal advantage of confocal microscopy
+over conventional wide-ﬁeld microscopy is
+that it can reveal the three-dimensional struc-
+ture of the specimen. Fluorescent specimens
+viewed with a conventional wide-ﬁeld ﬂuores-
+cent microscope appear blurry and lack con-
+trast because ﬂuorophores throughout the en-
+tire depth of the specimen are illuminated,
+and ﬂuorescence signals are collected not
+only from the plane of focus but also from
+areas above and below. A confocal micro-
+scope selectively collects light from a thin
+(<1µm) optical section at the plane of fo-
+cus in the specimen (Fig. 2C.1.1). Structures
+within the focal plane appear more sharply de-
+ﬁned than with a conventional microscope be-
+cause there is essentially no ﬂare of light from
+out-of-focus areas. A three-dimensional view
+of the specimen can be reconstructed from a
+series of optical sections at different depths
+(Fig. 2C.1.2).
+Several types of confocal microscopes are
+available. The most common type is the laser
+scanning confocal microscope (LSCM), which
+captures images by scanning the specimen
+with a focused beam of light from a laser
+and collecting the emitted ﬂuorescence signals
+with a photodetector. LSCMs sometimes are
+referred to as “spot-scanning” confocal micro-
+scopes, to distinguish them from microscopes
+that scan the specimen with a slit of light (slit-
+scanning) or multiple spots of light (spinning-
+disk or Nipkow disk). Spot-scanning LSCMs
+have slower image acquisition rates than slit-
+scanning or spinning-disk microscopes ( <1
+frame/sec versus 30 frames/sec or higher).
+However they are more versatile in a num-
+ber of ways. They can accommodate lasers
+with a wide range of wavelengths (from the
+UV to the infrared) and can be conﬁgured to
+image multiple ﬂuorophores either simultane-
+ously or sequentially. Some include spectral
+detectors that can capture the entire spectrum
+of the ﬂuorescence emitted at each pixel in
+the image. The most sophisticated LSCMs al-
+low the user to control the illumination wave-
+length and intensity on a microsecond time
+scale. This feature makes it possible to perform
+experiments that require selectively illuminat-
+ing ﬂuorophores in a deﬁned region of inter-est in order to photobleach (Fig. 2C.1.1D) or
+photoactivate them. Measurement of ﬂuores-
+cence recovery after photobleach (FRAP) or
+ﬂuorescence loss in photobleach (FLIP) can
+provide information about molecular mobil-
+ity and binding (Cole et al., 1996; McNally
+and Smith, 2002; Lippincott-Schwartz et al.,
+2003; Sprague and McNally, 2005). Photo-
+sensitive molecules include certain ﬂuores-
+cent proteins (for example, see Patterson and
+Lippincott-Schwartz, 2002, for the ﬂuorescent
+protein PaGFP and see Ando et al., 2002,
+for the photosensitive protein Kaede), “caged”
+molecules such as caged Ca2+chelators,
+neurotransmitters, and second messengers
+(Nerbonne, 1996). Confocal microscopy also
+can be used to measure ﬂuorescence resonance
+energy transfer (FRET; Wouters and Basti-
+aens, 2000).
+In microbial research, confocal microscopy
+is widely used for applications that require vi-
+sualizing microorganisms within their hosts
+(Roux et al., 2004; Fig. 2C.1.3A,B). Top-
+ics that have been addressed include the
+mechanisms of microbial adhesion and en-
+try into host cells (Elphick et al., 2004;
+Ferrari et al., 2003), mechanisms of intracel-
+lular motility (Satpute-Krishnan et al., 2003;
+Viachou et al., 2004; Forest et al., 2005), and
+the reactions of host cells to infection (Per-
+rin et al., 2004; Shaner et al., 2004). Confocal
+microscopy also has been used to characterize
+the growth and physical properties of bioﬁlms
+(Drenkard and Ausubel, 2002; Rani et al.,
+2005; Daims et al., 2006; Fig. 2C.1.3C,D). The
+current generation of confocal microscopes,
+particularly those that utilize charge-coupled
+devices (CCDs) as photon detectors, are suf-
+ﬁciently sensitive to detect weak ﬂuorescence
+signals and potentially could be used for imag-
+ing structures within individual microorgan-
+isms.
+The purpose of this unit is to provide back-
+ground information and practical tips for op-
+timizing confocal imaging. The ﬁrst section
+(Basis of Optical Sectioning) explains the
+basic principle of confocal imaging as im-
+plemented in a LSCM. The second section
+(Conﬁguration of an LSCM) describes the
+components and light path in a typical LSCM
+and compares this with the light paths of
+spot-scanning microscopes and a new type of
+slit-scanning confocal microscope. The third
+Contributed by Carolyn L. Smith
+Current Protocols in Microbiology (2006) 2C.1.1-2C.1.19
+Copyright C/circlecopyrt2006 by John Wiley & Sons, Inc.Microscopy
+2C.1.1Basic Confocal
+Microscopy
+2C.1.2
+Current Protocols in Microbiology
+Figure 2C.1.1 Applications of laser scanning microscopy. ( A, B). Imaging in thick specimens.
+Neurons in a Drosophila embryo were immunolabeled with antibodies against three different
+transcription factors (images provided by Dr. Ward Odenwald of the National Institutes of Health,
+Bethesda, Md.; reproduced from Kamabadur et al., 1998). ( A) A single optical section ( ∼2.5-µm)
+captured with 25 ×, 0.8-NA objective. Labeled neurons in the plane of focus appear sharply deﬁned,
+while those outside it are not visualized. ( B) A maximum projection of 65 optical sections collected
+at 2-µm intervals in the zaxis. ( C) Imaging intracellular structures. Dissociated rat ﬁbroblasts
+were immunolabeled with anti-tubulin antibodies to visualize microtubules (green) and stained
+with ﬂuorescent probes for mitochondria (Mitotracker, red) and DNA (DAPI, blue). The image is
+a projection of 20 optical sections (0.3- µm intervals) captured with a 100 ×, 1.4-NA objective. ( D)
+Measuring molecular mobility in living cells. In a living ﬁbroblast expressing a Golgi membrane
+protein (galactosyltransferase) fused to GFP (S65T), GFP ﬂuorescence (green) is localized in
+the Golgi complex, shown superimposed on a DIC image of the cell. After the ﬁrst image was
+collected, the boxed region (yellow) was scanned with full laser power to photobleach the GFP in
+the boxed area. The second image was collected 2 sec later. Subsequent images (not illustrated)
+showed that the GFP-galactosyltransferase rapidly diffused back into the photobleached area.
+Images were captured with a LSM410 (Carl Zeiss, Inc.). For the color version of this ﬁgure go to
+http://www.currentprotocols.com .
+section (Practical Guidelines) provides guide-
+lines for preparing specimens and conﬁgur-
+ing the critical parameters for confocal imag-
+ing. The Commentary provides references to
+sources of additional information.
+BASIS OF OPTICAL SECTIONING
+Confocal microscopes accomplish optical
+sectioning by scanning the specimen with
+af o c u s e db e a mo fl i g h ta n dc o l l e c t i n gt h e
+ﬂuorescence signals emitted by the specimenvia a pinhole aperture. The pinhole aperture
+blocks signals from out-of-focus areas of the
+specimen whereas light from the focal plane
+passes through the pinhole to reach the detec-
+tor. The physical basis of optical sectioning is
+illustrated in Figure 2C.1.4. The microscope
+objective focuses light from a point source
+(a laser) to a diffraction-limited spot in the
+specimen. The irradiation is most intense at the
+focal spot, but areas of the specimen above and
+below the focal spot are also illuminated. Fluo-
+rescent molecules excited by the incident lightMicroscopy
+2C.1.3
+Current Protocols in Microbiology
+Figure 2C.1.2 3-D Imaging in living specimens. Comparison of water- and oil-immersion objec-
+tives. ( A,B,E,F ) Living yeast cells expressing a GFP construct that targets to the mitochondrial
+matrix were visualized with C-APO 63 ×1.2 NA (water) objective ( A,B)o raP l a n a p o c h r o m a t
+100×1.4 NA (oil) objective ( E,F). The images show xyandyzprojections of stacks of 40 images
+collected at 0.2- µm intervals along the optical axis. The xyprojections appear sharper than the
+yzprojections because the resolution is higher in the focal plane of the objective than along the
+optical axis. The yeast were embedded in an aqueous solution with 0.2% agarose. Panels C and
+Ga r e yzprojections of images of 0.19- µmﬂ u o r e s c e n tb e a d sc a p t u r e dw i t ha6 3 ×(water; C)o r
+100×(oil;G) objective. The beads were embedded in an aqueous solution with 2% agarose. D
+andHare intensity proﬁles along the horizontal and vertical axes of the beads. A 63 ×1.2 NA
+(water) objective provides better axial resolution than an 100 ×1.4 NA objective (oil) in specimens
+in an aqueous solution. Scale bars =5µm(A,B,E,F ); 0.5 µm(C,G). Images were captured with
+aL S M 5 1 0( C a r lZ e i s s ,I n c . ) .
+emit ﬂuorescence in all directions. The objec-
+tive captures a portion of the emitted light. The
+objective projects light from the focal spot in
+the specimen to a conjugate spot in an “im-
+age” plane. The pinhole aperture is positioned
+in the image plane so as to be centered on this
+spot. The light that passes through the aperture
+is detected by a photomultiplier tube (PMT).
+Light from out-of-focus areas of the specimen
+is spread out at the image plane and is largely
+blocked by the pinhole aperture.
+The diameter of the pinhole determines how
+much of the ﬂuorescence emitted by the illu-
+minated cone in the specimen is detected, as
+well as the thickness of the optical section.
+From wave optics, it is known that a point light
+source in the plane of focus of an objective pro-
+duces a three-dimensional diffraction pattern
+in the image plane. The cross-section at the im-
+age plane is an Airy disk, a circular diffraction
+pattern with a bright central region. The radius
+of the bright central region of the Airy disk in
+the reference frame of the specimen is given by
+RAiry=0.61λ/NA where λis the emission
+wavelength and NA is the numerical aperture
+of the objective (Inou ´ea n dS p r i n g ,2 0 0 2 ) .A tthe image plane, the radius of the central re-
+gion is RAirymultiplied by the magniﬁcation
+at that plane (Wilson, 1995).
+Adjustment of the pinhole to a diameter
+slightly less than the diameter of the cen-
+tral region of the Airy disk allows most of
+the light from the focal point to reach the
+detector and reduces the background from
+out-of-focus areas by ∼1000-fold relative to
+wide-ﬁeld microscopy (Sandison et al., 1995).
+The separation of the in-focus signal from the
+out-of-focus background achieved by a prop-
+erly adjusted pinhole is the principal advan-
+tage of confocal microscopy for examination
+of thick specimens.
+Point illumination and the presence of a
+pinhole in the detection light path also produce
+improved lateral and axial resolution relative
+to conventional microscopy (Table 2C.1.1).
+The actual extent of improvement depends on
+the size of the pinhole. Near-maximal axial
+resolution is obtained with a pinhole radius of
+∼0.7×RAiry,w h e r e a so p t i m a ll a t e r a lr e s o l u -
+tion is obtained with a pinhole smaller than
+0.3×RAiry(Wilson, 1995). However, a pin-
+hole smaller than ∼0.7×RAirysigniﬁcantlyBasic Confocal
+Microscopy
+2C.1.4
+Current Protocols in Microbiology
+Figure 2C.1.3 Applications of confocal microscopy in microbial research. ( A, B ). Human red
+blood cells (RBC) infected with malaria parasites ( Plasmodium falciparum ; 3D7 strain). Biotinylated
+human RBC were labeled with streptavidin-conjugated Quantum Dots 525 (CA; green color;
+http://www.qdots.com )a n d0 . 5 -t o4 - µMF M - 6 4( M o l e c u l a rP r o b e s ,r e dc o l o r ) .T h ec e l l sw e r e
+injected into chambers (HybriWell HBW20 from Grace Bio-Labs) and were examined with an LSM
+510 confocal microscope (Carl Zeiss, Inc.) with a 100 ×1.4-NA oil objective. Panel A shows two
+RBC, one containing a parasite at the trophozoite stage; panel B shows a parasite at the schizont
+stage. The schizont was extruded from the RBC for better imaging of individual parasites (red).
+The green signal in the center of the schizont represents autoﬂuorescence from hemazoin in
+the digestive vacuole. Images were provided by Dr. Svetlana Glushakova (National Institutes of
+Health, Bethesda, Md.; methods described in Glushakova et al., 2005). ( C, D) Bioﬁlm composed
+of microcolonies of nitrifying bacteria (ammonia oxidizers; Nitrosomonas sp. ) and nitrite oxidizers
+(Nitrospira sp. ). Both populations were labeled by ﬂuorescence in situ hybridization (FISH) with
+16S rRNA-targeted oligonucleotide probes. Nitrosomonas colonies are green; Nitrospira colonies
+are red. Images are 3-D reconstructions created using the Daime imaging program (see Daims
+et al., 2006, and Internet Resources) from stacks of optical sections collected with an LSM 510
+(Carl Zeiss, Inc). Panel C shows an overview of the projected image of the bioﬁlm, while panel D
+shows a smaller region at higher zoom. Images were provided by Dr. Holger Daims (Universit ¨at
+Wien, Vienna, Austria). For the color version of this ﬁgure go to http://www.currentprotocols.com .
+reduces the total signal, a sacriﬁce that may
+not be worth the gain in resolution, especially
+when imaging dim samples. In ﬂuorescenceimaging, resolution is also inﬂuenced by the
+emission and excitation wavelengths (Table
+2C.1.1).Microscopy
+2C.1.5
+Current Protocols in Microbiology
+Figure 2C.1.4 The basis of optical sectioning. Illumination from a point light source is reﬂected
+by a dichroic mirror into the back aperture of a microscope objective. The objective lens focuses
+the light to a diffraction-limited spot within the specimen. Fluorophores at the focal spot and within
+the cones of illumination above and below it are excited, emitting ﬂuorescence in all directions.
+The ﬂuorescence captured by the objective passes through the dichroic mirror because the ﬂuo-
+rescence is at a longer wavelength than the excitation. The confocal pinhole allows ﬂuorescence
+from the focal spot to reach the photodetector and blocks ﬂuorescence from out-of-focus areas.
+Redrawn from Shotton (1993).
+Table 2C.1.1 Theoretical Resolutions of Confocal and Conventional Microscopesa,b
+Objective
+λx/λem 10×,0 . 4N A ,a i r 4 0 ×,0 . 8 5N A ,a i r 6 0 ×,1 . 4N A ,o i l
+Lat. res. Ax. res. Lat. res. Ax. res. Lat. res. Ax. res.
+Confocal ﬂuorescence microscope
+488/518 0.55 4.50 0.26 0.99 0.16 0.56
+568/590 0.64 5.17 0.30 1.09 0.18 0.64
+647/677 0.72 5.88 0.34 1.28 0.21 0.72
+Conventional ﬂuorescence microscope
+518 0.79 6.48 0.37 1.43 0.24 0.93
+590 0.90 7.38 0.42 1.63 0.28 1.06
+680 1.04 8.50 0.49 1.88 0.32 1.22
+aData reprinted from Brelje et al. (1993) by permission of Academic Press.
+bλexandλem,e x c i t a t i o na n de m i s s i o nw a v e l e n g t h s ;l a t .r e s .a n da x .r e s . ,l a t e r a la n da x i a lr e s o l u t i o n s .Basic Confocal
+Microscopy
+2C.1.6
+Current Protocols in Microbiology
+Figure 2C.1.5 The light path of a laser-scanning confocal microscope. The diagram illustrates
+the light path of a LSCM set up for simultaneous imaging of FITC and lissamine rhodamine. The
+488- and 568-nm lines of a krypton-argon laser are reﬂected by dichroic beam splitter 1 into the
+optical axis of the microscope. The beam is reﬂected by a mirror into the microscope objective,
+which focuses the beam to a diffraction-limited spot in the specimen. The scanner consists of a pair
+of galvanometer mirrors that deﬂect the laser beams so as to scan the spot across the specimen
+in a raster pattern. Fluorescence emitted as each point is illuminated travels the reverse path
+through the scanning system. The FITC ﬂuorescence (peak at 520 nm) and lissamine rhodamine
+ﬂuorescence (peak at 590 nm) pass through dichroic beam splitter 1 to dichroic beam splitter
+2, which transmits the lissamine rhodamine ﬂuorescence to photomultiplier tube 1 and reﬂects
+the FITC ﬂuorescence to photomultiplier tube 2. A variable pinhole in front of each photodetector
+blocks light from out-of-focus areas of the specimen while allowing light from the focal plane to
+reach the detector.
+CONFIGURATION OF AN LSCM
+Confocal microscopes use lasers for illu-
+mination because they provide intense exci-
+tation within a narrow range of wavelengths.
+Mixed krypton-argon gas lasers are popular
+for multicolor confocal microscopy because
+they emit at three wavelengths (488, 568, and
+647 nm) that excite many commonly-used
+ﬂuorophores—e.g., FITC, rhodamine, Cy3,
+Cy5, Alexa 488/555/568/647, green ﬂuores-
+cent protein (GFP), and red ﬂuorescent pro-
+tein (mRFP or DsRed). The disadvantage of
+krypton-argon lasers is that their life spans are
+short ( ∼2000 hr). Another way to achieve mul-
+tiwavelength excitation is to combine the out-
+puts of multiple lasers. Many of the confocal
+microscopes currently on the market combine
+an argon laser (488 nm) with a green helium-
+neon (HeNe) laser (543 or 594 nm) and a red
+HeNe laser (633 nm). The argon laser also
+may provide 458 and 514 nm lines, which can
+be used to excite the cyan and yellow variants
+of GFP (CFP and YFP). Some confocal mi-
+croscopes can accommodate a 405-nm diodelaser. The 405-nm laser is more optimal for
+excitation of CFP than the 458 line of the ar-
+gon laser and also excites photosensitive GFP
+(PaGFP). It can even be used to visualize some
+UV ﬂuorophores such as DAPI and Hoechst
+DNA dyes, although 405 nm is not the opti-
+mal excitation wavelength for these dyes. UV
+argon lasers (351/364 nm) also are available.
+Inclusion of a 405 nm or UV argon laser adds
+considerably to the cost of the confocal mi-
+croscope system due to the requirement for
+additional optical components to handle these
+wavelengths.
+The light path in a simple confocal micro-
+scope is illustrated in Figure 2C.1.5. The out-
+put of the laser (or the combined output of mul-
+tiple lasers) is reﬂected into the optical axis of
+the microscope by the primary dichroic beam
+splitter (splitter 1 in Fig. 2C.1.5). Wavelength-
+selection ﬁlters are inserted into the light
+path to block speciﬁc laser lines, and neutral-
+density ﬁlters may be inserted to attenuate
+the illumination. In current, high-end confocalMicroscopy
+2C.1.7
+Current Protocols in Microbiologysystems, the line selection and neutral-density
+ﬁlters have been replaced with an electroni-
+cally controlled acousto-optical tunable ﬁlter
+(AOTF). An AOTF can alter its transmission
+characteristics so as to pass selected wave-
+lengths, while completely blocking others. An
+AOTF also provides precise control over the
+attenuation of the individual laser beams.
+The scanner deﬂects the laser beam into
+the objective at varying angles in order to scan
+the laser beam across the specimen. Several
+different technologies for scanning have been
+devised. The most common method employs
+a pair of galvanometer mirrors. One mirror os-
+cillates rapidly to excite sequential spots along
+thex-axis of the specimen, and the second mir-
+ror oscillates more slowly to move the illumi-
+nation from line to line in the y-axis.
+The ﬂuorescence emissions that are col-
+lected by the objective follow the reverse
+path through the scanner to the primary
+dichroic beam splitter, and thereby are “des-
+canned” (Fig. 2C.1.5). The ﬂuorescence sig-
+nals (which are at a longer wavelength than
+the excitation due to the Stokes shift; are
+transmitted through the beam splitter. To si-
+multaneously image ﬂuorescence from mul-
+tiple ﬂuorophores requires selection of a pri-
+mary dichroic beam splitter that reﬂects each
+of the required excitation wavelengths and
+transmits the emissions of all of the ﬂuo-
+rophores. Secondary dichroic mirrors split the
+ﬂuorescence emissions from different ﬂuo-
+rophores for detection by separate detectors.
+Emission ﬁlters are inserted in the light path
+to the detectors (Fig. 2C.1.5) to block back-
+scattered excitation light and to reduce bleed-
+through of signals between channels. Current
+high-end confocal microscopes use more so-
+phisticated technology for emission discrimi-
+nation; descriptions of the designs of speciﬁc
+systems are available from the vendors (see
+SUPPLIERS APPENDIX ).
+The ﬂuorescence captured by the objective
+focuses to a stationary spot (Airy disk) in the
+image plane (Fig. 2C.1.4). The pinhole aper-
+ture is positioned in the image plane so as to be
+centered on the Airy disk. The diameter of the
+pinhole aperture can be adjusted to allow op-
+timization for different Airy-disk sizes, which
+vary with the objective’s numerical aperture
+and the emission wavelength. Adjustment of
+the diameter of the pinhole to a value of 0.7
+to 1.0 Airy Unit allows most of the in focus
+light to reach the detector and blocks most of
+the out-of-focus light. In systems with a sep-
+arate pinhole aperture for each detector, the
+pinhole apertures are located immediately infront of the detectors. Incorporation of a sep-
+arate pinhole for each detector allows the user
+to optimize the pinhole settings for different
+wavelengths.
+The photodetectors in LSCMs are photo-
+multiplier tubes (PMTs), which generate elec-
+trons at a rate proportional to the intensity of
+the incoming ﬂuorescence signal (Art, 1995).
+The PMT output is converted to a digital image
+that can be displayed on a computer monitor
+and stored as a digital ﬁle for later analysis.
+Digitization may be at 8-bit (256 gray lev-
+els), 10-bit (1024 gray levels) or 12-bit resolu-
+tion (4096 gray levels). Confocal microscopes
+typically have two to four PMTs for reﬂected
+light/epiﬂuorescence imaging and may have,
+in addition, a photodetector for transmitted
+light.
+In spinning disk confocal microscopes, the
+illumination from a laser or white light source
+passes through pinholes in the Nipkow disk so
+as to excite ﬂuorescence at multiple ( ∼1000)
+sites within the specimen. The disk revolves
+rapidly (1000 to 5000 rpm) causing the il-
+luminating spots to sweep across the speci-
+men as uniformly-spaced scan lines (Inou ´ea n d
+Inou´e, 2002). Fluorescence emitted by the
+specimen that is collected by the objective re-
+turns through the same pinholes in the Nipkow
+disk that provided the excitation light before
+it is detected by a full-ﬁeld CCD camera. In
+this way, point light sources and detector pin-
+holes to block out-of-focus ﬂuorescence are
+provided, with the advantage of higher collec-
+tion speeds than a spot scanner. Drawbacks
+of this approach include decreased illumina-
+tion to the specimen from light loss through
+the pinholes and the inability to change the
+pinhole diameter. This means that, unlike the
+case with a spot scanner, optimal confocal-
+ity is achieved only for one objective magni-
+ﬁcation, and the thickness of the optical sec-
+tion cannot be changed. Although the reduced
+specimen illumination generates a smaller ﬂu-
+orescent signal, scientiﬁc-grade CCD cameras
+have signiﬁcantly higher quantum efﬁciencies
+than the PMTs used for ﬂuorescence detec-
+tion in LSCMs and are able to more than ad-
+equately detect these levels of ﬂuorescence.
+Fluorescent specimens have been reported to
+undergo less photobleaching during examina-
+tion with a spinning disk confocal microscope
+than with a LSCM. The lower rate of photo-
+bleaching is thought to be due to the lower
+illumination levels (Inou ´ea n dI n o u ´e, 2002).
+An e wt y p eo fs l i t - s c a n n i n gc o n f o c a lm i -
+croscope (LSM 5 Live; Carl Zeiss, Inc.) that
+allows images to be acquired at rates as fastBasic Confocal
+Microscopy
+2C.1.8
+Current Protocols in Microbiologyas or faster than can be achieved with a
+spinning disk confocal microscope and with
+as low or lower rates of photobleaching has
+recently been introduced. The system adopts
+principles from both the spot scanner and the
+spinning disk in that it uses a single scan-
+ning galvanometer to move an illumination
+line that is combined with a sensitive single-
+line CCD detector. The point source of light
+from the laser is optically converted to a nar-
+row line, which is reﬂected onto the specimen
+by a novel beam splitter consisting of a mir-
+rored line on transparent glass. The line illu-
+mination is scanned across the specimen. The
+emitted ﬂuorescence from the specimen that
+is collected by the objective passes through
+the beam splitter and is detected by a linear
+CCD detector. A slit aperture in front of the
+detector blocks out-of-focus light, analogous
+to the pinhole aperture in an LSCM. The LSM
+5L i v eh a ss o m e w h a tp o o r e rr e s o l u t i o nt h a na
+spot-scanning LSCM, and the initial version
+is less versatile but can capture images much
+more rapidly.
+PRACTICAL GUIDELINES
+Sample Preparation
+The preeminent goal in preparing samples
+for imaging with a confocal microscope is to
+maximize the ﬂuorescence signals while pre-
+serving the three-dimensional structure of the
+specimen. Ideally, the sample should be less
+than ∼50µmi nt h i c k n e s s ,a l t h o u g ht h i c k e r
+samples can be visualized. Guidelines for
+preparing ﬁxed and living samples are de-
+scribed below.
+Fixation
+As t a n d a r dﬁ x a t i v ef o rﬂ u o r e s c e n c em i -
+croscopy is 2% to 4% formaldehyde in
+PBS. Formaldehyde penetrates cells rapidly
+and preserves the antigen-recognition sites
+for many antibodies. However, formaldehyde
+cross-links proteins slowly and may cause
+vesiculation of membranes. Some commercial
+preparations of formaldehyde (formalin) con-
+tain methanol, which shrinks cells. Techniques
+for optimizing formaldehyde ﬁxation are de-
+scribed by Bacallao et al. (1995). Fixatives
+containing a small amount of glutaraldehyde
+(0.125% to 0.25%) in addition to formalde-
+hyde preserve cellular morphology better, but
+glutaraldehyde destroys the epitopes for some
+antibodies. Glutaraldehyde ﬁxation inducesautoﬂuorescence but autoﬂuorescence can be
+reduced by treating the sample after ﬁxation
+with NaBH 4(1 mg/ml in PBS, pH 8.0, using
+two treatments of 5 min each for dissociated
+cells, longer for thicker samples). An alter-
+native procedure for preparing specimens for
+immunocytochemistry is to immerse them in
+cold ( −20◦C) methanol or acetone but ﬁxation
+by this method causes severe shrinkage.
+Choices of ﬂuorophores
+The choice of ﬂuorophores should take into
+account the available laser lines and the detec-
+tor channels of the confocal microscope. Ex-
+citation is most efﬁcient at wavelengths near
+the peak of the excitation spectrum of the
+ﬂuorophore, but a precise match is not re-
+quired. For experiments that require imaging
+multiple ﬂuorophores with standard photode-
+tectors (PMTs), it is best to select ﬂuorophores
+that are excited by different laser lines, in
+order to minimize spectral crossover (bleed-
+through) between the channels (Fig. 2C.1.6).
+Excitation and emission spectra for many ﬂu-
+orophores are available via the Internet (see
+Internet Resources). A recommended combi-
+nation of ﬂuorophores for excitation at 405
+nm, 488 nm, 543/561 nm, and 633 nm would
+comprise Marina Blue, Alexa 488, Alexa 555,
+and Alexa 647 (all available from Molecu-
+lar Probes/Invitrogen). The nucleic acid stain
+DAPI can be excited by illumination at 405
+nm, although ultraviolet excitation (350 nm)
+is more optimal. The cyanine dyes Cy2,
+Cy3, and Cy5 (available from Jackson Im-
+munoResearch Laboratories) are also suitable
+for confocal microscopy. For multiwavelength
+imaging with a spectral detector and spectral
+unmixing, it is important to select ﬂuorophores
+that have distinct emission spectra, but there
+is no advantage in using ﬂuorophores that
+have differing excitation spectra. Indeed, it
+is best to use ﬂuorophores that have simi-
+lar excitation maxima, so that they can be
+excited with a single laser line reﬂected
+into the microscope with a single-wavelength
+dichroic mirror. Other important criteria to
+consider in selecting ﬂuorophores for confocal
+microscopy are the quantum efﬁciencies and
+rates of photobleaching. In addition, the
+staining protocol should be designed so as
+to produce similar signal intensities in each
+channel. More information about selecting ﬂu-
+orophores for confocal imaging is available at
+the Molecular Expressions Web site (see In-
+ternet Resources).Microscopy
+2C.1.9
+Current Protocols in Microbiology
+Figure 2C.1.6 Excitation spectra of representative ﬂuorophores and emission wavelengths of
+lasers for confocal microscopy. The graph at the top shows the excitation spectra of Marina Blue,
+Alexa 488, Alexa 555, and Alexa 647 (Molecular Probes). The emission wavelengths of lasers
+commonly used for confocal microscopy are shown below. Data for the excitation spectra are from
+Molecular Probes.
+Control samples
+Confocal microscopes rely on electronic
+image enhancement techniques that can make
+even dim autoﬂuorescence signals or non-
+speciﬁc background staining look bright. In
+order to distinguish a real signal from back-
+ground, it is essential to prepare and examine
+appropriate control samples. For immunoﬂu-
+orescence experiments with one primary an-
+tibody, the appropriate control samples are
+unstained specimens and specimens treated
+with the secondary antibody but no primary
+antibody. Other control experiments may be
+required to verify the speciﬁcity of labeling.
+Experiments with two primary and secondaryantibodies require additional controls to test
+whether the secondary antibodies cross-react
+with the “wrong” primary antibody. Singly
+stained samples also should be prepared and
+imaged to determine the extent of spectral
+cross-over between the channels.
+Mounting the specimen
+Selection of a mounting medium should
+take into account the type of microscope ob-
+jective that will be used to observe the speci-
+men (see section on Microscope Objectives).
+In order for an objective to perform optimally,
+the mounting medium should have the same
+refractive index as the objective immersionBasic Confocal
+Microscopy
+2C.1.10
+Current Protocols in MicrobiologyTable 2C.1.2 Refractive Indexes of Common Immersion and Mounting Media
+Medium RI
+Immersion media
+Air 1.00
+Water 1.338
+Glycerol 1.47
+Immersion oil 1.518
+Mounting media
+50% glycerol/PBS/DABCO 1.416a
+5%n-propyl gallate/0.0025% p-phenylene diamine (PPD) in
+glycerol1.474a
+0.25% PPD/0.0025% DABCO/5% n-propyl gallate in glycerol 1.473a
+VectaShield (Vector Labs) 1.458a
+Slow Fade (Molecular Probes) 1.415b
+ProLong (Molecular Probes) 1.3865b,c
+aData from Bacallao et al. (1995).
+bData from Molecular Probes.
+cRefractive index (RI) for liquid medium. (RI for solidiﬁed medium will be higher.)
+medium. Mismatches in the refractive indices
+produce spherical aberration leading to loss of
+light at the detector, as well as decreased z-axis
+resolution and incorrect depth discrimination.
+Image deterioration caused by spherical aber-
+ration increases with depth into the specimen;
+therefore, matching the immersion and mount-
+ing medium refractive indices is particularly
+important for thick specimens. The refractive
+indices of some commonly used mounting me-
+dia are listed in Table 2C.1.2.
+Mounting media that have refractive in-
+dices close to that of immersion oil (RI =
+1.51) include DPX (RI =1.5; ProSciTech) and
+Permount (RI =1.52; ProSciTech). However,
+specimens must be dehydrated prior to mount-
+ing in these media, and dehydration causes
+shrinkage and distortion. Moreover, some ﬂu-
+orophores cannot withstand dehydration. Cells
+retain their three dimensional shapes when
+they are kept in physiological saline (PBS) or
+am i x t u r eo fP B Sa n dg l y c e r o l( B a c a l l a oe ta l . ,
+1995). If the specimen is to be mounted under
+a coverglass, it may be necessary to support the
+coverglass to avoid damaging the specimen.
+Addition of an antioxidant (antifade agent)
+to the mounting medium helps to alleviate
+photobleaching of synthetic ﬂuorophores
+such as those used for immunocytochemistry.
+One of the best antifade agents is 100 mg/ml
+1,4-diazabicyclo[2,2,2]octane (DABCO;
+Sigma; Bacallao et al., 1995). n-propyl
+gallate (Giloh and Sedat, 1982) and p-phenylenediamine (PPD; Johnson et al.,
+1982) are also effective antifade agents,
+but the former may cause dimming of the
+ﬂuorescence while the latter may damage
+the specimen (Bacallao et al., 1995). A wide
+variety of mounting media are available
+from commercial sources (Biomeda, Electron
+Microscopy Sciences, ProSciTech, Molecular
+Probes, Vector Laboratories) and many of
+these contain antifade agents. It is wise to
+check a the ﬂuorophore provider for recom-
+mendations about which mounting medium
+and antifade agents to use. Antioxidants do
+not reduce photobleaching of ﬂuorescent
+proteins.
+Living specimens
+Microscopy on living specimens grown in
+vitro is most conveniently performed with an
+inverted microscope, because the specimens
+can be viewed through the bottom of the
+culture chamber and the top can be opened
+for access. To allow imaging with an oil- or
+water-immersion objective, the culture cham-
+ber substrate should be a coverglass. The glass
+coverslip can be coated with poly- L-lysine
+(using a 1 mg/ml solution; Sigma) to pro-
+mote adhesion of the specimens (either
+eukaryotic cells or microorganisms). Nonad-
+herent specimens can be immobilized by em-
+bedding them in a thin layer of low-melting-
+point agar (0.2% for eukaryotic cells, up to
+2% for smaller organisms). Motile specimensMicroscopy
+2C.1.11
+Current Protocols in Microbiologysuch as Paramecium can be attached to the
+substrate with CellTak (BD Biosciences; W.
+Bell, pers. comm.). Culture chambers with
+coverglass substrates can be made from stan-
+dard plastic petri dishes by boring holes in
+their bottoms and afﬁxing coverglasses to the
+holes with Silgard (Dow-Corning). Culture
+chambers with coverglass substrates are also
+available from commercial sources (Labtek
+coverglass chamber, Fisher Scientiﬁc; MatTek
+glass-bottom culture dish, MakTek Corp). Al-
+ternatively, cells may be grown on a coverglass
+that can be mounted in a chamber for observa-
+tion on a microscope. A simple chamber can be
+constructed from a gasket cut from a sheet of
+silicon rubber or a soft plastic ruler and afﬁxed
+to a glass microscope slide with silicon grease.
+The well formed by the gasket is ﬁlled with
+medium, and then the coverglass with cells at-
+tached is sealed onto the well. More elaborate
+chambers, some having built-in heaters and/or
+ports for perfusion, are available from com-
+mercial sources (see Internet Resources for a
+list of suppliers).
+Specimens that need to be kept warm dur-
+ing observation pose a particular challenge be-
+cause temperature transients can make it difﬁ-
+cult to maintain focus. Probably the best way
+to keep specimens warm is to place the entire
+microscope in a temperature-controlled en-
+closure. Alternative strategies include warm-
+ing the microscope stage with heated air (us-
+ing an air stream incubator or hair dryer)
+or infrared lamps, or using a temperature-
+controlled specimen chamber (Terasaki and
+Dailey, 1995). If an oil or water immersion
+objective is used, heating the objective helps
+to maintain the specimen at the desired tem-
+perature. Microscope enclosures, stage warm-
+ers, temperature-controlled chambers, and
+objective heaters are available from suppliers
+of microscopes and microscope accessories.
+Living specimens should be kept in a
+medium that is buffered to maintain the correct
+pH. Many commonly used culture media are
+buffered with bicarbonate and require an atmo-
+sphere with 5% to 10% CO 2to maintain the
+correct pH. For microscopy, it is more conve-
+nient to use a buffer that maintains the correct
+pH in air. Many types of cells can be main-
+tained for several hours in a balanced saline so-
+lution or culture medium that is buffered with
+HEPES (10 to 20 mM). Use of a medium that
+contains phenol red should be avoided because
+phenol red adds background ﬂuorescence and
+can produce oxygen radicals when exposed
+to intense illumination. Addition of 0.3 U/ml
+Oxyrase (Oxyrase, Inc.) to the medium canhelp to alleviate photobleaching of synthetic
+ﬂuorophores (Waterman-Storer et al., 1993).
+Optimizing Imaging Parameters
+Microscope objectives
+High-NA objectives are optimal for ﬂuor-
+escence microscopy because they collect more
+light than low-NA objectives (brightness is
+proportional to NA4). Oil-immersion objec-
+tives have the highest numerical apertures
+(NA =1.4 or 1.45). However, oil-immersion
+objectives have short working distances (100
+to 200 µm). Moreover, they work optimally
+only with specimens mounted in a medium
+with a refractive index the same as that of
+immersion oil ( n=1.51). Mismatch of the
+refractive indices leads to a deterioration of
+image quality that becomes increasing severe
+with depth into the specimen. When a high-
+NA oil objective is used to image a specimen
+mounted in an aqueous medium, image qual-
+ity and signal brightness decline noticeably at
+distances of 5 to 10 µm from the coverglass.
+Mismatch of the refractive indices also leads
+to spatial distortion in the z-axis. The actual
+movement of the focal plane in the specimen
+(ds)p r o d u c e db yam o v e m e n to ft h eo b j e c t i v e
+(dobj)d e p e n d so nt h er a t i oo ft h er e f r a c t i v ei n -
+dexes: ds/dobj=ηs/ηobj(Majlof and Forsgren,
+2002).
+Aw a t e r - i m m e r s i o no b j e c t i v ei su s e f u l
+for imaging living specimens that are more
+than a few microns thick. Water-immersion
+objectives with numerical apertures of 1.2
+are available. These objectives are designed
+for viewing specimens mounted under a cov-
+erglass (0.17 µm; no. 1.5) and have fairly short
+working distances (130 to 220 µm). “Dipping”
+objectives, which are intended for use without
+ac o v e r g l a s s ,h a v el o w e rn u m e r i c a la p e r t u r e s
+(NA =0.9) and longer working distances (1
+to 2 mm).
+Objectives differ in their transmission ef-
+ﬁciency and degree of correction for spheri-
+cal and chromatic aberration and ﬂatness of
+ﬁeld. Plan Apochromat objectives provide the
+ﬂattest ﬁelds of view and color correction
+for three wavelengths. Plan Apocromat ob-
+jectives generally transmit efﬁciently through-
+out the visible spectrum (400 nm to 700 nm),
+but may transmit poorly in the UV ( <400
+nm) or infrared ( >700 nm; Keller, 1995).
+Some objectives that are less highly corrected
+(Fluar, Plan NeoFluar, Plan Fluor) provide
+higher transmission at visible, UV, and in-
+frared wavelengths. For additional information
+about objectives for confocal microscopy seeBasic Confocal
+Microscopy
+2C.1.12
+Current Protocols in MicrobiologytheUNIT 2A.1 ,K e l l e r( 1 9 9 5 ) ,B e n h a m( 2 0 0 2 ) ,
+and the Molecular Expressions Web site (see
+Internet Resources).
+Pinhole size
+As explained in the section on the Basis of
+Optical Sectioning, the size of the detector pin-
+hole has a critical inﬂuence on image quality.
+A pinhole with a diameter slightly less than
+or equal to the diameter of the bright central
+region of the Airy disk will let most of the
+light from the plane of focus reach the detec-
+tor, while blocking most of the out-of-focus
+ﬂare. The lateral resolution will be ∼10% bet-
+ter than that obtainable by conventional mi-
+croscopy with the same optics (Centonze and
+Pawley, 1995), although not as good as can be
+achieved with a smaller pinhole. Lateral reso-
+lution continues to improve as pinhole radius
+is decreased down to a pinhole size of ∼0.2×
+Airy disk radius, but a pinhole this small ex-
+cludes ∼95% of the signal (Wilson, 1995).
+Axial resolution improves as pinhole size de-
+creases, down to ∼0.7×Airy disk radius, then
+levels off. The best trade-off between signal
+intensity and resolution will depend on the
+characteristics of the sample and the required
+resolution.
+Scan zoom
+The scan zoom determines the dimensions
+of the area in the specimen that is scanned.
+Increasing the zoom reduces the dimensions
+of the scan area. The pixel number remains
+the same; consequently, individual pixels rep-
+resent a smaller area. For example, the scan
+area at zoom 2 is one quarter the scan area at
+zoom 1 and the pixel dimensions are half as
+large in each dimension. That is, if the pixel
+dimensions represent 0.25 µm×0.25 µma t
+zoom 1, then dimensions are 0.125 ×0.125
+µma tz o o m2 .
+For each objective, there is an optimal
+zoom setting that yields pixel dimensions suf-
+ﬁciently small to take advantage of the full
+resolution of the objective but large enough
+to avoid oversampling. In order for the min-
+imum resolvable entity to be visible on the
+display monitor, the pixel dimension needs to
+be smaller than (less than one-half) the optical
+resolution. However, if the pixel size is made
+too small by using a higher-than-optimal zoom
+factor, the specimen is subjected to more irra-
+diation than necessary, with an increased risk
+of photobleaching. The rate of photobleach-
+ing increases proportionally to the square of
+the zoom factor (Centonze and Pawley, 1995).
+Ag u i d e l i n ef o rs e l e c t i n ga na p p r o p r i a t ez o o mfactor derived from information theory (the
+Nyquist Sampling Theorem) states that the
+pixel dimensions should be equal to the op-
+tical resolution divided by 2.3 (see Webb and
+Dorey, 1995). The optical resolution in confo-
+cal imaging depends on the numerical aperture
+of the objective, the refractive index of the im-
+mersion medium, the excitation and emission
+wavelengths, and the diameter of the pinhole
+aperture. Values calculated for different objec-
+tives and wavelengths using the point-spread
+functions (PSF) for wide-ﬁeld and confocal
+microscopy are given in Table 2C.1.1. The lat-
+eral resolution for confocal microscopy can be
+approximated by: Reselx,yconfocal =0.4λ/NA,
+where λis the wavelength of the illumination
+and NA the numerical aperture of the objec-
+tive (see Webb and Dorey, 1995). The above
+equation assumes the use of an inﬁnitesimal
+pinhole; Resel x,ywill be larger with a pinhole
+of 0.7 to 1 Airy unit.
+z-axis sectioning interval
+In order to study the three-dimensional
+structure of a specimen, a series of images
+are captured at ﬁxed intervals throughout the
+entire depth of the specimen. The interval be-
+tween focal planes needed to achieve opti-
+mal resolution in the z-axis is not as small
+as the x,ypixel dimensions because the axial
+resolution is poorer than the lateral resolution
+(see Table 2C.1.1). The optimal interval (ac-
+cording to the Nyquist Sampling Theorem)
+is equal to the axial resolution divided by
+2.3. The axial resolution for an objective in
+confocal imaging can be approximated by:
+Reselzconfocal =1.4λη/NA2where nis the re-
+fractive index (see Webb and Dorey, 1995).
+Collecting images at shorter intervals results
+in oversampling, with an increased risk of pho-
+tobleaching.
+Illumination intensity
+Fluorescence emission increases linearly
+with illumination intensity up to a level at
+which emission saturates. Optimal signal-
+to-background and signal-to-noise ratios are
+obtained with illumination levels well below
+saturation (Tsien and Waggoner, 1995). The
+illumination intensity on a laser-scanning mi-
+croscope can be adjusted by operating the
+laser at submaximal power and by inserting
+neutral-density ﬁlters into the light path or
+varying the transmission through the AOTF.
+In general, the best images are obtained with
+illumination levels that are as high as possi-
+ble without producing unacceptable rates of
+photobleaching.Microscopy
+2C.1.13
+Current Protocols in MicrobiologyPMT black level and gain
+The contrast and background of confo-
+cal images are determined by the gain and
+black-level settings of the photomultiplier tube
+(PMT) ampliﬁers. To obtain maximal infor-
+mation, the black level and gain should be
+adjusted to take advantage of the full dynamic
+range of the PMTs. The appropriate black-
+level setting can be found by scanning while
+the light path to the PMT is blocked. The im-
+age that appears on the display monitor should
+be just barely brighter than the background,
+which is black (gray level =0). To set the
+gain, scan the specimen and adjust the gain so
+that the brightest pixel in the image is slightly
+below white (gray level =255, for 8-bit im-
+ages). Ensuring that all signals fall within the
+dynamic range of the PMT is especially im-
+portant for quantitative imaging experiments.
+Confocal imaging software typically includes
+ap s e u d o c o l o ri m a g ed i s p l a ym o d e( “ r a n g ei n -
+dicator”) that facilitates selection of appropri-
+ate black level and gain settings by highlight-
+ing pixels with intensity values near 0 or 255.
+Averaging
+Confocal images of dimly ﬂuorescent spec-
+imens captured at the fastest scan rate on a
+typical LSCM ( ∼0.5 sec/frame) appear noisy
+because of the small numbers of photons col-
+lected from each spot. Improved signal-to-
+noise can be attained by scanning the specimen
+at a slower rate or by scanning multiple times
+and averaging the signals. Current LSCMs al-
+low individual lines in the image to be re-
+peatedly scanned and averaged. Line averag-
+ing generally produces sharper images than
+frame averaging (which averages full frames)
+because there is less risk of blurring due to
+movements or changes in the specimen.
+Imaging multiple ﬂuorophores
+Confocal microscopes can typically be con-
+ﬁgured to capture images of two or more
+ﬂuorophores simultaneously or sequentially.
+Each approach has advantages and disadvan-
+tages. For simultaneous imaging, the speci-
+men is scanned with all of the required ex-
+citation wavelengths and the emissions of
+the different ﬂuorophores are split for detec-
+tion by separate photodetectors (Fig. 2C.1.5).
+The drawback of this approach is that spec-
+tral cross-over between channels may occur if
+the emission spectra of the ﬂuorophores over-
+lap. If each ﬂuorophore is excited by only
+one laser line, then exciting them sequentially
+will avoid spectral cross-over. The disadvan-
+tage of sequential excitation is that there maybe misalignment of the signals in different
+channels, particularly if the specimen is alive
+and moving. A third way of imaging multi-
+ple ﬂuorophores is available in confocal sys-
+tems in which the laser excitation is controlled
+with an AOTF; such systems can scan each
+line of the specimen sequentially with differ-
+ent excitation wavelengths with a time delay
+between scan lines of less than a millisec-
+ond. Line-by-line wavelength switching pro-
+vides rapid acquisition of ﬂuorescence signals
+from each spot in the specimen while avoiding
+the spectral cross-over between channels that
+may occur when the ﬂuorophores are excited
+simultaneously.
+Image display
+Confocal images are typically displayed as
+8-bit grayscale or 24-bit RGB (red/green/blue)
+color images. Each channel of an RGB im-
+age can represent a different ﬂuorophore (Fig.
+2C.1.1A to C). Color mixtures indicate colo-
+calization of ﬂuorophores within a pixel. A
+RGB ﬂuorescence image can be merged with
+ag r a y s c a l et r a n s m i t t e dl i g h ti m a g eb ya d d i n g
+the transmitted light image to each channel of
+the RGB image (Fig. 2C.1.1D; ﬂuorescence in
+green channel merged with DIC image).
+The three-dimensional dataset obtained by
+capturing a series of optical sections through
+the specimen can be used to compute views
+of the specimen from different viewing an-
+gles. Commercial confocal microscopes typ-
+ically include the capability to generate or-
+thogonal views of the specimen ( xy,xz,a n d
+yz)a n dm a yp e r m i tv i e w sf r o ma r b i t r a r ya n -
+gles. An xyprojection or “ z-series projection”
+is a two-dimensional display formed by merg-
+ing multiple image planes (Fig. 2C.1.1B,C,
+Fig. 2C.1.2A,E). The most common type
+of projection is a “maximum” projection in
+which each pixel represents the intensity of
+the brightest pixel in the z-axis. Another type
+of projection, referred to as “surface render,”
+displays the most superﬁcial pixels with in-
+tensities above a deﬁned threshold. Projec-
+tions also can be created for different view-
+ing angles (Fig. 2C.1.2B, F). Projections of
+the specimen from different viewing angles
+can be combined to create an animation in
+which the specimen appears to rotate in space.
+Such animations give the viewer a striking
+impression of the three-dimensional geome-
+try of the specimen. Generating two projec-
+tions at azimuths differing by 4◦to 10◦cre-
+ates stereo pairs that can be visualized with
+as t e r e ov i e w e ro rc o l o r - c o d e da n dm e r g e d
+to form a stereo anaglyph. Volume-renderingBasic Confocal
+Microscopy
+2C.1.14
+Current Protocols in Microbiologyimaging software is available that provides ad-
+ditional options for three-dimensional visual-
+ization and measurements (see Internet Re-
+sources).
+COMMENTARY
+Effective use of a confocal microscope re-
+quires understanding of the principles of image
+formation and knowledge of how to set up and
+use a microscope. The unit on Proper Align-
+ment and Adjustment of the Light Microscope
+(UNIT 2A.1 )d e s c r i b e st h ec o m p o n e n t so fal i g h t
+microscope and provides protocols for set-
+ting up a microscope for transmitted light and
+epiﬂuorescence imaging. This unit also lists
+references to literature on light microscopy.
+The Handbook of Biological Confocal Mi-
+croscopy (edited by V. Centonze and J. Pawley,
+1995, new edition planned for March 2006) is
+ac o m p r e h e n s i v er e f e r e n c eb o o ko nc o n f o c a l
+microscopy. It includes chapters on the funda-
+mental principles, instrumentation, image ac-
+quisition and display, sample preparation, and
+much more. Confocal Microscopy (Wilson,
+1990) provides a thorough discussion of the
+principles behind confocal imaging. Cell Bio-
+logical Applications of Confocal Microscopy
+(edited by B. Matsumoto, 2002) discusses the
+performance of different types of confocal mi-
+croscopes and contains practical information
+about common applications such as imaging
+immunoﬂuorescence and calcium ion indica-
+tors. Additional applications are described in
+Confocal and Two Photon Microscopy: Foun-
+dations, Applications and Advances (Diaspro,
+2002). The Molecular Expressions Web site
+also is an excellent source of information
+about light microscopy, including confocal mi-
+croscopy (see Internet Resources).
+Confocal microscopy is only one of
+several available techniques for capturing
+optical sections in ﬂuorescent specimens. An
+alternative to confocal microscopy is compu-
+tational “deconvolution” of images captured
+by wide-ﬁeld epiﬂuorescence microscopy
+(McNally et al., 1999; Boccacci and Bertero,
+2002). Computational deconvolution makes
+use of all of the ﬂuorescence captured by the
+objective, in contrast to confocal microscopy,
+which discards ﬂuorescence from out-of-focus
+areas. In addition, wide-ﬁeld microscopy can
+employ CCD cameras that have higher quan-
+tum efﬁciencies than the photodetectors used
+for confocal microscopy. For these reasons,
+wide-ﬁeld microscopy and deconvolution can
+be superior to confocal microscopy for imag-
+ing dim specimens or specimens that are sus-
+ceptible to photobleaching or photodamage.However, computational deconvolution of im-
+ages is time-consuming and does not work
+well in specimens with high levels of dispersed
+ﬂuorescence. Confocal microscopy allows di-
+rect visualization of optical sections and is ap-
+plicable to a wider range of specimens.
+Another technique for confocal imaging
+takes advantage of the optical phenomenon
+known as multiphoton excitation. Multiphoton
+microscopy allows deeper penetration into tis-
+sue than either wide-ﬁeld microscopy or con-
+ventional (single-photon) microscopy, and is
+particularly useful for imaging in thick speci-
+mens such as tissue slices or multicellular or-
+ganisms. However, this method suffers loss of
+resolution due to the longer illumination wave-
+length and absence of a detector pinhole.
+Troubleshooting
+Test samples are useful for monitoring the
+performance of a confocal microscope. A mi-
+crometer slide should be used to check the spa-
+tial calibration of each objective. Fluorescent
+microspheres with mixtures of ﬂuorophores
+(FluoSpheres; Molecular Probes) are useful
+for checking the x,yand axial alignment of
+images acquired at different excitation wave-
+lengths. Misalignment of the images in the xy
+plane may indicate that the pinholes are not
+centered or that the lasers need to be aligned;
+misalignment in the zaxis may be due to incor-
+rect setting of a collimating lens, misalignment
+of pinholes, or chromatic aberration in the ob-
+jective. The optical resolution of the micro-
+scope can be measured by capturing images of
+submicroscopic ( <0.2 nm) ﬂuorescent micro-
+spheres (Fig. 2C.1.2C,G). The images of the
+microspheres should be radially symmetrical
+in the xyplane and elliptical in the z-axis (Fig.
+2C.1.2C). Horizontal and axial resolutions are
+deﬁned by the full width at half maximal in-
+tensity (FWHM) of intensity proﬁles along the
+horizontal and vertical axes of the beads (Fig.
+2C.1.2D,H).
+Anticipated Results
+Confocal microscopy provides sharp im-
+ages of ﬂuorescent structures in thick speci-
+mens (Fig. 2C.1.1, Fig. 2C.1.2, Fig. 2C.1.3C,
+D). The maximum depth at which adequate
+images can be obtained depends on the objec-
+tive and the optical properties of the specimen.
+With a high-NA immersion objective, it may
+be possible to capture images at depths of >100
+µmi nas p e c i m e nt h a ti st r a n s p a r e n ta n dn o t
+heavily stained (Centoze and Pawley, 1995).
+However, if the specimen scatters light, both
+the illumination intensity and the proportionMicroscopy
+2C.1.15
+Current Protocols in Microbiologyof the emitted ﬂuorescence that is captured
+by the objective decline with increasing fo-
+cal depth. Mismatch of the refractive indexes
+of the immersion medium and specimen will
+further reduce the depth at which adequate sig-
+nal can be obtained. A low-NA objective can
+capture images at greater depths but provides
+much poorer axial resolution.
+At h r e e - d i m e n s i o n a lr e c o n s t r u c t i o no ft h e
+specimen can be generated from a series of
+optical sections at appropriately spaced inter-
+vals along the optical axis. The reconstruction
+can be viewed from any angle, but the view
+along the optical axis of the objective will ap-
+pear sharper than off-axial views, because the
+lateral resolution of the objective is better than
+the axial resolution (Fig. 2C.1.2). The axial
+distortion can be corrected by computational
+deconvolution (Wouterlood, 2005).
+Confocal imaging in living specimens is
+feasible although care must be taken to avoid
+phototoxicity and photodamage. Robust ﬂu-
+orophores such as the ﬂuorescent proteins
+EGFP and EYFP can be imaged hundreds of
+times with minimal photobleaching and no
+apparent phototoxicity, provided that the il-
+lumination is kept at a low level. Synthetic
+ﬂuorophores, such as organelle-speciﬁc dyes
+(Molecular Probes), generally are more pho-
+tosensitive, although in some applications the
+rate of bleaching can be reduced by the addi-
+tion of Oxyrase. The maximum rate at which
+images can be collected will depend on the
+scan speed, resolution, and area. Typical scan
+times for a 512 ×512 image are 1 to 4
+sec/frame.
+Ac o m m o na p p l i c a t i o no fc o n f o c a lm i -
+croscopy is to determine the relative distri-
+butions and extent of colocalization of the
+molecules tagged with different ﬂuorophores
+(Brelje et al., 2002). As many as four dif-
+ferent ﬂuorophores can be discriminated on
+ac o n f o c a lm i c r o s c o p ew i t hl a s e re x c i t a t i o n
+at 350/405, 488, 546/568, and 633/647 nm,
+and standard photodetectors, provided that
+the excitation spectra of the ﬂuorophores are
+well separated and matched to the laser lines.
+Confocal microscopes with spectral detectors
+can discriminate larger combinations of ﬂuo-
+rophores on the basis of their emission spectra.
+Spectral detection and linear unmixing allows
+discrimination of ﬂuorophores with highly
+overlapping emission spectra, such as GFP and
+YFP (Dickinson, et al., 2001).
+Confocal microscopy also is well suited for
+visualizing variants of the green ﬂuorescent
+protein. CFP and YFP can be visualized with
+minimal cross-talk between channels on a con-focal microscope with 405 nm and 514 nm
+excitation. The overlap of the excitation and
+emission spectra of CFP and GFP or GFP and
+DsRed may result in cross-talk between chan-
+nels in experiments with these combinations
+of ﬂuorophores. New ﬂuorescent proteins have
+been developed that potentially could provide
+more optimal combinations for multi-color
+imaging (Shaner et al., 2004). Fluorescent pro-
+teins have also been incorporated into bio-
+chemical reporters for measuring intracellular
+calcium, kinase activity, and other signaling
+molecules (Zhang et al., 2002).
+Photosensitive ﬂuorescent proteins are
+available that undergo a change in spectral
+properties upon photoactivation. Photactivat-
+able GFP (PaGFP; Patterson and Lippincott-
+Schwartz, 2002) exhibits little ﬂuorescence
+under 488 nm illumination prior to activation
+but undergoes a 100-fold increase in ﬂuores-
+cence after photoactivation at 400 to 430 nm.
+An LSCM with a 405- or 413-nm laser can
+be used to photoactivate PaGFP within a user-
+deﬁned region of interest within the specimen
+and thereby selectively “highlight” GFP ﬂu-
+orescence within that region. The activated
+GFP retains its ﬂuorescence indeﬁnitely and,
+importantly, manifests these properties even
+when fused to another protein. PaGFP fusion
+proteins provide a useful tool for studying
+the intracellular dynamics of proteins and or-
+ganelles (Karbowski et al., 2004).
+LSCMs that incorporate an AOTF to con-
+trol the illumination wavelength and intensity
+can be conﬁgured to perform various types of
+photobleach experiments. Measurement of ﬂu-
+orescence recovery after photobleach (FRAP)
+or ﬂuorescence loss in photobleach (FLIP) can
+provide information about molecular mobility
+and binding (Cole et al., 1996; McNally and
+Smith, 2002; Lippincott-Schwartz et al.,
+2003). In FRAP, ﬂuorescence in a small region
+of the specimen is photobleached by scanning
+with high-intensity illumination, and recovery
+of ﬂuorescence into the bleached area is then
+monitored by scanning with low-intensity il-
+lumination. The rate of return of ﬂuorescent
+molecules into the bleached area may be gov-
+erned by diffusion, binding interactions with
+other molecules, or a combination of both, and
+appropriate mathematical models have been
+developed to analyze these responses (Sprague
+and McNally, 2005). In FLIP, a region of the
+specimen is photobleached several times with
+ad e l a yb e t w e e nt h eb l e a c hs c a n sa n di m a g e s
+are collected during this process to monitor the
+distributions of bleached and nonbleached ﬂu-
+orescent molecules. Observation of FLIP canBasic Confocal
+Microscopy
+2C.1.16
+Current Protocols in Microbiologyshow whether there is exchange of ﬂuorescent
+molecules between two compartments of a cell
+or whether a ﬂuorescent structure is a single
+organelle or a network of contiguous but inde-
+pendent organelles (Cole et al., 1996).
+The spatial precision by which two ﬂu-
+orophores can be said to colocalize on the
+basis of light microscopy is limited by the
+optical resolution ( ∼0.2µmi nt h e xyplane
+and 0.6 µmi nt h e z-axis). The phenomenon
+of ﬂuorescence resonance energy transfer
+(FRET) can potentially reveal whether two
+ﬂuorophores are within <10 nm proximity.
+FRET (Wouters and Bastiaens, 2000) is the
+nonradiative transfer of energy from a ﬂuores-
+cent donor molecule to an acceptor molecule.
+Energy transfer occurs only if the molecules
+are within a distance of less than ∼10 nm,
+and only if the emission spectrum of the donor
+overlaps the excitation spectrum of the accep-
+tor. One application of FRET is to determine
+whether two populations of molecules undergo
+binding interactions. One population is labeled
+with donor ﬂuorophores (e.g., CFP) and the
+second is labeled with acceptor ﬂuorophores
+(e.g., YFP). Several techniques for measuring
+FRET have been devised (Jares-Erijman and
+Jovin, 2003) and many of these can be carried
+out with current LSCMs.
+Current LSCMs are much superior to their
+predecessors in sensitivity, speed of image ac-
+quisition and versatility. Although they are ex-
+pensive ($200,000 to $600,000) and require
+costly service contracts to ensure optimal per-
+formance, their many beneﬁts justify these
+costs.
+Acknowledgements
+The author wishes to thank Dr. Albert
+Neuztner (National Institutes of Health,
+Bethesda, Md.) for providing the cells illus-
+trated in Fig. 2C.1.3 and Dr. James Galbraith
+(also of the National Institutes of Health) for
+helpful comments on the manuscript. This re-
+search was supported by the Intramural Re-
+search Program of the National Institute of
+Neurological Diseases and Stroke at the Na-
+tional Institutes of Health, Bethesda, Md.
+LITERATURE CITED
+Ando, R., Hama, H., Yamamoto-Hino, M., Mizuno,
+H., and Miyawaki, A. 2002. An optical marker
+based on the UV-induced green-to-red photo-
+conversion of a ﬂuorescent protein. Proc. Natl.
+Acad. Sci. U.S.A. 99:12651-12656.
+Art, J. 1995. Photon detectors for confocal mi-
+croscopy. InHandbook of Biological Confocal
+Microscopy, 2nd ed. (J. Pawley, ed.) pp. 183-
+196. Plenum, New York.Bacallao, R., Kiai, K., and Jesaitis, L. 1995. Guiding
+principles of specimen preservation for confocal
+ﬂuorescence microscopy. InHandbook of Bio-
+logical Confocal Microscopy, 2nd ed. (J. Pawley,
+ed.) pp. 311-326. Plenum, New York.
+Benham, G. 2002. Practical aspects of objective
+lens selection for confocal and multiphoton dig-
+ital imaging techniques. InCell Biological Ap-
+plications of Confocal Microscopy, 2nd ed. (B.
+Matsumoto, ed.) pp. 247-300. Academic Press,
+San Diego, Calif.
+Boccacci, P. and Bertero, M. 2002. Image-
+restoration methods: Basics and algorithms. In
+Confocal and Two-Photon Microscopy: Founda-
+tions, Applications, and Advances (A. Diaspro,
+A., ed.), pp. 253-269. John Wiley & Sons,
+Hoboken, N.J.
+Brelje, T.C., Wessendorf, M.W., and Sorenson, R.L.
+1993. Multicolor laser scanning confocal im-
+munoﬂuorescence microscopy: Practical appli-
+cations and limitations. InCell Biological Appli-
+cations of Confocal Microscopy (B. Matsumoto,
+ed.) pp. 98-182. Academic Press, San Diego,
+Calif.
+Brelje, T.C., Wessendorf, M.W., and Sorenson, R.L.
+2002. Multicolor laser scanning confocal im-
+munoﬂuorescence microscopy: Practical appli-
+cations and limitations. InCell Biological Ap-
+plications of Confocal Microscopy, 2nd ed. (B.
+Matsumoto, ed.), pp. 166-244. Academic Press,
+San Diego, Calif.
+Centonze, V. and Pawley, J. 1995. Tutorial on prac-
+tical confocal microscopy and use of the con-
+focal test specimen. InHandbook of Biological
+Confocal Microscopy, 2nd ed. (J. Pawley, ed.)
+pp. 549-570. Plenum, New York.
+Cole, N., Smith, C., Sciaky, N., Terasaki, M.,
+Edidin, M., and Lippincott-Schwartz, J. 1996.
+Diffusional mobility of Golgi proteins in mem-
+branes of living cells. Science 237:797-801.
+Daims, H., Lucker, S., and Wagner, M. 2006.
+Daime , a novel image analysis program for mi-
+crobial ecology and bioﬁlm research. Environ.
+Microbiol. 8:200-213.
+Diaspro, A. (ed.) 2002. Confocal and Two Pho-
+ton Microscopy: Foundations, Applications and
+Advances. Wiley-Liss, New York.
+Dickinson, M.E., Bearman, G., Tille, S., Lansford,
+R., and Fraser, S.E. 2001. Multi-spectral imag-
+ing and llinear unmixing add a whole new
+dimension to laser scanning ﬂuorescence mi-
+croscopy. Biotechniques 31:1274-1278.
+Drenkard, E. and Ausubel, F.M. 2002. Pseu-
+domonas bioﬁlm formation and antibiotic resis-
+tance are linked to phenotypic variation. Nature
+416:740-743.
+Elphick, G.F., Querbes, W., Jordan, J.A. Gee, G.V.,
+Eash, S., Manley, K., Dugan, A., Stanifer, M.,
+Bhatnagar, A., Koreze, W.K., Roth, B.L., and
+Atwood, J.W. 2004. The Human Polyomavirus,
+JCV, uses serotonin receptors to infect cells. Sci-
+ence 306:1380-1383.
+Ferrari, A., Pellegrini, V., Arcangeli, C., Fittipaldi,
+A., Giacca, M., and Beltram, F. 2003. Caveolae-
+mediated internalization of extracellular HIV-1Microscopy
+2C.1.17
+Current Protocols in MicrobiologyTat fusion proteins visualized in real time. Mol.
+Ther. 8:284-294.
+Forest, T., Barnard, S., and Baines, J.D. 2005. Ac-
+tive intranuclear movement of herpes virus cap-
+sids. Nat. Cell Biol. 7:429-431.
+Giloh, H. and Sedat, J.W. 1982. Fluorescence
+microscopy: Reduced photobleaching of rho-
+damine and ﬂuorescein protein conjugates by
+n-propyl gallate. Science 217:1252-1255.
+Glushakova, S., Yin, D., Li, T., and Zimmerberg, J.
+2005. Membrane transformation during malaria
+parasite release from human red blood cells.
+Curr. Biol. 15:1645-1650.
+Inou´e, S. and Inou ´e, T. 2002. Direct-View High-
+Speed Confocal Scanner: The CSU-10. In
+Cell Biological Applications of Confocal Mi-
+croscopy, 2nded. (B. Matsumoto, ed.) pp. 88-
+128. Academic Press, San Diego, Calif.
+Inou´e, S. and Spring, K.R. 1997. Video Microscopy:
+The Fundamentals, 2nd ed. Plenum, New York.
+Jares-Erijman, E.A. and Jovin, T.M. 2003. FRET
+imaging. Nat. Biotechnol. 21:1387-1395.
+Johnson, G.D., Davidson, R.S., McNamee, K.C.,
+Russell, G., Goodwin, D., and Holborow, E.J.
+1982. Fading of immunoﬂuorescence during mi-
+croscopy: A study of the phenomenon and its
+remedy. J. Immunol. Methods 55:231-242.
+Kamabadur, R., Koizumi, K., Stivers, C., Nagle, J.,
+Poole, S., and Odenwald, W. 1998. Regulation of
+POU genes by castor andhunchback establishes
+layered compartments in the Drosophila CNS.
+Genes Dev. 12:246-260.
+Karbowski, M., Arnoult, D., Chen, H., Chan, D.C.,
+Smith, C.L., and Youle, R.J. 2004. Quantitation
+of mitochondrial dynamics by photolabeling of
+individual organelles shows that mitochondrial
+fusion is blocked during the Bax activation phase
+of apoptosis. J. Cell Biol. 164:493-499.
+Keller, E. 1995. Objective lenses for confocal mi-
+croscopy. InHandbook of Biological Confocal
+Microscopy, 2nd ed. (J. Pawley, ed.) pp. 111-
+126. Plenum, New York.
+Lippincott-Schwartz, J., Altan-Bonnet, N., and
+Patterson, G.H. 2003. Photobleaching and pho-
+toactivation: Following protein dynamics in liv-
+ing cells. Nat. Cell Biol. Suppl:S7-S14.
+Majlof, L. and Forsgren, P. 2002. Confocal mi-
+croscopy: Important considerations for accu-
+rate imaging. InCell Biological Applications of
+Confocal Microscopy 2nd ed. (B. Matsumoto,
+ed.) pp. 149-164. Academic Press, San Diego,
+Calif.
+Matsumoto, B. (ed.) 2002. Cell Biological Appli-
+cations of Confocal Microscopy. 2nd ed. Aca-
+demic Press, London.
+McNally, J., Karpova, T., Cooper, J., and Conchello,
+J. 1999. Three-dimensional imaging by decon-
+volution microscopy. Methods 19:373-385.
+McNally, J.G. and Smith, C.L. 2002. Photobleach-
+ing by confocal microscopy. InConfocal and
+Two Photon Microscopy: Foundations, Appli-
+cations and Advances (A. Diaspro, ed.) pp. 525-
+538. Wiley-Liss, New York.Nerbonne, J.M. 1996. Caged compounds: Tools
+for illuminating neuronal responses and connec-
+tions. Curr. Opin. Neurobiol. 6:379-386.
+Patterson, G.H. and Lippincott-Schwartz, J. 2002.
+Ap h o t o a c t i v a t a b l eG F Pf o rs e l e c t i v ep h o t o l a -
+beling of proteins and cells. Science 297:1873-
+1877.
+Perrin, A.J., Jiang, X., Birmingham, C.L., So, N.S.,
+Burmell, J.H. 2004. Recognition of bacteria in
+the cytosol of mammalian cells by the ubiquitin
+system. Curr. Biol. 14:806-811.
+Rani, S.A., Pitts, B., and Stewart, P.S. 2005. Rapid
+diffusion of ﬂuorescent tracers into Staphylococ-
+cusepidermis bioﬁlms visualized by time lapse
+microscopy. Antimicrob. Agents Chemother.
+49:728-732.
+Roux, P., Munter, S., Frischknecht, F., Herbomel, P.,
+and Shorte, P. 2004. Focusing light on infection
+in four dimensions. Cell. Microbiol. 6:333-343.
+Sandison, D.R., Williams, R.M., Wells, K.S.,
+Strickler, J., and Webb, W.W. 1995. Quantita-
+tive ﬂuorescence confocal laser scanning mi-
+croscopy. InHandbook of Biological Confocal
+Microscopy, 2nd ed. (J. Pawley, ed.) pp. 39-54.
+Plenum, New York.
+Satpute-Krishnan, P., DeGiorgis, J.A., and Bearer,
+E.L. 2003. Fast anterograde transport of Her-
+pes Simplex Virus: Role for the amyloid precur-
+sor protein of Alzheimer’s disease. Aging Cell
+2:305-318.
+Shaner, N.C., Campbell, R.E., Steinbach, P.A.,
+Giepmans, B.N., Palmer, A.E., and Tsien, R.Y.
+2004. Improved monomeric red, orange and yel-
+low ﬂuorescent proteins derived from Disco-
+soma sp. Red ﬂuorescent protein. Nat. Biotech-
+nol.22:1567-1572.
+Shotton, D.M. 1993. Electronic acquisition of
+light microscope images. InElectronic Light
+Microscopy (D.M. Shotton, ed.) pp. 1-38.
+Wiley-Liss, New York.
+Sprague, B.L. and McNally, J.G. 2005. FRAP anal-
+ysis of binding: Proper and ﬁtting. Trends Cell
+Biol. 15:84-91.
+Terasaki, M. and Dailey, M.E. 1995. Confocal mi-
+croscopy of living cells. InHandbook of Biolog-
+ical Confocal Microscopy, 2nd ed. (J. Pawley,
+ed.) pp. 327-346. Plenum, New York.
+Tsien, R.Y. and Waggoner, A. 1995. Fluorophores
+for confocal microscopy. InHandbook of Bio-
+logical Confocal Microscopy, 2nd ed. (J. Pawley,
+ed.) pp. 267-280. Plenum, New York.
+Viachou, D., Zimmermann, T., Cantera, R., Janse,
+C.J., Waters, A.P., and Kafatos, F.C. 2004.
+Real-time, in vivo analysis of malaria ookinete
+locomotion and mosquito midgut invasion. Cell
+Microbiol. 6:671-685.
+Waterman-Storer, C.M., Sanger, J.W., and Sanger,
+J.M. 1993. Dynamics of organelles in the mi-
+totic spindles of living cells: Membrane and mi-
+crotubule interactions. Cell Motil. Cytoskeleton
+26:19-39.
+Webb, R.H. and Dorey, C.K. 1995. The pixilated
+image. InHandbook of Biological ConfocalBasic Confocal
+Microscopy
+2C.1.18
+Current Protocols in MicrobiologyMicroscopy, 2nd ed. (J. Pawley, ed.) pp. 55-68.
+Plenum, New York.
+Wilson,T. (ed.) 1990. Confocal Microscopy. Aca-
+demic Press, London.
+Wilson, T. 1995. The role of the pinhole in confo-
+cal imaging system. InHandbook of Biological
+Confocal Microscopy, 2nd ed. (J. Pawley, ed.)
+pp. 167-182. Plenum, New York.
+Wouterlood, F.G. 2005. 3-D reconstruction of neu-
+rons from multichannel confocal laser scanning
+image series. InCurrent Protocols in Neuro-
+science (J.N. Crawley, C.R. Gerfen, M.A. Ro-
+gawski, D.R. Sibley, P. Skolnick, and S. Wray,
+eds) pp. 2.8.1-2.2.8.16. John Wiley & Sons,
+Hoboken, N.J.
+Wouters, F.S., and Bastiaens, P.I.H. 2000. Imag-
+ing protein-protein interactions by ﬂuores-
+cence resonance energy transfer (FRET)
+microscopy. InCurrent Protocols in Cell Biol-
+ogy (J.S. Bonifacino, M. Dasso, J.B. Harford, J.
+Lippincott-Schwartz, and K.M. Yamada, eds.)
+pp. 17.1.1-17.1.15. John Wiley & Sons,
+Hoboken, N.J.
+Zhang, J., Campbell, R.E, Ting, A., and Tsien,
+R.Y. 2002. Creating new ﬂuorescent probes
+for cell biology. Nature Rev. Mol. Cell Biol.
+3:906-918.
+KEY REFERENCES
+Inou´ea n dS p r i n g ,1 9 9 7 .S e ea b o v e .
+Covers the basics of light microscopy, video mi-
+croscopy, and much more.
+Matsumoto, 2002. See above.
+Good source of practical information about confo-
+cal imaging.
+Pawley, J. (ed.) 1995. See above.
+Comprehensive reference book on confocal mi-
+croscopy.
+Russ, J. 2002. The Image Processing Handbook.
+4th edition. CRC Press, Boca Raton, Fla.
+Guide to digital image processing.
+INTERNET RESOURCES
+http://www.microbial-ecology.net/daime
+Daime Web site, from which the Daime software ap-
+plication can be downloaded. Daime (digital image
+analysis in microbial ecology) is an open-source
+software program for 2-D and 3-D image analysis
+developed by Holger Daims, Sebastian L ¨ucker, and
+Michael Wagner (Universit ¨at Wien, Vienna, Aus-
+tria). The features of Daime and its application to
+analysis of bioﬁlms are described in Daims et al.
+(2006).
+http://rsb.info.nih.gov/ij
+ImageJ is a public domain image analysis pro-
+gram developed by W. Rasband (Research Ser-
+vices Branch, National Institute of Mental Health,
+NIH) for operating systems running Java (including
+Windows/PC and OSX/Macintosh). ImageJ has
+many useful tools for analysis of confocal images.http://www.uhnres.utoronto.ca/facilities/
+wcif/imagej/
+A manual written by Tony Collins that describes
+the use of ImageJ to visualize and analyze confocal
+images.
+http://www.molecularexpressions.com
+The Molecular Expressions Web site is a rich source
+of information about all aspects of light microscopy,
+including confocal microscopy. It includes sections
+on the basic principles of confocal imaging, instru-
+mentation, sample preparation, and choices of ﬂu-
+orophores. An interactive tutorial “Choosing ﬂu-
+orophore combinations for confocal microscopy”
+allows the user to determine the extent of spec-
+tral cross-over that will occur when imaging differ-
+ent combinations of ﬂuorophores with speciﬁc laser
+lines and ﬁlter sets.
+Web sites of vendors of confocal
+microscopes
+These provide product descriptions, manuals, tuto-
+rials and literature.
+http://www.zeiss.com
+Carl Zeiss, Inc.
+http://www.leica-microsystems.com/company
+Leica Microsystems.
+http://www.nikonusa.com
+Nikon, Inc.
+http://www.microscopyu.com
+For information about light microscopy and confo-
+cal microscopy.
+http://www.olympusconfocal.com/
+Olympus, Inc.
+http://www.perkinelmer.com/
+PerkinElmer, Inc.
+http://www.solameretech.com/
+Solamere Technology.
+Spectra of ﬂuorophores
+http://ﬂuorescence.nexus-solutions.net/
+frames6.htm
+Biorad Microsciences ﬂuorochrome database and
+charting application.
+http://home.earthlink.net/ ∼ﬂuorescentdyes/
+George McNamara Multiprobe Microscopy.
+http://www.probes.com/
+Molecular Probes.
+http://www.molecularexpressions.com
+Molecular Expressions.
+http://www.olympusﬂuoview.com/resources/
+specimenchambers.html
+Sources of chambers for maintaining living speci-
+mens during observation by microscopy.Microscopy
+2C.1.19
+Current Protocols in Microbiologyhttp://listserv.buffalo.edu/user/sub.html
+Many topics of interest to confocal microscopists
+are discussed on the confocal listserver operated
+by the listserver at the University at Buffalo. To
+subscribe to the lis,t go to the URL and type “con-
+focal” in the box that asks which list one wishes to
+join.
+Contributed by Carolyn L. Smith
+National Institute of Neurological
+Disorders and Stroke
+Bethesda, Maryland

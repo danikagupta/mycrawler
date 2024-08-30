@@ -1,0 +1,205 @@
+Coupled Microbial- Conversion and Computational- Fluid-
+Dynamics (CFD) Models for Butanediol Production in 
+Micro- Aerated Reactors
+Hari Sitaraman , James J Lischeske , Mohammad J 
+Rahimi, Yannick J Bomble , Peter C St John, Chao Wu 
+and Jonathan J Stickel
+Venue: AIChE Virtual Annual Meeting 2020
+FFunding provided U.S Dept. of Energy, Bioenergy Technologies OfficeIntroduction and Motivation
+2–Bioreactor: use microbial action for conversion 
+•Pharmaceutical industry
+•Waste water treatment
+•Biofuels and molecules (Research at NREL)
+–Ethanol/Butane -diol/Methane
+–Fermentation is a large cost contributor1
+•Cost is important: low value products
+–Improve economics through bioreactor design
+•More engineering than biology
+•Validated high- fidelity modeling
+•Scale -up/reactor -design optimization 
+•Techno -economic analysis
+Biomethanation reactor (NREL)Algae bioreactor
+1Humbird, D., R. Davis, and J. D. McMillan. "Aeration costs in stirred -tank and bubble 
+column bioreactors." Biochemical engineering journal 127 (2017): 161- 166.Image by Dennis Schroeder, NREL
+Image by Dennis Schroeder, NRELNREL    |    3Micro- aeration for BDO Production
+•Central idea: 
+•These are not like the traditional bubble columns where lot of air is sparged 
+(superficial velocities of ~1 m/s compared to ~10-2m/s)
+•Only controlled amount of O2is required
+•Too much O2will trigger creation of wrong products
+•Not enough air will reduce the reaction rate overall, and thus the rate of production of the desired product –butanediol (BDO)
+•Method
+•Bubble column CFD + microbial bioreaction
+•Reactions –5 species (microbe, glucose, xylose, acetoin and BDO)
+•Assume these species are well mixed and O
+2mixing is what limits reactions spatially
+•Challenge 
+•Long time scales for reactions ~ hours
+•Sub-cycling/operator splitting
+•Solve flow to steady -state
+•Do reactions
+•Redo until final reaction timeNREL    |    4Kinetics Model Development and Low- Order ResultsNREL    |    5Kinetics
+Substrate Uptake
+Sugar Limitation
+Biomass Growth
+Aerobic Limitation
+Electrons Consumed
+Substrate Used Products FormedNREL    |    6
+Kinetics –Substrate/Product Partitioning
+Experimental Phenomena Well -Mixed Model ResultSugarsElectronsGlucose consumed before Xylose
+Pis the CDF of a gamma 
+distributionBDO and Acetoin are assumed to be 
+produced in a consistent ratio prior to re -
+consumptionModeling Formalism
+At low O2 concentrations, existing acetoin 
+serves as an electron sourceNREL    |    7
+Kinetics Model Exploration –
+Well -mixed, Constant kLa
+kLa= 1 h-1
+kLa= 3 h-1kLa= 9 h-1Increased oxygen availability: 
+•Increases overall rate
+•Reduces BDO selectivityNREL    |    8Kinetics Model Exploration –
+O2Distribution
+Increasing oxygen distribution (holding mean O2 constant) in the reactor 
+reduces overall reaction rate but does not significantly impact product  
+selectivity.O2 mean: 0.004 mM 0.02 mM 0.1 mM
+(Max O2 at 1 
+bar: 0.21 mM)O2 assumed to have 
+gamma distribution, where the normalized variance is:
+β-1
+Solid 0
+Dashed 0.05
+Dotted 0.2
+NREL    |    9High -Fidelity CFD Sub -cycling MethodsNREL    |    10Multiphase Euler -Euler equations
+•Gas and liquid as continuous interpenetrating phases
+•Bubble sizes are small compared to reactor dimensions
+•Constant bubble size -6 mm
+•Compressible low Mach RANS equations 
+Volume fraction constraint
+Mass conservation
+Momentum conservation
+Species transport within 
+each phase
+NREL    |    11Mass transfer
+Oxygen mass transfer ( Higbie et al. 1)
+Oxygen transfer rate
+Henry’s law
+Mass transfer coefficient
+Microbial oxygen uptake (Monod model)
+1Higbie , R., 1935. The rate of absorption of a pure gas into a still liquid during short periods of exposure. Trans. AIChE 31, 365– 389. 
+Representative oxygen uptake relationship during CFDNREL    |    12Reaction Subcycling /Operator Splitting
+Euler -Euler CFD to 
+Pseudo -Steady -State
+Advance Bio -Reaction
+In Each Cell
+Oxygen 
+concentration 
+distributionBiomass, substrate,  
+and product 
+concentrations give 
+new max O2 uptakeNREL    |    13Computational model
+•Transport properties
+•Fermentation broth properties are similar to water
+•Grace drag model for bubbles
+•Wilke -Chang diffusion of species 
+•Multiphase k -ϵturbulence model
+•Wall lubrication effects
+•Customized solver bdoFOAM calls customized solver TwoPhaseEulerFoam
+in OpenFOAM
+•Simulations performed using
+•72 Intel Skylake processors
+•48 hours of run time to simulate 2000- 8000 seconds
+•Kinetics step is trivially fast
+•More details in Rahimi et al., Chem. Eng. Res. Design, 139, 2018NREL    |    14Subcycling ResultsNREL    |    15Bubble Column Reactor for BDO Production
+ 20 m
+5 m15 m
+3 m diaspargerNREL    |    16Sparge Rate Comparison
+0.01 m/s
+0.005 m/s
+40 mNREL    |    17Reactor Height
+30 m
+20 mNREL    |    18Conclusions and future work
+•Conclusions
+•Computational model
+•Kinetics model capturing unique dynamics of Z mobilis bench -scale 
+fermentation developed
+•Euler -Euler gas -transfer and OUR model implemented to determine 
+pseudo -steady -state O2 profiles in industrially -relevant bubble columns
+•Subcycling implemented to model batch fermentation in large -scale 
+reactors
+•Results
+•Impact of mean and variance of O2 demonstrated using a simple model
+•High -fidelity CFD demonstrated the impact of flow rate and reactor height 
+on product selectivity
+•Future work
+•Pushing oxygen concentration to lower mean O2 values
+•Model stability
+•Characterize tradeoff between selectivity and productivity
+•Evaluate additional reactor designs to enable high -scale low -mean and low -
+variance O2 concentration across reactor. Some possibilities:
+•Pump -around loop
+•Shallow channel
+•Evaluate oxygen feed timing strategies to overcome reactor limitationsNREL    |    19Acknowledgements
+•Funding from DOE, office of Energy Efficiency and Renewable 
+Energy, Bioenergy Technologies Office
+•A portion of this research was performed using computational 
+resources sponsored by the Department of Energy’s Office of 
+Energy Efficiency and Renewable Energy and located at the 
+National Renewable Energy Laboratory.
+NREL    |    20Thank You
+Questions? Email me at 
+James.Lischeske@nrel.gov
+NREL/PR- 5100 -78334NREL    |    21Appendix
+NREL    |    22Geometry and meshing
+•Bottom inlet with a gas fraction that specifies sparger mass flow rate
+•Lateral walls use no -slip condition for liquid and slip for gas
+•~ 300,000 cells –sufficient for grid convergent solutions
+airlift Bubble column Stir tank SpargerNREL    |    23CFD Model validation with small -scale bubble column
+•Validation done for a small -scale bubble column  (1 m height, 15 cm diameter)
+•Average mass transfer coefficient matches Heijnen and Van’t Riet (1984)1
+•Gas holdup matches experiments/simulations by Mcclure et al. (2013) 2
+1Heijnen , J. J., Van’t Riet, K., Apr. 1984. Mass transfer, mixing and heat transfer phenomena in low viscosity bubble column reactors. Chem. Eng. J. 28 (2), B21 –B42.
+2 McClure, D. D., Kavanagh, J. M., Fletcher, D. F., Barton, G. W., 2013.  Development of a CFD model of bubble column bioreacto rs:Part one - a 
+detailed experimental study. Chem. Eng. Technol. 36 (12), 2065– 2070. Superficial gas velocity:NREL    |    24Sensitivity to reactor height
+Pressure (Pa)
+O2conc 
+(mol/m3)
+10 m
+40 m
+5 m
+•Cases are at superficial gas velocity of 2 cm/s
+•Larger hydrostatic pressure head with greater height
+•Larger oxygen transfer due to higher Henry saturation concentrationNREL    |    25Transient fluid dynamics (comparison)
+•Superficial gas velocity = 0.1 m/s, impeller speed = 2 rad/s
+•Gas hold up is similar for all cases
+•Faster time scale to steady state with impellers
+•Draft tube and impellers aid better mixingGas fractionNREL    |    26Oxygen transfer
+OUR=75 mol/m3/hOUR=0
+•All reactors show almost the same average concentration 
+without microbial uptake
+•Higher mass transfer rate in that case of stir tank reactor
+•Stir-tank reactor higher average oxygen concentration with 
+microbial uptakeOxygen concentration in mol/m3NREL    |    27Oxygen limited regions
+Bubble column airlift Stir tank•Oxygen limited regions are 
+where microbial uptake is sub-optimal < 0.1 mol/m
+3
+•Radial transport is limited in bubble column, mitigated in airlift and stir tank
+•O2 limited regions towards the top and the wall boundariesNREL    |    28Streamlines and mixing
+•Streamlines obtained from 
+temporal averaging of liquid velocity at steady -state
+•Draft tube allows for better top to bottom mixing
+•Impellers in the stir tank form Taylor vortices that aid in better mixing
+Bubble column airlift Stir tankNREL    |    29Automated meshing of stir -tank reactor
+3 impellers, 
+10 baffles9 impellers, 5 baffles5 impellers, 6 baffles
+•Automated python script allows for a generic design that can be used for optimizationNREL    |    30
+Stir tank optimization
+Sensitivity of stir -tank reactor
+•5 m dia, 17 m height
+•Vgs=2 cm/s
+•average O2concentration
+•Rotational speed
+•No: of blades
+•No: of impellers3 impellers, 4 blades
+3 impellers, 20 rpm 4 blades, 20 rpm
+O2(mol/m3)
