@@ -21,6 +21,7 @@ def main():
     pdf_pages=[
         st.Page("ui/process_pdf_text.py", title="PDF text", icon="2️⃣"),
         st.Page("ui/process_pdf_image.py", title="PDF image", icon="2️⃣"),
+        st.Page("ui/extract_pdf_text.py", title="PDF-to-Text", icon="2️⃣"),
     ]
 
     ref_pages=[

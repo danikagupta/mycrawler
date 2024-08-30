@@ -1,0 +1,244 @@
+Posterior Error Probabilities and False Discovery Rates: Two Sides of
+the Same Coin
+Lukas Käll,†John D. Storey,†,‡Michael J. MacCoss,†and William Stafford Noble*,†,§
+Department of Genome Sciences, Biostatistics, Computer Science and Engineering, University of Washington,
+Seattle, Washington, 98195
+Received November 14, 2007
+A variety of methods have been described in the literature for assigning statistical signiﬁcance to
+peptides identiﬁed via tandem mass spectrometry. Here, we explain how two types of scores, the q-value
+and the posterior error probability, are related and complementary to one another.
+Keywords: q-value •posterior error probability •false discovery rate •statistical signiﬁcance •peptide
+identiﬁcation
+Introduction
+The immediate goal of most tandem mass spectrometry
+experiments is to identify proteins in a complex biologicalsample. A perfect experiment would produce a list of all andonly the proteins that exist in the sample. In practice, of course,real experiments are imperfect and yield lists that containproteins that were not actually in the sample sfalse positives s
+and leave out proteins that were in the sample sfalse negatives.
+Therefore, in interpreting the experimental results and par-ticularly in the context of designing follow-up experiments, abiologist beneﬁts from the availability of statistical scores withwell-deﬁned semantics.
+The accompanying articles
+1–3describe several methods for
+associating statistical scores with the results of tandem massspectrometry experiments. For logistical reasons, the currentdiscussion focuses on peptide-level identiﬁcations, rather thanprotein-level identiﬁcations, but similar methods and modelscan be applied to compute protein-level statistical scores.
+Here, we explain why statistical scoring is valuable and
+attempt to clarify the relationship among a variety of technicalterms that have been borrowed from the statistical literature.The take-home message is that two forms of scores, the q-value
+and the posterior error probability (PEP), are valuable andcomplementary. Therefore, an ideal software package for massspectrometry analysis should produce both of these scores.Which score the biologist focuses on will depend upon the typeof follow-up experiments that are being planned or the typeof conclusions being drawn from the results.
+False Discovery Rates and q-Values
+Our accompanying article3does not describe new statistical
+methods; rather, we describe how well-established methodsfrom the statistical literature can be applied to peptide iden-tiﬁcation from tandem mass spectra. In particular, we show
+how searching a set of spectra against a decoy protein database,containing reversed, shuffed, or Markov chain-generated aminoacid sequences, enables us to associate a particular score, calledaq-value, with every peptide -spectrum match (PSM). Rather
+than recapitulate how q-values are computed, we focus here
+on how to interpret these q-values. Say that a given spectrum
+smatches a particular peptide EAMRQPK with a q-value of 0.01.
+What does this tell us?
+To understand q-values, we must ﬁrst understand the notion
+of the false-discovery rate (FDR). Say that the goal of our massspectrometry experiment is to match every observed spectrumto a peptide in the given database, and then separate the listof PSMs into correct and incorrect matches. If we set an FDRthreshold of 1%, this means that we are willing to accept a listof PSMs in which 99% of the matches are correct and 1% arenot. Clearly, if we increase the FDR threshold to, say, 10%, thenwe will end up with a much longer list of PSMs. But the tradeoffis that a larger percentage of the PSMs in the list will beincorrect.
+Given this deﬁnition of FDR, a q-value of 0.01 for peptide
+EAMRQPK matching spectrum s means that, if we try allpossible FDR thresholds, then 1% is the minimal FDR thresholdat which the PSM of EAMRQPK to s will appear in the outputlist.
+Although the q-value is associated with a single PSM, it is
+important to recognize that the q-value depends upon the data
+set in which the PSM occurs. Say that we search a collectionof spectra against the entire nonredundant protein database.We rank the resulting PSMs by score, and we observe (EAM-RPK,s) at position 100. If an oracle tells us that (EAMRPK,s) isa correct mapping, but that 10 of the PSMs ranked above(EAMRPK,s) are incorrect, then the true q-value associated with
+(EAMRPK,s) is 0.1.
+Now consider an alternative situation. Rather than search
+the full nonredundant protein database, say that we insteadsearch the tryptic database and that, in the process, we remove20 of the 99 PSMs that rank above (EAMRPK,s). Among theseare 6 incorrect PSMs. In this second scenario, (EAMRPK,s) now
+* To whom correspondence should be addressed. E-mail: noble@
+gs.washington.edu.
+†Department of Genome Sciences, University of Washington.
+‡Department of Biostatistics, University of Washington.
+§Department of Computer Science and Engineering, University of
+Washington.
+40 Journal of Proteome Research 2008, 7, 40–44 10.1021/pr700739d CCC: $40.75 2008 American Chemical Society
+Published on Web 12/04/2007falls at position 80 in the ranked list, and its q-value is 4/80 )
+0.05. Note that the spectrum has not changed, nor has its score,but the associated q-value has changed from 0.1 to 0.05. A
+similar effect could be observed by switching from the non-redundant protein database to an organism-speciﬁc database,or by applying a quality ﬁlter to the spectra themselves.
+Posterior Error Probability
+Rather than focusing on computing q-values, the other two
+accompanying articles describe methods for computing pos-terior error probabilities. The PEP is, quite simply, the prob-ability that the observed PSM is incorrect. Thus, if the PEPassociated with (EAMRPK,s) is 5%, this means that there is a95% chance that the peptide EAMRPK was in the massspectrometer when spectrum s was generated.
+The PEP can be thought of as a local version of the FDR
+(indeed, Efron et al.
+4have used the term “local FDR” to refer
+to the PEP). Whereas the FDR measures the error rate associ-
+ated with a collection of PSMs, the PEP measures the prob-ability of error for a single PSM. Equivalently, the PEP measuresthe error rate for PSMs with a given score x. In practice, a given
+data set will contain only a single PSM with a particular score,so the PEP must be estimated using a model.
+The relationship between PEP and FDR can be understood
+visually from Figure 1. The FDR is the ratio of B(the number
+of incorrect PSMs with score >x)t o( A+B) (the total number
+of PSMs with score >x). Note that Aand Bare areas of the
+distribution. The PEP, on the other hand, is a ratio of thecorresponding heights of the distribution: the number bof
+incorrect PSMs with score )xdivided by the total number ( a
++b) of PSMs with score )x. As pointed out by Choi et al.,
+2
+the FDR can be computed from the PEPs, because the expected
+number of incorrect PSMs in a given set is equal to the sum ofthe PEPs.
+A common statistical or machine learning approach to
+estimating posterior probabilities is to learn the parameters ofa probability model from a set of labeled training data, and touse the learned parameters to predict PEPs for all future testdata. With this approach, the PEP associated with a PSM withscore xwill always be the same, regardless of the data set in
+which the PSM occurs.
+One of the appealing features of PeptideProphet is its ability
+to adjust the PEP estimates on the basis of the current dataset. This was true of the original version of PeptideProphet,
+5
+and the accompanying articles describe several improvements
+to this component of PeptideProphet.1,2
+Which Score Is Better?
+Say that you have just ﬁnished running a mass spectrometry
+experiment, and you have used a database search program tomatch each spectrum to a peptide. You now need to choose apiece of software to assign statistical scores to each of thesePSMs. Assume that you have two choices: one program thatcomputes accurate q-values and one program that computes
+accurate PEPs. Which program should you choose?
+The answer depends upon what you plan to do with your
+results. PEPs and q-values are complementary, and are useful
+in different situations. The q-value estimates the rate of
+misclassiﬁcation among a set of PSMs. If you are interested indetermining which proteins are expressed in a certain cell typeunder a certain set of conditions, or if your follow-up analysiswill involve looking at groups of PSMs, for example, consideringall proteins in a known pathway, evaluating enrichment withrespect to Gene Ontology categories, or performing experi-mental validation on a group of proteins, then the q-value is
+an appropriate measure.
+If the goal of your experiment instead is to determine the
+presence of a speciﬁc peptide or protein, then the PEP is morerelevant. For example, imagine that you are interested indetermining whether a certain protein is expressed in a certaincell type under a certain set of conditions. In this scenario youshould examine the PEPs of your detected PSMs. Likewise,imagine that you have identiﬁed a large set of PSMs using aq-value threshold, and among them, you identify a single PSM
+that is intriguing. Before deciding to dedicate signiﬁcantresources to investigating a single result, you should examinethe PEP associated with that PSM. This is because, althoughtheq-value associated with that PSM may be 0.01, the PEP is
+always greater than or equal to 0.01. In practice, the PEP valuesfor PSMs near the q)0.01 threshold are likely to be much
+larger than 1%.
+Figure 2 shows the relationship between PEP and q-value
+for a real data set, a collection of 34 492 2 +fragmentation
+spectra derived from a yeast whole-cell lysate. Setting a PEPthreshold of 1% yields 1029 PSMs, but the estimated FDR ofthis set of PSMs is only 0.3%. Alternatively, setting a thresholdofq)0.01 yields 1978 PSMs. Thus, for this data set, switching
+from PEP to q-values yields 92% more identiﬁcations.
+It can be shown
+8that thresholding FDR or PEP are actually
+two equivalent ways of implicitly balancing the tradeoff be-
+tween false positives and false negatives. This tradeoff alsodepends upon the prior probabilities of being in one class orthe other, how different the distributions are between the nulland alternative hypotheses, and so forth. From this perspective,it should be clear why both PEP and FDR are important. Whilea PEP cutoff allows one to easily determine the tradeoffbetween false positives and false negatives (see Storey
+8for the
+speciﬁc formula to do this), the FDR allows one to quantify
+the overall quality of the discrimination procedure, particularlyfocusing on those PSMs that we call signiﬁcant.
+Pathological scenarios can be constructed where it appears
+that it is necessary to employ a PEP measure. One simpleexample is the case where 100 PSMs are called signiﬁcant. Atthe same time, PEP )0 for the 99 most signiﬁcant PSMs and
+PEP )1 for the 100th most signiﬁcant PSM. Calling all 100
+PSMs signiﬁcant leads to FDR )1%, which is perfectly
+Figure 1. Two complementary methods for assessing statistical
+signiffcance.Posterior Error Probabilities and False Discovery Rates perspectives
+Journal of Proteome Research Vol. 7, No. 01, 2008 41reasonable. However, if we had also employed PEP, we would
+know that the 100th most signiﬁcant PSM should not be calledsigniﬁcant.
+Although compelling, when one considers how the re-
+searcher utilizes FDR and q-values, this counter-example falls
+apart. A standard technique is to plot the number of expectedfalse positives versus the number of PSMs called signiﬁcant.This simultaneous use of q-values (i.e., considering all possible
+FDR levels without having to decide on one beforehand) hasbeen statistically justiﬁed.
+9Clearly, in the above case, we would
+see that zero false positives are expected when calling the top
+99 PSMs signiﬁcant and one false positive is expected whencalling the top 100 PSMs signiﬁcant. From this, it is easilydeduced that the 100th most signiﬁcant PSM is most likely afalse positive.
+Alternative scenarios can also be constructed where it does
+not sufﬁce to only employ the PEP measure. For example,suppose that a PEP threshold of 5% is employed. If all PEPvalues meeting this threshold are equal to 5%, then it can beshown that the FDR of the set of signiﬁcant PSMs is also exactly5%. However, if a range of PEP values exist, all the way from0% to 5%, then the FDR will actually be much smaller than5%. Thus, as pointed out by Choi et al.,
+2setting a threshold on
+the PEP also bounds the false-discovery rate. However, setting
+the threshold in this way is extremely conservative: selectingPSMs such that the PEP is less than 5% will generally producea much smaller list of PSMs than setting a q-value threshold
+of 0.05. If the goal is to understand properties of a set of PSMs,then the q-value is the correct metric to use.
+In general, it takes much additional work to verify all of the
+conditions required to calculate a PEP, and it is arguable thatthe necessary assumptions may never be true.
+10The amazing
+property of FDR is that it can easily be calculated in a
+nonparametric fashion based on standard p-values without ever
+having to invoke the more sophisticated Bayesian classiﬁcationtheory approach.
+11Shotgun proteomics with data-dependent acquisition is a
+high-throughput technology. The volume of data produced insuch an experiment is arguably more amenable to analysis ofgroups of results, rather than single measurements. For ex-ample, a common goal is to obtain sets of signiﬁcant PSMsthat show a biological signal of interest. In this context, it isimportant to obtain high-quality sets of PSMs; the FDR simplygives the level of noise in any set. As such, we believe that FDR-based metrics such as the q-value are likely to be the most
+widely applicable signiﬁcance scores for this type of data.
+What about p-Values and E-Values?
+The q-value is a relatively new signiﬁcance measure. More
+familiar to many people is the p-value, and some readers may
+be wondering how the two concepts are related. It is possible,given a set of decoy PSM scores, to compute a p-value for each
+target PSM, and we describe a procedure for doing this in theaccompanying article. However, the p-value is not corrected
+for multiple tests. Intuitively, if we search a very large collectionof spectra against a given sequence database, we should expectsome of the resulting p-values to be small, simply by chance.
+If we do not perform multiple testing correction, then oursigniﬁcance scores will be anticonservative, meaning that wewill erroneously assign statistical signiﬁcance to some examplesthat are not actually signiﬁcant.
+The simplest form of multiple testing correction is the
+Bonferroni correction. This correction says that, if you areaiming for a signiﬁcance threshold of 0.05 but you repeat yourtest 1000 times, then you should adjust your threshold to 0.05/1000 )0.00005. In a typical peptide identiﬁcation experiment,
+the effective number of tests is very large. If we can computethe distribution of our PSM score, then we can compute thep-value associated with a single PSM. However, we have to
+correct for the number of candidate peptides that the spectrumwas compared to, that is, the total number of database peptideswhose mass is within a speciﬁed range around the inferredprecursor mass of the spectrum. Furthermore, if we aresearching a large collection of spectra against the samedatabase, then we also have to correct for the total number ofspectra in our data set. A Bonferroni correction that takes intoaccount both of these factors, number of candidate peptidesand number of spectra, will be extremely conservative, and wewill end up identifying very few peptides.
+The E-value is an alternative method for multiple testing
+correction. E-values are computed by X!Tandem,
+12OMSSA,13
+and Mascot.14In these programs, the E-value calculation is
+essentially the converse of the Bonferroni correction. Rather
+than dividing the target signiﬁcance threshold by the numberof tests performed, the E-value is the product of the p-value
+and the number of tests. The E-value can be interpreted as the
+expected number of times that you would expect to observe aPSM with a score xby chance. If the signiﬁcance threshold is
+kept the same, then using E-values is exactly equivalent to the
+Bonferroni correction. Note, however, that the E-values re-
+ported by X!Tandem, OMSSA, and Mascot only correct for thenumber of candidate peptides, not the number of spectra inthe data set. In the context of a large collection of mass spectra;therefore, these E-values are anticonservative.
+Conclusion
+Figure 3 summarizes the relationship among various meth-
+ods for assigning signiﬁcance to a collection of PSMs. Using
+Figure 2. Relationship between q-value and posterior error
+probability. The ﬁgure plots the estimated q-value (green curve)
+and the estimated posterior error probability (blue curve) as afunction of the score threshold. A set of 34 492 2 +fragmentation
+spectra were searched using Sequest
+6against a database of yeast
+predicted open reading frames and separately against a shuffed
+version of the same database. The q-values were estimated using
+standard methods.3Inspired by Storey et al.,7PEPs were esti -
+mated by ﬁtting a piecewise linear curve to a histogram of logit-transformed empirical error rates.perspectives Käll et al.
+42 Journal of Proteome Research Vol. 7, No. 01, 2008unadjusted p-values is invalid. The other three methods,
+thresholding by q-value, PEP, or using a Bonferroni correction,
+are increasingly conservative. If the goal is to identify as manypeptides/proteins as possible in a statistically valid fashion,then the q-value is the metric of choice. However, the q-value
+is, fundamentally, a measure of error rate within a collectionof PSMs. It is therefore complementary to the PEP, whichmeasures the probability of error for a single PSM. Dependingupon whether you are looking at groups of PSMs or individualPSMs, you should choose the appropriate signiﬁcance score.
+Rejoinder. Several of the accompanying commentaries
+distinguish between searching a concatenated target-decoydatabase versus searching the two databases separately.
+15,16
+This distinction is somewhat misleading. As pointed out byFitzgibbon et al., after performing separate searches, it is trivialto perfom the target-decoy competition a posteriori. Con-versely, if we use database search software that allows reportingall PSMs, rather than just a few top PSMs, then the top-scoringtarget and decoy scores could be extracted from the output ofa concatenated search.
+The important distinction, in this context, is not how the
+search is conducted, but how the statistical signiﬁcance iscomputed from the resulting PSM scores. We use as a modelof the null distribution the complete set of decoy PSM scores.In contrast, the protocol of Elias and Gygi
+17uses the distribu -
+tion of decoy PSM scores that win the target-decoy competitionas a null model for the target PSM scores that win the target-decoy competition. While the target-decoy competition has anumber of promising attributes that are beyond the scope ofthis rejoinder, we have concerns that these data may notaccurately reﬂect the signiﬁcance of a database search result.In the target-decoy competition protocol, the null distributionis computed with respect to a set of spectra that is completelydisjoint from the spectra in the target distribution. It is not clearto us whether this is an accurate null model.
+Fitzgibbon et al.
+15describe the possibility of using a decoy
+database that is smaller or larger than the target database. An
+alternative strategy is to compute decoy PSMs for only a subsetof the spectra. In this case, the relative number of decoy PSMswould be included as a multiplicative factor in the FDRcalculation. Fitzgibbon et al. then argue convincingly that asmaller decoy database should be used when doing so wouldyield suffciently accurate FDR estimates. The converse is alsotrue. In particular, if a researcher is interested in identifying aset of identiﬁcations with an extremely low FDR, then a verylarge collection of decoy PSMs could be constructed bysearching each spectrum against multiple decoy databases. Thechoice of the number of decoy PSMs comes down to a tradeoffbetween desired accuracy of the signiﬁcance estimates versuscomputational expense. Note that standard methods do existfor estimating the error on FDR estimates,
+18allowing the
+researcher to make this choice in a principled fashion.
+Choi and Nesvizhskii16argue that the distinction between
+FDR and q-values may not be crucial. The q-value serves the
+same purpose for FDR as the p-value does for the false-positiverate (or type I error rate). To put this into a historical context,
+in the early days of hypothesis testing, Neyman and Pearsonsuggested that all hypothesis testing be done with a predeter-mined false-positive rate and the only result one should reportis whether the test is signiﬁcant or not. However, R. A. Fisherargued that a p-value is more informative and that the p-value
+should be reported instead. In looking at the scientiﬁc litera-ture, it is clear that the reporting of p-values has won this
+argument. Indeed, the p-value is the simplest implementation
+of monitoring the false-positive rate in a data-adaptive manner.The q-value serves this exact same purpose for FDR; it also
+allows the researcher to evaluate a list of signiﬁcant tests in anunbiased manner. We therefore believe that it is relevant for aresearcher to understand the distinction between FDR andq-values, in the same manner that we currently make a
+distinction between false-positive rate and p-values.
+Finally, we agree wholeheartedly with Choi and Nesvizhskii
+that, ultimately, mass spectrometrists should be interested incomputing statistical signiﬁcance at the level of protein iden-tiﬁcations, rather than at the level of individual spectra. Themethods that we describe can be applied at the protein level,modulo the considerations mentioned by Choi and Nesvizhskii.
+Acknowledgment. This work was supported by NIH
+awards R01 EB007057 and P41 RR11823.
+References
+(1) Nesvizhskii, A.; Choi, H. Semi-supervised model-based validation
+of peptide identiﬁcation in mass spectrometry-based proteomics.J. Proteome Res. 2008 ,7, 254–265.
+(2) Choi, H.; Ghosh, D.; Nesvizhskii, A. Statistical validation of peptide
+identiﬁcations in large-scale proteomics using target-decoy data-base search strategy and ﬂexible mixture modeling. J. Proteome
+Res. 2008 ,7, 286–292.
+(3) Käll, L.; Storey, J. D.; MacCoss, M. J.; Noble, W. S. Assigning
+signiﬁcance to peptides identiﬁed by tandem mass spectrometryusing decoy databases. J. Proteome Res. 2008 ,7, 29–34.
+(4) Efron, B.; Tibshirani, R.; Storey, J.; Tusher, V. Empirical bayes
+analysis of a microarray experiment. J. Am. Stat. Assoc. 2001 ,96,
+1151–1161.
+(5) Keller, A.; Nezvizhskii, A. I.; Kolker, E.; Aebersold, R. Empirical
+statistical model to estimate the accuracy of peptide identiﬁcationmade by MS/MS and database search. Anal. Chem. 2002 ,74, 5383–
+5392.
+(6) Eng, J. K.; McCormack, A. L.; Yates, J. R., III. An approach to
+correlate tandem mass spectral data of peptides with amino acidsequences in a protein database. J. Am. Soc. Mass Spectrom. 1994 ,
+5, 976–989.
+(7) Storey, J. D.; Akey, J. M.; Kruglyak, L. Multiple locus linkage analysis
+of genomewide expression in yeast. PLoS Biol. 2005 ,3, 1380–1390.
+(8) Storey, J. D. A direct approach to false discovery rates. J. R. Stat.
+Soc. 2002 ,64, 479–498.
+(9) Storey, J. D.; Taylor, J. E.; Siegmund, D. Strong control, conservative
+point estimation, and simultaneous conservative consistency offalse discovery rates: A uniﬁed approach. J. R. Stat. Soc., Ser. B
+2004 ,66, 187–205.
+(10) Dudoit, S.; Shaffer, J. P.; Boldrick, J. C. Multiple hypothesis testing
+in microarray experiments. Stat. Sci. 2003 ,18, 71–103.
+(11) Storey, J. D.; Tibshirani, R. Statistical signiﬁcance for genome-wide
+studies. Proc. Natl. Acad. Sci. U.S.A. 2003 ,100, 9440–9445.
+(12) Fenyo, D.; Beavis, R. C. A method for assessing the statistical
+signiﬁcance of mass spectrometry-based protein identiﬁcationusing general scoring schemes. Anal. Chem. 2003 ,75, 768–774.
+(13) Geer, L. Y.; Markey, S. P.; Kowalak, J. A.; Wagner, L.; Xu, M.;
+Maynard, D. M.; Yang, X.; Shi, W.; Bryant, S. H. Open massspectrometry search algorithm. J. Proteome Res. 2004 ,3, 958–964.
+(14) Perkins, D. N.; Pappin, D. J. C.; Creasy, D. M.; Cottrell, J. S.
+Probability-based protein identiﬁcation by searching sequencedatabases using mass spectrometry data. Electrophoresis 1999 ,20,
+3551–3567.
+Figure 3. Methods for assigning statistical signiﬁcancePosterior Error Probabilities and False Discovery Rates perspectives
+Journal of Proteome Research Vol. 7, No. 01, 2008 43(15) Fitzgibbon, M.; Li, Q.; McIntosh, M. Modes of inference for
+evaluating the conﬁdence of peptide identiﬁcations. J. Proteome
+Res. 2008 ,7, 35–39.
+(16) Choi, H.; Nesvizhskii, A. I. False discovery rates and related
+statistical concepts in mass spectrometry-based proteomics. J.
+Proteome Res. 2008 ,7, 47–50.
+(17) Elias, J. E.; Gygi, S. P. Target-decoy search strategy for increased
+conﬁdence in large-scale protein identiﬁcations by mass spec-trometry. Nat. Methods 2007 ,4, 207–214.(18) Huttlin, E. L.; Hegeman, A. D.; Harms, A. C.; Sussman, M. R.
+Prediction of error associated with false-positive rate determina-tion for peptide identiﬁcation in large-scale proteomics experi-ments using a combined reverse and forward peptide sequencedatabase strategy. J. Proteome Res. 2007 ,7, 392–398.
+PR700739Dperspectives Käll et al.
+44 Journal of Proteome Research Vol. 7, No. 01, 2008

@@ -12,7 +12,8 @@ def count_files_in_top_level_directories(cwd=None):
         item_path = os.path.join(cwd, item)
         if os.path.isdir(item_path):  # Check if the item is a directory
             # Count the number of files in this top-level directory
-            file_count = sum([len(files) for r, d, files in os.walk(item_path) if r == item_path])
+            #file_count = sum([len(files) for r, d, files in os.walk(item_path) if r == item_path])
+            file_count = len([f for f in os.listdir(item_path)])
             file_counts[item] = file_count
 
     return file_counts
@@ -24,6 +25,7 @@ def compute_stats():
     #st.dataframe(co)
     statlist['Raw PDFs']=co['raw_pdf']  
     statlist['Processed PDFs']=co['processed_pdf']
+    statlist['PDF Text']=co['pdf_txt']
     statlist['Raw References']=co['raw_references']
     statlist['Downloaded Refs']=co['downloaded_ref']
     statlist['Errored Refs']=co['errored_ref']

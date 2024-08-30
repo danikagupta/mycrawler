@@ -1,0 +1,1533 @@
+The establishment of variant surface glycoprotein  monoallelic 1 
+expression revealed by single -cell RNA -seq of Trypanosoma 2 
+brucei  in the tsetse fly salivary glands.  3 
+ 4 
+Authors: Sebastian Hutchinson1*, Sophie Foulon2, Aline Crouzols1, Roberta Men afra2, Brice 5 
+Rotureau1, Andrew D. Griffiths2, Philippe Bastin1  6 
+ 7 
+1. Trypanosome Cell Biology Unit and INSERM U1201, 25 -28 Rue du Dr Roux, Institut 8 
+Pasteur, Paris, France  9 
+2. Laboratoire de Biochimie, CBI, ESPCI Paris , Universit é PSL , CNRS  UMR 8231 , 10 
+75005 Paris, France  11 
+ 12 
+ 13 
+*Corres pondence: Sebastian Hutchinson,  sebastian.hutchinson@pasteur.fr  14 
+  15 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Abstract  16 
+ 17 
+The long and complex  Trypanosoma brucei development in the tsetse fly vector culminates 18 
+when parasites gain mammalian infectivity in the salivary gland s. A key step in this process  is 19 
+the establishment of monoallelic variant surface glycoprotein ( VSG ) expression and the 20 
+formation of the VSG coat. The e stablishment  of VSG  monoallelic expression is  complex  and 21 
+poorly understood,  due to the multiple parasite stages present in the saliv ary glands. 22 
+Therefore,  we sought to further our understanding of this phenomenon by performing  single - 23 
+cell RNA -sequencing  (scRNA -seq) on these trypanosome populations . We were able to 24 
+capture the developmental program of trypanosomes in the salivary glands , identifying  25 
+populations of  epimastigote, gamete, pre -metacyclic and metacyclic cells. Our results show 26 
+that parasite metabolism is dramatically remodeled during development in the salivary glands , 27 
+with a shift in transcript abundance  from tricarboxylic a cid metabolism to glycolytic metabolism. 28 
+Analysis of VSG gene expression in pre-metacyclic and metacyclic cells  revealed  a dynamic 29 
+VSG gene activation  program . Strikingly,  we found  that pre -metacyclic  cells contain transcripts 30 
+from multiple VSG  genes, whic h resolves to singular VSG  gene expression in mature 31 
+metacyclic cells. Single molecule RNA  fluorescence in situ  hybridisation (smRNA -FISH)  of 32 
+VSG  gene expression following in vitro  metacyclogenesis confirmed this finding.  Our data 33 
+demonstrate that  multiple  VSG  genes are transcribed before a single gene is chosen. We 34 
+propose a transcriptional race model govern s the initiation of  monoallelic expression.  35 
+  36 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Introduction  37 
+African trypanosomes are single -cell flagellated parasites that cause Human African 38 
+Trypano somias es, and nagana in cattle  in sub -Saharan Africa . The parasite s have a digenetic  39 
+life cycle, cycling through a mammalian reservoir host and a tsetse fly ve ctor host. During t he 40 
+developmental phase in the fly , the parasite  progresses through multiple st ages before 41 
+acquiring mammalian infectivity in a process called metacyclogenesis in the salivary glan ds 42 
+(Rotureau an d Van Den Abbeele 2013) . Trypanosome  cells can be classified into multiple 43 
+stages grouped in two morphotypes: trypomastigote and epimastigote forms  (Figure 1 -figure 44 
+supplement 1) , defined by the relative positions of the nuclear and mitochondrial (kinetop last) 45 
+DNA within the cell  (Hoare and Wallace 1966) . Following a tsetse blood meal, the 46 
+trypomastigote stumpy -form parasites ingested from the blood rapidly differentiate into 47 
+trypomastigote procyclic form  (PCF) parasites which colonise the posterior midgut of the fly. 48 
+Procyclic tr ypanosomes elongate and migrate through the alimentary tract to reach  the cardia 49 
+(or proventriculus ), while differentiat ing into epimastigote forms.  50 
+After a first asymmetric division, e pimastigote  parasite s then migrate to the salivary 51 
+gland s where they a ttach to the epithelium via their flagellum and start proliferating  to colonise 52 
+it (Van Den Abbeele, Claes et al. 1999, Sharma, Peacock et al. 2008) . This population of 53 
+attached epimastigote  cells enter s another asymmetric division, producing trypomastigote pre- 54 
+metacyclic  cells which then mature further to produce free mammalian -infective metacyclic  55 
+cells that fill the lumen of the salivary glands and will be injected to the next host with the tsetse 56 
+saliva  (Rotureau, Subota et al. 2012)  (Figure 1 -figure supplement 1) . The two  mitotic c ell 57 
+divisions of attached epimastigote  cells, producing either an attached epimastigote or a pre- 58 
+metacyclic trypomastigote daughter cell  occur continuously and in paralle l during the entire life 59 
+of the tsetse, optimizing parasite transmission.  An additional heterogeneous parasite 60 
+population is found in the salivary glands , compos ed of meiotic cells and gametes (Peacock, 61 
+Ferris et al. 2011, Peacock, Bailey et al. 2014) . These processes lead to a heterogeneous 62 
+population of cells within the salivary glands.  RNA binding proteins appear to be  the key 63 
+regulators underpinning the trypanosome developmental program  (Kolev, Ullu et al. 2014) . For 64 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint instance,  ALBA3 restricts development in the cardia (Subota, Rotureau et al. 2011)  whereas 65 
+overexpression of  RNA binding protein 6  (RBP6 ) is sufficient to drive differentiation to infective 66 
+metacyclic  cells (Kolev, Ramey -Butler et al. 2012) .  67 
+In addition to the dramatic  remodeling described above, trypanosomes modulate their 68 
+energy metabolism in response to their specific environments (Smith, Bringaud et al. 2017) . In 69 
+the mammalian host , parasites utilize glucose as a primary carbon source to produce ATP 70 
+through the glycolytic pathway that is restricted in specialized organelles named glycosomes. 71 
+In contrast, in the tsetse fly midgut, parasites mostly use proline to feed the mitochondria l 72 
+tricarboxylic acid (TCA) cycle and oxidative phosphorylation pathways to produce ATP (review 73 
+in Smith, Bringaud et al. (2017) ).  74 
+A key step in  the metacy clogenesis  process is the establishment of monoallelic VSG  75 
+gene  expression  (Tetley, Turner et al. 1987) . African trypanosomes have an exclusively 76 
+extracellular lifecycle, meaning that in the mammalian host they are cont inually exposed to the 77 
+immune system. To evade humoral immune attack , the parasite covers  its surface in a 78 
+monolayer of 107 molecules of a single species of VSG protein which protects from 79 
+complement mediated lysis (Cross 1975, Mosser and Roberts 1982) . It is put under continuous 80 
+pressure to switch from the  adaptive  immune system, and the parasite evades this by antigenic 81 
+variation, a process of VSG  switching (Horn 2014) .  82 
+The epigenetic control of  monoallelic ex pression of VSG  genes underpins this antigenic 83 
+variation  (Duraisingh and Horn 2016) . Transcription of VSG s is highly structured; VSG genes 84 
+are always transcribed from a telomere proximal site known as a VSG -expression site ( VSG - 85 
+ES), by RNA polymerase I (RNA Pol I) (Zomerdijk, Kieft et al. 1991, Gunzl, Bruderer et al. 86 
+2003) . The genome has 19 bloodstream form VSG -ES which are polycistronic transcription 87 
+units, and 8 monocistronic metacyclic VSG -ES (mVSG -ES) (Hertz -Fowler, Figueiredo et al. 88 
+2008, Muller, Cosentino et al. 2018) . In addition, the trypanosome genome encodes several 89 
+thousand  silent  VSG  genes and gene fragments in a sub-telomeric archive which hugely 90 
+increases the antigen diversity availabl e for antigenic variation  (Berriman, Ghedin et al. 2005) . 91 
+The single active VSG -ES is transcribed from a  sub-nuclear organelle called the expression 92 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint site body (ESB), an extra -nucleolar RNA Pol I focus (Navarro and Gull 2001) . Transcription is 93 
+initiated at all VSG -ES, however only elongates over a single VSG -ES (Kassem, Pays et a l. 94 
+2014) . Maintenance of monoallelic VSG  expression depends on the VSG  Exclusion complex 95 
+(VEX) complex , which associat es with the ESB (Glover, Hutchinson et al. 2016, Faria, Glover 96 
+et al. 2019) , and  an mRNA trans -splicing locus , forming a transcription and splicing factory 97 
+(Faria, Luzak et al. 2021) . In addition, several  chromatin factors, including  the sheltrin 98 
+component  RAP1 and the histone chaperone CAF1 have been implic ated in  maintenance of  99 
+monoallelic expression (Yang, Figueiredo et al. 2009, Alsford and Horn 2012, Faria, Glover et 100 
+al. 2019) .  101 
+The establishment of monoallelic expression in metacyclic trypanosomes is relatively  102 
+poorly understood. Immunogold staining of salivary gland trypanosomes and double 103 
+immunofluorescence staining of in vitro  derived metacyclic parasites demonstrates that 104 
+monoallelic expression is established in the salivary glands of the tsetse  fly (Tetley, Turner et 105 
+al. 1987, Ramey -Butler, Ullu et al. 2015) . In bloodstream parasites, monoallelic expression can 106 
+undergo transcriptional switching events , where the active VSG -ES is switched off and a 107 
+previously silent on e is activated epigenetically  (Horn 2014) , requiring the re -establishment of 108 
+monoallelic expression. Analysis of BSF cells f ollowing a forced VSG -ES switch  showed that  109 
+transcription transiently increased at silent  VSG -ES prior to switching the active VSG-ES. This 110 
+was proposed as “probing” of silent VSG -ES before commitment to switching  (Aresta -Branco, 111 
+Pimenta et al. 2016) . Only one factor has so -far been linked to the establishment of monoallelic 112 
+expression; the histone methyltransferase DOT1b trimethylates H istone H 3 lysine 76 (Janzen, 113 
+Hake et al. 2006)  and is required to switch of f a previously active VSG -ES following the 114 
+establishment of a new active site (Figueiredo, Janzen et al. 2008) .  115 
+The limiting nature  and diverse cellular composition of salivary gland trypanosomes 116 
+has made these parasites  less experimentally  tractable  than in vitro  systems . These parasites 117 
+are not amenable to axenic culture (metacyclic cells are G0 arrested), and genetic 118 
+manipulation tools are not as well e stablished as  in culture d parasites.  We therefore applied a 119 
+single -cell RNA -sequencing  (scRNA -seq) approach  to salivary gland derived trypanosomes , 120 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint which overcomes many experimental boundaries through increased sensitivity and granularity  121 
+to address the la ck of resolution in  these cell types . Here , we dissect the architecture of 122 
+parasite development as they acquire mammalian infectivity in the salivary gland s using 123 
+inDrop . InDrop is a scRNA -seq technology wherein  single cells are co-encapsulated inside 124 
+nano liter droplets with single barcoded hydrogel microspheres (BHMs)  coupled to  barcod ed 125 
+cDNA primers  that hybridize to the 3’ poly(A) tail of mRNA  (Figure 1A), allowing  sequencing of  126 
+several thousand cells per experiment . Reverse transcription of mRNAs from e ach cell 127 
+generates cDNAs tagged with a unique barcode, specific to each cell, permitting the informatic 128 
+decomposition of single -cell transcriptomes  (Klein, Mazutis et al. 2015, Zilionis, Nainys et al. 129 
+2017) . 130 
+In thi s study, we first demonstrate d that trypanosomes are compatible with 3´ mRNA 131 
+barcoding using inDrop BHMs.  After having generated  single cell transcriptomes for cultured 132 
+bloodstream (BSF) and PCF trypanosomes , we performed inDrop with parasites from the 133 
+salivary glands. This revealed the presence of 4 cell clusters in the salivary glands, 134 
+corresponding to  1) attached epimastigote  cells, 2) gametes and meiotic  cells, 3) pre- 135 
+metacyclic trypomastigote  cells and 4) metacyclic parasites. We delineate d transcripto mic 136 
+changes to energy metabolism pathways, revealing a coherent developmental program in this 137 
+organ towards infectivity. Finally, we have perform ed the first analysis of the establishment of 138 
+monoallelic VSG expression in vivo . We show that the establishmen t of monoallelic expression 139 
+is a two -step process, where pre -metacyclic cells first initiate expression of multiple mVSG  140 
+transcripts , followed by monoallelic expression in metacyclic parasites.  We further validated 141 
+this finding by an orthogonal method,  employing smRNA -FISH with parasites undergoing 142 
+metacyclogenesis in vitro .  143 
+  144 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Results  145 
+Assessment  of single -cell RNA -seq using  inDrop  applied t o Trypanosoma brucei  146 
+To test whether trypanosomes would not be visibly stressed by the inDrop  pipeline, we 147 
+monitored  the survival and RNA metabolism using  ALBA3  and DHH1 as markers for cellular 148 
+stress  in procyclic form (PCF) cells , in conditions which mimic the inDrop protocol . Following 149 
+starvation in PBS for 2 h  at 27 °C, ALBA3 and D HH1 form RNA granules  in the cytoplasm  150 
+(Subota, Rotureau et al. 2011) , however when cells are placed on ice  for 2h in phosphate 151 
+buffered saline , no RNA  granule  formation was observed ( Figure 1 -figure supplement 2A). In 152 
+addition, c ells remained alive based on their motility after returning them to 27°C SDM -79 153 
+medium (97 %  untreated  and 94 %  2h PBS)  (Figure 1 -figure supplement  2B), indicating  that 154 
+they are not visibly stressed in the conditions required for inDrop .  155 
+ We first characterized the performance of the inDrop  pipeline with cultured  Antat1. 1E 156 
+PCF trypanosomes expressing EP (Glu-Pro) / GPEET  (Gly-Pro-Glu-Glu-Thr) repeat containing 157 
+procyclins . T. brucei  mRNAs are poly -adenylated and therefore compatible with priming of 158 
+cDNA synthesis using  poly(T)VN, so we began by performing ‘bulk’ experiments using  a primer  159 
+containing  a T7 promoter  for cDNA amplification by in vitro  transcription (IVT) , an Illumina 160 
+sequencing adaptor , a single inDrop cell barcode, unique molecular identifiers UMI (Islam, 161 
+Zeisel et al. 2014)  and a poly(T)VN sequence for mRNA capture  (see Materials and Methods) . 162 
+Library sequencing revealed that the majority of barcoded cDNA s corresponded to the 163 
+annotated  3´-end of transcripts, as expected  (Figure 1 B). We therefore proceeded to single 164 
+cell barcoding of trypanosomes. We mixed cultured BSF and PCF trypanosomes (47.5 % 165 
+each) with Ramos cells  (5%) , a human B-cell line derived fro m Burkitt’s lymphoma  (Klein, 166 
+Giovanella et al. 1975)  as a positive control.  The inclusion of Ramos cells also allows us to 167 
+estimate the amount of ambient RNA within the cell suspension which is detec ted by inDrop.  168 
+We constructed  a sequencing library, and generated 77.4 million  reads . To facilitate the use 169 
+of trypanosome genomic sequences for which no reference strain is available, we developed 170 
+a bespoke analysis pipeline to create a count matrix (see Materials and Methods). After 171 
+processing the reads with this pipeline, we u sed the Seurat and single cell transform (SCT) R 172 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint package s for data analysis (Butler, Hoffman et al. 2018, Hafemeister and Satija 2019, Stuar t, 173 
+Butler et al. 2019)  and determined that the transcriptomes of 1,979 cells  were captured , with 174 
+an average of 2,195 UMIs and 1,347 genes per cell. The emulsion contained approximately 175 
+4,900 cells, suggesting that we recovered approximately 40 % of the ce lls through inDrop. 176 
+Dimensionality reduction using the  Uniform Manifold Approximation and Projection  (UMAP ) 177 
+algorithm  (L McInnes, J Healy et al. 2018)  revealed  three clusters which corresponded to the 178 
+three  expected  cell types  in appro ximately  the expected proportions  (Figure 1 C), with 164 (8%) 179 
+Ramos cells, 809 (41%) procyclic cells and 1,006 (51%) BSF cells. Within clusters, we 180 
+detected an average of 1,932 UMI s and 1,211  genes for BSF , 2,268 UMI s and 1,258 genes  181 
+for PCF cells  and an av erage of 3,447 UMI s and 2,627 genes  in Ramos cells  (Figure 1 D). 182 
+Each trypanosome cell has between 20,000 -40,000 mRNA  molecules  per cell  (Haanstra, 183 
+Stewart et al. 2008)  therefore these data are consistent with an mR NA capture efficiency 184 
+between 4.8 % and 11.3 %, similar to the 7. 1 % reported by  Klein, Mazutis et al. (2015) . We 185 
+next plotted percentage of human and trypanosome UMI s for each barcode (Figure 1 -figure  186 
+supplement 2 C). This revealed that human barcodes contained higher proportions of 187 
+trypanosome UMIs than the converse. We hypothesized that this was potentially due to 188 
+trypanosome cell fragility which leads to release of trypanosome mRNAs from lysed cells . We 189 
+therefore  modified our protocol to maintain cell suspensions on ice until the moment they are 190 
+encapsulated (see Materials and Methods).  191 
+Marker gene analysis for each cluster revealed significantly differentially expressed 192 
+genes , corresponding to the known biology of each respective cell type . In the BSF cluster, 193 
+marker genes included  surface proteins  such as the active VSG -2 (Tb427.BES40.22)  (Figure 194 
+1E), GRESAG 4  (Tb927.7.6080 ), ISG65  (Tb927.2.3270 ), and GPI-PLC (Tb927.2.6000) , as 195 
+well as transcripts involved in the glycolytic pathway, such as AOX  (Tb927.10.7090 ), ALD 196 
+(Tb927.10.5620 ), and PYK1  (Tb927.10.14140 ), for example . The PCF cluster markers 197 
+included the procyclic surface markers EP1 (Tb927.10.10260 ) (Figure 1 E), EP2 198 
+(Tb927.10.10250),  GPEET  (Tb927.6.510 ) and PARP A /EP3 -2 (Tb927.6.450 ), the elect ron 199 
+transport chain component COXIV  (Tb927.1.4100 ), an amino acid transporter  (AAT10 -2) 200 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint (Tb927.8.8300), the RNA binding protein UBP2  (Tb927.11.510 ) and HSP90  201 
+(Tb927.10.10980 ), all of which are seen to be up-regulated in PCF using  bulk RNA -seq (Siegel, 202 
+Hekstra et al. 2010) . In the Ramos cluster , markers included  genes such as  immunoglobulin 203 
+lambda constant 3 ( IGLC3 ) (Figure 1 E) and prothymyosin alpha ( PTMA ), as expected . These 204 
+data correspond with known biology from bulk transcripto mics experiments and therefore 205 
+demonstrate that inDrop  is capable of single -cell analysis of trypanosome transcripts.  206 
+  207 
+Single -cell analysis of trypanosome  salivary gland transcriptomes  using inDrop  208 
+ We next proceeded to single -cell barcoding of trypanoso mes from tsetse fly salivary 209 
+glands. We  infected cages of 50 teneral (1-2 days post -eclosion) male tsetse flies with in vitro 210 
+generated stumpy -form Antat1.1 E (EATRO1125)  T. b. brucei  and recovered salivary gland 211 
+parasites by dissection 28 days post infecti on. We obtained 4.6 x104 parasites from a total of 212 
+72 dissected flies (Figure 2 -figure supplement 1 ). We then generated and sequenced single - 213 
+cell barcod ed libraries  (Figure 2 -figure supplement 2A ), and developed an optimized 214 
+bioinformatic pipeline for T. brucei , recovering data for  2,279 cells  from two technical replicates 215 
+(Figure 2 and Figure 2 -figure supplement 2B ), detect ing an average of 959 UMIs per replicate  216 
+(Figure 2 -supplement 2B ). As no genome sequence is available for the Antat1.1 strain  used 217 
+here, we identified VSG genes expressed in the salivary gland s by the Antat1.1 strain by 218 
+aligning reads to the VSG nome for Antat1.1 E (EATRO1125)  (Cross 2017) . We then selected 219 
+the top 8 sequences, in line with the reported number of mVSG -ES in the Lister -427 strain  220 
+(Muller, Cosentino et al. 2018) .  221 
+ We used the Seurat R package to analyze our technical replicates  (Butler, Hoffman et 222 
+al. 2018, Hafemeister and Satija 2019) . Count matrices were compiled from all aligned reads, 223 
+except for VSG  genes, where we used a stringent mapping quality  (MapQ40) , to avoid mis - 224 
+aligned reads being spuriously counted . We next examined several technical aspects of 225 
+inDrop, Firstly, we examined the background from ambient RNA by looking at the detection 226 
+rate in a cluster of Ramos cells, which were incorporated into our  experiment . These data 227 
+show ed that we d id not detect more than 2 mVSG  UMIs per barcode in Ramos cells (Figure 228 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint 2-figure supplement 3A). We therefore applied a >2 UMI cutoff for our mVSG  analyses below . 229 
+We established the percentage of stringently aligned reads (mapping quality >40) in our data. 230 
+This showed improvement over our in vitro data, with two distinct clusters of cells for human 231 
+and trypanosome UMIs (Figure 2-figure supplement 3B). We next considered whether 232 
+sequencing errors could contribute to barcode switching. Our bioinformatics pipeline permits 233 
+up-to two errors per cell barcode, so we compared the edit distance between all cell barcodes 234 
+in our study. The mean editing distance between barcodes was 11.4 nt, and only 0.017 % of 235 
+barcode pairs were within an editing distance of 2 (Figure 2-figure supplement 3C). These 236 
+parameters allowed us to effectively estimate the noise for our downstream analyses.  237 
+Following data preprocessing and integration of the technical replicates, we visualized 238 
+the datasets using UMAP projections (L McInnes, J Healy et al. 2018) (Figure 2A). Clustering 239 
+identified 5 clusters (Figure 2B), whose developmental state could be identified using known 240 
+marker genes (Figure 1E). EP1 Procyclin (Tb927.10.10260) is a surface protein found in 241 
+midgut forms (Roditi, Carrington et al. 1987), and its transcript can also be detected in salivary 242 
+gland parasites (Urwyler, Studer et al. 2007). Brucei alanine-rich protein (BARP, 243 
+Tb927.9.15640) is a surface protein present in attached epimastigote parasites (Urwyler, 244 
+Studer et al. 2007). Metacyclic VSG expression is a marker for metacyclic cells (Rotureau, 245 
+Subota et al. 2012), and VSG -393 is the most abundant VSG  transcript expressed in our 246 
+dataset. RBP6 (Tb927.3.2930) is an RNA binding protein which drives developmental 247 
+progression to infectivity in salivary glands, and is found in epimastigote forms in the salivary 248 
+glands (Kolev, Ramey-Butler et al. 2012, Vigneron, O'Neill et al. 2020). Calflagin is a flagellar 249 
+calcium binding protein whose expression is up-regulated in pre-metacyclic and metacyclic 250 
+forms (Rotureau, Subota et al. 2012). Finally, HAP2 (Tb927.10.10770) is a membrane- 251 
+membrane fusion protein found conserved in nature and expressed in the gametes of many 252 
+species (Figure 2C) (Fedry, Liu et al. 2017). Further evidence from bulk transcriptomics of 253 
+midgut, cardia (proventriculus) or salivary gland tissues (Kolev, Ramey-Butler et al. 2012) were 254 
+used to identify midgut forms. Of the 226 marker genes identified for the midgut forms cluster 255 
+in our inDrop data, 82.3 % of genes were maximally expressed in the midgut samples of bulk 256 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint trans criptomics  (Kolev, Ramey -Butler et al. 2012) , further supporting this annotation . In total , 257 
+we identified 142 midgut forms, 296 attached epimastigote  cells, 280 gametes, 317 pre - 258 
+metacyclic and 1,244 metacyclic cells.  These data indica te that we are able to capture single 259 
+cell transcriptomes of these salivary gland parasites, and identify cell states from these 260 
+transcriptomes, using inDrop . 261 
+ 262 
+Metabolic transcript analysis reveals dramatic remodeling during metacyclogenesis  263 
+ To further ou r understanding of developmental changes in the salivary glands, we 264 
+assessed the expression of glycoly sis and TCA cycle genes expressed in the transcriptomes  265 
+of parasites  from the salivary glands . Our analysis reveals that parasites remodel the 266 
+expression of metabolic enzymes during differentiation to metacyclic cells (Figure 3, and 267 
+Figure 3 -figure supplement 1 ). We were able to assess the expression changes for 12 268 
+glycolysis enzyme transcripts and 7 TCA cycle transcripts (Figure 3A). We observed a 269 
+common e xpression profile for most  genes  at the cluster  (Figure 3B and Figure 3 -figure 270 
+supplement 1) and single cell level (Figure 3C) . Glycolytic enzymes increased in their 271 
+expression between pre -metacyclic and metacyclic clusters, with hexokinase ( HK1, 272 
+Tb927.10. 2010) and ATP-dependent 6 -phosphofructokinase  (PFK, Tb927.3.3270) being clear 273 
+examples of this. We observed a decline in TCA cycle enzyme expression during 274 
+metacyclogenesis, with pre -metacyclic cells positioned as a clear intermediate stage between 275 
+epimast igote forms (Attached and Gametes) and metacyclic  cells. For instance,  aconitase  276 
+(ACO , Tb927.10.14000) and glycosomal isocitrate dehydrogenase (IDH, Tb927.11.900) both 277 
+decrease from their peak expression in attached epimastigote  cells to their lowest in me tacyclic  278 
+parasite s with pre-metacyclic  cells as intermediate s. This indicate s that the data clustering is 279 
+indeed reflecting the true developmental progression of these cells, consistent with previous 280 
+electron microscopy observations on glycosomal and mitoc hondrial remodeling during this 281 
+development  (Tetley and Vickerman 1985, Kolev, Ramey -Butler et al. 2012) .  282 
+ 283 
+Identification of a putative gamete cluster  284 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint  A subpopulation of trypanosomes undergo es meiosis I and II in  the salivary gland s, 285 
+producing gamete  cells that can recombine  sexually (Peacock, Ferris et al. 2011) . HAP2  286 
+expression has not been previously profiled during parasite development in the salivary gland s. 287 
+In our data, e xpression  of HAP2  was significantly upregula ted in gamete  cells compared to the 288 
+other clusters  (average log2 FC 0.74, detected in 82.5 % gamete  cells and 36.6 % cells in 289 
+other clusters , adjusted p.val = 0.  9.75 x 10-50, neg ative binomial test, Supplementary table 1) . 290 
+Additionally, and unexpectedly , BARP  expression was significantly reduced in these cells  291 
+compared to gamete cells  (average log2 FC -0.83, detected in  94.6 % attached epimastigote  292 
+cells and  61.1 % gamete  cells, adjusted p.val = 9.68 x 10-36, negative  binomial test) and EP1 293 
+procyclin  expre ssion up -regulated ( average log2 FC 1.45, detected in 58.1% and 87.5% of 294 
+attached epimastigote  cells and gamete cells, respectively, adjusted p.val = 3.26 x 10-56), 295 
+potentially explaining the presence of these transcripts in previous studies  (Urwyler, Studer et 296 
+al. 2007) . We also detected a significant up -regulation of  the game tocytogenesis marker  HOP1  297 
+(Tb927. 10.5490)  (Peacock, Ferris et al. 2011)  in this cluster  compared to the other clusters 298 
+(average log2 FC 0.80,  detected in 7.5 % gamete cells and 1.8 % cells in other clusters, 299 
+adjusted p.val = 1.54 x 10-4). These data therefore support the assignment of gamete cel ls to 300 
+this cluster.  301 
+ Attached epimastigote  cells undergo asymmetrical division to produce one attached 302 
+epimastigote daughter and one pre -metacyclic trypomastigote daughter (Rotureau, Subota et 303 
+al. 2012) . We examined these cells in more detail (Figure 4A). We searched for cells 304 
+expressing the histones ( H1 Tb927.11.1800, H2A Tb927.7.2820, H2B Tb927.10.10460, H3 305 
+Tb927.1.2430 and H4 Tb927.5.4170), as a p roxy for S -phase cells (Ersfeld, Docherty et al. 306 
+1996), and discovered two sub -clusters of cells expressing these transcripts (Figure 4B). To 307 
+investigate this more quantitatively , we sub -divided the S -Phase cluster and assessed the 308 
+marker genes expressed in these clusters (Figure 4 C). This revealed that BARP and the set 309 
+of 5 canonical histones were significantly associated with the “BARP -S” cluster. HAP2  was 310 
+significantly associated with both clusters, albeit more strongly with the HAP2 -S cluster  311 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint (Supplementary table 2) . The presence of these two clusters  raises the questions as to 312 
+whether there are two potential modes of development in the salivary glands.  313 
+ 314 
+Establishment of mVSG  monoallelic expression  315 
+ VSG  protein  expression is initiated during pre -metacyclic to metacyclic differentiation  316 
+(Tetley and Vickerman 1985, Rotureau, Subota et al. 2012) . Consistent with this, o ur data 317 
+revealed, as expected, the presence of very  few mVSG  UMIs in attached epimastigote  cells 318 
+with 85% of cells containing no detectable mVSG  transcripts, compared to pre -metacyclic and 319 
+metacyclic  clusters  (Figure 5 -figure supplement 1 ). Using our Ramos cell data to estimate the 320 
+amount of ambient RNA  in the cell suspension  detected by inDrop, we found that attached 321 
+epimastigote cells  contain ed more mVSG  UMIs on average than Ramos cells , where the se 322 
+gene s are  not present  (3.36 vs 0.19 UMI s per cell, respectively) , suggesting that there is some 323 
+transcription of these loci, consistent with ubiquitous transcription initiation from RNA -Pol I 324 
+promoters (Kassem, Pays et al. 2014) . We observed an increase in the average number of 325 
+mVSG  UMIs per cell as parasites proceeded through their developmental program (Figure 5 - 326 
+figure supplement 1), increasing from a mean of 3.36  UMIs in attached epimastigote cells to 327 
+10.0 UMIs and 21.7 UMIs in pre -metacyclic  and metacyclic cells , respectively.  328 
+We next assessed the  diversity of  mVSG  expression during the differentiation process . 329 
+Plotting the expression profile of individual pre-metacyclic cells  showed that the majority of 330 
+cells in this cluster express multiple different mVSG  genes (Figure 5A). We quantified the 331 
+number of different mVSG  genes expressed  per cell (i.e. the diversity of UMIs per cell)  in cells 332 
+with more than 10 mVSG  UMIs. This revealed, strikingly, that pre -metacyclic cells express ed 333 
+up-to six different mVSG  genes . Multi-mVSG  gene expression  (UMI cutoff >2 ) was observed 334 
+in 86.7 % of cells , whereas only 13.3 % expressed a single mVSG  gene. (Figure 5B) . Following 335 
+differe ntiation to metacyclic form cells, however, mVSG  expression had resolved into a 336 
+monoallelic state  (Figure 5C) , where a single mVSG  gene was detected in 86.8 % of cells , 337 
+12.2 % contained two mVSG  genes and only 1 % expressed 3 genes types  (Figure  5D).  338 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint We queried whether the detection of multiple mVSG  genes in pre -metacyclic cells was 339 
+a function of sequencing depth for those barcodes, compared to metacyclic cells . We plotted  340 
+the number of VSG  detected per barcode against the number of aligned reads, stratifi ed by 341 
+cluster  (Figure 5 -figure supplement 2 ). This  revealed that rather than having higher aligned 342 
+read counts, the median aligned reads per barcode associated to pre -metacyclic cells was 343 
+lower than metacyclic cells, even when comparing metacyclic cells wi th a single  expressed  344 
+mVSG  to pre -metacyclic  cells expressing 6 mVSG  genes (2.2 x 104 vs 1.6 x 104 median aligned 345 
+reads, respectively) . These data show that it is highly unlikely that the detection of multiple 346 
+mVSG  transcripts per cell is artefactual due t o sequencing depth .  347 
+We sought to further validate our findings  by turning to previously published scRNA - 348 
+seq data of salivary gland trypanosomes using both a different trypanosome strain ; RUMP503 , 349 
+and a different technique, the 10xGenomics single -cell RNA -seq system (Vigneron, O'Neill et 350 
+al. 2020) . As the complete set of mVSG  genes was not available for this strain, we used Trinity 351 
+(Grabherr, Haas et al. 2011)  to assemble mVSG transcripts de novo  from bulk RNA -seq data 352 
+(Savage, Kolev et al. 2016) , and retained the 8 most abundant mVSG  genes for downstream 353 
+analysis. This allowed us to perform a detailed analysis of mVSG  expression in t hese data , 354 
+which was not possible previously . We reprocessed the scRNA -seq data set using our pipeline, 355 
+observing similar clusters to Vigneron, O'Neill et al. (2020)  (Figure 5 -figure supplement 3A,B) . 356 
+We identified  a cluster of pre -metacyclic cells, in which we detected multi -mVSG  gene 357 
+expression . In cells with more than 10 mVSG  UMIs, 71 % contained transcripts from multiple 358 
+VSG genes (12 cells) , compared to 29 % with one  mVSG  detected  (UMI cutoff >2)  (Figure 5 - 359 
+figure supplement 3 C). In the metacyclic cell cluster s, a single mVSG  gene was detected in 78 360 
+% of cells, and 22 % of cells expressed two  or more  mVSG  genes, with the majority (86 %) of 361 
+this subset expressing 2  mVSG  transcripts. This new finding is similar to our inDrop data,  362 
+where 87 % of pre -metacyclic cells expressed more than a single  mVSG . These new analyses 363 
+uncover that expression of multiple mVSGs  is a common precursor to monoallelic expression 364 
+in different  trypanosome strains in vivo . 365 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint  To formally demon strate the existence of cells expressing more than a single VSG  366 
+gene,  we performed  smRNA -FISH following in vitro  metacyclogenesis by overexpressing 367 
+RBP6 . This in vitro  process models  the establishment of monoallelic mVSG expression  in a 368 
+third strain, the  Lister 427 genetic background . Induction of RBP6 in PCF forms triggers 369 
+differentiation first to epimastigote forms, which then further differentiate to trypomastigote 370 
+forms, producing infective metacyclic forms which express a single mVSG  (Kolev, Ramey - 371 
+Butler et al. 2012, Ramey -Butler, Ullu et al. 2015) . This process therefore allows us to model 372 
+the initiation of mVSG  expression.  373 
+We overexpressed RBP6 in PCF cells using a tetracycline inducible system  374 
+(Trenaman, Glover et al. 2019) , and sampled cultures after 3, 4 or 5 days of induction. After 375 
+probing for VSG -397, VSG -531 and alpha tubulin  as a positive control, w e detected VSG 376 
+transcripts in ~5 % of cells (303 cells positive for VSG  out of a total of 6,452 ). Within  this 377 
+population, w e established 3 categories of cells: “VSG+ ”, where transcript numbers were 378 
+quantifiable  (193 cells) , “VSG++ ” where transcript numbers were too high to be quantif ied 379 
+accurately (but w here individual  transcripts were discernable)  (18 cells),  and “VSG+++ ”, where 380 
+individual transcripts were no longer discernable  (92 cells)  (for representative images see 381 
+Figure 6A , Supplementary table 3 ).  382 
+To visualize  the proportions of VSG -397 and VSG -531 transcripts p er cell , we 383 
+estimated the total number of mVSG  transripts per cell in VSG++ and VSG+++ cat egories . 384 
+BSF cells contain  on average 2,000 VSG  transcripts (Haanstra, Stewart et al. 2008) . Hence, 385 
+we set the number of tra nscripts in VSG+++ cells at 2,000, and VSG++ cells at 200  (an order 386 
+of magnitude between VSG+ and VSG++) per channel (i.e. if both VSG -397 and VSG -531 387 
+were “VSG++” , we estimate that cell contains 400 VSG transcripts). Cells were therefore  388 
+class ified as  VSG + with less than 200 transcripts, VSG++ with between 200 and 400 389 
+transcripts , and VSG+++ with 2000  transcripts or more . We then assessed  singular VSG gene 390 
+expression in each cell category: 30 % (58 cells) VSG+ cells contained transcripts from both 391 
+VSG -397 and VSG -531, directly demonstrating the presence of cells expressing two different 392 
+VSG  genes.  This proportion dropped to only 1 7 % (3 cells) among  VSG++  cells and 0 % in 393 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint VSG+++ cells, indicating that monoallelic expression is established as cells express a  larger 394 
+amount of mVSG  transcripts (Figure 6B ).  395 
+   396 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Discussion  397 
+Our data demonstrate  that the inDrop scRNA -seq approach is compatible with 398 
+investigation of gene expression in trypanosomes . Despite significant biological constraints 399 
+(limited access to multip le populations of parasites in low numbers), w e were able to delineate 400 
+the developmental progression of these parasites in the salivary glands, including the 401 
+identification of a gamete cluster.  In our hands, we detected  similar numbers of trypanosome 402 
+UMIs (~2,000 for cultured cells)  compared  to Ramos  cells (~3,500) , despite having a much 403 
+lower mRNA content per cell  (105 vs 104 for human and trypanosome cells, respectively ) 404 
+(Haanstra, Stewart et al. 2008) .  405 
+The gamet e cell cluster was characterized by a  significant upregulation of HAP2 , a 406 
+conserved membrane fusion protein required for gamete fusion in diverse organisms  (Fedry, 407 
+Liu et al. 2017) , and HOP1 , a component of synapto nemal complexes formed in the first 408 
+meiotic division (Peacock, Ferris et al. 2011) . We did not , however , observe statistically  409 
+significant changes in  other known marker genes of gametocytogenesis such as  SPO11 , 410 
+DMC1  or MND1  (Peacock, Ferris et al. 2011) , likely due the sensitivity of the inDrop . Our 411 
+analysis of the metabolic transcriptome remodeling indicate d that energy metabolism  in 412 
+attached epimastigote  cells is dependent on the production of ATP in the mitochondrion , 413 
+consistent with recent evidence from in vitro derived epimastigote  parasite s using the RBP6 414 
+overexpression system (Dolezelova, Kunzova et al. 2020) . The most dramatic transcriptome 415 
+remodeling was following asymmetrical  division of attached epimastigote, with  pre-metacyclic 416 
+cells as transition intermediate s in terms of metabolic remodeling  (Figure 3) . These data are 417 
+consistent with electron microscopy  evidence showing an increase in the number  and size  of 418 
+glycosomes  together with the reduction of mitochondrial branc hing in metacyclic cells 419 
+compared to attached epimastigote parasites (Tetley and Vickerman 1985, Kolev, Ramey - 420 
+Butler et al. 2012) .  421 
+ Our analysis of the establishment of monoallelic mVSG  expression has uncovered th at 422 
+this is a phased process, first involving the activation of multiple mVSG -ES, and second the 423 
+emergence of a single active mVSG -ES. Here , we present three independent lines of evidence 424 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint to support this finding. First, i n AnTat1.1E  (EATRO1125) parasites fr om tsetse salivary gland s, 425 
+our inDrop data  identif ied both metacyclic and pre -metacyclic cells , which allowed us to 426 
+evaluate the expression of mVSG  genes before monoallelic expression was established. 427 
+Second, 10xGenomics data from Vigneron, O'Neill et al. (2020)  using the RUMP503 strain  428 
+were re -analyzed . Vigneron, O'Neill et al. (2020)  concluded that each metacyclic cell 429 
+expressed a single mVSG , as our re -analysis concluded.  However, expression of multiple 430 
+mVSG  genes occurs before cells become metacyclic forms. The intermediate cell cluster 431 
+identified in their study  therefore  likely represents the pre -metacyclic cells in our re -analysis. 432 
+This analysis was only possible due to  the addition of de novo  assembled mVSG transcripts. 433 
+Third, we used  smRNA -FISH in an in vitro  metacyclogenesis model using the Lister 427 strain . 434 
+Taken together, our data from three strains  analyzed by  different techniques , strongly support 435 
+our conclusions . This triple set of experimental evidence supports a dynamic  process where 436 
+many genes are initially transcribed at a low level, and as expression levels increase, a single 437 
+gene emerges as the active VSG.  438 
+Metacyclic cells express a protein coat comprised o f a single VSG type (Ramey -Butler, 439 
+Ullu et al. 2015) , suggesting that the multi -mVSG  gene expression we observed is restricted 440 
+to the transcript level in pre-metacyclic cells. Indeed, immunogold electron microscopy (Tetley, 441 
+Turner et al. 1987) and immunofluorescence data (Rotureau, Subota et al. 2012) indicates that 442 
+pre-metacyclic cells do not have VSG  on their surface. According to the nomenclature from 443 
+Tetley and Vickerman (1985), VSG protein appears on the surface of nascent metacyclic cells, 444 
+a developmental stage between pre-metacyclic and metacyclic form cells. As no cell division 445 
+occurs between pre-metacyclic/nascent/metacyclic differentiation, these data suggest that 446 
+there is a temporal component to ensuring a single VSG coat which depends upon both the 447 
+time required to establish a single active locus and the differentiation from pre-metacyclic to 448 
+metacyclic cell.  No data is available on the duration of the transition from pre-metacyclic to 449 
+metacyclic cell, so it is not possible to estimate the rate at which a single mVSG -ES is chosen 450 
+in vivo. Evidence from VSG switching experiments in bloodstream forms indicates that new 451 
+VSG  proteins are detectable on the surface within 12 h of a switch (Pinger, Chowdhury et al. 452 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint 2017) , suggesting that the establishment  of monoallelic expression could occur within this time 453 
+frame . During the transition from BSF to PCF following a tsetse bloodmeal, the VSG coat is 454 
+removed and rep laced with procyclin. The appearance of procyclin mRNA precedes  the 455 
+appearance of protein by approximately 6h (Roditi, Schwarz et al. 1989) . If a similar delay 456 
+exists with BARP to mVSG coat remodeling, this could p otentially explain how parasites are 457 
+able to express a single VSG type in their mVSG coats. Nevertheless , the exact parameters 458 
+underlying these transitions remain to be determined . 459 
+In bloodstream form  cells, a single VSG  is transcribed from the active VSG -ES in the 460 
+ESB (Navarro and Gull 2001) . In metacyclic cells , the picture is less clear : RNA Pol I staining 461 
+indicated that no ESB is detected at this stage.  Metacyclic VSG -ES are much shorter than BSF 462 
+VSG -ES (~5 Kbp for mVSG -ES compared to ~60 Kbp  for BSF VSG -ES), therefore the absence 463 
+of an ESB in metacyclic  cells may be due to fewer  RNA Pol I  molecules  at these  loci (Ramey- 464 
+Butler, Ullu et al. 2015) . Inferring  from the characteristics of the bloodstream ESB, we can 465 
+speculate on nature of VSG  gene expression regulation in metacyclic cells. The ESB is a bi - 466 
+partite  nuclear body consisting of the mRNA trans -splicing machiner y and the actively  467 
+transcribed VSG -ES (Faria, Luzak et al. 2021) . VEX1 and VEX2 are markers of the ESB, and 468 
+their association with the ESB are key to the maintenance of VSG monoallelic expression.  469 
+Perturbation of e ither or both protein’s expression leads to dramatic failures in monoallelic VSG 470 
+expression control, with silent VSG -ES being transcribed and multiple VSGs expressed on the 471 
+surface (Glover, Hutchinson et al. 2016, F aria, Glover et al. 2019) . Pharmacological i nhibition 472 
+of transcription disperse s the VEX1  and VEX2  and RNA Pol I  foci (Glover, Hutchinson et al. 473 
+2016, Kerry, Pegg et al. 2017, Faria, Glover et al. 2019, Faria, Luza k et al. 2021) , suggesting 474 
+that the ESB  requires active transcription. These data lead to a  picture of the ESB as a 475 
+structure which emerges from, and is stabilized by transcription of a VSG  gene.  476 
+We propose a model for the establishment of monoallelic ex pression  in metacyclic cells  477 
+(Figure 7) where the  multi -mVSG  expression profiles observed in this study correlate to an 478 
+initial step in a “race ” between each mVSG -ES (Figure 7A) to obtain a sufficient level of 479 
+transcription (Figure 7B) which leads to  the down regulation  of other sites. We propose that 480 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint following asymmetric division of attached epimastigote  parasite s, pre -metacyclic cells begin 481 
+transcribing multiple mVSG -ES. This would likely in turn recruit VEX1 and VEX2 proteins to 482 
+these loci, triggering a positive feedback loop, where VEX proteins recruit the mRNA splicing 483 
+machinery, stabilize the ESB and drive further transcription. This could lead to suppression of 484 
+transcription at other mVSG -ES by depletion of these limiting factors , or by the previously  485 
+proposed “RNA silencing” , in which transcripts from the active VSG  silence transcription from 486 
+other VSG -ES (Glover, Hutchinson et al. 2016) .  487 
+We note a striking similarity between the dynamics controlling the establishment  of 488 
+monoallelic expression in both mVSG  and olfactory neuron OR gene choice  (Hanchate, 489 
+Kondoh et al. 2015) . In Metazoa , monoallelic expression underpins the expression of olfactory 490 
+receptors ( ORs). It is initiated during neuronal development in the olfactory bulb, and 491 
+establishment of monoallelic expression  is preceded by expression of multiple olfactory 492 
+receptors in early mature olfactory neurons (Hanchate, Kondoh e t al. 2015) . A combination of 493 
+DNA enhancer networks and an epigenetic trap , where the expression of an OR triggers a 494 
+feedback loop which inhibits further activation after the first gene,  establish ing a single active 495 
+OR. Here, during development of olfacto ry neurons, all OR genes are modified with 496 
+heterochromatic histone trimethyl marks H3K4me3 and H4K20me3 (Magklara, Yen et al. 497 
+2011) . The lysine demethylase LSD1 is then transiently expressed during development, 498 
+activating a single OR (Lyons, Allen et al. 2013) . A feedback signal triggered by OR expression 499 
+utilizing the misfolded protein response inhibits further OR gene activation (Dalton, Lyons et 500 
+al. 2013) .  501 
+Both systems have intermediate developmental stages where  transcripts from  multiple 502 
+mVSG/OR  genes are detected, which then resolve to monoallelic states. Further, the 503 
+establishment  of monoallelic expression of OR genes is dependent on the structured and 504 
+temporal control of histone methylation  (Magklara, Yen et al. 2011) . Similarly, in trypanosomes, 505 
+the histone methyltransferase DOT1B is required for strict control of mon oallelic expression 506 
+following a transcriptional switch  (Figueiredo, Janzen et al. 2008) . In BSF cells, ectopic 507 
+expression of a second VSG leads to silenci ng of the active VSG  that is dependent on DOT1B 508 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint (Batram, Jones et al. 2014) . In the race model, the mVSG -ES who lost the “race” for 509 
+transcription would be silenced in a DOT1B dependent manner following the initial race, 510 
+consistent with the two -stage process observed in BSF cells. These similarities suggest 511 
+common solutions to the problem of monoallelic expression which deserve further 512 
+investigation. Through both experimental data, and re -analyses of published data, we are able 513 
+to uncover the dynamics underlying the establishment of monoallelic VSG expression. Our 514 
+data provide a landscape to frame these future investigation s into the establishment of single 515 
+antigen expression in trypanosomes.   516 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Materials and methods  517 
+ 518 
+Tsetse fly infections and dissections  519 
+ Tsetse flies ( Glossina morsitans morsitans ) were maintained at 27°C and 70% 520 
+hygrometry in Roubaud cages, in groups of 50 male flies per cage. Teneral flies were infected 521 
+with Trypanosoma brucei  Antat1.1 E (EATRO1125)  during their first meal. Stumpy form 522 
+trypanosomes were resuspended at 106 cells per ml in SDM -79 (Brun and Schonenberger 523 
+1979)  supplemented with 10% FBS (dominique Dutscher ) and 60  mM N -acetylglucosamine 524 
+(Peacock et  al., 2006). Flies were allowed to feed on infected media through a silicone 525 
+membrane. Following infection, flies were then maintained until dissection by feeding  four 526 
+times per week  on sheep’s blood in heparin.  Flies were dis sected as described previously 527 
+(Rotureau, Subota et al. 2012) . All salivary glands were collected (uninfected and infected) in 528 
+trypanosome dilution  buffer on ice and midguts scored for the presence of trypanosomes. 529 
+Salivary glands were manually broken using tweezers before being passed through a 70 µm 530 
+cell strainer  (ClearLine)  to remove the salivary glands. Trypanosomes were counted on a 531 
+hemocytomete r and diluted to 9.4 x 104 cells per ml . The final concentration was reached by 532 
+adding 18 µL of  OptiPrep™ Density Gradient Medium  to 100 µL of cell suspension (final 533 
+concentration 15 % vol/vol)  immediately prior to encapsulation.  Cells were maintained on i ce 534 
+throughout this process.  535 
+ 536 
+Microscopy  537 
+ Live trypanosomes in SDM -79 (Brun and Schonenberger 1979)  were spread on glass 538 
+slides and imaged on a DMR microscope (Leica) equipped with a EMCCD camera (C -9100, 539 
+Hamamatsu). The camera was controlled using µManager and a plug in for Hamamatsu 540 
+cameras (Edelstein, Tsuchida et al. 2014)  and captured images were edited using Fiji is just 541 
+ImageJ (FIJI) (Schindelin, Arganda -Carreras et al. 2012) . For the viability assay, cells were 542 
+scored for motility in a hemocytometer using an inverted phase contrast microscope.  543 
+  544 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Cell Encapsulation  545 
+  InDrop emulsions were prepared as described in Zilionis, Nainys et al. (2017) . A 546 
+detailed protocol  compatible with the micr ofluidic designs described by Zilionis, Nainys et al. 547 
+(2017)  is available on ( 10.5281/zenodo.3974628 ). Monodisperse droplets were produced by 548 
+injecting the 3 aqueous phases consisting of the cells mix, RT and lysis mix and barcoded 549 
+beads mix, and a  fluorinated  oil phase  containing fluorosurfactant  into a microfluidic chip with 550 
+controlled flow rates, creating an emulsion . Polydimethylsiloxane  (PDMS) chips were 551 
+fabricated as previously described (Mazutis, Gilbert et al. 2013)  at the Institut Pierre -Gilles de 552 
+Gennes (IPGG) in Paris. After plasma bonding, chips were made hydrophobic by manual 553 
+injection of 2  % 1H,1H,2H,2H -perfluorodecyltrichlorosilane  (Sigma -Aldrich) diluted in HFE 554 
+7500 (3M Novec).   555 
+Three aqueous phases, respectively for the cells, reverse transcriptase/lysis and BHMs 556 
+(1CellB io) were prepared as follows ; the cell mix contain ed 100 µL of cells diluted at a 557 
+concentration of 9.4 x 104 cells per ml  in trypanosome dilution buffer (TDB) (5 mM KCl, 80 mM 558 
+NaCl, 1 mM MgSO 4, 20 mM Na 2HPO 4, 2 mM NaH 2PO 4, 20 mM glucose, pH 7.4)  supplement ed 559 
+with 18 µL Optiprep (1CellBio) . The RT mix contains 1.3 RT premix (1CellBio), 11 mM MgCl 2 560 
+(1CellBio), 6.9 mM DTT (Invitrogen), 1.13 U/µL SUPERase IN RNAse Inhibitor (Life 561 
+Technologies), 20.7 U/µL Superscript III ( SSIII ) (Invitrogen) and 1 µM DY -647 (Dyo mics), the 562 
+beads mix contains BHMs (1CellBio) packed in 1x Gel Concentration Buffer (1CellBio).  The 563 
+commercial BHMs  carry photocleavable barcoded primers, containing, in order, a T7 promoter 564 
+sequence  for IVT , an Illumina adaptor, a cellular barcode, a 6 nt  UMI and a 18TVN primer site, 565 
+as described (Zilionis, Nainys et al. 2017) . The closely packing of the BHBs allows 80-90% 566 
+loading of a single bead per droplet (Abate, Chen et al. 2009) . 567 
+The 1 ml s yringes (Omnifix) for the cells, reverse transcriptase/lysis and BHMs  were 568 
+loaded with mineral oil (Sigma -Aldrich) and connected to a 200 µL pipette tip  prefilled with 569 
+mineral oil  using ~30 cm  of polytetrafluoroethylene (PTFE ) 0.56 mm  tubing and a PDMS plug  570 
+connecting the tubing to the tip. Mineral oil was then ejected from the syringe until it entirely 571 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint filled the pipette tip  prior to aspiration of each aqueous phase . Each reagent was aspirated on 572 
+ice into the 200 µL pipette tips filled with mineral oil, just before encapsulati on. Cells were 573 
+maintained on ice throughout the procedure by placing the pipette tip holding the cells in ice. 574 
+A short length  (15 cm)  of PFTE 0.56 mm  tubing then connected this tube to the microfluidic 575 
+chip. The RT/lysis and BHB pipette tips were directly inserted into the PDMS chip, whereas 576 
+the tubing carrying cells from the pipette on ice was inserted  into the PDMS chip . The syringe 577 
+for the oil phase was filled with carrier oil ( HFE-7500 fluorinated oil (3M  Novec ) containing 2% 578 
+w/w 008 -FluoroSurfactant (R AN Biotechnologies) ) and connected to the PDMS chip by PFTE 579 
+0.56 mm tubing.  580 
+Droplet production and beads loading were followed using an inverted microscope 581 
+(Nikon Eclipse Ti) and High -Speed Camera (Phantom). Flow rates for droplet production were 582 
+controll ed with syringe pumps ( neMESYS 290N Low pressure Syringe Pump, Cetoni ). Droplets 583 
+size and frequency of production were  monitored using laser optics excitation and detection 584 
+and a soluble fluorophore DY -647 present in the droplets (Dyomics) as described  (Mazutis, 585 
+Gilbert et al. 201 3). Flow rates of 250  µL/h, 250  µL/h, 60-80 µL/h  and 400 -500 µL/h  for the 586 
+cells, RT/lysis and BHMs  and oil , respectively  were maintained . A 5 cm PTFE tubing (0.3 mm 587 
+inner diameter) connects the chip outlet to a 1.5 mL collection tube, prefilled with 300 µ L of 588 
+mineral oil . Emulsions were collected during 15 minutes on ice, corresponding to 589 
+approximately 4,000 drops containing both a cell and an d a BHM . 590 
+Generation  and sequencing of barcoded cDNA libraries  591 
+We made two minor alterations to the molecular biolog y workflow described by Zilionis, 592 
+Nainys et al. (2017) : Our protocol omits the RNA fragmentation step following IVT of double 593 
+stranded cDNA products, and we modified the primer used to reverse transcribe amplified RNA 594 
+(aRNA) to make our libraries compatible with  standard Illumina sequencing primers. These 595 
+alterations are unlikely to affect the overall performance of inDrop, however.  596 
+1. Recovery of first strand cDNA  597 
+Barcoded cDNA l ibraries were prepared according to the protocol by Zilionis, Nainys et al. 598 
+(2017)  with sm all exceptions. Following encapsulation and ultra violet primer release, 599 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint emulsions were incubated at 50°C for 2h and then 70°C for 15 minutes. Following reverse 600 
+transcription (RT), emulsions were partitioned into approximately 2,000 cells per partition 601 
+before breaking the emulsion by adding one drop (3µL) of 1H,1H,2H,2H -Perfluorooctanol  602 
+(Sigma -Aldrich)  (Zilionis, Nainys et al. 2017) . cDNA was then stored at -80°C until further 603 
+process ed. 604 
+ Post-RT material was thawed on ice and 20µL of dH 2O (nuclease free) was added and 605 
+the solu tion centrifuged at 16,000 g for 5 minutes at 4°C. The aqueous phase was then applied 606 
+to a 0.45 µm filter spin column (Corning CoStar Spin -X, Sigma -Aldrich ) to remove the BHMs . 607 
+The emulsion tube was then washed with 20µL dH 2O to collect as much cDNA as pos sible 608 
+and applied to the spin column. The column was centrifuged at 16,000 g for 5 minutes at 4°C. 609 
+The emulsion tube was washed once more and supernatant collected by centrifugation once 610 
+more.  611 
+2. Removal  of unused primers  612 
+ The volume of cDNA was estimated  and digested by adding 100 µL of digestion mix 613 
+(79 µL H2O, 9 µL 10x Fast Digest Buffer  (Thermo Scientific ), 5 µL ExoI (20 U/µL , NEB ), 7 µL 614 
+HinFI ( 10U/µL, Thermo Scientific )) per 70 µL of cDNA and digested at 37°C for 30 minutes. 615 
+Samples were then purified  by adding 1.2x volume of room temperature AMPure XP beads  616 
+(Beckman Coulter ), incubating 5 minutes  at room temperature, collecting the beads on a 617 
+magnet and then 3 washes with freshly prepared 80% ethanol (roo m temperature), followed 618 
+by air drying , accordi ng to the manufacturer’s instructions . cDNA was then eluted in 17 µL of 619 
+dH2O. 620 
+3. Second strand synthesis  621 
+ Second strand synthesis (SSS) was performed using the NEBNext Ultra II Non - 622 
+Directional RNA Second Strand Synthesis Module  (E6111S ). 2 µL of SSS buffer  and 1 µL of 623 
+SSS enzyme mix was added to 17 µL of cDNA and the reaction was incubated at 16°C for 624 
+2h30m in a PCR machine with the lid set to 16°C. cDNA was purified again using 1.2x AMPure  625 
+XP beads (as above) and eluted in 7µL of DNA elution buffer (Zilionis, Nainys et al. 2017 ). 626 
+4. In vitro  transcription and reverse transcription of amplified RNA (aRNA)  627 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint  Double stranded cDNA was then amplified using the HiScribe T7 Quick High Yield RNA 628 
+Synthesis Kit  (E20 50S). To the 8µL of double stranded cDNA, 10 µL of 10x NTPs buffer  mix, 629 
+2 µL of T7 enzyme  and 1  µL of SUPERase IN RNAse Inibitor (20  U/µL) . were added and the 630 
+reaction incubated at 37°C  with the lid set to 50°C  for 14 -16 hours. The size and concentration 631 
+of amplified RNA was verified using a BioAnalyzer RNA pico chip (Agilent) using the mRNA 632 
+pico program. Approximately 5 ng of aRNA was then reverse transcribed by adding 1  µL of 10  633 
+mM dNTPs, 2  µL of Rd2N6  (see primer list)  and dH 2O to 13  µL. The RT reaction was heated 634 
+to 70°C for 3 minutes and then put on ice for 1 minute. Finally , 4 µL of 5x  first strand  buffer, 1  635 
+µL of 0.1M DTT, 1  µL of SSIII (200  U/µL) and 1  µL of SUPERase IN  RNase inhibitor  (20U/µL) . 636 
+RT reactions were incubated for  5 minutes at 25 °C, followed by  1h at 50°C and heat inactivated 637 
+at 70°C for 15 minutes. cDNA was p urified by adding 20  µL of dH 2O then purified with 1.2  x 638 
+AMPure XP beads and eluted with 20  µL dH 2O. 10  µL of this was then stored at -80°C as a 639 
+pre-PCR backup.  640 
+5. Library PCR.  641 
+The remaining 10  µL of cDNA was used for the library PCR. Libraries were PCR a mplified 642 
+using KAPA HiFi HotStart ReadyMix (Kapa Biosystem, KK2601 ). 25 µL of PCR mix containing  643 
+12,5 µL of 2x  KAPA  HiFi Master mix,  10 µL of cDNA, together with 2.5 µL of 5 µM P5-Rd1 and 644 
+P7-Rd2 primers (final concentration of 500 nM). Library indices were  in the P7 -Rd2 primer . 645 
+Primer sequences are available in Supplementary table 4. The l ibraries were amplified using 646 
+the following protocol; initial denaturation 5 min at 95°C, then 2 cycles of denaturation 98°C / 647 
+20 s, annealing 55°C / 30s and extension 72° C / 40 s, followed by 10 cycles of denaturation 648 
+98°C / 20 s, annealing 65°C / 30 s and extension 72°C / 40 s and final extension 5 min at 72°C. 649 
+They were then size selected using 0.7x volume  of AMPure XP beads at room temperature 650 
+prior to quantification an d sequencing.  651 
+6. Library quantification and sequencing  652 
+ Libraries were quantified using the KAPA library quantification kit for Illumina  (Kapa 653 
+Biosystem, KK4824 ) according to the manufacturers’ protocol. Bulk libraries (Figure 1B) were 654 
+sequenced on the Ill umina MiSeq platform  with a MiSeq V3 150 cycle cartridge  at the Institut 655 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Curie . Single cell barcoding libraries were sequenced on the Illumina NextSeq platform at the 656 
+Institut Pasteur  using a Mid -output 150 cycle cartridge. Sequencing of single cell librar ies at 657 
+BGI was performed on the  MGIseq -2000  following conversion to DNBseq libraries (Senabouth, 658 
+Andersen et al. 2020) . Details of sequencing outputs including read lengths and number of 659 
+reads generated can be found in Supplementary table 5.  660 
+ 661 
+Trypanosoma brucei transcriptom e 662 
+We assembled a non -redundant transcriptome from the T . brucei TREU927 reference 663 
+strain  (Berriman, Ghedin et al. 2005) . As only 60% of the trypanosome transcriptome has 664 
+annotated 3´ UTRs, we decided to extend each  gene’s annotated 3´ extremity to the 5´ 665 
+extremity of the neighboring gene. This was done by a combination of scripted extension using 666 
+the following rules. 1. If the proceeding gene is on the same strand, and within 2.5 kbp, the 667 
+gene is extended to the bas e before the proceeding gene. 2. If the proceeding gene is over 668 
+2.5 kbp then the gene is extended to 2.5 kbp downstream. 3. If the gene already extended into 669 
+the proceeding gene, then no change was made. 4. Similarly if the proceeding gene is on the 670 
+opposi te strand, no extension was made. Following extension of the entire gene list, extended 671 
+transcripts were filtered using a non -redundant gene list (Alsford, Turner et al. 2011) .  672 
+ To obtain sequences of metacyclic VSG  genes expressed in the salivary glands, we 673 
+aligned our data to the VSGnome (inclu ding flanks) of the Antat1.1 E (EATRO1125) strain 674 
+made available by Cross (2017)  here (http://129.85.245.250/index.html), using bowtie2 675 
+(Langmead and Salzberg 2012)  and selecte d the top 8 gene most abundant transcripts. These 676 
+are Tbb1125VSG -1401  (Genbank: KX699657 ), Tbb1125VSG -1476  (Genbank: KX699716 ), 677 
+Tbb1125VSG -1654  (Genbank: KX699860 ), Tbb1125VSG -385 (Genbank: KX699226 ), 678 
+Tbb1125VSG -393 (Genbank: KX698711 ), Tbb1125VSG -4564  (Genbank: KX700928 ), 679 
+Tbb1125VSG -4862  (Genbank: KX701110 ), Tbb1125VSG -4959  (Genbank: KX701187 ).  680 
+ To this non -redundant transcriptome, we appended both a human transcriptome and 681 
+the G. morsitans morsitans  genome sequence  (International Glossina Genome 2014) . Our 682 
+inDrop library preparations included 5% human B -cells as a positive control for the inDrop 683 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint pipeline , and our bowtie2 index therefore contained the ENSEMBL release 85 human 684 
+transcriptome (Yates, Achuthan et al. 2020) . The alignment index was constructed with 685 
+bowtie2 -build  (Langmead and Salzberg 2012) . These files are available at 686 
+10.5281/zenodo.3974628 . 687 
+ 688 
+Generation and analysis of  bulk inDrop data  689 
+ Cultured procyclic form Antat1.1E (EATRO1125) trypanosomes w ere encapsulated 690 
+using a standard inDrop microfluidic chip, except we replaced BHMs  with a single primer , 691 
+T7Rd2_linkerPolyTvN  (Supplementary table 4). Libraries were generated as described by 692 
+Zilionis, Nainys et al. (2017) , and as described for single cell BHMs  in this manuscript, except 693 
+we excluded stages relating to filtration of BHMs . Libraries were sequenced on a MiSeq at the 694 
+Institut Curie (Paris) next generation sequencing platform.  695 
+Bulk data were aligned to the trypanosome genome sequence using bowtie2 696 
+(Langmead and Salzberg 2012) , and resu lting bam files manipulated using samtools (Li, 697 
+Handsaker et al. 2009) . Metagene plots and heat maps were generated using deeptools2 698 
+(Ramirez, Ryan et al. 2016) . Gene coordinates used in the metaplot were the 5´and 3´splicing 699 
+and polyaden ylation signal sites (or start and stop codons if unannotated for a particular gene). 700 
+Bin size was set to 10 bp and the 500 bp region downstream from each gene are unscaled. 701 
+The gene list was filtered to a non -redundant set (Alsford, Turner et al. 2011) . 702 
+ 703 
+inDrop pre -processing pipeline  704 
+To permit m ore usability with bespoke genome sequences (no reference sequence is 705 
+available for the strain used  here for tsetse infections), w e generated a new  inDrop data 706 
+analysis pipeline for the analysis of trypanosomes, using bowtie2 and UMI-tools  (Langmead 707 
+and Salzberg 2012, Smith, Heger et al. 2017) , rather than bowtie and the inDrop analysis 708 
+pipeline (Klein, Mazutis et al. 2015) . Pre-processing of inDrop data was performed using the 709 
+UMI-tools package  (Smith, Heger et al. 2017) . A bash script is available at 710 
+(10.5281/zenodo.3974628 ) which performs all steps of the pre -processing. The script 711 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint exec utes 5 steps: 1. whitelist, 2. fastqsplitter, 3. extract, 4. align and 5. count. Whitelist 712 
+generates a list of acceptable barcodes , using a regular expression to pattern match the cell 713 
+barcode flanked by the common “W1” sequence (Klein, Mazutis et al. 2015, Zilionis, Nainys et 714 
+al. 2017)  permitting upto 6 errors in the W1, and requiring a string of 3 “T” nucleotides after the 715 
+UMI. We set the error correction threshold for barcodes at 2, and set the expected number of  716 
+cells at 2,000. We subset 106 reads to perform the whitelist step (these same filtering 717 
+parameters are maintained through our workflow).  Fastqsplitter breaks the read files into a 718 
+user-defined number of equal parts to allow downstream parallel processing.  Extract then 719 
+places the whitelisted cell barcodes from read 1 into the header of mRNA sequences in read 720 
+2, using the regex pattern matching parameters from whitelist . The script can initiate multiple 721 
+instances of extract to reduce the time required for th is stage. Align uses bowtie2 (Langmea d 722 
+and Salzberg 2012)  to align the reads to the hybrid trypanosome, human transcriptomes and 723 
+tsetse fly genome. Reads aligning to the tsetse genome were filtered out using samtools view 724 
+(Li, Handsaker et al. 2009) .  Finally count generates count matrices at mapping quality 0 and 725 
+40. Higher mapping stringency was used for VSG  counts to ensure accurate mapping.  726 
+ 727 
+Analysis of single cell RNA -seq data  728 
+ Single cell count matrices were analysed using the Seurat R package (Butler, Hoffman 729 
+et al. 2 018, Stuart, Butler et al. 2019) . Data were normalized using the single cell transform 730 
+algorithm (Hafemeister and Satija 2019) . Complete R scripts are available in 731 
+(10.5281/zenodo.3974628 ) to generate  all the figures  in the manuscript. Count t ables from 732 
+mapq 0 and mapq 40 matrices were merged into a single matrix by removing VSG counts with 733 
+mapq 0 and merging the mapq 40 counts to this reduced matrix. Valid b arcodes were filtered 734 
+by a minimum gene cut-off of 300. VSG UMI count data were extract ed using fetchData, 735 
+accessing the “counts” slot of the RNA assay.  736 
+To assess the sequencing depth, we employed data s ubsetting , as done previously by 737 
+Zhang, Li et al. (2019) . Data sets were subset using samtools and UMI totals per barcode 738 
+extracted in R , retaining only valid barcodes (R script on 10.5281/zenodo.3974628 ). To 739 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint calculate the number of mapped reads per cell, a custom script was developed to count the 740 
+number of aligned reads per barcode (available on 10.5281/zenodo.3974628 ). Subset reads 741 
+were then calculated as a fraction of the total. To calculate the Levenshtein distance between 742 
+valid barcodes, the barcodes for replicate 1 were extracted and all possible pairs were 743 
+evaluated using a python script ( 10.528 1/zenodo.3974628 ). Histogram and plotting were 744 
+performed in R. To estimate the expected rate of doublets a Poisson series was generated 745 
+corresponding to the predicted occupancy of cells in droplets. This was then compared to the 746 
+frequency of multi -VSG  expression observed in the pre -metacyclic cell cluster. The metabolism 747 
+analysis was performed using metabolic funtion annotations and schematic for glycolysis and 748 
+TCA cycle from trypanocyc (Shameer, Logan -Klumpler et al . 2015) . Scaled (Z -scores) are from 749 
+the SCT assay of Seurat in the “scaled.data” slot.  750 
+ 751 
+Single molecule RNA -FISH  752 
+ Overexpression of RBP6 was performed using PT1RBP6 -OE cells (a kind gift provided by 753 
+Lucy Glover, Institut Pasteur). PT1 cells  are equivalen t to the 2T1 BSF (Alsford, Kawahara et 754 
+al. 2005) . Wild type Lister 427 PCF cells  were transfected with pHD1313  (Alibu, Storm et al. 755 
+2005) . Second, a ribosomal spacer was targeted with pRPH, integrating a hygromycin 756 
+resista nce cassette and eGFP reporter gene (GFP tagged Sir2.3) with a RNA Pol -I promoter 757 
+under the control of a tet operator  (Alsford, Kawahara et al. 2005) . The RPH locus was  then 758 
+disrupte d with pH3E  (Alsford, Kawahara et al. 2005) , replac ing hygromycin with a puromycin 759 
+resistance cassette, resulting in PT1 cells.  Cells were induced by addition of 10 µg/ml of 760 
+tetracyc line to the culture medium and diluting every 24h to 2 x 106 cells per ml. We made 761 
+staggered inductions to obtain 3, 4 and 5 day induced cultures on the same day. We used the 762 
+ViewRNA™ Cell Plus Assay Kit  (Catalog number 88-19000 -99, Thermo Fisher) for smRN A- 763 
+FISH. The company designed probes based on the VSG -397 and VSG -531 or alpha tubulin 764 
+coding sequences. We followed the manufacturer’s instructions with a few minor exceptions. 765 
+Before settling cells onto slides, we chilled cultures on ice and then fixed in  ice cold 1 % 766 
+paraformaldehyde. Fixed cells were immediately washed in ice cold PBS by spinning 3x at 767 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint 1,000 g for 10 minutes. Cells were settled onto 8 -well glass chamber slides ( Nunc™ Lab -Tek™ 768 
+II Chamber Slide™ System ) and stained according to the manufac turer’s protocol. A minimum 769 
+of 100 µL was used to avoid drying samples during incubations. Cells were imaged on a  770 
+widefield  Zeiss Axio Imager.Z2 upright microscope equipped with an LED light source , and an 771 
+Axiocam 506 camera. Images were analysed using FIJ I (Schindelin, Arganda -Carreras et al. 772 
+2012, Rueden, Schindelin et al. 2017) . 773 
+ 774 
+Acknowledgements  775 
+ We thank George Cross for making the Antat1.1 E (EATRO1125)  VSGnome available 776 
+to the research community. Artur Scherf  and the Biomics platform at the Institut Pasteur 777 
+provided access to the Illumina NextSeq platform. Jessica Bryant and Sebastian Baumgarten 778 
+provided valuable assistance with Illumina sequencing, as well as many useful discussions , 779 
+and critical reading of t he manuscript . Sophie Créno from the Institut Pasteur high performance 780 
+computing facility helped with computational workflows . Christelle Travaillé aided with tsetse 781 
+fly infections. We thank David Horn  (University of Dundee)  for valuable advice and discuss ions.  782 
+We thank Lucy Glover, Serge Bonnefoy, and Aline Araujo Alves  for critical reading of the 783 
+manuscript. We are indebted to Eliane Thion and Lucy Glover (Institut Pasteur, Paris) for the 784 
+RBP6 strain, to Alena  Zíková (Institute of Parasitology, České Budějovice ) for advice on 785 
+inductions, and to Susanne Kramer ( Universität Würzburg , Würzburg ) for advice on smRNA - 786 
+FISH.  787 
+ 788 
+Funding  789 
+This project has received funding from the European Union’s Horizon 2020  research and 790 
+innovation programme under the Mari e Skłodowska -Curie grant agreement No 794979 . SH 791 
+was funded by a European Union Marie Skłodowska -Curie  (No 794979 ) and an Institut Pasteur 792 
+Roux -Cantarini fellowship . Funding was provided by the Institut Pasteur, and the French 793 
+Government Investissement d’A venir Programme —Laboratoire d’Excellence “Integrative 794 
+Biology of Emerging Infectious Diseases” (ANR -10-LABX -62-IBEID) . ICGex NGS platform of 795 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint the Institut Curie supported by the grants ANR -10-EQPX -03 (Equipex) and ANR -10-INBS -09- 796 
+08 (France Génomique Consort ium) from the Agence Nationale de la Recherche 797 
+("Investissements d’Avenir" program), by the Canceropole Ile -de-France and by the SiRIC - 798 
+Curie program - SiRIC Grant INCa -DGOS - 4654 . This work has received the support of the 799 
+“Institut Pierre -Gilles de Gennes ” (IPGG) through the “Investissements d’avenir” programs 800 
+Equipex ANR -10- EQPX -34 and Labex ANR -10-LABX -31. R.M. was supported by the ANR 801 
+project "Cellectchip" ANR -14-CE10 -0013.   802 
+ 803 
+Data Availability  804 
+ All sequencing data generated in this study is available f rom the European nucleotide 805 
+archive, accession number PRJEB43345 . All scripts and code used to generate the figures 806 
+are available from Zenodo 10.5281/zenodo.3974628 . 807 
+  808 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Figure legends  809 
+Figure 1. inDrop analysis of cultured bloodstream form and procyclic trypano somes.  A. 810 
+Schematic of the inDrop microfluidic chip, adapted from  Klein, Mazutis et al. (2015) . B. inDrop 811 
+performed in a microfluidic format, using a single primer to replace the BHMs  (no single -cell 812 
+resolution). T he plots show the  reads per kilobase per million mapped  (RPKM ) for annotated 813 
+T. brucei transcripts aligned from their 5´splic e site to the 3´polyadenylation sequence. Profile 814 
+plots (above) show the average RPKM across the ~7,500 non -redundant gene set for 815 
+trypanosomes . Heatmaps  (below)  show the RPKM for individual transcripts. C. UMAP 816 
+projection of single -cell barcoding data for a population of cells containing calculated 817 
+proportions of 47.5% for each BSF and PCF, and 5% Ramos cells. Measured cell proportio ns 818 
+are 51% BSF, 41% PCF and 8% Ramos.  D. Violin plots depict the total number of UMI s and 819 
+genes captured per cell within BSF, PCF and Ramos cell clusters. E. UMAP projections from 820 
+C overlaid with colour scale of gene expression values for EP1 procyclin (Tb 927.10.10260), 821 
+VSG -2 (Tb427.BES40.22) and Immunoglobulin lambda constant 3  (IGLC3 ).  822 
+ 823 
+Figure 2: InDrop  barcoding of salivary gland T. brucei . A. UMAP projection of two technical 824 
+replicates ( Lib1 and Lib2, red and blue , respectively). B. Merged UMAP project ion of technical 825 
+replicates with clustering information as indicated . C. Gene expression levels for marker genes 826 
+in the salivary glands, EP1 procyclin  (midgut stages)  (Roditi 1987 nature) : Tb927.10.10260, 827 
+BARP  (epimastigote stage): Tb927.9.15640  (Urwyler, Studer et al. 2007) , VSG -393: 828 
+(Genbank) KC612418.1  (Cross 2017) , RBP6 : Tb927.3.2930  (Kolev, Ramey -Butler et al. 2012) , 829 
+Calflagin : Tb927.8.5440  (Rotureau, Subota et al. 2012) , HAP2 : Tb927.10.10770  (Fedry, Liu et 830 
+al. 2017) . 831 
+ 832 
+Figure 3: Cluster -based analysis of main energy metabolism transcripts. A. The schematic 833 
+shows the glycolytic and TCA pa thways  (Shameer, Logan -Klumpler et al. 2015) . Compounds 834 
+(black text) and enzymes (red text for glycolysis, blue text for TCA cycle) are shown and 835 
+reactions are represented by arrows. B. Plot shows the expression Z -scores for each glycolysis 836 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint or TCA cycle enzyme transcript retained after SCT normalization (Hafemeister and Satija 837 
+2019) . Thicker lines show the average across each cohort.  AE: attached epimastigote cells; 838 
+G: Gamete cells; Pre -M: pre -metacyclic  cells: M: metacyclic cells.  C. Single cell level analysis 839 
+of metabolic transcripts. Cells are arranged by cluster (left to right) and relative transcript 840 
+expression shown per cell. Colours  represent  Z-transformed expression values.  Cluster 841 
+abbreviations a s for B. Abbreviations  of metabolites : G-6-P: glucose -6-phosphate; F -6-P: 842 
+fructose -6-phosphate; F -1,6-BP: fructose -1,6-bisphosphate; DHA -P: dihydroxyacetone 843 
+phosphate ; GA-3-P: glyceraldehyde -3-phosphate; 1,3 -BP-GA: 1,3 -bisphosphoglycerate; 3 -P- 844 
+GA: 3 -phosph oglycerate; 2 -P-GA: 2 -phosphoglycerate; P -EP: phospho -enol pyruvate. 845 
+Abbreviations of enzymes: HK1: hexokinase 1; PGI phosphoglucose isomerase ; PFK: 846 
+phosphofructokinase; ALD: aldolase; TIM: triose -phosphate isomerase ; GAPDH: 847 
+glyceraldehyde -3-phosphate dehy drogenase ; PGK( C/A): phosphoglycerate kinase , PGAM: 848 
+phosphoglycerate mutas e; ENO: enolase; PYK1: pyruvate kinase; CS: citrate synthase; ACO: 849 
+aconitase; IDH: isocitrate dehydrogenase; SCS a: succinyl co enzyme A synthetase; FHc, 850 
+fumarate hydratase, cytosolic;  gMDH: glycosomal malate dehydrogenase; mMDH: 851 
+mitochondrial malate dehydrogenase.  852 
+ 853 
+Figure 4: Analysis of gamete cluster. A. Normalised expression values for BARP  854 
+(Tb927.9.15640) and HAP2  (Tb927.10.10770) overla id on UMAP projections of attached 855 
+epimastigot e and gamete cell clusters.  B. Normalised expression values for canonical 856 
+histones: H1 Tb927.11.1800, H2A Tb927.7.2820, H2B Tb927.10.10460, H3 Tb927.1.2430 and 857 
+H4 Tb927.5.4170. C. Sub -clustering of cells in S -Phase. Clusters were manually re -annotated 858 
+using the Seurat function CellSelector. Two new c lusters of cells expressing both core histones 859 
+and either BARP or HAP2 were created and are indicated in brown  and red, respectively.  860 
+ 861 
+Figure 5: Developmental p rogression of VSG  expression. A. VSG  expression d ata for a 862 
+random subset of 50 pre -metacyclic cells, with a total VSG  UMI coun t > 10. Data are raw 863 
+(unscaled) UMI counts. Each column represents a cell and each colour a different VSG . B. 864 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Histogram show ing the number of VSG  expressed for all pre -metacyclic cells (per VSG  UMI 865 
+count > 2, all cells in cluster). C. As for A except that the data are a subset of 50 metacyclic 866 
+cells with total VSG  UMI counts >10. D. Histogram as for B except showing metacyclic VSG 867 
+transcript diversity (per VSG UMI count >2, all cel ls in cluster).  868 
+ 869 
+Figure 6. Single molecule RNA -FISH of in vitro  metacyclogenesis. A. Panel of representative 870 
+images of VSG+ and VSG++  cells containing both VSG -397 and VSG -531 transcripts ( i-iii) and 871 
+VSG+++ cells where a single VSG type is present ( iv and v). B. Above, proportions of VSG - 872 
+397 and VSG -531 transcripts  for VSG+, VSG++ and VSG+++ cells.  Each cell is plotted as a 873 
+single column on the x -axis. An estimate of transcript abundance for VSG++ and VSG+++ cells 874 
+was used based on published estimates of VSG transcript abundance in BSF (Haanstra, 875 
+Stewart et al. 2008) . Below, transcript abundance for VSG+ cells, and estimated transcript 876 
+abundance for VSG+ and VSG++ cells.   877 
+ 878 
+Figure 7. Model of the initiation of VSG monoallelic expression during metacyclogenesis. A. 879 
+Pre-metacyclic cells initiate a transcriptional race for monoallelic expression where a single 880 
+VSG  gene must reach a threshold of transcriptional activity. B. In metacyclic cells, this 881 
+threshold has been re ached for a single VSG  that is active, while the transcription of the other 882 
+mVSG s is silenced.  883 
+ 884 
+Supplementary figure legends.  885 
+ 886 
+Figure 1 -figure supplement 1.  Schematic of the life cycle of T. brucei , adapted from Rotureau 887 
+and Van Den Abbeele (2013) . The morphology and surface protein expression of 888 
+trypanosomes  during differentiation is depicted  in chrono logical order from left to right. Cell 889 
+types shown here are SL: slender bloodstream form ; ST: stumpy; PCF: procyclic form; Epi: 890 
+epimastigote; AE: attached epimastigote; ET: epimast igote-trypomastigote dividing cell; pMT: 891 
+pre-metacyclic cell; MT: metacyclic . The nucleus is depicted as a white circle  / oval and the 892 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint kinetoplast (mitochondrial DNA) as a yellow circle. In trypomastigote cells, the kinetoplast is 893 
+posterior to the nucleus, e.g. in PCF. In epimastigote cells, the kinetoplast is anterior to the 894 
+nucleus, e.g. in Epi. Cells are coloured according to the  family of  surface protein express ed.  895 
+ 896 
+Figure 1 -figure supplement 2. Survival and RNA metabolism of trypanosomes  expressing the 897 
+indicated fusion proteins  in conditions mimicking the inDrop  procedure. A.  Trypanosomes 898 
+collected by centrifugation and resuspended in either SDM -79 medium, or PBS and incubated 899 
+at either 0 °C or 27 °C. Scale bar 10 µm. B. Results of live/dead assay based on trypanosome 900 
+motility , by scoring live cells subjected to phase contrast m icroscopy . We assessed the ability 901 
+of the parasites  to survive starvation at 0 °C for 2h  in PBS . C. Histogram shows the percentage 902 
+of stringently aligned reads (mapQ > 40) to the trypanosome or human transcriptomes.  903 
+ 904 
+Figure 2 -figure supplement 1 . Details o f tsetse fly infections. Flies were infected for 28 days. 905 
+The table shows the characteristics of the dissection. Below is the workflow for dissections  and 906 
+sample collection.  907 
+ 908 
+Figure 2 -figure supplement 2 . Library construction, basic statistics and subsetti ng analysis. A. 909 
+Tapestation or Bioanalyzer traces for IVT and library PCR reactions to construct libraries 910 
+sequenced in this study. B. Table shows the number of cells recovered, and key parameters 911 
+including UMI s and genes captured. C. Subsetting analysis o f the data. Reads were 912 
+subsampled using samtools (Li, Handsaker et al. 2009)  in 10% intervals from 10% to 100% 913 
+before being re -counted using UMI -tools  (Smith, Heger et al. 2017) . Aligned reads  per cell 914 
+were counted using a custom script  (10.5281/zenodo.3974628 ). 915 
+ 916 
+Figure 2 -figure supplement 3. Analysis of possible technical artefacts. A. Ambient RNA 917 
+analysis. Plot shows the frequency of VSG  UMI detection in a cluster of Ramos cells. B.  918 
+Histogra m shows the percentage of stringently aligned reads (mapQ > 40) to the trypanosome 919 
+or human transcriptomes. C. Barcode switching analysis. The plot shows the frequency of 920 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Levenshtein  distances (number of changes required to permute one barcode to another) 921 
+between all pairs of barcodes in replicate 1 library 1 (1,129 barcodes). Red line shows cut -off 922 
+for error correction.  923 
+ 924 
+Figure 3 -figure supplement 1 . Analysis of metabolic enzymes in salivary gland clusters. As in 925 
+Figure 3B except each gene is plotted indiv idually.  926 
+ 927 
+Figure 5 -figure supplement 1. VSG expression analysis for attached epimastigote, pre 928 
+metacyclic and metacyclic clusters. Data presented have not been filtered (no minimum UMI 929 
+cutoff per cell) and consist of 50 random cells. Units are raw (non -normalised and unscaled) 930 
+UMI counts per cell. All VSG counts use a stringent mapping quality (MapQ40).  931 
+ 932 
+Figure 5 -figure supplement 2. Plot shows the number of VSG  genes detected per barcode 933 
+versus the aligned reads per barcode stratified by cluster. Boxplot s show bounds are 25th 50th 934 
+and 75th percentiles. Individual barcodes are plotted as dots.  935 
+ 936 
+Figure 5 -figure supplement 3. mVSG  expression analysis of data from Vigneron, O'Neill et al. 937 
+(2020) . UMAP projection of s cRNA -seq data indicating the classifications of cells. B. 938 
+Normalised expression values overlaid on UMAP projections for VSG  (IlTat1.22 AJ012198.3 ), 939 
+BARP  (Tb927.9.15640), HAP2  (Tb927.10.10770) and EP1-Procyclin  (Tb927.10.10260). C. 940 
+VSG expression profiles f or pre -metacyclic (above) and metacyclic cells (below). Left, VSG  941 
+expression data for all pre -metacyclic cells with a total VSG  UMI count > 10 and a random 942 
+subset of 50 metacyclic cells with a total VSG UMI count >  10. Data are raw (unscaled) UMI 943 
+counts. E ach column represents a cell and each colour a different VSG . Right, histogram 944 
+shows the number of VSG  expressed for all pre -metacyclic or metacyclic cells (per VSG  UMI 945 
+count > 2, all cells in cluster).  946 
+  947 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint References  948 
+ 949 
+Abate, A. R., C. H.  Chen, J. J. Agresti and D. A. Weitz (2009). "Beating Poisson 950 
+encapsulation statistics using close -packed ordering." Lab Chip  9(18): 2628 -2631.  951 
+Alibu, V. P., L. Storm, S. Haile, C. Clayton and D. Horn (2005). "A doubly inducible 952 
+system for RNA interference and rapid RNAi plasmid construction in Trypanosoma 953 
+brucei." Mol Biochem Parasitol 139(1): 75-82. 954 
+Alsford, S. and D. Horn (2012). "Cell-cycle-regulated control of VSG expression site 955 
+silencing by histones and histone chaperones ASF1A and CAF-1b in Trypanosoma 956 
+brucei." Nucleic Acids Res 40(20): 10150-10160. 957 
+Alsford, S., T. Kawahara, L. Glover and D. Horn (2005). "Tagging a T. brucei RRNA 958 
+locus improves stable transfection efficiency and circumvents inducible expression 959 
+position effects." Mol Biochem Parasitol 144(2): 142-148. 960 
+Alsford, S., D. J. Turner, S. O. Obado, A. Sanchez-Flores, L. Glover, M. Berriman, C. 961 
+Hertz-Fowler and D. Horn (2011). "High-throughput phenotyping using parallel 962 
+sequencing of RNA interference targets in the African trypanosome." Genome Res 963 
+21(6): 915-924. 964 
+Aresta-Branco, F., S. Pimenta and L. M. Figueiredo (2016). "A transcription- 965 
+independent epigenetic mechanism is associated with antigenic switching in 966 
+Trypanosoma brucei." Nucleic Acids Res 44(7): 3131-3146 . 967 
+Batram, C., N. G. Jones, C. J. Janzen, S. M. Markert and M. Engstler (2014). 968 
+"Expression site attenuation mechanistically links antigenic variation and development 969 
+in Trypanosoma brucei." Elife 3: e02324. 970 
+Berriman, M., E. Ghedin, C. Hertz-Fowler, G. Blandin, H. Renauld, D. C. Bartholomeu, 971 
+N. J. Lennard, E. Caler, N. E. Hamlin, B. Haas, U. Bohme, L. Hannick, M. A. Aslett, J. 972 
+Shallom, L. Marcello, L. Hou, B. Wickstead, U. C. Alsmark, C. Arrowsmith, R. J. Atkin, 973 
+A. J. Barron, F. Bringaud, K. Brooks, M. Carrington, I. Cherevach, T. J. Chillingworth, 974 
+C. Churcher, L. N. Clark, C. H. Corton, A. Cronin, R. M. Davies, J. Doggett, A. Djikeng, 975 
+T. Feldblyum, M. C. Field, A. Fraser, I. Goodhead, Z. Hance, D. Harper, B. R. Harris, 976 
+H. Hauser, J. Hostetler, A. Ivens, K. Jagels, D. Johnson, J. Johnson, K. Jones, A. X. 977 
+Kerhornou, H. Koo, N. Larke, S. Landfear, C. Larkin, V. Leech, A. Line, A. Lord, A. 978 
+Macleod, P. J. Mooney, S. Moule, D. M. Martin, G. W. Morgan, K. Mungall, H. 979 
+Norbertczak, D. Ormond, G. Pai, C. S. Peacock, J. Peterson, M. A. Quail, E. 980 
+Rabbinowitsch, M. A. Rajandream, C. Reitter, S. L. Salzberg, M. Sanders, S. Schobel, 981 
+S. Sharp, M. Simmonds, A. J. Simpson, L. Tallon, C. M. Turner, A. Tait, A. R. Tivey, 982 
+S. Van Aken, D. Walker, D. Wanless, S. Wang, B. White, O. White, S. Whitehead, J. 983 
+Woodward, J. Wortman, M. D. Adams, T. M. Embley, K. Gull, E. Ullu, J. D. Barry, A. 984 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint H. Fairlamb, F. Opperdoes, B. G. Barrell, J. E. Donelson, N. Hall, C. M. Fraser, S. E. 985 
+Melville and N. M. El -Sayed (2005). "The genome of the African trypanosome 986 
+Trypanosoma bruce i." Science  309(5733): 416 -422. 987 
+Brun, R. and Schonenberger (1979). "Cultivation and in vitro cloning or procyclic 988 
+culture forms of Trypanosoma brucei in a semi-defined medium. Short 989 
+communication." Acta Trop 36(3): 289-292. 990 
+Butler, A., P. Hoffman, P. Smibert, E. Papalexi and R. Satija (2018). "Integrating single- 991 
+cell transcriptomic data across different conditions, technologies, and species." Nat 992 
+Biotechnol 36(5): 411-420. 993 
+Cross, G. A. (1975). "Identification, purification and properties of clone-specific 994 
+glycoprotein antigens constituting the surface coat of Trypanosoma brucei." 995 
+Parasitology 71(3): 393-417. 996 
+Cross, G. A. (2017). "http://129.85.245.250/index.html." 997 
+Dalton, R. P., D. B. Lyons and S. Lomvardas (2013) . "Co-opting the unfolded protein 998 
+response to elicit olfactory receptor feedback." Cell 155(2): 321-332. 999 
+Dolezelova, E., M. Kunzova, M. Dejung, M. Levin, B. Panicucci, C. Regnault, C. J. 1000  
+Janzen, M. P. Barrett, F. Butter and A. Zikova (2020). "Cell-based and multi-omics 1001  
+profiling reveals dynamic metabolic repurposing of mitochondria to drive 1002  
+developmental progression of Trypanosoma brucei." PLoS Biol 18(6): e3000741. 1003  
+Duraisingh, M. T. and D. Horn (2016). "Epigenetic Regulation of Virulence Gene 1004  
+Expression in Parasitic Protozoa." Cell Host Microbe 19(5): 629-640. 1005  
+Edelstein, A. D., M. A. Tsuchida, N. Amodaj, H. Pinkard, R. D. Vale and N. Stuurman 1006  
+(2014). "Advanced methods of microscope control using muManager software." J Biol 1007  
+Methods 1(2). 1008  
+Ersfeld, K., R. Docherty, S. Alsford and K. Gull (1996). "A fluorescence in situ 1009  
+hybridisation study of the regulation of histone mRNA levels during the cell cycle of 1010  
+Trypanosoma brucei." Mol Biochem Parasitol 81(2): 201-209. 1011  
+Faria, J., L. Glover, S. Hutchinson, C. Boehm, M. C. Field and D. Horn (2019). 1012  
+"Monoallelic expression and epigenetic inheritance sustained by a Trypanosoma 1013  
+brucei variant surface glycoprotein exclusion complex." Nat Commun 10(1): 3023. 1014  (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Faria, J., V. Luzak, L. S. M. Muller, B. G. Brink, S. Hutchinson , L. Glover, D. Horn and 1015  
+T. N. Siegel (2021). "Spatial integration of transcription and splicing in a dedicated 1016  
+compartment sustains monogenic antigen expression in African trypanosomes." Nat 1017  
+Microbiol. 1018  
+Fedry, J., Y. Liu, G. Pehau-Arnaudet, J. Pei, W. Li, M. A. Tortorici, F. Traincard, A. 1019  
+Meola, G. Bricogne, N. V. Grishin, W. J. Snell, F. A. Rey and T. Krey (2017). "The 1020  
+Ancient Gamete Fusogen HAP2 Is a Eukaryotic Class II Fusion Protein." Cell 168(5): 1021  
+904-915 e910 . 1022  
+Figueiredo, L. M., C. J. Janzen and G. A. Cross (2008). "A histone methyltransferase 1023  
+modulates antigenic variation in African trypanosomes." PLoS Biol 6(7): e161. 1024  
+Glover, L., S. Hutchinson, S. Alsford and D. Horn (2016). "VEX1 controls the allelic 1025  
+exclusion required for antigenic variation in trypanosomes." Proc Natl Acad Sci U S A 1026  
+113(26): 7225-7230. 1027  
+Grabherr, M. G., B. J. Haas, M. Yassour, J. Z. Levin, D. A. Thompson, I. Amit, X. 1028  
+Adiconis, L. Fan, R. Raychowdhury, Q. Zeng, Z. Chen, E. Mauceli, N. Hacohen, A. 1029  
+Gnirke, N. Rhind, F. di Palma, B. W. Birren, C. Nusbaum, K. Lindblad-Toh, N. Friedman 1030  
+and A. Regev (2011). "Full-length transcriptome assembly from RNA-Seq data without 1031  
+a reference genome." Nat Biotechnol 29(7): 644-652. 1032  
+Gunzl, A., T. Bruderer, G. Laufer, B. Schimanski, L. C. Tu, H. M. Chung, P. T. Lee and 1033  
+M. G. Lee (2003). "RNA polymerase I transcribes procyclin genes and variant surface 1034  
+glycoprotein gene expression sites in Trypanosoma brucei." Eukaryot Cell 2(3): 542- 1035  
+551. 1036  
+Haanstra, J. R., M. Stewart, V. D. Luu, A. van Tuijl, H. V. Westerhoff, C. Clayton and 1037  
+B. M. Bakker (2008). "Control and regulation of gene expression: quantitative analysis 1038  
+of the expression of phosphoglycerate kinase in bloodstream form Trypanosoma 1039  
+brucei." J Biol Chem 283(5): 2495-2507. 1040  
+Hafemeister, C. and R. Satija (2019). "Normalization and variance stabilization of 1041  
+single-cell RNA-seq data using regularized negative binomial regression." Genome 1042  
+Biol 20(1): 296. 1043  
+Hanchate, N. K., K. Kondoh, Z. Lu, D. Kuang, X. Ye, X. Qiu, L. Pachter, C. Trapnell 1044  
+and L. B. Buck (2015). "Single-cell transcriptomics reveals receptor transformations 1045  
+during olfactory neurogenesis." Science 350(6265): 1251-1255. 1046  
+Hertz-Fowler, C., L. M. Figueiredo, M. A. Quail, M. Becker, A. Jackson, N. Bason, K. 1047  
+Brooks, C. Churcher, S. Fahkro, I. Goodhead, P. Heath, M. Kartvelishvili, K. Mungall, 1048  
+D. Harris, H. Hauser, M. Sanders, D. Saunders, K. Seeger, S. Sharp, J. E. Taylor, D. 1049  (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Walker, B. White, R. Young, G. A. Cross, G. Rudenko, J. D. Barry, E. J. Louis and M. 1050  
+Berriman (2008). "Telomeric expression sites are h ighly conserved in Trypanosoma 1051  
+brucei." PLoS One  3(10): e3527.  1052  
+Hoare, C. A. and F. G. Wallace (1966). "Developmental Stages of Trypanosomatid 1053  
+Flagellates: a New Terminology." Nature 212(5068): 1385-1386.  1054  
+Horn, D. (2014). "Antigenic variation in African trypanosomes." Mol Biochem Parasitol 1055  
+195(2): 123-129. 1056  
+International Glossina Genome, I. (2014). "Genome sequence of the tsetse fly 1057  
+(Glossina morsitans): vector of African trypanosomiasis." Science 344(6182): 380-386. 1058  
+Islam, S., A. Zeisel, S. Joost, G. La Manno, P. Zajac, M. Kasper, P. Lonnerberg and 1059  
+S. Linnarsson (2014). "Quantitative single-cell RNA-seq with unique molecular 1060  
+identifiers." Nat Methods 11(2): 163-166. 1061  
+Janzen, C. J., S. B. Hake, J. E. Lowell and G. A. Cross (2006). "Selective di- or 1062  
+trimethylation of histone H3 lysine 76 by two DOT1 homologs is important for cell cycle 1063  
+regulation in Trypanosoma brucei." Mol Cell 23(4): 497-507. 1064  
+Kassem, A., E. Pays and L. Vanhamme (2014). "Transcription is initiated on silent 1065  
+variant surface glycoprotein expression sites despite monoallelic expression in 1066  
+Trypanosoma brucei." Proc Natl Acad Sci U S A 111(24): 8943-8948. 1067  
+Kerry, L. E., E. E. Pegg, D. P. Cameron, J. Budzak, G. Poortinga, K. M. Hannan, R. D. 1068  
+Hannan and G. Rudenko (2017). "Selective inhibition of RNA polymerase I 1069  
+transcription as a potential approach to treat African trypanosomiasis." PLoS Negl Trop 1070  
+Dis 11(3): e0005432. 1071  
+Klein, A. M., L. Mazutis, I. Akartuna, N. Tallapragada, A. Veres, V. Li, L. Peshkin, D. 1072  
+A. Weitz and M. W. Kirschner (2015). "Droplet barcoding for single-cell transcriptomics 1073  
+applied to embryonic stem cells." Cell 161(5): 1187-1201. 1074  
+Klein, G., B. Giovanella, A. Westman, J. S. Stehlin and D. Mumford (1975). "An EBV- 1075  
+genom e-negative cell line established from an American Burkitt lymphoma; receptor 1076  
+characteristics. EBV infectibility and permanent conversion into EBV-positive sublines 1077  
+by in vitro infection." Intervirology 5(6): 319-334. 1078  
+Kolev, N. G., K. Ramey-Butler, G. A. Cross, E. Ullu and C. Tschudi (2012). 1079  
+"Developmental progression to infectivity in Trypanosoma brucei triggered by an RNA- 1080  
+binding protein." Science 338(6112): 1352-1353. 1081  (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Kolev, N. G., E. Ullu and C. Tschudi (2014). "The emerging role of RNA -binding 1082  
+proteins in the life cycle of Trypanosoma brucei." Cell Microbiol  16(4): 482 -489. 1083  
+L McInnes, J Healy and J. Melville (2018). "Umap: Uniform manifold approximation 1084  
+and projection for dimension reduction." arxiv arXiv:1802. 03426. 1085  
+Langmead, B. and S. L. Salzberg (2012). "Fast gapped-read alignment with Bowtie 2." 1086  
+Nature Methods 9(4): 357-359. 1087  
+Li, H., B. Handsaker, A. Wysoker, T. Fennell, J. Ruan, N. Homer, G. Marth, G. 1088  
+Abecasis, R. Durbin and G. P. D. P. Subgroup (2009). "The Sequence Alignment/Map 1089  
+format and SAMtools." Bioinformatics 25(16): 2078-2079. 1090  
+Lyons, D. B., W. E. Allen, T. Goh, L. Tsai, G. Barnea and S. Lomvardas (2013). "An 1091  
+epigenetic trap stabilizes singular olfactory receptor expression." Cell 154(2): 325-336. 1092  
+Magklara, A., A. Yen, B. M. Colquitt, E. J. Clowney, W. Allen, E. Markenscoff- 1093  
+Papadimitriou, Z. A. Evans, P. Kheradpour, G. Mountoufaris, C. Carey, G. Barnea, M. 1094  
+Kellis and S. Lomvardas (2011). "An epigenetic signature for monoallelic olfactory 1095  
+receptor expression." Cell 145(4): 555-570. 1096  
+Mazutis, L., J. Gilbert, W. L. Ung, D. A. Weitz, A. D. Griffiths and J. A. Heyman (2013). 1097  
+"Single-cell analysis and sorting using droplet-based microfluidics." Nat Protoc 8(5): 1098  
+870-891. 1099  
+Mosser, D. M. and J. F. Roberts (1982). "Trypanosoma brucei: recognition in vitro of 1100  
+two developmental forms by murine macrophages." Exp Parasitol 54(3): 310-316. 1101  
+Muller, L. S. M., R. O. Cosentino, K. U. Forstner, J. Guizetti, C. Wedel, N. Kaplan, C. 1102  
+J. Janzen, P. Arampatzi, J. Vogel, S. Steinbiss, T. D. Otto, A. E. Saliba, R. P. Sebra 1103  
+and T. N. Siegel (2018). "Genome organization and DNA accessibility control antigenic 1104  
+variation in trypanosomes." Nature 563(7729): 121-125. 1105  
+Navarro, M. and K. Gull (2001). "A pol I transcriptional body associated with VSG 1106  
+mono-allelic expression in Trypanosoma brucei." Nature 414(6865): 759-763. 1107  
+Peacock, L., M. Bailey, M. Carrington and W. Gibson (2014). "Meiosis and haploid 1108  
+gametes in the pathogen Trypanosoma brucei." Curr Biol 24(2): 181-186. 1109  
+Peacock, L., V. Ferris, R. Sharma, J. Sunter, M. Bailey, M. Carrington and W. Gibson 1110  
+(2011). "Identification of the meiotic life cycle stage of Trypanosoma brucei in the tsetse 1111  
+fly." Proc Natl Acad Sci U S A 108(9): 3671-3676. 1112  (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Pinger, J., S. Chowdhury and F. N. Papavasiliou (2017). "Variant surface glycoprotein 1113  
+density defines an immune evasion threshold for African trypanosomes undergoin g 1114  
+antigenic variation." Nature Communications  8(1): 828.  1115  
+Ramey-Butler, K., E. Ullu, N. G. Kolev and C. Tschudi (2015). "Synchronous 1116  
+expression of individual metacyclic variant surface glycoprotein genes in Trypanosoma 1117  
+brucei." Mol Biochem Parasitol 200(1-2): 1-4. 1118  
+Ramirez, F., D. P. Ryan, B. Gruning, V. Bhardwaj, F. Kilpert, A. S. Richter, S. Heyne, 1119  
+F. Dundar and T. Manke (2016). "deepTools2: a next generation web server for deep- 1120  
+sequencing data analysis." Nucleic Acids Res 44(W1): W160-165. 1121  
+Roditi, I., M. Carrington and M. Turner (1987). "Expression of a polypeptide containing 1122  
+a dipeptide repeat is confined to the insect stage of Trypanosoma brucei." Nature 1123  
+325(6101): 272-274. 1124  
+Roditi, I., H. Schwarz, T. W. Pearson, R. P. Beecroft, M. K. Liu, J. P. Richardson, H. J. 1125  
+Buhring, J. Pleiss, R. Bulow, R. O. Williams and et al. (1989). "Procyclin gene 1126  
+expression and loss of the variant surface glycoprotein during differentiation of 1127  
+Trypanosoma brucei." J Cell Biol 108(2): 737-746. 1128  
+Rotureau, B., I. Subota, J. Buisson and P. Bastin (2012). "A new asymmetric division 1129  
+contributes to the continuous production of infective trypanosomes in the tsetse fly." 1130  
+Development 139(10): 1842-1850.  1131  
+Rotureau, B. and J. Van Den Abbeele (2013). "Through the dark continent: African 1132  
+trypanosome development in the tsetse fly." Front Cell Infect Microbiol 3: 53. 1133  
+Rueden, C. T., J. Schindelin, M. C. Hiner, B. E. DeZonia, A. E. Walter, E. T. Arena and 1134  
+K. W. Eliceiri (2017). "ImageJ2: ImageJ for the next generation of scientific image 1135  
+data." BMC Bioinformatics 18(1): 529. 1136  
+Savage, A. F., N. G. Kolev, J. B. Franklin, A. Vigneron, S. Aksoy and C. Tschudi (2016). 1137  
+"Transcriptome Profiling of Trypanosoma brucei Development in the Tsetse Fly Vector 1138  
+Glossina morsitans." PLoS One 11(12): e0168877. 1139  
+Schindelin, J., I. Arganda-Carreras, E. Frise, V. Kaynig, M. Longair, T. Pietzsch, S. 1140  
+Preibisch, C. Rueden, S. Saalfeld, B. Schmid, J. Y. Tinevez, D. J. White, V. 1141  
+Hartenstein, K. Eliceiri, P. Tomancak and A. Cardona (2012). "Fiji: an open-source 1142  
+platform for biological-image analysis." Nat Methods 9(7): 676-682. 1143  
+Senabouth, A., S. Andersen, Q. Shi, L. Shi, F. Jiang, W. Zhang, K. Wing, M. 1144  
+Daniszewski, S. W. Lukowski, S. S. C. Hung, Q. Nguyen, L. Fink, A. Beckhouse, A. 1145  (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Pébay, A. W. Hewitt and J. E. Powell (2020). "Comp arative performance of the BGI 1146  
+and Illumina sequencing technology for single -cell RNA -sequencing." NAR Genomics 1147  
+and Bioinformatics 2(2). 1148  
+Shameer, S., F. J. Logan-Klumpler, F. Vinson, L. Cottret, B. Merlet, F. Achcar, M. 1149  
+Boshart, M. Berriman, R. Breitling, F. Bringaud, P. Bütikofer, A. M. Cattanach, B. 1150  
+Bannerman-Chukualim, D. J. Creek, K. Crouch, H. P. de Koning, H. Denise, C. 1151  
+Ebikeme, A. H. Fairlamb, M. A. Ferguson, M. L. Ginger, C. Hertz-Fowler, E. J. 1152  
+Kerkhoven, P. Mäser, P. A. Michels, A. Nayak, D. W. Nes, D. P. Nolan, C. Olsen, F. 1153  
+Silva-Franco, T. K. Smith, M. C. Taylor, A. G. Tielens, M. D. Urbaniak, J. J. van 1154  
+Hellemond, I. M. Vincent, S. R. Wilkinson, S. Wyllie, F. R. Opperdoes, M. P. Barrett 1155  
+and F. Jourdan (2015). "TrypanoCyc: a community-led biochemical pathways 1156  
+database for Trypanosoma brucei." Nucleic Acids Res 43(Database issue): D637-644. 1157  
+Sharma, R., L. Peacock, E. Gluenz, K. Gull, W. Gibson and M. Carrington (2008). 1158  
+"Asymmetric cell division as a route to reduction in cell length and change in cell 1159  
+morphology in trypanosomes." Protist 159(1): 137-151. 1160  
+Siegel, T. N., D. R. Hekstra, X. Wang, S. Dewell and G. A. Cross (2010). "Genome- 1161  
+wide analysis of mRNA abundance in two life-cycle stages of Trypanosoma brucei and 1162  
+identification of splicing and polyadenylation sites." Nucleic Acids Res 38(15): 4946- 1163  
+4957.  1164  
+Smith, T., A. Heger and I. Sudbery (2017). "UMI-tools: modeling sequencing errors in 1165  
+Unique Molecular Identifiers to improve quantification accuracy." Genome Res 27(3): 1166  
+491-499. 1167  
+Smith, T. K., F. Bringaud, D. P. Nolan and L. M. Figueiredo (2017). "Metabolic 1168  
+reprogramming during the Trypanosoma brucei life cycle." F1000Res 6. 1169  
+Stuart, T., A. Butler, P. Hoffman, C. Hafemeister, E. Papalexi, W. M. Mauck, 3rd, Y. 1170  
+Hao, M. Stoeckius, P. Smibert and R. Satija (2019). "Comprehensive Integration of 1171  
+Single-Cell Data." Cell 177(7): 1888-1902 e1821. 1172  
+Subota, I., B. Rotureau, T. Blisnick, S. Ngwabyt, M. Durand-Dubief, M. Engstler and P. 1173  
+Bastin (2011). "ALBA proteins are stage regulated during trypanosome development 1174  
+in the tsetse fly and participate in differentiation." Mol Biol Cell 22(22): 4205-4219. 1175  
+Tetley, L., C. M. Turner, J. D. Barry, J. S. Crowe and K. Vickerman (1987). "Onset of 1176  
+expression of the variant surface glycoproteins of Trypanosoma brucei in the tsetse fly 1177  
+studied using immunoelectron microscopy." Journal of Cell Science 87(2): 363-372. 1178  (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Tetley, L. and K. Vickerman (1985). "Differentiation in Trypanosoma brucei: host - 1179  
+parasite cell junctions and their persistence during acquisition of the variable antigen 1180  
+coat." J Cell Sci  74: 1-19. 1181  
+Trenaman, A., L. Glover, S. Hutchinson and D. Horn (2019). "A post-transcriptional 1182  
+respiratome regulon in trypanosomes." Nucleic Acids Res 47(13): 7063-7077. 1183  
+Urwyler, S., E. Studer, C. K. Renggli and I. Roditi (2007). "A family of stage-specific 1184  
+alanine-rich proteins on the surface of epimastigote forms of Trypanosoma brucei." 1185  
+Mol Microbiol 63(1): 218-228. 1186  
+Van Den Abbeele, J., Y. Claes, D. van Bockstaele, D. Le Ray and M. Coosemans 1187  
+(1999). "Trypanosoma brucei spp. development in the tsetse fly: characterization of 1188  
+the post-mesocyclic stages in the foregut and proboscis." Parasitology 118 ( Pt 5): 1189  
+469-478. 1190  
+Vigneron, A., M. B. O'Neill, B. L. Weiss, A. F. Savage, O. C. Campbell, S. Kamhawi, 1191  
+J. G. Valenzuela and S. Aksoy (2020). "Single-cell RNA sequencing of Trypanosoma 1192  
+brucei from tsetse salivary glands unveils metacyclogenesis and identifies potential 1193  
+transmission blocking antigens." Proc Natl Acad Sci U S A 117(5): 2613-2621.  1194  
+Yang, X., L. M. Figueiredo, A. Espinal, E. Okubo and B. Li (2009). "RAP1 is essential 1195  
+for silencing telomeric variant surface glycoprotein genes in Trypanosoma brucei." Cell 1196  
+137(1): 99-109. 1197  
+Yates, A. D., P. Achuthan, W. Akanni, J. Allen, J. Allen, J. Alvarez-Jarreta, M. R. 1198  
+Amode, I. M. Armean, A. G. Azov, R. Bennett, J. Bhai, K. Billis, S. Boddu, J. C. 1199  
+Marugan, C. Cummins, C. Davidson, K. Dodiya, R. Fatima, A. Gall, C. G. Giron, L. Gil, 1200  
+T. Grego, L. Haggerty, E. Haskell, T. Hourlier, O. G. Izuogu, S. H. Janacek, T. 1201  
+Juettemann, M. Kay, I. Lavidas, T. Le, D. Lemos, J. G. Martinez, T. Maurel, M. 1202  
+McDowall, A. McMahon, S. Mohanan, B. Moore, M. Nuhn, D. N. Oheh, A. Parker, A. 1203  
+Parton, M. Patricio, M. P. Sakthivel, A. I. Abdul Salam, B. M. Schmitt, H. Schuilenburg, 1204  
+D. Sheppard, M. Sycheva, M. Szuba, K. Taylor, A. Thormann, G. Threadgold, A. Vullo, 1205  
+B. Walts, A. Winterbottom, A. Zadissa, M. Chakiachvili, B. Flint, A. Frankish, S. E. Hunt, 1206  
+I. I. G, M. Kostadima, N. Langridge, J. E. Loveland, F. J. Martin, J. Morales, J. M. 1207  
+Mudge, M. Muffato, E. Perry, M. Ruffier, S. J. Trevanion, F. Cunningham, K. L. Howe, 1208  
+D. R. Zerbino and P. Flicek (2020). "Ensembl 2020." Nucleic Acids Res 48(D1): D682- 1209  
+D688. 1210  
+Zhang, X., T. Li, F. Liu, Y. Chen, J. Yao, Z. Li, Y. Huang and J. Wang (2019). 1211  
+"Comparative Analysis of Droplet-Based Ultra-High-Throughput Single-Cell RNA -Seq 1212  
+Systems." Mol Cell 73(1): 130-142 e135.  1213  (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Zilionis, R., J. Nainys, A. Veres, V. Savova, D. Zemmour, A. M. Klein and L. Mazutis 1214  
+(2017). "Single -cell barcoding and sequencing using droplet microflu idics." Nat Protoc  1215  
+12(1): 44-73. 1216  
+Zomerdijk, J. C., R. Kieft and P. Borst (1991). "Efficient production of functional mRNA 1217  
+mediated by RNA polymerase I in Trypanosoma brucei." Nature 353(6346): 772-775. 1218  
+ 1219  (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint 0
+1000
+5´
+3´
+mRNA
+5´
+3´
+5´
+3´
+5´
+3´
+genes
+RPKM
+0
+20
+40
+60
+80
+100Lib1 Lib2 Lib3 Lib4
+-10-5
+-5 0 5 10 1505
+UMAP_1UMAP_2
+BSF
+PCFRamos
+05,00010,00015,00020,000
+BSF PCF
+Ramos
+IdentityUMI
+2,0004,0006,000
+BSF PCF
+Ramos
+IdentityGenesB
+C DART Lysis Mix Oil
+OilCells
+Barcoding
+HydrogelsFigure 1
+-10-505
+-5 0 5 10 15
+UMAP_1-5 0 5 10 15
+UMAP_1-5 0 5 10 15
+UMAP_1UMAP_2
+1234EP1-Procyclin
+-10-505 UMAP_2
+123VSG-2
+-10-505 UMAP_2
+1.01.52.0IGLC3 E(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint 0SL ST PCF Epi AE ET pMT MTMammalian host
+Posterior
+Anterior
+Surface coat:Morphology:Host:
+Compartment:
+VSG Procyclins BARP VSGTsetse vector
+Midgut Cardia Salivary GlandsFigure 1-figure supplement 1(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Untreated
+UntreatedA B
+CALBA3::YFP  
+mCherry::DHH1  
+DNA
+SDM-79 + 0ºC 2 h020406080100 % Motile
+PBS + 27ºC 2 h
+PBS + 0ºC 2 hPBS + 0ºC 2 hFigure 1- figure supplement 2
+1101001000
+% UMI Trypanosome# Cells
+0255075100Trypanosome
+Human
+0 25 50 75 100(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint A
+C-50510
+-10 -5 0 5 10
+UMAP_1UMAP_2Midgut
+Pre-metacyclic
+Metacyclic
+Gametes
+Attached
+EpimastigoteLib1 Lib2
+-5
+-10 -5 0 5 10 -10 -5 0 5 100510
+UMAP_1UMAP_2BFigure 2
+-5
+-5 0 5 10-10 -5 0 5 10-10 -5 0 5 10-10
+-5 0 5 10-10 -5 0 5 10-10 -5 0 5 10-100510
+UMAP_1UMAP_2
+1234
+-50510
+UMAP_1UMAP_2
+1.01.52.02.5
+-50510
+UMAP_1UMAP_2
+1234
+-50510
+UMAP_1UMAP_2
+1.01.52.02.5
+-50510
+UMAP_1UMAP_2
+1.001.251.501.75
+-50510
+UMAP_1UMAP_2
+1.01.52.02.5EP1 Procyclin BARP VSG-393
+RBP6 Calflagin HAP2(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Infect Dissect28 days
+Manually break salivary glands
+70 µm cell strainer
+Wash and count
+inDrop PipelineTotal Died # Dissected # inf ected 
+(midgut)% infected Total cells recovered 
+(pooled salivary glands)(midgut)
+100 28 72 16 22 46,000Figure 2 - figure supplement 1(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Mean Median Mean Median
+Library1 1129 793 677 567 514
+Library2 1150 1122 952 729 678
+Combined 2279 959 795 649 585UMI/mRNA Genes#CellsLibrary 1
+Fluorescence Units Fluorescence UnitsA
+B
+CIVT
+Sequenced 
+library
+IVT
+Sequenced 
+libraryLibrary 2
+LibraryFigure 2 - figure supplement 2
+25050100150200250300
+500 4,000
+20040060080010001200
+250
+50
+100
+200
+300
+400
+500
+700
+1000
+1500
+250102030
+500 4,000
+0100200300
+3550
+100
+150
+200
+300
+400
+500
+600
+700
+1000
+2000
+3000
+7000
+10380
+020040060080010001200Median UMI
+Median aligned reads per cell0 5,000 10,000 15,000 20,000 25,000 30,000Library1
+Library2(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint 0.000.250.500.751.00
+0 1 2
+Number of UMI per cellFrequencyVSG
+VSG-393
+VSG-4862VSG-4564
+VSG-1654
+VSG-4959VSG-385
+VSG-1401
+VSG-1476
+0.000.050.100.150.200.25
+0 5 10 15
+Levenshtein distanceFrequencyA
+CBFigure 2 - figure supplement 3
+0255075100Trypanosome
+Human
+% UMI Trypanosome0 25 50 75 1001101001000# Cells(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint mMDHgMDHFHcSCSαIDHACOCSPYK1ENOPGAMPGKAPGKCGAPDHTIMALDPFKPGIHK1
+-1.5-1.0-0.50.00.51.01.5ExpressionG-6-PGlucose
+F-6-P
+F-1,6-BP
+1,3-BP-GAGA-3-P
+3-P-GA
+2-P-GA
+P-EP
+pyruvate
+acetyl-CoAoxalo-
+acetate
+citrate
+cis-aconitate
+D-threo-isocitrate
+2-oxoglutarate succinyl-CoAsuccinatefumarate(S)-malateDHA-PA B CFigure 3
+HK1
+PGI
+PFK
+ALD TIM
+GAPDH
+PGKC /
+PGKA
+PGAM
+ENO
+PYK1
+CS
+ACO
+ACO
+IDH SCSαFHcgMDH
+mMDH
+HK1
+PGIPFKALDTIMGAPDHPGKCPGKAPGAM
+ENO
+PYK1AverageGlycolysis
+CS
+ACOIDHSCSαFHcgMDH
+mMDHAverage
+TCAAEAE
+GG MG
+Pre-MPre-M
+MMZ-Score
+-0.50.00.51.0
+(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint GeneID Enzyme
+Tb927.10.2010
+Tb927.1.3830Tb927.3.3270
+Tb927.10.5620
+Tb927.11.5520Tb927.6.4280
+Tb927.1.700
+Tb927.1.720Tb927.10.7930
+Tb927.10.2890
+Tb927.10.14140
+Tb927.10.13430
+Tb927.10.14000Tb927.11.900
+Tb927.3.2230
+Tb927.3.4500Tb927.10.15410
+Tb927.10.2560HK1
+PGIPFKALDTIMGAPDHPGKCPGKAPGAM
+ENO
+PYK1
+CSACOIDHSCSαFHcgMDHmMDH
+Tb927.10.14000 Tb927.11.900 Tb927.3.2230 Tb927.3.4500 Tb927.10.15410 Tb927.10.2560Tb927.1.700 Tb927.1.720 Tb927.10.7930 Tb927.10.2890 Tb927.10.14140 Tb927.10.13430Tb927.10.2010 Tb927.1.3830 Tb927.3.3270 Tb927.10.5620 Tb927.11.5520 Tb927.6.4280Attached Epimastigote
+Gametes
+Pre-metacyclic
+Metacyclics
+Attached Epimastigote
+Gametes
+Pre-metacyclic
+Metacyclics
+Attached Epimastigote
+Gametes
+Pre-metacyclic
+Metacyclics
+Attached Epimastigote
+Gametes
+Pre-metacyclic
+Metacyclics
+Attached Epimastigote
+Gametes
+Pre-metacyclic
+Metacyclics
+Attached Epimastigote
+Gametes
+Pre-metacyclic
+Metacyclics-0.50.00.51.0
+-0.50.00.51.0
+-0.50.00.51.0
+ClustervalueFigure 3 supplement 1(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Figure 4
+BARP
+-8
+8 12 10-6-4-2
+UMAP_1UMAP_2
+1.01.52.02.5HAP2
+8 12 10-8-6-4-2
+UMAP_1UMAP_2
+1.01.52.02.5Histone H1
+8 12 10-8-6-4-2
+UMAP_1UMAP_2
+1.01.52.02.5
+Histone H2A
+Histone H3 Histone H4Histone H2B
+8 12 10 8 12 10
+8 12 10 8 12 10-8-6-4-2
+UMAP_1UMAP_2
+1.01.52.02.53.03.5
+-8-6-4-2
+UMAP_1UMAP_2
+1.01.52.02.53.0
+-8-6-4-2
+UMAP_1UMAP_2
+1.01.52.02.53.0
+-8-6-4-2
+UMAP_1UMAP_2
+1.01.52.02.53.0-50510
+-10 -5 0 5 10
+UMAP_1UMAP_2HAP2-S
+BARP-S
+Midgut formsAttached Epimastigote
+Gametes
+Pre-metacyclicMetacyclicsA
+CB(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint 0255075100UMI
+Pre-metacyclic0510152025
+246
+#VSGsCells
+0255075100UMI
+0100200300400500
+246
+#VSGsCellsVSG-393
+VSG-4862VSG-4564VSG-1654VSG-4959VSG-385VSG-1401VSG-1476A B
+C D
+MetacyclicFigure 5(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint 0255075100 UMI UMI UMITbb1125VSG-393
+Tbb1125VSG-4862Tbb1125VSG-4564Tbb1125VSG-1654Tbb1125VSG-4959Tbb1125VSG-385Tbb1125VSG-1401Tbb1125VSG-1476
+0255075100
+Pre-metacyclic
+MetacyclicAttached Epimastigote
+0255075100Figure 5 - figure supplement 1(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint 1e+031e+041e+05
+0123 456
+#VSG genes per barcode# Reads per barcodeCluster
+Midgut forms
+Attached Epimastigote
+Gametes
+Pre-metacyclicMetacyclicsFigure 5 - figure supplement 2(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint ILTat1.61
+ILTat1.63
+IlTat1.22
+IlTat1.64
+TRINITY-DN1307-c0-g1-i9
+TRINITY-DN1574-c0-g1-i1
+TRINITY-DN570-c0-g2-i1
+TRINITY-DN8007-c0-g1-i1-4-2024
+UMAP_1UMAP_2
+0102030UMI
+012345
+246 8
+VSGsPre-metacyclic
+Pre-meyacyclic
+Cells
+0306090120UM
+050100150200
+246 8
+VSGsMetacyclic
+Metacyclic CellsEpimastigote
+Pre-metacyclicMetacyclicA B
+C-4-20246
+-10 -5 0 5 10
+UMAP_1UMAP_2
+1234VSG - IlTat1.22
+-4-20246
+-10 -5 0 5 10
+UMAP_1UMAP_2
+123BARP
+-4-20246
+-10 -5 0 5 10
+UMAP_1UMAP_2
+1.01.52.0HAP2
+-4-20246
+-10 -5 0 5 10
+UMAP_1UMAP_2
+1234EP1 - ProcyclinFigure 5 supplement 3(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint VSG
+397VSG
+531αTub DNA
+VSG+
+VSG++
+VSG+++PhaseA
+B
+0.000.250.500.751.00
+0.000.250.500.751.00VSG proportion of total
+0.11101001000
+0.11101001000Total #VSG
+Est. #VSGVSG+
+Cell Cell CellVSG++ VSG+++
+i
+ii
+iii
+iv
+vFigure 6(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint Transcription 
+levelTranscription 
+levelThreshold Threshold
+VSG VSG
+Pre-metacyclic MetacyclicA BFigure 7(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted March 1, 2021. ; https://doi.org/10.1101/2021.03.01.433049doi: bioRxiv preprint 

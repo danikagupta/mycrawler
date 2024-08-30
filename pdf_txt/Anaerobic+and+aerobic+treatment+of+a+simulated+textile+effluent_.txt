@@ -1,0 +1,132 @@
+Standards Certification Education & Training Publishing Conferences & Exhibits Model analysis and controller design for aeration of textile industry effluent 
+2013 ISA Water / Wastewater and Automatic Controls Symposium 
+August 6-8, 2013 – Orlando, Florida, USA Authors: 
+J.Sumathi, P.R.Theerthagiri, S.Sundaram 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 2Presenter: P.R.Theerthagiri 
+• Assistant Professor in Electrical and Electronics 
+Engineering department, PRIST University, India. 
+B.E. in Anna University, Chennai, India. 
+M.Tech in SASTRA University, India. 
+pursuing Doctoral Degree in St. PETER‘S                             
+University, India. 
+• 4 years of industrial experience (TATA-VOLTAS, India) Headshot 
+photo 
+2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 3Presentation Outline 
+• Abstract • Literature survey • Experimental setup and procedure • Modeling • Controller design • Result Analysis • Summary 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 4Abstract 
+• Disposal and control of effluents has been a serious 
+challenge to researchers. 
+• Aeration being the primary step in effluent treatmen t, 
+effluents from textile industry was aerated in a fermen tor 
+at 300K till saturation. 
+• The data was fitted to a FOPDT model with an error of 
+less than 5 percent. 
+• The model was used to design closed loop controllers 
+based on various performance criteria for both regulator  
+and servo problems. 
+• The results indicate that IMC controller is superior to a 
+PID controller based on genetic algorithm. 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 5Literature Survey 
+Topic Author 
+Textile industry effluents –Its health effects Vence slau M.C.,Toms and Simon J.J 
+Characterization and reuse of textile effluent treatment plant waste sludge in clay bricks R.Baskar, K.M. Meera Sheriffa Begum, S.Sundaram 
+The Aerobic Biodegradability of Primary Aromatic Amines Brown D. and P. Laboureur 
+A sensitive dissolved oxygen sensor based on a charge-transfer complex modified electrode TU Yifeng 
+On-line Monitoring of Anaerobic-Aerobic Biotreatment of a Simulated Textile effluent for Selection of Control Parameters S.R.R. Esteves, S.J.Wilcox, C.O’Neill, F.R.Hawkes, D.L.Hawkes 
+Genetic Algorithm Based PID Controller Tuning for a Model Bioreactor S.M. Giriraj Kumar, R. Jain, N. Anantharaman, V. Dharmalingam and K. M.M. Sheriffa Begum 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 6Experiment setup
+2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 7Procedure 
+• The 1.5 liter fermentor has provisions for adjustment o f 
+air flow, temperature and speed of stirrer. 
+• Fresh effluent was diluted with water to obtain vario us 
+concentrations ranging from 0 to 100 percent in steps of 10 percent. 
+• One liter of fresh effluent of known concentration was 
+charged into the fermentor from storage tank using a peristaltic pump. 
+• The dissolved oxygen was monitored using a PC. 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 8Procedure 
+• At time t = 0, purified air was suddenly metered thro ugh 
+a rotameter at a rate of 1 lpm. 
+• The dissolved oxygen was monitored and recorded for 
+ten concentrations and three speeds (135, 145, and 155 rpm) with time till saturation. 
+• The data for 50% concentration and 155 rpm is given as 
+representative sample. 
+• Similar graphs were obtained for other concentrations 
+and speeds. 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 9Experimental and calculated values of DO for textile effluent 
+Textile effluent :50%, 155 rpm 
+6.0 6.6 7.2 7.8 8.4 9.0 
+0 5 10 15 20 25 30 35 
+Time, min Do, ppm Exp 50% 
+Cal  50% 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 10 Modeling
+• The experimental data was fitted by regression analysis 
+to a first order plus dead time model given by equation . 
+where, DO (t) is dissolved oxygen, ppm at any time t 
+DO (0) is dissolved oxygen, ppm at time t = 0 A  -Step input in air rate, lpmτ-Process time constant, min 
+τd  -Delay time, min 
+Kp -Process gain, DO/lpmDO (t) = DO (0) + K pA [1-exp(-(t- τd)/ τ)] 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 11 Modeling
+• Similar values where obtained for other concentrations 
+and speeds subject to diurnal variations. 
+• The values of DO calculated using model parameters 
+agreed with experimental data with an error of less t han 
+1 percent. 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 12 Model parameters for 50% concentration and 155 rpm
+Effluent Kp τd(min) τ(min) 
+Textile 1.2 1.3 9.7 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 13 Experimental and calculated values of DO for 50% textile effluent 
+Time 
+(min) 0 1.4 5 10 15 20 25 30 35 
+DO(Exp) 6.6 6.6 6.9 7.5 8.0 8.4 8.4 8.4 8.4 
+DO(Cal) 6.15 6.60 6.80 7.80 7.90 8.50 8.60 8.70 8.80 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 14 Controller design
+• Genetic Algorithm (GA) based Proportional Integral 
+Derivative (PID) controller. 
+• Transfer function for PID controller is given by • Internal Model Controller (IMC). 
+)11( ssKGd
+ic cτ
+τ++=
+dc dic
+ic p
+KKKKKKττ
+===
+;2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 15 Genetic Algorithm
+• It is a method for solving both constrained and 
+unconstrained optimization problems that is based on natural selection, the process that drives biological evolution. 
+• The genetic algorithm repeatedly modifies a populatio n 
+of individual solutions .
+• Genetic Algorithm rules are selection rules, crossover 
+rules & mutation rules. 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 16 GA based PID Controller Design
+• Objective Function : minimizing ITAE. • Tuning Parameters: K p, K i, K d
+• Constraints: The gain values of  the controller should b e 
+0 to K u.2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 17 Internal Model Controller (IMC) 
+2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 18 Result Analysis 
+• Based on model parameters a closed loop simulation 
+was carried out using MATLAB. 
+• Various tuning methods such as Genetic Algorithm  and 
+IMC were studied for selecting controller parameters. 
+• Comparison of controllers performance is done based on 
+rise time, settling time, percentage overshoot, ISE, IAE  
+and ITAE for both servo and regulator problem. 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 19 Servo response for IMC and GA -PID
+Textile effluent : 50% 
+00.4 0.8 1.2 1.6 22.4 
+0 5 10 15 20 25 30 35 
+Time, min DO, ppm GA-PID 
+IMC 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 20 Regulatory response for IMC and GA -PID
+Textile effluent:50% 
+00.4 0.8 1.2 1.6 22.4 
+0 5 10 15 20 25 30 35 
+Time,min DO,ppm GA-PID 
+IMC 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 21 Experimental and calculated values of DO for 50% textile effluent based on IMC & GA -PID
+Response Tuning 
+method Rise time, 
+sec Settling time, 
+sec Percentage 
+overshoot ISE IAE ITAE 
+Servo IMC 10.0 4.0 0.00 15.66 17.31 11.49 
+GA-PID 15.0 8.0 0.00 
+15.88 18.23 14.36 
+Regulatory IMC 15.0 4.0 0.00 
+10.93 22.29 3.12 
+GA-PID 19.0 7.5 0.00 
+11.27 23.05 3.56 2013 ISA WWAC Symposium Aug 6-8, 2013 –Orlando, Florida, USA 22 Summary 
+• Aeration of textile industry effluent process is modeled  
+and the data are fitted to FOPDT. 
+• The model was used to design closed loop controllers 
+based on various performance criteria for both regulator  
+and servo problems. 
+• The results indicate that IMC is slightly better than GA  
+based PID for this process. 
+• Similar results were obtained for other concentrations 
+and speeds. 
+• Experimental validation of the controller settings was 
+carried out for 50% concentration and 155 rpm. It confirmed that IMC was better than GA-PID. 
