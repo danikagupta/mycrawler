@@ -1,0 +1,461 @@
+A Statistical Model for Identifying Proteins by
+Tandem Mass Spectrometry
+Alexey I. Nesvizhskii,*,²Andrew Keller,*,²Eugene Kolker,³and Ruedi Aebersold
+Institute for Systems Biology, 1441 North 34th Street, Seattle, Washington 98103
+A statistical model is presented for computing prob-
+abilities that proteins are present in a sample on the basisof peptides assigned to tandem mass (MS/MS) spectraacquired from a proteolytic digest of the sample. Peptidesthat correspond to more than a single protein in thesequence database are apportioned among all corre-sponding proteins, and a minimal protein list sufficientto account for the observed peptide assignments isderived using the expectation -maximization algorithm.
+Using peptide assignments to spectra generated from asample of 18 purified proteins, as well as complex H.
+influenzae andHalobacterium samples, the model is
+shown to produce probabilities that are accurate and havehigh power to discriminate correct from incorrect proteinidentifications. This method allows filtering of large-scaleproteomics data sets with predictable sensitivity and false
+positive identification error rates. Fast, consistent, andtransparent, it provides a standard for publishing large-scale protein identification data sets in the literature andfor comparing the results obtained from different experi-ments.
+The goal of proteomics is to identify and characterize all
+proteins expressed in cells grown under a variety of conditions.1
+Tandem mass spectrometry (MS/MS) has become the methodof choice for identification of proteins in high-throughput pro-teomics studies.
+2,3It has been particularly useful for cataloging
+and quantifying proteins in a number of organisms,4-7for protein
+complex characterization and protein -protein network recon-struction,8-11for studying signaling pathways,12and for metabolic
+pathway reconstruction.13,14Finally, mass spectrometry is expected
+to play an important role in the ambitious task of modeling cellbehavior.
+15
+A general view of the MS/MS-based approach to study
+complex protein mixtures is illustrated in Figure 1. Sampleproteins are first proteolytically cleaved into smaller peptides, mostoften by the enzyme trypsin. Protein digestion is required becauseintact proteins are not amenable for mass spectrometric identifica-tion, though some progress toward removing this limitation hasbeen recently reported.
+16,17Complexity of the peptide mixture can
+be reduced by strong cation exchange chromatography or otheravailable separation techniques. The resulting peptide mixture isthen subjected to reversed-phase chromatography directly coupledwith a mass spectrometer. Alternatively, peptides eluting from thereversed-phase column can be deposited on a plate for subsequentanalysis by MALDI-MS/MS. Peptides are then ionized andselected ions subjected to fragmentation in the collision cell toproduce tandem mass spectra. At this stage, computationalmethods must be used to infer the peptides and proteins that gaverise to the observed spectra.
+18,19Database search programs such
+* Corresponding authors: (e-mail) nesvi@systemsbiology.org; akeller@
+systemsbiology.org.(fax) 206-732-1299.
+²Contributed equally to this work.
+³Current address: BIATECH, North Creek Parkway, Suite 115, Bothell, WA
+98011.
+(1) Pandey, A.; Mann, M. Nature 2000 ,405, 837 -846.
+(2) Aebersold, R.; Goodlett, D. R. Chem. Rev. 2001 ,101, 269 -287.
+(3) Smith, R. D.; Anderson, G. A.; Lipton, M. S.; Masselon, C.; Pas Ïa-Tolic Â, L.;
+Shen, Y.; Udseth, H. R. OMICS 2002 ,6,6 1-90.
+(4) Washburn, M. P.; Wolters, D.; Yates, J. R. Nat. Biotechnol. 2001 ,1 9, 242 -
+247.
+(5) Lipton, M. S.; Pas Ïa-Tolic Â, L.; Anderson, G. A.; Anderson, D. J.; Auberry, D.
+L.; Battista, J. R.; Daly, M. J.; Fredrickson, J.; Hixson, K. K.; Kostandarithes,H.; Masselon, C.; Markillie, L. M.; Moore, R. J.; Romine, M. F.; Shen, Y.;Stritmatter, E.; Tolic Â, N.; Udseth, H. R.; Venkateswaran, A.; Wong, K. K.;
+Zhao, R.; Smith, R. D. Proc. Natl. Acad. Sci. U.S.A. 2002 ,99, 11049 -11054.
+(6) Lasonder, E.; Ishihama, Y.; Andersen, J. S.; Vermunt, A. M. W.; Pain, A.;
+Sauerwein, R. W.; Eling, W. M.; Hall, N.; Waters, A. P.; Stunnenberg, H. G.;Mann, M. Nature 2002 ,419, 537 -542.(7) Florens, L.; Washburn, M. P.; Raine, J. D.; Anthony, R. M.; Grainger, M.;
+Haynes, J. D.; Moch, J. K.; Muster, N.; Sacci, J. B.; Tabb, D. L.; Witney, A.A.; Wolters, D.; Wu, Y.; Gardner, M. J.; Holder, A. A.; Sinden, R. E.; Yates,J. R.; Carucci, D. J. Nature 2002 ,419, 520 -526.
+(8) Link, A. J.; Eng, J.; Schieltz, D. M.; Carmack, E.; Mize, G. J.; Morris, D. R.;
+Garvik, B. M.; Yates, J. R., III. Nat. Biotechnol. 1999 ,17, 676 -682.
+(9) Gavin, A.; Bosche, M.; Krause, R.; Grandi, P.; Marzioch, M.; Bauer, A.;
+Schultz, J.; Rick, J. M.; Michon, A. M.; Cruciat, C. M.; Remor, M.; Hofert,C.; Schelder, M.; Brajenovic, M.; Ruffner, H.; Merino, A.; Klein, K.; Hudak,M.; Dickson, D.; Rudi, T.; Gnau, V.; Bauch, A.; Bastuck, S.; Huhse, B.;Leutwein, C.; Heurtier, M. A.; Copley, R. R.; Edelmann, A.; Querfurth, E.;Rybin, V.; Drewes, G.; Raida, M.; Bouwmeester, T.; Bork, P.; Seraphin, B.;Kuster, B.; Neubauer, G.; Superti-Furga, G. Nature 2002 ,415, 141 -147.
+(10) Ho, Y.; Gruhler, A.; Heilbut, A.; Bader, G. D.; et al. Nature 2002 ,415, 180 -
+183.
+(11) Ranish, J. A.; Yi, E. C.; Leslie, D. M.; Purvine, S. O.; Goodlett, D. R.; Eng,
+J.; Aebersold, R. Nat. Genet. 2003 ,33, 349 -355.
+(12) Pandey, A.; Podtelejnikov, A. V.; Blagoev, B.; Bustelo, X. R.; Mann, M.;
+Lodish, H. F. Proc. Natl. Acad. Sci. U.S.A. 2000 ,97, 179 -184.
+(13) Baliga, N. S.; Pan, M.; Goo, Y. A.; Yi, E. C.; Goodlett, D. R.; Dimitrov, K.;
+Shannon, P.; Aebersold, R.; Ng, W. V.; Hood, L. Proc. Natl. Acad. Sci. U.S.A.
+2002 ,99, 14913 -14918.
+(14) Guina, T.; Purvine, S. O.; Yi, E. C.; Eng, J.; Goodlett, D. R.; Aebersold, R.;
+Miller, S. I. Proc. Natl. Acad. Sci. U.S.A. 2003 ,100, 2771 -2776.
+(15) Forst, C. V. Mol. Biol. Rep. 2002 ,29, 265 -280.
+(16) Kelleher, N. L.; Lin, H. Y.; Valaskovich, G. A.; Aaseruud, D. J.; Fridriksson,
+E. K.; McLafferty, F. W. J. Am. Chem. Soc. 1999 ,121, 806 -812.
+(17) Meng, F.; Cargile, B. J.; Patrie, S. M.; Johnson, J. R.; McLoughlin, S. M.;
+Kelleher, N. L. Anal. Chem .2002 ,74, 2923 -2929.
+(18) Fenyo, D. Curr. Opin. Biotechnol .2000 ,11, 391 -395.
+(19) Chakravarti, D. B.; Chakravarti, B.; Moutsatsos, I. Biotechniques 2002 ,
+(Suppl. 32), 4 -15.Anal. Chem. 2003,75,4646 -4658
+4646Analytical Chemistry, Vol. 75, No. 17, September 1, 2003 10.1021/ac0341261 CCC: $25.00 © 2003 American Chemical Society
+Published on Web 07/15/2003as SEQUEST,20Mascot,21MS-Tag,22and Sonar23are used to assign
+peptides to MS/MS spectra. These programs compare eachacquired MS/MS spectrum against those obtained from a se-quence database and use various scoring schemes to find the bestmatching peptide. However, they are known to produce asignificant number of incorrect peptide assignments.
+24The process
+of validating peptide assignments often relies on time-consumingmanual verification. This data analysis bottleneck can be signifi-cantly reduced by adopting statistical models for validation ofpeptide assignments.
+25
+The ultimate goal of inferring protein identities based upon
+peptide assignments remains a challenge, even when statisticalmodels are employed for validating those assignments (Figure1). One must initially group all assigned peptides according totheir corresponding proteins in the database. This is particularlydifficult when an assigned peptide is ªdegenerateº, in the sensethat its sequence is present in more than a single entry in theprotein sequence database. Such cases often result from the useof eukaryotic databases, which contain homologous and redundantentries, and make it difficult to infer the particular corresponding
+protein(s) present in the original sample.
+26Once grouping is
+complete, the assigned peptides corresponding to an individualprotein, and their probabilities, must be combined to compute asingle protein confidence measure that is effective at distinguish-ing the correct from incorrect protein identifications. A particularchallenge in that regard is the detection of correct proteinidentifications with only a single corresponding assigned peptidein the data set, since the majority of incorrect protein identifica-tions also have only one corresponding peptide.
+Several software tools have been described that facilitate the
+identification of proteins based upon MS/MS data. Filtering andvisualization programs such as INTERACT,
+27DTAselect,28and
+CHOMPER29simply report the list of proteins corresponding to
+the peptides assigned to MS/MS spectra, without attempting toresolve the cases of degenerate peptides or to estimate probability-based confidence measures. Mascot and Sonar group peptidesaccording to their corresponding proteins and report a score foreach protein intended to indicate the confidence of the identifica-tion. Qscore
+30estimates confidence levels of protein identifications
+from SEQUEST search results by taking into account the totalnumber of identified peptides in the data set and the number ofidentified peptides corresponding to each protein. The effect ofmultiple peptides on the confidence of protein identifications wasalso described for a modified version of SEQUEST.
+31Though the
+scores provided by these tools can be used as criteria for filteringdata in order to help separate correct from incorrect proteinidentifications, they provide no means to estimate the resultingfalse positive error rate (fraction of proteins passing the filter thatare incorrect) and sensitivity (fraction of correct proteins passingthe filter).
+In this paper, we describe a model for computing accurate
+probabilities that proteins are present in a sample on the basis ofpeptides assigned to MS/MS spectra acquired from a proteolyticdigest of the sample. This model has as its input a list of assignedpeptides along with probabilities that those assignments arecorrect. Probabilities that peptide assignments are correct can beobtained, for example, according to the method described in ref25, or any alternative method, as long as they are accurate.Furthermore, the model does not require peptide assignments toMS/MS spectra made by database search, but should be ap-plicable to other computational approaches developed to analyzeMS/MS spectra as well, such as those based on a combination ofde novo sequencing and database search.
+32-34It computes a
+probability that a protein is present by combining together theprobabilities that corresponding peptides are correct after adjust-ing them for observed protein grouping information. The model
+(20) Eng, J. K.; McCormack, A. L.; Yates, J. R., III. J. Am. Soc. Mass Spectrom.
+1994 ,5, 976 -989.
+(21) Perkins, D. N.; Pappin, D. J. C.; Creasy, D. M.; Cottrell, J. S. Electrophoresis
+1999 ,20, 3551 -3567.
+(22) Clauser, K. R.; Baker, P.; Burlingame, A. L. Anal. Chem .1999 ,71, 2871 -
+2882.
+(23) Field, H. I.; Fenyo, D.; Beavis, R. C. Proteomics 2002 ,2,3 6-47.
+(24) Keller, A. D.; Purvine, S.; Nesvizhskii, A. I.; Stolyar, S.; Goodlett, D. R.;
+Kolker, E. OMICS 2002 ,6(2), 207 -212.
+(25) Keller, A.; Nesvizhskii, A. I.; Kolker, E.; Aebersold, R. Anal. Chem .2002 ,
+74, 5383 -5392.(26) Rappsilber, J.; Mann, M. Trends Biochem. Sci. 2002 ,27,7 4-78.
+(27) Han, D. K.; Eng, J.; Zhou, H.; Aebersold, R. Nat. Biotechnol. 2001 ,19, 946 -
+951.
+(28) Tabb, D. L.; McDonald, W. H.; Yates, J. R. J. Proteome Res .2002 ,1,2 1-
+26.
+(29) Eddes, J. S.; Kapp, E. A.; Frecklington, D. F.; Connolly, L. M.; Layton, M.
+J.; Moritz, R. L.; Simpson, R. J. Proteomics 2002 ,2, 1097 -1103.
+(30) Moore, R. E.; Young, M. K.; Lee, T. D. J. Am. Soc. Mass Spectrom .2002 ,
+13, 378 -386.
+(31) MacCoss, M. J.; Wu, C. C.; Yates, J. R. Anal. Chem .2002 ,74, 5593 -5599.
+(32) Taylor, J. A.; Johnson, R. S. Rapid Commun. Mass Spectrom .1997 ,11, 1067 -
+1075.
+(33) Mann, M.; Wilm, M. Anal. Chem .1994 ,66, 4390 -4399.
+(34) Shevchenko, A.; Sunyaev, S.; Loboda, A.; Shevchenko, A.; Bork, P.; Ens,
+W.; Standing, K. G. Anal. Chem .2001 ,73, 1917 -1926.
+Figure 1. Simplified outline of the experimental steps and flow of
+the data in a typical high-throughput mass spectrometry-basedanalysis of complex protein mixtures. Each sample protein (opencircle)iscleavedintosmallerpeptides(opensquares),whichcanbeuniquetothatproteinorsharedwithothersampleproteins(indicatedby dashed arrows). Peptides are then ionized and selected ionsfragmentedtoproduceMS/MSspectra.Somepeptidesareselectedfor fragmentation multiple times (dotted arrows) while some are notselected even once. Each acquired MS/MS spectrum is searchedagainstasequencedatabaseandassignedabestmatchingpeptide,which may be correct (open square) or incorrect (black square).Database search results are then manually or statistically validated.The list of identified peptides is used to infer which proteins arepresent in the original sample (open circles) and which are falseidentifications (black circles) corresponding to incorrect peptideassignments.Theprocessofinferringproteinidentitiesiscomplicatedbythepresenceofdegeneratepeptidescorrespondingtomorethana single entry in the protein sequence database (dashed arrows).
+Analytical Chemistry, Vol. 75, No. 17, September 1, 2003 4647handles cases when assigned peptides are degenerate by ap-
+portioning each such peptide among all its corresponding proteinsin order to derive a minimal protein list sufficient to account forthe observed peptide assignments. Furthermore, the modelcollapses redundant database entries into a single identificationand groups together those proteins that are impossible todifferentiate on the basis of peptides assigned to MS/MS spectra.We evaluate the model using data sets of MS/MS spectragenerated from a sample of 18 purified proteins,
+24as well as
+complex Haemophilus influenzae andHalobacterium samples. We
+demonstrate that it produces accurate protein probabilities withhigh power to discriminate between correct and incorrect proteinidentifications, including those corresponding to only a singleassigned peptide in the data set.
+This method for estimating the probability that a particular
+protein is present in the sample given the acquired massspectrometric information is of great importance to proteomics.It is fully automated and fast and does not rely on subjectiveªexpertº judgment (manual validation). It allows filtering of large-scale data sets with predictable sensitivity and false positiveidentification error rates and provides a standardized way forpublishing large-scale proteomics data sets in the literature.Finally, it makes the data analysis consistent and transparent,providing a way to compare results of different experimentalgroups obtained using different experimental protocols, differentmass spectrometers, and even different MS/MS database searchtools.
+EXPERIMENTAL DATA SETS
+A description of all experimental data sets used in this study
+is given in Table 1. All MS/MS spectra were generated using asimilar experimental protocol. Protein samples were proteolyzedwith trypsin and analyzed by LC/MS on an ESI-ITMS (Thermo-Finnigan, San Jose, CA) using a top-down data-dependent ionselection approach.
+36The spectra were searched with the SE-
+QUEST program.20All resulting peptide assignments in the data
+set were analyzed using PeptideProphet, a software tool imple-menting the statistical model described in ref 25, improved toinclude the number of missed cleavages
+37in the sequence of theassigned peptide, and extended to analyze peptide assignments
+to spectra of [M +H]+ions (see Supporting Information). The
+peptide probabilities computed by PeptideProphet have beenshown to be very discriminative and accurate and were used asinput to the protein statistical model described in this work. Itshould be noted that the protein statistical model can accept asinput a list of probabilities corresponding to each peptide assign-ment regardless of how these probabilities were computed, aslong as they are accurate.
+RESULTS AND DISCUSSION
+Peptide Probability Estimates. Since MS/MS spectra are
+produced by peptides, and not by proteins, all conclusions aboutwhat proteins are present in the sample are based upon theidentification of peptides that correspond to them. Thus, estimationof the probability that a particular protein is present in the originalsample can be facilitated by having a statistical model for validationof the identifications made at the peptide level. In ref 25, a robuststatistical approach was presented for estimation of the accuracyof peptide assignments to MS/MS spectra made by databasesearch algorithms. This approach is based on the use of theexpectation -maximization (EM) algorithm to derive a mixture
+model of correct and incorrect peptide identifications from thedata. Observed data (denoted as D) includes available information
+regarding database search results, such as database search scoresand properties of the assigned peptides, that help to distinguishthe correct (denoted as ª +º) and incorrect (denoted as ª -º)
+peptide assignments in the data set. By employing the observedinformation about each peptide assignment, the method learnsto distinguish correctly from incorrectly assigned peptides in thedata set and computes for each peptide assignment to a spectruma probability of being correct, p(+jD), using Bayes' Law:
+where p(Dj+) and p(Dj-) are the probabilities of an assigned
+peptide to an MS/MS spectrum having information Damong
+correctly and incorrectly assigned peptides, respectively, and p(+)
+andp(-) are prior probabilities of a correct and incorrect peptide
+assignment, respectively. The prior probabilities are the overallproportions of correct and incorrect peptide assignments in the
+(35) Extracted from ftp://ftp.ncicrf.gov/pub/nonredun/protein.nrdb.Z.
+(36) Goodlett, D. R.; Keller, A.; Watts, J. D.; Newitt, R.; Yi, E. C.; Purvine, S.;
+Eng, J. K.; von Haller, P.; Aebersold, R.; Kolker, E. Rapid Commun. Mass
+Spectrom. 2001 ,15, 1214 -1221.
+(37) Parker, K. C. J. Am. Soc. Mass Spectrom .2002 ,13,2 2-39.Table 1. Experimental Data Sets Used in the Study
+no. of MS/MS spectraf
+data set sample database used for searchno. of LC/
+MS/MS runs 1 + 2+ 3+
+18prot_Hinf 18-protein mixaH. influenzaed+18 proteinse22 504 18 496 18 044
+18prot_Dr 18-protein mixaDrosophilad+18 proteinse22 422 18 368 18 022
+18prot_Hum 18-protein mixahumand+18 proteinse22 401 18 180 17 824
+18prot.sub1_Hum 18-protein mixaH. influenzaed+18 proteinse1 26 694 664
+18prot.sub4_Hum 18-protein mixaH. influenzaed+18 proteinse4 13 1 294 12 95
+Hinf_Hum H. influenzaebhumand+H. influenzaed15 2006 15 791 15 553
+Halo_Hum Halobactereumchumand+Halobacteriumd5 1834 5 829 5 285
+aSample composed of 18 highly purified proteins (from bovine, chicken, rabbit, E. coli ,S. cerevisiae, andB. lichenformis ).24 bH. influenzae
+membrane fraction sample.43cHalobacterium , soluble fraction sample.44dProtein sequence databases extracted from ref 35.eSequences of the
+18 purified proteins and common sample contaminants such as keratin.24 fNumber of MS/MS database searches performed on [M +H]+,
+[M+2H]2+, and [M +3H]3+spectra.
+p(+jD))p(Dj+)p(+)
+p(Dj+)p(+)+p(Dj-)p(-)(1)
+4648Analytical Chemistry, Vol. 75, No. 17, September 1, 2003data set and can be considered as a measure of data quality. The
+parameters governing the distribution of database search scoresand other information, as well as the prior probabilities, are learnedfrom the data itself. This ensures that this method is robust towardvariations in sample purity, mass spectral quality, proteolytic digestefficiency, and other factors.
+25
+Protein Probability Estimates. Accurate probabilities that
+peptide assignments are correct, computed for example by themixture model EM method described above, can be used toestimate the probability that a particular protein is present in theoriginal sample. In general, there can be many distinct peptidesassigned to spectra, each of which corresponds to the sameparticular protein of interest. Furthermore, each distinct peptidemay be assigned to more than a single spectrum in the data set.Probabilities that peptide assignments are correct vary for differentpeptides and even for repeated observation of the same peptide.These assigned peptides each contribute evidence for the presenceof the corresponding protein. For the sake of simplicity, thissection describes an analysis that neglects all peptide assignmentsthat correspond to more than a single entry in the proteinsequence database, since in those cases their true correspondingproteins are ambiguous.
+If each peptide assignment to a spectrum is considered
+independent evidence for its corresponding protein, then theprobability Pthat a protein is present in the sample can be
+computed as the probability that at least one peptide assignmentcorresponding to the protein is correct,
+where each distinct peptide icorresponds to the protein of interest
+andp(+j
+Dij) is the computed probability that the jth assignment
+of peptide i(its peptide assignment information denoted Dij)t oa
+spectrum in the data set is correct. This formula likely overesti-mates the probability, however, since assignments of the samepeptide to multiple spectra are not justifiably independent eventswhen those spectra have nearly identical fragmentation patterns,as is often the case.
+21,30For example, multiple spectra correspond-
+ing to a peptide that is not in the database, perhaps due to aposttranslational modification, would each likely be assigned thesame incorrect peptide, leading to a misleadingly high probabilityfor the corresponding protein. To illustrate this, eq 2 was appliedto the data set of 22 LC/MS/MS runs generated from a mixtureof 18 known proteins and searched against the Drosophila
+sequence database, 18prot_Dr (see Table 1 and also ref 25). As aresult, four incorrect protein identifications were assigned aprobability 0.99 or greater, and eight incorrect protein identifica-tions were assigned a probability 0.9 or greater, all based on asingle corresponding peptide observed several times in the dataset. For example, the same peptide corresponding to incorrectprotein GP:AY010604_1 was assigned to three different spectrain the data set, with probabilities of being correct 0.42, 0.52, and
+0.64, respectively. Using eq 2, GP:AY010604_1 was then assigneda combined protein probability of 0.9. This inappropriately highcomputed probability suggests that multiple identifications of thesame peptide in a data set should not result in increasedconfidence that the corresponding protein is correct.
+A more conservative estimate of the probability that a protein
+is present in the sample can be computed as
+using only a single contribution for all jassignments to spectra
+of each distinct peptide ithat corresponds to that protein, the
+contribution determined by the maximum probability for allassignments of that peptide, max
+jp(+jDij). An illustration of how
+eq 3 is used to compute protein probabilities is shown in Figure2. This conservative approach results in more accurate proteinprobabilities and is implemented in the model. For example, usingeq 3 in place of eq 2, the computed probability of the incorrectprotein identification GP:AY010604_1 described above was re-duced from 0.9 to 0.64, and overall, no probabilities of incorrectproteins were 0.99 or greater, and three fewer were 0.9 or greater.
+Figure 2. Illustration of how eq 3 is used to compute protein probabilities. A protein is identified by several distinct peptides assigned to
+MS/MSspectra.Probabilitiesthatthepeptideassignmentsarecorrectarecombinedtogethertoestimatetheprobabilitythatthecorrespondingprotein is present in the sample. Assignments of the same peptide to multiple MS/MS spectra make a single contribution with the maximumprobability of all instances of that peptide in the data set.
+P)1-∏
+i(1-maxjp(+jDij)) (3)
+P)1-∏
+i∏
+j(1-p(+jDij)) (2)
+Analytical Chemistry, Vol. 75, No. 17, September 1, 2003 4649For the purpose of clarity, in all subsequent discussions it will
+be assumed that all assignments to spectra of each distinct peptideare represented by a single contribution having maximum prob-ability. Note, however, that unlike the situation of multipleassignments of a peptide to MS/MS spectra of the same precursorion charge state, assignments corresponding to the same peptidebut with different charge state all contribute to the evidence forthe presence of the corresponding protein. This conclusion issupported by the observation that peptides with different chargestate have significantly different MS/MS fragmentation patterns,
+38
+and it is rare to observe an incorrect peptide assigned withsignificant probabilities to spectra of multiple precursor ion chargestates.
+Adjusting Peptide Probabilities for Observed Protein
+Grouping Information. The grouping of peptides according to
+their corresponding proteins in eq 3 provides valuable newinformation regarding the validity of the peptide assignments. Thatis because correct peptide assignments, more than incorrect ones,tend to correspond to ªmultihitº proteins, those to which othercorrectly assigned peptides correspond.
+39In contrast, incorrect
+peptide assignments tend to correspond to proteins to which noother correctly assigned peptide corresponds. This trend isparticularly pronounced for ªhigh coverageº data sets, i.e., datasets consisting of a relatively large number of acquired MS/MSspectra with respect to the complexity of the sample (number ofproteins in the sample). As a result, even when computedprobabilities of correct peptide assignments are accurate in thecontext of the complete data set for which they are calculated,they may not be as accurate for subsets of peptides groupedaccording to corresponding protein. For example, in the case ofªmultihitº proteins, greater than the expected half of all corre-sponding assigned peptides with computed probability 0.5 arelikely to be correct. Consequently, before applying eq 3, computedpeptide probabilities must be made accurate for subsets ofpeptides grouped according to corresponding proteins by adjustingthem to reflect whether the protein is multihit in the data set.
+A measure of whether a peptide corresponds to a multihit
+protein in a data set is its estimated number of sibling peptides(NSP), defined as the expected number of other correctlyidentified peptides that correspond to the same protein. The NSPvalue for peptide i, NSP
+i, is computed as the sum of probabilities
+of correct assignments to spectra of the other peptides thatcorrespond to the same protein:
+where peptide mis another distinct peptide corresponding to the
+protein of interest, and p(+jD
+m) is the maximum probability of
+all assignments of peptide min the data set. For example, in the
+situation shown in Figure 2, peptide VYVEELKPTPEGDLEILLQKhas an NSP value 1.56 (calculated as 0.91 +0.65, the sum of the
+probabilities of its sibling peptides, TPEVDDEALEK and LS-FNPTQLEEQCHI).The difference in NSP values between correct and incorrect
+peptide assignments is particularly pronounced for the data setsof 22 LC/MS/MS runs generated from a sample containing only18 control proteins, which, given the number of acquired spectra,should be considered a high coverage data set. For example, inthe 18prot_Dr data set, the majority (92%) of correct peptideassignments have NSP values above 5, with average value around7, reflecting the fact that all of the identified control proteins wereidentified by multiple peptides. In contrast, fewer than 1% of theincorrect peptide assignments, namely, those that are chance hitsto one of the control proteins,
+24have NSP values above 5, and
+the majority of incorrect assignments have NSP values below 0.25,with the average value of 0.01. The difference between NSPdistributions among correct and incorrect peptide assignmentsis expected to be somewhat smaller, though still significant, forlower coverage data sets such as those typically produced fromcomplex protein samples.
+The probabilities that database search results are correct based
+upon peptide assignment information, D,p(+jD), can be adjusted
+to take into account NSP making the reasonable assumption thatNSP is independent of the parameters included in D, i.e., database
+search scores, number of tryptic termini, and number of missedcleavages, among correctly and incorrectly assigned spectra:
+where p(+jD,NSP) is the probability that peptide assignment is
+correct given its Dand its estimated number of sibling peptides,
+NSP, and p(NSPj+) and p(NSPj-) are the probabilities of having
+a particular NSP value according to the distribution of correct orincorrect peptide assignments, respectively. For simplicity, NSPvalues are made discrete by binning. The probability that acorrectly assigned peptide has an NSP value in bin kcan then be
+computed by summation over only those peptides with NSP valuein bin k:
+where Nis the total number of peptide assignments and p(+)i s
+the prior probability of a correct peptide assignment, computedby summation over all peptides i:
+The NSP distribution among incorrect peptide assignments is
+computed in an analogous manner. The adjusted probabilities thatpeptide assignments to MS/MS spectra are correct, given by eq5, have improved power to discriminate correct and incorrectdatabase search results (See Supporting Information.). Further-more, they are more accurate among subsets of peptides groupedaccording to corresponding protein and thus suitable for substitu-tion into eq 3 to compute probabilities that those proteins arepresent in the sample.
+(38) Sonsmann, G.; Ro Èmer, A.; Schomburg, D. J. Am. Soc. Mass Spectrom. 2002 ,
+13,4 7-58.
+(39) Choudhary, J. S.; Blackstock, W. P.; Creasy, D. M.; Cottrell, J. S Proteomics
+2001 ,1, 651 -667.NSPi)∑
+{mjm*i}p(+jDm) (4)p(+jD,NSP) )p(+jD)p(NSPj+)
+p(+jD)p(NSPj+)+p(-jD)p(NSPj-)(5)
+p(NSPj+))1
+Np(+)∑
+{ijNSP i2k}p(+jDi,NSPi) (6)
+p(+))1
+N∑
+ip(+jDi, NSPi) (7)
+4650Analytical Chemistry, Vol. 75, No. 17, September 1, 2003NSP distributions are expected to vary from data set to data
+set, reflecting a number of parameters such as data set size,protein sequence database size, number of proteins in the originalsample and their relative concentrations, and data quality. TheNSP distributions can be derived from each data set as a mixturemodel using the EM algorithm.
+40Initially, the unadjusted peptide
+probabilities p(+jD) are used to compute the estimated number
+of sibling peptides, NSP i, for each peptide assignment iin the
+data set (eq 4). Applying the EM algorithm, adjusted probabilitiesare then computed according to eq 5 alternatively with mixturemodel NSP distributions among correctly and incorrectly assignedspectra, p(NSPj+) and p(NSPj-), respectively, according to eqs
+6 and 7, until a fixed point is reached. The resulting adjustedpeptide probabilities p(+jD,NSP) are then substituted into eq 3
+to compute protein probabilities. This multistep approach facili-tates the robust analysis of alternative groupings of data. Initialprobabilities that peptide assignments are correct based uponpeptide assignment information Dcan be computed independently
+for disparate data sets (e.g., spectra collected from differentsamples or using different mass spectrometers) and then adjustedto take into account NSP only in the final combined data set forwhich protein probabilities are desired.
+Figure 3 illustrates how NSP distributions vary depending on
+sample complexity and data set size. Figure 3A plots the logarithmof the ratio p(NSPj+)/p(NSPj-) learned by the model in each
+NSP bin kfor the 18prot_Hum and Hinf_Hum data sets. A ratio
+greater than unity (positive logarithm) indicates that the prob-abilities are boosted by including NSP information, whereas a ratioless than unity (negative logarithm) indicates that the NSPadjustment reduces the probability that a peptide assignment iscorrect. These two data sets have approximately the same numberof spectra searched against databases of nearly identical size, yetwhereas the 18prot_Hum data set was generated from a samplewith only 18 proteins, the Hinf_Hum data set was generated froma complex sample containing hundreds of proteins. Thus, onewould expect a greater percent of correctly identified proteins inthe former to be multihit. Indeed, log p(NSPj+)/p(NSPj-) for
+the 18prot_Hum data set is more strongly positive at high NSPbins relative to the Hinf_Hum data set and more strongly negativeat low NSP bins (Figure 3A). As a result, incorporating NSPinformation boosts probabilities of peptides with high NSP values(corresponding to multihit proteins) and penalizes those with lowNSP values to a greater degree in the case of the 18prot_Humdata set than in the case of the Hinf_Hum data set. NSPdistributions are also affected by the number of spectra in thedata set. As the number of MS/MS spectra generated from aprotein sample increases, more of the correctly identified proteinswill be multihit. Figure 3B plots log p(NSPj+)/p(NSPj-)
+learned by the model for three data sets of increasing size,18prot.sub1_Hum (1 LC/MS/MS run), 18prot.sub4_Hum (4 runs),and 18prot_Hum (all 22 runs), all generated from the same sampleof 18 purified proteins. It is expected that as the size of the dataset increases with the sample complexity kept constant, samplecoverage increases whereby more correctly identified proteins aremultihit. As a result, the amount of peptide probability adjustmentfor peptides with low or very high NSP increases with increasingdata set size (Figure 3B). The effect of data set size on the learnedNSP distributions is expected to be more significant in the case
+of protein samples of higher complexity than the 18-protein mix.
+For each peptide, the amount of adjustment for NSP should,
+in principle, also depend on the likelihood of observing a particularnumber of its sibling peptides. For any protein, the likelihood ofobserving a particular number of peptides depends on a numberof factors such as its abundance in the sample, length, the numberof expected tryptic peptides (if proteins are digested using trypsin)or, in case of ICAT experiments,
+41the number of cysteine-
+containing peptides. In addition, some peptides are rarely, if ever,identified using mass spectrometry methods because their phys-icochemical properties result in poor ionization efficiency orincomplete fragmentation. As a result, some proteins might beexpected to produce only one distinct peptide that could possiblybe identified in an experiment. Such peptides, if indeed observed,should therefore not have their probability of being correctadjusted downward due to a low NSP value (no sibling peptides),even if the majority of other proteins are identified by multipledistinct peptides. Note, however, that the amount of adjustment
+(40) Dempster, A.; Laird, N.; Rubin, M. J. R. Stat. Soc. 1977 ,B39 (1), 1 -38.(41) Gygi, S. P.; Rist, B.; Gerber, S. A.; Turecek, F.; Gelb, M. H.; Aebersold, R.
+Nat. Biotechnol. 1999 ,17, 994 -999.
+Figure 3. Dependence of NSP (expected number of sibling
+peptides) distributions on sample complexity and data set size. (A)The logarithm of the ratio
+p(NSPj+)/p(NSPj-) learned by the model
+for each NSP bin kfor comparable numbers of spectra generated
+eitherfromalow-complexitysample,18prot_Hum,(triangles)orfroma high-complexity sample, Hinf_Hum, (squares). (B) Same for threedata sets of increasing size, 18prot.sub1_Hum, 1 LC/MS/MS run(squares), 18prot.sub4_Hum, 4 runs (circles), and 18prot_Hum, 22runs (triangles), each generated from the same sample. NSP bins
+k
+are defined as 0 eNSP <0.1 (bin 0), 0.1 eNSP <0.25 (bin 1),
+0.25 eNSP <0.5 (bin 2), 0.5 eNSP <1 (bin 3), 1 eNSP <2 (bin
+4), 2 eNSP <5 (bin 5), 5 eNSP <15 (bin 6), and 15 eNSP (bin
+7).
+Analytical Chemistry, Vol. 75, No. 17, September 1, 2003 4651for having a low NSP value depends not only on the ratio
+p(NSPj+)/p(NSPj-) learned by the model but also on the
+unadjusted peptide probability p(+jD); see eq 5. As a result,
+among all peptides in the data set having a low NSP value, peptideswith the unadjusted probability p(+jD) close to 1 are penalized
+to a lower degree then those in the intermediate- or low-probabilityrange. This ensures that, in practice, adjustment for NSP doesnot result in the loss of protein identifications based on only oneor two distinct peptides corresponding to them, which is oftenthe case with very small or low-abundant proteins, as long as theyare identified by at least one high-probability peptide.
+Degenerate Peptides. Peptides assigned to MS/MS spectra
+that correspond to more than a single entry in the proteinsequence database are ªdegenerateº and present a challenge sincetheir true corresponding proteins are uncertain. Such cases mostoften result from the presence of homologous proteins, splicingvariants, or redundant entries in the protein sequence database.
+26
+Degenerate peptides are more prevalent with searches using largedatabases. For example, they routinely comprise 20% or more ofall peptides assigned to MS/MS spectra upon searching a humansequence database.
+The most likely protein(s) corresponding to degenerate pep-
+tides can be inferred by apportioning such peptides among theirpossible corresponding proteins according to the estimatedprobabilities of those proteins in the sample, while in turncomputing the protein probabilities taking into account thoseestimated apportionments. For the sake of clarity, this sectiondescribes an analysis neglecting NSP information. The full analysiscombining treatment of degenerate peptides and adjustment ofpeptide probabilities for NSP is presented in the next section. Ifpeptide icorresponds to N
+sdifferent proteins, then the relative
+weight, win, that this peptide actually corresponds to protein n
+(n)1 ...Ns) is determined according to the probability of protein
+nrelative to those of all Nsproteins:
+In turn, the protein probabilities are computed according to eq 3
+taking into account the weights as well as the peptide probabilities:
+where the contribution of peptide iis weighted by its estimated
+apportionment to protein n,win, and p(+jDi) is the maximum
+probability among multiple assignments of peptide ito spectra in
+the data set, max jp(+jDij).The model learns the degenerate
+peptide weights iteratively using an EM-like algorithm. Peptidesare initially equally apportioned among their possible correspond-ing proteins, and the protein probabilities calculated accordingto eq 9. Then, both eqs 8 and 9 are applied iteratively until a fixedpoint is reached.
+The weights learned by the model reflect the likelihood that
+each of the proteins corresponding to degenerate peptides ispresent in the sample. Equation 8, requiring that the weights foreach degenerate peptide sum to unity, is based upon thesupposition that each degenerate peptide has only one corre-
+sponding protein in the original sample. This is aimed at derivingthe simplest list of proteins sufficient to explain the observedpeptides assigned to MS/MS spectra in the data set and can bedescribed in essence as Occam's razor, ªplurality should not beposited without necessityº.
+42For example, Figure 4 shows a
+common situation in which a degenerate peptide, with a probabilityp(+jD))p
+1of being a correct identification, corresponds to two
+different proteins, A and B. There are no peptide identificationsin the data set corresponding to protein A and not protein B. Onthe other hand, protein B has nondegenerate evidence in the formof peptide 2, with a probability p(+jD))p
+2,which corresponds
+only to protein B. Initially, both proteins are assumed equallylikely, P
+A)PB, and the weights w1Aandw1Bare equally ap-
+portioned according to eq 8. The weight w2Bis equal to 1 and
+fixed at that value throughout all iterations since peptide 2contributes to no proteins other than B. Substitution of the weightsand peptide probabilities in eq 9 updates protein probabilities and,due to presence of peptide 2, P
+Bbecomes greater than PA, and
+consequently, w1Bbecomes greater than w1A. The iterations
+continue until a fixed point is reached. In this particular case, thesolution given by eqs 8 and 9 is that protein B acquires all theweight from peptide 1, i.e.,
+w1B)1 and w1A)0, so that PA)0 and
+PB)1-(1-p1)(1-p2).In the above example, any nondegen-
+erate evidence for protein B, regardless of how low its probability,would result in the same apportionment of
+w1B)1 and w1A)0.
+Since in any realistic data set there is a large number of incorrectpeptide identifications with low probabilities, i.e., chance assign-ments of peptides corresponding to randomly selected proteinsin the database, improved performance of the model was achievedby introducing an empirically selected minimum probabilitythreshold of 0.2 for peptides used in eq 9 to compute proteinprobabilities. It should be noted that, in large data sets, thenetwork of degenerate peptides and their corresponding proteinsbecomes quite complex relative to the simple example illustratedin Figure 4. Such complexity, however, presents no problem forthe approach described above.
+It is not uncommon, even in organisms with small genomes,
+to encounter a situation when several database entries share aset of observed peptides and are in essence indistinguishable giventhe available mass spectrometric data. Such entries may includevarious isoforms or splicing variants that could be products ofthe same gene or products of different but related genes. Inaddition, they may simply reflect a significant number of redun-
+(42) Good, I. J. Proc. R. Soc. London A 1977 ,354, 303 -330.win)Pn
+∑
+s)1...NsPs(8)
+Pn)1-∏
+i(1-winp(+jDi)) (9)
+Figure 4. Illustration of a degenerate peptide case. Peptide 1,
+having probability p1of being a correct identification, corresponds to
+twodifferentproteins,AandB.ProteinBhasnondegenerateevidencein the form of peptide 2 with probability
+p2, which corresponds to
+protein B, and not A. Apportionments of peptide 1 among the two
+proteins, w1Aandw1B, and the protein probabilities, PAandPB, are
+learned iteratively using an EM-like algorithm.
+4652Analytical Chemistry, Vol. 75, No. 17, September 1, 2003dancies present in many databases due to incomplete protein
+sequences or sequencing errors. To facilitate interpretation of themodel results, the indistinguishable proteins are reported togetherin a group and assigned a single probability that any member ispresent in the sample.
+Combined Treatment of Degenerate Peptides and NSP .
+Inclusion of NSP and treatment of degenerate peptide cases canbe combined in a single step. If peptide iis shared between N
+s
+different proteins, then that peptide would have Nsdifferent NSP
+values, one for each protein n(n)1 ...Ns) computed by summing
+over other peptides malso corresponding to that protein
+The NSP distributions among correct and incorrect peptide
+assignments, p(NSPj+) and p(NSPj-), are calculated for each bin
+kin a similar way:
+where Nis the total number of peptide assignments and p(+)i s
+the prior probability of a correct peptide assignment. The proteinprobabilities are computed according to eq 9 using peptideprobabilities adjusted for NSP:
+Initially, estimates of the weights
+winare calculated using eq 8,
+after which NSP values are computed using eq 10. The NSPdistributions are then estimated according to eq 11, and thepeptide and protein probabilities according to eq 5 and eq 12iteratively until a fixed point is reached. Note that if a peptide isshared between N
+sdifferent proteins and, as a result, has Ns
+different NSP values, then that peptide gives as many contributions
+to the negative and positive NSP distributions. Upon terminationof the algorithm, the model learns accurate NSP distributionsreflecting the prevalence of multihit proteins in the data set andthe proteins corresponding to degenerate peptides that are morelikely to be present in the sample, given the Occam's razorconstraint. Finally, it computes an accurate probability that eachprotein is present in the sample.
+Evaluation of the Model .To evaluate the performance of the
+statistical model, it was first applied to data sets generated froma sample with 18 known proteins. Table 2 shows the number ofcorrect and incorrect protein identifications with probabilitygreater than or equal to 0.7 computed with or without adjustingpeptide probabilities to account for NSP. The first three data sets,18prot_Hinf, 18prot_Dr, and 18prot_Hum, were generated fromthe same data set of MS/MS spectra, yet searched againstdatabases of increasing size (Table 1). The 18prot_Hum data sethas a significant number of degenerate peptides, since the humansequence database contains many homologous proteins, splicingvariants, and redundant entries. By comparison, the 18prot_Drdata set has very few, and the 18prot_Hinf data set, even fewer,degenerate peptides. Table 2 shows that the model performed
+well on all data sets, regardless of the database used in the search.Employing NSP information, it produced 18 correct proteinidentifications and only 1 (18prot_Hum) or 0 (18prot_Hinf,18prot_Dr) incorrect identifications with computed probability 0.7or greater. In contrast, when NSP was notemployed to adjust
+peptide probabilities, the number of incorrect proteins assignedprobabilities 0.7 or greater increased significantly (34 in the caseof 18prot_Hum).
+Table 2 also shows the results obtained for different data set
+sizes. The model was applied to subsets of the 18prot_Hum dataset containing data from only 1 (18prot.sub1_Hum) or 4(18prot.sub4_Hum) LC/MS/MS runs, as well as to the entire dataset of 22 runs (Table 1). The model learned different NSPdistributions in these three data sets (Figure 3) and in each caseemployed the learned distributions to compute accurate anddiscriminating protein probabilities. In all three cases, many morecorrect than incorrect proteins were assigned probabilities 0.7 orgreater. Similar results were obtained for the number of correctand incorrect proteins with computed probability greater than orequal to 0.9.
+To evaluate the accuracy and discriminating power of com-
+puted protein probabilities for more realistic data sets generatedfrom samples with large numbers of proteins, the analysis wasapplied to database search results of MS/MS spectra generatedfrom complex H. influenzae,
+43Hinf_Human, and Halobacterium ,44
+Halo_Hum, samples. All MS/MS spectra were searched against
+a human protein sequence database appended with the muchsmaller database of the corresponding sample organism (see Table1 for details). Figure 5 shows the accuracy of the proteinprobabilities computed by the model. All protein identificationswere sorted according to the computed probability that thoseidentifications are correct, and the actual probabilities (fraction
+(43) Kolker, E.; Purvine, S.; Galperin, M. Y.; Stolyar, S .;e ta l . ,submitted to J.
+Bacter.
+(44) Ng, V. et al. Manuscript in preparation.NSPin)∑
+{mjm*i}wmnp(+jDm) (10)
+p(NSPj+))1
+Np(+)∑
+n∑
+{ijNSP in2k}winp(+jDi,NSPin) (11)
+Pn)1-∏
+i(1-winp(+jDi,NSPin)) (12)Table 2. Evaluation of Model Performance on Data
+Sets Generated from the Mixture of 18 PurifiedProteins
+a
+no. of protein identifications
+Pg0.7 Pg0.9
+data set model +-+-
+18prot_Hinf with NSP 18 0 18 0
+without NSP 19 26 19 8
+18prot_Dr with NSP 18 0 18 0
+without NSP 19 29 19 12
+18prot_Hum with NSP 18 1 18 1
+without NSP 18 34 18 12
+18prot.sub1_Hum with NSP 9080
+without NSP 9291
+18prot.sub4_Hum with NSP 12 0 12 0
+without NSP 12 5 12 2
+aThe numbers of correct ( +) and incorrect ( -) protein identifica-
+tions having computed probability ( P) equal to or greater than the
+indicated minimum probability thresholds are shown. Since the samplesalso contained several common contaminants such as keratin, the totalnumber of protein identifications considered to be correct can exceed18.
+Analytical Chemistry, Vol. 75, No. 17, September 1, 2003 4653of correct proteins) were determined within a sliding window of
+20 identifications. All identifications of human proteins, with theexception of common contaminants such as keratin, were con-sidered to be incorrect, whereas all identifications of the proteinsof the sample organism were inferred to be correct, with theexception of those due to chance peptide assignments.
+24The
+frequency of chance assignments was determined empirically asa ratio of the number of assignments to proteins of the sampleorganism with computed probability close to 0, to the total numberof incorrect assignments in the same probability range, and wasfound to be around 4% for the Hinf_Hum data set and 7% for theHalo_Hum data set. Figure 5 shows that the protein probabilitiescalculated by the model are accurate (results of an ideal modelare represented by the 45 °line). Figure 5 also plots the accuracy
+of protein probabilities calculated without adjustment of peptideprobabilities for NSP, which are significantly overestimated,especially in the range of intermediate probabilities. For example,in the Hinf_Hum data set, there were 36 proteins having aprobability computed without adjustment for NSP between 0.4 and0.6, when only 6 of those proteins (17%) were actually present inthe sample. At the same time, the peptide probabilities used asan input in the model were shown to be accurate, if slightlyunderestimated (see Supporting Information). The overestimationof protein probabilities calculated without adjusting peptideprobabilities to account for NSP can be explained by noting thatnearly all of the 36 proteins not present in the sample wereidentified (incorrectly) on the basis of only one peptide having asignificant probability of being correct. NSP adjustment penalizesjust such peptides with low NSP values, resulting in more accurateprotein probabilities, with 5 out the 12 proteins (42%) havingassigned probabilities (computed with adjustment for NSP)between 0.4 and 0.6 being present in the sample.
+The discriminating power of computed protein probabilities
+is illustrated in Figure 6A, which plots for the Hinf_Hum data setthe false positive error rate versus sensitivity resulting fromfiltering data on the basis of various minimum computed prob-ability thresholds. Each point along the curve represents theresults of using a different filter (minimum probability threshold)to accept all protein identifications with computed probabilitiesat least as great. The results indicate that the probabilities
+computed by the model have high power to discriminate thecorrect protein identifications from the incorrect ones. Forexample, employing a minimum probability threshold of 0.7 yields94% sensitivity (240 correct protein identifications) with a falsepositive error rate of 1.2% (3 incorrect identifications), which isclose to 100% sensitivity (255 correct protein identifications) and0% error rate (0 incorrect identifications) expected in this dataset from an ideal filter. Interestingly, in this data set, 39% of allcorrect identifications passing the 0.7 filter (95 correct identifica-tions) had only one peptide corresponding to them. Traditionally,these proteins, which often include low-abundance and lowmolecular weight proteins, are among the most challengingidentifications and would be lost using suggested filtering criteriarequiring two or more corresponding peptides.
+30Figure 6A also
+demonstrates that filtering the data on the basis of proteinprobabilities computed without adjustment for NSP results inlower sensitivity (and thus, number of correct protein identifica-tions) for any given false positive error rate. Similar results wereobserved for the Halo_Hum data set. Accurate computed prob-abilities can be used to compute the estimated number of correctprotein identifications in the data set (by summing the probabilitiesof all protein identifications in the data set). They can also be usedpredict the false positive error rate and sensitivity resulting from
+Figure 5. Accuracy of computed protein probabilities. The actual
+probability (fraction of protein identifications that are correct) amongidentificationswithindicatedcomputedprobabilitiesderivedfromthe
+H. influenzae sample, Hinf_Hum (solid line), and the Halobacterium
+sample, Halo_Hum (dashed line). Also shown is the accuracy ofprobabilities computed without adjusting peptide probabilities toaccount for protein grouping information (NSP). The expected prob-ability for an ideal model is indicated by the dotted 45 °line.
+Figure 6. Sensitivityandfalsepositiveidentificationerrorratesusing
+minimumcomputedproteinprobabilitythresholds.(A)Sensitivity/errorratetradeoffemployingthresholdsbaseduponprobabilitiescomputedwith (solid line) or without (dashed line) adjustment for proteingroupinginformation(NSP)forthe
+H.influenzae sample,Hinf_Hum.
+Theresultofusinganidealfilter(100%sensitivityand0%errorrate)is indicated by an asterisk. (B) Observed (solid line) and modelpredicted (dashed line) sensitivity and error rate as a function ofminimum computed probability threshold derived for the same dataset.
+4654
+Analytical Chemistry, Vol. 75, No. 17, September 1, 2003the use of any minimum probability threshold data filter.25Figure
+6B shows for the Hinf_Hum data set that there is good agreementbetween the actual sensitivity and error rates and those predictedby the model. Thus, researchers can choose minimum probabilitythresholds that confer a desired sensitivity or error rate for anydata set.
+Data sets Hinf_Hum and Halo_Hum both contain a number
+of degenerate peptides, each corresponding to more than a singleprotein in the database, which can be used to evaluate how themodel handles such cases. Figure 7A illustrates a case taken fromthe Halo_Human data set, where a peptide VAFGPK is sharedbetween two unrelated proteins, Q9HQJ9 from the sample organ-ism, Halobacterium (correct protein identification) and a human
+protein GPN:AF414401_1 (incorrect identification). The initial(unadjusted for NSP) probability that the peptide VAFGPK is acorrect identification, given its database search scores, numberof tryptic termini, and number of missed cleavages, is 0.86. Bothproteins sharing this peptide have other nondegenerate peptidescorresponding to them. Q9HQJ9, however, has a significantlylarger number of peptides that correspond to it, whileGPN:AF414401_1 has only one other peptide in the data set,RCMPSGPR, with initial probability 0.33, which is an incorrectassignment. Thus, peptide VAFGPK has many sibling peptidesand a very high NSP value with respect to protein Q9HQJ9 (NSPvalue 14.66, NSP bin 6) and only one low probability sibling, anda much lower NSP value, with respect to protein GPN:AF414401_1(NSP value 0.33, NSP bin 1). After adjustment for NSP, itsprobability is increased to 0.97, assuming it corresponds to proteinQ9HQJ9, and decreased to 0.35, assuming it corresponds to GPN:AF414401_1, and its apportionments between the two proteins areestimated to be 0.72 and 0.28, respectively. Thus, the modelcorrectly predicts that it is much more likely that peptide VAFGPKis present in the tryptic digest due to the presence in the originalsample of protein Q9HQJ9 rather than GPN:AF414401_1. SinceGPN:AF414401_1 does not have any other significant evidence,it is assigned a relatively low probability (0.39) of being presentin the sample. In contrast, it would have been assigned aprobability of 0.91 without adjustment of peptide probabilities toaccount for NSP and assuming a full contribution from degeneratepeptide VAFGPK.
+Another example, taken from the Hinf_Hum data set, is shown
+in Figure 7B. A peptide DAAANTMTEVK, identified with veryhigh probability, is present in two protein sequence databaseentries corresponding to two predicted coding regions, HI1339and HI1462.1. The only difference between these two entries isthat HI1462.1 has an additional stretch of six amino acids at its N
+terminus (Figure 7B). No other peptide corresponding to eitherof these two proteins was found in the data set. Therefore, giventhe available mass spectrometric information, and without anyadditional knowledge such as the molecular weight of the sampleprotein, it is impossible to distinguish between these two proteinentries and to determine which protein is more likely to be presentin the sample. As a result, both entries, HI1339 and HI1462.1, arereported together as a single identification. This example il-lustrates an important point that a high-throughput peptidesequencing approach might not be sufficient to distinguishbetween proteins with a high degree of sequence similarity, suchas splicing variants of the same gene product. In the particularcase shown in Figure 7B, for example, to distinguish HI1462.1
+from HI1339, one would need to look specifically for a peptidespanning the N terminal region of the former.
+Figure 7C shows an even more complicated situation observed
+in the Halo_Hum data set. A total of five peptides were identifiedcorresponding to a group of flagellin precursor proteins. Inaddition, there are no peptides corresponding to only one of theproteins in the group and not another. One of the proteins,FLA4_HALN1, corresponds to five peptides, while all otherproteins in the group correspond to only a subset of the fiveidentified peptides. In accordance with the Occam's razor approachimplemented in the model, FLA4_HALN1 is considered the mostprobable candidate since it is sufficient to explain the presenceof all five identified peptides in the tryptic digest of the sample.Thus, FLA4_HALN1 is assigned a probability close to 1 and isapportioned the full weights of its shared peptides, while all otherproteins in the group are assigned 0 probability. Nevertheless,the presence of FLA4_HALN1 is not required to explain theobserved data. For example, the observed peptides could haveoriginated from the presence of both FLA_HALN1 and Q9HQX4in the sample. The model therefore presents the entire set ofsimilar flagellin precursor proteins as a group in order to assistthe user in interpretation of the data. Note that situations of thekind discussed here, while quite rare in the H. influenzae or
+Halobacterium test data sets used to evaluate the performance of
+the model in this work, occur more frequently in data setsgenerated from higher eukariotic organisms. Preliminary resultsof applying this method to analyze the data generated in large-scale experiments performed on human raft cells are encouragingand demonstrate satisfactory grouping of similar proteins andapportioning of degenerate peptides among their correspondingproteins.
+45
+General Utility of the Model. Probabilities computed by the
+model are accurate measures of confidence to accompany proteinidentifications and provide a standardized way of publishing large-
+scale proteomics data sets in the literature. For example, research-ers can filter data below a low minimum probability threshold,such as 0.1, to remove the majority of incorrect results, and thenpublish the remaining protein list along with the computedprobabilities that those identifications are correct. This allowsusers to have access to the most complete data set possible tointerpret or further utilize at their discretion, as long as thereported protein probabilities are given full consideration. Aresearcher desiring only the most confident identifications, as isoften the case for high-throughput experiments, can accept onlythose reported identifications with a high probability (for example,at least 0.9). On the other hand, a researcher interested in aparticular protein has the opportunity to observe the evidence forits presence in the sample, no matter how slight. Inconclusiveevidence might be sufficient justification for additional experimentsto determine the validity of that identification. Published proteinidentifications accompanied by accurate probabilities would alsoprovide maximal information to higher level computational analy-ses based on proteomics data, such as those concerned with theidentification of protein -protein interactions, as long as they take
+the protein probabilities into account.
+(45) von Haller, P. D. et al. Manuscript in preparation.
+Analytical Chemistry, Vol. 75, No. 17, September 1, 2003 4655Figure 7. Examplesofmodelresultswithdegeneratepeptides(seetextfordetails).(A)IntheHinf_Humdataset,identifiedpeptideVAFGPK
+is shared between an unrelated correct (Q9HQJ9) and incorrect (GPN:AF414401_1) protein. The model correctly determines that it is muchmore likely that peptide VAFGPK is present in the tryptic digest due to the presence in the original sample of protein Q9HQJ9 rather thanGPN:AF414401_1.(B)IntheHinf_Humdataset,twoproteindatabaseentries,HI1339andHI1462.1,arenotdistinguishableonthebasisofthesingle observed peptide identification and are reported together as a single identification. (C) In the Halo_Hum data set, a total of five peptidesare identified corresponding to a group of flagellin precursor proteins, none of which has any nondegenerate evidence. One of the proteins,FLA4_HALN1, contains all five peptides, while all other proteins in the group contain only a subset of the five identified peptides. FLA4_HALN1is therefore the most probable candidate since its presence in the sample is sufficient to explain the presence of all identified peptides in thetryptic digest of the sample. These proteins are presented by the model as a group (“flagellin_precursor”).
+4656
+Analytical Chemistry, Vol. 75, No. 17, September 1, 2003The model can predict the number of correct protein identifica-
+tions in data sets, as well as the error rates resulting from filteringthe data with any minimum probability threshold. This informationcould serve as objective criteria by which related data sets arecompared, regardless of differences in the experimental orcomputational methods used to generate the data. For example,one can compare unfiltered protein identification data sets usingthe total number of correct protein identifications predicted bythe model. In addition, one can compare filtered data setsobjectively by specifying a uniform error rate and applying to eachdata set the corresponding minimum probability threshold. Themodel predicted error rate and the number of correct proteinidentifications can similarly be used to compare the performanceof different computational methods, such as different databasesearch tools, and different experimental protocols.
+At present, this model has been applied to large-scale data sets
+of peptide assignments produced by MS/MS database searchtools. It should be stressed that it can be applied to data sets ofpeptide assignments produced by anydatabase search tool, or
+by a combination of several such tools, as long as each peptideassignment is accompanied by an accurate probability that it iscorrect. Peptide probabilities can be considered accurate (in thecontext of the complete data set for which they are calculated), ifupon selection of all peptides in the data set having any givencomputed probability, the corresponding proportion of them iscorrect. Suitable peptide probabilities for any database search toolcan be obtained using the software PeptideProphet or a similarimplementation of the peptide statistical model described in ref25. Note that the probabilities that peptide assignments are correctcan be computed independently for disparate data sets (e.g.,spectra collected from different samples or using different massspectrometers) and then combined prior to analysis. Finally, thestatistical model can in principle be applied to peptides assignedto MS/MS spectra using computational methods not relyingexclusively on the database search, as well as to peptides identifiedusing experimental methods other than MS/MS sequencing.
+Future Work. One possible improvement of the model is
+related to the definition of NSP, given in eq 4. More accurateprotein probabilities might be achieved by renormalizing NSP toaccount for the differences in the expected number of peptidesamong different proteins. In addition, an empirical factor reflectingcommon knowledge about the protein digestion process can beintroduced in eq 4.
+46Various ways of renormalizing NSP are being
+investigated.
+An interesting future pursuit is to explore various ways to
+incorporate prior knowledge about the biological system ingeneral, and the samples analyzed by mass spectrometry inparticular, when such information is available. For example,assume that it is known that the given sample consists ofpredominantly nuclear fraction proteins. If then a peptide isobserved that is shared between two proteins, A and B, withprotein A being more likely to be present in a nuclear fractionthan B, it could then be inferred more likely that the peptide ispresent in the peptide mixture due to the presence of protein Ain the original sample rather than protein B. Thus, in this particularexample, the prior knowledge regarding cellular localization couldbe useful for resolving some cases of degenerate peptides. Inanother example, corresponding to the situation shown in Figure
+4, assume that it is determined, e.g., via the ICAT labelingapproach, that both peptides, 1 and 2, are present in the sampleat significantly different relative abundances with respect to acontrol sample. This, in turn, would indicate that both proteins, A
+and B, are likely to be present but at different relative abundancelevels. In general, prior information could be any knowledge
+available in the literature or obtained from other kinds ofmeasurements performed on the same systems in the course thestudy. In fact, all pieces of information mentioned above areroutinely taken into consideration by biologists analyzing andvalidating protein identifications obtained in their experiments.
+CONCLUSIONS
+The described method for computing probabilities that proteins
+are present in a sample on the basis of peptides assigned to MS/MS spectra acquired from a proteolytic digest of the sampleenables high-throughput analysis of large-scale proteomics experi-ments. It produces accurate probabilities that proteins are presentin the sample, with high power to discriminate correct fromincorrect protein identifications. It is fully automated and fast anddoes not rely on subjective manual validation. The method allowsfiltering of large-scale data sets with predictable sensitivity andfalse positive identification error rates. It presents results in anorganized manner by collapsing redundant protein sequencedatabase entries into single identifications and by groupingtogether proteins that are not distinguishable on the basis ofpeptides assigned to MS/MS spectra. It provides a new standardfor publishing large-scale proteomics data sets in the literatureand enables the comparison of results from different researchgroups, obtained using different experimental protocols, differentmass spectrometers, and even different MS/MS database searchtools. Resulting lists of protein identifications along with theircomputed probabilities can also serve as useful inputs to compu-tational tools being developed that rely on the data generated inhigh-throughput proteomics studies, such as those concerned withthe analysis of protein -protein interaction networks and metabolic
+pathway reconstruction.
+The software ProteinProphet implementing the statistical
+model described in this work will be available to the public athttp://systemsbiology.org/research/software.html.
+ACKNOWLEDGMENT
+This work was funded in part with Federal funds from the
+National Heart, Lung, and Blood Institute, National Institutes ofHealth, under Contract N01-HV-28179, from the National CancerInstitute, NIH, Grant 1-R33-CA93302, and by sponsored researchagreement from Oxford GlycoSciences to R.A., and by the DOE'sOffices of Biological and Environmental Research and AdvancedScientific Computing Research Genomes to Life Grant DE-FG08-
+01ER63218 to E.K. We thank Anne Claude Gingras, Jimmy Eng,Dan Martin, Xiao-jun Li, Victor Ng, Jeff Ranish, Andy Siegel, andJulian Watts for helpful discussions, and Bill Noble for criticalreading of the manuscript. We also appreciate contributions fromDavid Goodlett, Sergey Stolyar, Sam Purvine, and Eugene Yiregarding the experimental data sets used in this study.
+(46) Zhang, W.; Chait, B. T. Anal. Chem .2000 ,72, 2482.
+Analytical Chemistry, Vol. 75, No. 17, September 1, 2003 4657SUPPORTING INFORMATION AVAILABLE
+Coefficients of the derived discriminant function used to
+compute probabilities that SEQUEST search results of singlycharged precursor ion spectra are correct, as well as datademonstrating improved discriminating power of peptide prob-abilities computed with adjustment for NSP and accuracy ofcomputed peptide probabilities for the Halo_Hum and Hinf_Humdata sets. This material is available free of charge via the Internet
+at http://pubs.acs.org.
+Received for review February 7, 2003. Accepted June 5,
+2003.
+AC0341261
+4658Analytical Chemistry, Vol. 75, No. 17, September 1, 2003

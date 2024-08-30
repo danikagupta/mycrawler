@@ -1,0 +1,311 @@
+A Method for Assessing the Statistical
+Significance of Mass Spectrometry-Based ProteinIdentifications Using General Scoring Schemes
+David Fenyo 1and Ronald C. Beavis*
+Genomic Solutions (Canada) Inc., 460 -70 Arthur Street, Winnipeg, Manitoa R3B 1G7, Canada
+This paper investigates the use of survival functions and
+expectation values to evaluate the results of proteinidentification experiments. These functions are standardstatistical measures that can be used to reduce variousprotein identification scoring schemes to a common,easily interpretably representation. The relative merits ofscoring systems were explored using this approach, aswell as the effects of altering primary identification pa-rameters. We would advocate the widespread use of thesesimple statistical measures to simplify and standardizethe reporting of the confidence of protein identificationresults, allowing the users of different identificationalgorithms to compare their results in a straightforwardand statistically significant manner. A method is describedfor measuring these distributions using information thatis being discarded by most protein identification searchengines, resulting in accurate survival functions that arespecific to any combination of scoring algorithms, se-quence databases, and mass spectra.
+Protein identification has become an important application of
+mass spectrometry to biological research.1-3These identifications
+are based on the comparison of an experimentally determinedlist of masses and a database of protein (or translated nucleotide)sequences. These masses can be a list of parent ion masses or alist of fragment ion masses derived from a parent ion by tandemmass spectrometry. This paper will address the results from
+tandem mass spectrometry experiments, but the arguments andfindings may also be applied to protein identifications obtained
+by simple mass spectrometry.
+Numerous algorithms are available that allow a user to enter
+a parent ion mass, a list of fragment ion masses, and searchparameters that are used to find the peptide sequence in asequence database that most closely matches those masses, giventhe search parameter set.
+4The matching is based on the known
+peptide bond fragmentation reactions.5These algorithms can be
+separated into two general classes: those that require interpreta-tion of the mass list (class A) and those that require nointerpretation (class B). Class A algorithms require the manualor automated determination of one or more stretches of unam-biguous sequence by ªde novoº sequencing methods.
+6,7The
+database search can then be performed with the knowledge thatthis sequence should be present in any matching peptide. ClassB algorithms do not require the discovery of any sequence beforea search is performed.
+8,9Class B algorithms compare all of the
+masses on the list with all peptide sequences. The parent ion massis commonly used to limit the number of potential sequencesconsidered. Both types of algorithms have advantages anddisadvantages, but either type can be used to effectively identifyprotein sequences.
+All of these algorithms calculate a ªmatching scoreº that is
+used as a measure of how closely a given peptide sequencematches the masses. Examples of these scores are correlationfactors,
+8the number of ions that match a peptide sequence,9
+k-similarity statistics,10and calculated probability factors.7The
+score is dependent on the number and relative intensity ofsequence-specific ions present in the mass list and the algorithmparameters used for the particular calculation.
+Theoretical Interpretation of Peptide -Spectrum Matching
+Scores. In a typical protein identification experiment, a protein
+identification algorithm will be used to prepare a list of spectrum-to-peptide matching scores. The list is then presented to theinvestigator with the potential peptide sequences listed in order* Corresponding author. E-mail: rbeavis@proteide.net.
+(1) Ho, Y.; Gruhler, A.; Heilbut, A.; Bader, G. D.; Moore, L.; Adams, S. L.; Millar,
+A.; Taylor, P.; Bennett, K.; Boutilier, K.; Yang, L.; Wolting, C.; Donaldson,I.; Schandorff, S.; Shewnarane, J.; Vo, M.; Taggart, J.; Goudreault, M.;Muskat, B.; Alfarano, C.; Dewar, D.; Lin, Z.; Michalickova, K.; Willems, A.R.; Sassi, H.; Nielsen, P. A.; Rasmussen, K. J.; Andersen, J. R.; Johansen, L.E.; Hansen, L. H.; Jespersen, H.; Podtelejnikov, A.; Nielsen, E.; Crawford,J.; Poulsen, V.; Sorensen, B. D.; Matthiesen, J.; Hendrickson, R. C.; Gleeson,F.; Pawson, T.; Moran, M. F.; Durocher, D.; Mann, M.; Hogue, C. W.; Figeys,D.; Tyers, M. Nature 2002 ,415, 180 -183.
+(2) Gavin, A. C.; Bosche, M.; Krause, R.; Grandi, P.; Marzioch, M.; Bauer, A.;
+Schultz, J.; Rick, J. M.; Michon, A.M.; Cruciat, C. M.; Remor, M.; Hofert,C.; Schelder, M.; Brajenovic, M.; Ruffner, H.; Merino, A.; Klein, K.; Hudak,M.; Dickson, D.; Rudi, T.; Gnau, V.; Bauch, A.; Bastuck, S.; Huhse, B.;Leutwein, C.; Heurtier, M. A.; Copley, R. R.; Edelmann, A.; Querfurth, E.;Rybin, V.; Drewes, G.; Raida, M.; Bouwmeester, T.; Bork, P.; Seraphin, B.;Kuster, B.; Neubauer, G.; Superti-Furga, G. Nature 2002 ,415, 141 -147.
+(3) Andersen, J. S.; Lyon, C. E., Fox, A. H.; Leung, A. K.; Lam, Y. W.; Steen, H.;
+Mann, M.; Lamond, A. I. Curr. Biol .2002 ,12,1-11.(4) Rappsilber, J.; Mann, M. Trends Biochem. Sci .2002 ,27,7 4-78.
+(5) Aebersold, R.; Goodlett, D. R. Chem. Rev .2001 ,101, 269 -295.
+(6) Shevchenko, A.; Sunyaev, S.; Loboda, A.; Shevchenko, A.; Bork, P.; Ens,
+W.; Standing, K. G. Anal. Chem .2001 ,73, 1917 -1926.
+(7) Mann, M.; Wilm, M. Anal. Chem. 1994 ,66, 4390 -4399.
+(8) Yates, J. R., 3rd; Eng, J. K.; McCormack, A. L.; Schietz, D. Anal. Chem .
+1995 ,67, 1426 -1436.
+(9) Perkins, D. N.; Pappin, D. J.; Creasy, D. M.; Cottrell, J. S. Electrophoresis
+199 ,20, 3551 -3567.
+(10) Pevzner, P. A.; Mulyukov, Z.; Dancik, V.; Tang, C. L. Genome Res. 2001 ,
+11, 290 -299.Anal. Chem. 2003,75,768-774
+768Analytical Chemistry, Vol. 75, No. 4, February 15, 2003 10.1021/ac0258709 CCC: $25.00 © 2003 American Chemical Society
+Published on Web 01/10/2003of decreasing score. Comparing the scores produced by any of
+the commonly available software packages on any basis other thanthe relative rank of a particular peptide in the list of peptides isdifficult. As a result, practitioners of protein identification haveevolved sets of rules that they apply to identifications in additionto the peptide rank and score to determine the validity of a proteinidentification. For the purposes of this discussion, a peptidesequence that is the same as the sequence of the real peptidethat generated a particular tandem mass spectrum will be referredto as the ªvalidº sequence for that spectrum. All other peptidesequence assignments to a mass spectrum will be referred to asªstochasticº.
+One commonly used method to assess the validity of an
+assignment is to carefully examine the mass spectrum anddetermine how many of the ions were matched with the sequence.The user then uses his intuition and experience to determinewhether the pattern of sequence ions assigned corresponds to aªreasonableº identification. The mass spectrum is also inspectedto determine the signal-to-noise ratio of the data: high scores canbe produced by purely stochastic assignments if there is a largeamount of noise in the spectrum. This type of evaluation cannotbe automated, and it depends on the skill of an individual tocorrectly interpret a complex set of patterns with an understandingof the instrumentation used to produce the original data.
+Another strategy for determining the quality of a match to a
+particular peptide is to compare the ranked lists obtained fromdifferent algorithms. The user then applies some set of heuristicrules to compare the ranks of the peptides in the resultant lists.The simplest example of this approach would be to assume thatif a peptide is top ranked by two algorithms, it may be assumedto be a correct assignment. This strategy is based on theassumption that different algorithms produce matches via methodsthat are sufficiently different that the highest scoring peptidesresulting from stochastic matches to the data will be rankeddifferently by the algorithms, while peptides that are valid matchesto the data will be ranked similarly. There is no reason to believethat this assumption is true. The opposite is probably true: bothstochastic and valid assignments are likely to be similarly rankedby any two algorithms in the same class. Any two algorithmswithin a given class are based on similar assumptions, even thoughthe details of the scoring system may be different. The practitioneris forced to use sets of algorithms that give similar results fortrial spectra, which indicates that the algorithms must be formallyequivalent to some degree. This formal equivalence means thatcomparing peptide rankings between equivalent algorithms todetermine the quality of an assignment will lead to frequent
+nonvalid stochastic assignments.
+A difficulty in comparing the scores resulting from different
+algorithms is that they do not necessarily have any physicalinterpretation. A good scoring system does not necessarily haveany theoretical foundation: it is judged as good if it scores validsequences significantly different from all other sequences. There-fore, any practically useful comparison between scores should bea statistic that can be applied to a variety of scoring systems andhas a simple interpretation that is relevant to protein identificationexperiments.
+A statistic that has these properties and that has found wide
+acceptance in bioinformatics is the expectation value.
+11-13Anexpectation value can be defined for any valid scoring system that
+has the characteristic of the score being a maximum when a validmatch is obtained. Let xrepresent a score for a mass spectrum
+S; then the survival function, s(x), for a discrete stochastic score
+probability distribution, p(x), can be defined:
+14
+where Pr( X>x) is the probability that the spectrum's score will
+have a value greater than xby random matching with sequences
+in a particular database, D, and pj(x)is the discrete probability that
+best corresponds to a score of x. The expectation value e(x) forS
+onDis then defined as
+where nis the number of sequences scored. The expectation value
+has the following simple interpretation: given SandD,e(x)i s
+the number of peptides that would be expected to have scores ofat least x. For example, if a score x
+0has an expectation value e(x0)
+)10, then one would have a score of at least that value 10 times
+for every replicate of the experiment. An expectation value e(x0)
+)110-6implies that the experiment would have to be repeated
+1 million times before a score that high would be obtained bychance. Alternately, e(x
+0))110-6could be interpreted as the
+requirement that the sequence database searched would have tocontain 1 million times as many sequences to obtain a score thathigh by chance.
+These statistics can be applied to any type of scoring system
+for all of the peptide sequences that fit the primary parameters ofa search. A primary search parameter that is common to allcurrent scoring systems is the absolute value of the deviation, d,
+between the observed parent ion mass ( m) and the calculated
+mass of a peptide sequence ( m
+c)
+All sequences that do not fall within the appropriate drange
+specified for a search are not considered ( x)-∞).11This type of
+scoring is used in all tandem mass spectrometry identificationschemes in common use currently, although there is usually noexplicit score associated with sequences that do not have anappropriate intact mass. This scoring has the advantage ofspeeding up the calculation, because simply screening the parention mass removes a sequence from consideration without havingto perform any further calculations.
+7,8
+The only difficulty with applying eqs 1 and 2 to protein
+identification scores is that the stochastic probability distributionp(x) is not readily available in a general, parametrized form. The
+distribution can be obtained by Monte Carlo methods, but the
+(11) Karlin, S.; Altschul, S. Proc. Natl. Acad. Sci. U.S.A. 1990 ,87, 2264 -2268.
+(12) Karlin, S.; Altschul, S. Proc. Natl. Acad. Sci. U.S.A. 1993 ,90, 5873 -5877.
+(13) Mackey, A. J., Haystead, T. A. J.; Pearson, W. R. Mol. Cell. Proteomics 2002 ,
+1, 139 -147.
+(14) Filliben, J. J.; Heckert, A. Exploratory Data Analysis. In Engineering Statistics
+Handbook ; Croarkin, C., Tobias, P., Eds.; NIST: Washington DC; http://
+www.itl.nist.gov/div898/handbook/index.htm.sj(x))Pr(X>x))∑
+i)j(x)∞
+pi (1)
+ej(x))nsj(x) (2)
+d)jm-mcj (3)
+Analytical Chemistry, Vol. 75, No. 4, February 15, 2003 769specific distribution applicable to a particular mass list and set of
+search parameters (including the sequence database) would bevery time-consuming to calculate for each protein identificationexperiment. An alternative approach is to construct a frequencyhistogram of all peptide scores while a search is performed.During a search of a large sequence database, almost all scoreswill be the result of a random match: only one (if any) of thescores will be a valid match. The discrete valued frequencyfunction f(x) can be converted into p(x) by simple normalization
+where Nis the number of peptide sequences used to create the
+histogram
+Applying eqs 1 and 5 makes it possible to estimate p(x) and s(x)
+for any scoring system with any combination of data, searchparameters, and sequence. Once s(x) is known, it can then be fit
+to an analytical function and its value extrapolated for any valueofx. More importantly for the purposes of this paper, the survival
+functions for different scoring systems can be compared toevaluate their relative merit.
+Experimental Determination of p(x) and s(x).All calcula-
+tions were performed using modified versions of the databasesearch engine Sonar.
+15Sonar uses vector alignment and spectrum
+dot products16as a method of calculating correlations between
+peptide sequences and mass spectra, which are represented asvectors with high dimensionality.
+17The calculation of the dot
+product is done in such a way as to also yield detailed assignmentsof sequence-specific ions at the same time as the sequence-spectrum correlation statistics are obtained.
+The masses derived from calculating all of the potential peptide
+sequence-specific ions (a, b, y, and their corresponding -18 and
+-17 neutral loss products) were represented in a vector Pofn
+intensities P
+i., where nis the mass of the parent ion divided by
+the accuracy of mass measurement. Possible ions were repre-sented by P
+i)1, and all other values were 0. The spectrum to be
+compared was represented as an npoint vector I, where the values
+ofIicorresponded to the intensity of an observed fragment ion
+(normalized to a maximum of 100) or 0 if no fragment ion wasobserved. The correlation score (indicated below as system I),x
+I, was calculated as follows:
+Two alternative scoring schemes (systems II and III, respectively)
+were used for comparison: these schemes include extra termsthat account for the number of assigned b or y ions ( n
+bandny,respectively),
+and
+While these additional factors may seem odd initially, consider
+the simple question: What is the form of x(ny)/x(ny-1)? Consider
+the case of an 11-residue peptide sequence, P, and two spectra,
+AandB, such that spectrum Acontains 10 peaks of equal intensity
+that can be assigned to y-ions predicted for P, while Bcontains
+only one peak that can be assigned to P. The correlation score
+assumes that the score should be a simple linear function of thenumber of assignable ions, implying that Ais10better than
+Bas proof of the existence of P. Intuitively, this relationship is
+too weak, as a spectrum with 10 assignable y-ions would beconsidered as good an identification as possible, while a singleion would be considered to have little value as proof. Assumingan underlying hypergeometric distribution for a valid match, x(n
+y)/
+x(ny-1)ny, implying that Awould be (10!)better than B,
+as proof of the existence of P. The exponential score would place
+the factor at (e10). These larger factors are intuitively more
+reasonable and have the effect of moving valid scoring events tohigher scores than the predominant stochastic distribution.
+The SALSA score (system IV) was included as an additional
+scoring scheme: calculated based on the definition of SALSAscoring:
+18
+where Kis the number of detected ions that correspond to
+calculated peptide fragment ions and kis the total number of ions
+expected from the calculation. If an ion is not detected, thethreshold of detection is used for T
+i. As all signals are normalized
+to a maximum value of 100, the threshold value was set to 1 forall spectra considered here. The original description of the scoringscheme suggested that it was derived empirically from experi-mental data sets.
+MATERIALS AND METHODS
+All software was coded in C ++, using Microsoft Visual Studio,
+version 6. The applications were run using the Common GatewayInterface on either a single processor Pentium III (600 MHz) ora single processor Pentium 4 (1.6 GHz) computer, through theApache Web Server. All of the searches were obtained bysearching fragment ion spectra against the National Center forBioinformatics nonredundant protein sequence database (nr).
+A single ªrealº tandem mass spectrum was selected to use as
+an exemplar for the calculation of the distributions below. Thistandem spectrum was chosen from a reversed-phase high-performance liquid chromatography analysis of a protein trypticdigest performed on a Thermo-Finnigan LCQ ion trap mass
+(15) Field, H. I.; Fenyo È, D.; Beavis R. C. Proteomics 2002 ,2,3 6-47.
+(16) Stark, H.; Woods, J. W. Probability and Random Processes with Applications
+to Signal Processing, 3rd ed.; Prentice Hall, Saddle River, NJ, 2002.
+(17) Wan, K. X.; Vidavsky, I.; Gross, M. L. J. Am. Soc. Mass Spectrom .2002 ,
+13,85-88.(18) Liebler, D. C.; Hansen, B. T.; Davey, S. W.; Tiscareno, L.; Mason, D. E.
+Anal. Chem .2002 ,74, 203-210.pi)fi/N (4)
+N)∑
+i)0∞
+fi (5)
+xI)∑
+i)0n
+IiPi (6)xII)xI(nb!ny!) (7)
+xIII)xIexp(nb+ny) (8)
+xIV)K(∏
+i)1k
+Ii)1/k(9)
+770Analytical Chemistry, Vol. 75, No. 4, February 15, 2003spectrometer. The spectrum yielded the same peptide sequence
+identification from the commercial spectrum search enginesMascot and Sonar and that sequence was assumed to be correctas eight other peptides from the protein (type I human keratin)were also identified. It should be stressed that the particulars ofthe mass spectrum are not important in the context of this paper:this single spectrum was chosen to be illustrative of the generalapproach. It was decided that using a single spectrum wouldemphasize the main theme of the paper, which is how to evaluatethe results from a single spectrum when the scoring algorithmsand search parameters were changed.
+RESULTS AND DISCUSSION
+The application of specialized sequence search engines to mass
+spectrometry has become a relatively well established techniquefor matching peptide and protein sequences to experimentalresults. The core analytical question that underlies much of thisresearch may be summarized as follows: ªDoes this massspectrum correspond unambiguously with a known protein orpeptide sequence, yes or no?º If the answer is ªyesº, the researchermust then determine some type of confidence measure that thepositive result is not simply a statistical coincidence, but that it isa valid match.
+The range of scoring systems represented by eqs 6 -9
+underlines the difficulties for the average user in directly interpret-ing scores derived from tandem mass spectrometry proteinidentification search engines. These scoring systems have thesame goal: to minimize the score obtained from stochasticmatches while maximizing the score obtained from valid identi-fications. They approach the problem using different mathematicaldevices, however, making direct comparison of the scores difficult.It would be convenient to have a purely theoretical form for theunderlying statistical distributions that would allow the directlycalculation of the probability and expectation value for a particularscore. Unfortunately, it is difficult to provide such a theoreticaldistribution in practice. There are so many possible parametersthat would affect the distribution that it is not practical to attemptto model them all and still have an accurate representation of theexperimental situation.
+It is possible, however, to experimentally determine these
+distributions by accumulating a simple histogram during anypeptide identification calculation. To illustrate this type of calcula-tion, consider the case where a tandem mass spectrum has beengenerated using a peptide of known sequence. Using the formal-ism and algorithms described above, it is possible to directlymeasure the distribution of scores that result from peptides thatdo not correspond to the sample peptide that generated aparticular tandem spectrum. This distribution will be referred toas the ªstochasticº distribution, as it represents the scores possiblefrom peptides with sequences different from the peptide that wasactually analyzed, from a selected sequence database.
+The sequence database used is important, as it does not contain
+a truly random distribution of peptide sequences. Calculationsperformed with truly random peptide sequences may yield resultsquite different from those measured from the relevant sequencedatabase. The sequence database is assumed have the followingproperties: (a) it is large (meaning that it has many peptides thatsatisfy step 1 below); (b) if redundant sequences occur, the totalnumber of redundant sequences for any peptide is small relativeto the total size of the database; and(c) all protein sequences
+containing the peptide sequence that truly corresponds to thepeptide sample used to generate the tandem spectrum have beenremoved.
+The stochastic scoring distribution corresponding to a par-
+ticular tandem spectrum on a particular database can then bemeasured using the following steps:
+1. Find all peptides in the selected sequence database that
+match the experimental protein cleavage conditions (e.g., peptidesgenerated by trypsin cleavage) and have parent ion masses withina selected value of d(eq 3).
+2. Calculate the score for all of the peptides found in step 1
+using the selected scoring system.
+3. Record all of the scores generated in step 2.4.Construct a histogram of the frequency of the occurrence of
+a particular score versus all of the scores collected in step 3.
+Figure 1 illustrates the general form of the probability distribu-
+tion calculated from the scoring frequency histogram using eq 4.It is then a simple matter to calculate the survival function, usingeq 1. Some smoothing may be necessary to eliminate the effectsof redundant sequences on the curves: alternately multipleidentical scores caused by redundant sequences can be filteredout in step 3. Then eq 2 can be used to estimate how often aparticular score would be expected to be found by randomsequence matches. It is possible to assess how high a scoregenerated from the spectrum and the valid peptide sequenceshould be to produce an assignment with a particular confidencelevel. Practically, it is very simple to construct the scoringfrequency histogram ªon-the-flyº as sequences are being scored,with very little computational overhead or impact on the overallperformance of a practical scoring engine.
+A much more interesting case is one in which the valid
+sequence for a particular peptide is not known in advance. Thegoal of this exercise is to determine the sequence of the peptide,rather than simply measure the stochastic distribution. In thiscase, condition c for the database cannot be met. If the samealgorithm is applied in this case, conditions a and b on thedatabase ensure that the majority of the scores recorded cor-respond to the stochastic distribution and that only a single scoringvalue ( x*) in the scoring frequency histogram will correspond to
+a valid match between the peptide and the tandem spectrum,regardless of how many times that peptide sequence occurs inthe protein sequence database. A confident identification can bemade if the valid peptide match generates a value for x*in the
+ªsignificantº portion of Figure 1. The actual confidence interval
+Figure 1. Schematic representation of a stochastic score distribu-
+tion, as described in the text. Any peptide corresponding to a scorewithin the body of the stochastic distribution cannot be confidentlyassignedasbeingavalididentification.Ascorehigherthantheright-hand boundary of the stochastic distribution may be assigned aspotentially valid, with an associated expectation value.
+Analytical Chemistry, Vol. 75, No. 4, February 15, 2003 771of that identification can then be measured using the survival
+function and expectation value approach.
+Figure 2 shows a real example of scoring histograms calculated
+using steps 1 to 4 above, a sample tandem spectrum, and the NCBInr protein sequence database. The stochastic portion of themeasured distributions is to the left of the histogram, and thesingle histogram point corresponding to the valid identifiedsequence (score x*) is marked with a diamond. Clearly, x*does
+not fall within the stochastic distribution in either case, indicatingthat it is unlikely that the match is the result of a stochastic match(see the previous section for a description of the spectrum andits valid sequence).
+A few general comments can be made about the visual
+assessment of this type of histogram. The confidence that a scorerepresents a valid identification increases as the distance betweenthe high-scoring end of the stochastic distribution and x*
+increases. In the case that poor spectral quality causes a validmatch to fall within the stochastic distribution, there is simplyinsufficient information in the mass spectrum to confidently assignthat mass spectrum to a particular peptide sequence. It shouldbe noted that there is no way to distinguish between the casewhere there is insufficient data to positively match a sequencewith a spectrum and the case where the peptide sequence
+corresponding to the spectrum is not in the database (or has beenmodified in some unanticipated manner).
+A much more sophisticated estimate of the confidence of a
+sequence assignment can be obtained from the survival function.A comparison of survival functions derived from the stochasticportions of the scoring histograms for each of the four scoringsystems is illustrated in Figure 3, using the same spectrum,conditions, and database as for Figure 2. The arguments used tojustify the use of the maximum formulation of the extreme valuedistribution
+14(also referred to as the Gumbel distribution) in
+sequence similarity scoring11,12are valid for these scoring systems
+and form the basis for the estimation of expectation valuesassociated with survival functions. Based on this distribution, thehigh-scoring portion of a plot of log( s(x)) versus log( x) should be
+linear, as is evident from the curves shown. Practically, a smoothedlinear least-squares fit for all data points, log( s(x))<log(0.1),
+allows the estimation of the survival function sand hence the
+expectation value sfor all xsuch that s(x)>0.1. Applying this
+extrapolation process to the identification illustrated in Figure 2b,the expectation value for the point marked with a diamond is e(x*)
+)910
+-6. This expectation value can be interpreted as meaning
+that a stochastic match of that quality would only be expected tooccur once in 10
+5trials.
+Inspection of Figure 2 may be used for the qualitative analysis
+of the differences between scoring systems. The value of x*IIis
+clearly much better separated from the stochastic distribution thanx*
+I. This enhanced relative separation means that this type of
+scoring has the potential to be more sensitive at detectingsequences in spectra with lower spectral quality. As indicated inthe discussion above, system II scores rely on an additional stepof spectrum interpretation, namely, the assignment of specificparent ion fragmentation reactions and the addition of thatinformation to the score in an unbiased manner. The authors'experience in fully automated commercial and academic proteinidentification laboratories has shown this scoring system to beparticularly useful for automating assignments in environmentswhere it is not practical to have trained analysts refine proteinidentification lists manually. It should be noted, however, that theresults of any scoring algorithm may vary depending on the quality
+Figure 2. (a)Measuredstochasticscoringhistogramforaspecific
+tandem mass spectrum, using the correlation-only scoring scheme,
+xI(eq 6). The solid diamond marks the point in the histogram
+corresponding to the score for the valid peptide sequence ( x*). (b)
+Measured stochastic scoring histogram for the same tandem massspectrum, using one of the alternate scoring systems,
+xII(eq 7). The
+solid diamond marks the point in the histogram corresponds to thescore for the valid peptide sequence (
+x*).
+Figure 3. Measured survival functions for stochastic probability
+distributions using the four different scoring systems (eqs 6 -9)
+described in the text.
+772Analytical Chemistry, Vol. 75, No. 4, February 15, 2003of the spectra used and the details of the parameters used for the
+including or excluding sequences from consideration by aparticular search engine.
+Measuring and fitting these distributions makes them practical
+for protein identification experiments, rather than using a time-consuming de novo calculation to derive them (e.g., a Monte Carlosimulation of the experiment). Based on our implementation ofthis method, measuring and fitting these distributions introducesa calculation overhead of <1%/spectrum. This measurement
+method also has the advantage of accurately determining thedistribution appropriate for arbitrary combinations of searchparameters, sequence databases, and mass spectra. This type ofaccuracy is difficult to obtain without unacceptable overhead froma theoretical calculation.
+Figure 3 demonstrates how the survival functions can be used
+to normalize a scoring system, using the four example scoringsystems described above. By extrapolation, a score of ln( x
+I))10
+has an equivalent interpretation to ln( xI))12 and ln( xIV))5:
+the probability of that score or higher occurring at random is 0.01.Similarly, the interpretation of a score difference between ln( x
+IV)
+)5 and 7 extrapolates to the difference between ln( xIII))20 and
+23: the probability that the score or higher will occur at randomhas decreased by 1 order of magnitude. This type of simplecomparison based on a single graph has the additional advantageof uniquely taking into account the actual distribution of fragmention intensities, the mass of the parent ion, the detailed makeupof the sequence database, and all anticipated sequence modifica-tions that may have been allowed for in the original search.
+A significant consideration in any protein identification experi-
+ment is the effect of changing the search parameters on thesignificance of the results. Intuitively, the smaller the allowedrange for a parameter, the more significance should be placedon the best result. The degree to which this aphorism is true hasbeen difficult to evaluate objectively using raw scores. Applicationof the survival function approach allows the quantification of thedegree of benefit conferred by changes in any of the primaryselection parameters. There are a large number of potential effectscaused by changing these parameters, e.g., the number andidentity of potential posttranslational modifications considered, thefragment ion mass error allowed, or the signal-to-noise ratio ofthe spectrum.
+Rather than attempt an exhaustive survey of all possible effects,
+the effect of varying two such search parameters on the survivalfunctions measured for a single tandem spectrum using scoringsystem II (eq 7) was selected as an example and is shown inFigure 4. The parent ion mass deviation dand the peptide cleavage
+specificity are permuted between two fixed values. The values d
+)2 and the peptide cleavage specificity being trypsin (cleavage
+at lysine and arginine residues, except when followed by proline)represents values commonly using in protein identification experi-ments. The values d)100 and no peptide cleavage specificity
+(cleavage at all residues) represent extreme conditions that arenot commonly used. It has been the general perception of manyin the field that such nonrestrictive parameter values have thepotential to significantly affect the reliability of the results, maskingvalid matches. The use of nonrestrictive parameters also maydramatically increase the amount of time necessary for theidentification calculation, e.g., an identification that uses nonspe-cific peptide cleavage will take 10 times longer to calculate than
+one that that only considers tryptic peptides.
+Figure 4 demonstrates that varying these parameters has little
+effect on the overall form of s(x). Comparing the results of one
+cleavage chemistry, varying donly results in a minor change in
+the slope of the plot. The difference in the survival functions forchanging the cleavage specificity from trypsin to no specificity ismore significant. The effect of altering the primary searchparameters can be easily quantified by examining the values ofthe survival function and expectation value x*(Table 1). It should
+be noted that ln( x*))30.5 for the valid score, which is unaffected
+by the choice made for d.
+The survival function/expectation value calculations suggested
+above make drawing statistical inferences from large data setsroutine exercises. As an example, take the task of analyzing a setof tandem mass spectra collected over the course of a liquidchromatography separation, with the goal of determining whatprotein sequences were represented in the original sample byidentifying the peptide sequences from mass spectra. In this case,the confidence interval to calculate would be the confidence thatthe protein was present, rather than simply the confidence thatindividual peptides were present. A simple method to evaluatethe expectation value for the protein, based on the individualexpectation values for the peptides, requires only a slight refine-ment of the methods presented. The results of searching theappropriate sequence database with the complete set of tandem
+Figure 4. Survival functions measured for different search param-
+eters, using scoring system xII(eq 7). The symbol drepresents the
+alloweddeviationoftheobservedparentionmassfromthecalculatedmassofapeptidesequence(eq3).Thesequencesweregeneratedfrom intact protein sequences by assuming either cleavage withtrypsin (lysine or arginine, except when followed by proline) orcleavage at any peptide bond.
+Table 1. Comparison of Estimated Survival Functionand Expectation Values for Valid Scores (
+x*) Using
+Scoring Scheme xII(Eq 7) in the Experimental Data
+Shown in Figure 4
+parameters log( s(x*)) log( e(x*))
+d)2 (trypsin) -12.0 -4.6
+d)100 (trypsin) -11.7 -4.6
+d)2 (any) -11.5 -4.1
+d)100 (any) -11.3 -3.8
+Analytical Chemistry, Vol. 75, No. 4, February 15, 2003 773mass spectra would be a series of potential peptide assignments,
+each with an associated expectation value. By setting a confidencelimit threshold requiring that only peptides with e(x*)<e
+thres<
+1 were to be considered, a subset of these assignments with thegreatest likelihood of being valid would be created. By definition,such assignments would be rare and their stochastic occurrencewould be governed by the Poisson distribution. Therefore, if therewere Mspectra collected during the analysis, the stochastic
+chances of e(x*)<e
+thresisM1/2times greater than if a single
+measurement was made. Generalizing this relationship to multiplepeptide assignments, the expectation value for the protein ( E
+pro)
+based on the experimental results would be given by the followingexpression
+where there are nvalid peptide assignments contained in the
+protein sequence of interest, each with each peptide ihaving a
+characteristic expectation value and score.
+CONCLUSIONS
+The results of this paper suggest that the following steps may
+be used to reduce any well-behaved protein identification scoringsystem to an expectation value formulation for comparison withother systems.1. Create the distribution p(x) for each specific identification
+experiment, preferably experimentally by the methods described.
+2. Calculate s(x) from p(x).
+3. Fit the high-scoring portion of s(x) to a model distribution.
+4. Use the fitted function to extrapolate s(x) to the desired score
+and convert the extrapolated value to e(x).
+The results shown and two years of practical experience using
+survival functions and expectation values to evaluate proteinidentification experiments have shown that this approach isvaluable for automated, high-throughput experiments. They havealso proved valuable in assessing the relative merit of scoringsystems and evaluating the effects of altering primary identificationparameters. We advocate the widespread use of these simplestatistical measures to simplify and standardize the reporting ofthe confidence of protein identification results, allowing the usersof different software to compare their results in a straightforwardand statistically significant manner.
+ACKNOWLEDGMENT
+The authors thank the Manitoba Proteomics Centre at the
+University of Manitoba (http://www.proteome.ca) for their co-operation. They also thank Marcus Kalkum and Brian T. Chait ofRockefeller University for their discussions on this matter.
+Received for review June 18, 2002. Accepted November 5,
+2002.
+AC0258709Epro)xM∏
+i)1n
+ei(xi*) (10)
+774Analytical Chemistry, Vol. 75, No. 4, February 15, 2003

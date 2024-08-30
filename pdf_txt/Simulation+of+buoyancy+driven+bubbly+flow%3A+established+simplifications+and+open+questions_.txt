@@ -1,0 +1,620 @@
+This model is licensed under the COMSOL Software License Agreement 6.2 .
+All trademarks are the property of their respective owners. See www.comsol.com/trademarks .Created in COMSOL Multiphysics 6.2
+Flow in an Airlift Loop Reactor2 | FLOW IN AN AIRLIFT LOOP REACTORIntroduction
+This example illustrates multiphase flow modeling in an airlift loop reactor. Air bubbles are 
+injected through two frits at the bottom of a water-filled reactor. Due to buoyancy, the bubbles rise, inducing a circulating motion in the liquid. There is no mass transfer between 
+the phases.
+Model Definition
+The model parameters are taken from the experimental work presented in Ref. 1 , and are 
+summarized in Table 1 . The liquid phase in the reactor is water while the gas phase is air.
+BOUNDARY CONDITIONS
+Inlet Boundary Condition
+Two frits with radius 0.02 m are located at the bottom of the reactor (see Figure 1 ). Air 
+bubbles with a diameter of 3mm and superficial speed of 0.015 ms are injected through 
+the frits. For the liquid, the frits are described by a wall condition.
+Outlet Boundary Condition
+The top of the geometry ( xz-plane, y1.75 m) is a free surface. The surface motion is 
+neglected and the surface is instead approximated by a slip condition for the liquid. The 
+gas is free to exit the reactor through this boundary.
+Symmetry Condition
+Mirror symmetry is invoked in the xy-plane at z=0.04 m.TABLE 1:  MODEL DATA.
+PROPERTY VALUE DESCRIPTION
+H 1.75 m Reactor height
+W 0.5 m Reactor width
+T 0.08 m Reactor thickness
+db 3·10-3 m Bubble diameter
+R 0.02 m Frit radius
+L 0.16 m Width of riser and downcomer channels
+Vin 0.015 m/s Superficial velocity at inlet
+Cw 5·104 kg/(m3·s) Slip-velocity proportionality constant
+g,in 0.9727 kg/m3Gas density at inlet3 | FLOW IN AN AIRLIFT LOOP REACTORWall Condition
+Other boundaries are represented by wall functions for the liquid, and with zero gas flux 
+for the bubbles.
+Figure 1: Model geometry for the airlift loop reactor.
+BUBBLY FLOW INTERFACE AND TURBULENCE MODELING
+The Bubbly Flow interface sets up a multiphase-flow model for gas bubbles in a liquid. 
+The physics interface tracks the averaged gas-phase concentration rather than each bubble in detail. It solves for the liquid velocity, the pressure, and the volume fraction of the gas 
+phase. Details of the governing equations are presented in the theory section for the 
+Bubbly Flow interfaces in the  CFD Module User’s Guide .
+For laminar flow the gas velocity u
+g is calculated from
+where ul stands for the liquid-phase velocity, and uslip stands for the relative velocity 
+between gas and liquid, the so-called slip velocity.
+The slip velocity is calculated from a slip model. The Bubbly Flow interface provides 
+several slip models. The most appropriate slip model for this reactor is a pressure-drag balance slip model with a drag coefficient tuned for large bubbles.
+Symmetry
+InletOutlet
+uguluslip+ =4 | FLOW IN AN AIRLIFT LOOP REACTORThe experiments in Ref. 1  suggest that the Reynolds number for the fully developed flow 
+is 2·104, and hence that the flow is turbulent. The k- turbulence model for bubbly flows 
+is similar to the single-phase k- turbulence model (details can be found in the theory 
+sections for the Turbulent Flow and Bubbly Flow interfaces in the CFD Module User’s 
+Guide ). However, for bubbly flow cases, additional source terms are added to the 
+turbulence equations. These account for the extra production and dissipation of 
+turbulence due to the relative motion between the gas bubbles and the liquid. The additional source term in the k equation, denoted S
+k, accounts for the bubble-induced 
+turbulence and is given by (see Ref. 2 )
+The additional source term in the -equation, denoted S, accounting for the bubble-
+induced turbulence dissipation, is given by
+where Ck and C are model constants. The values of Ck and C are highly problem 
+dependent but can often be tuned to obtain good agreement between experimental data 
+and simulations (see Ref. 3 ). According to Ref. 2 , admissible values for Ck and C are in 
+the ranges of [ 0.01, 1 ] and [ 1, 1.92 ], respectively. Ref. 3  does however use C values less 
+than 1 and they obtain good agreements between the measurements and simulations. In 
+this example Ck and C are set to 0.6 and 1.4, respectively. 
+To account for turbulent transport of the bubbles, a drift velocity is added for the gas-
+phase velocity field:
+where
+and  is the turbulent Schmidt number.
+Using the k- model, the turbulent dynamic viscosity is defined asSkCkgp – uslip =
+S
+k---CSk=
+uguluslipudrift++ =
+udriftT
+T l--------------g
+g---------- –=
+T
+TlCk2
+------ =5 | FLOW IN AN AIRLIFT LOOP REACTORwhere C is a model constant (for details, see the theory section for the Bubbly Flow 
+interfaces in the CFD Module User’s Guide ).
+In the Bubbly Flow interface you can easily switch the k- turbulence model. You can also 
+control whether to include or exclude the bubble-induced turbulence term Sk by 
+adjusting the value of Ck. A Ck equal to zero means that the bubble induced turbulence 
+is neglected.
+The Physical Model settings for the Bubbly Flow interface also provides a low gas 
+concentration option which is active per default. This option is applicable if the gas 
+concentration is less than 2, in which case the transport equations can be simplified 
+compared to cases with higher gas concentrations. Ref. 1  does not specifically report the 
+gas concentration, but photographs of the reactor indicate that the gas concentration might be high, so the low gas concentration option is not enabled in this model.
+MESH GENERATION
+The mesh must be very fine in the vicinity of the frits in order to resolve steep gradients in 
+bubble concentration. The mesh also needs to be relatively fine in the interior of the 
+reactor since the presence of bubbles creates relatively complicated flow structures.
+SOLVING THE MODEL
+The goal is to obtain a stationary solution, but when it comes to buoyant flows, the best way to reach it is often a time-dependent simulation. Buoyant flows can feature intricate flow structures that are in a delicate balance with each other. It can sometimes be difficult 
+to find such flow structures with a stationary solver while a time-dependent simulation lets 
+the structures evolve to their final state.
+Results and Discussion
+Figure 2  shows the gas volume fraction and velocity streamlines for the liquid in the 
+symmetry plane at t30s. The results are qualitatively in good agreement with Ref. 1  
+except that the experiments show a recirculation zone at the upper-left corner while this 
+recirculation zone is absent in the simulation.
+The maximum value of the gas concentration is about 7 close to the two frits and higher 
+than 2 in substantial parts of the reactor. This confirms that the low-gas concentration 
+assumption would not have been valid.6 | FLOW IN AN AIRLIFT LOOP REACTORFigure 2: Results of a time-dependent simulation at t = 30 s. The surface is the gas 
+concentration, and the streamlines are liquid velocity.
+Figure 3  shows the turbulent viscosity. The effect of bubble induced turbulence can be 
+perceived by the relatively high levels of turbulent viscosity just above the frits and also beneath the free surface. The latter can be the reason to why there is no recirculation zone by the upper-left corner. But it could also be that the missing recirculation zone is caused 
+by sloshing which has been neglected in this example.
+7 | FLOW IN AN AIRLIFT LOOP REACTORFigure 3: Turbulent viscosity in the symmetry plane.
+Experimental data is reported for four probe position, #3, #5, #7 and #9. They correspond 
+to lines in the symmetry plane at different, constant heights, namely y= 300 mm, 
+y= 650 mm, y= 1250 mm and y= 1650 mm respectively. The probes are positioned in 
+the rising part of the reactor. Comparisons between simulation and experiments are shown 
+in Figure 4 . The agreement is good in the lower part of the reactor (positions #3 and #5) 
+where both liquid and gas velocities from the simulation are in close quantitative 
+agreement with their experimental counterparts. However, the agreement is less good in 
+the upper part of the reactor due to the missing recirculation zone in the upper-left corner. The simulation results are still qualitatively correct at probe position #7, but the velocities 
+are too low close to the inner wall. The lack of the recirculation zone is apparent at probe 
+position #9 where the experiments show negative liquid velocities along the outer wall while the simulation shows positive liquid velocities.
+The overall agreement must still be deemed good considering the many modeling 
+assumptions used in this example.
+8 | FLOW IN AN AIRLIFT LOOP REACTORFigure 4: Comparison between simulation results and experimental results for vertical 
+velocities at four different probe positions.9 | FLOW IN AN AIRLIFT LOOP REACTORReferences
+1. S. Becker, A. Sokolichin, and G. Eigenberger, “Gas-liquid flow in bubble columns and 
+loop reactors: Part II. Comparison of detailed experiments and flow simulations,” Chem. 
+Eng. Sci. , vol. 49, pp. 5747–5762, 1994.
+2. D. Kuzmin and S. Turek, “Numerical simulation of turbulent bubbly flows,” Third  Int. 
+Symposium on Two-Phase Flow Modeling and Experiment , Pisa, pp  22–24, Sept. 2004.
+3. A. Sokolichin, G. Eigenberger, and A. Lapin, “Simulation of Buoyancy Driven Bubbly 
+Flow: Established Simplification and Open Questions,” Fluid Mechanics and Transport 
+Phenomena , vol. 51, no. 1, pp. 24–45, 2004.
+Application Library path: CFD_Module/Verification_Examples/
+airlift_loop_reactor
+Modeling Instructions
+From the File menu, choose New.
+NEW
+In the New window, click Model Wizard .
+MODEL WIZARD
+1In the Model Wizard  window, click 3D.
+2In the Select Physics  tree, select Fluid Flow>Multiphase Flow>Bubbly Flow>Bubbly Flow,
+Turbulent Flow>Bubbly Flow, k- (bf).
+3Click Add.
+4Click Study .
+5In the Select Study  tree, select General Studies>Time Dependent .
+6Click Done.
+GLOBAL DEFINITIONS
+First, define some model parameters.
+Parameters 1
+1In the Model Builder  window, under Global Definitions  click Parameters 1 .
+10 | FLOW IN AN AIRLIFT LOOP REACTOR2In the Settings  window for Parameters , locate the Parameters  section.
+3In the table, enter the following settings:
+Define a step function to be used when ramping up the inlet gas flux as a function of time.
+Step 1 (step1)
+1In the Home  toolbar, click Functions  and choose Global>Step .
+2In the Settings  window for Step, locate the Parameters  section.
+3In the Location  text field, type 5.
+4Click to expand the Smoothing  section. In the Size of transition zone  text field, type 10.
+5Click Plot.
+GEOMETRY 1
+Create the geometry. To simplify this step, insert a prepared geometry sequence.
+1In the Geometry  toolbar, click Insert Sequence  and choose Insert Sequence .
+2Browse to the model’s Application Libraries folder and double-click the file 
+airlift_loop_reactor_geom_sequence.mph .
+Full geometry instructions can be found at the end of the document.
+3In the Geometry  toolbar, click Build All .
+Hold down the left mouse button and drag in the Graphics  window to rotate the 
+geometry. Similarly, use the right mouse button to translate the geometry and the 
+middle button to zoom.
+Now pick up the materials from the Material Library.Name Expression Value Description
+H 1.75[m] 1.75 m Reactor height
+W 0.5[m] 0.5 m Reactor width
+T 0.08[m] 0.08 m Reactor thickness
+d_b 3e-3[m] 0.003 m Bubble diameter
+R 0.02[m] 0.02 m Frit radius
+L 0.16[m] 0.16 m Width of riser and 
+downcomer channels
+V_in 0.015[m/s] 0.015 m/s Inlet velocity
+Cw 5e4[kg/(m^3*s)] 50000 kg/
+(m³·s)Slip-velocity 
+proportionality constant
+rhog_in 0.9727[kg/(m^3)] 0.9727 kg/m³ Gas density at inlet
+11 | FLOW IN AN AIRLIFT LOOP REACTORADD MATERIAL
+1In the Home  toolbar, click Add Material  to open the Add Material  window.
+2Go to the Add Material  window.
+3In the tree, select Built-in>Air .
+4Click Add to Component  in the window toolbar.
+5In the tree, select Built-in>Water, liquid .
+6Click Add to Component  in the window toolbar.
+7In the Home  toolbar, click Add Material  to close the Add Material  window.
+BUBBLY FLOW, K-  (BF)
+Fluid Properties 1
+1In the Model Builder  window, under Component 1 (comp1)>Bubbly Flow, k- (bf) click 
+Fluid Properties 1 .
+2In the Settings  window for Fluid Properties , locate the Materials  section.
+3From the Liquid  list, choose Water, liquid (mat2) .
+4From the Gas list, choose Air (mat1) .
+5Locate the Gas Properties  section. From the g list, choose Calculate from ideal gas law .
+6In the db text field, type d_b.
+7Locate the Slip Model  section. From the Slip model  list, choose Pressure-drag balance .
+8From the Drag coefficient model  list, choose Large bubbles .
+9In the Model Builder  window, click Bubbly Flow, k- (bf).
+10In the Settings  window for Bubbly Flow, k- , locate the Physical Model  section.
+11Clear the Low gas concentration  check box.
+12Locate the Turbulence  section. Find the Turbulence model parameters  subsection. Select 
+the Edit turbulence model parameters  check box.
+13In the C text field, type 1.4.
+14In the Ck text field, type 0.6.
+Gravity 1
+1In the Physics  toolbar, click Domains  and choose Gravity .
+2Select Domain 1 only.
+Wall 2
+In the Physics  toolbar, click Boundaries  and choose Wall.
+12 | FLOW IN AN AIRLIFT LOOP REACTORGravity 1
+1In the Model Builder  window, click Gravity 1 .
+2In the Settings  window for Gravity , locate the Gravity  section.
+3Specify the g vector as
+Wall 2
+1Click the Zoom Extents  button in the Graphics  toolbar.
+2In the Model Builder  window, click Wall 2 .
+3Select Boundaries 6 and 7 only.
+4In the Settings  window for Wall, locate the Gas Boundary Condition  section.
+5From the Gas boundary condition  list, choose Gas flux .
+6In the Ngg text field, type V_in*rhog_in*step1(t[1/s]) .
+Wall 3
+1In the Physics  toolbar, click Boundaries  and choose Wall.
+2Select Boundary 5 only.
+3In the Settings  window for Wall, locate the Liquid Boundary Condition  section.
+4From the Liquid boundary condition  list, choose Slip.
+5Locate the Gas Boundary Condition  section. From the Gas boundary condition  list, choose 
+Gas outlet .
+Initial Values 1
+When using gravity it is important to set the initial values of the pressure to hydrostatic 
+conditions.
+1In the Model Builder  window, click Initial Values 1 .
+2In the Settings  window for Initial Values , type g_const*bf.rhol*(1.75-y)  in the p 
+text field.
+Pressure Point Constraint 1
+1In the Physics  toolbar, click Points  and choose Pressure Point Constraint .
+2Select Point 23 only.0 x
+-g_const y
+0 z
+13 | FLOW IN AN AIRLIFT LOOP REACTORSymmetry 1
+1In the Physics  toolbar, click Boundaries  and choose Symmetry .
+2Select Boundary 4 only.
+MESH 1
+1In the Model Builder  window, under Component 1 (comp1)  click Mesh 1 .
+2In the Settings  window for Mesh, locate the Physics-Controlled Mesh  section.
+3From the Element size  list, choose Coarse .
+4Right-click Component 1 (comp1)>Mesh 1  and choose Edit Physics-Induced Sequence .
+Size
+1In the Model Builder  window, under Component 1 (comp1)>Mesh 1  click Size.
+2In the Settings  window for Size, locate the Element Size  section.
+3From the Predefined  list, choose Normal .
+Boundary Layer Properties 1
+1In the Model Builder  window, expand the Component 1 (comp1)>Mesh 1>
+Boundary Layers 1  node, then click Boundary Layer Properties 1 .
+2In the Settings  window for Boundary Layer Properties , locate the Layers  section.
+3In the Number of layers  text field, type 4.
+4In the Thickness adjustment factor  text field, type 3.
+5Click Build All .
+6Click the Zoom Extents  button in the Graphics  toolbar.
+STUDY 1
+Step 1: Time Dependent
+1In the Model Builder  window, under Study 1  click Step 1: Time Dependent .
+2In the Settings  window for Time Dependent , locate the Study Settings  section.
+3In the Output times  text field, type range(0,0.05,1)*30 .
+4From the Tolerance  list, choose User controlled .
+5In the Relative tolerance  text field, type 0.005 .
+Measurement data makes it possible to estimate manual scales for velocity and pressure.
+Solution 1 (sol1)
+1In the Study  toolbar, click Show Default Solver .
+14 | FLOW IN AN AIRLIFT LOOP REACTOR2In the Model Builder  window, expand the Solution 1 (sol1)  node.
+3In the Model Builder  window, expand the Study 1>Solver Configurations>
+Solution 1 (sol1)>Dependent Variables 1  node, then click Pressure (comp1.p) .
+4In the Settings  window for Field, locate the Scaling  section.
+5From the Method  list, choose Manual .
+6In the Scale text field, type 1.7e4 .
+7In the Model Builder  window, under Study 1>Solver Configura tions>Solution 1 (sol1)>
+Dependent Variables 1  click Velocity field, liquid phase (comp1.u) .
+8In the Settings  window for Field, locate the Scaling  section.
+9From the Method  list, choose Manual .
+10In the Scale text field, type 0.5.
+11In the Model Builder  window, collapse the Solution 1 (sol1)  node.
+12In the Model Builder  window, right-click Solution 1 (sol1)  and choose Compute .
+The following steps reproduce Figure 2 .
+RESULTS
+Surface 2
+1In the Results  toolbar, click More Datasets  and choose Surface .
+2Select Boundary 4 only.
+3In the Settings  window for Surface , locate the Parameterization  section.
+4From the x- and y-axes  list, choose xy-plane .
+2D Plot Group 5
+In the Results  toolbar, click 2D Plot Group .
+Surface 1
+Right-click 2D Plot Group 5  and choose Surface .
+2D Plot Group 5
+1In the Settings  window for 2D Plot Group , locate the Data section.
+2From the Dataset  list, choose Surface 2 .
+Streamline 1
+1Right-click 2D Plot Group 5  and choose Streamline .
+2In the Settings  window for Streamline , locate the Coloring and Style  section.
+3Find the Point style  subsection. From the Color list, choose White .
+15 | FLOW IN AN AIRLIFT LOOP REACTOR4Locate the Streamline Positioning  section. From the Positioning  list, choose 
+Uniform density .
+5In the Separating distance  text field, type 0.025 .
+6In the 2D Plot Group 5  toolbar, click Plot.
+The following steps reproduce Figure 3 .
+2D Plot Group 6
+1In the Home  toolbar, click Add Plot Group  and choose 2D Plot Group .
+2In the Settings  window for 2D Plot Group , locate the Data section.
+3From the Dataset  list, choose Surface 2 .
+Surface 1
+1Right-click 2D Plot Group 6  and choose Surface .
+2In the Settings  window for Surface , locate the Expression  section.
+3In the Expression  text field, type bf.muT .
+4In the 2D Plot Group 6  toolbar, click Plot.
+Proceed to reproduce the 1D-plots in Figure 4 . Start by importing experimental data.
+vl3
+1In the Results  toolbar, click Table .
+2In the Settings  window for Table , type vl3 in the Label  text field.
+3Locate the Data section. Click Import .
+4Browse to the model’s Application Libraries folder and double-click the file 
+airlift_loop_reactor_vl_no3.txt .
+vg3
+1In the Results  toolbar, click Table .
+2In the Settings  window for Table , type vg3 in the Label  text field.
+3Locate the Data section. Click Import .
+4Browse to the model’s Application Libraries folder and double-click the file 
+airlift_loop_reactor_vg_no3.txt .
+vl5
+1In the Results  toolbar, click Table .
+2In the Settings  window for Table , type vl5 in the Label  text field.
+3Locate the Data section. Click Import .
+16 | FLOW IN AN AIRLIFT LOOP REACTOR4Browse to the model’s Application Libraries folder and double-click the file 
+airlift_loop_reactor_vl_no5.txt .
+vg5
+1In the Results  toolbar, click Table .
+2In the Settings  window for Table , type vg5 in the Label  text field.
+3Locate the Data section. Click Import .
+4Browse to the model’s Application Libraries folder and double-click the file 
+airlift_loop_reactor_vg_no5.txt .
+vl7
+1In the Results  toolbar, click Table .
+2In the Settings  window for Table , type vl7 in the Label  text field.
+3Locate the Data section. Click Import .
+4Browse to the model’s Application Libraries folder and double-click the file 
+airlift_loop_reactor_vl_no7.txt .
+vg7
+1In the Results  toolbar, click Table .
+2In the Settings  window for Table , type vg7 in the Label  text field.
+3Locate the Data section. Click Import .
+4Browse to the model’s Application Libraries folder and double-click the file 
+airlift_loop_reactor_vg_no7.txt .
+vl9
+1In the Results  toolbar, click Table .
+2In the Settings  window for Table , type vl9 in the Label  text field.
+3Locate the Data section. Click Import .
+4Browse to the model’s Application Libraries folder and double-click the file 
+airlift_loop_reactor_vl_no9.txt .
+vg9
+1In the Results  toolbar, click Table .
+2In the Settings  window for Table , type vg9 in the Label  text field.
+3Locate the Data section. Click Import .
+4Browse to the model’s Application Libraries folder and double-click the file 
+airlift_loop_reactor_vg_no9.txt .
+17 | FLOW IN AN AIRLIFT LOOP REACTORVG9
+1Go to the vg9 window.
+Define cut lines that correspond to the experimental probe positions.
+RESULTS
+No3
+1In the Results  toolbar, click Cut Line 3D .
+2In the Settings  window for Cut Line 3D , type No3 in the Label  text field.
+3Locate the Line Data  section. In row Point 1 , set y to 0.3and z to 0.04 .
+4In row Point 2 , set x to 0.15 , y to 0.3, and z to 0.04 .
+5From the Snapping  list, choose Snap to closest boundary .
+6Right-click No3 and choose Duplicate .
+No5
+1In the Model Builder  window, under Results>Datasets  click No3.1 .
+2In the Settings  window for Cut Line 3D , type No5 in the Label  text field.
+3Locate the Line Data  section. In row Point 1 , set y to 0.65 .
+4In row Point 2 , set y to 0.65 .
+5Right-click No5 and choose Duplicate .
+No7
+1In the Model Builder  window, under Results>Datasets  click No5.1 .
+2In the Settings  window for Cut Line 3D , type No7 in the Label  text field.
+3Locate the Line Data  section. In row Point 1 , set y to 1.25 .
+4In row Point 2 , set y to 1.25 .
+5Right-click No7 and choose Duplicate .
+No9
+1In the Model Builder  window, under Results>Datasets  click No7.1 .
+2In the Settings  window for Cut Line 3D , type No9 in the Label  text field.
+3Locate the Line Data  section. In row Point 1 , set y to 1.65 .
+4In row Point 2 , set y to 1.65 .
+Probe position #3
+1In the Results  toolbar, click 1D Plot Group .
+18 | FLOW IN AN AIRLIFT LOOP REACTOR2In the Settings  window for 1D Plot Group , type Probe position #3  in the Label  text 
+field.
+3Locate the Data section. From the Dataset  list, choose No3.
+4From the Time selection  list, choose Last.
+5Click to expand the Title section. From the Title type  list, choose Manual .
+6In the Title text area, type Vertical liquid and gas velocities at probe 
+position #3 .
+Line Graph 1
+1Right-click Probe position #3  and choose Line Graph .
+2In the Settings  window for Line Graph , locate the y-Axis Data  section.
+3In the Expression  text field, type v.
+4Click to expand the Coloring and Style  section. From the Color list, choose Blue.
+5Click to expand the Legends  section. Select the Show legends  check box.
+6From the Legends  list, choose Manual .
+7In the table, enter the following settings:
+Table Graph 1
+1In the Model Builder  window, right-click Probe position #3  and choose Table Graph .
+2In the Settings  window for Table Graph , locate the Coloring and Style  section.
+3Find the Line style  subsection. From the Line list, choose None.
+4From the Color list, choose Blue.
+5Find the Line markers  subsection. From the Marker  list, choose Diamond .
+6Click to expand the Legends  section. Select the Show legends  check box.
+7From the Legends  list, choose Manual .
+8In the table, enter the following settings:
+Line Graph 2
+1Right-click Probe position #3  and choose Line Graph .
+2In the Settings  window for Line Graph , locate the y-Axis Data  section.Legends
+Fluid velocity, simulation
+Legends
+Fluid velocity, experiments19 | FLOW IN AN AIRLIFT LOOP REACTOR3In the Expression  text field, type bf.ugy .
+4Locate the Coloring and Style  section. From the Color list, choose Red.
+5Locate the Legends  section. Select the Show legends  check box.
+6From the Legends  list, choose Manual .
+7In the table, enter the following settings:
+Table Graph 2
+1Right-click Probe position #3  and choose Table Graph .
+2In the Settings  window for Table Graph , locate the Data section.
+3From the Table  list, choose vg3.
+4Locate the Coloring and Style  section. Find the Line style  subsection. From the Line list, 
+choose None.
+5From the Color list, choose Red.
+6Find the Line markers  subsection. From the Marker  list, choose Square .
+7Locate the Legends  section. Select the Show legends  check box.
+8From the Legends  list, choose Manual .
+9In the table, enter the following settings:
+Probe position #3
+1In the Model Builder  window, click Probe position #3 .
+2In the Settings  window for 1D Plot Group , locate the Axis section.
+3Select the Manual axis limits  check box.
+4In the x minimum  text field, type 0.
+5In the x maximum  text field, type 0.15 .
+6In the y minimum  text field, type -0.15 .
+7In the y maximum  text field, type 0.85 .
+8In the Probe position #3  toolbar, click Plot.
+9Right-click Probe position #3  and choose Duplicate .
+10In the Model Builder  window, collapse the Probe position #3  node.Legends
+Gas velocity, simulation
+Legends
+Gas velocity, experiments
+20 | FLOW IN AN AIRLIFT LOOP REACTORProbe position #5
+1In the Model Builder  window, under Results  click Probe position #3.1 .
+2In the Settings  window for 1D Plot Group , type Probe position #5  in the Label  text 
+field.
+3Locate the Data section. From the Dataset  list, choose No5.
+4Locate the Title section. In the Title text area, type Vertical liquid and gas 
+velocities at probe position #5 .
+Table Graph 1
+1In the Model Builder  window, expand the Probe position #5  node, then click 
+Table Graph 1 .
+2In the Settings  window for Table Graph , locate the Data section.
+3From the Table  list, choose vl5.
+Table Graph 2
+1In the Model Builder  window, click Table Graph 2 .
+2In the Settings  window for Table Graph , locate the Data section.
+3From the Table  list, choose vg5.
+4In the Probe position #5  toolbar, click Plot.
+Probe position #5
+1In the Model Builder  window, click Probe position #5 .
+2Click Plot.
+3Right-click Probe position #5  and choose Duplicate .
+4In the Model Builder  window, collapse the Probe position #5  node.
+Probe position #7
+1In the Model Builder  window, under Results  click Probe position #5.1 .
+2In the Settings  window for 1D Plot Group , type Probe position #7  in the Label  text 
+field.
+3Locate the Data section. From the Dataset  list, choose No7.
+4Locate the Title section. In the Title text area, type Vertical liquid and gas 
+velocities at probe position #7 .
+Table Graph 1
+1In the Model Builder  window, expand the Probe position #7  node, then click 
+Table Graph 1 .
+21 | FLOW IN AN AIRLIFT LOOP REACTOR2In the Settings  window for Table Graph , locate the Data section.
+3From the Table  list, choose vl7.
+Table Graph 2
+1In the Model Builder  window, click Table Graph 2 .
+2In the Settings  window for Table Graph , locate the Data section.
+3From the Table  list, choose vg7.
+Probe position #7
+1In the Model Builder  window, click Probe position #7 .
+2In the Probe position #7  toolbar, click Plot.
+3Right-click Probe position #7  and choose Duplicate .
+4In the Model Builder  window, collapse the Probe position #7  node.
+Probe position #9
+1In the Model Builder  window, under Results  click Probe position #7.1 .
+2In the Settings  window for 1D Plot Group , type Probe position #9  in the Label  text 
+field.
+3Locate the Data section. From the Dataset  list, choose No9.
+4Locate the Title section. In the Title text area, type Vertical liquid and gas 
+velocities at probe position #9 .
+Table Graph 1
+1In the Model Builder  window, expand the Probe position #9  node, then click 
+Table Graph 1 .
+2In the Settings  window for Table Graph , locate the Data section.
+3From the Table  list, choose vl9.
+Table Graph 2
+1In the Model Builder  window, click Table Graph 2 .
+2In the Settings  window for Table Graph , locate the Data section.
+3From the Table  list, choose vg9.
+Probe position #9
+1In the Model Builder  window, click Probe position #9 .
+2In the Probe position #9  toolbar, click Plot.
+3In the Model Builder  window, collapse the Probe position #9  node.
+22 | FLOW IN AN AIRLIFT LOOP REACTORAppendix. Geometry Modeling Instructions
+From the File menu, choose New.
+NEW
+In the New window, click Model Wizard .
+MODEL WIZARD
+1In the Model Wizard  window, click 3D.
+2Click Done.
+GLOBAL DEFINITIONS
+First, define some model parameters.
+Parameters 1
+1In the Model Builder  window, under Global Definitions  click Parameters 1 .
+2In the Settings  window for Parameters , locate the Parameters  section.
+3In the table, enter the following settings:
+GEOMETRY 1
+Work Plane 1 (wp1)
+1In the Geometry  toolbar, click Work Plane .
+2In the Settings  window for Work Plane , click Go to Plane Geometry .Name Expression Value Description
+H 1.75[m] 1.75 m Reactor height
+W 0.5[m] 0.5 m Reactor width
+T 0.08[m] 0.08 m Reactor thickness
+d_b 3e-3[m] 0.003 m Bubble diameter
+R 0.02[m] 0.02 m Frit radius
+L 0.16[m] 0.16 m Width of riser and downcomer 
+channels
+V_in 0.015[m/s] 0.015 m/s Inlet velocity
+Cw 5e4[kg/
+(m^3*s)]50000 kg/
+(m³·s)Slip-velocity proportionality 
+constant
+rhog_in 0.9727[kg/
+(m^3)]0.9727 kg/
+m³Gas density at inlet
+23 | FLOW IN AN AIRLIFT LOOP REACTORWork Plane 1 (wp1)>Plane Geometry
+In the Model Builder  window, click Plane Geometry .
+Work Plane 1 (wp1)>Polygon 1 (pol1)
+1In the Work Plane  toolbar, click Polygon .
+2In the Settings  window for Polygon , locate the Coordinates  section.
+3In the table, enter the following settings:
+4In the Work Plane  toolbar, click Build All .
+Work Plane 1 (wp1)>Polygon 2 (pol2)
+1In the Work Plane  toolbar, click Polygon .
+2In the Settings  window for Polygon , locate the Coordinates  section.
+3In the table, enter the following settings:
+4In the Work Plane  toolbar, click Build All .
+Work Plane 1 (wp1)>Difference 1 (dif1)
+1In the Work Plane  toolbar, click Booleans and Partitions  and choose Difference .
+2Select the object pol1 only.
+3In the Settings  window for Difference , locate the Difference  section.
+4Click to select the Activate Selection  toggle button for Objects to subtract .
+5Select the object pol2 only.
+6In the Work Plane  toolbar, click Build All .xw (m) yw (m)
+00
+L0
+WLWH
+0H
+xw (m) yw (m)
+L 0.110.34 0.2
+0.34 1.47
+L 1.56
+24 | FLOW IN AN AIRLIFT LOOP REACTORExtrude 1 (ext1)
+1In the Model Builder  window, under Component 1 (comp1)>Geometry 1  right-click 
+Work Plane 1 (wp1)  and choose Extrude .
+2In the Settings  window for Extrude , locate the Distances  section.
+3In the table, enter the following settings:
+4Click Build All Objects .
+Work Plane 2 (wp2)
+1In the Geometry  toolbar, click Work Plane .
+2In the Settings  window for Work Plane , locate the Plane Definition  section.
+3From the Plane  list, choose zx-plane .
+4Click Go to Plane Geometry .
+Work Plane 2 (wp2)>Circle 1 (c1)
+1In the Work Plane  toolbar, click Circle .
+2In the Settings  window for Circle , locate the Size and Shape  section.
+3In the Radius  text field, type R.
+4Locate the Position  section. In the xw text field, type T/2.
+5In the yw text field, type 0.11 .
+Work Plane 2 (wp2)>Circle 2 (c2)
+1In the Work Plane  toolbar, click Circle .
+2In the Settings  window for Circle , locate the Size and Shape  section.
+3In the Radius  text field, type R.
+4Locate the Position  section. In the xw text field, type T/2.
+5In the yw text field, type T/2.
+6In the Work Plane  toolbar, click Build All .
+Union 1 (uni1)
+1In the Model Builder  window, right-click Geometry 1  and choose 
+Booleans and Partitions>Union .
+2Click in the Graphics  window and then press Ctrl+A to select both objects.
+3In the Settings  window for Union , click Build All Objects .Distances (m)
+T
+25 | FLOW IN AN AIRLIFT LOOP REACTORBlock 1 (blk1)
+1In the Geometry  toolbar, click Block .
+2In the Settings  window for Block , locate the Size and Shape  section.
+3In the Depth  text field, type 2.
+4Locate the Position  section. In the z text field, type T/2.
+5Click Build All Objects .
+6Click the Zoom Extents  button in the Graphics  toolbar.
+Difference 1 (dif1)
+1In the Geometry  toolbar, click Booleans and Partitions  and choose Difference .
+2Select the object uni1 only, to add it to the Objects to add  list.
+3In the Settings  window for Difference , locate the Difference  section.
+4Click to select the Activate Selection  toggle button for Objects to subtract .
+5Select the object blk1 only.
+6In the Geometry  toolbar, click Build All .
+26 | FLOW IN AN AIRLIFT LOOP REACTOR

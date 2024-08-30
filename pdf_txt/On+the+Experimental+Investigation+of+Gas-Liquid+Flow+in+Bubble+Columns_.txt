@@ -1,0 +1,1424 @@
+Helmholtz-Zentrum Dresden-Rossendorf (HZDR)
+Hydrodynamic correlations for bubble columns from complementary 
+UXCT and RPT measurements in identical geometries and conditions
+Azizi, S.; Yadav, A.; Lau, Y. M.; Hampel, U.; Roy, S.; Schubert, M.;
+Originally published:
+November 2019
+Chemical Engineering Science 208(2019), 115099
+DOI: https://doi.org/10.1016/j.ces.2019.07.017
+Perma-Link to Publication Repository of HZDR:
+https://www.hzdr.de/publications/Publ-29616
+Release of the secondary publication 
+on the basis of the German Copyright Law § 38 Section 4.
+CC BY-NC-NDHydrodynamic correlations for bubble columns from complementary
+UXCT and RPT measurements in identical geometry and conditions
+S. Azizia, A. Yadavb, Y.M. Laua, U. Hampela,c, S. Royb, M. Schuberta,1
+aInstitute of Fluid Dynamics, Helmholtz-Zentrum Dresden-Rossendorf, Bautzner Landstrae 400, 01328
+Dresden, Germany
+bDepartment of Chemical Engineering, Indian Institute of Technology-Delhi, Hauz Khas, New Delhi, Delhi
+110016, India
+cChair of Imaging Technologies in Energy and Process Engineering, Technische Universit at Dresden, 01062
+Dresden, Germany
+1Corresponding author: Email: m.schubert@hzdr.de (M. Schubert)
+Abstract
+Many correlations have been developed to predict the hydrodynamics of bubble columns.
+Often, these studies are performed for incomparable systems in terms of column and sparger
+dimensions as well as physical uid properties. In this work, a dierent approach is proposed
+comprising interrelated correlations for liquid velocity, gas holdup and bubble size. The corre-
+lations are developed on the basis of complementary experiments with non-invasive measure-
+ment techniques, namely, Ultrafast X-ray Computed Tomography (UXCT) and Radioactive
+Particle Tracking (RPT). The experimental setup consists of a bubble column equipped with
+a needle sparger. Developed correlations considers sparger dimensions, operating conditions
+and bubble size. The bubble size is applied as the characteristic length in the Reynolds and
+the E otv os numbers, which are utilized for the gas holdup and liquid velocity correlations.
+In comparison with previous approaches, the developed correlations show better agreement
+with experimental data from this study as well as from the literature.
+Keywords: Bubble columns, hydrodynamic correlations, ultrafast X-ray computed
+tomography, radioactive particle tracking
+1. Introduction
+A bubble column reactor is a widely applied equipment in the chemical industry due to its
+superior gas-liquid contacting ability, excellent mass and heat transfer performance, intensive
+mixing without moving parts and comparably low energy consumption (Dudukovic and Mills,
+1984, Deen et al., 2010). The excellent mixing characteristics prevent the formation of tem- 5
+perature hotspots and thus, ensures high thermal stability. Despite the simple column design,
+the multiphase ow within is complex and the process design requires detailed knowledge on
+the key hydrodynamic properties, such as gas holdup, bubble size, liquid velocity and liquid
+circulation velocity (Shimada et al., 2012). For instance, the mass transfer rate of a chemical
+component into the liquid phase varies with the degree of liquid mixing due to the dependency 10
+of the mass transfer coecient on bubble size, gas holdup, liquid velocity distribution and
+liquid circulation velocity (Levenspiel, 1999). Particularly, the coecients of heat and mass
+transfer correlations rely strongly on the gas holdup (Letzel et al., 1999, Akita and Yoshida,
+1973, G otz et al., 2017). The spatial variation of the gas holdup is intimately related to the
+Preprint submitted to Chemical Engineering Science July 20, 2019pressure gradients in the column cross-section, which in turn results in liquid circulation in the 15
+bubble column and aect liquid mixing as well as heat and mass transfer (Letzel et al., 1999,
+Kantarci et al., 2005). The specic gas-liquid interfacial area is an important design factor,
+which directly correlates with the gas holdup and inversely with the bubble size. To enhance
+the interfacial area for the gas-liquid mass transfer, small bubbles are desired (Polli et al.,
+2002). As a consequence, smaller bubbles lead to higher gas residence time and higher gas 20
+holdups (Letzel et al., 1999, Kantarci et al., 2005). In contrast, large bubbles experience large
+net forces resulting from buoyancy and drag, which cause higher rise velocities. However, the
+existence of large bubbles with high rising velocities causes increasing of liquid mixing, which
+is desired for the increasing of heat transfer to immersed surfaces in the industrial bubble
+columns. Another implication of the radial gas holdup distribution is the radial variation of 25
+the liquid velocity. The liquid velocity distribution is important due to its particular eects on
+the convective heat and mass transfer (Gandhi et al., 2009). Increasing the liquid circulation
+velocity increases the liquid mixing in the bubble column, which causes a reduction of local
+concentration gradients due to a higher mass transfer rate.
+30
+All these aforementioned parameters in bubble columns depend signicantly on operating
+conditions, liquid properties, column dimensions, gas distributor design, etc. (Letzel et al.,
+1999, Kantarci et al., 2005). Subsequently, numerous correlations for bubble size, gas holdup,
+and liquid velocity have been proposed. These correlations are either developed on the basis
+of experiments from particular setups or dierent operating conditions. Although it is known 35
+that bubble size, gas holdup, liquid velocity and mixing are not independent from each other
+(Schafer et al., 2002, Basha et al., 2015, S al et al., 2013), a complete experimental database to
+derive the correlations for bubble size, gas holdup, and liquid velocity for identical bubble col-
+umn geometry and operating conditions are, as far as the authors recalled, not yet compiled.
+In this work, such a database is assembled on the basis of complementary experimental data 40
+using Ultrafast X-ray Computed Tomography (UXCT) and Radioactive Particle Tracking
+(RPT) for the derivation of hydrodynamic correlations. Contrary to literature correlations,
+not only is this a unique concept, but also the developed correlations are \coupled" beside
+dependency on physical properties, column dimensions and operating conditions. Starting
+from the derivation of the inlet bubble size correlation, the mean bubble size correlation is 45
+derived. Subsequently, the mean bubble size is applied as the characteristic length for the
+dimensionless Reynolds and E otv os numbers, which are utilized in the derivation of the gas
+holdup and liquid velocity correlations. As such, the coupling is described as \one-way".
+In the following sections, literature correlations are revisited and the procedure of deriving 50
+the hydrodynamic correlations is described. The employed state-of-the art measurement
+techniques are presented for assembling a complementary experimental database. And nally,
+the derived set of coupled correlations is given and its performance is compared with both
+correlations and experimental data from literature.
+2. Hydrodynamic correlations 55
+Below, literature correlations are briey listed for bubble size, gas holdup and liquid
+velocity. Afterwards, the procedure for deriving hydrodynamic correlations is explained with
+using complementary experimental data.
+22.1. Bubble size
+Table 1 shows correlations for the prediction of the initial bubble diameter, di(bubble di- 60
+ameter at sparger), which is mostly described in terms of sparger orice diameter, do(Leibson
+et al., 1956, Miller, 1974, Bhavaraju et al., 1978, Moo-Young and Blanch, 1981) and orice
+supercial gas velocity, Ugo(Leibson et al., 1956, Bhavaraju et al., 1978, Moo-Young and
+Blanch, 1981). Amongst these studies, only Bhavaraju et al. (1978) considered properties of
+the liquid phase instead of the gas phase. Beside these empirical correlations, Geary and Rice 65
+(1991) developed a model based on the force balance to predict the initial bubble diameter
+for rigid and exible spargers.
+Table 1: Correlations for the prediction of the initial bubble diameter.
+Reference Correlation
+Leibson et al. (1956) di= 0:18d1=2
+o(gUgodo
+g)1=3,gUgodo
+g<2000
+Miller (1974) di= (6d0:48
+o
+g(l g))1=3, for low gas ow rates
+Bhavaraju et al. (1978) di= 3:23do(lUgodo
+l) 0:1(U2
+go=4
+d3og)0:21
+Moo-Young and Blanch
+(1981)di= (0:19d0:48
+o)(gUgodo
+g)0:32
+Geary and Rice (1991) y=d3
+i
+d3o
+0:5g(d3
+i=6)2
+11do(d2oUgo)2(y2 1 2 lny) +Nr(y 1 lny) 2 N(2(y1=2 1) lny) 
+2(d3
+i=6)1=3
+do(1
+36)1=3(3(y1=3 1) lny) = 0
+Nr=32
+11d3
+i=6
+l(d2oUgo=4)2do(d2
+oU2
+gog
+4 do)
+N=128
+115p
+d3
+i=6
+d3oUgor
+2l
+l(d2
+oUgo
+16)3=2(4
+3)1=2
+The inlet bubble does not retain its initial bubble size due to breakup and coalescence
+events that changes the bubble size along its rising path. Considering the variety of breakup
+and coalescence models (Liao and Lucas, 2009, 2010), uncertainties of model coecients 70
+and the complexity of the population balance equations, simplied empirical correlations are
+needed for the assessment of the bubble diameter. Table 2 shows correlations for the prediction
+of the mean bubble diameter, dmin bubble columns. Krishna et al. (1991) and Krishna and
+3Table 2: Correlations for the prediction of the mean bubble diameter.
+Reference Correlation
+Krishna and Ellenberger (1996) dmL=1(Ug Udf)2=5(0:03 +h)4=5g 1=5
+Udf=1
+2:840:12
+0:04ggm;trans (1 gm;trans )
+gm;trans = 0:593:851:5s
+0:96
+g0:12
+l
+dmSnot reported
+Akita and Yoshida (1973) dm= 26D(D2gl
+) 0:5(UgD32
+l
+2
+l) 0:12(UgpgD)0:12
+Wilkinson et al. (1994) dm= (8:8
+lg)0:5(Ugl
+) 0:04(3l
+g4
+l) 0:12(l
+g)0:22
+Jamialahmadi et al. (2000) di= (6d0:48
+o
+g(l g))1=3
+dt= 0:45U0:87
+g0:85
+g
+dm=3q
+d3
+i+d3
+t
+Kumar et al. (1976) dm=8
+>>>>>>>>>>>>>>>>><
+>>>>>>>>>>>>>>>>>:1:56(gUgodo
+g)0:058(d2
+o
+(l g)g)0:251<gUgodo
+g<10
+0:32(gUgodo
+g)0:425(d2
+o
+(l g)g)0:2510<gUgodo
+g<2100
+100(gUgodo
+g) 0:4(d2
+o
+(l g)g)0:254000<gUgodo
+g<70000
+Ellenberger (1996) described dmper class of their two-bubble class model for the churn-
+turbulent ow, i.e. large and small bubble classes. In the two-bubble class model, Krishna 75
+and Ellenberger (1996) proposed a correlation for the large bubble diameter, dmL, which
+depends on the gas holdup at ow regime transition. However, they did not consider a
+correlation for the diameter of the small bubbles, dmS. Others simply just use the mean
+bubble diameter of the whole bubbly ow. The correlations predicting bubble sizes show an
+increase with increasing of supercial gas velocity (Akita and Yoshida, 1973, Basha et al., 80
+42015, Kantarci et al., 2005), surface tension and viscosity (Kantarci et al., 2005, Akita and
+Yoshida, 1973). Contrary, elevated pressure and increasing gas density reduce the mean
+bubble size (Wilkinson et al., 1994). The eect of temperature is ambiguous and depends
+on the non-linear change of vapor pressure, liquid viscosity and surface tension (Wilkinson
+et al., 1994). However, the inconsistent predictions of the bubble size can be attributed to the 85
+respective database gathered for dierent physical properties, operating conditions, column
+dimensions and sparger designs. For the latter one, only Jamialahmadi and M uller-Steinhagen
+(1992) and Kumar et al. (1976) related the mean bubble size to the initial bubble diameter.
+It should be noted that any radial distribution of the bubble size, dm(), has been not yet
+reported since such data are hardly accessible with conventional techniques. However, dm() 90
+can be determined with ultrafast X-ray tomography as recently shown by Azizi et al. (2017).
+2.2. Gas holdup
+The eect of the supercial gas velocity on the gas holdup is commonly expressed as
+g/Un
+gwith 0:7< n < 1:2 for the homogeneous and 0 :4< n < 0:7 for the heterogeneous
+ow regime (Basha et al., 2015, Shah et al., 1982, Reilly et al., 1986). In the heterogeneous 95
+ow regime, the contribution of small bubbles to the gas holdup is rather constant and equals
+the holdup at transition regime, whereas the large bubbles holdup continuously increases
+with increasing Ug(Kantarci et al., 2005, Krishna et al., 1991). In Table 3, the most common
+correlations for the prediction of the average gas holdup are summarized. All correlations
+to a greater or lesser extent consider the eects of liquid physical properties on the gas 100
+holdup. An increase in liquid viscosity reduces the gas holdup due to the formation of larger
+bubbles with higher rise velocity (Akita and Yoshida, 1973). Decreasing the surface tension
+results in smaller and more stable bubbles, which eventually lead to higher gas holdup and
+more uniform distribution of radial gas holdup (Kumar et al., 1976). Elevated gas density
+or higher operating pressure increase the gas holdup, which correlates inversely with the 105
+bubble size as mentioned above (Kantarci et al., 2005, Basha et al., 2015, Wilkinson and
+v. Dierendonck, 1990). The operating temperature mainly eects the liquid properties, which
+in turn inuence the gas holdup (Basha et al., 2015). The available gas holdup correlations
+show some inconsistencies with regard to supercial gas velocity and physical properties.
+Kumar et al. (1976) and Reilly et al. (1986) considered gas and liquid phase densities and 110
+surface tension, while Hughmark (1967) considered the densities only. Kawase et al. (1992)
+and Hikita et al. (1980) considered liquid viscosity and density in their gas holdup correlations.
+The column diameter is considered by Akita and Yoshida (1973), Behkish et al. (2006), S al
+et al. (2013), Krishna and Ellenberger (1996) and Nedeltchev and Schumpe (2008). The eect
+of the sparger design was emphasized in several studies (Luo et al., 1999, Akita and Yoshida, 115
+1973). In particular, the introduction of small bubbles results in high gas holdups (Kantarci
+et al., 2005). The sparger design, however, is ignored in the correlations. Only Behkish et al.
+(2006) and S al et al. (2013) considered the orice size as a decisive parameter. By dividing
+the gas holdup into contributions of large and small bubbles, Krishna and Ellenberger (1996)
+developed a gas holdup correlation for the churn-turbulent regime, called the two-bubble class 120
+model. The shape of the bubbles was also considered in the development of the gas holdup
+correlations, e.g. Nedeltchev and Schumpe (2008) proposed a correlation assuming ellipsoidal
+bubbles.
+5Table 3: Most common correlations for the prediction of the gas holdup.
+Reference Correlation
+Kumar et al. (1976) g= 0:728U0 0:485U02+ 0:0975U03
+U0=Ug(2
+l
+(l g)g)0:25
+Hughmark (1967) g= (2 + (0:35
+Ug)(lg
+72)1=3) 1
+Reilly et al. (1986) g= 0:009 + 296U0:44
+g 0:98
+l 0:160:19
+g
+Kawase et al. (1992)
+g=0:0625(lUg
+l)0:25
+1 0:0625(lUg
+l)0:25
+Hikita et al. (1980) g= 0:672f(Ugl
+)0:578(4
+lg
+l3) 0:131(g
+l)0:062(g
+l)0:107
+for pure liquids f= 1
+Akita and Yoshida (1973)g
+(1 g)4=f(D2lg
+)1=8(gD32
+l
+2
+l)1=12(Ug
+gp
+D)
+for pure liquids f= 0:2
+Behkish et al. (2006) g= 4:9410 3(0:415
+l0:177
+g
+0:174
+l0:27)U0:553
+g(pT
+pT pS)(D
+D+ 1) 0:117 0:053
+  = (KdNd
+o)
+Kdwas reported at several points of , where= 100Nd2
+o=D2
+S al et al. (2013) g= 0:2278(U2
+g
+dog)0:7767(d3
+o2
+lg
+2
+l)0:3649(do
+D)0:4780(d2
+olg
+)0:3916(D4U2
+gl
+d3oN2)0:2402
+Continued on next page...
+6Table 3 { continued from previous page.
+Reference Correlation
+Krishna and Ellenberger
+(1996)g=g;SB +g;LB
+g;LB =0:268
+D0:18(Ug Udf)4=5
+(Ug Udf)0:22
+g;SB =gm;trans
+Nedeltchev and Schumpe
+(2008)g=f2defbSB
+3D2ub
+dm=de= (l2h)1=3
+l=8
+>>>>>><
+>>>>>>:de
+1:14Ta 0:1762<Ta< 6
+de
+1:36Ta 0:286<Ta< 16:5
+h=8
+>>>>>><
+>>>>>>:1:3deTa 0:3522<Ta< 6
+1:85deTa 0:566<Ta< 16:5
+Ta= (lubde
+l)(g4
+l
+l3)0:23
+ub=s
+2
+lde+gde
+2
+SB=l2
+2(1 + (h
+l)21
+2eln(1 +e
+1 e)
+e=r
+1 (h
+l)2
+In addition to the mean gas holdup correlations, the radial distribution of the gas holdup 125
+was also investigated in few studies (Walter and Blanch, 1983, Wu et al., 2001). A parabolic
+gas holdup distribution is known to evolve in the column cross-section accompanied by radial
+pressure gradients, which prompts liquid circulation pattern with rising liquid in the center
+and descending liquid near the wall. Apart from some experimental studies (Kumar et al.,
+71997, Wu et al., 2008, Azizi et al., 2017), only few correlations for the radial gas holdup 130
+distribution, g(), have been proposed as summarized in Table 4. These correlations are
+basically developed in terms of the dimensionless radius following a power law, where n
+denes the steepness of the holdup distribution. Ueyama and Miyauchi (1979) considered
+n2 for their experimental data and ~ gas the radial chordal average gas holdup. Wu et al.
+(2001) included an additional parameter c, which determines the gas holdup value near the 135
+wall.
+Table 4: Correlations for the prediction of the radial gas holdup prole.
+Reference Correlation
+Ueyama and Miyauchi (1979) g() = ~g(n+ 2
+n)(1 n)
+wheren2
+Wu et al. (2001) g() =g(n+ 2
+n+ 2 2c)(1 cn)
+n= 2:188103(DUg(l g)
+l) 0:598(U2
+g
+gD)0:146(g4
+l
+(l g)3)
+c= 4:3210 2(DUg(l g)
+l)0:2492
+2.3. Liquid velocity
+The degree of liquid mixing is determined by the mean liquid circulation velocity, Ul;circ,
+which strongly eects conversion and selectivity of chemical reactions in bubble columns
+(Shimada et al., 2012). Ul;circis equal to the average ascending and descending liquid ve- 140
+locity of the mean liquid velocity distribution, Ul(). Due to limited information on Ul(),
+Ul;circis commonly estimated as proportional to ( DUg)m(Nottenk amper et al., 1983, Zehner,
+1982, Degaleesan, 1997). In Table 5, correlations for Ul() are given. These correlations are
+based on the centerline maximum velocity, Ul;max, whose correlations are also provided in this
+table. ForUl(), Walter and Blanch (1983) proposed a second order polynomial correlation 145
+considering the ow inversion point, which has been assigned to inv= 0:7. In their power
+law correlation, they applied the same coecients for nandcas proposed for their gas holdup
+correlation.
+2.4. Correlation derivation from complementary experimental data 150
+The correlations compiled in Tables 1 to 5 allow initial estimations of the hydrodynamic
+parameters in bubble columns. These correlations are useful when only limited experimental
+data are available. However, it should be noted that the application ranges of the correlations
+in terms of ow regimes, physical properties, dimensions of bubble column and sparger design
+8Table 5: Correlations for the prediction of the radial and centerline liquid velocity prole.
+Reference Correlation
+Walter and Blanch (1983) Ul() =Ul;max (1 (
+inv)2)
+whereinv= 0:7
+Wu and Al-Dahhan (2001) Ul() =Ul;max (1 2:65n0:44c2:65n0:44c)
+Zehner (1982) Ul;max= 0:737(UgD)1=3
+Riquarts (1981) Ul;max= (0:21gD)1=2(U3
+gl
+gl)1=8
+are not explicitly mentioned for most of the correlations or are not consistent with each other. 155
+In the engineering and design concepts, usually a combination of correlations of the following
+hydrodynamic parameters, di,dm,dm(),g,g(),Ul(),Ul;circ, respectively, are applied in
+the calculations. Dudley (1995) showed that dmandgare needed from other correlations
+(Tables 2 and 4) to correlate the mass transfer. The interdependencies between dmandg
+correlations are unknown due to the incomparable experiments and procedures for the devel- 160
+opment of these correlations. Applying these correlations may result into strong deviations
+from the actual values. Thus, to improve the results, compatible correlations containing the
+interdependencies of hydrodynamic properties are needed. This can be achieved using an
+experiment, which all hydrodynamic properties are measured for the derivation of a set of
+"coupled" hydrodynamic correlations. 165
+In our recent work, the potential of non-invasive measurement techniques, namely Ultra-
+fast X-ray Computed Tomography (UXCT) and Radioactive Particle Tracking (RPT), has
+been exemplarily illustrated for an advanced hydrodynamic analysis of bubble columns (Azizi
+et al., 2017). These complementary techniques enable access to the dynamics of both uid 170
+phases. The data sets of these measurement techniques provide a unique basis for the devel-
+opment of hydrodynamic correlations. Hence, the detailed objective of this work is to derive
+hydrodynamic correlations for di,dm,dm(),g,g(),Ul() andUl;circon the basis of experi-
+mental data from UXCT and RPT. These techniques are applied to measure gas and liquid hy-
+drodynamic properties at same operating conditions, column dimensions and sparger congu- 175
+rations.
+Figure 1 highlights the chronological order in which the set of coupled hydrodynamic
+correlations are derived. (0 !1) The inlet bubble diameter, diis correlated from a single ori-
+ce/needle with using the RedoandEodobased on the orice diameter, do. (2) Subsequently, 180
+diin terms of Redialong with the sparger conguration D(Np) 1and gas/liquid properties
+9Order Hydrodynamic correlation/parameter Measurement data
+0.
+1.
+2.
+3.
+4.
+5.
+6.Redo,Eodo
+di
++(D=(Np))
+dm
+Redm,Eodm
+dm()
+gm g()
+Ul;max Ul()Ul;circUXCT
+RPT
+Figure 1: Procedure for the derivation of the set of coupled hydrodynamic correlations.
+are employed to correlate the mean bubble diameter dm.D=Npshows the ratio of bubble
+column diameter to the pitch size, D=pdivided by number of needles/orices, N. With
+knowing this ratio, the pattern of installed needles/orices are identical in our experiments.
+The lowest value of D=Npshows the compact installation of needles in the sparger. (3) dmis 185
+used as the characteristic length in RedmandEodm. (4 and 5) Hence, D(Np) 1,dm(),g
+and the corresponding g() can be derived with using these dimensionless numbers and the
+sparger conguration. Up to now, for all the derived correlations UXCT experimental data
+is used. (6) To derive the Ul() andUl;circcorrelations, RPT experimental data are required.
+Steps 4, 5 and 6 are interchangeable, but are ordered here in a logical manner. 190
+3. Experimental setup
+The advanced measurement techniques UXCT and RPT were applied to a lab-scale bub-
+ble column. The experiments were performed at Indian Institute of Technology Delhi (IITD,
+India) and at Helmholtz-Zentrum Dresden-Rossendorf (HZDR, Germany) using RPT and
+UXCT, respectively. In order to ensure identical experimental conditions at either end, 195
+sparger and peripheral equipment were shipped to the respective labs and properties of the
+liquid phase were precisely matched.
+3.1. Bubble column geometry and operating conditions
+A cylindrical bubble column with an inner diameter of D= 0:1 m and a height of
+H= 1:0 m was used. Deionized water and air were used as liquid and gas phases, respectively, 200
+and the following liquid phase properties were determined: = 7010 3N/m,l= 997
+kg/m3,l= 0:001 kgm/s. The unaerated liquid height was adjusted at H0= 0:70 m. The
+bottom of the column was equipped with a needle sparger, which consists of three radially
+10separated gas plenum sections with a height of Hp= 0:20 m. Dierent numbers of needles
+with various sizes can be installed via 115 connection points similar to Luer-Lock connections. 205
+The Luer luck connection bases of needles are implemented inside the sparger. The full metal
+section of needles is in contact with liquid. The inserted length of needles is 30 mm for all of
+the needles in dierent sparger congurations. In Table 6, the applied sparger congurations
+A to F are shown with corresponding specications. The radially separated plenum sections
+are indicated with dotted red line. 210
+Table 6: Sparger congurations with number of needles, Npitch size,pand the dimensionless numberD
+Np.
+A B C D E F
+N 13 19 31 42 73 115
+p(mm) 27 21 16 14 9 8
+D
+Np0.28 0.25 0.20 0.17 0.15 0.10
+The supercial gas velocity was adjusted via three mass ow controllers (OMEGA, 2xFMA-
+2608A, 1xFMA-2609A) at Ug= 1:0, 3:2, 5:3 and 9:5 cm/s, respectively, while each gas plenum
+section of the sparger was separately connected to a mass ow controller. The gas ow rate
+through every section was adjusted according to the respective number of installed needles.
+Needles of 30 mm length with dierent inner diameters were installed. Table 7 summarizes 215
+the experimental matrix with the corresponding sparger congurations. The experimental
+matrix was chosen to cover both the homogeneous and heterogeneous ow regime via various
+supercial gas velocities while the inlet bubble size has been controlled by needle size and
+number installed in sparger.
+3.2. Ultrafast X-ray Computed Tomography (UXCT) 220
+Figure 2 shows the bubble column with the installed UXCT setup. Basically, UXCT
+produces cross-sectional images of the transient two-phase ows (reconstructed images with
+240 pixels per 120 mm) at a scanning rate of 1000 frames per second (fps). An electron
+beam is focused on a tungsten target generating an X-ray spot. The electron beam is swept
+periodically along the target surrounding the bubble column so that the produced X-ray fan 225
+penetrates the column from dierent angles. The arriving X-ray intensity is recorded with a
+detector ring, which consists of multiple detector elements co-aligned with the target. Each
+revolution of the electron beam around the bubble column provides X-ray intensity data for
+the reconstruction of one cross-sectional image at time step t(Fischer and Hampel, 2010,
+Bieberle et al., 2011). For the individual post-processing steps and the accuracy analysis 230
+of UXCT measurements, the reader is referred to Azizi et al. (2017). The experiments to
+determine bubble size and gas holdup were conducted at heights of Hmeas= 0:01;0:1;0:3 and
+0:5 m above the needles head of sparger. At each height, the mean values as well as the radial
+proles of bubble size and gas holdup were calculated via averaging over the whole cross-
+section and circumferentially, respectively. According to Fischer et al. (2008), a frame rates 235
+11Table 7: Experimental matrix.
+Experiment No. Ug(cm/s)do(mm)N(-) Sparger type
+1 1.0 0.22 115 F
+2 3.2 0.22 115 F
+3 5.3 0.22 115 F
+4 9.5 0.22 115 F
+5 1.0 0.57 19 B
+6 3.2 0.57 31 C
+7 5.3 0.57 42 D
+8 9.5 0.57 73 E
+9 1.0 0.95 13 A
+10 3.2 0.95 19 B
+11 5.3 0.95 31 C
+12 9.5 0.95 42 D
+of at least 1000 fps are required to produce sharp phase distribution images with a spatial
+resolution of about 1 mm. In this work, the minimum detected bubble diameter is 1 mm.
+The experimental data at Hmeas= 0:01 m are used to determine the initial bubble size at the
+sparger, due to capability of releasing the bubbles without breakup and coalescence at the top
+of the needles.The applied dynamic high-speed imaging in UXCT experiments is not prone 240
+to typical dynamic bias errors known from time-averaging probe measurement techniques
+(Fischer et al., 2008). The measurement time for each experiment was 10 s. Considering the
+hardware limitation and the costs of measurements, the longer measurement times were not
+possible. However, the identied bubbles are around few thousand in UXCT measurements,
+which provides statistically reliable data in 10 s. 245
+3.3. Radioactive Particle Tracking (RPT)
+Figure 3 shows the bubble column with the RPT setup using eight detectors located
+at four dierent axial heights. In the RPT experiments, the tracer particle is a radioactive
+isotope (Sc46) with a half-time of 83 days, which decays by beta emission followed by gamma-
+ray emission. The radioactive particle is encapsulated in a sphere of polymeric material with 250
+2 mm diameter. The whole tracer particle has an equivalent density similar to the liquid phase
+to ensure that it is neutrally buoyant and follows the liquid ow precisely (Azizi et al., 2017).
+Stokes number, Stcharacterizes the motion of particles in a continuous uid. In fact, St< 1
+is essential to guarantee following of the tracer particle closely to the liquid streamlines. In
+this work, the corresponding Stokes numbers of experiments are 0 :04< St < 0:15. During 255
+the RPT measurements, the moving tracer particle continuously emits gamma photons. The
+bubble column is surrounded by an optimized arrangement of scintillation detectors (Roy
+et al., 2002). The incident photons hit the NaI crystals in the detectors and scintillate
+into visible light. The visible light passes through the photomultiplier and gets converted
+into electrical pulses. The RPT measurement frequency is 50 Hz. The counted pulses of 260
+the detectors for each time step decrease exponentially with increasing distance between
+12Beam rotation
+anglesX-ray fan
+Bubble columnElectron beam
+Target ringDetector
+ring
+Top view of the electron
+beam X-ray tomography
+Air inlet
+channelsGas plenumElectron beam
+sectionsNeddle spargerBubble column
+Target ring
+Detector ring
+X-ray fan
+Hmeas = 0.01 mHmeas = 0.10 mHmeas = 0.30 mHmeas = 0.50 m
+Figure 2: Sketch of the ultrafast X-ray tomography (UXCT) with the bubble column installation.
+scintillation detector and tracer. Prior to the measurements, calibration data were recorded
+at multiple known positions of the tracer particle. At every individual measurement time step,
+the comparison of the photon counts of the detectors between measurement and calibration
+data discloses the position of the tracer particle (Upadhyay et al., 2013). Eventually, the 265
+velocimetry data for the liquid phase can be obtained from RPT measurements based on
+known tracer positions at each time step of the measurement (Degaleesan et al., 2001). The
+measurement time for each experiment was approximately 20 hours to collect sucient data
+for the reconstruction of the velocity eld.
+4. Results and discussion 270
+4.1. Complementary experimental database
+In this section, an overview of the gas phase ow morphology and the particle trajectories is
+provided, which is obtained via UXCT and RPT, respectively. Figure 4a illustrates the eect
+of the sparger conguration on the liquid dispersion (particle trajectories) and gas structure
+(vertical coordinate represents the measurement time) via 3D stacked sequences of 1000 UXCT 275
+images obtained at Hmeas= 50 cm during one second measurement time. The sparger cong-
+uration F consists of a large number of small needles, which accordingly produce small bubbles
+uniformly dispersed in the whole cross-section of the bubble column. With bigger needle size
+and lower number of installed needles (sparger structures B and A), the size of the bubbles
+increases and larger bubbles accumulate in the center region of the column cross-section. Bub- 280
+ble size and the extent of distribution uniformity inuence the liquid ow within the bubble
+column, which is shown in terms of particle trajectories from the RPT measurements in Figure
+4b. Actual data acquisition in RPT is over several hours spanning thousands of trajectories.
+Here, the particle trajectories are visualized for a limited duration of 120 seconds showing 6000
+13H= 0.17 mH= 0.40 mH= 0.56 mH= 0.82 m
+Radioactive Particle
+Scintillation detectors
+Air inlet
+channelsGas plenum
+sectionsNeddle
+spargerBubble column
+H= 0 m
+Figure 3: Sketch of the radioactive particle tracking (RPT) with installed detectors positioned around the
+bubble column.
+subsequent locations. The length and the dynamics of the trajectory (tracer particle path 285
+lines) indicate the liquid displacement, which is comparably low in the bubble column with the
+sparger structure F. This is due to small and uniform bubbles distributed evenly in the cross-
+section. Accordingly, the liquid mixing within the bubble column is low. The gas dynamics is
+increased due to larger bubbles released from the coarser sparger congurations B and A. As
+a consequence, the drag force increases causing higher liquid velocities in the bubble column. 290
+The eect of the supercial gas velocity on the gas phase structure is shown in Figure 5a
+atHmeas = 50 cm for the sparger structure F, which releases small bubbles of narrow size
+distribution. Gas holdup and bubble size increase with increasing supercial gas velocity
+from 1:0 to 9:5 cm/s, accompanied by a decreasing uniformity of the gas holdup distribution. 295
+In Figure 5b the corresponding particle trajectories from 6000 subsequent particle locations
+(i.e. 120 seconds) show increasing displacement and dynamics at higher supercial gas veloc-
+ities. The tracer trajectory at Ug= 1:0 cm/s consists mainly of longer rising and descending
+paths, while at larger supercial gas velocity, the tracer moves in a more random manner.
+Gas bubble dispersions and particle trajectories at Ug= 1:0 cm/s belong to the homoge- 300
+neous regime, while the increased uctuations, the spiraling path of the bubbles as well as
+the intensied displacement of the tracer particle indicate transition ( Ug= 3:2;5:3 cm/s) and
+heterogeneous regimes ( Ug= 9:5 cm/s).
+In the following sections, the correlations for mean bubble size, gas holdup and liquid ve- 305
+locity are derived from UXCT and RPT experiments and compared with existing correlations.
+Experimental data from the literature, which are not used in developing of new correlations,
+were also applied to validate the developed correlations. The domain of denition of devel-
+14Fp= 8 mm
+N= 115
+Bp= 21 mm
+N= 19
+Ap= 27 mm
+N= 13
+x(mm)x(mm)x(mm)
+y(mm)y(mm)y(mm)t(ms)
+t(ms)
+t(ms)
+(a) 3D stacked sequences of 1000 binarized UXCT images during 1 s measurement at Hmeas = 50 cm.
+Fp= 8 mm
+N= 115
+Bp= 21 mm
+N= 19
+Ap= 27 mm
+N= 13
+x(mm)x(mm)x(mm)
+y(mm)y(mm)y(mm)z(mm)
+z(mm)
+z(mm)
+(b) Tracer particle trajectory for 120 s measurement obtained via RPT.
+Figure 4: Eect of dierent sparger structures at Ug= 1:0 cm/s.
+oped correlations are given in form of dimensionless numbers. Considering these domains,
+limited experimental data exist for the evaluation of the correlations. Thus, the proposed 310
+evaluation data consist of bubble columns with needle sparger and perforated plate. In the
+developed correlations, the sparger eect were considered in form of sparger conguration and
+initial bubbles diameter. The evaluation of developed correlations shows a fair agreement of
+experimental data at the low supercial gas velocities in the bubble columns with perforated
+plate sparger. To derive each of the radial distribution correlations for bubble size, gas holdup 315
+and liquid velocity, an optimization problem was solved to minimize the error of predicted
+radial property compared with the experimental data.
+4.2. Bubble size correlations
+Since the sparger generally eects the mean bubble size and liquid motion, the initial
+bubble size is correlated with the internal needle diameter considering also the operating con- 320
+ditions. Subsequently, the initial bubble size is applied as a characteristic length to correlate
+the mean bubble size in the column.
+4.2.1. Initial bubble size at the sparger
+The eective forces on determining bubble formation, expansion and detachment are in-
+ertia, viscous, buoyancy and surface tension forces (where g<<l) (Geary and Rice, 1991, 325
+15Ug= 1:0 cm/s Ug= 3:2 cm/s Ug= 5:3 cm/s Ug= 9:5 cm/s
+x(mm)x(mm)x(mm)x(mm)
+y(mm)y(mm)y(mm)y(mm)t(ms)
+t(ms)
+t(ms)
+t(ms)
+(a) 3D stacked sequences of 1000 binarized UXCT images during 1 s measurement at Hmeas = 50 cm.
+Ug= 1:0 cm/s Ug= 3:2 cm/s Ug= 5:3 cm/s Ug= 9:5 cm/s
+x(mm)x(mm)x(mm)x(mm)
+y(mm)y(mm)y(mm)y(mm)z(mm)
+z(mm)
+z(mm)
+z(mm)
+(b) Tracer particle trajectory for 120 seconds measurement obtained via RPT.
+Figure 5: Eect of the supercial gas velocity in a bubble column with sparger conguration F ( p= 8 mm,
+N= 115).
+Tsuge and Hibino, 1978). Here, the orice diameter dois used to calculate RedoandEodoas
+Redo=lUgodo
+l=lUgD2
+lNdo(1)
+and
+Eodo=lgd2
+o
+: (2)
+According to dimensional analysis and Buckingham  theorem (see Appendix A), the equation
+for the initial bubble size can be written as di=b1doReb2
+doEob3
+do. The unknown coecients
+b1,b2andb3are calculated via nonlinear regression using the experimental data. The initial 330
+bubble size is derived as
+di= 2:1910 9doRe1:46
+doEo 0:52
+do; (3)
+which is valid for 7 10 3< E odo<1310 2and 4000< Rdo<40000. In Figure 6,
+the prediction from the developed correlation is compared with the UXCT data. As shown,
+Equation 3 provides less than 20 % deviation, while the predictions of the correlations sum-
+marized in Table 2 are scattered in a wider range. Amongst the literature correlations, the 335
+model based on a force balance proposed by Geary and Rice (1991) shows the least deviations
+due to considering similar forces used to derive Equation 3.
+160 5 10 15 20 25 30051015202530
+-20%+20%
+Geary et al. (1991)
+Miller (1974)
+Leibson et al. (1956)
+Bhavaraju et al. (1978)
+Equation 3
+Moo-Young and
+Blanch (1981)Figure 6: Parity plot of predicted and experimental initial (inlet) bubble diameters.
+4.2.2. Mean bubble size
+Previous correlations for the mean bubble size consider only the Reynolds number (see
+Table 2). However, the UXCT data reveal that the sparger congurations are decisive for the 340
+mean bubble size. Thus, the new correlation
+dm= 6:7510 62
+g2
+l(D
+Np)0:47Re0:34
+di(4)
+with
+Redi=lUgdi
+l(5)
+is proposed, which is valid for 0 :1<D=Np<0:29 and 20<Redi<3200. As shown in the
+parity plot in Figure 7, the predictions from the previous correlations (see Table 2) deviate
+strongly from UXCT experiments. Increasing Rediindicates increasing turbulence at the 345
+sparger region. The magnitude of dmdepends on the net eect of turbulence-induced breakup
+and coalescence (Liao and Lucas, 2009, 2010). However, Rediincreases with increasing di,
+which indicates an increase of the bubble-induced turbulence for the large bubbles. With
+increasingRedithe mean bubble diameter increases by Re0:34
+di. Furthermore, in Equation 4,
+the mean bubble diameter increases with decreasing pitch size of the sparger and increasing 350
+number of installed needles, resulting from an increasing coalescence rate.
+4.2.3. Radial distribution of the mean bubble size
+The radial bubble size distribution is correlated with a power law function, which can
+indicate larger bubbles in the center and a gradual reduction of the bubble size towards the
+wall (Kantarci et al., 2005, Basha et al., 2015) according to 355
+dm() =dmax(1 cdnd) (6)
+170 5 10 15 20 25 30051015202530
+-20%+20%Jamilahmadi and Müller-Steinhagen (1992)
+Kumar et al. (1976)
+Akita and Yoshida (1974)
+Wilkinson et al. (1994)
+Equation 4Figure 7: Parity plot of predicted and experimental mean bubble diameters.
+with
+dmax=R2dmR1
+02R2(1 cdnd)d=(nd+ 2)dm
+(nd+ 2 cd): (7)
+Applying the dimensional analysis, the coecients cdandnddepend mainly on Reynolds and
+E otv os numbers based on the mean bubble diameter according to
+cd= 0:36Re0:14
+dmEo 0:06
+dm; (8)
+nd= 1:73Re1:42
+dmEo 2:83
+dm; (9)
+360
+Redm=lUgdm
+l(10)
+and
+Eodm=lgd2
+m
+; (11)
+where 56< Redm<2050 and 4 < E odm<66 are the valid ranges. Figure 8 presents
+the UXCT experimental results for the radial bubble size distribution in comparison with
+the predictions of Equation 6 for dierent supercial gas velocity. At lower gas velocity,
+the radial bubble size distribution is rather at, while a parabolic behavior is obtained with 365
+increasing supercial gas velocity. In Figure 8, applied sparger congurations and supercial
+gas velocities are F,B,E and C and 1.0, 3.2, 5.3 and 9.5 cm/s, respectively. Although dierent
+spargers and supercial gas velocities were applied, the developed correlation matches fairly
+well the radial bubble size distribution for all conditions. To the best of our knowledge,
+correlations for the radial bubble size distribution in bubble columns are not available in the 370
+literature.
+18Ug= 1:0 cm/s
+Ug= 3:2 cm/s
+Ug= 5:3 cm/s
+Ug= 9:5 cm/s
+Figure 8: Comparison between experimental and predicted radial bubble size distributions (symbols indicate
+experimental data and lines the prediction according to Equation 6).
+4.2.4. Comparison with experimental bubble size data from literature
+Aiming for a bubble size correlation, which is valid beyond the own study, experimental
+data (Jamialahmadi and M uller-Steinhagen, 1992) and correlations from literature were com-
+pared with Equation 4 as shown in Figure 9. The experimental data of Jamialahmadi and 375
+M uller-Steinhagen (1992) are obtained for a bubble column of 10.5 cm diameter with a plate
+sparger with 1 mm orice diameter distributed in a 18 mm triangular pitch ( N= 35). The
+correlations of Akita and Yoshida (1973), Wilkinson et al. (1994), Kumar et al. (1976) show
+strong deviations. Equation 4 correctly accounts for the eect of the increasing supercial
+gas velocity considering the geometric features of the sparger. The developed correlation only 380
+slightly deviates from the experimental bubble size data, which might be due to the invasive
+nature of the probe measurements.
+4.3. Gas holdup correlations
+A similar approach for the development of the gas holdup correlation is applied. The total
+gas holdup correlation is developed based on RedmandEodmto account for the eect of dm 385
+andUgo. Similar to the radial bubble size distribution, a power law correlation is used to t
+the radial gas holdup prole.
+4.3.1. Total gas holdup
+Considering RedmandEodmas dened in Equations 10 and 11, the total gas holdup is
+derived as 390
+g= 1:110 3Re1:12
+dmEo 0:89
+dm: (12)
+The parity plot in Figure 10 compares results of correlations and experimental data using
+Equation 12 and the available total gas holdup correlations from the literature (see Table 3).
+It should be mentioned that most of the available correlations ignore the sparger design and
+thus, deviate strongly from the experimental results. Only the correlations of Behkish et al.
+190 0.02 0.04 0.06 0.08 0.1 0.12
+  Ug  (m/s)05101520
+Jamilahmadi and Müller-Steinhagen (1992)
+Equation 4
+Akita and Yoshida (1974)
+Wilkinson et al.(1994)
+Kumar et al. (1976)Figure 9: Prediction of the mean bubble diameter as a function of the supercial gas velocity.
+(2006) and S al et al. (2013) consider the sparger orice diameter and the number of holes. 395
+The sparger congurations are considered well in the correlation of Behkish et al. (2006) with
+introducing the sparger parameter  , while S al et al. (2013) applied Nanddodirectly in
+the correlation. The eect of the bubble size on the gas holdup was not considered in their
+correlations. As mentioned in various studies, the total gas holdup increases with decreasing
+bubble size (Deen et al., 2010). Equation 12 shows a good agreement between experimental 400
+and predicted total gas holdup.
+0 0.05 0.1 0.15 0.2 0.25 0.300.050.10.150.20.250.3
+-20%+20%
+Equation 12
+Behkish et al. (2005)
+Sal et al. (2013)
+Kumar et al. (1976)
+Hughmark et al. (1967)
+Akita and Yoshida (1973)
+Nedeltchev and
+Schumpe (2008)
+Figure 10: Parity plot of predicted and experimental total gas holdup data.
+204.3.2. Radial gas holdup distribution
+The developed correlation for the radial gas holdup distribution follows the approach
+of Wu et al. (2001) except for the coecients, which are modied according to UXCT ex-
+perimental results. The parameters of the correlation are correlated with RedmandEodm
+(Equations 15,16). In the correlation, the gas holdup in the center reduces gradually towards 405
+the column wall according to
+g() =g;max (1 cn): (13)
+The maximum gas holdup is dened as
+g;max =R2gR1
+02R2(1 cn)d=(n+ 2)g
+(n+ 2 c)(14)
+with
+c= 0:65Re 0:30
+dmEo0:68
+dm(15)
+and
+n= 0:23Re0:39
+dmEo 0:18
+dm: (16)
+Considering RedmandEodm(Equations 10 and 11), the coecients candnare chosen to 410
+properly predict the radial gas holdup prole, where 0 :26<c<0:93 and 0:83<n<2:16
+are the valid ranges. Figure 11 compares the UXCT measurement data with the predictions of
+Equation 13 using the coecients of Wu et al. (2001) and the newly derived coecients. The
+applied sparger congurations and supercial gas velocities in experiments and correlations are
+F,B,E and C and 1.0, 3.2, 5.3 and 9.5 cm/s, respectively. As shown in Table 4, the correlation 415
+of Wu et al. (2001) does not depend on the gas sparger and deviations increase with increasing
+supercial gas velocity. The developed correlation matches the radial gas holdup distribution
+fairly well. At low gas ow rate with small and uniform bubble size distribution, the radial
+gas holdup prole is rather at, while the radial gas holdup distribution has a parabolic shape
+at high gas ow rates. 420
+4.3.3. Comparison with experimental gas holdup data from literature
+Figure 12a shows the behavior of the total gas holdup for increasing supercial gas velocity
+in a bubble column with an inner diameter of D= 0:14 m equipped with a perforated
+plate sparger with N= 91 orices, whose diameter is do= 0:4 mm (S al et al., 2013). The
+developed correlation shows fair agreements with the experimental gas holdup especially at the 425
+lowerUg. In Figure 12b, experimental data and predictions are shown for a bubble column
+with a needle sparger (Hooshyar et al., 2010). The diameter of the column is D= 0:15
+m and the needle sparger consists of N= 559 needles with an inner diameter of do=
+0:8 mm. The prediction with the new correlation ts the experimental data also well in
+comparison to the other correlations. However, it should be mentioned that the range of 430
+the dimensionless number presenting the sparger conguration does not match the suggested
+limits in Figure 12b, which causes the deviation in mean bubble diameter and total gas
+holdup. In both sub-gures of Figure 12, the linear increase and later nonlinear behavior
+of the experimental gas holdup shows the transition from homogeneous to heterogeneous
+210.00 0.25 0.50 0.75 1.00
+ (-)0.000.100.200.300.40g() (-)  Ug  = 1.0 cm/sExperiment
+Wu et al. (2001)
+Equation 13
+F
+p= 8 mm
+do= 22 mm
+N= 115
+0.00 0.25 0.50 0.75 1.00
+ (-)0.000.100.200.300.40g() (-)  Ug  = 3.2 cm/sExperiment
+Wu et al. (2001)
+Equation 13
+B
+p= 21 mm
+do= 57 mm
+N= 19
+0.00 0.25 0.50 0.75 1.00
+ (-)0.000.100.200.300.40g() (-)  Ug  = 5.3 cm/sExperiment
+Wu et al. (2001)
+Equation 13
+E
+p= 8 mm
+do= 57 mm
+N= 73
+0.00 0.25 0.50 0.75 1.00
+ (-)0.000.100.200.300.40g() (-)  Ug  = 9.5 cm/sExperiment
+Wu et al. (2001)
+Equation 13
+C
+p= 16 mm
+do= 95 mm
+N= 31
+Figure 11: Comparison of the radial gas holdup prole using the correlation of Wu et al. (2001) and the own
+correlation vs. experimental data.
+ow regime with increasing supercial velocity. However, the deviation of correlations is 435
+more pronounced at the transition points of the experimental data. The measurement and
+estimation of dmat higherUgis dicult. Applying of the developed correlation based on dm,
+the bigger bubble size leads to lower gas holdups compared to the experiments. Due to the
+overestimation of dm, the gas holdup deviates from experimental data at higher Ug.
+440
+The radial gas holdup prole from the experimental study of Hooshyar et al. (2010) is plot-
+ted in Figure 13 together with the predictions using the developed correlation. (Equation 13)
+shows an excellent agreement, while the correlation of Wu et al. (2001) deviates from the
+experimental data.
+220 0.02 0.04 0.06 0.08 0.1
+  Ug (m/s)00.10.20.30.4
+Sal et al. (2013)
+Equation 12
+Behkish et al. (2005)
+Hughmark et al. (1976)(a) Perforated plate: do= 0:4 mm,N= 91, column:
+D= 0:14 m.
+0 0.02 0.04 0.06 0.08 0.1
+  Ug (m/s)00.10.20.30.4
+Hooshyar et al. (2010)
+Hughmark et al. (1976)
+Behkish et al. (2005)
+Sal et al. (2013)
+Equation 12(b) Needle sparger: do= 0:8 mm,N= 599, column:
+D= 0:15 m.
+Figure 12: Total gas holdup in the bubble columns vs. supercial gas velocity.
+0 0.25 0.5 0.75 1
+ (-)00.10.20.30.4g() (-)
+Hooshyar et al. (2010)
+Equation 13
+Wu et al. (2001)
+Figure 13: Radial gas holdup prole in a bubble column with a needle sparger ( D= 0:15 m,do= 0:8 mm,
+N= 599,Ug= 0:08 m/s).
+4.4. Liquid velocity correlations 445
+The liquid velocity distributions were measured using the RPT technique. After recon-
+structing the RPT data, the liquid velocity eld is obtained as cross-sectional view through
+the center of the bubble column (see Figure 14). The liquid velocity prole is well-developed
+at a height of approximately 20 cm above the sparger. To obtain the liquid circulation pattern
+within the bubble column, the axial liquid velocity is averaged over a range from 20 to 50 cm 450
+above the sparger to exclude sparger and free surface eects.
+23The cross-sectional time averaged liquid velocity of the bubble column is zero, while the
+time-averaged liquid ow involves upward and downward ows in the axial direction. In the
+following sections, correlations are developed for the prediction of the radial distribution of 455
+the axial velocity and the mean circulation velocity of the liquid phase.
+Figure 14: Averaging window along the height of bubble column for the liquid velocity.
+4.4.1. Radial distribution of the liquid velocity
+The velocity distribution involves a maximum in the center of the bubble column, which
+reduces gradually from the center to the inversion point. At the inversion point, the liquid
+velocity reaches zero and then, the liquid ow direction changes to downward ow between the 460
+inversion point and the wall. Theoretically, the liquid velocity follows the non-slip condition
+at the wall. However, the thickness of the boundary layer is very small and the experimental
+RPT data show the liquid velocity is not zero near to the wall. For this reason, a third order
+polynomial equation is considered for the liquid velocity distribution that accounts for the
+liquid ow behavior in the bubble column. However, the following boundary conditions are 465
+required as a set of constraints to establish the uniqueness of the ow eld: maximum velocity
+at the (@Ul=@= 0 andUl=Ul;max at= 0), zero velocity at the inversion point ( Ul= 0
+at=inv) and partial slip velocity at the wall ( (@Ul=@) + (1 )Ul= 0 at= 1). The
+parameteris the specularity coecient, which varies between zero (smooth wall) and one
+24(rough wall). Here, = 0:25 is considered. Applying these conditions results in 470
+Ul() =a03+a12+a2 (17)
+with
+a0=a2(1 +) (1 )2
+inv
+(1 +)3
+inv (1 + 2)2
+inv; (18)
+a1=a2(1 + 2) (1 )3
+inv
+(1 +)3
+inv (1 + 2)2
+inv(19)
+and
+a2=Ul;max: (20)
+The parameters Ul;max andinvdepend on the structure of the applied sparger, Redmand
+Eodm(dened in Equations 10 and 11) according to 475
+Ul;max = 0:02(
+ldm)0:50(D
+Np) 0:78Eo0:87
+dm(21)
+and
+inv= 0:37Re0:05
+dm: (22)
+Predicting the maximum liquid velocity with the available correlations in the literature
+(see Table 5) is not possible, because the eect of the sparger structure on the liquid velocity
+is neglected. In Figure 15, the assessment of the radial velocity distribution correlations is
+shown in comparison with the RPT experiments. Here, the applied congurations of the 480
+sparger and supercial gas velocities are F,B,E and C and 1.0, 3.2, 5.3 and 9.5 cm/s respec-
+tively. This way, the radial distributions of bubble size (Figure 8), gas holdup (Figure 11)
+and liquid velocity (Figure 15) can be compared at identical operating conditions. Contrary
+to Wu and Al-Dahhan (2001), the inversion point of the experimental data is below 0.7.
+The inversion point in the new developed correlation depends on Redm. Compared with the 485
+new correlation, one of Wu and Al-Dahhan (2001) deviates from the experimental results in
+predicting the radial liquid velocity.
+4.4.2. Mean liquid circulation velocity
+The mean liquid circulation velocity represents the degree of liquid mixing in the bubble
+column. The following correlation is based on sparger conguration and Reynolds number 490
+(dened in Equation 10) according to
+Ul;circ= 0:79Ul;maxEo 0:09
+dm: (23)
+The mean liquid circulation velocity is the absolute average liquid velocity from the center
+to the inversion point (or from the inversion point to the wall). Considering the radial
+distributions of liquid velocity and gas holdup, the mean liquid velocity is derived as
+Ul;circ=Rinv
+0Ul(1 g)R2d
+Rinv
+0(1 g)R2d: (24)
+250.00 0.25 0.50 0.75 1.00
+ (-)-0.20-0.100.000.100.20  Ul()  (m/s)
+  Ug  = 1.0 cm/sEquation 4: 
+Experiment: Experiment
+Wu and Al-Dahhan (2001)
+Equation 17
+F
+p= 8 mm
+do= 22 mm
+N= 115
+0.00 0.25 0.50 0.75 1.00
+ (-)-0.20-0.100.000.100.20  Ul()  (m/s)
+  Ug  = 3.2 cm/sEquation 4: 
+Experiment: Experiment
+Wu and Al-Dahhan (2001)
+Equation 17
+B
+p= 21 mm
+do= 57 mm
+N= 19
+0.00 0.25 0.50 0.75 1.00
+ (-)-0.20-0.100.000.100.20  Ul()  (m/s)
+  Ug  = 5.3 cm/sEquation 4: 
+Experiment: Experiment
+Wu and Al-Dahhan (2001)
+Equation 17
+E
+p= 8 mm
+do= 57 mm
+N= 73
+0.00 0.25 0.50 0.75 1.00
+ (-)-0.20-0.100.000.100.20  Ul()  (m/s)
+  Ug  = 9.5 cm/sEquation 4: 
+Experiment: Experiment
+Wu and Al-Dahhan (2001)
+Equation 17
+C
+p= 16 mm
+do= 95 mm
+N= 31
+Figure 15: Comparison of the radial liquid velocity distribution by the correlation of Wu and Al-Dahhan (2001)
+and by the new correlation with the experimental data from RPT (this work).
+The developed correlations for gas holdup and radial liquid distribution (Equations 13 and 17) 495
+can be applied in Equation 24 for calculating Ul;circ. As discussed in the introduction section,
+most researchers correlated Ul;circbased on (DUg)m(Nottenk amper et al., 1983, Zehner, 1982,
+Degaleesan, 1997). Nottenk amper et al. (1983) applied m= 0:4 based on their experiments.
+However, the prediction deviates from RPT experimental data at low Ugvalues (see Figure
+16), while fair agreement is obtained for high Ugvalues. The developed correlation for the 500
+mean liquid circulation velocity predicts the experiments correctly considering the inuence
+of the sparger congurations.
+4.4.3. Comparison with experimental liquid velocity data from literature
+In Figure 17, the predictions using the proposed radial liquid distribution correlation are
+compared with various experimental bubble column data from the literature. Degaleesan et al. 505
+(2001) applied a perforated plate sparger consisting of 61 orices with an inner diameter of 0.4
+260 0.02 0.04 0.06 0.08 0.10
+Measured   Ul,circ  (m/s)00.020.040.060.080.10Predicted   Ul,circ  (m/s)+20%
+-20%Nottenkämper et al. (1983)
+Equation 23Figure 16: Parity plot of predicted and measured mean liquid circulation velocity.
+mm and a pitch size of 15 mm for a column diameter of D= 0:14 m. The prediction especially
+near the wall is better to the correlation of Wu and Al-Dahhan (2001). The results of Wu and
+Al-Dahhan (2001) are based on the velocity predicted by the correlation of Riquarts (1981),
+which shows a better agreement than the correlation of Zehner (1982) for the centerline 510
+velocity. The error of the developed correlation decreases with increasing supercial gas
+velocity.
+Figure 18 presents experimental data from Sommerfeld and Br oder (2009) for a bubble
+column diameter of D= 0:14 m operated with a needle sparger consisting of 50 needles with 515
+an inner diameter of 0.4 mm and a pitch size of 12 mm. The predicted velocity distribution for
+the needle sparger fairly agrees with the experimental data. The centerline velocity obtained
+from Wu and Al-Dahhan (2001) is estimated by applying the correlation of Riquarts (1981).
+Again, applying the centerline velocity of Riquarts (1981) gives a better estimation than the
+correlation of Zehner (1982) for the centerline velocity. 520
+270.00 0.25 0.50 0.75 1.00
+ (-)-0.70-0.350.000.350.70  Ul()  (m/s)  Ug  = 2.4 cm/s
+Degaleesan et al. (2001)
+Equation 17
+Wu and Al-Dahhan (2001)
+0.00 0.25 0.50 0.75 1.00
+ (-)-0.70-0.350.000.350.70  Ul()  (m/s)  Ug  = 4.8 cm/s
+Degaleesan et al. (2001)
+Equation 17
+Wu and Al-Dahhan (2001)
+0.00 0.25 0.50 0.75 1.00
+ (-)-0.70-0.350.000.350.70  Ul()  (m/s)  Ug  = 9.6 cm/s
+Degaleesan et al. (2001)
+Equation 17
+Wu and Al-Dahhan (2001)
+0.00 0.25 0.50 0.75 1.00
+ (-)-0.70-0.350.000.350.70  Ul()  (m/s)  Ug  = 12 cm/s
+Degaleesan et al. (2001)
+Equation 17
+Wu and Al-Dahhan (2001)Figure 17: Liquid velocity distribution in a bubble column with a perforated plate.
+0 0.25 0.5 0.75 1
+ (-)-0.15-0.1-0.0500.050.10.15  Ul()  (m/s)
+Sommerfeld and Bröder (2009)
+Equation 17
+Wu and Al-Dahhan (2001)
+Figure 18: Liquid velocity distribution in a bubble column with a needle sparger ( Ug= 0:29 cm/s).285. Conclusions
+Hydrodynamic correlations are derived for bubble columns using complementary experi-
+mental data of UXCT and RPT measurements. UXCT is employed for gas phase dynamics,
+while RPT is used to obtain liquid phase dynamics. The measurements are performed for
+a bubble column with identical geometrical dimensions and operating conditions as well as 525
+sparger congurations. The correlations are derived using the Buckingham  theorem and
+a complete set of coupled hydrodynamic correlations for fdi,dm,dm(),g,g(),Ul(),
+Ul;circgis given in the Equations (3, 4, 6, 12, 13, 17 and 23). These correlations are \one-
+way" coupled as illustrated in the derivation procedure. First, diis correlated and is in turn
+employed to derive the correlation for dm. Subsequently, characteristic dimensionless num- 530
+bers regarding the complex hydrodynamics ( Re,Eo) on basis of dmalong with the sparger
+conguration D=(Np) are used to derive correlations of dm(),g(and corresponding
+g()) andUl() (and corresponding Ul;circ). The validity range of the derived correlations
+are 0:1<D= (Np)<0:29, 56<Redm<2050 and 4 <Eodm<66. Eventually, the general
+predictability of the developed correlations is also conrmed with experimental data from the 535
+literature obtained for dierent columns, sparger structures and operating conditions. As a
+future work, additional experiments for presenting dependency of developed correlations on
+physical properties are desired.
+Acknowledgement
+The authors gratefully acknowledge the nancial support of the European Research Coun- 540
+cil (ERC Starting Grant, Grant Agreement No:307360). Salar Azizi would like to thank the
+Indian Institute of Technology Delhi (IITD) and the technicians (Brahm Prakash Arya and
+Naresh Kumar) for the support during the visit at the Institute.
+29Nomenclature
+Symbols
+a0 First coecient of the polynomial radial liquid velocity correlation (Eq. 18), m/s
+a1 Second coecient of the polynomial radial liquid velocity correlation (Eq. 18), m/s
+a2 Third coecient of the polynomial radial liquid velocity correlation (Eq. 18), m/s
+c Parameter for radial gas holdup and liquid velocity distributions
+cd Parameter for the radial bubble size distribution
+c Parameter for the radial gas holdup distribution
+D Bubble column diameter, m
+de Characteristic Eddy length, m
+di Initial bubble diameter at the gas sparger, m
+dm Mean bubble diameter in the bubble column, m
+dmL Mean large bubble diameter (Table 2), m
+dmS Mean small bubble diameter (Table 2), m
+do Orice / inner needle diameter of the gas sparger, m
+dt Bubble diameter at turbulent churn ow, m
+EodmE otv os number based on the mean bubble size
+Eodo E otv os number based on the hole/needle size of the gas sparger
+e Bubble eccentricity
+f Correction factor for the gas holdup correlations (Table 3)
+fb Bubble formation frequency, 1/s
+g Gravitational acceleration, m/s2
+H Column height, m
+H0 Unaerated liquid height, m
+Hmeas Measurement height in the bubble column, m
+Hp Height of the sparger plenum, m
+h Larger diameter of the ellipsoidal bubble, m
+hVertical distance from the distributor plate to reach equilibrium bubble size, m
+Kd Gas sparger coecient depending on its structure, e.g. Kd= 1:0 for spider and ring
+spargers
+l Small diameter of the ellipsoidal bubble, m
+m Exponent indicating the dependency of the liquid circulation rate on UgandD
+N Number of the sparger orices or needles
+Nr First dimensionless number dened in the force balance of a bubble (Table 2)
+N Secondary dimensionless number dened in the force balance of a bubble (Table 2)
+n Exponent indicating the dependency of the gas holdup on Ugat dierent ow regimes
+nd Exponent in the correlation for the radial bubble size distribution (Eq. 9)
+n Exponent in the correlation for the radial gas holdup distribution (Eq. 16)
+PS Saturation pressure, Pa
+PT Total pressure, Pa
+30Qgo Gas volumetric ow rate in the orice, m3/s
+R Column radius, m
+RediReynolds number based on the initial bubble diameter of the gas sparger
+Redo Reynolds number based on the sparger orices / needle diameter
+RedmReynolds number based on the mean bubble diameter
+rinv Inversion radius of the liquid velocity, m
+r Radius, m
+ro Orice radius of the sparger, m
+SB Bubble surface area, m2
+Ta Tadaki dimensionless number (Table 3)
+Udf Supercial gas velocity of the small bubbles, m/s
+Ug Supercial gas velocity, m/s
+Ugo Supercial gas velocity in the orice / needle of the gas sparger, m/s
+Ul Liquid velocity, m/s
+Ul;max Maximum liquid velocity in the center of the bubble column, m/s
+Ul;circ Mean liquid circulation velocity, m/s
+U0Dimensionless parameter for the prediction of the gas holdup (Table 3)
+ub Bubble rise velocity, m/s
+y Ratio of the bubble volume at the nal deatachment stage to the bubble volume at the
+starting stage of the deatachment from sparger
+Greek symbols
+1 Empirical coecient (Table 2)
+g Mean gas holdup
+gm;trans Mean gas holdup at ow regime transition
+g;LB Total gas holdup for small bubbles in the churn turbulent regime
+g;LB Total gas holdup for large bubbles in the churn turbulent regime
+~g Radial chordal average gas holdup along the column diameter
+g;max Maximum gas holdup in the center of the bubble column
+g Gas holdup
+ Exponent for the hole diameter in the gas holdup correlation (Table 3)
+  Gas sparger parameter for the gas holdup calculation
+p Pitch size of the gas sparger, m
+ Specularity coecient for the partial slip velocity condition
+ Dimensionless column radius, r=R
+inv Dimensionless column radius at the inversion point of the liquid velocity, rinv=R
+g Gas viscosity, kgm/s
+l Liquid viscosity, kg m/s
+sl Modied liquid viscosity containing suspended particles, kg m/s
+ Ratio of the sparger open area to the column cross-sectional area (Table 3)
+g Gas density, kg/m3
+l Liquid density, kg/m3
+ Surface tension, N/m
+31Appendix A. Example of dimensional analysis and Buckingham  theorem 545
+An example of dimensional analysis and Buckingham  theorem (Curtis et al., 1982) is
+given to explain the development of the empirical correlations for the hydrodynamics in bubble
+columns. Equation 3 is developed based on a correlation between the decisive parameters
+according to
+f(l;l;;g;Ug;di;do) = 0: (A.1)
+The dimensions of the decisive parameters in terms of fundamental dimensions are summa- 550
+rized in Table A1, which are length, mass, time and temperature.
+Table A1: Dimensions of the considered parameters.
+Parameter Fundamental dimensions
+l ML 1T 1
+l ML 3
+ MT 2
+g LT 2
+Ugo LT 1
+di L
+do L
+The number of the parameters and the fundamental dimensions are 7 and 3, respectively.
+The equation relating the considered parameters requires (7-3) dimensionless numbers. Buck-
+ingham referred to these numbers as  numbers, which are independent from each other. The
+correlation is obtained as 555
+4=f(3;2;1): (A.2)
+The dimensionless numbers can be considered as multiplication of mrepeating parameters
+with an unknown exponent cand another parameter without exponent. According to the
+Buckingham theorem, two conditions should be considered in deriving the dimensionless num-
+bers: First, each of the fundamental dimensions must appear in at least one of the repeating
+parameters. Second, the repeating parameter cannot be a dimensionless parameter. Here, 560
+the parameters do,gandare chosen as the repeating parameters. Accordingly, the dimen-
+sionless numbers are
+1=dc1ogc2c3l; (A.3)
+2=dc4ogc5c6l; (A.4)
+3=dc7ogc8c9Ugo; (A.5)
+and 565
+4=dc10
+ogc11c12di: (A.6)
+Considering the dimensions of the parameters and all dimensionless numbers (with dimensions
+ofM0L0T0), the exponents of the parameters can be calculated according to
+1=Lc1(LT 2)c2(MT 2)c3(ML 3) =M0L0T0!c1= 2;c2= 1;c3= 1; (A.7)
+321=lgd2
+o
+=Eodo; (A.8)
+2=Lc4(LT 2)c5(MT 2)c6(ML 1T 1) =M0L0T0!c4= 0:5;c5= 0:5;c6= 1;(A.9)
+570
+2=g0:5d0:5
+ol
+; (A.10)
+3=Lc7(LT 2)c8(MT 2)c9(LT 1) =M0L0T0!c7= 0:5;c8= 0:5;c9= 0;(A.11)
+3=Ugo
+g0:5d0:5o; (A.12)
+4=Lc10(LT 2)c11(MT 2)c12(L) =M0L0T0!c10 = 1;c11 = 0;c12 = 0; (A.13)
+and
+4=di
+do: (A.14)
+The multiplication of the dimensionless numbers with the desired exponents results another 575
+dimensionless number. Instead of  3we use  1 1
+23=lUgodo=l=Redo. In this study the
+physical properties are constant during the measurements, which means  2/do. Applying
+Equation A.14, the dimensionless number,  2is correlated with  2=di=4, which results
+4=f(3;di
+4;1); (A.15)
+4=f(3;di;1); (A.16)
+580
+di=dof(lUgodo
+l;di;lgd2
+o
+) =dof(Redo;Eodo); (A.17)
+and
+di=b1doReb2
+doEob3
+do: (A.18)
+334
+3
+104
+Re02
+10
+0.14
+Eo00.120.150
+0.080.06 0 0.040.020100di/d0150200di=do
+(-)
+EodoRedo
+Figure A1: The 3D plot of initial bubble diameter correlation
+b1;b2andb3were obtained by applying the non-linear regression using the experimental
+data as
+di= 2:1910 9doRe1:465
+doEo 0:5256
+do: (A.19)
+The 3D plot of the correlation is shown in Figure A1. The root mean square error (RMSE)
+and the coecient of determination ( R2) are 3:37410 3and 0:9961, respectively. 585
+References
+K. Akita and F. Yoshida. Gas holdup and volumetric mass transfer coecient in bubble columns: Eects
+of liquid properties. Industrial and Engineering Chemistry Process Design and Development , 12(1):76{80,
+1973.
+S. Azizi, A. Yadav, Y. Lau, U. Hampel, S. Roy, and M. Schubert. On the experimental investigation of gas- 590
+liquid ow in bubble columns using ultrafast X-ray tomography and radioactive particle tracking. Chemical
+Engineering Science , 170:320{331, 2017.
+O. M. Basha, L. Sehabiague, A. Abdel-Wahab, and B. I. Morsi. Fischer-tropsch synthesis in slurry bubble
+column reactors: Experimental investigations and modeling - a review. International Journal of Chemical
+Reactor Engineering , 13(3):201{288, 2015. 595
+A. Behkish, R. Lemoine, R. Oukaci, and B. I. Morsi. Novel correlations for gas holdup in large-scale slurry
+bubble column reactors operating under elevated pressures and temperatures. Chemical Engineering Journal ,
+115(3):157{171, 2006.
+S. M. Bhavaraju, R. A. Mashelkar, and H. W. Blanch. Bubble motion and mass transfer in non-Newtonian
+uids: Part i. Single bubble in power law and bingham uids. AIChE Journal , 24(6):1063{1070, 1978. 600
+A. Bieberle, D. Hoppe, E. Schleicher, and U. Hampel. Void measurement using high-resolution gamma-ray
+computed tomography. Nuclear Engineering and Design , 241(6):2086{2092, 2011.
+S. S al, O. F. G ul, and M. Ozdemir. The eect of sparger geometry on gas holdup and regime transition points
+in a bubble column equipped with perforated plate spargers. Chemical Engineering and Processing: Process
+Intensication , 70:259{266, 2013. 605
+W. Curtis, J. D. Logan, and W. Parker. Dimensional analysis and the pi theorem. Linear Algebra and its
+Applications , 47:117{126, oct 1982.
+34N. Deen, R. Mudde, J. Kuipers, P. Zehner, and M. Kraume. Bubble Columns . American Cancer Society, 2010.
+S. Degaleesan. Fluid Dynamic Measurements and Modeling of Liquid Mixing in Bubble Columns . PhD thesis,
+Washington University, 1997. 610
+S. Degaleesan, M. Dudukovic, and Y. Pan. Experimental study of gas-induced liquid-ow structures in bubble
+columns. AIChE Journal , 47(9):1913{1931, 2001.
+J. Dudley. Mass transfer in bubble columns: A comparison of correlations. Water Research , 29(4):1129{1138,
+1995.
+M. P. Dudukovic and P. L. Mills. Chemical and Catalytic Reactor Modeling . American Chemical Society, 615
+Washington, D.C., 1984.
+F. Fischer and U. Hampel. Ultra fast electron beam X-ray computed tomography for two-phase ow measure-
+ment. Nuclear Engineering and Design , 240(9):2254{2259, 2010.
+F. Fischer, D. Hoppe, E. Schleicher, G. Mattausch, H. Flaske, B. R, and U. Hampel. An ultra fast electron
+beam x-ray tomography scanner. Meas. Sci. Technol. , (19), 2008. 620
+A. B. Gandhi, P. P. Gupta, J. B. Joshi, V. K. Jayaraman, and B. D. Kulkarni. Development of unied cor-
+relations for volumetric mass-transfer coecient and eective interfacial area in bubble column reactors for
+various gas-liquid systems using support vector regression. Industrial and Engineering Chemistry Research ,
+48(9):4216{4236, 2009.
+N. W. Geary and R. G. Rice. Bubble-size prediction for rigid and exible spargers. AIChE Journal , 37(2): 625
+161{168, 1991.
+M. G otz, J. Lefebvre, F. M ors, F. Ortlo, R. Reimert, S. Bajohr, and T. Kolb. Novel gas holdup correlation
+for slurry bubble column reactors operated in the homogeneous regime. Chemical Engineering Journal , 308:
+1209{1224, 2017.
+H. Hikita, S. Asai, K. Tanigawa, K. Segawa, and M. Kitao. Gas hold-up in bubble columns. Chemical 630
+Engineering Journal , 20(1):59{67, 1980.
+N. Hooshyar, P. J. Hamersma, R. F. Mudde, and J. R. van Ommen. Intensied operation of slurry bubble
+columns using structured gas injection. Canadian Journal of Chemical Engineering , 88(4):533{542, 2010.
+G. A. Hughmark. Holdup and mass transfer in bubble columns. Industrial Engineering Chemistry Process
+Design and Development , 6:218{220, 1967. 635
+M. Jamialahmadi and H. M uller-Steinhagen. Eect of alcohol, organic acid and potassium chloride concentra-
+tion on bubble size, bubble rise velocity and gas hold-up in bubble columns. Chemical Engineering Journal ,
+50(1):47{56, 1992.
+M. Jamialahmadi, H. M uller-Steinhagen, A. Sarra, and J. M. Smith. Studies of gas holdup in bubble column
+reactors. Chemical Engineering and Technology , 23(10):919{921, 2000. 640
+N. Kantarci, F. Borak, and K. O. Ulgen. Bubble column reactors. Process Biochemistry , 40(7):2263{2283,
+2005.
+Y. Kawase, S. Umeno, and T. Kumagai. The prediction of gas hold-up in bubble column reactors: Newtonian
+and non-Newtonian uids. Chemical Engineering Journal , 50(1):1{7, 1992.
+R. Krishna and J. Ellenberger. Gas holdup in bubble column reactors operating in the churn-turbulent ow 645
+regime. AIChE Journal , 42(9):2627{2634, 1996.
+R. Krishna, P. M. Wilkinson, and L. L. V. Dierendonck. A model for gas holdup in bubble columns incorporat-
+ing the inuence of gas density on ow regime transitions. Chemical Engineering Science , 46(10):2491{2496,
+1991.
+35A. Kumar, T. E. Degaleesan, G. S. Laddha, and H. E. Hoelscher. Bubble swarm characteristics in bubble 650
+columns. Canadian Journal of Chemical Engineering , 54(5):503{508, 1976.
+S. B. Kumar, D. Moslemian, and M. P. Dudukovic M. Gas-holdup measurements in bubble columns using
+computed tomography. AIChE Journal , 43(6):1414{1425, 1997.
+I. Leibson, E. G. Holcomb, A. G. Cacoso, and J. J. Jacmic. Rate of ow and mechanics of bubble formation
+from single submerged orices. ii. Mechanics of bubble formation. AIChE Journal , 2(3):300{306, 1956. 655
+H. Letzel, J. Schouten, R. Krishna, and C. van den Bleek. Gas holdup and mass transfer in bubble column
+reactors operated at elevated pressure. Chemical Engineering Science , 54(13-14):2237{2246, 1999.
+O. Levenspiel. Chemical Reaction Engineering . John Wiley & Sons, 1999.
+Y. Liao and D. Lucas. A literature review of theoretical models for drop and bubble breakup in turbulent
+dispersions. Chemical Engineering Science , 64(15):3389{3406, 2009. 660
+Y. Liao and D. Lucas. A literature review on mechanisms and models for the coalescence process of uid
+particles. Chemical Engineering Science , 65(10):2851{2864, 2010.
+X. Luo, D. J. Lee, R. Lau, G. Yang, and L.-S. Fan. Maximum stable bubble size and gas holdup in high-pressure
+slurry bubble columns. AIChE Journal , 45(4):665{680, 1999.
+D. N. Miller. Scale-up of agitated vessels gas-liquid mass transfer. AIChE Journal , 20(3):445{453, 1974. 665
+M. Moo-Young and H. W. Blanch. Design of biochemical reactors. mass transfer criteria for simple and complex
+systems. In Reactors and Reactions - Advances in Biochemical Engineering , volume 19, pages 1{69. Springer
+Berlin Heidelberg, 1981.
+S. Nedeltchev and A. Schumpe. A new approach for the prediction of gas holdup in bubble columns operated
+under various pressures in the homogeneous regime. Journal of Chemical Engineering of Japan , 41(8): 670
+744{755, 2008.
+R. Nottenk amper, A. Stei, and P.-M. Weinspach. Experimental investigation of hydrodynamics of bubble
+columns. German Chemical Engineering , 6(3):147{155, 1983.
+M. Polli, M. D. Stanislao, R. Bagatin, E. A. Bakr, and M. Masi. Bubble size distribution in the sparger region
+of bubble columns. Chemical Engineering Science , 57(1):197{205, 2002. 675
+I. G. Reilly, D. S. Scott, T. De Bruijn, A. Jain, and J. Piskorz. A correlation for gas holdup in turbulent
+coalescing bubble columns. Canadian Journal of Chemical Engineering , 64(5):705{717, 1986.
+H. P. Riquarts. Physical model for axial mixing of the liquid phase for hetrogeneous ow regime in bubble
+columns. German Chemical Engineering , 4(1):18{23, 1981.
+S. Roy, F. Larachi, M. H. Al-Dahhan, and M. Dudukovic. Optimal design of radioactive particle tracking 680
+experiments for ow mapping in opaque multiphase reactors. Applied Radiation and Isotopes , 56(3):485{
+503, 2002.
+R. Schafer, C. Merten, and G. Eigenberger. Bubble size distributions in a bubble column reactor under
+industrial conditions. Experimental Thermal and Fluid Science , 26(6-7):595{604, 2002.
+Y. T. Shah, B. G. Kelkar, S. P. Godbole, and W. D. Deckwer. Design parameters estimations for bubble 685
+column reactors. AIChE Journal , 28(3):353{379, 1982.
+N. Shimada, R. Saiki, A. Dhar, K. Mizuta, and A. Tomiyama. Liquid mixing in a bubble column. Journal of
+Chemical Engineering of Japan , 45(9):632{638, 2012.
+M. Sommerfeld and D. Br oder. Analysis of hydrodynamics and microstructure in a bubble column by planar
+shadow image velocimetry. Industrial and Engineering Chemistry Research , 48(1):330{340, 2009. 690
+36H. Tsuge and S. I. Hibino. Bubble formation from a submerged single orice accompanied by pressure uctu-
+ations in gas chamber. Journal of Chemical Engineering of Japan , 11(3):173{178, 1978.
+K. Ueyama and T. Miyauchi. Properties of recirculating turbulent two phase ow in gas bubble columns.
+AIChE Journal , 25(2):258{266, 1979.
+R. K. Upadhyay, H. J. Pant, and S. Roy. Liquid ow patterns in rectangular air-water bubble column investi- 695
+gated with radioactive particle tracking. Chemical Engineering Science , 96:152{164, 2013.
+J. F. Walter and H. W. Blanch. Liquid circulation patterns and their eect on gas hold-up and axial mixing
+in bubble columns. Chemical Engineering Communications , 19(4-6):243{262, 1983.
+P. M. Wilkinson and L. L. v. Dierendonck. Pressure and gas density eects on bubble break-up and gas hold-up
+in bubble columns. Chemical Engineering Science , 45(8):2309{2315, 1990. 700
+P. M. Wilkinson, H. Haringa, and L. L. Van Dierendonck. Mass transfer and bubble size in a bubble column
+under pressure. Chemical Engineering Science , 49(9):1417{1427, 1994.
+C. Wu, K. Suddard, and M. H. Aldahhan. Bubble dynamics investigation in a slurry bubble column. AIChE
+Journal , 54(5):1203{1212, 2008.
+Y. Wu and M. H. Al-Dahhan. Prediction of axial liquid velocity prole in bubble columns. Chemical Engineering 705
+Science , 56(3):1127{1130, 2001.
+Y. Wu, B. C. Ong, and M. H. Al-Dahhan. Predictions of radial gas holdup proles in bubble column reactors.
+Chemical Engineering Science , 56(3):1207{1210, 2001.
+P. Zehner. Momentum, mass and heat transfer in bubble columns - 1. Flow model of the bubble column and
+ow velocities. [Impuls-, Sto- und W armetransport in Blasens aulen - 1. Str omungsmodell der Blasens aule 710
+und Fl ussigkeitsgeschwindigkeiten.]. Verfahrenstechnik , 16(5):347{351, 1982.
+37

@@ -1,0 +1,983 @@
+ 
+ 
+General rights  
+Copyright and moral rights for the publications made accessible in the public portal are retained by the authors and/or other  copyright 
+owners and it is a condition of accessing publications that users recognise  and abide by the legal requirements associated with these rights.  
+ 
+ Users may download and print one copy of any publication from the public portal for the purpose of private study or research.  
+ You may not further distribute the material or use it for any profit -making activity or commercial gain  
+ You may freely distribute the URL identifying the p ublication in the public portal  
+ 
+If you believe that this document breaches copyright please contact us providing details, and we will remove access to the wo rk im mediately 
+and investigate your claim.  
+  
+ 
+   
+ 
+ 
+Downloaded from orbit.dtu.dk on: Aug 29, 2024
+Fluorescence Excitation Emission Matrix (EEM) spectroscopy
+Hambly, Adam C.; Wünsch, Urban J.
+Published in:
+Experimental Methods for Membrane Applications
+Link to article, DOI:
+10.2166/9781789062977_0265
+Publication date:
+2024
+Document Version
+Publisher's PDF, also known as Version of record
+Link back to DTU Orbit
+Citation (APA):
+Hambly, A. C., & Wünsch, U. J. (2024). Fluorescence Excitation Emission Matrix (EEM) spectroscopy. In S. G.
+Salinas-Rodríguez, & L. O. Villacorte (Eds.), Experimental Methods for Membrane Applications: In Desalination
+and Water Treatment (pp. 265-286). IWA Publishing. https://doi.org/10.2166/9781789062977_0265Chapter 12 
+ 
+Fluorescence Excitation 
+Emission Matrix (EEM) 
+Spectroscopy
+Adam C. Hambly & Urban J. Wünsch,  
+Technical University of Denmark, Denmark
+The learning objectives of this chapter are the following: 
+• Understand the theoretical and historical background of fluorescence EEM 
+spectroscopy
+• Outline EEM instrumentation and best practice for method development, with 
+consideration of potential shortcomings and interferences
+• Present and discuss research literature for fluorescence EEM spectroscopy as applied 
+to the fouling of membrane-based water treatment systems
+12.1 INTRODUCTION
+Fluorescence is a form of luminescence, whereby light (energy) is absorbed by a substance at 
+a particular wavelength (excitation), and then emitted at a longer wavelength (lower energy, 
+emission). The difference between the absorption and fluorescence maxima is known as the 
+Stokes shift, and the entire process typically takes place over a very short timeframe. This is 
+one of the characteristics which separates it from phosphorescence, which typically takes 
+place over longer timeframes. These processes are best described in general by a Jablonski 
+diagram (Figure 1), named after the Polish physicist Aleksander Jabłonski (1933).doi: 10.2166/9781789062977_0265
+© 2024 The Authors. This is an Open Access book chapter distributed under a Creative Commons 
+Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0),  
+(https://creativecommons.org/licenses/by-nc-nd/4.0/). The chapter is from the book Experimental 
+Methods for Membrane Applications in Desalination and Water Treatment, Sergio G. Salinas-Rodriguez, 
+Loreen O. Villacorte (Eds).
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024266
+Experimental Methods for Membrane Applications
+ε (m-1cm-1)
+Fluorescence intensity
+Wavelenght (nm)3502,000
+1,500
+1,000T1S1S2
+Internal
+conversion Intersystem
+crossing
+Fluoresence
+Phosphoresence
+S0012hvA
+hvAhvPhvF
+500
+400 450 500 550DENS in 0.1 M
+Phosphate buffer
+pH 7.0
+6001.0
+SO3
+0.5
+0 0-NEt
+EtAbsorption
+Figure 1 Left Jabłonski diagram; and Right: An example of a compounds absorption (A) and 
+fluorescence emission (F) spectra, where the Stokes shift is the distance between the 
+peaks of the two spectra (Adapted from Lakowicz, 2006b).
+Not all substances or compounds are capable of exhibiting fluorescence. However, since it 
+was first referred to in 1852 (Stokes, 1852), fluorescence-based methods have been used 
+to analytically detect and quantify specific compounds with high sensitivity. Fluorescence 
+spectroscopy is often described as being 10 to 1000 times more sensitive than absorbance 
+spectroscopy, due to the nature of the measurement having a ‘true’ zero. There are many 
+ways which fluorescence can and has been used analytically, from single point to simple 
+2D emission measurements at a single excitation wavelength, to synchronous fluorescence 
+and excitation-emission matrix (EEM) spectroscopy. Depending on the complexity of 
+the sample, spectra of mixtures such as organic matter, can often be deconstructed into 
+independently varying components using a variety of analytical tools (see section: 11.6 
+Data Processing). This chapter will focus on fluorescence EEM spectroscopy, and its practical 
+relevance in relation to membrane-based water treatment and fouling in general. 
+Broadly speaking, the analysis of FDOM (fluorescent dissolved organic matter) with EEM 
+spectroscopy found early use in the natural sciences, the bulk of which was first carried out 
+within oceanography. The methods have also been transferred to freshwater and estuarial 
+research applications, and subsequently have seen applications tied to water treatment 
+within a number of different fields. Fluorescence EEM spectroscopy has now been used to 
+detect and characterise organic content within the aquatic sciences, across a large variety of 
+natural and engineered systems. Oceans (Catalá et al., 2015; Stedmon and Nelson, 2015), 
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024267Chapter 12   
+seas, lakes (Kothawala et al., 2014; Osburn et al., 2017), and rivers (Baker and Inverarity, 
+2004), as well as drinking water (Bridgeman et al., 2011), wastewater (Carstea et al., 2016), 
+water recycling (Hambly et al., 2010; Hambly et al., 2015; Henderson et al., 2009; Murphy 
+et al., 2011), aquaculture (Hambly et al., 2015; Spiliotopoulou et al., 2017; Yamin et al., 
+2017), and desalination (Drozdova et al., 2017; Shutova et al., 2016) are some of the varied 
+aquatic settings in which fluorescence has been applied, from small scale research studies to 
+large scale industrial uses. 
+Within the context of this chapter, fluorescence EEM spectroscopy has shown particular 
+use in the analysis and understanding of membrane-based systems. As an optimised target 
+compound removal is paramount to the performance of any membrane system, any sort 
+of membrane fouling can therefore limit the systems performance. Feed waters often 
+contain a high level of organic compounds, and as such various forms of organic fouling of 
+the membranes can occur. The performance of a membrane system can be evaluated on the 
+FDOM analysis of different aspects of it, and depending on which aspect it is measuring, 
+the appropriate analytical method will require tweaking. Specific details of fluorescence 
+methods are thus contained in the following sections.
+Numerous other aspects of the measurement also need to be addressed before fluorescence 
+data is ready for interpretation. While fluorescence measurements are somewhat simpler 
+when compared to e.g., liquid chromatography coupled to mass spectrometry, analysts must 
+consider many questions before measurements can take place. For example, how should 
+samples be taken and how long can they be stored? How exactly should fluorescence be 
+measured, and which analysis strategy is the best for a given study? The following sections 
+11.2 to 11.7 provide guidance for the practical aspects behind fluorescence measurements 
+within an aquatic context.
+12.2 SAMPLING & STORAGE
+Samples taken from different stages of membrane filtration consist of particulate and soluble 
+material in water. A fraction of this material is highly bioavailable to microorganisms, while 
+other fractions resist biodegradation for longer periods (Hu and Ren, 2019; Urgun-Demirtas 
+et al., 2008). When it comes to sampling and subsequent storage prior to measurements, the 
+more bioavailable material requires special attention, as microbes naturally target the most 
+available compounds first and can thus alter the sample quickly (Heinz and Zak, 2018). 
+In general, it is advisable to process samples and perform fluorescence measurements as 
+quickly as possible to avoid storage artefacts. However, the constraints of sampling do not 
+always allow for fast sample processing. In such cases, preserving the sample and knowing 
+about possible storage effects is important. Preservation strategies include filtration, storage 
+in cold and dark conditions, freezing, and chemical poisoning. In contrast, autoclaving 
+introduces changes in FDOM (Andersson et al., 2018).
+Good practices for characterizing dissolved materials include 1) removing living organisms 
+as quickly as possible through filtration; 2) storing the sample at temperatures below 
+10 °C in the dark to minimize biological activity; 3) measuring as quickly as possible but 
+preferably at most within 5 days of sampling, and; 3) maintaining the same procedure for 
+sample processing within a study to keep potential biases constant. 
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024268
+Experimental Methods for Membrane ApplicationsDifferent filter materials and pore sizes are available for filtration. Amongst the available 
+materials, glass fiber filters are the safest option regarding contamination since they can 
+be ashed (>  4  h at > 450  °C, (Coble et al., 2014)). However, glass fibre filters generally 
+only exist with pore sizes of larger than 0.3  μm. The classic GF/F filter with a pore size of 
+0.7  μm was used to distinguish particulate from dissolved matter. However, at that pore 
+size, studies have reported bacterial passage rates between 10 and 25 % in marine samples 
+(Morán et al., 1999). It should however be noted that passage of microbes through filters 
+with all common diameters can be observed (Obayashi and Suzuki, 2019; Wang et al., 
+2007, 2008). If initial cell counts are high and assimilable carbon is abundant, microbial 
+regrowth can quickly change sample character despite the usage of ‘sterile’ filters (< 0.2 μm). 
+These observations emphasize that storages times should be kept short and effects of 
+microbial passage will depend on the original sample. Lastly, the leaching of filter material 
+into the sample should be investigated for the specific batch of filters used in each study. 
+In the context of wastewater, such leaching is likely negligible but can affect primarily the 
+UVA fluorescence emission range due to the leaching of production-related impurities. 
+Filters should be rinsed with ultrapure water followed by sample prior to obtaining a filtrate 
+for analysis. Filtration should occur slowly to avoid the bursting of cells (Rosenstock and 
+Simon, 1993).
+Freezing as a means to slow down biological processes can help to facilitate longer sample 
+storage. While some studies recommend freezing as suitable for samples with low carbon 
+concentrations, significant changes in optical indices, sample absorbance, and fluorescence 
+emission characteristics have been observed (Fellman et al., 2008; Heinz and Zak, 2018; 
+Spencer et al., 2007) concluded that the effects cannot be predicted from the composition of 
+the original sample. Thus, the effects cannot be corrected post-measurement.
+12.3 BENCHTOP INSTRUMENTATION
+Since fluorescence analyses are increasingly popular, users have a range of choices concerning 
+benchtop instrumentation. However, specifications regarding instrument and software 
+can differ significantly between instruments and affect the measurement experience and 
+resulting data quality.
+Commercial instruments on the market today usually feature incandescent or pulsed Xenon 
+lamps. These lamps provide excitation light in the entire ultraviolet-visible spectrum 
+(approx. 220 – 800 nm) and have a relatively continuous emission spectrum. To understand 
+the instrument’s limitations, it is important to keep in mind the lamp’s output spectrum. 
+For example, incandescent Xe lamps provide little light at wavelengths shorter than 
+240 nm and resulting emission scans are generally noisier and can be difficult to interpret. 
+Xe flash lamps can provide more light in the ultraviolet range resulting in a wider usable 
+excitation range and a more uniform signal-to-noise relationship across EEMs (Lakowicz, 
+2006a). However, Xe flash lamps also contain more distinct emission bands, that need to 
+be addressed to obtain spectrally calibrated EEMs. Lastly, incandescent Xe lamps have a 
+lifetime of < 2000 h and thus require more maintenance compared to pulsed light sources.
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024269
+Chapter 12  The optical configuration of spectrofluorometers can differ significantly due to the 
+requirements dictated by the detection system. The classic photomultiplier tube (PMT) is a 
+sensitive photon detector that lacks the ability to distinguish light of different wavelengths 
+but offers superior sensitivity thanks to signal amplification and low noise levels. 
+Spectrofluorometers that utilize PMTs require two monochromators: The first selects a 
+narrow band of light for sample excitation, the second permits a narrow band of fluorescence 
+emission to pass through to the PMT. By scanning through all desired emission wavelengths 
+at all desired excitation wavelengths, an EEM is constructed with typical speeds of 500 nm/
+min (total time typically between 20-40 min). On the other hand, charge-coupled device 
+detectors (CCDs) allow the simultaneous detection of the entire wavelength range of 
+interest and reduce measurement times considerably.
+Due to the necessity to consider non-linearity in fluorescence observations due to the optical 
+density of a sample (discussed below), it is also important to consider the availability of 
+spectrophotometers during the measurement of fluorescence. If potential projects involve 
+field measurements, the use of instruments with a combined absorbance-fluorescence 
+detection system can be advantageous since all required measurements are made within one 
+unit (see Figure 2).
+Figure 2 An example of a modern spectrofluorometer instrumentation setup in a research 
+laboratory – in this case an iteration of the Horiba Aqualog with a CCD detector.
+As mentioned above, samples generally contain particulate and dissolved material. While 
+both fractions contain fluorescent moieties, different instrument configurations are required 
+to characterize the material. For example, dissolved fluorescent material is quantified after 
+filtration of a water sample through filters in the classic right-angle geometry with a quartz 
+cuvette (Figure 3, left). On the other hand, the measurement of particulate material occurs 
+either directly in the unfiltered, optically thick suspension or by exciting particles directly 
+on a surface. In both cases, the non-transparent nature of the particulate sample necessitates 
+a front-face illumination (Figure 3, right). Front-face measurements of thick suspensions 
+can also occur in cuvettes, but require adapters to either adjust the angle of the incident light 
+relative to the cuvette face or to capture and direct the light at a specific angle toward the 
+cuvette. The remainder of this section will discuss right-angle fluorescence of optically thin 
+solutions since this is by far the most common application of fluorescence.
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024270Experimental Methods for Membrane Applications
+Right-angle fluoresence
+– transparant solution
+– filtered samplesFront-face fluoresence
+– thick solution
+– unfiltered samples & particles
+Figure 3 Schematic view (top) of the geometric position of samples and cuvettes.
+12.4 QUALITY ASSURANCE
+Most of today’s spectrofluormeters are spectrally calibrated in full from the factory. 
+However, to generate comparable results, wavelength accuracy and spectral calibration are 
+especially important to monitor over time as the instrument ages. Wavelength accuracy 
+refers to the deviation between true and detected wavelength in nanometres; either the 
+excitation light intercepted by the cuvette or the fluorescence emission captured by the 
+detector. Manufacturers commonly list the specification in the instrument manual and 
+a precision of ± 1 nm is typical. Deviations are monitored by detecting the peak position 
+of Rayleigh scatter at e.g., 467  nm, while the accuracy of the emission detector can be 
+verified by determining the peak position of the 435.8 nm Hg band emitted by common 
+low-pressure mercury vapor lamps (Sansonetti et al., 1996). Monitoring changes in peak 
+positions is especially important after instrument transport.
+Spectral calibration refers to the elimination of spectral biases that arise from a biased lamp 
+emission spectrum, and wavelength-dependent monochromator and detector biases. Some 
+of these biases are eliminated with the use of reference detectors, but the remainder of the 
+bias is removed with the use of excitation and emission correction factors that come pre-
+installed from the factory. It can however be a good idea to verify their appropriateness 
+from time to time. A triangular cuvette of Rhodamine B produces a flat excitation spectrum 
+after the successful elimination of spectral biases (Kopf and Heinze, 1984). The emission 
+calibration is commonly verified with standards available from the National Institute 
+of Standards and Technology (NIST). Different standards cover the ultraviolet-visible 
+emission range and the recorded spectra should fall within the certified values at all times 
+(Gilmore, 2014).
+To obtain valid results, the measured sample needs to meet certain criteria to ensure that 
+the instrument is capable of delivering the best results possible. For example, fluorescence 
+counts should not exceed the linear range of the detector. Fortunately, the instrument 
+control software usually warns users when the linearity threshold is exceeded. In such cases, 
+settings can be adjusted (e.g., integration time) or samples diluted. 
+In cases with high concentrations of chromophores, the sample transmission can be too low 
+to deliver quantitative fluorescence results. Kothawala et al., (2013) defined an absorbance 
+of 0.05  cm-1 (89  % transmittance) as the cutoff below which such effects can be safely 
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024271
+Chapter 12  neglected (Kothawala et al., 2013). On the other hand, an absorbance of 1.5   cm-1 (3  % 
+transmittance) was found to be the upper limit after which no quantitative fluorescence 
+results can be obtained even if correction methods are applied (see below). It is thus 
+important that samples meet the second criterion during the fluorescence measurements, as 
+no post-measurements for linearity will be possible.
+Prior to every study, choosing appropriate measurement settings is important to ensure 
+appropriate fluorescence counts in the relevant ranges of the EEM are accumulated. Regarding 
+range and resolution, the types of observed fluorophores and their properties will govern 
+which parts of the EEM should be captured. For example, if protein-like material, phenolic 
+compounds, and / or oils are present a high resolution in the excitation range below 300 nm 
+is especially important. To distinguish these highly similar fluorophores and quantify their 
+fluorescence, it can also be important to capture emission spectra with a resolution below 
+3  nm if bandwidth characteristics of monochromators permit this. For instruments with 
+incandescent Xe lamps, it generally makes little sense to capture emission below 240 nm 
+even if sample fluorophores exhibit strong absorbance bands since signal-to-noise ratios 
+deteriorate in the UV region. Capturing the emission up until 800 nm is necessary should 
+the sample contain algae or fluorescent pigments. Moreover, to enable the correction of 
+inner filter effects, it is important to measure the samples absorbance spectrum covering all 
+excitation and emission wavelengths. Otherwise, such corrections can become difficult to 
+implement.
+12.5 INTERFERENCES
+As an extrinsic property of fluorophores in solution, fluorescence fingerprints are 
+vulnerable to changes due to interferences. Such changes can impact fluorescence yields (per 
+mol of substance) and spectra and are caused by physicochemical properties of the sample. 
+When comparisons between samples are made, it is thus important to consider whether 
+physicochemical properties remain stable or are subject to change. In the following, we will 
+list some examples (not all) of the physicochemical parameters known to influence DOM 
+fluorescence.
+The sample’s temperature can affect the fluorescence intensity observed for a given sample. 
+When solvent temperatures increase, observed fluorescence generally decreases. However, 
+there is no evidence to suggest that spectral characteristics change due to temperature 
+(McKay et al., 2018). This effect is of great importance for in situ measurements with 
+sensors since temperature can vary systematically over longer periods of time. However, 
+a compensation is trivial if the sample’s temperature is known (Watras et al., 2011). For 
+benchtop instruments, temperature effects are usually not an issue since jacketed cuvette 
+holders and climate-controlled laboratories eliminate the chance for systematic biases.
+Changes in pH can lead to spectrally-dependent changes in a sample’s fluorescence. 
+Numerous studies have investigated the effect of pH on organic matter fluorescence, and 
+the different results reported in each study hints at sample-dependent, complex effects 
+(e.g. Esteves et al., 1999; Groeneveld et al., 2022; Mobed et al., 1996; Murphy et al., 2018; 
+Spencer et al., 2007). These complex changes make it effectively impossible to compensate 
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024272
+Experimental Methods for Membrane Applicationsthe pH-induced interference. It is thus best to avoid sample-to-sample differences in pH to 
+facilitate comparisons between samples.
+Beyond temperature and pH, ionic strength, the presence of metal ions, and particle 
+attenuation have also been reported to affect fluorescence measurements. As with all 
+physicochemical properties, it is advisable to obtain reference measurements for samples 
+coming from the system that is subject of a study. This will help to ascertain if issues with 
+certain parameters are to be expected and if so, whether great variation (e.g., pH or ionic 
+strength) might introduce artefacts that complicate interpretation of the fluorescence 
+readings in a given dataset.
+12.6 DATA PROCESSING
+Fluorescence measurements require several steps of processing before further analyses can 
+take place (Figure 4). While some software offers comprehensive features that contain the 
+most critical steps, we believe it is most advisable to export data from proprietary formats 
+and subsequently use open software environments to process and analyze fluorescence 
+data. This gives the user more control over processing steps, freedom of choice regarding 
+analysis strategies, and maximizes the impact of the conducted research by extracting 
+as much information as possible. Amongst the most common languages for statistical 
+computing, Matlab and R have community-driven software packages (Matlab: drEEM, 
+EEMlab;  R: eemR, StaRdom, albatross) that facilitate all steps in Figure 4 and enable a range 
+of multivariate analyses (Micó et al., 2019; Murphy et al., 2013; Pucher et al., 2019). While 
+theoretically possible, an analysis of EEMs in spreadsheet software is not recommended 
+since workflows are not easily automatable.
+Data export
+Export files from software & convert into 
+standardized, open delimited-seperated format
+Bias correction
+- Blank subtraction
+- Correct inner-filter effect
+- Calibrate fl. data to R.U./QSU
+- Remove scatter
+- Consider other biasesData import
+- Choose analysis platform
+- Assembly & import scans
+Inspect data set
+- Remove excessive noise
+- Indentify & handle outliers
+- Identify best anlysis strategy
+Figure 4 Steps involved in the processing of fluorescence measurements.
+After the successful import into the programming environment of choice, the next 
+processing steps concerns the correction or removal of different measurement biases. For 
+example, a blank should be subtracted from each sample fluorescence landscape to remove 
+the impact of background signals and reduce the abundance of scatter. Such blanks should 
+be measured daily and always be made from the sample solvent (e.g. water, buffered water, 
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024273Chapter 12  
+organic solvent). Blanks can also function as a standard for the calibration of fluorescence 
+signals into Raman Units (Lawaetz and Stedmon, 2009). Next, inner-filter effects (IFEs) are 
+compensated since they disturb the linearity of observed fluorescence due to the partial or 
+complete absorbance of emitted fluorescence by chromophores (Parker and Rees, 1960). 
+Such effects are easily corrected by applying correction factors derived from the sample’s 
+absorbance scan – provided the maximum absorbance be below approx. 1.5 cm-1 (Kothawala 
+et al., 2013).
+The removal of Rayleigh and Raman scatter can be an important step if the subsequent 
+analysis strategy (see below) includes the decomposition of fluorescence EEMs into 
+statistical components according to Beer Lambert’s law (Bahram et al., 2006). The open-
+source software packages mentioned above include functions for scatter removal and thus 
+simplify this task considerably.
+12.7 DATA ANAL YSIS
+Once data is measured and fully processed, the data analysis can occur. Analysis strategies 
+(overview in Table 1) can range from simply comparing fluorescence intensities (known 
+as ‘peak picking’) and fluorescence indices to multivariate analysis such as parallel factor 
+analysis (PARAFAC). 
+Table 1 Overview of most common strategies to analyse fluorescence EEMs.
+Analysis strategy Description References
+Peak picking Extraction of fluorescence intensities 
+from EEMs at defined wavelengths.(Coble 2007)
+Fluorescence regional 
+integration (FRI)Integration of fluorescence in 
+wavelength regions with predefined 
+interpretation.(Chen et al., 2003)
+Fluorescence indices Qualitative descriptors of FDOM with 
+insights into humification, aromaticity, 
+freshness and microbial processing.(Huguet et al., 2009; Maie et al., 
+2006; Ohno 2002; Parlanti et al., 
+2000)
+Parallel factor analysis 
+(PARAFAC)Multivariate decomposition of EEMs into 
+components.(Murphy et al., 2013)
+The comparison of fluorescence intensities usually occurs at predefined wavelengths that 
+typically have letters assigned to them (see Figure 5, table 2). For example, peak T, extracted 
+at excitation / emission 275  /  340 is typically ascribed to tryptophan- or protein-like 
+material. Peaks A and C on the other hand are often described as humic-like material. It 
+should be noted that the interpretation of fluorescence peaks should only be informed by 
+comparison with studies of the same sample material and take into account potential issues 
+(e.g. pharmaceuticals fluorescing like amino acids).
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024274
+Experimental Methods for Membrane ApplicationsTable 2 Position of predefined peaks and fluorescence indices as listed or described in Coble 
+(2007), Maie et al. (2006), Huguet et al. (2009), Ohno (2002).
+Peak / index λEx / λEmTentative interpretation in 
+natural environments
+A 260/400-460 Humic-like, terrestrial
+B 275/305 Autochthonous
+T 275/340 Autochthonous
+M 290-310/370-410 Anthropogenic contaminants
+C 320-360/420-460 Humic-like, terrestrial
+D 390/509 Humic-like, ubiquitous
+Fluorescence index (FI) 370/470
+370/520Distinguishes microbial and 
+terrestrial inputs
+Biological index (BIX) 310/380
+310/430Contribution of biological 
+transformations
+Humification index (HIX) 254/ ∫ 435– 480
+254 / ∫ 300 − 345 + 254 / ∫ 435 − 480Ratio between protein- and 
+humic-like fluorescence
+Fluorescence regional integration (FRI) is a particularly popular technique in engineered 
+systems by which integrals of wavelength regions in the EEM (Figure 5, yellow lines) are 
+tracked across samples. The assignment of these regions is based on model compounds 
+and natural environmental samples (Chen et al., 2003). According to Chen et al., (2003), 
+the five regions as illustrated in Figure 5 are aromatic protein-like material (I + II), fulvic 
+acid-like compounds (III), microbial by-product-like fluorescence (IV), and humic-like 
+material (V). Subsequent to the publication of the FRI approach, multivariate modelling has 
+indicated that underlying fluorescence spectra in regions I, II and IV, as well as III and V 
+overlap spectrally and regional integrals are likely not as specific as the names above suggest 
+(Stedmon et al., 2003).
+FI
+BIXD
+C
+MV
+IV
+IIII
+IIN
+T
+BAHIX
+Excitation (nm)Emission (nm)
+350 400 250 300550
+500
+450
+350400
+Figure 5  Emission-Excitation Matrix of a sample from a boreal river (Öre river, northern Sweden). 
+Yellow lines and text refer to fluorescence regional integration areas (FRI). Black dots 
+represent fluorescence indices: FI: Fluorescence Index; BIX: Biological Index; HIX: 
+Humification Index). Blue lines and text refer to predefined peak locations.
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024275
+Chapter 12  Several fluorescence-based indices also find frequent application (Figure 5, thick black 
+lines, Table 2). For example, the humification index (HIX) informs about the ratio between 
+protein- and humic-like fluorescence and thus can help to understand qualitative shifts 
+between samples (Ohno, 2002). The biological index (BIX) is a ratio between ultraviolet and 
+visible fluorescence and can indicate the importance of recent biological transformations 
+of material (Huguet et al., 2009). Lastly, the fluorescence index (FI) distinguishes between 
+microbial and terrestrial inputs in aquatic environments (Maie et al., 2006; McKnight et 
+al., 2001). As with peak picking, one should be careful to extrapolate interpretations from 
+studies performed on different sample types to membrane samples. The above-mentioned 
+fluorescence indices were defined in studies of natural aquatic environments but can help to 
+identify qualitative differences between samples.
+12.7.1 PARAFAC
+Amongst the multivariate analysis techniques, PARAFAC is the most popular technique 
+in the analysis of DOM and this section will provide a short overview over this technique. 
+For tutorials on MCR and PCA, we refer the reader to Bro and Smilde (2014), and de Juan 
+et al., (2014). PARAFAC is a particularly popular model for the decomposition since it 
+naturally follows the analytical principals of fluorescence (Bro, 1997; Murphy et al., 2013; 
+Stedmon and Bro, 2008). Each analyte (termed ‘component’ in the model) is described as 
+a product of an excitation and emission spectrum multiplied by a concentration factor. The 
+entire EEM is the sum of the fluorescence arising from each of the components. PARAFAC 
+is particularly attractive since it can distinguish spectrally overlapping components and thus 
+allows insights into components that may not be distinguishable in the raw fluorescence 
+data. Also, PARAFAC can isolate systematic signals in noisy measurements and thus help 
+to improve the quality of the results. Moreover, the component spectra can be compared 
+between studies and help to inform the chemical interpretation of the signals.
+As a multivariate modelling approach, PARAFAC analyses work best if a number of criteria 
+are met. For example, a minimum number of samples with meaningful compositional 
+variability helps to identify meaningful and robust models. If two or more peaks covary 
+perfectly, the approach may produce questionable models. Similarly, if a dataset consists 
+of too few samples, the algorithm can struggle to identify the underlying components. 
+As discussed above, the fluorescence occurring in each sample can be altered due to 
+interferences.  In such cases, it is most likely more fruitful to rely on peak picking and/or the 
+interpretation of fluorescence indices.
+12.8 APPLICATION IN MEMBRANE SYSTEMS
+As outlined above, there are myriad ways in which fluorescence measurements can be 
+applied to aquatic systems that utilise some form of membrane. Organic matter is a common 
+source of membrane fouling, and it follows that fluorescence measurement of organic 
+matter has gained traction in the analysis and investigation of how organic fouling occurs 
+in these systems. Whether it is microfiltration, ultrafiltration, nanofiltration, or reverse and 
+forward osmosis, using flat sheet, hollow fiber, tubular, or spiral wound constructions, there 
+is nearly always a way in which fluorescence measurements can be, and has been applied. 
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024276
+Experimental Methods for Membrane ApplicationsThese methods can assist in evaluating the membrane structure, the process performance in 
+general, and of course the level and character of fouling. However, the construction, matrix, 
+and analytical targets for each of these specific applications will determine how fluorescence 
+EEM spectroscopy can, and cannot, be used in each case.
+Section 11.3 has highlighted two physical application differences: (1) front-face fluorescence 
+spectroscopy; and (2) right-angle fluorescence spectroscopy. Both methods can be used to 
+assess and/or predict organic fouling, though in different ways and typically for different 
+applications. Front-face fluorescence EEM spectroscopy currently finds its most common 
+(membrane-related) use for systems such as MBRs (membrane bioreactors), or direct 
+measurement from fouled membrane surfaces. Regardless of whether front-face or right-
+angle fluorescence is used, the organic character of any fouling will be dependent on both 
+the feed, and the physical and/or chemical characteristics of the membrane in use.
+The direct, in situ fluorescence analysis of membranes has to date been carried out in 
+different ways in order to understand the main organic components behind the organic 
+fouling of membrane surfaces. For example, Yamamura et al., (2019) used in situ front-face 
+EEM spectroscopy to investigate the organic fouling of PVDF membranes from secondary 
+treated wastewater, in a bench-scale study. They observed increasing intensities with time 
+over three main peaks, and by combining intermittent backwashing with EEM analysis, 
+the authors observed peaks which were predominantly associated with reversible and/
+or irreversible fouling. Yu et al., (2019), also utilised front-face fluorescence to detect and 
+quantify model foulants on UF membranes, and concluded that it was a better method than 
+liquid right-angle fluorescence in this particular study due to lower standard deviations 
+observed between repeated measurements (see Figure 6). Pawlowski et al., (2016) used 
+front-face fluorescence to monitor fouling deposition on ion-exchange membranes. In this 
+study, the authors found it to be a useful tool in evaluating reverse electrodialysis processes, 
+and particularly for increasing membrane cleaning efficiencies. 
+Similar front-face techniques have also been used to investigate activated sludge systems 
+(Huaorng, 2022), to quantify biomass and bioactivity amongst other parameters. From 
+a practical spectroscopy perspective, these can be likened to the sludge and mixed liquor 
+components of MBRs. The fluorescence character of the sludge over time can be linked 
+to the evolution of fouling on the membranes, as the organic matter in particular EPS 
+(extracellular polymeric substances) has been found to be closely related to TMP (Chen et 
+al., 2018). Various iterations of front-face spectroscopy have been used for assessing both 
+the sludge and membrane components of MBR systems in situ (Galinha and Crespo, 2022).
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024277
+Chapter 12  Time (s)Time (s)
+Resistance (m-1)Foulant mass (mg/m2) Foulant mass (mg/m2)a) 10 mg/L BSA
+b)    10 mg/L HA5001,0001,5002,0002,500
+02x10114x10116x10118x1011
+2x10114x10116x10118x10110
+20406080100120140
+0 00BSA (liquid EEM)
+BSA (FFEEM)
+Resistance
+1.000 2.000 3.000 4.000 5.000
+0 1.000 2.000 3.000 4.000HA (liquid EEM)
+HA (FFEEM)
+ResistanceResistance (m-1)
+Figure 6 Comparison of fouling by 10 mg/L of (a) Bovine Serum Albumin and (b) Humic Acid 
+measured by liquid right-angle EEM and front-faced fluorescence EEM measurements 
+(adapted from Yu et al . (2019)).
+Looking beyond front-face fluorescence EEM spectroscopy, the more common method 
+of analysing membrane performance has historically been by a direct measurement of 
+the different liquid streams with right-angle fluorescence. This is due to the higher signal 
+and higher sensitivity that is achieved by this method, though front-face fluorescence 
+spectroscopy has been described and utilised for high absorbance liquid samples for nearly 
+half a century (Eisinger and Flores, 1979). In the case of membrane systems, using the 
+right-angle fluorescence method typically means a comparison of one or more out of the 
+feed, permeate, and concentrate streams. Whether some, or all, of these streams can be 
+analysed with right-angle fluorescence will depend on whether the target matrix adheres 
+to the requirements set out in section 11.4 Quality Assurance. Primarily, the liquid matrix 
+must exhibit low absorbance values, which either are below the threshold where they can 
+be considered negligible, or within the mathematically correctable range. In the latter case, 
+an absorbance measurement must accompany the fluorescence measurement to guarantee 
+accurate values.
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024278
+Experimental Methods for Membrane ApplicationsFor example, Poojamnong (2020) used right-angle fluorescence to compare the feed 
+and permeate EEMs of an MBR treating pulp and paper wastewater. This study found 
+protein-like fluorescence to be the most reduced region from the feed to the permeate, 
+which correlated to the main component of the fouling formed on the UF membranes. A 
+comparison of feed and permeates from RO processes of water recycling plants have also 
+shown that right-angle fluorescence EEM could be used to monitor organics rejection and 
+membrane integrity (Pype et al., 2013; Singh et al., 2009; Singh et al., 2015). Bagastyo et 
+al., (2011) identified humic and fulvic-like organics, as well as soluble microbial products 
+as the main constituents of the concentrate stream within an RO system treating secondary 
+wastewater effluent.
+A direct analysis of already fouled membranes can also be performed with right-angle 
+fluorescence EEM spectroscopy. Stripping off individual foulant layers by, for example, 
+backwashing, or acid/base washing, has been used to understand differences in the formation 
+of membrane foulant layers. In 2004, Kimura et al. (2004) showed that alkaline cleaning 
+removed primarily protein-like fluorescence from membranes fouled by surface water. 
+Henderson et al. (2011) also found that protein-like fluorescence was the predominant 
+fluorescence region that was removed through a three-step UF membrane cleaning 
+procedure. More specifically, in this case a low UV ‘tyrosine-like’ fluorescence component 
+found within 5 different sources of wastewater, was found to be highly correlated to 
+membrane fouling potential. In a study that investigated the role of DOM in the fouling 
+of membrane bioreactors (MBR) treating wastewater, Tang et al. (2010) also found that 
+two protein-like fluorescence components were most correlated to membrane fouling. 
+These and other similar studies highlight how EEM spectroscopy can be used effectively 
+to gain insight into how different foulant layers form, and therefore how to minimise their 
+formation. 
+Further to the direct observation of various fluorescent membrane fouling components, 
+studies have also investigated different pre-treatment steps to remove these components 
+and hence minimise organic fouling. For example, Wang et al. (2017) utilised liquid EEM 
+analysis to compare the performance and effect of 8 different types of powder activated 
+carbon (PAC), as a pre-treatment to UF membrane treatment. They showed that whilst 
+initial fouling was linked to the humic-like fluorescence region, ultimately the ability 
+of PAC to minimise irreversible fouling was linked to how well it absorbed protein-like 
+fluorescence.  Aftab et al. (2020) applied combinations of different pre-treatment processes 
+to change the FDOM character of landfill leachate, in order to compare how the resulting 
+organics character ultimately affected NF fouling. This study concluded that both fulvic-like 
+and protein-like fluorescence was more linked to irreversible fouling, than was humic-like 
+fluorescence. In slight contrast to this, Xu et al. (2022) concluded that both proteins and 
+humics contributed to the initial pore blocking stage, though the study was conducted on 
+synthetic mixtures and model foulant compounds. Through a combination of size exclusion 
+chromatography and liquid fluorescence EEM analysis, Haberkamp et al. (2011) also showed 
+that protein-like fluorescence correlated with the extent of hydraulically irreversible fouling 
+of UF membranes by secondary effluents. In this case, the authors also showed that chemical 
+coagulation and biological sand filtration as pre-treatment were both able to significantly 
+reduce membrane fouling. Furthermore, in a study that investigated dissolved air flotation 
+as a potential pre-treatment for membrane desalination, Shutova et al. (2016) showed 
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024279
+Chapter 12  that DAF treatment removed higher proportions of humic-like fluorescence than protein-
+like fluorescence, yet it still was able to remove between 28% and 58% of protein like 
+fluorescence from real water samples.
+Table 3 An overview of publications which have utilised fluorescence within membranerelated 
+treatment studies. N.B. MF (Microfiltration); UF (Ultrafiltration); RED (Reverse 
+electrodialysis); CE (cation exchange); AE (anion exchange); MBR (membrane 
+bioreactor); RO (reverse osmosis); AS (Activated sludge); FF (front-face), RA (right 
+angle), PP (peak picking); PARAFAC (Parallel factor analysis); FRI (fluorescence regional 
+integration); FI (fluorescence indices); PCA (principal components analysis); and PLS 
+(partial least squares)
+Reference Application Method Highlights or main findings
+Kimura et al. (2004) UF RA + PP Polysaccharide-like organic matter, Fe and Mn 
+in surface water responsible for irreversible 
+fouling.
+Singh et al. (2009) RO RA + PP Humic-like fluorescence most appropriate for 
+distinguishing between stage 1 and stage 2 RO.
+Tang et al. (2010) MBR RA + PP Protein-like fluorescence correlated positively 
+with membrane fouling.
+Henderson et al. (2011) UF RA + PP/
+PARAFACTyrosine-like fluorescence monitoring could be 
+used as an indicator of fouling potential from 
+domestic wastewater. 
+Bagastyo et al. (2011) RO RA + PP Advanced oxidation of RO concentrates more 
+efficient than coagulation & MIEX adsorption.
+Haberkamp et al. (2011) UF RA + PP Removal of protein-like substances by sand 
+filtration or coagulation resulted in reduced 
+irreversible fouling.
+Galinha et al. (2011) MBR RA/FF + 
+PLS3 fluorescence components could be used to 
+predict COD concentration in MBR permeate.
+Pype et al. (2013) RO RA + FRI Fluorescence proposed as surrogate for 
+pathogen removal in RO systems.
+Singh et al. (2015) RO RA + PP Peak C linked to TMP/fouling.
+Shutova et al. (2016) RO RA + 
+PARAFACHumics concentration used to determine optimal 
+coagulant dose.
+Pawlowski et al. (2016) RED - CE/AE FF / RA + 
+PCAFluorescence able to monitor fouling 
+development of ion-exchange membrane 
+surfaces.
+Vera et al. (2017) UF/RO RA + 
+PARAFACQuantified OM removals through treatment 
+plant, monitoring FDOM composition can 
+optimise treatment conditions due to seasonal 
+variation.
+Wang et al. (2017) UF RA + PP Humic-like substances contributed to initial 
+membrane fouling, protein-like correlated with 
+irreversible fouling.
+Cai et al. (2017) MBR RA + 
+PARAFACProtein-like substances more readily 
+biodegradable than humic-like substances.
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024280
+Experimental Methods for Membrane ApplicationsReference Application Method Highlights or main findings
+Jacquin et al. (2017) MBR RA + FRI Correlations established between LC-OCD-
+OND and EEM data to quantify protein-like and 
+humic-like substances.
+Xiao et al. (2018) MBR RA + FRI Identified correlations between characteristic 
+EEM wavelength regions and hydrophobic/ 
+hydrophilic DOM components.
+Yamamura et al. (2019) MF FF / RA 
++ PPProteinaceous substances responsible for 
+reversible and irreversible fouling, gels mainly 
+contributed to irreversible fouling.
+Yu et al. (2019) UF FF/RA + 
+PARAFACFF-EEM method superior to RA-EEM coupled 
+with mass balance for UF foulant determination.
+Aftab et al. (2020) NF RA + 
+PARAFACDifferent pre-treatment led to different 
+quantities and qualities of membrane foulants .
+Poojamnong et al. 
+(2020)MBR RA + FRI Irreversible foulants mainly comprised of 
+protein-like substances.
+Yu et al. (2021) MBR RA + PP/FI Combination of protein-like fluorescence and 
+UV280 used to predict fouling MBR potentials.
+Xu et al. (2022) UF RA + PP Proteins and humics mainly participate in 
+initial pore blocking, polysaccharides mainly 
+participate in later gel/cake layer stage 
+Yu et al. (2022) AS FF + 
+PARAFACProtein-like substances, NADH, and humic-like 
+substances correlated with MLVSS, intracellular 
+NADH, and humic-like substances in SMP , 
+respectively. 
+Cifuentes-Cabezas et al. 
+(2023)NF RA/FF + PP Fluorescence showed different fouling 
+development between different NF membrane 
+products.
+The studies that have been mentioned in this section are but a small proportion of the 
+many research applications of fluorescence EEM spectroscopy within membrane treatment 
+systems to date. While they highlight the method as a clear and practical use for measuring 
+organic fouling on membranes, it is nevertheless imperative to keep in mind that only a 
+fraction of OM is fluorescent. Although the fluorescent fraction is typically considered to 
+be representative of OM as a whole, a better overall picture of OM and OM-based fouling 
+will nearly always be attained when it is applied in combination with other analytical tools.
+Within the near future, further advances in optical technology and computer processing 
+power look to be the main impetus’ behind further development and wider application of 
+fluorescence sensors in membrane systems. As optical sensors become cheaper and more 
+sensitive, and light sources become more stable with higher output and tighter bandwidths 
+(particularly at lower wavelengths) fluorescence spectroscopy will become even more 
+practical and accessible for both research and industry applications. 
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024281
+Chapter 12  12.9 REFERENCES
+Aftab B, Cho J, Shin HS, and Hur J (2020) Using EEM-PARAFAC to Probe NF Membrane Fouling 
+Potential of Stabilized Landfill Leachate Pretreated by Various Options. Waste Management. 
+102: 260–269.
+Andersson MGI, Catalán N, Rahman Z, Tranvik LJ, and Lindström ES. (2018) Effects of Sterilization 
+on Dissolved Organic Carbon (DOC) Composition and Bacterial Utilization of DOC from Lakes. 
+Aquatic Microbial Ecology. 82(2): 199–208.
+Bagastyo AY, Keller J, Poussade Y, and Batstone DJ (2011) Characterisation and Removal of 
+Recalcitrants in Reverse Osmosis Concentrates from Water Reclamation Plants. Water Research 
+45(7): 2415–2427.
+Bahram M, Bro R, Stedmon CA, and Afkhami A (2006) Handling of Rayleigh and Raman Scatter for 
+PARAFAC Modeling of Fluorescence Data Using Interpolation. Journal of Chemometrics. 20(3–
+4): 99–105.
+Baker A, and Inverarity R (2004) Protein-like Fluorescence Intensity as a Possible Tool for Determining 
+River Water Quality. Hydrological Processes. 18(15): 2927–45.
+Bridgeman J, Bieroza M, and Baker A (2011) The Application of Fluorescence Spectroscopy to Organic 
+Matter Characterisation in Drinking Water Treatment. Reviews in Environmental Science and 
+Biotechnology. 10(3): 277–290.
+Bro R (1997) PARAFAC. Tutorial and Applications. Chemometrics and Intelligent Laboratory Systems. 
+38(2): 149–171.
+Bro R, and Smilde AK (2014). Principal Component Analysis. Analytical Methods. 6(9): 2812–2831.
+Cai W, Liu J, Zhu X, and Liu Y (2017) Fate of Dissolved Organic Matter and Byproducts Generated from 
+On-Line Chemical Cleaning with Sodium Hypochlorite in MBR. Chemical Engineering Journal. 
+323: 233–242.
+Carstea EM, Bridgeman J, Baker A, and Reynolds DM (2016) Fluorescence Spectroscopy for Wastewater 
+Monitoring: A Review. Water Research. 95: 205–219.
+Catalá TS, Reche I, Fuentes-Lema A, Romera-Castillo C, Nieto-Cid M, Ortega-Retuerta E, Calvo 
+E, Álvarez M, Marrasé C, Stedmon CA, and Álvarez-Salgado XA (2015) Turnover Time of 
+Fluorescent Dissolved Organic Matter in the Dark Global Ocean. Nature Communications. 6(1): 
+5986.
+Chen W, Qian C, Zhou K-G, and Yu H-Q. (2018) Molecular Spectroscopic Characterization of 
+Membrane Fouling: A Critical Review. Chem. 4(7): 1492–1509.
+Chen W, Westerhoff P, Leenheer JA, and Booksh K (2003). Fluorescence Excitation− Emission Matrix 
+Regional Integration to Quantify Spectra for Dissolved Organic Matter. Environmental Science 
+& Technology. 37(24): 5701–5710.
+Cifuentes-Cabezas M, Galinha CF, Crespo JG, Vincent-Vela MC, Mendoza-Roca JA, and Álvarez-
+Blanco S (2023) Nanofiltration of Wastewaters from Olive Oil Production: Study of Operating 
+Conditions and Analysis of Fouling by 2D Fluorescence and FTIR Spectroscopy. Chemical 
+Engineering Journal. 454: 140025.
+Coble PG (2007) Marine Optical Biogeochemistry: The Chemistry of Ocean Color. Chemical Reviews. 
+107(2): 402–418.
+Coble P, Lead J, Baker A, Reynolds D, and Spencer R (2014). Aquatic Organic Matter Fluorescence. In P. 
+Coble, J. Lead, A. Baker, D. Reynolds, & R. Spencer (Eds.), Aquatic Organic Matter Fluorescence 
+(Cambridge Environmental Chemistry Series, p. V). Cambridge: Cambridge University Press.
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024282
+Experimental Methods for Membrane ApplicationsDrozdova AN, Patsaeva SV, and Khundzhua DA (2017) Fluorescence of Dissolved Organic Matter 
+as a Marker for Distribution of Desalinated Waters in the Kara Sea and Bays of Novaya Zemlya 
+Archipelago. Oceanology. 57(1): 41–47.
+Eisinger J, and Flores J (1979) Front-Face Fluorometry of Liquid Samples. Analytical Biochemistry. 
+94(1): 15–21.
+Esteves VI, Santos EBH, and Duarte AC (1999) Study of the Effect of PH, Salinity and DOC on 
+Fluorescence of Synthetic Mixtures of Freshwater and Marine Salts. Journal of Environmental 
+Monitoring. 1(3): 251–254.
+Fellman JB, D’Amore DV, and Hood E (2008) An Evaluation of Freezing as a Preservation Technique 
+for Analyzing Dissolved Organic C, N and P in Surface Water Samples. Science of The Total 
+Environment. 392(2): 305–312.
+Galinha CF, Carvalho G, Portugal CAM,  Guglielmi G, Oliveira R, Crespo JG, and Reis MAM (2011) 
+Real-Time Monitoring of Membrane Bioreactors with 2D-Fluorescence Data and Statistically 
+Based Models. Water Science and Technology. 63(7): 1381–1388.
+Galinha CF, Carvalho G, Portugal CAM,  Guglielmi G, Oliveira R, Reis MAM and Crespo JG (2011) 
+Two-Dimensional Fluorescence as a Fingerprinting Tool for Monitoring Wastewater Treatment 
+Systems. Journal of Chemical Technology & Biotechnology. 86(7): 985–992.
+Galinha CF and Crespo JG (2022) Development and Implementation of MBR Monitoring: Use of 2D 
+Fluorescence Spectroscopy. Membranes. 12: 1218.
+Gilmore AM (2014) How to Collect National Institute of Standards and Technology (NIST) Traceable 
+Fluorescence Excitation and Emission Spectra. In Fluorescence Spectroscopy and Microscopy: 
+Methods and Protocols, Methods in Molecular Biology, eds. Yves Engelborghs and Antonie 
+J.W.G. Visser. Totowa, NJ: Humana Press, 3–27.
+Groeneveld M, Catalán N, Einarsdottir K, Bravo AG, and Kothawala DN (2022) The Influence of PH on 
+Dissolved Organic Matter Fluorescence in Inland Waters. Analytical Methods. 14(13): 1351–
+1360.
+Haberkamp J, Ernst M, Paar H, Palliscgeck D, Amy G, and Jekel M (2011) Impact of Organic Fractions 
+Identified by SEC and Fluorescence EEM on the Hydraulic Reversibility of Ultrafiltration 
+Membrane Fouling by Secondary Effluents. Desalination and Water Treatment. 29(1–3): 73–86.
+Hambly A, Henderson RK, Baker A, Stuetz RM, and Khan SJ (2010) Probabilistic Analysis of 
+Fluorescence Signals for Monitoring Dual Reticulation Water Recycling Schemes. Water Science 
+and Technology. 62(9): 2059–2065.
+Hambly AC, Arvin E, Pedersen L-F, Pedersen PB, Seredynska-Sobecka B, and Stedmon CA (2015) 
+Characterising Organic Matter in Recirculating Aquaculture Systems with Fluorescence EEM 
+Spectroscopy. Water Research. 83: 112–120.
+Hambly AC, Henderson RK, Baker A, Stuetz RM, and Khan SJ (2015) Application of Portable 
+Fluorescence Spectrophotometry for Integrity Testing of Recycled Water Dual Distribution 
+Systems. Applied Spectroscopy. 69(1): 124–129.
+Heinz M, and Zak D (2018) Storage Effects on Quantity and Composition of Dissolved Organic Carbon 
+and Nitrogen of Lake Water, Leaf Leachate and Peat Soil Water. Water Research. 130: 98–104.
+Henderson RK, Baker A, Murphy KR, Hambly A Stuetz RM and Khan SJ (2009) Fluorescence as a 
+Potential Monitoring Tool for Recycled Water Systems: A Review. Water Research. 43(4): 863–
+881.
+Henderson RK, Subhi N, Antony A, Khan SJ, Murphy KR, Leslie GL, Chen V, Stuetz RM, and Le-Clech 
+P (2011) Evaluation of Effluent Organic Matter Fouling in Ultrafiltration Treatment Using 
+Advanced Organic Characterisation Techniques. Journal of Membrane Science. 382(1): 50–59.
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024283
+Chapter 12  Hu H, and Ren H (2019) Removal of Bioavailable Dissolved Organic Nitrogen in Wastewater by 
+Membrane Bioreactors as Posttreatment: Implications for Eutrophication Control. Bioresource 
+Technology. 271: 496–499.
+Huguet A,  Vacher L, Relaxans S, Saubusse S, Froidefond JM, and Parlanti E (2009) Properties of 
+Fluorescent Dissolved Organic Matter in the Gironde Estuary. Organic Geochemistry. 40(6): 
+706–719.
+Jablonski A (1933) Efficiency of Anti-Stokes Fluorescence in Dyes. Nature. 131(3319): 839– 840.
+Jacquin C, Lesage G, Traber J, Pronk W, and Heran M (2017) Three-Dimensional Excitation and 
+Emission Matrix Fluorescence (3DEEM) for Quick and Pseudo-Quantitative Determination of 
+Protein- and Humic-like Substances in Full-Scale Membrane Bioreactor (MBR). Water Research. 
+118: 82–92.
+de Juan A, Jaumot J, and Tauler R (2014) Multivariate Curve Resolution (MCR). Solving the Mixture 
+Analysis Problem. Analytical Methods. 6(14): 4964–4976.
+Kimura K, Hane Y, Watanabe Y, Amy G, and Ohkuma N (2004) Irreversible Membrane Fouling during 
+Ultrafiltration of Surface Water. Water Research. 38(14): 3431–3441.
+Kopf U, and Heinze J (1984) 2,7-Bis(Diethylamino)Phenazoxonium Chloride as a Quantum Counter 
+for Emission Measurements between 240 and 700 Nm. Analytical Chemistry. 56(11): 1931–
+1935.
+Kothawala DN, Murphy KR, Stedmon CA, Weyhenmeyer GA, and  Tranvik LJ (2013) Inner Filter 
+Correction of Dissolved Organic Matter Fluorescence. Limnology and Oceanography: Methods 
+11(12): 616–630.
+Kothawala DN, Stedmon CA, Müller RA, Weyhenmeyer GA, Köhler SJ, and Tranvik LJ (2014) Controls 
+of Dissolved Organic Matter Quality: Evidence from a Large-Scale Boreal Lake Survey. Global 
+Change Biology. 20(4): 1101–1114.
+Lakowicz JR, ed. (2006a) Instrumentation for Fluorescence Spectroscopy. In Principles of Fluorescence 
+Spectroscopy, Boston, MA: Springer US, 27–61.
+Lakowicz JR, ed. (2006b) “Introduction to Fluorescence.” In Principles of Fluorescence Spectroscopy, 
+Boston, MA: Springer US, 1–26.
+Lawaetz AJ, and Stedmon CA (2009) Fluorescence Intensity Calibration Using the Raman Scatter Peak 
+of Water. Applied Spectroscopy. 63(8): 936–940.
+Maie N, Parish KJ, Watanabe A, Knicker H, Benner R, Abe T, Kaiser K, and Jaffé R (2006) Chemical 
+Characteristics of Dissolved Organic Nitrogen in an Oligotrophic Subtropical Coastal Ecosystem. 
+Geochimica et Cosmochimica Acta 70(17): 4491–4506.
+Mangal MN, Salinas-Rodriguez SG, Dusseldorp J, Blankert B, Yangali-Quintanilla VA, Kemperman 
+AJB, Schippers JC, van der Meer WGJ, and Kennedy MD (2022) Foulant Identification and 
+Performance Evaluation of Antiscalants in Increasing the Recovery of a Reverse Osmosis System 
+Treating Anaerobic Groundwater. Membranes. 12(3): 290.
+McKay G, Korak JA, and Rosario-Ortiz FL (2018) Temperature Dependence of Dissolved Organic 
+Matter Fluorescence. Environmental Science & Technology. 52(16): 9022–9032.
+McKnight DM, Boyer EW, Westerhoff PK, Doran PT, Kulbe T, and Andersen DT (2001) 
+Spectrofluorometric Characterization of Dissolved Organic Matter for Indication of Precursor 
+Organic Material and Aromaticity. Limnology and Oceanography. 46(1): 38–48.
+Micó Tormos P, Garcia-Ballesteros S, Mora Carbonell M, Vincente Candela R, Amat Payá AM, and 
+Arqués Sanz A (2019) EEMlab: A Graphical User-Friendly Interface for Fluorimetry Experiments 
+Based on the DrEEM Toolbox. Chemometrics and Intelligent Laboratory Systems. 188: 6–13.
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024Experimental Methods for Membrane Applications284Mobed JJ, Hemmingsen SL, Autry JL, and McGown LB (1996) Fluorescence Characterization of IHSS 
+Humic Substances: Total Luminescence Spectra with Absorbance Correction. Environmental 
+Science & Technology. 30(10): 3061–3065.
+Morán XAG, Gasol JM, Arin L, and Estrada M (1999) A Comparison between Glass Fiber and Membrane 
+Filters for the Estimation of Phytoplankton POC and DOC Production. Marine Ecology Progress 
+Series. 187: 31–41.
+Murphy KR, Timko SA, Gonsior M, Powers LC, Wünsch UJ, and Stedmon CA (2018) Photochemistry 
+Illuminates Ubiquitous Organic Matter Fluorescence Spectra. Environmental Science & 
+Technology. 52(19): 11243–11250.
+Murphy KR, Hambly A, Singh S, Henderson RK, Baker A, Stuetz RM, and Khan SJ (2011) Organic 
+Matter Fluorescence in Municipal Water Recycling Schemes: Toward a Unified PARAFAC 
+Model. Environmental Science & Technology. 45(7): 2909–2916.
+Murphy KR, Stedmon CA, Graeber D, and Bro R (2013) Fluorescence Spectroscopy and Multi-Way 
+Techniques. PARAFAC. Analytical Methods. 5(23): 6557– 6566.
+Obayashi Y, and Suzuki S (2019) High Growth Potential of Transiently 0.2-Mm- Filterable Bacteria 
+with Extracellular Protease Activity in Coastal Seawater. Plankton and Benthos Research. 14(4): 
+276–286.
+Ohno T (2002) Fluorescence Inner-Filtering Correction for Determining the Humification Index of 
+Dissolved Organic Matter. Environmental Science & Technology. 36(4): 742–746.
+Osburn CL, Anderson NJ, Stedmon CA, Giles ME, Whiteford EJ, McGenity TJ, Dumbrell AJ, and 
+Underwood GJC (2017) Shifts in the Source and Composition of Dissolved Organic Matter in 
+Southwest Greenland Lakes Along a Regional Hydro-Climatic Gradient. Journal of Geophysical 
+Research: Biogeosciences. 122(12): 3431–3445.
+Parker CA, and Rees WT (1960) Correction of Fluorescence Spectra and Measurement of Fluorescence 
+Quantum Efficiency. Analyst. 85(1013): 587–600.
+Parlanti E, Wörz K, Geoffroy L, and Lamotte M (2000) Dissolved Organic Matter Fluorescence 
+Spectroscopy as a Tool to Estimate Biological Activity in a Coastal Zone Submitted to 
+Anthropogenic Inputs. Organic Geochemistry. 31(12): 1765–1781.
+Pawlowski S, Galinha CF, Crespo JG, and Velizarov S (2016) 2D Fluorescence Spectroscopy for 
+Monitoring Ion-Exchange Membrane Based Technologies – Reverse Electrodialysis (RED). 
+Water Research. 88: 184–198.
+Pucher M, Wünsch U, Weigelhofer G, Murphy KR, Hein T, and Graeber D (2019) StaRdom: Versatile 
+Software for Analyzing Spectroscopic Data of Dissolved Organic Matter in R. Water. 11(11): 
+2366.
+Poojamnong K, Tungsudjawong K, Khongnakorn W, and Jutaporn P (2020) Characterization of 
+reversible and irreversible foulants in membrane bioreactor (MBR) for eucalyptus pulp and paper 
+mill wastewater treatment using fluorescence regional integration. Journal of Environmental 
+Chemical Engineering, 8(5): 104231
+Pype M-L, Patureau D, Wery N, Poussade Y, and Gernjak W (2013) Monitoring Reverse Osmosis 
+Performance: Conductivity versus Fluorescence Excitation–Emission Matrix (EEM). Journal of 
+Membrane Science. 428: 205– 211.
+Rosenstock B, and Simon M (1993) Use of Dissolved Combined and Free Amino Acids by Planktonic 
+Bacteria in Lake Constance. Limnology and Oceanography. 38(7): 1521–1531.
+Sansonetti CJ, Salit ML, and Reader J (1996) Wavelengths of Spectral Lines in Mercury Pencil Lamps. 
+Applied Optics. 35(1): 74–77.
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024285
+Chapter 12  Shutova Y,  Karna BL, Hambly AC, Lau B, Henderson RK, and Le-Clech P (2016) Enhancing Organic 
+Matter Removal in Desalination Pretreatment Systems by Application of Dissolved Air Flotation. 
+Desalination. 383: 12–21.
+Singh S, Henderson RK, Baker A, Stuetz RM, and Khan SJ (2009) Distinguishing Stage 1 and 2 Reverse 
+Osmosis Permeates Using Fluorescence Spectroscopy. Water Science and Technology. 60(8): 
+2017–2023.
+Singh S, Henderson RK, Baker A, Stuetz RM, and Khan SJ (2015) Online Fluorescence Monitoring of 
+RO Fouling and Integrity: Analysis of Two Contrasting Recycled Water Schemes. Environmental 
+Science: Water Research & Technology. 1(5): 689–698.
+Spencer RGM, Bolton L, and Baker A (2007) Freeze/Thaw and PH Effects on Freshwater Dissolved 
+Organic Matter Fluorescence and Absorbance Properties from a Number of UK Locations. Water 
+Research. 41(13): 2941–2950.
+Spiliotopoulou A, Martin R, Pedersen L-F, and Andersen HR (2017) Use of Fluorescence Spectroscopy 
+to Control Ozone Dosage in Recirculating Aquaculture Systems. Water Research. 111: 357–365.
+Stedmon CA, and Bro R (2008) Characterizing Dissolved Organic Matter Fluorescence with Parallel 
+Factor Analysis: A Tutorial. Limnology and Oceanography: Methods. 6(11): 572–579.
+Stedmon CA, Markager S, and Bro R (2003) Tracing Dissolved Organic Matter in Aquatic Environments 
+Using a New Approach to Fluorescence Spectroscopy. Marine Chemistry. 82(3): 239–254.
+Stedmon CA, and Nelson NB (2015). Chapter 10 - The Optical Properties of DOM in the Ocean. In 
+Biogeochemistry of Marine Dissolved Organic Matter (Second Edition), eds. Dennis A. Hansell 
+and Craig A. Carlson. Boston: Academic Press, 481–508.
+Stokes GG (1852) XXX. On the Change of Refrangibility of Light. Philosophical Transactions of the 
+Royal Society of London. 142: 463–562.
+Tang S, Wang Z, Wu Z, and Zhou Q (2010) Role of Dissolved Organic Matters (DOM) in Membrane 
+Fouling of Membrane Bioreactors for Municipal Wastewater Treatment. Journal of Hazardous 
+Materials. 178(1): 377–384.
+Urgun-Demirtas M, Sattayatewa C, and Pagilla KR (2008) Bioavailability of Dissolved Organic 
+Nitrogen in Treated Effluents. Water Environment Research: A Research Publication of the 
+Water Environment Federation. 80(5): 397–406.
+Vera M, Cruz S, Boleda MR, Mesa J, Martí-Alonso J, Casas S, Gibert O,   and Cortina JL (2017) 
+Fluorescence Spectroscopy and Parallel Factor Analysis as a Dissolved Organic Monitoring Tool 
+to Assess Treatment Performance in Drinking Water Trains. Science of The Total Environment. 
+584–585: 1212–1220.
+Wang H, Ding A, Gan Z, Qu F, Cheng X, Bai L, Guo S, Li G, and Liang H (2017) Fluorescent Natural 
+Organic Matter Responsible for Ultrafiltration Membrane Fouling: Fate, Contributions and 
+Fouling Mechanisms. Chemosphere. 182: 183–193.
+Wang Y, Hammes F, Boon N, and Egli T (2007) Quantification of the Filterability of Freshwater Bacteria 
+through 0.45, 0.22, and 0.1 Mm Pore Size Filters and Shape-Dependent Enrichment of Filterable 
+Bacterial Communities. Environmental Science & Technology. 41(20): 7080–7086.
+Wang Y, Hammes F, Düggelin M, and Egli T (2008) Influence of Size, Shape, and Flexibility on Bacterial 
+Passage through Micropore Membrane Filters. Environmental Science & Technology. 42(17): 
+6749–6754.
+Watras CJ, Hanson PC, Stacy TL, Morrison KM, Mather J, Hu Y-H, and Milewski P (2011) A 
+Temperature Compensation Method for CDOM Fluorescence Sensors in Freshwater. Limnology 
+and Oceanography: Methods. 9(7): 296–301.
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024Experimental Methods for Membrane Applications286Xiao K, Shen Y, Liang S, Tan J, Wang X, Liang P, and Liang X (2018) Characteristic Regions of the 
+Fluorescence Excitation–Emission Matrix (EEM) To Identify Hydrophobic/Hydrophilic 
+Contents of Organic Matter in Membrane Bioreactors. Environmental Science & Technology. 
+52(19): 11251–11258.
+Xu H, Xu Y, Xiao K, Gao T, Liu Z, Xue W, Wei C, and Huang X (2022) Interplay of Organic Components 
+in Membrane Fouling Evolution: Statistical Evidence from Multiple Spectroscopic Analyses. 
+Journal of Membrane Science 661: 120913.
+Yamamura H, Ding Q, and Watanabe Y (2019) Solid-Phase Fluorescence Excitation Emission Matrix 
+for in-Situ Monitoring of Membrane Fouling during Microfiltration Using a Polyvinylidene 
+Fluoride Hollow Fiber Membrane. Water Research. 164: 114928.
+Yamin G, Borisover M, Cohen E, and van Rijn J (2017) Accumulation of Humic-like and Proteinaceous 
+Dissolved Organic Matter in Zero-Discharge Aquaculture Systems as Revealed by Fluorescence 
+EEM Spectroscopy. Water Research. 108: 412–421.
+Yu H, Li Y, Yang H, Lv Y, Rong H and Qu F (2022) Characterization of Activated Sludge in Wastewater 
+Treatment Processes Using Front-Face Excitation–Emission Matrix (FF-EEM) Fluorescence 
+Spectroscopy. Environmental Science: Water Research & Technology. 8(10): 2265–2276.
+Yu H, Wu Z, Zhang X, Qu F, Wang P, and Liang H (2019) Characterization of Fluorescence Foulants on 
+Ultrafiltration Membrane Using Front-Face Excitation-Emission Matrix (FF-EEM) Spectroscopy: 
+Fouling Evolution and Mechanism Analysis. Water Research. 148: 546–555.
+Yu J, Xiao K, Qi T, Li Y, Tan J, Wen X, and  Huang X (2021) Spectroscopic Sensing of Membrane Fouling 
+Potential in a Long-Term Running Anaerobic Membrane Bioreactor. Chemical Engineering 
+Journal. 426: 130799.
+Downloaded from http://iwaponline.com/ebooks/book/chapter-pdf/1353341/9781789062977_0265.pdf
+by DENMARK TECHNICAL  UNIVERSITY (DTU) user
+on 03 April 2024

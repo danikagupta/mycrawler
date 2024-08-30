@@ -1,0 +1,778 @@
+ELSEVIER Chemometrics and Intelligent Laboratory Systems 30 (199.5) 97-108 Chemometrics and 
+intelligent 
+laboratory systems 
+Multi-way partial least squares in monitoring batch processes 
+Paul Nomikos *, John F. MacGregor 
+Department of Chemical Engineering, McMaster UniversiTy, Hamilton, Ontario, Canada L8S 4L7 
+Received 21 December 1994; accepted 10 May 1995 
+Abstract 
+Multivariate statistical procedures for monitoring the progress of batch processes are developed. Multi-way partial least 
+squares (MPLS) is used to extract the information from the process measurement variable trajectories that is more relevant to 
+the final quality variables of the product. The only information needed is a historical database of past successful batches. 
+New batches can be monitored through simple monitoring charts which are consistent with the philosophy of statistical pro- 
+cess control. These charts monitor the batch operation and provide on-line predictions of the final product qualities. Approxi- 
+mate confidence intervals for the predictions from PLS models are developed. The approach is illustrated using a simulation 
+study of a styrene-butadiene batch reactor. 
+Keywords: Multivariate analysis; Partial least squares; Batch processes; Statistical process control 
+1. Introduction 
+Batch and semi-batch processes play an important 
+role in the chemical industry due to their low vol- 
+ume-high value products. Examples include reac- 
+tors, crystallization, distillation, and injection mold- 
+ing processes; the manufacturing of polymers, herbi- 
+cides, insecticides, pharmaceuticals, and biochemi- 
+cals. Batch processes are characterized by a pre- 
+scribed processing of materials for a finite duration. 
+Successful batch operation means tracking this pre- 
+scribed recipe with high degree of reproducibility. 
+Feedrates, temperature and pressure profiles are im- 
+plemented with servo-controllers, and precise se- 
+quencing operations are produced with tools such as 
+* Corresponding author. Present address: DuPont Canada Inc., 
+Research and Development, 461 Front Rd., Kingston, Ontario, 
+K7L 5A5, Canada. email: nomikos@king5.dnet.dupont.com programmable logic controllers. Monitoring these 
+batch processes is very important to ensure their safe 
+operation and to assure that they produce consis- 
+tently high quality products. 
+Batch processes suffer a lack of reproducibility 
+from batch to batch variations due to disturbances and 
+the absence of on-line quality measurements. These 
+variations may be difficult for an operator to discern, 
+but could have an adverse effect on the final product 
+quality. Often, a disturbance or an operational prob- 
+lem can be undetected and the poor product quality 
+may remain undetected until significant expense has 
+been incurred. A system that monitors the time evo- 
+lution of a batch and can detect variations from nor- 
+mal operation in the familiar manner of a statistical 
+process control @PC) chart might allow for correc- 
+tive action early in the batch, the quick disposition of 
+batches not salvaged, and the diagnosis of assignable 
+causes that can be eliminated from future batches. 
+0169-7439/95/$09.50 0 1995 Elsevier Science B.V. All rights reserved 
+SSDI 0169-7439(95)00043-7 98 P. Nomikos, J.F. MacGregor/ Chemometrics and Intelligent Laboratory Systems 30 (1995) 97-108 
+The main characteristics of batch processes, flexi- 
+bility, finite duration, nonlinear behavior, and un- 
+steady state, are related both to their success and their 
+incompatibility with the conventional mathematical 
+or empirical modeling for monitoring and controlling 
+continuous processes. For on-line monitoring of batch 
+processes there are two general methodologies. One 
+is based on fundamental mathematical models (Kal- 
+man filters; e.g. [l]), and the second on knowledge 
+based models (expert systems, artificial intelligence 
+methods; e.g. [2]). These methods are reviewed by 
+Nomikos and MacGregor [3] and contrasted with sta- 
+tistical approaches based on multi-way principal 
+component analysis (MPCA). 
+SPC methods in batch processes usually are lim- 
+ited only to end product quality measurements [4,5], 
+or to a single variable measured throughout the batch 
+[6]. The use of statistical methods such as principal 
+component analysis (PCA) and partial least squares 
+(PLS) to the analysis of multivariate continuous 
+chemical process data has been well documented [7- 
+91. Nomikos and MacGregor [3,10] extended these 
+ideas to the nonlinear and finite duration batch pro- 
+cesses. They proposed SPC schemes for batch pro- 
+cesses based on MPCA, which utilize directly the in- 
+formation of the on-line measurements and systemat- 
+ically and scientifically recognize significant devia- 
+tions from the normal operating behavior of the pro- 
+cess through simple SPC charts. The behavior of the 
+process is characterized using an empirical model 
+based on the MPCA analysis of data obtained when 
+the process is operating well and is in a state of sta- 
+tistical control. Subsequently, future unusual events 
+are detected by referencing the measured process be- 
+havior against this ‘in-control’ model and its statisti- 
+cal properties. 
+Most batch and semi-batch processes operate in 
+open loop with respect to product quality variables, 
+simply because few, if any, on-line sensors exist for 
+tracking these variables. Upon completion of the 
+batch a range of quality measurements are usually 
+made on a sample of the product in the quality con- 
+trol laboratory. The MPCA in the proposed SPC 
+schemes [3,10] only makes use of the process vari- 
+able trajectory measurements (X> taken throughout 
+the duration of the batch. Measyrements on product 
+quality variables (Y) taken at the end of each batch were used only to help classify a batch as ‘good’ or 
+‘bad’. However, such product quality data can be 
+used in a much more direct fashion. Multi-way par- 
+tial least squares (MPLS) can be performed using 
+both the process data (X) and the product quality data 
+(Y). Rather than focus%g only on the variance of X, 
+MPLS focuses more on the variance of X that is mofe 
+- predictive for the product quality Y. 
+The same multivariate SPC monitoring ideas that 
+were developed using MPCA can be extended di- 
+rectly using MPLS when product quality data (Y) are 
+available. The additional information that one can get 
+from MPLS is an on-line inference of the final qual- 
+ity of the product. This paper describes the monitor- 
+ing scheme for batch processes based on MPLS, 
+which is analogous to that based on MPCA, and fo- 
+cuses on some statistical properties of PLS for pre- 
+dictions and on the development of control charts for 
+on-line predictions of the final product qualities. A 
+simulation of a styrene-butadiene batch reactor is 
+used to illustrate the ideas of the proposed SPC 
+method. 
+2. MPLS analysis of batch data 
+The number of measurements (feedrates, tempera- 
+tures, pressures, etc.) being made every few seconds 
+over several hours of the batch duration creates a data 
+overload. Some of the variables measured may be re- 
+dundant and most of them are highly correlated with 
+one another. Not only is the relationship among all the 
+variables at any one time important, but so is the en- 
+tire past history of the trajectories of all these vari- 
+ables. The aim is to build an empirical model based 
+on the measurements of a reference batch database, 
+which will describe the normal operation of the pro- 
+cess (X) when it produces good quality product (Y). 
+This Gpirical model will be used to monitor the 
+evolution of future batch runs. 
+MPLS [ 111 is an extension of PLS [12] to handle 
+data in three-dimensional arrays. A historical dataset 
+of batch trajectory data consists of i = 1,2,..,1 batch 
+runs where each of them has the on-line measure- 
+ments of j = 1,2 ,.., J variables over k = 1,2 ,.., K time 
+intervals throughout the batch. This vast amount of P. Nomikos, J.F. MacGregor/Chemometrics and Intelligent Laboratory Systems 30 (1995) 97-108 99 
+data is organized into a three-way array X (I X .I X 
+K) as it is shown in Fig. 1. Different batFh runs are 
+organized along the vertical side, the measurement 
+variables along the horizontal side, and their time 
+evolution occupies the third dimension. The final 
+quality variables (m = 1,2,..,M) for each batch are 
+summarized in a (I X M) matrix Y. The relation be- 
+tween MPLS and PLS is that MPLS is equivalent to 
+performing ordinary PLS on a large two dimensional 
+matrix X formed by unfolding the three way array X 
+in one of the six possible ways (two are degenera!! 
+cases). For analyzing and monitoring batch processes 
+[3,10], the most meaningful way of unfolding the ar- 
+ray X is to put each of its vertical slices (I X J) side 
+by sge to the right to create the matrix X (I X JK), 
+starting with the one corresponding to the first time 
+interval (Fig. 1). Each of the vertical slices of X is a 
+(I X .Z> matrix representing the values of all thrpro- 
+cess variables for all the batches at a common time 
+interval k. After the unfolding of X, each column of 
+X and Y are mean centered and sTaled to unit vari- 
+ance prior to perform the ordinary PLS analysis. 
+MPLS in this framework explains the variation of a 
+process variable about its average trajectory at each 
+point of time, as this has been defined from the refer- 
+ence normal database, which is most closely related 
+to the end quality of the product. This subtraction of 
+the average trajectories removes the major nonlinear 
+behavior of the process, leading to a more linear and 
+stationary problem which is suitable for statistical 
+analysis and inference [3,10]. Although other multi- 
+way methods [13-161 have been proposed for de- 
+composing such three-way arrays, we focus on MPLS 
+exclusively because of its simplicity and ease of in- 
+terpretation. 
+For batch data, PLS decomposes the X (I X JK) 
+and Y (I X M) matrices into a summation of R score 
+vectors (t (I X 1)) and loading vectors (p (JK X l), 
+q (A4 X l), plus some residual matrices (E (I X JK), 
+F (I x M)): 
+X= i t,p;+E, Y= i t,q’,+F (1) 
+r= 1 r=l 
+or if we combine the t, p, and q vectors into T (I X 
+R), P (JK X R), and Q (M X R) matrices 
+X=TP’+E, Y=TQ’+F (2) where T is given by: 
+T = XW(P’W)-’ (3) 
+The w vectors are orthonormal, the t vectors are or- 
+thogonal, and the matrix (P' W) is upper triangular 
+with ones as diagonal elements [ 171. This decomposi- 
+tion summarizes and compresses the data with re- 
+spect to both x and y variables and time into low 
+dimensional spaces that describe the operation of the 
+process which is most relevant to final product qual- 
+ity. Each row of the T matrix corresponds to a single 
+batch and depicts the overall variability of this batch 
+with respect to the other batches in the database. The 
+P and W matrices summarize the time variation of the 
+measurement variables about their average trajecto- 
+ries, and their elements give the weights applied to 
+each variable at each time interval within a batch to 
+give the t-scores for that batch. The Q matrix relates 
+the variability of the process measurements to the fi- 
+nal product qualities. 
+As in MPCA, batches with unusual operation will 
+appear in MPLS either as batches with large f-scores, 
+or with large residuals in the x-space (Q, = Cfi’=“, 
+E(i, cj2), or with both. Additionally in MPLS, if the 
+residuals for a batch in the y-space (Qr = Cr=“=i F(i, 
+cj2) are large, it means that its final product qualities 
+are not well predicted by its process measurements. 
+MPCA has proven very useful in the post analysis of 
+batch runs and has shown its abilities, both in simu- 
+lated examples and in real industrial data [3,10,18], to 
+discriminate between normal and abnormal batches 
+and detect abnormalities which are difficult to detect 
+by visual inspection only of the measurement trajec- 
+tories. MPLS shares these benefits. The power of both 
+MPCA and MPLS results from using the covariance 
+matrix of the variable trajectories. By doing this, both 
+methods utilize not just the magnitude of the devia- 
+tions of each process variable from its mean trajec- 
+tory but also both their simultaneous and temporal 
+correlations. 
+The assumptions behind these methods, as in all 
+inferential methods, are that one has ‘comparable’ 
+runs and ‘observable’ events of interest. The first as- 
+sumption states that future batches will operate in a 
+similar way with those in the reference database. If 
+something changes in the operation of the batch (e.g. 
+amount or type of catalyst), it will make all subse- 
+quent batches operationally different from the previ- 100 P. Nomikos, J.F. MacGregor/ Chemometrics and Intelligent Laboratory Systems 30 (1995) 97-108 
+Batches 1 M 
+1 Y 
+I 
+KJ 
+Fig. 1. Arrangement of batch data in MPLS. I is the number of batches, J is the number of process measurement variables, K is the num- 
+ber of time intervals, and M is the number of product quality variables. The three-way array X (I X J X K) unfolds into a matrix X (I X JK), 
+and a normal PLS can be performed between the X and Y matrices. . _ 
+ous ones. In this case one has to build a new database 
+which incorporates the change and re-apply the 
+method. The second assumption requires the mea- 
+surements to contain some information about an ab- 
+normality, in order that the method to be able to de- 
+tect it. If there is no information in the data about a 
+fault, then no method can detect it. 
+3. SBR example 
+The application of MPLS in batch data is illus- 
+trated here with a detailed mechanistic model for 
+semi-batch emulsion polymerization of styrene- 
+butadiene rubber (SBR) [ 191. Using typical variations 
+in the initial charge of materials and impurities, and 
+in the process operations, a number of batches were 
+simulated. Details of the simulations can be found in 
+[3,20], and the data used in this article are available from the authors upon request. Fifty batches which 
+gave final latex with quality properties within an ac- 
+ceptable region were selected to provide a reference 
+data array. On-line measurements were assumed to be 
+available on nine variables: the feedrates of styrene 
+and butadiene monomers, the temperature of the feed 
+stream, the reactor contents, the cooling water, and 
+the reactor jacket, the latex density, the total conver- 
+sion, and the instantaneous heat release from an en- 
+ergy balance. Using 200 time increments over the 
+duration of the batch, the reference dataset X was a 
+(50 X 9 X 200) array. The resulting latex anld poly- 
+mer properties of the product were summarized in 
+five quality variables (Y (SO X 2)): composition 
+(% styrene), particle size (A), branching 
+(branches/reacted monomer units), crosslinking 
+(crosslinks/reacted monomer units), and polydisper- 
+sity. 
+The ability of MPLS to discriminate between P. Nom&s, J.F. MacGregor/ Chemometrics and Intelligent Laboratory Systems 30 (1995) 97-108 101 
+batches with acceptable product and ‘bad’ batches 
+was tested through a post analysis of the 50 ‘good’ 
+batches plus some ‘bad’ ones with product quality 
+barely outside the acceptable region. MPLS was able 
+to detect clearly these ‘bad’ batches by placing them 
+in the reduced space (t-plots) away from the main 
+central cluster formed by the 50 ‘good’ batches. Hav- 
+ing established the observability of faults, an MPLS 
+model was built from the 50 ‘good’ batches, which 
+summarizes the information contained in them about 
+the normal operation of the process. This model will 
+be used as the statistical reference to classify new 
+batches as ‘good’ or ‘bad’ and give on-line predic- 
+tions of their final qualities. 
+Two PLS components were needed, as deter- 
+mined by cross-validation [21], to capture the varia- 
+tion of the process variables about their average tra- 
+jectories which is most predictive for the final prod- 
+uct qualities. The cumulative percentage sum of 
+squares explained (%SS) by the two principal com- 
+ponents of the X and Y matrices and of each quality 
+variable separately, is given in Table 1. One should 
+always use cross-validation to determine the number 
+of components in the PLS model and to assert its 
+predictability. To rely only on the percentage of ex- 
+plained Y will be misleading because of the large 
+number of predictor x-variables (9 X 200 = 1800 in 
+the SBR example). Any regression model could have 
+accounted for a large portion of the variability in the 
+Y. 
+The last row in Table 1 is the regression statistic 
+mean sum of squares due to regression (MSR) over 
+the mean squared error (MSE) (see Section 5) with 
+its 95% critical value, which shows how well the x- 
+data account for the variation in each y-variable. 
+These F-tests provide another way from a regression 
+point of view to check how well each of the y-varia- 
+bles is explained by the MPLS model. As it can be 
+seen from Table 1, quality variables 3 and 4 are ex- plained very well from the MPLS model and only 
+quality variable 2 (particle size) is poorly explained 
+by the process measurements. This arises because the 
+particle size is determined largely by the variation in 
+the number of seeded particles charged initially in the 
+reactor, and it is not influenced much by resulting 
+process conditions. 
+Plots of the latent vectors t, versus u, (u, = 
+Y,_ I9 ,/(q’,q r ), where Y, _ 1 is the residual matrix of 
+Y after extracting r - 1 components) are shown in 
+Fig. 2. The linear nature of these plots suggests that 
+nonlinear PLS [22] would probably not be needed. 
+Indeed, performing such a nonlinear PLS gave essen- 
+tially identical results to the linear analysis. The par- 
+ticular unfolding of X that is been used and the sub- 
+traction of the averaye trajectories from the process 
+measurements have apparently eliminated most non- 
+linear effects in the data. 
+4. On-line monitoring 
+The central idea in on-line monitoring is as fol- 
+lows. An MPLS model is built using a database of 
+‘good’ batches which yielded acceptable product and 
+did not exhibit any operational problems. Subsequent 
+batches are then referenced against this ‘in-control’ 
+model. The W, P, and Q matrices from such an anal- 
+ysis contain all the structural information about how 
+the process measurements deviate from their mean 
+values at each time interval and how these are re- 
+lated to the final quality variables. The predicted r- 
+scores (2 (1 X R)), the predicted quality variables (9 
+(1 X M)), and the residuals (e (1 X KJ), f (1 X M)) 
+for a new batch X,,, (K X J) are given by: 
+unfold and scale X,,,( K X J) to x,<,,,( 1 X ZU) 
+i = x,,,W(P’ W) -‘, 9 = iQ’, e = x,,, - b’, 
+f=y-9 (4) 
+Table 1 
+Cumulative percentage sum of squares explained by the two principal components of the X and Y matrices 
+%SS X Y Yl Y2 Y3 Y4 Y5 
+PC1 14.82 57.10 52.87 7.93 91.21 91.23 42.24 
+PC2 23.05 65.08 54.30 20.79 91.28 91.29 67.74 
+MSR/MSE (F,,,,,,,,, = 3.20) 27.92 6.17 245.97 246.21 49.93 102 P. Nomikos, J.F. MacGregor/ Chemometrics and Intelligent Laboratory Systems 30 (1995) 97-108 
+-40 -20 0 20 4Q 
+11 
+40 
+t 1 30 
+-40 
+-20 -10 0 10 20 
+T2 
+Fig. 2. t versus u plots. Each point represents one of the fifty 
+batches in the reference database. The t and u observations, for 
+both PLS components, fall close to the diagonal line of the graph. 
+This indicates that the PLS latent variables in the x- and y-space 
+(t, u) are well correlated. 
+The problem which arises in the on-line applica- 
+tion of the above equations is that the X,,, matrix is 
+not complete until the end of the batch operation. At 
+time interval k, the matrix X,,, has only its first k 
+rows complete and it is missing all the future obser- 
+vations (K - k rows). Several approaches have been (5) studied to overcome this problem [lo]. The approach 
+shown here uses the ability of PLS to handle missing 
+data [23]. PLS does this by projecting the already 
+known observations up to time interval k (x,,,, k (1 
+X W)) into the reduced space defined by the W and 
+P matrices in a sequential manner as following: 
+at each time interval k 
+for r = 1 to R 
+$l,r) =x new,kW(I:Kr) 
+/(W(l:kl,r)‘W(l:kl,r)) 
+X new,k = X new,k - i( l,r)P( l:W,r) 
+end 
+where the symbol (l:W,r) indicates the elements of 
+the rth column from the first row up and to the klth 
+row. PLS, essentially, predicts these missing values 
+by restricting them to be consistent with the already 
+known values, and with the correlation structure of 
+the process variables as defined by the W and P ma- 
+trices. This approach gives r-scores very close to their 
+final values as the X,,, becomes complete, but dur- 
+ing the first few time intervals may give poor esti- 
+mates of the t-scores since there is so little informa- 
+tion to work with. However, in our experience with 
+MPCA and MPLS on this and other examples 
+[3,10,24], this method works well by the time one has 
+about 10% of the batch history. The reasons for this 
+is that one is not building a PLS model based on large 
+amounts of missing data, but using an already well 
+established PLS model to predict the future behavior 
+of a new batch. Furthermore, the early data are com- 
+plete for all the measurement variables up to the cur- 
+rent time interval, and are very good for predicting the 
+future trajectory deviations which arise from varia- 
+tions in the initial batch charge conditions (i.e. impu- 
+rities, particle concentrations, etc.). 
+Now, one can calculate at each time interval the 
+predicted t-scores, the predicted final quality vari- 
+ables, and the residuals. Note that there are no resid- 
+uals (f) in the y-space during the on-line monitoring 
+since the actual values of the quality variables will be 
+known only at the end of the batch. If a new batch is 
+still operating in the same way as the batches in the 
+normal database, but has a larger than normal varia- 
+tion in its measurements, this will show up in the t- 
+scores which will place the new batch away from the P. Nomikos, J.F. MacGregor/ Chemometrics and Intelligent Laboratory Systems 30 (1995) 97-108 103 
+origin of the reduced x-space (t-plots). In the case 
+where a new type of variation occurs, the new batch 
+data will move away from the reduced x-space de- 
+fined by the MPLS model, and its residuals will be 
+large. In this case, the squared prediction error (SPE) 
+associated with the latest on-line measurements at 
+time interval k (SPE, = Ct<,,_ ljJ+ 1 e(l, c>‘) which 
+spEovloF 95%Wll3 99xwlro 
+Y) 
+I 
+TcuTcf oJ%WrrO 99%uul10 
+.-_ 
+----____-__ -----mm___. 
+_________-------- m--w. 4 
+50 loo 
+TUE 150 200 represents the perpendicular distance of the instanta- 
+neous batch process measurements from the reduced 
+x-space, will indicate the particular instant that some- 
+thing behaves abnormally [lo]. Thus, one has to 
+monitor the t-scores and the SPE for a new batch by 
+using SPC charts. These charts are easily imple- 
+mented and easily interpreted. Multivariate hotelling 
+P 
+i c spEolJTff 95%lJwloo 99xlJlM9o 
+10 
+. 
+-0 50 100 150 200 
+., 
+201 
+nw 
+Fig. 3. Monitoring charts for the SPE and tl-scores with their 95% and 99% control limits (dashed and solid lines) for the new ‘good’ batch 
+(left hand side plots) and the for ‘bad’ batch with the problem half-way through its operation (right hand side plots). The abnormality in the 
+‘bad’ batch is clearly flagged in the SPE chart after time interval 105. 104 P. Nom&s, J.F. MacGregor/ Chemometrics and Intelligent Laboratory Systems 30 (1995) 97-108 
+statistics can be used to monitor the overall perfor- 
+mance of the t-scores and the predicted final quali- 
+ties [10,25]. If an abnormal situation is detected by 
+either of these charts, one can diagnose the fault by 
+interrogating the underlying MPLS model to find 
+which process variables are primarily responsible for 
+the detected deviations. This diagnostic information 
+can be found by checking the contribution of each 
+process variable to the deviations observed in the t- 
+scores and residuals [20,24,26,27]. 
+The control limits for the monitoring charts are 
+derived from the statistical properties of the histori- 
+cal reference distribution of past normal batches [lo]. 
+Each of the fifty ‘good’ batches in the reference 
+database was passed through the on-line monitoring 
+algorithm given above, and their t-scores for each 
+PLS component and SPE were collected at each time 
+interval. This provided fifty observations at each time 
+interval for the t-scores and SPE which were used to 
+construct the control limits for future observations. 
+Two additional batches were simulated to provide 
+examples for on-line monitoring. One was a ‘good’ 
+batch, and the other a ‘bad’ one in which the level of 
+organic impurities in the butadiene monomer feed to 
+the reactor, increased by 50% halfway through the 
+batch operation (at time interval 100). This latter fault 
+is an incipient one, typical in industry, where the ab- 
+normal operation develops slowly. The final product 
+from this ‘bad’ batch was slightly out of the accept- 
+able quality region. Fig. 3 shows the on-line monitor- 
+ing charts, with their 95% and 99% control limits, for 
+the two new batches. The new ‘good’ batch shows no 
+abnormality in any of these charts. The ‘bad’ batch 
+with the problem half-way through its operation, is 
+clearly flagged as abnormal in the SPE chart around 
+time interval 105. After this time interval the obser- 
+vations from this batch move away from the reduced 
+x-space. The MPLS model is not any longer valid, 
+and one should treat the predicted t-scores with cau- 
+tion. 
+5. Confidence intervals for the final quality vari- 
+ables 
+Although the SPC charts based on MPLS for 
+monitoring a batch process can be constructed simi- 
+lar to those based on MPCA, MPLS additionally pro- vides predictions for the final product qualities. 
+MPLS gives, at each time interval, predictions of the 
+final quality variables (Y) of the product. These pre- 
+dictions do not have anything to do with the actual 
+values of the quality variables at the given time in- 
+terval. They only refer to the values which the prod- 
+uct quality variables will have upon completion of the 
+batch. In this section we develop approximate confi- 
+dence intervals for these predictions which can be 
+easily calculated. We treat the problem in its general 
+form and the prediction confidence intervals are ap- 
+plicable to any PLS study. 
+A major problem in the statistical analysis of PLS 
+is the nonlinear extraction of the PLS components. 
+PLS does not only look at the conditional distribu- 
+tion of the y-variables given the x-observations, but 
+treats both x and y as random variables connected 
+through the latent variables t. In the following we 
+shall treat only the case with univariate y, for the 
+multivariate case (Y) one has to treat each of the y- 
+variables separately. The X and Y matrices are as- 
+sumed to be mean centered. The statistical properties 
+which we shall derive in this section, are based on the 
+work of Searle [28] for regression based on general- 
+ized inverses. 
+The regression problem y = Xp can always get a 
+solution in the following form: 
+b=Gy 
+where G is a generalized inverse of X. (6) 
+PLS gives a right weak generalized itverse G of 
+the PLS, apptoximation_of the ,X matrix X = TP’ (X 
+GX = X, GXG = G, XG = (XGY) which is given 
+by: 
+G= W(P’W)-‘(T’T)-‘T’ (7) 
+Rao and Mitra [29], and Boullion and Od$l[30] show 
+that a right weak generalized inverse of X, which has 
+the same rank as X, gives the least squares solution b 
+for the problem y = X/3, in which: 
+I~-Yl+k-Yl, vg (8) 
+PLS gives the aboveAleast squares solution which 
+has unique minimum Ixb - y I, but the b and G are 
+not defined uniquely. The property of invariance of 
+generalized inverses, guarantees that the predicted 9 
+has a unique value (Xb) ~0 matter what right weak 
+generalized inverse of X one choose to use. Al- P. Nomikos, J.F. MacGregor/ Chemometrics and Intelligent Laboratory Systems 30 (1995) 97-108 105 
+though, PLS does not provide the minimum norm so- 
+lution (minlbl which is unique), its solution is close 
+to this, since the matrix W(P’ W) -‘P’ is generally 
+close to being symmetric and thus G would have been 
+also a left weak generalized inverse of a (%G% = 8, 
+GAG = G, GA = (Ga)‘). PLS provides the 
+Moore-Penrose generalized inverse of the original X 
+for the full rank decomposition of X, and in the case 
+where X has full column rank, PLS provides the or- 
+dinary least squares solution b = (X’ X1-l X’ y. 
+To proceed with Searle’s analysis [28], one needs 
+a generalized inverse of 8’8. PLS gives the follow- 
+ing reflexive generalized inverse Z for A’% 
+CEza9 = fi?Q, z?&Bz = Z): 
+Z=W(P’W)-‘(T’T)-‘(W’P)-‘W’ (9) 
+Define the indempotent matrix H = G%‘% = 
+W(P’ W)-‘P’ (H2 = H), which has rank equal to the 
+number of PLS components we have extracted 
+(rank(H) = R). Under the assumption that the y-vari- 
+able is distributed normally as N(X p, CT ‘1, and that 
+Z is independent of the y-variable, we get the fol- 
+lowing statistical analysis: 
+b = Zk y + ( (H - I) g for arbitrary g 
+(from now on, assume g = 0) (10) 
+E(b) = H p b is a biased estimator of /3 (11) 
+var(b) = Za2 (12) 
+The statistical test which we can derive from the 
+above results, in the usual regression notation, is 
+summarized in Table 2. 
+The statistic MSR/MSE is distributed as an F 
+distribution with R and Z - R - 1 degrees of free- 
+dom [28]. The problem is that this statistic does not 
+check for significant regression ( /? # 0). It tests for 
+the null hypothesis (X p) = 0. The only conclusion 
+we can derive, if this test is significant, is that the PLS 
+model accounts for a significant portion of the varia- 
+tion in the y-variable. The j3 is not an estimable 
+function, since b is not invariant to the generalized 
+Table 2 
+Statistical test 
+SSR=f’j d.f. = R MSR = SSR/R 
+SSE = (y - jY(y - 9) d.f.=I-R--l MSE = SSE/ 
+(I-R-l)=+’ A A 
+inverse of X’X that is used for Z (b has an infinite 
+number of descriptions). The only estimable function 
+is any quantity c’p, in which c’H = c’. This c’/3 has 
+c’b as its best linear unbiased estimator which is dis- 
+tributed normally as: 
+c’b N N(c’P, C’ZC’CT ‘) (13) 
+This shows that we are not able in general to test 
+for the significance of each coefficient separately, but 
+only certain linear combinations of them. In spite of 
+this, PLS provides a way to derive confidence inter- 
+vals for the predicted y-variable since a new set of 
+observations xneW can be decomposed as fi,,, = ^fP’, 
+and L,., P is an estimable function (~,,,,H = jz”,,). 
+The confidence intervals at significance level CY for 
+an individual y-response are given by: 
+9 * r,_R_1,~,2(MSE)1’2(1 + ~(TT)‘P)“* (14) 
+where T and MSE is the r-score matrix and mean 
+squared error of the PLS analysis of the data upon the 
+PLS model was built, and t,_,_,,,,, is the critical 
+value of the Studentized variable with Z-R-l degrees 
+of freedom at significance level a/2. 
+The motivation behind the above analysis was to 
+develop a simple expression for approximate confi- 
+dence intervals for the PLS predictions. Eq. (14) is 
+general for any PLS study. If one drops the (1) in the 
+(1 + t(T’T)-‘It’) term, one gets the equation for con- 
+fidence intervals of the expected value of a y-re- 
+sponse (2 ,,,b). Of course, the assumption that Z is 
+not a function of the y-variable is incorrect. Phatak 
+et al. [31] recognized this, and for the case of uni- 
+variate y did a first order linear approximation of b 
+around a set of observations (X 0, y,) to get im- 
+proved confidence intervals for 9. Although his ap- 
+proach is more accurate than the zero order approxi- 
+mation used here, it is computationally much more 
+time consuming. 
+Fig. 4 shows the on-line predictions with their 95% 
+and 99% confidence intervals, for three of the five 
+quality variables for the two new batches. The pre- 
+dictions for the ‘normal’ batch, match well the actual 
+final quality values of the product. For the ‘bad’ 
+batch, the predictions capture its problem and stretch 
+their values towards their actual final qualities. Qual- 
+ity variable two, which was poorly explained in the 
+MPLS model, has the poorest predictions for the P. Nomikos, J.F. MacGregor/ Chemometrics and Intelligent Laboratory Systems 30 (1995) 97-108 
+,220. 
+* 
+, 
+lZJ6. 
+(\ 
+SC----___ ___--- 
+I 
+0 so 100 tw 200 
+TIME 
+1.72 - 
+____* 
+. 1221 I 
+0 50 too 150 200 
+a.52 
+J.5. 
+J.44 1 
+0 20 IO0 lso 200 
+lwf 
+Fig. 4. On-line predictions, with their 95% and 99% confidence intervals (dashed and solid lines), for three of the five final product quality 
+variables for the ‘good’ batch (left hand side plots) and for the ‘bad’ batch with the problem half-way through its operation (right hand side 
+plots). The actual final product qualities are indicated by diamond marks. The PLS model for the ‘bad’ batch is not valid after time interval 
+105 (absence of confidence intervals) and its predictions are not generally trustworthy. P. Nomikos, J.F. MacGregor/ Chemometrics and Intelligent Laboratory Systems 30 (1995) 97-108 107 
+‘bad’ batch. On the other hand, quality variable three, product quality. Batch quality variables typically are 
+which was very well explained in the MPLS model, measurements of physical properties of the product, 
+has very good predictions and its final prediction is or variables which indicate if the product will have 
+very close to the actual one for the ‘bad’ batch. Since acceptable operation in the next stage, and some- 
+the MPLS model is no longer valid for the ‘bad’ batch times variables from customer feedback. For an ef- 
+after time interval 105 (the SPE exceeds its control fective PLS, the Y matrix should have as columns, 
+limits in Fig. 3) the predictions after this time inter- quality variables which are closely connected with the 
+val are not trustworthy. The confidence limits given batch process, as to be well correlated with the pro- 
+by Eq. (14) will no longer be valid, and they have not cess measurements. Also, these quality measure- 
+be plotted beyond this time interval in Fig. 4. Al- ments should span a wide range of product proper- 
+though the predictions may not be accurate, the di- ties because it is hard to believe that the whole batch 
+rections that the quality variables will take can be operation can be reflected to a single quality mea- 
+trusted in general, and this can help considerably in surement, or that one quality measurement can cap- 
+diagnosing the source of the abnormality. This is an- ture all the quality aspects of the final product. An- 
+other advantage of PLS with respect to other regres- other difficulty with the batch quality measurements 
+sion methods, it models both x- and y-spaces to give is that they are usually susceptible to a significant 
+good predictions and also provides a measure through amount of measurement error. In such cases, the un- 
+its residuals in the x-space of how well the PLS certainty in the quality measurements can make the 
+model can be trusted. use of MPLS inappropriate. 
+6. MPCA or MPLS 7. Conclusions 
+The question that arises in monitoring batch pro- 
+cesses is whether to use MPCA or MPLS. MPCA 
+uses only the information about the process opera- 
+tional behavior (x-data) and its model describes how 
+the on-line process measurements deviate from their 
+average trajectories when the process operates in an 
+‘in-control’ state. As a consequence, it will flag any 
+abnormality in the process measurements even though 
+it may be irrelevant to the quality of the product. As 
+an example, a batch-run may have a slightly different 
+agitator power profile because of a deterioration in its 
+agitator mechanism. This event will cause an alarm 
+in the MPCA monitoring. If the agitator power is not 
+correlated with the final product qualities, the MPLS 
+monitoring may not detect this deterioration in the 
+agitator. Therefore, which approach one uses will de- 
+pend upon whether or not one is primarily interested 
+in events that will probably offset product quality or 
+in any type of abnormal behavior. In general, it may 
+be beneficial to try to detect all process deteriora- 
+tions and correct them before they lead to permanent 
+malfunctions. Batch monitoring methods based on MPCA have 
+been extended by using MPLS. This extension al- 
+lows one not only to utilize the historical data on the 
+measured process variable trajectories, but also on the 
+final quality measurements at the end of each batch. 
+In addition to monitoring the process variable space, 
+MPLS gives on-line predictions for the final product 
+qualities. Approximate confidence intervals have 
+been developed for these predictions. The proposed 
+monitoring schemes have shown, via a polymeriza- 
+tion simulation, that they are able to detect clearly and 
+quickly an abnormality. 
+When additional information about the initial con- 
+ditions and set-up of the batch process is available, 
+one may use a multi-block method based on MPCA 
+or MPLS [20,24,27,32] to incorporate this informa- 
+tion into the monitoring scheme. Such prior informa- 
+tion can be organized in a new matrix which may 
+have variables like feed quality measurements, initial 
+amounts of initiator or emulsifier, preprocessing con- 
+ditions such as preheat duration, position of the batch 
+in the cleaning cycle, operator on duty, etc. 
+A difficultly with using MPLS to analyze and 
+monitor batch processes is having a sufficient num- 
+ber of quality variables which describe adequately the The methodology presented here is generic in that 
+it is easily applied to almost any batch or semi-batch 
+process, and provides a base for continuous improve- 108 P. Nomikos, J.F. MacGregor/Chemometrics and Intelligent Laboratory Systems 30 (1995) 97-108 
+ment. The proposed monitoring charts are in accor- 
+dance with the SPC requirements, in that they can be 
+easily displayed and diagnose a fault. In addition, the 
+data reduction and the light computational require- 
+ments of the proposed methods do not impose any 
+problem in their implementation. The objective of the 
+monitoring procedure is to detect faults, diagnose 
+them, and eliminate their cause and thereby shrink the 
+control limits and work towards a more consistent 
+quality product. 
+References 
+[l] R. lserman, Automatica, 20 (1984) 387. 
+[2] G.J. Birky and T.J. McAvoy, Comput. Chem. Eng., 14 (1990) 
+713. 
+[3] P. Nomikos and J.F. MacGregor, AfChE J., 40 (1994) 1361. 
+[4] G.J. Hahn and M.B. Cockrum, J. Appl. Stat., 14 (1987) 35. 
+[5] S.A. Vander Wiel, W.T. Tucker, F.W. Faltin and N. Do- 
+ganaksoy, Technometrics, 34 (1992) 286. 
+[6] C.E. Marsh and T.W. Tucker, ISA Trans., 30 (1991) 39. 
+[7] J. Kresta, J.F. MacGregor and T.E. Marlin, Can. J. Chem. 
+Eng., 69 (1991) 3.5. 
+[8] B. Skagerberg, J.F. MacGregor and C. Kiparissides, Chemom. 
+Intell. Lab. Syst., 14 (1992) 341. 
+[9] B.M. Wise, N.L. Ricker, D.F. Veltkamp and B.R. Kowalski, 
+Process Contr. Qua]., 1 (1990) 41 
+[lo] P. Nomikos and J.F. MacGregor, Technometrics, 37 (1995) 
+41. 
+[ll] S. Wold, P. Geladi, K. Esbensen and J. Ohman, J. Chemom. 
+1 (1987) 41. [12] P. Geladi and B.R. Kowalski, Anal. Chim. Acta, 185 (1986) 
+[13] i: Geladi, Chemom. lntell. Lab. Syst., 7 (1989) 11. 
+[14] A.K. Smilde and D.A. Doombos, J. Chemom., 5 (1991) 345. 
+[15] A.K. Smilde, Chemom. lntell. Lab. Syst., 15 (1992) 143. 
+[16] E. Sanchez and B.R. Kowalski, J. Chemom., 4 (1990) 29. 
+[17] A. Hoskuldsson, J. Chemom., 2 (1988) 211. 
+1181 K.A. Kosanovich, M.J. Piovoso, K.S. Dahl, J.F. MacGregor 
+and P. Nomikos, Am. Control Conf. ‘94, IFAC, June 29-July 
+1, Baltimore, Maryland, 1994. 
+[19] T.O. Broadhead, A.E. Hamielec and J.F. MacGregor, Makro- 
+mol. Chem. Suppl., 10 (1985) 105. 
+[20] P. Nomikos, Multivariate Statistical Process Control of Batch 
+Processes, Ph.D. Thesis, Department of Chemical Engineer- 
+ing, McMaster University, Canada, 1995. 
+[21] S. Wold, Technometrics, 20 (1978) 397. 
+[22] S. Wold, Chemom. Intell. Lab. Syst., 14 (1992) 71. 
+[23] P. Nelson, P.A. Taylor and J.F. MacGregor, Chemom. lntell. 
+Lab. Syst., submitted. 
+[24] T. Kourti, P. Nomikos and J.F. MacGregor, J. Process Contr., 
+submitted. 
+1251 N.D. Tracy, J.C. Young and R.L. Mason, J. Qual. Technol., 
+24 (1992) 88 . 
+[26] P. Miller, R.E. Swanson and C.E. Heckler, J. Qual. Technol., 
+submitted. 
+[27] J.F. MacGregor, C. Jaeckle, C. Kiparissides and M. Koutoudi, 
+AIChE J., 40 (1994) 826. 
+[28] S.R. Searle, Matrix Algebra Useful for Statistics, Wiley, New 
+York, 1982. 
+[29] C.R. Rao and S.K. Mitra, Generalized Inverse of Matrices and 
+its Applications, Wiley, New York, 1971. 
+1301 T.L. Boullion and P.L. Odell, Generalized Inverse Matrices, 
+Wiley-Interscience, New York, 1971. 
+1311 A. Phatak, P.M. Reilly and A. Penlidis, Anal. Chim. Acta, 277 
+(1993) 495. 
+]32] L.E. Wangen and B.R. Kowalski, J. Chemom., 3 (1988) 3. 

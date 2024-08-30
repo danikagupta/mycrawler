@@ -1,0 +1,573 @@
+ARTICLE
+Multi-Model Statistical Process Monitoring and
+Diagnosis of a Sequencing Batch Reactor
+Chang Kyoo Yoo,1,2,3Kris Villez,3In-Beum Lee,2Christian Rose ´n,4
+Peter A. Vanrolleghem3,5
+1Department of Environmental Science and Engineering, Center for Environmental
+Research, College of Environmental and Applied Chemistry, Kyung Hee University,Seocheon-dong, Giheung-gu, Yongin-Si, Gyeonggi-Do, 446-701; Korea;telephone: þ82-31-201-3824; fax: þ82-31-204-8114
+e-mail: ckyoo@khu.ac.kr; ChangKyoo.Yoo@biomath.ugent.be
+2School of Environmental Engineering and Science / Department of Chemical Engineering,
+Pohang University of Science and Technology, Pohang, Korea
+3BIOMATH: Department of Applied Mathematics, Biometrics and Process Control,
+Ghent University, Ghent, Flanders, Belgium
+4IEA: Department of Industrial Electrical Engineering and Automation,
+Lund University, Lund, Sweden
+5modelEAU, De ´partement de Ge ´nie Civil, Pavillon Pouliot,
+Universite ´Laval, Que ´bec, Canada
+Received 31 March 2006; accepted 11 September 2006
+Published online 10 October 2006 in Wiley InterScience (www.interscience.wiley.com). DOI 10.1002/bit.21220
+ABSTRACT: Biological processes exhibit different behavior
+depending on the inﬂuent loads, temperature, microorgan-
+ism activity, and so on. It has been shown that a combination
+of several models can provide a suitable approach to modelsuch processes. In the present study, we developed a multiple
+statistical model approach for the monitoring of biological
+batch processes. The proposed method consists of four maincomponents: (1) multiway principal component analysis(MPCA) to reduce the dimensionality of data and to remove
+collinearity; (2) multiple models with a posterior probability
+for modeling different operating regions; (3) local batchmonitoring by the T
+2- and Q-statistics of the speciﬁc local
+model; and (4) a new discrimination measure (DM) to
+identify when the system has shifted to a new operating
+condition. Under this approach, local monitoring by multi-ple models divides the entire historical data set into separate
+regions, which are then modeled separately. Then, these
+local regions can be supervised separately, leading to moreeffective batch monitoring. The proposed method is appliedto a pilot-scale 80-L sequencing batch reactor (SBR) for
+biological wastewater treatment. This SBR is characterized
+by nonstationary, batchwise, and multiple operation modes.The results obtained for the pilot-scale SBR indicate thatthe proposed method has the ability to model multiple
+operating conditions, to identify various operating regions,
+and also to determine whether the biosystem has shifted to anew operating condition. Our ﬁndings show that the localmonitoring approach can give more reliable and higher
+resolution monitoring results than the global model.
+Biotechnol. Bioeng. 2007;96: 687–701./C2232006 Wiley Periodicals, Inc.
+KEYWORDS: batch monitoring and supervision; biological
+system; multiple operational modes; probabilistic model-
+ing; sequencing batch reactor (SBR); wastewater treatment
+Introduction
+Biological processes will only achieve near-optimal perfor-
+mance if they are modeled and monitored using reliabletechniques. An adequate model of a biological processenhances the understanding of the process and can form thebasis for better process design, control, and operation. Inaddition, efﬁcient process monitoring and early faultdetection methods allow corrective action to be taken well
+before a dangerous situation occurs. In biological waste-
+water treatment plants, most changes are slow when theprocess is recovering from a ‘bad’ state to a ‘normal’ state.
+Correspondence to: C.K. Yoo
+Contract grant sponsor: Brain Korea 21 projectContract grant sponsor: Visiting Postdoctoral Fellowship of the Fund for ScientiﬁcResearch-Flanders (FWO)Contract grant sponsor: Institute for Encouragement of Innovation by means ofScience and Technology
+/C2232006 Wiley Periodicals, Inc. Biotechnology and Bioengineering, Vol. 96, No. 4, March 1, 2007 687When a problem occurs in such a process, it may give rise to
+subtle changes that gradually grow until they become aserious operational problem. In recently developed indus-trial biological plants, many variables are measured invarious operating units and an abundance of data isrecorded. However, such data sets are highly correlated andare subject to considerable noise. In the absence of anappropriate processing method, only limited information
+can be extracted. In such situations, the operator may not
+understand the process sufﬁciently to maintain stableoperation. If properly treated, however, this process datacan provide a wealth of information that can assist plantoperators in understanding the process status and enablethem to take appropriate action when an abnormality isdetected (Carrasco et al., 2004; Lee and Vanrolleghem, 2003,Rosen and Lennox, 2001; Saarinen et al., 2003; Xiao and
+Luong, 2003; Yoo et al., 2003).
+Sequencing batch reactor (SBR) processes have demon-
+strated their efﬁciency and ﬂexibility in the treatment ofwastewaters with high concentrations of nutrients (nitrogen,phosphorous) and toxic compounds from domestic andindustrial sources. A SBR has a unique cyclic batch operation,usually with ﬁve well-deﬁned phases: ﬁll, react, settle, draw,and idle. Most of the advantages of SBR processes can be
+attributed to their single-tank design and their ability to adjust
+the durations of the different phases, which endows theseprocesses with a ﬂexibility that allows them to meet manydifferent treatment objectives. However, SBR processes arehighly nonlinear, time-varying, and subject to signiﬁcantdisturbances such as hydraulic changes, composition varia-tions, and equipment failures. Small changes in concentrationsor ﬂows may have large effects on the biological reaction
+kinetics, leading to batch-to-batch variations in efﬂuent
+quality and microorganism growth. Such inﬂuent variationscause SBR processes to evolve over time as the microorgan-isms adapt to the changing operating conditions. These factorslead to changes in the microbial community and multipleoperation modes within a bioreactor. Moreover, comparedto data from continuous wastewater treatment processes,SBR operation data have the added dimension of batch
+number, which, when combined with the measured variables
+and sample times, gives a three-way matrix (batches /C2
+variables /C2time). Batch processes generally exhibit some
+batch-to-batch variation in the trajectories of the processvariables. However, treatment performance, the key indicatorof process performance, is often only examined off-line in alaboratory. This lack of real-time on-line monitoring oftreatment performance means that situations can arise where
+operators are aware of problems in the treatment perfor-
+mance, but cannot determine the underlying causes of theproblems or predict when the y will occur. Therefore, the
+monitoring and supervision of SBR processes are crucial tothe detection and timely correction of faults. Prompt faultidentiﬁcation and correction is particularly necessary inbiological processes because such processes may take days,weeks, or even months to recover from an abnormal state
+(Lennox et al., 2001; Nomikos and MacGregor, 1994).Generally, the fault detection and diagnosis system of an
+SBR is based on statistical methods and analyzes on-line databy comparing the data of a new batch to the historical data ofnormal and abnormal batches. If a new batch is close to theidentiﬁed normal batches, it can be classiﬁed as normal,otherwise if it is close to an identiﬁed abnormal batch, itcould be classiﬁed to the nearest known abnormal batch. Onthe other hand, if it is not close to either normal or abnormal
+batches, it could be classiﬁed as a new fault batch.
+Multiway principal component analysis (MPCA) has been
+successfully applied to batch processes (Chen and Liu, 1999;Nomikos and MacGregor, 1994; Tipping and Bishop,1997). Although the data are o btained from a process that
+is running stable, the biological adaptation characteristics ofbiological processes mean that the data may not be found in asingle operating region. Biological treatment plants show
+different behavior patterns depending on the inﬂuent loads,
+temperature, and the activity of the microorganisms. Thusthe models used for such plants should vary depending on theoperating conditions. One approach is to represent thebiological process using a suite of several models, where eachmodel is valid only in a speciﬁc operating domain. Severalstudies have sought to develop methods for continuousmonitoring of bioprocesses with multiple operation condi-
+tions. Chen and Liu (1999) proposed a mixture PCA model
+that takes advantage of PCA and heuristic smoothingclustering techniques. Xiao and Luong (2003) developed amethod for the on-line monitoring of cell growth andcytotoxicity using electric cell-substrate impedance sensing tomeasure the concentration and time response function.Tipping and Bishop (1997) suggested a mixture of aprobabilistic principal component (PC) analyzer for image
+compression and handwritten digit recognition, and Choi
+et al. (2003) applied a Gaussian mixture model to continuousprocess monitoring. Yoo et al. (2003) suggested nonlinearmodeling and an adaptive monitoring technique for acontinuous biological treatment plant with various operatingregions.
+In this article, we propose a local batch monitoring method
+with multiple probabilistic models in order to monitor a batch
+biological process with several operating conditions and to
+identify when a process has shifted to a new operatingcondition. First, MPCA is used to reduce the dimensionality ofthe data and to remove collinearity. Second, the transformeddata are classiﬁed into several operation regions based on theposterior probabilities of the mixture models. Third, adiscriminant measure (DM) is used to ﬁnd a new operatingcondition that does not belong to known operating regions.
+Finally, the corresponding local monitoring system driven by
+the probabilistic knowledge is used for SBR supervision.
+Materials and Methods
+Multiway Principal Component Analysis
+MPCA is used for the analysis and monitoring of batch
+process data. Batch data are typically reported in terms of
+688 Biotechnology and Bioengineering, Vol. 96, No. 4, March 1, 2007
+DOI 10.1002/bitbatch numbers, variables, and times. Data are arranged into
+a three-dimensional matrix X(I/C2J/C2K), where Iis the
+number of batches, Jis the number of variables, and Kis the
+number of times each batch is sampled. This matrix can bedecomposed using various three-way techniques, one ofwhich is MPCA. MPCA is equivalent to performing ordinaryPCA on a large two-dimensional matrix Xconstructed by
+unfolding the three-way data in the manner shown
+schematically in Figure 1 (Nomikos and MacGregor, 1994).
+MPCA decomposes the three-way array
+Xinto a
+summation of the product of a score trand a loading
+matrix Prplus a residual array Ethat is minimized in the
+least squares sense as follows:
+X¼XR
+r¼1tr/C10PrþE¼XR
+r¼1trpT
+rþE¼^XþE (1)
+where /C10denotes the Kronecker product ( X¼t/C10P)i s
+Xði;j;kÞ¼tðiÞPðj;kÞ;Rdenotes the number of PCs
+retained, trexpresses the relationship among batches, pris
+related to variables and their time variation, and Eis the
+residual matrix. The ﬁrst expression in Equation 1 givesthe 3-D decomposition while the second expressioncorresponds to the more common 2-D decomposition.
+The statistics used for monitoring multivariable batch
+processes are Hotelling’s T
+2-statistic and the Q-statistic
+(Nomikos and MacGregor, 1994; Wise and Gallagher,1996). The T
+2-statistic is a Mahalanobis distance between
+new data and the center of the normal operating conditiondata in a reduced dimension. The pattern of the residuals ismonitored using the Q-statistic, also referred to as the
+squared prediction error (SPE). The T
+2-statistic monitors
+systematic variations in the PC subspace, while the Q-
+statistic represents variations not explained by the retainedPCs. That is, faults in the process that violate the normalcorrelation of variables are detected in the PC subspace bytheT
+2-statistic, whereas faults that violate the PCA models
+are detected in the residual space by the Q-statistic. At end-
+of-batch, the T2- and Q-statistics for batch iare calculated as
+follows:
+T2
+i¼tT
+rS/C01tr/C24RðI2/C01Þ
+IðI/C0RÞFR;I/C0R (2)
+Qi¼eieT
+i¼XKJ
+c¼1Eði;cÞ2(3)
+where eiis the ith row of E,Iis the number of batches in the
+reference set, t ris a vector of Rscores, Sis the ( R/C2R)
+covariance matrix of the t-scores calculated during the
+model development, which is diagonal due to the
+orthogonality of the t-score values, Ris the number of
+PCs retained in the model, and FR,I-R is the F-distribution
+value with RandI–R–1 degrees of freedom. The statistical
+limits on the T2- and Q-statistics are computed by assuming
+that the data conform to a multivariate normal distribution.The conﬁdence limits of the T
+2-statistic are calculated
+from the F-distribution. The distribution of the Q-statistic
+is calculated from the chi-squared distribution, SPE k;a¼
+ðnk=2mkÞx2
+2mk2=nk;a, where mkand vkare the mean and
+variance of the SPE and x2
+2mk2=n;akis the critical value of the
+x2variable with 2m2
+k/vkdegrees of freedom at signiﬁcance
+levela(Wise and Gallagher, 1996). For a new sample x new,i f
+Tnew2<Tlim2andQnew<Q2
+lim, we consider a current batch
+to be in-control with 100(1 /C0a)% conﬁdence. Otherwise, a
+batch is designated as out of control. Here, the T2-value is
+used to detect faults associated with abnormal variationswithin a model subspace, whereas the Q-value is used to
+detect new events that are not taken into account in themodel subspace.
+Monitoring of Incomplete Batches
+In on-line batch monitoring using MPCA, we know only the
+values from the start of batch to the current time; however,on-line monitoring can be achieved by augmenting theincomplete set of real batch process data with predicted datato create a data set spanning the entire batch. Nomikos andMacGregor (1995) suggested three ways to estimate variabletrajectories, that is, to complete the remaining batch data:(1) zero deviation; (2) current deviation; and (3) PCA
+projection method. The choice of the most suitable
+approach depends on the characteristics of the batchprocess; however, the second and the third ﬁlling methodsare mainly used. For on-line monitoring, the distributionofT
+k2is approximated by an Fdistribution and that of SPE k
+can be approximated by a weighted x2distribution of
+SPE k/C24ðnk=2mkÞx2
+2mk2=nkwhere mkandvkare the mean and
+variance of SPE kat time k.I fTk2/C20T2
+limand SPE k/C20SPE lim,
+the current batch at time kis in-control. Otherwise, the
+current batch at time instant kis deemed out of control.
+Figure 1. Multiway unfolding of a three-way batch data set.
+Yoo et al.: Statistical Monitoring 689
+Biotechnology and Bioengineering. DOI 10.1002/bitBatch Monitoring Using Multiple MPCA Models
+As noted in the Introduction section, biological processes
+like the SBR process under study have several operation
+patterns depending on the inﬂuent loads, temperature,
+and microorganism activity (see Fig. 4a). For biologicalprocesses with multiple operation modes, it would beappropriate to use multiple models to capture the localvariations of each operating region. If data corresponding todifferent operating modes exhibit dissimilarities due todifferent batch trajectories or environmental changes, eachlocal model can capture its operating region better than a
+global model, at the cost of poor characterization of
+the other modes. The local MPCA model, however,provides an effective method to deal with nonlinearstructures in multivariate data, and thus overcomessome of the limitations of global models. Here, to enhancethe monitoring performance and reduce missed alarms inthe SBR process, we use multiple MPCA models within aprobabilistic framework. When multiple PCA models are
+used, the most important issue is how to discriminate
+multiple operation modes.
+Tipping and Bishop (1997) showed how local PCA
+learning can be incorporated into a Gaussian mixturemodeling framework with a probabilistic learning rule.Their approach is based on a linear Gaussian model thatdecomposes the input space into subspaces of multi-variate data. An arbitrary probability density of a sample
+vector x,p(x|u), can be approximated by a mixture of basis
+density functions within a Bayesian framework (Bishop,1995; Tipping and Bishop, 1997) as follows:
+pðxjuÞ¼X
+k
+i¼1pðxjiÞPi (4)
+where uis a parameter vector whose entries are model
+parameters, p(x|k) is the sample density, and Piis the prior
+probability that a data point is generated from componentiof the mixture. The prior probabilities satisfyP
+kPi¼1
+and 0 /C20Pi/C201. Here, the model parameters of the local
+models with an isotropic variance are determined by
+probabilistic maximum likelihood estimation, that is, the
+so-called expectation and maximization (EM) algorithm(Tipping and Bishop, 1997). In this article, Bayesianinference modeling with a mixture of MPCA models isused to capture local subspace behaviors within the SBRprocess.
+The diagnosis of local models is achieved by the following
+procedure. With the loading vectors of the local MPCA
+model, P, we can obtain the principal scores. Then, the chi-
+squared distance of a batch from the center of each localmodel is computed by
+x
+2
+jðkÞ¼ð tk/C0tjÞD/C01
+jðtk/C0tjÞT(5)where t kis the score vector of sample x k,Djis the
+covariance matrix of the scores t for group j, and tjis the
+group center of the principal scores. The posteriorprobability that sample x was sampled from the jth group
+can be obtained using Bayes’ theorem, as follows:
+pv
+j/C12/C12x/C0/C1
+¼pðxjvjÞPjPK
+i¼1pðxjvjÞPi¼Pj/C12/C12Dj/C12/C12/C01=2expð/C0x2
+j=2Þ
+Pc
+j¼1Pj/C12/C12Dj/C12/C12/C01=2expð/C0x2
+j=2Þ
+(6)
+where pðvj/C12/C12xÞis the probability of a sample x to be class j,vj
+is the category of the jth class and Pjis the prior probability
+for group j. The Bayes decision rule to minimize risk calls for
+selecting the action that minimizes the conditional risk.Thus, to minimize the average probability of error, weshould select the ithat maximizes the posterior probability
+pðv
+j/C12/C12xÞ(Duda et al., 2001). Therefore, in our probabilistic
+framework a new batch is classiﬁed into the group for whichpðv
+j/C12/C12xÞis highest. A posterior probability in a probabilistic
+framework is exploited to ﬁnd the most likely estimates of
+the true batch states by maximizing the probability of the
+multiple models. Probabilistic monitoring gives informa-tion on the shift in the process away from the normal steadystate condition. The probabilities of the current batch foreach local model provide a measure of the degree to whichthe current batch conditions conform to a particular localmodel. After selecting the corresponding jth speciﬁc model,
+local batch monitoring is performed using the T
+2- and Q-
+statistics of the jth MPCA model. For this batch, if Tnew2<
+T2
+j;limandQnew<Q2
+j;lim, we consider the current batch to be
+in-control with 100(1 /C0a)% conﬁdence. Otherwise, the
+batch is designated as out of control.
+Find a New Operating Condition
+Another important issue is how to detect and diagnose a new
+operation condition that does not belong to the historicalbatches. Batch processes such as SBR processes should bechecked to ﬁnd a new operating condition since typicalbiological processes are sensitive to environmental changes.If a new batch is different from the historical known batches,this kind of a batch is not diagnosed. Fortunately,
+monitoring of the evolution of the posterior probabilities
+of the multiple models gives information that can be used toovercome this problem. As noted above, a posteriorprobability provides a measure of the membership of thecurrent batch to a speciﬁc local model. In the case of anabnormal batch, the posterior probability of one particularmodel will suddenly increase, and the posterior probabilitiesof the other models will be close to zero. For a new operating
+condition, by contrast, the posterior probabilities of all
+models will gradually decrease together. Thus, the posteriorprobability data provide valuable information for determin-ing whether the system has shifted to a new operatingcondition.
+690 Biotechnology and Bioengineering, Vol. 96, No. 4, March 1, 2007
+DOI 10.1002/bitMotivated by the approach of Yoo et al. (2003), here
+we propose a new DM: the maximum value of theentries in the posterior probability matrix
+p
+kpT
+k;pk¼½pv1jxkpv2jxk/C1/C1/C1pvcjxk/C138t:
+DM k:¼arg max
+1/C20k/C20cpkpT
+k ð7Þ
+For the two-model case, this DM corresponds to the inner
+product matrix for two posterior probabilities, pikand pjk,
+where each element becomes each inner product ( pik,pjk)
+between the posterior probabilities ( pikandpjk) for models i
+andj, respectively. It has a mathematical form similar to that
+of a covariance matrix. There can be many advanced
+statistical rules to determine the value of the conﬁdencelimit of the DM. For example, the monitoring statistics ofDM with the kernel density estimation (KDE) can be used toapproximate its distribution, whereafter conﬁdencelimits can be computed. Alternatively, the conﬁdence limitmay be obtained using another assumed distributionfunction. For simplicity, we used a heuristic rule to
+determine the conﬁdence limit in this paper, for which
+the speciﬁc limit depends on the number of classes, (1 /C01/
+c). Using this deﬁnition, a value in the DM( k) at batch k
+below the speciﬁc limit (1 /C01/c) means that the current
+batch cannot be allocated to the previous mixture modelsand has moved into a new operating condition region. Thatis, the system is said to have taken on a new, unknownoperating condition when the posterior probabilities from
+all of the local models have relatively low values and DM
+starts to decrease.Proposed Local Batch Monitoring Framework
+Using Probabilistic Multiple MPCA Models
+Figure 2 shows the proposed framework of local batch
+monitoring using multiple models. First, the global and the
+multiple MPCA models with a priori operation knowledgeare constructed using historical batch data. Second,transformed data in the global model are classiﬁed intoseveral clusters using a posterior probability. Third, based onthe posterior probability of each local model, the local modelthat best represents a current operating condition is selectedand used for batch monitoring. In addition, the DM is
+monitored to determine whether the system has shifted to a
+new operating condition. If the DM indicates a newoperating mode, a new model is built using recent batches.Finally, the batch at a particular time instant is on-linemonitored using the jth local model and its statistical
+models. If the on-line batch monitoring detects anonconforming batch using the jth local model, contribu-
+tion plots of the jth local model can be used to diagnose the
+event so as to assign a cause.
+Results and Discussion
+Sequencing Batch Reactor
+The data used in this research were collected from a pilot-
+scale SBR system with the conﬁguration shown in Figure 3.This ﬁll-and-draw SBR with an 80-L working volumewas operated in a 6-h cycle mode where each cycle consistedof ﬁll/anaerobic (1 h), aerobic (2h 30 min), anoxic (1 h),
+Figure 2. Framework of the multiple batch diagnosis and local monitoring method.
+Yoo et al.: Statistical Monitoring 691
+Biotechnology and Bioengineering. DOI 10.1002/bitre-aerobic (30 min), and settling/draw (1 h) phases. The
+hydraulic retention time (HRT) and the solid retention time
+(SRT) were maintained at 12 h and 10 days, respectively. The
+loading amounts of chemical oxygen demand (COD) assynthetic municipal-like sewage, NH
+þ
+4-N, and PO3/C0
+4per
+cycle in standard conditions were 440, 60, and 95 mg/L,respectively.
+The duration/sequence of phases and on/off status of
+peristaltic pumps, mixer, and air supply were automaticallycontrolled by a Labview data acquisition and control (DAC)
+system. The DAC system consisted of a computer, analog/
+digital interface cards, sensors, transmitters, and solid-staterelays. Electrodes for measuring pH, oxidation-reductionpotential, dissolved oxygen (DO), temperature, weight, andconductivity were installed and connected to the individualsensors (see Table I for a list of variables measured). It hasbeen reported that on-line sensor values collected in SBRsare related to the dynamic characteristics of the nutrientconcentrations (COD, NH
+þ
+4-N, PO3/C0
+4, and NO/C03) in the
+SBRs, where dynamic variations in the pH, ORP, and DO
+proﬁles can detect the ends of phosphate release, ammonia
+conversion, and phosphate uptake (Chang and Hao, 1996).In this work, a multivariate monitoring system using simpleon-line sensors is used to monitor the status of the SBRprocess.
+Every 1 min, a set of on-line measurements was collected,
+including pH, ORP, DO, conductivity, temperature, andweight of the SBR reactor which do not require advanced or
+expensive measurement devices. In total, 521 batches of the
+SBR reactor were stored in a database of historicalinformation that represented the full dynamics of thebiological process. During these 521 batches, threerepresentative operating condition changes occurred inthe SBR process. Batches 1–280 are operated with theconventional SBR strategy (operational period 1, OP1), thatis, anaerobic–aerobic–anoxic–re-aerobic–settling phases.
+During batches 281–362, the DO control strategy of the
+SBR process changed with a new precise control algorithm(operational period 2, OP2). During batches 363–521, amodel-based optimization scenario with a step-feed controlscheme which exhibits 4 intermittent aeration sub-phaseshas been evaluated in a SBR (operational period 3, OP3, Sinet al., 2004). These operation changes took the form of achange in the SBR process dynamics, followed by an
+alteration in the microbial community, and ﬁnally a change
+in the sludge type (Sin et al., 2005). Only the ﬁrst 300
+Figure 3. Schematic diagram of a pilot-scale sequencing batch reactor (SBR).
+Table I. On-line measured variables of the SBR under study.
+No. Variables
+1 Temperature ( 8C)
+2p H3 Dissolved oxygen concentration (mg/L)
+4 Oxidation reduction potential (mV)
+5 Conductivity (mS)6 Weight (g)
+692 Biotechnology and Bioengineering, Vol. 96, No. 4, March 1, 2007
+DOI 10.1002/bitsampling time instants of each 360 min batch were used to
+develop the model during normal operating conditions(NOC), since biological reactions in the settling and drawing
+phases (corresponding to those of the last 60 time instants)
+were assumed to be negligible (Lee and Vanrolleghem, 2003;Yoo et al., 2004).
+SBR Operation Analysis Using Global and Multiple
+MPCA Models
+Batch diagnosis and monitoring of all historical batches was
+performed using the global MPCA model and three localMPCA models. When designing an MPCA model, it isimportant to determine the number of PCs of the model. Indetermining this number, both the curse of dimensionalityand loss of information are taken into account. In thepresent work, four PC’s were used for both the global andlocal MPCA models to capture the batch dynamics of a SBR
+using a cross-validation method (Tipping and Bishop, 1997;
+Yoo et al., 2004). The results of the global and local MPCAmodels are summarized in Table II. The explained variancescannot be compared directly because they are based on theirown means and variances. Figure 4a shows the score plot ofall 521 batches of the SBR in the PC
+1–PC 2plane using the
+global and local MPCA models with 99% conﬁdence limitsof the global MPCA model and three ellipsoids of 99%
+conﬁdence limits for each local operating condition. As
+shown in Figure 4a, since batches with similar operationconditions tend to cluster together in distinct regions in thereduced space of global MPCA model, it is possible toanalyze the batch operation history in the reduceddimensional space. Figure 4b shows the T
+2and SPE plots
+obtained using the global MPCA model.
+From Figure 4a it can be inferred that the ﬁrst group in the
+score plot represents the batches of the ﬁrst operational
+period (OP1). The second group (group 2) represents theoperating region during the second operational period(OP2) and the third group (group 3) comprises theobservations during the third operational period(OP3).Given these observations, a single global MPCAmodel may not be valid for a time-varying SBR process ofthis type. Because the SBR process exhibits several operation
+modes, the conﬁdence limits of the single global MPCAmodel would need to be widened, leading to less sensitive
+monitoring performance.
+Local Probabilistic Batch Monitoring of
+SBR Using Multiple MPCA Models
+In order to represent the distinct groups that characterize
+the process dynamics of a process undergoing multiplevariations, the proposed local monitoring method withmultiple MPCA models is used. Figure 5a–c shows theposterior probabilities of three local MPCA models,where the posterior probabilities of the local models
+indicate the extent to which the current batch belongs to
+the respective local models. Figure 5d shows the DM, whichis used to discriminate a change to a new process from theprevious local models.
+During batches 1–280, the posterior probability values for
+the ﬁrst local model (Fig. 5a) are large compared to those ofthe other models, which are almost zero, indicating that thebatches during this period can be assigned to the ﬁrst local
+model. Moreover, with the exception of two troughs, the
+DM value remains above the set limit during this period,conﬁrming that the ﬁrst local model can describe the datawell. The batches whose DM values fall below the conﬁdencelimit cannot be represented by any of the three local models;thus the periods in which these batches occur correspond toan unknown operating condition. Consistent with this, theposterior probability values of the ﬁrst local model are
+relatively low during these periods. The three troughs in the
+DM values coincide with external disturbances. Detailedinspection of the process data revealed that the ﬁrst, at batch80, was caused by a drain problem of the efﬂuent pump, thesecond, spanning batches 90–92, was caused by an abnormalfeeding by the inﬂuent pump and the third, spanningbatches 163–164, was caused by an abrupt increase in the airﬂow rate to the SBR. During the periods affected by these
+disturbances, the performance of the SBR process was
+unstable and the efﬂuent quality was quite poor. Because themicroorganisms of the SBR process could control theseexternal disturbances, the SBR process returned to thenormal operation region in each instance.
+During batches 281–362, the posterior probability values
+of the second local model are large compared to those of theother models, which are close to zero. This shift coincides
+with the batch at which the DO control strategy of the SBRTable II. Percent variance captured by the global MPCA model and the local MPCA models.
+Global MPCA model Local MPCA model 1 Local MPCA model 2 Local MPCA model 3
+PC% Variance of
+this PC% Total
+variance% Variance of
+this PC% Total
+variance% Variance of
+this PC% Total
+variance% Total
+variance% Variance of
+this PC
+1 75.20 75.20 26.09 26.09 38.60 38.60 29.98 29.98
+2 13.02 88.22 19.05 45.14 22.66 61.26 19.13 49.113 6.27 94.49 17.00 62.14 17.02 78.28 13.90 63.014 3.68 98.17 13.22 75.36 5.89 84.18 7.45 70.46
+Yoo et al.: Statistical Monitoring 693
+Biotechnology and Bioengineering. DOI 10.1002/bit−100 −50 0 50 100−60−40−20020406080100120
+PC 1PC 2a
+Global Model
+Local
+Model 1
+Local
+Model 2Local
+Model 3
+0 100 200 300 400 5000204060b
+ 84 85
+ 94 96 97 98 99
+ 100  290
+Batch numberT2
+0 100 200 300 400 50001000200030004000
+ 67 68 69 70 71 73 84 85
+ 289 290 291
+Batch numberSPE
+Figure 4. Batch diagnosis and monitoring of all historical batches using a global model: ( a) score plot in the PC 1-PC 2plane, and ( b)T2and SPE plots.
+694 Biotechnology and Bioengineering, Vol. 96, No. 4, March 1, 2007
+DOI 10.1002/bitprocess was changed (batch 281). In the period immediately
+after the introduction of the new DO control strategy(batches 281–285), the DM values fall below the conﬁdencelimit, presumably because the microorganisms of the SBRwere adapting to the new operation strategy during thosebatches. These ﬁndings therefore conﬁrm both the DM’sability to immediately detect a change in the DO controlstrategy as well as the microorganism’s ability to adapt and
+bring the SBR to a new steady state.
+After batch 360, the posterior probability values of the
+third local model (Fig. 5c) are almost unity, whereas those ofthe other two local models are almost zero. Thus, thesebatches can be assigned to the third local model. The DMvalues are below the conﬁdence limit for batch 363–370,indicating that a change to a new operation regime occurredin this interval. This observation coincides perfectly with
+the implementation of a new operational step-feed strategy
+with 4 intermittent aeration sub-phases at batch 363,resulting from a model-based optimization. This operationchange improved the nitrogen and phosphorus treatmentperformances of the SBR, and affected all process conditionsafter this batch, leading to substantial changes to the process.
+At around batch 445 the DM value show one diprepresenting an abnormal batch caused by an abnormalcontinuous feeding of inﬂuent pumps, where the processseems to shift brieﬂy from the third local model to thesecond one. These results conﬁrm that the proposed methodcan efﬁciently detect local process changes using the mixturemodels. It is therefore an effective technique for extracting
+information related to changes in unknown process
+operating conditions as well as for localizing multipleprocess disturbances.
+Figure 6 shows the T
+2and SPE charts obtained from the
+global and local MPCA models during the third operationperiod (batches 363–521). The T
+2and SPE data from the
+global MPCA model do not indicate the presence of anyabnormal batches during this operation period, whereas the
+T
+2and SPE charts of the corresponding local model detect
+the eight non-conforming batches: 363, 364, 367, 368, 369,442, 457, and 516 (batch numbers 1,2,4,5,6,79,84,153 inFig. 6). Although the single global model could be used tomodel the data in the subspace by MPCA, it would ignore
+0 100 200 300 400 50000.51a
+b
+c(a) p(w1|x)
+0 100 200 300 400 50000.51(b) p(w2|x)
+0 100 200 300 400 50000.51
+Batch number(c) p(w3|x)
+Figure 5. Local probabilistic monitoring with multiple MPCA models. a–c: Local-model monitoring of the SBR using three posterior probabilities; and ( d) discrimination
+measure (DM) for the detection of operation mode changes.
+Yoo et al.: Statistical Monitoring 695
+Biotechnology and Bioengineering. DOI 10.1002/bitthe local distributed characteristics of each local operational
+region. In the single global MPCA model, the symptoms of
+abnormal batches are buried in a conﬁdence region that istoo broad to catch such batches. On the other hand, localbatch monitoring using the appropriate local model showsbetter monitoring performance and increases the reliabilityof the monitoring system because it is capable ofautomatically extracting the key components that representthe kinetics of the biological reaction leading to batch-to-
+batch variations in the treatment performance and the
+microorganism community.
+On-Line Monitoring of an Abnormal Batch
+Using the Local MPCA
+Figure 7 shows the on-line batch monitoring results ( T
+2and
+SPE charts) of the global model and the third local model for
+theabnormal batch 84 identiﬁed in Figure 6b. For on-line
+batch monitoring, the current deviation is used as a ﬁllingmethod; in this approach, all future measurements are ﬁlled-in with their current deviation from the average batch. Asshown in Figure 7a, the monitoring charts of the globalMPCA model do not detect this abnormal batch. Bycontrast, the T
+2chart of the corresponding local model do
+detect the abnormal situation (Fig. 7b). Therefore, during
+on-line batch monitoring, the local probabilistic model candetect abnormalities that the global model fails to detect. It is
+interesting to note that the conﬁdence limit of the SPE chart
+of the global MPCA moves up and down two times, at thearound the 60th and 250th sampling times. These timescorrespond to the end of the ﬁlling phase and the start of thesecond aerobic phase of the old operation strategy(anaerobic, 1st aerobic, anoxic, and 2nd aerobic phases).On the other hand, the conﬁdence limit of the SPE chart ofthe local MPCA model moves up and down ﬁve times
+because the operating conditions of this batch have a unique
+cyclic batch operation (anaerobic, 4 alternating phases ofaerobic and anoxic and ﬁnal aerobic phases), as shown inFigure 4c. These ﬁndings illustrate that the local modelapproach can better extract the dynamic characteristics, thebiological phenomena and their relationships during thecurrent operation of the SBR.
+On-line monitoring charts only detect non-conforming
+batches; contribution plots must then be used to diagnose
+the detected events so as to assign a cause. Contributionplots indicate which variables are predominantly responsiblefor the deviations from the normal batch behavior. Figure 8shows the contribution plots for the T
+2chart of the third
+local model at 230 h of batch number 84. The deviation of T2
+comes from the pH (variable 2), conductivity (variable 5),
+and weight (variable 6). To examine this in greater detail,
+Figure 9 shows univariate plots of the temperature, pH, DO,
+ORP, conductivity, and weight for normal batches and for0 100 200 300 400 50000.10.20.30.40.50.60.70.80.91d
+Batch number(d) DM 
+Figure 5. (Continued )
+696 Biotechnology and Bioengineering, Vol. 96, No. 4, March 1, 2007
+DOI 10.1002/bit0 20 40 60 80 100 120 140 16002468
+Batch numberT2
+0 20 40 60 80 100 120 140 1600200400600
+Batch numberSPEa
+0 20 40 60 80 100 120 140 160010203040
+ 1
+ 2  79 84
+Batch numberT2
+0 20 40 60 80 100 120 140 1600200040006000
+ 1
+ 2 3 4 5 6  79 84  153
+Batch numberSPEb
+Figure 6. Batch monitoring charts of the third operation mode using ( a) the global model ( b) the corresponding local model. The dotted lines correspond to the
+99% conﬁdence limit.
+Yoo et al.: Statistical Monitoring 697
+Biotechnology and Bioengineering. DOI 10.1002/bit0 50 100 150 200 250 30012345678910
+Sample NumberT2
+0 50 100 150 200 250 300012345678910
+Sample NumberSPEa
+0 50 100 150 200 250 30002468101214161820
+Sample NumberT2
+0 50 100 150 200 250 300010203040506070
+Sample NumberSPEb
+Figure 7. On-line monitoring of charts for abnormal batch number 84 among the third operation mode batches using ( a) the global model ( b) the corresponding local model.
+The dotted lines correspond to the 99% conﬁdence limit.
+698 Biotechnology and Bioengineering, Vol. 96, No. 4, March 1, 2007
+DOI 10.1002/bit0 50 100 150 200 250 3002224262830
+Sample time (min)T 
+0 50 100 150 200 250 3006.877.27.47.67.8
+Sample time (min)pH 
+0 50 100 150 200 250 30001234
+Sample time (min)DO [mg/l] 
+0 50 100 150 200 250 300−300−200−1000100200300
+Sample time (min)ORP
+0 50 100 150 200 250 3008009001000110012001300
+Sample time (min)conductivity
+0 50 100 150 200 250 3005060708090100
+Sample time (min)weightBatch 84
+Normal batchesNormal batchesNormal batchesNormal batchesNormal batchesNormal batches
+Figure 9. Univariate plots of six on-line SBR variables for normal batches and batch number 84 among the third operation mode batches.123456−100102030405060
+VariablesC(T2)b
+Figure 8. Contribution plots for the T2-statistics at sample 230 of batch number 84 among the third operation mode batches. [Color ﬁgure can be seen in the online version of
+this article, available at www.interscience.wiley.com.]
+Yoo et al.: Statistical Monitoring 699
+Biotechnology and Bioengineering. DOI 10.1002/bitbatch number 87. The univariate plots conﬁrm the ﬁndings
+indicated by the contribution plots. Speciﬁcally, the weightis the main variable contributing to this abnormal batch,consistent with the nature of the malfunction: an accidentalinﬂuent feeding to the SBR process occurred due to aninﬂuent pump malfunction. Thus, it can be inferred that toomuch feeding of the carbon source (external disturbance)affects other variables, especially conductivity and pH. The
+T
+2chart of the local model in Figure 7b detects the abnormal
+carbon source feeding as soon as it occurs. Thus the local-model based method can give more reliable and higherresolution monitoring results. We note here that in thispaper our research was constrained to the application of themulti-model approach to a data set that was also used forcalibration of this speciﬁc model. Future research is thereforewarranted to check this approach against new data stemming
+from operational regions that are presented in the historical
+data set but not used in the calibration step, that is, a truevalidation of the method. Also, on-line use of our approachwarrants the search for strategies to detect and identify newoperations in case they are yet not present in the historicaldata, that is, methods to tackle contingency problems.
+Conclusions
+In this work, a new local batch monitoring method based onmultiple probabilistic models has been proposed and appliedto an 80-L SBR. Under this multiple modeling approach, theentire operation data of the SBR is divided into distinct
+regions, each of which is modeled separately. Then, these local
+regions can be supervised separately, leading to more effectivebatch monitoring. The method developed in this study wasshown to be a valuable tool for supervising a biological batchprocess with multiple operating conditions. Speciﬁcally, ourlocal model-based method was able to detect processdisturbances within a SBR that were not detected using aglobal model. Moreover, it was able to localize the cause of an
+abnormal batch and gave a much more sensitive and clear
+indication of the process disturbances within the SBR than didthe global model. The superiority of the local model-basedapproach derives from its ability to identify multiple operatingconditions and capture the biological relationship amongbatch process variables. The present results indicate that theproposed local batch monitoring approach may be a goodalternative to a global modeling approach for processes with
+multiple operation conditions such as biological processes.
+Since model-based optimization and control may lead tochanges in the microbial community or shift the systemdynamics, future studies should endeavor to incorporatemicrobial community information into the process monitor-ing and control method.
+Nomenclature
+E residual matrices
+FF distributionp(x|u) a probability density of a sample vector x
+p(x|k) a component density generated from component kof the
+mixture
+p(vj|x) the posterior probability of sample x from group j
+Pi the prior probability of the samples
+P loading matrix
+QQ -statistic
+Qlim conﬁdence limit for Q-statistic
+T score matrix
+T2Hotelling’s T2-statistic
+T2
+lim conﬁdence limit for Hotelling’s T2-statistic
+X three-way batch data array
+X input data matrix
+vj the category of the jth class
+Greek Letters
+x2
+j(k) the chi-squared distance of the jth sample from the center of
+each local model
+This work was supported by the Second-Phase of BK(Brain Korea) 21
+project, the Visiting Postdoctoral Fellowship of the Fund for Scientiﬁc
+Research-Flanders (FWO) and the Institute for Encouragement ofInnovation by means of Science and Technology in Flanders (IWT).Peter Vanrolleghem is Canada Research Chair in Water Quality
+Modelling. The authors thank Gu ¨rkan Sin, Ingmar Nopens, Ruxandra
+Govereanu, Dae Sung Lee, and Griet Schelstraete who greatly con-tributed to the BIOMATH SBR research.
+References
+Bishop CM. 1995. Neural networks for pattern recognition. New York:
+Clarendon Press.
+Carrasco EF, Omil F, Garrido JM, Arrojo B, Mendez R. 2004. Advanced
+monitoring and supervision of biological treatment of complex dairyefﬂuents in a full-scale plant. Biotechnol Prog 20:992–997.
+Chang CH, Hao OJ. 1996. Sequencing batch reactor system for nutrient
+removal: ORP and pH proﬁles. J Chem Tech Biotechnol 67:27–38.
+Chen J, Liu J. 1999. Mixture principal component analysis models for
+process monitoring. Ind Eng Chem Res 38:1478–1488.
+Choi SW, Park JH, Lee IB. 2003. Process monitoring using a Gaussian
+mixture model via principal component analysis and discriminantanalysis. Comp Chem Eng 28:1377–1387.
+Duda RO, Hart PE, Stork DG. 2001. Pattern classiﬁcation, 2nd edn. New
+York: John Wiley & Sons.
+Lee DS, Vanrolleghem PA. 2003. Monitoring of a sequencing batch reactor
+using adaptive multiblock principal component analysis. Biotechnol
+Bioeng 82:489–497.
+Lennox B, Montague GA, Hiden HG, Kornfeld G, Goulding PR. 2001.
+Process monitoring of an industrial fed-batch fermentation. BiotechnolBioeng 74(2):125–135.
+Nomikos P, MacGregor JF. 1994. Monitoring batch processes using multi-
+way principal component analysis. AIChE J 40(8):1361–1375.
+Nomikos P, MacGregor JF. 1995. Multivariate SPC charts for monitoring
+batch processes. Technometrics 37:41–59.
+Rosen C, Lennox JA. 2001. Multivariate and multiscale monitoring of
+wastewater treatment operation. Wat Res 35(14):3402–3410.
+Saarinen MA, Reece JS, Arnold MA, Murhammer DW. 2003. Monitoring
+and controlling the dissolved oxygen (DO) concentration within the
+high aspect ratio vessel (HARV). Biotechnol Prog 19(4):1335–1341.
+Sin G, Insel G, Lee DS, Vanrolleghem PA. 2004. Optimal but robust N and P
+removal in SBR’s: A model-based systematic study of operation sce-
+narios. Wat Sci Tech 50(10):97–105.
+700 Biotechnology and Bioengineering, Vol. 96, No. 4, March 1, 2007
+DOI 10.1002/bitSin G, Govoreanu R, Boon N, Schelstraete G, Vanrolleghem PA. 2005.
+Evaluation of the impacts of model-based operation of SBRs onactivated sludge microbial community. Wat Sci Tech 54(1):157–166.
+Tipping ME, Bishop CM. 1997. Mixtures of probabilistic principal com-
+ponent analysers. Technical report, Neural Computing Research
+Group. Aston University, UK.
+Wise BM, Gallagher NB. 1996. The Process chemometrics approach to
+process monitoring and fault detection. J Process Control 6:329–
+348.Xiao C, Luong JHT. 2003. On-line monitoring of cell growth and cyto-
+toxicity using electric cell-substrate impedance sensing (ECIS). Bio-technol Prog 19(3):1000–1005.
+Yoo CK, Vanrolleghem PA, Lee I. 2003. Nonlinear modeling and
+adaptive monitoring with fuzzy and multivariate statistical method
+in a biological wastewater treatment plant. J Biotech 105(1–2):135–163.
+Yoo CK, Lee DS, Vanrolleghem PA. 2004. Application of multiway ICA for
+on-line monitoring of a sequencing batch reactor. Wat Res 38(7):1715–
+1732.
+Yoo et al.: Statistical Monitoring 701
+Biotechnology and Bioengineering. DOI 10.1002/bit

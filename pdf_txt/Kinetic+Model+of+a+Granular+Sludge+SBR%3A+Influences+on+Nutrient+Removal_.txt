@@ -1,0 +1,1213 @@
+  
+Delft University of Technology
+On the mechanisms for aerobic granulation - model based evaluation
+van Dijk, Edward J.H.; Haaksman, Viktor A.; van Loosdrecht, Mark C.M.; Pronk, Mario
+DOI
+10.1016/j.watres.2022.118365
+Publication date
+2022
+Document Version
+Final published version
+Published in
+Water Research
+Citation (APA)
+van Dijk, E. J. H., Haaksman, V. A., van Loosdrecht, M. C. M., & Pronk, M. (2022). On the mechanisms for
+aerobic granulation - model based evaluation. Water Research , 216, Article 118365. 
+https://doi.org/10.1016/j.watres.2022.118365
+Important note
+To cite this publication, please use the final published version (if applicable).
+Please check the document version above.
+Copyright
+Other than for strictly personal use, it is not permitted to download, forward or distribute the text or part of it, without the consent
+of the author(s) and/or copyright holder(s), unless the work is under an open content license such as Creative Commons.
+Takedown policy
+Please contact us and provide details if you believe this document breaches copyrights.
+We will remove access to the work immediately and investigate your claim.
+This work is downloaded from Delft University of Technology. 
+For technical reasons the number of authors shown on this cover page is limited to a maximum of 10. Water Research 216 (2022) 118365
+Available online 27 March 2022
+0043-1354/© 2022 The Authors. Published by Elsevier Ltd. This is an open access article under the CC BY license ( http://creativecommons.org/licenses/by/4.0/ ).On the mechanisms for aerobic granulation - model based evaluation 
+Edward J.H. van Dijka,b,1,*, Viktor A. Haaksmana,1, Mark C.M. van Loosdrechta, 
+Mario Pronka,b 
+aDepartment of Biotechnology, Delft University of Technology, Van der Maasweg 9, Delft 2629 HZ, the Netherlands 
+bRoyal HaskoningDHV, Laan1914 35, Amersfoort 3800 AL, the Netherlands   
+ARTICLE INFO  
+Keywords: 
+Granule formation 
+Aerobic granular sludge 
+Sensitivity analyses 
+Key parameters 
+Modelling 
+Simulation ABSTRACT  
+In this study a mathematical framework was developed to describe aerobic granulation based on 6 main 
+mechanisms: microbial selection, selective wasting, maximizing transport of substrate into the biofilm, selective 
+feeding, substrate type and breakage. A numerical model was developed using four main components; a 1D 
+convection/dispersion model to describe the flow dynamics in a reactor, a reaction/diffusion model describing 
+the essential conversions for granule growth, a setting model to track granules during settling and feeding, and a 
+population model containing up to 100,000 clusters of granules to model the stochastic behaviour of the 
+granulation process. With this approach the model can explain the dynamics of the granulation process observed 
+in practice. This includes the presence of a lag phase and a granulation phase. Selective feeding was identified as 
+an important mechanism that was not yet reported in literature. When aerobic granules are grown from activated 
+sludge flocs, a lag phase occurs, in which not many granules are formed, followed by a granulation phase in 
+which granules rapidly appear. The ratio of granule forming to non-granule forming substrate together with the 
+feast/famine ratio determine if the transition from the lag phase to the granulation phase is successful. The 
+efficiency of selective wasting and selective feeding both determine the rate of this transition. Brake-up of large 
+granules into smaller well settling particles was shown to be an important source for new granules. The gran-
+ulation process was found to be the combined result from all 6 mechanisms and if conditions for either one are 
+not optimal, other mechanisms can, to some extent, compensate. This model provides a theoretical framework to 
+analyse the different relevant mechanisms for aerobic granular sludge formation and can form the basis for a 
+comprehensive model that includes detailed nutrient removal aspects.   
+1.Introduction 
+Aerobic granular sludge (AGS) is a technology for biological treat-
+ment of domestic and industrial wastewater. Microbial aggregates of 
+aerobic granular sludge are large compared to conventional activated 
+sludge, allowing for a more efficient treatment process. Although the 
+technology was invented more than 20 years ago (Heijnen and van 
+Loosdrecht, 1998; Morgenroth et al., 1997 ) and the first full-scale ap-
+plications treating sewage started to appear from 2005 under the trade 
+name Nereda ® (Giesen et al., 2013 ), there is no consensus in literature 
+on the underlying mechanisms for aerobic granulation and the process is 
+influenced by many factors (Winkler et al., 2018 ). Factors often 
+described are hydrodynamic shear (Liu and Tay, 2002; Tay et al., 2001; 
+Wu et al., 2020 ), physical selection on settling velocity (van Dijk et al., 
+2020; McSwain et al., 2004 ), the flow regime during contact of the sludge with influent (Haaksman et al., 2022; Lochmatter and Holliger, 
+2014; Rockt aschel et al., 2013 ), dissolved oxygen concentration (Mos-
+quera-Corral et al., 2005 ), feast/famine ratio (Beun et al., 2002; Cofr˘e 
+et al., 2018; de Kreuk and van Loosdrecht, 2004 ), influent substrate 
+composition (Layer et al., 2019; Pronk et al., 2015a ), organic loading 
+rate (Iorhemen and Liu, 2021 ), quorum sensing (Wang et al., 2017 ) and 
+aggregation through EPS (Liu et al., 2010 ). It is unclear which factors 
+matter most and how their interplay is affected by the process conditions 
+applied. A framework for biofilm morphology has been proposed 
+(Picioreanu et al., 1998 ), but this framework only explains granule 
+stability on the micro-scale, but it cannot explain granulation dynamics 
+on a reactor scale. For anaerobic granular sludge, such a framework has 
+been developed (Beeftink and van den Heuvel, 1990 ), but this frame -
+work is not as such applicable for aerobic granular sludge. 
+When a AGS reactor is seeded with activated sludge, under the right 
+circumstances, granular sludge will develop from flocculent sludge. In 
+*Corresponding author. 
+E-mail address: e.j.h.vandijk@tudelft.nl (E.J.H. van Dijk).   
+1 Both authors contributed equally to this manuscript. 
+Contents lists available at ScienceDirect 
+Water Research 
+u{�~zkw! s{yo|kr o>!ÐÐÐ1ow �o�to~1m{y2w{m k�o2Ðk�~o �!
+https://doi.org/10.1016/j.watres.2022.118365 
+Received 13 November 2021; Received in revised form 18 March 2022; Accepted 23 March 2022   Water Research 216 (2022) 118365
+2practice this granulation process shows dynamics that are not easily 
+explained. The granulation process commonly has a lag phase, in which 
+not much change in the granulation grade (biomass fraction of the 
+granules) seems to happen. Secondly, there is the granulation phase, in 
+which granules start to appear in the reactor and the granulation grade 
+increases (Fig. 1). The reason behind the lag phase and the trigger for the 
+sudden start of granulation is unclear. We hypothesize that there are six 
+main mechanisms that are of most importance for successful granulation 
+(Fig. 2). 
+Microbial selection is important for the formation of granules. It has 
+been shown that a stable dense biofilm can be best achieved, when the 
+uptake rate of substrates is lower than the transport rate of the substrates 
+into the granules (Van Loosdrecht et al., 2002 ). Therefore, the process is 
+optimized towards organisms that anaerobically sequester readily 
+biodegradable substrate by converting it into storage polymers and 
+subsequently utilizing these polymers for aerobic growth (de Kreuk and 
+van Loosdrecht, 2004; Nicholls and Osborn, 1979; Smolders et al., 
+1994 ). This effectively separates the substrate uptake and the growth 
+into two processes (called feast and famine). Phosphate accumulating 
+organisms (PAO) and glycogen accumulating organisms (GAO) are ex-
+amples of species that can make this split and these organisms are 
+commonly observed in full-scale aerobic granular sludge processes (Ali 
+et al., 2019 ). Not all substrates can be sequestered anaerobically into 
+storage polymers for aerobic growth of bacteria in the granules. We call 
+these substrates, non-granule forming substrates (n-GFS). Substrates that 
+can lead to growth of aerobic granules (e.g. volatile fatty acids, but also 
+readily biodegradable substrates that can be converted anaerobically) 
+we call granule forming substrates (GFS). 
+Physical selection is also an important driver for growing aerobic 
+granular sludge (Beun et al., 2002; de Kreuk and van Loosdrecht, 2004; 
+Morgenroth et al., 1997; Qin et al., 2004 ). AGS has advantageous 
+settling properties compared to activated sludge flocs (Heijnen and van 
+Loosdrecht, 1998; Morgenroth et al., 1997 ). In AGS reactors flocs will 
+always be present to some extent (Pronk et al., 2015b ) as not all carbon 
+sources present in sewage can be converted to storage polymers during anaerobic feeding (Layer et al., 2020 ). Therefore, it is needed to pref-
+erentially remove the flocculent sludge fraction with the excess sludge to 
+give granules a competitive advantage. This is achieved by using the 
+differential settling velocity between flocculent and granular sludge 
+(van Dijk et al., 2020; Liu et al., 2005 ). This is called the physical se-
+lection pressure. 
+Another well-known driver is maximizing transport of substrate into 
+the biofilm. Higher substrate concentrations in the bulk liquid result in a 
+deeper penetration of the substrate in the biofilm (Arvin and Harre -
+moes, 1990 ). This helps to grow and support a thicker biofilm. In AGS 
+reactors a higher substrate concentration is achieved by either pulse 
+feeding at the start (Beun et al., 2002 ) or more practical relevant by 
+plug-flow feeding from the bottom of the reactor (de Kreuk and van 
+Loosdrecht, 2004; Pronk et al., 2015b ). This gives a competitive 
+advantage for larger granules. Larger granules settle faster than smaller 
+granules and flocs, and therefore accumulate at the bottom of the settled 
+sludge bed (van Dijk et al., 2020 ). Feeding from the bottom therefore 
+results in a longer contact time with the influent and contact with higher 
+substrate concentrations for the larger granules. As a result, they will 
+have more opportunity for growth than smaller fraction. Hence the term 
+selective feeding . 
+Aerobic granules go through a typical life cycle that has a strong 
+influence on the granulation process and reactor performance. When an 
+AGS reactor is seeded with activated sludge flocs, these flocs will first 
+form proto-granules. Flocs and proto-granules share similar bulk settling 
+properties. An important difference is that the proto-granules already 
+have the granular morphology but are smaller than 200 µm, which is 
+considered to be the minimum size for an aggregate to be called an 
+aerobic granule (de Kreuk et al., 2007a ). Proto-granules already have 
+been observed in conventional activated sludge processes, especially in 
+systems with high anaerobic food to mass ratios, unmixed in-line 
+fermentation, and a high influent soluble COD fraction (Wei et al., 
+2020 ). Proto-granules are embedded in the floc matrix and settle 
+together with the flocculent material. 
+Biological conversions in proto-granules are comparable to Nomenclature 
+Definitions 
+c concentration (kg/m3) 
+x position of granules in a cluster from the bottom of the 
+reactor (m) 
+d diameter of granules in a cluster (m) 
+t time (s) 
+Dax axial dispersion coefficient in bulk-liquid during feeding 
+(m2/s) 
+v velocity (ms 1) 
+kLB mass transfer coefficient for bulk-liquid/biofilm interface 
+(ms 1) 
+a cumulative area of granules in a cluster per volume of 
+empty reactor (m 1 
+N number of clusters in a set a set ( ) 
+D diffusion coefficient (m2/s) 
+R volumetric reaction rate (kgm 3 s 1) 
+H height of the reactor (m) 
+r radial position from the center of a spherical granule (m) 
+qANCmax maximum biomass specific anaerobic substrate uptake rate 
+(kg kg 1 s 1) 
+K monod constant (kgm 3) 
+vf fluidizing velocity of granules in a clusters (ms 1) 
+k correction factor for wall effects ( ) 
+n expansion index ( ) davg average volume weighted diameter of granules in a cluster 
+(m) 
+Ar archimedes number ( ) 
+A area (m2) 
+Y yield coefficient (kg kg 1) 
+G number of granules in a cluster ( ) 
+P breaking chance of granule clusters ( ) 
+Greek symbols 
+ε voidage ( ) 
+εe apparent voidage around a cluster of granules ( ) 
+ν kinematic visocity of bulk-liquid (m2 s 1) 
+ρ density (kgm 3) 
+ρbed density of the sludge bed (combined liquid and biomass in 
+set of clusters at certain height) (kgm 3) 
+Subscripts 
+i index of set of biomass clusters at certain height in the 
+reactor 
+j index of biomass cluster 
+L bulk-liquid phase 
+B biofilm phase 
+GFS granule forming substrate 
+PHA storage polymers (polyhydroxyalkanoates) 
+in influent wastewater during feeding 
+X biomass  E.J.H. van Dijk et al.                                                                                                                                                                                                                           Water Research 216 (2022) 118365
+3conversions in flocs, because the small radius of the proto-granules al-
+lows for full penetration with oxygen. Simultaneous nitrification and 
+denitrification (SND) thus will be limited to very low DO conditions. 
+When proto-granules grow out into small granules (F200 µm), these 
+small granules will settle significant faster and independent of the 
+flocculent mass. The result is that small granules can experience the 
+benefits regarding sludge selection, remain longer in the reactor with 
+selective wasting and receive more influent with bottom feeding. When 
+the granules continue to grow, the biofilm kinetics become more pro-
+nounced and full penetration of oxygen is less likely and SND will in-
+crease. Large granules (F1000 µm) are more susceptible to breakage (de 
+Graaff et al., 2020 ). When a granule breaks into smaller pieces some will 
+be spilled and others will become a seed for new granules, restarting the 
+granule life cycle. Thus we hypothesized that breakage of granules is an 
+integral part of the granulation process, similar as proposed for anaer -
+obic sludge (Beeftink and van den Heuvel, 1990 ). 
+The aforementioned factors for aerobic granulation are not absolute. For example, only part of the substrate of domestic wastewater can be 
+taken up anaerobically by the AGS directly or after fermentation. Still, it 
+is possible to grow AGS on the complex composition of domestic 
+wastewater (Layer et al., 2019; Pronk et al., 2015b ). The selection 
+pressure applied in full-scale reactors will be less effective than in 
+lab-reactors, because of less favourable H/D ratios and other scaling 
+factors. Apparently, the favourable mechanisms can be allowed to be 
+non-optimally implemented to a certain extent without harming the 
+granulation process. It is however unclear, how the different mecha -
+nisms influence one another positively or negatively if the process 
+conditions become less favourable. 
+Analysis of the quantitative interplay between the aforementioned 
+mechanisms in combination with varying process conditions requires a 
+mathematical modelling approach. A mature granular bed in practice 
+exists of a collection of granules with sizes up to 5 mm (van Dijk et al., 
+2020 ). For the purpose of this study, a framework was required in which 
+the lifecycle of granules could be tracked. Simulated granules should be 
+Fig. 2.A graphical representation of the six mechanisms for granulation: (1) microbial selection, (2) selective wasting, (3) maximizing transport of substrate into the 
+biofilm, (4) selective feeding, (5) (non-) granule forming substrate, (6) breakage of granules. 
+Fig. 1.Typical startup of an aerobic granular sludge reactor from flocs, showing an initial lag phase with slow improvement of the sludge morphology, followed by 
+the granulation phase, where granules appear in the reactor. The colours indicate the size of the biomass aggregates, showing proto-granules and flocs (D200 µm), 
+small granules (F200 µm) and large granules (F1000 µm). Data derived from the Nereda ® reactor in Utrecht, the Netherlands. E.J.H. van Dijk et al.                                                                                                                                                                                                                           Water Research 216 (2022) 118365
+4allowed to have different time-variable spatial positions in the reactor 
+and should be exposed to different bulk-liquid conditions, within a cycle 
+and from one cycle to the next. This approach is required to capture the 
+stochastic properties of an AGS system. Several models are available 
+describing the AGS process with different emphases (Baeten et al., 
+2019 ). Models that describe granulation as the development of a char-
+acteristic mean granule size (Ni et al., 2010; Yang et al., 2004 ) or assume 
+a single granule size to study, for example, microbial speciation in 
+granules and nutrient removal (de Kreuk et al., 2007b; Xavier et al., 
+2007 ) are not suitable for the purpose of this study. The same holds for 
+models that assume successful granulation using a fixed granule size 
+distribution to investigate reactor performance (Dold et al., 2019; Layer 
+et al., 2020 ). Models with a dynamic granule size distribution (Beeftink 
+and van den Heuvel, 1990; Li and Li, 2009 ) often use a population 
+balance model (PBM) to describe the number of granules in a certain size 
+class and the processes that influence these amounts (i.e. growth and 
+detachment) via transitions from or to another size class. However, the 
+available PBMs are only suited for completely mixed reactors, not for 
+typical AGS reactors with combined spatial and temporal differences 
+between the conditions experienced by aggregates. We hypothesized 
+that the process for aerobic granulation can be described by six mech -
+anisms (Fig. 2) with a minimal required description of the biological 
+conversions, tracking the development of individual granule clusters in 
+the reactor over time. 
+In this study, we aimed to understand the underlying principles for 
+aerobic granulation. A mathematical model was constructed that de-
+scribes the full life cycle of aerobic granules. We performed a sensitivity 
+analysis on the six mechanisms proposed and we evaluated their indi-
+vidual contribution to the granulation process. 
+2.Methodology 
+A model was developed integrating several sub-models describing all 
+the proposed mechanisms responsible for the granulation process. The 
+main process steps in current full-scale AGS reactors according to the 
+Nereda ® concept are the feeding phase, in which fresh influent is fed to 
+the reactor from the bottom, the reaction phase, where the wastewater is 
+cleaned by different aeration strategies and finally the settling and 
+decanting phase, in which the selective wasting takes place. In full-scale 
+applications feeding and effluent decanting happens simultaneously 
+(Giesen et al., 2013; Pronk et al., 2015b ). 2.1. Theoretical background 
+2.1.1. Biomass morphology 
+The morphology of biofilms is dependent on a combination of con-
+vection, diffusion, reaction, growth and detachment (Picioreanu et al., 
+2000a ). All biomass clusters are assumed to have constant smooth and 
+spherical morphology with a constant density. This specific biofilm 
+morphology occurs when substrate uptake is limited by the maximum 
+biomass specific uptake rate and not by transport (Picioreanu et al., 
+2000b ). Since substrate uptake (anaerobic) is uncoupled from growth 
+(aerobic) in full-scale AGS, a smooth, spherical biofilm morphology was 
+assumed for all simulations. Wherever the distinction is made between 
+flocs and granules, this is solely based on the sludge particle diameter. 
+The smallest particles of 100 µm are referred to as flocs, while all larger 
+particles are considered (proto-)granules. 
+2.1.2. Microbial ecology 
+The microbial population differs over the radius of the biofilm due to 
+concentration gradients of substrates (Picioreanu et al., 1998 ). Different 
+organisms present in the biofilm are responsible for processes like 
+nitrification, denitrification and phosphate removal (de Kreuk et al., 
+2005; Winkler et al., 2013 ). However, since the aim of this study was to 
+investigate the impact of the different mechanisms on the growth of 
+aerobic granules, the biomass clusters are assumed to have constant 
+ecology. Furthermore, biomass formation in wastewater treatment 
+plants is mostly related to COD conversions. No nitrogen and phos-
+phorus conversions are considered in the model as they contribute 
+marginally to biomass formation. All modelled biomass can store COD 
+anaerobically as storage polymers. Therefore, only the conversions of 
+COD into storage polymers, and storage polymers into biomass, were 
+simulated to describe granular growth. 
+2.1.3. Biological fate of COD-types in wastewater 
+The chemical oxygen demand (COD) present in domestic wastewater 
+can be divided in multiple fractions (Henze, 1992 ). These fractions can 
+be divided based on the availability for biological conversions (Layer 
+et al., 2019 ). The soluble and suspended inert COD and inorganic solids 
+are not available for any biological conversion and are thus disregarded 
+in this model. Both the soluble readily biodegradable COD and the 
+colloid fast hydrolysable COD are available for anaerobic conversion 
+into storage polymers and are thus categorized as GFS. The suspended 
+slowly hydrolysable COD is available for biological conversions, but not 
+Fig. 3.Typical batch scheduling for the AGS process and the various active processes in the model.  E.J.H. van Dijk et al.                                                                                                                                                                                                                           Water Research 216 (2022) 118365
+5for anaerobic storage and are categorized as n-GFS. A schematic repre -
+sentation is shown in Fig. 4. 
+2.2. Model description 
+2.2.1. Components 
+Four mathematical models were combined to perform a sensitivity 
+analysis on the hypothesized main mechanisms for aerobic granulation 
+(see also Fig. 4). The four model components are described below (a 
+more detailed description can be found in the appendix).  
+1. Cluster-based biomass population model : An AGS reactor typically 
+contains a dynamic distribution of granule sizes, all of different age, 
+shape and ecology. To capture the probability of granules of similar 
+size to be at the different locations in the reactor at the same time, a 
+cluster-based approach was used. The sludge population was dis-
+cretized into clusters of aggregates with the same diameter, where 
+each simulated cluster represented the same amount of physical 
+biomass in the reactor. The amount of biomass represented by a 
+cluster scaled linearly with the surface area of the simulated reactor, 
+since the spatial gradients in an AGS reactor are mainly 1D (i.e. over 
+the height). A convergence analysis showed that a discretization of 
+1.75 ×10 2 simulated mass per real mass per reactor area (kg/kg/ 
+m2) yielded a discretization-independent solution. This resulted in 
+⊃10,000 clusters at start-up in the reference case with only flocs of 
+100 µm, and the population increased to ⊃100,000 upon successful 
+granulation. New clusters were formed from n-GFS as clusters with a 
+diameter of 100 µm. The clusters could be subjected to the following 
+mechanisms:  
+≡Growth: in the reaction phase, the diameter of each cluster of 
+particles grew according to the amount of PHA formed during the 
+anaerobic feeding phase. This resulted in a different increase in 
+volume for each cluster of granules. The increase was based on an 
+apparent yield coefficient (including decay) and a constant 
+biomass concentration in the granule, resulting in a constant VSS/ 
+TSS ratio. All PHA was assumed to be consumed and converted to new biomass, without any time dependence in the reaction phase 
+(see Appendix B).  
+≡Breakage: the larger aerobic granules become, the more likely they 
+will break up into smaller pieces (de Graaff et al., 2020 ). In the 
+model, granule clusters larger than 3 mm have an increasing 
+chance of breaking (increasing to 99% for granules larger than 5 
+mm). Breakage leads to two clusters with random diameter be-
+tween 100 µm and the original diameter, with a combined biomass 
+equal to the original cluster (see Appendix B).  
+≡Redistribution: if a cluster of granules exceeded the maximum 
+amount of represented real biomass, it was split into two clusters of 
+granules with same diameter. Each cluster would represent half of 
+the original biomass.  
+≡Wasting: Biomass discharge from the reactor was performed by the 
+removal of number of complete clusters. Clusters were selected, 
+depending on the wasting method used (a mixed sample for MLSS 
+control or based on settling velocity for selective wasting).  
+2. Bulk-liquid solute mass balance : the anaerobic feeding in an AGS 
+sequencing-batch reactor (SBR) is mainly a 1D process, since reactors 
+are fed from the bottom and the process is designed to get an optimal 
+plug-flow. Some axial mixing does occur (van Dijk et al., 2018 ). 
+Therefore, the concentration profile of GFS during feeding was 
+described by an 1D convection-dispersion model (Degaleesan and 
+Dudukovic, 1998; van Dijk et al., 2018 ). It was solved with one-way 
+coupling to the settling model, since during the feeding phase 
+granules will still be settling and partially fluidize. The calculated 
+effective voidage is thus dynamic and will hence influence the local 
+fluid velocity.  
+3. Biofilm solute mass balance : The flux of GFS into a granule depends on 
+the local concentration in the bulk-liquid surrounding the granule 
+and the rate of mass transfer, which varies over the height of the 
+reactor. It is in turn affected by the rate of diffusion in the granules 
+and rate of reaction of GFS to PHA. Furthermore, anaerobic storage 
+capacity of PHA is limited by a maximum PHA content, used as a 
+simplification for depletion of glycogen (de Kreuk et al., 2007b ). The 
+dynamic mass balances of GFS and PHA were modelled using a 1D 
+radial reaction-diffusion model for each cluster of particles, solved 
+Fig. 4.Model overview, with (1) convection and dispersion in the bulk liquid, (2) mass transfer through the boundary layer, (3) 1D radial diffusion, (4) conversion of 
+GFS to PHA, (5) settling of granules in the reactor, (6) individual based population model, (7) breakage. Schematic representation of the translation from organic 
+substrates in ASM2d (Henze et al., 1999 ) into the granulation model (8). E.J.H. van Dijk et al.                                                                                                                                                                                                                           Water Research 216 (2022) 118365
+6fully coupled to the bulk-liquid mass balance. The combined pro-
+cesses in the bulk-liquid phase, biofilm phase and the settling model 
+determined the total amount of storage polymer per cluster of 
+granule after the feeding phase.  
+4. Settling model : the settling velocity of a granule depends on the 
+physical properties of the granule (i.e. size and density) and the 
+biomass concentration in the near vicinity of the granule. As a result, 
+every granule will have a unique settling velocity, eventually 
+determining the position in the reactor during feeding. To describe 
+this settling behaviour, we used the Van Dijk settling model (van Dijk 
+et al., 2020 ) and adapted it to describe the settling and fluidization of 
+clusters of granules. The model was also adapted to better describe 
+the settling of flocs and proto-granules. The latter involved a change 
+in the calculation of the expansion index, which is now calculated 
+based on the Archimedes number. 
+2.2.2. Cycle build-up 
+A typical Nereda ® cycle was simulated in the model. This typical cycle has a duration of 6 h, and consists of 60 min of anaerobic feeding 
+and decanting, 270 min of reaction time, and 30 min for settling and 
+wasting of biomass. These typical values could vary in the scenario ’s. 
+Fig. 3 shows the different processes being modelled in the different 
+phases of the cycle. 
+2.3. Size distribution 
+The granule size distribution of the sludge in the Nereda ® reactor 
+used as reference in Fig. 1 was measured over time. To determine the 
+granule size distribution 1 L of sample was poured over a series of sieves 
+with different mesh sizes (212, 425, 630, 1000, 1400 and 2000 µm). A 
+mixed sample of 100 mL was filtered for the determination of the total 
+dry weight. The obtained granular biomass of the different sieve frac-
+tions and the mixed sample were dried at 105 ∘C until no change in 
+weight was detected anymore. Then the sieve fractions are grouped 
+together: small granules are the sum of 212, 425 and 630 µm, large 
+granules are the sum of 1000, 1400 and 2000 µm and the concentration Table 1 
+Results of sensitivity analysis.   
+First small granule (d) First large granule (d) Lag phase (d) Granulation phase (d) Average granule size (µm) Maximum granule size (µm) 
+reference case 90 165 193 58 1371 3742 
+no plug flow 78 – 205 73 695 742 
+15 min feeding 125 278 290 42 1206 2399 
+30 min feeding 95 203 205 42 1575 3716 
+no selective wasting 98 193 – – 189 3518 
+100 mg L 1 GFS – – – – 110 736 
+no selective feeding 115 278 275 52 1126 3886  
+Fig. 5.Concentration and evolution of granule fractions in the scenarios: blue area shows flocs and proto-granules, green area shows small granules, orange area 
+shows large granules. R: reference case, A: mixed feeding, B: 15 min feeding, C: 30 min feeding, D: no selective wasting, E: 100 mg L 1 GFS, F: no selective feeding. 
+(For interpretation of the references to colour in this figure legend, the reader is referred to the web version of this article.) E.J.H. van Dijk et al.                                                                                                                                                                                                                           Water Research 216 (2022) 118365
+7of proto-granules and flocs is obtained by subtracting the sum of all 
+granule fractions from the concentration of the mixed sample. 
+3.Results and discussion 
+A sensitivity analysis was done to compare the influence of the major 
+mechanisms on the granulation process. The main results for all sce-
+narios are summarized in Table 1 and Fig. 5. 
+3.1. Reference case 
+A reference case was defined and the different scenarios in the 
+sensitivity analysis were compared to this reference case. The reference 
+case was a full-scale reactor with a water depth of 6 m, that was seeded 
+with 2 g L 1 of flocs of 100 µm. The selection pressure at the start was 3 
+m h 1 and it was slowly increased whenever the sludge concentration 
+reached 3.0 g L 1. The reactor was fed from the bottom of the reactor, 
+with a P˘eclet number of 250. The exchange ratio was 25% and there 
+were no rain weather conditions, or other variation to the influent flow 
+or composition. The reactor was fed four batches per day, containing 
+500 mg L 1 of COD, which was composed of 200 mg L 1 granule 
+forming substrate and 300 mg L 1 non-granule forming substrate. The feeding time was 60 min. Feeding and decanting was done simulta -
+neously, as is normal for full-scale AGS installations. 
+For analyses the particles in the reactor are classified in three main 
+types: the proto granules , which are particles in the range of 100 to 200 
+µm. These particles have the granular morphology, but settling behav -
+iour is floc-like, so they are not able to separate from the sludge matrix. 
+Flocs are mathematically treated similar to the proto-granules, because 
+they both have the same floc-like behaviour. In the model a floc is 
+represented by particles of 100 µm and smaller. Small granules are par-
+ticles in the range of 200 to 1000 µm. These particles (larger than 200 
+µm) are aerobic granules according to the definition of AGS (de Kreuk 
+et al., 2007a ). These granules settle better than the proto-granule frac-
+tion and are small enough to be fully penetrated with substrate (acetate 
+and oxygen). Particles larger than 1000 µm are called large granules . 
+These granules settle very quickly and accumulate near the bottom of 
+the reactor during the feeding phase. Large granules are large enough to 
+only be partially penetrated with substrates. 
+The granulation process in the reference case is shown in Fig. 5. Since 
+the reactor is seeded with particles of 100 µm, it takes time before the 
+first small granules appear in the reactor. All proto-granules have the 
+same bulk-like settling behaviour, so selective wasting has no effect yet. 
+This means every particle has the same chance of being wasted. Until 
+Fig. 6.Granules in the reference case after the feeding phase at day 75. All graphs show the depth of the reactor on the y-axis. Left: individual groups of granules, 
+colour based on PHA concentration (g L 1) in the granule, x location is randomly chosen for visualization. Middle: the voidage fraction in the bed. Right: granule 
+forming substrate in the bulk liquid. 
+Fig. 7.Lorenz curve showing the inequality in substrate distribution over the granules in the reference case. The curves are given at the start of the simulation, at the 
+end of the lag phase and the end of the granulation phase, indicating an increasing inequality in substrate distribution. The numbers in the legend indicate the Gini 
+coefficient (0 for equal distribution, 1 of complete unequal distribution). E.J.H. van Dijk et al.                                                                                                                                                                                                                           Water Research 216 (2022) 118365
+8this point the growth of the granules is based on chance. The proto- 
+granules will not not receive substrate every cycle. The substrate load 
+depends on the position in the sludge bed, the volumetric exchange ratio 
+and the amount of sequestered substrate by the particles beneath it. Over 
+the course of multiple cycles, the combination of these factors will 
+determine whether a proto-granule will receive enough substrate to 
+grow into a small granule before it is spilled. 
+After 90 d the first small granules appear and these granules settle 
+faster than the proto-granules. This gives these granules a competitive 
+advantage: the granules will be fed more frequently, because they settle 
+towards the bottom of the reactor. This can be seen as a race towards the 
+substrate. The fastest settling granule will always win the race and can 
+take up a maximum amount of substrate. On top of this, the fastest 
+settling granule will also be spilled less likely in the selective wasting 
+from the top of the settled sludge bed. Larger granules therefore have a 
+double benefit: they receive more substrate and they are less likely to be 
+spilled. This process is also visible in Fig. 5: small granules dominate the 
+population in the reactor a few weeks after the first small granules 
+appeared. 
+In the simulation the first large granules appear after 165 d. These 
+granules have better settling properties then the small granules, the 
+largest ones having settling velocities well over 100 m h 1. This means 
+the large granules will reach the bottom of the reactor in several minutes 
+and they will be fed every cycle. The chance of being spilled through 
+selective wasting is close to zero, because the settling velocity of large 
+granules is much larger than the maximum applied selection pressure of 
+6 m h 1. This is a matter of the winner takes it all. The large granules will 
+accumulate most of the granule forming substrate (Fig. 6), essentially 
+leading to the extinction of the proto-granules. 
+The end of the lag phase is defined as the moment the biomass 
+concentration increases more than 10% above the target concentration 
+of 3 g L 1. This means the maximum selection pressure of 6 m h 1 is 
+reached and due to the increasing amount of granules, the biomass 
+concentrations keeps increasing. The reference case has a lag phase of 
+193 d. The end of the lag phase marks the start of the granulation phase, 
+which ends when the target biomass concentration of 8 g L 1 is reached. 
+Hereafter the biomass concentration is kept on 8 g L 1 through mixed 
+wasting in the aeration phase. The duration of the granulation phase was 
+58 d (see Table 1). 
+The granulation process in the reference case is very similar to what 
+is observed in practice (Fig. 1). It shows a similar apparent steady state 
+in the lag phase after which large granules appear in the granulation 
+phase. Granulation in practice shows a bit more variation due to pro-
+cesses that are not taken into account in the model, such as rain weather 
+events, load variations and temperature variations, but the overall 
+process compares well. 
+3.2. Microbial selection 
+The effect of changing feast/famine conditions was shown by 
+shortening the anaerobic feeding time, thus limiting the anaerobic up-
+take of granule forming substrate. Since the batch size (and thus the 
+loading rate) was kept constant, shortening the feeding time resulted in 
+a higher feed flow velocity. In the reference case the anaerobic feeding 
+time was 60 min, which was reduced to 30 min and 15 min. The shorter 
+feeding time has a clear effect on the duration of the lag phase, which 
+was 193 d in the reference case and was increased to 290 d in the case 
+with a 15 min feeding phase (Table 1). The granulation phase was a bit 
+faster, when the feeding phase was shortened, reducing from 58 to 42 d. 
+The final granule size distribution after 365 d was quite similar. 
+The difference in the lag phase is a consequence of the higher up-flow 
+velocity and the shorter contact time in the scenarios. A consequence of 
+the higher up-flow velocity is a larger sludge bed expansion, leading to 
+less proto-granules in contact with the influent. The shorter contact time 
+also leads to less uptake of substrate by the particles. As a result, less proto-granules grow towards small granules due to the more even dis-
+tribution of the residual granule forming substrate left over after the 
+feeding phase. 
+In the granulation phase the bed expansion is not an issue anymore, 
+because small granules can settle faster than flocs and proto-granules. 
+So, the substrate-rich influent is more effectively in contact with the 
+largest granule size fraction. The higher up-flow velocity causes a dis-
+tribution of the GFS to be more skewed towards the small granules. As a 
+result small granules are converted into larger granules more quickly, 
+slightly reducing length of the granulation phase. 
+Overall, the duration of the feast period is especially important in the 
+lag phase, which is shortened by a longer feast period at equal daily 
+volumetric loading rates. In the granulation period, the duration of the 
+feast period is of less importance and might even provide a means to 
+control the granule size distribution. 
+3.3. Selective wasting 
+The contribution of selective wasting to the aerobic granulation 
+process was shown by switching from selective wasting to mixed 
+wasting. In selective wasting the slowest settling biomass is removed 
+from the top of the sludge bed, while faster settling particles remain in 
+the reactor. In mixed wasting, the biomass concentration is kept con-
+stant by wasting both fast and slow settling biomass, all particles having 
+the same chance to get wasted. The mixed wasting is representative for 
+the situation in a conventional activated sludge process. The biomass 
+was wasted to maintain a concentration of 3 g L 1. This mixed wasting 
+did not lead to a significant granular fraction, although after 98 d the 
+first small granules appeared in the reactor. Some large granules were 
+present at the end of the simulation, although their contribution was 
+small (0.3 g L 1) and with insufficient effect on the settleability to allow 
+for an increase in MLSS. 
+This scenario clearly shows the importance of selective wasting, 
+because without it significant granulation does not happen. It also shows 
+the drive towards granulation from the other mechanisms in the reactor. 
+Although the granules are not preferentially maintained in the reactor as 
+they are randomly wasted, new granules are constantly formed, due to 
+spread in anaerobic distribution of GFS. This might explain, why (small) 
+granules are observed in many conventional activated sludge systems 
+(Wei et al., 2020 ). Even without selective wasting, some growth of 
+granules can happen, when the other drivers for granulation are suffi-
+ciently present in the reactor. However, selective wasting is essential to 
+drive the sludge towards full granulation. 
+3.4. Concentration gradients 
+To show the positive effect of upwards plug-flow feeding on the 
+granule formation, in the simulation the plug-flow feeding was removed. 
+The reactor was changed into an ideally mixed reactor during the 
+feeding period. In full-scale AGS reactor feeding and decanting is done 
+simultaneously, which is possible because of the plug-flow (van Dijk 
+et al., 2018 ). When the reactor would be ideally mixed during feeding, 
+biomass would wash-out, resulting in poor effluent quality. For a good 
+comparison between the scenarios, in the simulation biomass was not 
+allowed to leave the reactor with the effluent. The results show a strong 
+shift towards smaller granules. Compared to the reference case the 
+duration of the lag phase was only slightly longer (205 d compared to 
+193 d). Also, the duration of granulation phase was very similar. The 
+real difference is visible in the granule size distribution at the end of the 
+simulation. Without the plug flow feeding, no large granules appeared in 
+the reactor and the average granule size was 703 µm (compared to 1371 
+µm in the reference case). 
+This shift towards smaller granules is caused by several different 
+processes. Lower substrate concentrations in the bulk liquid limit the 
+diffusion depth of substrate into the granules. This results in slower E.J.H. van Dijk et al.                                                                                                                                                                                                                           Water Research 216 (2022) 118365
+9granule growth. Also, all substrate is distributed evenly over all parti-
+cles, where in the reference case the best settling fraction receives most 
+of the substrate. Pilot-scale work with anaerobic pulse-feeding of 
+municipal wastewater showed a smaller mean granule size compared to 
+the plug-flow of full-scale bottom-fed reactors (Rockt aschel et al., 2015 ). 
+Because the other mechanisms for granulation are still present (micro -
+bial selection, selective wasting and granule forming substrate), the 
+system can still achieve a high granulation grade, but only with small 
+granules. 
+3.5. Selective feeding 
+The effect of the selective feeding was shown by removing the dif-
+ferences in settling velocity between the different particle sizes during 
+the feeding phase. As a result, all particles have the same chance to be 
+exposed to substrate, regardless of their settling properties, while the 
+concentration gradient resulting from the plug-flow was kept intact. The 
+effect is most noticeable in the duration of the lag phase, which takes 
+275 d compared to 193 d in the reference case. The duration of granu -
+lation phase is comparable with the reference case, but the granulation 
+phase starts without any large granules present. In the end the average 
+granule size is slightly smaller than in the reference case. This outcome 
+indicates that whether a system transitions from the lag phase to the 
+granulation phase is not only determined by the formation of some small 
+granules that settle faster than proto-granules and flocs. The ability to 
+exploit the faster settling properties of small granules for the uptake of 
+GFS is key in accelerating the transition from the lag-phase to the 
+granulation-phase and of the granulation phase itself. 
+The selective feeding can thus be seen as a race to the substrate: the 
+best settling granules will have the longest exposure to the substrate and 
+will see the highest concentration gradients. Because the settling prop-
+erties of granules get better as they get larger, selective feeding allows 
+for an increase substrate utilization with an increasing granule size. 
+Removing selective feeding from the simulation shows, as expected, a 
+shift towards smaller granules. Although in the end large granules still 
+appear in the reactor, selective feeding is an important driver for gran-
+ulation, which has not been recognized before in literature. 
+3.6. Granule forming substrate 
+In the model non-granule forming substrate will always lead to the 
+formation of flocs and granule forming substrate can lead to the for-
+mation of granules, if it is converted into storage polymers. Especially in 
+the lag phase the ratio between GFS and n-GFS will influence the chance 
+of proto-granules to grow into small granules. When too many flocs are 
+formed compared to the growth of the proto-granules, the proto- 
+granules will get spilled before they grow into small granules and can 
+preferentially be retained in the reactor. This is clearly shown in the 
+scenario where the GFS was reduced from 200 mg L 1 to 100 mg L 1 (i.e. 
+decreased from 40% to 20% of the influent COD). Under these condi -
+tions the lag phase does not finish in the 365 d of simulation. Although 
+some small granules appear in the reactor (the maximum granule size is 
+736 µm), the average granule size is only 110 µm and the simulation 
+clearly shows a shift towards flocs in the lag phase. 
+In the model transport and conversion characteristics of GFS were 
+modelled as acetate, which is the most abundant granule forming sub-
+strate in municipal wastewater treatment. GFS is derived from the fatty 
+acids in the influent supplemented with the fatty acids formed by 
+fermentation and hydrolysis of more complex influent COD (Layer et al., 
+2019; Toja Ortega et al., 2021 ). The amount of GFS is in this context partly depending on the process conditions. Fermentation and hydro -
+lysis were not included in the presented modelling framework, since for 
+this sensitivity analysis the origin of the GFS is not important. The 
+amount of GFS will determine if the wastewater is suitable for AGS. For 
+future modelling and better design of AGS processes these fermentation 
+and hydrolysis processes will need better characterization in order to 
+include them in a reliable manner in aerobic granular sludge simulation 
+platforms. 
+3.7. Breakage 
+Granules will eventually break into smaller pieces. In the model the 
+chance of breaking is coupled to the granule size: larger granules have 
+higher chance of breaking. The resulting pieces can become a seed for 
+new granules. In the simulations the origin of granules (floc or breakage) 
+was monitored. At the start, all granules originate from flocs. When large 
+granules appear in the reactor, an increasing fraction of the biomass 
+originates from broken-up granules. At the end of the simulation (after 
+365 d) almost 20% originates from broken up large granules. This pro-
+cess can be seen as a bypass of the lag phase. Some pieces will be larger 
+than proto-granules and can develop into new granules without going 
+through the stochastic growth process of the proto-granules. In this 
+work, the probability of breakage was increased with increasing granule 
+size based on a decreasing granule strength, as was reported by de 
+Graaff et al. (2020) . The granule size beyond which a granule would 
+have a definite probability to break-up was based on the maximum 
+granule size observed in full scale Nereda ® (van Dijk et al., 2020 ). 
+Granules can break-up in two parts of random volume, adding up to the 
+volume of the original granule. In practice, breakage into multiple parts 
+as well as attrition will occur (Beeftink and van den Heuvel, 1990 ). 
+Reality is clearly more complicated than the implementation used for 
+the sensitivity analysis in this study. However, all implementations 
+would have the same qualitative effect as was observed in this study, 
+determining the maximum granule size and generate nuclei of varying 
+size for granulation to continue. For a part the breakage of large granules 
+will be a driver for the acceleration of the granulation process in the 
+granulation phase. Breakage of granules has a similar effect as adding an 
+external seed of granules to a reactor (Pijuan et al., 2011 ). Both act as a 
+source of new granules, bypassing the slow stochastic process of growing 
+small granules out of flocs and proto-granules. So during start-up of AGS 
+systems in practice a granular seed could speed up start-up times 
+significantly. 
+3.8. Model validity 
+Various mathematical models have been developed to describe bio-
+film growth (Wanner and Reichert, 1996 ) and biochemical conversions 
+in (partially) aerobic reactors for wastewater treatment (Henze et al., 
+1999 ). For the sensitivity analysis presented here, we opted to imple -
+ment only conversions required to capture the basic dynamics a mech -
+anism has on distribution of biomass over the size classes of granules. 
+The model was intended for systems with an anaerobic feast phase and 
+an aerobic famine phase. Only heterotrophic growth was assumed, with 
+a constant VSS/TSS ratio, using two substrates (n-GFS and GFS) and an 
+apparent yield for growth (modelling decay and growth combined). 
+Consequently, the active biomass density was constant, homogeneous 
+over the radius of a granule and independent of the historical substrate 
+loading rate of a cluster. This history could also not impact the storage 
+capacity of PHA. Regardless of these simplifications, the model was able 
+to describe the principle behaviour of the granulation process, consisting E.J.H. van Dijk et al.                                                                                                                                                                                                                           Water Research 216 (2022) 118365
+10of a lag phase and a granulation phase, without focus on mimicking 
+actual reactor performance. In the future the model could be extended to 
+incorporate biological nutrient removal to investigate the effects of the 
+mechanisms on reactor performance. 
+3.9. Further analysis 
+The sensitivity analysis performed in this study shows how delicate 
+the start-up is of a AGS reactor from flocs. The lag phase that is seen in 
+practice can be explained by the slow stochastic process of turning flocs 
+into proto-granules and proto-granules into small granules. Selective 
+wasting is an important mechanism for granulation, but in the lag phase, 
+because of the entrapment of proto-granules in the sludge flocs, it has a 
+limited effect. Granules are only selectively retained in the reactor, when 
+they settle faster than the flocculent sludge fraction. So the selective 
+wasting only starts to be effective when small granules appear in the 
+reactor. The lag phase seems to be mainly driven by the presence of 
+granule forming substrate and the ratio between proto-granule growth 
+and production of new flocs. The latter is important for the retention 
+time distribution of the proto-granules. Both flocs and proto-granules 
+will have a different age. The distribution of age needs to allow for 
+small granules to be formed, so the maximum retention time in distri -
+bution determines if and how fast small granules are formed. 
+In the granulation phase the other mechanisms become more 
+important for the granulation process. Large granules will not be spilled 
+through the selective wasting and will only disappear from the reactor 
+through breakage. The largest granules receive the highest amount of 
+substrate, because of the selective feeding. Their substrate uptake ca-
+pacity combined with their abundance is large enough to take up all the 
+substrate. As a consequence only a limited amount of granule forming 
+substrate is available for the flocs and proto-granules in a mature 
+granular bed. The large granules will filter out all substrate from the 
+influent at the bottom of the reactor. It is a matter of “the winner takes it 
+all”, as can be seen in Fig. 7, where we used a Lorenz curve to visualize 
+this process. In economics the Lorenz curve (Lorenz, 1905 ) is used to 
+visualize the inequality of the wealth distribution. We used it to visualize 
+the inequality in the substrate sequestered by the granules. The 
+accompanying Gini coefficients (Gini, 1912 ) are also shown. In the plot 
+the cumulative amount of substrate taken up by the granules was plotted 
+versus the cumulative amount of granules. The diagonal line would 
+represents a completely even distribution of the substrate over all 
+granules. The Lorenz curve at 3 different days is plotted. At the start of 
+the simulation there is some inequality, but this is caused by the batch 
+size that is smaller than the bed height. At the end of the lag phase there 
+is already a large inequality with a Gini coefficient increasing from 
+0.354 to 0.952, indicating a large change in substrate distribution. So at 
+the end of the lag phase, already a large part of the substrate is 
+sequestered by a small part of the granules. At the end of the granulation 
+phase the inequality is even larger, with a Gini coefficient of 0.998, 
+indicating that only a small fraction of granules sequester almost all the 
+substrate, clearly showing the effect of the selective feeding. 3.10. Practical implications 
+Growing granules from activated sludge flocs in a full-scale reactor 
+can be a lengthy process, as shown in Fig. 1. The model shows that a lag 
+phase is a natural part of the granulation process. In practice reactors are 
+often seeded with AGS from other plants to shorten the lag phase. 
+Seeding is a method to break out of the stochastic processes that 
+dominate the length of the lag-phase. Besides providing insights on the 
+granulation process, the model can help to optimize the start-up process 
+and find an optimum between cost for seeding and length of the start-up 
+process. The model can also be used to optimize the start-up strategy 
+regarding selective wasting, applied batch size and cycle times. When in 
+the future the model is extended with a more elaborate biological model, 
+it can also be used to investigate the effect of granule size distribution on 
+conversion rates and effluent quality. 
+4.Conclusion 
+A model was developed to provide a theoretical framework to 
+analyse the different relevant mechanisms for aerobic granular sludge 
+formation, which can form the basis for a comprehensive model that 
+includes detailed nutrient removal aspects. The insights from this study 
+can be used to further improve the granule formation in AGS reactors.  
+≡The model describes the dynamics of a lag and a granulation phase, 
+found in practice.  
+≡Selective feeding and breakage of large granules were identified as 
+important mechanisms, not reported in literature.  
+≡Granulation is a combined result from 6 mechanisms, allowing a sub- 
+optimal mechanism to be compensated by the other mechanisms.  
+≡The GFS/n-GFS ratio and feast/famine ratio are the most important 
+mechanisms in determining whether a system can transition from the 
+lag phase to the granulation phase.  
+≡Selective wasting and selective feeding mainly determine whether 
+the transition from lag to the granulation phase will occur and at 
+which rate.  
+≡Breaking of granules can have a positive effect on granulation, 
+similar to seeding of reactors with granules. 
+Declaration of Competing Interest 
+The authors declare that they have no known competing financial 
+interests or personal relationships that could have appeared to influence 
+the work reported in this paper. 
+Acknowledgements 
+The authors wish to thank Lindsey Carver and Pieter Brorens for their 
+invaluable contribution to this project. This work was supported by the 
+Delfland Water Authority, Delfluent Services, Evides Industriewater, the 
+Rijnland Water Authority and Royal HaskoningDHV.  
+Appendix A.Biological and physical constants 
+Model parameters are listed in Table A1. Additional parameters for the settling model not listed here, can be found in van Dijk et al. (2020) . E.J.H. van Dijk et al.                                                                                                                                                                                                                           Water Research 216 (2022) 118365
+11Appendix B.Mathematical model description 
+The model is build-up out of several components to simulate the change in time and in space of the dependent variables listed in Table B.3, which 
+are described below. 
+Bulk-liquid solute mass balance (1D convection-dispersion-transfer) 
+The mass balance of GFS during anaerobic feeding was formulated as follows, describing axial dispersion, convective transport and mass transfer 
+between the bulk and the biofilm (from/to all granules in the set of clusters Ni at a certain height): 
+∂cGFSCL
+∂t Dax∂2cGFSCL
+∂x2vin
+εLx∂cGFSCL
+∂x̂Ni
+j1kLBCGFSaj
+εLx(
+cGFSCBCj†rdjE2 cGFSCL)
+(B.1) 
+The boundary conditions were defined as follows:  
+≡Bottom inlet (Danckwerts): 
+[vin
+εLxcGFSCL Dax∂cGFSCL
+∂x]⃦⃦⃦⃦
+x0vincGFSCinCtF0 (B.2)    
+≡Top outlet (zero-dispersion): 
+ Dax∂cGFSCL
+∂x⃦⃦⃦⃦
+xH0CtF0 (B.3)   Table A1 
+Biological and physical constants used for the sensitivity analyses.  
+Constant Symbol Value Unit Reference 
+P˘eclet number Pe 2.5 ×102  van Dijk et al. (2018) 
+Reactor height H 6 m this study 
+Feeding velocity vin 4 m h 1 this study 
+Bulk-liquid density ρL 1×103 kg/m3 
+van Dijk et al. (2020) 
+Granule density ρB 1.035 ×103 kg/m3 
+van Dijk et al. (2020) 
+Temperature T 293 K this study 
+Biomass concentration granule cX 5×101 kg/m3 
+van Dijk et al. (2020) 
+Diffusion coefficient GFS in bulk (298 K) DGFSCL 1.21 ×10 9 m2 s 1 
+Cussler (2009) 
+Diffusion coefficient GFS in biofilm (298 K) DGFSCB 2.4 ×10 10 m2 s 1 
+van den Berg et al. (2021) 
+Monod constant for GFS KGFS 1 ×10 3 kg/m3 this study 
+Monod constant for PHA KPHA 1 ×10 3 kg/m3 this study 
+Maximum biomass specific substrate uptake rate qANCmax 2.78 ×10 5 kg kg 1s 1 this study 
+Maximum storage capacity of GFS cPHACmax 7.5 kg/m3 this study 
+Yield of biomass on storage polymers YXCPHA 0.32 kg kg 1 this study 
+Yield of biomass on n-GFS YXCn-GFS 0.32 kg kg 1 this study  
+Table B1 
+Dependent variables and interdependence in submodels. An ‘X’ denotes that the variable is used in a submodel. A shaded ‘O’ indicates that the variable is dynamically 
+computed in that submodel. Arrows indicate the extent of coupling between submodels (either one-way coupled (← or →) or fully coupled (→←)). Subscript j denotes 
+the index of the cluster of sludge particles.   
+Bulk-liquid solute mass balance Biofilm solute mass balance Settling model Granule population model 
+cGFSCLxCt O→ ←X  X 
+cGFSCBCjrCt X→ ←O→  X 
+cPHACBCjrCt O→  X 
+xjt X X ←O  
+djt X X X ←O  E.J.H. van Dijk et al.                                                                                                                                                                                                                           Water Research 216 (2022) 118365
+12Biofilm phase solute mass balance (1D radial diffusion-reaction) 
+The mass balance of GFS and storage polymers (PHA) over the biofilm phase was modelled according to the following equation: 
+∂cGFSCBCj
+∂t DGFSCB[∂2cGFSCBCj
+∂r22
+r∂cGFSCBCj
+∂r]
+RGFS 
+cGFSCBCjrCcPHACBCjr)
+(B.4)  
+∂cPHACBCj
+∂tRPHA 
+cGFSCBCjrCcPHACBCjr)
+(B.5) 
+Here the volumetric reaction rate R is based on Monod kinetics (de Kreuk et al., 2007b ). Both Monod constants are two orders of magnitude smaller 
+than the actual concentrations, therefore practically serve as switching terms: 
+RGFSqANCmaxXcGFSCBCj
+KGFScGFSCBCjcPHACmax cPHACBCj
+KPHAcPHACmax cPHACBCjCRPHA RGFS (B.6) 
+Boundary conditions were defined as follows:  
+≡Biofilm surface (flux-continuity with transfer from/to bulk-liquid): 
+ DGFSCB∂cGFSCBCj
+∂r⃦⃦⃦⃦
+rdjE2kLBCGFScGFSCBCj†rdjE2 cGFSCL†xxj)
+CtF0 (B.7)    
+≡Biofilm center (symmetry boundary condition): 
+ DGFSCB∂cGFSCBCj
+∂r⃦⃦⃦⃦
+r00CtF0 (B.8)   
+Mass transfer between bulk-liquid and biofilm 
+The mass transfer coefficient was calculated based on Sherwood relations for forced convection around a free sphere (Cussler, 2009 ) (top relation) 
+or semi-fluidized beds (Fan et al., 1960 ) (bottom relation). The choice depended on the local voidage of the sludge bed during feeding since no relation 
+covered the complete voidage range (from settled granular bed (0.5) to nearly void of biomass): 
+kLBCGFS εLCdj)
+max|
+⨆⨆⨆⨆〈
+⨆⨆⨆⨆⎜⌊
+2B00B6[
+djvin
+νεL]1
+2[
+ν
+DGFSCL]1
+3⌋
+DGFSCL
+djC
+⌊
+2B01B51[
+1 εLdjvin
+ν]1
+2[
+ν
+DGFSCL]1
+3⌋
+DGFSCL
+dj⎠
+⨆⨆⨆⨆〉
+⨆⨆⨆⨆⎟(B.9)  
+Settling model 
+The settling model for AGS developed van Dijk et al. (2020) was used to describe the settling of the individual groups of granules. In this model the 
+settling velocity of different size classed of granules is described. Since this model only describes the settling behaviour of classes of granules, it was 
+adapted to describe the settling behaviour of individual clusters of granules of the same size (j): 
+vjkvfCjεeCjnj 2ρBCj ρbedCi
+ρBCj ρLB (B.10) 
+Furthermore, every cluster of granules (instead of classes) experienced an apparent voidage fraction of the surrounding liquid ϵe. The calculation of 
+this apparent voidage fraction for individual granules is identical to the calculation for granule classes, only in this case is the diameter represents the 
+individual granule instead of the granule class. 
+εeCj1 ⌊
+1[davgCi
+dj]√
+1 εL 1
+3 1⇑⌋ 3
+(B.11) 
+Similarly, the average granule diameter can be calculated based on groups of similarly sized granules at the same height in the reactor: 
+davgCi⋃Ni
+j1cjdj
+1 εL(B.12) 
+Although this approach works well for classes of granules, the model outcome is unrealistic when a large granule is surrounded by lots of small 
+granules or flocs. davgCi will approach the size of the flocs in this case, leading to a very low value of εeCj for the large granule. The resulting low value of 
+davgCi
+dj makes the large granules stop settling all together. To cope with these rare cases, the value of εeCj is set to εL when εeCj εLD0B1. 
+In the original model the ratio between the fluidizing velocity and the terminal velocity was found to be 0.5, after calibration with a single fraction E.J.H. van Dijk et al.                                                                                                                                                                                                                           Water Research 216 (2022) 118365
+13between 1.0 and 2.0 mm. In this study we found that a value of 0.8 would give a better estimate for the smallest size fraction 100 and 200 µm, and still 
+agree with the original data. A similar correction was made for the calculation of the expansion index. In the current model this was calculated based 
+on the Archimedes number (Andalib et al., 2012 ): 
+nj1
+9B143×10 6Ar0B77280B2(B.13) 
+The position of a cluster of granules during feeding or settling (i.e. vin0) was modelled as follows: 
+dxj
+dtvjvin (B.14)  
+Growth of granules within a cluster 
+During each reaction phase, the volume (and thus the diameter) of a granule cluster was increased according to the amount of GFS accumulated as 
+storage polymers during the anaerobic feeding phase, and a constant density and apparent yield throughout the granule. The new diameter of a 
+granule cluster (j) was calculated using the following equation, assuming a spherical geometry: 
+dj2⎢
+⨀⨀∮VjColdYXCPHA
+cX⨄djColdE2
+0 cPHACjAdr
+4
+3π⎥
+⨁⨁⨀1
+3
+(B.15)  
+Breakage of biofilm clusters 
+The probability of breakage is calculated with a logistic function: 
+P1
+e 5000∗dj 0B0041(B.16)  
+Aerobic reaction phase 
+Processes taking place during the reaction phase were not modelled with time dependence, nor with a spatial dependence, but as a sequence of 
+events. First, the residual GFS that was not stored anaerobically was distributed over all existing clusters based on specific biofilm surface area. Next, 
+the diameter of all clusters was increased due to growth, based on an apparent yield (i.e. including loss from decay). All n-GFS fed during the anaerobic 
+phase was subsequently converted into new flocs. The final step was breakage of particles. This is different from the time dependent approach often 
+used in single biofilm modelling (Wanner and Reichert, 1996 ), but the simplification was justified due to the requirement of a discrete, cluster-based 
+approach. Mixed wasting of sludge was applied for MLSS control at the end of the aeration phase. 
+Appendix C.Model solution 
+Model equations for the sludge movement were computed using an explicit forward Euler approach (anaerobic feeding phase and settling phase). 
+Solute mass balances in the bulk-liquid and biofilm phases were discretized using finite differencing with an implicit Crank –Nicholson scheme (central 
+difference in space, average in time). The source term representing biological conversion in the biofilm mass balance was discretized using an explicit 
+forward Euler approach. The mass balances in both liquid and biofilm phases were solved (anaerobic feeding phase) fully coupled using LU- 
+decomposition followed by forward- and back substitution as outlined by Koester et al. (1993) . Operations on the sludge cluster population were 
+performed during the reaction phase the end of each phase. 
+Appendix D.Calculation of Lorenz-curve and Gini-coefficient for substrate distribution 
+A well-known method of analysing the inequality is the Gini coefficient (Gini, 1912 ). This Gini coefficient quantifies the inequality using the 
+Lorenz-curve, which plots the cumulative fraction of the total income (y-axis) earned by a population fraction sorted (x-axis) (Lorenz, 1905 ). The Gini 
+coefficient is determined by the ratio of the area between the equality line and the Lorenz curve, and the area between the Lorenz curve. To utilize the 
+Gini coefficient for the quantitative analysis of the distribution of GFS in the feeding phase, the amount of GFS accumulated as storage polymers by 
+each cluster was calculated weighted by the number of granules (G) represented by a simulated cluster (j). Before calculation, the clusters were sorted 
+based on the amount of accumulated GFS from low to high. The y-axis of the Lorenz curve was defined as: 
+yj⋃j
+m1Gm⨄dmE2
+0cPHACmAdr
+⋃N
+m1Gm⨄dmE2
+0cPHACmAdr(D.1) 
+The x-axis was calculated via: 
+xj⋃j
+m1Gm⋃N
+m1Gm(D.2) E.J.H. van Dijk et al.                                                                                                                                                                                                                           Water Research 216 (2022) 118365
+14Supplementary material 
+Supplementary material associated with this article can be found, in the online version, at doi:10.1016/j.watres.2022.118365 . 
+References 
+Ali, M., Wang, Z., Salam, K.W., Hari, A.R., Pronk, M., Van Loosdrecht, M.C., Saikaly, P.E., 
+2019. Importance of species sorting and immigration on the bacterial assembly of 
+different-sized aggregates in a full-scale aerobic granular sludge plant. Environ. Sci. 
+Technol. 53 (14), 8291 –8301. https://doi.org/10.1021/acs.est.8b07303 . 
+Andalib, M., Zhu, J., Nakhla, G., 2012. A new definition of bed expansion index and 
+voidage for fluidized biofilm-coated particles. Chem. Eng. J. 189–190, 244–249. 
+https://doi.org/10.1016/J.CEJ.2012.02.065 . 
+Arvin, E., Harremoes, P., 1990. Biofilm reactor performance. Water Sci. Technol. 22 
+(112), 171–192. https://doi.org/10.2166/wst.1990.0145 . 
+Baeten, J.E., Batstone, D.J., Schraa, O.J., van Loosdrecht, M.C., Volcke, E.I., 2019. 
+Modelling anaerobic, aerobic and partial nitritation-anammox granular sludge 
+reactors - A review. Water Res. 149, 322–341. https://doi.org/10.1016/j. 
+watres.2018.11.026 . 
+Beeftink, H.H., van den Heuvel, J.C., 1990. Bacterial aggregates of various and varying 
+size and density: a structured model for biomass retention. Chem. Eng. J. 44 (1) 
+https://doi.org/10.1016/0300-9467(90)80055-H . 
+van den Berg, L., van Loosdrecht, M.C.M., de Kreuk, M.K., 2021. How to measure 
+diffusion coefficients in biofilms: acritical analysis. Biotechnol. Bioeng. 118 (3), 
+1273 –1285. https://doi.org/10.1002/bit.27650 . 
+Beun, J.J., Van Loosdrecht, M.C.M., Heijnen, J.J., 2002. Aerobic granulation in a 
+sequencing batch airlift reactor. Water Res. 36, 702–712. 
+Cofr˘e, C., Campos, J.L., Valenzuela-Heredia, D., Pavissich, J.P., Camus, N., Belmonte, M., 
+Pedrouso, A., Carrera, P., Mosquera-Corral, A., Val del Río, A., 2018. Novel system 
+configuration with activated sludge like-geometry to develop aerobic granular 
+biomass under continuous flow. Bioresour. Technol. 267, 778–781. https://doi.org/ 
+10.1016/j.biortech.2018.07.146 . 
+Cussler, E.L., 2009. Diffusion: Mass Transfer in Fluid Systems, third ed. In: Cambridge 
+Series in Chemical Engineering. Cambridge University Press, Cambridge. https:// 
+doi.org/10.1017/CBO9780511805134 .  
+Degaleesan, S., Dudukovic, M.P., 1998. Liquid backmixing in bubble columns and the 
+axial dispersion coefficient. AIChE J. 44 (11), 2369 –2378. https://doi.org/10.1002/ 
+aic.690441105 . 
+van Dijk, E.J.H., Pronk, M., van Loosdrecht, M.C.M., 2018. Controlling effluent 
+suspended solids in the aerobic granular sludge process. Water Res. 147, 50–59. 
+https://doi.org/10.1016/j.watres.2018.09.052 . 
+van Dijk, E.J.H., Pronk, M., van Loosdrecht, M.C.M., 2020. A settling model for full-scale 
+aerobic granular sludge. Water Res. 186, 116135. https://doi.org/10.1016/j. 
+watres.2020.116135 . 
+Dold, P., Alexander, B., Burger, G., Fairlamb, M., Conidi, D., Bye, C., Du, W., 2019. 
+Modeling full-scale granular sludge sequencing tank performance. 91st Annu. Water 
+Environ. Fed. Tech. Exhib. Conf. WEFTEC 2018, pp. 3813 –3826. https://doi.org/ 
+10.2175/193864718825135937 . 
+Fan, L.-T., Yang, Y.-C., Wen, C.-Y., 1960. Mass transfer in semifluidized beds for solid- 
+liquid system. AIChE J. 6 (3), 482–487. https://doi.org/10.1002/aic.690060327 . 
+Giesen, A., De Bruin, L.M.M., Niermans, R.P., Van Der Roest, H.F., 2013. Advancements 
+in the application of aerobic granular biomass technology for sustainable treatment 
+of wastewater. Water Pract. Technol. 8 (1), 47–54. https://doi.org/10.2166/ 
+wpt.2013.007 . 
+Gini, C., 1912. Variabilita e Mutabilita Contributo allo Studio delle Distribuzioni e delle 
+Relazioni Statistiche. Tipogr. di P. Cuppini, Bologna .  
+de Graaff, D.R., van Dijk, E.J.H., van Loosdrecht, M.C.M., Pronk, M., 2020. Strength 
+characterization of full-scale aerobic granular sludge. Environ. Technol. 41 (13), 
+1637 –1647. https://doi.org/10.1080/09593330.2018.1543357 . 
+Haaksman, V., van Loosdrecht, M. M. C., Pronk, M., 2022. Influence of anaerobic contact 
+regime on substrate distribution. unpublished. 
+Heijnen, J., van Loosdrecht, M., 1998. Method for acquiring grain-shaped growth of a 
+microorganism in a reactor. WO 9837027. 
+Henze, M., 1992. Characterization of wastewater for modelling of activated sludge 
+processes. Water Sci. Technol. 25 (6), 1–15. https://doi.org/10.2166/ 
+WST.1992.0110 . 
+Henze, M., Gujer, W., Mino, T., Matsuo, T., Wentzel, M.C., Marais, G.v.R., Van 
+Loosdrecht, M.C.M., 1999. Activated sludge model no.2D, ASM2D. Water Sci. 
+Technol. 39 (1), 165–182. https://doi.org/10.1016/S0273-1223(98)00829-4 . 
+Iorhemen, O. T., Liu, Y., 2021. Effect of feeding strategy and organic loading rate on the 
+formation and stability of aerobic granular sludge. 10.1016/j.jwpe.2020.101709 . 
+de Kreuk, M., Kishida, N., van Loosdrecht, M., 2007. Aerobic granular sludge - state of 
+the art. Water Sci. Technol. 55 (8–9), 75. https://doi.org/10.2166/wst.2007.244 . 
+de Kreuk, M., Picioreanu, C., Hosseini, M., Xavier, J., van Loosdrecht, M., 2007. Kinetic 
+model of a granular sludge SBR: influences on nutrient removal. Biotechnol. Bioeng. 
+97 (4), 801–815. https://doi.org/10.1002/bit.21196 . 
+de Kreuk, M., Pronk, M., van Loosdrecht, M., 2005. Formation of aerobic granules and 
+conversion processes in an aerobic granular sludge reactor at moderate and low 
+temperatures. Water Res. 39 (18), 4476 –4484. https://doi.org/10.1016/j. 
+watres.2005.08.031 . de Kreuk, M.K., van Loosdrecht, M.C., 2004. Selection of slow growing organisms as a 
+means for improving aerobic granular sludge stability. Water Sci. Technol. Technol. 
+49 (11–12), 9–17. https://doi.org/10.2166/wst.2004.0792 . 
+Koester, D.P., Ranka, S., Fox, G.C., 1993. Parallel block-diagonal-bordered sparse linear 
+solvers for electrical power system applications. Proceedings of Scalable Parallel 
+Libraries Conference 195–203. https://doi.org/10.1109/SPLC.1993.365566 . 
+Layer, M., Adler, A., Reynaert, E., Hernandez, A., Pagni, M., Morgenroth, E., Holliger, C., 
+Derlon, N., 2019. Organic substrate diffusibility governs microbial community 
+composition, nutrient removal performance and kinetics of granulation of aerobic 
+granular sludge. Water Res. X 4, 100033. https://doi.org/10.1016/j. 
+wroa.2019.100033 . 
+Layer, M., Bock, K., Ranzinger, F., Horn, H., Morgenroth, E., Derlon, N., 2020. Particulate 
+substrate retention in plug-flow and fully-mixed conditions during operation of 
+aerobic granular sludge systems. Water Res. X 9, 100075. https://doi.org/10.1016/ 
+J.WROA.2020.100075 . 
+Li, A.-J., Li, X.-Y., 2009. Selective sludge discharge as the determining factor in SBR 
+aerobic granulation: numerical modelling and experimental verification. Water Res. 
+43 (14), 3387 –3396. https://doi.org/10.1016/j.watres.2009.05.004 . 
+Liu, X.-M., Sheng, G.-P., Luo, H.-W., Zhang, F., Yuan, S.-J., Xu, J., Zeng, R.J., Wu, J.-G., 
+Yu, H.-Q., 2010. Contribution of extracellular polymeric substances (EPS) to the 
+sludge aggregation. Environ. Sci. Technol. 44 (11), 4355 –4360. https://doi.org/ 
+10.1021/es9016766 . 
+Liu, Y., Tay, J.-H., 2002. The essential role of hydrodynamic shear force in the formation 
+of biofilm and granular sludge. Water Res. 36, 1653 –1665 . 
+Liu, Y., Wang, Z.W., Liu, Y.Q., Qin, L., Tay, J.H., 2005. A generalized model for settling 
+velocity of aerobic granular sludge. Biotechnol. Prog. 21 (2), 621–626. https://doi. 
+org/10.1021/bp049674u . 
+Lochmatter, S., Holliger, C., 2014. Optimization of operation conditions for the startup of 
+aerobic granular sludge reactors biologically removing carbon, nitrogen, and 
+phosphorous. Water Res. 59, 58–70. https://doi.org/10.1016/j.watres.2014.04.011 . 
+Lorenz, M.O., 1905. Methods of measuring the concentration of wealth. Publ. Am. Stat. 
+Assoc. 9 (70), 209–219. https://doi.org/10.1080/15225437.1905.10503443 . 
+McSwain, B., Irvine, R., Wilderer, P., 2004. The influence of settling time on the 
+formation of aerobic granules. Water Sci. Technol. 50 (10), 195–202. https://doi. 
+org/10.2166/WST.2004.0643 . 
+Morgenroth, E., Sherden, T., van Loosdrecht, M., Heijnen, J.J., Wilderer, P.A., 1997. 
+Aerobic granular sludge in a sequencing batch reactor. Water Res. 31 (12), 
+3191 –3194. https://doi.org/10.1016/S0043-1354(97)00216-9 . 
+Mosquera-Corral, A., De Kreuk, M., Heijnen, J., Van Loosdrecht, M., 2005. Effects of 
+oxygen concentration on N-removal in an aerobic granular sludge reactor. Water 
+Res. 39 (12), 2676 –2686. https://doi.org/10.1016/j.watres.2005.04.065 . 
+Ni, B.-J., Sheng, G.-P., Li, X.-Y., Yu, H.-Q., 2010. Quantitative simulation of the 
+granulation process of activated sludge for wastewater treatment. Ind. Eng. Chem. 
+Res. 49 (6), 2864 –2873. https://doi.org/10.1021/ie901252k .Publisher: American 
+Chemical Society 
+Nicholls, H.A., Osborn, D.W., 1979. Bacterial stress: prerequisite for biological removal 
+of phosphorus. J. Water Pollut. Control Fed. 51 (3 I), 557–569. 
+Picioreanu, C., Van Loosdrecht, M.C., Heijnen, J.J., 1998. Mathematical modeling of 
+biofilm structure with a hybrid differential- discrete cellular automaton approach. 
+Biotechnol. Bioeng. 58 (1), 101–116. https://doi.org/10.1002/(SICI)1097-0290 
+(19980405)58:1 D101::AID-BIT11 F3.0.CO;2-M . 
+Picioreanu, C., Van Loosdrecht, M.C.M., Heijnen, J.J., 2000. A theoretical study on the 
+effect of surface roughness on mass transport and transformation in biofilms. 
+Biotechnol. Bioeng. 68 (4), 355–369. https://doi.org/10.1002/(SICI)1097-0290 
+(20000520)68:4 . 
+Picioreanu, C., Van Loosdrecht, M.C.M., Heijnen, J.J., 2000. Effect of diffusive and 
+convective substrate transport on biofilm structure formation: a two-dimensional 
+modeling study. Biotechnol. Bioeng. 69 (5), 504–515. https://doi.org/10.1002/ 
+1097-0290 . 
+Pijuan, M., Werner, U., Yuan, Z., 2011. Reducing the startup time of aerobic granular 
+sludge reactors through seeding floccular sludge with crushed aerobic granules. 
+Water Res. 45 (16), 5075 –5083. https://doi.org/10.1016/j.watres.2011.07.009 . 
+Pronk, M., Abbas, B., Al-zuhairy, S.H.K., Kraan, R., Kleerebezem, R., van Loosdrecht, M. 
+C.M., 2015. Effect and behaviour of different substrates in relation to the formation 
+of aerobic granular sludge. Appl. Microbiol. Biotechnol. 99 (12), 5257 –5268. 
+https://doi.org/10.1007/s00253-014-6358-3 . 
+Pronk, M., de Kreuk, M., de Bruin, B., Kamminga, P., Kleerebezem, R., van 
+Loosdrecht, M., 2015. Full scale performance of the aerobic granular sludge process 
+for sewage treatment. Water Res. 84, 207–217. https://doi.org/10.1016/j. 
+watres.2015.07.011 . 
+Qin, L., Tay, J.H., Liu, Y., 2004. Selection pressure is a driving force of aerobic 
+granulation in sequencing batch reactors. Process Biochem. 39 (5), 579–584. 
+https://doi.org/10.1016/S0032-9592(03)00125-0 . 
+Rockt aschel, T., Klarmann, C., Helmreich, B., Ochoa, J., Boisson, P., Sørensen, K.H., 
+Horn, H., 2013. Comparison of two different anaerobic feeding strategies to establish 
+a stable aerobic granulated sludge bed. Water Res. 47 (17), 6423 –6431. https://doi. 
+org/10.1016/j.watres.2013.08.014 . E.J.H. van Dijk et al.                                                                                                                                                                                                                           Water Research 216 (2022) 118365
+15Rockt aschel, T., Klarmann, C., Ochoa, J., Boisson, P., Sørensen, K., Horn, H., 2015. 
+Influence of the granulation grade on the concentration of suspended solids in the 
+effluent of a pilot scale sequencing batch reactor operated with aerobic granular 
+sludge. Sep. Purif. Technol. 142, 234–241. https://doi.org/10.1016/j. 
+seppur.2015.01.013 . 
+Smolders, G.J.F., van der Meij, J., van Loosdrecht, M.C.M., Heijnen, J.J., 1994. Model of 
+the anaerobic metabolism of the biological phosphorus removal process: 
+stoichiometry and pH influence. Biotechnol. Bioeng. 43 (6), 461–470. https://doi. 
+org/10.1002/bit.260430605 . 
+Tay, J.-H., Liu, Q.-S., Liu, Y., 2001. The effects of shear force on the formation, structure 
+and metabolism of aerobic granules. Appl. Microbiol. Biotechnol. 57 (1), 227–233. 
+https://doi.org/10.1007/S002530100766 . 
+Toja Ortega, S., Pronk, M., de Kreuk, M.K., 2021. Anaerobic hydrolysis of complex 
+substrates in full-scale aerobic granular sludge: enzymatic activity determined in 
+different sludge fractions. Appl. Microbiol. Biotechnol. 105 (14), 6073 –6086. 
+https://doi.org/10.1007/s00253-021-11443-3 . 
+Van Loosdrecht, M.C., Heijnen, J.J., Eberl, H., Kreft, J., Picioreanu, C., 2002. 
+Mathematical modelling of biofilm structures. Antonie van Leeuwenhoek, Int. J. 
+Gen. Mol. Microbiol. 81 (1–4), 245–256. https://doi.org/10.1023/A: 
+1020527020464 . 
+Wang, S., Shi, W., Tang, T., Wang, Y., Zhi, L., Lv, J., Li, J., 2017. Function of quorum 
+sensing and cell signaling in the formation of aerobic granular sludge. 10.1007/s111 
+57-017-9420-7 . 
+Wanner, O., Reichert, P., 1996. Mathematical modeling of mixed-culture biofilms. 
+Biotechnol. Bioeng. 49 (2), 172–184. https://doi.org/10.1002/(SICI)1097-0290 
+(19960120)49:2 D172::AID-BIT6 F3.0.CO;2-N . Wei, S.P., Stensel, H.D., Nguyen Quoc, B., Stahl, D.A., Huang, X., Lee, P.H., Winkler, M. 
+K., 2020. Flocs in disguise? High granule abundance found in continuous-flow 
+activated sludge treatment plants. Water Res. 179, 115865. https://doi.org/ 
+10.1016/J.WATRES.2020.115865 . 
+Winkler, M.-K., Kleerebezem, R., De Bruin, L., Verheijen, P., Abbas, B., Habermacher, J., 
+Van Loosdrecht, M., 2013. Microbial diversity differences within aerobic granular 
+sludge and activated sludge flocs. Appl. Microbiol. Biotechnol. 97 (16), 7447 –7458. 
+https://doi.org/10.1007/s00253-012-4472-7 . 
+Winkler, M.K.H., Meunier, C., Henriet, O., Mahillon, J., Su˘arez-Ojeda, M.E., Del 
+Moro, G., De Sanctis, M., Di Iaconi, C., Weissbrodt, D.G., 2018. An integrative review 
+of granular sludge for the biological removal of nutrients and recalcitrant organic 
+matter from wastewater. Chem. Eng. J. 336, 489–502. https://doi.org/10.1016/J. 
+CEJ.2017.12.026 . 
+Wu, J., de los Reyes, F.L., Ducoste, J.J., 2020. Modeling cell aggregate morphology 
+during aerobic granulation in activated sludge processes reveals the combined effect 
+of substrate and shear. Water Res. 170 https://doi.org/10.1016/j. 
+watres.2019.115384 . 
+Xavier, J.B., de Kreuk, M.K., Picioreanu, C., van Loosdrecht, M.C.M., 2007. Multi-scale 
+individual-based model of microbial and bioconversion dynamics in aerobic 
+granular sludge. Environ. Sci. Technol. 41 (18), 6410 –6417. https://doi.org/ 
+10.1021/es070264m .Publisher: American Chemical Society 
+Yang, S.-F., Liu, Q.-S., Tay, J.-H., Liu, Y., 2004. Growth kinetics of aerobic granules 
+developed in sequencing batch reactors. Lett. Appl. Microbiol. 38 (2), 106–112. 
+https://doi.org/10.1111/j.1472-765X.2003.01452.x . E.J.H. van Dijk et al.                                                                                                                                                                                                                           

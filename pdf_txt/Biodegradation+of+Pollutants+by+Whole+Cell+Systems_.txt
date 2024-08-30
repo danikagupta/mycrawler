@@ -1,0 +1,2307 @@
+Contents lists available at ScienceDirect
+Biotechnology Advances
+journal homepage: www.elsevier.com/locate/biotechadv
+Research review paper
+Bioremediation 3. 0: Engineering pollutant-removing bacteria in the times of
+systemic biology
+Pavel Dvo řáka, Pablo I. Nikelb,J iří Damborskýc,d, Víctor de Lorenzoa,⁎
+aSystems and Synthetic Biology Program, Centro Nacional de Biotecnología (CNB-CSIC), 28049 Madrid, Spain
+bThe Novo Nordisk Foundation Center for Biosustainability, 2800 Lyngby, Denmark
+cLoschmidt Laboratories, Centre for Toxic Compounds in the Environment RECETOX, Department of Experimental Biology, Faculty of Science, Masaryk University, 62500
+Brno, Czech Republic
+dInternational Clinical Research Center, St. Anne's University Hospital, Pekarska 53, 656 91 Brno, Czech Republic
+ARTICLE INFO
+Keywords:
+Bioremediation
+Biodegradation pathway engineeringEmerging pollutantsEnvironmental biotechnologySystemic biologyMetabolic engineeringSystems biologySynthetic biologyABSTRACT
+Elimination or mitigation of the toxic eﬀ ects of chemical waste released to the environment by industrial and
+urban activities relies largely on the catalytic activities of microorganisms —speciﬁcally bacteria. Given their
+capacity to evolve rapidly, they have the biochemical power to tackle a large number of molecules mobilized
+from their geological repositories through human action ( e.g., hydrocarbons, heavy metals) or generated through
+chemical synthesis ( e.g., xenobiotic compounds). Whereas naturally occurring microbes already have con-
+siderable ability to remove many environmental pollutants with no external intervention, the onset of geneticengineering in the 1980s allowed the possibility of rational design of bacteria to catabolize speci ﬁc compounds,
+which could eventually be released into the environment as bioremediation agents. The complexity of this
+endeavour and the lack of fundamental knowledge nonetheless led to the virtual abandonment of such a re-combinant DNA-based bioremediation only a decade later. In a twist of events, the last few years have witnessed
+the emergence of new systemic ﬁelds (including systems and synthetic biology, and metabolic engineering) that
+allow revisiting the same environmental pollution challenges through fresh and far more powerful approaches.
+The focus on contaminated sites and chemicals has been broadened by the phenomenal problems of anthro-
+pogenic emissions of greenhouse gases and the accumulation of plastic waste on a global scale. In this article, we
+analyze how contemporary systemic biology is helping to take the design of bioremediation agents back to thecore of environmental biotechnology. We inspect a number of recent strategies for catabolic pathway con-
+struction and optimization and we bring them together by proposing an engineering work ﬂow.
+1. Introduction
+Increasing pollution of air, soils, ground and surface waters con-
+stitutes a major threat to public health both in developing countries as
+well as in industrialized countries including EU states, the USA, India
+and China. The majority of contaminants that a ﬀect soils and waters are
+heavy metals and organic compounds such as mineral oil hydrocarbons,polyaromatic hydrocarbons, benzene derivatives, and halogenated hy-drocarbons. Many of organic polluting compounds for agricultural (the
+pesticides dichlorodiphenyltrichloroethane, atrazine, and penta-
+chlorophenol), industrial (solvents such as dichloroethane or dielectric
+ﬂuids such as polychlorinated biphenyls) or military use (explosives
+such as 2,4,6-trinitrotoluene) are xenobiotics of anthropogenic origin.There is also a spectrum of so-called emerging contaminants (Table 1 ),
+i.e., substances long present in the environment whose presence andnegative e ﬀects have only recently been recognized ( Petrie et al.,
+2015 ). The list can be further broadened with petroleum-derived
+plastics and some chemicals originally considered to be green , including
+certain types of bioplastics or ionic liquids ( Amde et al., 2015 ). Despite
+the recalcitrant nature of some of these polluting compounds, many are
+more or less susceptible to biodegradation ( Alexander, 1999 ). In addi-
+tion to these traditional causes of environmental deterioration, the re-cent decades have witnessed the onset of ramped-up levels of anthro-pogenic emissions of CO
+2and other greenhouse gases and their ensuing
+impact on climatic change. Whereas the chemicals themselves aresimple (CO
+2,C H 4,N2O), the challenge here is less their biodegradation
+than their recapture in a non-gaseous form.
+The major entity that causes large-scale transformations in the
+biosphere are microorganisms and their metabolic pathways. Microbesdegrade toxic chemicals viacomplete mineralization or co-metabolism,
+http://dx.doi.org/10.1016/j.biotechadv.2017.08.001
+Received 4 June 2017; Received in revised form 1 August 2017; Accepted 4 August 2017⁎Corresponding author.
+E-mail address: vdlorenzo@cnb.csic.es (V. de Lorenzo).Biotechnology Advances 35 (2017) 845–866
+Available online 05 August 2017
+0734-9750/ © 2017 Elsevier Inc. All rights reserved.
+MARKin aerobic or anaerobic conditions. Advantageous properties such as
+small genome size, relative simplicity of the cell, short replication
+times, rapid evolution and adaptation to the new environmental con-
+ditions made microbes, and particularly bacteria, favourable candidates
+for bioremediation technologies, that is in situ orex situ removal of
+polluting chemicals from the environment using biological agents. Theremoval of environmental pollution caused by the extensive activities of
+industrial society is a serious topic that draws the attention of bio-
+technologists. This is because beyond the medical and environmental
+consequences, the situation signs considerable potential for growth of
+eco-industry focused on clean-up technologies and removal of en-
+vironmental contaminants. In fact, valorization of waste chemicals ac-cumulating in industry is one of the pillars of the circular economy and
+the 4th Industrial Revolution ( Schmidt, 2012; Wigginton et al., 2012 ).
+The earliest attempts at directed bioremediation, although not for-
+malized as such at the time, dated back to the late 19th century with the
+origins of the ﬁrst wastewater treatment plants ( Litchﬁeld, 2005 ).
+Bioremediation began in earnest some 45 years ago with the isolation ofculturable bacteria from contaminated sites and studying their de-
+gradation pathways. The ﬁrst report on enhanced in situ bioremediation
+of soil contaminated with peroleum-derived hydrocarbons was pub-lished in 1975 by Raymond et al. (1975) . Natural microbial degraders
+were later applied with success in world-wide and local biotechnolo-gical processes including large-scale wastewater denitri ﬁcation, ur-
+anium removal, and degradation of 1,2-dichloroethane from ground-water or the organophosphorus pesticide coumaphos from cattle-dip
+waste ( Francis and Mankin, 1977; Lovley et al., 1991; Mulbry et al.,
+1998; Stucki and Thueer, 1995 ). The advent of technologies for pollu-
+tant removal using naturally emerging microorganisms could be called
+the era of Bioremediation 1 .0. Even so, a number of speci ﬁc chemicals,
+especially of anthropogenic origin, including persistent organic pollu-tants such as dichlorodiphenyltrichloroethane (DDT), tri-
+chloroethylene, 1,2,3-trichloropropane, some polychlorinated biphe-
+nyls (PCB) or dioxins continued to be resistant to natural
+biodegradation due to lack of e ﬃcient microbial catabolic traits whose
+evolution was not su ﬃciently rapid or ended in a deadlock ( Janssen
+et al., 2005).
+Initial discoveries in molecular biology and progress in biological
+engineering disciplines seemed to provide a partial solution for such
+challenges through rational interventions in the metabolic networks of
+selected microbial hosts. The rise of recombinant DNA technology al-
+lowed the transformation of bioremediation from empirical practice
+into an excercise in genetic engineering, giving rise to what we might
+term Bioremediation 2 .0. The goal of the new ﬁeld was to engineer
+whole microbes, their biodegradation pathways, and the corresponding
+enzymes towards in situ mineralization of target pollutants. Suchsuperbugs were expected to provide an economically feasible, en-
+vironmentally friendly alternative to the costly conventional technol-
+ogies for pollutant removal available at the time ( Ramos et al., 2011).
+The late 1980s and early 1990s represented the golden era of biode-gradation research, with numerous engineering attempts following the
+pioneering work by Chakrabarty and co-workers ( Kellogg et al., 1981).
+They described the preparation of recombinant Pseudomonas putida
+strains able to break down crude oil by the plasmid -assisted
+molecular
+breeding , that is, propagation of novel catabolic capabilities through
+directed bacterial conjugation and plasmid transfer. The persistence of
+many xenobiotics was attributed mainly to the absence of complete
+degradative pathways in a single organism ( Brenner et al., 1994;
+Reineke and Knackmuss, 1979 ). Recruitment of complementary en-
+zyme sequences by conjugative gene transfer and so called patchwork
+assembly of several existing natural pathways in a suitable host was
+believed to generate functional synthetic routes that would allow forthe complete mineralization of persistent target compounds such as
+PCB ( Lehrbach et al., 1984; Ramos et al., 1987; Rojo et al., 1987 ).
+Despite some success with the patchwork strategy and engineering of
+superbugs with extended substrate scope in laboratory conditions, this
+initial and rather naïve approach led to many disappointments as well(Cases and de Lorenzo, 2005; de Lorenzo, 2009 ). A prominent example
+was the case of engineered Pseudomonas strains that did not grow on 2-
+chlorotoluene as the only carbon source, even though they possessed all
+the genetic components presumed necessary for substrate mineraliza-
+tion ( Haro and de Lorenzo, 2001 ). From a contemporary perspective,
+such failures can be explained by lack of insight into important factorssuch as: (i) thermodynamic feasibility of assembled catabolic networks,
+(ii) kinetic characteristics of enzymes and physicochemical properties
+of metabolites, (iii) expression levels of pathway modules, (iv) cross-
+talk between exogenous and endogenous metabolic routes, and (v)
+stress responses and changes in overall host cell physiology after in-
+troduction of new metabolic modules and exposure to toxic substrates
+and metabolites ( de Lorenzo, 2009; Ramos et al., 2011 ).
+Fortunately, the last decade has witnessed the onset of what can be
+called systemic biology , which merges di ﬀerent approaches of systems
+biology, metabolic engineering, and synthetic biology, for the sake ofunderstanding and reprograming biological systems. Systemic biology
+has the potential to remove the unknowns and bottlenecks encountered
+in past trials and paves the way towards the era of Bioremediation 3 .0.
+The joint power of the systemic biology disciplines can ensure thatbiodegradation and bioremedation using genetically modi ﬁed micro-
+organisms will remain a vital concept deserving of the full attention ofnew generations of bioengineers.
+In this article we review the applications of novel engineering
+strategies to the design and evolution of microbial biodegradationTable 1
+Emerging contaminants.Sources: http://toxics.usgs.gov ,http://www.eugris.info (Petrie et al., 2015 ).
+Groups of products Classes of chemicals Examples
+Human and veterinary
+pharmaceuticalsAntibiotics, anti-parasitic agents, ionophores Amoxicillin, erythromycin, metronidazol, tetracycline, lincomycin,
+sulfathiazole
+Stimulants and drugs including anti-in ﬂammatory, anti-diabetic,
+anti-epileptic, anti-hypertensive, or anti-cancer drugs,
+anticoagulants, hallucinogens, analgesics, β-blockers, anti-
+depressants, lipid regulators, or erectile dysfunction drugsAmphetamine, cocaine, ca ﬀeine, nicotine, propranolol, ibuprofen,
+codeine, carbamazepine, beza ﬁbrate, metformin, ﬂuoxetine, warfarine,
+valsartan, tramadol, morphine, methandone, diazepam, ephedrine,
+tamoxifen
+Hormones including natural and synthetic estrogens, androgens Estrone, estriol, testosterone, progesterone, mestranol (ovulation
+inhibitor), cholesterol
+Industrial and household
+wastewater productsInsecticides, plasticizers, detergents, ﬂame retardants, polycyclic
+aromatic hydrocarbons, antioxidants, solvents, disinfectants,
+fumigants, fragrances, preservativesCarbaryl, chlorpyrifos, diethylphtalate, p-nonylphenol, tri(2-
+chloroethyl)phosphate, naphtalene, anthracene, 2,6-di- tert-butylphenol,
+1,2,3-trichloropropane, phenol, 1,4-dichlorobenzene, acetophenone
+Personal care products Insect repellents, polycyclic musks, sunscreen agents, fragrances,
+antisepticsBisphenol A, 1-benzophenone, methylparaben, N,N-diethyltoluamide,
+triclosan
+Nanomaterials Miscelaneous Nanosilver, alumina nanoparticles, titanium dioxide, fullerenes, carbon
+blackP. Dvoř ák et al.
+Biotechnology Advances 35 (2017) 845–866
+846pathways and whole-cell degraders from the last decade, and propose
+an optimal work ﬂow for pathway design, construction and optimiza-
+tion. In particular, we discuss the potential of state-of-the-art systemic
+technologies not yet fully employed for this purpose including new
+ways to genetically engineer superior CO 2scavengers. Lastly, the per-
+spectives of microbial cell factories tailored for biodegradation andbioremediation are critically evaluated.
+2. Approaches and tools of systems biology and metabolic
+engineering for tailoring biodegradation pathways
+One key objective of systems biology is to gain comprehensive,
+quantitative understanding of living cells by combining high-throughput technologies and computational methods to characterize
+and predict cell behaviour ( Dai and Nielsen, 2015). Metabolic en-
+gineering, ﬁrst deﬁ ned as a new scienti ﬁc discipline by Bailey (1991) ,i s
+now understood as the practice of optimizing genetic and regulatory
+processes within the cells to (i) improve the yield and productivity of
+native products synthesized by organisms, (ii) establish the synthesis of
+products new to the host cell, and, two points especially relevant for
+biodegradation, to (iii) extend the range of substrates or improve sub-
+strate uptake, and (iv) improve overall cell robustness ( Nielsen et al.,
+2014 ). These goals can be achieved by engineering natural metabolic
+pathways in the host cell or synthetic routes assembled from enzymes
+originating from di ﬀerent organisms. The aims of systems biology co-
+incide fully with the objectives of metabolic engineering. These twodisciplines are now inseparable, complement each other, and have even
+merged into a ﬁeld of systems metabolic engineering ( Lee et al., 2012 ).
+Metabolic engineers use systems biology computational tools and ‘omic ’
+techniques to gain deeper insight into the genetic and physiological
+background of target organisms, to model enzymatic reactions and todetermine the constraints for e ﬃcient biocatalysis. To overcome these
+constraints, computational tools are applied together with establishedexperimental protocols, now frequently strengthened with synthetic
+biology standards and ﬁne-tuning adaptive laboratory evolution. The
+Design -Build -Test-Analyze (DBTA) cycle is repeated until performance of
+the engineered cell factory is optimized and a cost-e ﬀective process can
+be established ( Paddon and Keasling, 2014). It is tempting and logical
+to use the same intellectual work ﬂow to engineer biodegradation
+pathways ( Fig. 1). The portfolio of systems metabolic engineering tools
+applicable for such purposes will be discussed in more detail in the
+Section 2 of the review.
+2.1. Step 1: get to know the contaminant and ﬁnd a suitable catabolic
+pathway
+The compound to be degraded or removed from the contaminated
+environment or industrial waste site is usually the very ﬁrst component
+known in a project focused on biodegradation or bioremediation. Thepolluting chemicals show diverse physicochemical properties, can oc-
+cupy heterogenous physical niches in the environment, and exist in
+concentrations ranging from ng/L to mg/L ( Meckenstock et al., 2015 ).
+Industrial waste chemicals, prohibited pesticides, or warfare agentssuch as 1,2,3-trichloropropane, γ-hexachlorocyclohexane, or yperite,
+respectively, can be available for degradation as stock piles or mixedwith environmental matrix. When bioremediation is a method of choice
+for removal of the target compound, another challenge arises: how to
+ﬁnd the most suitable pathway for degradation and, ideally, complete
+mineralization of the chemical in the huge amount of genetic, bio-chemical and microbiological data available. As pointed out by Nobel
+laureate Sydney Brenner, we are currently “...drowning
+ in a sea of data,
+thirsting for knowledge... ”. New computational tools and algorithms,
+combined with common sense, are the only way to cope with the
+complexity of life, ﬁnd the needle in a haystack, and obtain valuable
+output –the natural or synthetic pathway or set of pathways most
+suitable for a speci ﬁc biodegradation task in a selected microbial host.Computational tools can provide the user with relevant information onphysicochemical properties of the target compound and the basic
+building blocks of the catabolic pathway –enzymes and metabolites. A
+wide spectrum of databases and prediction systems that provide usefulinformation on a number of chemicals and biodegradative or biosyn-
+thetic routes has been developed over the years. Comprehensive re-
+views that focus on evaluation of computational tools mainly for bio-
+synthetic pathway design have been published in the last few years
+(Long et al., 2015; Medema et al., 2012). Chemical and biodegradation
+databases as well as pathway and toxicity prediction systems that mightbe useful for evaluating existing biodegradation pathways or en-
+gineering new ones were reviewed by Arora and Bae (2014) . To avoid
+duplication, here we aim to discuss mainly the updates and applicationsof representative systems for biodegradation pathway design.
+2.1.1. Databases
+The University of Minnesota Biocatalysis/Biodegradation Database
+and Pathway Prediction System (UM-BBD/PPS) is a remarkable tool
+that has garnered microbial pathways for xenobiotics for over 20 years
+and can be considered an advisable ﬁrst-choice search engine ( Gao
+et al., 2010 ). In 2014, UM-BBD/PPS rights were assigned to Eawag, the
+Swiss Federal Institute of Aquatic Science and Technology and the da-
+tabase got a new name EAWAG-BBD/PPS. EAWAG-BBD ( http://eawag-
+bbd.ethz.ch ) can not only search through 543 microorganism entries,
+219 metabolic routes, 1503 reactions, 1396 chemicals, and 993 en-
+zymes, but also allows prediction of novel biotransformations leading
+from target xenobiotic substrate to the molecule that can be metabo-
+lized by central catabolic pathways of a host cell. The enviPath tool
+(The Environmental Contaminant Biotransformation Pathway Re-
+source; https://envipath.org/ ) was recently introduced as a rebuilt
+version of EAWAG-BBD/PPS ( Wicker et al., 2016 ). Registered user can
+employ enviPath for design of particular biochemical routes and per-sonal databases with biotransformation data as well as for prediction of
+new catabolic pathways. In 2017, the same team introduced a new
+database implanted in enviPath platform, Eawag-Soil ( Latino et al.,
+2017 ). This public database is a unique repository of data collected
+during laboratory simulations on aerobic degradation of pesticides in
+soil, including biotransformation half-lifes.
+Although they provide access to much more data in addition to
+biodegradation pathways and related content, MetaCyc and BioCyc
+databases by SRI International should be mentioned as well ( Caspi
+et al., 2016). With its 2526 experimentally elucidated pathways from2844 di ﬀerent organisms from all domains of life, MetaCyc ( https://
+metacyc.org/ ) is one of the largest repositories of metabolism data and
+serves primarily as an on-line encyclopedia in which metabolic routes
+can be predicted from available sequenced genomes, browsed through,
+or mutually compared. The majority of listed compounds and reactions
+now also include the Gibbs free energy values ( Caspi et al., 2016).
+BioCyc ( https://biocyc.org/ ) is a collection of 9389 organism-speci ﬁc
+Pathway/Genome Databases (PGDB; the number tripled in the last
+three years!). Each PGDB encompasses the sequenced genome and
+predicted metabolic network of single organism. Moreover, information
+on individual components such as predicted operons, metabolites, en-
+zymes and their reactions, or transport systems is provided ( Caspi et al.,
+2016 ). BioCyc also provides several useful tools for navigating, visua-
+lizing, and analyzing the PGDB, and for analyzing omics data. Both
+MetaCyc
+and BioCyc are linked to numerous other databases. UniProt
+(www.uniprot.org/ ), a collaboration between the European Bioinfor-
+matics Institute, the SIB Swiss Institute of Bioinformatics and the Pro-
+tein Information Resource, supplies missing information on function,
+sequence, or taxonomy of proteins from metabolic or signalling path-
+ways and is further interconnected with more speci ﬁc protein databases
+such as RCSB Protein Data Bank or BRENDA, thus completing the pic-ture with structural or kinetic data ( Berman et al., 2000; Chang et al.,
+2015; UniProt Consortium, 2015).P. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+8472.1.2. Pathway prediction systems and toxicity prediction algorithms
+The development of reliable pathway prediction systems is of major
+importance for the ﬁeld of biodegradation as for the numerous an-
+thropogenic chemicals released into the environment the catabolic
+pathways are either completely unknown or poorly understood. These
+tools consider many factors including substrate speci ﬁcities, binding
+sites or reaction mechanisms of enzymes, structural changes in sub-strate-product pairs and pathway distance from substrate to product
+(Medema et al., 2012). The pathway prediction system of EAWAG-
+BBD/PPS or enviPath, predicts biodegradation routes based on avail-able biotransformation rules derived from reactions found in the
+EAWAG-BBD database or in the literature ( Gao et al., 2010; Wicker
+et al., 2016 ). It can highlight initiating reaction types likely to occur in
+aerobic environments, which in some cases lead to the complete mi-neralization of the contaminant ( Fig. 2), although, it does not deﬁ ne the
+thermodynamic feasibility of the proposed pathways or the speci ﬁc
+enzymes that catalyse proposed reactions. This latter information can
+be supplemented by the complementary prediction algorithm of a new
+public database RAPID ( http://rapid.umn.edu/rapid/ ), currently being
+developed by the group of Lawrence P. Wackett at University of Min-nesota. The idea of future utility of combined EAWAG-BBD and RAPID
+algorithms was provided recently by Aukema and co-workers who used
+these tools to predict initial metabolism of a set of emerging con-
+taminants that include recalcitrant pharmaceuticals, alkyl phthalates,
+or fragrance compounds previously shown to be degraded by Para-
+burkholderia xenovorans LB400 ( Aukema et al., 2016).In case of anthropogenic contaminants with unknown or un-
+complete natural catabolic pathways, the Biochemical Network
+Integrated Computational Explorer (BNICE.ch) can be recommended as
+well ( Hatzimanikatis et al., 2005). The authors from the Vassily Hat-
+zimanikatis' group at the Swiss Federal Institute of Technology havebeen developing BNICE.ch, one of the ﬁrst tools for uncovering and
+describing new enzymatic reactions based on known biochemistry,for > 15 years. In the latest version, the method was coupled with a
+manually-curated KEGG database, generally recognized as one of the
+most complete repositories of metabolic data ( Kanehisa et al., 2014).
+The catalogued biochemistry of the KEGG database was converted into361 bidirectional generalized rules which were applied to explore the
+possible space of all metabolic reactions that link the compounds re-ported in the KEGG and are potentially found in nature ( Hadadi et al.,
+2016 ). As a result, 6528 KEGG reactions and 137,416 known or com-
+pletely new enzymatic reactions between two or more KEGG com-
+pounds were organized in a reaction web-based database named ATLAS
+of Biochemistry ( http://lcsb-databases.ep ﬂ.ch/atlas/ ). Importantly, the
+thermodynamic feasibility of de novo generated reactions was evaluated
+and the parameter of Gibbs free energy is a part of the majority of
+records in the ATLAS database. To the bene ﬁt of the reaction prediction
+system, according to authors, up to 80% of the newly added KEGGreactions in 2015 already existed in ATLAS as novel reactions.
+In biodegradation pathway design, BNICE.ch was ﬁrst used by
+Finley and co-workers to propose all possible catabolic routes for 4-
+chlorobiphenyl, phenanthrene, γ-hexachlorocyclohexane, and 1,2,4-
+Fig. 1. Proposed work ﬂow for engineering biodegradation pathways using systemic biology approaches and tools. The Figure sketches the roadmap to contructing superior bacterial
+catalysts for environmental bioremediation that capitalize on systems and synthetic biology, as explained in this review.P. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+848trichlorobenzene (1,2,4-TCB), compounds that represent various classes
+of xenobiotics ( Finley et al., 2009 ). BNICE.ch not only reproduced the
+experimentally veri ﬁed pathways, but also found completely novel re-
+actions, taking into account the starting compound, the requested
+length of the pathway and the broader reaction rules of the Enzyme
+Commission classi ﬁcation system. The 15 novel pathways for 1,2,4-TCB
+were subsequently probed using thermodynamic analysis and foundenergetically feasible. In the follow-up study, the authors evaluated the
+new routes in the context of Pseudomonas putida KT2440 cellular me-
+tabolism ( Finley et al., 2010 ). They expanded the available P.putida
+metabolic model by including the pathways obtained from BNICE.chand metabolic ﬂux analysis was used to predict the maximum biomass
+generated using 1,2,4-TCB as the sole carbon source. In this way, in-teresting alternative pathways were proposed that couple 1,2,4-TCButilisation with biomass formation. Although this work was purely
+theoretical, it suggests the way for those who wish to use the increasing
+power of computational modelling to design biodegradation routes or
+explore the fate of xenobiotics in the environment.
+Prediction tools for assisting the design of robust microbial bio-
+sensors are highly desirable as well. Such biosensors are often based on
+regulatory proteins or riboswitches able to translate the presence of a
+given metabolite or small molecule into a readily measurable readout
+(Gredell et al., 2012; Schallmey et al., 2014; Cardinale et al., 2017 ). But
+what to do when biosensors for a compound of interest do not exist? An
+interesting approach to tackle the issue was presented recently by
+Delépine et al. (2016) . Their SensiPath algorithm ( http://sensipath.
+micalis.fr/ ) stems from the concept of retrosynthesis introduced pre-
+viously by the same laboratory ( Carbonell et al., 2014). SensiPath
+Fig. 2. Initial aerobic biotransformations of the
+emerging contaminant 1,2,3-trichloropropane
+(TCP) generated by the EAWAG-BBD Pathway
+Prediction System. Reactions are tagged with one
+of the 249 biotransformation rules used for the
+predictions. Reactions proven experimentally to
+be catalysed by haloalkane dehalogenase DhaA,
+epoxide hydrolase EchA and halohydrin dehalo-
+genase HheC in aerobic conditions are high-lighted with thick arrows ( Bosma et al., 1999 ).
+The scheme was adopted and modi ﬁed from
+http://eawag-bbd.ethz.ch/predict/ . Aerobic like-
+lihood speciﬁ es whether the reaction will occur in
+aerobic conditions, exposed to air, in soil (mod-
+erate moisture) or water, at neutral pH, 25 °C,with no competing compounds. Abbreviations:
+DCP, 2,3-dichloropropane-1-ol; ECH, epi-
+chlorohydrin; CPD, 3-chloropropane-1,2-diol;
+GDL, glycidol.P. Dvoř ák et al.
+Biotechnology Advances 35 (2017) 845–866
+849applies more than 9,000 unique reaction rules collected from BRENDA,
+Metacyc, and Rhea ( Morgat et al., 2015 ) databases to ﬁnd enzymes
+(currently limited to max. two-step reactions) able to convert a targetundetectable organic chemical into a molecule that can be recognized
+by a known natural sensing system. In the theoretical part of the follow-
+up study the authors applied SensiPath to expand the range of thereby
+detectable compounds among chemical structures collected from sev-
+eral databases ( Libis et al., 2016 ). The method almost tripled (from 169
+to 477) the number of theoretically detectable compounds in theTOX21 database ( Krewski et al., 2009 ). The predictive power of the
+method was validated in the experimental part of the study. Metabolicmodules of up to two enzymes proposed by SensiPath were introduced
+into E.colibearing a sensing module for the product of enzymatic
+conversion at stake. Functional whole-cell biosensors for cocaine, ni-troglycerin, or parathion were constructed in such way. Despite this
+remarkable contribution, the number of undetectable organic chemicals
+remains at a high > 94% of all compounds in TOX21 database.
+Strengthening the computational power of tools such as SensiPath will
+hopefully improve the situation in the near future.
+The predicted reaction networks can also be pruned using toxicity
+estimation algorithms, to prevent the formation of compounds highy
+toxic to the host ( Benfenati, 2007). Besides quantitative structure ac-
+tivity relationship (QSAR) models, which calculate toxicity based on thephysical characteristics of the chemical structures (molecular de-
+scriptors; Eriksson et al., 2003), other models have recently been de-
+veloped to predict toxicity based, for example, on chemical-chemicalinteractions ( Chen et al., 2013). QSAR models nonetheless remain the
+paradigm in the ﬁeld. An interesting example of a QSAR model-based
+computational tool ( https://absynth.issb.genopole.fr/Bioinformatics/ )
+is the toxicity prediction web server EcoliTox ( Planson et al., 2012 ).
+The dataset obtained from screening a diversi ﬁed chemical library of
+166 compounds for toxicity in Escherichia coli was used to develop a
+predictor of toxicity of metabolites throughout the metabolome of thispopular bacterial host. Tools similar to the EcoliTox server could be
+integrated into a computational framework for improved design of
+native or heterologous biodegradation pathways and used to ﬁne-tune
+their expression in selected microbial hosts. A powerful virtualscreening approach, currently applied predominantly in drug design
+studies ( Buryska et al., 2016), could be used similarly for synthetic
+pathway predictions to avoid selection of enzymes whose catalyticmachinery might be inhibited by molecules present in a host cell.
+2.1.3. Detection and quanti ﬁcation of pathway building blocks
+Once the suitable pathway is selected, another issue arises, that of
+how to detect and quantify the pathway building blocks - metabolites
+and enzymes. Detection and accurate quanti ﬁcation of metabolites in
+complex reaction mixtures and of functional enzymes produced withinthe cell provide valuable information on pathway performance and its
+bottlenecks, as well as a background for further optimization of the
+route. Here, the experimental tools and approaches come into play for
+theﬁrst time in our work ﬂow scheme ( Fig. 1). The best sensitivity and
+separation power is currently provided by chromatographic separationof metabolites followed by mass spectrometry analysis ( Büscher et al.,
+2009 ). Information on physicochemical properties of compounds
+(boiling point, polarity, molecular weight) generated in the pathway is
+nonetheless crucial for correct choice of a detection method, be it gas
+chromatography, liquid chromatography, or capillary electrophoresis
+(Büscher et al., 2009 ). Of the numerous chemical databases, PubChem
+(https://pubchem.ncbi.nlm.nih.gov/ ),
+created in 2004 by the US Na-
+tional Institutes of Health, is the world's largest free chemistry re-pository, into which anyone can deposit data on structures and their
+properties ( Kim et al., 2016 ). The database has grown to > 92 million
+structures. Bioactivity data of chemical substances, manually with-drawn from the scienti ﬁc literature, are saved in PubChem Substance
+and Compound databases. Integration with other databases allows in-cluding pharmacology, toxicology, drug target information, safety orhandling information to the annotation of chemical records. PubChemalso hosts data from important regulatory agencies, including the US
+Environmental Protection Agency. In 2007, another free repository,
+ChemSpider ( http://www.chemspider.com/ ), was created and later
+purchased by the UK Royal Society of Chemistry; it provides access toover 59 million entries from 487 diverse data sources and can be re-
+commended as another rich source of knowledge on experimental or
+predicted physicochemical properties of compounds.
+For pathway enzyme detection and absolute quanti ﬁcation, SDS-
+PAGE or better, Western blot analysis, followed by determination of
+enzyme activity have been standard protocols in metabolic engineering
+for many years ( Kurumbang et al., 2014). When applied to multiple-
+enzyme pathways, however, these methods are tedious and time-con-suming. Selected Reaction Monitoring Mass Spectrometry protocols
+developed in the past few years seem to provide a promising alternative
+for absolute protein quanti ﬁcation in the future, as they allow rapid
+simultaneous quanti ﬁcation of many proteins in the cell, with good
+selectivity and sensitivity regardless of organism of origin ( Batth et al.,
+2012 ).
+2.2. Step 2: select and get to know a suitable microbial host
+In addition to catabolic pathway choice or design, the selection of a
+suitable host is a crucial initial step in any engineering project focusedon the development of a whole-cell degrader. Over the years, several
+microbial hosts have been considered for application in biodegradation
+processes, but no single, naturally isolated bacterial strain possesses all
+the desired characteristics of the optimal degrader. Soil bacteria could
+satisfy many of these requirements because of the conditions they face
+naturally in the niches in which they thrive, including exposure to
+environmental contaminants and to competing and predatory species.
+These microorganisms have versatile metabolic lifestyles that allowthem to adapt to changing conditions, sometimes adverse (oxidative
+stress, temperature challenges, osmotic perturbations). P.putida is a
+ubiquitous rhizosphere colonizer that belongs to the wide (if somewhatfuzzy) group of ﬂuorescent Pseudomonas .P.putida KT2440 is the best-
+characterized saprophytic laboratory pseudomonad that has retained itsability to survive and thrive in the environment. Its entire chromosome
+sequence is available since 2002 ( Belda et al., 2016; Nelson et al., 2002,
+Nikel et al., 2014). This strain derives from P.putida mt-2, a naturally
+occurring species able to degrade several aromatic compounds through
+the activities encoded in the catabolic TOL plasmid. The physiological
+and metabolic properties of pseudomonads argue for their selection as
+the starting point for engineering of biodegradation processes. In ad-
+dition to rapid growth and low nutrient demand, their extremely ver-
+satile metabolism and high capacity to supply redox power, providing
+endurance to oxidative stress, are several advantages that render P.
+putida an interesting host for degradation applications ( Nikel et al.,
+2016a ). Most of these properties arise from a very robust central me-
+tabolism ( Fig. 3), in which the combined activity of enzymes from
+diﬀerent pathways ( i.e.,
+the EDEMP cycle; Nikel et al., 2015) endows
+the cells with a large NADPH supply ( Chavarría et al., 2013). The op-
+erativity of the EDEMP cycle enables the formation of ATP and NADPH
+at diﬀerent rates depending on the amount of trioses phosphate re-
+cycled. Assuming that P.putida has (i) a NAD+dependent glycer-
+aldehyde-3- Pdehydrogenase and a NADP+dependent glucose-6- Pde-
+hydrogenase, (ii) pyruvate as the end product of glycolytic pathways,and (iii) a negligible ﬂux through 2-ketogluconate, the yields of pyr-
+uvate, ATP, and NADPH are as indicated in the inset to Fig. 3. The
+ability to sustain high NADPH formation rates is a requisite needed in a
+bacterial host for the implantation of biodegradation pathways
+(Lorenzo and Loza-Tavera, 2011 ). As will be shown in part in following
+sections, these bene ﬁcial properties are re ﬂected in the increasing
+number of metabolic engineering studies in which P.putida appears as
+one major player.P. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+8502.2.1. Omics techniques in studies of bacterial degraders
+Systems biology, and particularly ‘omic ’techniques, contributed
+markedly to rational selection of suitable hosts for metabolic en-
+gineering. The enormous amount of genetic information read with ﬁrst-
+or next-generation sequencing techniques together with powerful newalgorithms and computational tools to aid with data mining, allowed
+considerable progress in our understanding of dynamic interactions
+inside and in between cells and the environments they inhabit
+(Bouhajja et al., 2016; Vilchez-Vargas et al., 2010 ). Available genomic
+data also enabled new insights into the evolution of microbial meta-bolism towards biodegradation of well-recognized xenobiotics such as
+1,3,5-triazine ( Shapir et al., 2007 ). 16S rRNA-phylogenetic microarrays
+and the functional gene microarrays have been used to monitor mi-crobial community dynamics and to track activities of microbes in the
+polluted environments, respectively ( Chakraborty et al., 2012). The
+reconstructed genome-scale metabolic models, together with tran-scriptomic, proteomic, metabolomic, and ﬂux analyses in various
+growth and stress conditions, completely changed our view of popularbiodegradative bacterial hosts including the paradigmatic P.putida
+(Sohn et al., 2010).
+For instance, ﬂuxomic analyses applied to P.putida KT2440 helped
+to reveal its distinct strategies for dealing with carbon sources, e.g., by
+favouring the routes that generate NADPH, which promotes greater
+resistance to oxidative stress ( Chavarría et al., 2013; Nikel et al., 2013 ).
+Examination of transcriptomic data uncovered the signi ﬁcant portion of
+theP.putida genome ( ≥20%) that is di ﬀerentially expressed when the
+cells are grown on diverse substrates and emphasized the role of a suite
+of global regulators ( J. Kim et al., 2013 ). Recent complete structural re-
+annotation of the KT2440 strain genome allowed identi ﬁcation of 1485CDSs associated to 1898 chemical reactions, prediction of catabolicpathways for 92 compounds (carbon, nitrogen, and phosphorus
+sources) and upgrading of the available genome-scale metabolic model
+(Belda et al., 2016; Pucha łka et al., 2008 ).‘Omic ’analyses greatly in-
+creased insight into the genetic and physiological background of someother pseudomonads besides KT2440, including P.pseudoalcaligenes
+CECT5344, which might be used for biodegradation of industrial cya-nide-containing wastes, or the 2,4,6-trinitrotoluene biotransforming P.
+putida JLR11 ( Pascual et al., 2015; Wibberg et al., 2016 ). At the time of
+writing this article, there are 3133 drafted and 215 completed Pseu-
+domonas genomes
+ currently available in the Pseudomonas Genome Da-
+tabase ( http://www.pseudomonas.com/ ), perhaps the most compre-
+hensive genomic database dedicated to a single bacterial genus ( Winsor
+et al., 2016 ).
+Complete genomic sequences are currently available for many other
+potentially useful degraders such as Cupriavidus necator JMP134, a
+bacterium with nearly 300 genes involved in the catabolism of aro-matics, including chloroaromatics ( Lykidis et al., 2010 ). Other ex-
+amples include, but are not limited to, the PCBs-degrading Acidovorax
+sp. strain KKS102 ( Ohtsubo et al., 2012 ), the cyclic hydrocarbons-de-
+grading Alicycliphilus denitri ﬁcans strains BC and K601 ( Oosterkamp
+et al., 2013 ), or the oil-degrading bacterium Oleispira antarctica , whose
+genome has provided useful information as to how bacteria mitigate oilspills in cold environments ( Kube et al., 2013). Genomic sequences of
+these and many other microorganisms with biodegradation capabilitiescan be searched through in comprehensive databases such as NCBI
+genome database ( https://www.ncbi.nlm.nih.gov/genome/ ) or Micro-
+Scope ( http://www.genoscope.cns.fr/agc/microscope/home/ ), a mi-
+crobial genome annotation and analysis platform ( Vallenet et al.,
+2016 ), developed in the Laboratory of Bioinformatics Analyses for
+Genomics and Metabolism at the National Sequencing Centre (Evry,
+France); it provides a complete pipeline for annotations and compara-
+tive analyses of up to 6000 microbial genomes, of which hundreds weremanually curated for accuracy.
+Despite interest in study of individual bacterial species, the fasci-
+nating in situ systems biology exercise that followed one of the most
+alarming ecological disasters in modern human history, the 2010 BPDeepwater Horizon spill in the Gulf of Mexico, emphasized the irre-
+placeable role of bacterial communities in natural bioremediation.
+Bacteria that can convert oil-derived alkanes and aromatics into the
+biomass were identi ﬁed based on (i) genome reconstructions viame-
+tagenome sequencing of the DNA from the stable-isotope-probing ex-periments ( Dombrowski et al., 2016), and (ii) cultivation trials using oil
+samples from sea surface and deep sea collected during the out ﬂow
+(Gutierrez et al., 2013 ). Only the concerted action of many microbial
+species including Cycloclasticus ,Alcanivorax , members of Rhodospir-
+illales ,Alteromonas and others, augmented by the speci ﬁc environment
+of the oil spill, allowed the degradation of the complex mixture thatconsisted of as many as 1000 compounds. Metagenomic strategies help
+to shed light also on the composition and dynamics of microbial con-
+sortia that participate in natural biodegradation of chorinated ethenes
+in contaminated groundwater ( Adetutu et al., 2015 ) or polycyclic aro-
+matic hydrocarbons in soils ( Guazzaroni et al., 2013 ).
+2.3. Step 3: build the pathway and optimize its performance in the contextof host metabolism
+Optimization of the proposed biochemical pathway in the context of
+host cell metabolism is often the most demanding part of the en-gineering
+project. This is especially true for de novo synthetic pathways
+composed of enzymes from di ﬀerent sources, implanted into a new
+bacterial host. Codon composition of introduced genes might not beoptimal for expression in a heterologous host, enzyme activities might
+not be well balanced or might cross-talk with the native metabolic
+network, pathway intermediates can accumulate and inhibit the growth
+of cells, or cofactors, ATP or redox carriers might be lacking. The
+Fig. 3. The action of the EDEMP cycle is illustrated with a theoretical example of ﬂux
+distribution in glucose-grown P.putida KT2440. Total carbon uptake is considered to be
+100 (arbitrary units), and glucose can be split into the phosphorylative (Glk) or oxidative
+(x) branches. The net formation rates ( v) of pyruvate (Pyr), ATP, and NADPH are in-
+dicated in the inset table, with rrepresenting the amount of triose phosphates recycled to
+hexose phosphates through the action of the EDEMP cycle. Note that part of the glucosecan also be oxidized through the action of the so-called peripheral reactions , represented by
+the overall ﬂuxxin the scheme, and that two trioses are formed per glucose consumed,
+i.e., a glucose uptake ﬂux of 100 (arbitrary units) will result in a pyruvate ﬂux of 200.
+Abbreviations: ED pathway, Entner –Doudoro ﬀ pathway; EMP pathway:
+Embden –Meyerhof –Parnas pathway; PP pathway, pentose phosphate pathway; G6P,
+glucose-6-P; F6P, fructose-6-P; FBP, fructose-1,6-P
+2; DHAP, dihydroxyacetone- P; GA3P,
+glyceraldehyde-3- P; 6PG, 6-phosphogluconate; KDPG, 2-keto-3-deoxy-6-phosphogluco-
+nate; 2KG, 2-ketogluconate; and 2K6PG, 2-keto-6-phosphogluconate. Figure adapted andmodiﬁed from ( Nikel et al., 2016a).P. Dvoř ák et al.
+Biotechnology Advances 35 (2017) 845–866
+851portfolio of systemic tools that can help overcome these issues is ex-
+panding constantly. Here, we will center on the major concepts that
+have proven useful in tailoring biodegradation pathways and microbial
+degraders. We will discuss the application of several of these modern
+tools including the example of engineering the synthetic catabolic route
+for 1,2,3-trichloropropane (TCP, Fig. 2), an industrial byproduct of
+anthropogenic origin now being recognized as a groundwater con-taminant ( Samin and Janssen, 2012). TCP is representative of di ﬃcult-
+to-degrade halogenated aliphatic compounds, a tough case for re-mediation technologists due to its physicochemical properties, toxicity
+in living organisms, and absence of e ﬃcient natural catabolic pathway
+(Janssen et al., 2005; Samin and Janssen, 2012 ). The enzymes later
+used to compose the ﬁrst synthetic pathway that allowed mineraliza-
+tion of TCP by an engineered bacterium had already been described inthe late 1980s and early 90s ( Bosma et al., 1999). With a history
+spanning > 25 years, the engineering of this biodegradation pathwaythus represents one of the most systematic e ﬀorts of its kind.
+2.3.1. Computational tools for pathway and strain optimization
+The tremendous increase in the number of sequenced genomes (the
+number of complete genomes in the NCBI database has more than
+doubled in the last two years) of unicelluar and multicellular organ-
+isms, including the microbial degraders mentioned above, led to the
+reconstruction of genome-scale metabolic models representing all
+(anotated) biochemical reactions that take place in the living cell ( King
+et al., 2015 ). Mathematical models of metabolic networks have a cen-
+tral role in metabolic engineering, and in pathway and strain optimi-zation. Modelling can be used to analyze the selected pathway ( e.g., to
+determine the distribution of metabolic ﬂuxes) and identify reactions
+that must be modi ﬁed to improve its performance. Genome-scale me-
+tabolic models are built by compiling data on genes related to bio-chemical reactions from databases such as KEGG and BioCyc. The genes
+are compared to already ﬁnalized reconstructions of related organisms
+toﬁnd homologous reactions; the draft model is then re ﬁned and ver-
+iﬁed by simulations. Flux Balance Analysis (FBA) and Metabolic Flux
+Analysis (MFA) are two major approaches that use metabolic models topredict intracellular ﬂuxes ( Stephanopoulos, 1999 ). FBA is a theoretical
+concept that uses the stoichiometric coe ﬃcients for each reaction in the
+system as the set of constraints for optimization. MFA determines in-
+tracellular ﬂuxes from measurable rates of metabolite uptake and se-
+cretion in growth medium. In a typical experiment, substrates labelledwith the non-radioactive isotope
+13C are used in chemostat-grown
+cultures to trace ﬂuxes through a cellular network. Computational tools
+such as Cobra 2.0 for Matlab, OptKnock, or k-OptForce can implement
+constraint-based ﬂux calculations and suggest strategies based on
+knock-out, upregulation or downregulation of target genes to optimizemetabolite production without compromising cell growth ( Burgard
+et al., 2003; Chowdhury et al., 2014; Schellenberger et al., 2011 ). In a
+study by Izallalen and colleagues, OptKnock was used together with the
+constraint-based in silico model of Geobacter sulfurreducens to determine
+gene deletions which could lead to increased respiration rates ( Izallalen
+et al., 2008 ).Geobacter species are well recognized for their ability to
+degrade radioactive and toxic metals and have been explored for theirutility in microbial fuel cells ( Shi et al., 2016 ). These processes are
+nonetheless limited by electron transfer rates in cells. OptKnock cal-culations followed by genetic constructions by the authors resulted in
+recombinant Geobacter cells with decreased ATP levels, slower growth
+rates, and predicted higher respiration rates ( Izallalen et al., 2008 ).
+Subsequent genome-wide analysis of gene transcript levels also veri ﬁed
+thein silico predictions.
+Although FBA- and MFA-based approaches can handle genome-scale
+metabolic models and require no information on enzyme kinetics, their
+output only gives a steady-state approximation of the dynamic reality in
+the living cell. Kinetic modelling is an alternative to static ﬂux calcu-
+lations when reliable kinetic parameters of pathway enzymes and someother input data are available, e.g., speci ﬁc surface area of the cell,permeability coe ﬃcients for substrates, metabolite concentrations, or
+approximate enzyme amount in the cell ( Chowdhury et al., 2015). Ki-
+netic constants can be obtained from enzyme databases such asBRENDA or can be determined experimentally. One should keep in
+mind that most kinetic constants deposited in databases are not stan-
+dardized and also measured in in vitro , which might be a limiting factor
+when such data are applied to kinetic modelling in living systems ( Costa
+et al., 2011 ). Computational tools such as COPASI or E-Cell are used to
+assemble the pathway model in the form of kinetic and di ﬀerential
+equations, and to simulate reaction time courses for various conditions
+(Mendes et al., 2009; Takahashi et al., 2003 ). Kinetic models of whole
+metabolic networks are the holy grail of metabolic engineering buttheir application in strain design is limited by factors such as un-
+reliability of parameters, non-universality of rate laws, need to imple-
+ment regulatory events, or extremely high demand on computational
+power ( Chowdhury et al., 2015 ). In contrast, the use of kinetic mod-
+elling to engineer individual metabolic pathways or simpler in vitro -
+assembled networks is currently more feasible ( Muschiol et al., 2015 ).
+Recent studies by Dvorak, Kurumbang and colleagues are notable
+example of kinetic modelling applied in engineering of synthetic bio-
+degradation pathways ( Dvorak et al., 2014b; Kurumbang et al., 2014).
+As a model, these studies centered on detoxi ﬁcation
+of the industrial
+waste compound and water pollutant TCP to glycerol - reaction cata-
+lysed by the haloalkane dehalogenase DhaA from Rhodococcus rhodo-
+chrous NCIMB 13064 and the haloalcohol dehalogenase HheC and the
+epoxide hydrolase EchA from Agrobacterium radiobacter AD1 ( Bosma
+et al., 1999 ).In vitro steady-state kinetic data obtained for HheC, EchA,
+and three variants of DhaA were utilized to develop a kinetic model of
+the reaction that proved useful for revealing major bottlenecks in the
+pathway, that is (i) low activity of wild-type DhaA on TCP and (ii)
+unbalanced enantioselectivity and enantiospeci ﬁcity of the ﬁrst and the
+second enzyme in the route, DhaA and HheC, respectively ( Dvorak
+et al., 2014b ). Modelling was further applied to predict optimal enzyme
+stoichiometry and ﬁne-tuning overall pathway e ﬃciency, both in in
+vitro conditions and in the heterologous microbial host E.coli.I nE.coli,
+the pathway was established as a modular, tunable system ( Kurumbang
+et al., 2014 ). Absolute amounts of pathway enzymes in the cell, copy
+numbers of used plasmid vectors, and toxicity levels of pathway sub-
+strate and intermediates were included in the mathematical model as
+additional parameters. Variants of the pathway, predicted to promote
+better host survival in a medium with toxic TCP, were veri ﬁed ex-
+perimentally. The observed precise matching between calculated andexperimental data con ﬁrmed the performance of the pathway in E.coli
+and stressed the power of kinetic modelling when reliable parametersare available. Finally, the kinetic parameters of an optimal DhaA var-
+iant that would ensure su ﬃcient TCP conversion to glycerol as well as
+host cell growth on the toxic substrate were both predicted by mathe-matical modelling.
+This study shows that, for engineering and implanting heterologous
+pathways, complete knowledge of the host cell metabolic background is
+not a must, and a reliable strain design can be achieved with a relatively
+simple mathematical model ( Dvorak et al., 2014b ). Even so, similar
+studies that combine theoretical and experimental approaches in thedesign of pathways and strains for biodegradation are still rare. Most
+recent work in the biodegradation ﬁeld is restricted to application of
+purely experimental techniques from a repertoire of metabolic en-gineering, discussed in the following section.
+2.3.2. Experimental tools for pathway and strain optimization
+Once the bottleneck reaction steps are identi ﬁed and a solution is
+proposed, experimental techniques are applied to target the appropriate
+genes or regulatory mechanisms. Engineering is traditionally conducted
+at the level of gene expression, which a ﬀects the quantity of protein.
+Genes in native or synthetic pathways are usually overexpressed byintroducing plasmid vectors with extra copies of desired coding se-
+quences. One popular approach, also used for modular assembly of theP. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+852TCP biodegradation pathway described above, is to combine Novagen
+Duet plasmid vectors (Merck Millipore, Germany) or derivatives such as
+ePathBrick vectors, which carry compatible replication origins and
+antibiotic markers ( Kurumbang et al., 2014; Tolia and Joshua-Tor,
+2006; Xu et al., 2012 ). This system allows e ﬀective propagation and
+maintenance of up to four plasmids in a single E.coliBL21 cell with
+λDE3 lysogen and modular assembly of multi-gene pathways. SEVA
+(Standard European Vector Architecture) plasmids with standardized
+architecture and nomenclature are an alternative modular vector
+system tailored to allow cloning or expression of heterologous genes in
+P.putida ,E.coliand other Gram-negative bacteria, with no speci ﬁc
+need for strain pretreatment ( Martínez-García et al., 2015 ). Up to four
+plasmids, each with one of the six available antibiotic markers (ampi-
+cillin, kanamycin, cloramphenicol, streptomycin, tetracycline, genta-
+micin), four independent replication origins (RK2, pBBR1, pRO1600/
+ColE1, RSF1010), and diverse cargoes, can be combined in a single host
+cell to ful ﬁll the user's needs. A rich collection of constructs is already
+freely available ( http://seva.cnb.csic.es/ ).
+A set of compatible SEVA plasmids was used, for instance, in a study
+ofNikel and de Lorenzo (2013) , who described extrication of P.putida
+KT2440 from its strictly aerobic nature, which prevents its use in in-
+dustrial anaerobic fermentors and certain bioremediation applications
+(Nikel and de Lorenzo, 2013). Two scenarios were considered to ex-
+plain the inability of P.putida to grow in anoxic conditions, (i) un-
+balanced energy charge due to limited activity of the respiratory chain,
+and (ii) lack of appropriate pathways for anoxic NADH re-oxidation.
+This two-fold problem was tackled by recruiting the pyruvate dec-
+arboxylase ( pdc) and alcohol dehydrogenase II ( adhB ) genes from the
+anaerobe Zymomonas mobilis and the acetate kinase ( ackA ) gene from
+the facultative aerobe E.coli, to manipulate energy generation and
+redox balance in anoxic conditions. To evaluate the potential of therecombinant host for anoxic biotransformations, the authors used it as a
+host for the haloalkane dehalogenase genes from P.pavonaceae strain
+170. The resulting recombinant, which bore two synthetic operons on
+compatible plasmids pSEVA234 and pSEVA428, not only survived in
+anoxic conditions, but also degraded the environmental pollutant 1,3-
+dichloropropene. These results highlight the possibility of harnessing
+the full potential of P.putida KT2440 as a robust biocatalyst by precise
+control of its energy and redox metabolism.
+Despite the widespread use of recombinant plasmids in proof-of-
+concept studies, metabolic engineers must bear in mind that the in-troduction and massive expression of heterologous genes can a ﬀect host
+ﬁtness, due either to additional metabolic load or to depletion of es-
+sential cofactors in redox reactions ( Dvorak
+ et al., 2015; Glick, 1995;
+Wu et al., 2016). This is even more important in the design of robustbacterial degraders that must cope with a spectrum of toxic substrates
+and/or pathway intermediates, and might need an additional energy
+charge and reducing cofators to cope with oxidative stress ( Dvorak
+et al., 2015; Nikel et al., 2013 ). By-passing such di ﬃculties is possible
+by tuning inducer concentration, applying lower-copy-number plasmids
+with weaker promoters, or by enzyme-mediated co-factor recycling
+through overexpression of NAD
++kinase, transhydrogenases or dehy-
+drogenases ( Dvorak et al., 2015; Nikel et al., 2016b).
+As an alternative, expression of heterologous genes directly from the
+host chromosome can be bene ﬁcial for greater stability of the desired
+genotype/phenotype and improved host viability ( Martínez-García
+et al., 2014a; Santos and Yoshikuni, 2014; St-Pierre et al., 2013; Zobelet al., 2015 ). Homologous recombination and site-speci ﬁc or random
+transposition-based techniques have been developed to enable chro-mosomal insertion of single genes, gene clusters or whole synthetic
+operons, or knockouts of genes that encode competing metabolic
+pathways ( Loeschcke et al., 2013; Martínez-García et al., 2014a; Santos
+and Yoshikuni, 2014; St-Pierre et al., 2013; Zobel et al., 2015 ).
+In a study by Samin and co-workers, a mutant variant of haloalkane
+dehalogenase DhaA was introduced into the chromosome of 2,3-di-chloro-1-propanol-degrading P.putida MC4 under the control of astrong constitutive promoter using the Tn5 transposon-based delivery
+vector ( Samin et al., 2014 ). Although the complete mineralization
+pathway in strain MC4 is not yet fully understood, the recombinantPseudomonas was the ﬁrst microorganism shown to grow aerobically on
+TCP, both in shaken ﬂasks and in packed-bed reactor in continuous-
+ﬂow conditions. Mini-transposon systems have also been used suc-
+cessfully for chromosomal integration of the whole catabolic cluster, asin the study by Wittich and Wolf who transplanted 11 genes from three
+distinct bacteria into Cupriavidus necator H850, giving rise to the ﬁrst
+designer bacterium to show aerobic growth on a wide range of PCB,including the two commercial pesticides Aroclor 1221 and Aroclor
+1232 ( Wittich and Wol ﬀ, 2007 ).
+Gene expression balancing is undoubtedly a powerful metabolic en-
+gineering concept. In addition to the approaches mentioned above for
+rather rough manipulation of gene expression, numerous techniques for
+ﬁne-tuning expression have been developed in recent years. Surgical
+cuts, including computationally designed ribosome binding sites, re ﬁned
+architecture of the whole expression cassette, mutagenesis of promoter
+regions, tailored stability of mRNA molecules, or altered gene order in
+the operon were proven useful for optimizing bisynthetic pathways
+(Boyle and Silver, 2012 ). In several cases, expression adjustment was also
+considered in biodegradation pathway design. de la Peña Mattozzi andco-workers achieved more rapid paraoxon hydrolysis in a recombinant
+P.putida strain by altering the order of three genes in the operon for
+enzymes that convert one of the initial pathway intermediates ( de la
+Peña Mattozzi et al., 2006 ). Expression of the dszB gene, which encodes
+2-hydroxybiphenyl-2-sul ﬁnate sul ﬁnolyase, the last rate-limiting enzyme
+in the dibenzothiophene biodesulfurization pathway, was improved by
+rearranging gene order and removing the overlapping structure in the dsz
+operon ( Li et al., 2007 ). Nonetheless, especially in cases of synthetic
+metabolic pathways composed of biocatalysts from diverse organisms,
+the activity, selectivity, stability or inhibition bottlenecks of individual
+enzymes can be too far-reaching to be solved by tuning expression of thecorresponding genes. Moreover, overexpression of endogenous or exo-
+genous genes often results in a metabolic burden and lower host viability
+due to overconsumption of metabolic precursors (amino acids, rRNA,
+ATP, reducing cofactors) to fuel the synthesis of non-essential proteins
+(Glick, 1995; Wu et al., 2016 ).
+ Protein engineering of bottleneck en-
+zymes then becomes a more reasonable approach.
+2.3.3. Protein engineering to eliminate bottlenecks of biodegradation
+pathways
+Over the last two decades, three distinct strategies were developed to
+allow the construction and identi ﬁcation of mutant enzymes with de-
+sirable properties ( Bornscheuer et al., 2012 ). The earliest approach, ra-
+tional design , exploits various computational techniques such as, mole-
+cular docking, homology modelling and molecular dynamics simulations,together with site-directed mutagenesis protocols to generate targeted
+mutations that result in single or several modi ﬁed variants of an enzyme
+(Damborsky and Brezovsky, 2014 ). In contrast, directed evolution uses
+random mutagenesis methods and is bene ﬁcial especially in cases when
+neither the structure nor the catalytic mechanism of the enzyme isavailable ( Brakmann, 2001 ). Random methods of directed evolution are
+combined with elements of rational enzyme modi ﬁcation to bypass
+certain limitations of both approaches. This focused directed evolution
+approach targets several speci ﬁc residues or certain protein regions se-
+lected on the basis of prior structural and functional knowledge(Bornscheuer et al., 2012 ). Mutation hot spots are chosen experimentally
+and, on a much larger scale, computationally, using powerful new al-gorithms and statistical tools such as HotSpot Wizzard or 3DM tool(Bendl et al., 2016; Damborsky and Brezovsky, 2014; Kuipers et al.,
+2010 ). A clear trend in recent years is the introduction of protein en-
+gineering into the metabolic engineering work ﬂow.
+The activities of many enzymes that act on anthropogenic com-
+pounds are derived from promiscuous activities that are generally very
+ineﬃ cient ( Khersonsky and Taw ﬁk, 2010). In such cases, proteinP. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+853engineering is the only possible solution. Numerous reports from the
+ﬁrst decade of the 2000s describe application of common protein en-
+gineering methods such as error-prone PCR, DNA shu ﬄing, site-di-
+rected or saturation mutagenesis for engineering activity, or selectivity
+of individual catabolic enzymes to halogenated hydrocarbons ( Parales
+and Ditty, 2005; Wittich et al., 2010 ). Recently, the new challenge of
+accumulating plastic waste has attracted the attention of protein en-
+gineers, who try to enhance the activities of certain bacterial or fungal
+enzymes such as esterases, lipases or polyster hydrolases to synthetic
+polymers, including polyethylene terephthalate (PET) or polyurethanes
+(Wierckx et al., 2015 ). For instance, Wei and colleagues applied a
+comparison of crystal structures and molecular docking combined withside-directed mutagenesis to improve the activity of cutinase TfCut2
+from Thermobi ﬁda fusca KW3 towards PET at elevated temperatures
+that promote degradation of this oil-derived plastic ( Wei et al., 2016 ).
+Subsequent kinetic and in silico energetic analyses con ﬁrmed that the
+improvement in PET hydrolysis was the result of a relief of productinhibition caused by single point mutation in the enzyme's surface-ex-
+posed active site. New unique PETase and MHETase, shown to help
+bacterium Indonella sakaiensis to depolymerize and utilize PET, are
+promissing candidates for protein and metabolic engineering exercisesthat might lead to biotechnological recycling of the polymer
+(Bornscheuer, 2016; Yoshida et al., 2016a ). Alas, such a promise is not
+devoid of controversy about the very enzymes that could do the job(Yang et al., 2016; Yoshida et al., 2016b )
+The studies reporting the implantation of constructed mutants in the
+context of the whole biodegradative pathway are nonetheless rather
+rare. Iwakiri and co-workers successfully applied Alcaligenes sp . KF711
+harbouring engineered monooxygenase P450
+CAM for the dehalogena-
+tion of pentachloroethane to trichloroethane in anoxic conditions
+(Iwakiri et al., 2004 ). In another study, promiscuous toluene ortho -
+monooxygenase and epoxide hydrolase were engineered using DNA-shuﬄing and saturation mutagenesis; the use of mutant genes allowed
+more rapid aerobic degradation of chlorinated ethenes, with less ac-
+cumulation of stress-inducing intermediates in recombinant E.coli
+bearing the synthetic pathway ( Lee et al., 2006; Rui et al., 2004 ).
+Mutants of DhaA, the enzyme that initiates dehalogenation of TCP,
+were used in three of the previously mentioned studies that focused onTCP pathway engineering ( Dvorak et al., 2014b; Kurumbang et al., 2014;
+Samin et al., 2014 ). The DhaA31 variant, with 29-fold improved catalytic
+eﬃciency towards the chlorinated substrate, was prepared by combining
+molecular dynamics simulations of product release from the buried ac-tive site with site-directed and saturation mutagenesis in selected hot
+spots ( Pavlova et al., 2009 ). Another promising mutant with the potential
+to remove the second serious bottleneck in the synthetic TCPpathway —enantioselectivity of DhaA and high enantiospeci ﬁcity of
+HheC —originated from the work of van Leeuwen et al. (2012) .T h e
+authors targeted DhaA31 to obtain variants that convert TCP pre-
+dominantly into ( R)-DCP, which can be further converted by HheC at a
+much higher rate than the ( S)-enantiomer. Five rounds of focused di-
+rected evolution using saturation mutagenesis with restricted codon sets
+provided mutant DhaA r5-90R with 13 new amino acid substitutions, and
+substantially improved ( R)-selectivity. Mutagenesis nevertheless a ﬀected
+the activity with TCP, which dropped to wild-type DhaA levels; themutant was later shown in in vitro andin vivo studies to be of no value for
+further improvement of TCP pathway e ﬃciency ( Dvorak et al., 2014b;
+Kurumbang et al., 2014 ). Additional engineering input is thus needed to
+obtain DhaA variants with improved activity and modi ﬁed enantios-
+electivity that would promote smooth ﬂux through the synthetic
+pathway ( Fig. 4 ) and allow growth of bacterial recombinants in minimal
+medium with the toxic substrate ( Kurumbang et al., 2014 ).
+It will be necessary to accelerate the processes of laboratory evo-
+lution and screening of new enzymes with enhanced properties in
+mutant and metagenomic libraries to make protein engineering of
+greater value in optimizing natural and synthetic catabolic pathways
+(Bouhajja et al., 2016 ). Selection couples an improved enzyme propertywith host survival, which allows even > 10
+9clones/enzyme variants to
+be tested in a reasonable time. New selection assays based on toxicsubstrate conversions into a harmless utilizable metabolite, coupled
+withﬂuorescence-activated sorting of surviving cells could, for ex-
+ample, be applied for the enrichment of new dehalogenase variantsfrom libraries prepared by directed evolution or a semi-rational ap-
+proach ( Fernández-Álvaro et al., 2011; Fibinger et al., 2015 ). Several
+recent studies presented work ﬂows for high-throughput screening and
+characterization of improved enzyme variants or novel enzyme activ-
+ities. These test schemes are based on: (i) bioinformatic pre-screening
+combined with high-throughput experimental characterization of can-
+didate proteins ( Bastard et al., 2014 ), (ii) completely automated robotic
+platforms manipulating clones growing in microtitre plates ( Dörr et al.,
+2016 ), (iii) microcapillary arrays coupled with ﬂuorescent assays and
+laser extraction for recovery of live clones ( Chen et al., 2016 ), or (iv)
+single-cell sorting based on a ﬂuorescent signal from clones with an
+implemented synthetic genetic circuit responding to a speci ﬁc meta-
+bolite ( Choi et al., 2014 ).In silico screening of molecules that ﬁt the
+active site cavity of an available enzyme structure, or reverse screeningof enzymes that can accommodate target substrate could supplement
+experimental methods and reduce the time needed for discovery of new
+biocatalysts for recalcitrant chemicals. Indeed, the potential of in silico
+screening methods was demonstrated when investigating cytochromeP450-mediated metabolism of xenobiotics ( Raunio et al., 2015 ). In a
+recent study by Aukema and colleagues, docking and molecular dy-namics simulations allowed selection of biphenyl dioxygenase from
+Paraburkholderia xenovorans LB400 as the best candidate enzyme for
+metabolizing carbamazepine, one of the most commonly identi ﬁed re-
+calcitrant pharmaceuticals in rivers ( Aukema et al., 2016). The ex-
+perimentally veri ﬁed rate of carbamazepine degradation by P.xeno-
+vorans cells was 40-times greater than the best reported rates so far.
+As shown in the preceding sections, the available toolbox of systems
+biology, metabolic engineering and protein engineering applicable forre-factoring microbes and their catabolic pathways towards more e ﬃ-
+cient biodegradation of waste chemicals and recalcitrant pollutants isbecoming inordinately large. Even so, the deﬁ ned work ﬂows, standards
+and universally applicable principles for strain optimization were longmissing in the ﬁeld of metabolic engineering, despite which, the aim to
+engineer living systems on a rational basis remained prevalent in thecommunity. This goal led metabolic engineers to adopt standards and
+strategies from another closely related ﬁeld of synthetic biology, that
+was established primarily to program living systems with a high pre-dictability.
+3. Synthetic biology approaches and tools for biodegradation
+pathway engineering
+The principal underlying thought in synthetic biology is that any
+living system can be considered a set of separate usable componentsthat can be combined by the means of biological engineering in new
+arrangements to alter existing features or generate new ones ( de
+Lorenzo and Danchin, 2008). Such biological engineering can be sim-pliﬁed by applying principles adopted from electronic engineering and
+computer
+science to produce predictable, robust systems (genetic con-
+trol systems, metabolic pathways, chromosomes and whole cells) with
+non-natural functions ( Paddon and Keasling, 2014 ). This would be
+achieved through the fabrication of thoroughly characterized, stan-dardized, recyclable parts. From its very beginnings, synthetic biology
+has been confronted with the need to de ﬁne its practice precisely and to
+develop clear, generally applicable strategies, as this was the only way
+to guarantee and implement engineering principles in a ﬁeld as sto-
+chastic as biology. With its tools, standards and the DBTA cyclestrategy, synthetic biology has contributed as has no other scienti ﬁc
+discipline to rationalize metabolic engineering. Its bottom-up ap-proaches and synthetic devices are being implemented to make more
+robust, better controllable microbial cell factories. Synthetic biologyP. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+854can, and to some extent already contributes, the same service with its
+new concepts to the ﬁelds of biodegradation and bioremediation. In the
+theSection 3, we will discuss examples of bene ﬁcial inclusion of syn-
+thetic biology into strategies for engineering pathways and whole cells
+for biodegradation of waste and polluting chemicals, and perspectives
+for these initiatives.
+3.1. Development of robust microbial chassis for biodegradation of toxic
+chemicals
+Genetic instability and negatively a ﬀected ﬁtness are frequently
+encountered drawbacks of the native microbial hosts tailored by me-tabolic engineering for speci ﬁc biodegradation purposes. Synthetic
+biology o ﬀers possible solutions for these problems by implementing
+DNA synthesis and genome editing strategies. Both curiosity and pro-
+spective practical applications drive synthetic biologists to generate
+microbial cells with deleted parts of their genomes that encode re-
+dundant, cryptic, or even deleterious functions. Such cells, endowed
+with a reduced genome as foundation to house and support hetero-
+logous genetic parts, are collectively known as chassis (Adams, 2016 ).
+An extreme case of a chassis is the so-called minimal cell (Glass et al.,
+2006 ). Chassis can be prepared by de novo synthesis of a reduced target
+genome and its implantation into a suitable cell envelope, or throughsystematic deletions of non-essential genes in the genomes of an ex-
+isting natural host. Microarray-based oligonucleotide synthesis is cur-
+rently used to provide a substrate (usually 5 –50 oligos) for construction
+of larger (usually 200 –3000 bp) synthetic fragments ( Kosuri and
+Church, 2014). Scarless methods including the popular Gibson as-
+sembly, uracil assembly, Golden Gate technology, ligase cycling reac-
+tion, or yeast recombination are used to combine sequence-veri ﬁed
+gene-length fragments in even larger complexes ( Casini et al., 2015 ).
+DNA synthesis also allows preparation of standardized genetic parts
+(promoters, ribosome binding sites, genes, terminators and so on) withveriﬁed codon-optimized sequences. Despite breakthroughs in gene
+synthesis and DNA assembly methods, this last approach for chassis
+construction seems far more feasible at the moment, considering the
+lesser demand of chromosome editing experiments, the constantly ex-
+panding portfolio of genetic tools, and the growing list of micro-
+organisms with intentionally reduced genomes ( Martínez-García and deLorenzo, 2016; Si et al., 2015 ).
+Discarding non-essential cell functions shows considerable potential
+not only for biosynthetic purposes ( Hutchison et al., 2016 ), but also for
+designer biodegradation and bioremediation. A recent report on the
+systematic deletion of 11 non-adjacent genomic regions in P.putida
+KT2440 ( Fig. 5) is a unique example of genome streamlining in a
+popular bacterial host with well-deﬁ ned biodegradation capabilities
+(Martínez-García et al., 2014b ). In all, 300 genes were eliminated, that
+is, 4.3% of the entire KT2440 strain genome, using the scar-less deletion
+procedure based on homologous recombination after in vivo DNA
+cleavage by the homing Saccharomyces cerevisiae nuclease
+ I-SceI
+(Martínez-García and de Lorenzo, 2012). A suite of functions was tar-
+geted, including the complete ﬂagellar machinery, whose assembly and
+function drains ATP from the cells and consumes NAD(P)H. Four pro-
+phages, two transposons, and three components of DNA restriction-
+modiﬁcation systems were also eliminated to minimize genetic in-
+stability. The resulting strains designated P.putida EM42 and EM383
+(the latter lacks the recA gene that encodes recombinase A) showed
+clearly superior growth properties and improved overall physiologicalvigour compared to wild-type KT2440. Moreover, due to the higher
+NADPH/NADP
++ratio, the reduced-genome strains also better tolerated
+endogenous oxidative stress, a property that provides a crucial ad-vantage for catalysing harsh biodegradation reactions such as aerobic
+dehalogenation of chlorinated pollutants ( Nikel et al., 2013 ).
+Despite their reliability and robustness, the procedures based on
+these genome editing tools are time- and labour-intensive, and re-stricted to a limited number of model microorganisms. This problem is
+now being challenged by new protocols that pro ﬁt from the type II
+bacterial Clustered Regularly Interspaced Short Palindromic Repeats(CRISPR) and CRISPR-associated protein (Cas), Multiple Automated
+Genome Editing (MAGE), and combinations thereof ( Barrangou and
+van Pijkeren, 2016; Wang et al., 2009 ). Nonetheless, these technologies
+also su ﬀer from some weaknesses such as generation of numerous o ﬀ-
+target mutations. The o ﬀ-target problem of the CRISPR-Cas system was
+recently mitigated by engineering high- ﬁdelity Cas9 nucleases
+(Kleinstiver et al., 2016). In a similar manner, the number of o ﬀ-target
+mutations during MAGE was reduced substantially when temperature-
+sensitive control of the endogenous methyl-directed mismatch repair
+system was introduced into the E.colihost together with a dominant
+Fig. 4. Hypersurface plot describing the e ﬀect of catalytic e ﬃciency ( kcat/Km) and enantioselectivity ( E-value) of haloalkane dehalogenase DhaA on the production of glycerol in the TCP
+pathway. The hypersurface was calculated using the mathematical model of the TCP pathway ( Dvorak et al., 2014b ) using the constraints of Kurumbang and co-workers ( Kurumbang
+et al., 2014 ). Positions of four DhaA variants, DhaAwt (wild type, kcat/Km=7 0M−1s−1,E-value = 1), DhaA r5-90R ( kcat/Km=2 0M−1s−1,E-value = 10), DhaA31 ( kcat/
+Km= 600 M−1s−1,E-value = 1), and hypothetical DhaAXX ( kcat/Km= 700 M−1s−1,E-value = 10), are indicated by red dots. Note that the majority of mutations (orange spheres)
+introduced into DhaA r5-90R and DhaA31 are adjacent to the active site (red spheres) and to the access tunnels (in green). Hypothetical enzyme DhaAXX with 10-fold improved catalytic
+eﬃciency and 10-fold improved enantioselectivity compared to DhaAwt, would enable production of 1 mM glycerol (red line) from 2 mM TCP in the culture of recombinant E.coli
+BL21(DE3) within 24 h time interval. Such glycerol concentration will be su ﬃcient to support the cell growth. Figure was adopted and modi ﬁed from ( Kurumbang et al., 2014 ). (For
+interpretation of the references to colour in this ﬁgure legend, the reader is referred to the web version of this article.)P. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+855negative mutator allele of the E.colimismatch repair protein MutL
+(Nyerges et al., 2016). By placing this highly conserved allele together
+with λRed recombinase genes and a temperature-sensitive λrepressor
+on a single broad-host range plasmid, Nyerges and co-workers provided
+a simpli ﬁed MAGE variant (pORTMAGE) that allowed genome editing
+and mutant library generation in several biotechnologically and clini-cally relevant bacterial species, with no need for prior modi ﬁcations of
+parental strains. The recent discovery of the Ssr protein from P.putida
+DOT-T1E, a functional homologue of the βprotein of the λRed re-
+combination system, paved the way for oligonucleotide-mediatedmultiplex genome engineering in pseudomonads, including P.putida
+KT2440 and its derived platform strains EM42 and EM383 ( Aparicio
+et al., 2016 ). Continuing facilitated reduction of their genomes (dele-
+tions of multiple repetitive sequences or certain proteases) and genomesof other relevant bacterial hosts will provide more reliable, robust
+chassis for biodegradation pathway engineering.
+3.2. Development of synthetic microbial consortia for enhanced
+biodegradation and bioremediation of pollutants
+An alternative strategy that allows for the emergence of more robust
+microbe-based bioprocesses is just the opposite of the systematic de-velopment of bacterial chassis based on individual wild-type strains.
+Natural microbial consortia perform complicated biocatalytic taskssuch as lignocellulose degradation, wastewater puri ﬁcation, or in-
+testinal food digestion. By dividing the labour and metabolic burden,the consortium members become more ﬂexible when facing complex
+environmental conditions. Distribution of catabolic capacity amongcells of a single organism, among di ﬀerent bacterial strains, or even
+among species from di ﬀerent kingdoms is pivotal; this is especially true
+for biodegradation of complex toxic chemicals, which encompasses
+many steps and harmful intermediates with diverse physicochemical
+properties. The idea of exploiting consortia for directed biodegradation
+of polluting compounds and bioremediation of contaminated sites thus
+lies ready to hand.
+Application of natural microbial consortia has already shown pro-
+mise for bioremediation of sites polluted with anthropogenic pesticides
+such as diclofop methyl or atrazine ( Baghapour et al., 2013; Wolfaardt
+et al., 1994 ). Together with the new ﬁeld of synthetic biology, attempts
+are being made to modify the structure of original natural consortia ordevelop completely new arti ﬁcial organizations of co-operating mi-
+croorganisms. For example, co-culture of engineered E.coliSD2 and P.
+putida KT2440 was used successfully to mineralize the insecticide
+parathion in shaken ﬂasks and in bioﬁ lm culture ( Gilbert et al., 2003 ).
+In another study, complete mineralization of 2,4,6-tribromophenol, a
+ﬂame-retardant intermediate and pesticide, was achieved using anartiﬁcial
+anaerobe consortium of reductive debrominator Dehalobacter
+sp. FTH1, a hydrogen supplier Clostridium sp . Ma13, and the 4-chor-
+ophenol-degrading strain Desulfatiglans parachlorophenolica DS (Li et al.,
+2015 ). Recently, Martínez and co-workers introduced an attractive al-
+ternative strategy for engineering the 4S pathway ( Fig. 6A), a para-
+digmatic bioprocess for removal of the recalcitrant sulphur from aro-matic heterocycles in fuels ( Martínez et al., 2016 ). The pathway
+encoded by dszABCD genes converts the model compound di-
+benzothiophene (DBT) into sulphur-free 2-hydroxybiphenyl (2HBP).
+The authors initially synthesized and re-arranged the original genes and
+optimized transcriptional and translational signals for P.putida KT2440.
+By dividing the pathway into three separate modules expressed in-dividually, they were able to deﬁ ne previously unreported bottlenecks
+in the pathway; that is, the inhibitory e ﬀect of intermediate 2HBP-
+sulﬁnate (HBPS) on DszA and DszC monooxygenases and HBPS leakage
+into the culture medium, from which it could not be transported backinto the cells for further processing. To prevent HBPS accumulation,
+two P.putida strains bearing dszC1 -D1ordszB1A1 -D1modules were
+mixed as a suspension of resting cells. When the strains were combinedat a 1:4 ratio and added with cell-free extract containing extra DszB,
+almost 100% of DBT was transformed into 2HBP in assay conditions.
+Considerable attention is currently being dedicated to developing
+strategies for biodegradation of oil and oil-derived chemicals. Patowaryand co-workers designed a potent microbial consortium for prospective
+decontamination of sites exposed to polycyclic aromatic hydrocarbons
+from crude oil ( Patowary et al., 2016 ). The authors ﬁrst inspected the
+biodegradative capacity for total petroleum hydrocarbons of 23 bac-terial isolates from petroleum-contaminated soils, and subsequently
+designed 14 arti ﬁcial consortia based on the ﬁve most e ﬃcient isolates.
+The best designer consortium, comprised of two biosurfactant-produ-cing, hydrocarbon-degrading strains of Bacillus pumilus and B.cereus ,
+showed up to 84% degradation of total petroleum hydrocarbons afterﬁve weeks, as veri ﬁed by gravimetric, FTIR and GC/MS analyses. Ap-
+plication of natural or re-designed bacteria and their consortia alsoholds considerable promise for decomposition of oil-derived plastic
+waste ( Skariyachan et al., 2016; Yoshida et al., 2016a, 2016b ).
+New tricks for more e ﬃcient biodegradation strategies could be
+adopted from inspiring current research on synthetic consortia designed
+to decompose and valorize lignocellulosic biomass ( Minty et al., 2013).
+Tozakidis and co-workers reported application of an engineered con-sortium
+of three P.putida strains displaying thermophilic en-
+doglucanase, exoglucanase, or β-glucosidase for concerted hydrolysis of
+cellulose at elevated temperatures ( Tozakidis et al., 2016 ). Some studies
+describe surface display of whole designer cellulosomes –synthetic
+enzymatic nanomachines whose natural counterparts are produced by
+certain cellulolytic bacteria that exploit clustered surface-attached
+Fig. 5. Engineered Pseudomonas putida KT2440 as a new
+robust chassis for biodegradation and bioremediation.
+Martínez-García and colleagues used in-house genome
+editing tools to streamline the chromosome of Pseudomonas
+putida KT2440 ( Martínez-García et al., 2014b ). Deletion of
+4.3% of the original genome gave rise to the new platform
+strains EM42 and EM383, whose advantageous propertiesmake them useful chassis for engineering biodegradation
+pathways and other applications.P. Dvoř ák et al.
+Biotechnology Advances 35 (2017) 845–866
+856cellulases for e ﬃcient depolymerization of cellulose and hemicellulose
+(S. Kim et al., 2013; Moraïs et al., 2014 ). The vast majority of the work
+that exploits surface display systems for whole-cell removal of en-
+vironmental contaminants has been restricted to individual proteins
+such as laccases, methyl parathion hydrolase, or triphenylmethane re-
+ductase ( Gao et al., 2014; Liu et al., 2016; Yang et al., 2012 ). It is
+tempting to expand available surface display technologies with cellu-losome parts for the design of synthetic consortia that would catalyse
+more complex biodegradation reactions, including polymeric substrates
+or toxic metabolites, outside the cells.
+Despite their true biotechnological potential, microbial consortia
+remain too complex for directed long-term application, either for bio-
+synthesis or for biodegradation. It is still di ﬃcult to engineer home-
+ostasis and evolutionary stability in an arti ﬁcial multi-cellular system,
+whose behaviour becomes unpredictable with time ( Escalante et al.,
+2015 ). Attempts to adopt principles of intercellular communication for
+synthetic consortia are just at their beginnings ( Hennig et al., 2015;
+Scott and Hasty, 2016). Intensive co-operation of genetic engineers andevolutionary biologists with microbial ecologists and chemists will
+obviously be needed to derive a deeper understanding of the processes
+that rule the formation and survival of natural microbial consortia.
+Lessons learnt from nature can be implemented and combined with
+completely anthropogenic orthogonal genetic devices for more reliable
+design of stable multicellular systems.
+3.3. Development of orthogonal systems in bacteria to enhance pollutant
+biodegradation and bioremediation
+Orthogonal , or in other words parallel, independent systems
+1is a keyconcept in synthetic biology as long as such quality makes live systemsmore amenable to bona ﬁdeengineering. Orthogonalization involves
+e.g., use of unnatural genetic codes (for example, quadruplet rather than
+triplet), alternative transcription-translation machineries, toggleswitches, and genetic circuits for assembly of novel metabolic and
+signalling pathways from proteins containing non-natural amino acids
+(An and Chin, 2009; Wang et al., 2012). Such metabolic pathways could
+have new functions and would synthesize or catabolize a fresh spectrumof compounds. Ideally, orthogonal pathways/modules interact mini-
+mally with their natural counterparts in the host cell. This improves
+predictability of the component behaviour and prevents inhibitory
+cross-talk following introduction of the pathway or circuit into an ex-
+isting metabolic network ( Kim and Copley, 2012; Kurumbang et al.,
+2014 ). In an orthogonal module the input and output molecules of
+genetic circuits —or enzymes and metabolites of synthetic biochemical
+routes —are not degraded or inactivated by side-reactions or physico-
+chemical conditions of the host cell. While complete orthogonality is
+virtually impossible in biological systems, a practicable level of context-
+independence is indeed feasible. Some examples of claimed orthogonal
+systems include simple synthetic genetic circuits, switches, or designed
+metabolic pathways. These have the potential to improve function of
+individual engineered bacteria or synthetic consortia as whole-cell
+biosensors and degraders of recalcitrant chemicals.
+Sensitivity, robustness and applicability of microbial biosensors for
+detecting heavy metals or halogenated hydrocarbons can be greatly
+improved by implementing orthogonal genetic devices ( Bereza-
+Malcolm et al., 2015). Thus far, simple microbial biosensor designsbased on one input and two-part regulatory systems with promoter and
+reporter providing a coloured, ﬂuorescent, bioluminescent, or electric
+signal prevail in the literature ( Ravikumar et al., 2017). Reports on
+more complex multi-input systems based on Boolean logic gates are still
+rare, but give us a clue to future developments in the ﬁeld. As ﬁrst
+outlined by the work of Wang et al. (2016) , orthogonally acting multi-
+Fig. 6. Examples of synthetic biology approaches applied to
+engineering biodegradation pathways and whole-cell de-
+graders. (a) Martínez and co-workers divided the 4S
+pathway for sulphur removal from aromatic heterocycles
+into two modules ( dszC1 -D1and dszB1A1 -D1) that were
+expressed individually in two P.putida KT2440 strains to
+form a synthetic consortium ( Martínez et al., 2016 ). Com-
+bining the strains at a 1:4 ratio and mixing them with cell-free extract from the third strain producing DszB resulted inalmost complete conversion of dibenzothiophene into sul-
+phur-free 2-hydroxybiphenyl in assay conditions. (b) Wang
+et al. constructed a synthetic bacterial consortium in which
+each of the two E.colistrains functioned as a double input
+sensor with synthetic AND gates for detecting arsenic,mercury, and copper ions and quorum sensing molecules
+(3OC
+6HSL; Wang et al., 2013 ). Strain 2 generated red
+ﬂuorescence only in the presence of all three metal ions in
+culture. (c) Benedetti and colleagues achieved directedtransition between planktonic and bio ﬁlm lifestyles of P.
+putida KT2440 by controlling cyclic di-GMP levels with an
+orthogonal genetic device composed of the yedQ diguany-
+late cyclase gene from E.coliunder the control of the cy-
+clohexanone-responsive ChnR/ P
+chnB regulatory node from
+Acinetobacter johnsonii (Benedetti et al., 2016 ). Designed
+cells with a synthetic operon for 1-chlorobutane biode-
+gradation formed inducible bio ﬁlms with higher dehalo-
+genase activity than free, planktonic bacteria. (d) Dvorak
+and co-workers assembled the ﬁrstin vitro synthetic biode-
+gradation pathway for 1,2,3-trichloropropane (TCP) bycombining engineered haloalkane dehalogenase DhaA31,halohydrin dehalogenase HheC, and epoxide hydrolaseEchA, immobilized in cross-linked enzyme aggregates
+(CLEAS) and polyvinyl alcohol particles (LentiKats) ( Dvorak
+et al., 2014a). The immobilized pathway converted high
+concentrations of toxic TCP into glycerol in contaminated
+water for more than two months of continuous operation in
+a bench-top packed bed reactor. (For interpretation of the references to colour in this ﬁgure legend, the reader is referred to the web version of this article.)
+1The mathematical and geometrical concept of orthogonality has been adopted ﬁrst by
+computing science and then by synthetic biology to signify operative independence.
+System A is orthogonal to system B if A does not in ﬂuence B— and vice versa.P. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+857input/multi-output logic gates will be especially valuable for detecting
+mixtures of polluting chemicals (organic, inorganic, or both) by pro-
+viding a speci ﬁc signal for each of the constituents ( He et al., 2016;
+Wang et al., 2011 ). Developing such biosensors is of practical im-
+portance, as polluted environments are usually burdened with nu-
+merous contaminants that have diverse physicochemical properties.
+The authors engineered a set of two-input E.coli-based biosensors with
+synthetic AND gates using signalling sensory modules from native two-component signal transduction pathways, as well as hrpR and hrpS
+genes along with their HrpL promoter element from P.syringae . Using
+these sensors, they detected arsenic, mercury, copper, and zinc ions, as
+well as quorum sensing molecules in aqueous environment ( Wang et al.,
+2011 ). The most advanced design resulted in a triple-input AND logic-
+gated biosensor that formed a synthetic bacterial consortium in which
+each of the two members acted as a double input sensor ( Fig. 6B). In the
+presence of arsenic and mercury, the ﬁrst strain formed a quorum
+sensing molecule (3OC
+6HSL) that di ﬀused freely into the medium and
+was sensed together with Cu2+by the second strain, which provided a
+redﬂuorescent signal ( Wang et al., 2013). The ﬂuorescent response was
+seen only when all three metal ions were present in the culture.
+Reliable orthogonal devices will be crucial for engineering arti ﬁcial
+cell-cell communication, for instance, taking advantage of bacterialquorum sensing systems ( Hennig et al., 2015; Scott and Hasty, 2016 ).
+Programming the dynamics of subpopulations of synthetic consortiathat perform complex tasks will be only possible with parallel genetic
+circuits and signalling molecules unknown to the host cells ( Chen et al.,
+2015 ). As stressed by Silva-Rocha and de Lorenzo (2014) , catabolic
+pathways for recalcitrant and xenobiotic compounds could be a reliable
+source of wiring devices and molecules These pathways are frequently
+found in speci ﬁc types of organisms, and metabolic crosstalk can thus
+be avoided by implementing components of such networks in suitablehosts. For instance, aromatic molecules such as benzoate or phenol can
+be used as signal inducers that are recognized by regulatory proteinsthat trigeger expression of target genes. The recent determination of the
+crystal structure of the sensory domain in the phenol-responsive tran-
+scription activator PoxR ilustrates how aromatics are sensed in bacteria
+(Patil et al., 2016 ). This study paves the way for wider application of
+rationally engineered transcription regulators responsive to aromaticsin the design of synthetic genetic circuits.
+The dynamic behaviour of the whole biodegradation pathway can
+also be better studied when the route is transferred into a distant host
+chassis where it acts orthogonally. The orthogonal nature of the syn-
+thetic pathway for TCP biodegradation in the surrogate host E.coli
+BL21 (DE3), described in Section 2.3.1 ., allowed a very good match
+between in silico predicted and in vivo metabolite concentrations and
+precise description of the bottlenecks ( Kurumbang et al., 2014), as well
+as deciphering the contribution of metabolic burden and substrate/
+metabolite toxicity to the ﬁtness cost of TCP biotransformation by
+whole-cell catalysts ( Dvorak et al., 2015 ). Despite their bene ﬁts for such
+mechanistic and proof-of-concept studies, laboratory E.colistrains
+might not be optimally suited for the harsh conditions that accompanybiodegradation and bioremediation processes ( Adams, 2016; Nicolaou
+et al., 2010). Development of reliable chassis amenable to implantation
+of orthogonal genetic devices is therefore desirable. These new cell
+platforms should be based on robust environmental strains of Pseudo-
+monas ,Rhodococcus ,Deinococcus , and other microorganisms with broad
+metabolic versatility and natural resistance to organic solvents or heavy
+metals ( Adams, 2016).
+One can also take advantage of other speci ﬁc properties of en-
+vironmental bacteria including formation of a robust bio ﬁlm. As shown
+recently by Benedetti and colleagues, the actual physical forms ofwhole-cell biocatalysts can be mastered using orthogonal genetic parts
+(Fig. 6 C) through the so-called synthetic
+ morphology approach ( Benedetti
+et al., 2016 ).Pseudomonads generate bioﬁ lms with biophysical prop-
+erties that depend on the species. Cyclic di-GMP ( c-di-GMP) is the key
+signal molecule that rules the complex regulatory network mediatingthe transition between planktonic cells and bio ﬁlm formation. This
+feature was exploited to design an orthogonal genetic device for ma-
+nipulating the native c-di-GMP biochemistry in P.putida , thereby con-
+trolling bioﬁ lm formation ( Benedetti et al., 2016 ). The E.coli yedQ gene
+(encoding diguanylate cyclase, the enzyme that synthesizes c-di-GMP
+from GTP) was placed under control of a tightly regulated cyclohex-anone-responsive expression system. A synthetic operon, encoding the
+enzymes needed for 1-chlorobutane biodegradation, was also in-
+troduced in the engineered, bio ﬁlm-forming P.putida strain. Upon ac-
+tivation of the corresponding genetic modules with appropriate in-ducers, the resulting P.putida biocatalyst displayed high dehalogenase
+activity in robust bioﬁ lms.
+The modern approaches of biological engineering accelerate the
+development of whole-cell biocatalysts for in situ bioremediation or
+biosensing of emerging environmental pollutants. Field applications of
+genetically modi ﬁed microorganisms are nonetheless restricted by
+current legislation and hindered by the unreliable behaviour of re-combinant microbes in complex, ﬂuctuating environments. Synthetic
+biology can help to tackle the major problems through the means de-scribed at the beginning of this chapter, i.e., non-canonical genetic
+codes and xenobiochemistry, which can prevent di ﬀusion of undesired
+sequences into the environmental gene pool, di ﬀerentiate recombinants
+from their natural counterparts, and improve robustness and reliabilityof prepared genetic devices, whole-cell degraders and biosensors. The
+examples of such endeavours were recently reviewed extensively
+(Schmidt, 2010; Schmidt and de Lorenzo, 2016 ). These systems could
+be combined with bioluminiscence, ﬂuorescence, or DNA watermarking
+technologies to track the environmental fate of designer degraders, or
+with inducible suicide systems for discarding degraders once their
+mission is completed ( Liss et al., 2012; Liu et al., 2010; Paul et al.,
+2005 ). Yet the path to applied xenobiology is still crooked, and many
+ethical questions remain. Another concept from the portfolio of syn-
+thetic biology that will be discussed in the following section has thepotential to ﬁll the time gap until we obtain reliable whole-cell catalysts
+and alternative solutions also acceptable for GMO critics will be pro-vided.
+3.4. Engineering microbial biodegradation pathways in vitro
+The
+major principle of cell-free synthetic biology is that puri ﬁed
+biomolecules or components in crude cell extracts replace intact cellsfor constructing complex biomolecular systems ( Hodgman and Jewett,
+2012 ). To date, metabolic networks that encompass > 10 enzymes
+have been reconstructed in vitro (Rollin et al., 2015; Schwander et al.,
+2016 ). Cell-free metabolic pathways allow easy veri ﬁcation of bioca-
+talyst function, determination of kinetic parameters, as well as eva-
+luation of the network by kinetic modelling ( Santacoloma et al., 2011).
+Note, however, that assemby of degradative pathways in cell-free sys-tems (whether with puriﬁ ed enzymes or cell extracts) is not only to
+prototype and parametrize new routes, but also for direct use in theﬁeld (Karig, 2017). Despite the drawbacks that cell-free systems cannot
+self-propagate, that certain biomolecules can be sensitive to oxidizingenvironments, and that their encapsulation and large-scale production
+might be costly, these systems o ﬀer an appealing means to circumvent
+problems associated to GMO release to the environment. Apart fromincreasing safety, they o ﬀer other clear bene ﬁts. For instance, in vitro
+systems can operate in the presence of toxins that would inhibit or killlive cells, and metabolites, regulators and enzymes can be produced in
+optimized concentrations without interfering with cell components.
+Most important for release and predictability, the evolutionary oppor-tunities of such non-live agents are zero, making the emergence of
+unexpected properties virtually impossible.
+In vitro metabolic networks can su ﬀer from suboptimal e ﬃciency
+due to the lower enzyme concentration compared to the extremely
+dense cell cytoplasm ( Hodgman and Jewett, 2012 ). This issue can be
+mitigated by enzyme immobilization and improved spatial organizationP. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+858viasynthetic protein or DNA sca ﬀolds that reduce di ﬀusion of pathway
+intermediates and promote substrate channeling ( Siu et al., 2015 ). Al-
+ternatively, biocatalysts can be precipitated and covalently inter-
+connected in cross-linked enzyme aggregate particles ( Sheldon, 2011 );
+this method was applied successfully to synthesize toxic nucleotideanalogues by an immobilized ﬁve-enzyme synthetic pathway ( Scism
+and Bachmann, 2010 ). The biochemical route described was completed
+with functional ATP regeneration, which demonstrates that in vitro
+technologies can cope with another possible drawback –limited co-
+factor recycling.
+Thus far, mainly single immobilized enzymes or whole-cell bioca-
+talysts have been exploited in biotechnological processes intended to
+remove polluting chemicals such as polyethylene terephthalate, 2,4-
+dinitrophenol, atrazine, or inorganic nitrates ( Barth et al., 2016;
+Dehghanifard et al., 2013; Mutlu et al., 2015; Trögl et al., 2012 ).In vitro
+assays with cell-free extracts or puri ﬁed enzymes, respectively, helped
+to identify an unknown anaerobic pathway for complete phthalatedegradation to CO
+2inThauera chlorobenzoica 3CB-1 or to decipher se-
+questration of the highly toxic intermediate tetrachlorobenzoquinone inpentachlorophenol degradation pathway in Sphingobium chlor-
+ophenolicum (Ebenau-Jehle et al., 2017; Yadid et al., 2013). Geueke
+et al. showed the bene ﬁts of an in vitro engineering approach in the
+model of γ-HCH biodegradation pathway ( Geueke et al., 2013). They
+used a system of two puriﬁ ed enzymes, the dehydrochlorinase LinA and
+the haloalkane dehalogenase LinB, which initiate biotransformation ofγ-HCH, a prohibited insecticide. They separately incubated ﬁve isomers
+that form technical HCH (which used to be applied frequently instead ofpure γ-HCH) with various LinA:LinB ratios and determined metabolic
+proﬁles of sequential biotransformations. Analyses of these pro ﬁles
+helped determine the environmental fate of HCH isomers, and showed
+that the original HCH degradation pathway is optimized by evolution
+forγ-HCH, but not for other isomers that co-pollute contaminated sites.
+Theﬁrst report of in vitro assembly of a fully functional synthetic
+biodegradation pathway was published by Dvorak and co-workers(Dvorak et al., 2014a ). The authors adopted the cell-free strategy using
+immobilized engineered haloalkane dehalogenase DhaA31, halohydrindehalogenase HheC and epoxide hydrolase EchA for TCP bio-
+transformation to harmless, valuable glycerol in contaminated water
+(Fig. 6D). The practical utility of bacterial recombinants that mineralize
+TCP (desccribed in Sections 2.3.1 and 2.3.2 ) is limited by substrate
+toxicity and by legislative barriers on the application of GMO
+(Kurumbang et al., 2014; Samin et al., 2014). Probing the function of
+the pathway in in vitro conditions therefore lied ready to hand. The
+authors successfully immobilized the pathway in the form of puri ﬁed
+enzymes or cell-free extracts in cross-linked enzyme aggregates andlens-shaped polyvinyl alcohol particles. The immobilized pathway
+showed almost the same e ﬃciency of TCP-to-glycerol conversion as
+mixture of free enzymes. Physicochemical properties of polyvinyl al-cohol lentils allowed recovery from the reaction mixture and recycling
+of the pathway. In addition, the immobilized enzymes retained > 50%
+of their initial activities for over 2 months of continuous operation in a
+bench-top packed bed reactor. The study indicated that the im-
+mobilized route removes TCP from heavily contaminated water with a
+pollutant concentration (~1 g/L) that would be detrimental to the
+living degraders. One can anticipate that such conversions of toxic TCP
+to useful glycerol could even pave the way for prospective valorization
+of this waste chemical.
+Although this biotechnology requires further validation and tuning,
+the work showed that in vitro assembly of natural or synthetic enzy-
+matic pathways with engineered enzymes is a promising concept for thebiodegradation of polluting compounds and toxic industrial waste
+products. Transport of such pathways vianon-live carriers is related
+conceptually to e ﬀorts to produce and release complex therapeutic
+agents for human use. In both cases, their application demands the
+development of a sort of environmental Galenic science that enables
+supply of the engineered biological remedy when and where needed.4.
+Towards planet-wide bioremediation interventions: CO 2
+capture as a large-scale challenge
+Environmental deterioration due to emissions of recalcitrant che-
+micals seems to pale when compared to the problem of global warmingcaused by the release of greenhouse gases that originate in human ac-
+tivities. The bulk of these gases comprise four natural molecules, carbon
+dioxide (CO
+2), methane (CH 4), nitrous oxide (N 2O) and ozone (O 3), as
+well as one class of xenobiotics, the chloro ﬂuorocarbons or CFC. Given
+the diluted, aereal and global nature of this problem, the strategies
+contemplated for tackling these chemical species di ﬀer considerably
+from those that centre on site-speci ﬁc pollution issues. Most proposals
+thus far focus much more on reducing emissions than on capture and
+returning to innocuous chemical or mineral forms. All these compounds
+have their own natural biogeochemical cycle and, in theory, simply
+reducing their input into the biosphere should restore the original
+equilibrium ( Rockström et al., 2017). Recent ecological thought none-
+theless postulates that the impact of climate change in many ecosystemsis already irreversible by natural means, and call for large-scale inter-
+ventions that could help to resolve this impasse ( de Lorenzo et al.,
+2016 ). In this case, what types of options could be considered from a
+systemic biology perspective?
+Some incipient attempts have appeared recently, mostly in the ﬁeld
+of engineering bacteria with a greater capacity for non-photosynthetic
+ﬁxing of CO
+2(Erb and Zarzycki, 2016 ). One option is to use the six
+alternative pathways of autotrophic carbon ﬁxation known in nature
+(Fuchs, 2011; Hicks et al., 2017 ) as a starting point to optimize such
+natural processes. Another possibilty is the invention of new routes byrewiring or modifying existing enzymes in a new con ﬁguration. A re-
+markable example of this solution is the work of Antonovsky et al.
+(2016) , who showed that combining metabolic rewiring, recombinant
+protein expression, and laboratory evolution enables the production ofsugars and other biomass constituents by a fully functional Calvin-Benson-Bassham (CBB) cycle in E.coli. In the bacteria designed in this
+way, carbon is ﬁxed viaa refactored CBB cycle, whereas reducing
+power and energy are derived from pyruvate oxidation ( Fig. 7). It is
+interesting to note how evolutionary approaches adjust ﬂuxes and
+generate connections between the designed CBB cycle and the host
+biochemical network, that cannot be predicted or designed.
+A separate approach was recently developed by Schwander et al.
+(2016) , who developed a synthetic route for continuous CO
+2ﬁxation in
+vitro by composing a cycle formed of 17 enzymes that convert CO 2into
+organic molecules. The cycle was draughted by metabolic retro-
+synthesis with enzymes from nine organisms from three domains of life,
+further optimized through rounds of protein engineering and metabolic
+proofreading. Although this completely designed pathway has not yet
+been implemented in vivo (e.g., in a bacterial carrier) it is a question of
+time until it is done and propagated throughout an entire microbialcommunity ( de Lorenzo et al., 2016).
+Finally, today's systemic approaches enable the invention of en-
+zymes from scratch through de novo protein design followed by directed
+evolution, which opens perspectives for improving the natural state ofaﬀairs regarding ﬁxation of CO
+2(and other greenhouse gases) as well as
+valorization of this waste as biotechnological feedstocks ( Huang et al.,
+2016; Renata et al., 2015). A separate matter is the large-scale de-
+ployment of the microbial agents for CO 2retrieval. Existing technology
+allows their implementation in bio ﬁlters and bioreactors that capture
+emissions at source. But how can we spread such desirable catalytic
+properties at a very large, even at planetary level to make a di ﬀerence?
+Such technologies are not yet available —let alone that they raise a large
+number of safety questions. But they must necessarily be developed if
+we are not just to control greenhouse gas discharges, but also aim at
+their eventual reduction to pre-industrial levels ( de Lorenzo et al.,
+2016 ).
+Unfortunately, greenhouse gases are not the only globally wide-
+spread molecules to be concerned about. Much before global warmingP. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+859associated to CO 2emissions became so conspicuous, widespread pol-
+lution by endocrine disruptors ( e.g., alkylphenols, bisphenols, DDT,
+PCBs, polybrominated diphenyl ethers, phthalates and per-
+ﬂuorooctanoic acid) was well documented. Moreover, other silent pol-
+lutants originate in the pharmaceutical industry e.g., antibiotics
+(Marathe et al., 2017 ) and hormones. They end up in a large variety of
+ecosystems in a diluted but still active form. Finally, plastics ( e.g.,
+polycarbonate, polystyrene, polyethylene terephthalate, low/high-density polyethylene, polypropylene and polyvinyl chloride) are cur-
+rently receiving a considerable focus as a major environmental pro-
+blem. A number of microbial strains able to totally or partially act upon
+these compounds have been isolated (see above) but in general the
+biodegradation process is very slow. The global nature of these types of
+pollution thus requires the development of new, e ﬃcient microbial
+pathways for their elimination, quite a challenge for contemporarysynthetic biologists and metabolic engineers ( de Lorenzo, 2017 ).
+But—as is the case for CO2 capture mentioned above —pathways and
+hosts able to deploy them are not enough. E ﬀective strategies for global
+dispersion of biodegradative activities of interest are badly nee-ded—perhaps inspired in gene drives or some type of self-propagating,
+massive horizontal gene transfer ( de Lorenzo et al., 2016).
+5. Conclusions and perspectives
+The practical examples described in the preceding sections show
+that technologies of systemic biology o ﬀer promise not only for the
+renaissance of bioremediation using anthropogenically enhanced mi-
+crobial degraders, but also for entry to the new era of Bioremediation
+3.0. The bottlenecks described at the beginning of this text are one by
+one being released or removed with the help of new computational and
+experimental tools. Databases and pathway prediction systems help theuser to select suitable chemically and energetically feasible traits for
+desired tasks. Multi-omic analyses provide valuable information that
+facilitates choice of a suitable host. Genome-scale and kinetic models
+applied hand-in-hand with genetic engineering techniques enable tai-
+loring of gene expression, reduction of metabolic burden, and pathway
+optimization in the context of host metabolism. The visionary concepts
+of synthetic biology and global scale CO
+2bioremediation open up new
+dimensions for engineering microbial degraders. General work schemes
+and standards for design, building, and ﬁne-tuning of selected bio-
+chemical routes, networks and whole-cell biocatalysts are simulta-neously becoming better deﬁ ned and accepted by the community.
+Despite the clear progress over the last decade of biochemical and
+biological engineering, the vast complexity of the living cell remains
+the major hurdle for any attempt for fully rational pathway design. In
+the case of biosensing and biodegradation pathway design and pro-
+spective applications of the genetically-modi ﬁed microbes, this problem
+is exacerbated by the complexity of intercellular and interspeci ﬁc in-
+teractions and by the still poorly understood interplay between the
+biotic and abiotic factors that govern contaminant biodegradation in
+polluted ecosystems ( de Lorenzo, 2008; Meckenstock et al., 2015 ). We
+assume that, in principle, there are two ways to address this challenge,now and in future.
+Theﬁrst admits that complexity of biological systems will not be
+resolved anytime soon and thus bets on combining rational designs with
+natural evolution at the end of the DBTA cycle, thus expanding it to
+DBTAE (Design-Build-Test-Analyze-Evolve). Adaptive laboratory evo-
+lution (ALE) is a high calibre tool of this approach. ALE is now frequently
+used by academic and industrial laboratories to evolve desired prop-erties in environmental bacteria and for ﬁne-tuning recombinant mi-
+croorganisms, but its principles have been well known since the time ofthe very ﬁrst attempts to modify microbial phenotypes ( Kellogg et al.,
+Fig. 7. Hemiautotrophic growth of engineered E.colial-
+lowed by decoupling energy production and carbon ﬁxa-
+tion. The hemiautotrophic growth was observed after per-
+forming three distinct steps: (i) Calvin-Benson-Bassham
+(CBB) cycle for the biosynthesis of sugars from CO 2was
+completed by introducing only two exogenous enzymaticactivities, phosphoribulokinase ( prkA) and RuBisCO, (ii)
+phosphoglycerate mutase genes gpmA and gpmM were de-
+leted to separate central metabolism into two sub-systems,i.e., a CO
+2-ﬁxing part that included PrkA, RuBisCO, upper
+glycolysis, and the pentose phosphate pathway, and an en-
+ergy-supplying module that employed lower glycolysis and
+the TCA cycle, (iii) the engineered strain bearing furthermutations ( ΔpfkA,ΔpfkB, Δzwf) was exposed to the strong
+selective pressure towards greater carbon ﬁxation in xylose-
+limited chemostat with a surplus pyruvate and CO
+2.
+Emerged mutations made designed CBB cycle functional
+and the hemiautotrophic strain that replaced utilisation of
+xylose with CO 2ﬁxation dominated the population.
+Figure adapted from Antonovsky et al. (2016) .P. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+8601981 ). In biodegradation research, exposing microorganisms with de-
+sirable catabolic traits to the target chemical(s) for prolonged intervals
+in chemostat or shaken- ﬂask cultures enabled isolation of bacteria able
+to use persistent compounds such as 2,4,5-trichlorophenoxyacetic acid(the defoliating Agent Orange), or helped improve atrazine degradation
+rates by Pseudomonas sp. ADP or 2,4-dichlorophenoxyacetic by Ral-
+stonia sp. TFD41 ( Devers et al., 2008; Kellogg et al., 1981; Nakatsu
+et al., 1998 ). Nonetheless, the potential of ALE in engineering microbial
+degraders has yet not been fully exploited. ALE will be an ideal tool forempowering rationally pre-designed recombinants with resistance to
+diverse environmental stresses encountered in directed biodegradation
+processes or in polluted ecosystems ( Nicolaou et al., 2010; Oide et al.,
+2015; Wang et al., 2016). When combined with whole-genome se-quencing and reverse engineering, ALE as an evolutionary “blind” ap-
+proach can paradoxically contribute to further rationalizing the ﬁeld by
+exposing otherwise unpredictable complex changes in multitrait phe-
+notypes.
+The second approach bets on technology without compromise, and
+will take advantage of continuing technological revolution in biology
+and related sciences. We recently witnessed the attempt of synthetic
+biologists to implement automation as we know it from electronic en-
+gineering in the design of orthogonal genetic circuits that would co-
+ordinate the actions of selected microbial chassis ( Nielsen et al., 2016 ).
+The genetic “guts” and pathway enzymes of the chassis can be designed
+and synthesized de novo or be tailored rapidly, with surgical precision,
+using new genome editing and protein engineering tools ( Huang et al.,
+2016; Hutchison et al., 2016; Nyerges et al., 2016; Ran et al., 2013;
+Renata et al., 2015). Although the circuit design tools still work pre-
+dominantly with simple logic gates, the robustness and utility of the
+available minimal cells is limited, and de novo -designed enzymes have
+low activity, we can assume that the e ﬃciency, reliability and time
+demand of such exercises will be further improved by progress in
+computer science and arti ﬁcial intelligence development that could
+crack the complexity of life. A purely technological approach would
+omit any unknowns from the DBTA cycle with help of reliable com-
+putational simulations, thus expanding it to DSBTA (Design- Simulate -
+Build-Test-Analyze) and providing space for construction of whole-cellcatalysts perfectly tailored for speci ﬁc biodegradation tasks.
+The challenges of both approaches applied to directed in situ bior-
+emediation encompass the development of test schemes that will ex-
+pose engineered organisms to mimicked environmental conditions, in-
+cluding limiting carbon sources, lack of oxygen or redox recycling, mass
+transfer perturbations, or interspeci ﬁc predation ( Meckenstock et al.,
+2015 ). A critical issue will be the choice and establishment of new
+chassis organisms better suited to ﬁeld biotransformations than the
+currently available laboratory strains in terms of resistance to harshconditions including extreme pH, temperature, osmotic pressure or
+ﬂuctuating concentrations of toxic chemicals ( Adams, 2016). These
+new strains must simultaneously be reliable, amenable to genetic ma-nipulation, have mapped genomes and, ideally, metabolic models at
+hand. The in situ bioremediation quests will be complicated by the
+varying nature of polluting compounds, their mixtures and transfor-mation
+products, all of which can be present at a single site ( Sarigiannis
+and Hansen, 2012 ). Future microbial degraders must therefore be de-
+signed to cope with several problem compounds in parallel, and not
+only in terms of degradation or mineralization. The succesful conver-
+sion of dangerous contaminants into usable molecules that can be fur-
+ther valorized by whole-cell or cell-free biocatalysts is a desirable
+starting point for the development of new technologies that extend
+standard concepts of biodegradation and bioremediation ( Dvorak et al.,
+2014a; Wigginton et al., 2012 ). Microbe-driven trash-to-treasure con-
+versions are known from established biomass valorization processes,
+but this concept can also be implemented in wastewater treatment,
+metal and plastic recycling, or in direct valorization of industrial by-
+product streams or captured greenhouse gases ( Bornscheuer, 2016;
+Koutinas et al., 2014; Nancharaiah et al., 2016; Wierckx et al., 2015 ).Even so, the major challenge to the entire ﬁeld of engineered de-
+graders is not related to continued progress in the development of im-
+proved technologies, which is inevitable, but rather to the dissemina-
+tion and popularization of achievements already attained. Public
+environmental concerns and regulatory constraints have not just re-
+stricted ﬁeld tests of genetically modi ﬁed microbes, but also a ﬀect the
+quality of fundamental research and, by the same token, overall pro-gress in the ﬁeld. The exercises described in this review will only have a
+chance to become real enterprises if the general population is inspiredby biotechnology and accepts it as an inseparable part of our daily
+routine, as it did for information technology. The new systemic dis-
+ciplines that make life less puzzling as well as emerging do-it-yourself
+movement in biotechnology can undoubtedly contribute to a general
+change of attitude ( de Lorenzo and Schmidt, 2017 ). Such change is
+vital, because our ability to minimize production of waste and pollutingchemicals, remove existing waste or use it in bioprocesses to form
+value-added compounds will shape the fate of our society on a global
+scale.
+Acknowledgements
+PD is the holder of the Marie Sklodowska-Curie grant No. 704410
+(FUTURE). The work in Authors' Laboratory was funded by the
+CAMBIOS Project of the Spanish Ministry of Economy and
+Competitiveness RTC-2014-1777-3 (MINECO), HELIOS Project of the
+Spanish Ministry of Economy and Competitiveness BIO 2015-66960-C3-
+2-R (MINECO/FEDER) and the ARISYS (ERC-2012-ADG-322797),
+EmPowerPutida (EU-H2020-BIOTEC-2014-2015-6335536), and
+Raft4Biotech (720776) contracts of the European Union. JD is sup-
+ported also by the Czech Ministry of Education (LQ1605, LO1214,
+LM2015055), and Czech Grant Agency (GA16-06096S). The ﬁnancial
+support of The Novo Nordisk Foundation to PIN is also gratefully ac-knowledged.
+References
+Adams, B.L., 2016. The next generation of synthetic biology chassis: moving synthetic
+biology from the laboratory to the ﬁeld. ACS Synth. Biol. 5, 1328 –1330. http://dx.
+doi.org/10.1021/acssynbio.6b00256 .
+Adetutu, E.M., Gundry, T.D., Patil, S.S., Golneshin, A., Adigun, J., Bhaskarla, V., Aleer, S.,
+Shahsavari, E., Ross, E., Ball, A.S., 2015. Exploiting the intrinsic microbial de-
+gradative potential for ﬁeld-based in situ dechlorination of trichloroethene con-
+taminated groundwater. J. Hazard. Mater. 300, 48 –57.http://dx.doi.org/10.1016/j.
+jhazmat.2015.06.055 .
+Alexander, M., 1999. Biodegradation and Bioremediation. Academic Press .
+Amde, M., Liu, J.-F., Pang, L., 2015. Environmental application, fate, e ﬀects, and con-
+cerns of ionic liquids: a review. Environ. Sci. Technol. 49, 12611 –12627. http://dx.
+doi.org/10.1021/acs.est.5b03123 .
+An, W., Chin, J.W., 2009. Synthesis of orthogonal transcription-translation networks.
+Proc. Natl. Acad. Sci. U. S. A. 106, 8477 –8482. http://dx.doi.org/10.1073/pnas.
+0900267106 .
+Antonovsky, N., Gleizer, S., Noor, E., Zohar, Y., Herz, E., Barenholz, U., Zelcbuch, L.,
+Amram, S., Wides, A., Tepper, N., Davidi, D., Bar-On, Y., Bareia, T., Wernick, D.G.,Shani, I., Malitsky, S., Jona, G., Bar-Even, A., Milo, R., 2016. Sugar synthesis fromCO
+2inEscherichia coli . Cell 166, 115 –125. http://dx.doi.org/10.1016/j.cell.2016.05.
+064.
+Aparicio, T., Jensen, S.I., Nielsen, A.T., de Lorenzo, V., Martínez-García, E., 2016. The Ssr
+protein (T1E_1405) from Pseudomonas putida DOT-T1E enables oligonucleotide-based
+recombineering in platform strain P. putida EM42. Biotechnol. J. 11, 1309 –1319.
+http://dx.doi.org/10.1002/biot.201600317 .
+Arora, P.K., Bae, H., 2014. Integration of bioinformatics to biodegradation. Biol. Proced.
+Online 16, 8. http://dx.doi.org/10.1186/1480-9222-16-8 .
+Aukema, K.G., Escalante, D.E., Maltby, M.M., Bera, A.K., Aksan, A., Wackett, L.P., 2016.
+In silico identi ﬁcation of bioremediation potential: carbamazepine and other re-
+calcitrant personal care products. Environ. Sci. Technol. http://dx.doi.org/10.1021/
+acs.est.6b04345 .
+Baghapour, M.A., Nasseri, S., Derakhshan, Z., 2013. Atrazine removal from aqueous so-
+lutions using submerged biological aerated ﬁlter. J. Environ. Health Sci. Eng. 11, 6.
+http://dx.doi.org/10.1186/2052-336X-11-6 .
+Bailey, J.E., 1991. Toward a science of metabolic engineering. Science 252, 1668 –1675 .
+Barrangou, R., van Pijkeren, J.-P., 2016. Exploiting CRISPR-Cas immune systems for
+genome editing in bacteria. Curr. Opin. Biotechnol. 37, 61 –68.http://dx.doi.org/10.
+1016/j.copbio.2015.10.003 .
+Barth, M., Honak, A., Oeser, T., Wei, R., Belisário-Ferrari, M.R., Then, J., Schmidt, J.,
+Zimmermann, W., 2016. A dual enzyme system composed of a polyester hydrolaseP. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+861and a carboxylesterase enhances the biocatalytic degradation of polyethylene ter-
+ephthalate ﬁlms. Biotechnol. J. 11, 1082 –1087. http://dx.doi.org/10.1002/biot.
+201600008 .
+Bastard, K., Smith, A.A.T., Vergne-Vaxelaire, C., Perret, A., Zaparucha, A., De Melo-
+Minardi, R., Mariage, A., Boutard, M., Debard, A., Lechaplais, C., Pelle, C., Pellouin,
+V., Perchat, N., Petit, J.-L., Kreimeyer, A., Medigue, C., Weissenbach, J., Artiguenave,
+F., De Berardinis, V., Vallenet, D., Salanoubat, M., 2014. Revealing the hidden
+functional diversity of an enzyme family. Nat. Chem. Biol. 10, 42 –49.http://dx.doi.
+org/10.1038/nchembio.1387 .
+Batth, T.S., Keasling, J.D., Petzold, C.J., 2012. Targeted proteomics for metabolic
+pathway optimization. Methods Mol. Biol. 944, 237 –249. (Clifton NJ). http://dx.doi.
+org/10.1007/978-1-62703-122-6_17 .
+Belda, E., van Heck, R.G.A., José Lopez-Sanchez, M., Cruveiller, S., Barbe, V., Fraser, C.,
+Klenk, H.-P., Petersen, J., Morgat, A., Nikel, P.I., Vallenet, D., Rouy, Z., Sekowska, A.,Martins Dos Santos, V.A.P., de Lorenzo, V., Danchin, A., Médigue, C., 2016. The
+revisited genome of Pseudomonas putida KT2440 enlightens its value as a robust
+metabolic chassis. Environ. Microbiol. 18, 3403 –3424. http://dx.doi.org/10.1111/
+1462-2920.13230 .
+Bendl, J., Stourac, J., Sebestova, E., Vavra, O., Musil, M., Brezovsky, J., Damborsky, J.,
+2016. HotSpot Wizard 2.0: automated design of site-speci ﬁc mutations and smart
+libraries in protein engineering. Nucleic Acids Res. 44, W479 –487. http://dx.doi.org/
+10.1093/nar/gkw416 .
+Benedetti, I., de Lorenzo, V., Nikel, P.I., 2016. Genetic programming of catalytic
+Pseudomonas putida bioﬁlms for boosting biodegradation of haloalkanes. Metab. Eng.
+33, 109 –118. http://dx.doi.org/10.1016/j.ymben.2015.11.004 .
+Benfenati, E., 2007. Predicting toxicity through computers: a changing world. Chem.
+Cent. J. 1, 32. http://dx.doi.org/10.1186/1752-153X-1-32 .
+Bereza-Malcolm, L.T., Mann, G., Franks, A.E., 2015. Environmental sensing of heavy
+metals through whole cell microbial biosensors: a synthetic biology approach. ACS
+Synth. Biol. 4, 535 –546. http://dx.doi.org/10.1021/sb500286r .
+Berman, H.M., Westbrook, J., Feng, Z., Gilliland, G., Bhat, T.N., Weissig, H., Shindyalov,
+I.N., Bourne, P.E., 2000. The Protein Data Bank. Nucleic Acids Res. 28, 235 –242.
+Bornscheuer, U.T., 2016. Microbiology. Feeding on plastic. Science 351, 1154 –1155.
+http://dx.doi.org/10.1126/science.aaf2853 .
+Bornscheuer, U.T., Huisman, G.W., Kazlauskas, R.J., Lutz, S., Moore, J.C., Robins, K.,
+2012. Engineering the third wave of biocatalysis. Nature 485, 185 –194. http://dx.
+doi.org/10.1038/nature11117 .
+Bosma, T., Kruizinga, E., de Bruin, E.J., Poelarends, G.J., Janssen, D.B., 1999. Utilization
+of trihalogenated propanes by agrobacterium radiobacter AD1 through heterologous
+expression of the haloalkane dehalogenase from Rhodococcus sp. strain M15-3. Appl.
+Environ. Microbiol. 65, 4575 –4581 .
+Bouhajja, E., Agathos, S.N., George, I.F., 2016. Metagenomics: probing pollutant fate in
+natural and engineered ecosystems. Biotechnol. Adv. 34, 1413 –1426. http://dx.doi.
+org/10.1016/j.biotechadv.2016.10.006 .
+Boyle, P.M., Silver, P.A., 2012. Parts plus pipes: synthetic biology approaches to meta-
+bolic engineering. Metab. Eng. 14, 223 –232. http://dx.doi.org/10.1016/j.ymben.
+2011.10.003 .
+Brakmann,
+S., 2001. Discovery of superior enzymes by directed molecular evolution.
+Chembiochem Eur. J. Chem. Biol. 2, 865 –871.
+Brenner, V., Arensdorf, J.J., Focht, D.D., 1994. Genetic construction of PCB degraders.
+Biodegradation 5, 359 –377.
+Burgard, A.P., Pharkya, P., Maranas, C.D., 2003. Optknock: a bilevel programming fra-
+mework for identifying gene knockout strategies for microbial strain optimization.Biotechnol. Bioeng. 84, 647 –657. http://dx.doi.org/10.1002/bit.10803 .
+Buryska, T., Daniel, L., Kunka, A., Brezovsky, J., Damborsky, J., Prokop, Z., 2016.
+Discovery of novel Haloalkane dehalogenase inhibitors. Appl. Environ. Microbiol. 82,
+1958 –1965. http://dx.doi.org/10.1128/AEM.03916-15 .
+Büscher, J.M., Czernik, D., Ewald, J.C., Sauer, U., Zamboni, N., 2009. Cross-platform
+comparison of methods for quantitative metabolomics of primary metabolism. Anal.Chem. 81, 2135 –2143. http://dx.doi.org/10.1021/ac8022857 .
+Carbonell, P., Parutto, P., Baudier, C., Junot, C., Faulon, J.-L., 2014. Retropath: auto-
+mated pipeline for embedded metabolic circuits. ACS Synth. Biol. 3, 565 –577. http://
+dx.doi.org/10.1021/sb4001273 .
+Cardinale, S., Tueros, F.G., Sommer, M.O.A, 2017. Genetic-metabolic coupling for tar-
+geted metabolic engineering. Cell Rep. 20, 1029 –1037. http://dx.doi.org/10.1016/j.
+celrep.2017.07.015 .
+Cases, I., de Lorenzo, V., 2005. Genetically modi ﬁed organisms for the environment:
+stories of success and failure and what we have learned from them. Int. Microbiol. 8,213–222.
+Casini, A., Storch, M., Baldwin, G.S., Ellis, T., 2015. Bricks and blueprints: methods and
+standards for DNA assembly. Nat. Rev. Mol. Cell Biol. 16, 568 –576. http://dx.doi.
+org/10.1038/nrm4014 .
+Caspi, R., Billington, R., Ferrer, L., Foerster, H., Fulcher, C.A., Keseler, I.M., Kothari, A.,
+Krummenacker, M., Latendresse, M., Mueller, L.A., Ong, Q., Paley, S., Subhraveti, P.,
+Weaver, D.S., Karp, P.D., 2016. The MetaCyc database of metabolic pathways and
+enzymes and the BioCyc collection of pathway/genome databases. Nucleic Acids Res.
+44, D471 –480. http://dx.doi.org/10.1093/nar/gkv1164 .
+Chakraborty, R., Wu, C.H., Hazen, T.C., 2012. Systems biology approach to bior-
+emediation. Curr. Opin. Biotechnol. 23, 483 –490. http://dx.doi.org/10.1016/j.
+copbio.2012.01.015 .
+Chang, A., Schomburg, I., Placzek, S., Jeske, L., Ulbrich, M., Xiao, M., Sensen, C.W.,
+Schomburg, D., 2015. BRENDA in 2015: exciting developments in its 25th year ofexistence. Nucleic Acids Res. 43, D439 –446. http://dx.doi.org/10.1093/nar/
+gku1068 .
+Chavarría, M., Nikel, P.I., Pérez-Pantoja, D., de Lorenzo, V., 2013. The Entner-Doudoro ﬀ
+pathway empowers Pseudomonas putida KT2440 with a high tolerance to oxidativestress. Environ. Microbiol. 15, 1772 –1785. http://dx.doi.org/10.1111/1462-2920.
+12069 .
+Chen, L., Lu, J., Zhang, J., Feng, K.-R., Zheng, M.-Y., Cai, Y.-D., 2013. Predicting chemical
+toxicity e ﬀects based on chemical-chemical interactions. PLoS One 8, e56517. http://
+dx.doi.org/10.1371/journal.pone.0056517 .
+Chen,
+Y., Kim, J.K., Hirning, A.J., Josi ć, K., Bennett, M.R., 2015. Synthetic biology.
+Emergent genetic oscillations in a synthetic microbial consortium. Science 349,986–989. http://dx.doi.org/10.1126/science.aaa3794 .
+Chen, B., Lim, S., Kannan, A., Alford, S.C., Sunden, F., Herschlag, D., Dimov, I.K., Baer,
+T.M., Cochran, J.R., 2016. High-throughput analysis and protein engineering using
+microcapillary arrays. Nat. Chem. Biol. 12, 76 –81.http://dx.doi.org/10.1038/
+nchembio.1978 .
+Choi, S.-L., Rha, E., Lee, S.J., Kim, H., Kwon, K., Jeong, Y.-S., Rhee, Y.H., Song, J.J., Kim,
+H.-S., Lee, S.-G., 2014. Toward a generalized and high-throughput enzyme screening
+system based on arti ﬁcial genetic circuits. ACS Synth. Biol. 3, 163 –171. http://dx.doi.
+org/10.1021/sb400112u .
+Chowdhury, A., Zomorrodi, A.R., Maranas, C.D., 2014. k-OptForce: integrating kinetics
+withﬂux balance analysis for strain design. PLoS Comput. Biol. 10, e1003487. http://
+dx.doi.org/10.1371/journal.pcbi.1003487 .
+Chowdhury, A., Khodayari, A., Maranas, C.D., 2015. Improving prediction ﬁdelity of
+cellular metabolism with kinetic descriptions. Curr. Opin. Biotechnol. 36, 57 –64.
+http://dx.doi.org/10.1016/j.copbio.2015.08.011 .
+Costa, R.S., Machado, D., Rocha, I., Ferreira, E.C., 2011. Critical perspective on the
+consequences of the limited availability of kinetic data in metabolic dynamic mod-elling. IET Syst. Biol. 5, 157 –163. http://dx.doi.org/10.1049/iet-syb.2009.0058 .
+Dai, Z., Nielsen, J., 2015. Advancing metabolic engineering through systems biology of
+industrial microorganisms. Curr. Opin. Biotechnol. 36, 8 –15.http://dx.doi.org/10.
+1016/j.copbio.2015.08.006 .
+Damborsky, J., Brezovsky, J., 2014. Computational tools for designing and engineering
+enzymes. Curr. Opin. Chem. Biol. 19, 8 –16.http://dx.doi.org/10.1016/j.cbpa.2013.
+12.003 .
+de la Peña Mattozzi, M., Tehara, S.K., Hong, T., Keasling, J.D., 2006. Mineralization of
+paraoxon and its use as a sole C and P source by a rationally designed catabolicpathway in Pseudomonas putida . Appl. Environ. Microbiol. 72, 6699 –6706. http://dx.
+doi.org/10.1128/AEM.00907-06 .
+de Lorenzo, V., 2008. Systems biology approaches to bioremediation. Curr. Opin.
+Biotechnol. 19, 579 –589. http://dx.doi.org/10.1016/j.copbio.2008.10.004 .
+de Lorenzo, V., 2009. Recombinant bacteria for environmental release: what went wrong
+and what we have learnt from it. Clin. Microbiol. Infect. 15 (Suppl. 1), 63 –65.http://
+dx.doi.org/10.1111/j.1469-0691.2008.02683.x .
+de Lorenzo, V., 2017. Seven microbial bio-processes to help the planet. Environ.
+Microbiol. http://onlinelibrary.wiley.com/doi/10.1111/1751-7915.12816/full .
+de Lorenzo, V., Danchin, A., 2008. Synthetic biology: discovering new worlds and new
+words. EMBO Rep. 9, 822 –827. http://dx.doi.org/10.1038/embor.2008.159 .
+de Lorenzo, V., Schmidt, M., 2017. The do-it-yourself movement as a source of innovation
+in biotechnology - and much more. Microb. Biotechnol. 10, 517 –519. http://dx.doi.
+org/10.1111/1751-7915.12715 .
+de
+Lorenzo, V., Marlière, P., Solé, R., 2016. Bioremediation at a global scale: from the test
+tube to planet Earth. Microb. Biotechnol. 9, 618 –625. http://dx.doi.org/10.1111/
+1751-7915.12399 .
+Dehghanifard, E., Jonidi Jafari, A., Rezaei Kalantary, R., Mahvi, A.H., Faramarzi, M.A.,
+Esraﬁli, A., 2013. Biodegradation of 2,4-dinitrophenol with laccase immobilized on
+nano-porous silica beads. Iranian J. Environ. Health Sci. Eng. 10. http://dx.doi.org/
+10.1186/1735-2746-10-25 .
+Delépine, B., Libis, V., Carbonell, P., Faulon, J.-L., 2016. SensiPath: computer-aided de-
+sign of sensing-enabling metabolic pathways. Nucleic Acids Res. 44, W226 –231.
+http://dx.doi.org/10.1093/nar/gkw305 .
+Devers, M., Rouard, N., Martin-Laurent, F., 2008. Fitness drift of an atrazine-degrading
+population under atrazine selection pressure. Environ. Microbiol. 10, 676 –684.
+http://dx.doi.org/10.1111/j.1462-2920.2007.01490.x .
+Dombrowski, N., Donaho, J.A., Gutierrez, T., Seitz, K.W., Teske, A.P., Baker, B.J., 2016.
+Reconstructing metabolic pathways of hydrocarbon-degrading bacteria from theDeepwater Horizon oil spill. Nat. Microbiol. 1, 16057. http://dx.doi.org/10.1038/
+nmicrobiol.2016.57 .
+Dörr, M., Fibinger, M.P.C., Last, D., Schmidt, S., Santos-Aberturas, J., Böttcher, D.,
+Hummel, A., Vickers, C., Voss, M., Bornscheuer, U.T., 2016. Fully automatized high-
+throughput enzyme library screening using a robotic platform. Biotechnol. Bioeng.
+113, 1421 –1432. http://dx.doi.org/10.1002/bit.25925 .
+Dvorak, P., Bidmanova, S., Damborsky, J., Prokop, Z., 2014a. Immobilized synthetic
+pathway for biodegradation of toxic recalcitrant pollutant 1,2,3-trichloropropane.Environ. Sci. Technol. 48, 6859 –6866. http://dx.doi.org/10.1021/es500396r .
+Dvorak, P., Kurumbang, N.P., Bendl, J., Brezovsky, J., Prokop, Z., Damborsky, J., 2014b.
+Maximizing the e ﬃciency of multienzyme process by stoichiometry optimization.
+Chembiochem Eur. J. Chem. Biol. 15, 1891 –1895. http://dx.doi.org/10.1002/cbic.
+201402265 .
+Dvorak, P., Chrast, L., Nikel, P.I., Fedr, R., Soucek, K., Sedlackova, M., Chaloupkova, R.,
+de Lorenzo, V., Prokop, Z., Damborsky, J., 2015. Exacerbation of substrate toxicity byIPTG in Escherichia coli BL21(DE3) carrying a synthetic metabolic pathway. Microb.
+Cell Factories 14, 201. http://dx.doi.org/10.1186/s12934-015-0393-3 .
+Ebenau-Jehle, C., Mergelsberg, M., Fischer, S., Brüls, T., Jehmlich, N., von Bergen, M.,
+Boll, M., 2017. An unusual strategy for the anoxic biodegradation of phthalate. ISMEJ. 11, 224 –236. http://dx.doi.org/10.1038/ismej.2016.91 .
+Erb, T.J., Zarzycki, J., 2016. Biochemical and synthetic biology approaches to improve
+photosynthetic CO
+2-ﬁxation. Curr. Opin. Chem. Biol. 34, 72 –79.http://dx.doi.org/
+10.1016/j.cbpa.2016.06.026 .
+Eriksson, L., Jaworska, J., Worth, A.P., Cronin, M.T.D., McDowell, R.M., Gramatica, P.,P. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+8622003. Methods for reliability and uncertainty assessment and for applicability eva-
+luations of classi ﬁcation- and regression-based QSARs. Environ. Health Perspect. 111,
+1361 –1375 .
+Escalante, A.E., Rebolleda-Gómez, M., Benítez, M., Travisano, M., 2015. Ecological per-
+spectives on synthetic biology: insights from microbial population biology. Front.
+Microbiol. 6, 143. http://dx.doi.org/10.3389/fmicb.2015.00143 .
+Fernández-Álvaro, E., Snajdrova, R., Jochens, H., Davids, T., Böttcher, D., Bornscheuer,
+U.T., 2011. A combination of in vivo selection and cell sorting for the identi ﬁcation of
+enantioselective biocatalysts. Angew. Chem. Int. Ed. Eng. 50, 8584 –8587. http://dx.
+doi.org/10.1002/anie.201102360 .
+Fibinger, M.P.C., Davids, T., Böttcher, D., Bornscheuer, U.T., 2015. A selection assay for
+haloalkane dehalogenase activity based on toxic substrates. Appl. Microbiol.Biotechnol. 99, 8955 –8962. http://dx.doi.org/10.1007/s00253-015-6686-y .
+Finley, S.D., Broadbelt, L.J., Hatzimanikatis, V., 2009. Computational framework for
+predictive biodegradation. Biotechnol. Bioeng. 104, 1086 –1097. http://dx.doi.org/
+10.1002/bit.22489 .
+Finley, S.D., Broadbelt, L.J., Hatzimanikatis, V., 2010. In silico feasibility of novel bio-
+degradation pathways for 1,2,4-trichlorobenzene. BMC Syst. Biol. 4, 7. http://dx.doi.
+org/10.1186/1752-0509-4-7 .
+Francis, C.W., Mankin, J.B., 1977. High nitrate denitri ﬁcation in continuous ﬂow-stirred
+reactors. Water Res. 11. http://dx.doi.org/10.1016/0043-1354(77)90061-6 .
+Fuchs, G., 2011. Alternative pathways of carbon dioxide ﬁxation: insights into the early
+evolution of life? Annu. Rev. Microbiol. 65, 631 –658. http://dx.doi.org/10.1146/
+annurev-micro-090110-102801 .
+Gao, J., Ellis, L.B.M., Wackett, L.P., 2010. The University of Minnesota Biocatalysis/
+Biodegradation Database: improving public access. Nucleic Acids Res. 38, D488 –491.
+http://dx.doi.org/10.1093/nar/gkp771 .
+Gao, F., Ding, H., Feng, Z., Liu, D., Zhao, Y., 2014. Functional display of triphenylmethane
+reductase for dye removal on the surface of Escherichia coli using N-terminal domain
+of ice nucleation protein. Bioresour. Technol. 169, 181 –187. http://dx.doi.org/10.
+1016/j.biortech.2014.06.093 .
+Geueke, B., Garg, N., Ghosh, S., Fleischmann, T., Holliger, C., Lal, R., Kohler, H.-P.E.,
+2013. Metabolomics of hexachlorocyclohexane (HCH) transformation: ratio of LinAto LinB determines metabolic fate of HCH isomers. Environ. Microbiol. 15,
+1040 –1049. http://dx.doi.org/10.1111/1462-2920.12009 .
+Gilbert, E.S., Walker, A.W., Keasling, J.D., 2003. A constructed microbial consortium for
+biodegradation of the organophosphorus insecticide parathion. Appl. Microbiol.Biotechnol. 61, 77 –81.http://dx.doi.org/10.1007/s00253-002-1203-5 .
+Glass, J.I., Assad-Garcia, N., Alperovich, N., Yooseph, S., Lewis, M.R., Maruf, M.,
+Hutchison, C.A., Smith, H.O., Venter, J.C., 2006. Essential genes of a minimal bac-
+terium. Proc. Natl. Acad. Sci. U. S. A. 103, 425 –430. http://dx.doi.org/10.1073/pnas.
+0510013103 .
+Glick, B.R., 1995. Metabolic load and heterologous gene expression. Biotechnol. Adv. 13,
+247–261.
+Guazzaroni, M.-E., Herbst, F.-A., Lores, I., Tamames, J., Peláez, A.I., López-Cortés, N.,
+Alcaide,
+M., Del Pozo, M.V., Vieites, J.M., von Bergen, M., Gallego, J.L.R., Bargiela,
+R., López-López, A., Pieper, D.H., Rosselló-Móra, R., Sánchez, J., Seifert, J., Ferrer,M., 2013. Metaproteogenomic insights beyond bacterial response to naphthaleneexposure and bio-stimulation. ISME J. 7, 122 –136. http://dx.doi.org/10.1038/ismej.
+2012.82 .
+Gredell, J.A., Frei, C.S., Cirino, P.C., 2012. Protein and RNA engineering to customize
+microbial molecular reporting. Biotechnol. J. 7, 477 –499. http://onlinelibrary.wiley.
+com/doi/10.1002/biot.201100266/full .
+Gutierrez, T., Singleton, D.R., Berry, D., Yang, T., Aitken, M.D., Teske, A., 2013.
+Hydrocarbon-degrading bacteria enriched by the Deepwater Horizon oil spill iden-tiﬁed by cultivation and DNA-SIP. ISME J. 7, 2091 –2104. http://dx.doi.org/10.1038/
+ismej.2013.98 .
+Hadadi, N., Hafner, J., Shajkofci, A., Zisaki, A., Hatzimanikatis, V., 2016. ATLAS of
+biochemistry: a repository of all possible biochemical reactions for synthetic biology
+and metabolic engineering studies. ACS Synth. Biol. 5, 1155 –1166. http://dx.doi.
+org/10.1021/acssynbio.6b00054 .
+Haro, M.A., de Lorenzo, V., 2001. Metabolic engineering of bacteria for environmental
+applications: construction of Pseudomonas strains for biodegradation of 2-chlor-otoluene. J. Biotechnol. 85, 103 –113.
+Hatzimanikatis, V., Li, C., Ionita, J.A., Henry, C.S., Jankowski, M.D., Broadbelt, L.J.,
+2005. Exploring the diversity of complex metabolic networks. Bioinforma. Oxf. Engl.21, 1603 –1609. http://dx.doi.org/10.1093/bioinformatics/bti213 .
+He, W., Yuan, S., Zhong, W.-H., Siddikee, M.A., Dai, C.-C., 2016. Application of geneti-
+cally engineered microbial whole-cell biosensors for combined chemosensing. Appl.
+Microbiol. Biotechnol. 100, 1109 –1119. http://dx.doi.org/10.1007/s00253-015-
+7160-6 .
+Hennig, S., Rödel, G., Ostermann, K., 2015. Arti ﬁcial cell-cell communication as an
+emerging tool in synthetic biology applications. J. Biol. Eng. 9, 13. http://dx.doi.org/
+10.1186/s13036-015-0011-2 .
+Hicks, N., Vik, U., Taylor, P., Ladoukakis, E., Park, J., Kolisis, F., Jakobsen, K.S., 2017.
+Using prokaryotes for carbon capture storage. Trends Biotechnol. 35, 22 –32.http://
+dx.doi.org/10.1016/j.tibtech.2016.06.011 .
+Hodgman, C.E., Jewett, M.C., 2012. Cell-free synthetic biology: thinking outside the cell.
+Metab. Eng. 14, 261 –269. http://dx.doi.org/10.1016/j.ymben.2011.09.002 .
+Huang, P.-S., Boyken, S.E., Baker, D., 2016. The coming of age of de novo protein design.
+Nature 537, 320 –327. http://dx.doi.org/10.1038/nature19946 .
+Hutchison, C.A., Chuang, R.-Y., Noskov, V.N., Assad-Garcia, N., Deerinck, T.J., Ellisman,
+M.H., Gill, J., Kannan, K., Karas, B.J., Ma, L., Pelletier, J.F., Qi, Z.-Q., Richter, R.A.,
+Strychalski, E.A., Sun, L., Suzuki, Y., Tsvetanova, B., Wise, K.S., Smith, H.O., Glass,
+J.I., Merryman, C., Gibson, D.G., Venter, J.C., 2016. Design and synthesis of a
+minimal bacterial genome. Science 351, aad6253. http://dx.doi.org/10.1126/science.aad6253 .
+Iwakiri, R., Yoshihira, K., Ngadiman, Null, Futagami, T., Goto, M., Furukawa, K., 2004.
+Total degradation of pentachloroethane by an engineered Alcaligenes strain expres-sing a modi ﬁed camphor monooxygenase and a hybrid dioxygenase. Biosci.
+Biotechnol. Biochem. 68, 1353 –1356. http://dx.doi.org/10.1271/bbb.68.1353 .
+Izallalen, M., Mahadevan, R., Burgard, A., Postier, B., Didonato, R., Sun, J., Schilling,
+C.H., Lovley, D.R., 2008. Geobacter sulfurreducens strain engineered for increased
+rates of respiration. Metab. Eng. 10, 267 –275. http://dx.doi.org/10.1016/j.ymben.
+2008.06.005 .
+Janssen,
+D.B., Dinkla, I.J.T., Poelarends, G.J., Terpstra, P., 2005. Bacterial degradation of
+xenobiotic compounds: evolution and distribution of novel enzyme activities.
+Environ. Microbiol. 7, 1868 –1882. http://dx.doi.org/10.1111/j.1462-2920.2005.
+00966.x .
+Kanehisa, M., Goto, S., Sato, Y., Kawashima, M., Furumichi, M., Tanabe, M., 2014. Data,
+information, knowledge and principle: back to metabolism in KEGG. Nucleic Acids
+Res. 42, D199 –205. http://dx.doi.org/10.1093/nar/gkt1076 .
+Karig, D.K., 2017. Cell-free synthetic biology for environmental sensing and remediation.
+Curr. Opin. Biotechnol. 45, 69 –75.http://dx.doi.org/10.1016/j.copbio.2017.01.010 .
+Kellogg, S.T., Chatterjee, D.K., Chakrabarty, A.M., 1981. Plasmid-assisted molecular
+breeding: new technique for enhanced biodegradation of persistent toxic chemicals.Science 214, 1133 –1135 .
+Khersonsky, O., Taw ﬁk, D.S., 2010. Enzyme promiscuity: a mechanistic and evolutionary
+perspective. Annu. Rev. Biochem. 79, 471 –505. http://dx.doi.org/10.1146/annurev-
+biochem-030409-143718 .
+Kim, J., Copley, S.D., 2012. Inhibitory cross-talk upon introduction of a new metabolic
+pathway into an existing metabolic network. Proc. Natl. Acad. Sci. U. S. A. 109,
+E2856 –2864. http://dx.doi.org/10.1073/pnas.1208509109 .
+Kim, S., Baek, S.-H., Lee, K., Hahn, J.-S., 2013a. Cellulosic ethanol production using a
+yeast consortium displaying a minicellulosome and β-glucosidase. Microb. Cell
+Factories 12, 14. http://dx.doi.org/10.1186/1475-2859-12-14 .
+Kim, J., Oliveros, J.C., Nikel, P.I., de Lorenzo, V., Silva-Rocha, R., 2013b. Transcriptomic
+ﬁngerprinting of Pseudomonas putida under alternative physiological regimes.
+Environ. Microbiol. Rep. 5, 883 –891. http://dx.doi.org/10.1111/1758-2229.12090 .
+Kim, S., Thiessen, P.A., Bolton, E.E., Chen, J., Fu, G., Gindulyte, A., Han, L., He, J., He, S.,
+Shoemaker, B.A., Wang, J., Yu, B., Zhang, J., Bryant, S.H., 2016. PubChem substanceand compound databases. Nucleic Acids Res. 44, D1202– 1213. http://dx.doi.org/10.
+1093/nar/gkv951 .
+King, Z.A., Lloyd, C.J., Feist, A.M., Palsson, B.O., 2015. Next-generation genome-scale
+models for metabolic engineering. Curr. Opin. Biotechnol. 35, 23 –29.http://dx.doi.
+org/10.1016/j.copbio.2014.12.016 .
+Kleinstiver, B.P., Pattanayak, V., Prew, M.S., Tsai, S.Q., Nguyen, N.T., Zheng, Z., Joung,
+J.K., 2016. High-ﬁ delity CRISPR-Cas9 nucleases with no detectable genome-wide o ﬀ-
+target e ﬀects. Nature 529, 490 –495. http://dx.doi.org/10.1038/nature16526 .
+Kosuri, S., Church, G.M., 2014. Large-scale de novo DNA synthesis: technologies and
+applications. Nat. Methods 11, 499 –507. http://dx.doi.org/10.1038/nmeth.2918 .
+Koutinas, A.A., Vlysidis, A., Pleissner, D., Kopsahelis, N., Lopez Garcia, I., Kookos, I.K.,
+Papanikolaou, S., Kwan, T.H., Lin, C.S.K., 2014. Valorization of industrial waste andby-product
+streams via fermentation for the production of chemicals and biopoly-
+mers. Chem. Soc. Rev. 43, 2587 –2627. http://dx.doi.org/10.1039/c3cs60293a .
+Krewski, D., Andersen, M.E., Mantus, E., Zeise, L., 2009. Toxicity testing in the 21st
+century: implications for human health risk assessment. Risk Anal. 29, 474 –479.
+http://dx.doi.org/10.1111/j.1539-6924.2008.01150.x .
+Kube, M., Chernikova, T.N., Al-Ramahi, Y., Beloqui, A., Lopez-Cortez, N., Guazzaroni, M.-
+E., Heipieper, H.J., Klages, S., Kotsyurbenko, O.R., Langer, I., Nechitaylo, T.Y.,
+Lünsdorf, H., Fernández, M., Juárez, S., Ciordia, S., Singer, A., Kagan, O., Egorova, O.,
+Petit, P.A., Stogios, P., Kim, Y., Tchigvintsev, A., Flick, R., Denaro, R., Genovese, M.,
+Albar, J.P., Reva, O.N., Martínez-Gomariz, M., Tran, H., Ferrer, M., Savchenko, A.,
+Yakunin, A.F., Yakimov, M.M., Golyshina, O.V., Reinhardt, R., Golyshin, P.N., 2013.Genome sequence and functional genomic analysis of the oil-degrading bacterium
+Oleispira antarctica. Nat. Commun. 4, 2156. http://dx.doi.org/10.1038/
+ncomms3156 .
+Kuipers, R.K., Joosten, H.-J., van Berkel, W.J.H., Leferink, N.G.H., Rooijen, E., Ittmann,
+E., van Zimmeren, F., Jochens, H., Bornscheuer, U., Vriend, G., dos Santos, V.A.P.M.,Schaap, P.J., 2010. 3DM: systematic analysis of heterogeneous superfamily data to
+discover protein functionalities. Proteins 78, 2101 –2113. http://dx.doi.org/10.1002/
+prot.22725 .
+Kurumbang, N.P., Dvorak, P., Bendl, J., Brezovsky, J., Prokop, Z., Damborsky, J., 2014.
+Computer-assisted engineering of the synthetic pathway for biodegradation of a toxic
+persistent pollutant. ACS Synth. Biol. 3, 172 –181. http://dx.doi.org/10.1021/
+sb400147n .
+Latino, D.A.R.S., Wicker, J., Gütlein, M., Schmid, E., Kramer, S., Fenner, K., 2017. Eawag-
+Soil in enviPath: a new resource for exploring regulatory pesticide soil biodegrada-
+tion pathways and half-life data. Environ. Sci.: Processes Impacts 19, 449 –464.
+http://dx.doi.org/10.1039/c6em00697c .
+Lee, J., Cao, L., Ow, S.Y., Barrios-Llerena, M.E., Chen, W., Wood, T.K., Wright, P.C., 2006.
+Proteome changes after metabolic engineering to enhance aerobic mineralization ofcis‑1,2-dichloroethylene. J. Proteome Res. 5, 1388 –1397. http://dx.doi.org/10.
+1021/pr060008t .
+Lee, J.W., Na, D., Park, J.M., Lee, J., Choi, S., Lee, S.Y., 2012. Systems metabolic en-
+gineering of microorganisms for natural and non-natural chemicals. Nat. Chem. Biol.
+8, 536 –546. http://dx.doi.org/10.1038/nchembio.970 .
+Lehrbach, P.R., Zeyer, J., Reineke, W., Knackmuss, H.J., Timmis, K.N., 1984. Enzyme
+recruitment in vitro: use of cloned genes to extend the range of haloaromatics de-graded by Pseudomonas sp. strain B13. J. Bacteriol. 158, 1025 –1032 .
+Li, G.-Q., Ma, T., Li, S.-S., Li, H., Liang, F.-L., Liu, R.-L., 2007. Improvement of di-
+benzothiophene desulfurization activity by removing the gene overlap in the dszP. Dvoř ák et al.
+Biotechnology Advances 35 (2017) 845–866
+863operon. Biosci. Biotechnol. Biochem. 71, 849 –854. http://dx.doi.org/10.1271/bbb.
+60189 .
+Li, Z., Yoshida, N., Wang, A., Nan, J., Liang, B., Zhang, C., Zhang, D., Suzuki, D., Zhou, X.,
+Xiao, Z., Katayama, A., 2015. Anaerobic mineralization of 2,4,6-tribromophenol to
+CO2by a synthetic microbial community comprising Clostridium ,Dehalobacter , and
+Desulfatiglans . Bioresour. Technol. 176, 225 –232. http://dx.doi.org/10.1016/j.
+biortech.2014.10.097 .
+Libis, V., Delépine, B., Faulon, J.-L., 2016. Expanding biosensing abilities through com-
+puter-aided design of metabolic pathways. ACS Synth. Biol. 5, 1076 –1085. http://dx.
+doi.org/10.1021/acssynbio.5b00225 .
+Liss, M., Daubert, D., Brunner, K., Kliche, K., Hammes, U., Leiherer, A., Wagner, R., 2012.
+Embedding permanent watermarks in synthetic genes. PLoS One 7, e42465. http://
+dx.doi.org/10.1371/journal.pone.0042465 .
+Litchﬁeld, C., 2005. Thirty years and counting: bioremediation in its prime? Bioscience
+55, 273 –279. http://dx.doi.org/10.1641/0006-3568(2005)055[0273:TYACBI]2.0.
+CO;2 .
+Liu, X., Germaine, K.J., Ryan, D., Dowling, D.N., 2010. Genetically modi ﬁed
+Pseudomonas biosensing biodegraders to detect PCB and chlorobenzoate bioavail-
+ability and biodegradation in contaminated soils. Bioeng. Bugs 1, 198 –206. http://dx.
+doi.org/10.4161/bbug.1.3.12443 .
+Liu, J., Tan, L., Wang, J., Wang, Z., Ni, H., Li, L., 2016. Complete biodegradation of
+chlorpyrifos by engineered Pseudomonas putida cells expressing surface-immobilized
+laccases. Chemosphere 157, 200 –207. http://dx.doi.org/10.1016/j.chemosphere.
+2016.05.031 .
+Loeschcke, A., Markert, A., Wilhelm, S., Wirtz, A., Rosenau, F., Jaeger, K.-E., Drepper, T.,
+2013. TREX: a universal tool for the transfer and expression of biosynthetic pathways
+in bacteria. ACS Synth. Biol. 2, 22 –33.http://dx.doi.org/10.1021/sb3000657 .
+Long, M.R., Ong, W.K., Reed, J.L., 2015. Computational methods in metabolic en-
+gineering for strain design. Curr. Opin. Biotechnol. 34, 135 –141. http://dx.doi.org/
+10.1016/j.copbio.2014.12.019 .
+Lorenzo, V., Loza-Tavera, H., 2011. Microbial bioremediation of chemical pollutants: how
+bacteria cope with multi-stress environmental scenarios. In: Storz, G., Hengge, R.
+(Eds.), Bacterial Stress Responses, Second edition. ASM Press, Washington, DC, pp.
+481–492. http://dx.doi.org/10.1128/9781555816841.ch30 .
+Lovley, D.R., Phillips, E.J.P., Gorby, Y.A., Landa, E.R., 1991. Microbial reduction of ur-
+anium. Nature 350, 413 –416. http://dx.doi.org/10.1038/350413a0 .
+Lykidis, A., Pérez-Pantoja, D., Ledger, T., Mavromatis, K., Anderson, I.J., Ivanova, N.N.,
+Hooper, S.D., Lapidus, A., Lucas, S., González, B., Kyrpides, N.C., 2010. The completemultipartite genome sequence of Cupriavidus necator JMP134, a versatile pollutant
+degrader. PLoS One 5, e9729. http://dx.doi.org/10.1371/journal.pone.0009729 .
+Marathe, N.P., Pal, C., Gaikwad, S.S., Jonsson, V., Kristiansson, E., Larsson, D.G.J., 2017.
+Untreated urban waste contaminates Indian river sediments with resistance genes tolast resort antibiotics. Water Res. 124, 388 –397. http://dx.doi.org/10.1016/j.watres.
+2017.07.060 .
+Martínez, I., Mohamed, M.E.-S., Rozas, D., García, J.L., Díaz, E., 2016. Engineering syn-
+thetic bacterial consortia for enhanced desulfurization and revalorization of oil sulfurcompounds. Metab. Eng. 35, 46 –54.http://dx.doi.org/10.1016/j.ymben.2016.01.
+005.
+Martínez-García,
+E., de Lorenzo, V., 2012. Transposon-based and plasmid-based genetic
+tools for editing genomes of gram-negative bacteria. Methods Mol. Biol. 813,
+267–283. (Clifton NJ). http://dx.doi.org/10.1007/978-1-61779-412-4_16 .
+Martínez-García, E., de Lorenzo, V., 2016. The quest for the minimal bacterial genome.
+Curr. Opin. Biotechnol. 42, 216 –224. http://dx.doi.org/10.1016/j.copbio.2016.09.
+001.
+Martínez-García, E., Aparicio, T., de Lorenzo, V., Nikel, P.I., 2014a. New transposon tools
+tailored for metabolic engineering of gram-negative microbial cell factories. Front.
+Bioeng. Biotechnol. 2, 46. http://dx.doi.org/10.3389/fbioe.2014.00046 .
+Martínez-García, E., Nikel, P.I., Aparicio, T., de Lorenzo, V., 2014b. Pseudomonas 2.0:
+genetic upgrading of P.putida KT2440 as an enhanced host for heterologous gene
+expression. Microb. Cell Factories 13, 159. http://dx.doi.org/10.1186/s12934-014-
+0159-3 .
+Martínez-García, E., Aparicio, T., Goñi-Moreno, A., Fraile, S., de Lorenzo, V., 2015. SEVA
+2.0: an update of the Standard European Vector Architecture for de-/re-constructionof bacterial functionalities. Nucleic Acids Res. 43, D1183 –1189. http://dx.doi.org/
+10.1093/nar/gku1114 .
+Meckenstock, R.U., Elsner, M., Griebler, C., Lueders, T., Stumpp, C., Aamand, J., Agathos,
+S.N., Albrechtsen, H.-J., Bastiaens, L., Bjerg, P.L., Boon, N., Dejonghe, W., Huang,
+W.E., Schmidt, S.I., Smolders, E., Sørensen, S.R., Springael, D., van Breukelen, B.M.,
+2015. Biodegradation: updating the concepts of control for microbial cleanup in
+contaminated aquifers. Environ. Sci. Technol. 49, 7073 –7081. http://dx.doi.org/10.
+1021/acs.est.5b00715 .
+Medema, M.H., van Raaphorst, R., Takano, E., Breitling, R., 2012. Computational tools for
+the synthetic design of biochemical pathways. Nat. Rev. Microbiol. 10, 191 –202.
+http://dx.doi.org/10.1038/nrmicro2717 .
+Mendes, P., Hoops, S., Sahle, S., Gauges, R., Dada, J., Kummer, U., 2009. Computational
+modeling of biochemical networks using COPASI. Methods Mol. Biol. 500, 17 –59.
+(Clifton NJ). http://dx.doi.org/10.1007/978-1-59745-525-1_2 .
+Minty, J.J., Singer, M.E., Scholz, S.A., Bae, C.-H., Ahn, J.-H., Foster, C.E., Liao, J.C., Lin,
+X.N., 2013. Design and characterization of synthetic fungal-bacterial consortia fordirect production of isobutanol from cellulosic biomass. Proc. Natl. Acad. Sci. U. S. A.
+110, 14592 –14597. http://dx.doi.org/10.1073/pnas.1218447110 .
+Moraïs, S., Shterzer, N., Lamed, R., Bayer, E.A., Mizrahi, I., 2014. A combined cell-con-
+sortium approach for lignocellulose degradation by specialized Lactobacillus plan-
+tarum cells. Biotechnol. Biofuels 7, 112. http://dx.doi.org/10.1186/1754-6834-7-
+112.
+Morgat, A., Axelsen, K.B., Lombardot, T., Alcántara, R., Aimo, L., Zerara, M., Niknejad, A.,Belda, E., Hyka-Nouspikel, N., Coudert, E., Redaschi, N., Bougueleret, L., Steinbeck,C., Xenarios, I., Bridge, A., 2015. Updates in Rhea —a manually curated resource of
+biochemical reactions. Nucleic Acids Res. 43, D459 –464. http://dx.doi.org/10.1093/
+nar/gku961 .
+Mulbry, W., Ahrens, E., Karns, J., 1998. Use of a ﬁeld-scale bio ﬁlter for the degradation of
+the organophosphate insecticide coumaphos in cattle dip wastes. Pestic. Sci. 52,268–274. http://dx.doi.org/10.1002/(SICI)1096-9063(199803)52:3<268::AID-
+PS719>3.0.CO;2-2 .
+Muschiol, J., Peters, C., Oberleitner, N., Mihovilovic, M.D., Bornscheuer, U.T., Rudro ﬀ,
+ F.,
+2015. Cascade catalysis —strategies and challenges en route to preparative synthetic
+biology. Chem. Commun. (Camb.) 51, 5798 –5811. http://dx.doi.org/10.1039/
+c4cc08752f .
+Mutlu, B.R., Yeom, S., Wackett, L., Aksan, A., 2015. Modelling and optimization of a
+bioremediation system utilizing silica gel encapsulated whole-cell biocatalyst. Chem.
+Eng. J. 259, 574 –580. http://dx.doi.org/10.1016/j.cej.2014.07.130 .
+Nakatsu, C.H., Korona, R., Lenski, R.E., de Bruijn, F.J., Marsh, T.L., Forney, L.J., 1998.
+Parallel and divergent genotypic evolution in experimental populations of Ralstoniasp. J. Bacteriol. 180, 4325 –4331 .
+Nancharaiah, Y.V., Mohan, S.V., Lens, P.N.L., 2016. Biological and bioelectrochemical
+recovery of critical and scarce metals. Trends Biotechnol. 34, 137 –155. http://dx.doi.
+org/10.1016/j.tibtech.2015.11.003 .
+Nelson, K.E., Weinel, C., Paulsen, I.T., Dodson, R.J., Hilbert, H., Martins dos Santos,
+V.A.P., Fouts, D.E., Gill, S.R., Pop, M., Holmes, M., Brinkac, L., Beanan, M., DeBoy,R.T., Daugherty, S., Kolonay, J., Madupu, R., Nelson, W., White, O., Peterson, J.,Khouri, H., Hance, I., Chris Lee, P., Holtzapple, E., Scanlan, D., Tran, K., Moazzez, A.,
+Utterback, T., Rizzo, M., Lee, K., Kosack, D., Moestl, D., Wedler, H., Lauber, J.,
+Stjepandic, D., Hoheisel, J., Straetz, M., Heim, S., Kiewitz, C., Eisen, J.A., Timmis,
+K.N., Düsterhöft, A., Tümmler, B., Fraser, C.M., 2002. Complete genome sequence
+and comparative analysis of the metabolically versatile Pseudomonas putida KT2440.
+Environ. Microbiol. 4, 799 –808.
+Nicolaou, S.A., Gaida, S.M., Papoutsakis, E.T., 2010. A comparative view of metabolite
+and substrate stress and tolerance in microbial bioprocessing: from biofuels and
+chemicals, to biocatalysis and bioremediation. Metab. Eng. 12, 307 –331. http://dx.
+doi.org/10.1016/j.ymben.2010.03.004 .
+Nielsen, J., Fussenegger, M., Keasling, J., Lee, S.Y., Liao, J.C., Prather, K., Palsson, B.,
+2014. Engineering synergy in biotechnology. Nat. Chem. Biol. 10, 319 –322. http://
+dx.doi.org/10.1038/nchembio.1519 .
+Nielsen, A.A.K., Der, B.S., Shin, J., Vaidyanathan, P., Paralanov, V., Strychalski, E.A.,
+Ross, D., Densmore, D., Voigt, C.A., 2016. Genetic circuit design automation. Science352, aac7341. http://dx.doi.org/10.1126/science.aac7341 .
+Nikel, P.I., de Lorenzo, V., 2013. Engineering an anaerobic metabolic regime in
+Pseudomonas putida KT2440 for the anoxic biodegradation of 1,3-dichloroprop-1-ene.
+Metab. Eng. 15, 98 –112. http://dx.doi.org/10.1016/j.ymben.2012.09.006 .
+Nikel, P.I., Pérez-Pantoja, D., de Lorenzo, V., 2013. Why are chlorinated pollutants so
+diﬃcult to degrade aerobically? Redox stress limits 1,3-dichloroprop-1-ene metabo-
+lism by Pseudomonas pavonaceae. Philos. Trans. R. Soc. Lond. Ser. B Biol. Sci. 368,20120377. http://dx.doi.org/10.1098/rstb.2012.0377 .
+Nikel, P.I., Martínez-García, E., de Lorenzo, V., 2014. Biotechnological domestication of
+pseudomonads using synthetic biology. Nat. Rev. Microbiol. 12, 368 –379. http://dx.
+doi.org/10.1038/nrmicro3253 .
+Nikel, P.I., Chavarría, M., Fuhrer, T., Sauer, U., de Lorenzo, V., 2015. Pseudomonas putida
+KT2440 strain metabolizes glucose through a cycle formed by enzymes of the Entner-
+Doudoro ﬀ, Embden-Meyerhof-Parnas, and pentose phosphate pathways. J. Biol.
+Chem. 290, 25920– 25932. http://dx.doi.org/10.1074/jbc.M115.687749 .
+Nikel, P.I., Chavarría, M., Danchin, A., de Lorenzo, V., 2016a. From dirt to industrial
+applications: Pseudomonas putida as a synthetic biology chassis for hosting harsh
+biochemical
+reactions. Curr. Opin. Chem. Biol. 34, 20 –29.http://dx.doi.org/10.
+1016/j.cbpa.2016.05.011 .
+Nikel, P.I., Pérez-Pantoja, D., de Lorenzo, V., 2016b. Pyridine nucleotide transhy-
+drogenases enable redox balance of Pseudomonas putida during biodegradation of
+aromatic compounds. Environ. Microbiol. 18, 3565 –3582. http://dx.doi.org/10.
+1111/1462-2920.13434 .
+Nyerges, Á., Csörg ő, B., Nagy, I., Bálint, B., Bihari, P., Lázár, V., Apjok, G., Umenho ﬀer,
+K., Bogos, B., Pósfai, G., Pál, C., 2016. A highly precise and portable genome en-gineering method allows comparison of mutational e ﬀects across bacterial species.
+Proc. Natl. Acad. Sci. U. S. A. 113, 2502 –2507. http://dx.doi.org/10.1073/pnas.
+1520040113 .
+Ohtsubo, Y., Maruyama, F., Mitsui, H., Nagata, Y., Tsuda, M., 2012. Complete genome
+sequence of Acidovorax sp. strain KKS102, a polychlorinated-biphenyl degrader. J.Bacteriol. 194, 6970 –6971. http://dx.doi.org/10.1128/JB.01848-12 .
+Oide, S., Gunji, W., Moteki, Y., Yamamoto, S., Suda, M., Jojima, T., Yukawa, H., Inui, M.,
+2015. Thermal and solvent stress cross-tolerance conferred to Corynebacterium glu-
+tamicum by adaptive laboratory evolution. Appl. Environ. Microbiol. 81, 2284 –2298.
+http://dx.doi.org/10.1128/AEM.03973-14 .
+Oosterkamp, M.J., Veuskens, T., Talarico Saia, F., Weelink, S.A.B., Goodwin, L.A.,
+Daligault, H.E., Bruce, D.C., Detter, J.C., Tapia, R., Han, C.S., Land, M.L., Hauser, L.J.,Langenho ﬀ, A.A.M., Gerritse, J., van Berkel, W.J.H., Pieper, D.H., Junca, H., Smidt,
+H., Schraa, G., Davids, M., Schaap, P.J., Plugge, C.M., Stams, A.J.M., 2013. Genome
+analysis and physiological comparison of Alicycliphilus denitri ﬁcans strains BC and
+K601(T.). PLoS One 8, e66971. http://dx.doi.org/10.1371/journal.pone.0066971 .
+Paddon, C.J., Keasling, J.D., 2014. Semi-synthetic artemisinin: a model for the use of
+synthetic biology in pharmaceutical development. Nat. Rev. Microbiol. 12, 355 –367.
+http://dx.doi.org/10.1038/nrmicro3240 .
+Parales, R.E., Ditty, J.L., 2005. Laboratory evolution of catabolic enzymes and pathways.
+Curr. Opin. Biotechnol. 16, 315 –325. http://dx.doi.org/10.1016/j.copbio.2005.03.
+008.P. Dvoř ák et al.
+Biotechnology Advances 35 (2017) 845–866
+864Pascual, J., Udaondo, Z., Molina, L., Segura, A., Esteve-Núñez, A., Caballero, A., Duque,
+E., Ramos, J.L., van Dillewijn, P., 2015. Draft genome sequence of Pseudomonas putida
+JLR11, a facultative anaerobic 2,4,6-trinitrotoluene biotransforming bacterium.
+Genome Announc. 3. http://dx.doi.org/10.1128/genomeA.00904-15 .
+Patil, V.V., Park, K.-H., Lee, S.-G., Woo, E., 2016. Structural analysis of the phenol-re-
+sponsive sensory domain of the transcription activator PoxR. Structure 1993 (24),624–630. (Lond. Engl.). http://dx.doi.org/10.1016/j.str.2016.03.006 .
+Patowary, K., Patowary, R., Kalita, M.C., Deka, S., 2016. Development of an e ﬃcient
+bacterial consortium for the potential remediation of hydrocarbons from con-
+taminated sites. Front. Microbiol. 7, 1092. http://dx.doi.org/10.3389/fmicb.2016.
+01092 .
+Paul, D., Pandey, G., Jain, R.K., 2005. Suicidal genetically engineered microorganisms for
+bioremediation: need and perspectives. Bioessays 27, 563 –573. http://dx.doi.org/10.
+1002/bies.20220 .
+Pavlova, M., Klvana, M., Prokop, Z., Chaloupkova, R., Banas, P., Otyepka, M., Wade, R.C.,
+Tsuda, M., Nagata, Y., Damborsky, J., 2009. Redesigning dehalogenase access tunnelsas a strategy for degrading an anthropogenic substrate. Nat. Chem. Biol. 5, 727 –733.
+http://dx.doi.org/10.1038/nchembio.205 .
+Petrie, B., Barden, R., Kasprzyk-Hordern, B., 2015. A review on emerging contaminants in
+wastewaters and the environment: current knowledge, understudied areas and re-
+commendations for future monitoring. In: Water Res., Occurrence, Fate, Removal and
+Assessment of Emerging Contaminants in Water in the Water Cycle (From
+Wastewater to Drinking Water). 72. pp. 3 –27.http://dx.doi.org/10.1016/j.watres.
+2014.08.053 .
+Planson, A.-G., Carbonell, P., Paillard, E., Pollet, N., Faulon, J.-L., 2012. Compound
+toxicity screening and structure-activity relationship modeling in Escherichia coli .
+Biotechnol. Bioeng. 109, 846 –850. http://dx.doi.org/10.1002/bit.24356 .
+Pucha łka, J., Oberhardt, M.A., Godinho, M., Bielecka, A., Regenhardt, D., Timmis, K.N.,
+Papin, J.A., Martins dos Santos, V.A.P., 2008. Genome-scale reconstruction and
+analysis of the Pseudomonas putida KT2440 metabolic network facilitates applications
+in biotechnology. PLoS Comput. Biol. 4, e1000210. http://dx.doi.org/10.1371/
+journal.pcbi.1000210 .
+Ramos, J.L., Wasserfallen, A., Rose, K., Timmis, K.N., 1987. Redesigning metabolic
+routes: manipulation of TOL plasmid pathway for catabolism of alkylbenzoates.
+Science 235, 593 –596.
+Ramos, J.-L., Marqués, S., van Dillewijn, P., Espinosa-Urgel, M., Segura, A., Duque, E.,
+Krell, T., Ramos-González, M.-I., Bursakov, S., Roca, A., Solano, J., Fernádez, M.,Niqui, J.L., Pizarro-Tobias, P., Wittich, R.-M., 2011. Laboratory research aimed at
+closing the gaps in microbial bioremediation. Trends Biotechnol. 29, 641 –647.
+http://dx.doi.org/10.1016/j.tibtech.2011.06.007 .
+Ran, F.A., Hsu, P.D., Wright, J., Agarwala, V., Scott, D.A., Zhang, F., 2013. Genome en-
+gineering using the CRISPR-Cas9 system. Nat. Protoc. 8, 2281 –2308. http://dx.doi.
+org/10.1038/nprot.2013.143 .
+Raunio, H., Kuusisto, M., Juvonen, R.O., Pentikäinen, O.T., 2015. Modeling of interac-
+tions between xenobiotics and cytochrome P450 (CYP) enzymes. Front. Pharmacol. 6,123. http://dx.doi.org/10.3389/fphar.2015.00123 .
+Ravikumar, S., Baylon, M.G., Park, S.J., Choi, J.-I., 2017. Engineered microbial biosensors
+based on bacterial two-component systems as synthetic biotechnology platforms inbioremediation and biore ﬁnery. Microb. Cell Factories 16, 62. http://dx.doi.org/10.
+1186/s12934-017-0675-z .
+Raymond, R.L., Jamison, V.W., Hudson, J.O., 1975. Final Report on Bene ﬁcial
+Stimulation of Bacterial Activity in Ground Waters Containing Petroleum Products.Sun
+Ventures, Incorporated .
+Reineke, W., Knackmuss, H.J., 1979. Construction of haloaromatics utilising bacteria.
+Nature 277, 385 –386.
+Renata, H., Wang, Z.J., Arnold, F.H., 2015. Expanding the enzyme universe: accessing
+non-natural reactions by mechanism-guided directed evolution. Angew. Chem. Int.Ed. Eng. 54, 3351 –3367. http://dx.doi.org/10.1002/anie.201409470 .
+Rockström, J., Ga ﬀney, O., Rogelj, J., Meinshausen, M., Nakicenovic, N., Schellnhuber,
+H.J., 2017. A roadmap for rapid decarbonization. Science 355, 1269 –1271. http://dx.
+doi.org/10.1126/science.aah3443 .
+Rojo, F., Pieper, D.H., Engesser, K.H., Knackmuss, H.J., Timmis, K.N., 1987. Assemblage
+of ortho cleavage route for simultaneous degradation of chloro- and methylaromatics.
+Science 238, 1395 –1398 .
+Rollin, J.A., Martin del Campo, J., Myung, S., Sun, F., You, C., Bakovic, A., Castro, R.,
+Chandrayan, S.K., Wu, C.-H., Adams, M.W.W., Senger, R.S., Zhang, Y.-H.P., 2015.High-yield hydrogen production from biomass by in vitro metabolic engineering:
+mixed sugars coutilization and kinetic modeling. Proc. Natl. Acad. Sci. U. S. A. 112,
+4964 –4969. http://dx.doi.org/10.1073/pnas.1417719112 .
+Rui, L., Kwon, Y.M., Reardon, K.F., Wood, T.K., 2004. Metabolic pathway engineering to
+enhance aerobic degradation of chlorinated ethenes and to reduce their toxicity bycloning a novel glutathione S-transferase, an evolved toluene o-monooxygenase, and
+gamma-glutamylcysteine synthetase. Environ. Microbiol. 6, 491 –500. http://dx.doi.
+org/10.1111/j.1462-2920.2004.00586.x .
+Samin, G., Janssen, D.B., 2012. Transformation and biodegradation of 1,2,3-tri-
+chloropropane (TCP). Environ. Sci. Pollut. Res. Int. 19, 3067 –3078. http://dx.doi.
+org/10.1007/s11356-012-0859-3 .
+Samin, G., Pavlova, M., Arif, M.I., Postema, C.P., Damborsky, J., Janssen, D.B., 2014. A
+pseudomonas putida strain genetically engineered for 1,2,3-trichloropropane bior-emediation. Appl. Environ. Microbiol. 80, 5467 –5476. http://dx.doi.org/10.1128/
+AEM.01620-14 .
+Santacoloma, P.A., Sin, G., Gernaey, K.V., Woodley, J.M., 2011. Multienzyme-catalyzed
+processes: next-generation biocatalysis. Org. Process. Res. Dev. 15, 203 –212. http://
+dx.doi.org/10.1021/op1002159 .
+Santos, C.N.S., Yoshikuni, Y., 2014. Engineering complex biological systems in bacteria
+through recombinase-assisted genome engineering. Nat. Protoc. 9, 1320 –1336.http://dx.doi.org/10.1038/nprot.2014.084 .
+Sarigiannis, D.A., Hansen, U., 2012. Considering the cumulative risk of mixtures of
+chemicals - a challenge for policy makers. Environ. Health 11 (Suppl. 1), S18. http://
+dx.doi.org/10.1186/1476-069X-11-S1-S18 .
+Schallmey, M., Frunzke, J., Eggeling, L., Marienhagen, J., 2014. Looking for the pick of
+the bunch: high-throughput screening of producing microorganisms with biosensors.
+Curr. Opin. Biotechnol. 26, 148 –154. http://dx.doi.org/10.1016/j.copbio.2014.01.
+005.
+Schellenberger, J., Que, R., Fleming, R.M.T., Thiele, I., Orth, J.D., Feist, A.M., Zielinski,
+D.C., Bordbar, A., Lewis, N.E., Rahmanian, S., Kang, J., Hyduke, D.R., Palsson, B.Ø.,2011. Quantitative prediction of cellular metabolism with constraint-based models:
+the COBRA Toolbox v2.0. Nat. Protoc. 6, 1290 –1307. http://dx.doi.org/10.1038/
+nprot.2011.308 .
+Schmidt, M., 2010. Xenobiology: a new form of life as the ultimate biosafety tool.
+Bioessays 32, 322 –331. http://dx.doi.org/10.1002/bies.200900147 .
+Schmidt,
+M. (Ed.), 2012. Synthetic Biology: Industrial and Environmental Applications,
+1st edition. Wiley-Blackwell .
+Schmidt, M., de Lorenzo, V., 2016. Synthetic bugs on the loose: containment options for
+deeply engineered (micro)organisms. Curr. Opin. Biotechnol. 38, 90 –96.http://dx.
+doi.org/10.1016/j.copbio.2016.01.006 .
+Schwander, T., Schada von Borzyskowski, L., Burgener, S., Cortina, N.S., Erb, T.J., 2016.
+A synthetic pathway for the ﬁxation of carbon dioxide in vitro. Science 354, 900 –904.
+http://dx.doi.org/10.1126/science.aah5237 .
+Scism, R.A., Bachmann, B.O., 2010. Five-component cascade synthesis of nucleotide
+analogues in an engineered self-immobilized enzyme aggregate. Chembiochem Eur.
+J. Chem. Biol. 11, 67 –70.http://dx.doi.org/10.1002/cbic.200900620 .
+Scott, S.R., Hasty, J., 2016. Quorum sensing communication modules for microbial
+consortia. ACS Synth. Biol. 5, 969 –977. http://dx.doi.org/10.1021/acssynbio.
+5b00286 .
+Shapir, N., Mongodin, E.F., Sadowsky, M.J., Daugherty, S.C., Nelson, K.E., Wackett, L.P.,
+2007. Evolution of catabolic pathways: genomic insights into microbial s-triazine
+metabolism. J. Bacteriol. 189, 674 –682. http://dx.doi.org/10.1128/JB.01257-06 .
+Sheldon, R.A., 2011. Characteristic features and biotechnological applications of cross-
+linked enzyme aggregates (CLEAs). Appl. Microbiol. Biotechnol. 92, 467 –477. http://
+dx.doi.org/10.1007/s00253-011-3554-2 .
+Shi, L., Dong, H., Reguera, G., Beyenal, H., Lu, A., Liu, J., Yu, H.-Q., Fredrickson, J.K.,
+2016. Extracellular electron transfer mechanisms between microorganisms and mi-
+nerals. Nat. Rev. Microbiol. 14, 651 –662. http://dx.doi.org/10.1038/nrmicro.
+2016.93 .
+Si, T., Xiao, H., Zhao, H., 2015. Rapid prototyping of microbial cell factories via genome-
+scale engineering. Biotechnol. Adv. 33, 1420 –1432. http://dx.doi.org/10.1016/j.
+biotechadv.2014.11.007 .
+Silva-Rocha, R., de Lorenzo, V., 2014. Engineering multicellular logic in bacteria with
+metabolic wires. ACS Synth. Biol. 3, 204 –209. http://dx.doi.org/10.1021/
+sb400064y .
+Siu, K.-H., Chen, R.P., Sun, Q., Chen, L., Tsai, S.-L., Chen, W., 2015. Synthetic sca ﬀolds for
+pathway enhancement. Curr. Opin. Biotechnol. 36, 98 –106. http://dx.doi.org/10.
+1016/j.copbio.2015.08.009 .
+Skariyachan, S., Manjunatha, V., Sultana, S., Jois, C., Bai, V., Vasist, K.S., 2016. Novel
+bacterial consortia isolated from plastic garbage processing areas demonstrated en-
+hanced degradation for low density polyethylene. Environ. Sci. Pollut. Res. Int. 23,
+18307 –18319. http://dx.doi.org/10.1007/s11356-016-7000-y .
+Sohn, S.B., Kim, T.Y., Park, J.M., Lee, S.Y., 2010. In silico genome-scale metabolic ana-
+lysis of Pseudomonas putida KT2440 for polyhydroxyalkanoate synthesis, degradation
+of aromatics and anaerobic survival. Biotechnol. J. 5, 739 –750. http://dx.doi.org/10.
+1002/biot.201000124 .
+Stephanopoulos, G., 1999. Metabolic ﬂuxes and metabolic engineering. Metab. Eng. 1,
+1–11.http://dx.doi.org/10.1006/mben.1998.0101 .
+St-Pierre,
+F., Cui, L., Priest, D.G., Endy, D., Dodd, I.B., Shearwin, K.E., 2013. One-step
+cloning and chromosomal integration of DNA. ACS Synth. Biol. 2, 537 –541. http://
+dx.doi.org/10.1021/sb400021j .
+Stucki, G., Thueer, M., 1995. Experiences of a large-scale application of 1,2-di-
+chloroethane degrading microorganisms for groundwater treatment. Environ. Sci.Technol. 29, 2339 –2345. http://dx.doi.org/10.1021/es00009a028 .
+Takahashi, K., Ishikawa, N., Sadamoto, Y., Sasamoto, H., Ohta, S., Shiozawa, A., Miyoshi,
+F., Naito, Y., Nakayama, Y., Tomita, M., 2003. E-cell 2: multi-platform E-cell simu-lation system. Bioinforma. Oxf. Engl. 19, 1727 –1729 .
+Tolia, N.H., Joshua-Tor, L., 2006. Strategies for protein coexpression in Escherichia coli .
+Nat. Methods 3, 55 –64.http://dx.doi.org/10.1038/nmeth0106-55 .
+Tozakidis, I.E.P., Brossette, T., Lenz, F., Maas, R.M., Jose, J., 2016. Proof of concept for
+the simpli ﬁed breakdown of cellulose by combining Pseudomonas putida strains with
+surface displayed thermophilic endocellulase, exocellulase and β-glucosidase.
+Microb. Cell Factories 15, 103. http://dx.doi.org/10.1186/s12934-016-0505-8 .
+Trögl, J., Krh ůtková, O., Pila řová, V., Dá ňová, P., Holíč ek, R., Kohlová, M., Hejda, S.,
+Smr čka, J., Bou šková, A., K řiklavová, L., 2012. Removal of nitrates from high-salinity
+wastewaters from desulphurization process with denitrifying bacteria encapsulated in
+Lentikats Biocatalyst. Int. J. Environ. Sci. Technol. 9, 425 –432. http://dx.doi.org/10.
+1007/s13762-012-0048-4 .
+UniProt Consortium, 2015. UniProt: a hub for protein information. Nucleic Acids Res. 43,
+D204 –212. http://dx.doi.org/10.1093/nar/gku989 .
+Vallenet, D., Calteau, A., Cruveiller, S., Gachet, M., Lajus, A., Josso, A., Mercier, J.,
+Renaux, A., Rollin, J., Rouy, Z., Roche, D., Scarpelli, C., Médigue, C., 2016.MicroScope in 2017: an expanding and evolving integrated resource for community
+expertise of microbial genomes. Nucleic Acids Res. http://dx.doi.org/10.1093/nar/
+gkw1101 .
+van Leeuwen, J.G.E., Wijma, H.J., Floor, R.J., van der Laan, J.-M., Janssen, D.B., 2012.P. Dvoř ák et al.
+Biotechnology Advances 35 (2017) 845–866
+865Directed evolution strategies for enantiocomplementary haloalkane dehalogenases:
+from chemical waste to enantiopure building blocks. Chembiochem Eur. J. Chem.
+Biol. 13, 137 –148. http://dx.doi.org/10.1002/cbic.201100579 .
+Vilchez-Vargas, R., Junca, H., Pieper, D.H., 2010. Metabolic networks, microbial ecology
+and “omics ”technologies: towards understanding in situ biodegradation processes.
+Environ. Microbiol. 12, 3089 –3104. http://dx.doi.org/10.1111/j.1462-2920.2010.
+02340.x .
+Wang, H.H., Isaacs, F.J., Carr, P.A., Sun, Z.Z., Xu, G., Forest, C.R., Church, G.M., 2009.
+Programming cells by multiplex genome engineering and accelerated evolution.Nature 460, 894 –898. http://dx.doi.org/10.1038/nature08187 .
+Wang, B., Kitney, R.I., Joly, N., Buck, M., 2011. Engineering modular and orthogonal
+genetic logic gates for robust digital-like synthetic biology. Nat. Commun. 2, 508.http://dx.doi.org/10.1038/ncomms1516 .
+Wang, K., Schmied, W.H., Chin, J.W., 2012. Reprogramming the genetic code: from tri-
+plet to quadruplet codes. Angew. Chem. Int. Ed. Eng. 51, 2288 –2297. http://dx.doi.
+org/10.1002/anie.201105016 .
+Wang, B., Barahona, M., Buck, M., 2013. A modular cell-based biosensor using engineered
+genetic logic circuits to detect and integrate multiple environmental signals. Biosens.
+Bioelectron. 40, 368 –376. http://dx.doi.org/10.1016/j.bios.2012.08.011 .
+Wang, L., Xue, C., Wang, L., Zhao, Q., Wei, W., Sun, Y., 2016. Strain improvement of
+Chlorella sp. for phenol biodegradation by adaptive laboratory evolution. Bioresour.
+Technol. 205, 264 –268. http://dx.doi.org/10.1016/j.biortech.2016.01.022 .
+Wei, R., Oeser, T., Schmidt, J., Meier, R., Barth, M., Then, J., Zimmermann, W., 2016.
+Engineered bacterial polyester hydrolases e ﬃciently degrade polyethylene ter-
+ephthalate due to relieved product inhibition. Biotechnol. Bioeng. 113, 1658 –1665.
+http://dx.doi.org/10.1002/bit.25941 .
+Wibberg, D., Bremges, A., Dammann-Kalinowski, T., Maus, I., Igeño, M.I., Vogelsang, R.,
+König, C., Luque-Almagro, V.M., Roldán, M.D., Sczyrba, A., Moreno-Vivián, C.,
+Blasco, R., Pühler, A., Schlüter, A., 2016. Finished genome sequence and methylomeof the cyanide-degrading Pseudomonas pseudoalcaligenes strain CECT5344 as resolved
+by single-molecule real-time sequencing. J. Biotechnol. 232, 61 –68.http://dx.doi.
+org/10.1016/j.jbiotec.2016.04.008 .
+Wicker, J., Lorsbach, T., Gütlein, M., Schmid, E., Latino, D., Kramer, S., Fenner, K., 2016.
+enviPath —the environmental contaminant biotransformation pathway resource.
+Nucleic Acids Res. 44, D502 –508. http://dx.doi.org/10.1093/nar/gkv1229 .
+Wierckx, N., Prieto, M.A., Pomposiello, P., de Lorenzo, V., O'Connor, K., Blank, L.M.,
+2015. Plastic waste as a novel substrate for industrial biotechnology. Microb.
+Biotechnol. 8, 900 –903. http://dx.doi.org/10.1111/1751-7915.12312 .
+Wigginton, N., Yeston, J., Malako ﬀ, D., 2012. Working with waste. More treasure than
+trash. Introduction. Science 337, 662 –663. http://dx.doi.org/10.1126/science.337.
+6095.662 .
+Winsor, G.L., Gri ﬃths, E.J., Lo, R., Dhillon, B.K., Shay, J.A., Brinkman, F.S.L., 2016.
+Enhanced annotations and features for comparing thousands of Pseudomonas gen-
+omes in the Pseudomonas genome database. Nucleic Acids Res. 44, D646 –653.
+http://dx.doi.org/10.1093/nar/gkv1227 .
+Wittich,
+R.-M., Wol ﬀ, P., 2007. Growth of the genetically engineered strain Cupriavidus
+necator RW112 with chlorobenzoates and technical chlorobiphenyls. Microbiology
+153, 186 –195. http://dx.doi.org/10.1099/mic.0.29096-0 .
+Wittich, R.-M., van Dillewijn, P., Ramos*, J.L., 2010. Rational construction of bacterial
+strains with new/improved catabolic capabilities for the e ﬃcient breakdown of en-
+vironmental pollutants. In: Timmis, K.N. (Ed.), Handbook of Hydrocarbon and Lipid
+Microbiology. Springer, Berlin Heidelberg, pp. 1247 –1254 .
+Wolfaardt, G.M., Lawrence, J.R., Robarts, R.D., Caldwell, S.J., Caldwell, D.E., 1994.
+Multicellular organization in a degradative bio ﬁlm community. Appl. Environ.
+Microbiol. 60, 434 –446.
+Wu, G., Yan, Q., Jones, J.A., Tang, Y.J., Fong, S.S., Ko ﬀas, M.A.G., 2016. Metabolic
+burden: cornerstones in synthetic biology and metabolic engineering applications.
+Trends Biotechnol. 34, 652 –664. http://dx.doi.org/10.1016/j.tibtech.2016.02.010 .
+Xu, P., Vansiri, A., Bhan, N., Ko ﬀas, M.A.G., 2012. ePathBrick: a synthetic biology plat-
+form for engineering metabolic pathways in E.coli. ACS Synth. Biol. 1, 256 –266.
+http://dx.doi.org/10.1021/sb300016b .Yadid, I., Rudolph, J., Hlouchova, K., Copley, S.D., 2013. Sequestration of a highly re-
+active intermediate in an evolving pathway for degradation of pentachlorophenol.Proc. Natl. Acad. Sci. U. S. A. 110, E2182 –2190. http://dx.doi.org/10.1073/pnas.
+1214052110 .
+Yang, J., Liu, R., Jiang, H., Yang, Y., Qiao, C., 2012. Selection of a whole-cell biocatalyst
+for methyl parathion biodegradation. Appl. Microbiol. Biotechnol. 95, 1625 –1632.
+http://dx.doi.org/10.1007/s00253-011-3792-3 .
+Yang, Y., Yang, J., Jiang, L., 2016. Comment on A bacterium that degrades and assim-
+ilates poly(ethylene terephthalate). Science 353, 759. http://dx.doi.org/10.1126/
+science.aaf8305 .
+Yoshida, S., Hiraga, K., Takehana, T., Taniguchi, I., Yamaji, H., Maeda, Y., Toyohara, K.,
+Miyamoto, K., Kimura, Y., Oda, K., 2016a. A bacterium that degrades and assimilatespoly(ethylene terephthalate). Science 351, 1196 –1199. http://dx.doi.org/10.1126/
+science.aad6359 .
+Yoshida, S., Hiraga, K., Takehana, T., Taniguchi, I., Yamaji, H., Maeda, Y., Toyohara, K.,
+Miyamoto, K., Kimura, Y., Oda, K., 2016b. Response to comment on A bacterium thatdegrades and assimilates poly(ethylene terephthalate). Science 353, 759. http://dx.
+doi.org/10.1126/science.aaf8625 .
+Zobel, S., Benedetti, I., Eisenbach, L., de Lorenzo, V., Wierckx, N., Blank, L.M., 2015. Tn7-
+based device for calibrated heterologous gene expression in Pseudomonas putida . ACS
+Synth. Biol. 4, 1341 –1351. http://dx.doi.org/10.1021/acssynbio.5b00058 .
+Web references
+http://toxics.usgs.gov , accessed 21.5.2017.
+http://www.eugris.info , accessed 21.5.2017.
+http://eawag-bbd.ethz.ch , accessed 29.7.2017.
+https://envipath.org/ , accessed 29.7.2017.
+https://metacyc.org/ , accessed 29.7.2017.
+https://biocyc.org/ , accessed 29.7.2017.
+www.uniprot.org/ , accessed 22.5.2017.
+http://rapid.umn.edu/rapid/ , accessed 22.5.2017.
+http://lcsb-databases.ep ﬂ.ch/atlas/ , accessed 22.5.2017.
+http://sensipath.micalis.fr/ , accessed 26.7.2017.
+https://ntp.niehs.nih.gov/results/tox21/ , accessed 26.7.17.
+https://absynth.issb.genopole.fr/Bioinformatics/ , accessed 22.5.2017.
+https://pubchem.ncbi.nlm.nih.gov/ , accessed 29.7.2017.
+http://www.chemspider.com/ , accessed 29.7.2017.
+http://www.pseudomonas.com/ , accessed 29.7.2017.
+https://www.ncbi.nlm.nih.gov/genome/ , accessed 22.5.2017.
+www.genoscope.cns.fr/agc/microscope/home/ , accessed 22.5.2017.
+http://seva.cnb.csic.es/ , accessed 22.5.2017.P. Dvoř ák et al. Biotechnology Advances 35 (2017) 845–866
+866

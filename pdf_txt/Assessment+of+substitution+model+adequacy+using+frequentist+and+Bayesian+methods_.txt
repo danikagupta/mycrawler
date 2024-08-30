@@ -1,0 +1,616 @@
+Assessment of Substitution Model Adequacy Using
+Frequentist and Bayesian Methods
+Jennifer Ripplinger*,1and Jack Sullivan1,2
+1Bioinformatics and Computational Biology, University of Idaho
+2Department of Biological Sciences, University of Idaho
+*Corresponding author: E-mail: jripplinger@vandals.uidaho.edu.
+Associate editor: Jeffrey Throne
+Abstract
+In order to have conﬁdence in model-based phylogenetic methods, such as maximum likelihood (ML) and Bayesian
+analyses, one must use an appropriate model of molecular evolution identiﬁed using statistically rigorous criteria. Although
+model selection methods such as the likelihood ratio test and Akaike information criterion are widely used in thephylogenetic literature, model selection methods lack the ability to reject all models if they provide an inadequate ﬁt tothe data. There are two methods, however, that assess absolute model adequacy, the frequentist Goldman–Cox (GC) testand Bayesian posterior predictive simulations (PPSs), which are commonly used in conjunction with the multinomial loglikelihood test statistic. In this study, we use empirical and simulated data to evaluate the adequacy of commonsubstitution models using both frequentist and Bayesian methods and compare the results with those obtained withmodel selection methods. In addition, we investigate the relationship between model adequacy and performance in ML
+and Bayesian analyses in terms of topology, branch lengths, and bipartition support. We show that tests of model
+adequacy based on the multinomial likelihood often fail to reject simple substitution models, especially when the modelsincorporate among-site rate variation (ASRV), and normally fail to reject less complex models than those chosen by modelselection methods. In addition, we ﬁnd that PPSs often fail to reject simpler models than the GC test. Use of the simplestsubstitution models not rejected based on ﬁt normally results in similar but divergent estimates of tree topology andbranch lengths. In addition, use of the simplest adequate substitution models can affect estimates of bipartition support,although these differences are often small with the largest differences conﬁned to poorly supported nodes. We also ﬁndthat alternative assumptions about ASRV can affect tree topology, tree length, and bipartition support. Our results suggest
+that using the simplest substitution models not rejected based on ﬁt may be a valid alternative to implementing more
+complex models identiﬁed by model selection methods. However, all common substitution models may fail to recover thecorrect topology and assign appropriate bipartition support if the true tree shape is difﬁcult to estimate regardless ofmodel adequacy.
+Key words: Bayesian, Goldman–Cox, maximum likelihood, model adequacy, parametric bootstrap, posterior predictive
+simulation.
+Introduction
+Statistical methods of phylogenetic inference, such as max-
+imum likelihood (ML) and Bayesian estimation, utilize an
+explicit model of molecular evolution, normally selectedfrom a group of nucleotide substitution models referredto as the general time reversible (GTR; Tavare ´1986) family.
+Model choice is critical because use of an underparameter-ized model can mislead an analysis by failing to accountfully for multiple substitutions at the same site while inclu-sion of superﬂuous parameters can increase the variance inparameter estimates (e.g., Gaut and Lewis 1995; Sullivan
+and Swofford 1997, 2001; Lemmon and Moriarty 2004).
+Consequently, model selection methods such as the hier-archical implementation of the likelihood ratio test (hLRT;Frati et al. 1997; Sullivan et al. 1997 ;Posada and Crandall
+1998), Akaike information criterion (AIC; Akaike 1973),
+Bayesian information criterion (BIC; Schwarz 1978), and de-
+cision theory (DT) approach ( Minin et al. 2003; Abdo et al.
+2004) identify substitution models that optimize the tradeoff between bias and variance according to their respective
+statistical criteria (see Posada and Buckley 2004 andSullivan
+and Joyce 2005 for reviews of model selection methods).
+Although use of any model selection method is preferableto choosing a model arbitrarily ( Ripplinger and Sullivan
+2008), these are relative ﬁt methods that lack the abilityto reject all models if none provides an adequate ﬁt tothe data. That is, none of the typical model selection meth-ods actually assess goodness of ﬁt in an absolute sense.
+There are two methods that assess the absolute ﬁt be-
+tween a substitution model and the data: the Goldman–Cox (GC) test (also known as the parametric bootstrapgoodness-of-ﬁt test; Reeves 1992; Goldman 1993; Whelan
+et al. 2001) and posterior predictive simulation (PPS; Rubin
+1984; Gelman et al. 1996; Huelsenbeck et al. 2001; Bollback
+2002, 2005). Both tests normally utilize the multinomial log
+likelihood test statistic, which is calculated as the weightedsum of site pattern log likelihoods. The GC test is a frequent-ist method used to evaluate the hypothesis of a perfect ﬁtbetween the model and data using a null distribution
+©The Author 2010. Published by Oxford University Press on behalf of the Society for Molecular Biology and Evolution. All rights reserved. For permissions, please
+e-mail: journals.permissions@oxfordjournals.org
+2790 Mol. Biol. Evol. 27(12):2790–2803. 2010 doi:10.1093/molbev/msq168 Advance Access publication July 8, 2010
+Research article
+generated with the parametric bootstrap. To conduct a GC
+test, one ﬁrst performs a ML analysis and calculates the
+value of the realized test statistic
+d5ðlnLmultinomial /C0lnLconstrained Þ;
+where the ﬁrst component is the multinomial log likeli-
+hood and the second component is the log likelihood con-strained to a particular substitution model. Data for thenull distribution are simulated using maximum likelihoodestimates (MLEs) of the tree topology, branch lengths, andsubstitution model parameters and subsequently analyzedin the same manner as the original data. Test statisticsare then calculated for each replicate and used to form
+the null distribution; a Pvalue is calculated by determining
+the rank of the realized test statistic in relation to the null
+distribution.
+PPS (e.g., Bollback 2002) is a Bayesian method for assess-
+ing model adequacy that utilizes parameter estimatesdrawn from their respective posterior distributions ratherthan MLEs, which eliminates the reliance on point esti-mates associated with the GC test. In order to conduct
+PPSs, one ﬁrst calculates the realized test statistic (the mul-
+tinomial likelihood) and conducts a Bayesian analysis toproduce posterior distributions for the tree topology,branch lengths, and substitution model parameters. Datafor the null, or predictive, distribution are generated ina manner similar to the parametric bootstrap except sim-ulation parameters are sampled from the posterior distri-bution independently for each replicate. A multinomial
+test statistic is subsequently calculated for each replicate
+and used to form the null distribution; the realized test sta-tistic is evaluated against this distribution.
+Because tests of model adequacy are computationally
+intensive, they are rarely used as model selection strategiesand have instead been used to investigate the ﬁt of partic-ular substitution models. Goldman (1993) used the para-
+metric bootstrap to evaluate the ﬁt of three relatively
+simple GTR family models [Jukes–Cantor (JC; Jukes and
+Cantor 1969), Felsenstein 81 (F81; Felsenstein 1981), and
+Hasegawa–Kishino–Yano (HKY; Hasegawa et al. 1985)]
+to primate wg-globin pseudogene and tree-of-life small
+subunit rRNA data sets and was able to reject both the
+JC and the F81 models, as well as the HKY model whenapplied to the rRNA data set. Similarly, Whelan et al.
+(2001) used the GC test to reject the GTR model ( Tavare ´
+1986) for a primate mitochondrial data set. Conversely,Bollback (2002) used PPSs to evaluate the ﬁt between
+the JC, HKY, and GTR models and the primate wg-globin
+pseudogene data set analyzed by Goldman (1993) and was
+unable to reject any of the models. Furthermore, severalauthors have been unable to reject the adequacy of sub-stitution models using the GC test when the models ac-counted for among-site rate variation (ASRV). For
+example, Carstens et al. (2005) were unable to reject the
+HKYþCmodel for a salamander cytochrome b (cyt b)
+data set, and Demboski and Sullivan (2003) were unable
+to reject the GTR þCmodel for chipmunk cyt b data.Despite instances where model adequacy methods have
+failed to reject GTR family models, there has been specu-
+lation that this set of models is insufﬁcient (e.g., Sanderson
+and Kim 2000; Revell et al. 2005; Kelchner and Thomas
+2007) and, consequently, several authors have suggesteda need for rigorous analysis of model adequacy using theGC test and PPSs ( Sullivan and Joyce 2005 ;Gatesy 2007).
+However, Waddell et al. (2009) have shown that the GC
+test can lack power. They could not reject the GTR þ
+IþCmodel as inadequate using the GC test for a single
+data set but demonstrated that sets of taxa exhibited datapatterns that deviated signiﬁcantly from those expectedunder the model using pairwise tests of symmetry.
+Here, we extend the examination of the adequacy of the
+GTR family models on an array of data using both the GCtest and the PPSs. We ﬁrst evaluate the ﬁt of 56 commonsubstitution models on each of 25 empirical data sets and
+compare the results with those obtained with model selec-
+tion methods. We then test whether or not use of the sim-plest models not rejected based on absolute goodness ofﬁt produces signiﬁcantly different estimates of topology,branch lengths, and bipartition support than models cho-sen by model selection. Last, we evaluate the adequacy ofGTR family models on simulated data sets and investigatethe performance of both adequate and insufﬁcient models
+in recovering the true tree, estimating branch lengths, and
+assigning support to appropriate bipartitions.
+Methods
+Data Collection
+In order to assess the performance of model adequacymethods under a variety of conditions, we downloaded25 diverse data sets from the phylogenetic database Tree-BASE ( http://www.treebase.org ). The culled data included
+2 arthropod, 1 sponge, 2 vertebrate, 7 ﬂowering plant, 1 red
+algae, 4 club fungus, 6 sac fungus, 1 slime net, and 1 water
+mold data set, which comprised 2 mitochondrial, 3 chlo-roplast, and 20 nuclear gene sequence alignments. We ﬁrstimported the data sets into PAUP*4.0b10 ( Swofford 2002)
+and removed alignment regions the original authors hadlabeled as poor or ambiguous. We then removed redun-dant haplotypes using Collapse 1.2 (available fromhttp://darwin.uvigo.es ) while treating gaps as ﬁfth charac-
+ter states. Because inclusion of gaps and ambiguous char-acters causes difﬁculty in calculating the multinomiallikelihood, these characters were removed; nonetheless,the resulting pool of data sets exhibited a large amountof diversity ( ﬁg. 1 ). Citations for each data set, as well as
+data collected as part of this study, are provided in supple-
+mentary material ,Supplementary Material online.
+Frequentist Analysis
+We began our analysis by identifying optimal models ac-cording to the hLRT, corrected AIC (AIC
+c), BIC, and DT
+model selection methods; models were selected fromamong the 56 GTR family models implemented in Modelt-
+est3.7 ( Posada and Crandall 1998) and DT-ModSel ( MininAssessment of Model Adequacy ·doi:10.1093/molbev/msq168 MBE
+2791et al. 2003). In order to identify best-ﬁt models under the
+various relative criteria, we ﬁrst used PAUP* to calculate ML
+scores for each candidate model and then used Modeltestto select optimal models according to the hLRT, AIC
+c, and
+BIC. Similarly, we recalculated ML scores and used DT-ModSel to identify models with the lowest expected risk.Branch lengths were not included during model selection,and sequence length was used to approximate sample sizein the AIC
+c, BIC, and DT calculations (e.g., Posada and Buckley
+2004; Ripplinger and Sullivan 2008).
+After conducting model selection, we performed GC
+tests for all 56 substitution models to determine whichmodels exhibited an adequate ﬁt to the data. We ﬁrst con-ducted ML analyses in PAUP* to obtain realized test sta-tistics and estimates of the topology, branch lengths,and substitution model parameters. Model parameterswere initially estimated from a neighbor joining (NJ) tree
+constructed with LogDet distance ( Lockhart et al. 1994)
+and used as starting values for a heuristic ML search using
+ten random addition starting trees and tree-bisection-reconnection (TBR) branch swapping. We then generated100 data replicates for the null distribution using Seq-Gen(Rambaut and Grassly 1997), which utilizes simulation to
+produce a sequence alignment given a tree, branch lengths,and substitution model parameters. Each replicate was sub-
+sequently analyzed in the same manner as the original data
+and the difference between the multinomial and con-strained likelihoods was calculated to form the null distri-bution. Last, we calculated a Pvalue by evaluating the test
+statistic against the null distribution and assessed the out-come at a50.05.In order to assess the relative performance of statistically
+supported models, we performed additional ML analysesusing substitution models chosen by model selectionmethods and the simplest models not rejected by theGC test. For each analysis, we estimated initial model pa-rameters from a NJ starting tree constructed with LogDetdistance, which were used as starting values for a ML heu-ristic search with ten random addition starting trees andTBR branch swapping. We subsequently reoptimized pa-
+rameter estimates and performed additional search itera-
+tions until the tree topology stabilized ( Sullivan et al. 2005).
+In order to quantify differences among models chosen withalternative methods, we calculated symmetric distance dif-ferences (SDDs; Robinson and Foulds 1981) and sum of
+branch lengths for ML trees constructed with models cho-sen by model selection methods as well as the simplestmodels not rejected by the GC test. Last, we conducted
+ML nonparametric bootstrap analyses for each supported
+model using 1,000 replicates, substitution model parame-ters optimized on the preceding ML analysis, ten randomaddition starting trees, and TBR branch swapping. In caseswhere the C-shape parameter exceeded the limit of 300,
+the parameter was optimized on the limit instead of theempirical value.
+Bayesian Analysis
+Because only 24 GTR family models can be implementedin MrBayes3.1.2 ( Huelsenbeck et al. 2001; Ronquist and
+Huelsenbeck 2003), we repeated model selection accordingto the hLRT, AIC
+c, and BIC using a version of MrModeltest
+(Nylander 2004) we adapted to include BIC scores. In
+FIG.1 .Summary statistics for the 25 empirical data sets analyzed as part of this study. The data sets contained ( a) 5–44 haplotypes ( /C22x521)
+and 203–2,279 ( /C22x5736) nucleotides, ( b) a maximum pdistance of 4.0–36.5% ( /C22x516.8%), (c ) a weighted average tree length of 0.08–3.32 ( /C22x5
+0.74%), and ( d) a weighted average stemminess index of 0.02–0.93 ( /C22x50.26%). Tree lengths and stemminess indices were calculated as BIC
+weighted averages across all ML trees constructed with the 56 nucleotide models implemented in Modeltest and DT-ModSel.Ripplinger and Sullivan ·doi:10.1093/molbev/msq168 MBE
+2792addition, we identiﬁed substitution models with minimum
+posterior risk using a version of DT-ModSel we modiﬁed to
+select among pertinent models. We subsequently employedMrBayes to perform Bayesian Markov chain Monte Carloanalyses for each data set using all 24 applicable models.For each analysis, we performed two independent runs fromrandom starting trees, each with three heated and one coldchain, for 5 /C210
+6generations; trees and substitution model
+parameters were sampled every 100 generations. We con-
+ﬁrmed that the chains had converged upon the stationary
+distribution by analyzing both log likelihood plots and thestandard deviation of split frequencies. We discarded theﬁrst 500,000 generations (10%) of each analysis as burn-in. We then conducted PPSs using MAPPS ( Bollback
+2002 ), which calculate the realized test statistic (multino-
+mial likelihood) from the sequence alignment, producesdata replicates by sampling 1,000 joint tree and model pa-
+rameter posterior probabilities and constructs the null dis-
+tribution by calculating test statistics for each data replicate.Finally, we calculated average posterior tree lengths usingsubstitution models chosen by model selection methodsas well as the simplest models not rejected by PPSs.
+Simulation Analysis
+Although use of empirical data allows us to investigate the
+effects of substitution model adequacy on a range of real
+world scenarios, it would also be useful to utilize simulateddata to explore the relationship between the model ade-quacy and the accuracy of phylogenetic inference. Conse-quently, we performed simulations based on shrewmitochondrial DNA ( Brandli et al. 2005) and water mold
+nuclear DNA ( Mirabolfathy et al. 2001) data sets, both
+of which elicited unusual behavior from model adequacy
+methods. In order to obtain a tree topology for simulation,
+we conducted ML analyses for each data set using theGTRþIþCmodel. For each analysis, initial model param-
+eters were estimated based on a NJ tree constructed withLogDet distance and used as starting values for a MLheuristic search with ten random addition starting treesand TBR branch swapping; the ML search was reiterateduntil the tree topologies converged. We partitioned the
+shrew data set into three parts consisting of the cyt b gene,
+control region, and cytochrome oxidase II (COXII) gene; thecyt b and COXII genes were further divided by codonposition to produce a total of seven data partitions.Similarly, the water mold data set was divided into threesubsets representing the internal transcribed spacer (ITS)1 region, the 5.8S rRNA gene, and the ITS2 region. For eachpartition, we obtained MLEs of GTR þIþCmodel param-
+eters from a ML analysis constrained to the true treetopology and used Seq-Gen to simulate ten replicates.We then concatenated the simulated data to form ten setsof partitioned replicates for each data set. We subsequentlyanalyzed the replicates in the same manner as the empiricaldata except that phylogenetic analyses were conductedusing all applicable models instead of limiting the analysisto models identiﬁed by model selection methods and the
+simplest models not rejected based on ﬁt.Results
+Empirical Analysis
+The GC test often failed to reject simple substitution mod-
+els as long as they incorporated ASRV [invariable sites ( I),
+C-distributed rates ( C), or a combination of the two ( Iþ
+C);ﬁg. 2 a]. Although the simple JC model, which assumes
+both equal base frequencies and substitution rates, was re-
+jected for all data sets, JC þIcould not be rejected for 68%
+of the data and both JC þCand JC þIþCcould not be
+rejected for 72% of the data. The GC test identiﬁed the F81
+model, which incorporates unequal base frequencies and
+equal substitution rates, as the simplest adequate modelfor one data set, whereas F81 þIand F81 þCwere
+the simplest models not rejected for another data set. Sim-ilarly, the Kimura 2-parameter model (K2P; Kimura 1980)
+withC-distributed rate variation, which assumes equal
+base frequencies and unequal transition/transversion rates,was the simplest model not rejected for one data set,whereas HKY þIand HKY þC, which incorporate both
+unequal base frequencies and transition/transversion rates,were identiﬁed as the simplest nonrejectable models for anadditional two data sets. Only two data sets required com-
+plex models; the transversional model (TVM) with invari-
+able sites or C-distributed rates was needed to capture
+adequately the signal from a small geranium data set ( p
+distance 514.1%, BIC-weighted tree length 50.19, and
+BIC-weighted stemminess index 50.02), whereas the most
+complex GTR þIþCmodel, which assumes unequal base
+frequencies and independent substitution rates, was re-quired to ﬁt the 32 shrew sequences used for simulation(pdistance 513.8%, BIC-weighted tree length 50.49,
+and BIC-weighted stemminess index 50.22).
+Similarly, PPSs often failed to reject simple models, es-
+pecially when those models incorporated ASRV ( ﬁg. 2 b).
+The JC model without ASRV was the simplest nonreject-able model for 16% of the data sets, whereas JC þI,
+JCþC, and JC þIþCcould not be rejected for 40%,
+52%, and 60% of the data, respectively. PPSs identiﬁedF81þIas the simplest adequate model for one data
+set, K2P þCas the simplest nonrejectable model for an
+additional data set, and K2P þIþCas the simplest ad-
+equate model for two data sets. All models were rejectedfor an additional two data sets, including the water molddata used for simulation ( pdistance 517.8% and 15.6%,
+BIC-weighted tree length 50.91 and 0.63, and BIC-
+weighted stemminess index 50.21 for both data sets),
+but neither of these data sets were the ones that requiredcomplex models when evaluated with the GC test.
+In most cases, both the GC test and the PPSs failed to
+reject models that were much less complex than thoseidentiﬁed by model selection methods ( ﬁg. 3 ). There was
+a signiﬁcant difference in complexity among substitutionmodels chosen by model selection methods and the sim-
+plest models not rejected by the GC test [median ( M)54.0
+(hLRT), 8.0 (AIC
+c), 5.0 (BIC), 5.0 (DT), and 1.0 (GC) param-
+eters; Friedman rank sum test adjusted for ties, P,0.01,
+df54] due to both the large number of parametersAssessment of Model Adequacy ·doi:10.1093/molbev/msq168 MBE
+2793inferred by the AIC cand relatively simple models not re-
+jected by the GC test (evaluated using pairwise Wilcoxon
+signed rank tests adjusted for ties with the Bonferronimultiple-test correction). Consequently, optimal modelsidentiﬁed by model selection methods were normallysupported as adequate by the GC test (84%, 96%, 80%,and 84% of the models chosen by the hLRT, AIC
+c, BIC,
+and DT methods, respectively). Similarly, there was
+FIG.2 .Frequency with which common substitution models are not rejected by ( a) GC tests and ( b) PPSs for 25 empirical data sets. Simple
+models such as JC, which assumes equal base frequencies and substitution rates, normally cannot be rejected as long as they incorporate
+a proportion of invariable sites ( I),C-distributed rates ( C), or a combination of the two ( IþC). Assessed models include JC, F81, which
+assumes unequal base frequencies and equal substitution rates, K2P, which incorporates equal base frequencies and separate transition andtransversion rates, HKY, which assumes unequal base frequencies and separate transition and transversion rates, K3P, which incorporates equal
+base frequencies, two transversion rates, and equal transition rates, K3Puf with unequal base frequencies, Tamura–Nei, which assumes unequal
+base frequencies, one transversion rate, and independent transition rates, TrNef with equal base frequencies, transitional (TIM), which
+incorporates unequal base frequencies, two transversion, and independent transition rates, TIMef with equal base frequencies, transversional
+(TVM), which incorporates unequal base frequencies, independent transversion rates, and one transition rate, TVMef with equal base
+frequencies, symmetrical (SYM), which assumes equal base frequencies and independent substitution rates, and GTR, which incorporates
+unequal base frequencies and independent substitution rates. Overall, PPSs failed to reject somewhat simpler models than the GC test.Ripplinger and Sullivan ·doi:10.1093/molbev/msq168 MBE
+2794a signiﬁcant difference in the number of parameters incor-
+porated by substitution models chosen by model selectionmethods from the reduced set of models implemented inMrBayes and the simplest models not rejected by PPSs[M56.0 (hLRT), 9.0 (AIC
+c), 5.0 (BIC), 5.0 (DT), and 1.0
+(PPS); Friedman test, P,0.01, df 54] due primarily to
+the complex models chosen by the AIC cand the simple
+models not rejected by PPSs (evaluated with Wilcoxon
+FIG.3 .Difference in number of parameters between the simplest models not rejected by GC tests or PPSs and best-ﬁt models identiﬁed using
+the hLRT, corrected AIC (AIC c), BIC, and DT approach for 25 empirical data sets. Both tests of model adequacy often failed to reject models
+that were simpler than those chosen by model selection methods, especially the AIC c.Assessment of Model Adequacy ·doi:10.1093/molbev/msq168 MBE
+2795signed rank tests). Substitution models selected by model
+selection methods were normally supported by PPSs but at
+a lower rate than the GC test (72% of models selected usingthe hLRT, AIC
+c, and BIC and 68% of models selected by DT
+were supported by PPSs).
+The use of alternative substitution models chosen by
+model selection methods, as well as use of the simplestmodels not rejected by the GC test, resulted in similarbut statistically signiﬁcant differences in SDDs among
+ML tree topologies [ M50.34 (hLRT), 0.34 (AIC
+c), 0.31
+(BIC), 0.31 (DT), and 0.31 (GC); Friedman test, P50.04,
+df54]. However, no signiﬁcant differences among treat-
+ments could be detected using pairwise Wilcoxon signed
+rank tests with a multiple-test correction. Furthermore, al-though use of statistically supported models resulted in MLtrees with similar length, there was a statistically signiﬁcantdifference in the sum of branch lengths [ M50.49 (hLRT),
+0.49 (AIC
+c), 0.49 (BIC), 0.49 (DT), and 0.48 (GC); Friedman
+test, P,0.01, df54] due to shorter trees inferred using
+the simplest models not rejected by the GC test (evaluatedusing Wilcoxon signed rank tests). Median bootstrap valuescalculated using models selected by model selection meth-ods and the GC test tended to be fairly similar [ M582%
+(hLRT), 80% (AIC
+c), 79% (BIC), 79% (DT), and 81% (GC)].
+However, Friedman’s test cannot be applied to this data
+because bootstrap values calculated for bipartitions on
+the same tree are not independent from one and other.Although the median difference in bootstrap support be-tween models chosen by model selection methods and thesimplest models not rejected by the GC test was only 2%(for all model selection methods), the maximum differenceranged from 34% (AIC
+cvs. GC) to 47% (hLRT, BIC, and DT
+vs. GC), with the largest differences typically conﬁned to
+more poorly supported bipartitions. Similarly, the use of
+substitution models chosen by model selection methodsfrom the reduced set of models implemented in MrBayes,as well as use of the simplest models not rejected by PPSs,resulted in a signiﬁcant difference in SDDs among averageposterior tree lengths [ M50.69 (hLRT), 0.66 (AIC
+c), 0.58
+(BIC), 0.58 (DT), and 0.95 (PPS); Friedman, P50.01, df5
+4], although no signiﬁcant pairwise differences could be
+identiﬁed using Wilcoxon signed rank tests with the Bon-
+ferroni correction. Median posterior probabilities weremore similar than bootstrap values [ M596% (hLRT),
+96% (AIC
+c), 96% (BIC), 96% (DT), and 97% (PPS)]. Although
+the median difference in bipartition posterior probabilitieswas small ( M51% for hLRT and DT vs. PPS and 2% for
+AIC
+cand BIC vs. PPS), the maximum difference in posterior
+probabilities was much larger than the maximum differ-
+ence in bootstrap values, ranging from 72% (hLRT, BIC,
+and DT vs. PPS) to 74% (AIC cvs. PPS).
+Simulation Analysis
+Although the GC test and PPSs both failed to reject rela-tively simple substitution models for replicates generatedfrom the shrew data set, PPSs typically supported less com-plex models than the GC test ( ﬁg. 4 ). The GC test rejected
+the JC model with and without ASRV for all replicates.K2PþCwas the simplest nonrejectable model for two
+replicates, whereas the GC test identiﬁed HKY þIand
+HKYþCas the simplest adequate models for two addi-
+tional replicates and HKY þCalone as the simplest ade-
+quate model for three replicates. The more complexKimura 3-parameter (K3P; Kimura 1981) model with C-dis-
+tributed rate variation, which assumes unequal base fre-quencies and two transversion rates, was the simplestnonrejectable model for one replicate, whereas the equal
+base frequency Tamura–Nei model (TrNef; Tamura and
+Nei 1993) with C-distributed rates was the simplest non-
+rejectable model for an additional replicate. The GC test
+identiﬁed both K3P þCand TrNef þCas the simplest
+adequate models for the remaining replicate. Conversely,PPSs identiﬁed JC þCas the simplest nonrejectable model
+for eight replicates and K2P þCas the simplest substitu-
+tion model for the remaining two replicates.
+Both the GC test and the PPSs failed to reject less com-
+plex substitution models than those identiﬁed by modelselection methods ( ﬁg. 5 ). There was a signiﬁcant difference
+in model complexity among substitution models identiﬁedby model selection methods and the simplest models notrejected by the GC test [ M56.5 (hLRT), 9.5 (AIC
+c), 5.0
+(BIC), 5.0 (DT), and 4.0 (GC) parameters; Friedman test,P.0.01, df54] due primarily to the parameter-rich mod-
+els chosen by the AIC
+cand the simple models not rejected
+by the GC test (evaluated with pairwise Wilcoxon signedrank tests). Similarly, there was also a signiﬁcant differencein complexity among models chosen by model selectionmethods from the reduced set of models implementedin MrBayes and the simplest models not rejected by PPSs[M59.0 (hLRT), 10.0 (AIC
+c), 5.0 (BIC), 5.0 (DT), and 1.0
+(PPS) parameters; Friedman test, P.0.01, df54] due to
+differences among the complex models chosen by the hLRTand AIC
+c, simpler models selected by the BIC and DT, and
+least complex models identiﬁed as adequate by PPSs (eval-uated with Wilcoxon signed rank tests).
+Use of all 56 substitution models lead to the recovery of
+an incorrect ML tree for all ten replicates, with standardizedSDDs from the true tree ranging from 0.38 to 0.72. Al-though there was no signiﬁcant difference in SDDs among
+ML tree topologies when using the substitution models
+identiﬁed by model selection methods or the simplestmodels not rejected by the GC test [ M50.49 (hLRT),
+0.50 (AIC
+c), 0.49 (BIC), 0.49 (DT), and 0.50 (GC); Friedman
+test, P50.93, df54], there was a signiﬁcant difference in
+SDDs among ML trees when using substitution models thatmade alternative assumptions about ASRV [ M50.47
+(equal rates, eq), 0.50 ( I), 0.50 ( C), and 0.50 ( IþC); Fried-
+man test, P.0.01, df53]. The use alternative statistically
+supported models resulted in similar but statistically signif-icantly different tree lengths [ M50.45 (hLRT), 0.45 (AIC
+c),
+0.45 (BIC), 0.45 (DT), and 0.44 (GC); Friedman test, P,
+0.01, df 54], although no signiﬁcant pairwise differences
+could be detected using Wilcoxon signed rank tests withthe Bonferroni correction. Similarly, there was a signiﬁcantdifference in branch lengths among models that made dif-
+ferent assumptions about ASRV [ M50.34 (eq), 0.42 ( I),Ripplinger and Sullivan ·doi:10.1093/molbev/msq168 MBE
+27960.43 (C), and 0.44 ( IþC); Friedman test, P,0.01, df53]
+due to signiﬁcant differences among all treatment pairs
+(evaluated with Wilcoxon signed rank tests). Althoughall models tended to underestimate the true tree length(0.49), equal rates models performed worse than those thatincorporated ASRV. There was a signiﬁcant difference inSDDs among average posterior tree lengths between sub-stitution models chosen by model selection methods andthe simplest models not rejected by PPSs [ M50.50 (hLRT),
+0.50 (AIC
+c), 0.50 (BIC), 0.50 (DT), and 0.42 (GC); Friedman
+test, P,0.01, df 54] due to signiﬁcantly shorter trees
+inferred using the simplest substitution models not re-jected by PPS (evaluated with Wilcoxon signed rank tests).Furthermore, there was signiﬁcant difference among mod-
+els that made alternative assumptions about ASRV [ M5
+0.36 (eq), 0.45 ( I), 0.47 ( C), and 0.47 ( IþC); Friedman test,
+P,0.01, df 53] due to models that assume equal sub-
+stitution rates or a proportion of invariable sites. The re-
+sults were similar to those obtained under ML; equalrates models underestimated tree length more than mod-els that incorporated ASRV (especially, the C-distribution).
+Concordant with previous results, tests of model ade-
+quacy failed to reject simple models for replicates gener-ated from a water mold data set ( ﬁg. 6 ). The GC test
+again rejected JC with and without ASRV for all replicates.F81þI, F81þC, K2P þIþC, and K3P þCwere the
+FIG.4 .Rate with which substitution models are not rejected by ( a) GC tests and ( b) PPSs for ten replicates generated by simulating stochastic
+evolution using a partitioned GTR þIþCmodel constrained to the ML topology identiﬁed for a shrew mitochondrial data set. GC tests
+typically did not reject models that incorporated both unequal base frequencies and transition/transversion substitution rates, especially when
+the models also included C. Conversely, PPSs often failed to reject even the simplest models as long as they incorporated C.Assessment of Model Adequacy ·doi:10.1093/molbev/msq168 MBE
+2797simplest nonrejectable models for one replicate apiece. The
+GC test identiﬁed K2P þIand K2P þCas the simplest
+adequate models for one replicate; HKY þIand HKY þ
+Cwere the simplest models not rejected for an additional
+replicate. The equal rates HKY model and K2P þCmodel
+were identiﬁed as the simplest adequate models for tworeplicates apiece. Conversely, PPSs identiﬁed the equal ratesJC model as the simplest adequate model for six replicatesand JC þI,J Cþ C, and equal rates K2P as the simplest
+nonrejectable models for the remaining four replicates.
+Both tests of model adequacy failed to reject simpler
+models than those selected by model selection methods
+(ﬁg. 7 ), which is similar to results obtained from the em-
+pirical and shrew simulation data. There was a signiﬁcant
+difference in the number of parameters incorporated bymodels chosen by model selection methods and the
+FIG.5 .Disparity in number of parameters between the simplest model(s) not rejected by GC tests or the PPSs and optimal models identiﬁed by
+the hLRT, AIC c, BIC, and DT methods for ten replicates from a shrew data set. Both tests of model adequacy often failed to reject models that
+were simpler than those chosen by model selection methods.Ripplinger and Sullivan ·doi:10.1093/molbev/msq168 MBE
+2798simplest models not rejected by the GC test [ M54.5
+(hLRT), 6.0 (AIC c), 4.5 (BIC), 5.0 (DT), and 3.5 (GC); Fried-
+man test, P,0.01, df54] due to the difference between
+the complex models chosen by the AIC cand the relatively
+simple models not rejected by the GC test (evaluated with
+Wilcoxon signed rank tests). Similarly, there was a signiﬁ-cant difference in model complexity among models se-lected by model selection methods from the reduced setof models implemented in MrBayes and the least complexmodels not rejected by PPSs [ M54.0 (hLRT), 7.0 (AIC
+c),
+4.0 (BIC), 4.0 (DT), and 0.0 (PPS) parameters; Friedmantest, P,0.01, df 54] due to the simple models not re-
+jected by PPSs (evaluated with pairwise Wilcoxon signedrank tests).All 56 substitution models inferred the same ML topology
+for nine of the ten replicates despite the rejection of several
+simple models using the GC test. Use of all substitution
+models resulted in the recovery of the true tree for eightreplicates and the recovery of the same incorrect tree for anadditional replicate, whereas models that incorporated theleast complex rate matrix outperformed parameter-richmodels for the remaining replicate. Consequently, therewas no signiﬁcant difference in SDDs among ML treetopologies generated using substitution models identiﬁed
+by model selection methods and the least complex
+models not rejected by the GC test ( M50 for all methods;
+Friedman test, P,0.99, df 54) or among models that
+made different assumptions about ASRV ( M50 for all
+FIG.6 .Frequency with which common substitution models are not rejected by ( a) GC tests and ( b) PPSs for ten replicates generated using
+a gene partitioned GTR þIþCmodel and ML topology for a water mold data set. Although both methods failed to reject relatively simple
+models, PPSs normally failed to reject less complex models (including JC without ASRV) than the GC test.Assessment of Model Adequacy ·doi:10.1093/molbev/msq168 MBE
+2799methods; Friedman test, P,0.99, df53). Although use of
+alternative models chosen by model selection methods, as
+well as the simplest models deemed adequate by the GCtest, did not result in statistically signiﬁcant differences inSDDs [ M50.13 (hLRT), 0.13 (AIC
+c), 0.12 (BIC), 0.13 (DT),
+and 0.13 (GC); Friedman test, P50.25, df54], there was
+a signiﬁcant difference in the sum of branch lengths amongmodels that made alternative assumptions about ASRV [ M
+50.12 (eq), 0.13 ( I), 0.13 ( C), and 0.13 ( IþC); Friedman
+test, P,0.01, df 53] due to signiﬁcantly shorter treesinferred using equal rates models (evaluated with Wilcoxonsigned rank tests). Median bootstrap values calculated us-ing models selected by model selection methods and theGC test were quite similar [ M595% (hLRT), 94% (AIC
+c),
+95% (BIC), 94% (DT), and 94% (GC)]. Even though the me-dian difference in bootstrap support between models cho-
+sen by model selection methods and the simplest models
+not rejected by the GC test was only 1% (for all methods),the maximum difference ranged from 8% (hLRT and BIC vs.GC) to 54% (DT vs. GC) with the largest difference (54%)
+FIG.7 .Difference in number of parameters between the simplest model(s) not rejected by GC tests or PPSs and best-ﬁt models identiﬁed using
+hLRT, AIC c, BIC, and DT for ten replicates generated from a water mold data set. Both tests of model adequacy normally failed to reject simpler
+models than those chosen by model selection methods, especially the AIC c.Ripplinger and Sullivan ·doi:10.1093/molbev/msq168 MBE
+2800due to a bipartition with low bootstrap support. Similarly,
+the median difference in bootstrap support between mod-
+els that made alternative assumptions about ASRV was 1%,with the maximum difference in bipartition support rang-ing from 14% to 55%, with the largest differences conﬁnedto more poorly supported nodes. There was a signiﬁcantdifference in SDDs among average posterior tree lengthsgenerated using substitution models chosen by model se-lection methods and PPSs [ M50.14 (hLRT), 0.15 (AIC
+c),
+0.14 (BIC), 0.14 (DT), and 0.14 (PPS); Friedman test, P,
+0.01, df 54], although no signiﬁcant differences could
+be detected among treatment pairs (evaluated with Wil-coxon signed rank tests). Similarly, there was a signiﬁcantdifference among models that made alternative assump-tions about ASRV [ M50.14 (eq), 0.15 ( I), 0.14 ( C), and
+0.14 ( IþC); Friedman test, P,0.01, df53], with all mod-
+els, especially those containing a proportion of invariable
+sites, overestimating the true tree length (0.13). Median
+posterior probabilities calculated using models selectedby model selection methods and PPSs were quite similar(M5100% for all methods). Even though the median dif-
+ference in posterior probabilities between models chosenby model selection methods and the simplest models notrejected by PPSs was less than 1% (for all methods), themaximum difference ranged from 15% (hLRT vs. PPS) to
+24% (AIC
+cvs. PPS) with the larger differences due to poorly
+supported bipartitions. Similarly, the median difference in
+posterior probabilities between models that made alterna-tive assumptions about ASRV was less than 1%, with themaximum difference in bipartition support ranging from1% to 15%.
+Discussion
+Although model selection methods such as the hLRT andAIC are widely used in the phylogenetic literature, thesemethods choose the best substitution model from a setof possible alternatives based on relative ﬁts and conse-quently cannot evaluate the adequacy of ﬁt betweenthe model and data. We have found that two methods thatassess absolute model adequacy, the frequentist GC test
+and Bayesian PPSs, in conjunction with the multinomial
+log likelihood test statistic, normally fail to reject less com-plex substitution models than those chosen by model se-lection methods. Although the multinomial likelihood,which describes site pattern frequencies, is more generalthan substitution models implemented in phylogeneticanalysis, it fulﬁlls the requirement by both the GC testand PPSs for a test statistic that provides a perfect ﬁt be-
+tween the model and sequence data.
+One interpretation of our results is that the current set
+of substitution models provides an adequate ﬁt to the ma-
+jority of phylogenetic data sets, a result that is surprising andin direct contradiction with speculation that the current setof substitution models is inadequate (e.g., Sanderson and
+Kim 2000). Our ﬁnding that ASRV, especially the C-shape
+parameter, is an important component of common sub-
+stitution models has been reached in a number of otherstudies (e.g., Buckley et al. 2001; Lemmon and Moriarty
+2004; Kelchner and Thomas 2007). We have also demon-
+strated that PPSs often fail to reject simpler models than
+the GC test, a result that is concordant with that obtainedby Bollback (2001) for a primate wg-globin pseudogene
+data set. This result can be explained by the fact that PPSsincorporate more uncertainty by sampling from relevantposterior distributions rather than relying on MLEs(Huelsenbeck et al. 2000).
+An alternative explanation for our results is that data set
+wide tests that assess deviations from the expected multi-nomial likelihoods may only be sufﬁciently powerful to de-tect large deviations from the expectations of the GTRfamily of models (e.g., lack of ASRV or equal vs. unequalbase frequencies). Interpreted in conjunction with recentwork by Waddell et al. (2009) , it may be the case that these
+tests essentially average deviations from the model across
+taxa and that marginalization to subsets of the character-
+by-taxon matrix will yield more powerful tests of absolutemodel ﬁt.
+In addition, we found that although using the simplest
+models not rejected based on ﬁt often leads to divergenttree topologies and branch lengths, they were not signiﬁ-cantly different from those estimated using more complexmodels. However, use of the simplest models not rejected
+by model adequacy methods affected bipartition support
+in some instances, although these differences were oftenconﬁned to poorly supported bipartitions. Nevertheless, al-though use of substitution models that made alternativeassumptions about ASRV did not affect tree topology, itdid inﬂuence branch lengths and bipartition support. Thisresult is similar to that obtained by Buckley et al. (2001) .
+As expected, we found no correlation between substitu-
+tion model adequacy and phylogenetic performance; in-stead model performance depended strongly on theunderlying tree shape. Although all substitution modelstend to perform well when the true tree contains long in-ternal branches (i.e., the tree has a high stemminess index;Fiala and Sokal 1985), use of an appropriate model becomesparamount when the tree contains long external branchesseparated by a short internal branch, a situation known
+as the Felsenstein zone ( Felsenstein 1978; Sullivan and
+Swofford 2001; Swofford et al. 2001). Model selection is also
+important in the inverse-Felsenstein zone, where the mis-
+interpretation of convergent evolution along two adjacentlong external branches can favor underparameterizedmodels ( Sullivan and Swofford 2001; Swofford et al.
+2001). Consequently, we would expect optimal trees in-ferred for data sets where all models recovered the same
+tree topology to have a higher stemminess index than trees
+calculated for data sets where models inferred different to-pologies ( Sullivan and Joyce 2005). We calculated stemmi-
+ness indexes for our data using the BioPerl moduleBio::Phylo::Forest::Trees (available at http://www.cpan.org)
+and found that data sets for which all models recovered thesame tree topology had a signiﬁcantly higher stemminessindex than other data sets (ML: Wilcoxon rank sum test,
+P,0.01; Bayesian: Wilcoxon, P,0.01).Assessment of Model Adequacy ·doi:10.1093/molbev/msq168 MBE
+2801Although simple substitution models (such as JC with
+ASRV) may perform adequately for many empirical data
+sets, even the most complex GTR þIþC model may fail
+to recover the correct tree when the underlying tree shapehas a low stemminess index (i.e., contains many shortinternal branches), suggesting that one cannot always im-prove phylogenetic performance by further parameterizingthe rate matrix of GTR family models.
+Consequently, the use of alternative models, generated
+by partitioning the common set of substitution models,proposing gene-speciﬁc models, or adding novel param-eters to these models, may be necessary to correctly inferdifﬁcult-to-estimate tree shapes. Data sets are often par-titioned by gene or codon position, a strategy that mayincrease phylogenetic performance (e.g., Castoe et al.
+2004 ;Brown and Lemmon 2007 ). Ribosomal RNA genes,
+often utilized in phylogenetic analysis, can be partitioned
+into stem and loop regions or one may use an explicit
+RNA model such as the doublet model implementedin MrBayes (Schoniger and von Haeseler 1994), whichaccounts for correlation among substitutions in stemregions. Similarly, one may use codon models thatutilize the genetic code to account for synonymous/nonsynonymous substitution bias in protein-coding genes(Goldman and Yang 1994 ;Yang et al. 2000 ), even though
+codon-partitioned models that account for ASRV may per-form as well as codon models without the computationalburden ( Ren et al. 2005). Although common substitution
+models assume the evolutionary process is homogeneousacross the tree, this assumption is based more on compu-tational tractability than biological realism. Nonstationarymodels have been developed that incorporate composi-tional heterogeneity ( Foster 2004) as well as nonstationary
+substitution rates due to covarion-like evolution ( Tufﬂey
+and Steel 1998; Huelsenbeck 2002). Because use of com-
+mon substitution models does not necessarily lead tothe recovery of the true tree, even if these models havean adequate ﬁt to the data (using data set wide tests),it would be useful to expand current model selectionmethods and automated software to incorporate alterna-tive sets of substitution models.
+Supplementary Material
+Supplementary Material is available at Molecular Biology
+and Evolution online ( http://www.mbe.oxfordjournals
+.org/ ).
+Acknowledgments
+This research is part of the University of Idaho Initiative forBioinformatics and Evolutionary Studies (IBEST); fundingfor the IBEST Bioinformatics Core is provided by the Na-tional Institute of Health/National Center for Research Re-sources grants P20RR16448 and P20RR016454. We wouldlike to thank Celeste Brown, Jason Evans, Paul Joyce, DavidPosada, Jeff Thorne, Peter Waddell, Chris Williams, and ananonymous reviewer for their comments that helped im-
+prove this manuscript. We would also like to thank CelesteBrown and our systems administrators for their assistancein using the IBEST Beowulf clusters.
+References
+Abdo Z, Minin VN, Joyce P, Sullivan J. 2004. Accounting for
+uncertainty in the tree topology has little effect on the decision-
+theoretic approach to model selection in phylogeny estimation.
+Mol Biol Evol. 22:691–703.
+Akaike H. 1973. Information theory and an extension of the
+maximum likelihood principle. In: Petrov BN, Caski F, editors.Proceedings of the Second International Symposium onInformation Theory. Budapest (Hungary): Akademiai Kiado. p.
+267–281.
+Bollback JP. 2002. Bayesian model adequacy and choice in
+phylogenetics. Mol Biol Evol . 19:1171–1180.
+Bollback JP. 2005. Posterior mapping and predictive distributions. In:
+Nielsen R, editor. Statistical methods in molecular evolution.New York: Springer. p. 1–25.
+Brandli L, Lawson Handley LJ, Vogel P, Perrin N. 2005. Evolutionary
+history of the greater white-toothed shrew ( Crocidura russula )
+inferred from analysis of mtDNA, Y and X chromosome markers.
+Mol Phylogenet Evol. 37:832–844.
+Brown JM, Lemmon AR. 2007. The importance of data partitioning
+and the utility of Bayes factors in Bayesin phylogenetics. Syst
+Biol. 56:643–655.
+Buckley TR, Simon C, Chambers GK. 2001. Exploring among-site rate
+variation models in a maximum-likelihood framework usingempirical data: Effects of model assumptions on estimates oftopology, branch lengths, and bootstrap support. Syst Biol .
+50:67–86.
+Carstens BC, Degenhardt JD, Stevenson AS, Sullivan J. 2005.
+Accounting for coalescent stochasticity in testing phylogeo-graphic hypotheses: testing models of Pleistocene populationstructure in the Idaho giant salamander Dicamptodon aterrimus .
+Mol Ecol. 14:255–265.
+Castoe TA, Doan TM, Parkinson CL. 2004. Data partitions and
+complex models in Bayesian analysis: the phylogeny of
+Gymnophthalmid lizards. Syst Biol . 53:448–469.
+Demboski J, Sullivan J. 2003. Extensive mtDNA variation within the
+yellow-pine chipmunk, Tamias amoenus (Rodentia: Sciuridae),
+and phylogeographic inferences for northwest North America.
+Mol Phylogenet Evol. 26:389–408.
+Felsenstein J. 1978. Cases in which parsimony or compatibility
+methods will be positively misleading. Syst Zool . 27:401–410.
+Felsenstein J. 1981. Evolutionary trees from DNA sequences:
+a maximum-likelihood approach. J Mol Evol. 17:368–376.
+Fiala KL, Sokal RR. 1985. Factors determining the accuracy of
+cladogram estimation: evaluation using computer simulation.
+Evolution 39:609–622.
+Foster PG. 2004. Modeling compositional heterogeneity. Syst Biol .
+53:485–495.
+Frati F, Simon C, Sullivan J, Swofford DL. 1997. Evolution of the
+mitochondrial cytochrome oxidase II gene in Collembola. J Mol
+Evol. 44:145–158.
+Gatesy J. 2007. A tenth crucial question regarding model use in
+phylogenetics. Trends Ecol Evol. 22:509–510.
+Gaut BS, Lewis PO. 1995. Success of maximum likelihood phylogeny
+inference in the four-taxon case. Mol Biol Evol. 12:152–162.
+Gelman A, Meng X-L, Stern H. 1996. Posterior predictive assessment
+of model ﬁtness via realized discrepancies. Stat Sin . 6:733–807.
+Goldman N. 1993. Statistical tests of models of DNA substitution.
+J Mol Evol. 36:182–198.
+Goldman N, Yang Z. 1994. A codon-based model of nucleotide
+substitution for protein-coding DNA sequences. Mol Biol Evol.
+11:725–736.Ripplinger and Sullivan ·doi:10.1093/molbev/msq168 MBE
+2802Hasegawa M, Kishino K, Yano T. 1985. Dating the human-ape split
+by a molecular clock of mitochondrial DNA. J Mol Evol.
+22:160–174.
+Huelsenbeck JP. 2002. Testing a covariotide model of DNA
+substitution. Mol Biol Evol . 19:698–707.
+Huelsenbeck JP, Rannala B, Masly JP. 2000. Accommodating
+phylogenetic uncertainty in evolutionary studies. Science
+288:2349–2350.
+Huelsenbeck JP, Ronquist F, Nielson R, Bollback JP. 2001. Bayesian
+inference of phylogeny and its impact on evolutionary biology.
+Science 294:2310–2314.
+Jukes TH, Cantor CR. 1969. Evolution of protein molecules. In:
+Munro HN, editor. Mammalian protein metabolism. New York:
+Academic Press. p. 21–132.
+Kelchner SA, Thomas MA. 2007. Model use in phylogenetics: nine
+key questions. Trends Ecol Evol. 22:87–94.
+Kimura M. 1980. A simple method of estimating evolutionary rate of
+base substitutions through comparative studies of nucleotide
+sequences. J Mol Evol. 16:111–120.
+Kimura M. 1981. Estimation of evolutionary distances between
+homologous nucleotide sequences. Proc Nattl Acad Sci U S A .
+78:454–458.
+Lemmon AR, Moriarty EC. 2004. The importance of proper model
+assumptions in Bayesian phylogenetics. Syst Biol . 53:265–277.
+Lockhart PJ, Steel MA, Hendy MD, Penny D. 1994. Recovering
+evolutionary trees under a more realistic model of sequenceevolution. Mol Biol Evol. 11:605–612.
+Minin V, Abdo Z, Joyce P, Sullivan J. 2003. Performance-based
+selection of likelihood models for phylogeny estimation. Syst
+Biol. 52:1–10.
+Mirabolfathy M, Cooke DEL, Duncan JM, Williams NA, Ershad D,
+Rahimian H, Alizadeh A. 2001. Phytophthora pistaciae sp. nov.
+and Phytophthora melonis (Katsura): the principal causes of
+pistachio gummosis in Iran. Mycol Res . 105:1166–1175.
+Nylander JAA. 2004. MrModeltest v2. Program distributed by the
+author. Uppsala (Sweden): Evolutionary Biology Centre, UppsalaUniversity.
+Posada D, Buckley TR. 2004. Model selection and model averaging in
+phylogenetics: advantages of Akaike information criterion and
+Bayesian approaches over likelihood ratio tests. Syst Biol .
+53:793–808.
+Posada D, Crandall KA. 1998. Modeltest: testing the model of DNA
+substitution. Bioinformatics 14:817–818.
+Rambaut A, Grassly NC. 1997. Seq-Gen: an application for the
+Monte Carlo simulation of DNA sequence evolution alongphylogenetic trees. Comput Appl Biosci. 13:235–238.
+Reeves JH. 1992. Heterogeneity in the substitution process of amino
+acid sites of proteins coded for by mitochondrial DNA. J Mol
+Evol. 35:17–31.
+Ren F, Tanaka H, Yang Z. 2005. An empirical examination of the
+utility of codon-substitution models in phylogeny reconstruc-tion. Syst Biol . 54:808–818.
+Revell LJ, Harmon LJ, Glor RE. 2005. Underparametrized model of
+sequence evolution leads to bias in the estimation of diversif-
+ication rates from molecular phylogenies. Syst Biol . 54:973–983.
+Ripplinger J, Sullivan J. 2008. Does choice in model selection affect
+maximum likelihood analysis? Syst Biol . 57:76–85.Robinson DF, Foulds LR. 1981. Comparison of phylogenetic trees.
+Math Biosci. 53:131–147.
+Ronquist F, Huelsenbeck JP. 2003. MrBayes 3: Bayesian phyloge-
+netic inference under mixed models. Bioinformatics 19:
+1572–1574.
+Rubin DB. 1984. Bayesianly justiﬁable and relevant frequency
+calculations for the applied statistician. Ann Stat . 12:
+1151–1172.
+Sanderson MJ, Kim J. 2000. Parametric phylogenetics? Syst Biol .
+49:817–829.
+Schoniger M, von Haeseler A. 1994. A stochastic model for the
+evolution of autocorrelated DNA sequences. Mol Phylogenet
+Evol. 3:240–247.
+Schwarz G. 1978. Estimating the dimensions of a model. Ann Stat .
+6:461–464.
+Sullivan J, Abdo Z, Joyce P, Swofford DL. 2005. Evaluating the
+performance of a successive-approximations approach to
+parameter optimization in maximum-likelihood phylogeny
+estimation. Mol Biol Evol. 22:1386–2392.
+Sullivan J, Joyce P. 2005. Model selection in phylogenetics. Ann Rev
+Ecol Evol Syst . 36:445–466.
+Sullivan J, Markert JA, Kilpatrick CW. 1997. Phylogeography and
+molecular systematics of the Peromyscus aztecus species group
+(Rodentia: Muridae) inferred using parsimony and likelihood.
+Syst Biol . 46:426–440.
+Sullivan J, Swofford DL. 1997. Are guinea pigs rodents? The
+importance of adequate models in molecular phylogenetics.
+J Mammal Evol . 4:77–86.
+Sullivan J, Swofford DL. 2001. Should we use model-based methods
+for phylogenetic inference when we know that assumptions
+about among-site rate variation and nucleotide substitution
+pattern are violated? Syst Biol . 50:723–729.
+Swofford DL. 2002. PAUP*: phylogenetic analysis using parsimony
+(*and other methods). Version 4.0b10. Sunderland (MA):
+Sinauer Associates.
+Swofford DL, Waddell PJ, Huelsenbeck JP, Foster PG, Lewis PO,
+Rogers JS. 2001. Bias in phylogenetic estimation and its relevance
+to the choice between parsimony and likelihood methods. Syst
+Biol. 50:525–539.
+Tamura K, Nei M. 1993. Estimation of the number of nucleotide
+substitutions in the control region of mitochondrial DNA inhumans and chimpanzees. Mol Biol Evol. 10:512–526.
+Tavare ´S. 1986. Some probabilistic and statistical problems in the
+analysis of DNA sequences. In: Miura RM, editor. Some
+mathematical questions in biology: DNA sequence analysis.
+Lectures on Mathematics in the Life Sciences. Vol. 17. New York
+American Mathematical Society. p. 57–86.
+Tufﬂey C, Steel M. 1998. Modeling the covarion hypothesis of
+nucleotide substitution. Math Biosci. 147:63–91.
+Waddell PJ, Ota R, Penny D. 2009. Measuring ﬁt of sequence data to
+phylogenetic model: gain of power using marginal tests. J Mol
+Evol. 69:289–299.
+Whelan S, Lio P, Goldman N. 2001. Molecular phylogenetics: state-
+of-the-art methods for looking into the past. Trends Genet .
+17:262–272.
+Yang Z, Nielsen R, Goldman N, Pedersen AMK. 2000. Codon-
+substitution models for heterogeneous selection pressure atamino acid sites. Genetics 155:431–449.Assessment of Model Adequacy ·doi:10.1093/molbev/msq168 MBE
+2803

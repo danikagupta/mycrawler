@@ -1,0 +1,1362 @@
+ 
+ 
+ 
+ 
+ 
+FAULT DETECTION AND DIAGNOSIS VIA  
+IMPROVED MULTIVARIATE STAT ISTICAL PROCESS CONTROL 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+NOORLISA BINTI HARUN 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+UNIVERSITI TEKNOLOGI MALAYSIA 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+FAULT DETECTION AND DIAGNOSIS VIA  
+IMPROVED MULTIVARIATE STAT ISTICAL PROCESS CONTROL 
+ 
+ 
+ 
+ 
+ 
+NOORLISA BINTI HARUN 
+ 
+ 
+ 
+ 
+ 
+A thesis submitted in fulfilment of the  
+requirements for the award of the degree of 
+ Master of Engineering (Chemical) 
+ 
+ 
+ 
+ 
+Faculty of Chemical and Natural Resources Engineering  
+Universiti Teknologi Malaysia 
+ 
+ 
+ 
+ 
+JULY 2005 
+ 
+ 
+  iii
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+In the Name of Allah, Most Gracious, Most Merciful. 
+ 
+I humbly dedicate to… 
+my beloved family members  
+my best friend   
+those who has shaped my life and 
+those who has influenced my life on the right path. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  iv
+ 
+ 
+ 
+ 
+ 
+ACKNOWLEDGEMENT 
+ 
+ 
+ 
+ Firstly, I would like to take this  opportunity to th ank my respectful 
+supervisor, Assoc. Prof. Dr. Kamarul As ri Ibrahim who has relentlessly given 
+guidance, constructive ideas and invaluable advice, en abling me to achieve the 
+objective of this dissertation. In addition I am very grateful to my family members, 
+no amount of gratitude could repay their kindness of being there as well as the 
+patience to put up with my whim.  
+ 
+ I also would like to thank my fellow course mates and friends for the 
+assistances, advices and ideas in producing a resourceful, fruitf ul and practicable 
+research. May God bless all of you. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  v
+ 
+ 
+ 
+ 
+ 
+ABSTRACT 
+ 
+ 
+ 
+Multivariate Statistical Process Contro l (MSPC) technique has been widely 
+used for fault detection and diagnosis (F DD). Currently, contribu tion plots are used 
+as basic tools for fault diagnosis in MSPC  approaches. This pl ot does not exactly 
+diagnose the fault, it just provides greater insight into possible causes and thereby 
+narrow down the search. Hence, the cause of the faults cannot be found in a 
+straightforward manner. Therefore, this  study is conducted to introduce a new 
+approach for detecting and diagnosing fault via correlati on technique. The correlation 
+coefficient is determined using multivariate analysis techniques, namely Principal 
+Component Analysis (PCA) and Partial Corre lation Analysis (PCorrA). An industrial 
+precut multicomponent distillation column is used as a unit operation in this research. 
+The column model is developed using Matla b 6.1. Individual charting technique such 
+as Shewhart, Exponential Weight Movi ng Average (EWMA) and Moving Average 
+and Moving Range (MAMR) charts are used to facilitate the FDD. Based on the results obtained from this study, the efficiency  of Shewhart chart in detecting faults 
+for both quality variables (Oleic acid, x
+c8 and linoleic acid, x c9) are 100%, which is 
+better than EWMA (75% for x c8 and 77.5% for x c9) and MAMR (63.8% for x c8 and 
+70% for x c9). The percentage of exact faults diagnoses using PCorrA technique in 
+developing the control limits for Shewhart  chart is 100% while using PCA is 87.5%. 
+It shows that the implementation of PCorrA  technique is better than PCA technique. 
+Therefore, the usage of PCorrA technique in Shewhart chart for fault detection and 
+diagnosis gives the best for it has the highest fault detection and diagnosis efficiency.   
+ 
+ 
+ 
+ 
+ 
+ 
+  vi
+ 
+ 
+ 
+ 
+ 
+ABSTRAK 
+ 
+ 
+ 
+Proses Kawalan Statistik Multipembolehubah ( MSPC) digunakan secara 
+meluas untuk mengesan dan mengenalpasti pun ca kesilapan. Pada masa kini, carta 
+penyumbang digunakan untuk mengenalpasti punca kesilapan dalam MSPC . Carta 
+ini tidak dapat mengenalpas ti punca kesilapan dengan tepat yang mana ia sekadar 
+menunjukkan kemungkinan besar punca kesi lapan dan membantu memudahkan 
+pencarian punca kesilapan. Oleh itu, punca kesilapan tidak dapat ditentukan secara 
+langsung. Justeru, kajian ini telah dijalankan bagi memperkenalkan satu pendekatan 
+baru untuk mengesan dan mengenalpasti punc a kesilapan melalui teknik korelasi. 
+Pekali korelasi ditentukan melalui kaedah Analisis Statistik Multipembolehubah iaitu 
+Analisis Komponen Utama (PCA)  dan Analisis Korelasi Separa (PCorrA) . Turus 
+penyulingan multikomponen industri digunakan sebagai operasi unit. Model turus ini dibangunkan menggunakan perisian Matlab 6.1.  Teknik carta individu yang terdiri 
+daripada Shewhart, Exponential Weight Mo ving Average (EWMA) , dan Moving 
+Average  dan Moving Range (MAMR)  digunakan bagi mengesan dan mengenalpasti 
+punca kesilapan. Berdasarkan kepada keput usan yang diperolehi, kecekapan carta 
+Shewhart dalam mengesan kesilapan untuk kedua-dua pembolehubah kualiti (Asid 
+oliek, x
+c8 dan asid linoleik, x c9) adalah 100% yang mana lebih baik berbanding 
+dengan carta EWMA  (75% bagi x c8 and 77.5% bagi x c9)dan carta MAMR (63.8% bagi 
+xc8 and 70% bagi x c9). Peratusan mengenalpasti punc a kesilapan secara tepat 
+menggunakan teknik PCorrA bagi carta Sh ewhart adalah 100% manakala PCA 
+adalah 87.5%. Ini menunjukkan bahawa pe nggunaan teknik PCorrA adalah lebih 
+baik berbanding teknik PCA. Oleh itu, penggunaan teknik PCorrA dalam carta 
+Shewhart bagi tujuan mengesan dan mengenalpasti punca kesilapan adalah yang 
+terbaik dengan peratusan kecekapan yang paling tinggi.  
+ 
+ 
+  vii
+ 
+ 
+ 
+ 
+ 
+TABLE OF CONTENTS 
+ 
+ 
+ 
+CHAPTER TITLE PAGE
+   
+ TITLE PAGE i 
+ DECLARATION ii 
+ DEDICATION iii 
+ ACKNOWLEDGEMENT iv 
+ ABSTRACT v 
+ ABSTRAK vi 
+ TABLE OF CONTENTS vii 
+ LIST OF TABLES xii 
+ LIST OF FIGURES xiv 
+ LIST OF SYMBOLS xvi 
+ LIST OF ABBREVIATIONS xx 
+ LIST OF APPENDICES xxi 
+   
+1 INTRODUCTION  
+ 1.1  Introduction 1 
+ 1.2 Research Background 2 
+ 1.3 Objectives of the Research 4 
+ 1.4 Scopes of the Research 4 
+ 1.5 Contributions of the research 5 
+ 1.6 Chapter Summary 5 
+ 
+  
+ 
+  
+ 
+   viii
+2 LITERATURE REVIEW  
+ 2.1 Introduction 7 
+ 2.2 Definitions of Fault, Fault Detection and Fault Diagnosis 8 
+ 2.3 Multivariate Statistical Analysis, MSA 9 
+ 2.4 Review on Principal Component Analysis, PCA 10 
+  2.4.1 Extension of Principa l Component Analysis, PCA 
+method  
+   2.4.1.1 Multi-Way  PCA 14 
+   2.4.1.2 Multi-Block PCA 15 
+   2.4.1.3 Moving PCA 16 
+   2.4.1.4 Dissimilarity, DISSIM 17 
+   2.4.1.5 Multi-Scale PCA 18 
+  2.4.2 PCA Adopted in Industries 19 
+  2.4.3 PCA as Controller 20 
+  2.4.4 Theory of PCA 21 
+ 2.5 Review on Partial Correlation Analysis, PCorrA 23 
+  2.5.1 Theory of PCorrA 26 
+ 2.6 Chapter Summary 27 
+    
+3 IMPROVED STATISTICAL PROCESS CONTROL CHART  
+ 3.1 Statistical Process Control, SPC 29 
+ 3.2 Traditional Statistical Pr ocess Control, SPC chart 30 
+  3.2.1 Shewhart Chart 31 
+  3.2.2 Exponential Weight Moving Average, EWMA Chart 35 
+  3.2.3 Moving Average and Moving Range, MAMR Chart 39 
+ 3.3 Improve Statistical Process Control Chart 43 
+ 3.4 Chapter Summary 45 
+    
+    
+ 
+ 
+ 
+     ix
+4 DYNAMIC SIMULATED DISTILLATION COLUMN  
+ 4.1 Introduction 46 
+ 4.2 Process Description of Precut Column 48 
+ 4.3 The Information of Pre-cut column 49 
+ 4.4 Degree of Freedom (DoF) Analysis 51 
+ 4.5 Formulations of the Distillation Column Models 56 
+  4.5.1 Mass Balance Equations 56 
+   4.5.1.1 Bottom column model 58 
+   4.5.1.2 Trays model 59 
+   4.5.1.3 Reflux drum model 61 
+   4.5.1.4 Pumparound drum model 62 
+  4.5.2 Equilibrium Equations 63 
+   4.5.2.1 Bubble Point Calculations  66 
+  4.5.3 Summation Equation 68 
+  4.5.4 Heat Balance Equation 68 
+  4.5.5 Hydraulic Equations 69 
+ 4.6 Dynamic Simulation of the Study Column  70 
+ 4.7 Controller Tuning 74 
+  4.7.1 Bottom Liquid Level Controller 75 
+  4.7.2 Bottom Temperature Controller 76 
+  4.7.3 Top Column Pressure Controller 78 
+  4.7.4 Sidedraw Tray Liquid Level Controller 79 
+  4.7.5 Pumparound Temperature Controller 80 
+  4.7.6 Pumparound Flow Rate Controller 81 
+  4.7.7 Reflux Flow Rate Controller 82 
+  4.7.8 Controller Sampling Time, TAPC 82 
+ 4.8 Dynamic simulation Program Performance Evaluation 83 
+ 4.9 Chapter Summary 84 
+    
+    
+    
+ 
+     x
+5 METHODOLOGY  
+ 5.1 Introduction 86 
+ 5.2 Variable Selection for Process Monitoring 87 
+ 5.3 Statistical Process Control Sampling Time, TSPC 90 
+ 5.4 Normal Operating Condition (NOC) Data Selection and 
+Preparation 92 
+  5.4.1 Data pretreatment 94 
+  5.4.2 Correlation Coefficient via Multivariate Analysis 
+Techniques 94 
+   5.4.2.1 Principal Component Analysis, PCA 95 
+   5.4.2.2 Partial Correlation Analysis, PCorrA 101 
+  5.4.3 Control limits of Improved Statistical Process 
+Control, ISPC chart 103 
+ 5.5 Generated Out of Control, OC data 105 
+ 5.6 Fault Coding Monitoring Framework 109 
+ 5.7 Performance Evaluation of the FDD Method 111 
+  5.7.1 Fault Detection Efficiency 111 
+  5.7.2 Fault Diagnosis Efficiency 112 
+ 5.8 Chapter Summary 113 
+      
+6 RESULTS AND DISCUSSIONS   
+ 6.1 Statistical Process Control Sampling Time, TSPC 116 
+ 6.2 Normal Operating Condition, NOC Data  117 
+  6.2.1 Correlation coefficient via Principal Component 
+Analysis, PCA  119 
+  6.2.2 Correlation coefficient via Partial Correlation 
+Analysis, PCorrA 123 
+ 6.3 Parameters to Design Improve d Statistical Process Control 
+chart 124 
+ 6.4 Fault Detection and Diagnosis Method Performance 127 
+  6.4.1 False alarm Analysis 127 
+      xi
+  6.4.2 Fault Detection Efficiency Results and Results 
+Discussions 129 
+  6.4.3 Fault Diagnosis Efficiency Results and Results 
+Discussions 132 
+ 6.5 Chapter Summary 136 
+      
+7 CONCLUSIONS AND RECOMMENDATIONS   
+ 7.1 Introduction 138 
+ 7.2 Conclusions of Improved SPC framework 139 
+ 7.3 Recommendations to  Future Research  141 
+    
+ LIST OF REFERENCES 142 
+   
+ APPENDICES 154 
+      
+      
+      
+      
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  xii
+ 
+ 
+ 
+ 
+ 
+LIST OF TABLES 
+ 
+ 
+ 
+TABLE NO. TITLE PAGE
+   
+4.1 Specification of the pre-cut column 49 
+4.2 Components composition and conditions of the pre-cut column 50 
+4.3 Number of variables 52 
+4.4 Number of equations 53 
+4.5 Control loops properties 55 
+4.6 Cohen-Coon controller settings 75 
+4.7 The step change results for bottom liquid level controller 76 
+4.8 Properties of bottom liquid level P controller 76 
+4.9 The step change results for bottom temperature controller 77 
+4.10 Properties of bottom temperature PID controller 77 
+4.11 The step change results for top column pressure controller 78 
+4.12 Properties of top column pressure PI controller 78 
+4.13 The step change results for sidedr aw tray liquid level controller 79 
+4.14 Properties of sidedraw tray liquid level P controller 79 
+4.15 The step change results for pumparound temperature controller 80 
+4.16 Properties of pumparound temperature PID controller 81 
+4.17 Properties of pumparound fl ow rate P controller 81 
+4.18 Properties of reflux flow rate P controller 82 
+5.1 APC variables for each control loops 87 
+5.2 Normal correlation coefficient for process variables 88 
+5.3 SPC variables 88 
+   
+   
+    xiii
+5.4 The control lim its of Improved SPC chart 104 
+5.5 Param eters to design E WMA 105 
+5.6 Description of sensor fault, valve fault and controller fault 107 
+5.7 Improved SPC chart statistic for FDD 108 
+5.8 Coding system  for fault detection 109 
+5.9 Coding system  for fault diagnosis 109 
+5.10 Fault coding system  for Shewhart Chart 110 
+5.11 Fault coding system  for EW MA Chart 110 
+5.12 Fault coding system  for MAMR Cha rt 110 
+6.1 Time constant for each control loops 116 
+6.2 The skewness and kurtosis value of NOC data 118 
+6.3 Summ ary of the NOC data 118 
+6.4 Eigenvectors Matrix 119 
+6.5 Eigenvalues , variation explained by each PC and cum ulative 
+varia tion 119 
+6.6 The correlation coefficient usi ng different cum ulative variation  121 
+6.7 The percentage difference for two PCs retained and three PCs 
+retained co mpared to six PCs 122 
+6.8 Simple correlation m atrix 123 
+6.9 The correlation coefficien t result using PCorrA 124 
+6.10 Constant to design Shewhart range chart 124 
+6.11 FDD result using different L and β to design EWMA chart 125 
+6.12 FDD result using PCA with different window size to design 
+MAMR chart 126 
+6.13 FDD result using PCorrA with different window size to design 
+MAMR chart 126 
+6.14 False alarm  result corres ponding to o leic acid co mposition 128 
+6.15 False alarm  result corres pondi ng to linoleic acid com position 128 
+6.16 The known fault causes 129 
+6.17 The known out of control, OC conditions 130 
+  xiv
+ 
+ 
+ 
+ 
+ 
+LIST OF FIGURES 
+ 
+ 
+ 
+FIGURE NO. TITLE PAGE 
+   
+2.1 Multi-block PCA monitoring framework  15 
+3.1 Shewhart range and Shewhart individual chart during normal 
+condition 34 
+3.2 Shewhart range and Shewhart individual chart during faulty 
+condition 34 
+3.3 EWMA control chart under normal condition 38 
+3.4 EWMA control chart under faulty condition 38 
+3.5 Moving average and range contro l chart under normal condition 42 
+3.6 Moving average and range control chart under faulty condition 42 
+3.7 The implementation of correlation coefficient, Cjk in SPC chart 44 
+4.1 Pre cut column 48 
+4.2 Distillation column control loop 54 
+4.3 Distillation column schematic diagram 57 
+4.4 Bubble point calculation procedure 67 
+5.1 The procedure to calculate and implement TSPC 92 
+5.2 Example Scree plot 97 
+5.3 The procedures to determine correlation coefficient, Cjk via PCA 
+method 100 
+5.4 The procedures to determine correlation coefficient, Cjk via 
+PCorrA metho 103 
+5.5 The outlined of FDD algorithm 
+ 115 
+ 
+    xv
+6.1 The autocorrelation plot 117 
+6.2 Histogram plot of NOC data 118 
+6.3 Scree plot 120 
+6.4 Fault detection efficiency usi ng different Improved SPC chart 131 
+6.5 Percentage of faults occurs in different region detected by each 
+Improved SPC chart  132 
+6.6 Fault diagnosis situation using PC A for oleic acid composition   133 
+6.7 Fault diagnosis situation us ing PCorrA for oleic acid 
+composition 134 
+6.8 Fault diagnosis situation using PCA for linoleic acid 
+composition   134 
+6.9 Fault diagnosis situation us ing PCorrA for linoleic acid 
+composition   135 
+   
+   
+   
+   
+   
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  xvi
+ 
+ 
+ 
+ 
+ 
+LIST OF SYMBOLS  
+ 
+ 
+ 
+aij - Wilson constant 
+n - Num ber of r etained prin cipal com ponent 
+A - Square matrix 
+Ab - Bottom  column area 
+At - tray activ e area 
+Ai,Bi,Ci - Antoine constant  for component i 
+A*,B*,C*,D* - Constant for liquid heat capacity 
+A2, ,'
+001.D'
+999.D  - Constant for MA and MR control lim it 
+β - Weighting factor 
+B - Bottom  flow rate 
+Cj,k - Correlation coefficient b etween variable j and variable k 
+δ  - Shifted valu e in st andard deviation unit 
+D - Distillate flowrate 
+FDetect - Fault Dete ction 
+FDiagnose - Fault Diagn osis 
+vapH∆  - Heat of vaporization 
+nvapH,∆  - Heat of vaporization at norm al boiling point 
+hN - Liquid enth alpy leav ing each tray  
+hb - Enthalpy for bottom  stream  
+how - Over weir height 
+H, h - CuSum  control lim its 
+HN - Vapor enthalpy leav ing each tray  xvii
+I - Identity matrix 
+cK - Controller Gain 
+Kp - Static Gain,  
+L28 - Liquid flowrate at tray 28 
+LH, P - Pumparound drum  height 
+Lf - Liquid feed flowrate 
+LH, Re - Reflux drum liquid level 
+LH, B - Bottom  liquid level 
+L - Width of the  control lim it 
+M - Num ber of observations  
+MB - Bottom molar hold-up 
+MW - Molecular weight 
+MRe - Reflux drum m olar hold-up 
+MP - Pumparound drum  molar hold-up  
+MN - Molar hold up at tray N 
+N - Num ber of stages 
+p - Num ber of observations 
+P - Pumparound flowrate 
+Pci - Critical pressure of component i 
+sat
+iP - Vapor pressure for component i 
+Ptot - Total pressure of the system  
+ρ - Liquid density 
+QR - Reboiler heat duty 
+Q - Num ber of variables for response variables 
+R - Correlation matrix 
+rj,k - Correlation value between variable j and variable k 
+Re - Reflux flowrate 
+R - Universal g as constan t 
+rk - Autocorrelation coefficient  xviii
+S - Sidedraw flowrate 
+S - Variance-Covariance matrix 
+sj,k - Covariance value of variable j and variable k 
+s - NOC standard deviation 
+T - Temperature of the system 
+Tci - Critical temperature of com ponent i 
+Tri - Reduced temperature of com ponent i 
+Tb,i - Boiling point for com ponent i 
+TAPC - APC sam pling tim e 
+TSPC - SPC sam pling tim e 
+t, u  - Latent vectors 
+τ - Time Const ant 
+τD - Derivative T ime Constant 
+τI - Integral Tim e Constant 
+θ - Dead time 
+V - Eigenvector matrix 
+v - Eigenvector or loading vectors 
+V - Vapor flowrate  
+Vci - Critical volum e for com ponent i 
+Vi - Liquid m olar volum e of com ponent i 
+WL - Weir length  
+ω - Critical accentric factor of com pone nt i 
+w - Un-normalized eigenvectors 
+x - NOC mean 
+1x - Shifted mean 
+xi - ith observation in the process 
+xij - Value of  the i-th row and j-th column matrix 
+s
+ijx - Standardized variable 
+x - Liquid phase m ole fraction  xix
+xS - Sidedraw mole fraction 
+xRe - Reflux mole fraction 
+xP - pumparound liquid m ole fraction 
+xD - Distilla te mole f raction 
+γi - Liquid phase activity coefficient for com ponent i 
+y - Vapor phase m ole fraction 
+zi - The ith EWMA statistic 
+Zci - Critical com pressibility f actor for component i 
+iφ - Vapor fugacity coefficient for com ponent i 
+Λij - Wilson binary interaction param eter for com ponent i and j 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  xx
+ 
+ 
+ 
+ 
+ 
+LIST OF ABBREVIATIONS 
+ 
+ 
+ 
+APC - Automatic Process Control 
+DoF - Degree of Freedom  
+EWMA - Exponential Weight Moving Average  
+FDD - Fault Detection and Diagnosis  
+ISPC - Improved Statistical  Process Control 
+MA - Moving Average 
+MESH - Mass, Equilibrium, Summation, Heat 
+MR - Moving Range  
+MSA - Multivariate Statistical Analysis 
+MSPC - Multivariate Statistical Process Control  
+NIPALS - Non-iterative Partial Least Squares 
+NOC - Normal Operating Condition 
+OC - Out of Control 
+PCA - Principal Component Analysis  
+PCorrA  - Partial Correlation Analysis  
+PV - Process Variable 
+QV - Quality Variable 
+SPC - Statistical Process Control  
+USPC - Univariate Statistical Process Control  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  xxi
+ 
+ 
+ 
+ 
+ 
+LIST OF APPENDICES 
+ 
+ 
+ 
+APPENDIX TITLE PAGE 
+ 
+A Column profile comparison  155 
+B Parameter selection to design EWMA chart  158 
+C Parameter selection to design MAMR chart  163 
+D Number of fault causes  170 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+CHAPTER 1 
+ 
+ 
+ 
+INTRODUCTION 
+ 
+ 
+ 
+1.1 Introduction 
+ 
+A major technological challenge facing th e processing industr ies is the need 
+to produce consistently high quality product. This is partic ularly challenging in high 
+demanding situations where processes are subj ect to varying raw ma terial properties, 
+changing market needs and fluctuating ope rating conditions due to equipment or 
+process degradation. The need to provide industry with techniques, which enhance 
+process performance, will re quire new methodologies to be adopted that are capable 
+of being used across a spectrum of industr ial processing operations and on a wide 
+range of products (Simoglou et al. , 2000).  
+ 
+Modern industrial processes typica lly have a large number of operating 
+variables under closed loop c ontrol. These loops used to compensate for many types 
+of disturbances and to counteract the effect of set point change. This is necessary to 
+achieve high product quality and to m eet production standards. Although these 
+controllers can handle many t ypes of disturbances, there are faults in the process 
+such as line blockage, line leakage, sensor fault, valve fault and controller fault that 
+cannot be handled adequately. In  order to ensure that pro cess is operating at normal 
+operating condition as required, faults must  be detected, diagnosed and removed. 
+These activities, and their management, are called as Statistical Process Control, SPC 
+(Miletic et al., 2004).   2
+The combination of Statistical Process Control (SPC) charts and multivariate 
+analysis approach is used for Fault Det ection and Diagnosis (FDD) in the chemical 
+process. Principal Component Analysis (PCA) and Partial Correlation Analysis 
+(PCorrA) are the techniques us ed in this study. A precut multicomponent distillation 
+column that has been instal led with controllers  is used as the study unit operation.  
+Improved Statistical Process Control method is implemented to detect and diagnose 
+various kinds of faults, which occur in the process.  
+ 
+ 
+ 
+1.2 Research Background 
+ 
+Statistical methods are used to monito r the performance of the process over 
+time in order to detect any process shifts from the target. Most of Statistical Process 
+Control (SPC) techniques involve operations  on single response variables such as 
+weight, pH, temperature, specific grav ity, concentration and pressure. This 
+traditional SPC is used to monitor and verify that the process remains in statistical 
+control based on small number of variables. The state of statistical control means that 
+the process or product variables remain close to the target. Normally the fault in the 
+process is seek through the usage of SPC  chart, i.e., the final product quality 
+variables. Measuring quality variables al one are not enough to describe the process 
+performance (Kourti et al., 1996). In this study, both quality variables and process 
+variables are monitored. This can be done by developing the correlation coefficient 
+between quality variables and process variables using multivariate analysis 
+technique. In traditional SPC, once the qual ity variables detected out of statistical 
+control signal, it is then left up to proce ss operators and engineers to try to diagnose 
+the cause of out of control using their process knowledge (M acGregor and Kourti, 
+1995). 
+ 
+Chemical processes are becoming better instrumented with the advances of 
+process sensors and data acquisition systems. There are massive amount of data being collected continuously and these variables are often correlated. Multivariate 
+statistical analysis has been  developed in order to extr act useful information from 
+process data and utilize it for process monitoring (Kresta et al ., 1991). Normally,  3
+multivariate statistical analysis techni que is combined with SPC chart using 
+Hotelling’ s T2 and Q  statistics to plot the graph for fault detection and diagnosis. 
+Even though this conventiona l method provides good results for fault detection, there 
+is difficulty in applying this method to di agnose faults because it does not provide a 
+causal description of the process that can be used as the basis for fault diagnosis. 
+Currently, contribution plots ar e used as the basic tools for fault diagnosis in the 
+multivariate statistical approaches. Howeve r, this plot cannot exactly diagnose the 
+cause but it just provides gr eater insight into possible cau ses and thereby narrows the 
+search. The cause of the faults cannot be found in a straightforward manner. 
+ 
+To overcome the limitation of contribution plot using multivariate analysis 
+technique to diagnose fault, Improved SPC chart is introduced in this study. 
+Multivariate analysis approach is applied in the SPC realm procedure to detect and 
+diagnose the faulty condition in different approach. The multivariate analysis method 
+is used to develop the control limits of  SPC charts. The correlation coefficient 
+calculated from multivariate analysis techniqu e is applied to improve the SPC chart. 
+The quality variables data is incorporated  in the control chart during the faulty 
+condition for fault detection purpose, while  the process variables which has been 
+correlated with the quality variables is used for fault diagnosis. Therefore, the 
+Improve SPC charts applied is not only fo r quality variables but also for process 
+variables. By monitoring the process vari ables, the cause of faulty condition, which 
+affects the quality variables, could be identified directly. This will help the operator 
+to take proper action immediately afte r faults exist in the process.   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  4
+1.3 Objectives of the Research 
+ 
+1. To determine the performance of the Improved Statistical Process Control 
+charts; which are Shewhart individu al and Shewhart range, Exponential 
+Weight Moving Average (EWMA) and Moving Average and Moving 
+Range (MAMR) chart for fault detection. 
+2. To utilize multivariate analysis technique, Principal Component Analysis 
+(PCA), and Partial Correlation Anal ysis (PCorrA), for developing the 
+relationship between the process variab le(s) and the quality variable(s) for 
+fault diagnosis. 
+ 
+ 
+ 
+1.4 Scopes of the Research 
+ 
+The scopes of the research are: 
+ 
+1. A simulated precut multicomponent distillation column model from the literature is used  as a case study. The model consists of 
+controllers with vari ous kinds of disturbances and operating 
+conditions. 
+2. A set of Normal Operating Conditi on (NOC) data and a set of Out 
+of Control (OC) data are generated using this simulated distillation 
+column. 
+3. Normal operating statistical model is developed using the multivariate techniques, PCA and PCorrA via correlation 
+coefficient approach between the qua lity variable(s) and the process 
+variable(s). 
+4. The Shewhart individual and Shewhart range, Exponential Weight 
+Moving Average (EWMA), and Moving Average and Moving 
+Range (MAMR) charts are developed.  
+5. The faulty condition is incorporated into the process model in order to see the performance of the contro l charts to detect the fault(s) 
+and to find the cause of the fault(s).    5
+6. The results of fault detection an d diagnosis are then discussed 
+further. 
+ 
+ 
+ 
+1.5 Contributions of the Research 
+ 
+In this research, a new approach known as Improved Statistical Process 
+Control for fault detection and diagnosis  is introduced. Multivariate analysis 
+technique, Principal Component Analysis , PCA and Partial Correlation Analysis, 
+PCorrA are used to develop the correlati on coefficient between quality variables and 
+process variables. This technique is inco rporated in the Improved SPC chart as a 
+fault diagnosis tools to find the cause of the faulty c ondition. Improved SPC charts 
+are applied for both quality variables a nd process variables which have been 
+correlated with quality variables of interest. 
+ 
+ 
+ 
+1.6 Chapter Summary 
+ 
+This thesis contains seven chapters. The first chapter comprises of the 
+introduction of the research, research background, objectives of th e research, scopes 
+of the research and contributions of this research. Chapter 2 reviews the multivariate 
+analysis techniques and the concept of multivariate analysis technique used in this 
+study, which are Principal Component Analysis (PCA) and Partial Correlation 
+Analysis (PCorrA).  
+ 
+Chapter 3 consists of the concept of Statistical Process Control, SPC chart, 
+detail explanation on SPC charts; Shew hart, EWMA and MAMR and the way to 
+construct these charts. This chapter also presents the implementation of multivariate analysis technique in SPC chart to develop Improve SPC chart.  
+ 
+Chapter 4 expresses the reasons for c hoosing distillation column as the case 
+study. This chapter also presents the dynami c modeling of the columns, formulation  6
+of dynamic simulating algorithm, establis hment of dynamic simulation program, 
+controller tuning and explanation on Au tomatic Process Control, APC time 
+sampling. The performances of the written  simulation program are compared with 
+HYSYS simulator. 
+ 
+Chapter 5 mainly contains the procedur e for fault detection and diagnosis. 
+This chapter contains variables selecti on to perform process fault detection and 
+diagnosis, determination of SPC sampli ng time, generating of normal operating 
+condition data, out of control data and th e development of correlation coefficient 
+using PCA and PCorrA to re late the quality variables with process variables.  
+ 
+Chapter 6 presents the result and disc ussion of the research. The results are 
+systematically presented. Discussions are made on the performance of each 
+Improved SPC chart to detect known fault in  the process and the efficiency of the 
+proposed method to conduct fault diagnosi s with applicati on of multivariate 
+statistical analysis. Chapter 7 contains  the conclusions of the research and 
+suggestions to the future SPC research activities. 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+Alw
+ 
+ 
+ower, K. M . (2000). Using exponentially weighted moving average (EWMA) 
+ 
+hen, Q., Kruger, U., Meronk, M. a nd Leung, A.Y.T. (2004). Synthesis of T2 and Q 
+statistic for process monitoring. Control Engineering Practice . 12: 745-755. 
+ 
+hen, G., McAvoy, T. J. and Piovoso, M.  J. (1997). A multivariate statistical 
+ Chen, K. H. (2001). 
+Data-Rich Multivariate De tection and Diagnosis Using 
+Eigenspace Analysis . PhD Thesis. Massachusetts Institute Of Technology. 
+ Chen, K. H., Boning, D. S. and Welsch, R. E. (2001). Multivariate statistical process 
+control and signature analysis us ing eigenfactor detection method. 
+The 33rd 
+Symposium on the Interface of Computer Science and Statistics . June 2001. Costa 
+Mesa, CA. 1996. 1-20.  
+LIST OF REFERENCES 
+ 
+an, L. C. (2000).  Statistical process analysis . New York: McGraw Hill.  
+Bakshi, B. R. (1998). Multiscale PCA with application to multiv ariate statistical 
+process monitoring. American Institute of Chemical Engineering Journal . 44: 
+1596-1610. 
+ 
+Bakshi, B. R. (1999). Multiscale anal ysis and modeling using wavelets. Journal of 
+Chemometrics . 13: 415–434. 
+B
+charts . Minitab Inc., State College, P.A., USA. 
+C
+C
+controller for on line quality improvement. Journal of Process Control . 8(2): 
+139-149.  143
+Chiang, L. H., Russell, E. L. and Braatz, R. D. (2000). Fault diagnosis in chem ical 
+processes using Fisher discrim inant analys is, dis criminant p artial lea st squares,  
+and principal com pone nt analysis. Chemomet rics and Intelligent Laboratory 
+Systems.  50: 243–252 
+ 
+Chiang, L. H., and Braatz, R. D. (2003). Process m onitoring using causal m ap and 
+multivar iate statistics: fault detection and id entification. Chemometrics and  
+ 
+liff, N. (1987). Analyzing Mu ltivaria te Data . Harcourt Brace Jovanovich  
+ 
+Das
+puters and Chemical Engineering. 
+24: 785-791. 
+ 
+Daszykowski, M., W alczak, B. and Massart , D. L. (2003).  Projection m ethods in 
+chem istry. Chemometrics  and Intellig ent Laboratory Systems . 65: 97–112. 
+DeVor, R. E., Chang, T. H. and Sutherland, J. W . (1992).  Statistical quality design 
+and control: contemporary concepts and methods . New York: Macm illan.  
+ 
+DeVries, A. and Conlin, B. J. (2003). Desi gn and perform ance of statistical process  
+control charts appl ied to  estrou s detection efficiency. Journal of Dairy Science . 
+ 
+Doty, L. A.  (1996). Statistical process control . 2nd Edition . New York: Industrial 
+ 
+Duchesne, C., Kourti, T., and MacGregor, J. F. (2002). Multiv C for startups 
+and grade transition. American Ins titute of Chemical Eng ineering Jou rnal. 48 
+(12): 2890-2901. 
+ Intellig ent L aboratory S ystems . 65: 159– 178. 
+C
+Publishers.  
+h, S. and Venkatasubram anian, V. (2000). Challenges in the industrial 
+applications of fau lt diagnostic system s. Com
+ 
+86: 1970–1984. 
+press In c.  
+ariate SP
+  144
+Finn, J.D. (1974).  A general mode l for multiv ariate ana lysis. USA: Holt, Rinehart 
+and W inston.  
+ 
+Foucart, T. (2000). A decision rule fo r discarding principal com ponents in 
+regression. Statistical Planning and Inference . 89: 187-195. 
+ 
+l. 7(6): 403-424. 
+ 
+ 
+Gertler, J. J. (1998). Fault detection and diagnosis in engineering systems . New 
+York: Marc el Dekker.  
+ 
+oulding, P.R., Lennox, B., Sandoz, D.J ., Sm ith, K. and Marjanovic, O. (2000). 
+ds. 
+International Journal of Systems Science . 31(11): 1459-1471. 
+ 
+Hashim oto, K., Shi mizu, E., Kom atsu, N., Nakazato, M., Okam ura, N., W atanabe, 
+ basic fibrobl ast growth factor in schizophrenia. 
+Psychiatry Research . 120: 211–218. 
+ 
+Himmelblau, D.M. (1978). Fault detection and diagnos is in chemical and 
+etrochemical processes. Am sterdam : Elsevier Press.  
+Hu
+ion selection. Journal of P rocess Control . 13: 357–362. 
+Hunter, J.S (1989). One point plot equivalent to the Sh ewhart chart with W estern 
+Electris Rules. In: Montgom ery, D. C. Introduction to Statistical Quality Control . 
+3rd   Edition. Canada: John W iley & Sons. 338. Frank, P. M., and Ding, X. (1997). Su rvey of robust resi dual generation and 
+evaluation m ethods in observer ba sed fault detection system s. Journal of process 
+contro
+Geankoplis, C. J. (1993). Transport processes and unit operations . 3rd Edition. New  
+Jersey : Pren tice-Hall.  
+G
+Fault d etection in  con tinuous processes using multivariate st atistical m etho
+H., Kum akiri, C., Shinoda, N., Okada, S., Takei, N., and Iyo, M. (2003). 
+Increased levels of serum
+p
+ 
+rowitz, S., Anderson, J., Duvall, M. and Riggs, J. B. (2003). Distillation control 
+configurat
+ 
+  145
+Hwang, D. and Han, C. (1999).  Real tim e monitoring for a proces s with m ultiple 
+operating modes. Control Engineering Practice. 7: 891 – 902. 
+ 
+rahim, K.A. (1997). Application of Partial Correlation Analysis in Active 
+UTM and IEM.  1997. 434 – 439. 
+ 
+JiJi, R. D., Hamm ond, M. H., W illiam s, F. W. and Rose-Pehrsson, S.  L. (2003 ). 
+Multiv ariate statis tical p rocess control for continuous m onitoring of networked 
+ 
+Kahn, M. G., Bailey, T. C., Steib, S . A., Fraser, V. J. and D unagan, W. C. (1996).  
+SPC for expert system  perform ance monitoring. Journal of American Medical 
+. 3(4): 258-269. 
+Kano, M., Nagao, K., Hasebe, S., Hashi moto, I., Ohno, H., Strauss, R. and 
+Bakshi, B. R. (2000a). Com parison of statistical process monitoring m ethods : 
+f Next Generation 
+Chemical Plants (PSE Asia 2000) . Decem ber 6-8. Kyoto, Japan. 345 – 350. 
+  
+Iserm ann, R. (1997). Supervision, Fault De tection and Fault Dia gnosis Methods – An 
+Introduction. Control Engineering Practice.  5(5):  639 – 652. 
+Ib
+Statis tical P rocess Control. Proceedings of Regional Symposium of Chemical 
+Engineering . October 13-15, 1997. Johor: 
+ 
+Jackson, J. E. (1991). A User’s Guide to Principal Components .  USA: John W iley &  
+Sons.  
+early warn ing fire dete ction (EWFD) system s. Sensors and Actuators B. 93: 107–
+116. 
+Informatics Association
+ 
+applic ation  to the Eastm an challenge prob lem. Computers and Chemical 
+Engineering . 24: 175-181. 
+ 
+Kano, M., Segawa, T., Ohno, H., Hasebe, S. and Hashim oto, I. (2000b).  
+Identif icatio n of Fault Situa tions by  Using Historica l Data Sets. Proceedings of 
+International Symposium on Design, Oper ation and Control o
+  146
+Kano, M., Ohno, H., Hasebe, S., Hashim oto, I., Strauss, R. and B akshi, B. R.  
+(2000c). Contribution plots for fault id entification based on dissim ilarity of 
+process data. American Institute of Chemic al Engineering Annual Meeting. 
+Nove mber 12-17. Los Angeles, CA. Unpublished. 
+Kan ilarity of 
+Process Data for  Statistical Process Monitoring. Proceedings  of IFAC Symposium 
+ 
+ European Control  
+Conference (ECC) . Sept ember 4-7. Porto, Portugal. 1888-1893. 
+ 
+Kano, M ., Hasebe, S., Hashi moto, I., Ohno. (2001b). A new m ultivariate pro cess 
+monitoring m ethod using prin cipal com ponent analysis. Computers and 
+Chemical Engineering . 25: 1103-1113. 
+Kan
+. R. (2002). Com parison of  multivar iate s tatistical proc ess m onitoring  
+methods with application to the E astman challenge problem . Computers and 
+Chemical Engineering . 26: 161-174. 
+ 
+ing, C. J. (1980). Separation processes . 2nd Edition. New York: McGra w Hill.  
+Kle  
+analysis and other multivariable methods . Boston: PWS-KENT Publishing 
+ 
+Ko
+ations of projection m ethods for m ultivariate s tatistical process  contro l. 
+Computers chemical eng ineering. 20: 745-750.  
+o, M., Nagao, K., Ohno, H., Hasebe, S., Hashimoto, I. (2000d). Dissim
+on Advanced Control of Chemical Processes (ADCHEM ). June 14-16. Pisa, Italy: 
+IFAC, 231-236.  
+Kano, M., Hasebe, S., Hashim oto and O hno, H. (2001a). Fault Detection and 
+Identif icatio n Based on Dissim ilarity of  Process Data.
+ 
+o, M., Nagao, K., Hasebe, S., Hashimoto, I., Ohno, H., Strauss, R. and 
+Bakshi, B
+K
+ 
+inbaum, D. G., Kupper, L. L.  and Muller, K. E. (1987).  Applied regression
+Com pany.  
+urti, T., Lee, J. and Macgregor, J. F. (1996). Experiences with industrial 
+applic
+  147
+Kourti, T.  and McGregor, J.F. (1996). Mu ltivariate SPC m ethods for process and 
+product m onitoring. Journal of Quality Technology . 1996. 28 (4): 409–428. 
+e in Engineering. 12: 35-47. 
+ 
+ennox, B., Montague, G. A., Hiden, H. G., Kornfeld, G., and Goulding, P. R.  
+Loong, L. H., and Ibrahim, K. I. (2002). Improved Multiv ariable Statistical Proces s 
+Control (MSPC) for Chem ical Process Fa ult Detection and Diagnosis (PFDD)–
+Cross-Variable Correlation Approach. Regional Symposium on Chemical  
+Engineering , RSCE/SOMChem . 1637-1644. 
+ 
+Lopes, J. A. and Menezes, J. C. (1998). Faster Developm ent of Ferm entation 
+Processes. Early Stages Process Diagnosis. American I nstitute of Chemical 
+Engineering Journal . 94( 320): 391-396. 
+ 
+Luyben, W . L. (1963). Process Modeling, Simulation,  and Control for Chemical 
+Engineer . USA: McGraw Hill. 
+ 
+MacGregor, J. F., Jaeckle, C., Kiparissid es, C. and Koutoudi , M. (1994). Process  
+Monitoring and Diagnosis  by Multi-block Methods. American I nstitute of 
+Chemical Engineering Journal.  40: 826–838.  
+Kresta, J.,  MacGregor, J.F and Marlin, T .E. (1991). Multivariate statis tical 
+monitoring of process operating perform ance. Canada journal chemical 
+engineering . 69: 35-47.  
+ 
+Leger, R. P., Garland, Wm. J.and Poehlm an, W. F. S. (1998). Fault detection and 
+diagnosis using statistical control ch arts and artificial neural networks. Artificia l 
+Intelligenc
+ 
+Lennox, B., Goulding, P.R. and Sandoz, D. J. (1999). Analysis of m ultivariate 
+statistical m ethods for continuous system s. Computers and Chemical  
+Engineering . 23: 207-210. 
+L
+(2001). Application of multivar iate statistical process c ontro l to batch op erations. 
+Biotechnology and Bioengineering . 74(2): 125-135. 
+ 
+  148
+MacGregor,  J.F. and K ourti,  T. (1 995). Sta tistical process  cont rol of multivariate 
+processes. Control engineering practice . 3(3): 403-414. 
+ 
+Marriott, F.  H. C. (19 74). The In terpretation  of Multiple Observations . N.Y.:  
+Academ ic Press.  
+ 
+Martin, E.B., and Morris, A.J. (1996).    
+process perform ance m onitoring charts. Journal process control . 6(6): 349-358. 
+ 
+Martin, E. B., Morris, A.J., Papazoglou, M. C., and Kiparissides, C. (1996). Batch 
+Computers Chemical Engineering . 
+20: 599-604.  
+ 
+Martin, E Morris, Kipar 1999 ng performance 
+enhancem ent through multiv ariate process c Annual Reviews in 
+Contro3: 35-44
+ 
+Mason, R. and Yo (2002 iate stati ocess  contro l with 
+industr applica : Asa
+ 
+Miles, J. and Shevlin, M. (2001).  Applying regression and correlation: A guide for 
+studen nd resea ndon: cation.  
+ 
+Miletic, uinn, S , M., Vaculik, V., and
+Review:An indus ective ementing on-line applications of 
+multiv te statis l of P trol. 14: 821-836. 
+ 
+Misra, M ue, H. S. J., , C. (20 ultivariate process 
+monitoring  and fa sis by le PCA. ters and Chemical 
+Engineering . 26: 1281–1293. 
+ 
+Montgom  D. C. (1 duction to Statistical Quality Control . 3rd   Edition. 
+Canada: John W iley & S ons.  
+ Non-param etric confidence bounds for
+process m onitoring for consistent production. 
+.,  B.  A.J., and issides, C. ( ). M turi anufac
+statistical ontrol. 
+l. 2 . 
+. L ung, J. C. ). Multivar stical p r
+ial tions. U.S.A -Siam.  
+ts a rchers. Lo  Sage Publi
+I., Q ., Dudzic  Champagne, M. (2004). 
+trial persp  on impl
+aria tics. Journa rocess Con
+., Y H., Qin,  and Ling 02). M
+ult diagno  multi-s ca  Compu
+ery, 996). Intro
+  149
+Nash, J.C. and Lefkovitch, L.P. (1976). Principal com ponent and regression by SVD 
+on a sm all com puter. Apply Sta tistics. 25(3): 210-216.  
+ 
+Nom ikos, P. and MacGregor, J. F. (1994) . Monitoring of batch processes using 
+Multi-W ponent Analysis. American In f Chemical 
+Engineing Journa : 1361 –
+ 
+Nom ikos, (1996). D nd diag  abnormal batch operations based on 
+multi-way p rincipa ent anal  Transact :25-266. 
+ 
+Nong Y., Qiang C., Syed Masum  E., a tae N. (20 i-square Statistical 
+Profil for Ano tion. Proceedings of the 200
+Inform n Assur ecurity  States Mi cademy. June 6-7, 
+2000.
+ 
+Oakland, . (1996) l Process Contr ol. 3rd Edition. Oxf ord: Butterwor th 
+Heine n.  
+ 
+Ogunnaik .A. and  (1994) s Dynamic elling and Control. 
+Oxford Uni versity   
+ 
+Onat, A., soy, V. l, O. (1 aist circu
+ratio in Turkish adults: inte rrelation her risk fa d association with 
+cardio ular dise national Journal of Cardio 0: 43–50. 
+ 
+Patton, R., Frank, P. and Clark, R. (1989). Fault diagnosis in dynamic systems: 
+Theory and application . UK: Prentic e Hall.  
+ 
+Quemerais, B., Cossa, D., Rondeau, B.,  Pha m, T. T. and Fortin, B. (1998). Mercury 
+distribution in relation to iron and m anganese in the wa ters of the St. L awrence 
+river. The S cience o f the Total Enviro nment . 213: 193-201. 
+ 
+Quesenberry, C. P.  (1997). Statistical process control methods for quality 
+improvement . New York: John W iley.  ay Principal C om stitute o
+er l. 40 (8)  1375. 
+P. etection a nosis of
+l compon ysis. ISA ions. 35
+nd Kyu 00). Ch
+ing maly Detec 0 IEEE Workshop on 
+atio ance and S  United litary A
+ West Point, NY: IEEE. 2000. 187-193. 
+J. S . Statistica
+man
+e, B Ray, W .H. . Proces s, Mod
+ Press, Inc.
+ San  and Uysa 999). W mference and waist-to-hip 
+ with  ot ctors an
+vasc ase. Inter logy. 7
+  150
+Ralston, P., DePuy, G.,  and Graham, H.  (2001). Com puter-based m onitoring and 
+fault diagnosis: a chem ical process case study. ISA transaction . 40: 85-98. 
+ 
+Reid, R.C., Prausnitz, J. M. and Poling, B. E. (1987). The properties of gases and 
+liq ew Yo raw Hill
+ 
+Ruiz, D., Nougues, J. M., and Puigjaner, L. (2001). Fault diagnosis support system  
+for com plex chem ical plan ters and l Enginee : 151-
+ 
+Santen, A., Koot, G. L.  M., and Zullo, L. C. (1997). Statistical data analysis of a 
+chem ical plant. Computers Chemical Engineering . 21: 112-1129. 
+ 
+Seborg, D. E., Thom as, C. and Tetsuya, W . (1996). Principal com ponent analysis  
+ndustrial distillation column. 13th Wor ld 
+IFAC Congr ess. 1996. San Francisco. 
+ 
+Sha pplied Mul chniques. USA: John W iley & Sons.  
+ 
+Shirley, M. D. F., Rusht on, S. P., Sm G. C., South, A. B., and Lurz, P. W . W. 
+(2003). Investigating the spatial dynam ics of bo rculosis in  
+evaluating an ual-based ion model. 
+7: 139–157.  
+ 
+Shinskey, F. G. (1984). Distil lation control for productivity  and energy conservation. 
+2nd Edition. New York: MacGraw Hill. 
+ 
+Simoglou, A., Martin,  E. B., and Morris, A.  J. (2000). Mu ltivariate statistical pro cess 
+contro l of a n industrial fluidised -bed reacto r. Control Engineering Practice . 8: 
+893-909. 
+ 
+Singh. R., and Gilbreath , G. (2002). A real  time inform ation system  for multivariate 
+statistical process control. International Jurnal of Production Economics . 75: 
+161-172. uids. 4th Edition. N rk: MacG .  
+ts. Compu  Chemica ring. 25
+160.  
+applied to process m onitoring of an i
+rma, S. ( 1996). A tivariate Te
+ith, 
+vine tube  badger
+populations:  individ  simulat Ecological 
+Modelling . 16
+  151
+Smith, J. M., Van Ness, H. C.,  and Abbott, M. M.  (1996). Introduction to chemical 
+engineering thermodynamics . 5th Edition. New York: MacGr aw Hill.  
+ 
+Souza, A. M., Sam ohyl, R. W ., and Malave , C. O. (2004). Multivariate feed back 
+control: an app lication in a productive process. Computers & Industrial  
+Engineering . 46: 837–850. 
+ 
+Stephanopoulos, G. (1984). Chemical Process Control: An Introduction to Theory 
+and Practice . New Jersey: Prentice Hall.  
+ 
+Srivastava, M.S. (2002). . New York: John W iley 
+and Sons.  
+ 
+Summ ers, D. C. (2000). Quality . 2nd Edition . Upper Saddle River, N.J.: Prentic e 
+Hall.  
+ 
+Thorndike, R. M. (1976). Correlational procedures for research . New York : 
+Gardner Press.  
+ 
+Tsum oto, S.,  Hirano, S ., Yasuda, A. a nd Tsumoto, K. (2002). Analysis of am ino-
+acid sequ ences by statistical techn ique. Information Sciences . 145: 205–214. 
+ 
+Tubb, C., Om erdic, E. (2001). Fault Detection and Handling. Impro ves techn ical 
+report FD 001 . 1-8. 
+ 
+Upadhyaya, B.R., Zhao, K., and Lu, B. ( 2003). Fault m onitoring of nuclear power 
+plant sensors and field devices. Prog ress in Nuclear Energy. 43: 337-342. 
+ 
+Venkatasubram anian, V. , Rengaswamy, R., Yin, K., and Kavuri, S. N. (2003a). A 
+review of process fault de tection and diagnosis Part I: Quantitative m odel-based 
+methods. Computers and Chemical Engineering . 27: 293-311. 
+ Methods of Multiv ariate Statistics
+  152
+Venkatasubram anian, V. , Rengaswamy, a nd Ka vuri, S. N. (2003b). A review of 
+process fault detection and diagnos is Pa rt II: Qualitative models and search  
+strategies. Computers and Chemical Engineering . 27: 313-326. 
+ 
+Venkatasubram anian, V. , Rengaswamy, R., Ka vuri, S. N.,  and Yin, K. (2003c).  A 
+review of process fault detection and di agnosis Part III: P rocess history based 
+methods. Computers and Chemical Engineering . 27, 327-346.  
+ 
+Walas, S. M. (1985).  Phase equilib rium  in chem ical engineering.  Butterworth 
+Publisher. 
+ 
+Wang, J. C. and He nke, G. E.  (1966). Tridiagonal Matrix for Distillation. 
+Hydrocarbon Processing. 45(8):  155 – 165. 
+ 
+Wang, S. and Xiao, F. (2004). Detection a nd diagnosis of AHU sensor faults using  
+principal component analysis m ethod. Energy Conversion and Management . 45: 
+2667-2686. 
+ 
+Wang, H., Song, Z. and W ang, H. (2002). Statistical process m onitoring using 
+improved PCA with optim ized sens or loc ations. Journal of Process Control . 12: 
+735-744. 
+ 
+Wetherill, W.B.  and Brown, D. (1991). Statistical process control for the process 
+industries . 3rd Edition. L ondon : Chapm an and Hall.  
+ 
+Wise, B. M., and Gallagher, N. B. (1996) . The process chem omet rics approach to 
+process m onitoring and fault detection. Journal of Process Control . 6: 329-348. 
+ 
+Wissemeier, A. H. and Zuhlke, G. (2002) . Relation between clim atic variables, 
+growth and  the in cidence of  tipb urn in  filed-grown lettu ce as ev aluated by  
+simple, partial and m ultiple reg ression analysis. Scientia Horticu ltura e. 93: 193-
+204. 
+ 
+  153
+Woodall, A. H. (2000). Controversies and contradictions in Statistical Process 
+Control. Journal of Quality Control . 30(4): 341-350.  
+ 
+Yoon, S. and MacGregor, J.F. (2000). Statis tical and causal model-based approaches 
+to fault detection and isolation. American In stitute of Chemical Engineering  
+Journal . 46(9): 1813-1824. 
+ 
+Yoon, S. and MacGreg or, J.F. (20 01). Fault d iagnosis  with m ultivariate statistical 
+model part I: Using stea dy state fault signatures. Journal of process control . 11: 
+387-400. 
+ 
+Yoon, S., Kettaneh, N ., W old, S., Landry,  J. and Pepe, W . (2003). Multiv ariate 
+process m onitoring and early fault de tection (MSPC) using PCA and PLS. Plant 
+automation and decision support conference . September 21-24, 2003. 
+ 
+Yung, W.  K. C.  (1996). An integrat ed m odel for m anufacturing process 
+improve ment. Journal of Materials P rocessing Technology . 61: 39-43. 
+ Washington, DC: National Petrochem ical and Refiners Association. 2003. 1-18. 
+ 

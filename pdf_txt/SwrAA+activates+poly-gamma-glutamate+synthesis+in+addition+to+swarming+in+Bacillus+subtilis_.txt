@@ -1,0 +1,1391 @@
+1 
+ SwrA extends DegU over an UP element to activate flagellar gene  expression in Bacillus 1 
+subtilis  2 
+ 3 
+Ayushi Mishra1, Anna C. Hughes1, Jeremy D. Amon2, David Z. Rudner2, Xindan Wang1, Daniel 4 
+B. Kearns1* 5 
+1Department of Biology, Indiana University, Bloomington IN 47408  6 
+2Department of Microbiology, Harva rd Medical School, Boston MA 0 2115 7 
+ 8 
+*corresponding author 9 
+dbkearns@indiana.edu  10 
+1-812-856-2523 11 
+  12 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 2 
+ ABSTRACT   13 
+ SwrA activates flagellar gene expression in Bacillus subtilis  to increase the frequency of 14 
+motile cells in liquid and elevate flagellar density to enable swarming over solid surfaces.  Here 15 
+we use ChIP-seq to show that SwrA interacts with many sites on the chromosome in a manner 16 
+that depends on the response regulator DegU.  We identify a Deg U-specific inverted repeat 17 
+DNA sequence and show that SwrA synergizes with phosphorylation  to increase DegU DNA 18 
+binding affinity.  We further show that SwrA increases the size of the DegU footprint expanding 19 
+the region bound by DegU towards the promoter.  The location of the DegU inverted repeat was 20 
+critical and moving the binding site closer to the promoter impaired transcription more that could 21 
+be explained by deactivation.  We conclude that SwrA/DegU forms a heteromeric complex that 22 
+enables both remote binding and interaction between the activator and RNA polymerase in the 23 
+context of an interceding UP element.  We speculate that multim eric activators that resolve cis- 24 
+element spatial conflicts are common in bacteria and likely act  on flagellar biosynthesis loci and 25 
+other long operons of other multi-subunit complexes.   26 
+ 27 
+  28 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 3 
+ IMPORTANCE 29 
+ In Bacteria, the sigma subunit of RNA polymerase recognizes spe cific DNA sequences 30 
+called promoters that determine where gene transcription begins .  Some promoters also have 31 
+sequences immediately upstream called an UP element that is bou nd by the alpha subunit of 32 
+RNA polymerase and is often necessary for transcription.  Final ly, promoters may be activated 33 
+by transcription factors that bind DNA specific sequences and help recruit RNA polymerase to 34 
+weak promoter elements.  Here we show that the promoter for the  32 gene long flagellar operon 35 
+in Bacillus subtilis  requires an UP element and is activated by a heteromeric trans cription factor 36 
+of DegU and SwrA.  Our evidence suggests that SwrA oligomerizes  DegU over the DNA to 37 
+allow RNA polymerase to interact with DegU and the UP element s imultaneously.  Heteromeric 38 
+activator complexes are known but poorly-understood in bacteria and we speculate they may be 39 
+needed to resolve spatial conflicts in the DNA sequence. 40 
+ 41 
+ 42 
+ 43 
+ 44 
+ 45 
+ 46 
+ 47 
+  48 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 4 
+ INTRODUCTION 49 
+ Bacterial flagella are complex, multi-subunit, trans-envelope m achines that propel cells 50 
+to swim in liquid or swarm over solid surfaces.  Flagella are composed of dozens of different 51 
+subunits, expressed in a series of hierarchical stages roughly corresponding to the order in 52 
+which the subunits are assembled (1-4).  The top of the hierarchy is often a transcription factor 53 
+called a master regulator that directly enhances the expression  of the earliest genes in flagellar 54 
+synthesis.  Mutation of the master regulator tends to impair or  abolish motility while over- 55 
+expression of the master regulator can lead to hyper-flagellati on and, in some systems, promote 56 
+swarming motility (5).  Master regulators bind upstream of one or more promoters in the flagellar 57 
+regulon and often require the formation of heteromeric, multiprotein complexes (6-8).  While 58 
+clearly important for motility gene expression, these master regulators are among the most 59 
+species-specific and the least-studied components of the hierarchy.   60 
+In Bacillus subtilis, the master flagellar regulator is SwrA, a small (117 amino acid ), 61 
+positively-charged protein that is narrowly-conserved in a clos ely-related subset of species 62 
+within the genus Bacillus  (9,10).  First discovered as a factor required for swarming but not 63 
+swimming motility (9), SwrA activates the constitutive Pflache promoter of the 32-gene long fla/che  64 
+operon encoding early-stage flagellar biosynthesis components, over a relatively narrow (~4- 65 
+fold) range (11-14).  Moderate SwrA levels support a high frequency of swimming cells in liquid 66 
+and SwrA levels increase on a surface for enhanced flagellar sy nthesis to support swarming 67 
+motility (13; 15-17).  The mechanism by which SwrA enhances Pflache promoter activity is poorly- 68 
+understood but SwrA has been shown interact with the DNA bindin g protein DegU (14, 18-20). 69 
+DegU is a response regulator that functions as a transcription factor.  Cells lacking DegU 70 
+have pleiotropic phenotypes that include defects in genetic competence, exoprotease 71 
+production, exopolymer production, biofilm formation, and motil ity (21-30).  A consensus binding 72 
+sequence for DegU has not been determined and the mechanism by which DegU differentially 73 
+regulates the wide variety of targets under its control is poor ly-understood (31,32).  DegU binds 74 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 5 
+ DNA in both phosphorylated and unphosporylated forms and each may bind targets differently 75 
+(14,25,33-35).  DegU is phosphorylated either by its cognate so luble kinase DegS (36,37) or by 76 
+the small metabolite acetyl phosphate (38) and two small protei ns DegQ and DegR enhance the 77 
+phosphorylated state (25,39).  Finally, SwrA binds to the DegU receiver domain and may alter 78 
+DegU’s DNA binding activity (19,20).  Consistent with being a m odulator of DegU function, cells 79 
+lacking SwrA have phenotypes beyond defects in motility, many of which overlap with cells 80 
+lacking DegU (40-42).   81 
+Here we characterized SwrA association with the chromosome usin g Chromatin 82 
+immunoprecipitation coupled to deep sequencing (ChIP-seq) and found that SwrA is enriched at 83 
+DNA sequences in a manner that depends on DegU.  SwrA enhanced DegU binding at a variety 84 
+of target sites in vitro  with the highest affinity displayed at Pflache, consistent with genetic results 85 
+suggesting that it was the primary biological SwrA target (13).  Despite extensive sequence 86 
+analysis, no SwrA or DegU consensus site was detected bioinformatically, but a perfect 5-8-5 87 
+inverted repeat within Pflache was shown to be required for SwrA/DegU binding and activity.  88 
+SwrA interaction synergized with phosphorylation to increase De gU’s DNA binding affinity and 89 
+expanded the DegU binding site lik ely by inducing DegU oligomer ization.  Inverted repeat 90 
+location was critical and moving the repeat closer to the promo ter abolished promoter activity by 91 
+disrupting a cis-acting UP element.  Thus we suggest that DegU oligomerization induced by 92 
+SwrA is necessary to allow both the remote binding of DegU and interaction with RNA 93 
+polymerase at the promoter.  Complex heteromeric activators may  be generally required for 94 
+promoters with UP elements, and we speculate that a number of p oorly-understood 95 
+transcriptional modulators may act enabling the transcription f actor to contact RNA polymerase 96 
+without interfering with, or otherwise occluding, UP elements. 97 
+ 98 
+  99 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 6 
+ RESULTS 100 
+SwrA interacts with DNA indirectly.  SwrA is the master regulator of motility in B. 101 
+subtilis,  and SwrA activates the Pflache promoter that controls 32 genes involved in flagellar 102 
+assembly and chemotaxis (13,14).  Other targets of SwrA have be en reported but the extent of 103 
+the SwrA regulon, and the mechanism of SwrA-mediated transcript ional activation are poorly- 104 
+understood (13,19,20,41,42).  To investigate whether SwrA assoc iates with DNA in vivo , we 105 
+performed chromatin immunoprecipitation coupled to deep sequenc ing (ChIP-Seq) on wild type 106 
+and swrA mutant cells. Cultures were treated with formaldehyde, and aft er lysis and DNA 107 
+fragmentation, SwrA was immunoprecipitated with antibodies rais ed against the full-length 108 
+protein. After reversing the crosslinks, the DNA associated with SwrA was subjected to next 109 
+generation sequencing. Chromatin immuno-enrichment was calculated as the ratio of ChIP-Seq 110 
+signal to genomic DNA plotted as peaks in 1 kb windows that spanned the entire genome. SwrA 111 
+candidate binding sites were defined as peaks that were enriche d in wild type replicates but not 112 
+in the swrA mutant control (Fig 1A ).  113 
+SwrA was enrichment at thirty-four genomic locations and all bu t two were located in 114 
+intergenic regions consistent with possible promoters ( Table S1 ).  To investigate whether SwrA 115 
+affected transcription of the neighboring genes, 13 promoter re gions containing strongly- 116 
+enriched peaks ( Pflache, PflgM, PswrA, PyxjJ, PmcpA, PycdC, PyneI, PytvA, PydaJ, PywdA, PyweA, PtlpA, and 117 
+PsacX) were cloned upstream of the lacZ gene encoding β-galactosidase, and β-galactosidase 118 
+activity was measured in various genetic backgrounds.  As antic ipated, expression of Pflache-lacZ  119 
+decreased relative to wild type in cells lacking SwrA, and increased when was overexpressed, 120 
+consistent with previous reports (Fig 2A ) (13,14).  The remaining reporters responded to the 121 
+presence and absence of SwrA in a variety of ways.  Expression from four promoters, P flgM, 122 
+PswrA, PyxjJ, and P mcpA was reduced ~2-fold in a swrA deletion and increased ~2-fold when swrA 123 
+was artificially overexpressed in a manner that was similar to Pflache (Fig 2A ).  Five promoters, 124 
+PyneI, PytvA, PydaJ, PywdA, and  PyweA produced low but detectable levels of LacZ activity that was 125 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 7 
+ not altered by either mutation or overexpression of swrA ( Fig 2A ).  Finally, three promoters, 126 
+PtlpA, PycdC and P sacX, produced no activity above background (<2 Miller units, MU) in any strain 127 
+and were omitted from the study.  We conclude that while ChIP-S eq indicated SwrA-enrichment 128 
+of several promoter regions, enrichment did not necessarily reflect an effect of SwrA on reporter 129 
+expression.  We further conclude that SwrA either directly or i ndirectly activated the P fla/che, PflgM, 130 
+PswrA, PyxjJ, and P mcpA promoters. 131 
+One way in which SwrA could enrich target promoter regions is by binding directly to 132 
+DNA.  To determine whether SwrA bound DNA directly, electrophor etic mobility shift assays 133 
+(EMSA) were performed on seven different promoter regions.  The  Pflache promoter was chosen 134 
+as a known SwrA target and P flgM, PyxjJ, PswrA, and P yneI were added as candidates from the 135 
+present study.  Two negative controls were included: the promot er P comK expressing the gene for  136 
+the master activator of competence gene expression ComK, and th e promoter Phag expressing 137 
+the gene for the flagellar filament protein Hag.  The seven dif ferent promoter fragments were 138 
+PCR amplified, radiolabeled, incubated with purified SwrA prote in at a range of protein 139 
+concentrations, resolved by native gel electrophoresis and anal yzed by phosphorimager.  In 140 
+each case, addition of SwrA failed to alter migration of the ra diolabeled DNA fragment except at 141 
+the highest concentration of SwrA added (1 μM) ( Fig S1 ).  These data argue that SwrA is not 142 
+sufficient for DNA binding. 143 
+ 144 
+SwrA-DNA interaction is DegU-dependent.   Current evidence suggests that SwrA interacts 145 
+with the P flache promoter indirectly by interacting with the response regulator  DegU (19,20).  146 
+Consistent a requirement of both proteins for DNA binding, cell s lacking either SwrA or DegU 147 
+are defective in swarming motility even when the remaining prot ein was artificially 148 
+overexpressed (Fig S2 ) (9,20,25,26,43).  To test whether DegU is required for SwrA's  149 
+association with DNA, we repeated the SwrA ChIP-Seq in a degU  mutant strain. In the absence 150 
+of DegU , all SwrA-dependent peaks were abolished (Fig 1A ). Furthermore, the degU  mutation 151 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 8 
+ reduced the expression of the SwrA target promoters Pflache, PflgM, PswrA, PyxjJ, and P mcpA to levels 152 
+similar to that observed in a swrA mutant, and SwrA overexpression failed to activate these 153 
+promoters ( Fig 2B ).  We conclude that SwrA association with DNA and transcriptional activation 154 
+of SwrA-responsive promoters are entirely dependent on the pres ence of DegU .    155 
+  To investigate whether SwrA alters DegU DNA binding specifici ty, we performed ChIP- 156 
+seq using a DegU antibody.  DegU was enriched at 46 locations, many of which were upstream 157 
+of genes involved in motility, c ompetence, biofilm formation as well as genes of unknown 158 
+function (Fig 1B;  Table S1 ) (44).  All 34 SwrA-enriched regions were also enriched in the D egU 159 
+ChIP-seq (Fig 1C, Fig S3A ). Furthermore, in cells lacking SwrA, there was a general reduction 160 
+enrichment in the DegU ChIP-seq ( Fig 1B,1C ).  Peaks were sorted into three different DegU- 161 
+ChIP classes depending on the effect of SwrA on enrichment ( Table S1 ).   Class I targets (61%) 162 
+were SwrA-dependent as they were abolished in the absence of Sw rA.  Class II targets (11%) 163 
+were SwrA-enhanced as they were reduced but not abolished when SwrA was absent.  Class III 164 
+targets (28%) were SwrA-independent as they appeared unaffected  by its absence.  We 165 
+conclude that three-quarters of the DegU-enriched promoters wer e either enhanced by, or fully 166 
+dependent on, the presence of SwrA.  Therefore, SwrA potentiate s binding of DegU to a subset 167 
+of promoters in its regulon.   168 
+In an effort to determine a consensus binding site for DegU, 200 base pair fragments 169 
+surrounding each ChIP-seq peak center were compiled and subject ed to MEME sequence 170 
+pattern analysis (45).  Combining sequences from all DegU peaks  indicated an enriched 171 
+sequence that did not contain a repeat element as might be expected for a response regulator 172 
+DNA binding sequence ( Fig S4 ).  Separate analysis of the cla ss I, class II and class III De gU 173 
+ChIP peaks, provided similarly-enriched sequences ( Fig S4 ).  We wondered whether our data 174 
+set might be incomplete due to the absence of peaks located nea r the characterized DegU- 175 
+regulated promoters: P aprE and P pgsB directing alkaline protease and poly-γ-glutamate synthesis 176 
+respectively (Fig S3B ) (27,41,46-48). Accordingly, we performed a DegU ChIP-seq by i mmune- 177 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 9 
+ precipitating DegU from a strain overexpressing the small phosp hor-enhancer protein DegQ and 178 
+a strain expressing the hyper-active DegU allele, DegUhy32 (21,25,33).  Both the DegQ 179 
+overproduction ( Fig S5A, Table S2) and DegUhy32 (Fig S5B, Table S3) strains identified 180 
+additional peaks that were SwrA-enhanced, but MEME analysis of each dataset still produced 181 
+an asymmetric DegU target sequence similar to that of the wild type (Fig S4 ).   Moreover, 182 
+sequence analysis did not indicate how SwrA was differentiating a subset of the DegU peaks for 183 
+enrichment and there appeared to be no SwrA-specifying sequence  in the DNA.   184 
+ 185 
+SwrA increases DegU affinity for DNA and expands the DegU bindi ng site.   To better 186 
+understand the mechanism of SwrA-mediated DegU activation, DegU  EMSAs were conducted 187 
+on the same series of promoters previously used to test for dir ect interaction by SwrA.  DegU 188 
+bound poorly to each promoter but an electrophoretic mobility s hift was observed with Pflache 189 
+when DegU was phosphorylated by ATP and its cognate kinase, Deg S (Fig S1 ) (14,25).  Thus, 190 
+the P flache promoter seemed to contain the highest affinity binding site of those tested, and we 191 
+note that previously studied promoters like PflgM and P comK, bound by DegU-P and DegU 192 
+respectively, require higher concentrations than used here (34,49).  Next, the concentration of 193 
+either DegU or DegU-P was held constant and increasing amounts of SwrA were added to the 194 
+reaction.  The presence of SwrA caused a supershift of the P flache promoter and did so at lower 195 
+concentrations when DegU was phosphorylated ( Fig 3).  Moreover, the presence of SwrA 196 
+induced a shift of all promoters except the non-predicted targe t Phag, suggesting that SwrA 197 
+generally enhanced the affinity of DegU-P for its targets.  198 
+To explore the effect of SwrA on DegU DNA binding activity, the  concentration of SwrA 199 
+was held constant, and EMSA experiments were conducted in tripl icate on P flache with increasing 200 
+amounts of DegU and DegU-P.  Addition of SwrA caused diffuse su pershifted bands making it 201 
+difficult to quantify the densitometry of the bound state.  Therefore, we calculated the fraction of 202 
+the unbound state and subtracted the value from 1.  Phosphorylation of DegU increased DNA 203 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 10 
+ binding affinity by 10-fold (Fig 4A,B ).  SwrA increased the binding affinity of DegU ( Fig 4A ) and 204 
+DegU-P (Fig 4B ) by approximately 10-fold and 4-fold respectively, suggesting that SwrA affinity 205 
+enhancement was phosphorylation independent ( Fig 4 ).  High levels of SwrA caused smearing 206 
+of the band signal even for non-target promoters like Phag but did so with a K d much higher than 207 
+observed for Pflache (Fig 4C ).   While ChIP-seq is non-quantitative, we note SwrA-enhanceme nt 208 
+of DegU DNA binding is consistent with the in vivo  global reduction in DegU enrichment in the 209 
+absence of SwrA (Fig 1B ).  We conclude that SwrA interacts with DegU and synergizes with 210 
+phosphorylation to enhance DNA binding.  211 
+To further explore the effect of SwrA on DegU-P, DNAse I protec tion assays were 212 
+conducted on the Pflache (Fig 5A ) and PyxjJ (Fig 5B ) promoters.  DegU-P protected a region of the 213 
+Pflache promoter 40 base pairs (bp) upstream of the -35 box (Fig 5A ).  Centered within the 214 
+protected region was a perfect 5-8-5 inverted repeat of CTAGG separated by an intervening 8 215 
+base pairs ( Fig 5C ).  Addition of SwrA to the reaction expanded the protection to both the left 216 
+and right of the repeat thereby increasing the total protected area to approximately 70 bp.  217 
+DegU-P alone did not provide DNAse I protection of PyxjJ at the concentration used, and while 218 
+the location of the PyxjJ promoter is unknown, addition of SwrA induced protection again  with a 219 
+width of approximately 70 bp ( Fig 5B ).  We conclude that SwrA alters the way in which DegU-P 220 
+binds DNA and creates a wide footprint of DNase I protection at  multiple promoters.  221 
+The consensus sequence to which DegU-P binds is poorly-understood and we focused 222 
+our attention on the putative 5-8-5 inverted repeat within the Pflache promoter.  To test whether 223 
+the inverted repeat element was important for SwrA/DegU-depende nt activation, two bases 224 
+were changed in each half site of the repeat separately and together at the native site in the 225 
+chromosome.  Mutation of either the promoter distal site (site 1) or the promoter proximal site 226 
+(site 2) had little effect on swarming motility but mutation of  both sites simultaneously caused a 227 
+severe defect ( Fig 6A ).  Overexpression of SwrA shortened the lag period of the sing le mutants 228 
+and restored partial swarming to the double mutant.  Moreover, EMSA indicated that mutation of 229 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 11 
+ both sites simultaneously abolished and dramatically reduced binding of DegU-P in the absence 230 
+and presence of SwrA respectively ( Fig 4D ).  Finally, consistent with an important regulatory 231 
+element, the sequence upstream of the Pflache promoter, including the putative 5-8-5 repeat, was 232 
+highly-conserved in a wide variety of B. subtilis  relatives that also encoded SwrA and DegU ( Fig 233 
+5C) and conservation degraded farther upstream (Fig S6 ).  We conclude that the conserved 234 
+inverted repeat protected in the DegU-P DNase I protection assa y is required for SwrA/DegU- 235 
+dependent activation of Pflache.  236 
+We noted that the 5-8-5 inverted repeat was part of the consens us sequence predicted 237 
+by MEME analysis but the actual output emphasized the thymine-e nriched spacer between the 238 
+repeats rather than the repeats themselves ( Fig S4).  We wondered why the intervening 239 
+sequence was so highly-conserved and homopolymer replacements were made to test its 240 
+importance.  When six of the spacer residues were changed to ei ther all adenines (A) or all 241 
+thymines (T), no change on swarming motility was observed and o verexpression of SwrA 242 
+shortened the lag period like wild type ( Fig 6B ).  When the residues were changed to all 243 
+guanines (G), swarming was severely impaired but in a way that could be rescued by SwrA 244 
+overexpression.  When the residues were changed to all cytosine s (C) swarming motility was 245 
+abolished and overexpression of SwrA had little effect.  We conclude that the nature of the 246 
+sequence between the inverted repeats is relevant insofar as on ly an A-T rich sequence is 247 
+tolerated for full functionality. 248 
+ DegU-P bound to the 5-8-5 repeat but did not activate expressi on until the presence of 249 
+SwrA widened the region of protection.  We wondered whether the  effectiveness of the 5-8-5 250 
+repeat was dependent on the distance from the -35 box.  To test  position-dependence, the 251 
+repeat was moved towards (by deletion) and away (by insertion o f randomized sequence) from 252 
+the promoter by full helical turns of the DNA (10 bp) to maintain register with the promoter ( Fig 253 
+S7).  Movement of the repeat 20 and 10 bases father away (-20 and  -10) abolished and reduced 254 
+swarming respectively (Fig 6C ).  Overexpression of SwrA however was able to enhance 255 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 12 
+ swarming of the -10 reposition.  Moving the repeat 10 and 20 ba ses closer to the promoter (+10 256 
+and +20), abolished swarming in a manner that could not be rescued by SwrA overexpression 257 
+(Fig 6C ).  We conclude that the position of the DegU binding site is i mportant and moving it 258 
+from its current location impairs swarming motility.  Moreover,  the strain containing the DegU 259 
+binding site shifted 20 base pairs closer to the promoter also exhibited mucoid colonies on 260 
+plates and was difficult to pellet in liquid suggesting additio nal phenotypic effects.  We infer that 261 
+SwrA expansion of the DegU binding site is likely important to bring the activation complex 262 
+closer to the promoter, but additional sequence elements may be  important for P flache 263 
+expression.   264 
+ The mucoid colony and loose pellet of the strains in which the DegU binding site was 265 
+moved 20 closer to the promoter was consistent with the phenoty pe of a SigD mutant, and SigD 266 
+is encoded at the 3’ end of the fla/che  operon under Pflache control (11,12,50-52).  To measure 267 
+SigD activity, a reporter in which the SigD-dependent Phag-promoter was transcriptionally fused 268 
+to the gene encoding green fluorescent protein ( gfp) and introduced at an ectopic site in a 269 
+variety of strains (13).  Wild type exhibited a high frequency of brightly fluorescent P hag ON cells 270 
+with rare dark Phag OFF cells (Fig 7) .  Mutation of either SwrA or DegU decreased the frequency 271 
+of Phag ON cells, with OFF cells growing as long chains, whereas mutat ion of SigD abolished 272 
+ON cell production and cell chains were ubiquitous ( Fig 7 ).  Strains in which the DegU binding 273 
+site was moved 20 or 10 base pairs farther away (+20 and +10) o r 10 base pairs closer (-10) to 274 
+the promoter produced populations similar to that of either the  SwrA or DegU mutant, consistent 275 
+with the inability of the protein complex to activate the Pflache promoter properly (Fig 7) .  The 276 
+strain that moved the DegU binding site 20 base pairs closer ho wever, produced a population 277 
+similar to that of the SigD mutant, indicating a more severe de fect in Pflache promoter activity than 278 
+could be explained simply by impairment of SwrA/DegU (Fig 7) .  SwrA/DegU did not become 279 
+inhibitory when the DegU binding site was moved 20 base pairs c loser as mutation of either 280 
+protein failed to restore Phag expression (Fig S8 ).  Alignment of P flache promoter sequences from 281 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 13 
+ closely related species indicated a high degree of conservation  including homopolymeric A and 282 
+T tracts resembling a promoter-enhancing UP element (Fig 5C, Table S8)  (53-56).  We 283 
+conclude that DegU likely evolved to bind as close to the Pflache promoter as possible while 284 
+maintaining an UP element constrained to reside immediately adjacent to the -35 box.  In order 285 
+to function as an activator however, an additional factor SwrA was required to expand DegU 286 
+binding epigenetically closer to the promoter and enhance inter action with RNA polymerase ( Fig 287 
+8A).  288 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 14 
+ DISCUSSION 289 
+SwrA is a poorly-understood transcriptional activator, which wh ile conserved in close 290 
+relatives of Bacillus subtilis , is mutated in most commonly-used laboratory strains (9,40,57- 59).  291 
+How SwrA activates gene expression is unknown but recent work has indicated that SwrA 292 
+modifies the function of the response regulator DegU (19,20,42) .  Here we took a global ChIP- 293 
+seq approach to show that SwrA interacts with DNA indirectly at  a subset of DegU binding sites.  294 
+The DNA binding consensus of DegU is unknown but by focusing on one of the strongest 295 
+targets, the Pflache promoter, we found an inverted repeat that DegU bound with high affinity.  296 
+Moreover, addition of SwrA synergized with phosphorylation to e nhance DegU DNA binding 297 
+affinity and caused DegU to protect a region larger than the inverted repeat.  We hypothesize 298 
+that the inverted repeat in Pflache  represents the DegU consensus binding site and that SwrA- 299 
+induced DegU oligomerization that may permit binding at other s ites in the chromosome where 300 
+consensus conservation is poor.  Moreover, we suggest that SwrA  functions as a co-activator to 301 
+allow DegU to bind DNA far from the promoter while permitting contact with RNA polymerase.  302 
+ The paradigm of transcriptional activators was established with the pleiotropic CAP/CRP 303 
+protein of E. coli (60,61).  Briefly, CAP binds as a dimer to an inverted repeat sequence (62-64) 304 
+upstream of a weak promoter and increases RNA polymerase recrui tment (65-66) by interaction 305 
+with the C-terminal domain of α subunit (α-CTD) (67-68).  The l ocation of the CAP binding site is 306 
+important, such that if the CAP site is relocated too far from,  too close to, or on the opposite 307 
+face of DNA from the -35 box, activation is impaired (69-72).   Like CAP, DegU is a dimeric, 308 
+pleiotropic, regulatory protein that binds to an inverted repeat sequence upstream of the Pflache 309 
+promoter.  DegU binding to Pflache however was not sufficient and required an additional protein 310 
+SwrA to increase expression approx imately four-fold.  Moreover,  moving the DegU binding site 311 
+towards the P flache promoter caused a near complete failure of expression, a stronger defect 312 
+than mere deactivation.  Thus, SwrA and DegU not only activates  expression of the Pflache 313 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 15 
+ promoter but must do so in a way that accommodates a critical c is element that intercedes 314 
+between the promoter and the binding site. 315 
+ The Pflache promoter-proximal cis-acting sequence is likely an UP element.   UP elements 316 
+are sequences rich in adenine and thymine bases located immedia tely upstream of the -35 box 317 
+of certain promoters (53,54,56), and either increase RNA polymerase stability at the promoter, 318 
+or control open complex formation to initiate transcription (53,54,73,74). We note that the 319 
+sequence immediately upstream of Pflache is A-T rich, highly-conserved in related species and 320 
+very similar to previously-characterized UP elements that enhan ce the flagella-related Phag and 321 
+PfliD promoters in B. subtilis  (55,75-77).  The failure of the degU  binding site to stimulate Pflache 322 
+when moved closer to the -35 box suggests that the SwrA/DegU co mplex cannot substitute for 323 
+the UP element and that the two serve different functions in promoting transcription.  The 324 
+presence of DegU/SwrA likely increases affinity of RNA polymera se for the promoter, while the 325 
+UP element is critical for expression and may function in open complex formation.  If this is the 326 
+case, DegU evolved to bind as close to the promoter as possible while not interrupting the UP 327 
+element, and SwrA extends the reach of DegU. 328 
+ We infer that SwrA expands the region of protection on Pflache by changing the oligomeric 329 
+state of the DegU response regulator.  There is no evidence tha t SwrA interacts with DNA 330 
+directly and a bacterial two-hybrid assay indicated that SwrA interacted with the N-terminal 331 
+domain of DegU far from the DNA binding surface (19).  The site  of DegU-SwrA interaction is 332 
+supported by AlphaFold-Multimer and SwrA residues essential for activity are located at the 333 
+interface (Fig 8B ) (16).  Moreover, the AlphaFold model predicts that SwrA bindi ng induces 334 
+freedom of rotation in the DegU N-terminal dimerization domain,  which could provide a 335 
+mechanism for lateral oligomerization.  SwrA-induced oligomerization might also explain the 336 
+diffuse appearance of some EMSA supershifted bands and why high concentrations of both 337 
+proteins appeared to cause clogging of polyacrylamide wells.  DegU oligomerization might also 338 
+permit interaction with otherwise weak binding sites and explai n why an inverted-repeat 339 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 16 
+ consensus binding site was difficult to detect.  Finally, we no te the enigmatic DegUhy32 allele 340 
+selected in the absence of SwrA sits at the DegU dimerization interface and might induce 341 
+mobility of the DegU N-terminal domain and partially mimic the SwrA-bound state (Fig 8B ) 342 
+(21,22,33,35,42,43).   343 
+ Why some promoters require UP elements and some do not is unkn own.  Here, the 344 
+Pflache promoter requires an UP element for basal expression but is als o activated by 345 
+DegU/SwrA to further increase flagellar gene expression.  We po sit that a complex transcription 346 
+factor is needed to accommodate spatial juxtaposition of two in compatible cis-element 347 
+sequences.  While SwrA/DegU may be unique, we note similarities  to a number of other poorly- 348 
+understood activators.  For example, RcsA is a small helix-turn -helix protein that modulates the 349 
+expression of a subset of promoters governed by RcsB to activat e polysaccharide biosynthesis 350 
+(78-80).  In addition, Sxy/TfoX is a small protein that modulat es a subset of promoters controlled 351 
+by CAP to activate DNA uptake machinery (81-83).  The FlhDC mas ter flagellar regulator of E. 352 
+coli/S.enterica  is also bipartite, and while the literature disagrees on which protein(s) binds DNA, 353 
+productive flagellar gene transcription only occurs in the presence of both (7,84-88).  Finally, 354 
+SwrA, RcsA, Sxy, and FlhC all regulate either long operons or t ransmembrane nanomachines 355 
+and each is proteolytically regulated by the Lon protease (17,8 9-92).   Perhaps complex 356 
+enzymes or machines encoded in long operons require UP elements  and consequentially 357 
+evolved heteromeric transcription factors to activate gene expr ession in response to 358 
+environmental input.   359 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 17 
+ MATERIALS AND METHODS 360 
+          Strain and growth conditions: B. subtilis and E. coli strains were grown in lysogeny 361 
+broth (LB) (10 g tryptone, 5 g yeast extract, 5 g NaCl per lite r) broth or on LB plates fortified with 362 
+1.5 % Bacto agar at 37°C. When appropriate, antibiotics were added at the following 363 
+concentrations: ampicillin 100 μg /ml (amp), kanamycin 5 μg/ml ( kan), chloramphenicol 5 μg/ml 364 
+(cm), spectinomycin 100μg/ml (spec), tetracycline 10 μg/ml (tet ), and erythromycin 1μg/ml plus 365 
+lincomycin 25μg/ml (mls). Isopropyl β-D-thiogalactopyranoside ( IPTG, Sigma) was added to LB 366 
+medium at 1mM concentration when required.  367 
+          Strain construction: All PCR products were amplified from B. subtilis  chromosomal 368 
+DNA, from the indicated strains. Constructs were transformed into the naturally competent strain 369 
+DK1042 (3610 comIQ12L) (93) and transduced using SPP1-m ediated generalized transduct ion to 370 
+other genetic backgrounds (94).   371 
+          SPP1 phage transduction:  To 0.2 ml of dense culture (OD600- 0.6-1.0), grown in TY broth 372 
+(Atoclaved LB broth supplemented with 10 mM MgSO 4 and 100 µM MnSO 4), serial dilutions of 373 
+SPP1 phage stock were added and statically incubated for 15 min  at 37 °C. To each mixture, 3 374 
+ml TYSA (molten TY supplemented with 0.5% agar) was added, pour ed atop fresh TY plates, 375 
+and incubated at 37 °C overnight. Top agar from the plate conta ining near confluent plaques 376 
+was harvested by scraping into a 15 mL conical tube, vortexed, and centrifuged at 5,000 X g for 377 
+10 min. The supernatant was passed through a 0.45 µm syringe filter and stored at 4 °C. 378 
+Recipient cells were grown to OD600- 0.6-1.0 in 3 ml TY broth a t 37 °C. One ml cells were 379 
+mixed with 25 µl of SPP1 donor phage stock. Nine mL of TY broth  was added to the mixture and 380 
+allowed to stand at 37 °C for 30 min. The transduction mixture was then centrifuged at 5,000 X 381 
+g for 10 min, the supernatant was discarded, and the pellet was resuspended in the remaining 382 
+volume. 100 µL of cell suspension was plated on TY fortified wi th 1.5% agar, the appropriate 383 
+antibiotic, and 10 mM sodium citrate and incubated at 37 °C ove rnight. All strains used in this 384 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 18 
+ study are listed in Table 1. All primers used to build strains for this study are listed i n Table S6  385 
+and all plasmids are listed in Table S7 . 386 
+          Transcriptional reporter constructs: The P swrA, PyxjJ, PmcpA, PyneI, PydaJ, PywdA, PsinI and  PtlpA 387 
+promoter regions were amplified from B. subtilis  strain DK1042 as the template using the primer 388 
+pairs (353/354), (5120/5121), (5118/5119), (5116/5117), (6481/6482), (6483/6484), (6187/6188) 389 
+and (6189/6190), respectively. The amplicons were digested with  EcoRI and BamHI and ligated 390 
+into the EcoRI and BamHI sites of pDG268 containing the lacZ gene and the cat  gene for 391 
+chloramphenicol resistance betweens arms of amyE (95) to genera te pDP144, pDP464, 392 
+pDP463, pDP462, pAM08, pAM09, pDP521 and pDP522. 393 
+         The P ytvA and P yweA promoter regions were amplified from B. subtilis  strain DK1042 as the 394 
+template using the primer pair (6487/6488) and (6489/6490) respectively. The amplicons were 395 
+digested with MfeI and BamHI and ligated into the EcoRI and BamHI sites of pDG268 to 396 
+generate pAM11 and pAM12. 397 
+          The P sacX promoter region was amplified from B. subtilis  strain DK1042 as the template 398 
+using the primer pair (6069/6064). The amplicon was digested with HinDIII and BamHI and 399 
+ligated into the HinDIII and BamHI sites of pDG268 to generate pAM01. 400 
+          Native site mutants: Native site mutants (Fig S7 ) were created by allelic replacement. To 401 
+generate the following mutations at the native site, the Pflache region was amplified from DK1042 402 
+chromosomal DNA using the primer pairs 6T (7817/7820, 7819/7818), 6A (7817/7822, 403 
+7821/7818), site1 (7817/7824, 7823/7818), site2 (7817/7826, 7825/7818), site1+2 (7817/7828, 404 
+7827/7818), 6G (7817/7870, 7869/7818), 6C (7817/7872, 7871/7818), +10 (7817/7887, 405 
+7886/7885), +20 (7817/7980, 7979/7885), -10 (7817/7982, 7981/7885) and -20 (7817/7984, 406 
+7983/7885). The fragments were assembled by Gibson assembly (96 ) and the assembled 407 
+product was digested with EcoRI and SalI. and ligated into the EcoRI and SalI site of pminiMAD 408 
+carrying a temperature sensitive origin of replication in B. su btilis and the erm gene conferring 409 
+mls resistance (97), to generate pAM39, pAM40, pAM41, pAM42, pA M43, pAM48, pAM49, 410 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 19 
+ pAM56, pAM67, pAM68 and pAM69 respectively. The plasmids were p assaged individually 411 
+through recA+  E. coli strain TG1, transformed into DK1042 and plated at restrictive temperature 412 
+for plasmid replication (37°C) on LB agar supplemented with mls to select for transformants with 413 
+single crossover plasmid integration. Plasmid eviction was ensured by growing the strains for 14 414 
+hours at a permissive temperature for plasmid replication (22°C ) in the absence of mls 415 
+selection. Cells were serially diluted and plated on LB agar plates in the absence of mls. 416 
+Individual colonies were replica patched on LB agar plates with  and without mls to identify mls 417 
+sensitive colonies that have successfully evicted the plasmid. Chromosomal DNA was isolated 418 
+form the colonies that had excised the plasmid and allelic repl acement was confirmed by PCR 419 
+amplification of the Pflache region using primers 1921 and 3042 followed by sequencing usin g the 420 
+same set of primers individually.  421 
+          Swarm expansion assay: Cells were grown to mid-log phase (OD 600 0.3-1.0) at 37°C in 422 
+lysogeny broth (LB) and resuspended to and OD600 of 10 in pH 8.0 PBS (137 mM NaCl, 2.7 mM 423 
+KCl, 10 mM Na 2HPO 4, and 2 mM KH 2PO4) containing 0.5% India ink (Higgins). Freshly 424 
+prepared LB plates fortified with 0.7% bacto agar (25 mL per pl ate) was dried for 10 min in a 425 
+laminar flow hood, centrally inoculated with 10 μL of the cell suspension, dried for another 10 426 
+min, and incubated at 37 °C. The India ink demarks the origin of the colony and the swarm 427 
+radius was measured relative to the origin every 30 min. For co nsistency, an axis was drawn on 428 
+the back of the plate and swarm radii measurements were taken a long this transect. IPTG was 429 
+added to the medium at final concentration of 1mM to the LB broth and plates when appropriate.  430 
+          β-galactosidase assay: B. subtilis  strains were grown in LB broth at 37°C with constant 431 
+rotation to OD (0.7-1.0). One ml of cells were harvested and assayed for β-galactosidase 432 
+activity. The OD 600 of each sample was measured and the cells were centrifuged and  433 
+resuspended in 1 ml of Z-buffer (40 mM NaH 2PO 4, 60 mM Na 2HPO 4, 1 mM MgSO 4, 10 mM KCl 434 
+and 38 mM β-mercaptoethanol). To each sample, lysozyme was adde d to a final concentration 435 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 20 
+ of 0.2 mg/ml and incubated at 30°C for 15 minutes. Each sample was diluted appropriately in 436 
+500 μl of Z-buffer and the reaction was started with 100 µl of start buffer (4 mg/ml 2-nitrophenyl 437 
+β-D-galactopyranoside (ONPG) in Z-buffer) and stopped with 250 µl 1 M Na 2CO 3. The OD 420 of 438 
+the reaction mixtures were recorded and the β-galactosidase specific activity was calculated 439 
+according to the equation: (OD 420/time x OD 600)] x dilution factor x 1000. IPTG was added to the 440 
+medium at final concentration of 1mM to the LB broth and plates  when appropriate. Average β- 441 
+galactosidase activities and standard deviations in Figure 2 are presented in Table S5 .  442 
+          DegU-His 6 protein purification: The DegU-His 6 fusion protein expression vector pNW43 443 
+was transformed into BL21(DE3) E. coli, and the resulting strain, DE776, was grown to an OD600 444 
+of 0.7 at 37°C with constant shaking in 1 liter of Terrific Bro th (12 g tryptone, 25 g yeast extract, 445 
+4ml glycerol and 100 ml sterile potassium phosphate solution (2 .31 g KH 2PO4, 12.54 g 446 
+K2HPO4) supplemented with 100 μg/ml ampicillin. Protein expression was induced by adding 1 447 
+mM IPTG, and growth was continued overnight at 16°C. Cells were  pelleted, resuspended in 448 
+lysis buffer (50mM Tris HCl pH7.6 and 150mM NaCl), treated with  lysozyme and lysed by 449 
+sonication. Lysed cells were centrifuged at 8000xg  for 30 min at 4°C. Supernatant was isolated 450 
+and combined with 2 ml of nickel-nitrilotriacetic acid (Ni-NTA)  His Bind resin (Novagen), 451 
+equilibrated in lysis buffer and incubated for 1 hour at 4°C wi th gentle rotation. The resin-lysate 452 
+mixture was poured into a 1-cm separation column (Bio-Rad), the  resin was allowed to pack, 453 
+and the lysate was allowed to flow through the column. The resin was washed with wash buffer 454 
+(50mM Tris HCl pH7.6, 150mM NaCl and 5mM Imidazole). DegU-His 6 protein bound to the resin 455 
+was eluted in a stepwise manner using lysis buffer supplemented with 10, 30, 100, 250 and 456 
+500mM Imidazole. Elution products were separated by 15 % sodium  dodecyl sulfate- 457 
+polyacrylamide gel electrophoresis (SDS-PAGE) and Coomassie stained to verify purification of 458 
+the DegU-His 6 protein and fractions containing clean DegU-His 6 were pooled and concentrated 459 
+to 2mL.  Finally, the concentrated protein was purified via siz e exclusion chromatography using 460 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 21 
+ a Superdex 75 16/60 column (GE Heathcare). DegU-His 6 was stored in storage buffer (20mM 461 
+Tris pH7.6, 10% glycerol, 200mM NaCl) at -80C. Concentration of  protein was determined by 462 
+Bradford assay (Bio-rad) 463 
+          DegS-His 6 protein purification: The DegS-His 6 fusion protein expression vector pYH8 464 
+was transformed into BL21(DE3) E. coli, and the resulting strain, DE891, was grown to an OD600 465 
+of 0.5 at 37°C with constant shaking in 500ml of LB Broth suppl emented with 25 μg/ml 466 
+kanamycin. Protein expression was induced by adding 1 mM IPTG, and growth was continued 467 
+for an additional 4 hours at 30°C. Cells were pelleted, resuspe nded in lysis buffer (50mM Tris 468 
+HCl pH7.6 and 150mM NaCl), treated with lysozyme and lysed by s onication. Lysed cells were 469 
+centrifuged at 8000xg for 30 min at 4°C. Insoluable pellets wer e resuspended in 4mL of 470 
+resuspension buffer (6M guanidine HCl, 50mM Tris HCl pH7.6 and 150mM NaCl), stored on ice 471 
+for 30 mins followed by centrifugation at 30,000xg for 15 minut es. The supernatant was isolated 472 
+and combined with 2 ml of nickel-nitrilotriacetic acid (Ni-NTA)  His Bind resin (Novagen), 473 
+incubated at room temperature for 20mins and poured into a 1-cm  separation column (Bio-Rad). 474 
+To renature the lysate-resin mixture, the column was serially w ashed with 10ml of lysis buffer 475 
+supplemented with 8, 6, 4 and 2M Urea respectively, followed by  a final wash of 10ml lysis 476 
+buffer.  DegS-His6 was serially eluted with lysis buffer supple mented with 2ml 100mM, 250mM 477 
+and 500mM imidazole respectively. Elution products were separat ed by 15 % sodium dodecyl 478 
+sulfate-polyacrylamide gel electrophoresis (SDS-PAGE) and Cooma ssie stained to verify 479 
+purification of the DegS-His 6 protein and fractions containing clean DegS-His 6 were pooled and 480 
+concentrated to 2mL.  Finally, the concentrated protein was dia lyzed against storage buffer 481 
+(50mM Tris-HCl pH7.6, 200mM KCl, 10mM MgCl2, 1mM dithiothreitol  (DTT), 20% (v/v) glycerol) 482 
+and stored at  -80°C. Concentration of protein was determined b y Bradford assay (Bio-rad).  483 
+ 484 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 22 
+           GST-SwrA protein purification: The GST-SwrA fusion protein expression vector pSM94 485 
+was transformed into BL21(DE3) E. coli, and the resulting strain, DE2671, was grown to an 486 
+OD600 of 0.5 at 37°C with constant shaking in 500ml of LB broth suppl emented with 100 μg/ml 487 
+ampicillin. Protein expression was induced by adding 1 mM IPTG,  and growth was continued for 488 
+an additional 4 hours at 30 C. Cells were pelleted, resuspended  in lysis buffer (25 mM Tris-HCl 489 
+pH 8.0, 1 mM DTT, 1 mM EDTA, 0.1% Triton X-100, 150 mM NaCl, and protease inhibitor 490 
+cocktail (Roche)), treated with ly sozyme and lysed by sonicatio n. Lysed cells were centrifuged 491 
+at 8000xg  for 30 min at 4°C. The supernatant was isolated and combined wi th 2 mL of 492 
+Glutathione-Sepharose resin (GE Healthcare) and incubated for 1  hour at 4°C. The mixture was 493 
+poured into a a 1-cm separation column (Bio-Rad) and the column  was washed with wash 494 
+buffer (25 mM Tris-HCl pH 8.0, 1 mM DTT, 0.1% NP-40, 250 mM NaC l, 10% glycerol, and 495 
+protease inhibitor cocktail (Roche)). GST-SwrA was eluted form the resin using elution buffer 25 496 
+mM Tris-HCl pH 8.5, 20 mM glutathione, 1 mM DTT, 250 mM NaCl, 1 0% glycerol, and protease 497 
+inhibitor cocktail (Roche)). Elution products were separated by 15 % sodium dodecyl sulfate- 498 
+polyacrylamide gel electrophoresis (SDS-PAGE) and Coomassie stained to verify purification of 499 
+the GST-SwrA protein and fractions containing clean GST-SwrA we re pooled and concentrated 500 
+to 2mL.  Finally, the concentrated protein was dialyzed against  storage buffer (25 mM Tris-HCl 501 
+[pH 8.0], 1 mM DTT, 250 mM NaCl, 10% glycerol, 20% sucrose) and  stored at -80°C. 502 
+Concentration of protein was determined by Bradford assay (Bio-rad).  503 
+          Antibody generation:  1 mg His 6-DegU protein was sent to Cocalico Biologicals for serial 504 
+injection into a rabbit host for antibody generation. The antibody was purified from serum by 505 
+mixing it with His 6-DegU-conjugated Affigel-10 and incubating overnight at 4 ºC. T he slurry was 506 
+loaded onto a 1 cm column (BioRad) and eluted with 100 mM glyci ne (pH 2.5) dropwise and 507 
+neutralized with 2 M unbuffered Tris base. Elutions were separa ted by SDS-PAGE and 508 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 23 
+ Coomassie stained. Peak elutions were pooled, dialyzed into 1 X  PBS, 50% glycerol, and BSA 509 
+was added to a final concentration of 1 mg/ml prior to storage at -20 ºC. 510 
+          Chromatin Immunoprecipitation Sequencing (ChIP-Seq): Bacillus subtilis  cultures 511 
+were grown to an OD 600 of 1.0 at 37°C with constant rotation. 20 ml of cells were cro ss-linked for 512 
+30 minutes at room temperature using 3% formaldehyde (Sigma), q uenched with 125 mM 513 
+glycine, washed with PBS, and then lysed. DNA was sheared to an  average fragment size of 514 
+~200 bp using Qsonica sonicator (Q8000R), and then incubated ov ernight at 4ºC with α-SwrA 515 
+or  α-DegU as indicated. Immunoprecipitation was performed using Protein A Magnetic 516 
+Sepharose beads (Cytiva #45002511), washed, and DNA was eluted in TES (50mM Tris pH8, 517 
+10mM EDTA and 1% SDS). Crosslinks were reversed overnight at 65ºC. DNA samples were 518 
+treated with a final concentration of 0.2mg/ml RNaseA (Promega #A7973) and 0.2mg/ml 519 
+Proteinase K (NEB #P8107S) respectively, and subsequently extra cted using 520 
+phenol/chloroform/isoamyl (25:24:1). DNA samples were then used for library preparation using 521 
+NEBNext UltraII DNA library prep kit (NEB #E7645L). Paired end sequencing of the libraries 522 
+was performed using Illumina NextSeq 550 platform and atleast 3  million paired end reads were 523 
+obtained for each sample.  Two or three biological replicates were sequenced for each sample.  524 
+          Whole genome sequencing (WGS): Bacillus subtilis  cultures were grown to an OD 600 of 525 
+1.0 at 37°C with constant rotation and 5ml of cells were collected, pelleted and DNA was 526 
+extracted using Qiagen DNeasy kit (#69504). Genomic DNA was son icated using Qsonica 527 
+sonicator (Q8000R) and the sonicated DNA was used to prepare libraries using the NEBNext 528 
+UltraII DNA library prep kit (NEB #E7645L). Paired end sequenci ng of the libraries was 529 
+performed using Illumina NextSeq 550 platform and at least 3 mi llion paired end reads were 530 
+obtained for each sample.  Data from WGS was used as input for the ChIP. 531 
+          Analysis of ChIP-Seq and WGS data: Sequencing reads for both  ChIP and WGS were 532 
+mapped individually to B. subtilis 3610 genome (CP020102) (98) using CLC Genomics 533 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 24 
+ Workbench software (Qiagen). The enrichment at ribosomal RNA locations were eliminated and 534 
+the number of reads mapped to each base pair in the genome was exported into a .csv file. 535 
+Data was normalized to the total number of reads and fold enric hment was calculated as the 536 
+ratio of number of reads at each genome location in ChIP-Seq an d WGS (ChIP/input). Analysis 537 
+was performed and graphs were plotted in 1kb bins to show enrichment across the entire 538 
+genome using custom R-scripts. When required, individual peaks were plotted in 10bp bins 539 
+across a 4kb range centered around the peak summit. Detailed pr otocols and scripts are 540 
+available upon request. 541 
+          MEME analysis: 200bp sequence surrounding the DegU peak center in WT, degQ+++ and 542 
+degU degUhy32+++ (Table S1, S2 and S3) was extracted using a custom perl script and a fasta 543 
+file was created. Sequences were subjected to Multiple Em for M otif Elicitation (MEME) v 5.5.2 544 
+using parameters (meme sequences.fa -dna -oc . -nostatus -time 14400 -mod anr -nmotifs 3 - 545 
+minw 6 -maxw 30 -objfun classic -revcomp -markov_order 0) (54) (Table S2 ). 30bp highly 546 
+enriched motif sequences were extracted and sequence logo presented Fig S4  was created by 547 
+WebLogo using default parameters (99).   548 
+          Electromobility shift assay : DNA probes of 150-200bp regions surrounding DegU ChIP- 549 
+Seq peak centers were generated by PCR amplification using DK10 42 chromosomal DNA and 550 
+the following primer pairs: Pflache (7231/1782), P yxjJ (7463/7464), P flgM (7459/7460), PmcpA 551 
+(7554/7555), PswrA (7461/7462), P yneI (7465/7466) and P comK (7229/7230). When required the 552 
+Pflache (site1+2)  region was amplified using primer pirs (7231, 1782) using DB49  chromosomal 553 
+DNA as the template. 25nM of DNA was radiolabeled using T4-Polynucleotide kinase (NEB 554 
+M0201S) and 0.5μl of ATP(γ-32P) (Perkin, 3000Ci/mmol) in 20μl reactions. Excess unincorporat ed 555 
+ATP(γ-32P) was removed by passing the reaction through as G-50 Micro Co lumns (Cytiva) and 556 
+the radiolabeled DNA was stored at 4°C until further use. When appropriate, DegU 557 
+phosphorylation reactions were performed by adding DegU-His 6 and DegS-His 6 at a ratio of 1:5 558 
+and 1mM cold ATP to kinase buffer (50 mM Tris-HCl (pH 7.6), 0.1  mM EDTA, 10 mM MgCl 2, 1 559 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 25 
+ mM DTT, 50 mM KCl, 0.1 mg/ml BSA, 10% glycerol) and the reactio n was incubated at room 560 
+temperature for 20 minutes. 20 μl binding reactions were prepared with various concentrations 561 
+of DegU, DegU-P and SwrA as indicated, 1ul of radiolabeled probe and 5ng/ul polydI-dC 562 
+(Roche) in binding buffer (50 mM Tris-HCl (pH 7.6), 0.1 mM EDTA , 10 mM MgCl 2, 1 mM DTT, 563 
+50 mM KCl, 0.1 mg/ml BSA, 10% glycerol, 0.1mM ATP) and incubate d at 30°C for 30 minutes. 564 
+6.5% native polyacrylamide gel was prepared using 19:1 acrylamide/bisacrylamide (Biorad), 1X 565 
+Tris-Glycine-EDTA buffer (25mM Tris base, 250mM Glycine and 1mM  EDTA pH 8.0) and 5% 566 
+glycerol. Glycerol was added to the binding reaction at a final  concentration of 10% to facilitate 567 
+loading and 12ul of the reaction mixture was fractionated on a 6.5% native gel in 1X TGE 568 
+running buffer at room temperature for 1 hour at 100V (constant ). Gels were dried, exposed to a 569 
+phosphorimager screen overnight and radioactive signal was dete cted using Typhoon FLA 570 
+9500. Fiji v 2.1.0 (100) was used to quantify the fraction of unbound DNA the fraction of bound 571 
+DNA was calculated by subtracting the fraction of unbound DNA f rom 1. DNA binding curves 572 
+were generated in GraphPad Prism 9 using Non-linear regression and one site specific binding 573 
+parameters.  574 
+          DnaseI-footprinting assay:  300-350bp fluorescently labelled DNA probes surrounding 575 
+the DegU ChIP peak was generated by PCR amplification using a f orward primer with a 5′-FAM 576 
+fluorescent tag (IDT) and a reverse primer with a 5′-HEX fluore scent tag (IDT). Pflache probe was 577 
+generated using primer pair 7548/7549 and Pyxj probe was generated using primer pair 578 
+7562/7563 and DK1042 chromosomal DNA as template. The optimal c oncentration of DnaseI 579 
+(NEB #M0570) at which uniform cleavage was observed across the probe was assessed over a 580 
+range of concentrations (1X – 1024X) prepared in the presence of 1X DNAseI buffer. DegU was 581 
+phosphorylated as described earlier. 20ul binding reactions were set up in 1X binding buffer to 582 
+which 5ng/μl polydIdC, 20nM DNA probe, 1X DnaseI buffer and either no protein or indicated 583 
+amounts of DegU-P and SwrA were added and incubated at 30°C for  30 minutes. 5μl of 584 
+optimized DNAseI dilution was added to the reaction and incubat ed at room temperature for 15 585 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 26 
+ minutes. Reaction was quenched by addition of 25μl of 0.5M EDTA  pH 8.0.  DNA fragments 586 
+were cleaned using Qaigen MinElute PCR purification kit (#28004 ). Fragment analysis was 587 
+performed by Genewiz, Azenta Life Sciences using a 3730 DNA analyzer and fragment size 588 
+was determined using a GeneScan 500LIZ DNA size standard. Data was analyzed using Peak 589 
+Scanner software v1.0 and the peak height corresponding each fragment size was exported into 590 
+a text file. The values were plotted using a custom R-script and DNaseI protection was 591 
+determined by an absence of peaks across a range of consecutive fragment sizes.   592 
+          Alignment of P flache region: All bacteria that contain both SwrA and DegU were identified 593 
+by BLAST+ v 2.12.0 (101). P flache  sequence ranging from +1 to -120 ( Fig 5 ) and -121 to -250 594 
+(Fig S6 ) were extracted and aligned by Clustal Omega v 1.2.4 using default parameters (102). 595 
+Alignment was shaded using Jalview v 2.11.2.7(103) using a 60% identity threshold and false 596 
+colored using Adobe illustrator.  597 
+          Microscopy:  For microscopy, 3ml of LB broth was inoculated with a single co lony and 598 
+grown at 37C to OD600 05-0.8. 1ml of culture was pelleted and r esuspended in  30μl 1X PBS 599 
+buffer containing 5 µg/ml FM 4-64 (Invitrogen #T13320) and incu bated for 2 min at room 600 
+temperature in the dark. Excess dye was washed with 1mL of PBS,  cells were spun down and 601 
+resuspended in a final volume of 30μl of PBS. Flat agarose pads  (1% agarose in PBS) were 602 
+created by on a slide, 5μl of sample was spotted on the  Agaros e pads and covered with a glass 603 
+coverslip. Fluorescence microscopy was performed with a Nikon 80i microscope with a phase 604 
+contrast objective Nikon Plan Apo 100X and an Excite 120 metal halide lamp.  FM4-6 4 was 605 
+visualized with a C-FL HYQ Texas Red Filter Cube (excitation fi lter 532-587 nm, barrier filter 606 
+>590 nm). GFP was visualized using a C-FL HYQ FITC Filter Cube (FITC, excitation filter 460- 607 
+500 nm, barrier filter 515-550 nm).  Images were captured with a Photometrics Coolsnap HQ2 608 
+camera in black and white using NIS elements software and subse quently false colored and 609 
+superimposed using Fiji v 2.1.0.  610 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 27 
+           Structure prediction: Structure prediction was performed using  Alphafold (104). The B. 611 
+subtlis 3610 DegU and SwrA sequences were separated a colon (:) wheneve r necessary and 612 
+prediction was performed using parameters colabfold_batch –num- recycle 20 –amber – 613 
+templates –model-type alphafold2_multimer_v2. The structures were visualized using UCSF 614 
+Chimera v 1.15 (105). 615 
+          Data availability: ChIP-seq and WGS data have been submitted to the Gene Expressio n 616 
+Omnibus and we are awaiting accession numbers (accession no. GS Exxxx).  617 
+ 618 
+ 619 
+ 620 
+ 621 
+ACKNOWLEDGEMENTS 622 
+We thank members of the Kearns lab for helpful discussions, members of the Van Kessel lab for 623 
+biochemical support and we thank Zhongqing Ren for assistance with ChIP-seq.   We thank the 624 
+Indiana University Center for Genomics and Bioinformatics for high throughput sequencing and 625 
+AlphaFold-Multimer was performed using IU Carbonate supported in part by Lilly Endowment, 626 
+Inc., through its support for the Indiana University Pervasive Technology Institute.   Support for 627 
+this work comes from National Institutes of Health R35GM145299 to DZR, R01GM141242, 628 
+R01GM143182, R01AI172822 to XW, and R35GM131783 to DBK. This research is a 629 
+contribution of the GEMS Biology Integration Institute, funded by the National Science 630 
+Foundation DBI Biology Integration Institutes Program, Award #2022049 to XW. 631 
+  632 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 28 
+ TABLE 1: Strains 633 
+Strain Genotypea                                                          
+E. coli  
+DE776 PT7 DegU-His6 amp  
+DE891 PT7 DegS-His6 kan amp  
+DE2671 PT7-GST-SwrA amp   
+B. subtilis  
+3610 wildtype 
+DK1042 comIQ12L                                                                                                                                                        (93) 
+DS2415 ΔswrA                                                                                                      (106) 
+DS3649 ΔdegU                                                                                                      (106) 
+DK6613 amyE::P swrA-lacZ cat 
+DK6624 ΔswrA  amyE::P swrA-lacZ cat 
+DK6625 thrC::P hyspank -swrA mls amyE::P swrA-lacZ cat 
+DK6626 ΔdegU  amyE::P swrA-lacZ cat 
+DK6650 ΔdegU  thrC::P hyspank -swrA mls  amyE::P swrA-lacZ cat 
+DK6390 comIQ12L amyE::P yweA-lacZ cat 
+DK6476 ΔswrA amyE::P yweA-lacZ cat 
+DK6480 thrC::P hyspank -swrA mls amyE::P yweA-lacZ cat 
+DK6484 ΔdegU amyE::P yweA-lacZ cat thrC::P hyspank -swrA mls 
+DK6510 ΔdegU  thrC::P hyspank -swrA mls  amyE::P yweA-lacZ cat 
+DK6387 comIQ12L amyE::P ydaJ-lacZ cat 
+DK6473 ΔswrA  amyE::P ydaJ-lacZ cat 
+DK6477 thrC::P hyspank -swrA mls amyE::P ydaJ-lacZ cat 
+DK6481 ΔdegU amyE::P ydaJ-lacZ cat  
+DK6509 ΔdegU  thrC::P hyspank -swrA mls  amyE::P ydaJ-lacZ cat 
+DK6471 amyE::P ytvA-lacZ cat amp 
+DK6500 ΔswrA amyE::P ytvA-lacZ cat 
+DK6501 thrC::P hyspank -swrA mls  amyE::P ytvA-lacZ cat 
+DK6502 ΔdegU  amyE::P ytvA-lacZ cat 
+DK6550 ΔdegU  thrC::P hyspank -swrA mls  amyE::P ytvA-lacZ cat 
+DK6388 comIQ12L amyE::P ywdA-lacZ cat 
+DK6474 ΔswrA amyE::P ywdA-lacZ cat 
+DK6478 thrC::P hyspank -swrA mls amyE::P ywdA-lacZ cat 
+DK6482 ΔdegU amyE::P ywdA-lacZ cat  
+DK6524 ΔdegU  thrC::P hyspank -swrA mls  amyE::P ywdA-lacZ cat 
+DS811 amyE::P flgM-lacZ cat (Kearns & Losick, 2005) 
+DK4870 ΔswrA  amyE::P flgM-lacZ cat 
+DK4919 ΔthrC::P hyspank -swrA mls amyE::P flgM-lacZ cat 
+DS3658 ΔdegU amyE::P flgM-lacZ cat 
+DK4983 thrC::P hyspank -swrA mls amyE::P flgM-lacZ cat degU::TnYLB kan  
+DS1868 amyE::P flache-lacZ cat 
+DK4730 ΔswrA amyE::P flache-lacZ cat 
+DK4918 thrC::P hyspank -swrA mls amyE::P flache-lacZ cat (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 29 
+ DK4734 ΔdegU amyE::P flache-lacZ cat 
+DK4979 thrC::P hyspank -swrA mls amyE::P flache-lacZ cat degU::TnYLB kan 
+DK4150 comIQ12L amyE::P yxjJ-lacZ cat  
+DK4733 ΔswrA amyE::P yxjJ-lacZ cat  
+DK4929 thrC::P hyspank -swrA mls amyE::P yxjJ-lacZ cat 
+DK4737 ΔdegU amyE::P yxjJ-lacZ cat 
+DK4982 thrC::P hyspank -swrA mls amyE::P yxjJ-lacZ cat degU::TnYLB kan  
+DK4149 comIQ12L amyE::P mcpA-lacZ cat 
+DK4732 ΔswrA amyE::P mcpA-lacZ cat  
+DK4928 thrC::P hyspank -swrA mls amyE::P mcpA-lacZ cat 
+DK4736 ΔdegU amyE::P mcpA-lacZ cat  
+DK4981 thrC::P hyspank -swrA mls amyE::P mcpA-lacZ cat degU::TnYLB kan  
+DK4148 comIQ12L amyE::P yneI-lacZ cat 
+DK4731 ΔswrA amyE::P yneI-lacZ cat  
+DK4927 thrC::P hyspank -swrA mls amyE::P yneI-lacZ cat 
+DK4735 ΔdegU amyE::P yneI-lacZ cat  
+DK4980 thrC::P hyspank -swrA mls amyE:: P yneI-lacZ cat degU::TnYLB kan 
+DK4813 comIQ12L  amyE::P sacX-lacZ cat 
+DK5667 comIQ12L  amyE::P tlpA-lacZ cat 
+DK7631 comIQ12L  amyE::P ycdC-lacZ cat 
+DK5666 comIQ12L  amyE::P sinI-lacZ cat 
+DS8094 ΔswrA amyE::P hyspank -swrA spec 
+DS3534 degU::TnYLB kan amyE::P hyspank -degU lacI spec 
+DS8111 ΔswrA amyE::P hyspank -degU spec 
+DS8259 ΔdegU amyE::P hyspank -swrA spec 
+DK9504 ΔpgsB amyE::P hyspank -degQ spec 
+DK9525 ΔpgsB swrA::tet amyE::P hyspank -degQ spec 
+DK9523 ΔpgsB degU::TnYLB kan amyE::P hyspank -degUhy(32) lacI spec 
+DK9524 ΔpgsB degU::TnYLB kan swrA::tet amyE::P hyspank -degUhy(32) lacI spec 
+DK3858 comIQ12L amyE::P hag-GFP cat 
+DB164 comIQ12L  Pflache DegUBS(site1) 
+DB196 comIQ12L  Pflache DegUBS(6A) thrC::P hyspank -swrA mls 
+DB228 comIQ12L  Pflcahe DegUBS(6T) thrC::P hyspank -swrA mls 
+DB47 comIQ12L  Pflache DegUBS(6T) 
+DB48 comIQ12L  Pflache DegUBS(6A) 
+DB504 comIQ12 Pflache DegUBS(+10) amyE::P hag-GFP cat 
+DB519 comIQ12 Pflache DegUBS(+20) amyE::P hag-GFP cat 
+DB520 comIQ12 Pflache DegUBS(-10) amyE::P hag-GFP cat 
+DB521 comIQ12 Pflache DegUBS(-20) amyE::P hag-GFP cat 
+DB549 comIQ12 swrA::kan  amyE::P hag-GFP cat  
+DB550 comIQ12 degU::TnYLB kan amyE::P hag-GFP cat  
+DB612 comIQ12L sigD::tet amyE::P hag-GFP cat 
+DB613 comIQ12 Pflache DegUBS(+20) swrA::kan amyE::P hag-GFP cat 
+DB795 comIQ12 Pflache DegUBS(+20)  degU::TnYLB kan amyE::P hag-GFP cat (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 30 
+  634 
+ 635 
+ 636 
+ 637 
+ 638 
+ 639 
+ 640 
+ 641 
+ 642 
+ 643 
+ 644 
+ 645 
+ 646 
+ 647 
+ 648 
+ 649 
+ 650 
+ 651 
+aAll B. subtilis strains are in either 3610 or DK1042 genetic backgrounds and t he E. coli  652 
+strains are in BL21 background. 653 
+ 654 
+ 655 
+  656 DB198 comIQ12L  Pflache DegUBS(site1) thrC::P hyspank -swrA mls 
+DB102 comIQ12L  Pflache DegUBS(site2) 
+DB197 comIQ12L  Pflache DegUBS(site2) thrC::P hyspank -swrA mls 
+DB49 comIQ12L  Pflache DegUBS(site1+2) 
+DB58 comIQ12L  Pflache DegUBS (site1+2) thrC::P hyspank -swrA mls 
+DB165 comIQ12L  Pflache DegUBS(6G) 
+DB199 comIQ12L  Pflache DegUBS(6G) thrC::P hyspank -swrA mls 
+DB166 comIQ12L  Pflache DegUBS(6C) 
+DB200 comIQ12L  Pflache DegUBS(6C) thrC::P hyspank -swrA mls 
+DB195 comIQ12L  Pflache DegUBS(+10) 
+DB220 comIQ12L  Pflache DegUBS(+10) thrC::P hyspank -swrA mls 
+DB486 comIQ12L Pflache DegUBS(+20) 
+DB522 comIQ12L Pflache DegUBS(+20) thrC::P hyspank -swrA mls 
+DB487 comIQ12L Pflache DegUBS(-10) 
+DB523 comIQ12L Pflache DegUBS(-10) thrC::P hyspank -swrA mls 
+DB488 comIQ12L PflacheDegUBS(-20) 
+DB524 comIQ12L Pflache DegUBS(-20) thrC::P hyspank -swrA mls (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 31 
+ REFERENCES 657 
+ 658 
+1.  Komeda Y .  1982.  Fusions of flagellar operons to lactose genes on a Mu  lac bacteriophage.  659 
+J Bacteriol 150:16-26. 660 
+ 661 
+2.  Kutsukake K, Ohya Y, Iino T .  1990.  Transcriptional analysis of the flagellar regulon of 662 
+Salmonella typhimurium .  J Bacteriol 172:741-747. 663 
+ 664 
+3.  Kalir S, McClure J, Pabbaraju K, Southward C, Ronen M, Leibler S, Surette MG, Alon U .  665 
+2001.  Ordering genes in a flagellar pathway by analysis of exp ression kinetics from living 666 
+bacteria.  Science 292:2080-2083. 667 
+ 668 
+4.  Dasgupta N, Wolfgang MC, Goodman AL, Arora SK, Jyot J, Lory S, Ramphal R.  2003.  669 
+A four-tiered transcriptional regulatory circuit controls flage llar biogenesis in Pseudomonas 670 
+aeruginosa .  Mol Microbiol 50:809-824. 671 
+ 672 
+5.  Patrick JE, Kearns DB .  2012.  Swarming motility and the control of master regulator s of 673 
+flagellar biosynthesis.  Mol Microbiol 83:14-23. 674 
+ 675 
+6.  Liu X, Matsumura P .  1994.  The FlhD/FlhC complex, a transcriptional activator of the 676 
+Escherichia coli  flagellar class II operons.  J Bacteriol 176:7345-7351. 677 
+ 678 
+7.  Claret L, Hughes C .  2000.  Functions of the subunits in the FlhD 2C2 transcriptional master 679 
+regulator of bacterial flagellum biogenesis and swarming.  J Mo l Biol 303:467-478. 680 
+ 681 
+8.  Sourjik V, Muschler P, Scharf B, Schmitt R .  2000.  VisN and VisR are global regulators of 682 
+chemotaxis, flagellar, and motility genes in Sinorhizobium  (Rhizobium ) meliloti .  J Bacteriol 683 
+182:782-788. 684 
+ 685 
+9.  Kearns DB, Chu F, Rudner R, Losick R .  2004.  Genes governing swarming in Bacillus 686 
+subtilis  and evidence of a phase variation mechanism controlling surfac e motility.  Mol Microbiol 687 
+52:357-369. 688 
+ 689 
+10. Calvio C, Celandroni F, Ghelardi E, Amati G, Salvetti S, Cecil iani F, Galizzi A, Senesi 690 
+S.  2005.  Swarming differentiation and swimming motility in Bacillus subtilis  are controlled by 691 
+swrA, a newly identified dicistronic operon.  J Bacteriol 187:5356-5366. 692 
+ 693 
+11.  Márquez-Magaña LM, Chamberlin MJ .  1994.  Characterization of the sigD  transcriptional 694 
+unit of Bacillus subtilis.  J Bacteriol 176:2427-2434. 695 
+ 696 
+12.  West JT, Estacio W, Márquez-Magaña L . 2000.  Relative roles of the fla/che P A, PD-3, and 697 
+PsigD promoters in regulating motility and sigD expression in Bacillus subtilis .  J Bacteriol 698 
+182:4841-4848. 699 
+ 700 
+13.  Kearns DB, Losick R.  2005.  Cell population heterogeneity during growth of Bacillus 701 
+subtilis .  Gene Dev 19:3083-3094. 702 
+ 703 
+14.  Tsukahara K, Ogura M .  2008.  Promoter selectivity of the Bacillus subtilis  response 704 
+regulator DegU, a positive regulator of the fla/che  operon and sacB .  BMC Microbiol 8:8.  705 
+ 706 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 32 
+ 15.  Mukherjee S, Bree AC, Liu J, Patrick JE, Chien P, Kearns DB .  2015.  Adaptor-mediated 707 
+Lon proteolysis restricts Bacillus subtilis  hyperflagellation.  Proc Natl Acad Sci USA 112:250- 708 
+255. 709 
+ 710 
+16.  Hughes AC, Subramanian S, Dann CE III, Kearns DB .  2018.  The C-terminal region of 711 
+Bacillus subtilis  SwrA is required for activity and adaptor-dependent LonA prote olysis.  J 712 
+Bacteriol 200:e00659-17. 713 
+ 714 
+17.  Olney SG, Chien P, Kearns DB .  2022.  SmiA is a hybrid priming/scaffolding adaptor for 715 
+the LonA protease in Bacillus subtilis .  J Biol Chem 298:102045. 716 
+ 717 
+18.  Calvio C, Osera C, Amati G, Galizzi A.  2008.  Autoregulation of swrAA  and motility in 718 
+Bacillus subtilis .  J Bacteriol 190:5720-5728. 719 
+ 720 
+19. Ogura M, Tsukahara K .  2012.  SwrA regulates assembly of Bacillus subtilis  DegU via its 721 
+interaction with N-terminal domain of DegU.  J Biochem 151:643-655. 722 
+ 723 
+20.  Mordini S, Osera C, Marini S, Scavone F, Bellazzi R, Galizzi A,  Calvio C .  2013.  The 724 
+role of SwrA, DegU, and P D3 in fla/che  expression in Bacillus subtilis .  PLoS ONE 8 :e85065. 725 
+ 726 
+21.  Kunst F, Pascal M, Lepesant-Kejzlarova J, Lepesant JA, Billault  A, Dedonder R .  727 
+1974.  Pleiotropic mutations affecting sporulation conditions a nd the synthesis of extracellular 728 
+enzymes in Bacillus subtilis .  Biochimie 56:1481-1489. 729 
+ 730 
+22.  Ayusawa D, Yoneda Y, Yamane K, Maruo B.  1975.  Pleiotropic phenomena in autolytic 731 
+enzyme(s) content, flagellation, and simultaneous hyperproducti on of extracellular α-amylase 732 
+and protease in a Bacillus subtilis mutant.  J Bacteriol 124:459-469. 733 
+ 734 
+23.  Kunst F, Debarbouille M, Msadek T, Y oung M, Mauel C, Karamata D , Klier D, 735 
+Rapoport G, Dedonder R .  1988.  Deduced polypeptides encoded by the Bacillus subtilis sacU  736 
+locus share homology with two-component sensor-regulator systems.  J Bacteriol 170:5093- 737 
+5101. 738 
+ 739 
+24.  Msadek T, Kunst F, Henner D, Klier A, Rapoport G, Dedonder R .  1990.  Signal 740 
+transduction pathway controlling synthesis of a class of degrad ative enzymes in Bacillus subtilis : 741 
+expression of the regulatory genes and analysis of mutations in degS  and degU .  J Bacteriol 742 
+172:824-834. 743 
+ 744 
+25. Kobayashi K .  2007.  Gradual activation of the response regulator DegU con trols serial 745 
+expression of genes for flagellum formation and biofilm formati on in Bacillus subtilis .  66:395- 746 
+409. 747 
+ 748 
+26. Verhamme DT, Kiley TB, Stanley-Wall NR .  2007.  DegU co-ordinates multicellular 749 
+behavior exhibited by Bacillus subtilis .  Mol Microbiol 65:554-568. 750 
+ 751 
+27.  Ohsawa T, Tsukahara K, Ogura M .  2009.  Bacillus subtilis  response regulator DegU is a 752 
+direct activator of pgsB  transcription involved in γ-poly-glutamic acid synthesis.  Bio sci 753 
+Biotechnol Biochem 73:2096-2102. 754 
+ 755 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 33 
+ 28.  Kimura K, Tran LSP, Do TH, Itoh Y .  2009.  Expression of the pgsB  encoding the poly- 756 
+gamma-DL-glutamate synthase of Bacillus subtilis  (natto).  Biosci Biotechnol Biochem 73:1149- 757 
+1155. 758 
+ 759 
+29.  Verhamme DT, Murray EJ, Stanley-Wall NR .  2009.  DegU and Spo0A jointly control 760 
+transcription of two loci required for complex colony developme nt by Bacillus subtilis .  J 761 
+Bacteriol 191:100-108. 762 
+ 763 
+30.  Baptista C, Barreto HC, São-José C .  2013.  High levels of DegU-P activate an Esat-6- 764 
+like secretion system in Bacillus subtilis .  PLoS ONE 8:e67840. 765 
+ 766 
+31.  Ogura M, Yamaguchi H, Yoshida K, Fujita Y, Tanaka T .  2001.  DNA microarray analysis 767 
+of Bacillus subtilis DegU, ComA, and PhoP regulons: an approach  to comprehensive analysis of 768 
+B. subtilis two-component regulatory systems.  Nuc Acids Res 29:3804-3813. 769 
+ 770 
+32. Mäder U, Antelmann H, Buder T, Dahl MK, Hecker M, Homuth G.  2002.  Bacillus subtilis  771 
+functional genomics: genome-wide analysis of the DegS-DegU regu lon by transcriptomics and 772 
+proteomics.  Mol Genet Genomics 268:455-467. 773 
+ 774 
+33.  Dahl MK, Tsadek T, Kunst F, Rapoport G.   1992.  The phosphorylation state of the DegU 775 
+response regulator acts as a molecular switch allowing either degradative enzyme synthesis or 776 
+expression of gene competence in Bacillus subtilis .  J Biol Chem 267:14509-14514. 777 
+ 778 
+34.  Hamoen LW, Werkhoven AFV, Venema G, Dubnau D .  2000.  The pleiotropic response 779 
+regulator DegU functions as a priming protein in competence dev elopment in Bacillus subtilis .  780 
+Proc Natl Acad Sci USA 97:9246-9251. 781 
+ 782 
+35.  Amati G, Bisicchia P, Galizzi A.  2004.  DegU-P represses expression of the motility fla- 783 
+che operon in Bacillus subtilis .  J Bacteriol 186:6003-6014. 784 
+ 785 
+36. Mukai K, Kawata M, Tanaka T .  1990.  Isolation and phosphorylation of the Bacillus subtilis  786 
+degS  and degU  gene products.  J Biol Chem 265:20000-20006. 787 
+ 788 
+37. Dahl MK, Tsadek T, Kunst F, Rapoport G.   1991.  Mutational analysis of the Bacillus 789 
+subtilis  DegU regulator and its phosphorylation by the DegS protein kin ase.  J Bacteriol 790 
+173:2539-2547. 791 
+ 792 
+38. Cairns LS, Martyn JE, Bromley K, Stanley-Wall NR.  2015.  An alternate route to 793 
+phosphorylating DegU of Bacillus subtilis  using acetyl phosphate. BMC Microbiol 15:78. 794 
+ 795 
+39.  Mukai K, Kawata-Mukai M, Tanaka T .  1992.  Stabilization of phosphorylated Bacillus 796 
+subtilis  DegU by DegR.  J Bacteriol 174:7954-7962. 797 
+ 798 
+40. Stanley NR, Lazazzera BA .  2005.  Defining the genetic differences between wild and 799 
+domestic strains of Bacillus subtilis  that affect poly-γ-DL-glutamic acid production and biofilm 800 
+formation.  Mol Microbiol 57:1143-1158. 801 
+ 802 
+41. Osera C, Amati G, Calvio C, Galizzi A .  2009.  SwrAA activates poly-γ-glutamate synthesis 803 
+in addition to swarming in Bacillus subtilis.  Microbiol 155:2282-2287. 804 
+ 805 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 34 
+ 42. Ermoli F, Bontà V, Vitali G, Calivo C .  2021.  SwrA as global modulator of the two- 806 
+component system DegSU in Bacillus subtilis .  Res Microbiol 172:103877. 807 
+ 808 
+43. Sanchez S, Snider EV, Wang X, Kearns DB .  2021.  Identification of genes required for 809 
+swarming motility in Bacillus subtilis  using transposon mutagenesis and high-throughput 810 
+sequencing (TnSeq).  J Bacteriol 204:e0008922. 811 
+ 812 
+44.  Murray EJ, Kiley TB, Stanley-Wall NR .  2009.  A pivotal role for the response regulator 813 
+DegU in controlling multicellular behavior.  Microbiol 155:1-8. 814 
+ 815 
+45.  Bailey TL, Johnson J, Grant CE, Noble WS .  2015.  The MEME suite.  Nuc Acids Res 816 
+43:W39-W49. 817 
+ 818 
+46.  Henner DJ, Ferrari E, Perego M, Hoch JA .  1988.  Location of the targets of the hpr-97, 819 
+sacU32(Hy), and sacQ36(Hy) mutations in upstream regions of the subtilisin promoter.  J 820 
+Bacteriol 170:296-300. 821 
+ 822 
+47.  Ogura M, Shimane K, Asai K, Ogasawara N, Tanaka T .  2003.  Binding of response 823 
+regulator DegU to the aprE  promoter is inhibited by RapG, which is counteracted by 824 
+extracellular PhrG in Bacillus subtilis .  Mol Microbiol 49:1685-1697. 825 
+ 826 
+48.  Shimane K, Ogura M .  2004.  Mutational analysis of the helix-turn-helix region of  Bacillus 827 
+subtilis response regulator DegU, and indentification of cis-acting sequences for DegU in the 828 
+aprE  and comK  promoters.  J Biochem 136:387-394. 829 
+ 830 
+49.  Hsueh YH, Cozy LM, Sham LT, Calvo RA, Gutu AD, Winkler ME, Ke arns DB .  2011.  831 
+DegU-phosphate activates expression of the anti-sigma factor FlgM in Bacillus subtilis .  Mol 832 
+Microbiol 81:1092-1108. 833 
+ 834 
+50.  Helmann JD, Marquez LM, Chamberlin MJ.  1988.  Cloning, sequencing, and disruption 835 
+of the Bacillus subtilis  σ28 gene.  J Bacteriol 170:1568-1574. 836 
+ 837 
+51.  Chan JM, Guttenplan SB, Kearns DB .  2014.  Defects in the flagellar motor increase 838 
+synthesis of poly-γ-glutamate in Bacillus subtilis .  J Bacteriol 195:740-753. 839 
+ 840 
+52.  Mukherjee S, Kearns DB.  2014.  The structure and regulation of flagella in Bacillus 841 
+subtilis . Annu Rev Genet 48:319-340. 842 
+ 843 
+53.  Ross W, Gosink KK, Salomon J, Igarashi K, Zou C, Ishihama A, Se verinov K, Gourse 844 
+RL.  1993. A third recognition element in bacterial promoters: DNA binding by the α subunit of 845 
+RNA polymerase.  Science 262:1407-1413. 846 
+ 847 
+54.  Rao L, Ross W, Appleman JA, Gaal T, Leirmo S, Schlax PJ, Record MT, Gourse RL .  848 
+1994.  Factor independent activation of rrnB P1: an “extended” promoter with an upstream 849 
+element that dramatically increases promoter strength.  J Mol Biol 235:1421-1435. 850 
+ 851 
+55.  Fredrick K, Caramori T, Chen Y-F, Galizzi A, Helmann JD .  1995.  Promoter architecture 852 
+in the flagellar regulon of Bacillus subtilis : high-level expression of flagellin by the σD RNA 853 
+polymerase requires an upstream promoter element.  Proc Natl Ac ad Sci USA 92:2582-2586. 854 
+ 855 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 35 
+ 56.  Estrem ST, Gaal T, Ross W, Gourse RL.  1998.  Identification of an UP element 856 
+consensus sequence for bacterial promoters.  Proc Natl Acad Sci  USA 95:9761-9766. 857 
+ 858 
+57. Grant GF, Simon MI .  1969.  Synthesis of bacterial flagella II.  PBS1 transductio n of 859 
+flagella-specific markers in Bacillus subtilis .  J Bacteriol 99:116-124. 860 
+ 861 
+58.  Senesi S, Ghelardi E, Celandroni F, Salvetti S, Parisio E, Gali zzi A .  2004.  Surface- 862 
+associated flagellum formation and swarming differentiation in Bacillus subtilis are controlled by 863 
+the ifm  locus.  J Bacteriol 186:1158-1164. 864 
+ 865 
+59.  Zeigler DR, Prágai Z, Rodriguez S, Chevreux B, Muffler A, Alber t T, Bai R, Wyss M, 866 
+Perkins JB .  2008.  The origins of 168, W23, and other Bacillus subtilis legacy strains.  J 867 
+Bacteriol 190:6983-6995. 868 
+ 869 
+60.  Busby S, Ebright RH .  1999.  Transcriptional activation by catabolite activator protein 870 
+(CAP).  J Mol Biol 293:199-213. 871 
+ 872 
+61.  Lee DJ, Minchin SD, Busby SJW.  2012.  Activating transcription in bacteria.  Annu Rev 873 
+Microbiol 66:125-152. 874 
+ 875 
+62.  Simpson RB.  1980.  Interaction of the cAMP receptor protein with the lac promoter.  Nuc 876 
+Acids Res 8:759-766. 877 
+ 878 
+63.  Schmitz A .  1981.  Cyclic AMP receptor protein interacts with lactose op erator DNA.  Nuc 879 
+Acids Res 9:277-292. 880 
+ 881 
+64.  Schultz SC, Shields GC, Steitz TA .  1991.  Crystal structure of a CAP-DNA complex: the 882 
+DNA is bent by 90°.  Science 253:1001-1007. 883 
+ 884 
+65.  Malan TP, Kolb A, Buc H, McClure WR .  1984.  Mechanism of CRP-cAMP activation of 885 
+lac operon transcription initiation activation of the P1 promoter.   J Mol Biol 180:881-909. 886 
+ 887 
+66.  Zhou Y, Merkel TJ, Ebright R .  1994.  Characterization of the activating region of 888 
+Escherichia coli  catabolite gene activator protein (CAP) II.  Role at class I a nd class II CAP- 889 
+dependent promoters.  J Mol Biol 243:603-610. 890 
+ 891 
+67. Igarashi K, Ishihama A .  1991.  Bipartite functional map of the E. coli  RNA polymerase α 892 
+subunit: involvement of the C-terminal region in transcription activation by cAMP-CRP.  Cell 893 
+65:1015-1022. 894 
+ 895 
+68.  Chen Y, Ebright YW, Ebright RH .  1994.  Identification of the target of a transcription 896 
+activator protein by protein-protein photocrosslinking.  Scienc e 265:90-92. 897 
+ 898 
+69. Gaston K, Bell A, Kolb A, Buc H, Busby S .  1990.  Stringent spacing requirements for 899 
+transcription activation by CRP.  Cell 62:733-743. 900 
+ 901 
+70. Ushida C, Aiba H .  1990.  Helical phase dependent action of CRP: effect of the distance 902 
+between the CRP site and the -35 region on promoter activity.  Nuc Acids Res 18:6325-6330. 903 
+ 904 
+71. Wing HJ, Williams SM, Busby SJW .  1995.  Spacing requirements for transcription 905 
+activation by Escherichia coli  FNR protein.  J Bacteriol 177:6704-6710. 906 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 36 
+  907 
+72.  Egland KA, Greenberg EP .  1999.  Quorum sensing in Vibrio fischeri : elements of the luxI 908 
+promoter.  Mol Microbiol 31:1197-1204. 909 
+ 910 
+73.  Strainic MG Jr, Sullivan JJ, Velevis A, deHaseth PL .  1998.  Promoter recognition by 911 
+Escherichia coli RNA polymerase: effects of the UP element on open complex forma tion and 912 
+promoter clearance.  Biochem 37:18074-18080. 913 
+ 914 
+74. Tagami H, Aiba H .  1999.  An inactive open complex mediated by an UP element at  915 
+Escherichia coli  promoters.  Proc Natl Acad Sci USA 96:7202-7207. 916 
+ 917 
+75.  Helmann JD . 1995. Compilation and analysis of Bacillus subtilis σA-dependent promoter 918 
+sequences: evidence for extended contact between RNA polymerase  and upstream promoter 919 
+DNA.  Nuc Acids Res 23:2351-2360. 920 
+ 921 
+76.  Caramori T, Galizzi A .  1998.  The UP element of the promoter for the flagellin gene , hag, 922 
+stimulates transcription from both SigD- and SigA-dependent pro moters in Bacillus subtilis .  Mol 923 
+Gen Genet 258:385-388. 924 
+ 925 
+77.  Meijer WJJ, Salas M .  2004.  Relevance of UP elements for three strong Bacillus subtilis 926 
+phage Φ29 promoters.  Nuc Acids Res 32:1166-1176. 927 
+ 928 
+78.  Kelm O, Kiecker C, Geider K, Bernhard F.   1997. Interaction of the regulator proteins 929 
+RcsA and RcsB with the promoter of the operon for amylovoran bi osynthesis in Erwinia 930 
+amylovora.  Mol Gen Genet 256:72-83. 931 
+ 932 
+79.  Wehland M, Bernhard F .  2000.  The RcsAB box.  J Biol Chem 275:7013-7020. 933 
+ 934 
+80.  Pristovšek P, Sengupta K, Löhr F, Schäfer B, Wehland von Trebra , Ruterjans H, 935 
+Bernard F .  2003.  Structural analysis of the DNA-binding domain of the Erwinia amylovora  936 
+RcsB protein and its interaction with the RcsAB box.  J Biol Ch em 278:17752-17759. 937 
+ 938 
+81.  Cameron ADS, Redfield RJ .  2008.  CRP binding and transcriptional activation at CRP-S 939 
+sites.  J Mol Biol 383:313-323. 940 
+ 941 
+82.  Sinha S, Cameron ADS, Redfield RJ .  2009.  Sxy induces a CRP-S regulon in 942 
+Escherichia coli .  J Bacteriol 191:5180-5195. 943 
+ 944 
+83.  Søndberg E, Sinha AK, Gerdes, Semsey S .  2019.  CRP interacts specifically with Sxy to 945 
+activate transcription in Escherichia coli .  Front Microbiol 10 :2053. 946 
+ 947 
+84. Prüß BM, Matsumura P .  1996.  A regulator of the flagellar regulon of Escherichia coli , flhD , 948 
+also affects cell division.  J Bacteriol 178:668-674. 949 
+ 950 
+85. Campos A, Matsumura P .  2001.  Extensive alanine scanning reveals protein-protein an d 951 
+protein-DNA interaction surfaces in the global regulator FlhD f rom Escherichia coli .  Mol 952 
+Microbiol 39:581-594. 953 
+ 954 
+86. Claret L, Hughes C .  2002.  Interaction of the atypical prokaryotic transcription  activator 955 
+FlhD 2C2 with early promoters of the flagellar gene hierarchy.  J Mol B iol 321:185-199. 956 
+ 957 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 37 
+ 87. Wang S, Fleming RT, Westbrook EM, Matsumura P, McKay DB .  2006.  Structure of the 958 
+Escherichia coli FlhDC complex, a prokaryotic heteromeric regulator of transcrip tion.  J Mol Biol 959 
+355:798-808. 960 
+ 961 
+88. Fitzgerald DM, Bonocora RP, Wade JT .  2014.  Comprehensive mapping of the 962 
+Escherichia coli  flagellar regulatory network.  PLoS Genet 10:e1004649. 963 
+ 964 
+89. Stout V, Torres-Cabassa A, Maurizi MR, Gutnick D, Gottesman S .  1991.  RcsA, an 965 
+unstable positive regulator of capsular polysaccharide synthesi s.  J Bacteriol 173:1738-1747. 966 
+ 967 
+90. Claret L, Hughes C .  2000.  Rapid turnover of FlhD and FlhC, the flagellar regulo n 968 
+transcriptional activator proteins, during Proteus  swarming.  J Bacteriol 182:833-836. 969 
+ 970 
+91.  Clemmer KM, Rather PN .  2008.  The Lon protease regulates swarming motility and 971 
+virulence gene expression in Proteus mirabilis .  J Med Microbiol 57:931-937. 972 
+ 973 
+92.  Jaskólska M, Gerdes K .  2015.  CRP-dependent positive autoregulation and proteolytic  974 
+degradation regulate competence activator Sxy of Escherichia coli .  Mol Microbiol 95 :833-845. 975 
+ 976 
+93.  Konkol MA, Blair KM, Kearns DB .  2013.  Plasmid-encoded ComI inhibits competence in 977 
+the ancestral 3610 strain of Bacillus subtilis .  J Bacteriol 195:4085-4093. 978 
+ 979 
+94. Yasbin RE, Young FE .  1974.  Transduction in Bacillus subtilis  by bacteriophage SPP1.  J 980 
+Virol 14:1343-1348. 981 
+ 982 
+95.  Antoniewski C, Savelli B, Stragier P.  1990. The spoIIJ  gene, which regulates early 983 
+developmental steps in Bacillus subtilis , belongs to a class of environmentally responsive 984 
+genes.  J Bacteriol  172:86-93. 985 
+ 986 
+96. Gibson DG, Young L, Chuang R-Y, Venter JC, Hutchison CA, Smith HO. 2009. 987 
+Enzymatic assembly of DNA molecules up to several hundred kilob ases. Nat Methods  6:343– 988 
+345. 989 
+ 990 
+97.  Patrick JE, Kearns DB.  2008. MinJ (YvjD) is a topological determinant of cell divisio n in 991 
+Bacillus subtilis. Mol Microbiol . 70:1166-79. 992 
+ 993 
+98.  Nye TM, Schroeder JW, Kearns DB, Simmons LA.  2017. Complete genome sequence of 994 
+undomesticated Bacillus subtilis strain NCIB 3610. Genome Announc 5:e00364-17. 995 
+ 996 
+99. Crooks GE, Hon G, Chandonia JM, Brenner SE.  2004. WebLogo: A sequence logo 997 
+generator.  Gen Research 14:1188-1190. 998 
+ 999 
+100.  Schindelin, J., Arganda-Carreras, I., Frise, E., Kaynig, V., Lo ngair, M., Pietzsch, T., … 1000 
+Cardona, A. 2012. Fiji: an open-source platform for biological-image analy sis. Nature Methods . 1001 
+9:676–682. 1002 
+ 1003 
+101.  Camacho C, Coulouris G, Avagyan V, Ma N, Papadopouos J, Bealer K, et al.  2009. 1004 
+BLAST+: architecture and applications. BMC Bioinformatics  10:421. 1005 
+ 1006 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 38 
+ 102.  Sievers F, Wilm A, Dineen DG, Gibson TJ, Karplus K, Li W, Lopez R, McWilliam H, 1007 
+Remmert M, Söding J, Thompson JD, Higgins D.  2011. Fast, scalable generation of high- 1008 
+quality protein multiple sequence alignments using Clustal Omeg a. Mol Sys Biol 7:539. 1009 
+ 1010 
+103.  Waterhouse AM, Procter JB, Marti n DMA, Clamp M, Barton GJ. 2009 . Jalview Version 1011 
+2 - A multiple sequence alignment editor and analysis workbench . Bioinformatics  25:1189-1191 . 1012 
+ 1013 
+104.  Jumper, J., Evans, R., Pritzel, A. et al. 2021. Highly accurate protein structure prediction 1014 
+with AlphaFold. Nature. 596:583–589. 1015 
+ 1016 
+105.  Pettersen EF, Goddard TD, Huang CC, Couch GS, Greenblatt DM, Me ng EC, Ferrin 1017 
+TE. 2004. UCSF Chimera--a visualization system for exploratory res earch and analysis.  J 1018 
+Comput Chem.  25:1605-12. 1019 
+ 1020 
+106.  Patrick JE, Kearns DB.  2009.  Laboratory strains of Bacillus subtilis  do not exhibit 1021 
+swarming motility.  J Bacteriol 191:7129-7133. 1022 
+ 1023 
+ 1024 
+ 1025 
+ 1026 
+  1027 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 39 
+ FIGURE LEGENDS 1028 
+ 1029 
+Figure legend 1:  SwrA enriches a subset of DegU-enriched promo ters.   A)  ChIP-Seq 1030 
+analysis using a primary antibody  to SwrA (αSwrA).  The number of sequencing reads were 1031 
+normalized by the total number of reads for each sample. The fold of enrichment (ChIP/Input) 1032 
+were calculated and plotted in 1 kb bins. The following strains were used to generate this panel:  1033 
+WT (3610), ΔswrA (DS2415), and Δ degU  (DS3649).  Peaks of particular interest were 1034 
+numbered 1-10.  B)  ChIP-Seq analysis using a primary antibody to DegU (αDegU).  Data were 1035 
+processed in the same way as in panel A.  The following strains  were used to generate this 1036 
+panel:  WT (3610), Δ degU  (DS3649) and Δ swrA (DS2415).   Peaks of particular interest were 1037 
+numbered 1-10 to match the same peaks in panel A.  C)  ChIP-Seq analysis of peaks 1-10 from 1038 
+panels A and B enlarged to show detail over a 4 kb range.  Each panel is named according to 1039 
+the promoter region for the likely gene downstream.  Gene size and identity is indicated below 1040 
+the X-axis.  The X-axis is marked in 2 kb intervals.  Green lin es indicated WT ChIP-Seq data 1041 
+using αSwrA antibody, blue lines indicate WT ChIP-Seq data usin g αDegU antibody, and 1042 
+magenta lines indicate swrA mutant ChIP-seq data using αDegU antibody.  1043 
+ 1044 
+Figure legend 2:  SwrA/DegU activate expression from a subset o f enriched promoters.  1045 
+A)  β-galactosidase activity from the indicated promoter region  fused to the lacZ gene. Light 1046 
+gray bars indicate expression in a swrA mutant and black bars indicate expression when swrA 1047 
+was overexpressed from an IPTG-inducible promoter in meroploid.    Activity was normalized to 1048 
+100% wild type expression (dashed line).  Error bars are the standard deviation of three 1049 
+replicates.  The following strains were used to generate this panel: P flache-lacZ (DK4730, 1050 
+DK4918), PflgM-lacZ (DK4870, DK4919), PswrA-lacZ  (DK6624, DK6625), PyxjJ-lacZ (DK4733, 1051 
+DK4929), PmcpA-lacZ (DK4732, DK4928), PyneI-lacZ  (DK4731, DK4927), PytvA-lacZ  (DK6500, 1052 
+DK6051), PydaJ-lacZ  (DK6473, DK6477) PywdA-lacZ  (DK6474, DK6478), PyweA-lacZ (DK6476, 1053 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 40 
+ DK6480).  B)  β-galactosidase activity from the indicated promo ter region fused to the lacZ  1054 
+gene. Light gray bars indicate expression in a degU  mutant and black bars indicate expression 1055 
+when swrA was overexpressed from an IPTG-inducible promoter in meroploid.   Activity was 1056 
+normalized to 100% wild type expression (dashed line).  Error b ars are the standard deviation of 1057 
+three replicates.  The following strains were used to generate this panel: Pflache-lacZ  (DK4734, 1058 
+DK4979), PflgM-lacZ (DS3103, DK4983), PswrA-lacZ  (DK6626, DK6650), PyxjJ-lacZ (DK4737, 1059 
+DK4982), PmcpA-lacZ (DK4736, DK4981), PyneI-lacZ  (DK4735, DK4908), PytvA-lacZ  (DK6502, 1060 
+DK6550), PydaJ-lacZ (DK6481, DK6509)  P ywdA-lacZ  (DK6482, DK6524)  P yweA-lacZ (DK6484, 1061 
+DK6510).  Raw data included in table S5. 1062 
+ 1063 
+Figure legend 3:  SwrA causes a supershift in DegU DNA binding.   Electrophoretic mobility 1064 
+shift assays (EMSA) with the indicated radiolabeled promoter fragment and protein.  Ø indicates 1065 
+that no protein was added.  Left panels, an increasing about of  SwrA was added to a constant 1066 
+0.3 μM of DegU.  Right panels, an increasing amount of SwrA was  added to a constant 0.3μM 1067 
+of DegU-P phosphorylated by DegS and ATP.   Gray carets indicat e the position of DNA shifted 1068 
+by the presence of either DegU or DegU-P alone.  Black carets i ndicated the position of DNA 1069 
+supershifed by the presence of either DegU or DegU-P and SwrA. * indicates aggregation.  1070 
+ 1071 
+Figure legend 4:  SwrA increases DegU DNA-binding affinity.  Densitometry analysis  of 1072 
+electrophoretic mobility shift assays (EMSA) ( Fig S9 ) with the indicated radiolabeled promoter 1073 
+fragment and various concentrations of either DegU or DegU-P ph osphorylated by ATP and 1074 
+DegS.  Gray circles are EMSA densitometry in the presence of the indicated form of DegU.  1075 
+Black circles are EMSA densitometry in the presence of the indi cated form of DegU and 0.2 μM 1076 
+SwrA.  Each point is the average of three replicates and error bars are standard deviations.  A)  1077 
+Densitometry values of radiolabeled Pflache promoter sequence shifted by  DegU; B) densitometry 1078 
+values of radiolabeled Pflache promoter sequence shifted by DegU -P; C) densitometry values of 1079 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 41 
+ radiolabeled Phag promoter sequence shifted by DegU -P; D) densitometry values of radiolabeled 1080 
+Pflache promoter sequence doubly mutated at site 1 and site 2 shifted b y DegU-P.   1081 
+   1082 
+Figure legend 5:  SwrA increases the length of DNA protected by  DegU-P.  A)  DNaseI 1083 
+sequencing footprint analysis of the Pflache promoter.  300 bp fragments of dsDNA were 1084 
+fluorescently labeled on the forward strand, the indicated prot ein was added, followed by partial 1085 
+digestion with DNase I and sequencing of the digested fragments . Top panel, 1 uM BSA added; 1086 
+middle panel 3 μM of DegU-P added; bottom panel 3 μM of DegU-P and 1μ M of SwrA added.  1087 
+Blue bars indicate the location of the 5-8-5 inverted repeat; o range bars indicate the expanded 1088 
+region of SwrA/DegU-P protection; purple bars indicate the -35 element, the -10 element, and  1089 
++1 transcriptional start sites of the P flache promoter are marked with an asterisk.  Peaks indicate 1090 
+the number of sequence reads terminating at that location on on e strand.  B)  DNaseI 1091 
+sequencing footprint analysis of the PyxjJ promoter.  Top panel, 1 uM BSA added; middle panel 3 1092 
+μM of DegU-P added; bottom panel 3 μM of DegU-P and 1 μM of Swr A added.  Peaks indicate 1093 
+the number of sequence reads terminating at that location.  C) Alignment of the P flache promoter 1094 
+fragment.  Blue boxes highlights the location of the 5-8-5 inve rted repeat (repeat sequences in 1095 
+bold); Orange box highlight the expanded region of SwrA/DegU-P protection; purple highlights 1096 
+that -35 and -10 elements of the P flache promoter and the +1 transcriptional start site.  1097 
+ 1098 
+Figure legend 6:  The distance between the DegU binding site an d the Pflache promoter is 1099 
+important for activation.   A)  Quantitative swarm expansion assays  of strains mutated for the 1100 
+DegU binding site inverted repeat sequences (gray circles), and  strains containing the indicated 1101 
+mutations and SwrA overexpressed by IPTG induction ( swrA+++, black circles). The following 1102 
+strains were used to generate this panel: site1 (DB164, DB198), site 2 (DB102, DB197), and 1103 
+site 1+2 double mutant (DB49, DB58) .  B)  Quantitative swarm expansion assays  of strains with 1104 
+the indicated sequence between the DegU binding site repeat ele ments (gray circles), and 1105 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 42 
+ strains containing the indicated sequence and SwrA overexpressed by IPTG induction (swrA+++, 1106 
+black circles)  The following strains were used to generate thi s panel: 6A (DB48, DB196), 6T 1107 
+(DB47, DB228), 6G (DB165, DB199), and 6C (DB166, DB200).  C)  Quantitative swarm 1108 
+expansion assays  of strains in which the 5-8-5 DegU binding site motif was moved  farther away 1109 
+(-20 or -10 bp, respectively) or towards (+10 or +20 bp, respec tively) the P flache promoter (gray 1110 
+circles), and strains containing the indicated relocation and S wrA overexpressed by IPTG 1111 
+induction ( swrA+++, black circles)  The following strains were used to generate this panel: -20  1112 
+(DB488, DB524), -10 (DB487, DB523), +10 (DB195, DB220) and +20 (DB486, DB522).  Each 1113 
+data point is the average of three replicates.   1114 
+ 1115 
+Figure legend 7:  Moving the DegU binding site towards Pflache resembles a sigD  mutant. 1116 
+Fluorescent micrographs of strains expressing Phag-GFP in the indicated genetic backgrounds. 1117 
+Membrane was false colored red and P hag-GFP reporter was false colored green. The following 1118 
+strains are used to generate this panel: wt (DK3858), swrA (DB549), degU (DB550), sigD 1119 
+(DB612), - 20 (DB521), -10 (DB520), +10 (DB504) and +20 (DB519). Scale bar is 8µm. 1120 
+ 1121 
+Figure legend 8.  SwrA activates flagellar gene expression by e xpanding DegU over an 1122 
+UP element.  A)  Model of SwrA inducing DegU oligomerization.  Top, a dimer of DegU-P (blue) 1123 
+binds to the Pflache promoter region (gray cylinder) at the 5-8-5 inverted repeat s ite.  Meanwhile, 1124 
+RNA polymerase (pink) α subunit and σ subunit bind at the UP el ement and -35/-10 boxes 1125 
+respectively to initiate a basal level of expression (dashed gr ay arrow).  Bottom, SwrA binds to 1126 
+DegU-P causing it to oligomerize and make contact with the α C-terminal domain and enhance 1127 
+expression (solid gray arrow).  B)  AlphaFold-Multimer prediction of the DegU dimer (cyan) and 1128 
+DegU dimer bound by SwrA (orange).  Red, residue phosphorylated  by DegS.  Purple, residue 1129 
+mutated by the hyperactive hy32 allele.  Dark blue, residues identified in a forward genetic 1130 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 43 
+ screen which when mutate abolished SwrA activity (16).   AlphaF old-Multimer prediction 1131 
+confidence graphs included in Fig S10 . 1132 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint ChIP/InputA B
+C
+05
+0100150ChIP/InputFigure 1
+genome position (kb)36
+1
+5 4
+10972
+8
+0 1000 2000 3000 4000 
+ChIP/Input1 45
+81
+06
+9
+723
+0 1000 2000 3000 40001
+5
+02
+0406080020406080020406080
+020406080020406080020406080
+genome position (kb)WT (αSwrA)
+swrA (αSwrA)
+degU (αSwrA)WT (αDegU)
+degU (αDegU)
+swrA (αDegU)
+1. flache 2. flgM 3. swrA 4. yxjJ 5. mcpA
+10. yweA 9. ywdA 8. ydaJ 7. ytvA 6. yneI  
+05
+0100150ChIP/Input1
+51
+0
+codY flgB yvyF flgM swrA ctpB pepT yxjJ mcpA tlpA
+ccdA yneI ytvB ytvA topB ydaJ ywdA sacA yweA spsLswrA (αDegU)
+WT (αSwrA)
+WT (αDegU)
+swrA (αDegU)(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint Figure 2
+A
+BswrA
+swrA+++
+degU
+degU swrA+++ 
+0100200300flache flgM swrA yxjJ mcpA yneI ytvA ydaJ ywdA yweA
+flache flgM swrA yxjJ mcpA yneI ytvA ydaJ ywdA yweA% WT expression0100200300% WT expression(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint Figure 3
+ 
+DegU
+Pflache
+PyxjJ
+PflgM
+PmcpA
+PswrA
+PyneI
+PcomK
+PhagDegU-P0.003
+0.01
+0.03
+0.1
+0.3
+1
+Ø Ø0
+0.003
+0.01
+0.03
+0.10.30SwrA (µM) SwrA (µM)
+1
+*
+*
+*
+*
+*
+*
+*
+*(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint A B C D
+1 10 100 100002
+0406080100120
+-201 10 100 1000-2002
+0406080100120Percent bound
+1 10 100 1000-2002
+0406080100120
+1 10 100 100002
+0406080100120
+-20Fig 4
+-SwrA
++SwrAKd=1921 nM
+Kd=216 nMKd=141.7 nM
+Kd=37.94 nMKd=ND
+Kd=580.1nMKd=ND
+Kd=408.1 nM
+DegU (nM) DegU-P (nM) DegU-P (nM) DegU-P (nM)Pfla
+chePflache PhagPflache(sites 1+2)(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint Pflache  AFigure 5
+BPyxjJsequencing reads05000500sequencing reads08000800
+**
+*
+0 50 100 200 300 150 250
+position (bp)0800SwrA
+DegU-PØ
+DegU-P
+0 50 100 200 300 150 250
+position (bp)0500SwrA
+DegU-PØ
+DegU-P
++1 -10 box -35 box DegU binding site SwrA expansionC(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint Figure 6
+051
+01520253035
+Time (hr)0 1 2 3 4 5Time (hr)0
+1 2 3 4 505101520253035
+05101520253035
+012345-20
+5
+Time (hr)0
+1 2 3 4 5-10
+Time (hr)012345+20site1
+Time (hr)0
+1 2 3 4 5site2
+Time (hr)0
+1 2 3 4 5site1+2
+6
+A
+Time (hr)0
+1 2 3 4 56T
+Time (hr)0 1 2 3 4 56C
+Time (hr)0 1 2 3 4 56Gmutantmutant (swrA+++)swarm radius (mm) swarm radius (mm) swarm radius (mm)A
+B
+C +10
+Time (hr)0
+1 2 3 4 5
+Time (hr)(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint wildtype -20
+degU +10
+sigD +20
+Membrane Phag-GFP Merge Phag-GFP Membrane Merge
+swrA -10
+Figure 7(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint DegU-PSwrADegU-PRNAP
+RNAP
+αα
+5-8-5 UP -35 -10
+5-8-5 UP -35 -10Pflache basal expression
+Pflache activatedFig 8
+DegU DegUSwrA
+P-site (D56)
+hy32 (H12)SwrA LOF
+(L79)
+(F104)
+(S105)
+(W112)
+DNA binding
+domainReceiver
+domainAB
+σ
+σalphafold
+prediction
+SwrA
+P
+h
+DN
+R
+d
+(which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted August 4, 2023. ; https://doi.org/10.1101/2023.08.04.552067doi: bioRxiv preprint 

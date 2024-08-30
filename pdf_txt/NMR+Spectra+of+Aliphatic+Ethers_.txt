@@ -1,0 +1,509 @@
+7440
+Applications ofArtificial Intelligence forChemical Inference.
+111. Aliphatic Ethers Diagnosed byTheir Low-Resolution Mass
+Spectra andNuclear Magnetic Resonance Data2
+Gustav Schroll,3A.M.Duffield, Carl Djerassi, B.G.Buchanan, G.L.Sutherland,E.A.Feigenbaum, andJ.Lederberg
+Contribution from theDepartments ofChemistry, Computer Science, andGenetics,
+Stanford University, Stanford, California 94305. Received May 16,1969
+Abstract: Acomputer program capable ofinterpreting thelow-resolution mass spectra ofaliphatic ethers isde-scribed. This program (Heuristic dendral) makes extensive useofthedendral algorithm. Inorder toobtainunequivocal answers totheidentity ofunknown compounds annmrsubroutine wasincorporated intothefinalstage ofHeuristic dendral. Asdemonstrated inTable I,theuseofthisprogram either resulted inoneortwocan-didates, ifthenumber oftheoretical possibilities isrelatively low(lessthan 200), oratleastinadrastic reduction ofthenumber ofpossible structures (e.g., 10candidates outof989possibilities) using solely mass spectral input. Ifnmrdataarealsoemployed, thenafurther reduction, usually leading toasingle structure, ispossible.
+Althoughinitsinfancy, computer interpretation of
+k.both low-
+1,4and high-resolutions,6mass spectra
+shows considerable promise forthefuture automatic
+evaluation ofexperimental data. Ourbasic approach
+tothisproblem wasenunciated inourearlier publica-
+tions
+1,7where wedescribed acomputer program (Heur-
+isticdendral) capable ofinterpreting thelow-resolu-
+tion mass spectra ofaliphatic ketones. This system
+relied extensively onthecomputer program dendral
+which generates7complete andirredundant listsofali-phatic structures corresponding toanyempirical com-
+position. Wehave now extended thescope ofHeur-
+istic dendral toinclude aliphatic ethers. This wasa
+logical development inview ofthewell-documented8
+behavior ofthisclass ofcompound inthemass spec-
+trometer.
+Adiagrammatic representation ofHeuristic dendral
+isdepicted inScheme I.Given anunknown mass spec-
+trum (Figure 1)andtheempirical formula ofthemolec-
+ulariontheprogram must infer thepresence ofthecor-
+rectfunctional group which inthepresent instance isthe
+ether group. This information isobtained bythe
+preliminary inference maker9andisthen used bythe
+structure generator tocompile exhaustive andirre-
+dundant lists ofcandidate structures containing this
+(1)PartII:A.M.Duffield, A.V.Robertson, C.Djerassi, B.G.Buchanan, G.L.Sutherland, E.A.Feigenbaum, and J.Lederberg,/.Amer. Chem. Soc, 91,2977(1969).
+(2)The financial assistance oftheAdvanced Research Projects
+Agency (Contract SD-183), theNational Aeronautics and Space Ad-ministration (NGR-05-020-00 4),andtheNational Institutes ofHealth(Grants GM 11309 andAM 04257) isgratefully acknowledged.
+(3)Recipient ofaFullbright Travel Award. Permanent address:Chemical Laboratory 11,University ofCopenhagen, Denmark.
+(4)B.Pettersson andR.Ryhage, Ark. Kemi, 26,293(1967); L.R.Crawford andJ.D.Morrison, Anal. Chem., 40,1469 (1968); 41,994(1969).
+(5)R.Venkataraghavan, F.W.McLafferty, and G.E.VanLear,Org. Mass. Spectry., 2,1(1969); S.Sasaki, H.Abe, andT.Ouki, Anal.Chem., 40,2220 (1968).
+(6)K.Biemann andP.V.Fennessey, 14th Annual Conference on
+Mass Spectroscopy, Dallas, Tex., May 1966, p322; A.Mandelbaum,
+P.V.Fennessey, andK.Biemann, 15thAnnual Conference onMassSpectroscopy, Denver, Colo., May 1967,pill.
+(7)J.Lederberg, G.L.Sutherland, B.G.Buchanan, E.A.Feigen-
+baum, A.V.Robertson, A.M.Duffield, and C.Djerassi, J.Amer.
+Chem. Soc., 91,2973 (1969).
+(8)H.Budzikiewicz, C.Djerassi, andD.H.Williams, "Mass Spec-
+trometry ofOrganic Compounds," Holden-Day, SanFrancisco, Calif.,
+1967, Chapter 6.
+(9)Program modules arelabeled insmall capitals.functional group. Truncation ofthelistofcandidate
+structures isachieved bythe predictor section of
+Heuristic dendral inwhich apredicted mass spectrum
+Figure 1
+Scheme I.Conceptualization ofHeuristic Dendral
+[Reprinted from theJournal oftheAmerican Chemical Society, 91,7440 (1969).]Copyright 1969 bytheAmerican Chemical Society andrenrinted byoermission ofthecoovrieht owne:7441
+P;
+tl
+t
+g
+S(
+v*
+«
+cScheme 11. Rules forEther Identification0
+"High, >10% relative abundance; any,T>l% relative abundance
+foreach possible structure iscompared totheoriginal
+unknown (Figure 1).Any irreconcilable difference be-
+tween theunknown andpredicted mass spectra results
+intherejection ofthatcandidate structure from further
+consideration. Alltheviable structures arethen pro-
+cessed bythescoring function which ranks them in
+order ofpreference. Atthislevel oftheprogram an
+nmr spectrum ispredicted foreach surviving candidate
+andtheresults compared tothenmr spectrum oftheun-
+known compound. Inourexperience thisyields only
+oneacceptable structure. The decision rules andthe
+structure ofHeuristic dendral areperhaps best ap-
+preciated inastepbystepdiscussion ofitssolution toa
+given problem.
+Thecriteria forHeuristic dendral toinfer thepres-
+enceofanether function from anexamination ofanun-picted inScheme 11.Ifanycondition fails, none of
+these other ethers willbeconsidered. The degree of
+substitution oneither a-carbon atom will affect the
+masses oftheproducts ofa-cleavage ofaliphatic ethers.
+The a-cleavage peaks referred toinScheme IIhave
+their origin inthefollowing mathematical relationship
+ofthea-cleavage processes, forexample, ofanether 3:
+M+58=a+b.Thus fortheprogram torespond
+that anether 3subgraph ispresent itmust recognize
+twopeaks whose sumisequal tothemolecular weight
+plus 58amu. Forether 2,ether 4,ether 4A,ether 5,
+and ether 6themasses oftheradicals duplicated in
+acleavage are44,72,72,86,and 100amu, respectively.
+The values depicted inScheme IIas31...high, 45...
+high, etc.correspond tothemass oftherearrangement
+ionscanddforthecaseofanether 3.
+M a c,m/e 31
+known low-resolution mass spectrum andthecomposi-
+tionofthemolecular ionaresummarized inScheme 11.
+The program acknowledges thepresence oftheether
+subgraph bychecking foraffirmative answers tothefol-
+lowing specific points. Peaks corresponding totheloss
+of17and 18amu, respectively, arebelow 2%relative
+abundance;10theempirical composition ofthemolec-
+ularionmust beconsistent withthepresence ofanether
+linkage within asaturated molecule andtwoalkyl ions
+corresponding tothealkyl chains flanking theether-
+oxygen atom must bepresent. Should these conditions
+besatisfied then Heuristic dendral attempts toexpand
+theether subgraph into anyofthesixsubgraphs de-Thefollowing responses were generated byHeuristic
+dendral asitprocessed atypical problem. Theopera-
+torinitiates theprogram bytyping thefollowing com-
+mand.13Theprogram fetches thelow-resolution mass
+*(IKF£R (QUOTE C6H140) S.ETH-TERT-BUT (QUOTE TESTII))
+spectrum inquestion, andfollowing aninitial examina-
+tionofFigure 1bythepreliminary inference maker
+thecomputer responds with
+Theprogram deduces thatboth theether 2andether
+4Asubgraphs (Scheme II)areconsistent with theinfor-
+mation contained inFigure 1.(goodlist, lasthename
+implies, isalistofsubgraphs which arethought tobe(10) Theempirical composition ofanether isalso compatible withthepresence ofanalcohol group. However, thelatter class ofcom-
+pounds shows appreciable peaks (>2% relative abundance) intheir mass
+spectra corresponding tothelossofwater from their molecular ions. 11
+Furthermore, themass spectra ofsome aliphatic ethers12display weakpeaks (<2%relative abundance) duetotheexpulsion of17amu.
+(11)Reference
+8,Chapter 2.(13) s-eth-_ert-but isthecode under which the"unknown" low-
+resolution mass spectrum (Figure 1)isfiled. Itcorresponds tothedata
+recorded 12forethyl ?-butyl ether andtest 11isthename ofthestorage
+location inwhich results willbekeptforlater use. (12) F.W.McLafferty, Anal. Chem., 29,1782 (1957).
+Schroll, etal./Nmr Diagnosis ofAliphatic Ethers+
+-CH.+" —R + +R—CH 2—O=CHR' <—R—CH2—O—CHR'—>■CH 2=O— CHR'—>CH2=OH
+CH3 CH 3
+HO=CHR' RCH 2—6=CHCH 3—>HO=CHCH 3f b d,m/e45
+*COODLIST=(*ETHER2!* *ETHER4A!*)
+*PARTITIONS =((«ETHER2!* 15.43.) (*ETHER4A!* 15.15.))7442
+ether 2
+(partitions RandR')
+ether 4A
+(partitions RandR')
+particularly good forsolving theproblem athand.)
+Furthermore itdefines partitions which correspond to
+thealkyl chains expelled inthea-cleavage fragmenta-
+tionofanether 2andether 4A(where RandR'are
+partitions forhypothetical ether 2andether 4Asub-
+graphs). Finally subgraphs that appear tobepoor
+solutions forthisproblem —i.e.,subgraphs whose con-
+ditions areviolated byFigure I—are1—areplaced onbad-
+list. The alcohol subgraph isplaced onbadlist as
+Figure 1contains noprominent peak duetothelossof
+water from themolecular ion.
+*BADLIST =(*C-2-ALCOHOL* *PRIMARY-ALCOHOL* *ETHERS* *ETHER
+4**ETHER 3*)
+Thecommand
+14"(EXPLAIN (QUOTE TESTII) (QUOTE TESTIIA) (QUOTE MAR2O) )
+instructs thatpartoftheprogram known asthestruc-
+ture generator tolocate theoutput ofthe prelim-
+inary inference maker (infiletest 11)andthestruc-
+ture generator thenbuilds allthecandidate structures
+consistent with thegoodlist and badlist constraints,
+leaving theresult intheexternal fileunder thelabel
+test 11A.Theteletype response isinthefollowing
+form:15
+(FILE READ)
+(NOVEMBER-15-1968 VERSION)
+C4*ETHER2 !*HIOMOLECULES
+NODOUBLE BONDEQUIVS
+(NOVEMBER-15-1968 VERSION)
+The predictor section ofHeuristic dendral (see
+Scheme I)ismade operational bytyping thesentence
+*(SCORE (QUOTE TESTIIA) S.ETH-TERT-BUT)
+The predicted abbreviated mass spectrum foreach of
+thethree candidate structures (read from test 11A)is
+then compared toFigure 1todetermine whether any
+fundamental inconsistencies exist. Those structures
+remaining (none were eliminated intheexample under
+scrutiny) arethen processed bythescoring function
+which ranks them inorder ofpreference. Theorder
+depends onthenumber ofpeaks considered tobesignifi-
+cant inthepredicted mass spectrum 16andontheir esti-
+(14)
+"Quote"isanidiosyncracy oflisp todistinguish alabel from
+thecontents ofthecorresponding list.
+(15) The three candidate structures represented indendral dot
+notation areethyl «-butyl ether, ethyl isobutyl ether (both belonging to
+theether 2subgroup), and ethyl ?-butyl ether (ether 3subgroup), re-
+spectively. C4*ether2!*Hlo and C2*ether4A!*H6 correspond to
+theempirical formula CeHuO when thecompositions (see Scheme II)
+C2H4O andC4HBO ofanether 2andether 4A,respectively, areincluded.
+(16)Inthepredicted mass spectra them/evalue andrelative intensity
+arelisted asadotted pair(e.g., "(57.61)" refers tom/e57of61%relative
+intensity). Nosignificance should beattached totherelative intensitymated relative degrees ofsignificance. Forexample,
+ions a,b,andcareassigned degree 3andrearrangement
+ions c,d,andfalsohave degree 3.Itwillbeobserved
+that the scoring function ranks candidate 3(ethyl
+7-butyl ether) asitsfirstpreference (score of23). This
+example received aninflated score relative totheother
+two structures because ofthebranching ofthef-butyl
+entity. Thus every methyl ofthis group isavailable
+forelimination byacleavage (Scheme III)andeach of
+these resulting ionscanyield therearrangement ionof
+mass 59. Hence, thegreater thenumbers ofpossible
+acleavages themore significant peaks andthehigher
+thescore ofthatcandidate inthepresent program. We
+have deferred thefurther refinement ofthe scoring
+function infavor ofannmr section ofHeuristic
+dendral asthispromised toyield amore unambiguous
+result (seeFigure 2).
+Wefrequently found that mass spectrometry alone
+wasinsufficient toseparate thecorrect structure from
+three orfour other dialkyl ethers butthatunequivocal
+answers could beobtained byincorporating intoHeur-
+istic pendral some knowledge ofnmr spectroscopy.
+Thus anewsubroutine oftheprogram wasapplied toall
+tenable structures passed bythescoring function. It
+should benoted thattheprogram canprofitably usenmr
+dataifitisavailable, butdoes notrequire it.
+Thenmrprogram accepts twoarguments, viz.alistof
+candidates (from thescoring function) andthenmr
+spectrum oftheunknown compound. Foreach viable
+structure annmr spectrum ispredicted.17This isthen
+compared with theunknown's nmr spectrum andthe
+chemical shift information must agree towithin ±0.3
+ppm. Thepredicted resonance must display thesame
+multiplicity andintegral value astheunknown. Ifthe
+recorded signal isamultiplet then thepredicted nmr
+spectrum must contain oneormore signals within ±0.3
+ppm ofthischemical shiftandthevalues oftheintegrals
+must becompatible. Ifthesignal requirements arenot
+satisfied between thepredicted and unknown's nmr
+spectrum then thedisparity isnoted andutilized bythe
+nmr scoring function. Foranycandidate thescore
+iszeroifallthesignals intheunknown spectrum were
+assigned. Otherwise thescore istheproduct ofallthe
+integrals oftheunassigned signals multiplied by0.75
+values asthey arecalculated from parameters which areatbest only
+crude approximations.
+(17) Thenmrdata
+necessaryfortheprediction ofchemical shifts are
+stored ascorrelation tables taken from K.Nakanishi, "Infrared Ab-
+sorption Spectroscopy," Holden-Day, Inc., San Francisco, Calif.,
+1962, p223. Theintegral values foragiven structure arepredicted as
+theactual number ofhydrogens giving risetoeach predicted signal.
+Themultiplicity ofthepredicted signal isdetermined bythefollowing
+rules (the term "a-carbon" refers tothecarbon atom adjacent tothe
+C-H under discussion) :ifmore than onea-carbon possesses hydrogens
+M(multiplet); ifnoa-hydrogens present S(singlet); ifonea-hydrogen
+present D(doublet); iftwo a-hydrogens present T(triplet); ifthree
+a-hydrogens present
+Q(quartet). Nouseiscurrently made ofcoupling
+constants orother data(spin decoupling measurements) butitisantici-
+pated thatthiscould beincorporated intotheprogram asrequired.
+Journal oftheAmerican Chemical Society /91:26 jDecember 17,1969#+ -R
++.-R' +
+CH*=o— CH 2R'<—R—CH 2—O—CH 2R'—>R—CH 2—o=CH 2
+CH3 CH 3
+(CH 3)2C=6— CH 2R-<— R—C—O—CH 2R'—>R—C—6=CH 2
+CH3 CH 3
+1. CH2..
+C3H70.C2H5 ,
+2. CH2.. CH..CH3CH3
+0.C2H5,C2»ETHER4A!*H6
+MOLECULES NODOUBLE BONDEQUITS
+1.
+C CH3 CH3 CH30.C2H5 ,
+DONE7443
+t.
+IScheme 111
+C4H3
+foreach multiplet. Thelower thescore thehigher the
+priority foranystructure.waspresented totheprogram as
+((1.09 3T)(1.13 9S)(3.33 2Q))
+1)and output from theprogram given in
+peared attheteletype.19Figure 3ap- c..0._
+PREDICTEDNMR-
+SPECTRA:
+CANDIDATENUMBER: 1ZZQ.Z
+STRING-NOTATION: 01
+ICICCICICICDELTA-VALUE NUMBER
+OFHYDROGENS((3.2)(23.37) (31.132) (57.75) (59.13)(37.31) (132.5)
+MULTIPLICITY0.90 3 T
+T
+M
+M
+T
+Q3)
+1.33 3Ci..,CCCO.C1.40 2
+1.90 2
+3".. 2
+{(■a.3)(29.8)(31.25) (57.o)(59.75) (37.133) (132.1)) 3.43 2
+*Llo'_
+0?iiA_i<3_
+MOLJSCULSS:
+CANDIDATENUMBER: 2
+"ST.IMG-NOTATION:011
+CICC1
+CI1
+CCDELTA- VALUE NUMBER
+OFHYDROGENS MULTIPLICITY'..9. 6 D
+T
+■;.
+D
+02..0 1
+3._3 2
+3..0 2
+CANDIDATENUMBER: 3
+ST_I
+MS-NOTATION:01
+1C1CC111
+CCCDELTA- VALUE NUMBER
+OFHYDROGENS*1.M
+..SANST.IEFIRST. TiA.KED
+MOLECULE13T.iE NTHI.THEORIjKIAL- .U_43ERED
+LISTabove.
+MULTIPLICITY3=THE
+SCORE(HIGHEST =3E3T)
+BASEDo'.THE TJUBE'
+OFSIO.IFICA.T
+PREDICTEDPEA_3 TIT__
+ORIGINAL SRAPH.P=liiELI
+Si'OFSIGNIFICANT PREDICTEDPEAKS.U=THE
+POS3I3L!f SIGNIFICANT PSASSJ5i5D
+TORESOLVE SCOHI.-.
+TIES(THE F_W_R IM
+DOJ3TTHE3-_I.BR).
+__Di.S1"33
+1"3.
+3...9
+3
+2
+ST
+0
+LIST OFRANKED
+MOLECULESFigure 2.
+CANDIDATE : RANK :
+;MON- ASSI
+GNED SI
+GNALS:
+Therecorded nmr spectrum (3hydrogens, triplet at
+51.09; 9hydrogens, singlet at51.13 ;and2hydrogens,
+quartet at53.33) oftheunknown compound (ethyl
+/-butyl ether) isalready available intheliterature.18It3 1
+2
+3NIL
+CC1.1299999 9S))
+CC1.1299999 9s>) 1
+DONE(18) H.A.Brune andD.Schulte, Chem. Ber., 100, 3438 (1967). Figure 3.
+Schroll, etal.jNmr Diagnosis ofAliphatic Ethers*CH 3—CH2—O—CH 2—CH 2—CH 2—CH 3I
+-CH^A \-C3H7
+*r A_^
+CH 2=0+—(CH 2)3—CH3 CH 3CH 2—0+=CH 2
+\-C4H_
+-C2H4^/
+CH 20+H -<
+m/e 31
+-C4HsAr' \-C_H.
+CH 2=0+—CH 2-CH(CH 3)2 CH 3-CH 2-o+=CH 2
+>V-CH3 -CsHt^T
+H3C—H2C—O—CH 2—CH(CH3)2II
+CH3
++
+"I
+-CH3
+CH 3—CH 2—O—C—CH 3—>CH2=o+— C(CH 3)3
+11lCH 3
+CH 3—CH 2—o+=C(CH3)2 O+H=C(CH3),
+m/e59
+(U.3)(29.&)) (31.l_l_) (57.31) (59.33) (37.6-3)(1.2.5)
+2)
+1.33=23
+P=((31.5)(37.3)(59.3)(37.3)(59.3)(37.3)(59.3)
+(37.2))
+U=UI
+2#1
+3=11
+?=((31.3)(o..3)(31.3)(37.2))
+U=_IL1.30 3
+3n3=11
+P=((31.3)(59.3)(31.3)(37.2))
+v=31L7444
+i
+_
+.
+.
+iTable I.Heuristic dendral Interpretation oftheMass Spectra0ofSome Aliphatic Ethers— *Number
+ofcandidates from
+Number Struc- Consis-
+*—ofaliphatic—-ture tency
+Isomers Ethers generator check Compound Ranking ofcandidates
+2 2 Correct structure ranked below ethyl n-propyl
+4 4 Correct structure ranked first
+2 2 Correct structure tiedwith ethyl isobutyl
+2 2 Correct structure tiedwith ethyl «-butyl
+«Themass spectra used as"unknown" were taken from theliterature.12 6Nmr spectra correctly differentiated thecorrect structure fromtheother candidates. Without thenmrinput data thecorrect structure tiedforfirst together with thenumber ofcandidates listed underconsistency check.
+Theprogram predicted chemical shifts fortheprotonsofcandidates 1,2,and 3according tothevalues inpa-
+rentheses instructures I,11,111. Heuristic dendral
+correctly identified theunknown from itsmass andnmr
+spectra asethyl .-butyl ether. Table Irecords other ex-
+amples inwhich dendral examined known spectra as
+"unknown" utilizing solely themass spectral informa-
+tionorcombining itwith annmr spectrum.
+(19) The string notation usedforcandidates 1,2,and3isrepre-
+sented inanalternative dendral format inwhich 1designates asingle
+bond. These three candidates translate toI,11,and 111,respectively.
+Journal oftheAmerican Chemical Society j91:26 /December 17,19691.Ic—o—c—c
+Ic14 6
+c
+2./c—c—o—c 14 6
+3.
+4.\c
+c—c—o—c—c—c—cc/c—c—o—c—c\c32
+3215
+15
+5.
+6.
+7.
+8.c
+Ic—c—o—c—c—cc
+Ic—c—o—c—c
+Icc—c—c—o—c—c—cc c\ /c—o—c32
+32
+32
+3215
+15
+15
+15/ \c c
+9.
+0.
+1.C—C—c—o—c—c—c—cc c\ /c—o—c/ \c c—cc—c—c—c—o—c—c—c—c72
+72
+17133
+33
+82
+.2.
+3.
+4.c c\ Ic—c—o—c—c/ Ic c
+C—C—O—C—C—C—C—c—c—c
+c—c—c—c—o—c—c—c—c—c171
+405
+40582
+194
+194
+5.c—c—c—c—c—o—c—c—c—c—c 989 482
+c c
+6.\ /c—c-c—o—c—c—c/ \c c989 482Correct structure tiedwith n-propyl isopropyl
+3 3 Correct structure ranked first6
+1 1 Correct structure ranked first6
+10 10 Correct structure ranked first6
+2 2 Correct structure tiedwith«-propyl isobutyl
+1 1 Correct structure ranked first
+3 3 Correct structure tiedwith «-butyl isobutyl and
+diisobutyl
+.5 15 Di-/-butyl ranked first
+Correct structure tiedforsecond with isopropyl
+isoamyl
+.7
+813
+8Correct structure tiedwith 12other ethyl ethers
+Correct structure tiedwith 7other (C4)-0— (C6)
+ethers
+[0 10 Correct structure tiedwith 9others (C 5)—O-^Cs)
+ethers
+0 10 Correct structure ranked first6
+(1.3) (3.4) (3.4) (1.4) (1.9) (0.9)CH 3—CH 2—O—CH*— CH 2—CH 2—CH3I
+(1.3) (3.4) (3.4) (2.0) (0.9)
+CH 3—CH 2—O—CH 2—CH(CH3)2
+II
+(1.3) (3.4) (0.9)
+CH 3—CH 2—O—C—(CH 3)3
+111
+Although werecognize thattheassignment ofthecor
+ectstructure toanunknown aliphatic ether isafairlj7445
+simple problem itnonetheless represents astarting point
+fordemonstrating thepotential power inherent incom-
+puter interpretation ofexperimental data. Even when
+nounambiguous answers canbeobtained itisimpres-
+sivetonotethatthenumber ofpossible candidates isre-
+duced drastically (e.g., 10candidates outof989theo-
+retical possibilities inexamples 15and 16inTable I).
+Inthecaseofmass spectra taken directly from gas
+chromatography effluents theprogram would notbe
+abletoutilize nmrinput data. Thus multiple solutions
+would bepossible foraparticular problem. However,
+asstated above, asignificant degree oftruncation con-
+sidering allpossible aliphatic ethers would beachieved.
+Clearly onecanprogram other physical data(forin-
+stance iranduvspectral parameters) tosupplement the
+mass spectral andnmrdatacurrently used. With added
+experimental data andsophisticated programming the
+computer should beabletosolve more complex prob-
+lems anditistothisendthatfuture research inourlab-
+oratories isbeing directed.Experimental Section
+Thecomputer program described here, named Heuristic
+dendral,runs onthePDP-10 time-sharing computer attheStanford Uni-
+versity Artificial Intelligence Laboratory. Itiswritten inthelisp
+programming language inthree large parts each requiring approxi-
+mately 40Kofcore memory (with anestimated 15Kofoverlap
+between theparts). Although many factors influence thelength of
+timetheprogram takesfrom thetimeitreceives theinitial spectrum
+andmolecular ioncomposition tothetimeitoutputs itsordered
+listofexplanatory structures, 4or5mmattheteletype willusually
+suffice forexamples ofthecomplexity described here.
+Theprogram isnowconfined tomonofunctional aliphatic struc-
+tures. However, wearecurrently working ontheremoval ofthese
+limitations aswellasadding more mass spectrometry theory tothe
+program such thatmore complex problems willbewithin the
+program's capability. Details ofthecomputer program itself have
+been described elsewhere.20
+(20) B.G.Buchanan and G.L.Sutherland, "Heuristic dendral:
+AProgram forGenerating Explanatory Hypotheses inOrganic Chem-
+istry," Stanford Artificial Intelligence Lab. Memo No.62,1968.

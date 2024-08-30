@@ -1,0 +1,415 @@
+Dual-detection confocal fluorescence 
+microscopy: fluorescence axial imaging without 
+axial scanning 
+Dong-Ryoung Lee,1 Young-Duk Kim,1 Dae-Gab Gweon,1,3 
+and Hongki Yoo,2,* 
+1Nano Opto-Mechatronics Laboratory, Department of Mechanica l Engineering, Korea Advan ced Institute of Science 
+and Technology (KAIST), 291 Daehak-ro, Yuseong-gu, Daejeon, 305-701, South Korea 
+2 Biomedical Optics and Photomedicine Laboratory, Departm ent of Biomedical Engineering, Hanyang University, 
+222 Wangsimni-ro, Seongdong-gu, Seoul, 133-791, South Korea 
+3gweondg@kaist.ac.kr 
+*hyoo@hanyang.ac.kr 
+Abstract:  We propose a new method for high-speed, three-dimensional (3-
+D) fluorescence imaging, which we re fer to as dual-detection confocal 
+fluorescence microscopy (DDCFM). In contrast to conventional beam-
+scanning confocal fluorescence microscopy, where the focal spot must be 
+scanned either optically or mechanically over a sample volume to 
+reconstruct a 3-D image, DDCFM can obtain the depth of a fluorescent 
+emitter without depth scanning. DDCFM comprises two photodetectors, 
+each with a pinhole of diffe rent size, in the confocal detection system. Axial 
+information on fluorescent emitters can be measured by the axial response 
+curve through the ratio of intensity signals. DDCFM can rapidly acquire a 
+3-D fluorescent image from a single two-dimensional scan with less 
+phototoxicity and photobleaching than confocal fluorescence microscopy 
+because no mechanical depth scans are needed. We demonstrated the 
+feasibility of the proposed method by phantom studies. 
+©2013 Optical Soci ety of America 
+OCIS codes:  (180.1790) Confocal microscopy; (180.2520) Fluorescence microscopy; 
+(180.6900) Three-dimensional microscopy; (120.3930) Metrological instrumentation. 
+References and links 
+1. R. S. Fischer, Y. Wu, P. Kanchanawong, H. Shroff,  and C. M. Waterman, “Micro scopy in 3D: a biologist’s 
+toolbox,” Trends Cell Biol. 21(12), 682–691 (2011). 
+2. E. A. Te Velde, T. Veerman, V. Subramaniam, and T. Ruers, “The use of fluorescent dyes and probes in surgical 
+oncology,” Eur. J. Surg. Oncol. 36(1), 6–15 (2010). 
+3. R. Weissleder and V. Ntziachristos, “Sheddi ng light onto live molecular targets,” Nat. Med. 9(1), 123–128 
+(2003). 
+4. D. Li, W. Zheng, and J. Y. Qu , “Two-photon autofluorescence microscopy of multicolor excitation,” Opt. Lett. 
+34(2), 202–204 (2009). 
+5. Y. Hiraoka, J. R. Swedlow, M. R. Paddy, D. A. Agard, and J. W. Sedat, “Three-dimensional multiple-
+wavelength fluorescence microscopy for the structural an alysis of biological phenome na,” Semin. Cell Biol. 
+2(3), 153–165 (1991). 
+6. P. Prabhat, S. Ram, E. S. Ward, and R. J. Ober, “S imultaneous imaging of  different focal planes in fluorescence 
+microscopy for the study of cellular dynamics in three dimensions,” IEEE Trans. Nanobioscience 3(4), 237–242 
+(2004). 
+7. M. Gu, Principles of Three-dimensional Imaging in Confocal Microscopes  (World Scientific, 1996). 
+8. J. B. Pawley, Handbook of Biological Confocal Microscopy  (Springer, 1995). 
+9. R. A. Hoebe, C. H. Van Oven, T. W. Gadella, Jr., P. B. Dhonukshe, C. J. Van Noorden, and E. M. Manders, 
+“Controlled light-exposure microscopy reduces photobl eaching and phototoxicity in fluorescence live-cell 
+imaging,” Nat. Biotechnol. 25(2), 249–253 (2007). 
+10. R. Dixit and R. Cyr, “Cell damage and reactive oxy gen species production induced by fluorescence microscopy: 
+effect on mitosis and guidelines for non-i nvasive fluorescence microscopy,” Plant J. 36(2), 280–290 (2003). 
+11. L. Song, C. A. Varma, J. W. Verhoeven, and H. J. Tanke, “Influence of the triplet excited state on the 
+photobleaching kinetics of fluorescei n in microscopy,” Biophys. J. 70(6), 2959–2968 (1996). 
+12. J. Huisken and D. Y. Stainier, “Selective plane illumi nation microscopy techniques in developmental biology,” 
+Development 136(12), 1963–1975 (2009). 
+#190510 - $15.00 USD
+Received 14 May 2013; revised 12 Jul 2013; accepted 14 Jul 2013; published 18 Jul 2013
+(C) 2013 OSA
+29 July 2013 | Vol. 21,  No. 15 | DOI:10.1364/OE.21.017839 | OPTICS EXPRESS  1783913. T. A. Planchon, L. Gao, D. E. Milkie, M. W. Davidson,  J. A. Galbraith, C. G. Galbraith, and E. Betzig, “Rapid 
+three-dimensional isotropic imaging of living cells using Bessel beam plane illumination,” Nat. Methods 8(5), 
+417–423 (2011). 
+14. S. Abrahamsson, J. Chen, B. Hajj, S. Stallinga, A. Y. Katsov, J. Wisniewski, G. Miz uguchi, P. Soule, F. Mueller, 
+C. Dugast Darzacq, X. Darzacq, C. Wu, C. I. Bargmann, D. A. Agard, M. Dahan, and M. G. Gustafsson, “Fast 
+multicolor 3D imaging using aberration-corr ected multifocus microscopy,” Nat. Methods 10(1), 60–63 (2012). 
+15. A. K. Ruprecht, T. F. Wiesendanger, and H. J. Tizian i, “Chromatic confocal micr oscopy with a finite pinhole 
+size,” Opt. Lett. 29(18), 2130–2132 (2004). 
+16. H. J. Tiziani and H. M. Uhde, “Three-dimensional im age sensing by chromatic c onfocal microscopy,” Appl. 
+Opt. 33(10), 1838–1843 (1994). 
+17. S. Cha, P. C. Lin, L. Zhu, P. C. Sun, and Y. Fainman, “Nontranslational three-dimensional profilometry by 
+chromatic confocal microscopy w ith dynamically configurable mi cromirror scanning,” Appl. Opt. 39(16), 2605–
+2613 (2000). 
+18. T. Kim, S. H. Kim, D. Do, H. Yoo, and D. Gweon,  “Chromatic confocal micros copy with a novel wavelength 
+detection method using tran smittance,” Opt. Express 21(5), 6286–6294 (2013). 
+19. K. B. Shi, P. Li, S. Z. Yin, and Z. W. Liu, “Chrom atic confocal microscopy using supercontinuum light,” Opt. 
+Express 12(10), 2096–2101 (2004). 
+20. Q. Xu, K. Shi, S. Yin, and Z. Liu, “Chromatic  two-photon excitation fluorescence imaging,” J. Microsc. 235(1), 
+79–83 (2009). 
+21. C. A. Yang, K. B. Shi, H. F. Li, Q. A. Xu, V. G opalan, and Z. W. Liu, “Chrom atic second harmonic imaging,” 
+Opt. Express 18(23), 23837–23843 (2010). 
+22. C. J. R. Sheppard and C. J. Cogswell, “Confocal microscopy with detector arrays,” J. Mod. Opt. 37(2), 267–279 
+(1990). 
+23. C. H. Lee and J. P. Wang, “Nonint erferometric differential confocal micr oscopy with 2-nm depth resolution,” 
+Opt. Commun. 135(4-6), 233–237 (1997). 
+24. W. Q. Zhao, J. B. Tan, and L. R. Qiu, “Bipolar absolute differential confocal approach to higher spatial 
+resolution,” Opt. Express 12(21), 5013–5021 (2004). 
+25. J. B. Tan, J. Liu, and Y. H. Wang, “Differential confocal microscopy with a wide measuring range based on 
+polychromatic illumination,” Meas. Sci. Technol. 21(5), 054013 (2010). 
+26. Y. Wang, L. R. Qiu, Y. X. Song, and W. Q. Zhao, “Laser differential confocal lens thickness measurement,” 
+Meas. Sci. Technol. 23(5), 055204 (2012). 
+27. W. Q. Zhao, C. Liu, and L. R. Qiu, “Laser divide d-aperture differential confocal sensing technology with 
+improved axial resolution,” Opt. Express 20(23), 25979–25989 (2012). 
+28. L. M. Zou, J. Q. Qu, S. L. Hou, and X. M. Ding, “D ifferential confocal technology based on radial birefringent 
+pupil filtering principle,” Opt. Commun. 285(8), 2022–2027 (2012). 
+29. A. Bilenca, A. Ozcan, B. Bouma, and G. Tearne y, “Fluorescence coherence tomography,” Opt. Express 14(16), 
+7134–7143 (2006). 
+30
+. M. de Groot, C. L. Evans, and J. F. de Boer, “S elf-interference fluorescence microscopy: three dimensional 
+fluorescence imaging without de pth scanning,” Opt. Express 20(14), 15253–15262 (2012). 
+31. T. Wilson and A. R. Carlini, “Size of the de tector in confocal imaging systems,” Opt. Lett. 12(4), 227–229 
+(1987). 
+32. M. Gu and C. J. R. Sheppard, “Confocal fluorescent micros copy with a finite-sized circular detector,” J. Opt. 
+Soc. Am. A 9 (1), 151–153 (1992). 
+33. J. W. Goodman, Introduction to Fourier Optics  (Roberts & Company, 2005).  
+1. Introduction 
+Fluorescence microscopy has become an essential tool in biology and biomedicine by 
+visualizing certain molecules and cells in high contrast with endogenous and exogenous fluorescent molecules. Fluor escent imaging is used in many biological and medical 
+applications, including analysis of cell microstructures, localization of protein expression, and measurement of dynamic mo lecular processes [1–6]. 
+Confocal fluorescence microscopy has the ability to acquire optically-sectioned images 
+from a thick specimen using a confocal pinhole to  effectively eliminate out-of-focus noise [7, 
+8]. One of the main advantages of confo cal fluorescence micros copy over conventional 
+fluorescence microscopy is that live specimens can be observed with high resolution and contrast. In addition, confocal fluorescence microscopy can reconstruct a three-dimensional 
+(3-D) image of a biological sample [1]. Sin ce confocal fluorescence microscopy acquires a 
+point image of a conjugate point with a pinhole pl aced in front of a detector, the point must be 
+scanned over the specimen volume to create a 3-D image [7]. Creating a 3-D image by 
+reconstructing a stack of 2-D images is time intensive and induces phototoxicity and photobleaching due to the rep eated light exposure [9–11]. 
+To overcome these limitations, fast 3-D imaging methods have been developed. Selective 
+plane illumination microscopy uses light sheet illumination from the side of the sample to 
+#190510 - $15.00 USD
+Received 14 May 2013; revised 12 Jul 2013; accepted 14 Jul 2013; published 18 Jul 2013
+(C) 2013 OSA
+29 July 2013 | Vol. 21,  No. 15 | DOI:10.1364/OE.21.017839 | OPTICS EXPRESS  17840create an optically-sectioned fluorescent image [12, 13]. This technique allows fast 3-D 
+imaging with reduced photobleachin g, but it suffers from spatial constraints due to the side 
+illumination. Abrahamsson et al.  [14] proposed multifocus microscopy, which acquires 
+multiple images from different focal planes using specially designed gratings. However, the 
+detection system is relatively complex, and the number of focal planes is fixed. 
+Three-dimensional fluorescence imaging without depth scanning is another approach to 
+rapidly acquire three-dimensional fluorescent information and to reduce phototoxicity and 
+photobleaching. Chromatic conf ocal microscopy uses a broadband light source and an 
+objective with longitudinal chromatic aberrations, which generate multiple, axially-distributed 
+foci depending on wavelength [15–17]. Chromatic confocal microscopy has been most widely 
+developed using reflectance imaging for surface profiling, while several studies have 
+investigated fluorescence and nonlinear opti cal imaging [18–21]. Differential confocal 
+microscopy, which uses two or more detectors, is another method to measure surface shape with 2-D scans [22–28]. To our knowledge, fluorescence differential confocal microscopy has 
+not yet been reported. By analyzing fluorescen ce self-interference signal, the location of the 
+fluorescence signal can be determined [29, 30]. Depth discrimination technique of a 
+fluorescent signal without a mechanical dept h scan enables rapid visualization of 3-D 
+distribution of fluorescence labels. This technique also has potential to be developed as a miniature endoscopic probe for in vivo volumetric imaging. In this paper, we propose a novel 
+method for axial imaging without axial scanning, called dual-detection confocal fluorescence 
+microscopy (DDCFM). 
+ 
+Fig. 1. Schematic of DDCFM. Light from a point source is reflected by a dichroic mirror (DM) 
+and illuminates the sample. Light from a fluorescent emitter within the focal volume in the 
+sample passes through the DM and is split by a be am splitter (BS). Each beam is directed to 
+the photomultiplier tube (PMT) through a pinhole. Pinhole 1 (P1) is smaller than pinhole 2 
+(P2). 
+2. Principle of DDCFM 
+Figure 1 shows a schematic diagram of DDCFM, which uses two pinhole detectors with 
+different sizes, while conventional confocal fluorescence microscopy uses only one pinhole 
+detector. For DDCFM, light from the fluorescent sample is split by a beam splitter, then 
+directed to two pinhole detectors. Since each pinho le is of a different size, each detector has a 
+different axial response. Thus, a new axial response curve of the intensity ratio can be calculated from the ratio of signals received at each detector. The axial response curve of the 
+intensity ratio indicates the relationship between the axial position of the fluorescent sample 
+and the intensity ratio. In DDCFM, the axial distance of the sample from the focal plane can 
+#190510 - $15.00 USD
+Received 14 May 2013; revised 12 Jul 2013; accepted 14 Jul 2013; published 18 Jul 2013
+(C) 2013 OSA
+29 July 2013 | Vol. 21,  No. 15 | DOI:10.1364/OE.21.017839 | OPTICS EXPRESS  17841be calculated using the intensity ratio of the fluorescent emitter. As a result, the DDCFM can 
+be used to rapidly determine the depth of a fluorescent signal in a sample without the need for 
+depth scanning. 
+The axial response curve in confocal fluore scence microscopy depends on the pinhole 
+size. Since an out-of-focus beam is filtered by the pinhole, a detector placed behind the 
+pinhole receives the highest signal when the fluorescent emitter is in the focal plane of the 
+objective. In other words, the peak of the axial response curve is on the focal point, and the 
+signal value gradually decreases as the object moves away from the focal point [31]. When 
+light passes through the optical system, the amplitude and phase change of the field are 
+explained as diffraction properties and are used  to create the axial response curve [7]. To 
+express the axial response curve of confocal fluorescence microscopy according to the 
+pinhole size, the intensity of a point object with a finite-size circular detector is obtained as 
+[7, 31, 32] 
+ 22(,) (,) (,) (),ihu v h u v h u v D v =⊗   (1) 
+where ⊗is the 2-D convolution operation, ()Dv is the intensity sensitivity of the detector, and 
+(,)huv  is the point-spread function (PSF) of the lens, given by 
+ 1
+2
+0
+0(,) ( ) e x p ( / 2 ) ( ) ,huv P i u J v d ρρ ρ ρ ρ =−  (2) 
+where ()Pρ is the pupil function of the lens, and u and v are optical coordinates defined 
+respectively by 
+ 
+22sin
+2sin ,vr
+uzπα
+λ
+πα
+λ=
+=
+
+
+
+ (3) 
+where sinα is the numerical aperture (NA), and r and z are the radial and axial coordinates, 
+respectively. 
+The PSF describes the impulse response, which is explained by Fresnel diffraction of the 
+imaging system [33]. The intensity on the detector is determined by the square of the PSF 
+because the intensity is the squa re of the field amplitude [7]. 
+If we assume that ()Pρ is a circular, uniform aperture  with the same radius as the 
+objective lens, and ()Dv is a circular pinhole detector [7, 31], from Eq. (1), the axial response 
+curve becomes, 
+ 2
+1
+2
+0
+00() e x p ( ) ( ) ,pv
+Iui u J v d d v ρρ ρ ρ =  (4) 
+where 
+pv represents the radius of the pinhole. As in Eq. (4), the axial response curve is a 
+function of the axial optical coordinate, u, and the radius of the pinhole,
+pv. The pinhole size 
+determines the axial response curve, and, in general, larger pinholes generate wider axial 
+response curves. 
+The fluorescence intensity is also proportional to quantum yield, which is the number of 
+photons emitted per photons absorbed. The quantum yield varies according to the surroundings. If we account for the fluorescen ce quantum yield, the fl uorescence intensity can 
+be expanded as 
+ 
+(, ) ( ) ,Iz I zΦ= Φ ×  (5) 
+#190510 - $15.00 USD
+Received 14 May 2013; revised 12 Jul 2013; accepted 14 Jul 2013; published 18 Jul 2013
+(C) 2013 OSA
+29 July 2013 | Vol. 21,  No. 15 | DOI:10.1364/OE.21.017839 | OPTICS EXPRESS  17842where Φ is the quantum yield, and ()Iz is another expression of Eq. (4) with z and a given 
+pv. 
+Since DDCFM has two detectors with different pinhole sizes, two axial response curves 
+are generated with different full widths at half maximum (FWHM). We can calculate the 
+intensity ratio with the small and large pinholes.  Since, both intensity values are proportional 
+to the same quantum yield, the axial response curve of the intensity ratio is independent of the 
+quantum yield. When the two pinhole sizes are pre-determined and fixed, the intensity ratio is 
+a function of z, yielding the following expression 
+ 11
+22() ()() ,
+() ()RIzI zIz
+IzI zΦ×==
+Φ× (6) 
+where 1()Iz and 2()Iz are the intensities detected by pinhole 1 and pinhole 2, respectively, at a 
+specific axial position, z. The intensity ratio according to axial position becomes the axial 
+response curve of the DDCFM system, as shown in Fig. 2. The axial position of the 
+fluorescence emitter corresponds to a unique inte nsity ratio, and an intensity ratio corresponds 
+to a unique axial position. Thus, using the axial response curves of the intensity ratio in DDCFM, the axial positions of fluorescent particles can be measured without axial scanning, 
+even when the quantum yield of the fluorescent sample varies. 
+ 
+Fig. 2. Theoretical axial res ponse curves of the intensity a nd intensity ratio in DDCFM. The 
+intensity signals measured by each PMT differ b ecause of different pinhole sizes. The blue and 
+green line graphs show the axial response curves of the small (v p = 2.7) and large (v p = 13.5) 
+pinholes, respectively. The ratio of the axial res ponse curves is indicated by the red line. Since 
+the relationship between the intensity ratio a nd the axial position is one-to-one, the intensity 
+ratio directly indicates the axial position of the fluorescence source. 
+3. System setup 
+To demonstrate the feasibility of the proposed method, we built a DDCFM system, as shown 
+in Fig. 3. The DDCFM has two detectors, each with a pinhole of a different diameter. A 
+488nm wavelength laser (35-LAL-030-220, Melles Griot, NM) was used as the light source. After it was collimated, the excitation beam passed the excitation filter (LL01-488-25, Semrock, NY). A dichroic mirror (Di02-R488, Semrock, NY) reflected the beam to a 2-D 
+scanner comprising a galvanometer mirror (6240H, Cambridge technology, MA) and a 
+resonant mirror (000-3015013, GSI Lumonics, MI). This scanner system was used to rapidly 
+scan the x-y plane of th e fluorescent sample. An imaging rate of 15.6 frames per second with 
+512 × 512 pixels was achieved using the resonant mirror with a resonant frequency of 8kHz. A relay lens expanded the beam diameter by three times and caused the beam to pass through 
+the center of the objective wh ile scanning the imaging field. The relay lens enabled the 
+system to have a large field-of-view (FOV), up to 4000 × 4000 μ m. An objective lens (378-
+801-6, Mitutoyo, Japan) focused the beam onto the fluorescent sample. The FWHM of the 
+#190510 - $15.00 USD
+Received 14 May 2013; revised 12 Jul 2013; accepted 14 Jul 2013; published 18 Jul 2013
+(C) 2013 OSA
+29 July 2013 | Vol. 21,  No. 15 | DOI:10.1364/OE.21.017839 | OPTICS EXPRESS  17843axial response curve depends on the NA of the objective and the pinhole size. An objective 
+lens with a relatively low effective NA of 0.04 5 was used for long axial measurements. Light 
+emitted from the fluorescent sample traveled back through the objective, relay lens, x-y 
+scanner, dichroic mirror, and emission filter (FF03-525/50-25, Semrock, NY). 
+The filtered beam was divided by a 50/50 beam splitter (BS010, Thorblas, NJ). The two 
+beams were focused by two collecting lenses (NT47-641, Edmund, NJ) onto pinholes of 
+different sizes. The diameter of the airy disk on the pinhole was used to determine the pinhole 
+sizes [31]. The airy di sk diameter was 42.7 μ m at the detection plane. The small and large 
+pinhole diameters were 30 μm and 150 μm, respectively. The fluorescent emission was 
+measured by the two PMTs (H6779-20, Hamamatsu, Japan). 
+ 
+Fig. 3. Schematic of the experimental setup.  The laser source was collimated then passed 
+through an excitation filter. The beam was reflect ed by a dichroic mirror (DM) and scanned by 
+an x-y scanner. A relay lens optical system directed the beam to the center of a 0.045-NA 
+objective, despite various beam angles. The samp le was precisely moved in the axial direction 
+by a PZT stage. Light emitted from the sample passed inversely through the optical 
+components and then through a dichroic mi rror (DM) and emission filter. A 50/50 beam 
+splitter (BS) divided the beam path equally, a nd two collecting lenses (C1, C2) focused the 
+beam onto the PMTs. The pinhole in front of PM T 1 was smaller than the pinhole in front of 
+PMT 2. The pinhole diameters were 30 μm and 150 μm. 
+4. Experiment and results 
+We tested the performance of DDCFM by imaging various fluorescent beads and a 
+fluorescent-stained sample. We measured the axial response curve of DDCFM. A fluorescent 
+sample with sparsely distributed standard fluorescent beads was prepared by spreading 6 μm 
+fluorescent beads (I-14785, Invitrogen, CA) on a glass slide. We used the piezoelectric (PZT) stage (MIPOS, piezosystem jena, MA) to move the fluorescent sample axially in 1 μm 
+increments over a 300 μ m range. The bead intensity was m easured by two PMTs at each step. 
+Figure 4 shows the measured axial response cu rves of DDCFM. As the fluorescent beads 
+moved away from the focal point, the bead intensity decreased for both the small and large pinholes. The normalized intensities measured with the small and large pinholes are indicated 
+by the blue and green lines, respectively. The two axial response curves show that the intensity at the small pinhole decreased rapidly as the bead moved out of focus. On the other 
+hand, the signal decrease was much slower for the large pinhole. The ratio of the two curves 
+is shown by the red line, which illustrates the dependency of the axial position on the ratio of 
+the two axial response curves. These curves were  used as a standard to calculate the axial 
+position of a fluorescent emitter from the intensity ratio without axial scanning. 
+#190510 - $15.00 USD
+Received 14 May 2013; revised 12 Jul 2013; accepted 14 Jul 2013; published 18 Jul 2013
+(C) 2013 OSA
+29 July 2013 | Vol. 21,  No. 15 | DOI:10.1364/OE.21.017839 | OPTICS EXPRESS  17844Part of the intensity ratio curve (red line) ranging from 45 μm to 225 μm was fitted as 
+quintic polynomial to form a calibration curve, since the ratio and height have a relatively 
+linear relation. Thus, in this experime nt, the axial measurement range was 180 μm. 
+ 
+Fig. 4. Axial response curves. At each height, intensity was measured with 30 μm (blue) and 
+150 μm (green) pinholes. The intensity ratio of pinholes 1 and 2 is shown in red. Using the 
+intensity ratio curve, the axial position of  a fluorescent particle can be measured. 
+To evaluate the performance of DDCFM, the he ight of a fluorescent bead was measured 
+when the bead moved axially from the focal plane. The fluorescent sample was 6 μm 
+fluorescent beads spread sparsely on a glass s lide. The sample was attached to the PZT stage 
+to change the sample height. Two PMTs detected the fluorescence intensities as the beads moved. The ratio of two PMT signals was calculated, and the bead height was calculated 
+from the height measurement curve. 
+Figure 5 shows the axial movement of a bead. Figures 5(a) and 5(b) show linear and step 
+sample movements, respectively. The solid blue lines show the stage movement, and green 
+spots show the bead height measured by DDCFM . To accurately evaluate  the axial position, 
+the standard deviation (SD) of the difference between the stage height and measured height 
+was calculated. The SD was 7.42 μm for linear movement and 4.98 μm for step movement. 
+ 
+Fig. 5. Height variation measurement. The solid line represents the real PZT movement, and 
+closed circles are the measured axial positions of a bead. (a) Linear bead movement. (b) Step 
+bead movement. 
+#190510 - $15.00 USD
+Received 14 May 2013; revised 12 Jul 2013; accepted 14 Jul 2013; published 18 Jul 2013
+(C) 2013 OSA
+29 July 2013 | Vol. 21,  No. 15 | DOI:10.1364/OE.21.017839 | OPTICS EXPRESS  17845 
+Fig. 6. DDCFM measurement of a fluorescent sample comprising two levels of 6 μm 
+fluorescent beads separated by 105 μm. (a) Schematic of the sample. (b) 3-D surface image of 
+a step sample taken with confocal reflectance microscopy. (c,d) Fluorescence intensity images 
+of beads measured by the small and large pi nholes, respectively. (e) Normalized ratio of 
+intensity image. (f) Corresponding height image of beads. The beads on levels  and  are 
+separated by 105.6 μm on average. Scale bars: 100 μm. 
+To demonstrate the 3-D imaging capabilities of DDCFM, a 3-D sample was prepared then 
+imaged. The 3-D sample was made by placing fl uorescent beads at two different heights. An 
+aluminum block was machined in to a step shape, as shown in  Fig. 6(a). The difference in 
+level height was 105 μ m (Fig. 6(b)), as determined by commercial 3-D confocal microscopy 
+(NS-I3500, Nanoscopesystems, Korea). Fluorescent beads were sparsely spread on the block, 
+so that beads on level  were 105 μm higher than beads on level . 
+For DDCFM, the focus was scanned over a single 700 × 700 μm lateral plane. Height 
+information was collected in a single 2-D DDCFM scan. Figures 6(c) and 6(d) show the 2-D 
+images from the small and large pinhole, respectively. The resulting normalized ratio of 
+intensity, shown in Fig. 6(e), shows beads distributed on the two steps in the x-y plane. Since 
+the focal plane was close to level , the ratio for beads on level  was larger than that for 
+beads on level . The ratios of beads on each level were clearly different, while the beads on 
+the same level had similar ratios. From the intensity ratio image, the height of each emitter 
+was reconstructed over a wide transverse x-y field and is represented by color bar in Fig. 6(f). Mean bead heights on levels  and  were 122.3 μm and 16.7 μm, respectively. The mean 
+distance between the two levels was calculated to be 105.6 μm, which shows that DDCFM 
+accurately measures fluorescent sample heights.  The SD of the height measurement, which 
+represents the accuracy of DDCFM, was 6.5 μm on the left and 5.1 μ m on the right. 
+We tested whether DDCFM performs well with  samples of varying brightness. As shown 
+in Fig. 7(a), the sample comprised two kinds of fluorescent beads with different quantum 
+yields (I-14785 (100%) and (0.3%), Invitrogen , CA) on a glass slide. Although all beads were 
+on the same flat surface, the bead intensities differed due to different quantum yields (Figs. 7(b) and 7(c)). The bead heights could not be calculated by intensity measured with only one 
+PMT because of varying intensities. The intensity ratio, however, was not influenced by 
+quantum yield. As shown in Fig. 7(d), the inte nsity ratios were uniform regardless of quantum 
+yield. Based on these ratios, Fig. 7(e) shows the height map of beads that were uniformly 
+distributed with a SD of 8.86 μ m. These results show that DDCFM is able to precisely 
+measure the axial positions of fluorescent emitters with various quantum yields. 
+#190510 - $15.00 USD
+Received 14 May 2013; revised 12 Jul 2013; accepted 14 Jul 2013; published 18 Jul 2013
+(C) 2013 OSA
+29 July 2013 | Vol. 21,  No. 15 | DOI:10.1364/OE.21.017839 | OPTICS EXPRESS  17846 
+Fig. 7. DDCFM measurement of a fluorescent sample comprising 6 μm fluorescent beads with 
+two different quantum yields on a glass slide. (a) Schematic of a sample. (b,c) Fluorescence 
+intensity images of beads measured by th e small and large pinholes, respectively. (d) 
+Normalized intensity ratio image. (e) Corres ponding height image. De spite varying quantum 
+yields, bead heights were measured uniformly. Scale bars: 100 μm. 
+To demonstrate the potential of DDCFM to  image 3-D structures, 3-D image of a 
+fluorescent sample was obtained with a single 512 × 512 pixel raster scan without depth 
+scanning. The sample was knitted nylon fabric stained with fluorescein (fluorescein sodium salt, Sigma-Aldrich, MO). Figure 8 shows fluore scent images of the nylon fabric structure. 
+Figures. 8(a) and 8(b) are normalized intensity images of the nylon fabric in a 4000  ×  4000 
+× 180 μ m field of view taken with small and large pinhole, respectively. Large field of view 
+and large depth range was obtained using an objective lens with low NA (NA = 0.045). A median filter and an averaging filter with a size of 3 × 3 pixels were applied to the DDCFM 
+images to reduce the noise. Pixels having intensity below a certain threshold (0.05 × max intensity) were removed from calculation. After image pre-processing, intensity ratio was calculated then converted to height information. The corresponding 3-D reconstruction, 
+shown in Fig. 8(c), was colored according to sample height. Different height of nylon fibers 
+can be seen in the color-coded height map. 
+Also, we acquired a stack of 2-D images of th e same sample with a confocal microscopy 
+mode to directly compare th e DDCFM with conventional conf ocal microscopy. We acquired 
+a total of 181 sections with a confocal microscopy mode using the small pinhole, while moving the sample axially by 1 μm at each step. In order to reduce the width of axial response 
+curve, we used different objective lens with higher NA (NA = 0.16) (UPLSAPO 4x, 
+Olympus, Japan). Figure 8(d) shows two representative 2-D confocal images acquired with a 
+confocal microscopy mode. Due to higher NA an d larger magnification, the field of view was 
+reduced by half. 2-D confocal images with different depth clearly show different fabric structure. Height map was calcula ted from the stack of confocal  images by finding the axial 
+(z) position whose intensity was maximized at a given transverse (xy) position. Color-coded height map is shown in Fig. 8(e). We acquired DDCFM image with a reduced field of view using low NA objective lens (NA = 0.045) to directly compare the DDCFM with confocal 
+microscopy. Height map acquired by DDCFM without axial scanning is shown in Fig. 8(f). DDCFM (Fig. 8(f)) shows similar 3-D structure to confocal microscopy (Fig. 8(e)). Axial (xz) 
+intensity images of the sample, reconstructed from 2-D stack of confocal microscopy (Fig. 
+8(g)) and height profile of DDCFM (Fig. 8(h)) show similar pattern. 
+#190510 - $15.00 USD
+Received 14 May 2013; revised 12 Jul 2013; accepted 14 Jul 2013; published 18 Jul 2013
+(C) 2013 OSA
+29 July 2013 | Vol. 21,  No. 15 | DOI:10.1364/OE.21.017839 | OPTICS EXPRESS  17847 
+Fig. 8. DDCFM images of the 3-D structur e of knitted nylon fabric. (a,b) Fluorescence 
+intensity images of fabric with small and larg e pinhole, respectively. (c) Corresponding height 
+image of nylon fabric. (d) Representative images of 2D stack of confocal microscope mode. (e) 
+Reconstructed height map of nylon fabric by confocal mi croscope mode with high NA 
+objective (NA = 0.16). (f) Optically zoomed height  map of ROI (white dashed square) in (c) 
+by DDCFM with low NA objective (NA = 0.045). (g) xz cross-section (1800 × 180 μm) of 
+white dashed line in (e). (h) xz cross-section (1800 × 180 μm) of white dashed  line in (f) with 
+SD of 10 μm. Color bars in (d),(g), and (h) show normalized intensity. Scale bars, 1mm. 
+5. Conclusion 
+In conclusion, we have presented the dual detection confocal fluorescence microscopy 
+method to detect the axial position of fluores cent particles with a single shot. Two point 
+detectors with different pinhol e sizes receive simultaneous fl uorescent signals, which depend 
+on the pinhole size and axial position of the fl uorescent particle. The intensity ratio can be 
+used to precisely measure the axial position where the fluorescence is emitted. DDCFM can 
+provide depth information of a fluorescent sample  at high speed because no mechanical depth 
+scanning is needed. Since this method measures a depth location of fluorophore, not a full depth profile, if there is more than one fluorop hore along the axial (z) direction at a transverse 
+(xy) position, the depth measurement might be inaccurate. In this case, we anticipate that 
+DDCFM measures the top position of the multiple fluorophores, since the closest fluorescent 
+particle contributes most to the intensity ratio. Thus, the presented method works well for 
+sparse fluorescent samples and surface profile, while it might have some errors for measuring 
+dense samples with multilayer structure. Our results show that DDCFM is capable of 
+visualizing fluorescent 3-D object with a r easonably complex structure as well as single 
+fluorescent bead. Since DDCFM does not use repeated 2-D scans to create a 3-D 
+reconstruction, photobleaching and phototoxicity can be greatly reduced compared to conventional laser scanning confocal fluorescence microscopy. Also, DDCFM has great 
+potential to be miniaturized for a compact, endoscopic, 3-D fluore scence imaging probe. 
+Acknowledgments 
+This work was supported by a National Research Foundation of Korea (NRF) grant funded by 
+the Korean government (MEST) (No. NRF-2009-0092825 and 2012R1A1A1041203). 
+#190510 - $15.00 USD
+Received 14 May 2013; revised 12 Jul 2013; accepted 14 Jul 2013; published 18 Jul 2013
+(C) 2013 OSA
+29 July 2013 | Vol. 21,  No. 15 | DOI:10.1364/OE.21.017839 | OPTICS EXPRESS  17848

@@ -1,0 +1,168 @@
+Review
+Bubble-induced turbulence modeling for vertical bubbly ﬂows
+Avinash Vaidheeswarana,⇑, Takashi Hibikib
+aNational Energy Technology Laboratory, 3610 Collins Ferry Rd, Morgantown, WV 26505-2353, United States
+bSchool of Nuclear Engineering, Purdue University, 400 Central Drive, West Lafayette, IN 47907-2017, United States
+article info
+Article history:
+Received 15 June 2017Received in revised form 19 August 2017Accepted 21 August 2017
+Keywords:
+Bubble-induced turbulence
+Two-ﬂuid model
+Bubbly ﬂowsLESRANSabstract
+Eulerian two-ﬂuid model (TFM) has been the workhorse for several applications involving vertical bubbly
+ﬂows due to its computational efﬁciency especially when applied to large-scale systems. The constituent
+phases are treated as interpenetrating continuous media, and the stress terms are usually modeled using
+Large Eddy Simulation (LES) and Reynolds Averaged Navier Stokes (RANS) approaches. Turbulence in theliquid phase plays an important role in determining the void fraction distribution. Besides, turbulence
+parameters are used in the closure models for interfacial terms which would determine heat and mass
+transfer or species composition in a given system. Hence, it is necessary to model the turbulence ﬁeldaccurately. LES-TFM approach has produced reasonably accurate results, albeit the sub-grid scale model-
+ing of interfacial terms remains to be validated. There is a lack of a universal approach to model turbulent
+bubbly ﬂows using RANS-TFM, and the research in developing the transport equations and closure termsis extensive. At present, the choice of one model over the other is mostly ad hoc, and a systematic analysisis required to determine their applicability. In the current review, the different BIT models and their
+applications have been summarized. Further, some of the shortcomings in the existing approaches are
+identiﬁed and recommendations for future work are made based on the analysis.
+/C2112017 Elsevier Ltd. All rights reserved.
+Contents
+1. Introduction . . . ...................................................................................................... 7 4 1
+2. BIT modeling strategies . . . . . . . . . . . . . ................................................................................... 7 4 2
+2.1. Algebraic models . . . . . . . ......................................................................................... 7 4 3
+2.2. One-equation models . . . ......................................................................................... 7 4 4
+2.3. Two-equation models . . . ......................................................................................... 7 4 4
+2.4. Reynolds stress models. . ......................................................................................... 7 4 9
+3. Conclusions. . . . ...................................................................................................... 7 4 9
+4. Recommendations for future work . . . . ................................................................................... 7 4 9
+Conflict of interest. . . . . . . . . . . . . ....................................................................................... 7 5 0
+References . . . . ...................................................................................................... 7 5 0
+1. Introduction
+Turbulent bubbly ﬂows are ubiquitous in engineering applica-
+tions including chemical reactors, bioreactors, nuclear reactors,
+heat exchangers, and oil and gas pipelines. It is known from the
+experiments [1–7] that the liquid velocity proﬁles vary in verticalbubbly two-phase ﬂows depending on the morphology of bubbles
+and ﬂow conditions. For ﬁnely dispersed ﬂows at low superﬁcial
+gas velocities, the bubbles migrate to the wall [4,8,9] resulting in
+a steeper velocity gradient in the near-wall region. At higher gas
+concentrations, as larger bubbles are formed from coalescence,
+they migrate towards the center, and the velocity proﬁle would
+resemble that of single phase ﬂows. There is a strong inter-
+dependence between void fraction, liquid velocity, and turbulence
+ﬁeld, which eventually determine the heat and mass transfer char-
+http://dx.doi.org/10.1016/j.ijheatmasstransfer.2017.08.075
+0017-9310/ /C2112017 Elsevier Ltd. All rights reserved.⇑Corresponding author.
+E-mail address: avinash.vaidheeswaran@gmail.com (A. Vaidheeswaran).International Journal of Heat and Mass Transfer 115 (2017) 741–752
+Contents lists available at ScienceDirect
+International Journal of Heat and Mass Transfer
+journal homepage: www.else vier.com/locate/ijhmt
+acteristics for systems with phase change, and species composition
+for chemically reacting ﬂows. Hence, it is important to predict the
+turbulence ﬁeld accurately.
+Turbulence modeling approaches in single-phase ﬂows can be
+classiﬁed under scale resolving simulation (SRS) (which includes
+Large Eddy Simulation (LES), Detached Eddy Simulation (DES),
+and Partially Averaged Navier-Stokes method (PANS)), and Rey-
+nolds Averaged Navier-Stokes equations (RANS). Besides DES,
+there have been some developments in hybrid turbulence model-
+ing approach using Limited Numerical Scales (LNS) method of Bat-
+ten et al. [10], and Scale Adaptive Simulation (SAS) method of
+Menter and Egorov [11]. The choice among them is often made
+depending on the desired resolution and the scale of application.
+Some of the methodologies have been extended to dispersed bub-
+bly ﬂows as summarized in Table 1 . The recently developed
+approaches including PANS [12], LNS [10], and SAS [11] are primar-
+ily restricted to single-phase ﬂows and offer considerable potential
+for multi-phase ﬂow systems.
+Direct Numerical Simulation (DNS) would provide the highest
+resolution of the ﬂow ﬁeld around bubbles and has no dependence
+on modeling. However, the computational cost scales considerably
+with the Reynolds number, and hence cannot be adopted for indus-
+trial scale applications. One of the alternatives is to use Large Eddy
+Simulation (LES) which is capable of resolving the dynamically sig-
+niﬁcant scales of motion. It is well-suited to handle a wider range
+of turbulent ﬂows, and is less dependent on modeling compared to
+Reynolds Averaged Navier-Stokes (RANS) approach. The ﬁltered
+phasic equations [20] (referred to as LES-TFM henceforth) obtained
+using ﬁrst principles are similar to the two-ﬂuid model (TFM)
+equations obtained by time-averaging [54], volume-averaging
+[55] or ensemble averaging [56]. It is common to impose a restric-
+tion on the ﬁlter length scale [57] based on the bubble size whileusing the LES-TFM, and the recommended value is D=Db¼1:5.
+Recently, Vaidheeswaran and Lopez de Bertodano [58] have
+obtained convergent predictions going well below this cut-off
+limit, which is inevitable when the computational domain imposes
+restrictions on the grid size. However, ﬁltering of inter-phase
+momentum transfer terms remains open-ended.
+TFM using RANS modeling (referred to as RANS-TFM hence-
+forth) has been the most widely used approach for large scale
+applications even though it has a greater dependence on closure
+relations. It is worth pointing out that work including Buwa et al.
+[59] and Moraveji et al. [60] do not include the interfacial contribu-
+tions to liquid phase turbulence and consider the single phase k-e
+model [39] to be adequate. Even though the results obtained were
+satisfactory, neglecting BIT does not appear consistent with the
+physics of vertical bubbly ﬂows.
+The objective of the current review is to discuss the develop-
+ment and application of BIT models for vertical bubbly ﬂows. The
+literature reported in this article is restricted to predicting
+turbulence in continuous phase. The dispersed phase turbulence
+is usually neglected since it is observed to scale with the
+continuous phase turbulence proportional to the density ratio
+rq¼q2=q1([1–3] ), and for gas-liquid ﬂows, rq/C281. Some of the
+shortcomings of the existing approaches have been identiﬁed and
+recommendations are provided to improve the state-of-the-art in
+BIT modeling.
+2. BIT modeling strategies
+The Eulerian TFM consists of continuity, momentum and energy
+equations for the constituent phases. The readers may refer to Ishii
+and Hibiki [9]for details regarding the TFM and constitutive rela-Nomenclature
+Latin
+ai interfacial area concentration [m/C01]
+CD coefﬁcient of drag [–]
+CVM coefﬁcient of virtual mass [–]
+Db bubble diameter [m]
+g acceleration due to gravity [m s/C02]
+I identity tensor
+j volumetric ﬂux [m s/C01]
+k turbulence kinetic energy [m2s/C02]
+MD
+2i momentum transfer due to drag [kg m2s/C02]
+MVM
+2i momentum transfer due to virtual mass [kg m2s/C02]
+P rate of turbulence production [kg m/C01s/C03]
+p pressure [N m/C02]
+Q volumetric ﬂow rate [m3s]
+rq density ratio [–]
+Re Reynolds number[–]
+Ski rate of interfacial turbulence kinetic energy production
+[kg m/C01s/C03]
+Sei rate of interfacial turbulence kinetic energy dissipation
+[kg m/C01s/C03]
+u velocity [m s/C01]
+u+non-dimensional velocity [–]
+u⁄ friction velocity [m s/C01]
+y+non-dimensional distance from the wall [–]
+Greek
+a volume fraction [–]
+e turbulence eddy dissipation [m2s/C03]
+m kinematic viscosity [m2s/C01]
+l dynamic viscosity [kg m/C01s/C01]q density [kg m/C03]
+s shear stress [kg m/C01s/C02]
+x turbulence eddy dissipation frequency [s/C01]
+Subscripts
+1,l liquid phase
+2,g,b vapour phase
+BI bubble-induced
+D drag
+i interfacial
+r relative
+t turbulent
+VM virtual mass
+Abbreviations
+TFM two-ﬂuid modelBIT bubble-induced turbulence
+CFD computational ﬂuid dynamics
+DES detached eddy simulationDNS direct numerical simulation
+IATE interfacial area transport equation
+LES large-eddy simulationLNS limited numerical scalesPANS partially-averaged Navier-Stokes
+RANS Reynolds-averaged Navier-Stokes
+RSM Reynolds stress modelSAS scale adaptive simulationSRS scale resolving simulation
+SST shear-stress transport742 A. Vaidheeswaran, T. Hibiki / International Journal of Heat and Mass Transfer 115 (2017) 741–752Download English Version:
+https://daneshyari.com/en/article/4993945
+Download Persian Version:
+https://daneshyari.com/article/4993945
+Daneshyari.com

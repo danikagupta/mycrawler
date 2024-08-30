@@ -1,0 +1,1556 @@
+^'"^ °'-^o,
+/
+12f^^1>
+IT
+JNBSTECHNICAL NOTE1122
+'"f£AV of
+U.S.DEPARTMENT OFCOMMERCE/ National Bureau ofStandards
+Summary ofOn-Line orInteractive
+Physico-Chemical Numerical
+DataSystems
+iO
+.753
+.1122
+180
+2
+NATIONAL BUREAU OFSTANDARDS
+TheNational Bureau ofStandards' wasestablished byanactotCongress onMarch 3,1901.
+TheBureau's overall goal istostrengthen andadvance theNation's science andtechnology
+and facilitate their effective application forpublic benefit. Tothisend, theBureau conducts
+research andprovides: (1)abasis fortheNation's physical measurement system, (2)scientific
+andtechnological services forindustry andgovernment, (3)atechnical basis forequity in
+trade, and (4)technical services topromote public safety. TheBureau's technical work isper-
+formed bytheNational Measurement Laboratory, theNational Engineering Laboratory, and
+theInstitute forComputer Sciences andTechnology.
+THENATIONAL MEASUREMENT LABORATORY provides thenational system of
+physical andchemical andmaterials measurement; coordinates thesystem withmeasurement
+systems ofother nations andfurnishes essential services leading toaccurate anduniform
+physical andchemical measurement throughout theNation's scientific community, industry,
+andcommerce; conducts materials research leading toimproved methods ofmeasurement,
+standards, anddataontheproperties ofmaterials needed byindustry, commerce, educational
+institutions, andGovernment; provides advisory andresearch services tootherGovernment
+agencies; develops, produces, and distributes Standard Reference Materials; andprovides
+calibration services. TheLaboratory consists ofthefollowing centers:
+Absolute Physical Quantities^ —Radiation Research—Thermodynamics and
+Molecular Science—Analytical Chemistry—Materials Science.
+THENATIONAL ENGINEERING LABORATORY provides technology andtechnical ser-
+vices tothepublic and private sectors toaddress national needs and tosolve national
+problems; conducts research inengineering andapplied science insupport ofthese efforts;
+builds andmaintains competence inthenecessary disciplines required tocarry out this
+research and technical service; develops engineering dataandmeasurement capabilities;
+provides engineering measurement traceability services; develops testmethods andproposes
+engineering standards andcode changes; develops andproposes newengineering practices;
+anddevelops andimproves mechanisms totransfer results ofitsresearch totheultimate user.
+TheLaboratory consists ofthefollowing centers:
+Applied Mathematics —Electronics and Electrical Engineering- —Mechanical
+Engineering andProcess Technology- —Building Technology —FireResearch—
+Consumer Product Technology —Field Methods.
+THEINSTITUTE FORCOMPUTER SCIENCES ANDTECHNOLOGY conducts
+research andprovides scientific andtechnical services toaidFederal agencies intheselection,
+acquisition, application, and useofcomputer technology toimprove effectiveness and
+economy inGovernment operations inaccordance with Public Law89-306 (40U.S.C. 759),
+relevant Executive Orders, andother directives; carries out thismission bymanaging the
+Federal Information Processing Standards Program, developing Federal ADP standards
+guidelines, andmanaging Federal participation inADP voluntary standardization activities;
+'provides scientific andtechnological advisory services andassistance toFederal agencies; and
+provides thetechnical foundation forcomputer-related policies oftheFederal Government.
+The Institute consists ofthefollowing centers:
+Programming Science andTechnology —Computer Systems Engineering.
+'Headquarters andLaboratories atGaithersburg, MD, unless otherwise noted;
+mailing address Washington, DC 20234.
+'Some divisions within thecenter arelocated atBoulder, CO 80303.
+RATIONAL SUmiAV
+oreVAMDABDS
+UBRAST
+Summary ofOn-Line orInteractiveZll^'Zc
+Physico-Chemical Numerical ol/^r^
+DataSystems ^usisi— /lo.//p->
+Joseph Hilsenrath
+Office ofStandard Reference Data
+National Measurement Laboratory
+National Bureau ofStandards
+Washington, DC20234
+h
+U.S.DEPARTMENT OFCOMMERCE, Philip M.Klutznick, Secretary
+Luther H.Hodges, Jr.,Deputy Secretary
+Jordan J.Baruch, Assistant Secretary forProductivity, Technology andInnovation
+NATIONAL BUREAU OFSTANDARDS, Ernest Ambler, Director
+Issued October 1980
+National Bureau ofStandards Technical Note 1122
+Nat. Bur.Stand. (U.S.). Tech. Note 1122. 24pages (Oct. 1980)
+CODEN: NBTNAE
+U.S.GOVERNMENT PRINTING OFFICE
+WASHINGTON: 1980
+For salebytheSuperintendent ofDocuments. U.S.Government Printing OfUce
+Washington. DC20402 Price $1.75
+(Add 25percent forother than U.S. mailing)
+Contents
+Page
+1.Introduction 1
+2.Physico-Chemical Numerical DataSystems , 1
+3.International Access toNumerical DataSystems 2
+4.Comments onTables AThrough F 2
+5.General References 3
+6.Specific References 3
+Table 1.Availability byCountries ofNetworks andData Bases 6
+Table A.Systems forIdentification ofUnknown Substances 8
+Table B.Systems forProperties ofPure Substances andMixtures 11
+Table C.Systems forMetallurgical Calculations 13
+Table D.Systems forTables ofThermodynamic andThermochemical
+Properties ofIndividual Substances 14
+Table E.Properties ofPlastics etc. 14
+Table F.Systems forChemical Process Simulation andDesign 15
+Appendix A.TheASPEN Computer Program Survey 17
+Appendix B.NIH-EPA Chemical Information System 18
+Appendix C.Computer Programs forHandling Technical Data/
+NBSMagnetic Tape Series 20
+ni
+Summary ofOn-Line orInteractive Physico-Chemical
+Numerical Data Systems
+Joseph Hilsenrath*
+National Bureau ofStandards, Washington, D.C.20234
+Abrief description isgiven of53interactive physico-chemical numerical data systems, most ofwhich
+areon-line oninternational computer networks. Thesystems are listed under fiveheadings: those
+useful foridentification ofsubstances from spectroscopic data; those providing thermodynamic and
+transport properties ofpurecomponents andmixtures; those which perform metallurgical calculations
+anddraw phase diagrams; systems producing complete tables ofthermodynamic properties ofindividual
+substances; andthose forchemical process simulation, optimization, anddesign. References topublished
+descriptions ofthesystems, where they exist, arealsogiven.
+Keywords: Chemical data; databanks; data bases; datanetworks; interactive systems; numerical data
+bases; on-line data; physical data; spectroscopic datasystems.
+1.Introduction
+Thedevelopment ofmulti-user computer hardware andoperating systems and associated
+national and international communications networks hasmade ittechnically andeconomically
+possible toprovide users with on-line access toawide variety ofdatasystems.
+Aside from bibliographic information, thedata bases that arenowonstream practically
+around-the-clock include: marketing, economic, actuarial, financial, and regulatory data;
+demographic andother census statistics; andweather, ecological, geological, geographical, and
+other Earth data.
+Two oftheleading U.S.value-added networks—GTE Telenet andTymnet—offermore than
+250data bases. Nearly halfofthese areavailable onbothnetworks.
+These databases havebeen cataloged byanumber oforganizations, andmost recently bythe
+American Society forInformation Science (ref. 1).There isagrowing demand foraconvenient
+listing ofon-line physical andchemical numerical data systems. Thissummary hasbeen prepared
+inresponse tothis interest.
+2.Physico-Chemical Numerical Data Systems
+The53computerized numerical datasystems included inthissummary havebeen grouped
+into6largely mutually exclusive categories. They arelisted intablesAthrough Fasfollows:
+TableAlists17systems useful foridentification ofunknown compounds viaIR,UV,NMR,
+andmass spectra aswellascrystallographic data.
+Table Blists14systems toretrieve, compute, orestimate thermodynamic andtransport
+properties ofpurecompounds ormixtures.
+TableClists fivesystems formetallurgical calculations andgeneration ofthese diagrams.
+TableDlists four systems tocompute complete tables ofthermodynamic properties of
+technically important fluids.
+'Guest Worker, Office ofStandard Reference Data, National Measurement Laboratory.
+1
+TableEliststwosystems forphysical properties ofplastics including interaction ofpolymers
+with propellants andother energetic materials.
+Table Flists11systems forchemical process simulation, optimization, and design. See
+Appendix Aforadiscussion oftheASPEN survey ofcomputer programs forchemists.
+Thesystems ingroupAarebased onrelatively large data bases with10,000 to150,000
+compounds. They areusually restricted toasingle type ofdata, although three ofthesystems
+listed (A5,A13, A16) combine anumber oftypes ofdata inthesame system. Thesystems in
+groups B,C,andEcontain data orparameters forestimating hundreds rather thanthousands of
+compounds. Those ingroup Dprovide detailed tables ofthermal properties asafunction of
+temperature andpressure forasingle substance, such asammonia (D2); forasmall group of
+substances, such ascryogenic fluids (Dl); orforatmospheric gases (D4).
+Anumber ofreferences aretoproceedings ofCODATA conferences. TheCommittee onData
+forScience andTechnology (CODATA) wasorganized in1967 bytheInternational Council of
+Scientific Unions (ICSU) to"work onaninter-disciplinary basis toimprove thequality, reliability,
+and accessibility ofdata ofimportance toscience andtechnology." The activities ofCODATA and
+itsTaskGroups were discussed inapaper byN.Kurti (ref. 2).
+TheNational Bureau ofStandards and anumber ofother Government agencies including
+NASA, DOE, NIH, andEPA collect, evaluate, anddisseminate compendia ofphysico-chemical
+data.Many ofthese werecomputer produced, andareoften available onmagnetic tape aswell as
+inpublished form. They areprime candidates forinclusion inon-line orbatch mode retrieval
+systems. Itisbeyond thescope ofthisreport tolistthedata collections available incomputer-
+readable form.Auseful, though incomplete, listofnumerical databasesnowunder development
+canbefound inanarticle byF.U.Wetzler (ref. 3),"Data Banks forRandD."TheNBS Office of
+Standard Reference Data sells orleases anumber ofdata tapes listed inAppendix Creprinted
+from thecurrent listofpublications (ref. 4)oftheNational Standard Reference Data System.
+3.International Access toNumerical Data Systems
+IntheUnited States most networks canbereached bylocal telephone call in200 ormore
+cities. Such "toll-free," actually, distance-independent network, access isnow also possible ina
+dozen orsocountries. Alisting ofavailable networks andassociated communications charges in
+European countries canbefound inareport (ref. 5)byA.Tomberg oftheEuropean Association
+ofScientific Information Dissemination Centres (EUSIDIC).
+Table 1shows countries able toaccess thenumerical datasystems, listed here aswell asfive
+ofthemajor U.S. networks. Ofthe39countries listed, allbut4canaccess oneojmore ofthese
+networks. Both oftheU.S.value-added netivorks—GTE Telenet andTymnet—canbeaccessed in
+25ofthecountries listed. Twelve ofthese countries areser\'ed byatleast fourU.S.networks, and
+insome cases byoneormore localnetworks aswell.
+4.Comments onTables AThrough F
+Sixofthesystems listed inTableAarepartoftheNIH-EPA Chemical Information System
+(CIS). These areavailable from thesame vendor onaninternational network (TELENET) andare
+integrated viathechemical registry^ number with eight other CISsystems (SANSS, OHM-TADS,
+RTECS, MLAB, CAMSEQ II,CTCP, GINA, andtheFederal Register Notices). Abrief description
+ofthese systems iscontained inAppendix B.Fuller accounts aretobefound inaseries ofpapers
+byS.R.Heller andassociates (refs. 6-8,A8.1-A8.3, AlO.l, A10.2).
+TheELIZA program listed asA13 differs from theothers inthat itcombines information on
+IR,UV,NMR, andmass spectra with anumber ofchemical properties inasingle system for
+identifying organic compounds. Itwasdesigned foruseinteaching analvtical chemistr}\ andthe
+database includes compounds normally found incollege anduniversitv laboratories.
+Zupan and colleagues attheBoris Kidric Chemical Institute inYugoslavia have also
+implemented asystem (A16) which combines IR,NMR, andmass spectra. Asimilar system
+(A5) hasbeen inoperation foradecade orsoattheSiberian Institute ofOrganic Chemistry in
+Novosibirsk.
+The x-ray crystallographic search system (All) merits special notice. Thedata baseupon
+which itdepends originated withand iskept current bytheCrystallographic Data Centre at
+Cambridge University. TheCambridge crystallographic data base contains atomic coordinates,
+bond angle, etc., aswell ascellparameters andreferences for25,000 organic compounds. This
+system hasbeen leased toaccredited information centers andresearch laboratories in18countries,
+though few yethave them on-line. Table 1shows which countries operate accredited
+crystallographic data centers.
+Thesystems Bl,B2,andB7have acommon characteristic. Each wasdeveloped with joint
+industrial andgovernmental cooperation and support under thesupervision ofthe local
+engineering society which isactively engaged initspromotion andmarketing.
+Inthearea ofmetallurgy there isanevenmore interesting cooperative program which
+crosses national borders. Systems C2,C4,andC5arenational implementations ofthefruits ofan
+international collaboration between English, French, German, andSwedish metallurgists working
+together under asemi-formal group called Scientific Group Thermodata Europe (SGTE). The
+secretariat forthegroup islocated attheNational Physical Laboratory atTeddington, England.
+5.General References
+1.M.E.Williams, Computer Readable Data Bases.ADirectory andDataSourcebook, American Society forInformation
+Science, October 1979.
+2.N.Kurti, Capture, Evaluation andStorage ofData—AsSeen byCODATA, Pure&Appl. Chem. 49,1793-1796
+(1977).
+3.F.U.Wetzler, DataBanks forRandD,Research /Development, pp.54—64, June 1977.
+4.Anonymous, National Standard Reference DataSystem Publication List,1964—1979, (LP81), U.S. National Bureau of
+Standards.
+5.A.Tomberg, On-Line Retrieval Systems andNetworks, Pure&Appl. Chem. 49,1871-1887 (1977).
+6.C.L.Fisk, G.W.A.Milne, and S.R.Heller, TheStatus ofInfrared Data Bases, Journ. ofChromatographic Science
+17,441-444 (1979).
+7.H.J.Bernstein and L.C.Andrews, TheNIH/EPA Chemical Information System, Database 2,(1979).
+8.S.R.Heller andG.W.A.Milne, TheNIH/EPA Chemical Information System, Environmental Science and
+Technology 13,798-803 (1979).
+9.J.N.Peterson, C.C.Chen, and L.B.Evans, Computer Programs forChemists Part 1,Chem. Eng.85,145-154
+(1978).
+10. ibid.. Part 2,pp.69-82.
+11. ibid.. Part 3,pp.79-86.
+12. ibid.. Part 4,pp.107-115.
+13.C.C.Chen and L.B.Evans, MoreComputer Programs forChemical Engineers, Chem. Eng.86,167-172 (1979).
+6.Specific References
+Al.l D.8.Eriey, FastSearching System fortheASTM Infrared Data File, Anal. Chem. 40,894-898 (1968).
+A1.2 D.S.Erley,AQuantitative Evaluation ofSeveral Infrared Searching Systems, Applied Spectroscopy 25,200-202
+(1971).
+A3.1 M.M.Noone, AComputerized Method forRapid Comparison andRetrieval ofInfrared Spectral Data. Chapter 8in
+Modern Methods ofSteroid Analysis, pp.221-230 (Academic Press, 1973).
+A4.1. E.M.Kirby, R.N.Jones, andD.G.Cameron, SPIR— ASearch Program forSpectra, CODATA Bulletin 21,pp.
+18-25 (1976).
+A4.2 R.N.Jones, DataBanking forScience andTechnology, Chemistry inCanada 24,23-27 (1972).
+A5.1 V.A.Koptyug andY.P.Drobyshev, Computerized Molecular Spectroscopy Data Handline intheNovosibirsk
+Scientific Centre. Proceedings oftheThird International CODATA Conference, LeCreusot, France, June26-29,
+1972, pp.67-70.
+A5.3 V.A.Koptyug, Scientific Information Center ofMolecular Spectroscopy intheSiberian Branch oftheAcademy of
+Sciences oftheU.S.S.R., Proceedings oftheFourth International CODATA Conference atTsakhcadzor, U.S.S.R.,
+June24-27, 1974, pp.100-103.
+A6.1 G.G.Johnson, Jr..andV.Vand, Computerized Powder Diffraction Identification System, Ind.Eng.Chem. 59,9-31
+(1967).
+A6.2 G.G.Johnson, Jr.,Revised X-Ray Powder Diffraction Technique, Ind.Eng.Chem. 61,79(1969).
+A7.1 Anonymous, The Joint Committee onPowder Diffraction Standards—AnInternational Data Source, Journal of
+Testing andEvaluation (ASTM), 2,26-27 (1979).
+A7.2 R.Jenkins, Qualitative Analysis With theJ.C.P.D.S. Powder File, Paper No.CHINF— 34presented attheACS
+national meeting inWashington, D.C. (1979).
+A8.1 S.R.Heller, Conversational Mass Spectral Retrieval System and ItsUseassnAid inStructure Determination, Anal.
+Chem. 44,1951-1961 (1972).
+A8.2 S.R.Heller etal.,AConversational Mass Spectral Search System IV.TheEvolution ofaSystem fortheRetrieval of
+Mass Spectral Information, J.Chem. Doc.13,130-133 (1973).
+A8.3 S.R.Heller etal..Progress oftheMSDC-NIH-EPA Mass Spectral Search System, Adv. Mass. Spec. 7B,985-988
+(1978).
+A9.1 F.W.McLafferty etal.,Probability Based Matching ofMass Spectra. Rapid Identification ofSpecific Compounds
+andMixtures, Org.Mass Spectrom. 9,p.690(1974).
+A9.2 K.S.Kwok etal..Computer-Aided Interpretation ofMass Spectra III.ASelf-Teaching Interpretive andRetrieval
+System, J.Am.Chem. Soc.95,4185 (1973).
+A9.3.F. W.Karasek and J.Michnowicz, Using Interpretive Search System, Research/Development, pp.38-44 (1976).
+AlO.l G.W.A.Milne etal.,ASubstructure Oriented 13-CNMR Chemical Shift Retrieval System, Anal. Chim. Acta103,
+141(1978).
+A10.2 D.L.Dalrymple etal.,ACarbon-13 Nuclear Magnetic Resonance Spectral Data Base andSearch System, Org.
+Mag. Res.11,535(1978).
+All.l F.H.Allen etal.,Cambridge Crystallographic Data Centre. II.Structural Data File, J.Chem. Doc. 13,119-123
+(1973).
+A11.2 F.H.Allen etal.,Cambridge Crystallographic Data Centre. IV.Preparation ofInteratomic Distances 1960-1965, J.
+Chem. Doc.13,211-219 (1973).
+A11.3 0.Kennard, Computer Based Systems fortheRetrieval ofData: Crystallography, Pure andAppl. Chem. 49,
+1807-1816(1977).
+A12.1 J.D.H.Donnary etal..Crystal Data Determinative Tables Third Edition, Volume 1.Organic Compounds, Joint
+Committee onPowder Diffraction Standards (1973).
+A12.2 0.Kennard, Crystal Data Determinative Tables Third Edition, Volume 3,Organic Compounds 1967-1974, Joint
+Committee onPowder Diffraction Standards (1978).
+A12.3 H.M.Ondik andA.D.Mighell, Crystal Data Determinative Tables, Third Edition, Volume 4,Inorganic
+Compounds 1967-1969, JointCommittee onPowder Diffraction Standards (1978).
+A13.1 R.R.Reeder and J.P.Ranck, ELIZA—AChemical Information System forUndergraduates, Proceedings ofthe
+Seventh Conference onComputers intheUndergraduate Curriculum (CCUC/7), Computer Center, State University
+ofNewYork atBinghamton, NY.
+A14.1 T.Shimanouchi, Two Projects ontheEvolution andCompilation ofScientific Data inJapan, Proceedings ofthe
+Fifth International CODATA Conference, Boulder, CO,pp.41-48 (1976).
+A14.2 T.Shimanouchi andT.Yamamoto, Crystallographic Data Services inJapan, ibid.
+A15.1 J.E.Dubois, French National Policy forChemical Information andtheDARC System asaPotential Tool ofThis
+Policy, J.Chem. Doc.13,8-14 (1973).
+A16.1 J.Zupan etal..Combined Retrieval System forInfrared, Mass, andCarbon-13 Magnetic Resonance Spectra, Anal.
+Chem. 49,2141-2146 (1977).
+A16.2 J.Zupan etal..Minicomputer Oriented Chemical Information System, Analytical Letters 12(A2),109-114 (1979).
+A17.1 K.N.Hartman etal.,ACompendium ofGasPhase Basicity andProton Affinity Measurements, Nat. Bur. Stand.
+(U.S.)NBSIR 79-1777 (July 1979).
+B2.1 M.G.O'Reilly, DataBanks—Estimation Compilation andRetrieval ofPhysical, Technical andEconomic Data, a
+paper delivered atCHEMD.\TA "77,June9-10, 1977, Esproo, Finland.
+B2.2 B.Edmonds, Meeting theInformation Needs oftheProcess Industries, Institution ofChemical Engineers, N.W.
+Branch, Symposium Papers 1979.
+B3.1 J.A.deLeeuw denBouter andA.M.P.Tans, Storage andRetrieval ofPhysical Property Data inTISDATA,
+Proceedings CHEMDATA '77,June9-10, 1977, Esproo, Finland.
+B4.1 K.K.Neumann andG.Ostertag. ZumAufbau vonComputergestutzten Systemen zurGemischdatenversorgung, Ber.
+derBunsen-Gesellschaft 81,1027-1033 (1977).
+B4.1 K.K.Neumann and G.Ostertag, Computerized System toProvide Thermophvsical Properties ofMixtures,
+International Chemical Engineering 20,1-5(Jan. 1980).
+B4.3 K.K.Neumann andG.Ostertag, Computers Meet Engineers' Demand forPhysical Properties, German Chemical
+Engineering 1,73-78 (1978).
+B5.1 Y.Yoneda, AProposal ofanEstimation and Retrieval System ERDICO forPhysical Properties ofOrganic
+Compounds byChemo Input, Information Chemistry Computer— Assisted Chemical Research andDesign, pp.
+239-253 (Univ. ofTokyo Press, 1975).
+B7.1 R.Eckermann, TheDECHEMA Thermophysical Property DataBank and Service, Proceedings oftheWorld
+Congress ofChemical Engineers Meeting, Amsterdam 1976.
+87.2 H.Knapp, Centralized Service forThermophysical Data inGermany—DSD:Dechema Data Service, Proceedings of
+the1stInternational Conference onPhase Equilibria andFluid Properties intheChemical Industry, (Jan. 1977), in
+T.S.Storvick, S.I.Sandler (ed.): Phase Equilibria andFluid Properties intheChemical Industry, ACSSymposium
+Series No.60,pp.459-467, American Chemical Society, Washington, DC,1977.
+88. 18.D.Smith, TheTRL Correlation Package andtheRelated Thermodynamic DataBanks—Mixture Data, apaper
+presented atthe87th National Meeting oftheAlChE, August, pp.10-22.
+B9. 1C.N.B.Martin, Using aComprehensive Physical Property Estimation System, TheChemical Engineer 241,
+285-288 (1970).
+B9.2 E.N.B.Martin, AComplete Physical Property Data System, International Chemical Engineers Symposium Series
+No.35,pp.27-29 (1972).
+Bll.l W.H.Seaton, E.Freedman, D.N.Treweek, CHEETA—TheASTM Chemical Thermodynamic andEnergy Release
+Evaluation Program, ASTM Report D851 (1974), American Society forTesting andMaterials.
+Cl.l L.Kaufman andH.Nesser, Systems forStorage andRetrieval ofThermochemical DataandCalculation ofPhase
+Diagrams-1, Computer Simulation forMaterial Application—Nuclear Metallurgy, R.J.Arsenault etal.,eds. Vol. 1,
+pp.63-74.
+C2.1 J.F.Counsell andG.P.Jones, Metallurgical andInorganic Data Bank: Instructions forUse,DCSNote21(1974),
+National Physical Laboratory, Teddington, England.
+C3.1 A.D.Pelton, C.W.Bale, andW.T.Thompson, Facility fortheAnalysis ofChemical Thermodynamics (F*A*C*T)—
+AComputerized Canadian Thermodynamic DataTreatment Centre, Applications ofPhase Diagrams inMetallurgy
+andCeramics, Nat. Bur.Stand. (U.S.) Spec. Pub.496, pp.1077-1079 (March 1978).
+Dl.l R.D.McCarty, Interactive FORTRAN IVComputer Programs fortheThermodynamic andTransport Properties of
+Selected Cryogens (FLUIDS PACK), Nat. Bur.Stand. (U.S.), Tech. Note 1025 (1980).
+D2.1 L.Haarand J.Gallagher, TheEquation ofState ofAmmonia, Nat. Bur.Stand. (U.S.)NBSIR 77-1409 (Dec. 1977).
+D2.2 L.Haar and J.Gallagher, AnInteractive FORTRAN Program forThermodynamic Properties ofAmmonia, Nat. Bur.
+Stand. (U.S.), Tech. Note (inpress).
+D3.1 J.B.Pedley and J.Rylance, Sussex N.P.L. Computer Analyzed Thermochemical Data: Organic andOrganometallic
+Compounds, Sussex University Press, Brighton, England (1977).
+El.l J.Nardone, Computerized Numeric Data forPolymers, J.Chem. Inf.Comput. Sci.19,71-73 (1979).
+F6. 1N.F.Brannock, V.S.Verneuil, andY.S.Wang, Rigorous Distillation Simulation, Chem. Eng. Prog., pp.83-87
+(1977).
+F6.2 N.F.Brannock, V.S.Nerneuil, andY.L.Wang, Process Simulation Program—AnAdvanced Flowsheeting Tool for
+Engineers, Proceedings oftheTwelfth Symposium onComputer Applications inChemical Engineering, Montreux,
+Switzerland, June 1979, Computers andChemical Engineering, Vol.3(inpress).
+TABLE 1.AVAILABILITY BYCOUNTRIES OFNETUORKS ANDDATA BASES
+::NETUORKS: : :
+.. . . £| .
+:::G: :: ::C A :
+:::T: : : ::ACT : PHYSICO-CHEMICAL
+:::E::G:C: :HRA :
+COUNTRY :::-:C:E:Y: :BY : NUMERICAL
+:::T:Y:-:F': :RSS :
+::T:E:B:G:H: :ITY : DATA SYSTEMS
+::Y:L:E:E:E: :DAS :
+::M:E:R:I:R: :GLT :
+::N:N:N:S:N: :E E :
+::E:E!E:C:E: : M :
+:!T:T:T:0:T: : :
+ARGENTINA ;:X:X: :X: : : : A2,A3, A6,A7-A12,A17
+AUSTRALIA ::X:X:X:X: : :X :A2,A3,A6,A7-A12, A17,F6
+AUSTRIA !:X:X!X!X: : : :A2,A3,A6,A7-A12,A17,F6
+BAHARAIN ;:X:X: :: :: : A2,A3, A6,A7-A12,A17
+BELGIUM ::X:X:X:X: ;:X :A2,A3,A6,A7-A12,A17,B2,F6
+BERMUDA ::X:X: : : : : : A2,A3,A6,A7-A12,A17
+BRAZIL ::X: :X: : ::X : A2,A3,A6,F6
+CANADA ::X:X:X:X: : :X : A2,A3, A4,A6-A12, A17
+: : : B13,C3,F1,F6
+DENMARK ::X:X:X:X: : : :A2,A3, A6,A7-A12,A17,F6
+FINLAND ::X:X!X:X: : :X :A2,A3,A6,A7-A12,A17,F6
+FRANCE ::X;X:X:X: : ;X :A2,A3, A6,A7-A12,A15,A17
+: : : B2,C4,C5,F1 ,F6
+GREECE :: ::X: : :: : F6
+GERMANY (UEST) ::X:X:X:X:X: :X :A2,A3,A6-A1 2,A17,B4,B7,F6,F8
+HUNGARY :::::::: X :
+HONG KONG ::X:X: :X: :: : A2,A3,A6-A12,A17,F6
+INDIA :::::::: X :
+IRELAND ::X:X: :X: : : : F6
+ISRAEL ::X:X:X: : ! :X : A2,A3,A6-A12,A17,F6
+ITALY ::X:X:X:X:X: :X : A2,A3,A6-A12, A17
+JAPAN :: : ::X: : :X :A2,A3,A6,A14 B1,B5,F6,F7
+6
+TABLE 1.AVAILABILITY BYCOUNTRIES OFNETUORKS ANDDATA BASES
+COUNTRY::NETUORKS:
+,""" —""--",
+:::G: : : :
+:::T: :: !
+:::E::G:C:
+:::-:C:E:Y!
+:::T:Y:-:P!
+::T:E:B:G:H:
+::Y:L:E:E:Ei
+::H:E:R:I:R:
+::N:N:N:S:Ni
+::E:E:E:C:E!
+::T:T:T:0:T:! D
+;C A
+lACT
+iHRA
+iBY
+!RSS
+ilTY
+;DAS
+iGLT
+lE EPHYSICO-CHEMICAL
+NUMERICAL
+DATA SYSTEMS
+: MEXICO ::X:X:X:X: : : A2,A3,A6-A12,A17,F6
+:NETHERLANDS ::X:X:X!X: : :X :A2,A3,A6-A12,A17 B2,B3,F6,F10
+:NEWZEALAND ::X:X X A2,A3,A6~A12,A17
+: NORWAY :;X:X:X:X: ::X A2,A3,A6-A12,A17,F6
+sPHILIPPINES ::X:X: :::: A2,A3,A6-A12,A17
+:PORTUGAL ::X:X:X: ::: A2,A3,A6,F6
+:PUERTO RICO ::X:X: :X: :: A2,A3,A6-A12,A17,F6
+:SAUDI ARABIA :: : ::X: :: F6
+:SINGAPORE ::X:X: :X: : : A2,A3,A6-A12,A17,F6
+:SOUTH AFRICA :: ::X: : : : F6
+: SPAIN ::X:X:X:X: : : A2,A3,A6-A12,A17,F6
+: SUEDEN ::X:X:X:X: ::X A2,A3,A6-A12,A17,F6
+;SUITZERLAND ::X:X:X:X:X: : A2,A3,A6-A12,A17,F6
+: TAIUAN ::X: : :: :: F6
+:UNITED KINGDOM ::X:X:X:X:X: :X
+B2A2,A3,A6-A12,A17
+,B9,B10,C2,D3,F1,FA,F8,F9
+UNITED STATES ::X:X:X:X:Xi X : A2,A3,A6-A12,A17
+:B2,B8,B11,B13,BH,C1,C2,
+: D1,D2,F1 -F6,F9,F11
+U.S.S.R, A5,B6,B12,D4
+VENEZUELA
+YUGOSLAVIAiX:X:
+A16
+ACTIVE COHPUTERIZED PHYSICO-CHEHICAL NUMERICAL DATA SrSTEHS
+: t +CMPDS +NETUORK +BATCH + +
+: NAME + FUNCTION tIN + OR +VERSION + CONTACT + REMARKS ;
+: +
+=s=:=rr========+DATA BASE+ DIAL-UP +RUNS ON+
+=====================+
+==:==== =======-:===:=;===j
+TADLE A.SYSTEMS FORIDENTIFICATION OFUNKNOUN SUBSTANCES:
+.
+: A1 SEARCHES AN +143,000 SEESPIR tBM1130 MR.BUDBLACKNEY + API :
+. INFRARED +INASTM +IBH 1800 DNASYSTEMS, INC. i NRC-NBS :
+:FIRST-1 SPECTRA DATA +INDEX +IBM 1258 S.WASHINGTON +DHS-BUTTERUORTHS :
+FILE FOR A + +360/370 ST. +COBLENTZ SOCIETY :
+:INFRARED MATCH AGAINST + +UNIVAC P.O. BOX1424 +HCARES. PROJ. :
+! DATA +THE SPECTRUM OF+ +1108 SAGINAU, MICH. 48605 +INFRARED DATA COM. :
+:RETRIEVAL ANUNKNOUN + +DSC-META TEL(517) 793-0185 + OFJAPAN :
+:PROGRAH SUBSTANCE + t 4 + SADTLER FILES :
+: A2 SEEFIRST-1 +150,000 VIA + 7 DR.CLARA D.GRAVER +SEEFIRST-1 FOR A :
+; RETRIEVAL ALSO t TYMNET + CHEMIR LABORATORIES +LIST OFFILES :
+: IRGO BASED ON + FROM + 761UEST KIRKHAM +—:
+CHEMICAL CLASSES+ TYMSHARE + ST.LOUIS, MO63122 tPRIVATE FILES CAN :
+:INFRARED ANDELEMENTAL + + TEL. (314) 962-5752 + BEADDED :
+DATA COMPONENTS + + +
+:RETRIEVAL + + +
+:PROGRAMS + + +
+: A3 SEEFIRST-t +110,000 VIA +UNIVAC MARIE SCANDONE +SEEFIRST-1 FORA :
+;— + TYMNET +1108 SADTLER RESEARCH LAB tLIST OFFILES :
+: IRIS + FROM + 3316 SPRING GARDEN STt.
+; + UNIVERSITY t PHILADELPHIA, PA. +PRIVATE FILES CAN :
+:INFRARED + COMPUTING + 19104 + BEADDED :
+:INFORMATION + CORP. (UCC) + TEL(215) 382-7800 +
+:SYSTEM + t +
+: A4 SEEFIRST-1 +SEE ONLY IN + DR. G.H.UOOD + RUNS ONTHE :
+.+FIRST-1 CANADA + CANADIAN INSTITUTE +COMPUTER ATTHE :
+: SPIR + VIADATAPAC + FOR +CANADIAN NATIONAL :
+:SEARCH + + SCIENTIFIC AND +RESEARCH COUNCIL ;
+:PROGRAM FOR t + TECHNICAL INFORMATION +
+:INFRARED + + MONTREAL ROAD +
+:SPECTRA + + OTTAUA KIA0R6 +
++ + ONTARIO, CANADA +:
++ + TEL(613) 993-3294 +
+: A5 SEARCHES + + PROF. V.A. KOPTYdG +SPECTRUM ALSO :
+.—IRANDUV + IN + INSTITUTE OF tPROVIDES RETRIEVAL :
+;SPECTRUM SPECTRAL DATA + DEVELOPMENT +BESH6 ORGANIC CHEMISTRY + ON :
+: FILES FOR A +50,000+ STAGE + SIBERIAN DIVISION +MELTING ANDBOILING :
+: MATCH AGAINST + USSR ACADEMY OF + TEHPERATURES :
+! SPECTRA OF + + SCIENCE +MOLECULAR UEIGHT :
+UNKNOUN< + NOVOSIBIRSK, USSR +ANDCHROMOPHORIC :
+SUBSTANCES + + + CODES :
+: A6 SEARCHES THE +33,000 UNIVERSITY +IBM MR.MARK A.HOLOMANY +.
+SOFtUARE UAS :
+.POUDER +PHASES COMPUTING +360/370 JOINT COMMITTEE ON tURITTEN AND IS :
+: 2DTS +DIFFRACTION DATA+ CORP. (UCC) t POUDER DIFFRACTION tHAINTAINED BYPROF. :
+FILE OFTHE +UNIVAC STANDARDS +G.G. JOHNSON, JR., :
+:DIFFRACTION +JOINT COMMITTEE +1100 1601 PARK LANE +PENN. STATE UNIV., :
+: DATA ONPOUDER +SERIES SUARTHHORE, PA19081 +
+:TELE-SEARCH DIFFRACTION + TEL(215) 328-9400 t
+STANDARDS +CDC ORUCCAT t
+(JCPDS) TO *6000/700( +1930 HIGH LINE DRIVE +
+IDENTIFY +CYBER DALLAS TX75207 t:
+UNKNOUN + TEL. (214) 655-8795 t
+COMPOUNDS + +
+-- — •
+ACTIVE COHPUTERIZED PHYSICO-CHEMICAL NUHERICflL DATA SYSTEMS
++ tCMPDS•fNETUORK +BATCH + +
+: NAME + FUNCTION + IN + OR +VERSION + CONTACT-f REMARKS :
+: + +BATA BASEt DIAL-UP tRUNS ON+ +
+===z==^====,===:====:=.
+TABLE ASYSTEMS FORIDENTIFICATION OFUNKNOUN SUBSTANCES (CONT.)
+: A7 + VIA DEC- 10 +APART OFTHE :
+. + 33,000 GTETELENET + NIH-EPA-CIS ;
+: PDSM + SEE2DTS PHASES FROM SEEMSSS + CHEMICAL :
++ INTERACTIVE +INFORMATION SYSTEM :
+:POUDER + SCIENCES +BASED ONJCPDS ;
+:DIFFRACTION + CORP. +POUDER DIFFRACTION :
+:SEARCH + t FILE :
+: MATCH + + :
+: AS +SEARCHES THE 33,000 VIA DEC- 10 KAYPOOL +THIS ISAJOINT :
+.+MASS SPECTRA GTETELENET INTERACTIVE SCIENCES +EFFORT BETWEEN :
+: HSSS +FILE FOR A FROM CORP .918-16TH ST. +MSBC-NOTTINGHAM, :
++MATCH AGAINST INTERACTIVE ,SUITE 500 + ENGLAND, THE :
+: MASS + THEMASS SCIENCES UASHINGTON, DC20006 +NATIONAL INSTITUTE :
+:SPECTRAL +SPECTRUM OFAN CORP. TEL. (800) 424-9400 +OFHEALTH, ANDTHE :
+rSEARCH SYSTEM+UNKNOUN COMPOUNtlt DR .C.CITROEN +ENVIRONMENTAL :
++ CID-TNOP.O.BOX 36 tPROTECTION AGENCY :
+SEE PROTON DATA + 2600 AADELFT + INTHEU.S. :
+: (AI7) + THENETHERLANDS +EPACONTACT ISDR. :
++ TEL 015-56-93-30 +STEPHEN R.HELLER, :
++ DR.J.C. VEAL +TEL (202) 755-4938 :
++ UKCIS +
+: + THEUNIVERSITY + APART OF :
++ NOTTINGHAM NG72RD + THE :
++ ENGLAND + NIH-EPA-CIS ;
++ TEL (0602)57411 t CHEMICAL ;
++ +INFORMATION SYSTEM :
+: A9 PBH + PROF. F.U. MCLAFFERTY +FOR ACOMPARISON OF :
+: COMPARES + VIA +PDP11/45 DEPT. OFCHEM. + THESEARCH
+:PBM/5TIRS UNKNOUN +41,429,TYMNET OR +STRATEGIES OFPBM :
++SPECTRUM AGAINSTt SPECTRA OR DR.ALEC GRIMISON + ANDMSSS SEE
+:PROBABILITY tAREFERENCE FILE+ OF GTETELENET OFFICE OF +REFERENCE A9.3 :
+: BASED +32,860 FROM CORNELL COMP. SERVICES +
+:hATCHING AND STIRS +COMPOUNDS+ UNIV OFFICE CORNELL UNIV. +:
+:SELF-TRAININGt INTERPRETS + OF ITHACA, N.Y. 14853 +:
+iINTERPRETIUE +UNKNOUN SPECTRUM+ COMPUTER TEL(607) 256-5100 +:
+: AND TOIDENTIFY + SERVICES + :
+:RETRIEVAL STRUCTURAL + ONIBM t
+:SYSTEMS tFEATURES OFTHE + 370/168 +
+MOLECULE + +
+: A10 SEARCHES THE + VIA DEC- 10 SEEMSSS + APART OF :
+.CARBON-13 +8800 GTETELENET t THE :
+:C-13 NMR tNUCLAR MAGNETIC +SPECTRA FROM + NIH-EPA-CIS :
+RESONANCE + INTERACTIVE + CHEMICAL :
+SPECTRA + SCIENCES +INFORMATION SYSTEM :
+DATA FILE + CORP. +
+! Alt SEARCHES FOR +25,000 + VIA + APART OF :
+.ATOMIC tCOMPOUNDSt GTETELENET + THE :
+: CRYST COORDINATES + FROM 7 SEEMSSS + NIH-EPA-CIS :
+: CRYSTAL CELL + INTERACTIVE + CHEMICAL :
+: X-RAY PARAMETERS AND + SCIENCES tINFORMATION SYSTEM :
+:CRYSTAL- BIBLIOG. ITEMS + CORP. + BASED ON :
+:LOGRAPHY + +STRUCTURAL FILES OF :
+:SEARCH t +THECAMBRIDGE ;
+:SYSTEM t
+++
++CRYSTALLOGRAPHIC :
+DATA CENTR-: :
+ACTI'JE COHPUr£RIiE[! PHYSICO-CHEHICAL ^UHtRICAL OhTA SYS
++ CMPDS NETUORK +BATCH + +
+! NAME + FUNCTION +IN + OR VERSION CONTACT + REMARKS :
+t tATABhS£ DIAL-UP VRUNS ON+
+== ============ ----=====
+TABLE ASYSTEMS FORIDENTIFICATION OFUNKilOUN SUBSTANCES (CONC.)
+: A12 +RETRIEVAL AND + + VIA tCANBEUSED TO :
+. +ANALYSIS OFTHE + +GTETELENET DEC-10 SEEnsss +IDENTIFY SINGLE :
+: XTftL +FOLLDUING DATA +50,000 + FROM t CRYSTALS :
++ CRYSTALS INTERACTIVE FORUHICH: ;
+:CRYSTAL +DETERM. RATIO + SCIENCES +THEUNIT CELL. OR :
+: DATA + Rl + CORP. +DENSITY. OROTHER :
+:[iETERi1INATIVE+ ANGLES: + + +PARAMETERS IN :
+:TABLES ALPHA, BETA, GAMI1A + +COLUMN 2AREKNOMM :
++ CELL + +
+4-CONST:A,B,C + + +
++SPACE GROUPS + + +
++1ENS: IihAND DX + + +
++ELEIiENTAL + 4-
++ CONST. + + :
++STRUCT. FQRh. + t + :
++FORMULA FRAG. + + •f:
+tCOMPOUND NAME + t +
+: A13 +ASYSTEM FOR +2000 + DEC 10 JAMES HAMILTON +THEDATA BASE :
+.+IDENTIFYING +ORGANIC 1HACIENOA UAY +INCLUDES IR.JV,NMR :
+: ELIZA +COMPOUNDS FROM +COHPOUNBS+ ANDOVER MASS. 01810 AND rtASS SPECTRA :
++THEIR PHYSICAL +FOUND + TEL.(417) 487-2718 +SYSTEM NAME. CAS :
++PROPERTIES AND +IN + REG. H.TRANS. POINTS, :
++ SPECTRA. +COLLEGE + +FUNCTIONAL GROUPS :
+: +SEEREMARKS +CHEM LABS* +ANDREF.TO SPECTRA :
+: A14 t + ON-LINE Y.TITAKA + PART OFA :
+. + SEE t10.000 UNDER HITACH OR +COMPREHENSIVE DATA :
+: MXDS +CRYST (All) COMPOUNDSt TOOL-IR 8800/8700+ T.YAMAMOTO +DISSEMINATION :
+::10LECULAR + + + AT + ATTOKYO UNIV. + SYSTEM UNDER :
+: AND + t + UNIV. BUNKYO-KU + DEVELOPMENT :
+:CRYSTALLINE + + + OF + TOKYO JAPAN +
+: DATA + + TOKYO + +
+:SYSTEh + •f + +
+: A15 +SEARCHES FOR +13295 C+TRANSPAC PDP PROF. J.E.DUBOIS +DPDS USES CIDA =
+. +MASS.CU NMR +13NMR + AND 11/35 + CENTRE +DATA FO^C-13 NMR. :
+: DPDS +SPECTRA, AND + +EURONET VhX D-INFORMATIGUE ET +THECAMBRIDGE :
++ ATOMIC +31502 + 11TSO DEDOCUMENTATION +CRYSTALLOGRPHIC :
+: DARC +COORDINATES IN+MASS + AUTOMATIQUE(CIDA) DATA FILES. :
+:PLURIDATA +CRYSTAL CELLS + + + I.RUEGUYDELA +ANDTHENIH/EPA :
+:SYSTEM +COUPLED UITH +222A7 + BROSSE, +MASS SPECTRAL :
+fSTRUCTURE ANDCRYSTALS + +75005 PARIS, FRANCE tDATA BASE, ASWELL :
+: +SUBSTRUCTURE + + + +ASOTHER DATA :
++ SEARCHES + + + +
+: A16 +COMBINED RET. CONTAINS + DR.J.ZUPAN +SEARCHES POSSIBLE :
+.+SYST. FOR IR, +1000 +PDP11/34 +CHEMICAL INSTITUTE ONULN, :
+: KISIK +MASS, ANDNMR +SPECTRA + + BORIS KIDRIC +CONNECTIVITY, !
++SPECTRA SEE +OFEACH + HAJDRIHOVA, 19 SUB-STRUCTURE, ETC. :
++ REMARKS TYPE + + 41000 LJUBLJANA :
+: + + + + YUGOSLAVIA + •
+: A17 + PROVIDES +450 + VIA + THESE DATA FROM THE :
+. +RETRIEVAL ON +GTETELENET + SEEMSSS +NBSIONENERGETICS :
++GAS-PHASE + FROM + +DATA CENTER ARE :
+:PROTON +BASICITY AND + INTERACTIVE + INCORPORATED INTHE :
+: DATA tPROTON AFFINITY + +SCIENCES + + NIH-EPA MASS :
++ + + CORP. + +SPECTRA SEARCH :
++ + + + SYSTEH :
+10
+ACTIVE COMPUTERIZED PHYSICO-CHErtlCflL NUHERICAL DATA SYSTEMS
++ CNPDS tNETUORK +BATCH + +
+: NAME + FUNCTION + IN + OR +VERSION t CONTACT + REMARKS :
++ DATA BASE+ DIAL-UP fRUNS ON+ +
+TABLE BSYSTEMS FORPROPERIIES OfPURE SUBSTANCES AND MIXTURES :
+61 RETRIEliAL OF ON-LINE IBM +DR.KEIJI YAJIMA + 16SYSTEMS :
+STORED DATA AND ACCESS UNDER 360/370 +MANAGING DIRECTOR +INSTALLED INJAPAN :
+:JUS£~AESOPP ESTIMATION OF IN-HOUSE +CDC 6600 + INSTITUTE OFTHE +ASOFJUNE 1980 :
+THERMODYNAMIC TEST UNIVAC +UNION OFJAPANESE + SEEALSO F7 :
+:AN£Sri«ATOR ANDTRANSPORT 1100 + SCIENTISTS AND +
+.•rOR PHrSiCAL PROPERTIES VIA GE635 + ENGINEERS + :
+:PROPERTIES CORRELATING TOSBAC +5-10-11 SENDAGAYA + !
+EQUATIONS FOR 3400, + SHIBUYA-KU + ;
+PURE COMPONENTS 5600 + TOKYO, JAPAN + :
+ANDMIXTURES HITACH + + ;
+8400 + + ;
+FACOM + + :
++230-45/65+ + ;
+MELCOM + t :
+: B2 CALCULATION OF 400 G.E.MARK III DR.BERYL EDMONDS + FOR ASINGLE :
+.PROPERTIES OF LARGELY GAMMA THEINSTITUTION OF + COMPOUND THE :
+: PPBS PURE COMPOUNDS HYDRO- UNIVERSITY CHEMICAL ENGINEERS +PROGRAM GIVES 17 :
++AND MIXTURES AS CARBONS COMPUTING 165/171 RAILWAY +CONSTANTS AND 14 :
+:PHYSICAL REQUIRED FOR CO.(UK)LTD. TERRACE +STREAM VARIABLES :
+:PROPERTY CHEMICAL ALSO FROM RUGBY CV2t 3HQ + F(T,P) :
+:DATA SYSTEMS PROCESS DESIGN SERVICE ENGLAND +FOR BOTH SINGLE AND :
+BUREAUS IN +HULTICOMPONENT :
+FRANCE, t STREAMS :
+NETHERLANDS +
+: B3 COMPUTES 480 NETHERLANDS UNIVAC J.A.DELEEUU DEN +INTERFACES WITH :
+.PHYSICAL COMPUTER 1108 BOUTER +USER PROGRAMS
+:TISDATA PROPERTIES FOR CENTRE AT CDC6600 DSMREASEARCH AND + AND :
+:TECHNOLOGICAL+ CHEMICAL HEERLEN PATENTS +TISFLO ANDTISUNOP :
+:INFORMATION PROCESS P.O.BOX 18,6160MD + SEEF4 :
+:SYSTEM CALCULATIONS GELEEN, HOLLAND +
+: B4 COMPUTER 350 +DR. KLAUS KURT NEUMANN +:
+THEDATA FILE :
+.PROGRAMS FOR FRIEDRICH UHDE GMBH t CONSISTS OF :
+:THERMO- ESTIMATING 46DORTMUND +APPROXIMATELY 400 :
+:PHYSICAL THERMODYNAMIC DEGGINSTRASSE 10-12 + DATA ITEMS :
+:PROPERTieS ANDTRANSPORT P.O. BOX262 +COMPRISING CRITICAL :
+:PROGRAM PROPERTIES OF FEDERAL REPUBLIC OF + CONSTANTS, :
+:PACKAGE PURE SUBSTANCES GERMANY +PROPERTIES AT :
+ANDMIXTURES + SPECIFIC :
++TEMPERATURES AND :
+: +PRESSURES, AND :
++PARAMETERS FOR :
++ESTIHATING METHODS. !
+5000 t THE HITACH DR.YUKIO YONEDA +.
+ESTIMATIONS, UHEN :
+: B5 ESTIMATION AND+COMPOUNDS+ UNIVERSITY 8800 DEPT. OFSYNTHETIC +REQUIRED, EMPLOY :
+.RETRIEVAL OF +OFTOKYO IBM370 CHEMISTRY +GROUP CONTRIBUTION :
+:EROICA PROPERTIES OF +COMPUTER UNIVERSITY OFTOKYO t METHODS :
+ORGANIC + CENTER HONGO, BUNKYO-KU, + •
+COMPOUNDS + TOKYO, JAPAN +:
+t +:
+: B6 THERMOPHYSICAL + GOSSTANDART +THIS ISASERVICE :
+.PROPERTIES OF + (GSSSD) + OFGSSSD :
+:AVESTA PURE SUBSTANCE + DATA CENTER FOR + THEUSSR :
+:ABECTA MIXTURES AND + HYDROCARBONS ANDOIL tSTATE SERVICE OF :
+PETROLEUM i PRODUCTS +STANDARD REFERENCE :
+PRODUCTS + VNII PKNEFTEKIM + DATA :
++ 252068, KIEV-68 +
++ PALLADIN AV., 46 +
+USSR +;
+: B7 ON-LINE SYSTEM +SDR:3000 +EURONET IBM370 DR.REINER ECKERMAN +ACOOPERATIVE :
+.FORDATA SDC:500 + ODIN SIEMANS DECHEMA +PROGRAM OFTHE !
+:DETHERM RETRIEVAL(SRD) + 4004, DEUTSCHE GESELLSCHAFT +CHEMICAL INDUSTRY, :
+AND t 7.760 FURCHEMISCHES +UNIVERSITIES, AND :
+:DECHEMA CALCULATION t APPARATEUESEN E.V. +THEFRG, UNDER s
+:THERMO- (SDC) + FRANKFURT GERMANY + DECHEMA :
+:PHYSICAL + POSTFACH 971046 +ADMINISTRATION. :
+:PROPERTY + FRANKFURT 97 +:
+:DATA BANK + UEST GERMANY + :
+11
+ACTIVE COMPUTERIZED PHTSICO-CHEHICAL NUMERICAL DATA SYSTEMS
++ +CMPDS +NETUORK +BATCH + +
+: NAME + FUNCTION +IN + OR +VERSION + CONTACT + REMARKS :
+: t
+===============DATA BASE+ DIAL-UP
+============+RUNS ON+
+==================r==+
+===================;
+:
+: TABLE B.SYSTEMS FOR'ROPERTIES OFPURE SUBSTANCES ANDMIXTURES (CONC. !
+:
+: B7 +ON-LINE SYSTEM +SDR:3000 +EURONET +IBM370 +DR.REINER ECKERNAN + ACOOPERATIVE :
+. + FORDATA +SDC:500 + ODIN +SIEMANS + DECHEMA tPROGRAM OFTHE ;
+:DETHERM +RETRIEVAL(SRD) + t +4004, +DEUTSCHE 6ESELLSCHAFT +CHEMICAL INDUSTRY, :
++ AND + + t7.760 + FURCHEMISCHES +UNIVERSITIES, AND :
+:DECHEMA +CALCULATION + + + +APPARATEUESEN E.V. +THEFR6, UNDER :
+:THERMO- + (SDC) + + + +FRANKFURT GERMANY + DECHEMA :
+:PHYSICAL t + + + + POSTFACH 971046 +ADMINISTRATION. :
+:PROPERTY + + + + + FRANKFURT 97 +:
+:DATA BANK + + + + + WEST GERMANY +
+: B8 + ACCESSES +350+ +DESIGNED FOR +IBM360 +DR.BUFORD D.SMITH +AVAILABLE TOTRL :
+. +EVALUATED DATA + +IN-HOUSE USE t + THERMODYNAMICS +SPONSORS GROUP :
+: TRL + BANK FOR + + + +RESEARCH LABORATORY +:
+!CORRELATION +THERMODYNAMIC + t + + BOX1144 +:
+:PACKAGE +DATA FROM A + + t +UASHINGTON UNIVERSITY +
++DATA BASE FOR + + + +ST.LOUIS MO.63130 +
++PURE COMPOUNDS + + + + +
+: B9 + APHYSICAL +200 + ONTHE + + DR.J.T.R.UATSON +AREPROGRAHMED AND :
+: +PROPERTIES DATA + + NEL + +NATIONAL ENGINEERING +REyiSED INTERACTIVE :
+:NEL-APPES + SYSTEM + + UNIVAC + + LABORATORY +VERSION OFTHE :
++ + +1100/21 + + EAST KILBRIDE +(CIRCA 1970) AICHE :
+: f + + + + GLAS60U 6750QU + APPES !
++ + + + + SCOTLAND +
+: BIO +DATA RETRIEVAL +500+ +SCICON(UK), +UNIVAC + DR.P.UINTER +INTERFACES UITH :
+: +ANDCALC FOR +INCLUDING+ CSC, UCS t1100 +PROCESS INDUSTRIES +DESIGN PROGRAMS :
+:KEYDATA + PROCESS +PPDS + CDC +SERIES 4 GROUP + CONCEPT AND :
++SIMULATION +DATA BASE+ +—+COMPUTER AIDED DESIGN + MULTICOL :
++ + + +PRIME + CENTRE + SEEF9 :
++ + + tCDC + MADINGLY RD. +
++ + + +ICL 2900 +CAMBRIDGE CB3OHB +
+: + + + +SERIES + ENGLAND +
+i B11 +ASTM CHEMICAL + + +UNIVAC + ROBERT MELTZER +PROGRAM ESTIMATES :
+. +THERMODYNAMIC + + t1108 +AMERICAN SOCIETY FOR*PROPERTIES FROM :
+:CHETAH +ANDENERGY + + +IBM360 +TESTING ANDMATERIALS + SECOND-ORDER :
+• + RELEASE + + + + 1916 RACE ST. +CONTRIBUTIONS :
+: +EVALUATION + + + +PHILADELPHIA, PA19103 + ACCORDING TO :
+: + PROGRAM + + + + + BENSON ET.AL :
++ + t + +CHEM. REVS. 69, :
++ + + + + +279-324 (1969) :
+: B12 + COMPUTES +1200 + UNDER +HP3000 +PROF. L.V. GURVICH +THE SYSTEM COMPUTES :
+.+THERMODYNAMIC + +DEVELOPMENT + +DEPT. OFCHEMICAL +THERMODYNAMIC :
+:THERMOCHEM- +PROPERTIES OF + + + + THERMODYNAMICS tPROPERTIES FROM :
+:ICAL DATA +INORGANIC AND + + + + INST. OFHIGH +SPECTROSCOPIC, :
+:SYSTEM +SIMPLE ORGANIC + + + + TEMPERATURE +MOLECULAR, AND :
+: +COMPOUNDS + + + +MOSCOU U.S.S.R. 127412+ CHEMICAL :
+;+ + + + + +EBUILIBRIUM DATA :
+: B13 + COMPUTES +1500 t VIA +IBM +PROF. C.B. ALCOCK +SYSTEM ALLOUS 2ND :
+.+THERMOCHEMICAL + +GTETELENET +360/370 +DEPT. OFMETALLURGY AND+ AND3RDLAU ;
+: TBANK +FUNCTIONS FOR + +AND I.P. +UNDER +MATERIAL SCIENCE + ANALYSIS OF :
++INDIVIDUAL + +SHARP ASSOC. +APL + UNIV. OFTORONTO +EXPERIMENTAL DATA :
++SUBSTANCES AND + +ALSO VIA + + TORONTO, CANADA +
++ CHEMICAL + t TELEX + + M5SIA4 +
++REACTIONS + + + +TEL. 416-978-6808 +
+:BH +ANINTERACTIVE +200 tUNIVERSITY +UNIVAC + J.DAVID CHASE + CONTACT UCC :
+.+DATA RETRIEVAL + +C0MPUTIN6 CO. +1100/81 +CELANESE CHEMICAL CO. +TEL.(214)655-8627 :
+:CPPDMS +SYSTEM FOR + +OFFERS ONLY + + P.O.BOX 9077 +FORACCESS TOTHE :
+tPROPERTIES OF + +THE DATA BASE + +CORPUS CHRISTI,TX 78408+ SOFTUARE ANDTHE :
+:CELANESE + CHEMICAL + +MANAGEMENT + +TEL.(512)241-2343 CELANESE CHEMICAL :
+:PHYSICAL +COMPOUNDS IN + +SYSTEM BUT + + XT4267 CO.FORTHEDATA :
+:PROPERTIES +FUNCTIONAL, + +NOTTHEDATA + + BASE :
+: DATA +TABULAR, AND + + BASE + + :
+:MANAGEMENT +GRAPHIC FORM IN+ + + + ;
+:SYSTEM +SIANDOTHER + + + + :
++ UNITS + + + + :
+12
+•ftCTIVE COHPUTERIZED PHYSICO-CHEMICAL NUHERICflL DATA SYSTEMS*
++ +CMPDS NETWORK +BATCH + +
+:NAME FUNCTION +IN OR +VERSION t CONTACT t REMARKS :
+: +DATA DIAL-UP tRUNS ON+ + :
+: + +BASE + +
+TABLE SYSTEMS FOfMETALLURGICAL CALCULATIONS
+: CI COMPUTES AND DATA MANLABS *IBM DR.LARRY KAUFMAN THESYSTEM HANDLES :
+.DISPLAYS FOR 10 +1130 HANLABS, INC. SOLUTIONS INVOLVING :
+:DATABANK ISOTHERMAL METALS +3i0/370 21ERIE STREET ALUMINUM, CARBON, :
+SECTIONS OF AND 45 CAMBRIDGE, MASS 0213? TITANIUM, CHROMIUM, s
+rSYSTEM FOR BINARY AND BINARY TEL(417) 491-2900 IRON, COBALT, :
+:6INARY AND TERNARY PHASE +SYSTEMS NICKEL, NIOBIUM, :
+:TERNARY DIAGRAMS ALLOU M0LY8DINUH,AND :
+:PHASE +•OR120 TUNGSTEN :
+:DIAGRAMS +TERNARY
++SYSTEMS
+i C2 METALLURGICAL 2000 UK-NPL DR.THOMAS IBARRY GIBBS ENERGY ;
+J CALCULATIONS: INOR- NATIONAL PHYSICAL MINIMIZATION :
+:KTDATA FORPURE GANIC LABORATORY CHEM. REACTION :
+COMPOUNDS, TEDBINGTON, ENGLAND CALCULATIONS GIVING :
+:METAL- FORMIXTURES, TEL.01-977-3222 DELTAH, DELTAG, :
+:LURGICAL FORREACTIONS DELTACP, DELTAS, AND :
+:THERMO- INVOLVING LOGKP FORCHEMICAL :
+:DYNAMIC GASES, SOLIDS REACTIONS ALSO :
+.•DATA BANK ORLIQUIDS, DELTAH(298), S(298), :
+FORDILUTE ANDCSUBP FOREACH :
+:MEMBER OF SOLUTIONS OF REACANT :
+:SGTE+t GASES AND OVER ASPECIFIED :
+METALS IN TEMPERATURE RANGE :
+•METALS SEEC4 :
+: C3 INTERACTIVE 1905 VIATELENET DR.U.T.THOMPSON t(!;
+JOINT METALLURGICAL :
+SYSTEM FOR MAINLY ANDDATAPAC DEPT. OFMINING PROJECT OFTHEECOLE :
+:FACT COMPUTING INORG. FROM NCGILL ANDMETALLURGICAL POLYTECHNIQUE AND :
+:FACILITY REACION SEE COHP. CENTRE ENGINEERING MC6ILL UNIV. :
+:FORTHE iEOUILIBRIA AND+REMARKS +MCGILL UNIV. MONTREAL, —:
+:ANALYSIS DISPLAY OF CANADA USES STORED FREE :
+: OF iPHASE DIAGRAMS ENERGY DATA TO :
+:CHEMICAL OFVARIOUS GENERATE 50+BINARY :
+:THERMODYNAM+ TOPOLOGIES ANDTERNARY PHASE :
+: ICS + DIAGRAMS :
+: C't METALLURGICAL 2500 +EURONET tHB-68 DR.YVES DENEIL SEEMTDATA (C2) :
+. CALCULATIONS +INORGANI+ TRANSPAC +(DPS3) BIBLIOTHEQUE PART OFA :
+:THERMODATA PURE CMPDS, C tMULTICS UNIVERSITAIRE COOPERATIVE PROGRAM !
+:DATA BANK MIXTURES, AND DESSCIENCES +BETUEEN METALLURGISTS :
+REACTIONS B.P.22-38402 INBRITAIN, FRANCE, !
+:MEMBER OF INVOLVING SAINT-MARTIN-D'HERES GERMANY, ANDSWEDEN :
+:SGTE++ tGASES, SOLIDS, FRANCE
+ORLIQUIDS (74)42.76.90 BASED LARGELY ON :
+tJANAF, HULTGREN, AND :
+aKUBASCHEUSKI ETAL ;
+: C5 METALLURGICAL 100 EURONET *HB-i8 DR. I.ANSARA ORDR.
+; CALCULATIONS BINARY CONNECTION +(DPS3) C.BERNARD SEEC2 :
+:DATA BANK OF +SYSTEMS PLANNED tMULTICS LABORATOIRE DE SEEC4 :
+: FOR +MULTICOMPONENT t THERMODYNAMIQUE ET
+:MULTI- >PHASE DIAGRAMS PHYSICO-CHIMIE
+:COMPONENT METALLURGIOUES :
+!SYSYTEMS E.N.S.E.E.G.-BP 44 :
+38401- SAINT MARTIN ;
+:MEMBER OF D'HERES FRANCE :
+:SGTEtt TEL. (74)54.41.27 :
+**SCIENTIFIC GROUP THERHODATA EUROPE
+13
+ACTIVE COMPUTERIZED PHYSICO-CHEMICAL NUMERICAL DATA SYSTEMS
++ +CMPDS +NETWORK +BATCH
+: NAME + FUNCTION + IN + OR +VERSION + CONTACT REMARKS :
++ +DATA BASE+ DIAL-UP +RUNS ON+ +:
+:======-===== ================= === ========================= ==: ================:======:
+: TABLE D.SYSTEMS FORTABLES OFTHERMODYNAMIC ANDTHERMOCHEMICAL PROPERTIES OFINDIVIDUAL SUBSTANCES :
+: Dl +ANINTERACTIVE 7 CANBEMADE +CDC 4400 MRS. BETTIJOYCE MOLINO+PROVIDES TABLES FOR :
+. tFORTRAN IV AVAILABLE ON UNIVAC OFFICE OFSTANDARD HYDROGEN, HELIUM, :
+:FLUIDS PACK tSYSTEM FOR TYMNET ON 1108 REFERENCE DATA NITROGEN, OXYGEN, :
++THERMODYNAMIC REQUEST TO UASHIN6T0N D.C. 20234 NEON, ARGON, AND :
+tANDTRANSPORT OSRD TEL.(301) 921-2050 METHANE :
++PROPERTIES OF :
++ SELECTED SEEBELOU :
++ CRYOGENS :
++SEEREMARKS s
+: D2 +ANINTERACTIVE 1 CANBEMADE UNIVAC SEEFLUIDS PACK THIS PROGRAM AND :
+. FORTRAN PROGRAM AVAILABLE ON 1108 FLUIDS PACK ARE :
+:AMMONIA + FOR TYMNET ON AVAILABLE ONMAG :
+:TABLES +THERMODYNAMIC REQUEST TO TAPE FROM THE :
+PROPERTIES OF OSRD OFFICE OFSTANDARD :
+:-f AMMONIA REFERENCE DATA :
+: D3 +PROVIDES STD. DR.J.B.PEDLEY AMAGTAPE VERSION :
+: +ENTHALPY OF SCHOOL OFMOLECULAR OFTHECITED PEDLEY :
+:COMPUTER +FORMATION AND0F+ SCIENCES AND RYLANCE BOOK IS :
+:ANALYZED +COMBUSTION FOR UNIV. OFSUSSEX AVAILABLE :
+:THERMOCHEM- *ORGANIC AND BRIGHTON BN9QJ :
+:ICAL DATA
+:
+:+ORGANOMETALLIC
++COMPOUNDS
+t ALSO STD.
++ENTH. CHANGES
+FOR1133
++REACTIONSENGLAND :
+:
+;
+: D4 +THERMODYNAMIC 87 DR.A.D,KOZLOV IMCLUDESiAIR, !
+.+PROPERTIES OF AUTOMATED SYSTEM METHANE, ETHYLENE, :
+:VNITS-GSSSD +TECHNICALLY SERVICE VNITS-GSSSD UATER, CARBON :
++IMPORTANT GASES EZDAKOV PER.1, DIOXIDE OXYGEN, AND :
+: +ANDLIQUIDS TO 117334 MOSCOU B-334 AMMONIA :
+1500 KAND100 USSR
+: + MPA TEL. 250-0190
+:
+: TABLE E.PROPERTIES OFPLASTICS ETC.
+: Et DELIVERS TEST +SEVERAL DIAL-UP TO HARRY PEBLY +ALSO INCLUDES A :
+.+DATA ONTHE +THOUSAND THECDC6600 PLASTICS TECHNICAL +COMPILATION OF s
+:COHPAT +INTERACTION OFMATERIAL INFORMATION CENTER +OBSERVED MATERIAL :
++POLYMERS AND +COMBIN- U.S. ARMY ARMAMENT DEFICIENCIES CALLED :
+:COHPATABILITY+ METALS UITH +ATIONS RAND DCOMMAND HAZARD-FAILURE :
+:OFMATERIALS+PROPELLANTS,EXPL+ DOVER, N.J. 07801 +
+: UITH +OSIVES, AND + TEL.(201) 328-4222
+:PROPELLANTS +PYROTECHNICS + +
+: AND + + +
+:EXPLOSIVES + + + :
+: E2 + PROVIDES t LATE CDC 6600 JOHN NARDONE MECH. PROPERTIES :
+; +MECHANICAL, ELECT* IN PLASTICS TECHNICAL +INCLUDE: CREEP, :
+:PLASTEC +RICAL, THERMAL, + 1980 INFORMATION CENTER +STRESS RELAXATION, :
+:DATA SYSTEM OPTICAL, PHYSICAL* U.S. ARMY ARMAMENT +POISSON RATIO, :
+t.AND PERMANENCE t RAND DCOMMAND STRESS FATIGUE, :
+: tPROPERTIES OF + DOVER, N.J. 07801 HARDNESS, FRICTION, !
+: + PLASTICS + TEL.(201) 328-5859 ANDABRASION :
+14
+ACTIVE COMPUTERIZED PHrSICO-CHEMICAL NUMERICAL DATA SYSTEMS
+t CMPDS +NETWORK +BATCH +:
+: NAME + FUNCTION + IN + OR +VERSION CONTACT REMARKS :
+'.-.----------===DATA BASE+ DIAL-UP RUNS ON
+======== =====================+
+=========s=========.
+:
+: TABLE F,SYSTEMS FORCHEMICAL PROCESS SIMULATION ANDDESIGN:
+:
+i
+; F1 APHYSICAL GENERAL UNIVAC JOHN ADAMS CHEMTRAN INTERFACES :
+.PROPERTIES 856 ELECTRIC +1100 CHEMSHARE CORP. UITH PROGRAMS :
+:CHEMTRAN GENERATION AND MARK III +SERIES SUITE 1900 DISTIL, REFINE, AND :
+CORRELATION SERVICES CDC 6400 DESIGN TOSOLVE :
+: SYSTEM FORPURE CONTROL DATA +AND 3000 POST OAK PROBLEMS INTHE ;
+: COMPOUNDS AND CORP. CYBER HOUSTON, TX77056 PROCESSING OF :
+: MIXTURES TYMSHARE SERIES TEL(713) 627-8945 PETRO-CHEHICALS :
+: UNITED +IBM
+i COMPUTING 370AND
+: SYSTEMS +360DOS
+UNITED +PRIME
+COMPUTING CO. ICL
+: F2 IBM360 PROF R.L. MOTARD
+.PROCESS 98 XDS DEPT OFCHEM ENG THIS SYSTEM IS :
+: CHESS SIMULATION DATA +SIGMA 7 UASHINGTON UNIV AVAILABLE ONLY TO :
+:— RETRIEVAL DATA +CDC ST.LOUIS MO63130 UNIVERSITIES AND :
+:CHEMICAL CALCULATION 6400 TEL(314) 889-6072 U.S.GOVT AGENCIES :
+:ENGINEERING DATA ESTIMATION UI108
+:SIMULATION RCA
+:SYSTEM SPECTRA :
+70/45 :
+: F3 PROCESS UNITED IBM DR.ALVIN H.LARSEN THIS :
+.SIMULATION 180 COMPUTING 360/50 MONSANTO CO. -F4EE PACKAGE HASBEEN :
+:FLOUTRAN DATA RETRIEVAL SYSTEMS FOR 370/135 800 N.LINDBERGH BLVD HADE AVAILABLE FOR :
+:SIMULATION DATA EDUCATIONAL CDC 6400 ST.LOUIS, MO63166 EDUCATIONAL USE :
+CALCULATION USEONLY H6080 TEL(314) 694-6311 THROUGH THE :
+DATA ESTIMATION UNIVAC INITIATIVE OFTHE :
+_-1108 CACHE CORP. :
+: F4 FLOUSHEET 99 NETHERLANDS UNIVAC:
+INTERFACES s
+.SIMULATION COMPUTER 1100 SEETISDATA (B3) UITH :
+:TISFLO AND CENTRE AT +SERIES TISDATA ANDUSER :
+:TISUNOP UNIT OPERATIONS HEERLEN PROGRAMS :
+CALCULATIONS :
+CHEMICAL FRANCIS HUNCASTERJ
+DATA BASE DEVELOPED :
+: F5 PROCESS 200 MCDONNELL MCDONNELL DOUGLAS ANDMAINTAINED BY :
+: SIMULATION DOUGLAS AUTOMATION CO.B0X516 PHILLIPS PETROLEUM :
+: PDA PHYSICAL AUTONATION + STLOUIS MO63166 CO. :
+:PROCESS PROPERTIES TEL.(314)232-2585 BARTLESVILLE,OK :
+:DESIGN RETRIEVAL AND + 74004 :
+:ANALYSIS GENERATION +•
+;— +:
+: GPS +:
+:GENERAL +!
+:PROCESS +.
+:SIMULATION!
+: F4 CONTROL DATA IBM ALSO AVAILABLE FROM :
+.PERFORMS 450 CORP. +360/370 DR.N.F. BRANNOCK
+:PROCESS RIGOROUS INCLUDING+ UNITED COMP. +CDC SIMULATION SCIENCE SIALTD. INTHEUK :
+DISTILLATION PPDS SYSTEMS 6600 INC. ANDTHE :
+:SIMULATION SIMULATION DATA BASE^ UNIV. COMP. CYBER 1400 N.HARBOR BLVD NETHERLANDS :
+:PROGRAM INVOLVING CO. 172,174 FULLERTON, CA92635
+J STEADY-STATE MCDONNELL UNIVAC TEL(714) 879-9180 BOCDATASOLVE IN s
+:VLE/REGRESS ENERGY ANDMASS DOUGLAS +1100 THEUK :
+BALANCE AUTOH. CO. SERIES
+G.E.MARK AQUATAINE SYSTEM :
+III INFRANCE ;
++SERVICE CENTURY RESEARCH :
+;CENTER, TOKYO :
+15
+ACTIVE COMPUTERIZED PHYSICO-CHEMICAL NUMERICAL DATA SYSTEMS
++ +CMPDS tNETUORK +BATCH + +---•
+NAME + FUNCTION +IN + OR +VERSION + CONTACT + REMARKS :
++
+==============+DATA BASE+ DIAL-UP +RUNS ON+ +
+_._---__.-_.__-___..
+TABLE F.SYSTEMS FORCHEMICAL PROCESS SIMULATION ANDDESIGN (CONC. ):
+s
+: F7 +DYNAHIC PROCESS + +
+. +SIMULATION + UNDER SEE Bl SEE Bl tINSTALLATIONS :
+: DPS +MASS ANDHEAT + DEVELOPMENT +.
+. + BALANCE + + DPS (7) :
+:JUSE-L-GIFS +OPTIMIZATION + +JUSE-L-GIFS (24) :
+. +NON-IDEAL + +JUSE-NIDIST (17) :
+:JUSE-MIDIST- 1+MULTICOMP. + +
++SIMULATION + +
+: F8 + +800 t IBM370 +
+. + ATHIRD +INCLUDING+ 3033 D.J. SAUERS +CURRENT VERSION IS :
+:FLOUPACK II+GENERATION +PPDS t DEC 10 IMPERIAL CHEMICAL +AJOINT EFFORT OF ;
++ PROCESS +DATA BASE+ INDUSTRIES LTD. +ICIANDLINDE AG ;
++SIMULATION + P.O. BOXNO. 11 +(MUNICH, FRG) :
++ SYSTEM + THEHEATH t;
++ + RUNCORN CHESHIRE UA7 +;
++ + 4QEENGLAND + s
++ + TEL(092 85)73456 + :
+: F9 + +USES SCICON UNIVAC +
+. +PROCESS DESIGN +KEYDATA (UK)CSC 1100 DR. P.UINTER t U.S. REP IS :
+:CONCEPT + AND +SEEBIO UCS SERIES PROCESS INDUSTRIES fAAATECHNOLOGY AND :
+.+SIMULATION + CDC GROUP +SPEC. CO.INC. :
+:MULTICOL + + PRIME COMPUTER AIDED DESIGN +P.O. BOX37189 :
++ + CDC CENTRE +HOUSTON, TX77036 :
++ + +ICL 2900 MADINGLEY ROAD +TEL(713) 789-6200 :
++ + SERIES CAMBRIDGE CB3OHB +s
++ + ENGLAND t;
+: FIO +MULTI-PURPOSE + UCS + :
+.+ FLASH + tG.E.MARK III GARRETT COMPUTING +:
+: FLASH +RECOMBINATION + SYSTEMS INC. +:
++ AND + 1111 REPUBLIC BANK + :
++PLANT RECOVERY + TOUERS + :
+: + PROGRAMS + DALLAS TX75201 + :
++ + TEL(214) 741-1026 + :
+: F11 + CALC. OF + 61 tG.E.MARK III CARL SUTTON +PROyiDES ACHOICE ;
+.+K-VALUES AND + SERVICE 6ASPROCESSORS ASSOC. +OF5METHODS FOR :
+:GPA-K +H+ENTHALPIES FOR + UNIVERSITY 1812 FIRST PLACE + CALCULATING :
+: MODII +TUOORTHREE + +COMPUTING CO. TULSA, OK74103 +THERMODYNAMIC :
++PHASES OFLIGHT + UNITED TEL(918) 582-5112 + PROPERTIES :
++HYDROCARBONS + COMPUTING +;
++ + SYSTEMS INC. +:
+16
+Appendix A
+TheASPEN Computer Program Survey
+The earlier version ofthissummary, dated June 1976, contained information onanumber of
+programs forchemical process simulation anddesign. Since then thestaff oftheASPEN project at
+MIT hascompleted anextensive survey ofcomputer programs forchemical engineers. The results
+ofthatsurvey, published inaseries offivepapers inChemical Engineering (ref.9-13), contains
+information on437 listings—anumber ofwhich describe entire suites ofprograms. The table
+shows howthese programs aredistributed among 11technical areas.
+Anexamination ofthesources ofthe437computer systems shows thefollowing interesting
+distribution:
+North American Universities
+Other Universities
+Consult. &Eng.Firms (U.S.)
+Consulting &Engineering (other)
+U.S.Government
+Chemical Industry39%
+10%
+33%
+8%
+5%
+5%
+Programs developed indepartments ofchemical engineering make upthelargest source, while
+those from consulting andengineering firms represent aclose second.
+Inview oftheavailability oftheASPEN survey, wehave included here only those chemical
+process anddesign systems which weknow tobeavailable on-line, orsoon tobesoavailable, or
+those batch systems which utilize oneofthemore current physical properties data bases, listed in
+Table B.Wehave included references topublished descriptions ofthelisted systems, wherever
+theywere available.
+Appliccition Aresis for437CoMputer ProgrciMs
+Covered bytheASPEN Survey <Chen-Eng. vol-85,86)
+NUHBER:
+9 :
+18 :
+31 :
+45 :
+42 :
+147 :
+23 !
+45 :
+40 :
+16 :
+21 :FUNCTION
+437TherModynaMics ofcheHical equilibriuM
+Vapor-liquid equilibrium
+Thernal properties
+Steady state flowsheet anddynawic siMul«ition
+Special processes
+Unit Operations
+Cost estimation andrelcited econoMics
+Mathenatical techniques
+Vessels, tanks, andpiping technology
+Dynamic process control
+MiscellanioLis
+TOTAL
+17
+Appendix B
+NIH-EPA
+Chemical Information System
+Research chemists, environmental scientists, and librarians— inprivate industry, universities or
+government— cannow retrieve chemical information quickly andinexpensively without sophisticated
+knowledge ofcomputers.
+TheNIH/EPA Chemical Information System (CIS) isacollection ofscientific databases available
+through aninteractive computer program. Noother publicly available information system canprovide
+such diverse numeric, asopposed tobibliographic, dataonsomany (over 192,000) chemical sub-
+stances. CIShasaunique linking system, theheart ofwhich istheStructure andNomenclature
+Search System (SANSS). SANSS allows theuser, inasingle operation, tosearch 66different files
+including theTSCA inventory. TheCISdatabases canbesearched by:
+1.Chemical Structure: atwo-dimensional representation thatcanbegenerated bytheuser.
+2.CAS Index Name, Trade Names, Common Names andSynonyms: over450,000 names
+which canbesearched incomplete ortruncated form.
+3.CAS Registry Number: thekeytounlock thedoors oftheCIS fileand linktheCIStoChem-
+icalAbstracts.
+TheChemical Information System hasbeen developed byagencies oftheUnited States Government
+incooperation withother governments andorganizations. Itisavailable only intheprivate sector (via
+Telenet) forusebythegovernment, industry, andthepublic through anannual subscription feeof
+$300.00 andeither $36.00 or$60.00 perconnect hour, depending onwhich component isused. The
+annual subscription feehasbeenwaived foracademic institutions.
+Forfurther information contact —,
+U.S.A.
+TheNetherlands
+Switzerland
+Finland
+Japan
+EnglandKayPool, CISProject, 2135 Wisconsin Ave.,NW,Washington. D.C.20007
+Phone: (202)298-6200 or(800)424-2722
+Dr.Charles Citroen, CID-TNO, POBox36.2600 AA, Delft, Phone: (015) 56-93-30
+Dr.T.Clerc, Pharmacy Department, University ofBern,3012 Bern, Phone: (031) 65-41-71
+Dr.S.Laitinen, Technical Research Center ofFinland, Technical Information Center,
+Vuorlmiehentic 5,02150 Espoo 15,Phone; (0)456-4370
+Mr.Isao Miura, International Information Service Dept., Kinokuniya Bookstore Co., Ltd.,
+10-13 Kitashinjuku 4-Chome, Shinjuku-ku. Tokyo 160-91, Phone: (03)364-0751
+Dr.Diane Eakin, Fraser Williams Scientific Systems Ltd.,Glendower House, Poynton,
+Cheshire, SK12NJ, Phone: (0625) 871126
+18
+Appendix B(cone.)
+NIH/EPA
+Chemical
+Information
+System
+CISincludes thefollowing components:
+Structure andNomenclature Search System (SANSS) —
+provides adatabase ofover192,000 compounds collected
+from over66different sources. AlloftfieCISdatabases
+aresearctiabie througti SANSS bystructure, substructure,
+chemical code, or full, partial orleft- orright-truncated
+name. Thedata obtained fromSANSS includes theCAS
+registry number, other databases associated tothesub-
+stances, structural diagram, andsystematic names asweU
+assynonyms. ($60.00 perconnect hour)'
+Mass Spectral Search System (MSSS)— contains mass
+spectra ofover33,000 compounds which canbesearched
+onthebasis ofnormal peakandintensity requirements, as
+wellasbyBiemann and probability based-matched (PBM)
+techniques. ($36.00 perconnect hour)'
+Carbon-1 3Nuclear Magnetic Resonance Spectral
+Search System (CNMR) —contains CNMR spectra ofover
+8,500 compounds. Searches bychemical shift require-
+ments arepermitted; analysis anddisplay ofthisinforma-
+tion forcompounds ofinterest may also beobtained.
+($36,00 perconnect hour)'
+Nuclear Magnetic Resonance Literature Search System
+(NMRLIT) —retrieves bibliographic information forover
+34,000 literature references inthe field ofNMR. Searches
+maybeconducted byauthor, nucleus, NMR subject orjour-
+nal,from1964 tothepresent ($36.00 perconnect hour)'
+Powder Diffraction Search-Match (PDSM) —contains over
+30,000 powder diffraction patterns, provided bytheJoint
+Committee onPowder Diffraction Standards (JCPDS), for
+identifying compounds based upon thecharacteristics of
+their powder diffraction pattern, asopposed tox-ray
+crystal identification. ($60.00 perconnect hour)'
+X-ray Crystallographic Search System (CRYST) —
+contains thebibliographic andstructural files oftheCrys-
+tallographic Data Centre (Cambridge, England). There are
+over25,000 compounds which havespace groups assigned
+which maybeused asasearch element. There areapprox-
+imately 18,000 compounds which have had theatomic
+coordinates and cellparameters reported. ($36.00 percon-
+necthour)t
+X-ray Single Crystal Search System (XTAD—isasearch
+system oftheCrystal Data Determinative Tables pub-
+lished bytheNational Bureau ofStandards andtheJoint
+Committee onPowder Diffraction Standards. Thespace
+group, density, unit cells andchemical types willbe
+searchable. This system currently uses theCambridge
+Crystallographic Data Centre tile. ($36.00 perconnect
+hour)'EPA's OilandHazardous Materials-Technical Assist-
+tance Data System (OHM-TADS) —provides information
+pertinent toemergency spill response efforts. The
+OHM-TADS database includes awide variety ofphysical,
+chemical, biological, toxicological andcommercial dataon
+these materials, withemphasis placed ontheir deleterious
+effects onwater quality. Upto126different fields ofinfor-
+mation aremaintained formore than 1,000 materials.
+($36.00 perconnect hour)'
+Water Drop—Distribution Registry ofOrganic Pollutants
+contains data ondrinking andother types ofwater, date
+andlocation ofwater sample, compound identity, analytical
+method used, concentration detected, andreferences to
+published results. ($36.00 perconnect hour)'
+Federal Register Notices —provides across-reference to
+allofthecitations ofachemical orclass ofchemicals cited
+intheFederal Registry since January 1,1978. The title,
+part, subpart, and ashort description ofthenotice ofthe
+chemical ofinterest isavailable. ($60.00 perconnect
+hour)'
+Registry ofToxic Effects ofChemical Substances
+(RTECS) —isprovided bytheNational Institute ofOccupa-
+tional Safety andHealth totheCIS.TheRTECS publication,
+withover 40,000 toxicological measurements, isavailable
+with asetofprograms tosearch the fileonthebasis of
+toxicological dataanddesignators (e.g. animal typeand
+measuring method ($36.00 perconnect hour)'
+Chemical Modeling Laboratory (CHEMLAB) —provides all
+thecapabilities oftheformer component, CAMSEQ-II, for
+three-dimensional conformational analysis, molecular orbit-
+alcalculations, and inaddition, provides fortheestimation
+ofmany properties ofachemical; such as,the partition
+coefficient, melting point, boiling point, solubility and oth-
+ers.($60.00 perconnect hour)'
+Mathematical Modeling System (MLAB) —aninteractive
+system formathematical modeling. Thiscomponent pro-
+vides major capabilities intheareas ofcurve anddistribu-
+tion fitting, linear and non-linear regression, statistical
+analysis, differential and integral calculus, andtwo-and
+three-dimensional plotting. ($60.00 perconnect hour)"
+Operational soon:
+Clinical Toxicology ofCommercial Products (CTCP) —
+willbeaninteractive search system based upon thepubli-
+cation ofthesamename byGleason, Hodge, Gosselin, et
+al.CTCP willpermit searching ofcommon commercial
+products byidentifying theproduct oritsconstituents. The
+toxicity oftheproducts inCTCP willalsobeavailable
+($60.00 perconnect hour)'
+Partition Coefficients (LOGP) —have been provided by
+Pomona College (California). Thedata willcontain partition
+coefficients onapproximately 5,000 common chemicals.
+LOGP willallow searching tobedone byvalue, solvent,
+andreferences astothecompound inquestion. ($36.00
+perconnect hour)'
+'European users aregiven acredit of$12.00 perconnect hour.
+ThePTT will billthecommunications costs directly totheuser
+Hourly rates include CPU's andconnect minutes accumulated ina
+program. There isa$3,00 minimum persession.
+tNon-USA users require permission fromCambridge DataSystem.
+7/1/80
+19
+Appendix C
+VIII.Computer Programs forHandling
+Technical Data
+NBSTech. Note 444, Reform :AGeneral -Purpose
+Program forManipulating Formatted Data Files,
+R.C.McClenon and J.Hilsenrath (1968).
+NBSTech. Note 446, PRECISE :AMultiple Precision
+Version ofOMNITAB ,A.E.Bean and J.Hilsenrath
+(1968).
+NBSTech. Note 470, Edpac :Utility Programs for
+Computer-Assisted Editing, Copy-Production, and
+Data Retrieval ,C.G.Messina and J.Hilsenrath
+(1969).
+NBSTech. Note 500, Edit-Insertion Programs for
+Automatic Typesetting ofComputer Printou t,
+C.G.Messina and J.Hilsenrath (1970).
+NBSTech. Note 700, COMBO :AGeneral -Purpose Program
+forSearching, Annotating, Encoding-Decoding, and
+Reformatting Data Files ,Robert McClenon and
+Joseph Hilsenrath (1972).
+NBSTech. Note 738, Subroutine fortheCalculation
+ofCODEN Check Characters, D.Garvin (1972).
+NBSTech. Note 740, SETAB :AnEdit/Insert Program
+forAutomatic Typesetting ofSpectroscopic and
+Other Computerized Tables,Robert C.Thompson and
+Joseph Hilsenrath (1973).
+NBSTech. Note 760, Description oftheMagnetic Tape
+Version oftheBulletin ofThermodynamics and
+Thermochemistry, No.14 ,R.McClenon, W.H.Evans,
+D.Garvin, and B.C.Duncan (1973).
+NBSTech. Note 820, Complete Clear Text Representa-
+tion ofScientific Documents inMachine-Readable
+Form ,Blanton C.Duncan andDavid Garvin (1974).
+NBSTech. Note 903, TheNIRA Computer Program Package
+(Photonuclear Data Center ),H.J.Vander Molen and
+H.M.Gerstenberg (1976).
+NBSTech. Note 928, Computer Programs fortheEvalua-
+tion ofActivity andOsmotic Coefficients,B.R.
+Staples and R.L.Nuttall (1976).
+NBSHandbook 101, OMNITAB, AComputer Program for
+Statistical andNumerical Analysis,J.Hilsenrath,
+G.G.Ziegler, C.G.Messina, P.J.Walsh, and
+R.J.Herbold (Revised January 1968).NBSSpec. Publ .424, AContribution toComputer Type-
+setting Techniques :Table ofCoordinates for
+Hershey's Repertory ofOccidental Type Fonts and
+Graphic Symbols ,N.M.Wolcott and J.Hilsenrath
+(1976)!
+NBSIR 76-1147, ACombined Least SumandLeast Squares
+Approach totheEvaluation ofThermodynamic Data
+Networks ,D.Garvin, V.B.Parker, D.D.Wagmann,
+andW.H.Evans (1976).
+NBSIR 78-1432, Automation oftheIonEnergetics Data
+Center ,R.Thompson, W.Webb, H.M.Rosenstock
+(1977).
+IX.NBSMagnetic Tape Series
+NBSMagnetic Tape 1,OMNITAB IIMagnetic Tape and
+Documentation Parcel .David Hogben, Sally T.Peavy,
+andRuth Varner (1970).
+NBSMagnetic Tape 2,Fortran Programs forText
+Editing, FileManipulation andAutomatic Typesetting,
+C.G.Messina, R.McClenon, and J.Hilsenrath (1973).
+NBSMagnetic Tape 3,Bibliography andIndex tothe
+Literature intheNBSAlloy Data Center ,G.C.
+Carter and D.J.Kahan (1973).
+NBSMagnetic Tape 4,Magnetic Tape Version ofthe
+Bulletin ofThermodynamics andThermochemistry ,
+No.14(1971), Robert McClenon andBlanton Duncan
+(1973).
+NBSMagnetic Tape 9,Crystal Data Tape, Derived from
+the3rdEdition ofCrystal Data Determinative
+Tables, H.M.Ondik and A.D.Mighell (197b).
+NBSMagnetic Tape 10,Atomic Spectral-Line Intensities,
+W.FMeggers, C.H.Corliss, and B.F.Scribner
+(1975).
+NBSMagnetic Tape 12,Tables ofCoordinates for
+Hershey's Repertory ofType Fonts andGraphic
+Symbols, Norman M.Wolcott andJoseph Hilsenrath
+jrmr:
+EPA/NIH Mass Spectral Data Base ,S.R.Heller and
+G.W.A.Milne (1977). Oneyear lease feefrom
+$500. Write forfurther information to:
+Office ofStandard Reference Data
+National Bureau ofStandards
+Building 221 -Room A323
+Washington, D.C.20234
+Telephone: (301) 921-3442
+NBSHandbook 125, OMNIDATA, AnInteractive System for
+Data Retrieval, Statistical andGraphical Analysis,
+andData Base Management, AUser's Manual,
+J.Hilsenrath and B.Breen (1978).
+20
+HBS-114A (REV. 0-781
+U.S.DEPT. OFCOMM.
+BIBLIOGRAPHIC DATA
+SHEET1.PUBLICATION ORREPORT NO.
+NBSTN11225.ReeiptfeHf iAficetslori Nq.
+4.TITLE ANDSUBTITLE
+Summary ofOn-Line orInteractive Physico-Chemical
+Numerical Data Systems5.Publication Date
+October 1980
+^^ijaRljatton Code
+7.AUTHOR(S)
+Joseph Hilsenrath8.Performing Organ. Report No.
+^^^^^SMiTiStHoT 9.PERFORMING ORGANIZATION NAMEANDADDRESS
+NATIONAL BUREAU OFSTANDARDS
+DEPARTMENT OFCOMMERCE
+WASHINGTON, DC20234it.W-^ ..^..A-^ .-....^..^^^. .^-.-^^.\....,,
+11.Contract/Grant No.
+12.SPONSORING ORGANIZATION NAMEANDCOMPLETE ADDRESS fSfreet, city. State, ziP)
+Same asNo. 913.Type ofReport &Period Covered
+Final
+ip^!^»«5ortBg ftgwicy Coiie
+t^^N.vXN^.Nv^^v ...^.^X^i.--^. N sx.. s ....s ..\
+15.SUPPLEMENTARY NOTES
+I IDocument describes acomputer program; SF-185, FIPS Software Summary, isattached.
+16.ABSTRACT (A200-word orleaa tactual summary o{moal significant information. Ifdocument includes asignificant bibliography or
+literature survey, mention ithere,)
+Abrief description isgiven of51interactive physico-chemical numerical data
+systems, most ofwhich areon-line oninternational conputer networks. Thesystems
+arelisted under five headings: those useful foridentification ofsubstances
+fromspectroscopic data; those providing thermodynamic andtransport properties of
+pure coii:5)onents andmixtures; those v^ich perform metallurgical calculations and
+drawphase diagrams; systems producing complete tables ofthermodynamic properties
+ofindividual substances; andthose forchemical process simulation, optimization,
+anddesign. References topublished descriptions ofthesystems, where they exist,
+arealso given.
+17.KEYWORDS (six totwelve entries; alphabetical order; capitalize only thefirst tetter ofthefirst l<eyword unless aproper name;
+separated bysemicolons)
+Qiemical data; data banlcs; data bases; data networks; interactive systems;
+numerical data bases; on-line data; physical data; spectroscopic data systems
+18.AVAILABILITY [3Unlimited
+I IForOfficial Distribution. DoNotRelease toNTiS
+r~|Order From Sup. ofDoc, U.S.Government Printing Office, Washington, DC
+20402,
+I 1Order From National Technical Information Service (NTIS), Springfield,
+VA. 2216119.SECURITY CLASS
+(THISREPORT)
+UNCLASSIFIED
+20.SECURITY CLASS
+(THIS PAGE)
+UNCLASSIFIED21.NO.OF
+PRINTED PAGES
+24
+22.Price
+$1.75
+USCOMM-DC
+Subscribe now—
+Thenew
+National Bnrean
+ofStandards
+Journal
+Theexpanded Journal ofResearch oftheNational
+Bureau ofStandards reports NBS research and
+development Inthose disciplines ofthephysical
+andengineering sciences inwhich theBureau is
+active. These include physics, chemistry, engineer-
+ing,mathematics, andcomputer sciences. Papers
+cover abroad range ofsubjects, withmajor
+emphasis onmeasurement methodology, andthe
+basic technology underlying standardization. Also
+included from time totime aresurvey articles on
+topics closely related totheBureau's technical
+and scientific programs. Asaspecial service to
+subscribers each issue contains complete citations
+toallrecent NBS publications inNBSandnon-
+NBSmedia. Issued sixtimes ayear. Annual sub-
+scriptions: domestic $13.; foreign $16.25. Single
+copy, $3.domestic; $3.75 foreign.
+•Note:TheJournal wasformerly published in
+twosections: Section A"Physics andChem-
+istry" andSection B"Mathematical Sciences."
+NBSBoard ofEditors
+Churchill Eisenhart,
+Executive Editor (tViathematics)
+JohnW.Cooper (Physics)
+Donald D.Wagman (Chemistry)
+Andrew J.Powell (Engineering)
+Joseph O.Harrison (Computer Science)
+Howard J.M.Hanley (Boulder Labs.)
+Subscription Order Form
+Entermysubscription toNBS Journal ofResearch
+at$13.Add$3.25 forforeign mailing. Noadditional postage is
+required formailing within theUnited States orItspossessions.
+(SJRA— FileCode 2N)
+Send Subscription to:
+Name-First, Last
+Company Name orAdditional Address Line
+Street Address
+City State ZipCode
+(or)COUNTRY
+II !
+PLEASE PRINTCredit Card
+Tola! chargeOrders Only
+s$ .Fill intheboxes below.
+Credit
+Card No. 1 1 1 11 11 11 11 1 1 1 1
+DVISA MasterCard
+txpiration uate
+Month/Year1 1 1
+n
+DRemittance Enclosed. Domestic:
+Check ormoney order. Foreign:
+International money order,
+draftonanAmerican orCanadian
+Bank, orbyUNESCO coupons,
+Made payable tothe
+Superintendent otDocuments.
+Charge tomyDeposit
+Account No.
+ftUS,GOVERNMENT PRINTING OFFICE 1980-340-997/284MAILORDER FORM TO:
+Superintendent ofDocuments
+Government Printing Office
+Washington, D.C.20402
+NBSTECHNICAL PUBLICATIONS
+PERIODICALS
+JOURNAL OFRESEARCH— TheJournal ofResearch ofthe
+National Bureau ofStandards reports NBS research anddevelop-
+ment inthose disciplines ofthephysical andengineering sciences in
+which theBureau isactive. These include physics, chemistry,
+engineering, mathematics, andcomputer sciences. Papers cover a
+broad range ofsubjects, withmajor emphasis onmeasurement
+methodology andthebasic technology underlying standardization.
+Also included from time totime aresurvey articles ontopics
+closely related totheBureau's technical and scientific programs.
+Asaspecial service tosubscribers each issue contains complete
+citations toallrecent Bureau publications inbothNBSandnon-
+NBSmedia. Issued sixtimes ayear.Annual subscription; domestic
+$I.V foreign $16.25. Single ci)py, %}domestic; $3.75 foreign.
+NOTE; TheJournal wasformerly published intwosections: Sec-
+tionA"Physics andChemistry" andSection B"Mathematical
+Sciences."
+DIMENSIONS/NBS —Thismonthly magazine ispublished toin-
+form scientists, engineers, business andindustry leaders, teachers,
+students, andconsumers ofthe latest advances inscience and
+technology, withprimary emphasis onwork atNBS.Themagazine
+highlights andreviews such issues asenergy research, fireprotec-
+tion, building technology, metric conversion, pollution abatement,
+health and safety, andconsumer product performance. Inaddi-
+tion, itreports theresults ofBureau programs inmeasurement
+standards and techniques, properties ofmatter and materials,
+engineering standards and services, instrumentation, and
+automatic data processing. Annual subscription: domestic $11;
+foreign $13.75.
+NONPERIODICALS
+Monographs —Major contributions tothetechnical literature on
+various subjects related totheBureau's scientific andtechnical ac-
+tivities.
+Handbooks—Recommended codes ofengineering and industrial
+practice (including safety codes) developed incooperation with in-
+terested industries, professional organizations, and regulatory
+bodies.
+Special Publications —Include proceedings ofconferences spon-
+sored byNBS,NBSannual reports, andother special publications
+appropriate tothisgrouping such aswall charts, pocket cards, and
+bibliographies.
+Applied Mathematics Series—Mathematical tables, manuals, and
+studies ofspecial interest tophysicists, engineers, chemists,
+biologists, mathematicians, computer programmers, andothers
+engaged inscientific andtechnical work.
+National Standard Reference Data Series—Provides quantitative
+dataonthephysical andchemical properties ofmaterials, com-
+piled from theworld's literature and critically evaluated.
+Developed under aworldwide program coordinated byNBSunder
+theauthority oftheNational Standard Data Act(Public Law
+90-396).NOTE: The principal publication outlet fortheforegoing data is
+theJournal ofPhysical andChemical Reference Data(JPCRD)
+published quarterly forNBS bytheAmerican Chemical Society
+(ACS) andtheAmerican Institute ofPhysics (AlP). Subscriptions,
+reprints, andsupplements available fromACS, 1155Sixteenth St.,
+NW, Washington, DC20056.
+Building Science Series—Disseminates technical information
+developed attheBureau onbuilding materials, components,
+systems, andwhole structures. The series presents research results,
+testmethods, andperformance criteria related tothestructural and
+environmental functions and thedurability and safely charac-
+teristics ofbuilding elements andsystems.
+Technical Notes—Studies orreports which arecomplete inthem-
+selves butrestrictive intheir treatment ofasubject. Analogous to
+monographs butnotsocomprehensive inscope ordefinitive in
+treatment ofthesubject area. Often serve asavehicle forfinal
+reports ofwork performed atNBSunder thesponsorship ofother
+government agencies.
+Voluntary Product Standards—Developed under procedures
+published bytheDepartment ofCommerce inPart 10,Title 15,of
+theCode ofFederal Regulations. The standards establish
+nationally recognized requirements forproducts, andprovide all
+concerned interests with abasis forcommon understanding ofthe
+characteristics oftheproducts. NBS administers thisprogram asa
+supplement totheactivities oftheprivate sector standardizing
+organizations.
+Consumer Information Series—Practical information, based on
+NBS research andexperience, covering areas ofinterest tothecon-
+sumer. Easily understandable language and illustrations provide
+useful background knowledge forshopping intoday's tech-
+nological marketplace.
+Order theaboveNBS publications from: Superintendent ofDocu-
+ments, Government Printing Office, Washington, DC20402.
+Order thefollowing NBS publications —FIPS andNBSIR's—from
+theNational Technical Information Services, Springfield. VA22161.
+Federal Information Processing Standards Publications (FIPS
+PUB)—Publications inthis series collectively constitute the
+Federal Information Processing Standards Register. TheRegister
+serves astheofficial source ofinformation intheFederal Govern-
+ment regarding standards issued byNBS pursuant totheFederal
+Property andAdministrative Services Actof1949 asamended.
+Public Law89-306 (79Stat. 1127), andasimplemented byEx-
+ecutive Order 11717(38 FR12315, datedMay II,1973)andPart6
+ofTitle 15CFR(Code ofFederal Regulations).
+NBS Interagency Reports (NBSIR)—Aspecial series ofinterim or
+final reports onwork performed byNBS foroutside sponsors
+(both government andnon-government). Ingeneral, initial dis-
+tribution ishandled bythesponsor; public distribution isbythe
+National Technical Information Services, Springfield, VA22161,
+inpaper copy ormicrofiche form.
+BIBLIOGRAPHIC SUBSCRIPTION SERVICES
+Thefollowing current-awareness andliterature-survey bibliographies
+areissued periodically bytheBureau:
+Cryogenic Data Center Current Awareness Service. Aliterature sur-
+veyissued biweekly. Annual subscription: domestic $35; foreign
+$45.
+,Liquefied Natural Gas.Aliterature survey issued quarterly. Annual
+subscription: $30.Superconducting Devices andMaterials. Aliterature survey issued
+quarterly. Annual subscription: $45. Please send subscription or-
+dersandremittances forthepreceding bibliographic services tothe
+National Bureau ofStandards, Cryogenic Data Center (736)
+Boulder, CO80303.
+U.S.DEPARTMENT OFCOMMERCE
+National Bureau ofStandards
+Washington. DC20234
+OFFICIAL BUSINESS
+Penalty forPrivate Use.5300POSTAGE ANDFEES PAID
+U.S.DEPARTMENT OFCOMMERCE
+COM-215
+SPECIAL FOURTH-CU\SS RATE
+BOOK

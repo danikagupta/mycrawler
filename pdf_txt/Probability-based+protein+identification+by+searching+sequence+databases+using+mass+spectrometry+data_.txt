@@ -1,0 +1,459 @@
+Tutorial
+Protein identification using MS/MS data☆
+John S. Cottrell ⁎
+Matrix Science Ltd., London, UK
+ARTICLE INFO ABSTRACT
+Article history:
+Received 2 February 2011Accepted 9 May 2011Available online 15 May 2011The subject of this tutorial is protein identification and characterisation by database searching ofMS/MS Data. Peptide Mass Fingerprinting is excluded because it is covered in a separate tutorial.Practical aspects of database searching are emphasised, such as choice of sequencedatabase, effect of mass tolerance, and how to identify post-translational modifications.The relationship between sensitivity and specificity is discussed, as is the challenge of using
+peptide match information to infer which proteins were present in the sample.
+Since these tutorials are introductory in nature, most references are to reviews, rather thanprimary research papers. Some familiarity with mass spectrometry and protein chemistry isassumed. There is an accompanying slide presentation, including speaker notes, and acollection of web-based, practical exercises, designed to reinforce key points. This Tutorial ispart of the International Proteomics Tutorial Programme (IPTP 6).
+© 2011 Elsevier B.V.Keywords:Protein identification
+Database search
+Protein inferenceTutorial
+1. Overview
+Fig. 1 illustrates a typical experimental workflow for protein
+identification and characterisation using MS/MS data. The
+starting point is a protein sample, which may be a singleprotein or a complex mixture of proteins. An enzyme, oftentrypsin, digests the proteins to peptides. In most cases, one ormore stages of chromatography are used to regulate the flowof peptides into the mass spectrometer. Peptides are selectedone at a time using the first stage of mass analysis. Eachisolated peptide is then induced to fragment, possibly by
+collision, and the second stage of mass analysis used to
+capture an MS/MS spectrum.
+For each MS/MS spectrum, software is used to determine
+which peptide sequence in a database of protein or nucleic
+acid sequences gives the best match. Each entry in thedatabase is digested, in silico, using the known specificity ofthe enzyme, and the masses of the intact peptides calculated.If the calculated mass of a peptide matches that of an observedpeptide, the masses of the expected fragment ions are
+calculated and compared with the experimental values.Some search engines also predict and compare the relativeintensities of the fragment ions [1]. Many scoring algorithms
+have been devised to decide which peptide sequence bestmatches a given spectrum.
+Because the data in each MS/MS spectrum correspond to an
+isolated peptide, it makes no difference whether the originalsample was a single protein or a mixture. Individual peptidesequences are identified, then the set of peptide sequences isused to infer which proteins may have been present. Unless a
+peptide is unique to one particular protein, there may be some
+ambiguity as to which protein it originated from.
+There are many variations of this workflow. 1D or 2D gel
+electrophoresis may be used for separation followed by a
+single stage of chromatography. In Top-down proteomics(matching MS/MS spectra of intact proteins [2]), or if the
+sample was of endogenous peptides (sometimes called
+peptidomics [3]), there would be no enzyme digest step.JOURNAL OF PROTEOMICS 74 (2011) 1842 –1851
+☆This Tutorial is part of the International Proteomics Tutorial Programme (IPTP 6). Details can be found at: http://www.proteomicstutorials.org/ .
+⁎Matrix Science Ltd. , 64 Baker Street, London W1U 7GB, UK. Tel.: +44 20 7486 1050; fax: +44 20 7224 1344.
+E-mail address: jcottrell@matrixscience.com .
+1874-3919 © 2011 Elsevier B.V.
+doi:10.1016/j.jprot.2011.05.014
+available at www.sciencedirect.com
+www.elsevier.com/locate/jprot
+Open access under CC BY-NC-ND license.Open access under CC BY-NC-ND license.Database matching of MS/MS data is possible because
+peptide molecular ions fragment preferentially at certain pointsalong the backbone [4,5]. For many instruments, the major
+peaks in an MS/MS spectrum are b ions, where the charge isretained on the N-terminus, or y ions, where the charge isretained on the C-terminus [6]. The dominant fragmentation
+pathways depend on the ionisation technique, the massanalyser, and the peptide structure. Electron transfer dissocia-tion, for example, produces predominantly c and z ions [7].
+Peptide fragmentation is rarely a clean process, and the
+spectrum will often show significant peaks from side chain
+cleavages and internal fragments, where the backbone has
+been cleaved twice. This creates ambiguity and makes itdifficult to ‘read off ’the sequence. Worse, there may be no
+recognisable fragments at all to define some parts of thesequence. So, although de novo sequence interpretation canbe used in favourable cases [8], the only option for many MS/
+MS spectra is database searching, where we settle for the bestmatch in a limited pool of sequences. There may be nosequence ions from one half of the peptide, but if there is asequence in the database that gives a good match to the otherhalf, and the molecular mass fits, we accept this as the correct
+sequence.2. Sequence tag searches
+The first approach to database searching with MS/MS data was
+the sequence tag, originally described by Mann and Wilm [9].
+Whilst the quality of a typical MS/MS spectrum is not goodenough for ‘end to end ’de novo interpretation, it is often
+possible to pick out a short sequence ladder, and read off three
+or four residues of sequence. In a sequence homology search,
+this would be worth almost nothing, since any given tripletcan be expected to occur by chance many times in even asmall database. What Mann and Wilm recognised was that ashort stretch of amino acid sequence might provide sufficientspecificity for unambiguous identification if it was combinedwith the fragment ion mass values that enclose it, the peptidemass, and the enzyme specificity.
+Picking out an accurate tag is not trivial, and requires both
+skill and experience (or sophisticated software). Fig. 2 shows a
+promising four residue tag. Each search engine has its own
+syntax for the mass and sequence information. The example
+shown here is for Mascot, where the masses are entered asobserved m/z values. Searching this tag with trypsin as theenzyme and a mass tolerance of 0.5 Da gives a match to the
+Fig. 1 –A typical experimental workflow for protein identification and characterisation using MS/MS data.1843 JOURNAL OF PROTEOMICS 74 (2011) 1842 –1851trypsin autolysis peptide LQGIVSWGSGCAQK. The peaks
+defining the tag turn out to be y ions, which is why the
+sequence reads from right to left.
+If the tag is not called correctly, then no match will be
+found. With some search engines, ambiguity is OK, as longas it is recognised and the query is formulated correctly.Obviously, I=L and, unless the mass accuracy is high, Q=K andF=MetOx. Software or a table of mass values can help identifythe more common ambiguities.
+These days, the standard sequence tag search is essentially
+obsolete. It is much easier to skip the interpretation stage andsearch the MS/MS peak list directly, as will be described below.
+The reason the sequence tag is still important is its so-called
+‘error tolerant ’mode. This consists of relaxing the specificity,
+usually by removing the peptide molecular mass constraint.When this is done, the tag becomes disconnected from oneterminus, so that a match is possible even if there is a massdifference to one side or the other of the tag. This is one of thefew ways of getting a database match to a peptide when thereis a truly unknown modification or a variation in the primaryamino acid sequence.
+Other algorithms that combine mass and sequence infor-
+mation in novel ways include OpenSea [10], MS-BLAST [11],
+GutenTag [12], and MultiTag [13].3. Searching uninterpreted MS/MS data
+The more widespread approach to database searching of
+MS/MS data is to skip the interpretation step and let thesearch engine try to match calculated mass values directly.This method was pioneered by John Yates and Jimmy Eng at
+the University of Washington, Seattle, who used a cross
+correlation algorithm to compare an experimental MS/MSspectrum against spectra predicted from candidate peptidesequences. Their ideas were implemented as the Sequestprogram [14].
+There are now many search engines on the web for
+performing searches of uninterpreted MS/MS data. Fig. 3 lists
+those available in late 2010 together with some of the free andcommercial packages that can be downloaded or purchased torun locally.
+Searching of uninterpreted MS/MS data is readily automat-
+ed for high throughput work, and most ‘proteomics pipelines ’
+use this approach. A sample may generate tens or evenhundreds of thousands of MS/MS spectra, which can besearched as a single data set. It also offers the possibility ofgetting useful matches from spectra of marginal quality, fromwhich it would be difficult to call a reliable sequence tag. In
+Fig. 2 –An example of a sequence tag. Each search engine has its own syntax for the mass and sequence information. The
+example shown here is for Mascot, where the masses are entered as observed m/z values.1844 JOURNAL OF PROTEOMICS 74 (2011) 1842 –1851isolation, a weak match to a single spectrum might not be
+worth much, but if several spectra match peptides from thesame protein, this may give a higher degree of confidence thatthe protein is truly present. This is usually only practical forsmall data sets, where the probability of getting multiple
+peptide matches to the same protein by chance is very low.
+Searches of large data sets can be slow, particularly if
+searched without enzyme specificity or with many variablemodifications. It may be necessary to spread the workloadacross multiple processors in a computer cluster or grid.
+The remainder of this tutorial focuses on key aspects of
+searching uninterpreted MS/MS data: search parameters, sitelocalisation of modifications, multi-pass searches to locateunsuspected modifications and non-specific cleavage, scor-ing, the trade-off between sensitivity and specificity, andprotein inference.
+4. Search parameters
+Besides the mass spectrometry data, all search enginesrequire additional information in the form of ‘search param-
+eters ’. Some try to keep the user interface simple, and ask for
+few parameters, others aim for greater flexibility and acceptsome additional complexity. This section looks at the moreimportant search parameters.
+4.1. Sequence database
+There are two major repositories for sequence databases, onehosted by the National Center for Biotechnology Informationin the USA ( http://www.ncbi.nlm.nih.gov/ ) and the other
+hosted by the European Bio informatics Institute ( http://
+www.ebi.ac.uk/ ). All search engines use the ubiquitous Fasta
+format and all support searching of databases of proteinsequences. Some also support searching DNA sequences,which may be sequences corresponding to proteins (mRNA),expressed sequence tags (EST), or the genomic DNA sequence
+for a particular organism. Nucleic Acids Research produces anannual databases issue, containing articles describing the
+major databases ( http://dx.doi.org/10.1093/nar/gkp1077 ).
+SwissProt is a high quality, curated, non-redundant protein
+database. That is, it contains a consensus sequence for each
+distinct protein, and known variants have been collapsed into a
+single entry. This makes it relatively small, so searches are fastand reports are concise. However, if a protein of interest ispresent in the sample at a very low level, and only representedin the MS/MS data by one or two spectra, there is a risk that thesecritical sequences could be missing from a non-redundantdatabase. The alternative is a comprehensive, non-identicaldatabase, where every known protein sequence is explicitlyrepresented, such as NCBInr or UniRef100. The penalty is thatthe database becomes larger by a factor of approximately 20. Asearch will take 20 times as long and protein inference becomes
+more difficult.
+EST databases can be very large and very redundant. They
+are worth trying with high quality MS/MS data if a good matchcould not be found in a protein database or if studying anorganism that is not well represented in the protein databases.
+The genomes of an increasing number of organisms have
+been sequenced. But, in most cases, as soon as a genomesequence is published, the proteins corresponding to thecoding sequences are added to NCBInr and UniRef100. So, themain motivation for searching a genomic DNA sequencewould be to find matches to sequences from coding sequences
+missed by the gene finding software. Unfortunately, the
+genomes of higher organisms have an exon/intron structure,which causes many potential matches to be lost because thepeptide sequence is broken across two exons [15].
+To illustrate, Fig. 4 summarises the search results for a public
+domain dataset (ABRF Proteome Informatics Research GroupStudy iPRG2010). The data, from human proteins, were searchedusing Mascot against a curated protein database (IPI human),the human sequences of the GenBank EST division, and thehuman genome assembly. Search conditions were as shown.The table shows the number of peptide matches obtained at a
+1% false discovery rate (to be explained in greater detail below)
+and the average score threshold used to get 1% FDR.
+EST_human gets far fewer matches than IPI_human. The
+main reason is that EST_human is a much larger database, bymore than a factor of 100. This means that score thresholdsare higher, so we lose all the weaker matches that had scoresbetween 36 and 60. There may be additional matches inEST_human, but the net change is to lose many matches.
+The human genome results are even worse. This is not
+because of a higher threshold; the databases are very similar insize. One reason is that a proportion of potential matches are
+missed because they are split across exon –intron boundaries.
+Based on average tryptic peptide length, approximately 20% ofmatches are lost for this reason. In this particular example, thedifference is much larger than 20%. The other factor is that thehuman genome is only 1.5% coding sequence, and represents asingle consensus genome. EST_human is 100% coding sequenceand represents a wide range of SNPs and variants.
+To search a nucleic acid database, a utility can be used to
+translate the sequences to amino acids prior to the search orthe search engine can translate automatically, in the course ofthe search. Usually, this is a 6 frame translation, 3 reading
+frames from the forward strand and 3 reading frames from thehttp://proteomics.ucsd.edu/LiveSearch/ InsPect
+ByOnic, Crux, MassMatrix, MyriMatch, Paragon, 
+PepSplice, ProLuCID, ProbID, ProteinLynx GS, SIMS, Sequest, SpectrumMill, greylag, pFind, etc.Not on-linehttp://thegpm.org/TANDEM/index.html X!Tandem (The 
+GPM)http://hs2.proteome.ca/prowl/knexus.html Sonarhttp://www.ncbi.nlm.nih.gov/CBBResearch/qmbp/R
+AId_DbS/index.htmlRAId_DbShttp://www.expasy.org/tools/popitam/ Popitamhttp://phenyx.vital-it.ch/pwi/login/login.jsp Phenyxhttp://bart.scripps.edu/public/search/pep_probe/se
+arch.jspPepProbehttp://pubchem.ncbi.nlm.nih.gov/omssa/index.htm OMSSAhttp://prospector.ucsf.edu/prospector/cgi-
+bin/msform.cgi?form=mstagstandardMS-Tag (Protein 
+Prospector)http://www.matrixscience.com/search_form_select.
+htmlMascot
+Fig. 3 –Search engines for uninterpreted MS/MS data.1845 JOURNAL OF PROTEOMICS 74 (2011) 1842 –1851complementary strand. This is partly because the strand and
+frame are often uncertain and partly to catch frame shifts. Allorganisms do not share the same genetic code. The differ-ences may not be great, but it is worth using the correct code ifthe taxonomy is known.
+4.2. Taxonomy
+If a database contains taxonomy information, most searchengines can use this to restrict the search to entries for a
+particular organism or taxonomic rank. This speeds up the
+search because, in effect, it makes the database smaller.Limiting the taxonomy also simplifies the result report,because it removes homologous proteins from other species.
+It isn't a good idea to specify a very narrow taxonomy in a
+search. If the correct protein from the correct species is not inthe database, it can be very helpful to see a match to a proteinfrom a similar species. This is especially important for poorlyrepresented species. For example, in Swiss-Prot 2010_08, thereare 25,000 entries for rodents, all but 1500 of which are eithermouse or rat. So, even if you are studying hamster or porcupine,
+choose ‘Rodentia ’or something broader, not ‘Other rodentia ’.
+If using a narrow taxonomy or a single organism database,
+remember to include sequences from common contaminants.Otherwise, you may get misleading matches such as humanserum albumin when it should be BSA or mouse keratin when itshould be human.
+4.3. Mass tolerance
+Most search engines support separate mass tolerances forprecursors and fragments. Hybrid instruments, in particular,
+may have very different accuracies for MS and MS/MS.Precursor m/z comes from peak picking the (MS) survey scan.
+Sometimes, the
+13C peak may be selected rather than the12C. In
+extreme cases, the13C2peak may be taken. This can happen
+even when the underlying accuracy and resolution are veryhigh. Some search engines allow for this and will look at thecorrect mass, plus and minus the tolerance, and also in narrowwindows 1 Da and 2 Da higher. This is preferable to opening outthe precursor mass tolerance to 1 or 2 Da.
+Specifying too tight a mass tolerance is a very common
+reason for failing to get a match. Unless the search engine
+performs some type of re-calibration [16,17] ,i ti sm a s s
+accuracy that matters, not precision. Making an estimate ofthe mass accuracy doesn't have to be a guessing game. Searchresult reports usually include graphs showing the mass errorsfor matched peptides as a function of mass. Search a standardthat gives many strong matches, such as a BSA digest, andlook at these error graphs. The extent of random scatter andany systematic trend will become clear. Add on a safetymargin and this is your error estimate.
+If you have very high precursor accuracy, beware of searching
+a small database. The combination of low ppm mass tolerance,
+tryptic cleavage specificity, a nd a database limited to proteins
+from a single taxon can mean that there is only a single candidatep e p t i d es e q u e n c ef o rm a n yo ft h eM S / M Ss p e c t r a .I ti sd i f f i c u l tt ojudge the reliability of such matches, when there are few or noalternatives to compare against. Better to search a larger databaseor open out the mass tolerance so as to ensure each spectrum istested against a diverse range of candidate sequences.
+4.4. Enzyme
+If the peptides result from an enzyme digest, you need to know
+what the enzyme was and select it in the search form.
+Database Size Avg. 1% 
+threshold# matches @ 
+1% FDR
+IPI_human 3.66 3.5 x 10^7 residues 36 2961
+EST_human 20100415 4.2 x 10^9 bases 60 1899
+Human Genome 20060306 3.1 x 10^9 bases 60 1241
+Fig. 4 –Results for a public domain dataset searched using Mascot against a curated protein database (IPI human), the human
+sequences of the GenBank EST division, and the human genome assembly. Search conditions were as shown.1846 JOURNAL OF PROTEOMICS 74 (2011) 1842 –1851Setting the number of allowed missed cleavage sites to zero
+simulates a limit digest. If you are confident that the digestwas perfect, with no partial fragments present, this will givemaximum discrimination.
+If experience shows that the digest mixtures usually
+include some partials (peptides with missed cleavage sites)you should choose a setting of 1, or maybe 2 missed cleavagesites. Don't specify a higher number without good reason,because each additional level of missed cleavages increasesthe number of calculated peptide masses to be matchedagainst the experimental data. Just like mass tolerances, themissed cleavage parameter is best set by looking at somesuccessful search results to see how complete the digestsactually are.
+Some people like to perform searches without enzyme
+specificity, then gain confidence that a match is correct if the
+matched peptides are tryptic. The downside is that this makesthe search space 100 to 1000 times larger, so that many weakmatches will be lost. If there is evidence for a lot of non-specificcleavage, which may actually be in-source fragmentation, thena semi-specific enzyme allows one end of the peptide to be non-specific, but not both. Only abandon enzyme specificitycompletely if you have no other choice, such as when searchingendogenous peptides.
+4.5. Peak list file format
+There are a number of different file formats for peak lists. DTAand PKL were developed for Sequest and Waters Masslynxrespectively, and are relatively simple, containing little morethan mass and intensity pairs. MGF is the Mascot GenericFormat, which also supports embedded search parametersand meta data. mzML is the standard interchange formatcontrolled by the Proteomics Standards Initiative [18]. It can be
+used for either raw data or peak lists and replaces bothmzData, which was mainly for peak lists, and mzXML, whichwas mainly for raw data.
+4.6. Modifications
+Proteins and peptides can be modified in hundreds of ways [19].
+Some modifications relate to bi ological function, others are
+artefacts of sample handling. The most comprehensive data-bases of protein modifications are Unimod ( http://www.unimod.
+org), which focuses on modifications relevant to mass spectrom-
+etry, and RESID ( http://www.ebi.ac.uk/RESID/ ), which concen-
+trates on natural modifications , mostly post-translational.
+In database searching, modifications are handled in two
+ways. First, there are the quantitative modifications, usually
+called fixed or static. An example would be the efficientalkylation of cysteine. Since all cysteines are modified, this iseffectively just a change in the mass of cysteine. It carries nopenalty in terms of search speed or specificity.
+In contrast, most post-translational modifications do not
+apply to all instances of a residue. For example, phosphorylationmight affect just one serine in a peptide containing manyserines. Non-quantitative modifications, usually called variableor differential, are expensive in the sense that they increase thetime taken for a search and reduce its specificity. This is because
+the software has to permute out all the possible arrangements ofmodified and unmodified residues that fit to the peptide
+molecular mass. As more and more modifications are consid-ered, the number of combinations and permutations increasesgeometrically; a so-called combinatorial explosion. This is why
+it is very important to be as sparing as possible with variable
+modifications.
+A third class of modifications is sometimes used for stable
+isotope labels in a quantitation experiment. Some peptideswill carry a light label (or no label) and other peptides will carrya heavy label, but no peptide ever carries a mixture of light andheavy. To keep the search space small, this can be imple-mented as two separate fixed modification searches, one eachfor the light and heavy labels.
+5. Site analysis
+For modifications that relate to biological function, the site of amodification can be just as important as the nature of the
+modification. If a peptide contains both modified and unmodi-
+fied sites, identifying the presence of a modification is not thesame as localising it to a particular residue. A standard searchresult report may list only the highest scoring arrangement, or itmay list several arrangements with differing scores, but leavinginterpretation to the user. Many software tools have beendeveloped to try and quantify site localisation, often with aparticular focus on phosphorylation: Ascore [20],M a x Q u a n t [21],
+InsPect [22], MS-Alignment [23],P T M F i n d e r [24], PhosphoScore
+[25], Debunker [26], SloMo —ETD/ECD [27], ModifiComb [28],a n d
+Delta Score [29].
+6. Multi-pass searches
+Multi-pass searching is the efficient way to find less common
+modifications, including poi nt mutations in the primary
+sequence, and non-specific peptides. The first pass search is asimple search of the entire database with minimal modifica-tions. The protein hits found in the first pass search are thenselected for an exhaustive second pass search. During thissecond pass search, a long list of potential modifications istested serially. That is, only peptides containing a singleunsuspected modification will be matched, but this will covermost post-translational modifications. Single residue substitu-tions can be handled in exactly the same way as modifications,
+and the enzyme specificity will often be relaxed so as to find
+matches to non-specific peptides.
+Because only a handful of entries are being searched, search
+time is not an issue. It is difficult to apply any kind of statisticaltreatment to the results, because the entries being searchedhave been pre-selected. Best to think of the matches from thefirst pass search as the evidence for the presence of the proteins.The matches from the second pass search give increasedcoverage and may give clues as to unsuspected modificationsor SNPs that merit closer investigation.
+Often, there are many possible explanations for an observed
+mass difference. For example, a delta of 28 Da could be formyl or
+dimethyl or ethyl or one of several amino acid substitutions,such as Lys->Arg. The search report can give a list ofpossibilities, but the researcher must use their knowledge and1847 JOURNAL OF PROTEOMICS 74 (2011) 1842 –1851experience to decide on the best explanation for the observed
+differences.
+The main limitation of multi-pass searching is that it can
+only find matches to proteins that have at least one match to an
+unmodified peptide. Not so useful when studying endogenous
+peptides or very heavily modified proteins, such as histones.Similar limitations apply to ‘unrestricted ’modification searches,
+where peptide mass spectra are compared with one another,rather than matched to database sequences [30].
+7. Scoring
+Many different ways of scoring peptide matches have been
+developed. A review by Sadygov [31] classified scoring
+algorithms as Descriptive (e.g. Sequest [14],S o n a r [32]),
+Interpretative (e.g. PeptideSearch [9], MS-Seq [33]), Stochastic
+(e.g. Scope [34], Olav [35]), and Probability-based (e.g. Mascot
+[36], OMSSA [37]). It is beyond the scope of this tutorial to go
+into detail about individual algorithms.
+For search engines that have non-statistical scoring algo-
+rithms, there is the possibility to process the results withsomething like PeptideProphet [38] or Percolator [39],w h i c h
+converts the scores into probabilities. This makes it easier toapply a threshold to remove unreliable matches.
+Whether or not the scoring algorithm is probability-based,
+database searching is a statistical process. Most MS/MSspectra do not encode the complete peptide sequence; thereare gaps and ambiguities. Hopefully, most of the time, we areable to report the correct match, a ‘true positive ’, but not
+always. If the sequence of the peptide is not in the database,and we obtain a match below our score or significance
+threshold, that is also OK, and we have a ‘true negative ’. The
+other two quadrants represent failure. A ‘false positive ’is
+when we report a significant match to the wrong sequence. A‘false negative ’is when we fail to report a match even though
+the correct sequence is in the database. For real-life datasets,when we cannot be certain that all the correct sequences arepresent in the database, we don't know whether a failure toget a match to a spectrum is a true negative or a false negative.The usual way to measure the quality of a set of search resultsis with a false discovery rate, which doesn't require estimatesof true negatives or false negatives [40].
+Many search engines report expect (or expectation) values,
+either as scores or in addition to scores. An expect value is thenumber of times you would expect to get a score at least as highby chance. Small expect values are good, and a match with anexpect value of 1 or more indicates a random match. You cancalculate an expect value for a non-statistical score by fitting thetail of the score distribution to a straight line in log space [41].
+Some software reports a PEP value (Posterior Error Probability),which is similar to an expect value for values much less than 1.
+Even the best scoring scheme cannot fully separate the
+correct and incorrect matches. This is often illustrated in the
+form of a Receiver Operating Characteristic or ROC plot, which
+shows the relationship between the true positive and falsepositive rates as the threshold is varied ( Fig. 5 ). The origin is a
+very high threshold, which lets nothing through. At the topright, we have a very low threshold, that allows everythingthrough. Neither extreme is a useful place to be. The diagonalrepresents a useless scoring algorithm, that is equally likely to
+let through a false match as a true one. The solid curve showsa useful scoring algorithm, and the more it pushes up towardsthe top left corner, the better. Setting a threshold towards this
+top left corner gives a high ratio of correct matches to false
+matches.
+8. Sensitivity and specificity
+It could be argued that, a few years ago, there was too muchfocus on sensitivity and not enough consideration given tospecificity, so that some of the published lists of proteins fromdatabase searching were not as accurate as the authors mighthave hoped. A growing awareness of this issue led to initiativesfrom various quarters. Most notably, the Editors of Molecularand Cellular Proteomics held a workshop in 2005 to define a setof guidelines [42]. Similar guidelines have been adopted by other
+journals and by the Proteomics Standards Initiative [43].
+For large scale studies, there is a requirement to estimate
+the false discovery rate. One of the most reliable ways to dothis is with a so-called target –decoy search. This is a very
+simple but powerful way of validating search results. Thesearch is repeated, using identical search parameters, againsta database in which the sequences have been reversed orshuffled. The number of matches from the decoy database isan excellent estimate of the number of false positives in theresults from the target database [44].
+There is a good deal of discussion in the literature about
+whether the decoy sequences should be reversed or rando-
+mised; whether to search a single database containing both
+target and decoy sequences or separate databases. Theseconsiderations may change the numbers in a small way, butthe most important thing is to do some type of decoy search andestimate whether the level of false positives is 0.1% or 1% or 10%.
+Although a decoy search is an excellent validation method
+for large data sets, it isn't useful when there are only a small
+01
+1 0
+1 - Specificity
+(False positive rate)Sensitivity
+(True positive rate)Receiver Operating Characteristic
+Fig. 5 –Receiver Operating Characteristic or ROC plot, which
+shows the relationship between the true positive and falsepositive rates as the threshold is varied.1848 JOURNAL OF PROTEOMICS 74 (2011) 1842 –1851number of spectra, because the numbers are too small to give
+an accurate estimate. Hence, this is not a substitute for astable scoring scheme. You might think of it as a form ofexternal calibration for the scoring algorithm.
+In addition to transforming non-statistical scores into
+probabilities, PeptideProphet also seeks to improve sensitivitythrough better discrimination. It takes information about thematches, besides the score, and uses a machine learningalgorithm called linear discriminant analysis to learn whatdistinguishes correct from incorrect matches. Examples ofadditional information would be precursor mass error, num-ber of missed cleavages, or the number of tryptic termini [38].
+A more recent development has been to use the matches
+from a decoy database as negative examples for a classifier.Percolator trains a machine learning algorithm called a support
+vector machine to discriminate between a sub-set of the high-
+scoring matches from the target database, assumed correct, andthe matches from the decoy database, assumed incorrect [39].
+9. Protein inference
+It is essential to remember that database matching of MS/MS
+spectra identifies peptides, not proteins. Using the peptidesequences to deduce which proteins were present in theoriginal sample is surprisingly difficult because many of thepeptide sequences in a typical search result can be assigned tomore than one protein. The guiding principal of proteininference is to create a minimal list of proteins. That is, theminimum number of proteins that can account for theobserved peptides. Some people call this approach theprincipal of parsimony, others call it Occam's razor [45].
+Imagine the very simple case where we have three peptide
+matches, which can be assigned to three proteins, asillustrated in Fig. 6 . Do we have evidence for all three proteins,
+or just one? By the principal of parsimony, we will report thatthe sample contained protein A. Proteins B and C are classifiedas sub-set proteins, and given an inferior status. This iscertainly a reasonable decision, but there is no guarantee thatit is correct. It is possible that the sample actually did contain amixture of proteins B and C, but not protein A. Another thingto watch for is the possibility that peptide 2 is a very weakmatch, maybe spurious. If so, then there is nothing to choose
+between proteins A and B.
+This ambiguity is made worse in a shotgun proteomics or
+MudPIT experiment, where the proteins from a cell lysate aredigested to peptides without any prior fractionation or separa-tion. In general, no matter how good the data, there will be someambiguity concerning which proteins were present in thesample. This can be a serious problem if someone who is not
+familiar with these issues ends up with the impression that thesearch gives evidence for the presence of all of the proteins in afamily, rather than just one or two.
+Protein false discovery rate is not the same as peptide false
+discovery rate. It may be higher or lower, depending on the rulesfor accepting a protein or protein family. It is usually advisable torequire that a protein has significant matches to more than onedistinct peptide sequence. A prot e i nw i t hm a t c h e st oj u s tas i n g l e
+peptide sequence is commonly referred to as a ‘one-hit wonder ’
+a n di so f t e nt r e a t e da ss u s p e c t .T h i si sa c t u a l l yas l i g h to v e r -simplification. In a search with a large number of spectra and asmall database, even though the peptide false discovery rate islow, a protein can pick up multiple false matches by chance. Onew a yt og u a r da g a i n s tt h i si st ol o o ka tt h ed e c o ys e a r c hr e s u l t s
+and ensure that your rules for accepting a protein in the target
+database give no false posit ive proteins from the decoy.
+10. Further reading
+Other tutorials in this series cover related topics, in particular:
+•De novo and sequence homology searching
+•Protein ID by MALDI (Peptide Mass Fingerprinting)
+•ID verification principles. PeptideProphet, etc.
+•Proteomics databases (Data repositories).
+Recent review articles that cover database searching of MS/
+MS data in greater depth or give a different perspective includethose from Duncan et al. [46],M a [47], Kumar and Mann [48],
+McHugh and Arthur [49], Matthiesen [50], and Hernandez et al.
+[51]. From the many text books that are available, Computa-
+tional Methods for Mass Spectrometry Proteomics covers the area
+systematically, and each chapter contains a good selection ofliterature citations [52].
+11. Practical exercises
+A web-based collection of practical exercises has been
+compiled to accompany this tutorial. The starting page ishttp://www.ms-ms.com/exercises/exercises.html .
+Appendix A. Supplementary data
+Supplementary data to this article can be found online at
+doi:10.1016/j.jprot.2011.05.014 .
+REFERENCES
+[1] Barton SJ, Whittaker JC. Review of factors that influence the
+abundance of ions produced in a tandem mass spectrometer
+and statistical methods for discovering these factors. Mass
+Spectrom Rev 2009;28(1):177 –87.
+[2] Kelleher NL. Top-down proteomics. Anal Chem 2004;76(11):
+196A –203A.Peptide 1 Peptide 2 Peptide 3
+Peptide 1 Peptide 3
+Peptide 2A
+BC
+Fig. 6 –Three peptide matches, which can be assigned to
+three proteins. Do we have evidence for all three proteins, orjust one?1849 JOURNAL OF PROTEOMICS 74 (2011) 1842 –1851[3] Fricker LD, Lim JY, Pan H, Che FY. Peptidomics: identification
+and quantification of endogenous peptides in
+neuroendocrine tissues. Mass Spectrom Rev 2006;25(2):
+327–44.
+[4] Papayannopoulos IA. The interpretation of collision-induced
+dissociation tandem mass spectra of peptides. Mass Spectrom
+Rev 1995;14(1):49 –73.
+[5] Paizs B, Suhai S. Fragmentation pathways of protonated
+peptides. Mass Spectrom Rev 2005;24(4):508 –48.
+[6] Roepstorff P, Fohlman J. Proposal for a common
+nomenclature for sequence ions in mass spectra of peptides.Biomed Mass Spectrom 1984;11(11):601.
+[7] McAlister GC, Berggren WT, Griep-Raming J, Horning S,
+Makarov A, Phanstiel D, et al. A proteomics grade electron
+transfer dissociation-enabled hybrid linear ion trap –orbitrap
+mass spectrometer. J Proteome Res 2008;7(8):3127 –36.
+[8] Seidler J, Zinn N, Boehm ME, Lehmann WD. De novo
+sequencing of peptides by MS/MS. Proteomics 2010;10(4):
+634–49.
+[9] Mann M, Wilm M. Error-tolerant identification of peptides in
+sequence databases by peptide sequence tags. Anal Chem
+1994;66(24):4390 –9.
+[10] Searle BC, Dasari S, Turner M, Reddy AP, Choi D, Wilmarth PA,
+et al. High-throughput identification of proteins and
+unanticipated sequence modifications using a mass-based
+alignment algorithm for MS/MS de novo sequencing results.Anal Chem 2004;76(8):2220 –30.
+[11] Shevchenko A, Sunyaev S, Loboda A, Shevehenko A, Bork P,
+Ens W, et al. Charting the proteomes of organisms with
+unsequenced genomes by MALDI-quadrupole time of flightmass spectrometry and BLAST homology searching. Anal
+Chem 2001;73(9):1917 –26.
+[12] Tabb DL, Saraf A, Yates JR. GutenTag: high-throughput
+sequence tagging via an empirically derived fragmentationmodel. Anal Chem 2003;75(23):6415 –21.
+[13] Sunyaev S, Liska AJ, Golod A, Shevchenko A, Shevchenko A.
+MultiTag: multiple error-tolerant sequence tag search for thesequence-similarity identification of proteins by massspectrometry. Anal Chem 2003;75(6):1307 –15.
+[14] Eng JK, McCormack AL, Yates III JR. An approach to correlate
+tandem mass spectral data of peptides with amino acidsequences in a protein database. J Am Soc Mass Spectrom1994;5(11):976 –89.
+[15] Choudhary JS, Blackstock WP, Creasy DM, Cottrell JS.
+Matching peptide mass spectra to EST and genomic DNAdatabases. Trends Biotechnol 2001;19(10):S17 –22.
+[16] Luethy R, Kessner DE, Katz JE, McLean B, Grothe R, Kani K,
+et al. Precursor-ion mass re-estimation improves peptideidentification on hybrid instruments. J Proteome Res 2008;7(9):4031 –9.
+[17] Cox J, Mann M. Computational principles of determining and
+improving mass precision and accuracy for proteomemeasurements in an Orbitrap. J Am Soc Mass Spectrom2009;20(8):1477 –85.
+[18] Martens L, Chambers M, Sturm M, Kessner D, Levander F,
+Shofstahl J, et al. mzML —a community standard for mass
+spectrometry data. Mol Cell Proteomics 2010. http://www.
+mcponline.org/content/10/1/R110.000133 .
+[19] Jensen ON. Interpreting the protein language using
+proteomics. Nat Rev Mol Cell Biol 2006;7(6):391 –403.
+[20] Beausoleil SA, Villen J, Gerber SA, Rush J, Gygi SP. A
+probability-based approach for high-throughput protein
+phosphorylation analysis and site localization. Nat Biotechnol2006;24(10):1285 –92.
+[21] Olsen JV, Blagoev B, Gnad F, Macek B, Kumar C, Mortensen P,
+et al. Global, in vivo, and site-specific phosphorylation
+dynamics in signaling networks. Cell 2006;127(3):635 –48.
+[22] Tanner S, Shu HJ, Frank A, Wang LC, Zandi E, Mumby M, et al.
+InsPecT: identification of posttranslationally modifiedpeptides from tandem mass spectra. Anal Chem 2005;77(14):
+4626 –39.
+[23] Tsur D, Tanner S, Zandi E, Bafna V, Pevzner PA. Identification
+of post-translational modifications by blind search of mass
+spectra. Nat Biotechnol 2005;23(12):1562 –7.
+[24] Tanner S, Payne SH, Dasari S, Shen Z, Wilmarth PA, David LL,
+et al. Accurate annotation of peptide modifications through
+unrestrictive database search. J Proteome Res 2008;7(1):170–81.
+[25] Ruttenberg BE, Pisitkun T, Knepper MA, Hoffert JD.
+PhosphoScore: an open-source phosphorylation siteassignment tool for MSn data. J Proteome Res 2008;7(7):3054 –9.
+[26] Lu BW, Ruse C, Xu T, Park SK, Yates J. Automatic validation of
+phosphopeptide identifications from tandem mass spectra.Anal Chem 2007;79(4):1301 –10.
+[27] Bailey CM, Sweet SMM, Cunningham DL, Zeller M, Heath JK,
+Cooper HJ. SLoMo: automated site localization of
+modifications from ETD/ECD mass spectra. J Proteome Res2009;8(4):1965 –71.
+[28] Savitski MM, Nielsen ML, Zubarev RA. ModifiComb, a new
+proteomic tool for mapping substoichiometricpost-translational modifications, finding novel types ofmodifications, and fingerprinting complex protein mixtures.
+Mol Cell Proteomics 2006;5(5):935 –48.
+[29] Savitski MM, Lemeer S, Boesche M, Lang M, Mathieson T,
+Bantscheff M, et al. Confident phosphorylation sitelocalization using the Mascot Delta Score. Mol Cell Proteomics
+2010. http://www.mcponline.org/content/10/2/M110.003830 .
+[30] Ahrne E, Muller M, Lisacek F. Unrestricted identification of
+modified proteins using MS/MS. Proteomics 2010;10(4):
+671–86.
+[31] Sadygov RG, Cociorva D, Yates JR. Large-scale database
+searching using tandem mass spectra: Looking up theanswer in the back of the book. Nat Methods 2004;1(3):
+195–202.
+[32] Field HI, Fenyo D, Beavis RC. RADARS, a bioinformatics
+solution that automates proteome mass spectral analysis,optimises protein identification, and archives data in a
+relational database. Proteomics 2002;2(1):36 –47.
+[33] Clauser KR, Baker P, Burlingame AL. Role of accurate mass
+measurement (+/ −10 ppm) in protein identification strategies
+employing MS or MS/MS and database searching. Anal Chem
+1999;71(14):2871 –82.
+[34] Bafna V, Edwards N. SCOPE: a probabilistic model for scoring
+tandem mass spectra against a peptide database.
+Bioinformatics 2001;17(suppl 1):S13 –21.
+[35] Colinge J, Masselot A, Giron M, Dessingy T, Magnin J. OLAV:
+towards high-throughput tandem mass spectrometry dataidentification. Proteomics 2003;3(8):1454 –63.
+[36] Perkins DN, Pappin DJ, Creasy DM, Cottrell JS. Probability-based
+protein identification by searching sequence databases usingmass spectrometry data. Electrophoresis 1999;20(18):3551 –67.
+[37] Geer LY, Markey SP, Kowalak JA, Wagner L, Xu M, Maynard
+DM, et al. Open mass spectrometry search algorithm.
+J Proteome Res 2004;3(5):958 –64.
+[38] Keller A, Nesvizhskii AI, Kolker E, Aebersold R. Empirical
+statistical model to estimate the accuracy of peptide
+identifications made by MS/MS and database search. AnalChem 2002;74(20):5383 –92.
+[39] Spivak M, Weston J, Bottou L, Kall L, Noble WS. Improvements
+to the percolator algorithm for peptide identification from
+shotgun proteomics data sets. J Proteome Res 2009;8(7):3737 –45.
+[40] Nesvizhskii AI, Vitek O, Aebersold R. Analysis and validation
+of proteomic data generated by tandem mass spectrometry.
+Nat Methods 2007;4(10):787 –97.
+[41] Eng JK, Fischer B, Grossmann J, MacCoss MJ. A fast SEQUEST
+cross correlation algorithm. J Proteome Res 2008;7(10):4598 –602.1850 JOURNAL OF PROTEOMICS 74 (2011) 1842 –1851[42] Bradshaw RA, Burlingame AL, Carr S, Aebersold R. Reporting
+protein identification data: the next generation of guidelines.
+Mol Cell Proteomics 2006;5(5):787 –8.
+[43] Binz P-A, Barkovich R, Beavis RC, Creasy D, Horn DM, Julian
+RK, et al. Guidelines for reporting the use of massspectrometry informatics in proteomics. Nat Biotechnol
+2008;26(8):862.
+[44] Elias JE, Gygi SP. Target-decoy search strategy for increased
+confidence in large-scale protein identifications by mass
+spectrometry. Nat Methods 2007;4(3):207 –14.
+[45] Nesvizhskii AI, Aebersold R. Interpretation of shotgun
+proteomic data —the protein inference problem. Mol Cell
+Proteomics 2005;4(10):1419 –40.
+[46] Duncan MW, Aebersold R, Caprioli RM. The pros and cons of
+peptide-centric proteomics. Nat Biotechnol 2010;28(7):659 –64.
+[47] Ma B. Challenges in computational analysis of mass
+spectrometry data for proteomics. J Comput Sci Technol
+2010;25(1):107 –23.[48] Kumar C, Mann M. Bioinformatics analysis of mass
+spectrometry-based proteomics data sets. FEBS Lett 2009;583
+(11):1703 –12.
+[49] McHugh L, Arthur JW. Computational methods for protein
+identification from mass spectrometry data. PLoS ComputBiol 2008;4(2).
+[50] Matthiesen R. Methods, algorithms and tools in
+computational proteomics: a practical point of view.Proteomics 2007;7(16):2815 –32.
+[51] Hernandez P, Muller M, Appel RD. Automated protein
+identification by tandem mass spectrometry: issues andstrategies. Mass Spectrom Rev 2006;25(2):235 –54.
+[52] Eidhammer I, Flikka K, Martens L, Mikalsen S-O. Computational
+methods for mass spectrometry proteomics. Chichester, UK:
+Wiley; 2007.1851 JOURNAL OF PROTEOMICS 74 (2011) 1842 –1851

@@ -1,0 +1,469 @@
+Application of Multivariate Statistical Analysis in Batch Processes
+L. Lu. Zheng, Thomas J. Mc Avoy,* Yunbing Huang, and Gang Chen
+Department of Chemical Engineering, Institute of System Research, University of Maryland,
+College Park, Maryland 207402
+Multivariate statistical analysis methods such as principal component analysis (PCA) and partial
+least squares (PLS) are powerful tools for chemical process modeling and monitoring. This paperapplies PCA/PLS techniques and their variants, multiway PCA/PLS and orthogonal PCA, to anindustrial batch process. The study utilizes an existing large historical process data set andcombines multivariate statistical methods with batch time optimization calculations to identifypossibilities for process improvement. The objective is to increase throughput by shortening thebatch reaction time. The batch time optimization calculations provide feasible setpoint operationalsuggestions while maintaining the underlying data correlation structure. A pseudo-setpointapproach is also proposed to investigate the reaction period during which the setpoint profilesremain constant. Results for an industrial reactor indicate that the batch time can be shortenedby approximately 4.3%.
+Introduction
+Batch processes are widely used in the chemical
+industry, particularly in the manufacture of specialtymaterials and products. These processes are usuallyhighly profitable. However, they often exhibit highcomplexity and nonlinear process behavior. With thehelp of modern computer technology, researchers andengineers have been exploring new ways of bettermodeling batch processes using multivariate statisticaldata analysis techniques. The advantage of applyingthese techniques is that they require no prior processknowledge. Only the historical data representing dayto day normal process operations are needed. The twomost commonly used multivariate statistical analysismethods are principal component analysis (PCA) andpartial least squares (PLS). Many studies on PCA andPLS have been conducted and recorded in the literature,such as those by Geladi and Kowalski,
+1Wold et al.,2and
+Ho¨skuldson.3PCA is a technique that finds a lower
+dimensional space capturing the maximum amount ofvariance in an input data matrix, X, without losing any
+useful information. PLS is a similar approach to PCAexcept it reduces the dimension of both input and outputdata matrices, Xand Y, by capturing the maximum
+amount of covariance between XandY, to best predict
+Y. PCA/PLS methods are very useful in the areas of
+process modeling, monitoring, and fault detection.
+Because the data structure of a batch process is three-
+dimensional, I(batch) J(variable) K(time), one needs
+a technique that transforms a multidimensional datastructure into a two-dimensional data matrix. Wold etal.
+2and Geladi4presented a multiway PCA/PLS ap-
+proach which is designed to handle multidimensionalprocess data. Nomikos and MacGregor
+5,6successfully
+applied the multiway PCA/PLS technique to batchprocesses. Dong et al.
+7developed a nonlinear PCA/PLS
+algorithm to better describe the nonlinear behavior ina batch process. The PCA/PLS techniques and theirvariants are also very useful in process improvementand process optimization. Piovoso and Kosanovich
+8
+discussed applications of PCA/PLS in process monitor-ing and controller design for a batch polymer process.
+Dong et al.7proposed a batch to batch optimization
+algorithm that calculates the gradient of the objectivefunction from a nonlinear PLS model. The gradient isthen corrected using the plant data as feedback.
+In this paper, attention is also focused on batch
+process improvement using PCA/PLS and their vari-ants. Multiway PCA/PLS are used to deal with thethree-dimensional data array involved in a batch pro-cess and to provide a predictive model for batch time.The objective of the modeling is to improve manipulatedvariable operating policies to minimize the batch time.To help achieve this goal, this paper uses a variant ofPCA called orthogonal PCA. Orthogonal PCA/PLS isused to reduce the size of the optimization problem. Thebatch time optimization calculations pinpoint areas forpotential process improvement from extremely large andmessy process data. Setpoints are used as the optimiza-tion variables. The optimization calculations help toidentify better setpoint operating policies associatedwith shorter batch times. A pseudo-setpoint approachis introduced to investigate periods during which thesetpoints are constant. Results are presented for theapplication of the approach to a real industrial batchreactor. Additional results for a second batch reactor
+are given by Zheng.
+9
+Techniques Used
+(a) PCA/PLS and Multiway PCA/PLS. Historical
+process data can be used to develop a comprehensiverepresentation of a chemical process. How to extractuseful information from process data is a very importantissue. PCA and PLS are designed to handle multivariatedata from chemical processes by characterizing thecorrelation structure in the process measurements usingonly a few variables known as the principal componentsor latent variables. These methods project the informa-tion contained in a group of highly correlated processvariables onto low-dimensional spaces defined by a few1641 Ind. Eng. Chem. Res. 2001, 40,1641 -1649
+10.1021/ie000630+ CCC: $20.00 © 2001 American Chemical Society
+Published on Web 03/10/2001principal components. The mathematical representa-
+tions of PCA and PLS are as follows:
+where Xis the input variables, such as the process
+measurements, and tr,pr, and Eare known as the
+scores, loadings, and residuals associated with X;Yis
+the output variables, such as quality variables, and ur,
+qr, and Fare the scores, loadings, and residuals associ-
+ated with Y;âis the matrix of regression coefficients;
+and ¡is the regression residual. The principal compo-
+nents are ordered in a way such that the amount ofvariance described by each principal component de-creases as the number of principal components in-creases. The score vectors define the magnitude of theprincipal components. The loading vectors are orthonor-mal and provide the directions of the principal compo-nents. The optimum number of principal componentsretained for the model is determined using cross-validation.
+10
+PCA and PLS assume that process data are given by
+a two-dimensional data matrix X(mn). To deal with
+the three-dimensional batch process data structure,multiway PCA/PLS is applied.
+5Multiway PCA and PLS
+are modified PCA/PLS techniques that are capable ofhandling a three-dimensional data array, X, by unfold-
+ing it to form a large two-dimensional matrix, X, and
+then performing PCA and PLS on X. Figure 1 demon-
+strates how a three-dimensional data array is trans-formed into a two-dimensional data matrix.
+To detect abnormal behavior in a particular batch,
+the squared prediction error (SPE) and the HotellingT
+2statistic are used. These two parameters are defined
+as
+where kdenotes a particular time interval and ì-1is a
+diagonal matrix containing the inverse eigenvaluesassociated with the eigenvectors retained in the model.The SPE detects any new variations occurring in a
+process, while T
+2captures larger than normal process
+variations. The SPE and T2confidence limits calcula-
+tions can be found in Jackson and Mudholkar11and
+Tracy et al.12
+(b) Orthogonal PCA and Its Use for Preprocess-
+ing Data. In addition to the PCA/PLS and multiway
+PCA/PLS methods, this paper uses another variant ofPCA, orthogonal PCA. The mathematical representationof orthogonal PCA as used in this paper is
+where V(mn) are the process measurements, S(m
+k) are the manipulated setpoints, and m
+iare the
+orthonormal loading vectors. The PCA formulationgiven in eq 7 was presented by Rao,
+13who gave a
+solution to the problem. Without the constraint involv-ing (Vm
+i)TS, eq 7 represents ordinary PCA. By adding
+the constraint on ( Vm i)TS, the optimization procedure
+is forced to find a normalized linear combination of themeasurements that is orthogonal to and not correlatedwith the measured Svariables and that has a maximum
+variance.
+In this paper an approach different from that taken
+by Rao is used. Before PCA is applied to the Vdata,
+the data are first separated into a set correlated with S
+and a set uncorrelated with Sby multiplication by a
+square transformation matrix Mas
+Cis a matrix of transformed measurements that are
+correlated with SandUis a matrix of measurements
+that are not correlated with S. If a matrix Ais defined
+asV′Sand if the singular value decomposition of Ais
+í“î′, then as shown in the appendix the transformation
+Mis equal to í. Figure 2 provides a graphical repre-
+sentation of the transformation approach used here.
+The major advantage of the transformation approach
+is that it reduces the size of the data set that needs tobe examined for analyzing batch processes. For example,in the case of the industrial reactor treated later on,there are 22 process measurements and 4 setpoints.Thus, the dimension of Visn22T, where nis the
+number of batches and Tis the batch duration. By
+contrast, the dimension of Cis only n4T, which is
+roughly a factor of 5 -6 smaller. The transformation M
+focuses the data into a set, C, that contains useful
+information predicting the quality variables associatedwith a batch process. It should be noted that thetransformation Mmaps unmeasured process distur-
+bances into both Uand C. The following example
+illustrates the use of orthogonal PCA.
+Figure 1. Multiway array unfolding.
+PCA
+X)∑
+r)1R
+trprT+E (1)
+PLS
+X)∑
+r)1R
+trprT+E (2)
+Y)∑
+r)1R
+urqrT+F (3)
+Y)Xâ+¡ (4)
+SPEk)∑
+c)(k-1)J+1kJ
+c2)xk(I-PPT)xkT(5)
+Tk2)tkì-1tkT(6)
+Figure 2. Orthogonal matrix transformation.
+max
+mi(Vmi)T(Vmi) (7)
+subject to
+miTmi)1
+(Vmi)TS)0
+Z)V*M)[C,U] (8)1642 Ind. Eng. Chem. Res., Vol. 40, No. 7, 2001To illustrate the transformation approach, consider
+the following simple example, given by x)(Kz)T, where
+xconsists of four measurements, and the Kmatrix is
+andzis given by
+In this example, xcan be considered as process mea-
+surements, which result from the multiplication of K
+ands1through d2. Here, x1is chosen to be the quality
+variable y.s1and s2can be considered as the setpoint
+variables; d1can be considered as an unmeasured
+disturbance that affects all of the xvariables; and d2
+can be considered as an unmeasured disturbance that
+only affects the predicted variable, x1ory, e.g. the batch
+time, and not the process variables x2tox4. The random
+variables d1,d2,s1, and s2are all taken as having zero
+mean and unit variance. Some random noise (zero meanand variance )0.1) is added to the all of the x’s. The
+objective is to model yby using PLS with process
+measurements x
+2-x4. In this example the process
+measurement matrix Vis [x2,x3,x4], and the setpoint
+matrix is S)[s1,s2].
+Three different cases are investigated. In the first
+case, only s1and s2are used as inputs and d1and d2
+are zero. Case 2 adds d1as an input, and case 3 includes
+both d1andd2as inputs. In each of these cases, the C
+andUmatrixes are first calculated. Then PLS models
+are generated that correlate Cwith y,Uwith y, and
+[U,C,S] with y. Table 1 lists the results for this
+example. From this table, one can see that Cis capable
+of capturing almost all variance in the data when thereare no unmeasured disturbances, d
+1and d2, affecting
+the process variables and the quality variable. There-fore, in case 1, Chas almost perfect predictive capability
+andUhas no predictive capability because it does not
+pick up any variability at all. When an unmeasureddisturbance, d
+1, is present influencing the process
+measurements (case 2), the predictive capability in C
+is reduced slightly. Because s1,s2, and d1are mapped
+intoC,Cis able to model essentially all of the variability
+iny. The unknown disturbance d1shows up as well in
+U, and the predictive capability of Uimproves because
+it captures some of the variance caused by the presenceofd
+1in each measurement. In case 3, unmeasured
+disturbances, d1and d2, influence the batch time.However, d2does not affect the process measurements,
+and it only contributes to the batch time and nothingelse. By contrast d
+1does affect the process measure-
+ments. The predictive capability in Cis reduced dra-
+matically because the 1, 4 element K, which gives the
+effect of d2ony, is much larger than the rest of the
+coefficients in the Kmatrix, implying that d2has a
+significant impact on the batch time. Uhas little
+predictive capability because d2is not picked up in the
+process measurements. Later in the discussion it willbe shown that the real batch process examined behavessimilarly to cases 1 and 3.
+Minimizing the Batch Time
+The PLS model for batch time is expressed as follows:
+where â
+1and â2come from the final PLS model.
+Orthogonal PCA calculations can be performed on Vto
+give VM )[U,C], which leads to
+TheUvariables are orthogonal to S, and they are not
+correlated with S. The Cvariables are correlated with
+S, and they change when Schanges. When trying to
+optimize the batch time tB, it is only necessary to
+account for the changes in the Cvariables with S.
+Because the Uvariables do not vary with S, they can
+be eliminated from the optimization by setting them totheir mean values, 0. To account for the effect of Son
+C, one can generate a PLS model relating CtoSas
+The batch time optimization becomes
+Notice here that if one were not using orthogonal PCA,
+a significantly larger model would be required becausethe dimension of V(dim )22) is much larger than the
+dimension of C(dim )4).
+To maintain the correlation structure present in the
+original data, it is necessary to include a SPE constraintat each time step through the batch. These constraintsensure that when Sis being optimized for a batch, the
+correlation structure in the data is not violated at anytime during the batch. From U,C, and S, one can
+determine a data matrix to be used in the SPE con-straints. Because the Uvariables are all set to zero, for
+optimization one can estimate Vas
+Substituting into the SPE constraint giveswhere 
+kis the SPE for every time interval k. If a batch
+lasts 100 time units with a time step of 5 units, thenthere would be 20 SPE constraints, one at each timestep. Values of 
+kare calculated from the original batch
+data.11The loading matrix Pis determined from a PCA
+model describing [ V,S])TP+residual. The manipu-
+lated variables Salso need to be constrained to preventTable 1. Results after Orthogonal Transformation of
+Data
+case Xvariables modelno. of
+LV%yblock
+explained
+1 s1,s2 C-y 2 97.2
+U-y 1 0.00
+[U,C,S]-y 3 97.2
+2 s1,s2,d1 C-y 2 94.2
+U-y 1 11.6
+[U,C,S]-y 3 94.9
+3 s1,s2,d1,d2 C-y 2 34.6
+U-y 1 5.4
+[U,C,S]-y 3 35.2
+K)[-1.600 2.000 -3.000 5.000
+0.500 -1.100 1.000 0
+-1.286 1.000 -0.857 0
+1.500 -1.400 1.500 0](9)
+z)[s1
+s2
+d1
+d2](10)tB)[V,S]â)Vâ1+Sâ2 (11)
+tB)Uâ3+Câ4+Sâ2 (12)
+C)Sâ5 (13)
+min
+s{Uâ3+Câ4+Sâ2}fmin
+sS(â2+â5â4) (14)
+Vö)[C,U]M-1)[C,0 ]M-1)[Sâ5,0 ]M-1(15)
+j[Vö,S]â[I-PPT]j2)jS[[â5,0 ]M-1,I]j2ek(16)Ind. Eng. Chem. Res., Vol. 40, No. 7, 2001 1643large setpoint variable movements. If large setpoint
+changes are made, the linear relationship between tB
+and Swill not be valid. For this paper, the setpoint
+movements are bound to (1 standard deviation, ók
+where k)1, ..., K. Constraining setpoint changes to
+this region involves interpolating within the availableprocess data for conditions favoring shorter batch times.
+When the above calculation steps are summarized,
+the final objective function is
+where krepresents the time steps and
+Because the objective function is linear in S, the solution
+of eq 17 will lie at one of the constraints. The MATLABOptimization Toolbox routine CONSTR
+14is used to solve
+eq 17.
+Industrial Batch Example
+(a) Overview. The batch time minimization calcula-
+tions are applied to an industrial batch process. Processdata are captured from a distributed control system. Thedata need to be scaled and reviewed for outliers beforeuse in modeling. Multiway PCA/PLS models and vari-able contribution plots are generated to detect abnormalbatch process behavior. The most accurate batch timeprediction models are obtained from a repeated processof outlier removal and model regeneration. The finalmodels are used in the batch time optimization calcula-tions. The solution of eq 17 suggests the best setpointoperating policy changes to reduce batch time. Goodengineering judgment, based on fundamental processknowledge and process control, is essential in determin-ing which of the mathematically derived improvementsuggestions are realizable.
+(b) Data Collection and Preprocessing Issues.
+With the advance of computer technology, processmeasurements are available continuously. However, notall process measurements should be blindly inputtedinto the process model. Adequate process knowledge isneeded to choose the correct variables for the model.After carefully choosing the proper process measure-ments, one needs to truncate the process data for all ofthe batches to the same length in order for the matrixoperations associated with multiway PCA/PLS to becarried out. The shortest batch reaction time is chosento be the standard batch length in a data matrix. Theassumption made is that the batch reaction should beeither completed or close to being completed at thechosen batch time. The data included up to the standardbatch time should be adequate to develop accurate PCA/PLS models. Then the three-dimensional data array isunfolded to a two-dimensional data matrix before PCA/PLS is performed. The three-way array is unfolded insuch a fashion that all measurements of a batch overthe entire course of that batch are lined up in one row
+and each row of the matrix represents one batch, batch(variable time). In addition, the process data are
+scaled to zero mean and unit variance to remove thesize effects from the measurements.
+Preprocessing data correctly is extremely important,
+because the way the data are processed directly affectsthe accuracy of the multivariate statistical models. Solidprocess knowledge and good engineering judgment areinvolved in most aspects of data preprocessing, such asprocess measurement selection, batch time determina-tion, and batch length truncation. The person who isresponsible for performing data preprocessing needs tobe able to identify what conditions determine thebeginning of a batch and what conditions indicate theend of a batch. The same individual also has to knowwhere the most valuable information lies in process dataand what information is not relevant for the purpose ofmodel development. The size of the computation can beconsiderably reduced when all of the irrelevant orunimportant process information is removed from thedata matrix.
+(c) Modeling Aspects. Once the data are ready, one
+can perform PCA and PLS calculations on it. In thisresearch, the main goal is to obtain an accurate batchtime prediction model. A PLS model is used to modelthe batch time. A PCA model for the input measure-ments, V, is used to detect outliers and thereby to
+improve the accuracy of the PLS batch time predictionmodel. A batch with either its PCA scores or its SPEfalling outside the confidence limits is considered as anoutlier. Outliers can result from different types ofabnormal batch behavior, and they are usually associ-ated with poor product quality or long batch time.However, some batches have larger than average varia-tion in the process, resulting in either high score valuesor above limit SPEs, but the final quality of the productor the batch time remain unaffected. These batchesshould be retained in the process model because theycould very well be important in the optimization. Thatis why all outliers must be investigated individually andthoroughly to determine the source of the unusualphenomenon. Only batches in which the final productqualities are poor as a result of some abnormal processbehavior can be identified as bad batches, and only thesebatches (bad outliers) should be eliminated from thefinal batch time prediction model. All other batches(good outliers) should be retained to keep the data setas rich as possible.
+Using the results of multiway PCA/PLS, Nomikos and
+McGregor
+6used corresponding statistical process control
+(SPC) charts to detect the outliers and to monitor batchoperations. There are several different types of SPCcharts. The variable contribution plots to the SPE andthe variable contribution plots to T
+2are the two most
+common ones. These plots indicate how much a variablecontributes to SPE and T
+2. The SPE and T2contribu-
+tion plots can also be generated over the entire durationof the batch. By doing so, one can track when a batchstarts to behave out of the ordinary and it should beexamined as an outlier. Once the bad outliers areremoved, a PLS model can be regenerated and theremaining batches can be reevaluated for abnormality.This procedure is repeated until all of the bad outliersare removed from the model. Each time the model isregenerated the correlation structure of the modelchanges. The guideline that has been followed duringmin
+sSW (17)
+subject to
+jSkZj2ek k)1, 2, ..., K
+Ske(1ók
+W)â2+â5â6 (18)
+Z)[[â5,0 ]M-1,I] (19)1644 Ind. Eng. Chem. Res., Vol. 40, No. 7, 2001the model building phase of the research is that the
+batch time prediction accuracy should improve progres-sively with each bad outlier removed. The best PLSmodel is obtained when the batch time predictionaccuracy does not improve when any additional batchis removed.
+(d) Process Calculations. The industrial process
+studied is an almost fully automated batch process. Theproduction facilities consist of a batch reactor, followedby a continuous finishing section. The chemical reactioninvolved is reversible and can be described as follows:
+The feed and the catalytic materials are charged batch-
+wise to the reactor. An excess amount of material L ispresent to drive the reaction forward. An importantaspect of this batch reaction is the removal of oneproduct, O, produced during the course of the reaction.The reactor overhead system continually removes Ofrom an accumulator drum, with excess L being refluxedback to the reactor. Keeping the content of O in thereaction mass low helps move the reaction towardultrahigh final conversion.
+The final PLS model for this batch process is devel-
+oped from 88 batches with 22 variables. The shortestbatch time is found to be 333 time units, which is chosento be the batch length for data truncation. By analyzingthe batch data, one can develop better setpoint move-ments to improve process operations and, ultimately,shorten the final batch reaction time. As discussedearlier, orthogonal PCA can be applied to determinevariables that are correlated with the setpoint, C.
+Knowing the batch time predictive capability of C, one
+can determine whether there are unmeasured distur-bances affecting the batch time but not the processmeasurements. If there are no unmeasured distur-bances that affect the process measurements, the vari-ables that are not correlated with the setpoint, U, show
+little correlation with the batch time. By preprocessingthe data using orthogonal PCA and then correlating theresults with the batch time, one can find out if any ofthese disturbances take place during the process.
+There are four setpoint variables in the process data
+set. They are the reactor heat input, the reactor tem-perature, the reactor pressure, and the reactor overheadaccumulator level. The results, as listed in Table 2, showthat the process data are similar to those of cases 1 and3 in Table 1. The PLS model correlating Uwith the
+batch time captures only 0.63% of the variance, indicat-ing that there are no disturbances in the processaffecting the process measurements (case 1 in Table 1).The PLS model correlating Cto batch time captures
+28.1% of variance, suggesting that there are othervariables outside of the process data set that areinfluencing the length of the batch time without affect-ing the process measurements (case 3 in Table 1). ThePLS model between SandCshows that the variancesin both the Xblock ( C) and Yblock ( S) data are
+reasonably well explained by the model. The numberof latent variables used is determined by cross-valida-tion calculations.
+In the batch time optimization calculations, the
+setpoint variables are chosen to be the optimizationvariables because they are the only variables that canbe manipulated. Before the optimization calculations arecarried out, it is recommended to have a knowledgeableprocess engineer go over each phase of the process anddetermine if all setpoint variables are independent. Insome cases, certain setpoints may depend on othersduring a particular phase. A good example would be acascade controller where the output of one setpoint isdetermined by the output of another setpoint variableat some time during a batch. Under these circum-stances, the data need to be divided into stages basedon the control structure being used. Then, optimizationcalculations are carried out for individual stages. Allsetpoint variables should be included in the stagewiseoptimization calculations as optimization variables ifthey are independent from each other during thatparticular phase of the reaction. This type of calculationis known as a multistage calculation.
+7The setpoint
+variables that are not independent should be removedfrom the optimization variables because they cannot bemanipulated independently during that particular phaseof the batch. The dependent setpoints can be includedin the data set as regular process variables.
+In this process, the control scheme is set up in such
+a way that the reactor temperature at the beginning ofthe reaction phase rises until it reaches a targettemperature. Then a temperature to pressure cascadeis closed, allowing the pressure setpoint to be deter-mined by the amount of positive deviation between thetemperature measurement and the temperature set-point. Once the cascade is turned on, the pressuresetpoint is no longer an independent variable. Becauseof the presence of the temperature -pressure cascade
+control structure, the data matrix has to be separatedinto two stages, one before the cascade is closed and oneafter, and the optimization calculations need to beperformed on both stages individually. The shortestlength for the time period before the cascade closure isfound to be 97 time units, and the shortest length forthe time period after the cascade closure is found to be223 time units. These values are used to separate thedata into two stages. Figure 3 gives the optimizationresults for the first stage of the reaction period duringwhich reactor pressure setpoint is acting as an inde-pendent variable. The zero lines in Figure 3 indicatethe variable means and the solid black lines are thesuggested setpoint movements from the optimizer. Theoptimization results indicate that the time to cascadeclosure (first stage of a batch) can be shortened by 14.4time units on average. However, making operationalchanges in all of the setpoints indicated in Figure 3 is
+not possible. These changes need to be evaluated fortheir feasibility of implementation.
+Applying engineering judgment and process knowl-
+edge, one would find that suggested setpoint changesfor the reactor overhead accumulator level and thereactor pressure and temperature are not feasible. Instage 1, the first drop of feed entering the reactordetermines the reaction starting time. The measure-ments of the overhead accumulator level, pressure, andtemperature are allowed to vary freely until the reactorTable 2. Process Data Preprocessing Result Using
+Orthogonal PCA
+modelno. of
+LV % xblock explained%yblock
+explained
+Cbatch time 1 33.5 28.1
+Ubatch time 1 86.7 0.63
+[U,C,S] batch time 1 35.5 27.7
+S-C 8 91.3 55.0
+[V,S] (PCA) 3 51.7
+L+MTN+OInd. Eng. Chem. Res., Vol. 40, No. 7, 2001 1645finishes charging the feed material L and M. The
+variation, between 16 and 24 time units, correspondsto the completion of the reactor feed charging process.In the original data set these variables appeared to beindependent; however, these setpoint changes involveprocess-driven events that cannot be manipulated. Theoptimization results for the overhead accumulator level,pressure, and temperature setpoints indicate that thesetpoint changes should be made early. If the feedcharging finished quicker, then the setpoint changes canbe made earlier and it would take less time to reachthe cascade closure point. However, the amount of timeit takes to charge the feed varies from batch to batch.In some cases the feed sticks, and this fact leads to aprolonged charging time. Therefore, setpoint operationpolicy changes associated with the reactor overheadaccumulator level, the reactor pressure, and the reactortemperature in the early stage of the reaction cannotbe implemented in practice.
+Looking at the first graph in Figure 3, the optimizer
+suggests raising the reactor heat input at the beginningof the first stage. This change agrees with processknowledge because more heat input at the beginningof the reaction raises the reactor temperature faster,which leads to earlier cascade closure. From a processstandpoint, this move should be considered. When allother setpoint variables are allowed to operate in theway they normally do and the heat input is allowed tofollow the operating profile suggested by the optimizer,the reactor could reach the point of cascade closure in111.5 time units, compared to an average of 122 timeunits. Thus, the results predict that the heatup stagecan be shortened by 10.5 time units.
+The optimization results provide no suggestions on
+how to improve the batch setpoint operations for thetime period after about 40 time units and up to the endof the reactor heatup stage. The reason is that all ofthe setpoint variables have the same values from 40time units on, and therefore, there is no variability inthe process data. Because the optimizer calculates thebest operating policies from the input data, it is notpossible to determine any improvement if there is novariability in the data. An approach to determine betteroperating policies during this period is discussed in thenext section.
+The optimization results for the second stage after
+cascade closure are plotted in Figure 4. During thisstage, the cascade has been turned on, and the reactor
+pressure setpoint is no longer independent. For optimiz-ing this part of the operation, the setpoint variables onlyinclude reactor heat input, reactor overhead accumula-tor level, and reactor temperature. It should be notedthat the reactor overhead accumulator profile is exactlythe same in every batch after the temperature -pressure
+cascade is closed. No variability exists in the input dataset.
+The solution calculated for the reactor temperature
+setpoint is somewhat difficult to interpret. There is agood deal of fluctuation at the beginning of the secondstage. This fluctuation is the result of the optimizertrying to pick the best temperature setpoint policy toshorten batch time. The reactor temperature setpointvalues in this process are determined from on-lineprocess control programs. Therefore, the temperatureprofile remains approximately constant in most of thebatches up to 157 time units. (1ómovements in the
+temperature setpoint involve almost no movement atall because the variability lies in a very narrow bandduring this period of time. The temperature setpoint forthe last 20 time units of the reaction is determined bythe reactor conversion obtained from reactor samplingand by downstream process equipment capacity. Thereis some variability during this period. The optimizationresults indicate that, toward the end of the reaction, thereactor temperature should be kept high at first andthen low. If the temperature movements can be carriedout as suggested, the reaction time after cascade closurecan be shortened from 264.2 to 262.4 time units, only a1.8 time unit reduction.
+The optimization results indicate potential setpoint
+policy changes in reactor heat input. It makes sense tokeep the reactor heat input setpoint lower than averageuntil about 126 time units after the cascade is closedand then raise it to a higher than average value at theend of a batch. Lowering the heat input below theaverage allows the overhead jet system to work better.Therefore, the coproduct O can be removed from thereaction mass more efficiently, and the reaction contin-ues to move forward. When the reaction is almostfinished, heat input can be increased again to help boiloff the remaining coproduct O in the reaction mass,which pushes the reaction toward its final ultrahighconversion. If the reactor heat input moves are carriedout according to the optimizer, the length of the reaction
+Figure 3. Process optimization result before cascade closure.
+Figure 4. Process optimization results after cascade closure.1646 Ind. Eng. Chem. Res., Vol. 40, No. 7, 2001time after cascade closure would be shortened from
+264.2 to 258.2 time units on average , a 6 time unit
+reduction.
+Looking at the overall batch time optimization results,
+one can see that the most promising setpoint sugges-tions lie in the reactor heat input. When the heat flowis increased at the beginning of a batch, the reactor isheated faster, which allows the reactor temperature toreach its cascade closure condition earlier. The recom-mendation for the heat input at the end of the reactionis also potentially useful. Lowering the heat inputtoward the end of the reaction enhances the coproductO removal during that period. Raising the heat inputat the very end of the reaction stimulates the finalcoproduct boiloff, which pushes the reaction toward itsfinal conversion. The suggested heat input policy changesare suitable for implementation because they do notviolate any process principles and constraints. When thesuggested setpoint changes are applied in the reactorheat input, the total batch time can potentially bedecreased by 4.3%. If larger setpoint changes areallowed, i.e., larger than (1ó, a larger improvement
+may be possible.
+Pseudo-Setpoint Approach
+Figures 3 and 4 indicate how setpoint adjustments
+in reactor heat input can be made to shorten the batchtime. However, one can also see that there is almost novariability in some periods of the setpoint profiles,because they follow the same control scheme in everybatch. To determine heat-input strategies during theseperiods, the concept of pseudo-setpoints is introduced.The process measurements associated with the set-points, labeled here as pseudo-setpoints, are substitutedfor the real setpoint variables. The rationale for thisapproach is that the process measurements have varia-tion even though the setpoints are constant. The opti-mization calculations are carried out using the pseudo-setpoints as optimization variables. Using processmeasurements as pseudo-setpoints allows one to inves-tigate the “blind periods” that occur in the setpointprofiles and provides information on the process duringthese periods. Certain types of noise in process mea-surements, i.e., biased measurements, might causeproblems for the pseudo-setpoint approach. Although ageneral treatment of noise issues is difficult, if the noiseis random and zero mean, then meaningful resultsshould be achieved with the pseudo-setpoint approachbecause the effect of this type of noise should be filteredby PCA and PLS algorithms.
+The results of pseudo-setpoint optimization calcula-
+tions are plotted in Figures 5 and 6 both before and aftercascade closure. These figures show results that areconsistent with those shown in Figures 3 and 4. Theresults provide more insight into what kind of processvariable movements could lead to shorter batch time.Figures 5 and 6 show that the process measurement ofthe reactor heat input should be kept higher than theaverage operating values at the beginning of the batch,lower toward the end of the reaction, and higher againat the very end of the reaction. These suggestions agreewith the results from the optimization calculations usingsetpoints as optimization variables. In addition, theresults from the optimization calculations using thepseudo-setpoint variables provide information about thetime periods during which the real setpoint variablesdo not vary. Figures 5 and 6 indicate that the reactorheat input should be kept higher than average from the
+beginning of a batch reaction until about 25 time unitsafter the cascade closure. This information is notavailable in the setpoint optimization results.
+A second batch process has also been studied, and it
+is primarily manually operated. The chemical reactioninvolved is similar to that in the first batch process.Instead of having a continuous finishing section, likethe first process, every step of the second batch processis carried out in batch fashion. The reaction is drivento completion by having excess reactant and constantremoval of one byproduct. Unlike the first process thesecond process is not operated at maximum capacitybecause it encounters downstream holdups due toequipment limitations. When the first process encoun-ters problems, equipment and labor from the secondprocess are usually sacrificed to ensure smooth opera-tion of the first process. Because of the operatingconditions in the second process, its data set is richerand it has much more variability. The same types ofcalculations that are carried out for the first process arealso carried out for the second one. The optimizationresults provide similar setpoint suggestions for thereactor heat input, and these suggestions could helpshortening the batch time in the second process by 7.5%.
+Figure 5. Process pseudo-setpoint optimization results before
+cascade closure.
+Figure 6. Process pseudo-setpoint optimization results after
+cascade closure.Ind. Eng. Chem. Res., Vol. 40, No. 7, 2001 1647Because of space limitations, a detailed discussion of
+the results for the second process is not included in thispaper but can be found in work by Zheng.
+9
+Conclusions
+This paper has focused on using existing data to
+improve batch process operations by applying multi-variate statistical methods. The results from an indus-trial batch process show that these techniques effec-tively extract useful information from the process datawithout violating the underlying variable correlationstructure. The research demonstrates the utility ofpreprocessing the data using orthogonal PCA to sepa-rate the setpoint correlated variables from the setpointuncorrelated variables. The recommended setpoint pro-files from the optimization calculations point out pos-sible areas for improvement. These suggestions agreewith process knowledge. It is found that setpointimprovements can be achieved on reactor heat input,which would help to shorten the batch time. A discus-sion of how to extract useful information during periodswith no setpoint variability using pseudo setpoints hasalso been given. For the industrial batch reactor con-sidered, it is estimated that batch time can be shortenedby approximately 4.3%. Because of production con-straints, it was not possible to verify this estimation onthe real reactor.
+Appendix
+Rather than directly solving eq 7, the process mea-
+surements are first transformed using eq 8 into asubspace ( C) that involves linear combinations of mea-
+surements that are correlated with Sand a subspace
+(U) that contains linear combinations of measurements
+that are not correlated with S.
+By definition Usatisfies the constraint
+andCsatisfies the inequality
+Further Uis the maximum dimension subspace satisfy-
+ing eq A-1. Once Uis determined, PCA can be carried
+out on U, and the resulting solution is also a solution
+for the orthogonal loading vectors given by eq 7.
+To determine CandU, the matrix Ais defined as
+The dimension of AisJs, where Jis equal to the
+number of measurements and sis equal to the number
+of setpoints. In the development below, it is assumedthat the rank of Sissand that J>s. Let the singular
+value decomposition of Abe given as
+then M)í. Further the subspace Uresults from using
+columns s+1t o Jofí.Proof. Consider Z
+TSafter eliminating Ausing eq A-4:
+Equation A-5 makes use of the fact that
+“is aJsmatrix with the structure
+where the dimension of the diagonal matrix of singular
+values is sxsand the dimension of the null matrix is ( J
+-s)xs. Substitution of eqs 8 and A-7 into eq A-5 gives
+From eq A-8, eqs A-1 and A-2 follow directly. Because
+the setpoints are assumed to be independent, all of theelements of the diagonal matrix are nonzero and thedimension of Ciss
+xs. The dimension of Uis (J-s)xs,
+and Uis given by multiplying Vby the last J-s
+columns of í. Further the rank of Aiss, which is equal
+to the dimension of the null space of Adefined by
+If the original measurement space has dimension J,
+then solutions satisfying eq A-9 fall into a subspacewhose dimension is reduced by s; i.e., its dimension is
+J-s. Thus, Uhas the maximum dimension of sub-
+spaces satisfying eq A-9.
+Notation
+A)VTS
+C)variables that are correlated with the setpoints
+d)disturbances in the orthogonal PCA example
+E)residual matrix for X-block variables
+F)residual matrix for Y-block variables
+I)number of batches
+J)number of measurements
+k)time index
+K)batch length, matrix defined in eq 9
+m)number of rows in a matrix
+mi)loading vectors for the orthogonal PCA
+M)transformation matrix
+n)number of columns in a matrix
+p)X-block loading vectors
+P)matrix of pvectors
+q)Y-block loading vectors
+Q)matrix of qvectors
+r)index
+R)number of factors retained
+s)setpoint variables in the orthogonal PCA example
+S)matrix of setpoint variables
+SPE )squared prediction error defined by eq 5
+t)X-block score vector
+tB)batch time
+T)matrix of tvectors
+T2)squared scores, defined by eq 6
+u)Y-block score vector
+U)matrix of uvectors
+V)matrix of process measurements
+W)matrix of optimization parameters
+x)row vector of process measurements
+X)process measurements (inputs)Z)V*M)[C,U] (8)
+UTS)0 (A-1)
+CTS*0 (A-2)
+A(V)TS (A-3)
+A)í“vT(A-4)ZTS)MTA)MTí“îT)“îT(A-5)
+MTí)íTí)I (A-6)
+“)[diag( óii)
+0](A-7)
+ZTS)[CT
+UT]S)[diag( óii)
+0]îT(A-8)
+ATx)0 (A-9)1648 Ind. Eng. Chem. Res., Vol. 40, No. 7, 2001Y)quality variables (outputs)
+z)defined in eq 10
+Z)transformed process measurements
+â)matrix of regression coefficients
+)error between model and process measurements
+¡)residual in the PLS model
+ì)diagonal matrix of eigenvalues
+í)matrix in singular value decomposition
+î)matrix in singular value decomposition
+ó)standard deviation of setpoints
+“)matrix of singular values
+Literature Cited
+(1) Geladi, P.; Kowalski, B. R. Partial Least Squares Regres-
+sion: A tutorial. Anal. Chim. Acta 1986 ,185,1-17.
+(2) Wold, S.; Gelaid, P.; Esbensen, K. Principal Component
+Analysis. Chemom. Intell. Lab. Syst. 1987 ,2, 37.
+(3) Hoskuldsson, A. PLS regression methods. J. Chemom. 1988 ,
+2, 211 -228. Dong, D.; McAvoy, T. J. Batch Tracking via Nonlinear
+Principal Component Analysis. AIChE J. 1996 ,42, 2199 -2208.
+(4) Geladi, P. Analysis of Multi-way (Multi-mode) Data. Ch-
+emom. Intell. Lab. Syst. 1989 ,7,1 1-30.
+(5) Nomikos, P.; MacGregor, J. F. Monitoring Batch Processes
+Using Multi-way Principal Component Analysis. AIChE J. 1994 ,
+40, 1361 -1375.(6) Nomikos, P.; MacGregor, J. F. Multivariate SPC Charts for
+Monitoring Batch Processes. Technometrics 1995 ,37,4 1-59.
+(7) Dong, D.; McAvoy, T. J.; Zafiriou, E. Batch to Batch
+Optimization Using Neural Network Models. Ind.Eng. Chem. Res.
+1995 ,35, 2269 -2276.
+(8) Piovoso, M. J.; Kosanovich, K. A. Applications of Multivari-
+ate Statistical Methods to Process Monitoring and ControllerDesign. Int. J. Control 1993 ,59, 743 -765.
+(9) Zheng, L. L. Application of Multivariate Statistical Analysis
+in Batch Processes. M.S. Thesis, University of Maryland, CollegePark, MD, 1999.
+(10) Osten, D. W. Selection of Optimal Regression Models via
+Cross-validation. J. Chemom. 1988 ,2,3 9-48.
+(11) Jackson, J. E.; Mudholkar, G. S. Control Procedures for
+Residuals Associated with Principal Component Analysis. Tech-
+nometrics 1979 ,21, 341 -348.
+(12) Tracy, N. D.; Young, J. C.; Mason, R. L. Multivariate
+Control Charts for Individual Observations. J. Qual. Technol.
+1992 ,24,8 8-95.
+(13) Rao, C. The Use and Interpretation of Principal Component
+Analysis in Applied Research. Sankhya A 1964 ,26, 329 -358.
+(14) Optimization Toolbox User ’s Guide ; Mathworks, Inc.: Nat-
+ick, MA, 1996.
+Received for review June 30, 2000
+Accepted January 24, 2001
+IE000630+Ind. Eng. Chem. Res., Vol. 40, No. 7, 2001 1649

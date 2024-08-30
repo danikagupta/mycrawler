@@ -1,0 +1,40 @@
+A Historyof Multi-way Methods in Chemistry and Chemical EngineeringBarry M. WiseEigenvector Research, Inc.Manson, WA  USAThe Early Years, 1975-1998Outline•Beginnings•Multi-way models•Second order analytical techniques•The Videofluorometer•Applications in Analytical Chemistry•Applications in Chemical EngineeringBeginnings (for me!)•Started graduate school in Chemical Engineering at University of Washington in fall of 1985•Took Chemometrics (Chem 526?) from Bruce R. Kowalski•Course included lectures by his grad students on their current work•Eugenio Sanchez talked about Rank Annihilation Factor Analysis (RAFA)
+Sources of multi-way chemical data•Many sources of multi-way data in chemistry•By far the most common are–Fluorescence spectroscopy–Hyphenated techniques•Separation w/multi-channel detector•GC-MS, LC-UV, etc. –Batch chemical processes
+Lamp(uv-vis)SampleExcitation monochromatorEmissionmonochromatorDetector/Intensity
+ExcitationEmission
+Excitation-emission matrix –a chemical fingerprintExcitation-Emission FluorescenceBilinear: Single analytes produce matrices of rank 1!Also linearly additive.Gas Chromatography-Mass SpectrometryAlso bilinear!•Sample separated by gas or liquid chromatography•Effluent measured by multi-channel detector, commonly mass spectrometry or UV/VismasstimeBatch Chemical Process Data
+time / samplevariabletime / samplebatch numbervariable...•Reactants loaded into single vessel•Allowed to react for some specified time or until some end point is reached•Typically controlled to some temperature•Often have intermediate steps where other things are added or temperature is cooled, etc. Not generally bilinear!•PCA -bilinear model,•PARAFAC -trilinearmodel,
+XE=++c2b2a2c1b1a1E=+ACB==+å1Fij if jf ijfxa b e
+==+å1Fijk if jf kf ijkfxa b c ePARAFAC•Decomposition is unique under fairly mild conditions•Form of the model identical to fluorescence and GC/MS etc.•Provides good estimates of true underlying components (if rank is chosen correctly) …. or Canonical Decomposition =CanDecompCP…or combined 
+R. A. Harshman, Foundations of the PARAFAC procedure: model and conditions for an 'explanatory' multi-mode factor analysis, UCLA Working Papers in phonetics, 16 (1970) 1.
+J. D. Carroll, J. Chang, Analysis of individual differences in multidimensional scaling via an N-way generalization of "Eckart-Young" decomposition, Psychometrika, 35 (1970) 283.PARAFAC•For three-way data, three orthogonal bases, A, B, and C; one for each mode•Tucker3 is X= AG(CÄB)’ + E•Loadings are truncated bases and Gthe representation of Xin these reduced spaces•Number of factors in each mode can be different!•Not unique, only subspace unique=XGCBA
+L. R. Tucker. The extension of factor analysis to three-dimensional matrices. In: Contributions to Math. Psychology, Eds. Frederiksen, Gulliksen, New York:Holt, Rinehart & Winston, 1964L. R. Tucker. Some mathematical notes on three-mode factor analysis.Psychometrika31:279-311, 1966The Tucker3 modelSanchez and Kowalski
+The Videofluorometer•Acquired 241 fluorescence spectra at 241 excitation wavelengths•Displayed them in three dimensions •Data captured on a television camera element 
+Fluorescence Landscapes
+Warner et. al.
+•First analysis of videofluorometerdata•Least squares fits•Rotated eigenvectors of single EEM to non-negative values
+Ho, Christian and Davidson
+Series of papers from 1978 to 1981, mostly in Analytical ChemistryHo et. al. Cont. 
+Increasing levels of sophistication in the analysis, ending with using optimization methods to find the where rank is minimized for multiple componentsAppellofand Davidson
+Referenced Carrol & Chang, re-invented Harshman’s PARAFAC!De Ligneyet. al. 
+Used a Tucker model, referenced Kroonenberg, didn’t reference Appellof!AviLorber
+•Showed RAFA could be cast as a generalized eigenvector problem and solved non-iteratively•Solution required separate samples for each standardSanchez and Kowalski
+Did not reference Appellofand Davidson! Kowalski didn’t like PARAFAC!
+GRAM
+•Problem: Generalized eigenvector problem results in imaginary solutions. •Many follow on papers to address thisTrilinear Decomposition (TLD)
+•Based on GRAM•Problem is to find two representative samples containing all components in different ratiosRestricted Tucker Models
+Multi-Linear PLS: N-PLS
+PARAFAC Tutorial
+Bro Thesis, 1998
+Application to Batch Data
+Tucker-1, aka unfold data and do PCATLD and PARAFAC on Process Data
+Batch Data Roadmap
+29zero order holdinterpolate
+COW, DTW,align, assignderivatize,peak findCreate stepstats (whichones?)Batchdata
+SummaryPCAUnfoldacrossSummaryPARAFACSummaryTuckerwhichmodel?how?
+MPCA(Tucker1)COW, DTW,align, truncate
+UnfoldacrossPARAFACTucker3PARAFAC2Batch maturityPCAUnfolddownvariablesamplerate?noyestimeshift?noyesfix?noyesstepapproach?noyes
+stepsexist?yesnostepsexist?yesno
+batchmaturity?noyestimeshift?noyesfix?noyesCOW, DTW,align, truncatemonotonic?noyesBuild PLSmaturitymodelwhichmodel?createsteps?noyesyes, but....
+Software
+3WayPackPLS_Toolbox2.0N-way ToolboxAll available in ~1998TRICAP’97•Three-way Methods in Chemistry and Psychology•May 4-9, 1997•Manson, WA•http://web.archive.org/web/20010223003407/http://www.eigenvector.com/Old/TRICAP_schedule.htmlWhere are we now?•Multi-way analysis in chemistry is more common but still not yet routine–Compare to PLS which is ubiquitous •Mostly in fluorescence–PARAFAC in water quality analysis•True multi-way models still uncommon in process analysis–Some use of the unfold approaches•University of Washington was the nexus of multi-way in chemistry!

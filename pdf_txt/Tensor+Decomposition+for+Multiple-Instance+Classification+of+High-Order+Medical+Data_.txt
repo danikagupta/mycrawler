@@ -1,0 +1,900 @@
+Research Article
+Tensor Decomposition for Multiple-Instance Classification of
+High-Order Medical Data
+Thomas Papastergiou , Evangelia I. Zacharaki , and Vasileios Megalooikonomou
+Computer Engineering and Informatics Department, University of Patras, Rio, Achaia 26504, Greece
+Correspondence should be addressed to Thomas Papastergiou; papastergiou@ceid.upatras.grReceived 1 June 2018; Accepted 30 August 2018; Published 6 December 2018Academic Editor: Panayiotis VlamosCopyright © 2018 Thomas Papastergiou et al. This is an open access article distributed under the Creative Commons Attribution
+License, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work isproperly cited.
+Multidimensional data that occur in a variety of applications in clinical diagnostics and health care can naturally be
+represented by multidimensional arrays (i.e., tensors). Tensor decompositions o ﬀer valuable and powerful tools for latent
+concept discovery that can handle eﬀ ectively missing values and noise. We propose a seamless, application-independent feature
+extraction and multiple-instance (MI) classiﬁ cation method, which represents the raw multidimensional, possibly incomplete,
+data by means of learning a high-order dictionary. The eﬀ ectiveness of the proposed method is demonstrated in two application
+scenarios: (i) prediction of frailty in older people using multisensor recordings and (ii) breast cancer classi ﬁcation based on
+histopathology images. The proposed method outperforms or is comparable to the state-of-the-art multiple-instance learning
+classiﬁ ers highlighting its potential for computer-assisted diagnosis and health care support.
+1. Introduction
+Nowadays, data tend to be large in volume and multipara-
+metric in nature, especially in clinical diagnostics and healthcare. Applications that provide massive multidimensionaldata are vast. Some examples include monitoring patientsby multisensor technologies [1, 2], noninvasive lesion detec-
+tion and diagnosis using hyperspectral sampling [3], cancer
+diagnosis based on tissue microarray data [4, 5], color segmen-tation of skin lesions using histology-stained microscopicimages [4, 5], classi ﬁcation of EEG signals for seizure detection
+[6], or for Alzheimer ’s disease analysis [7]. The main challenge
+is to extract discriminative features from high-dimensionaldata in a way that preserves their multidimensional structurewhile at the same time models the interdimensions ’interac-
+tion. Traditional matrix representation techniques that repre-sent high-dimensional data by ﬂattening them to a matrix
+suﬀer many times from the curse of dimensionality that poses
+limitations on many two-dimensional approaches. By repre-senting such data in a more natural way by multidimensionalarrays (a.k.a. tensors) and using sophisticated high-ordertechniques, such as tensor decompositions, we can capturemultiple interactions and couplings and simultaneouslydiscover latent concepts that are present in the data [8].Tensor-based techniques have been employed in the ﬁeld
+of signal processing and machine learning for a variety oftasks [9] like in blind multiuser code-division multiple access(CDMA) communications, blind source separation, collabo-rative ﬁltering-based recommender systems, Gaussian mix-
+ture parameter estimation, topic modeling, or, as mostlyrelated to our work, multilinear discriminative subspacelearning [10, 11], among many others. For an extensive over-view of the underlying tensor theory and the aforementionedapplications, we refer to the extensive review paper [9].Tensor decomposition has also been applied recently forimage restoration by grouping image patches [12] or forimage compression and reconstruction [13, 14] by removingredundancy simultaneously in spatial and spectral domain.In contrast to multichannel signal or image data encoding thatoften bene ﬁts from tensor decomposition due to their struc-
+tured nature, encoding of 3D geometrical meshes rather relieson traditional techniques, such as graph Fourier Transform[15]. A common aspect in most of the applications is theexploitation of sparsity in high-order structures. An overviewHindawi
+Complexity
+Volume 2018, Article ID 8651930, 13 pages
+https://doi.org/10.1155/2018/8651930of some basic techniques that exploit sparsity in the recovery
+of low-rank higher-order tensors, followed by related applica-tions, is provided in [16].
+The second challenge in the analysis of current biomedi-
+cal data comes in the learning phase that follows the data rep-resentation phase. Standard supervised learning implies thateach example used for training a classi ﬁcation model, is rep-
+resented as a feature vector with an associate class labelattached. However, in many real-life applications, data tend
+to be complex, incorporating di ﬀerent concepts, and thus it
+is diﬃcult to model each example as a single feature vector:
+e.g., medical images depicting di ﬀerent tissue types, bio-
+signals tracking di ﬀerent activities, or molecules with confor-
+mations with di ﬀerent chemical properties. In these cases, a
+more e ﬃcient representation, which preserves as much infor-
+mation as possible, consists of a collection of feature vectors
+(denoted as instances), such as patches of an image, timewindows of biosignals, or conformations of a molecule, eachone covering a di ﬀerent aspect of the whole object. The chal-
+lenge that arises for such representations is the lack of re ﬁned
+annotation for each individual feature vector, known as
+multiple-instance learning (MIL). Furthermore, some of the
+feature vectors describing an observation could provide none
+or sometimes even misleading information about the object ’s
+class (e.g., not all cells are malignant in a histopathologyimage with malignancy).
+Besides the challenges inherited by the high-order struc-
+ture and multivariate context, data partiality or incomplete-ness impose an additional burden. Missing data occur inreal-life due to a variety of reasons including failure in thedata acquisition processes (e.g., temporary malfunction ofEEG electrodes [17]), costly experiments impeding the anno-tation of all samples, or due to noise or artifacts removal. In
+supervised learning paradigms, missing values must be
+removed from the data or imputed by statistical approaches[18] prior to inference. Another interesting approach whenclassifying data with missing values is based on the assump-tion that data are of low rank [19, 20], that there exist proto-types (i.e., components) and all the samples can bereconstructed by a mixture of them. For example in [19],the classi ﬁcation problem is treated as a matrix completion
+problem via rank minimization, while in [20], classi ﬁcation
+is performed using the low-rank assumption without anymatrix completion step. For high-dimensional settings,dissimilarity-based classi ﬁcation is proposed in [21] where
+missing values are estimated via high-order decompositionand then classi ﬁcation is performed on the completed data.
+The aim of this work is to de ﬁne a generalized tensor-based
+multiple-instance learning framework (called TensMIL)for analyzing high-order, possibly incomplete data, avoidingthe extraction of prede ﬁned or hand-crafted features. Our
+approach is formulated as a multistep minimization problemin which all parameters, internal and external, are learnt bysupervision. In order to illustrate the wide applicability ofTensMIL, we assess it in two distinct scenarios for multiple-instance classi ﬁcation using biomedical images and multi-
+channel biosignals, respectively, and compare it against otherstate-of-the-art techniques. In order to place the method intothe MIL context and better appreciate its di ﬀerences fromother approaches, we ﬁrst provide a small overview of the
+related work in MIL and then proceed with more detailsand contributions of TensMIL.
+In multiple-instance learning problems, bags (subjects)
+are described by multiple-feature arrays (instances) andlabels are provided only for the bags, whereas the labels ofthe individual instances are unknown. Several methods havebeen proposed exploiting local or global information andimplementing di ﬀerent classi ﬁers or mapping functions.
+For a complete taxonomy on MIL algorithms, we refer tothe work of Amores [22], as well as previous reviews byFoulds and Frank [23] or Dong [24]. At the ﬁrst level of the
+taxonomy tree, the classi ﬁcation frameworks follow either
+the Instance Space (IS), Bag Space (BS), or Embedded Space(ES) paradigm.
+The inference process for the methods in the IS paradigm
+is based on information that resides in the individualinstances, i.e., an instance-level classiﬁ er is trained to separate
+the instances in positive or negative class. The obtainedinstance-level scores are then aggregated to summarize theinformation about the whole bag, usually based on one of
+the two assumptions [22, 23]: the standard MI assumption
+that states that every positive bag contains at least one posi-
+tive instance and the collective (orweighted collective )
+assumption in which all instances in a bag contribute equally
+(oraccording to
+weights) to the bag ’s label [25]. The selected
+aggregation rule thus acts as a bag-level classi ﬁer. Although
+the assumption-based IS paradigm proves to be an e ﬀective
+heuristic in many application domains, very often, the rela-tionship between instances in a bag and the bag-level classlabels is unknown; therefore, the use of concepts was intro-
+duced to relax the strict view of prede ﬁned assumptions. A
+more re ﬁned hierarchy of assumptions was de ﬁned by
+Weidmann et al. [26] and presented by increasing generalityfrom the standard MI (for a single concept), to the presence-based (for multiple concepts), threshold-based, and count-based assumption.
+In contrast to the IS paradigm, where the (bag-level)
+classiﬁer is obtained as an aggregation of local responses,
+the inference process of the methods in the BS and ES para-digms is performed in the space of bags. BS methods directlyemploy a distance or kernel function that operates on non-vectorial entities, such as the bags, in order to assess similar-ity between them. Since our proposed method relates less tothis category of methods, we omit further discussion, but
+refer to [22] for additional details. In the ES paradigm, a set
+of concepts are identi ﬁed by unsupervised learning and used
+as a vocabulary that describes classes of instances. A mappingfunction is then employed to map each bag into a featurevector vwhich aggregates the pertinent information about
+the bag. In the special case of histogram-based ES methods,the vector vdescribes the distribution (histogram) of the
+instances into the di ﬀerent classes of the vocabulary. The
+few ES methods that are not based on vocabularies orconcepts ’learning usually summarize statistics (for example,
+the minimum and maximum values) of the features of all the
+instances inside the bag. Another interesting approach is
+associating the bags with their most informative instancesvia instance selection. In this way, the bag space is mapped2 Complexityto a reduced instance space, where IS classi ﬁers or even
+classic non-MIL classiﬁ ers can be exploited. Recently a new
+multiple-instance learning algorithm with discriminative
+bag mapping (MILDM) [27] has been proposed, whereinformative instances are selected such that the bags aremaximally distinguishable in the new mapping space.
+In this paper, we propose a seamless method for feature
+extraction and MIL classi ﬁcation of high-dimensional data
+by modeling the data as n-dimensional arrays (i.e., tensors).
+Through tensor decomposition, we construct a high-
+dimensional dictionary that models the latent factors of the
+data as a number of n−1dimensional rank-1 constructs. In
+this way, the coeﬃ cients that correspond to the instances’
+mode indicate the contribution of each latent factor to the
+representation of the corresponding instance, and thus they
+can serve as instance-level features. Subsequently, using thesefeatures, we train an instance-level classi ﬁer for predicting
+the hidden class label of each instance by a continuous score.We model each bag by the density function of the predictedlabels and train a bag space classi ﬁer for the ﬁnal classi ﬁca-
+tion task. Our motivation was to avoid strict prede ﬁned
+MIL rules, such as the standard MIL assumption; therefore,we extended the collective assumption, by learning the baglabels using the probability density function of the estimatedhidden instances’ labels.
+The main contributions of our work are summarized
+as follows:
+(1) TensMIL is based on a generalized feature extraction
+method for high-dimensional data using tensordecomposition, thus can be applied in multiple
+scenarios
+(2) It performs well even with a very small number
+(e.g., 10%) of observed data
+(3) Evaluation in the UCSB Breast Cancer benchmark
+dataset with full and with partial observed values
+showed that it outperforms or is comparable to exist-ing state-of-the-art MIL algorithms
+(4) To the best of our knowledge, we are the ﬁrst to exploit
+the potential of physiological (such as respiratory andcardiac) signals in predicting aging-associated decline(frailty). The application of TensMIL revealed prog-nostic capabilities for frailty manifestation that previ-
+ous methods failed to uncover
+2. Materials and Methods
+The proposed methodology is illustrated in the simpli ﬁed
+schematic diagram in Figure 1 and consists mainly of three
+phases: (i) the data representation and feature extractionphase in which the data are mapped from the original high-dimensional space to a lower dimensional space using tensordecomposition, (ii) the multiple-instance learning phase in
+which sequential discriminative models are inferred to clas-
+sify the data into di ﬀerent groups, and (iii) the optimization
+phase that is coupled with the previous phase for learningthe hyperparameters. In the next sections, we describeanalytically every phase starting from the use of tensordecomposition for feature extraction and proceeding withour proposed MIL framework.
+The notation that we follow within this manuscript is as
+follows. We denote tensors by capital boldface Euler letters(X,Y,Z), matrices by capital boldface letters ( A,B,C),
+vectors by boldface lowercase letters ( a,b,c), and scalars by
+lowercase letters ( a,b,c). Entries of a matrix or a tensor are
+denoted by lowercase letters with subscripts (e.g., the
+(i
+1,i2,…,in) entry of an n-way tensor Xis denoted by
+xi1,i2,…,in). Columns of a matrix are denoted by a boldface
+capital letter with a subscript consisting of a star and a
+number (e.g., A∗,1denotes the ﬁrst column of matrix A).
+2.1. Tensor Decomposition. We brie ﬂy outline the CANDE-
+COMP/PARAFAC (CP) decomposition, a powerful tooloriginally introduced in [28, 29]. For preliminaries on ten-
+sors, we refer to the Supplementary Material (available here).
+Without loss of generality and for the sake of simplicity fromnow and on, we will refer to 3rd order tensors, although theproposed method can be generalized for high-order tensors.LetXbe a 3-way tensor of size I×J×K. With full
+data, a tensor Xcan be decomposed into a set of
+matrices U,V, and Wof sizes I×R,J×R,K×R, respectively,
+as follows:
+X≈〠
+R
+r=1U∗,r∘V∗,r∘W∗,r, 1
+where Ris the rank of the decomposition and “°”denotes the
+outer product of two arrays.
+LetΩbe the set of the observed indices of tensor X.W e
+can de ﬁne an indicator tensor Whaving the same size as the
+original tensor such that Wi,j,k=1,∀i,j,k∈Ω, and
+zero elsewhere. The tensor decomposition problem can thenbe formulated as follows:
+min
+U,V,WW⊛X−〠R
+r=1U∗,r∘V∗,r∘W∗,r2
+F, 2
+where the “⊛”denotes the Hadamard (element-wise) prod-
+uct. When Ωis equal to the set of indices of X, then we have
+a full- (nonmissing) value decomposition problem; other-wise, we have a decomposition problem with missing values.PARAFAC
+(1)Bayesian
+optimization
+of hyper-
+parameters
+(3)
+Multiple-instance
+classification
+(2)Extracted
+featuresRaw
+data
+Figure 1: Schematic diagram of the proposed methodology.3 ComplexityFor calculating the CP decomposition, we exploit the
+well-known Alternating Least Squares (ALS) method [30]
+when we deal with a full-value problem, and the two Proxi-mal methods proposed in [31] when we deal with missingvalue problems. The methods proposed in [31] —Gen-
+ProxSGD (nondistributed) and StrProxSGD (distributed,suitable for big data) —tackle the optimization problem in
+(2) by solving local minimization problems rather than solv-
+ing the entire problem at once.
+2.2. Generalized Feature Extraction. We propose here a gen-
+eral method for extracting instance-based features from raw
+data in which data are represented as an n-
+dimensional tensor X∈ℝ
+I1×I2×⋯×In. The representation of
+the data is problem-speci ﬁc, and we will discuss in a later sec-
+tion the representation of data for the two di ﬀerent problems
+that we tackle. Our objective is to calculate the latent factors
+of data via the CP decomposition of the raw data tensor,
+where instances are arranged in one dimension. The obtainedfactor matrix (the one corresponding to the instances) can beused as feature matrix in the instances’ space. The other fac-
+tor matrices correspond to the calculated high-orderdictionary.
+Formally, if X∈R
+I×J×K(instances are arranged across
+theﬁrst dimension), we can write slice-wise a rank-R CP
+decomposition of Xpresented in (1) as
+Xi,∗,∗≈〠R
+r=1uirV∗r∘W∗r, 3
+whereXi,∗,∗represents a mode-1 slice of the tensor that
+corresponds to the ith instance. Equation (3) denotes that
+each instance can be approximated as a linear combina-
+tion of Rtwo-dimensional components, V∗,r∘W∗,r∈
+ℝJ×Kwhich correspond to the latent factors of the data.
+Thus, we can choose as features representing an instance
+i, the Rcoeﬃ cients uir,r=1 ,2 ,…,R, that correspond to
+theith row of factor matrix Uin (2). Furthermore, we
+can see the latent factors V∗,r∘W∗,ras a high-order dic-
+tionary describing the data. This procedure can beemployed as is to tensors of order N>3yielding dictionar-
+ies of order N−1and is independent of the nature of the data
+per se.
+2.3. Alternative Feature Extraction for New (Unseen) Data.
+The tensor-based feature extraction process in the proposedframework involves the decomposition of a common tensorconstructed by the concatenation of training and testingsamples, as described above. For reducing the computational
+cost, it might be desired to classify new testing data without
+repeating the whole tensor decomposition. We describe nextan alternative approach to obtaining the low-dimensionalfeature representation in which a PARAFAC model isconstructed only from the training data while the test dataare represented by the estimated training model as follows.
+IfX
+train≈∑R
+r=1U∗,r∘V∗,r∘W∗,ris a PARAFAC decomposi-
+tion of rank R calculated for the training set and Xtestis
+the tensor of test data, then it can be shown [30] that thePARAFAC calculation problem of (2) can be written in a
+mode-1 matricized form as
+minU,V,WXtrain 1 −UW ⊙VT2
+Fr4
+We can formulate and solve a least squares minimization
+problem to ﬁnd the “closest ”representation of the test set
+based on the calculated dictionary of UandW:
+minUXtest 1−UW ⊙VT2
+Fr5
+It is easy to show [30] that the solution of
+the problem of (5) has the following closed form
+U=Xtest 1W⊙VWTW⊛VTV†, where “†”is the
+Moore-Penrose pseudoinverse.
+In the following, we describe the next phase of the meth-
+odology that involves the construction of the discriminativemodel by multiple-instance learning.
+2.4. Problem Statement in Multiple-Instance Learning (MIL).
+Weﬁrst brie ﬂyd eﬁne formally the multiple-instance learn-
+ing problem. A bag B
+i=xi,1,xi,2,…,xi,niis a set of nifea-
+ture vectors describing a subject. Let us denoteB=
+Bi,i=1 ,2 ,…,nas the set of all the bags. The cardinal-
+ity of each bag Bican vary across the bags. Each feature vector
+xi,j, where the ﬁrst index refers to the corresponding bag
+and the second index to the feature of the bag it belongsto, is called an instance . All instances x
+i,j,i=1 ,2 ,…,n,
+and j=1 ,2 ,…,nilive in a d-dimensional feature space
+(xi,j∈ℝd), called instance space . Each bag comes with a
+label attached to it Yi∈Y=1,…,C,i=1 ,2 ,…,n, with
+C=2deﬁning a binary classi ﬁcation problem and C>2
+deﬁning a Cclass classi ﬁcation problem. Ydenotes the
+set of all bag class labels.
+The objective of a MIL problem is given a collection of n
+bags (subjects) with their appropriate labels Bi,Yi,i=1 ,
+2,…,nto learn a model that can predict the labels of new
+observations (bags).
+2.5. Our MIL Framework (TensMIL). The proposed MIL
+framework follows the IS paradigm in which an
+instance-level classi ﬁerfxisﬁrst constructed based on
+the label inheritance rule (i.e., all instances of a bag inherit
+the label of the bag). In order to make learning computa-tionally feasible, it is generally necessary to reduce thehypothesis space by enforcing some MI assumption. How-ever, in contrast to the classical IS-based methods thatdirectly combine the instance-level responses throughsome prede ﬁned rule, we increase the generality and try
+to infer those assumptions based on the training set. Spe-ciﬁcally, we extract the histogram of all instance-level
+responses within each bag and learn the distribution ofthose histograms from the training set. The instance-label
+responses refer to the output of the instance-level classi ﬁer
+f
+xand are analogous to class prediction scores for each
+instance. The histogram extraction of the instance-level4 Complexityresponses corresponds to quantizing the responses within
+predeﬁned bins that can be considered as clusters of low,
+medium, or high class-likeness. In that sense, our frame-work relates also to the ES methods without vocabularies
+with the di ﬀerence that the representation is not based
+on the original (multiple) attributes of the instances, buton the instance-level responses (output of the ﬁrst classi-
+ﬁer). Our contribution lies in the fact that we do not rely
+on a few statistics, like the average, minimum, or maxi-
+mum values, but incorporate a richer representation such
+as the histogram.
+In mathematical terms, we formulate (similarly to previ-
+ous work [32]) an optimization problem that we solve based
+on the following steps:
+(i) First, the instance-level responses within each bag
+are estimated based on a function f
+∙∣θfthat
+assigns a class prediction score (such as an abnor-mality score) to each instance in the bag given a setof parameters θ
+f(6), by initializing the unknown
+instance labels with the corresponding class label,i.e.,y
+i,j=Yi,∀i:
+θf= arg minθf〠n
+i=1〠ni
+j=1lfxi,jθf,yi,j, 6
+where lℝ×ℝ→ℝ+is a loss function de ﬁned over
+the instance space. Upon estimation of θf, the func-
+tion fwill provide the predictions for the instance-
+level class labels, which is in contrast to the work
+in [32], where the unknown instance-level class
+labels are considered as optimization variables andare calculated in an iterative manner
+(ii) Then, a mapping function H
+∙∣θHis applied from
+the instance space to the bag space and the mapped
+features are used as the new bag representation B
+(7). In the proposed method, this mapping corre-
+sponds to the calculation of the density function ofthe class prediction scores and is obtained by histo-gram extraction:
+Bi=ℋfxi,jθfθH:xi,j∈Bi 7
+(iii) Finally, the classiﬁ cation function F∙∣θFfor the
+whole bag is calculated by supervised learning asshown in the following equations:
+θF= arg minθF〠n
+i=1LF BiθF,Yi, 8
+̂Yi=FBiθF, 9
+where Lℝ×ℝ→ℝ+is a loss function de ﬁned
+over the bag spaceMore details on the individual steps are provided in the
+following sections.
+2.5.1. Robust Estimation of the Instances ’Hidden Labels. The
+medical applications usually concern classi ﬁcation problems
+of ordinal data, where the classes have a natural order, such
+as the grade of a tumor or the performance score in a clinicaltest. If class labels are used, they can be considered as a discreteapproximation of the continuous score (e.g., malignancy);
+thus, the same techniques can be applied for discrete or
+continuous output variables. The binary classi ﬁcation is a
+special case of this problem, where the two classes lie onthe two extremes (minimum and maximum) of the clinicalscore range.
+In the ﬁrst step (6), we use the squared error as loss func-
+tion and train a full quadratic regression model (containingan intercept, linear terms, interactions, and squared terms)
+f
+ℝd→ℝin the instance space that predicts the hidden
+class labels yi,jfor each instance. The quadratic regression
+model can be expressed as
+fx=〠d
+k=1〠d
+m=1θkmxkxm+〠d
+k=1xk, 10
+where the parameters θkmcollectively form the vector θfin
+(6), and dis the dimensionality of xemployed in the regres-
+sion. Since there is no available information about theinstances’ hidden class labels, the regression model is trained
+by using values for the dependent variable, the class labels ofthe corresponding bags, this means that y
+i,j=Yi,∀j=1 ,…,
+ni. Upon the calculation of f, which is common for all bags,
+we can estimate the instance labels as ̂yi,j=fxi,j.
+Since not all the instances of a bag iwill belong to the
+bag’s class Yi, some of the instances will behave as outliers
+and will not ﬁt well to the respective class. To eliminate
+the eﬀect of such inconsistent data, we employ robust qua-
+dratic regression which uses iteratively reweighted leastsquares with a weighting function [33]. We used the logisticweighting function:
+w
+k=tanhrk
+rk, rk=residk
+tune∗s∗1−hkk=1 ,2 ,…,d,
+11
+where resid is the vector of residuals of the previous itera-
+tion, sis an estimate of the standard deviation of the error
+term given by the median absolute deviation of the residualsfrom their mean scaled by a constant z,his the vector of the
+leverage values from least-squared ﬁt, and tune is a tuning
+parameter. For the experiments of this paper, we usedthe default values for the aforementioned parameters:z=0
+6745 and tune =1205. The choice of the constant
+zmakes the estimate of the standard deviation of the error
+term unbiased for normal distributions. Furthermore, thechoice of the above default values gives coeﬃ cient estimates
+that are approximately 95% as statistically e ﬃcient as the5 Complexityordinary least squares estimates, provided that the response
+has a normal distribution with no outliers. By employingthe above weighting function, the misclassi ﬁcation penalty
+for the instances that do not belong to the bag ’s class is
+reduced, obtaining thus a robust estimation of the hiddenlabels of the instances. Finally, we want to mention that weexperimented with di ﬀerent weighting functions and di ﬀer-
+ent tuning parameters and we empirically concluded to use
+the aforementioned logistic weighting function with the
+default tuning settings since it yielded better results.
+2.5.2. QDA-Based Bag Classi ﬁcation. In order to obtain the
+bag representation (7) and subsequent bag classi ﬁcation
+((8) and (9)), we treat the extracted attributes in target
+bags (i.e., the instance-level class predictions per bag) as
+random variables that are de ﬁned over a space of proba-
+bility distributions. We then approximate the density func-
+tionsH
+ifxi,j,j=1 ,2 ,…,ni,i=1 ,2 ,…,n, of the class
+label scores for each bag by histogram extraction using θH
+equally sized bins. Having estimated the histograms for allbags in the training set Η=
+Hi,i=1 ,2 ,…,n, we can train
+a bag-wise classi ﬁer that will learn to discriminate the
+unknown class Y. Assuming that the observations from
+each class k,k=1 ,2 ,…,Care drawn from a multivariate
+Gaussian distribution H∼Nμk,Σkand that each class
+has its own covariance matrix ( Σk), we can use the qua-
+dratic discriminant analysis (QDA) classi ﬁer [34] to ﬁnd a
+nonlinear quadratic decision boundary. The QDA classiﬁ er
+FB→Yassigns an observation to the class with the
+maximum discriminant score ̂Yi= argmaxkδkhi:
+δkp=−1
+2p−μkTΣ†
+kp−μk+ logπk−1
+2logΣk,12where δkis the discriminant function over the bag space, μk
+is the mean vector of all the training observations from the
+kth class, Σkis the covariance matrix for the kth class, and
+πkis the prior probability of an observation belonging to the k
+th class. The parameters μk,Σkof the discriminant functions
+are learnt from the training set and subsequently used in thetesting phase to predict the class labels for new bags.
+2.6. Implementation Details and Summary of TensMIL
+Architecture. In this section, we summarize the individual
+steps of the method, starting from the raw multidimensionaldata, and illustrate them in Figure 2 highlighting the di ﬀer-
+ences between training and testing phase.
+In the ﬁrst phase, data must be arranged in a tensor of
+order N≥3, with the ﬁrst dimension dedicated to the
+instances. The tensor can be constructed by placing instancesof each bag B
+1,B2,…,Bnin a sequential order, but this is
+only for convenience. Training and test data can be placedin the same tensor, constructing a high-dimensional tensoras can be seen in Figure 2. In the second phase (the featureextraction phase), a PARAFAC model is computed and thetrain and test features are extracted from the correspondingrows of the factor matrix corresponding to the instances ’
+dimension. In the third step, the train and test feature matri-ces are concatenated along the dimension corresponding toinstances and PCA is performed for decorrelation anddimensionality reduction obtaining truncated train and testmatrices. The percentage ( θ
+p) of variance explained in the
+PCA loading matrix is a parameter of the method and canvary for di ﬀerent datasets. In the fourth step, a robust qua-
+dratic regression model is trained for predicting the instances ’
+labels. Finally, the histograms of the class predictions of eachbag are then calculated and ﬁtted to a pseudoquadratic
+discriminant analysis classi ﬁer.Trainin g
+phase
+Testing
+phaseB1
+B2
+Bn...PARAFAC PCAUT
+QDA bag classifierHistogram of
+predictions per bagFull quadratic
+robust regressionTrain
+dataUtrainTtrain
+TtestUtestTestdata
+Atrain
+Atest
+Figure 2: The architecture of TensMIL, where U is the feature matrix extracted from the raw data by PARAFAC decomposition, T is the score
+matrix obtained by performing PCA on U, A is the matrix containing the bag-level features, fˑis the full quadratic regression model, and
+Ḟˑis the QDA classiﬁ er.6 Complexity2.6.1. Bayesian Optimization of Hyperparameters. The
+parameters of the two incorporated models, θfandθF,are
+calculated sequentially by supervised learning, whereas the
+number of histogram bins ( θH) and the percentage ( θp)o f
+variance retained from the set of hyperparameters areoptimized externally and used as input in the learning phase.
+We optimized the hyperparameters using Bayesian optimiza-
+tion [35], based on 2-fold cross-validation on the training set.
+The algorithm for the training phase of TensMIL is
+shown in Algorithm 1.
+2.7. Assessment of the Method. As evaluation metrics for
+the selection of the hyperparameters and overall assess-
+ment of the methodology, we used the classi ﬁcation accuracy
+(number of correctly classi ﬁed samples over total number of
+samples), the balanced accuracy, and the area under the ROCcurve (AUC). The balanced accuracy is de ﬁned as
+Bacc =
+∑C
+c=1Tc/nc
+C, 13
+with Tcbeing the number of correctly classiﬁ ed bags of
+class candncthe number of bags in class c, for c=1 ,…,C.
+The choice of metric depended on the dataset and the
+metric used in prior work (i.e., by selecting the same
+criterion, comparison with other works was possible). We
+performed a series of experiments by comparing di ﬀerent
+classiﬁers on the same datasets using 10-fold cross-
+validation and report the average accuracy. For each fold,we internally used a 2-fold cross-validation procedure on
+the training set in order to tune the hyperparameters of each
+method. Once the best parameters were determined, they
+were used to classify the test set to record the test accuracy.Therefore, all methods were assessed on independent test sets
+not used during training of the classiﬁ cation models, nor
+during the optimization of the hyperparameters. For fairness,
+we performed grid search in each fold for ﬁnding the best
+parameters for each of the compared methods (our own aswell as other state-of-the-art methods).3. Results and Discussion
+For the evaluation of our proposed algorithm, we employed
+two datasets: (i) the Breast Cancer UCSB Center forBio-Image Informatics benchmark dataset [36] consistingof histopathology color images and (ii) multichannel record-ings from the FrailSafe project [37] monitoring older people.In the next sections, we describe in brief these datasets andhow they are represented by multidimensional arrays.
+3.1. Data Sets
+3.1.1. UCSB Breast Cancer Image Classi ﬁcation. The UCSB
+breast cancer dataset [36] consists of color histopathology
+images of 58 subjects of size 896 ×768 pixels taken from 32
+benign and 26 malignant breast cancer patients. The classi ﬁ-
+cation problem of these images was formulated as an MILproblem ﬁrst by Kandemir et al. [4] who segmented the
+images in 7 ×7 patches and extracted features from each
+patch. In an MIL setting, image patches are considered asinstances and images as bags. In order to represent the data-set as a tensor in our approach, we also segment each imageinp×ppatches and vectorize the pixels of each patch per
+channel ending up to a matrix where the rows of the matrixrepresent the pixels and the 3 columns represent the RGBchannels. If we arrange all these matrices across the ﬁrst
+dimension, we obtain a tensor of dimensions I×J×3, where
+I=5 8∗p
+2and Jis the number of pixels per patch. If we
+devote the ﬁrst mode of the tensor to the instances, the
+second mode to the pixels, and the third mode to the RGBchannels, we end up with a 3-mode tensor, containing allinstances as described earlier.
+3.1.2. Physiological Signals from Monitoring Older People.
+This data set was collected as part of the FrailSafe project[37] and consists of physiological measurements acquiredfrom older people (age >70 years). The measurements are
+acquired during ordinary all day indoor or outdoor activities.The ultimate goal is to predict aging-associated decline in
+reserve and function (denoted as frailty ) through the extrac-
+tion of geriatric indices from multiparametric data. Standard
+frailty indices, such as the Fried phenotype of frailty [38], arebased on the common geriatric assessment (performedInput: training and test instances’ features UtrainandUtest,subjects ’training labels Ytrain, percentage of variance retained by PCA θp,
+the number of bins used for the histograms θΗ
+Output: prediction model
+1. Concatenate UtrainandUtestalong the ﬁrst dimension into a matrix U.
+2. Perform PCA for decorrelation and dimensionality reduction on the concatenated matrix Uand get the scores T, using the
+m-leading singular values that preserve θpof data variance.
+3. Split the truncated scores matrix Tinto the corresponding TtrainandTtest(will be used in the testing phase) scores matrix.
+4. Train a robust full quadratic regression model (Equation (10)) using Ttrainandytrain(the instance labels inherited by the
+corresponding bag labels) and get the instance labels predictions Predtrainfor each instance
+5. Split the vector PredtrainintoθΗsubsets of equal sizes and store the cutting points to be used as histogram bin edges in the testing
+phase
+6. For each of the ntraining bags calculate the normalized cumulative histogram and construct the n×θΗfeature matrix Atrain
+7. Fit a QDA model Fto map AtraintoYtrain(Equation (12)).
+Algorithm 1: TensMIL (training)7 Complexitysporadically and if considered necessary) and do not contin-
+uously monitor the health status, neither capture di ﬀerent
+medical domains. On the contrary, our goal is to extractfrailty indicators from the multidimensional recordings inan eﬀort to unobstructively monitor the health status of the
+older people. We assess the predictive power of physiologicalsignals using TensMIL and the Fried score as ground truth,measured on the same time period with the acquired data.According to the Fried scale [38], three frailty stages can bedistinguished: nonfrail, prefrail, and frail.
+The physiological signals used in this study included
+time-synchronized measurements (calculated by dedicatedsoftware algorithms) from respiration, heart, posture, andphysical activity. Seven channels were resampled at the same
+frequency (25 Hz): respiratory raw signal (by the piezoresis-
+tive sensor), magnitude of acceleration in 3 axes, breathingamplitude, breathing rate, ECG heart rate, ECG heart ratevariability, and ECG RR interval. The measurements arerecorded using two di ﬀerent devices, a fact that makes this
+dataset especially challenging. More details on the problemobjective and the incorporated devices can be found in [1, 2].
+The data representation in a tensorial form included
+the extraction of nonoverlapping time windows of oneminute duration (i.e., 1500 time points). We considerthe measurements in each time window for each subject
+as an instance, while the total recordings (all instances)
+for each subject compose one bag. In order to model the datain the form of a multidimensional array, we concatenatethe multiple instances (i.e., time windows) of each subject in
+a 3-dimensional tensor X
+iof dimensionality ni× 1500 × 7 ,
+i=1 ,2 ,…,n, where niis the number of instances available
+for each subject. In order to construct the whole tensor, we
+concatenate all tensors Xialong the ﬁrst dimension to pro-
+duce a new 3D-tensor Xcontaining all instances of all bags as
+shown in Figure 3, resulting to a 19244 × 1500 × 7 tensor. In
+Table 1, we summarize the available data per frailty group.
+3.2. Experiments
+3.2.1. PARAFAC Feature Insights. Before proceeding with the
+results of the analysis, we provide some insights on the nature
+of the extracted features. As stated before, a tensor with fullor missing values can be decomposed into Rrank-1 compo-
+nents, producing a high-order dictionary that represents the
+ecg_rr
+ecg_hrr
+ecg_hr
+br
+br
+baba
+acc_xyz
+resp_piezo×10−3
+×10−3ecg_hrrecg_rr
+ecg_hr
+acc_xyz
+resp_piezo500 1000 1500500 1000 1500
+500 1000 1500ECG RR
+ECG HR
+Breathing rate
+Breathing ampl.
+Acceleration
+Resp. piezoECG HR var.
+(a)
+ecg_rr
+ecg_rrv × 10−3
+ecg_hr
+br
+ba
+× 10−3
+× 10−3acc_xyz
+resp_piezo
+500 1000 1500
+500 1000 1500
+500 1000 1500
+500 1000 1500
+500 1000 1500
+500 1000 1500ecg_rr
+ecg_hrv
+ecg_hr
+br
+ba
+acc_xyz
+resp_piezoSubject 1
+Subject 2
+Subject 3
+(b)
+Figure 3: 3D-tensor for one subject (a) and 3D-tensor of all subjects (b).
+Table 1: Number of instances and percentages of bags (subjects)
+and instances (time windows) per class.
+Class Nr. of bags Nr. of instances Perc. of bagsPerc. of
+instances
+Nonfrail 49 7127 42.24% 37.03%
+Prefrail 54 8803 46.55% 45.74%
+Frail 13 3314 11.21% 17.22%Sum 116 19,244 100% 100%8 Complexitylatent concepts in the data. Since instances are assigned to the
+ﬁrst dimension of the tensor, each mode-1 slice corresponds
+to an instance. Having computed the PARAFAC factorsU,V, and W, we can compute, based on (1), the reconstruc-
+tion of the data tensor either from full observed values orfrom a subset of the tensor ’s values (missing values).
+Figure 4 depicts ﬁve random instances of the Breast
+Cancer dataset and their corresponding reconstructions withthe ALS algorithm using full values (upper row) or with theStrProxSGD algorithm using 10% observed values (lowerrow). It can be observed that the reconstruction from fullvalues results to a clearer version of the original images. Aswill be discussed in the next section, our experiments showedthat the information preserved from the decomposition(even when using only 10% of the observed values) issuﬃcient to accurately classify the images in benign and
+malignant cases. The PARAFAC decomposition producesspatial ( Vfrom Equation (3)) and color ( Wfrom Equation
+(3)) components that correspond to the second and thirddimension of the data tensor, which constitute the high-order dictionary. Figure 5 illustrates 40 (selected out of 120)spatial components of the dictionary. We observe also thatthe spatial components computed from 10% observed valuesare slightly noisier than the components computed from fullvalues, a fact that showed to not signi ﬁcantly a ﬀect the
+classiﬁcation accuracy.
+3.2.2. Classi ﬁcation Assessment. The evaluation metric that
+we used for our experiments was di ﬀerent for each dataset.
+For the BC dataset, we report the AUC, since this metricwas used for evaluation in the majority of other works. Forthe sake of completeness, we report also the mean testaccuracy over 10 di ﬀerent test sets.
+As reported in Table 1, the physiological signals dataset is
+highly unbalanced containing 11.21% of frail bags and about42% and 47% of nonfrail and prefrail bags, respectively. Forthis reason, along with the test accuracy, we report also thebalanced accuracy.
+3.2.3. Breast Cancer Diagnosis from Histopathology Images.
+In this experiment, we computed the accuracy and the AUC
+of the proposed method against state-of-the-art MIL algo-rithms. We report results for each of the algorithms employ-ing the features extracted by Kandemir et al. [4], and featuresextracted by the proposed method computing the PARAFACdecomposition from full values using the ALS algorithm [30]and from 10% randomly selected observed values using theStrProxSGD algorithm [31]. We should note here that thefeatures extracted by Kandemir et al. [4] are application-speciﬁc in contrast to our extracted features that are
+problem-independent and can be obtained directly fromany raw multidimensional data with the same procedure.
+As can be observed in Table 2, when we employ the fea-
+tures from [4], our method is as good as JC2MIL [40] but itis outperformed by the other methods. This suggests thatthe feature extraction process is strongly related with the pro-posed MIL classi ﬁcation method. Indeed, when we employ
+the proposed features from tensor decomposition, perfor-mance improves as can be shown from the performance ofTensMIL from full and 90% missing values, respectively.When using ALS features from full data, our method out-performs all other methods in terms of AUC, improving
+the performance by 4% –11% while in terms of accuracy
+TensMIL outperforms all other investigated methods and is
+comparable to MCILBoost. Overall, our method is compara-ble or outperforms other methods in terms of AUC and out-performs all other methods in terms of accuracy, exceptMILBOOST [41]. Concerning the case of data with missingvalues, our method outperforms in terms of accuracy all otherinvestigated methods and in terms of AUC all methods exceptof JC2MIL to which it is comparable. Let us note here that theextraction of the hand-crafted features in [4] cannot be cur-rently reproduced for data with missing values because thecode for the feature extraction is not provided. Thus, for the
+missing values experiment, we compare only with the features
+extracted by StrProxSGD [31].
+3.2.4. Physiological Signals for Frailty Prediction. In the next
+experiment, we evaluated the accuracy of TensMIL for frailty
+status prediction of older people based on motion, cardiac,and respiratory signals. In these experiments, the hyperpara-meters of the method were estimated by cross-validation onthe training set (using the StrProxSGD algorithm for extract-ing features from 10% observed values) and were subse-
+quently used for the case of full values. We performed two
+series of experiments. In the ﬁrst experiment, we considered
+the three distinct frailty stages proposed by Fried (nonfrail,prefrail, and frail), whereas in the second experiment, we
+real im. real im. real im. rec. im. rec. im. rec. im.
+ins. 566 ins. 566 ins. 737 ins. 737 ins. 3666 ins. 3666
+real im. rec. im. real im. rec. im. real im. rec. im.
+ins.566 ins.566 ins.737 ins.737 ins.3666 ins.3666
+Figure 4: Random patches from BC images and their reconstruction with full values (upper row) using ALS and from 10% observed values
+using StrProxSGD (lower row).9 Complexitymerged the prefrail and frail classes to create a less unbal-
+anced dataset. Feature extraction was performed using theALS algorithm from full data and the StrProxSGD algorithmfor missing data. The results of the three class problem fromfull and incomplete data are shown in Table 3. When fullvalues are considered, the accuracy of the proposed method
+is 45.76% (37% higher than the probability of random guess)
+and the balanced accuracy is 34.06% (similar to randomguess). In contrast, when only 10% of the values areemployed, we obtain accuracy 73.41% and balanced accuracy67.17%, which is an improvement by a factor of 1.6 (for theaccuracy) and 1.97 (for the balanced accuracy). These resultsstrongly suggest that the data are highly noisy. Even thoughPARAFAC decomposition is robust against noise [43], ALSalgorithm using full data could not ﬁnd a good high-order
+dictionary for discrimination between the three classes. Onthe other hand, when only 10% of the data are employed,StrProxSGD could calculate a more suitable dictionary for
+Spac. Comp.:1 Spac. Comp.:2 Spac. Comp.:3 Spac. Comp.:4 Spac. Comp.:5 Spac. Comp.:6 Spac. Comp.:7 Spac. Comp.:8
+Spac. Comp.:9 Spac. Comp.:10 Spac. Comp.:11 Spac. Comp.:12 Spac. Comp.:13 Spac. Comp.:14 Spac. Comp.:15 Spac. Comp.:16
+Spac. Comp.:17 Spac. Comp.:18 Spac. Comp.:19 Spac. Comp.:20 Spac. Comp.:21 Spac. Comp.:22 Spac. Comp.:23 Spac. Comp.:24
+Spac. Comp.:25 Spac. Comp.:26 Spac. Comp.:27 Spac. Comp.:28 Spac. Comp.:29 Spac. Comp.:30 Spac. Comp.:31 Spac. Comp.:32
+Spac. Comp.:33 Spac. Comp.:34 Spac. Comp.:35 Spac. Comp.:36 Spac. Comp.:37 Spac. Comp.:38 Spac. Comp.:39 Spac. Comp.:40
+(a)
+Spac. Comp.:1 Spac. Comp.:2 Spac. Comp.:3 Spac. Comp.:4 Spac. Comp.:5 Spac. Comp.:6 Spac. Comp.:7 Spac. Comp.:8
+Spac. Comp.:9 Spac. Comp.:10 Spac. Comp.:11 Spac. Comp.:12 Spac. Comp.:13 Spac. Comp.:14 Spac. Comp.:15 Spac. Comp.:16
+Spac. Comp.:17 Spac. Comp.:18 Spac. Comp.:19 Spac. Comp.:20 Spac. Comp.:21 Spac. Comp.:22 Spac. Comp.:23 Spac. Comp.:24
+Spac. Comp.:25 Spac. Comp.:26 Spac. Comp.:27 Spac. Comp.:28 Spac. Comp.:29 Spac. Comp.:30 Spac. Comp.:31 Spac. Comp.:32
+Spac. Comp.:33 Spac. Comp.:34 Spac. Comp.:35 Spac. Comp.:36 Spac. Comp.:37 Spac. Comp.:38 Spac. Comp.:39 Spac. Comp.:40
+(b)
+Figure 5: First 40 (out of 120) spatial components of PARAFAC model from 10% observed values using StrProxSGD (a) and from full values
+using ALS (b).10 Complexitythe classi ﬁcation task. Let us note here that we do not report
+results from other MIL classi ﬁers, since their performance
+was very poor when using the one-against-all strategy for
+the above multiclass problem.
+Since the prefrail class lies between the frail and nonfrail
+class and in order to construct a more balanced dataset, wemerged the prefrail with the frail group and examinedthe binary classi ﬁcation problem. As reported in Table 4,
+TensMIL achieved from 26.44% to 13.63% higher accuracythan the other methods by using only 10% of randomlyselected values. For the case of full values, the proposed
+method achieves from 8.56% to 2.43% better accuracy. Only
+JC2MIL achieves slightly better accuracy than TensMIL.
+In Table 5, we report also the mean CPU running time
+(across the 10-fold cross-validation sets) of TensMIL as com-pared to the other investigated state-of-the-art methods. Thetime reported corresponds to the frailty classiﬁ cation prob-
+lem based on physiological signals, since this dataset wasthe largest among the two examined applications. The featureextraction component using tensor decomposition is themost time-consuming part of the method (it requires about2.25 hours), whereas the MIL component is computationally
+fast.Speciﬁcally, the classi ﬁcation component in TensMIL
+requires 7 to ~52 times less training time as compared to
+the investigated classi ﬁers. This fact is due to the simplicity
+of TensMIL since only a full quadratic regression and aQDA model have to be trained. In terms of the inference time
+(after feature extraction), TensMIL along with JC2MILachieves a testing time under 1 second, which is faster thanall the other investigated algorithms. We should note herethat the experiments for the tensor decomposition were con-ducted on a Red Hat Enterprise Linux, release 6.7 (Santiago)server, comprising 162.8 GHz AMD Opteron ™6320 proces-
+sors with 62 Gb RAM, running MATLAB R2018a, while theexperiments for measuring the training and test time wereconducted on an Ubuntu 16.04 LTS desktop, comprising42.0 Gz Intel® Xeon® CPU E5504 processors with 23.5 GbRAM, running MATLAB R2017a.
+Finally, we compared our method with a clustering
+approach proposed in [1] for prediction of several clinicalmetrics that used statistical features from the same physio-logical signals, as well as other devices (GPS, game platform).Although this approach [1] showed high potential for someclinical metrics, the accuracy for the frailty index expressedby the Fried score was only 51% for the 2 class problem
+(nonfrail vs. prefrail and frail). TensMIL achieves 3.02%
+and 29.83% higher accuracy when all values or only 10% ofthe values are used, respectively. The clustering approach in[1] was not evaluated with missing values; however, weexpect small deviations in accuracy due to the large time scaleused for feature extraction and the statistical nature of theimplemented features.
+4. Conclusions
+In this work, we exploited the high-order structure of healthdata through tensor decomposition aiming at extractingapplication-independent features that can facilitate predic-tion in multiple-instance learning paradigms. The predictionTable 2: Tenfold cross-validation mean test accuracy and mean AUC for the BC dataset.
+BCKandemir [4] ALS R= 120StrProxSGD R= 120
+(90% missing values)
+Acc AUC Acc AUC Acc AUC
+MILES [39] 81.33 (0.15) 0.91 (0.15) 72.67 (0.21) 0.79 (0.21) 63.33 (0.18) 0.72 (0.15)
+JC2MIL [40] 74.33 (0.16) 0.84 (0.16) 72.33 (0.18) 0.78 (0.18) 77.67 (0.08) 0.88 (0.14)
+MILBoost [41] 89.33 (0.09) 0.94 (0.09) 81.67 (0.21) 0.87 (0.19) 68.33 (0.3) 0.77 (0.27)
+MCILBoost [42] 82.33 (0.15) 0.93 (0.12) 85.00 (0.12) 0.90 (0.12) 76.67 (0.22) 0.84 (0.16)
+TensMIL 74.33 (0.16) 0.86 (0.16) 84.67 (0.17) 0.90 (0.15) 79.33 (0.16) 0.85 (0.15)
+Table 3: Test accuracy and balanced accuracy from full and 90%
+missing values for the 3 class problem.
+MethodALS R=6 0StrProxSGD R=6 0
+(90% missing values)
+Acc Bacc Acc Bacc
+TensMIL 45.76 (0.13) 34.06 (0.09) 73.41 (0.01) 67.17 (0.13)
+Table 4: Test accuracy from full and 90% missing values for the 2
+class problem.
+Methods ALS R=6 0StrProxSGD R=6 0
+(90% missing values)
+MILES [39] 51.59 (0.13) 67.20 (0.11)
+JC2MIL [40] 56.82 (0.07) 55.30 (0.08)
+MILBoost [41] 50.83 (0.15) 54.39 (0.15)
+MCILBoost [42] 45.46 (0.14) 60.91 (0.22)
+TensMIL 54.02 (0.13) 80.83 (0.16)Table 5: Mean CPU running time over the 10 cross-validation folds
+for the MIL classiﬁ cation component.
+Methods Training timeaTesting timea
+MILES [39] 42 sec 1 sec
+JC2MIL [40] 56 sec <1 sec
+MILBoost [41] 52 sec 5 sec
+MCILBoost [42] 309 sec 6 sec
+TensMIL 6 sec <1 sec
+aThe experiments were conducted on an Ubuntu 16.04 LTS desktop,
+comprising 4 2.0 GHz Intel (R) Xeon (R) CPU E5504 processors with
+23.5 Gb RAM, running MATLAB R2017a.11 Complexitymodels were trained in a sequential fashion to learn local and
+global content, while external hyperparameters were esti-mated by Bayesian optimization, thus providing an end-to-end architecture. The method could successfully representand classify data with a signi ﬁcant amount (90%) of missing
+values. It was evaluated in the UCSB breast cancer bench-mark dataset, as well as for prediction of aging-associateddecline. In both application scenarios, the proposed methodoutperformed or was comparable to existing state-of-the-art
+machine learning techniques. Moreover, the obtained results
+were superior to our previous work based on statistical fea-tures and cluster analysis. Future work includes the investiga-tion of sparse representations and addition of nonnegativityand orthogonality constraints for the extraction of more nat-ural and interpretable data concepts.
+Data Availability
+The UCSB Breast Cancer data set is publically available andcan be downloaded from https://bioimage.ucsb.edu/research/bio-segmentation. The data of the physiological signals forfrailty prediction are collected as part of the FrailSafe Project[27] and will be available at the repository of the project:https://frailsafe-project.eu/ (contact:vasilis@ceid.upatras.gr).
+Conflicts of Interest
+The authors declare that there is no conﬂ ict of interest
+regarding the publication of this paper.
+Acknowledgments
+The research reported in the present paper was partially
+supported by the FrailSafe Project (H2020-PHC-21-2015-
+690140) “Sensing and predictive treatment of frailty and asso-
+ciated co-morbidities using advanced personalized modelsand advanced interventions ”cofunded by the European
+Commission under the Horizon 2020 research and inno-vation program. The authors want to thank all ICT(Smartex, CERTH, Gruppo Sigla) and medical partners fromthe FrailSafe Project for data sharing and annotations. Theyespecially wish to thank their colleagues K. Deltouzos andS. Kalogiannis for the help with data preprocessing.
+Supplementary Materials
+The preliminaries of tensors and their rank decompositions.(Supplementary Materials)
+References
+[1] S. Kalogiannis, E. I. Zacharaki, K. Deltouzos et al., “Geriatric
+group analysis by clustering non-linearly embedded multi-
+sensor data, ”in2018 IEEE International Conference on Inno-
+vations in Intelligent Systems and Applications (INISTA
+2018) , Thessaloniki, Greece, 2018.
+[2] A. Papagiannaki, E. I. Zacharaki, K. Deltouzos et al., “Meeting
+challenges of activity recognition for ageing population in real
+life settings,” in2018 IEEE 20th International Conference on e-Health Networking, Applications and Services (Healthcom) ,
+pp. 1–6, Ostrava, Czech Republic, 2018.
+[3] G. Lu, L. Halig, D. Wang, X. Qin, Z. G. Chen, and B. Fei,
+“Spectral-spatial classiﬁ cation for noninvasive cancer detec-
+tion using hyperspectral imaging, ”Journal of Biomedical
+Optics , vol. 19, no. 10, article 106004, 2014.
+[4] M. Kandemir, C. Zhang, and F. A. Hamprecht, “Empowering
+multiple instance histopathology cancer diagnosis by cellgraphs, ”inMedical Image Computing and Computer-
+Assisted Intervention –MICCAI 2014. MICCAI 2014. Lecture
+Notes in Computer Science, vol 8674 pp. 228 –235, Springer,
+Cham.
+[5] K. Mosaliganti, F. Janoos, O. Irfanoglu et al., “Tensor classiﬁ -
+cation of N-point correlation function features for histology
+tissue segmentation, ”Medical Image Analysis, vol. 13, no. 1,
+pp. 156–166, 2009.
+[6] V. G. Kanas, E. I. Zacharaki, E. Pippa, V. Tsirka,
+M. Koutroumanidis, and V. Megalooikonomou, “Classiﬁ ca-
+tion of epileptic and non-epileptic events using tensor decom-position,” in2015 IEEE 15th International Conference on
+Bioinformatics and Bioengineering (BIBE) , Belgrade, Serbia,
+November 2015.
+[7] C.-F. V. Latchoumane, F. B. Vialatte, J. Solé-Casals et al., “Mul-
+tiway array decomposition analysis of EEGs in Alzheimer ’s
+disease, ”Journal of Neuroscience Methods, vol. 207, no. 1,
+pp. 41–50, 2012.
+[8] A. Cichocki, D. Mandic, L. de Lathauwer et al., “Tensor
+decompositions for signal processing applications: from two-way to multiway component analysis, ”IEEE Signal Processing
+Magazine , vol. 32, no. 2, pp. 145 –163, 2015.
+[9] N. D. Sidiropoulos, L. de Lathauwer, X. Fu, K. Huang,
+E. E. Papalexakis, and C. Faloutsos, “Tensor decomposition
+forsignal
+processing and machine learning, ”IEEE Transac-
+tions on Signal Processing , vol. 65, no. 13, pp. 3551 –3582, 2017.
+[10] H. Lu, K. N. Plataniotis, and A. N. Venetsanopoulos, “A survey
+of multilinear subspace learning for tensor data, ”Pattern
+Recognition , vol. 44, no. 7, pp. 1540 –1551, 2011.
+[11] S. Yan, D. Xu, Q. Yang, L. Zhang, X. Tang, and H. J. Zhang,
+“Multilinear discriminant analysis for face recognition, ”IEEE
+Transactions on Image Processing , vol. 16, no. 1, pp. 212 –220,
+2007.
+[12] X. Zhang, X. Yuan, and L. Carin, “Nonlocal low-rank tensor
+factor analysis for image restoration, ”inIEEE Conference on
+Computer Vision and Pattern Recognition (CVPR) , Salt Lake
+City, UT, USA, June 2018.
+[13] B. Du, M. Zhang, L. Zhang, R. Hu, and D. Tao, “PLTD: patch-
+based low-rank tensor decomposition for hyperspectralimages, ”IEEE Transactions on Multimedia , vol. 19, no. 1,
+pp. 67 –79, 2017.
+[14] Y. Wang, L. Lin, Q. Zhao, T. Yue, D. Meng, and Y. Leung,
+“Compressive sensing of hyperspectral images via joint tensor
+Tucker decomposition and weighted total variation regulariza-tion,”IEEE Geoscience and Remote Sensing Letters , vol. 14,
+no. 12, pp. 2457 –2461, 2017.
+[15] A. S. Lalos, I. Nikolas, E. Vlachos, and K. Moustakas, “Com-
+pressed sensing for eﬃ cient encoding of dense 3D meshes
+using model-based Bayesian learning, ”IEEE Transactions on
+Multimedia , vol. 19, no. 1, pp. 41 –53, 2017.
+[16] Y. Wang, D. Meng, and M. Yuan, “Sparse recovery: from
+vectors to tensors, ”National Science Review , vol. 5, no. 5,
+pp. 756 –767, 2018.12 Complexity[17] E. Acar, D. M. Dunlavy, T. G. Kolda, and M. Mørup, “Scalable
+tensor factorizations with missing data, ”in2010 SIAM
+International Conference on Data Mining , pp. 701 –712,
+Columbus, OH, USA, April-May 2010.
+[18] P. J. García-Laencina, J.-L. Sancho-Gómez, and A. R. Figueiras-
+Vidal, “Pattern classiﬁ cation with missing data: a review,”
+Neural Computing and Applications , vol. 19, no. 2,
+pp. 263 –282, 2010.
+[19] G. Andrew, B. Recht, J. Xu, R. Nowak, and X. Zhu, “Transduc-
+tion with matrix completion: three birds with one stone, ”in
+Advances in Neural Information Processing Systems 23 (NIPS
+2010) ,J .D .L a ﬀerty, C. K. I. Williams, J. Shawe-Taylor, R. S.
+Zemel, and A. Culotta, Eds., pp. 757–765, Curran Associates,
+Inc., 2010.
+[20] E. Hazan, R. Livni, and Y. Mansour, “Classi ﬁcation with
+low rank and missing data, ”inProceedings of the 32 nd
+International Conference on Machine Learning, Lille, France,2015.
+[21] D. Porro-Muñoz, R. P. W. Duin, and I. Talavera, “Missing
+values in dissimilarity-based classiﬁ cation of multi-way data, ”
+inProgress in Pattern Recognition, Image Analysis, Computer
+Vision, and Applications. CIARP 2013. Lecture Notes in Com-
+puter Science, vol 8258 , J. Ruiz-Shulcloper and G. Sanniti di
+Baja, Eds., Springer Berlin Heidelberg, Berlin, Heidelberg,
+2013.
+[22] J. Amores, “Multiple instance classiﬁ cation: review, taxonomy
+and comparative study, ”Artiﬁcial Intelligence , vol. 201,
+Supplement C, pp. 81–105, 2013.
+[23] J. Foulds and E. Frank, “A review of multi-instance learning
+assumptions, ”The Knowledge Engineering Review , vol. 25,
+no. 1, pp. 1–25, 2010.
+[24] L. Dong, A Comparison of Multi-instance Learning Algorithms ,
+University of Waikato. The University of Waikato, Hamilton,New Zealand, 2006.
+[25] X. Xu, Statistical Learning in Multiple Instance Problems ,
+University of Waikato. The University of Waikato, Hamilton,New Zealand, 2003.
+[26] N. Weidmann, E. Frank, and B. Pfahringer, “A two-level learn-
+ing method for generalized multi-instance problems,” in
+Machine Learning: ECML
+2003. ECML 2003. Lecture Notes in
+Computer Science, vol 2837 pp. 468 –479, Springer, Berlin,
+Heidelberg.
+[27] J. Wu, S. Pan, X. Zhu, C. Zhang, and X. Wu, “Multi-instance
+learning with discriminative bag mapping, ”IEEE Transactions
+on Knowledge and Data Engineering , vol. 30, no. 6, pp. 1065 –
+1080, 2018.
+[28] J. D. Carroll and J.-J. Chang, “Analysis of individual di ﬀer-
+ences in multidimensional scaling via an N-way generalizationof“Eckart-Young” decomposition,” Psychometrika , vol. 35,
+no. 3, pp. 283 –319, 1970.
+[29] R. A. Harshman, “Foundations of the PARAFAC procedure:
+models and conditions for an “explanatory” multi-modal
+factor analysis, ”UCLA Working Papers in Phonetics , vol. 16,
+pp. 1–84, 1970.
+[30] T. G. Kolda and B. W. Bader, “Tensor decompositions and
+applications, ”SIAM Review , vol. 51, no. 3, pp. 455 –500,
+2009.
+[31] T. Papastergiou and V. Megalooikonomou, “A distributed
+proximal gradient descent method for tensor completion, ”in
+2017 IEEE International Conference on Big Data (Big Data),
+Boston, MA, USA, December 2017.[32] C. Leistner, A. Sa ﬀari, and H. Bischof, MIForests: Multiple-
+Instance Learning with Randomized Trees , Springer Berlin
+Heidelberg, Berlin, Heidelberg, 2010.
+[33] W. Dumouchel and F. O'Brien, “Integrating a robust option
+into a multiple regression computing environment, ”inCom-
+puting and graphics in statistics , pp. 41–48, Springer-Verlag
+New York, Inc., New York, NY, USA, 1991.
+[34] T. Hastie, R. Tibshirani, and J. Friedman, The Elements of
+Statistical Learning, Springer Series in Statistics, Springer-
+Verlag New York, 2009.
+[35] M. A. Gelbart, J. Snoek, and R. P. Adams, “Bayesian optimiza-
+tion with unknown constraints, ”inProceedings of the Thirtieth
+Conference on Uncertainty in Arti ﬁcial Intelligence ,pp.250
+ –
+259, AUAI Press, Quebec City, Quebec, Canada, 2014.
+[36] E. D. Gelasca, J. Byun, B. Obara, and B. S. Manjunath, “Evalu-
+ation and benchmark for biological image segmentation, ”in
+2008 15th IEEE International Conference on Image Processing ,
+San Diego, CA, USA, October 2008.
+[37] “Frail safe project,” Available from: https://frailsafe-project.eu/.
+[38] L. P. Fried, C. M. Tangen, J. Walston et al., “Frailty in older
+adults evidence for a phenotype,” The Journals of Gerontology:
+Series A , vol. 56, no. 3, pp. M146 –M157, 2001.
+[39] Y. Chen, J. Bi, and J. Z. Wang, “MILES: multiple-instance
+learning via embedded instance selection, ”IEEE Transactions
+on Pattern Analysis and Machine Intelligence , vol. 28, no. 12,
+pp. 1931 –1947, 2006.
+[40] K. Sikka, R. Giri, and M. S. BartlettX. Xie, M. W. Jones, and
+G. K. L. Tam, “Joint clustering and classiﬁ cation for multiple
+instance learning, ”inProceedings of the British Machine
+Vision Conference (BMVC) , BMVA Press, 2015.
+[41] P. Viola, J. C. Platt, and C. Zhang, “Multiple instance boosting
+for object detection, ”inProceedings of the 18th International
+Conference on Neural Information Processing Systems ,
+pp. 1417 –1424, MIT Press, Vancouver, British Columbia,
+Canada, 2005.
+[42] Y. Xu, J. Y. Zhu, E. I. C. Chang, M. Lai, and Z. Tu, “Weakly
+supervised histopathology cancer image segmentation and
+classiﬁ cation, ”Medical Image Analysis, vol. 18, no. 3,
+pp. 591 –604, 2014.
+[43] E. Acar, D. M. Dunlavy, T. G. Kolda, and M. Mørup, “Scalable
+tensor factorizations for incomplete data, ”Chemometrics and
+Intelligent Laboratory Systems , vol. 106, no. 1, pp. 41–56, 2011.13 ComplexityHindawi
+www.hindawi.com Volume 2018MathematicsJournal of
+Hindawiwww.hindawi.com Volume 2018Mathematical Problems 
+in Engineering
+Applied MathematicsJournal of
+Hindawi
+www.hindawi.com Volume 2018
+Probability and Statistics
+Hindawiwww.hindawi.com Volume 2018Journal of
+Hindawiwww.hindawi.com Volume 2018Mathematical PhysicsAdvances in
+Complex AnalysisJournal of
+Hindawiwww.hindawi.com Volume 2018
+OptimizationJournal of
+Hindawiwww.hindawi.com Volume 2018
+Hindawiwww.hindawi.com
+Volume 2018Engineering  
+ MathematicsInternational Journal of
+Hindawiwww.hindawi.com Volume 2018Operations ResearchAdvances in
+Journal of
+Hindawiwww.hindawi.com Volume 2018Function Spaces
+Abstract and 
+Applied Analysis
+Hindawi
+www.hindawi.com Volume 2018
+International 
+Journal of Mathematics and Mathematical Sciences
+Hindawiwww.hindawi.com Volume 2018Hindawi Publishing Corporation http://www.hindawi.com Volume 2013Hindawiwww.hindawi.comThe Scientific  
+World Journal
+Volume 2018
+Hindawi
+www.hindawi.com
+ Volume 2018
+Volume 2018
+Numerical Analysis
+Numerical Analysis
+Numerical Analysis
+Numerical Analysis
+Numerical Analysis
+Numerical Analysis
+Numerical Analysis
+Numerical Analysis
+Numerical Analysis
+Numerical Analysis
+Numerical Analysis
+Numerical Analysis
+Advances in
+Advances in
+ Discrete Dynamics in 
+Nature and Society
+Hindawi
+www.hindawi.com Volume 2018
+Hindawiwww.hindawi.comDiﬀerential EquationsInternational Journal of
+Volume 2018Hindawiwww.hindawi.com Volume 2018Decision SciencesAdvances in
+Hindawiwww.hindawi.com Volume 2018AnalysisInternational Journal of
+Hindawiwww.hindawi.com Volume 2018Stochastic AnalysisInternational Journal ofSubmit your manuscripts at
+www.hindawi.com

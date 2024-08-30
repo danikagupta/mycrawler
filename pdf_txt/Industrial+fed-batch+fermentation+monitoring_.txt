@@ -1,0 +1,402 @@
+Process Monitoring of an Industrial
+Fed-Batch Fermentation
+B. Lennox,1G.A. Montague,3H.G. Hiden,2G. Kornfeld,4P.R. Goulding1
+1Control Technology Centre, School of Engineering, University of
+Manchester, School of Engineering, Simon Building, Oxford Road,
+Manchester, M13 9PL, England; telephone: 0161 275 4324; fax: 0161 275
+4346; e-mail: Barry.Lennox@man.ac.uk
+2GSE Systems Ltd, Hexham, Northumberland
+3Department of Chemical and Process Engineering, University of
+Newcastle, England
+4Biochemie Ltd, Kundl, Austria
+Received 20 February 2000; accepted 7 January 2001
+Abstract: Market demand places great emphasis in in-
+dustry on product quality. Consequently, process moni-toring and control have become important aspects ofsystems engineering. In this article we detail the resultsof a 2-year study focusing on the development of a con-dition monitoring system for a fed-batch fermentationsystem operated by Biochemie Gmbh in Austria. We alsodemonstrate the suitability and limitations of currentstate of the art technologies in this field and suggestnovel modifications and configurations to improve theirsuitability for application to a fed-batch fermentation sys-tem.
+© 2001 John Wiley & Sons, Inc. Biotechnol Bioeng 74:
+125–135, 2001.
+Keywords: fault detection; fault diagnosis; fermentation;
+multivariate statistical process control; principal compo-nent analysis
+INTRODUCTION
+When operating fermentation systems it is vitally important
+to maintain operation within strict limits. There are twomain reasons why this is the case. First, biologically basedsystems by nature are highly sensitive to abnormal changesin operating conditions. To ensure that the maximum pos-sible yield of product is obtained from the system it isnecessary to make sure that conditions within the fermentorremain closely fixed around a prespecified “ideal” trajec-tory.Second,formanycompoundsaspartoftheproceduresto guarantee product chemical consistency, regulatory au-thorities (such as the FDA in the USA) demand proof thatconsistent operation is adhered to. Without this the productcannot be sold. In industrial fermentation systems, processoperators are typically employed to achieve consistent op-eration through manual monitoring and control. The opera-tor uses his experience and knowledge of the fermentationprocess, together with information provided by supervisorycontrol systems, to detect potential problems and makemodifications when necessary. The importance of effectiveoperator control cannot be underestimated as the perfor-
+mance of a fermentation is very much dependant upon theability to keep the system operating smoothly. A fermenta-tion that is free from major upsets is likely to be moreproductive than one subject to significant disturbances.Therefore, the earlier a potential problem to the system canbe detected, the less severe its influence will be and theresulting corrective action will consequently be more re-strained.
+Although operator control may be adequate in certain
+situations it makes little direct use of the historical data thatis routinely gathered and logged. Historical data will typi-cally contain information on high- and low-productivitybatches, as well as information on the consequences of per-formingparticularactionsinresponsetoproblemsituations.It is possible therefore to develop simple rule-based struc-tures that compare individual variables with historical rec-ords. Any deviations that indicate reduced productivityfrom the current batch can then be brought to the attentionof the operators. Rules themselves can be formulatedthrough the use of such methodologies as rule-inductionprocedures and case-based reasoning (Leake, 1996). Withthe rules formulated, it is relatively simple to implementthem, particularly with recent developments in real-timeknowledge-based systems, such as G2 from Gensym Ltd.These approaches are fine in certain situations, such as finalproductivity analysis. However, the problem when applyingthe methods to on-line fermentation monitoring is the sheercomplexity of the system together with the need to accountfor temporal patterns.
+An alternative technique for monitoring batch processes
+thatalsoutilizeshistoricaldataisStatisticalProcessControl(SPC) (Wetherill and Brown, 1991). Traditional univariateSPC may be suitable for selected fermentation systems(Hahn and Cockrum 1987; Vander Wiel et al., 1992), how-ever, such processes in general pose a variety of problemsthatmakeunivariateSPCinappropriate.Forexample,manyvariables may be recorded, necessitating the need for mul-tiple charts to be interpreted, which can be difficult. Other
+Correspondence to: Barry Lennox
+Contract grant sponsor: Biochemie Gmbh, Austria
+© 2001 John Wiley & Sons, Inc.problemsincludethefactthatsteadystateisnotachievedin
+batch operation and deviations may be caused by interac-tions between variables which may not appear on SPCcharts.
+To overcome the problems associated with univariate
+SPC, multivariate SPC (MSPC) techniques have been de-veloped (Nomikos and MacGregor, 1995a; Wise and Gal-lagher, 1996) and subsequently applied to batch-fermentation systems. The aim of this work was to developa process monitoring system for a fed-batch fermentationsystemoperatedbyBiochemieinAustria.Indevelopingthesystem the capabilities of a variety of MSPC techniqueswere compared and assessed. In addition, a number ofmodifications to the existing technologies are described andit is demonstrated how they can improve the monitoringcapabilities of the system. The utilization of artificial neuralnetworks (ANNs) to infer product quality measurements isalso detailed. This was required due to the problems asso-ciated with making direct on-line measurements of quality.The work with ANNs represents an initial study into thedevelopment of a closed loop control system to regulate thefermentation system.
+This article is divided into several sections. First, we
+describe the mathematical algorithms that were used in thisstudy. This is followed with a description of a number ofpractical considerations that were investigated to make thealgorithms more suitable for batch fermentation systems.Then, we detail the results of applying the algorithms to theindustrialfed-batchfermentationsystemandfinally,outlinethe important conclusions from the work.
+For propriety reasons many details from the fermentation
+process, including labels on graphs have been omitted.
+COMPONENT TECHNOLOGIES
+This article describes the on-line application of multivariate
+statistical process control (MSPC) and artificial neural net-work (ANN) techniques to a fermentation process. Beforethe application is detailed a brief description of the algo-rithms employed in this study is provided. These descrip-tionsassumesomeknowledgeofthetechnologies,which,ifrequired, can be obtained from the publications detailed inTable I which provide excellent introductions to the topics.
+Multivariate Statistical Process Control
+The main focus of this work was the application of MSPC
+technologies to the industrial fermentation system. Thework concentrates on the application of principal compo-
+nent analysis (PCA) and partial least squares (PLS), alsoknown as “projection to latent structures.” The basic con-cepts of these algorithms are described in the followingsections. The algorithms were originally formulated for ap-plication to continuous systems, however, it is explained ina following section how simple data preprocessing proce-dures can be employed to enable their application to batchprocesses.
+Principal Component Analysis
+Principal component analysis is used to analyze the covari-ance of a set of plant variables. The approach transforms amatrix containing mmeasurements from nprocess vari-
+ables, [Z], into a matrix of mutually uncorrelated variables,
+t
+k(wherek= ;1t on ) of length m. These variables, called
+principal components (PCs), are transforms of the originaldata into a new basis defined by a set of orthogonal loading
+vectors,p
+k, of length n. The individual values of the prin-
+cipal components are called “scores.” The transformation isdefined by
+@Z#=(
+k=1np,n
+tkpkT+E (1)
+The loadings are defined here as being orthonormal, and
+so they become the eigenvectors of the data covariancematrix,Z
+TZ. Thetkandpkpairs are ordered so that the first
+pair capture the largest amount of variation in the data andthe last pair capture the least. In this way, it is generallyfoundthatasmallnumberofPCs( np)canaccountformuch
+ofthepowerinthecovariancematrix.Theremainingpowerconstitutes the error term E. When Eq. (1) is applied to a
+singlevectorofnewprocessmeasurements, z
+T,theresulting
+termEis called the “prediction error.” There are several
+methods for determining the suitable value for np. One
+method is to continue to add PCs until the variation ex-plained in the retained PCs exceeds a particular value, how-ever, a more suitable approach, and the technique used inthis work, is to use cross validation (Wold, 1978).
+By selecting a value of nplower than nthe PCA algo-
+rithm is able to project highly correlated process data into alow-dimensional space defined by the principal compo-nents. Control charts that are simple to interpret can then beconstructed using this data. The formulation of these chartsis described in the section on process monitoring usingPCA.
+Partial Least Squares
+Partial least squares is a tool suitable whenever plant vari-ablescanbepartitionedintocause( X)andeffect( Y)values.
+The method may be used for regression or similarly, toPCA, reduction of the effective dimensionality of data. Theapproach works by selecting factors of cause variables in asequence that successively maximizes the explained covari-Table I. References for further information.
+Topic Reference
+Principal Component Analysis Wise and Gallagher (1996)
+Partial Least Squares Geladi and Kowalski (1986)Multi-way Techniques Kourti and MacGregor (1995)Artificial Neural Networks Willis et al (1991)Radial Basis Functions Warnes et al (1998)
+126 BIOTECHNOLOGY AND BIOENGINEERING, VOL. 74, NO. 2, JULY 20, 2001ance between the cause and effect variables. Given a matrix
+of cause data, X, and effect data, Y, a factor of the cause
+data,tk, and effect data, uk, is evaluated, such that
+X=(
+k=1np,nx
+tkpkT+EandY=(
+k=1np,nx
+ukqkT+F(2)
+whereEandFare residual matrices, npis the number of
+inner components that are used in the model and nxis the
+number of causal variables. These equations are referred toas the “outer relationships.” The vectors t
+kare mutually
+orthogonal. These vectors and ukare selected so as to maxi-
+mize the covariance between each pair, ( tk,uk). Linear re-
+gression is performed between the tkand theukvectors to
+produce the inner relationship, such that:
+uk=bktk+«k
+wherebkis a regression coefficient, and «krefers to the
+prediction error. The PLS method provides the potential fora regularized model through selecting an appropriate num-ber of latent variables, u
+kin the model ( np). The number of
+latent variables is typically made through the use of crossvalidation.
+The section on process monitoring on PLS explains how
+this algorithm can be used to monitor the progress of aprocess.
+Multiway Multivariate Statistical Process Control
+ConventionalPCAandPLSarelinearproceduresandthere-
+fore limited in their effectiveness when applied to nonlinearbatchfermentationproblems.Twooptionsexistforimprov-ing the capabilities of the techniques when applied to batchsystems. The first is to develop nonlinear counterparts toPCA and PLS and the second is to transform the batch datain such a way as to remove the nonlinear characteristics.Although nonlinear MSPC techniques exist and have beenapplied successfully to fermentation systems (Dong andMcAvoy, 1996), the transformation of batch data hasproved to be a more effective option and was thereforeadoptedinthisstudy.Themostcommonformofdatatrans-formation, termed multiway PCA and PLS, was initiallyproposed by Nomikos and MacGregor (1994). Since then,other researchers have adopted the approach and applied itto a variety of processes. For example, Gallagher et al.(1996) applied the technique to monitor nuclear waste stor-age vessels and Gregersen et al. (1997) investigated thedetection of faults in a fed-batch fermentation process.
+Multiway Principal Component Analysis
+The concept of multiway PCA is a relatively straightfor-ward extension to the approach taken for continuous sys-tems but deviations from mean trajectories rather thansteady state are considered. The following description to-gether with Figure 1 explains the multiway approach toPCA.Selectmhistoricalbatcheswhichallyieldedhighproduct
+concentrations. These batches are referred to as “nominal”batches and will be used for comparison purposes. The du-ration of each batch is likely to differ and therefore the datafrom each batch is considered only until the shortest runlength. Techniques exist which allow all the measured pro-cess data to be used regardless of the shortest run length(Lakshminarayanan et al., 1996). In this application how-ever, the run lengths did not differ significantly and thususing the reduced sized data sets was not considered to be aproblem.
+The next step is to identify the, n,process variables that
+are to be monitored. For each variable the mean trajectoryover all the nominal batches is calculated and subtractedfrom each process measurement. This effectively removesthe major nonlinearity from the data and leaves a zero meantrajectory for each variable.
+Unfold the individual data matrices from each batch into
+asingleunfoldeddatamatrix,asdepictedinFigure1.InthisFigureV1refers to variable 1, V1
+trefers to the value of
+variable 1 at time tandtendrefers to the time at which the
+batch finished. Finally, all columns of the unfolded datamatrix are standardized to unit variance. Principal compo-nent analysis can now be applied to this unfolded data ma-trix using two techniques:
+1. Projection PCA
+A PCA model is developed using the entire unfolded
+datamatrix,i.e.,thereisaloadingvariablecalculatedforevery measured process variable at each sampling in-stant. The subsequent use of this model to monitor abatch on-line poses the problem that it is necessary toknow the values of all process measurements through tothe end of the batch. This means that with the exceptionof the end point of the batch, it is necessary to estimatethe future values of all the measured variables. The pre-dictionoffutureprocessvaluesisnormallyreferredtoas“filling up” the matrix and is typically achieved by as-sumingthateitherallfuturescaledprocessvaluesremainatthemeanvalueofzero(fillingmethod1);orthefutureFigure 1. Multi-way MSPC.
+LENNOX ET AL: PROCESS MONITORING OF AN INDUSTRIAL FED-BATCH FERMENTATION 127processvaluesremainatthecurrentoffsetfromthemean
+value (filling method 2).
+An alternative technique that has been utilized in this
+work is to use the capability of PCA and PLS to handlemissing data (Nelson et al., 1996). Research work in thisarea has tended to concentrate on using PCA and PLS toinfer process measurements at the current sampling in-stant when a particular measurement is unavailable.However, the same techniques can be used to fill up thedata matrix. The technique was employed in this workandcomparedwiththeotherapproachesdescribedabove(filling method 3).
+2. Moving Window PCA
+A PCA model is developed on a moving window of
+data. For example at the 50th sampling instant, a PCAmodel may be developed using data collected from the41st to the 50th sampling instants. In this case, the mov-ing window length would be said to be equal to 10. Sucha model effectively compares operating conditions overthe last few sample points with those experienced at thesame time in the nominal batches. The advantage of thistechnique is that it does not require the values of futuremeasurements to be predicted. However, it does requirethat the PCA model be re-evaluated at each samplingpoint.BothPCAalgorithmsareappliedandcomparedinthis study.
+Multiway Partial Least Squares
+The concept of multiway PLS is very similar to multiwayPCA. The unfolded data matrix represents the cause matrixand is created in exactly the same way. The construction ofthe effect matrix is problem dependent and is detailed in thesection below on process monitoring using partial leastsquares.
+Artificial Neural Networks
+Artificial neural networks (ANNs) are mathematical func-
+tions that provide a nonlinear description of the relationshipbetween cause and effect variables. Although many differ-ing types of ANN exist (Lippman, 1987), they do possesssome common features. They are generally composed ofnumerous process elements, termed nodes, which are ar-rangedtogethertoformanetwork.AcommontypeofANNmodel used in many applications is the feedforward net-work. This type of network comprises an input layer whereinput information is presented to the network, one or morehiddenlayers where neuron processing takes place and an
+outputlayerfromwhichthenetworkoutputsareobtained.Itis termed a feedforward network because the outputs fromone layer are fed-forward as inputs to the subsequent layer.Insuchanetworktheprocessingelementisonethatweightsthe input signals and then sums them together with a biasterm. The neuron output is then obtained by passing thesummed, weighted inputs through a nonlinear activationfunction,suchasthehyperbolictangent.Analternativetypeof neural network and the one chosen for this study is the
+radial basis function (RBF) neural network.
+The RBF networks utilize a clustering process on the
+input data before presentation to the network and uses non-linear activation functions that are locally tuned to cover aregion of the input space. The network structure consists ofan input layer, a single hidden layer containing the samenumber of nodes as cluster centers, and an output layer. Inthis application the hidden layer nodes are made up of sym-metrical Gaussian density functions. The activation, andhence, the output of the hidden units is dependent upon thedistance between the given input vector and the unit center.The closer to the center the input lies, the higher the acti-vation of the unit, i.e., the larger the value sent on to theoutput layer in the network. Only the connections from thehidden to the output layer are weighted, leading to a fasttraining rate. This fast training rate means the neural net-work models can be quickly developed, and the fixed layerstructure of the RBF network (i.e., only one hidden layer)places a convenient restriction on topology selection whencompared to alternative network structures. An additionalproperty of RBF networks is that it is relatively easy tointroduce on-line calculation of confidence limits for themodel estimations, providing a measure of local reliability.
+The training procedure for the RBFNs can be decom-
+posed naturally into three distinct stages: (1) locating thecenters of the hidden layer radial units; (2) determining thewidth of each radial unit; and (3) calculating the networkweights for interconnections between the radial basis layerand the output layer. The scheme proposed by Moody andDarken (1989) to perform the training is used in this work.Further details of the precise methodology used for RBFnetwork construction and confidence-bound determinationcan be found in Warnes et al. (1998).
+Process Monitoring Using Principal
+Component Analysis
+ProcessmonitoringisachievedwithPCAbydevelopingthe
+PCA model on example data from the process. The datachosen for this stage should have been collected duringsuccessful,high-yieldfermentationrunsandisreferredtoas“nominal data.” The model developed with this data is laterrecalled using on-line data and the consistency of this datais assessed. Various approaches for assessing this consis-tency have been suggested in the literature. In this and pre-vious work (Goulding et al., 2000), it has been found thatfor PCA the analysis should be applied separately to datavariationinthespaceoftheprincipalcomponentsandintheprediction errors.
+Variation in the space of the principal components is
+provided through the T
+2statistic that is defined as:
+T2=(
+k=1np
+tksk-2tkT(3)
+where sk2is the variance of the kthscore.
+128 BIOTECHNOLOGY AND BIOENGINEERING, VOL. 74, NO. 2, JULY 20, 2001Variation in the prediction error is expressed as the
+squared prediction error (SPE) and is defined as E2.
+Control limits can be applied to the T2and SPE charts
+based on the assumption that the statistics follow a normaland chi-squared distribution, respectively. These limits aretermed the T
+2andQlimits, respectively, and a description
+of how they are calculated is provided in Appendix A.
+While a new batch is running, the T2andSPEvalues can
+be plotted. Any violations of the confidence limits shouldindicate that the current batch is deviating from nominalconditions. However, the manner in which it is deviatingfrom normality differs depending upon which chart is vio-lating the confidence limits. Goulding et al. (2000) demon-strated that changes in the relationships between variables,such as that experienced if a sensor failed, tended to bedetected on the SPEchart, while changes in operating con-
+dition,forexampleagradechange,weretypicallyidentifiedon theT
+2chart. There will be exceptions to this, for ex-
+ample, a high-impact fault which significantly affects anumber of variables is likely to be detected on both the T
+2
+andSPEcharts.
+An important consideration when constructing the SPE
+andT2charts is setting the confidence limits. Most reported
+applications tend to place 95% or 99% confidence limits onthe charts. However, experience shows that the correct set-ting of the confidence limits is critical to the success of themonitoring system. Process operators will quickly lose con-fidence with a system that gives many false alarms, andtherefore the limits should be set so that such alarms areminimized. This aspect is further detailed in the section onapplication of PCA.
+While highlighting abnormal conditions is very useful,
+assigning the cause of the abnormalities is arguably evenmore important. Technology in this aspect of MSPC is lim-ited and is an area of significant research (Gertler et al.,1999). In this work simple contribution charts were used toindicate cause.
+Contributionstothe T
+2statisticareobtainedbytakingthe
+gradient of T2with respect to each variable. The contribu-
+tion to the SPEstatistic from a given variable is simply the
+squared prediction error on that variable.
+Process Monitoring Using Partial Least Squares
+Partial least squares is a technique for determining a linear
+relationship between cause and effect variables. Its advan-tage over ordinary least squares is that it is capable of han-dlinglargeill-conditionedmatrices,asaretypicallyencoun-teredinbatchsystems.Previousworkhasdemonstratedthatit can be used for process monitoring in two very differentways. The first approach uses PLS as a prediction tool toestimate the end concentration of biomass in the fermentor.The second technique is very similar to PCA and involvesmonitoring the inner latent variables produced by the algo-rithm. In this study, it was found that the second approachofferednotangiblebenefitsoverPCAandwasthereforenotintegrated into the final monitoring system (Lennox et al.,1999). Using a PLS model to predict the final biomass
+concentration was, however, found to be beneficial. ThePLS model acts as a classification system and can be usedto indicate if the current batch is more consistent with high-or low-yield batches. Because it is used as a classifier it isimportant that the model is developed using historical datafrom both high- and low-yield batches. The construction ofthe cause and effect matrices is relatively straightforward.The cause matrix is identical to that used in multiway PCAand the effect matrix is a column vector containing the finalproduct concentration from each of the historical batches.
+Confidence limits can be placed around the PLS predic-
+tion (Nomikos and MacGregor, 1995b) and if the PLSmodel predicts that the required amount of biomass will notbe produced from the batch then a warning message can berelayed to the operator.
+Process Monitoring Using Artificial
+Neural Networks
+Previous research has demonstrated that ANNs can be used
+as a non-linear counterpart to PCA and PLS algorithms, forexample, auto-associative ANNs (Kramer, 1992). In thisstudy, linear PCA and PLS have been found to provideadequate results and therefore, ANNs have not been inves-tigatedinthiscapacity.However,thelongtermplansforthiswork are to provide automatic feedback control of biomassproduction in the fermentor. It is anticipated that employingANNs within a model-based control system will provide asuitable controller for this application. As a preliminarystudy, ANNs have been employed as soft sensors to predictthe concentration of biomass in the fermentor during thebatch.
+ON-LINE CONSIDERATIONS
+Data Preprocessing
+It is important that any monitoring system that is developed
+becapableofhandlingcommondataproblemssuchasnoiseand outliers. Tham (1994) provides a thorough review ofdata-handling procedures and the recommended techniquessuggested in his article have been successfully employed inthis work. These procedures involve filtering out noise us-ing low-pass filters and detecting and removing outliersthrough the identification of trends in the data.
+Missing Data
+A common problem in process systems is that some mea-
+surements may not always be available. For example, afaulty thermocouple may be withdrawn from service for theduration of a batch. Such a situation would mean that itwould not be possible to apply any previously developedPCA or PLS model that used this thermocouple measure-ment to the current batch. In fact, any blank entries in the
+LENNOX ET AL: PROCESS MONITORING OF AN INDUSTRIAL FED-BATCH FERMENTATION 129unfolded data matrix, which would result from a single
+missing measurement, would render the PCA or PLS modelinvalid during an on-line batch. In this application it wasconsidered likely that one or more process measurementswould be unavailable during a typical batch run. It wastherefore considered to be essential that this problem beaddressed.
+Problems associated with missing data values have been
+researched at length by Nelson et al. (1996). In their studiesthey identified three methods for estimating missing datavalues, each of which makes use of the predeveloped PCAorPLSmodels.Eachoftheseapproacheswasappliedinthiswork with mixed results. It was found that two of the meth-ods, projection to the model plane and replacement by theconditional mean created matrix singularity problems andwere unsuitable for this application. However, the single-component regression technique was found to provide ac-ceptableresults.Completedetailsofthesealgorithmscanbefound in Nelson et al. (1996).
+Pre-Culture Data
+The progress of a batch is dependent upon not only the
+conditionsinthefermentor,butalsotheconditionswhenthebiomass was in its pre-culture, or seed, stage. It is possibleto employ measurements taken in the pre-culture stage inthemonitoringsystembysimplyappendingtheinformationto the unfolded data matrix that is used in both the PCA andPLS routines. Such information was not available in thiswork and thus, has not been applied. However, Ignova et al.(1999) have demonstrated how important information re-garding the progress of the batch can be extracted from thepre-culture data.
+APPLICATION OF CONDITION MONITORING
+TECHNOLOGIES TO THEFED-BATCH FERMENTATION
+The work detailed in this article represents the first phase of
+an ongoing project to implement a condition-monitoringsystem onto an industrial fed-batch fermentation system.The aim of this work is to assess the suitability and benefitsof applying advanced monitoring technologies to the batchprocess. Based upon the outcome of this phase of the work,the next stage will be to apply the monitoring tools to aresearch facility and test their performance over a period oftime. Based upon the results of this phase, the monitoringsystemwillbeappliedtotheindustrialfermentationsystem.
+Application of Principal Component Analysis
+A PCA model was developed from historical data from 10
+high-yield industrial batches. The ability of this model tomonitor a number of subsequent batches was then deter-mined. Some of these subsequent batches operatedsmoothly while others were affected by disturbances.
+Figure 2 displays the SPE for each of the 10 referencebatches. Based on this information, a 97% confidence limit
+has been evaluated and also plotted. In this example theunfolded data matrix has been filled using filling method 2.A 97% confidence limit has been specified in this applica-tion because at this level none of the nominal batches vio-late the limit, thus reducing the potential for false alarms.
+Figure 3 shows the SPE, along with 97% confidence
+limits, for a particular test batch. During this fermentationan intermittent drift on a sensor measurement was experi-enced. This drift was most apparent between sample num-bers40–70and100–150.TheSPEchartdisplayedinFigure3 demonstrates that the PCA model has detected this faultentering the system.
+Further investigation of the PCA model showed that the
+T
+2limitwasneverexceededduringthisbatchandtherefore,
+the chart was unable to identify this fault. This result agreeswith the analysis in the section on process monitoring usingPCA. The T
+2chart is able to detect significant changes in
+operation and high-impact faults. A fault such as this, aFigure 2. SPE chart for nominal batches.
+Figure 3. SPE chart for test batch.
+130 BIOTECHNOLOGY AND BIOENGINEERING, VOL. 74, NO. 2, JULY 20, 2001small drift on a sensor is unlikely to be detected in the T2
+chart.
+SectiononmultiwayPCAdescribedtwoalternativetech-
+niques for filling up the unfolded data matrix. The suitabil-ity of these techniques was compared with the results ob-tained using filling method 2. Figure 4 shows the SPE chartfor the test batch investigated above, this time using fillingmethod 1. By using this technique the PCA model is nolonger able to identify the sensor fault. Similar reduction inmonitoring capabilities of this approach have been reportedby Lakshminarayanan et al. (1996) and Nomikos and Mac-Gregor (1995a).
+The reason for the reduction in performance using filling
+method 1 can be explained by considering Figure 5. Thisfigure shows a particular process variable measurement re-corded during a complete batch cycle (bold line). The batchchosen in this example was a high-yield batch free fromprocess disturbances. Using the data collected up to samplepoint 90, the value of the process variable between sampletimes 91 and 180 has been inferred using each of the threemethods to fill up the unfolded data matrix. It is evidentfrom this figure that filling method 2 most accuratelymatches the actual process measurement. Because the per-formanceoftheprocessmonitorwillbedependentupontheaccuracy with which it fills the unfolded matrix, fillingmethod 2 would appear to be the more suitable in this ap-plication.
+Similar results were repeated in many other tests using
+different variables and batches, confirming the suitability offilling method 2.
+The low-power principal components that are combined
+to create the SPE chart capture relationships between theprocess variables and as such, can be considered to be mod-els of the system. The more accurate these models are themore sensitive the SPE chart will be to abnormal processconditions. The value of the Qlimit, which in this work is
+specifiedasbeinggreaterthanthemaximumSPEoverallofthe nominal batches, provides a measure of the accuracy ofthelowpowerPCAmodels.Thelowerthe Qlimit,themore
+accurate the models are.
+Figure 2 indicates that the sensitivity of the SPE is low at
+the beginning and end of the batch and high during themiddle. The low sensitivity at the start is because so littledata is available from the batch and therefore the unfoldeddata matrix is being filled with inaccurate data. The sensi-tivity at the end of the batch is believed to be because therelationships between the variables differ during the pro-gression of the batch, for example, cell death phenomenawill affect the latter stages of the batch. Relationships be-tweenvariablesthatarevalidattheearlystagesofthebatchmay not hold towards the end of the batch. To account forthis, it is possible to construct PCA submodels. Using thistechnique, PCA models are constructed using data collectedfrom only part of the batch. For example, one PCA modelmay be applied up to sample number 60, a second betweensample 60 and 150, and a third between 150 and 180.
+Figure 6 compares the Qlimit obtained using such a
+submodel approach compared with that using a single PCAmodel over the full duration of the batch. The figure showsthattheSPEandthecorresponding Qlimitusingsubmodels
+is significantly lower than that using the single PCA model.ThisindicatesthattheSPEchartshouldbemoresensitivetoprocess abnormalities, such as faults, if submodels are em-
+Figure 4. SPE chart for test batch using filling method 1.Figure 5. Inferred process measurement using various filling methods.
+Figure 6. Effect of using sub-models.
+LENNOX ET AL: PROCESS MONITORING OF AN INDUSTRIAL FED-BATCH FERMENTATION 131ployed and is therefore a more suitable method for process-
+monitoring purposes. One minor drawback with using sub-modelsisthatthe Qlimitcanincreasesharplyfollowingthe
+change from one model to the next. This effect can be seenmost notably in Figure 6 at sample number 60.
+The reason for this is the same as the high SPE experi-
+enced at the start of the single model technique and is be-cause so little data is available when filling up the unfoldeddata matrix. To reduce this problem it is possible to con-struct submodels that operate during particular periods butare developed using data collected both before and duringthe period. For example, a submodel that operates betweensample numbers 80 and 120 may actually be developedusing data collected between sample numbers 60 and 120.Therefore, when the model is introduced at sample number80 the data it uses to fill up the unfolded data matrix will bemore reliable.
+The ability of PCA to handle missing data values is dem-
+onstrated in Figure 7. The solid line in this chart shows theSPE over the course of a batch.
+Data collected from this batch was passed through the
+PCAalgorithmoncemore.However,thistimethemeasure-ment from a particular variable was set to be missing be-tweensamples41and60and101and130.Usingthesingle-component regression method to replace the missing valuesthe SPE chart obtained for this batch is given by the dottedline in Figure 7. It is evident from this chart that there isvery little difference between the two SPE values throughthe duration of the batch and therefore in this particularexample, the routines for handling missing data values haveworkedverywell.SimilarresultstothatdisplayedinFigure7 were recorded from a number of subsequent missing datatests involving other process variables and batches.
+Further tests using the moving window PCA technique
+showed that it produced similar results to those obtainedusing the projection method with submodels. It is thereforedifficult to establish conclusions as to which is the moresuitable technique for this application. An advantage in us-ing the moving window approach is that there are fewervariables that require specifying, such as the number ofsubmodels and the periods over which these submodelsshould be used. However, it was found that the movingwindow approach required accurate specification of the
+timedelays,whiletheprojectionmethodwasmorerobusttothis information.
+Application of Partial Least Squares
+As discussed earlier, it was found that monitoring the latent
+variables of the PLS model gave no further insight into theoperation of the fermentation system than is availablethrough PCA. Therefore, in this study the inner relation-ships in the PLS models were ignored and only the predic-tion accuracy of the models was monitored.
+Partial least squares’ models were developed to estimate
+thefinalconcentrationofbiomassinthefermentor.Theaimof this exercise is to use this estimate to categorize theon-line fermentations into high- and low-yield production.
+The PLS model was developed on historical data and
+applied to a number of alternative batches. Figure 8 showsanexampleofaPLS-monitoringchart.Thischartshowsthefinal biomass concentration (solid line), estimated at eachsample time during the batch, 95% confidence limits(dashed line) and the actual final concentration of biomass(thin solid line). Details of the confidence limit calculationscan be found in Nomikos and MacGregor (1995b).
+It can be seen from Figure 8 that for this batch, which
+proceeded upset-free, the PLS estimate of the final productconcentration was reasonably accurate throughout. It is alsonoticeable that the biomass estimate during the first half ofthe run is relatively noisy and for the second half of the runit is reasonably consistent. This is because at the start of thebatch most of the data in the unfolded data matrix has beenestimated and is therefore less reliable than in the laterstages of the batch.
+TheaccuracyofthePLSmodeldisplayedinFigure8was
+consistentwiththatproducedforseveralotherbatches.Thislevel of accuracy makes the PLS model a useful tool formonitoring the progress of the fermentation system for thisparticular application.
+Application of Neural Networks
+Theabilitytoformulatearelationshipbetweenon-linemea-
+surements and off-line assays using a RBF network pro-
+Figure 7. Effect of missing data. Figure 8. PLS monitoring chart.
+132 BIOTECHNOLOGY AND BIOENGINEERING, VOL. 74, NO. 2, JULY 20, 2001vides on-line estimates of performance. This information is
+complementary to that provided by the MSPC methods. Tobuild the RBF model it is necessary to first select batchesfor RBF network parameterization. The batch data require-ments are similar to those for PLS-based modeling and re-quire a wide coverage of operational experience to maxi-mize the model coverage.
+Figure 9 demonstrates the predictive capability of the
+RBF network. Inputs to the network are on-line measure-ments from the process and the output is the biomass levelmeasured in the laboratory from off-line samples. The net-work was trained using a selected set of batches exhibitingvarying behavior spreading the region of operation. Theinputs to the network were chosen using a combination ofprocess knowledge and off-line verification of network be-havior. The network topology was specified using cross-validation to determine the topology that maximized thepredictive capability. Figure 9 shows the data that was usedto test the network behavior and it is important to note thatit did not feature in the training procedure. The crossesrepresent off-line samples and the continuous line is thenetwork prediction. The dashed lines either side of this arethe95%confidenceboundsinpredictionaccuracy.Itcanbeseen that a good agreement between on-line prediction andperformance verified by off-line analysis is achieved. Theestimates are currently available to the process operator forinformation purposes but in the longer term the option toclose the loop exists.
+CONCLUSIONS AND FURTHER WORK
+This article has provided details of a 2-year study aimed at
+developing a condition monitoring system for a fed-batchfermentation process. The primary conclusion from thework is that existing technologies in the field of processmonitoring, such as PCA and PLS, provide a suitable toolfor the detection of process abnormalities.Principal component analysis has been employed suc-
+cessfully to detect and isolate process faults while PLS hasbeen applied to estimate final product composition in thefermentor. The PLS estimate was shown to be sufficientlyaccurate to enable it to categorize on-line batches into highand low yield.
+The integration of the PCA and PLS methods with infor-
+mation from other sources such as inferences from RBFnetworks serves to provide operators with a rich source ofoperational assistance.
+Describedhereinaremanyofthepracticalconsiderations
+that have been encountered in this application. Such con-siderations have ranged from data preprocessing issues tocomputation problems.
+The monitoring procedures developed in this work are
+currently being applied to a research facility operated byBiochemie. Subject to the success of trials conducted in thisfacility the intention is to then transfer the monitoring sys-tem to the industrial production equipment. Further analyti-cal work that will be conducted during this time will focuson assessing whether or not there are advantages in usingdata collected during the pre-culture stage of the batch andif advantages exist to determine the optimal way to exploit-ing this information.
+The authors would like to thank the members of the Control
+Groups at the Universities of Newcastle-upon-Tyne andManchester for providing technical assistance during the courseof this work. Particular thanks are extended to Dr. Ming Tham.
+NOMENCLATURE
+bk Regression co-efficient from PLS
+E error matrix from PCA
+F error matrix from PCA and PLS
+Fnp,r−l, avalueoftheF-distributionatthe a%confidencelimitfor
+npprincipal components and rsamples
+g function of the traces of the residual covariance matrix
+h function of the traces of the residual covariance matrix
+h0 function of the traces of the residual covariance matrix
+k index for principal components and latent variables
+m number of reference batches selected
+n number of process variables
+np number of principal components or latent variables re-
+tained
+nx number of cause variables
+pk loading vector from PCA and PLS
+qk loading vector for effect data from PLS
+Qlimit confidence limit for T2values
+Qa value for Qlimit at the a% level of confidence
+r number of samples in the matrix Z
+SPE square prediction error
+tk principal component or latent variable
+T2measure of the variation in the space of the principalcomponents
+u
+k score vector for effect data in PLS
+V residual covariance matrix
+X matrix of cause data
+Y matrix of effect data
+z vector of new process data
+Z matrix of process data Figure 9. On-line biomass concentration estimation.
+LENNOX ET AL: PROCESS MONITORING OF AN INDUSTRIAL FED-BATCH FERMENTATION 133Greek letters
+alevel of confidence
+«kprediction error
+mEmean ofE
+sk2variance of the kthprincipal component
+uitrace ofVto theithpower
+xh2chi-squared variable
+APPENDIX A
+Statistical confidence limits for T2are calculated using the
+F-distribution as follows:
+Ta2=np~r-1!
+r-npFnp,r-1,a (A1)
+whereris the number of samples in Z,ais the confidence
+limit, expressed as a fraction and npis the number of prin-
+cipal components retained in the model.
+Confidence limits for the SPE chart are based upon the
+chi-squared distribution (Jackson and Mudholkar, 1979).
+Qa=u1F1-u2h0~1-h0!
+u12+za=2u2h02
+u1G1
+h0
+(A2)
+where:
+QaistheconfidencelimitfortheSPEchartatthe a%level.
+u1=trace~V!,u2=trace~V2!,u3=trace~V3!,h0=1-2u1u3
+3u22
+(A2)
+V=EET
+r-1,ais the confidence limit (0–100%)andzis the
+Normalvariable.
+The calculation of traces of powers of the residual matrix
+can become impractical with large data sets. This is par-ticularly relevant in applying these techniques to batch sys-tems as the control limits and PCA models are often calcu-lated at each sampling instant. Where the calculations maybe excessive it is possible to employ the confidence limitsproposed by Box (1954) and given by:
+Q
+a=gxh,a2(A4)
+where: xh2is the chi-squared variable, g=u2
+u1andh=u12
+u2
+gandhcan be approximated by matching moments (Nomi-
+kos and MacGregor, 1995a) as shown below.
+g=sE2
+mE,h=2mE2
+sE2,sEandmErefer to the standard deviation
+and mean of E.
+Figure A1 shows a comparison of the confidence limits
+produced using the trace of the residual matrix comparedwith those obtained by matching moments. The graph indi-cates that there is very little difference between the twotechniques and that if large data sets are encountered (they
+weren’t in this application) then the matching moments al-gorithm can be used as an alternative. Care should be takenwhen using this algorithm as errors can be introduced ifoutliers are present in the data (Nomikos and MacGregor,1995a).
+References
+Box GEP. 1954. Some theorems on quadratic forms applied in the study of
+analysis of variance problems: Effect of inequality and variance inone-way classification. Ann Math Stat 25:290–302.
+Dong D, McAvoy TJ. 1996. Batch tracking via non-linear principal com-
+ponent analysis. AIChE J 42(8):2199–2208.
+Gallagher NB, Wise BM, Stewart CW. 1996. Application of multiway
+principal components analysis to nuclear waste storage tank monitor-ing. Comp Chem Eng 20S:739–744.
+Geladi P, Kowalski BR. 1986. Partial least squares regression: A tutorial.
+Anal Chim Acta 185:1–17.
+Gertler J, Li WH, Huang YB, McAvoy T. 1999. Isolation enhanced prin-
+cipal component analysis. AIChE J 45(2):323–334.
+Goulding PR, Lennox B, Sandoz DJ, Smith K, Marjanovic O. 2000. Fault
+detection in continuous processes using multivariate statistical meth-ods. Intl J Syst Sci 31(11).
+Gregersen L, Jorgensen SB, Andersen MY. 1997. Industrial fed-batch fer-
+mentation monitoring. International Symposium on Advanced Controlof Chemical Processes. Banff p. 49–54.
+Hahn GJ, Cockrum MB. 1987. Adapting control charts to meet practical
+needs: A chemical processing application. J Appl Stat 14:35–52.
+Ignova M, Montague GA, Ward AC, Glassey J. 1999. Fermentation seed
+quality analysis with self-organizing neural networks. Biotechnol Bio-eng 64:82–91.
+Jackson JE, Mudholkar GS. 1979. Control procedures for residuals asso-
+ciated with principal analysis. Technometrics 21:341–349.
+KourtiT,MacGregorJF.1995.Processanalysis,monitoringanddiagnosis,
+using multivariate projection methods. Chemometr Intelli Lab Syst28:3–21.
+Kramer MA. 1992. Autoassociative neural networks. Comp Chem Eng
+16(4):313–328.
+Lakshminarayanan S, Gudi RD, Shah SL, Nandakumar K. 1996. Monitor-
+ing batch processes using multivariate statistical tools: Extensions andpractical issues. Proceedings of IFAC World Congress, June, SanFrancisco. p. 241–246.Figure A1. Comparison of confidence limits.
+134 BIOTECHNOLOGY AND BIOENGINEERING, VOL. 74, NO. 2, JULY 20, 2001Leake DB. 1996. Case based reasoning: Experiences, lessons and future
+directions. Cambridge, MA: MIT Press.
+Lennox B, Montague GA, Hiden HG, Kornfeld G. 1999. Case study in-
+vestigating multivariate statistical techniques for fermentation super-vision. Comp Chem Eng 23S:827–830.
+Lippman RP. 1987. An introduction to computing with neural nets. IEEE
+ASSP Mag, Volume 90(5), April, 4–22.
+Moody J,Darken CJ. 1989. Fast learning in networks of locally-tuned
+processing units. Neural Comp 1:281–294.
+Nelson PRC, Taylor PA, MacGregor JF. 1996. Missing data methods in
+PCA and PLS: Score calculations with incomplete observations. Che-mometr Intell Lab Sys 35:45–65.
+Nomikos P, MacGregor JF. 1994. Monitoring batch processes using multi-
+way principal component analysis. AIChE J 40(8):1361–1375.
+Nomikos P, MacGregor JF. 1995a. Multivariate SPC charts for monitoring
+batch processes. Technometrics 37(1):41–59.
+NomikosP,MacGregorJF.1995b.Multi-waypartialleastsquaresinmoni-
+toring batch processes. Chemometr Intell Lab Sys 30:97–108.Tham MT. 1994. Succeed at on-line validation and reconstruction of data.
+Meas Contr May:46–56.
+Vander Wiel SA, Tucker WT, Faltin FW, Doganaksoy N. 1992. Algorith-
+mic statistical process control: concepts and an application. Techno-metrics 34:286–297.
+WarnesMR,GlasseyJ,MontagueGA,KaraB.1998.Applicationofradial
+basis function and feedforward artificial neural networks to the Esch-
+erichia coli fermentation process. Neurocomp 20(1–3):67–82.
+Wetherill GB, Brown DW. 1991. Statistical process control: Theory and
+practice. London: Chapman and Hall.
+Willis MJ, Di Massimo C, Montague GA, Tham MT, Morris AJ. 1991.
+Artificialneuralnetworksinprocessengineering.IEEEProceedings-D138(3):256–266.
+Wise BM, Gallagher NB. 1996. The process chemometrics approach to
+process monitoring and fault detection. J Proc Cont 6(6):329–348.
+WoldS.1978.Cross-validatoryestimationofthenumberofcomponentsin
+factor and principal components models. Technometrics 34:286–297
+LENNOX ET AL: PROCESS MONITORING OF AN INDUSTRIAL FED-BATCH FERMENTATION 135

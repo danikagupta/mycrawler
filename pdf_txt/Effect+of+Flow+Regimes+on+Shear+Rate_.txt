@@ -1,0 +1,578 @@
+Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.Linking maximal shear rate and energy dissipation circulation
+function in airlift bioreactors
+Mateus Esperan ca1, Mariane Buo2, Caroline Mendes3, Guilherme Rodriguez4, Rodrigo
+Bettega2, Alberto Badino2, and Marcel Otavio Cerri5
+1Federal Institute of Education, Science and Technology of S~ ao Paulo
+2University of S~ ao Carlos
+3Federal University of Rio Grande
+4Federal University of Itajub a
+5UNESP
+March 30, 2022
+Abstract
+Pneumatic reactors are an important class of bioreactors widely used in biotechnological processes. The growing interest in these
+reactors is mainly related to their good mass transfer capacity, as well as lower operating costs, due to the simple mechanical
+structure. Knowledge of the transport phenomena and hydrodynamics of bioreactors is important to enable denition of the
+best bioreactor model and operating conditions for a specic bioprocess. Several performance parameters are used to evaluate
+bioreactors, with the imposed shear being one of the most dicult to quantify. For stirred tanks, the fragmentation of microor-
+ganisms has been well correlated with a hydrodynamic parameter called the \energy dissipation/circulation function" (EDCF).
+However, there have been no estimates of the EDCF for pneumatic bioreactors. The present work proposes a methodology to
+estimate the EDCF for dierent pneumatic bioreactors and operating conditions. The diculty in estimating the EDCF for
+pneumatic bioreactors is in dening the volume of higher energy dissipation. Here, this was achieved employing the maximal
+shear rate obtained using computational uid dynamics simulations. The estimated volume was validated by comparing pellet
+fragmentation in conventional and pneumatic bioreactors, under conditions that led to similar EDCF values.
+1. INTRODUCTION
+Airlift reactors are an important class of multiphase contactors that are widely used in the chemical industry,
+biotechnological processes, and biological wastewater treatment. The growing interest in these reactors is
+mainly related to their mixing capacity and heat and mass transfer characteristics, as well as lower design
+and operating costs, due to the simple mechanical structure and absence of moving parts (Behin, 2010).
+Understanding of the transport phenomena involved in the operation of airlift bioreactors is very important
+in order to allow denition of the best operating conditions for a specic bioprocess. The most common
+performance parameters used for this task are the liquid circulation velocity, mixing time, gas holdup,
+bubble diameter, overall oxygen transfer coecient (k La), and shear rate ( _ ) (de Jesus, Neto, & Maciel,
+2017). Among all these variables, k La and _have been extensively applied to characterize cultivations in
+airlift bioreactors, while also enabling comparison of the performances of stirred tank and airlift bioreactors
+in the production of bioproducts (Thomasi, Cerri, & Badino, 2010; Michelin et al., 2013, Cerri & Badino,
+2012).
+Airlift bioreactors usually require less energy than stirred tank reactors, under similar oxygen transfer con-
+ditions. The turbulence of two-phase ow in airlift bioreactors not only provides favourable conditions for
+1Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.mass transfer, but can also be used for suspending solid particles (Trager, Qazi, Onken, & Chopra, 1989).
+Despite the importance of power input in the characterization of bioreactors, few studies have described
+its eect on the performance of cultivations in airlift bioreactors (de Jesus et al., 2017; Contreras, Garcia,
+Molina, & Merchuk, 1999; Grima, Chisti, & MooYoung, 1997; Merchuk & Berzin, 1995; Merchuk & Benzvi,
+1992). The main application of this concept is focused on modelling the liquid circulation velocity (Mendes
+& Badino, 2016; Kilonzo, Margaritis, & Bergougnou., 2010; Hwang & Cheng, 1997; Bando, Fujimori, Ter-
+azawa, Yasuda, & Nakamura, 2000; Calvo & Leton, 1991; Calvo, Leton, & Arranz, 1991; Chisti, Halard &
+Mooyoung, 1988). In contrast, the power input has been extensively used to evaluate the performance of
+cultivations in stirred tank bioreactors.
+Smith, Lilly, and Fox (1990) evaluated the eect of agitation on the fragmentation of Penicillium chrysogenum
+in bench (9-L) and pilot (90-L) scales of conventional bioreactors equipped with Rushton turbine impellers.
+Firstly, an unsuccessful attempt was made to correlate the penicillin production rate to the impeller tip
+speed, for both scales. Subsequently, it was observed that the breakup frequency (1/t C) could be used to
+characterize the penicillin production rate. As a result, a correlation was proposed where the turbulence
+dissipation rate ( =P
+D3) was combined with the frequency of exposure of the mycelium to the high shear
+zone (breakup frequency, 1 =tC), dening what is currently called the energy dissipation/circulation function
+(EDCF) ( Equation 1 ).
+EDCF =P
+D31
+tC(1)
+Once the energy dissipation/circulation function concept had been dened, it started to be widely used
+to correlate mycelium fragmentation to operating conditions in conventional bioreactors. Makagiansar,
+Shamlou, Thomas, and Lilly (1993) successfully correlated the EDCF to the specic penicillin production
+rate obtained in bench (5-L), pilot (100-L), and industrial scale (1,000-L) stirred tank bioreactors equipped
+with Rushton turbine impellers.
+Justen, Paul, Nienow, and Thomas (1996) modied the denition of EDCF by including a geometrical factor
+(k) (Equation 2 ), whereby the relevant volume depends on the type of impeller and the volume swept
+by it while rotating, allowing the evaluation of dierent impeller geometries (paddle, Rushton turbine, and
+pitched blade). An excellent correlation was observed between this new EDCF concept and morphological
+parameters such as the mean total hyphal length and mean projected area, obtained from P. chrysogenum
+cultivations.
+EDCF =P
+kD31
+tC
+(2)
+Amanullah et al. (2000) determined EDCF values for several impeller models (Rushton turbine, Prochem
+Maxow T, pitched blade, paddle, propeller, and Intermig set) during fragmentation tests of P. chrysogenum
+and Aspergillus oryzae , also observing a dependency among EDCF values and morphological parameters.
+The selection of a bioreactor model for application in an aerobic bioprocess should consider not only its oxygen
+transfer capability, but also the shear environment provided by it, since biochemical processes are extremely
+sensitive to the shear intensity, when fragile animal cells, plant cells, and lamentous microorganisms are
+used (Contreras et al., 1999). Excessive shear can cause cell damage, leading to viability loss and even cell
+disruption or disintegration, so bioreactors should provide moderate or low shear, necessitating understanding
+of the shear distribution within the system.
+Although there are some methodologies available for estimating the shear rates in conventional bioreactors
+(Campesi, Cerri, Hokka, & Badino, 2009; Buo et al., 2016; Bustamante, Cerri, & Badino, 2013) and
+pneumatic bioreactors (Cerri, Futiwaki, Jesus, Cruz, & Badino, 2008; Thomasi et al., 2010; Nishikawa,
+Kato, & Hashimoto, 1977; Schumpe & Deckwer, 1987; Shi, Riba, & Angelino, 1990; Al-Masry & Chetty,
+1996; Merchuk & Benzvi, 1992; Merchuk & Berzin, 1995; Grima et al., 1997), they involve indirect estimation
+of this parameter. The application of the EDCF concept can ll this gap, since it considers the specic power
+2Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.consumption, which is a variable associated with the shear level, and also takes into account the frequency
+of exposure to the high shear environment.
+The nonexistence of the energy dissipation/circulation function for other types of bioreactors makes it dicult
+to compare the performance of the bioreactors in terms of the degree of cellular fragmentation. Therefore, the
+present work proposes a new way to estimate the EDCF for pneumatic bioreactors, considering two dierent
+approaches, namely fragmentation similarity and computational uid dynamics simulations, for which very
+similar values were obtained.
+2. MATERIALS AND METHODS
+2.1. Bioreactors and experimental conditions
+A 4-L conventional stirred tank bioreactor (STB) (New Brunswick Scientic, USA) was evaluated in this
+study. This device was equipped with two dierent dual-impeller congurations, either two Rushton turbines
+(RT-RT) or two Elephant Ear impellers (EEDP-EEUP). These impellers associations, with diameters of 0.076
+and 0.080 m for RT and EE, respectively, were employed previously by Buo, Esperan ca, Farinas, and Badino
+(2020b).
+Three dierent 5-L pneumatic bioreactor models were used in the present work: bubble column (BC),
+concentric-duct airlift (CDA), and split airlift (SA). These devices were equipped with dierent spargers:
+84-hole cross-type spargers for the BC and CDA bioreactors, and a 76-hole wing-type sparger for the SA
+bioreactor. The sparger holes were 0.5 mm in diameter and were spaced 5 mm apart.
+The bioreactor models are illustrated in Figure 1 (stirred tank bioreactor and impellers) and Figure 2
+(pneumatic bioreactors). The detailed geometric dimensions are presented in Table 1 .
+The pneumatic bioreactors were evaluated for specic air ow rates ( air) ranging from 1 to 5 vvm, while
+the stirred tank bioreactor was operated at an impeller speed ( N) of 400 rpm and airof 0.4 vvm.
+Figure 1.
+Figure 2.
+Table 1.
+2.2. Energy dissipation/circulation function (EDCF)
+The energy dissipation/circulation function (EDCF) is an important hydrodynamic parameter and can be
+related to possible damage that a bioreactor may cause to cells (Buo et al., 2020b; Smith et al., 1990;
+Hardy, Augier, Nienow, Beal, & Ben Chaabane, 2017). For stirred tank bioreactors, this parameter can be
+obtained considering the gassed power consumption ( Pg) in a region of higher energy dissipation and shear
+stress, the volume VC, which is close to the impellers, and the circulation time (t C) (Equation 3 ).
+EDCF =Pg
+VC1
+tC
+(3)
+For stirred tanks, VCis normally related to the impeller diameter and geometry. However, for pneumatic
+bioreactors, no denition or estimation for this volume of higher energy dissipation was found in the literature.
+Despite this apparent lack, methods have been reported for estimation of the other two variables, Pgand
+tC, in pneumatic bioreactors. These are also important variables for the estimation of EDCF and have been
+determined experimentally for the pneumatic devices presented in Section 2.1 .
+The circulation time ( tC) was obtained using the method described by Vasconcelos et al. (2003), which
+consists of monitoring the time required for a spherical particle with the same density as the liquid to
+circulate through the bioreactor. A digital camera (Nikon D5200) and free VideoPad software were used for
+lming and analysis of the results, respectively.
+3Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.The gassed power consumption was calculated using Equation 4 , assuming isothermal gas expansion of
+the bubbles rising from the sparger holes to the uid surface (Chisti, 1989).
+Pg=QgPaln (1 +dghd
+Pa)
+(4)
+where,Qgis the volumetric gas ow rate (m ³.s-1),Pais the atmospheric pressure (Pa), dis the gas-liquid
+mixture density (kg.m-3),gis the gravitational acceleration (m.s-2), andhdis the gas-liquid dispersion height
+(m).
+2.3. Evaluation of shear rate ( _) in pneumatic bioreactors
+Based on behaviour observed in stirred tank bioreactors, it is expected that the region of higher energy
+dissipation should also exhibit a high degree of shear. This region has been described using a characteristic
+volume (VC), although values have not yet been established for pneumatic bioreactors.
+In order to evaluate the axial shear rate prole in the pneumatic bioreactors, computational uid dynamics
+(CFD) simulations were performed using the Euler-Euler approach and the mathematical modelling proposed
+by Rodriguez, Valverde-Ramirez, Mendes, Bettega, and Badino (2015), which had successfully predicted
+the liquid circulation velocity, global gas hold-up, and volumetric oxygen transfer coecient for the same
+three pneumatic bioreactor geometries evaluated in the present work. Subsequently, Esperan ca et al. (2019)
+extended this approach and estimated the average shear rate ( _ av) for the CDA bioreactor, based on the mean
+interstitial liquid velocity and the interstitial liquid velocities in the riser and downcomer. More recently,
+Esperan ca et al. (2020) extended the investigation to the other pneumatic bioreactors (SA and BC) and
+showed that the highest shear rate values (maximum shear rate, _ max) occurred close to the sparger holes.
+In the present work, this approach, which has provided satisfactory and consistent prediction of both global
+and local variables, was used to obtain the shear rate values along the axial prole, for all the pneumatic
+bioreactors.
+The simulations were performed for the pneumatic bioreactors (BC, CDA, and SA) operating with three
+dierent uids: distilled water ( L= 997 kg[?]m-3,L= 8.49[?]10-4Pa[?]s,= 0.072 N[?]m-1) and glycerol
+solution (63% v[?]v-1,L= 1157 kg[?]m-3,L= 0.01 Pa[?]s, = 0.068 N[?]m-1) as Newtonian uids, and
+xanthan gum solution (0.2% w[?]v-1,L= 1000 kg[?]m-3,K= 0.06 Pa[?]sn,n= 0.36,= 0.0708 N[?]m-1) as
+a non-Newtonian uid. The specic air ow rates ( air) used were the same as those described in Section
+2.1.
+The computational geometry and numerical mesh were generated using GAMBIT v. 2.4.6 software and the
+simulations were performed using Fluent 14.5 software.
+2.4. Pellet fragmentation assays
+In recent work, Buo, Esperanca, Bettega, Farinas, and Badino (2020a) used A spergillus niger pellets as a
+microbial model to compare the fragmentation caused by dierent bioreactors. Subsequently, Buo et al.
+(2020b) performed assays of A. niger pellet fragmentation with dierent STB impeller congurations. In the
+present work, the same methodology described in the previous studies was applied for pellet fragmentation
+in the STB, with the two impeller congurations, and in the CDA bioreactor. Pellet fragmentation assays
+were performed during 4 h, with samples periodically removed for acquisition of stereoscopic images using
+a Biofocus XT-3H-BI microscope, at a magnication of 7.5x. The images were treated using free ImageJ
+software (rsbweb.nih.gov/ij), enabling determination of the temporal proles for the pellet projected area (A),
+the variable used for fragmentation analysis. For each experimental point, more than 100 objects (pellets)
+were analysed in two dierent samples, with the standard deviation used as the statistical parameter.
+3. RESULTS AND DISCUSSION
+3.1 Denition of the characteristic volume ( V C) in pneumatic bioreactors
+4Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.The characterization of mycelium fragmentation, using the energy dissipation/circulation function (EDCF)
+concept, requires knowledge of the characteristic volume ( VC), a region where a higher amount of energy
+is dissipated. In stirred tank bioreactors, the swept volume around the impellers corresponds to the region
+where this elevated energy dissipation is observed, in what is known as the impeller discharge zone (Li et
+al., 2002). This is also the region where the maximum shear rate occurs (Li et al., 2002) ( Figure 3 ).
+Figure 3.
+According to Smith et al. (1990), \in the turbulent model of local isotropy it is the local energy dissipation
+rate that determines the shear stress level". Liu et al. (2016) used the Euler-Lagrange CFD approach
+to investigate the correlation between energy dissipation and shear rate/stress locations for stirred tank
+bioreactors, monitoring the trajectories of random particles released in a 3-L stirred tank. The authors
+dened the maximum shear stress and shear frequency (SSF) parameter, based on the EDCF concept.
+According to Liu et al. (2016), the SSF is the ratio between the maximum shear stress ( max) and the time
+required for a microorganism to be exposed to the high-shear condition (t C).
+To the best of our knowledge, the EDCF concept has never been applied for the characterization of mycelial
+fragmentation in pneumatic bioreactors (airlift and bubble column), despite there being well-established
+methodologies for the determination of both gassed power consumption ( Pg) and circulation time ( tC).
+The determination of EDCF values for pneumatic bioreactors requires knowledge of the characteristic volume
+(VC). Several studies have reported that the region around the sparger holes presents the highest shear rate
+(Esperanca et al., 2020; Pawar, 2017; Garcia, Paternina, Pupo, Bula, & Mare, 2014; Mavaddat, Mousavi,
+Amini, Azargoshasb, & Shojaosadati, 2014). This maximum shear rate ( _ max) is the result of the high gas
+injection velocity, which is determined by the sparger characteristics, considering the number and diameter
+of the holes (Esperanca et al., 2020).
+When the maximum shear rate ( _ max) is used to evaluate the shear environments in pneumatic and stirred
+tank bioreactors, similar values are obtained, irrespective of bioreactor type, showing that the high shear
+condition is dened by the operating conditions, rather than only by the type of bioreactor (Esperanca et
+al., 2020).
+Therefore, since there is a link between the locations of elevated energy dissipation and shear rate for stirred
+tanks, in the case of pneumatic bioreactors, the highest amount of energy would be expected to be dissipated
+close to the sparger holes.
+In order to determine the characteristic volume ( VC) in pneumatic bioreactors, the axial shear rate prole
+was obtained from the CFD results ( Figure 4a ). This prole started at the bottom of the bioreactor and
+exhibited a peak of _ , whose value was around 3 orders of magnitude higher than the average value ( _ av),
+for liquid heights (h) ranging from about 0.03 to 0.04 m ( Figure 4a ). A more accurate evaluation of the
+characteristic volume ( VC) was performed using the derivative of the shear rate in relation to the liquid
+height (d_=dh ), (Figure 4b ). TheVCstarted at the liquid height where d_=dh began to increase faster,
+and ended at the liquid height where d_=dh approached zero again ( Figure 4b ). The calculation of VC
+assumed a cylindrical volume surrounding the sparger holes, with the diameter taken as the sparger diameter
+(Figure 3b ). This approach was applied for the entire set of pneumatic bioreactor models (bubble column,
+concentric-duct airlift, and split airlift), types of uid (distilled water, glycerol solution, and xanthan gum
+solution), and specic air ow rates ( air).
+Figure 4.
+Regardless of the pneumatic bioreactor model, uid type, and specic air ow rate, the axial prole of the
+normalized shear rate ( _ =_av) showed that the highest shear rates occurred at liquid heights ( h) ranging
+from 0.0220 to 0.0471 m ( Figure 5 ). This range of heights corresponded to volumes ranging from 57.9 to
+106.5 cm3, which accounted for between 1.2 and 2.8% of the total liquid volume.
+Figure 5.
+5Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.3.2 Estimation of EDCF for pneumatic bioreactors
+Once the location of the characteristic volume ( VC) for pneumatic bioreactors had been identied and its
+value had been estimated, the EDCF could be estimated for the 5-L pneumatic bioreactors ( Equation 5 ).
+EDCF =Pg
+VC1
+tC
+(5)
+Knowing the experimental values of the dispersion density ( d) and gas-liquid dispersion height ( hd), the
+gassed power consumption could be calculated using Equation 4. Subsequently, knowing Pgand the liquid
+circulation time ( tC), and assuming an average characteristic volume of 75 cm3, based on the range from
+57.9 to 106.5 cm3 (corresponding to 1.5% of the total liquid volume), the EDCF could be estimated. Figure
+6shows the EDCF according to the specic air ow rate ( air) for the CDA and SA bioreactors operated
+with Newtonian and non-Newtonian uids. In this case, the frequency term was considered to be the inverse
+of the circulation time (1
+tC), as indicated by Esperanca et al. (2020).
+Figure 6.
+For the concentric-duct airlift (CDA) bioreactor, the EDCF ranged from 1.0 to 9.1 kW.m-3.s-1, while for
+the split airlift (SA) bioreactor it varied from 0.71 to 6.8 kW.m-3.s-1. Comparing the two airlift models, the
+EDCF values were slightly higher for the CDA device, compared to the SA system. Increase of the specic
+air ow rate acted to increase the EDCF, due to the combined eects of a shorter circulation time ( tC) and
+higher gassed power input ( Pg).
+Despite these results being estimates of EDCF, the values seemed to be reasonable, since they were of the
+same order of magnitude as EDCF values reported for stirred tanks ( Table 2 ). Therefore, the estimated
+value ofVCalso seemed to be appropriate.
+It is important to highlight that in the scale-up of stirred tank bioreactors, lower specic power inputs are
+required, due to \cost considerations and practical restraints on motor, gearbox, and bearing design, among
+other" (Justen et al. 1996), resulting in longer circulation times. Hence, lower ECDF values are expected
+for larger stirred tanks, as the literature shows ( Table 2 ).
+Table 2.
+3.3 Validation of V C
+estimation using fragmentation assays
+In order to validate the pneumatic bioreactor characteristic volume ( VC) values estimated by CFD analysis,
+pellet fragmentation assays were performed using the 5-L concentric-duct airlift bioreactor at 5 vvm. For
+this operating condition, the expected EDCF values were in the range from 7.0 to 9.1 kW.m-3.s-1, depending
+on the uid characteristics ( Figure 6 ).
+Pellet fragmentation assays were also performed using a 4-L stirred tank bioreactor at 400 rpm and 0.4 vvm,
+with dierent dual-impeller combinations: Rushton turbine/Rushton turbine (RT-RT), and Elephant Ear
+down-pumping/Elephant Ear up-pumping (EEDP-EEUP). The EDCF values for these impeller congura-
+tions and operating conditions were 5.3 and 5.0 kW.m-3.s-1, respectively (Buo et al., 2020b). Figure 7
+shows the variation of the normalized pellet projected area ( A=A 0) during the fragmentation assays performed
+using the stirred tank bioreactor (STB) with two dierent impeller combinations (RT-RT and EEDP-EEUP)
+and the concentric-duct airlift (CDA) bioreactor.
+Figure 7.
+The results showed that despite some dierences in the pellet fragmentation proles, the nal A=A 0values
+were very similar for all the bioreactors, with an average value of 0.77. This indicated that for these
+bioreactors, under the operating conditions employed, the fragmentations were equivalent.
+6Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.Since the EDCF has been applied to describe the cellular fragmentation in stirred tanks, it was expected that
+the EDCF values would be the same for the CDA and STB systems, under the abovementioned operating
+conditions ( Equation 6a ).
+EDCF CDA= EDCF STB(6a)
+Considering an average EDCF value of 5.15 kW.m-3.s-1for the stirred tank with RT-RT and EEDP-EEUP
+impeller congurations, and the general EDCF denition ( Equation 3 ), then:
+EDCF CDA=Pg
+VC1
+tC= 5:15kW
+m3s
+(6b)
+Substituting in Equation 6b the gassed power input ( Pg) value of 1.64 W ( Equation 4 ) for the CDA
+bioreactor operating at 5 vvm and the circulation time ( tC) of 3.1 s (Mendes & Badino, 2016), the char-
+acteristic volume ( VC) in which there was the highest energy dissipation was calculated as being 103 cm3.
+This volume represented about 2.1% of the liquid volume in the CDA bioreactor and was within the VC
+range estimated using CFD simulation (from 57.9 to 106.5 cm3). This proximity between the VCvalues
+obtained by the two methodologies evidenced the applicability of the analytical approach proposed in the
+present work.
+The STB swept volumes were calculated based on the geometric characteristics of the dual-impeller con-
+gurations, for comparison with VCof the CDA system. The characteristic volumes for the STB equipped
+with dierent impeller combinations were higher than those observed for the CDA bioreactor ( Table 3 ),
+corresponding to about 11.9% (average value) of the liquid volume. Hence, despite the higher power input
+observed for stirred tank bioreactors, this amount of energy is dissipated in a greater volume, resulting in
+similar EDCF values.
+Table 3
+The establishment, in this work, of the EDCF calculation for pneumatic bioreactors makes it possible to
+estimate this variable for dierent operating conditions, allowing comparison of lamentous microorganism
+cultivations in pneumatic and conventional bioreactors.
+CONCLUSIONS
+The energy dissipation/circulation function (EDCF) was successfully estimated, for the rst time, for pneu-
+matic bioreactors operating under dierent conditions. The values obtained were of the same order of
+magnitude as EDCF values for stirred tanks reported in the literature. A critical point in the methodol-
+ogy was denition of the characteristic volume ( VC) of higher energy dissipation, which was obtained by
+analysing the region of maximal shear rate. This approach proved to be satisfactory, since similar EDCF
+values were obtained for conventional and pneumatic bioreactors operating under conditions that resulted
+in similar A. niger fragmentation. The present work introduces a new methodology for calculation of an
+important parameter for pneumatic bioreactors, allowing comparisons to be made of the fragmentation of
+lamentous microorganisms in dierent bioreactors.
+Acknowledgments
+The authors are grateful for the nancial support provided by the Human Resources Program of the Brazil-
+ian National Agency of Petroleum, Natural Gas, and Biofuels (PRH/ANP-44), the National Council for
+Scientic and Technological Development (CNPq, grants 478472/2011-0, 431460/2016-7, 310098/2017-3,
+and 131780/2018-2), the Sao Paulo State Research Foundation (FAPESP, grants 2011/23807-1, 2012/17756-
+8, and 2018/11405-5), and Coordenacao de Aperfeicoamento de Pessoal de Nivel Superior - Brasil (CAPES,
+Finance Code 001).
+References
+7Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.Al-Masry, W. A. & M. Chetty (1996) On the estimation of eective shear rate in external loop airlift reactors:
+Non-Newtonian uids. Resources Conservation and Recycling, 18,11-24.
+Amanullah, A., R. Blair, A. W. Nienow & C. R. Thomas (1999) Eects of agitation intensity on mycelial
+morphology and protein production in chemostat cultures of recombinant Aspergillus oryzae. Biotechnology
+and Bioengineering , 62 (4), 434-446.
+Amanullah, A., P. Justen, A. Davies, G. C. Paul, A. W. Nienow & C. R. Thomas (2000) Agitation in-
+duced mycelial fragmentation of Aspergillus oryzae and Penicillium chrysogenum. Biochemical Engineering
+Journal, 5,109-114.
+Bando, Y., K. Fujimori, H. Terazawa, K. Yasuda & M. Nakamura (2000) Eects of equipment dimensions on
+circulation ow rates of liquid and gas in bubble column with draft tube. Journal of Chemical Engineering
+of Japan, 33,379-385.
+Behin, J. (2010) Modeling of modied airlift loop reactor with a concentric double-draft tube. Chemical
+Engineering Research & Design, 88,919-927.
+Buo, M. M., L. J. Correa, M. N. Esperanca, A. J. G. Cruz, C. S. Farinas & A. C. Badino (2016) Inuence
+of dual-impeller type and conguration on oxygen transfer, power consumption, and shear rate in a stirred
+tank bioreactor. Biochemical Engineering Journal, 114,133-142.
+Buo, M. M., M. N. Esperanca, R. Bettega, C. S. Farinas & A. C. Badino (2020a) Oxygen transfer and
+fragmentation of Aspergillus niger pellets in stirred tank and concentric-duct airlift bioreactors. Industrial
+Biotechnology, 16.
+Buo, M. M., M. N. Esperanca, C. S. Farinas & A. C. Badino (2020b) Relation between pellet fragmen-
+tation kinetics and cellulolytic enzymes production by Aspergillus niger in conventional bioreactor with
+dierent impellers. Enzyme and Microbial Technology, 139.
+Bustamante, M. C. C., M. O. Cerri & A. C. Badino (2013) Comparison between average shear rates in
+conventional bioreactor with Rushton and Elephant ear impellers. Chemical Engineering Science, 90,92-100.
+Calvo, E. G. & P. Leton (1991) A uid dynamic model for bubble columns and airlift reactors. Chemical
+Engineering Science, 46,2947-2951.
+Calvo, E. G., P. Leton & M. A. Arranz (1991) Prediction of gas hold up and liquid velocity in airlift loop
+reactors containing highly viscous newtonian liquids. Chemical Engineering Science, 46,2951-2954.
+Campesi, A., M. O. Cerri, C. O. Hokka & A. C. Badino (2009) Determination of the average shear rate in
+a stirred and aerated tank bioreactor. Bioprocess and Biosystems Engineering, 32,241-248.
+Cerri, M. O. & A. C. Badino (2012) Shear conditions in clavulanic acid production by Streptomyces
+clavuligerus in stirred tank and airlift bioreactors. Bioprocess and Biosystems Engineering, 35,977-984.
+Cerri, M. O., L. Futiwaki, C. D. F. Jesus, A. J. G. Cruz & A. C. Badino (2008) Average shear rate for
+non-Newtonian uids in a concentric-tube airlift bioreactor. Biochemical Engineering Journal, 39,51-57.
+Chisti, M. Y., B. Halard & M. Mooyoung (1988) Liquid circulation in airlift reactors. Chemical Engineering
+Science, 43,451-457.
+Chisti, Y. 1989. Airlift Bioreactors. Belfast, Northern Ireland: Elsevier Science Publishers Ltd.
+Contreras, A., F. Garcia, E. Molina & J. C. Merchuk (1999) Inuence of sparger on energy dissipation,
+shear rate, and mass transfer to sea water in a concentric-tube airlift bioreactor. Enzyme and Microbial
+Technology, 25,820-830.
+de Jesus, S. S., J. M. Neto & R. Maciel (2017) Hydrodynamics and mass transfer in bubble column, conven-
+tional airlift, stirred airlift and stirred tank bioreactors, using viscous uid: A comparative study. Biochemical
+Engineering Journal, 118,70-81.
+8Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.Esperanca, M. N., C. E. Mendes, G. Y. Rodriguez, M. O. Cerri, R. Bettega & A. C. Badino (2019) Average
+shear rate in airlift bioreactors: searching for the true value. Bioprocess and Biosystems Engineering, 42,
+995-1008.
+Esperanca, M. N., C. E. Mendes, G. Y. Rodriguez, M. O. Cerri, R. Bettega & A. C. Badino (2020) Sparger
+design as key parameter to dene shear conditions in pneumatic bioreactors. Biochemical Engineering
+Journal, 157.
+Garcia, S., E. Paternina, O. R. Pupo, A. Bula & L. Di Mare (2014) CFD simulation of multiphase ow in
+an airlift column photobioreactor. Global Nest Journal, 16,1121-1134.
+Grima, E. M., Y. Chisti & M. MooYoung (1997) Characterization of shear rates in airlift bioreactors for
+animal cell culture. Journal of Biotechnology, 54,195-210.
+Hardy, N., F. Augier, A. W. Nienow, C. Beal & F. Ben Chaabane (2017) Scale-up agitation criteria for
+Trichoderma reesei fermentation. Chemical Engineering Science, 172,158-168.
+Hwang, S. J. & Y. L. Cheng (1997) Gas holdup and liquid velocity in three-phase internal-loop airlift reactors.
+Chemical Engineering Science, 52,3949-3960.
+Justen, P., G. C. Paul, A. W. Nienow & C. R. Thomas (1996) Dependence of mycelial morphology on
+impeller type and agitation intensity. Biotechnology and Bioengineering, 52,672-684.
+Justen, P., G. C. Paul, A. W. Nienow & C. R. Thomas (1998) Dependence of Penicillium chrysogenum
+growth, morphology, vacuolation, and productivity in fed-batch fermentations on impeller type and agitation
+intensity. Biotechnology and Bioengineering, 59,762-775.
+Kilonzo, P. M., A. Margaritis & M. A. Bergougnou (2010) Hydrodynamic characteristics in an inverse
+internal-loop airlift-driven brous-bed bioreactor. Chemical Engineering Science, 65,692-707.
+Li, Z. J., V. Shukla, K. S. Wenger, A. P. Fordyce, A. G. Pedersen & M. R. Marten (2002) Eects of increased
+impeller power in a production-scale Aspergillus oryzae fermentation. Biotechnology Progress, 18,437-444.
+Liu, Y., Z. J. Wang, J. Y. Xia, C. Haringa, Y. P. Liu, J. Chu, Y. P. Zhuang & S. L. Zhang (2016) Application
+of Euler-Lagrange CFD for quantitative evaluating the eect of shear force on Carthamus tinctorius L. cell
+in a stirred tank bioreactor. Biochemical Engineering Journal, 114,212-220.
+Makagiansar, H. Y., P. A. Shamlou, C. R. Thomas & M. D. Lilly (1993) The inuence of mechanical forces
+on the morphology and penicillin production of Penicillium chrysogenum. Bioprocess Engineering, 9,83-90.
+Mavaddat, P., S. M. Mousavi, E. Amini, H. Azargoshasb & S. A. Shojaosadati (2014) Modeling and CFD-
+PBE simulation of an airlift bioreactor for PHB production. Asia-Pacic Journal of Chemical Engineering,
+9,562-573.
+Mendes, C. E. & A. C. Badino (2016) Hydrodynamics of Newtonian and non-Newtonian liquids in internal-
+loop airlift reactors. Biochemical Engineering Journal, 109,137-152.
+Merchuk, J. C. & S. Benzvi (1992) A novel approach to the correlation of mass transfer rates in bubble-
+columns with non-Newtonian liquids. Chemical Engineering Science, 47,3517-3523.
+Merchuk, J. C. & I. Berzin (1995) Distribution of energy dissipation in airlift reactors. Chemical Engineering
+Science, 50,2225-2233.
+Michelin, M., A. M. O. Mota, M. L. T. M. Polizeli, D. P. da Silva, A. A. Vicente & J. A. Teixeira (2013)
+Inuence of volumetric oxygen transfer coecient (k(L)a) on xylanases batch production by Aspergillus
+niger van Tieghem in stirred tank and internal-loop airlift bioreactors. Biochemical Engineering Journal, 80,
+19-26.
+Nishikawa, M., H. Kato & K. Hashimoto (1977) Heat-transfer in aerated tower lled with non-Newtonian
+liquid. Industrial & Engineering Chemistry Process Design and Development, 16,133-137.
+9Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.Pawar, S. B. (2017) CFD analysis of ow regimes in airlift reactor using Eulerian-Lagrangian approach.
+Canadian Journal of Chemical Engineering, 95,420-431.
+Rocha-Valadez, J. A., E. Galindo, L. Serrano-Carreon (2007). The inuence of circulation frequency on
+fungal morphology: A case study considering Kolmogorov microscale in constant specic energy dissipation
+rate cultures of Trichoderma harzianum .Journal of Biotechnology , 130, 394-401.
+Rodriguez, G. Y., M. Valverde-Ramirez, C. E. Mendes, R. Bettega & A. C. Badino (2015) Global performance
+parameters for dierent pneumatic bioreactors operating with water and glycerol solution: experimental data
+and CFD simulation. Bioprocess and Biosystems Engineering, 38,2063-2075.
+Schumpe, A. & W. D. Deckwer (1987) Viscous media in tower bioreactors - Hydrodynamic characteristics
+and mass-transfer properties. Bioprocess Engineering, 2,79-94.
+Shi, L. K., J. P. Riba & H. Angelino (1990) Estimation of eective shear rate for aerated non-Newtonian
+liquids in airlift bioreactor. Chemical Engineering Communications, 89,25-35.
+Smith, J. J., M. D. Lilly & R. I. Fox (1990) The eect of agitation on the morphology and penicillin
+production of Penicillium chrysogenum. Biotechnology and Bioengineering, 35,1011-1023.
+Tang, W. J., A. Pan, H. Z. Lu, J. Y. Xia, Y. Zhuang, S. Zhang, J. Chu, H. Noorman (2015). Improve-
+ment of glucoamylase production using axial impellers with low power consumption and homogeneous mass
+transfer. Biochemical Engineering Journal , 99, 167-176.
+Thomasi, S. S., M. O. Cerri & A. C. Badino (2010). Average shear rate in three pneumatic bioreactors.
+Bioprocess and Biosystems Engineering, 33,979-988.
+Trager, M., G. N. Qazi, U. Onken & C. L. Chopra (1989). Comparison of airlift and stirred reactors for
+fermentation with Aspergillus niger .Journal of Fermentation and Bioengineering, 68,112-116.
+Vasconcelos, J. M. T., J. M. L. Rodrigues, S. C. P. Orvalho, S. S. Alves, R. L. Mendes & A. Reis (2003). Eect
+of contaminants on mass transfer coecients in bubble column and airlift contactors. Chemical Engineering
+Science, 58,1431-1440.
+Xia, J. Y., Y. H. Wang, S. L. Zhang, N. Chen, P. Yin, Y. P. Zhuang, J. Chu (2009). Fluid dynamics investi-
+gation of variant impeller combinations by simulation and fermentation experiment. Biochemical Engineering
+Journal , 43, 252-260.
+Tables
+Table 1 . Geometric characteristics of the bioreactors.
+Bioreactor Bioreactor Bioreactor Bioreactor
+STB BC CDA SA
+VL(L)
+H (m)
+HL(m)
+HI(m)
+H1(m)
+H2(m)
+D (m)
+DI(m) L (m)4
+0.307
+0.192
+0.078
+-
+-
+0.170
+-
+-5
+0.600
+0.450
+-
+-
+-
+0.125
+-
+-5
+0.600
+0.450
+-
+0.350
+0.045
+0.125
+0.080 -5
+0.600
+0.450
+-
+0.350
+0.045
+0.125
+- 0.124
+Table 2. EDCF values reported for stirred tank bioreactors.
+10Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.Reference Volume (L) Impeller N (rpm)air
+(vvm)EDCF
+(kW.m-3.s-1)
+Smith et al.
+(1990)9 90 RT-RT-RT
+RT-RT-RT800-1,200
+350-5650.54 0.70 11.0-58.4
+3.3-14.4
+Makagiansar et
+al. (1993)5 100 1,000 RT-RT-RT
+RT-RT-RT
+RT-RT-RT700-1,300
+265-530 300-4000.5 0.5 0.5 4-180 3.5-37 6-17
+Justen et al.
+(1996)1.4 1.4/20/180 Various (Pd, RT,
+PMT, Pp, PB,
+Int) RT145-2,054+
+250-1,443++Ungassed
+Ungassed9.5-1,300 1.8-400
+Justen, Paul,
+Nienow, and
+Thomas (1998)6 Pd RT PB 280 600-1,400
+1,150-1,8001 1 1 13.7-24.2§
+7.3-471.0§
+88.5-1,875§
+Amanullah et
+al. (1999)1.4 RT, PMT, PB 145-2,054+Ungassed 2-1,300
+Amanullah et al.
+(2000)1.4 1.4 RT, PMT, PB
+Various (Pd, RT,
+PMT, Pp, PB,
+Int)145-2,054+
+120-1,500+Ungassed
+Ungassed2-1,300 10-525
+Li et al. (2002) 80,000 RT-RT-RT 19.4-26.4
+(control)§,¶
+6.6-54.8 (high
+power)§,¶
+Rocha-Valdez,
+Galindo, and
+Serrano-
+Carre on
+(2007)10 RT-RT 275-660 Ungassed 3-96
+Xia et al.
+(2009)35 Three dierent
+impeller
+associations300-600 - 8-18
+Tang et al.
+(2015)50 RT-RT-RT
+Whu-Whu-Whu350 470 1 ~15 ~11
+Liu et al.
+(2016)3 RT-RT 100-400 Ungassed 1-100 (SSF)
+Hardy et al.
+(2017)2.5 80,000
+-130,000Several (Pp, Pt,
+Ct, Pd)800-1,700 0.5 100-1500 ~1
+Buo et al.
+(2020b)4 Two impellers
+RT-RT
+EEDP-EEUP400-1,000 0.4-1.2 5-100
+Legend: RT: Rushton turbine; Pd: Paddle; PMT: Prochem Maxow T; Pp: Propeller; PB: Pitched blade;
+Int: Intermig set; Pt: Proled triblade; Ct: Centripetal turbine; Whu: Wide-blade hydrofoil up-pumping.
++Impeller speed ranges were dierent for each impeller type.
+++Impeller speed ranges were dierent for each bioreactor scale.
+§EDCF values obtained during the cultivations.
+11Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.¶Control cultivations: D i/T = 0.38; higher impeller speed. Higher power cultivations: D i/T = 0.43; lower
+impeller speed.
+Table 3. Comparison of CDA and STB parameters.
+Reference Bioreactor Operating
+conditionsEDCF
+(kW.m-3.s-1)Pg(W) t C(s)
+VC
+(L)VC/V (%)
+Buo et al.
+(2020b)STB
+(RT-RT)400 rpm 0.4
+vvm5.3+4.22+1.81+0.439 11.0
+(Buo et al.
+(2020b)STB
+(EEDP-
+EEUP)400 rpm 0.4
+vvm5.0+3.51+1.37+0.512 12.8
+Present
+studyCDA 5 vvm 5.15++1.64 3.10 0.106 2.1
++Values obtained from Buo et al. (2020b).
+++Calculated as the average of both STB values.
+Figure legends
+Figure 1. Schematic geometries of the bioreactors: (a) stirred tank bioreactor (STB) and (b) Rushton
+turbine (RT) and Elephant Ear (EE) impellers.
+Figure 2. Schematic geometries of the pneumatic bioreactors: (a) bubble column (BC), (b) concentric-duct
+airlift (CDA), and (c) split airlift (SA).
+Figure 3. Regions of elevated energy dissipation and shear rate in (a) a stirred tank bioreactor and (b) a
+pneumatic bioreactor.
+Figure 4. Determination of the characteristic volume in a 5-L concentric-duct airlift bioreactor operated
+with glycerol solution at 3 vvm: (a) shear rate as a function of liquid height; (b) derivative of shear rate as
+a function of liquid height.
+Figure 5. Normalized shear rate, as a function of liquid height, for pneumatic bioreactors operated with
+dierent uids and specic air ow rates.
+Figure 6. Energy dissipation/circulation function (EDCF), according to specic air ow rate ( air), for the
+5-L airlift bioreactors.
+Figure 7. Temporal variation of the normalized pellet projected area for the dierent bioreactors.
+12Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.
+13Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.
+14Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.
+15Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.
+16Posted on Authorea 30 Mar 2022 | The copyright holder is the author/funder. All rights reserved. No reuse without permission. | https://doi.org/10.22541/au.164864330.03803470/v1 | This a preprint and has not been peer reviewed. Data may be preliminary.
+17

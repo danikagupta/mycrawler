@@ -1,0 +1,1496 @@
+/g0003
+/g0029/g004c/g004a/g0058/g0055/g0048/g0003/g0036/g0014/g0044/g0011/g0003/g0003/g0036/g0044/g0050/g0053/g004f/g004c/g0051/g004a/g0003/g004a/g0048/g0044/g0055/g0003/g0047/g0048/g0053/g004f/g0052/g005c/g0048/g0047/g0003/g0044/g0045/g0052/g0059/g0048/g0003/g0057/g004b/g0048/g0003/g0051/g0044/g0059/g004c/g004a/g0044/g0057/g004c/g0052/g0051/g0003/g0045/g0055/g004c/g0047/g004a/g0048/g0003 /g0052/g0051/g0003/g0057/g004b/g0048/g0003/g0056/g004b/g004c/g0053/g0011/g0003/g0003
+/g0029/g004c/g004a/g0058/g0055/g0048/g0003/g0036/g0014/g0045/g0011/g0003/g0003/g0024/g0055/g0055/g0044/g0051/g004a/g0048/g0050/g0048/g0051/g0057/g0003/g0052/g0049/g0003/g0056/g0044/g0050/g0053/g004f/g004c/g0051/g004a/g0003/g004a/g0048/g0044/g0055/g0003/g004c/g0051/g0056/g0057/g0044/g004f/g004f/g0048/g0047/g0003/g0052/g0051/g0003/g0057/g004b/g0048/g0003 /g0044/g004f/g0058/g0050/g004c/g0051/g0058/g0050/g0003/g0056/g0046/g0044/g0049/g0049/g0052/g004f/g0047/g0011/g0003/g0003
+/g0029/g004c/g004a/g0058/g0055/g0048/g0003/g0036/g0014/g0046/g0011/g0003/g0003/g0037/g0044/g0051/g0047/g0048/g0050/g0003/g0050/g004c/g0056/g0057/g0003/g0046/g004b/g0044/g0050/g0045/g0048/g0055/g0003/g0056/g0044/g0050/g0053/g004f/g0048/g0055/g0056/g0003/g0050/g0052/g0058/g0051/g0057/g0048/g0047/g0003/g005a/g004c/g0057/g004b/g004c/g0051/g0003/g004b/g0052/g0058/g0056 /g004c/g0051/g004a/g0011/g0003The Chemical Mechanism of MECCA
+KPP version: 2.2.1_rs3
+MECCA version: 2.5d
+Date: August 21, 2009.
+Selected reactions:
+“Tr && (G || Aa) && !C && !I && ! Hg ”
+Number of aerosol phases: 1
+Number of species in selected mechanism:
+Gas phase: 57Aqueous phase: 62All species: 119
+Number of reactions in selected mechanism:
+Gas phase (Gnnn): 93Aqueous phase (Annn): 115Henry (Hnnn): 61Photolysis (Jnnn): 32Heterogeneous (HETnnn): 0Equilibria (EQnn): 44Dummy (Dnn): 1All equations: 346
+The following describes the full chemical mechanism and rel evant
+parameters as used for the simulations reported in this publ ication.
+Reactions labeled with “a01” correspond to a speciﬁc aeroso l size bin.
+Since the reaction mechanisms were identical for each size b in, the
+chemical mechanism for only one of the eight bins is describe d here.
+Further information can be found in the article “Technical N ote:
+The new comprehensive atmospheric chemistry module MECCA” by
+R. Sander et al. (Atmos. Chem. Phys. 5, 445-450, 2005), available at
+http://www.atmos-chem-phys.net/5/445 .Table 1: Gas phase reactions
+# labels reaction rate coeﬃcient reference
+G1000 StTrG O 2+ O(1D)→O(3P) + O 2 3.3E-11*EXP(55 ./temp) Sander et al. (2006)
+G1001 StTrG O 2+ O(3P)→O3 6.E-34*((temp/300 .)**(-2 .4))*cair Sander et al. (2006)
+G2100 StTrG H + O 2→HO2 k_3rd(temp,cair,4 .4E-32,1 .3,
+4.7E-11,0 .2,0.6)Sander et al. (2006)
+G2104 StTrG OH + O 3→HO2+ O2 1.7E-12*EXP(-940 ./temp) Sander et al. (2006)
+G2105 StTrG OH + H 2→H2O + H 2.8E-12*EXP(-1800 ./temp) Sander et al. (2006)
+G2107 StTrG HO 2+ O3→OH + 2 O 2 1.E-14*EXP(-490 ./temp) Sander et al. (2006)
+G2109 StTrG HO 2+ OH →H2O + O 2 4.8E-11*EXP(250 ./temp) Sander et al. (2006)
+G2110 StTrG HO 2+ HO 2→H2O2+ O2 k_HO2_HO2 Christensen et al. (2002),
+Kircher and Sander (1984)∗
+G2111 StTrG H 2O + O(1D)→2 OH 1.63E-10*EXP(60 ./temp) Sander et al. (2006)
+G2112 StTrG H 2O2+ OH →H2O + HO 2 1.8E-12 Sander et al. (2006)
+G3101 StTrG N 2+ O(1D)→O(3P) + N 2 2.15E-11*EXP(110 ./temp) Sander et al. (2006)
+G3103 StTrGN NO + O 3→NO2+ O2 3.E-12*EXP(-1500 ./temp) Sander et al. (2006)
+G3106 StTrGN NO 2+ O3→NO3+ O2 1.2E-13*EXP(-2450 ./temp) Sander et al. (2006)
+G3108 StTrGN NO 3+ NO →2 NO 2 1.5E-11*EXP(170 ./temp) Sander et al. (2006)
+G3109 StTrGN NO 3+ NO 2→N2O5 k_NO3_NO2 Sander et al. (2006)∗
+G3110 StTrGN N 2O5→NO2+ NO 3 k_NO3_NO2/(2 .7E-27*EXP(11000 ./
+temp))Sander et al. (2006)∗
+G3200 TrG NO + OH →HONO k_3rd(temp,cair,7 .0E-31,2 .6,
+3.6E-11,0 .1,0.6)Sander et al. (2006)
+G3201 StTrGN NO + HO 2→NO2+ OH 3.5E-12*EXP(250 ./temp) Sander et al. (2006)
+G3202 StTrGN NO 2+ OH →HNO 3 k_3rd(temp,cair,1 .8E-30,3 .0,
+2.8E-11,0 .,0.6)Sander et al. (2006)
+G3203 StTrGN NO 2+ HO 2→HNO 4 k_NO2_HO2 Sander et al. (2006)∗
+G3204 TrGN NO 3+ HO 2→NO2+ OH + O 2 3.5E-12 Sander et al. (2006)
+G3205 TrG HONO + OH →NO2+ H2O 1.8E-11*EXP(-390 ./temp) Sander et al. (2006)
+G3206 StTrGN HNO 3+ OH →H2O + NO 3 k_HNO3_OH Sander et al. (2006)∗
+G3207 StTrGN HNO 4→NO2+ HO 2 k_NO2_HO2/(2 .1E-27*EXP(10900 ./
+temp))Sander et al. (2006)∗
+2Table 1: Gas phase reactions (... continued)
+# labels reaction rate coeﬃcient reference
+G3208 StTrGN HNO 4+ OH →NO2+ H2O 1.3E-12*EXP(380 ./temp) Sander et al. (2006)
+G4101 StTrG CH 4+ OH →CH3O2+ H2O 1.85E-20*EXP(2 .82*log(temp)
+-987./temp)Atkinson (2003)∗
+G4102 TrG CH 3OH + OH →HCHO + HO 2 2.9E-12*EXP(-345 ./temp) Sander et al. (2006)
+G4103 StTrG CH 3O2+ HO 2→CH3OOH + O 2 4.1E-13*EXP(750 ./temp) Sander et al. (2006)∗
+G4104 StTrGN CH 3O2+ NO →HCHO + NO 2+ HO 2 2.8E-12*EXP(300 ./temp) Sander et al. (2006)
+G4105 TrGN CH 3O2+ NO 3→HCHO + HO 2+ NO 21.3E-12 Atkinson et al. (1999)
+G4106a StTrG CH 3O2+ CH 3O2→2 HCHO + 2 HO 2 9.5E-14*EXP(390 ./temp)/(1 .+1./
+26.2*EXP(1130 ./temp))Sander et al. (2006)
+G4106b StTrG CH 3O2+ CH 3O2→HCHO + CH 3OH + O 29.5E-14*EXP(390 ./temp)/(1 .+
+26.2*EXP(-1130 ./temp))Sander et al. (2006)
+G4107 StTrG CH 3OOH + OH →.7 CH 3O2+ .3 HCHO +
+.3 OH + H 2Ok_CH3OOH_OH Sander et al. (2006)∗
+G4108 StTrG HCHO + OH →CO + H 2O + HO 2 9.52E-18*EXP(2 .03*log(temp)
++636./temp)Sivakumaran et al. (2003)
+G4109 TrGN HCHO + NO 3→HNO 3+ CO + HO 2 3.4E-13*EXP(-1900 ./temp) Sander et al. (2006)∗
+G4110 StTrG CO + OH →H + CO 2 1.57E-13 + cair*3 .54E-33 McCabe et al. (2001)
+G4111 TrG HCOOH + OH →HO2 4.0E-13 Sander et al. (2006)
+G6100 StTrGCl Cl + O 3→ClO + O 2 2.8E-11*EXP(-250 ./temp) Atkinson et al. (2007)
+G6102a StTrGCl ClO + ClO →Cl2+ O2 1.0E-12*EXP(-1590 ./temp) Atkinson et al. (2007)
+G6102b StTrGCl ClO + ClO →2 Cl + O 2 3.0E-11*EXP(-2450 ./temp) Atkinson et al. (2007)
+G6102c StTrGCl ClO + ClO →Cl + OClO 3.5E-13*EXP(-1370 ./temp) Atkinson et al. (2007)
+G6102d StTrGCl ClO + ClO →Cl2O2 k_ClO_ClO Atkinson et al. (2007)
+G6103 StTrGCl Cl 2O2→ClO + ClO k_ClO_ClO/(9 .3E-28*EXP(8835 ./
+temp))Atkinson et al. (2007), Sander
+et al. (2006)∗
+G6202 StTrGCl Cl + H 2O2→HCl + HO 2 1.1E-11*EXP(-980 ./temp) Atkinson et al. (2007)
+G6204 StTrGCl ClO + HO 2→HOCl 2.2E-12*EXP(340 ./temp) Atkinson et al. (2007)
+G6205 StTrGCl HCl + OH →Cl + H 2O 1.7E-12*EXP(-230 ./temp) Atkinson et al. (2007)
+G6300 StTrGNCl ClO + NO →NO2+ Cl 6.2E-12*EXP(295 ./temp) Atkinson et al. (2007)
+3Table 1: Gas phase reactions (... continued)
+# labels reaction rate coeﬃcient reference
+G6301 StTrGNCl ClO + NO 2→ClNO 3 k_3rd_iupac(temp,cair,1 .6E-31,
+3.4,7.E-11,0 .,0.4)Atkinson et al. (2007)
+G6302 TrGCl ClNO 3→ClO + NO 2 6.918E-7*exp(-10909 ./temp)*cair Anderson and Fahey (1990)
+G6304 StTrGNCl ClNO 3+ Cl→Cl2+ NO 3 6.2E-12*EXP(145 ./temp) Atkinson et al. (2007)
+G6400 StTrGCl Cl + CH 4→HCl + CH 3O2 6.6E-12*EXP(-1240 ./temp) Atkinson et al. (2006)
+G6401 StTrGCl Cl + HCHO →HCl + CO + HO 2 8.1E-11*EXP(-34 ./temp) Atkinson et al. (2006)
+G6402 StTrGCl Cl + CH 3OOH→HCHO + HCl + OH 5.9E-11 Atkinson et al. (2006)∗
+G6403 StTrGCl ClO + CH 3O2→HO2+ Cl + HCHO 3.3E-12*EXP(-115 ./temp) Sander et al. (2006)
+G7100 StTrGBr Br + O 3→BrO + O 2 1.7E-11*EXP(-800 ./temp) Atkinson et al. (2007)
+G7102a StTrGBr BrO + BrO →2 Br + O 2 2.7E-12 Atkinson et al. (2007)
+G7102b StTrGBr BrO + BrO →Br2+ O2 2.9E-14*EXP(840 ./temp) Atkinson et al. (2007)
+G7200 StTrGBr Br + HO 2→HBr + O 2 7.7E-12*EXP(-450 ./temp) Atkinson et al. (2007)
+G7201 StTrGBr BrO + HO 2→HOBr + O 2 4.5E-12*EXP(500 ./temp) Atkinson et al. (2007)
+G7202 StTrGBr HBr + OH →Br + H 2O 6.7E-12*EXP(155 ./temp) Atkinson et al. (2007)
+G7204 StTrGBr Br 2+ OH →HOBr + Br 2.0E-11*EXP(240 ./temp) Atkinson et al. (2007)
+G7300 TrGBr Br + BrNO 3→Br2+ NO 3 4.9E-11 Orlando and Tyndall (1996)
+G7301 StTrGNBr BrO + NO →Br + NO 2 8.7E-12*EXP(260 ./temp) Atkinson et al. (2007)
+G7302 StTrGNBr BrO + NO 2→BrNO 3 k_BrO_NO2 Atkinson et al. (2007)∗
+G7303 TrGBr BrNO 3→BrO + NO 2 k_BrO_NO2/(5 .44E-9*exp(14192 ./
+temp)*1 .E6*R_gas*temp/(atm2Pa*N_
+A))Orlando and Tyndall (1996),
+Atkinson et al. (2007)∗
+G7400 StTrGBr Br + HCHO →HBr + CO + HO 2 7.7E-12*EXP(-580 ./temp) Atkinson et al. (2006)
+G7401 TrGBr Br + CH 3OOH→CH3O2+ HBr 2.66E-12*EXP(-1610 ./temp) Mallard et al. (1993)
+G7402a TrGBr BrO + CH 3O2→HOBr + HCHO 0.8/1.1*5.7E-12 Aranda et al. (1997)
+G7402b TrGBr BrO + CH 3O2→Br + HCHO + HO 2 0.3/1.1*5.7E-12 Aranda et al. (1997)
+G7403 StTrGBr CH 3Br + OH →H2O + Br 2.35E-12*EXP(-1300 ./temp) Sander et al. (2006)
+G7407 TrGBr CHBr 3+ OH →H2O + 3 Br 1.35E-12*EXP(-600 ./temp) Sander et al. (2006)∗
+G7408 TrGBr CH 2Br2+ OH →H2O + 2 Br 2.0E-12*EXP(-840 ./temp) Sander et al. (2006)∗
+G7600 TrGBrCl Br + BrCl →Br2+ Cl 3.3E-15 Mallard et al. (1993)
+G7601 TrGClBr Br + Cl 2→BrCl + Cl 1.1E-15 Mallard et al. (1993)
+4Table 1: Gas phase reactions (... continued)
+# labels reaction rate coeﬃcient reference
+G7602 TrGClBr Br 2+ Cl→BrCl + Br 1.2E-10 Mallard et al. (1993)
+G7603a StTrGClBr BrO + ClO →Br + OClO 1.6E-12*EXP(430 ./temp) Atkinson et al. (2007)
+G7603b StTrGClBr BrO + ClO →Br + Cl + O 2 2.9E-12*EXP(220 ./temp) Atkinson et al. (2007)
+G7603c StTrGClBr BrO + ClO →BrCl + O 2 5.8E-13*EXP(170 ./temp) Atkinson et al. (2007)
+G7604 TrGClBr BrCl + Cl →Br + Cl 2 1.5E-11 Mallard et al. (1993)
+G7605 TrGBr CHCl 2Br + OH →H2O + Br 2.0E-12*EXP(-840 ./temp) see note
+G7606 TrGBr CHClBr 2+ OH →H2O + 2 Br 2.0E-12*EXP(-840 ./temp) see note
+G7607 TrGBr CH 2ClBr + OH →H2O + Br 2.4E-12*EXP(-920 ./temp) Sander et al. (2006)∗
+G9200 StTrGS SO 2+ OH →H2SO4+ HO 2 k_3rd(temp,cair,3 .3E-31,4 .3,
+1.6E-12,0 .,0.6)Sander et al. (2006)
+G9400a TrGS DMS + OH →CH3SO2+ HCHO 1.13E-11*EXP(-253 ./temp) Atkinson et al. (2004)∗
+G9400b TrGS DMS + OH →DMSO + HO 2 k_DMS_OH Atkinson et al. (2004)∗
+G9401 TrGNS DMS + NO 3→CH3SO2+ HNO 3+ HCHO 1.9E-13*EXP(520 ./temp) Atkinson et al. (2004)
+G9402 TrGS DMSO + OH →.6 SO 2+ HCHO + .6 CH 3O2
++ .4 HO 2+ .4 CH 3SO3H1.E-10 Hynes and Wine (1996)
+G9403 TrGS CH 3SO2→SO2+ CH 3O2 1.9E13*EXP(-8661 ./temp) Barone et al. (1995)
+G9404 TrGS CH 3SO2+ O3→CH3SO3 3.E-13 Barone et al. (1995)
+G9405 TrGS CH 3SO3+ HO 2→CH3SO3H 5.E-11 Barone et al. (1995)
+G9600 TrGSCl DMS + Cl →CH3SO2+ HCl + HCHO 3.3E-10 Atkinson et al. (2004)
+G9700 TrGSBr DMS + Br →CH3SO2+ HBr + HCHO 9.E-11*EXP(-2386 ./temp) Jeﬀerson et al. (1994)
+G9701 TrGSBr DMS + BrO →DMSO + Br 2.54E-14*EXP(850 ./temp) Ingham et al. (1999)
+5∗Notes:
+Rate coeﬃcients for three-body reactions are de-
+ﬁned via the function k_3rd (T,M,k300
+0,n,k300
+inf,
+m,fc). In the code, the temperature Tis called
+temp and the concentration of “air molecules”
+Mis called cair. Using the auxiliary variables
+k0(T),kinf(T), and kratio,k_3rd is deﬁned as:
+k0(T) = k300
+0×/parenleftbigg300K
+T/parenrightbiggn
+(1)
+kinf(T) = k300
+inf×/parenleftbigg300K
+T/parenrightbiggm
+(2)
+kratio =k0(T)M
+kinf(T)(3)
+k_3rd =k0(T)M
+1 +kratio×f/parenleftBig
+1
+1+(log 10(kratio))2/parenrightBig
+c (4)
+A similar function, called k_3rd_iupac here, is
+used by Atkinson et al. (2005) for three-body re-
+actions. It has the same function parameters as
+k_3rd and it is deﬁned as:
+k0(T) = k300
+0×/parenleftbigg300K
+T/parenrightbiggn
+(5)
+kinf(T) = k300
+inf×/parenleftbigg300K
+T/parenrightbiggm
+(6)
+kratio =k0(T)M
+kinf(T)(7)
+N= 0.75−1.27×log10(fc) (8)
+k_3rd_iupac =k0(T)M
+1 +kratio×f/parenleftBig
+1
+1+(log 10(kratio)/N)2/parenrightBig
+c (9)G2110: The rate coeﬃcient is: k_HO2_HO2 =
+(1.5E-12*EXP(19 ./temp)+1 .7E-33*EXP(1000 ./
+temp)*cair)* (1 .+1.4E-21*EXP(2200 ./temp)
+*C(ind_H2O)) . The value for the ﬁrst (pressure-
+independent) part is from Christensen et al.
+(2002), the water term from Kircher and Sander
+(1984).
+G3109: The rate coeﬃcient is: k_NO3_NO2 =k_
+3rd(temp,cair,2 .E-30,4 .4,1.4E-12,0 .7,0.6).
+G3110: The rate coeﬃcient is deﬁned as back-
+ward reaction divided by equilibrium constant.
+G3203: The rate coeﬃcient is: k_NO2_HO2 =
+k_3rd(temp,cair,1 .8E-31,3 .2,4.7E-12,1 .4,
+0.6).
+G3206: The rate coeﬃcient is: k_HNO3_OH
+=2.4E-14 * EXP(460 ./temp) + 1 ./ ( 1 ./
+(6.5E-34 * EXP(1335 ./temp)*cair) + 1 ./
+(2.7E-17 * EXP(2199 ./temp)) )
+G3207: The rate coeﬃcient is deﬁned as back-
+ward reaction divided by equilibrium constant.
+G4103: Sander et al. (2006) recommend a zero
+product yield for HCHO.
+G4107: The rate coeﬃcient is: k_CH3OOH_OH =
+3.8E-12*EXP(200 ./temp) .
+G4109: The same temperature dependence as-
+sumed as for CH 3CHO+NO 3.
+G6103: The rate coeﬃcient is deﬁned as back-
+ward reaction divided by equilibrium constant.
+G6402: The initial products are probably HCl
+and CH 2OOH (Atkinson et al., 2006). It is as-
+sumed that CH 2OOH dissociates into HCHO and
+OH.G7302: The rate coeﬃcient is: k_BrO_NO2 =
+k_3rd(temp,cair,5 .2E-31,3 .2,6.9E-12,2 .9,
+0.6).
+G7303: The rate coeﬃcient is deﬁned as back-
+ward reaction (Atkinson et al., 2007) divided
+by equilibrium constant (Orlando and Tyndall,
+1996).
+G7407: It is assumed that the reaction liberates
+all Br atoms. The fate of the carbon atom is
+currently not considered.
+G7408: It is assumed that the reaction liberates
+all Br atoms. The fate of the carbon atom is
+currently not considered.
+G7605: Same value as for G7408: CH 2Br2+OH
+assumed. It is assumed that the reaction liber-
+ates all Br atoms but not Cl. The fate of the
+carbon atom is currently not considered.
+G7606: Same value as for G7408: CH 2Br2+OH
+assumed. It is assumed that the reaction liber-
+ates all Br atoms but not Cl. The fate of the
+carbon atom is currently not considered.
+G7607: It is assumed that the reaction liberates
+all Br atoms but not Cl. The fate of the carbon
+atom is currently not considered.
+G9400: Addition path. The rate coeﬃcient
+is:k_DMS_OH =1.0E-39*EXP(5820 ./temp)
+*C(ind_O2)/ (1 .+5.0E-30*EXP(6280 ./temp)
+*C(ind_O2)) .
+6Table 2: Photolysis reactions
+# labels reaction rate coeﬃcient reference
+J1000 StTrGJ O 2+ hν→O(3P) + O(3P) jx(ip_O2) see note
+J1001a StTrGJ O 3+ hν→O(1D) jx(ip_O1D) see note
+J1001b StTrGJ O 3+ hν→O(3P) jx(ip_O3P) see note
+J2101 StTrGJ H 2O2+ hν→2 OH jx(ip_H2O2) see note
+J3101 StTrGNJ NO 2+ hν→NO + O(3P) jx(ip_NO2) see note
+J3103a StTrGNJ NO 3+ hν→NO2+ O(3P) jx(ip_NO2O) see note
+J3103b StTrGNJ NO 3+ hν→NO jx(ip_NOO2) see note
+J3104a StTrGNJ N 2O5+ hν→NO2+ NO 3 jx(ip_N2O5) see note
+J3200 TrGJ HONO + h ν→NO + OH jx(ip_HONO) see note
+J3201 StTrGNJ HNO 3+ hν→NO2+ OH jx(ip_HNO3) see note
+J3202 StTrGNJ HNO 4+ hν→.667 NO 2+ .667 HO 2+ .333 NO 3+ .333 OH jx(ip_HNO4) see note
+J4100 StTrGJ CH 3OOH + h ν→HCHO + OH + HO 2 jx(ip_CH3OOH) see note
+J4101a StTrGJ HCHO + h ν→H2+ CO jx(ip_COH2) see note
+J4101b StTrGJ HCHO + h ν→H + CO + HO 2 jx(ip_CHOH) see note
+J6000 StTrGClJ Cl 2+ hν→Cl + Cl jx(ip_Cl2) see note
+J6100 StTrGClJ Cl 2O2+ hν→2 Cl 1.4*jx(ip_Cl2O2) see note
+J6101 StTrGClJ OClO + h ν→ClO + O(3P) jx(ip_OClO) see note
+J6201 StTrGClJ HOCl + h ν→OH + Cl jx(ip_HOCl) see note
+J6300 TrGNClJ ClNO 2+ hν→Cl + NO 2 jx(ip_ClNO2) see note
+J6301a StTrGNClJ ClNO 3+ hν→Cl + NO 3 jx(ip_ClNO3) see note
+J6301b StTrGNClJ ClNO 3+ hν→ClO + NO 2 jx(ip_ClONO2) see note
+J7000 StTrGBrJ Br 2+ hν→Br + Br jx(ip_Br2) see note
+J7100 TrGBrJ BrO + h ν→Br + O(3P) jx(ip_BrO) see note
+J7200 StTrGBrJ HOBr + h ν→Br + OH jx(ip_HOBr) see note
+J7300 TrGNBrJ BrNO 2+ hν→Br + NO 2 jx(ip_BrNO2) see note
+J7301 StTrGNBrJ BrNO 3+ hν→0.29 Br + 0.29 NO 3+ 0.71 BrO + 0.71 NO 2jx(ip_BrNO3) see note
+J7401 TrGBrJ CH 2Br2+ hν→2 Br jx(ip_CH2Br2) see note
+J7402 TrGBrJ CHBr 3+ hν→3 Br jx(ip_CHBr3) see note
+J7600 StTrGClBrJ BrCl + h ν→Br + Cl jx(ip_BrCl) see note
+J7602 TrGClBrJ CH 2ClBr + h ν→Br + Cl jx(ip_CH2ClBr) see note
+7Table 2: Photolysis reactions (... continued)
+# labels reaction rate coeﬃcient reference
+J7603 TrGClBrJ CHCl 2Br + h ν→Br + 2 Cl jx(ip_CHCl2Br) see note
+J7604 TrGClBrJ CHClBr 2+ hν→2 Br + Cl jx(ip_CHClBr2) see note
+∗Notes:
+J-values are calculated with an external module
+and then supplied to the MECCA chemistry
+J6100: Stimpﬂe et al. (2004) claim that the
+combination of absorption cross sections from
+Burkholder et al. (1990) and the Cl 2O2formation
+rate coeﬃcient by Sander et al. (2003) can ap-proximately reproduce the observed Cl 2O2/ClO
+ratios and ozone depletion. They give an al-
+most zenith-angle independent ratio of 1.4 for
+Burkholder et al. (1990) to Sander et al. (2003)
+J-values. The IUPAC recommendation for the
+Cl2O2formation rate is about 5 to 15 % less
+than the value by Sander et al. (2003) but morethan 20 % larger than the value by Sander et al.
+(2000). The J-values by Burkholder et al. (1990)
+are within the uncertainty range of the IUPAC
+recommendation.
+J7301: The quantum yields are from Sander et al.
+(2003).
+8Table 3: Henry’s law coeﬃcients
+substancek⊖
+H
+M/atm−∆solnH/R
+Kreference
+O2 1.3×10−31500. Wilhelm et al. (1977)
+O3 1.2×10−22560. Chameides (1984)
+OH 3.0 ×1014300. Hanson et al. (1992)
+HO2 3.9×1035900. Hanson et al. (1992)
+H2O2 1.×1056338. Lind and Kok (1994)
+NH3 58. 4085. Chameides (1984)
+NO 1.9 ×10−31480. Schwartz and White (1981)
+NO2 7.0×10−32500. Lee and Schwartz (1981)∗
+NO3 2. 2000. Thomas et al. (1993)
+HONO 4.9 ×1014780. Schwartz and White (1981)
+HNO 3 2.45×106/1.5×1018694. Brimblecombe and Clegg (1989)∗
+HNO 4 1.2×1046900. R´ egimbal and Mozurkewich (1997)
+CH3O2 6. 5600. Jacob (1986)∗
+CH3OOH 3.0 ×1025322. Lind and Kok (1994)
+HCHO 7.0 ×1036425. Chameides (1984)
+HCOOH 3.7 ×1035700. Chameides (1984)
+CO2 3.1×10−22423. Chameides (1984)
+Cl2 9.2×10−22081. Bartlett and Margerum (1999)
+HCl 2./1.7 9001. Brimblecombe and Clegg (1989)
+HOCl 6.7 ×1025862. Huthwelker et al. (1995)
+Br2 7.7×10−13837. Bartlett and Margerum (1999)
+HBr 1.3 10239. Brimblecombe and Clegg (1989)∗
+HOBr 9.3 ×1015862. Vogt et al. (1996)∗
+BrCl 9.4 ×10−15600. Bartlett and Margerum (1999)
+SO2 1.2 3120. Chameides (1984)
+H2SO4 1.×10110. see note
+DMSO 5. ×1046425. De Bruyn et al. (1994)∗
+9∗Notes:
+The temperature dependence of the Henry con-
+stants is:
+KH=K⊖
+H×exp/parenleftbigg−∆solnH
+R/parenleftbigg1
+T−1
+T⊖/parenrightbigg/parenrightbigg
+where ∆ solnH= molar enthalpy of dissolution
+[J/mol] and R= 8.314 J /(mol K).NO2: The temperature dependence is from
+Chameides (1984).
+HNO 3: Calculated using the acidity constant
+from Davis and de Bruin (1964).
+CH3O2: This value was estimated by Jacob
+(1986).
+HBr: Calculated using the acidity constant fromLax (1969).
+HOBr: This value was estimated by Vogt et al.
+(1996).
+H2SO4: To account for the very high Henry’s law
+coeﬃcient of H 2SO4, a very high value was cho-
+sen arbitrarily.
+DMSO: Lower limit cited from another reference.
+10Table 4: Accommodation coeﬃcients
+substance α⊖−∆obsH/R
+Kreference
+O2 0.01 2000. see note
+O3 0.002 0. DeMore et al. (1997)∗
+OH 0.01 0. Takami et al. (1998)∗
+HO2 0.5 0. Thornton and Abbatt (2005)
+H2O2 0.077 3127. Worsnop et al. (1989)
+NH3 0.06 0. DeMore et al. (1997)∗
+NO 5.0 ×10−50. Saastad et al. (1993)∗
+NO2 0.0015 0. Ponche et al. (1993)∗
+NO3 0.04 0. Rudich et al. (1996)∗
+N2O5 0.1 0. DeMore et al. (1997)∗
+HONO 0.04 0. DeMore et al. (1997)∗
+HNO 3 0.5 0. Abbatt and Waschewsky (1998)∗
+HNO 4 0.1 0. DeMore et al. (1997)∗
+CH3O2 0.01 2000. see note
+CH3OOH 0.0046 3273. Magi et al. (1997)
+HCHO 0.04 0. DeMore et al. (1997)∗
+HCOOH 0.014 3978. DeMore et al. (1997)
+CO2 0.01 2000. see note
+Cl2 0.038 6546. Hu et al. (1995)
+HCl 0.074 3072. Schweitzer et al. (2000)∗
+HOCl 0.5 0. see note
+ClNO 3 0.108 0. Deiber et al. (2004)∗
+Br2 0.038 6546. Hu et al. (1995)
+HBr 0.032 3940. Schweitzer et al. (2000)∗
+HOBr 0.5 0. Abbatt and Waschewsky (1998)∗
+BrNO 3 0.063 0. Deiber et al. (2004)∗
+BrCl 0.38 6546. see note
+SO2 0.11 0. DeMore et al. (1997)
+H2SO4 0.65 0. P¨ oschl et al. (1998)∗
+11Table 4: Accommodation coeﬃcients (... continued)
+substance α⊖−∆obsH/R
+Kreference
+CH3SO3H 0.076 1762. De Bruyn et al. (1994)
+DMSO 0.048 2578. De Bruyn et al. (1994)
+∗Notes:
+The temperature dependence of the accommoda-
+tion coeﬃcients is given by (Jayne et al., 1991):
+α
+1−α= exp/parenleftbigg−∆obsG
+RT/parenrightbigg
+= exp/parenleftbigg−∆obsH
+RT+∆obsS
+R/parenrightbigg
+where ∆ obsGis the Gibbs free energy barrier of
+the transition state toward solution (Jayne et al.,
+1991), and ∆ obsHand ∆ obsSare the correspond-
+ing enthalpy and entropy, respectively. The equa-
+tion can be rearranged to:
+ln/parenleftbiggα
+1−α/parenrightbigg
+=−∆obsH
+R×1
+T+−∆obsS
+R
+and further:d ln/parenleftbiggα
+1−α/parenrightbigg /slashbigg
+d/parenleftbigg1
+T/parenrightbigg
+=−∆obsH
+R
+If no data were available, a value of α= 0.01, α
+= 0.1, or α= 0.5, and a temperature dependence
+of−∆obsH/R= 2000 K has been assumed.
+O2: Estimate.
+O3: Value measured at 292 K.
+OH: Value measured at 293 K.
+NH3: Value measured at 295 K.
+NO: Value measured between 193 and 243 K.
+NO2: Value measured at 298 K.
+NO3: Value is a lower limit, measured at 273 K.
+N2O5: Value for sulfuric acid, measured between
+195 and 300 K.
+HONO: Value measured between 247 and 297 K.
+HNO 3: Value measured at room temperature.
+Abbatt and Waschewsky (1998) say γ > 0.2.
+Hereα= 0.5 is used.HNO 4: Value measured at 200 K for water ice.
+CH3O2: Estimate.
+HCHO: Value measured between 260 and 270 K.
+CO2: Estimate.
+HCl: Temperature dependence derived from
+published data at 2 diﬀerent temperatures
+HOCl: Assumed to be the same as α(HOBr).
+ClNO 3: Value measured at 274.5 K.
+HBr: Temperature dependence derived from
+published data at 2 diﬀerent temperatures
+HOBr: Value measured at room temperature.
+Abbatt and Waschewsky (1998) say γ > 0.2.
+Hereα= 0.5 is used.
+BrNO 3: Value measured at 273 K.
+BrCl: Assumed to be the same as α(Cl2).
+H2SO4: Value measured at 303 K.
+12Table 5: Reversible (Henry’s law) transfer and irreversibl e (“heterogenous”) uptake
+# labels reaction rate coeﬃcient reference
+H1000f_a01 TrAa01Sc O 2→O2(aq) k_exf(01,ind_O2) see note
+H1000b_a01 TrAa01Sc O 2(aq)→O2 k_exb(01,ind_O2) see note
+H1001f_a01 TrAa01MblScScm O 3→O3(aq) k_exf(01,ind_O3) see note
+H1001b_a01 TrAa01MblScScm O 3(aq)→O3 k_exb(01,ind_O3) see note
+H2100f_a01 TrAa01Sc OH →OH(aq) k_exf(01,ind_OH) see note
+H2100b_a01 TrAa01Sc OH(aq) →OH k_exb(01,ind_OH) see note
+H2101f_a01 TrAa01Sc HO 2→HO2(aq) k_exf(01,ind_HO2) see note
+H2101b_a01 TrAa01Sc HO 2(aq)→HO2 k_exb(01,ind_HO2) see note
+H2102f_a01 TrAa01MblScScm H 2O2→H2O2(aq) k_exf(01,ind_H2O2) see note
+H2102b_a01 TrAa01MblScScm H 2O2(aq)→H2O2 k_exb(01,ind_H2O2) see note
+H3101f_a01 TrAa01NSc NO 2→NO2(aq) k_exf(01,ind_NO2) see note
+H3101b_a01 TrAa01NSc NO 2(aq)→NO2 k_exb(01,ind_NO2) see note
+H3102f_a01 TrAa01NSc NO 3→NO3(aq) k_exf(01,ind_NO3) see note
+H3102b_a01 TrAa01NSc NO 3(aq)→NO3 k_exb(01,ind_NO3) see note
+H3200f_a01 TrAa01NMblScScm NH 3→NH3(aq) k_exf(01,ind_NH3) see note
+H3200b_a01 TrAa01NMblScScm NH 3(aq)→NH3 k_exb(01,ind_NH3) see note
+H3201_a01 TrAa01MblNScScm N 2O5→HNO 3(aq) + HNO 3(aq) k_exf_N2O5(01)*C(ind_H2O_
+a01)Behnke et al. (1994),
+Behnke et al. (1997)∗
+H3202f_a01 TrAa01NSc HONO →HONO(aq) k_exf(01,ind_HONO) see note
+H3202b_a01 TrAa01NSc HONO(aq) →HONO k_exb(01,ind_HONO) see note
+H3203f_a01 TrAa01MblNScScm HNO 3→HNO 3(aq) k_exf(01,ind_HNO3) see note
+H3203b_a01 TrAa01MblNScScm HNO 3(aq)→HNO 3 k_exb(01,ind_HNO3) see note
+H3204f_a01 TrAa01NSc HNO 4→HNO 4(aq) k_exf(01,ind_HNO4) see note
+H3204b_a01 TrAa01NSc HNO 4(aq)→HNO 4 k_exb(01,ind_HNO4) see note
+H4100f_a01 TrAa01MblScScm CO 2→CO2(aq) k_exf(01,ind_CO2) see note
+H4100b_a01 TrAa01MblScScm CO 2(aq)→CO2 k_exb(01,ind_CO2) see note
+H4101f_a01 TrAa01ScScm HCHO →HCHO(aq) k_exf(01,ind_HCHO) see note
+H4101b_a01 TrAa01ScScm HCHO(aq) →HCHO k_exb(01,ind_HCHO) see note
+H4102f_a01 TrAa01Sc CH 3O2→CH3OO(aq) k_exf(01,ind_CH3O2) see note
+H4102b_a01 TrAa01Sc CH 3OO(aq) →CH3O2 k_exb(01,ind_CH3O2) see note
+13Table 5: Reversible (Henry’s law) transfer and irreversibl e (“heterogenous”) uptake
+# labels reaction rate coeﬃcient reference
+H4103f_a01 TrAa01ScScm HCOOH →HCOOH(aq) k_exf(01,ind_HCOOH) see note
+H4103b_a01 TrAa01ScScm HCOOH(aq) →HCOOH k_exb(01,ind_HCOOH) see note
+H4104f_a01 TrAa01ScScm CH 3OOH→CH3OOH(aq) k_exf(01,ind_CH3OOH) see note
+H4104b_a01 TrAa01ScScm CH 3OOH(aq) →CH3OOH k_exb(01,ind_CH3OOH) see note
+H6000f_a01 TrAa01ClMblSc Cl 2→Cl2(aq) k_exf(01,ind_Cl2) see note
+H6000b_a01 TrAa01ClMblSc Cl 2(aq)→Cl2 k_exb(01,ind_Cl2) see note
+H6200f_a01 TrAa01ClMblScScm HCl →HCl(aq) k_exf(01,ind_HCl) see note
+H6200b_a01 TrAa01ClMblScScm HCl(aq) →HCl k_exb(01,ind_HCl) see note
+H6201f_a01 TrAa01ClMblSc HOCl →HOCl(aq) k_exf(01,ind_HOCl) see note
+H6201b_a01 TrAa01ClMblSc HOCl(aq) →HOCl k_exb(01,ind_HOCl) see note
+H6300_a01 TrAa01ClMblN N 2O5+ Cl−(aq)→ClNO 2+ NO−
+3(aq) k_exf_N2O5(01) * 5 .E2 Behnke et al. (1994),
+Behnke et al. (1997)∗
+H6301_a01 TrAa01ClMblN ClNO 3→HOCl(aq) + HNO 3(aq) k_exf_ClNO3(01) * C(ind_
+H2O_a01)see note
+H6302_a01 TrAa01ClMblN ClNO 3+ Cl−(aq)→Cl2(aq) + NO−
+3(aq) k_exf_ClNO3(01) * 5 .E2 see note
+H7000f_a01 TrAa01BrMblSc Br 2→Br2(aq) k_exf(01,ind_Br2) see note
+H7000b_a01 TrAa01BrMblSc Br 2(aq)→Br2 k_exb(01,ind_Br2) see note
+H7200f_a01 TrAa01BrMblScScm HBr →HBr(aq) k_exf(01,ind_HBr) see note
+H7200b_a01 TrAa01BrMblScScm HBr(aq) →HBr k_exb(01,ind_HBr) see note
+H7201f_a01 TrAa01BrMblSc HOBr →HOBr(aq) k_exf(01,ind_HOBr) see note
+H7201b_a01 TrAa01BrMblSc HOBr(aq) →HOBr k_exb(01,ind_HOBr) see note
+H7300_a01 TrAa01BrMblN N 2O5+ Br−(aq)→BrNO 2+ NO−
+3(aq) k_exf_N2O5(01) * 3 .E5 Behnke et al. (1994),
+Behnke et al. (1997)∗
+H7301_a01 TrAa01BrMblN BrNO 3→HOBr(aq) + HNO 3(aq) k_exf_BrNO3(01) * C(ind_
+H2O_a01)see note
+H7302_a01 TrAa01BrMblN BrNO 3+ Br−(aq)→Br2(aq) + NO−
+3(aq) k_exf_BrNO3(01) * 3 .E5 see note
+H7600f_a01 TrAa01ClBrMblSc BrCl →BrCl(aq) k_exf(01,ind_BrCl) see note
+H7600b_a01 TrAa01ClBrMblSc BrCl(aq) →BrCl k_exb(01,ind_BrCl) see note
+H7601_a01 TrAa01ClBrMblN ClNO 3+ Br−(aq)→BrCl(aq) + NO−
+3(aq)k_exf_ClNO3(01) * 3 .E5 see note
+14Table 5: Reversible (Henry’s law) transfer and irreversibl e (“heterogenous”) uptake
+# labels reaction rate coeﬃcient reference
+H7602_a01 TrAa01ClBrMblN BrNO 3+ Cl−(aq)→BrCl(aq) + NO−
+3(aq)k_exf_BrNO3(01) * 5 .E2 see note
+H9100f_a01 TrAa01SMblScScm SO 2→SO2(aq) k_exf(01,ind_SO2) see note
+H9100b_a01 TrAa01SMblScScm SO 2(aq)→SO2 k_exb(01,ind_SO2) see note
+H9200_a01 TrAa01SMblScScm H 2SO4→H2SO4(aq) xnom7sulf*k_exf(01,ind_
+H2SO4)see note
+H9400f_a01 TrAa01S DMSO →DMSO(aq) k_exf(01,ind_DMSO) see note
+H9400b_a01 TrAa01S DMSO(aq) →DMSO k_exb(01,ind_DMSO) see note
+H9401_a01 TrAa01SMbl CH 3SO3H→CH3SO−
+3(aq) + H+(aq) k_exf(01,ind_CH3SO3H) see note
+∗Notes:
+The forward ( k_exf ) and backward ( k_exb )
+rate coeﬃcients are calculated in the
+ﬁlemessy_mecca_aero.f90 using the ac-
+commodation coeﬃcients in subroutine
+mecca_aero_alpha and Henry’s law constants
+in subroutine mecca_aero_henry .
+kmt= mass transfer coeﬃcientlwc = liquid water content of aerosol mode
+H3201, H6300, H6301, H6302, H7300, H7301,
+H7302, H7601, H7602: For uptake of X(=
+N2O5, ClNO 3, BrNO 3) and subsequent re-
+action with H 2O, Cl−, and Br−, we deﬁne
+kexf(X) =kmt(X)×lwc/([H2O] + 5.0E2[Cl−] +
+3.0E5[Br−]).
+H6301, H6302, H7601: The total uptake is de-termined by kmt(ClNO 3). The relative rates are
+assumed to be the same as for N 2O5(H3201,
+H6300, H7300).
+H7301, H7302, H7602: The total uptake is deter-
+mined by kmt(BrNO 3). The relative rates are
+assumed to be the same as for N 2O5(H3201,
+H6300, H7300).
+15Table 6: Acid-base and other eqilibria
+# labels reaction K0[Mm−n] -
+∆H/R[K]reference
+EQ20_a01 TrAa01Sc HO 2⇀↽O−
+2+ H+1.6E-5 Weinstein-Lloyd and Schwartz (1991)
+EQ21_a01 TrAa01MblScScm H 2O⇀↽H++ OH−1.0E-16 -6716 Chameides (1984)
+EQ30_a01 TrAa01MblNScScm NH+
+4⇀↽H++ NH 3 5.88E-10 -2391 Chameides (1984)
+EQ31_a01 TrAa01NSc HONO ⇀↽H++ NO−
+2 5.1E-4 -1260 Schwartz and White (1981)
+EQ32_a01 TrAa01MblNScScm HNO 3⇀↽H++ NO−
+3 15 8700 Davis and de Bruin (1964)
+EQ33_a01 TrAa01NSc HNO 4⇀↽NO−
+4+ H+1.E-5 Warneck (1999)
+EQ40_a01 TrAa01MblScScm CO 2⇀↽H++ HCO−
+3 4.3E-7 -913 Chameides (1984)∗
+EQ41_a01 TrAa01ScScm HCOOH ⇀↽H++ HCOO−1.8E-4 Weast (1980)
+EQ60_a01 TrAa01Cl Cl−
+2⇀↽Cl + Cl−7.3E-6 Yu (2004)
+EQ61_a01 TrAa01ClMblScScm HCl ⇀↽H++ Cl−1.7E6 6896 Marsh and McElroy (1985)
+EQ62_a01 TrAa01ClSc HOCl ⇀↽H++ ClO−3.2E-8 Lax (1969)
+EQ70_a01 TrAa01Br Br−
+2⇀↽Br + Br−2.54E-6 -2256 Liu et al. (2002)
+EQ71_a01 TrAa01BrMblScScm HBr ⇀↽H++ Br−1.0E9 Lax (1969)
+EQ72_a01 TrAa01BrSc HOBr ⇀↽H++ BrO−2.3E-9 -3091 Kelley and Tartar (1956)∗
+EQ73_a01 TrAa01ClBrMbl BrCl + Cl−⇀↽BrCl−
+2 3.8 1191 Wang et al. (1994)
+EQ74_a01 TrAa01ClBrMbl BrCl + Br−⇀↽Br2Cl−1.8E4 7457 Wang et al. (1994)
+EQ75_a01 TrAa01ClBrMbl Br 2+ Cl−⇀↽Br2Cl−1.3 0 Wang et al. (1994)
+EQ76_a01 TrAa01ClBrMbl Br−+ Cl 2⇀↽BrCl−
+2 4.2E6 14072 Wang et al. (1994)
+EQ90_a01 TrAa01SMblScScm SO 2⇀↽H++ HSO−
+3 1.7E-2 2090 Chameides (1984)
+EQ91_a01 TrAa01SMblScScm HSO−
+3⇀↽H++ SO2−
+3 6.0E-8 1120 Chameides (1984)
+EQ92_a01 TrAa01SMblScScm HSO−
+4⇀↽H++ SO2−
+4 1.2E-2 2720 Seinfeld and Pandis (1998)
+EQ93_a01 TrAa01SMblScScm H 2SO4⇀↽H++ HSO−
+4 1.0E3 Seinfeld and Pandis (1998)
+∗Notes:
+EQ40: For pKa(CO2), see also Dickson and Millero (1987).EQ72: For pKa(HOBr), see also Keller-Rudek et al. (1992).
+16Table 7: Aqueous phase reactions
+# labels reaction k0[M1−ns−1]−Ea/R[K] reference
+A1000_a01 TrAa01Sc O 3+ O−
+2→OH + OH−1.5E9 Sehested et al. (1983)
+A2100_a01 TrAa01Sc OH + O−
+2→OH−1.0E10 Sehested et al. (1968)
+A2101_a01 TrAa01Sc OH + OH →H2O2 5.5E9 Buxton et al. (1988)
+A2102_a01 TrAa01Sc HO 2+ O−
+2→H2O2+ OH−1.0E8 -900 Christensen and Sehested
+(1988)
+A2103_a01 TrAa01Sc HO 2+ OH →H2O 7.1E9 Sehested et al. (1968)
+A2104_a01 TrAa01Sc HO 2+ HO 2→H2O2 9.7E5 -2500 Christensen and Sehested
+(1988)
+A2105_a01 TrAa01Sc H 2O2+ OH →HO2 2.7E7 -1684 Christensen et al. (1982)
+A3100_a01 TrAa01NSc NO−
+2+ O3→NO−
+3 5.0E5 -6950 Damschen and Martin
+(1983)
+A3101_a01 TrAa01NSc NO 2+ NO 2→HNO 3+ HONO 1.0E8 Lee and Schwartz (1981)
+A3102_a01 TrAa01NSc NO−
+4→NO−
+2 8.0E1 Warneck (1999)
+A3200_a01 TrAa01NSc NO 2+ HO 2→HNO 4 1.8E9 Warneck (1999)
+A3201_a01 TrAa01NSc NO−
+2+ OH →NO2+ OH−1.0E10 Wingenter et al. (1999)
+A3202_a01 TrAa01NSc NO 3+ OH−→NO−
+3+ OH 8.2E7 -2700 Exner et al. (1992)
+A3203_a01 TrAa01NSc HONO + OH →NO2 1.0E10 Barker et al. (1970)
+A3204_a01 TrAa01NSc HONO + H 2O2+ H+→HNO 3+ H+4.6E3 -6800 Damschen and Martin
+(1983)
+A4100_a01 TrAa01Sc CO−
+3+ O−
+2→HCO−
+3+ OH−6.5E8 Ross et al. (1992)
+A4101_a01 TrAa01Sc CO−
+3+ H2O2→HCO−
+3+ HO 2 4.3E5 Ross et al. (1992)
+A4102_a01 TrAa01Sc HCOO−+ CO−
+3→2 HCO−
+3+ HO 2 1.5E5 Ross et al. (1992)
+A4103_a01 TrAa01Sc HCOO−+ OH →OH−+ HO 2+ CO 2 3.1E9 -1240 Chin and Wine (1994)
+A4104_a01 TrAa01Sc HCO−
+3+ OH →CO−
+3 8.5E6 Ross et al. (1992)
+A4105_a01 TrAa01Sc HCHO + OH →HCOOH + HO 2 7.7E8 -1020 Chin and Wine (1994)
+A4106_a01 TrAa01Sc HCOOH + OH →HO2+ CO 2 1.1E8 -991 Chin and Wine (1994)
+A4107_a01 TrAa01Sc CH 3OO + O−
+2→CH3OOH + OH−5.0E7 Jacob (1986)
+A4108_a01 TrAa01Sc CH 3OO + HO 2→CH3OOH 4.3E5 Jacob (1986)
+A4109_a01 TrAa01Sc CH 3OH + OH →HCHO + HO 2 9.7E8 Buxton et al. (1988)
+17Table 7: Aqueous phase reactions (...continued)
+# labels reaction k0[M1−ns−1]−Ea/R[K] reference
+A4110a_a01 TrAa01Sc CH 3OOH + OH →CH3OO 2.7E7 -1715 Jacob (1986)
+A4110b_a01 TrAa01Sc CH 3OOH + OH →HCHO + OH 1.1E7 -1715 Jacob (1986)
+A6000_a01 TrAa01Cl Cl + Cl →Cl2 8.8E7 Wu et al. (1980)
+A6001_a01 TrAa01Cl Cl−
+2+ Cl−
+2→Cl2+ 2 Cl−3.5E9 Yu (2004)
+A6100_a01 TrAa01Cl Cl−+ O3→ClO−3.0E-3 Hoign´ e et al. (1985)
+A6101_a01 TrAa01Cl Cl 2+ O−
+2→Cl−
+2 1.0E9 Bjergbakke et al. (1981)
+A6102_a01 TrAa01Cl Cl−
+2+ O−
+2→2 Cl−1.0E9 Jacobi (1996)∗
+A6200_a01 TrAa01Cl Cl →H++ ClOH−1.8E5 Yu (2004)
+A6201_a01 TrAa01Cl Cl + H 2O2→HO2+ Cl−+ H+2.7E7 -1684 Christensen et al. (1982)
+A6202_a01 TrAa01Cl Cl−+ OH →ClOH−4.2E9 Yu (2004)
+A6203_a01 TrAa01Cl Cl 2+ HO 2→Cl−
+2+ H+1.0E9 Bjergbakke et al. (1981)
+A6204_a01 TrAa01ClMbl Cl 2→Cl−+ HOCl + H+21.8 -8012 Wang and Margerum
+(1994)
+A6205_a01 TrAa01Cl Cl−
+2+ HO 2→2 Cl−+ H+1.3E10 Jacobi (1996)
+A6206_a01 TrAa01Cl HOCl + O−
+2→Cl + OH−7.5E6 Long and Bielski (1980)
+A6207_a01 TrAa01Cl HOCl + HO 2→Cl 7.5E6 Long and Bielski (1980)
+A6208_a01 TrAa01ClMbl HOCl + Cl−+ H+→Cl2 2.2E4 -3508 Wang and Margerum
+(1994)
+A6209_a01 TrAa01Cl ClOH−→Cl−+ OH 6.0E9 Yu (2004)
+A6210_a01 TrAa01Cl ClOH−+ H+→Cl 2.4E10 Yu (2004)
+A6300_a01 TrAa01Cl Cl + NO−
+3→NO3+ Cl−1.0E8 Buxton et al. (1999b)
+A6301_a01 TrAa01Cl Cl−+ NO 3→NO−
+3+ Cl 3.4E8 Buxton et al. (1999b)∗
+A6302_a01 TrAa01Cl Cl−
+2+ NO−
+2→2 Cl−+ NO 2 6.0E7 Jacobi et al. (1996)
+A6400_a01 TrAa01Cl Cl−
+2+ CH 3OOH→2 Cl−+ H++ CH 3OO 5.0E4 Jacobi et al. (1996)
+A7000_a01 TrAa01Br Br−
+2+ Br−
+2→2 Br−+ Br 2 1.9E9 Ross et al. (1992)
+A7100_a01 TrAa01Br Br−+ O3→BrO−2.1E2 -4450 Haag and Hoign´ e (1983)
+A7101_a01 TrAa01Br Br 2+ O−
+2→Br−
+2 5.6E9 Sutton and Downes (1972)
+A7102_a01 TrAa01Br Br−
+2+ O−
+2→2 Br−1.7E8 Wagner and Strehlow
+(1987)
+A7200_a01 TrAa01Br Br−+ OH →BrOH−1.1E10 Zehavi and Rabani (1972)
+18Table 7: Aqueous phase reactions (...continued)
+# labels reaction k0[M1−ns−1]−Ea/R[K] reference
+A7201_a01 TrAa01Br Br 2+ HO 2→Br−
+2+ H+1.1E8 Sutton and Downes (1972)
+A7202_a01 TrAa01BrMbl Br 2→Br−+ HOBr + H+9.7E1 -7457 Beckwith et al. (1996)
+A7203_a01 TrAa01Br Br−
+2+ HO 2→Br2+ H2O2+ OH−4.4E9 Matthew et al. (2003)
+A7204_a01 TrAa01Br Br−
+2+ H2O2→2 Br−+ H++ HO 2 1.0E5 Jacobi (1996)
+A7205_a01 TrAa01Br HOBr + O−
+2→Br + OH−3.5E9 Schwarz and Bielski
+(1986)
+A7206_a01 TrAa01Br HOBr + HO 2→Br 1.0E9 Herrmann et al. (1999)
+A7207_a01 TrAa01Br HOBr + H 2O2→Br−+ H+1.2E6 Bichsel and von Gunten
+(1999)
+A7208_a01 TrAa01BrMbl HOBr + Br−+ H+→Br2 1.6E10 Beckwith et al. (1996)
+A7209a_a01 TrAa01Br BrOH−→Br−+ OH 3.3E7 Zehavi and Rabani (1972)
+A7209b_a01 TrAa01Br BrOH−→Br + OH−4.2E6 Zehavi and Rabani (1972)
+A7210_a01 TrAa01Br BrOH−+ H+→Br 4.4E10 Zehavi and Rabani (1972)
+A7300_a01 TrAa01Br Br−+ NO 3→Br + NO−
+3 4.0E9 Neta and Huie (1986)
+A7301_a01 TrAa01Br Br−
+2+ NO−
+2→2 Br−+ NO 2 1.7E7 -1720 Shoute et al. (1991)
+A7400_a01 TrAa01Br Br−
+2+ CH 3OOH→2 Br−+ H++ CH 3OO 1.0E5 Jacobi (1996)∗
+A7601_a01 TrAa01Br Br−+ ClO−+ H+→BrCl + OH−3.7E10 Kumar and Margerum
+(1987)
+A7602_a01 TrAa01ClBrMbl Br−+ HOCl + H+→BrCl 1.32E6 Kumar and Margerum
+(1987)
+A7603_a01 TrAa01ClBrMbl HOBr + Cl−+ H+→BrCl 2.3E10 see note
+A7604_a01 TrAa01ClBrMbl BrCl →Cl−+ HOBr + H+3.0E6 Liu and Margerum (2001)
+A9100_a01 TrAa01SSc SO−
+3+ O2→SO−
+5 1.5E9 Huie and Neta (1987)
+A9101_a01 TrAa01SMblScScm SO2−
+3+ O3→SO2−
+4 1.5E9 -5300 Hoﬀmann (1986)
+A9102_a01 TrAa01SSc SO−
+4+ O−
+2→SO2−
+4 3.5E9 Jiang et al. (1992)
+A9103_a01 TrAa01SSc SO−
+4+ SO2−
+3→SO−
+3+ SO2−
+4 4.6E8 Huie and Neta (1987)
+A9104_a01 TrAa01SSc SO−
+5+ O−
+2→HSO−
+5+ OH−2.3E8 Buxton et al. (1996)
+A9105_a01 TrAa01S SO−
+5+ SO2−
+3→.72 SO−
+4+ .72 SO2−
+4+ .28 SO−
+3+
+.28 HSO−
+5+ .28 OH−1.3E7 Huie and Neta (1987),
+Deister and Warneck
+(1990)∗
+19Table 7: Aqueous phase reactions (...continued)
+# labels reaction k0[M1−ns−1]−Ea/R[K] reference
+A9106_a01 TrAa01S SO−
+5+ SO−
+5→O2+ SO2−
+4 1.0E8 Ross et al. (1992)∗
+A9200_a01 TrAa01SSc SO2−
+3+ OH →SO−
+3+ OH−5.5E9 Buxton et al. (1988)
+A9201_a01 TrAa01SSc SO−
+4+ OH →HSO−
+5 1.0E9 Jiang et al. (1992)
+A9202_a01 TrAa01SSc SO−
+4+ HO 2→SO2−
+4+ H+3.5E9 Jiang et al. (1992)
+A9203_a01 TrAa01SSc SO−
+4+ H2O→SO2−
+4+ H++ OH 1.1E1 -1110 Herrmann et al. (1995)
+A9204_a01 TrAa01SSc SO−
+4+ H2O2→SO2−
+4+ H++ HO 2 1.2E7 Wine et al. (1989)
+A9205_a01 TrAa01SSc HSO−
+3+ O−
+2→SO2−
+4+ OH 3.0E3 see note
+A9206_a01 TrAa01SMblScScm HSO−
+3+ O3→SO2−
+4+ H+3.7E5 -5500 Hoﬀmann (1986)
+A9207_a01 TrAa01SSc HSO−
+3+ OH →SO−
+3 4.5E9 Buxton et al. (1988)
+A9208_a01 TrAa01SSc HSO−
+3+ HO 2→SO2−
+4+ OH + H+3.0E3 see note
+A9209_a01 TrAa01SMblScScm HSO−
+3+ H2O2→SO2−
+4+ H+5.2E6 -3650 Martin and Damschen
+(1981)
+A9210_a01 TrAa01SSc HSO−
+3+ SO−
+4→SO−
+3+ SO2−
+4+ H+8.0E8 Huie and Neta (1987)
+A9211_a01 TrAa01S HSO−
+3+ SO−
+5→.75 SO−
+4+ .75 SO2−
+4+ .75 H++
+.25 SO−
+3+ .25 HSO−
+51.0E5 Huie and Neta (1987)
+A9212_a01 TrAa01SSc HSO−
+3+ HSO−
+5+ H+→2 HSO−
+4+ H+7.1E6 Betterton and Hoﬀmann
+(1988)
+A9300_a01 TrAa01SSc SO2−
+3+ NO 2→SO2−
+4+ 2 HONO - NO 2 2.0E7 Clifton et al. (1988)
+A9301_a01 TrAa01SSc SO−
+4+ NO−
+3→SO2−
+4+ NO 3 5.0E4 Exner et al. (1992)
+A9302_a01 TrAa01SSc SO2−
+4+ NO 3→NO−
+3+ SO−
+4 1.0E5 Logager et al. (1993)
+A9303_a01 TrAa01SSc HSO−
+3+ NO 2→HSO−
+4+ 2 HONO - NO 2 2.0E7 Clifton et al. (1988)
+A9304_a01 TrAa01SSc HSO−
+3+ NO 3→SO−
+3+ NO−
+3+ H+1.4E9 -2000 Exner et al. (1992)
+A9305_a01 TrAa01SSc HSO−
+3+ HNO 4→HSO−
+4+ NO−
+3+ H+3.1E5 Warneck (1999)
+A9400_a01 TrAa01SSc SO2−
+3+ HCHO →CH2OHSO−
+3+ OH−1.4E4 Boyce and Hoﬀmann
+(1984)
+A9401_a01 TrAa01SSc SO2−
+3+ CH 3OOH + H+→SO2−
+4+ H++ CH 3OH 1.6E7 -3800 Lind et al. (1987)
+A9402_a01 TrAa01SSc HSO−
+3+ HCHO →CH2OHSO−
+3 4.3E-1 Boyce and Hoﬀmann
+(1984)
+A9403_a01 TrAa01SSc HSO−
+3+ CH 3OOH + H+→HSO−
+4+ H++ CH 3OH 1.6E7 -3800 Lind et al. (1987)
+20Table 7: Aqueous phase reactions (...continued)
+# labels reaction k0[M1−ns−1]−Ea/R[K] reference
+A9404_a01 TrAa01SSc CH 2OHSO−
+3+ OH−→SO2−
+3+ HCHO 3.6E3 Seinfeld and Pandis
+(1998)
+A9600_a01 TrAa01SCl SO2−
+3+ Cl−
+2→SO−
+3+ 2 Cl−6.2E7 Jacobi et al. (1996)
+A9601_a01 TrAa01SClMbl SO2−
+3+ HOCl →Cl−+ HSO−
+4 7.6E8 Fogelman et al. (1989)
+A9602_a01 TrAa01SCl SO−
+4+ Cl−→SO2−
+4+ Cl 2.5E8 Buxton et al. (1999a)
+A9603_a01 TrAa01SCl SO2−
+4+ Cl→SO−
+4+ Cl−2.1E8 Buxton et al. (1999a)
+A9604_a01 TrAa01SCl HSO−
+3+ Cl−
+2→SO−
+3+ 2 Cl−+ H+4.7E8 -1082 Shoute et al. (1991)
+A9605_a01 TrAa01SClMbl HSO−
+3+ HOCl →Cl−+ HSO−
+4+ H+7.6E8 see note
+A9606_a01 TrAa01SCl HSO−
+5+ Cl−→HOCl + SO2−
+4 1.8E-3 -7352 Fortnum et al. (1960)
+A9700_a01 TrAa01SBr SO2−
+3+ Br−
+2→2 Br−+ SO−
+3 2.2E8 -649 Shoute et al. (1991)
+A9701_a01 TrAa01SBr SO2−
+3+ BrO−→Br−+ SO2−
+4 1.0E8 Troy and Margerum
+(1991)
+A9702_a01 TrAa01SBrMbl SO2−
+3+ HOBr →Br−+ HSO−
+4 5.0E9 Troy and Margerum
+(1991)
+A9703_a01 TrAa01SBr SO−
+4+ Br−→Br + SO2−
+4 2.1E9 Jacobi (1996)
+A9704_a01 TrAa01SBr HSO−
+3+ Br−
+2→2 Br−+ H++ SO−
+3 6.3E7 -782 Shoute et al. (1991)
+A9705_a01 TrAa01SBrMbl HSO−
+3+ HOBr →Br−+ HSO−
+4+ H+5.0E9 see note
+A9706_a01 TrAa01SBr HSO−
+5+ Br−→HOBr + SO2−
+4 1.0E0 -5338 Fogelman et al. (1989)
+∗Notes:
+A6102: Jacobi (1996) found an upper limit of
+6E9and cite an upper limit from another study
+of2E9. Here, we set the rate coeﬃcient to 1E9.
+A6301: There is also an earlier study by Exner
+et al. (1992) which found a smaller rate coeﬃ-
+cient but did not consider the back reaction.
+A7400: Assumed to be the same as for Br−
+2+
+H2O2.A9105: The rate coeﬃcient for the sum of the
+paths (leading to either HSO−
+5or SO2−
+4) is from
+Huie and Neta (1987), the ratio 0.28/0.72 is from
+Deister and Warneck (1990).
+A9106: See also: (Huie and Neta, 1987; Warneck,
+1991). If this reaction produces a lot of SO−
+4, it
+will have an eﬀect. However, we currently assume
+only the stable S 2O2−
+8as product. Since S 2O2−
+8
+is not treated explicitly in the mechanism, weuse SO2−
+4as a proxy. Note that this destroys the
+mass consistency for sulfur species.
+A9205: D. Sedlak, pers. comm. (1993).
+A9208: D. Sedlak, pers. comm. (1993).
+A9605: assumed to be the same as for SO2−
+3+
+HOCl.
+A9705: assumed to be the same as for SO2−
+3+
+HOBr.
+21References
+Abbatt, J. P. D. and Waschewsky, G. C. G.:
+Heterogeneous interactions of HOBr, HNO 3,
+O3, and NO 2with deliquescent NaCl aerosols
+at room temperature, J. Phys. Chem. A, 102,
+3719–3725, 1998.
+Anderson, L. C. and Fahey, D. W.: Studies
+with ClONO 2: Thermal dissociation rate and
+catalytic conversion to NO using an NO/O 3
+chemiluminescence detector, J. Phys. Chem.,
+94, 644–652, 1990.
+Aranda, A., Le Bras, G., La Verdet, G., and
+Poulet, G.: The BrO + CH 3O2reaction: Ki-
+netics and role in the atmospheric ozone bud-
+get, Geophys. Res. Lett., 24, 2745–2748, 1997.
+Atkinson, R.: Kinetics of the gas-phase reactions
+of OH radicals with alkanes and cycloalkanes,
+Atmos. Chem. Phys., 3, 2233–2307, 2003.
+Atkinson, R., Baulch, D. L., Cox, R. A., Hamp-
+son, Jr., R. F., Kerr, J. A., Rossi, M. J.,
+and Troe, J.: Summary of evaluated kinetic
+and photochemical data for atmospheric chem-
+istry: Web version August 1999, http://www.
+iupac-kinetic.ch.cam.ac.uk/ , 1999.
+Atkinson, R., Baulch, D. L., Cox, R. A., Crowley,
+J. N., Hampson, R. F., Hynes, R. G., Jenkin,
+M. E., Rossi, M. J., and Troe, J.: Evaluated ki-
+netic and photochemical data for atmospheric
+chemistry: Volume I – gas phase reactions ofOx, HO x, NO xand SO xspecies, Atmos. Chem.
+Phys., 4, 1461–1738, 2004.
+Atkinson, R., Baulch, D. L., Cox, R. A., Crow-
+ley, J. N., Hampson, Jr., R. F., Hynes, R. G.,
+Jenkin, M. E., Kerr, J. A., Rossi, M. J.,
+and Troe, J.: Summary of evaluated kinetic
+and photochemical data for atmospheric chem-
+istry: Web version March 2005, http://www.
+iupac-kinetic.ch.cam.ac.uk/ , 2005.
+Atkinson, R., Baulch, D. L., Cox, R. A., Crowley,
+J. N., Hampson, R. F., Hynes, R. G., Jenkin,
+M. E., Rossi, M. J., and Troe, J.: Evaluated ki-
+netic and photochemical data for atmospheric
+chemistry: Volume II - gas phase reactions of
+organic species, Atmos. Chem. Phys., 6, 3625–
+4055, 2006.
+Atkinson, R., Baulch, D. L., Cox, R. A., Crowley,
+J. N., Hampson, R. F., Hynes, R. G., Jenkin,
+M. E., Rossi, M. J., and Troe, J.: Evaluated ki-
+netic and photochemical data for atmospheric
+chemistry: Volume III — gas phase reactions
+of inorganic halogens, Atmos. Chem. Phys., 7,
+981–1191, 2007.
+Barker, G. C., Fowles, P., and Stringer, B.: Pulse
+radiolytic induced transient electrical conduc-
+tance in liquid solutions, Trans. Faraday Soc.,
+66, 1509–1519, 1970.
+Barone, S. B., Turnipseed, A. A., and Ravis-
+hankara, A. R.: Role of adducts in the atmo-spheric oxidation of dimethyl sulﬁde, Faraday
+Discuss., 100, 39–54, 1995.
+Bartlett, W. P. and Margerum, D. W.: Tempera-
+ture dependencies of the Henry’s law constant
+and the aqueous phase dissociation constant of
+bromine chloride, Environ. Sci. Technol., 33,
+3410–3414, 1999.
+Beckwith, R. C., Wang, T. X., and Margerum,
+D. W.: Equilibrium and kinetics of bromine
+hydrolysis, Inorg. Chem., 35, 995–1000, 1996.
+Behnke, W., Scheer, V., and Zetzsch, C.: Pro-
+duction of BrNO 2, Br2and ClNO 2from the
+reaction between sea spray aerosol and N 2O5,
+J. Aerosol Sci., 25, S277–S278, 1994.
+Behnke, W., George, C., Scheer, V., and Zet-
+zsch, C.: Production and decay of ClNO 2from
+the reaction of gaseous N 2O5with NaCl solu-
+tion: Bulk and aerosol experiments, J. Geo-
+phys. Res., 102D, 3795–3804, 1997.
+Betterton, E. A. and Hoﬀmann, M. R.: Oxida-
+tion of aqueous SO 2by peroxymonosulfate, J.
+Phys. Chem., 92, 5962–5965, 1988.
+Bichsel, Y. and von Gunten, U.: Oxidation of
+iodide and hypoiodous acid in the disinfection
+of natural waters, Environ. Sci. Technol., 33,
+4040–4045, 1999.
+Bjergbakke, E., Navartnam, S., Parsons, B. J.,
+and Swallow, A. J.: Reaction between HO 2·
+22and chlorine in aqueous solution, J. Am. Chem.
+Soc., 103, 5926–5928, 1981.
+Boyce, S. D. and Hoﬀmann, M. R.: Kinetics
+and mechanism of the formation of hydrox-
+ymethanesulfonic acid at low pH, J. Phys.
+Chem., 88, 4740–4746, 1984.
+Brimblecombe, P. and Clegg, S. L.: Erratum, J.
+Atmos. Chem., 8, 95, 1989.
+Burkholder, J. B., Orlando, J. J., and Howard,
+C. J.: Ultraviolet absorption cross sections
+of Cl 2O2between 210 and 410 nm, J. Phys.
+Chem., 94, 687–695, 1990.
+Buxton, G. V., Greenstock, C. L., Helman,
+W. P., and Ross, A. B.: Critical review of
+rate constants for reactions of hydrated elec-
+trons, hydrogen atoms and hydroxyl radi-
+cals (·OH/·O−) in aqueous solution, J. Phys.
+Chem. Ref. Data, 17, 513–886, 1988.
+Buxton, G. V., McGowan, S., Salmon, G. A.,
+Williams, J. E., and Wood, N. D.: A study
+of the spectra and reactivity of oxysulphur-
+radical anions involved in the chain oxidation
+of S(IV): A pulse and γ-radiolysis study, At-
+mos. Environ., 30, 2483–2493, 1996.
+Buxton, G. V., Bydder, M., and Salmon, G. A.:
+The reactivity of chlorine atoms in aqueous so-
+lution: Part II. The equilibrium SO.−
+4+ Cl−
+⇀↽Cl.+ SO2−
+4, Phys. Chem. Chem. Phys., 1,
+269–273, 1999a.Buxton, G. V., Salmon, G. A., and Wang, J. Q.:
+The equilibrium NO.
+3+ Cl−⇀↽NO−
+3+ Cl.: A
+laser ﬂash photolysis and pulse radiolysis study
+of the reactivity of NO.
+3with chloride ion in
+aqueous solution, Phys. Chem. Chem. Phys.,
+1, 3589–3593, 1999b.
+Chameides, W. L.: The photochemistry of a
+remote marine stratiform cloud, J. Geophys.
+Res., 89D, 4739–4755, 1984.
+Chin, M. and Wine, P. H.: A temperature-
+dependent competitive kinetics study of the
+aqueous-phase reactions of OH radicals with
+formate, formic acid, acetate, acetic acid, and
+hydrated formaldehyde, in: Aquatic and Sur-
+face Photochemistry, edited by Helz, G. R.,
+Zepp, R. G., and Crosby, D. G., pp. 85–96,
+A. F. Lewis, NY, 1994.
+Christensen, H. and Sehested, K.: HO 2and
+O−
+2radicals at elevated temperatures, J. Phys.
+Chem., 92, 3007–3011, 1988.
+Christensen, H., Sehested, K., and Corﬁtzen,
+H.: Reactions of hydroxyl radicals with hydro-
+gen peroxide at ambient and elevated temper-
+atures, J. Phys. Chem., 86, 1588–1590, 1982.
+Christensen, L. E., Okumura, M., Sander, S. P.,
+Salawitch, R. J., Toon, G. C., Sen, B., Blavier,
+J.-F., and Jucks, K. W.: Kinetics of HO 2+
+HO2→H2O2+ O2: Implications for strato-
+spheric H 2O2, Geophys. Res. Lett., 29, doi:
+10.1029/2001GL014525, 2002.Clifton, C. L., Altstein, N., and Huie, R. E.:
+Rate constant for the reaction of NO 2with sul-
+fur(IV) over the pH range 5.3–13, Environ. Sci.
+Technol., 22, 586–589, 1988.
+Damschen, D. E. and Martin, L. R.: Aqueous
+aerosol oxidation of nitrous acid by O 2, O3and
+H2O2, Atmos. Environ., 17, 2005–2011, 1983.
+Davis, Jr., W. and de Bruin, H. J.: New activ-
+ity coeﬃcients of 0-100 per cent aqueous ni-
+tric acid, J. Inorg. Nucl. Chem., 26, 1069–1083,
+1964.
+De Bruyn, W. J., Shorter, J. A., Davidovits,
+P., Worsnop, D. R., Zahniser, M. S., and
+Kolb, C. E.: Uptake of gas-phase sulfur species
+methanesulfonic acid, dimethylsulfoxide, and
+dimethyl sulfone by aqueous surfaces, J. Geo-
+phys. Res., 99D, 16927–16932, 1994.
+Deiber, G., George, C., Le Calv´ e, S., Schweitzer,
+F., and Mirabel, P.: Uptake study of ClONO 2
+and BrONO 2by halide containing droplets,
+Atmos. Chem. Phys., 4, 1291–1299, 2004.
+Deister, U. and Warneck, P.: Photooxidation of
+SO2−
+3in aqueous solution, J. Phys. Chem., 94,
+2191–2198, 1990.
+DeMore, W. B., Sander, S. P., Golden, D. M.,
+Hampson, R. F., Kurylo, M. J., Howard, C. J.,
+Ravishankara, A. R., Kolb, C. E., and Molina,
+M. J.: Chemical kinetics and photochemical
+23data for use in stratospheric modeling. Eval-
+uation number 12, JPL Publication 97-4, Jet
+Propulsion Laboratory, Pasadena, CA, 1997.
+Dickson, A. G. and Millero, F. J.: A compar-
+ison of the equilibrium constants for the dis-
+sociation of carbonic acid in seawater media,
+Deep-Sea Res. A, 34, 1733–1743, 1987.
+Exner, M., Herrmann, H., and Zellner, R.: Laser-
+based studies of reactions of the nitrate radi-
+cal in aqueous solution, Ber. Bunsenges. Phys.
+Chem., 96, 470–477, 1992.
+Fogelman, K. D., Walker, D. M., and Margerum,
+D. W.: Non-metal redox kinetics: Hypochlo-
+rite and hypochlorous acid reactions with sul-
+ﬁte, Inorg. Chem., 28, 986–993, 1989.
+Fortnum, D. H., Battaglia, C. J., Cohen, S. R.,
+and Edwards, J. O.: The kinetics of the oxida-
+tion of halide ions by monosubstituted perox-
+ides, J. Am. Chem. Soc., 82, 778–782, 1960.
+Haag, W. R. and Hoign´ e, J.: Ozonation of
+bromide-containing waters: Kinetics of forma-
+tion of hypobromous acid and bromate, Envi-
+ron. Sci. Technol., 17, 261–267, 1983.
+Hanson, D. R., Burkholder, J. B., Howard, C. J.,
+and Ravishankara, A. R.: Measurement of OH
+and HO 2radical uptake coeﬃcients on water
+and sulfuric acid surfaces, J. Phys. Chem., 96,
+4979–4985, 1992.Herrmann, H., Reese, A., and Zellner, R.: Time
+resolved UV/VIS diode array absorption spec-
+troscopy of SO−
+x(x=3, 4, 5) radical anions in
+aqueous solution, J. Mol. Struct., 348, 183–
+186, 1995.
+Herrmann, H., Ervens, B., Nowacki, P., Wolke,
+R., and Zellner, R.: A chemical aqueous phase
+radical mechanism for tropospheric chemistry,
+Chemosphere, 38, 1223–1232, 1999.
+Hoﬀmann, M. R.: On the kinetics and mecha-
+nism of oxidation of aquated sulfur dioxide by
+ozone, Atmos. Environ., 20, 1145–1154, 1986.
+Hoign´ e, J., Bader, H., Haag, W. R., and Stae-
+helin, J.: Rate constants of reactions of ozone
+with organic and inorganic compounds in wa-
+ter – III Inorganic compounds and radicals,
+Wat. Res., 19, 993–1004, 1985.
+Hu, J. H., Shi, Q., Davidovits, P., Worsnop,
+D. R., Zahniser, M. S., and Kolb, C. E.: Re-
+active uptake of Cl 2(g) and Br 2(g) by aqueous
+surfaces as a function of Br−and I−ion con-
+centration: The eﬀect of chemical reaction at
+the interface, J. Phys. Chem., 99, 8768–8776,
+1995.
+Huie, R. E. and Neta, P.: Rate constants for
+some oxidations of S(IV) by radicals in aque-
+ous solutions, Atmos. Environ., 21, 1743–1747,
+1987.
+Huthwelker, T., Clegg, S. L., Peter, T., Carslaw,
+K., Luo, B. P., and Brimblecombe, P.: Solu-bility of HOCl in water and aqueous H 2SO4to
+stratospheric temperatures, J. Atmos. Chem.,
+21, 81–95, 1995.
+Hynes, A. J. and Wine, P. H.: The atmospheric
+chemistry of dimethylsulfoxide (DMSO) kinet-
+ics and mechanism of the OH + DMSO reac-
+tion, J. Atmos. Chem., 24, 23–37, 1996.
+Ingham, T., Bauer, D., Sander, R., Crutzen,
+P. J., and Crowley, J. N.: Kinetics and prod-
+ucts of the reactions BrO + DMS and Br +
+DMS at 298 K, J. Phys. Chem. A, 103, 7199–
+7209, 1999.
+Jacob, D. J.: Chemistry of OH in remote
+clouds and its role in the production of formic
+acid and peroxymonosulfate, J. Geophys. Res.,
+91D, 9807–9826, 1986.
+Jacobi, H.-W.: Kinetische Untersuchungen
+und Modellrechnungen zur troposph¨ arischen
+Chemie von Radikalanionen und Ozon in
+w¨ aßriger Phase, Ph.D. thesis, Universit¨ at GH
+Essen, Germany, 1996.
+Jacobi, H.-W., Herrmann, H., and Zellner, R.:
+Kinetic investigation of the Cl−
+2radical in the
+aqueous phase, in: Air Pollution Research Re-
+port 57: Homogenous and hetrogenous chem-
+ical Processes in the Troposphere, edited by
+Mirabel, P., pp. 172–176, Oﬃce for oﬃcial
+Publications of the European Communities,
+Luxembourg, 1996.
+24Jayne, J. T., Duan, S. X., Davidovits, P.,
+Worsnop, D. R., Zahniser, M. S., and Kolb,
+C. E.: Uptake of gas-phase alcohol and organic
+acid molecules by water surfaces, J. Phys.
+Chem., 95, 6329–6336, 1991.
+Jeﬀerson, A., Nicovich, J. M., and Wine, P. H.:
+Temperature-dependent kinetics studies of the
+reactions Br(2P3/2) + CH 3SCH 3↔CH3SCH 2
++ HBr. Heat of formation of the CH 3SCH 2
+radical, J. Phys. Chem., 98, 7128–7135, 1994.
+Jiang, P.-Y., Katsumura, Y., Nagaishi, R., Do-
+mae, M., Ishikawa, K., Ishigure, K., and
+Yoshida, Y.: Pulse radiolysis study of concen-
+trated sulfuric acid solutions. Formation mech-
+anism, yield and reactivity of sulfate radicals,
+J. Chem. Soc. Faraday Trans., 88, 1653–1658,
+1992.
+Keller-Rudek, H., Koschel, D., Merlet, P., Ohms-
+Bredemann, U., Wagner, J., and Wietel-
+mann, A.: Gmelin Handbook of Inorganic and
+Organometallic Chemistry, 8th Edition, Br,
+Bromine, Supplement Volume B2, Compounds
+with Oxygen and Nitrogen, Springer Verlag,
+Berlin, 1992.
+Kelley, C. M. and Tartar, H. V.: On the system:
+bromine-water, J. Am. Chem. Soc., 78, 5752–
+5756, 1956.
+Kircher, C. C. and Sander, S. P.: Kinetics and
+mechanism of HO 2and DO 2disproportiona-
+tions, J. Phys. Chem., 88, 2082–2091, 1984.Kumar, K. and Margerum, D. W.: Kinetics and
+mechanism of general-acid-assisted oxidation
+of bromide by hypochlorite and hypochlorous
+acid, Inorg. Chem., 26, 2706–2711, 1987.
+Lax, E.: Taschenbuch f¨ ur Chemiker und
+Physiker, Springer Verlag, Berlin, 1969.
+Lee, Y.-N. and Schwartz, S. E.: Reaction kinet-
+ics of nitrogen dioxide with liquid water at low
+partial pressure, J. Phys. Chem., 85, 840–848,
+1981.
+Lind, J. A. and Kok, G. L.: Correction to
+“Henry’s law determinations for aqueous so-
+lutions of hydrogen peroxide, methylhydroper-
+oxide, and peroxyacetic acid” by John A. Lind
+and Gregory L. Kok, J. Geophys. Res., 99D,
+21119, 1994.
+Lind, J. A., Lazrus, A. L., and Kok, G. L.: Aque-
+ous phase oxidation of sulfur(IV) by hydro-
+gen peroxide, methylhydroperoxide, and per-
+oxyacetic acid, J. Geophys. Res., 92D, 4171–
+4177, 1987.
+Liu, Q. and Margerum, D. W.: Equilibrium and
+kinetics of bromine chloride hydrolysis, Envi-
+ron. Sci. Technol., 35, 1127–1133, 2001.
+Liu, Y., Pimentel, A. S., Antoku, Y., Giles, B. J.,
+and Barker, J. R.: Temperature-dependent
+rate and equilibrium constants for Br ·(aq) +
+Br−(aq)⇀↽Br−
+2·(aq), J. Phys. Chem. A, 106,
+11075–11082, 2002.Logager, T., Sehested, K., and Holcman, J.: Rate
+constants of the equilibrium reactions SO 4+
+HNO 3⇀↽HSO−
+4+ NO 3and SO 4+ NO 3⇀↽
+SO2−
+4+ NO 3, Radiat. Phys. Chem., 41, 539–
+543, 1993.
+Long, C. A. and Bielski, B. H. J.: Rate of
+reaction of superoxide radical with chloride-
+containing species, J. Phys. Chem., 84, 555–
+557, 1980.
+Magi, L., Schweitzer, F., Pallares, C., Cherif, S.,
+, Mirabel, P., and George, C.: Investigation of
+the uptake rate of ozone and methyl hydroper-
+oxide by water surfaces, J. Phys. Chem. A, 101,
+4943–4949, 1997.
+Mallard, W. G., Westley, F., Herron, J. T.,
+Hampson, R. F., and Frizzel, D. H.: NIST
+Chemical Kinetics Database: Version 5.0, Na-
+tional Institute of Standards and Technology,
+Gaithersburg, MD, 1993.
+Marsh, A. R. W. and McElroy, W. J.: The dis-
+sociation constant and Henry’s law constant of
+HCl in aqueous solution, Atmos. Environ., 19,
+1075–1080, 1985.
+Martin, L. R. and Damschen, D. E.: Aqueous
+oxidation of sulfur dioxide by hydrogen perox-
+ide at low pH, Atmos. Environ., 15, 1615–1621,
+1981.
+Matthew, B. M., George, I., and Anastasio, C.:
+Hydroperoxyl radical (HO2 ·) oxidizes dibro-
+mide radical anion ( ·Br−
+2) to bromine (Br 2)
+25in aqueous solution: Implications for the
+formation of Br 2in the marine boundary
+layer, Geophys. Res. Lett., 30, doi:10.1029/
+2003GL018572, 2003.
+McCabe, D. C., Gierczak, T., Talukdar, R. K.,
+and Ravishankara, A. R.: Kinetics of the reac-
+tion OH + CO under atmospheric conditions,
+Geophys. Res. Lett., 28, 3135–3138, 2001.
+Neta, P. and Huie, R. E.: Rate constants for re-
+actions of NO 3radicals in aqueous solutions,
+J. Phys. Chem., 90, 4644–4648, 1986.
+Orlando, J. J. and Tyndall, G. S.: Rate
+coeﬃcients for the thermal decomposition
+of BrONO 2and the heat of formation of
+BrONO 2, J. Phys. Chem., 100, 19398–19405,
+1996.
+Ponche, J. L., George, C., and Mirabel, P.: Mass
+transfer at the air/water interface: Mass ac-
+commodation coeﬃcients of SO 2, HNO 3, NO 2
+and NH 3, J. Atmos. Chem., 16, 1–21, 1993.
+P¨ oschl, U., Canagaratna, M., Jayne, J. T.,
+Molina, L. T., Worsnop, D. R., Kolb, C. E.,
+and Molina, M. J.: Mass accommodation co-
+eﬃcient of H 2SO4vapor on aqueous sulfuric
+acid surfaces and gaseous diﬀusion coeﬃcient
+of H2SO4in N2/H2O, J. Phys. Chem. A, 102,
+10082–10089, 1998.
+R´ egimbal, J.-M. and Mozurkewich, M.: Perox-
+ynitric acid decay mechanisms and kinetics atlow pH, J. Phys. Chem. A, 101, 8822–8829,
+1997.
+Ross, A. B., Mallard, W. G., Helman, W. P.,
+Bielski, B. H. J., Buxton, G. V., Cabelli, D. E.,
+Greenstock, C. L., Huie, R. E., and Neta,
+P.: NDRL-NIST Solution Kinetics Database:
+- Ver. 1, National Institute of Standards and
+Technology, Gaithersburg, MD, 1992.
+Rudich, Y., Talukdar, R. K., Imamura, T., Fox,
+R. W., and Ravishankara, A. R.: Uptake of
+NO3on KI solutions: Rate coeﬃcient for the
+NO3+ I−reaction and gas-phase diﬀusion
+coeﬃcients for NO 3, Chem. Phys. Lett., 261,
+467–473, 1996.
+Saastad, O. W., Ellermann, T., and Nielsen,
+C. J.: On the adsorption of NO and NO 2
+on cold H 2O/H 2SO4surfaces, Geophys. Res.
+Lett., 20, 1191–1193, 1993.
+Sander, S. P., Friedl, R. R., DeMore, W. B.,
+Golden, D. M., Kurylo, M. J., Hampson, R. F.,
+Huie, R. E., Moortgat, G. K., Ravishankara,
+A. R., Kolb, C. E., and Molina, M. J.: Chem-
+ical kinetics and photochemical data for use
+in stratospheric modeling. Supplement to eval-
+uation 12: Update of key reactions. Evalu-
+ation number 13, JPL Publication 00-3, Jet
+Propulsion Laboratory, Pasadena, CA, http:
+//jpldataeval.jpl.nasa.gov/ , 2000.
+Sander, S. P., Finlayson-Pitts, B. J., Friedl,
+R. R., Golden, D. M., Huie, R. E., Kolb, C. E.,Kurylo, M. J., Molina, M. J., Moortgat, G. K.,
+Orkin, V. L., and Ravishankara, A. R.: Chemi-
+cal Kinetics and Photochemical Data for Use in
+Atmospheric Studies, Evaluation Number 14,
+JPL Publication 02-25, Jet Propulsion Labo-
+ratory, Pasadena, CA, 2003.
+Sander, S. P., Friedl, R. R., Golden, D. M.,
+Kurylo, M. J., Moortgat, G. K., Keller-Rudek,
+H., Wine, P. H., Ravishankara, A. R., Kolb,
+C. E., Molina, M. J., Finlayson-Pitts, B. J.,
+Huie, R. E., and Orkin, V. L.: Chemical Kinet-
+ics and Photochemical Data for Use in Atmo-
+spheric Studies, Evaluation Number 15, JPL
+Publication 06-2, Jet Propulsion Laboratory,
+Pasadena, CA, 2006.
+Schwartz, S. E. and White, W. H.: Solubility
+equilibria of the nitrogen oxides and oxyacids
+in dilute aqueous solution, in: Advances in En-
+vironmental Science and Engineering, edited
+by Pfaﬄin, J. R. and Ziegler, E. N., vol. 4, pp.
+1–45, Gordon and Breach Science Publishers,
+NY, 1981.
+Schwarz, H. A. and Bielski, B. H. J.: Reactions of
+HO2and O−
+2with iodine and bromine and the
+I−
+2and I atom reduction potentials, J. Phys.
+Chem., 90, 1445–1448, 1986.
+Schweitzer, F., Mirabel, P., and George, C.: Up-
+take of hydrogen halides by water droplets, J.
+Phys. Chem. A, 104, 72–76, 2000.
+Sehested, K., Rasmussen, O. L., and Fricke, H.:
+26Rate constants of OH with HO 2, O−
+2, and
+H2O+
+2from hydrogen peroxide formation in
+pulse-irradiated oxygenated water, J. Phys.
+Chem., 72, 626–631, 1968.
+Sehested, K., Holcman, J., and Hart, E. J.: Rate
+constants and products of the reactions of e−
+aq,
+O−
+2and H with ozone in aqueous solutions, J.
+Phys. Chem., 87, 1951–1954, 1983.
+Seinfeld, J. H. and Pandis, S. N.: Atmospheric
+Chemistry and Physics, John Wiley & Sons,
+Inc., 1998.
+Shoute, L. C. T., Alfassi, Z. B., Neta, P., and
+Huie, R. E.: Temperature dependence of the
+rate constants for reaction of dihalide and
+azide radicals with inorganic reductants, J.
+Phys. Chem., 95, 3238–3242, 1991.
+Sivakumaran, V., H¨ olscher, D., Dillon, T. J.,
+and Crowley, J. N.: Reaction between OH
+and HCHO: temperature dependent rate co-
+eﬃcients (202-399 K) and product pathways
+(298 K), Phys. Chem. Chem. Phys., 5, 4821–
+4827, 2003.
+Stimpﬂe, R. M., Wilmouth, D. M., Salawitch,
+R. J., and Anderson, J. G.: First measure-
+ments of ClOOCl in the stratosphere: The cou-
+pling of ClOOCl and ClO in the Arctic po-
+lar vortex, J. Geophys. Res., 109, doi:10.1029/
+2003JD003811, 2004.
+Sutton, H. C. and Downes, M. T.: Reactions
+of the HO 2radical in aqueous solution withbromine and related compounds, J. Chem.
+Soc. Faraday Trans. 1, 68, 1498–1507, 1972.
+Takami, A., Kato, S., Shimono, A., and Koda,
+S.: Uptake coeﬃcient of OH radical on aque-
+ous surface, Chem. Phys., 231, 215–227, 1998.
+Thomas, K., Volz-Thomas, A., and Kley, D.:
+Zur Wechselwirkung von NO 3-Radikalen mit
+w¨ assrigen L¨ osungen: Bestimmung des Henry-
+und des Massenakkomodationskoeﬃzienten,
+Ph.D. thesis, Institut f¨ ur Chemie und Dynamik
+der Geosph¨ are 2, Forschungszentrum J¨ ulich
+GmbH, Germany, 1993.
+Thornton, J. and Abbatt, J. P. D.: Measure-
+ments of HO 2uptake to aqueous aerosol: Mass
+accommodation coeﬃcients and net reactive
+loss, J. Geophys. Res., 110D, doi:10.1029/
+2004JD005402, 2005.
+Troy, R. C. and Margerum, D. W.: Non-metal re-
+dox kinetics: Hypobromite and hypobromous
+acid reactions with iodide and with sulﬁte and
+the hydrolysis of bromosulfate, Inorg. Chem.,
+30, 3538–3543, 1991.
+Vogt, R., Crutzen, P. J., and Sander, R.: A mech-
+anism for halogen release from sea-salt aerosol
+in the remote marine boundary layer, Nature,
+383, 327–330, doi:10.1038/383327A0, 1996.
+Wagner, I. and Strehlow, H.: On the ﬂash photol-
+ysis of bromide ions in aqueous solution, Ber.
+Bunsenges. Phys. Chem., 91, 1317–1321, 1987.Wang, T. X. and Margerum, D. W.: Kinet-
+ics of reversible chlorine hydrolysis: Tem-
+perature dependence and general-acid/base-
+assisted mechanisms, Inorg. Chem., 33, 1050–
+1055, 1994.
+Wang, T. X., Kelley, M. D., Cooper, J. N., Beck-
+with, R. C., and Margerum, D. W.: Equi-
+librium, kinetic, and UV-spectral characteris-
+tics of aqueous bromine chloride, bromine, and
+chlorine species, Inorg. Chem., 33, 5872–5878,
+1994.
+Warneck, P.: Chemical reactions in clouds, Fre-
+senius J. Anal. Chem., 340, 585–590, 1991.
+Warneck, P.: The relative importance of vari-
+ous pathways for the oxidation of sulfur diox-
+ide and nitrogen dioxide in sunlit continental
+fair weather clouds, Phys. Chem. Chem. Phys.,
+1, 5471–5483, 1999.
+Weast, R. C., ed.: CRC Handbook of Chemistry
+and Physics, 61st Edition, CRC Press, Inc.,
+Boca Raton, FL, 1980.
+Weinstein-Lloyd, J. and Schwartz, S. E.: Low-
+intensity radiolysis study of free-radical reac-
+tions in cloudwater: H 2O2production and de-
+struction, Environ. Sci. Technol., 25, 791–800,
+1991.
+Wilhelm, E., Battino, R., and Wilcock, R. J.:
+Low-pressure solubility of gases in liquid wa-
+ter, Chem. Rev., 77, 219–262, 1977.
+27Wine, P. H., Tang, Y., Thorn, R. P., Wells, J. R.,
+and Davis, D. D.: Kinetics of aqueous phase
+reactions of the SO−
+4radical with potential im-
+portance in cloud chemistry, J. Geophys. Res.,
+94D, 1085–1094, 1989.
+Wingenter, O. W., Sive, B. C., Blake, N. J.,
+and Rowland, F. S.: Atomic chlorine concen-
+trations determined from ethane and hydroxyl
+measurements made over the Central Paciﬁc
+Ocean, Eos, Trans. AGU (Abstract Supple-
+ment), 80, F149–F150, 1999.Worsnop, D. R., Zahniser, M. S., Kolb, C. E.,
+Gardner, J. A., Watson, L. R., van Doren,
+J. M., Jayne, J. T., and Davidovits, P.: The
+temperature dependence of mass accommoda-
+tion of SO 2and H 2O2on aqueous surfaces, J.
+Phys. Chem., 93, 1159–1172, 1989.
+Wu, D., Wong, D., and Di Bartolo, B.: Evolu-
+tion of Cl−
+2in aqueous NaCl solutions, J. Pho-
+tochem., 14, 303–310, 1980.
+Yu, X.-Y.: Critical evaluation of rate constantsand equilibrium constants of hydrogen per-
+oxide photolysis in acidic aqueous solutions
+containing chloride ions, J. Phys. Chem. Ref.
+Data, 33, 747–763, 2004.
+Zehavi, D. and Rabani, J.: The oxidation of
+aqueous bromide by hydroxyl radicals. A pulse
+radiolytic investigation, J. Phys. Chem., 76,
+312–319, 1972.
+28

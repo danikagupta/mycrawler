@@ -1,0 +1,1007 @@
+ 
+ 1 Single -cell transcriptomics reveals expression profiles of  Trypanosoma brucei  1 
+sexual stages  2 
+ 3 
+Virginia  M. Howick1,2,3*, Lori Peacock 4,5, Chris Kay 4, Clare Collett 4$, Wendy Gibson 4#, Mara 4 
+K.N. Lawniczak 3# 5 
+ 6 
+1 Institute of Biodiversity, Animal Healt h, and Comparative Medicine , University of Glasgow, 7 
+Glasgow  G12 8QQ, UK 8 
+2 Wellcome Centre for Integrative Parasitology, University of Glasgow, Glasgow  G12 8QQ, UK 9 
+3 Parasites and Microbes Programme, Wellcome Sanger Institute, Hinxton CB10 1SA , UK 10 
+4 School of Biological Sciences , University of Bristol, Bristol BS8 1UG, UK  11 
+5 Bristol Veterinary School, University of Bristol, Langford  BS40 5D U, UK 12 
+$ Present address: UK Hea lth Security Agency , Porton Down, Salisbury SP4 0JG, UK  13 
+ 14 
+# These authors contributed equally to this work  15 
+*  Correspondence : VMH , Virginia.Howick@glasgow.ac.uk  16 
+ 17 
+Running head: Single -cell transcriptomics of trypanosomes  18 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 2 Abstract  19 
+Early  diverging lineages such as trypanosomes can provide clues to the evolution of s exual 20 
+reproduction in eukaryotes . In Trypanosoma  brucei , the pathogen that cause s Human African 21 
+Trypanosomiasis,  sexual reproduction occurs  in the salivary glands  of the insect host , but 22 
+analysis of the molecular signatures  that define the se sexual forms  is complicated because 23 
+they mingle with more numerous, mitotically -dividing developmental stages. We used single - 24 
+cell RNA -sequencing (scRNAseq) to profile  388 indi vidual trypanosomes from  midgut, 25 
+proventriculus, and salivary glands  of infected tsetse flies  allowing us to  identif y tissue -specific 26 
+cell types . Further investigation of salivary gland parasite transcriptomes revealed  fine-scale 27 
+changes in gene expression  over a developmental progression  from putative sexual forms 28 
+through  metacyclics expressing variant surface glycoprotein genes . The cluster of cells 29 
+potentially containing sexual forms was characterized by high level transcription of  the gamete 30 
+fusion protein  HAP2 , together with  an array of surface proteins and several genes of unknown  31 
+function. We linked  these expression patterns to  distinct  morphological forms using 32 
+immunofluorescence assays and reporter gene expression to demonstra te that  the 33 
+kinetoplastid -conserved gene Tb927.10.12080  is exclusively expressed at high levels by 34 
+meiotic intermediates and gametes. We speculate that this protein, currently of unknown 35 
+function, plays a role in gamete formation and/or fusion . 36 
+ 37 
+Keywords: African trypanosomes; single cell RNA sequencing; transcriptomics ; tsetse fly ; 38 
+Glossina  39 
+  40 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 3 Introduction  41 
+The African tsetse -transmitted trypanosomes are single -celled parasites that cause human 42 
+and animal diseases, which are a heavy burden for many countries in sub-Saharan  Africa. 43 
+These trypanosomes survive in  both the tsetse and mammalian host by taking on d istinct 44 
+morphological forms that suit the diverse metabolic  and immune  environments they encounter  45 
+[1]. When blood infected with Trypanosoma  brucei  is imbibed by the  tsetse  fly (genus 46 
+Glossina), trypanosome blood stream  forms (BSF) rapidly  change their transcriptional profile, 47 
+including switching off  Variant Surface Glycoprotein (VSG)  transcription and upregulating 48 
+expression of other surface proteins such as procyclins  [2,3] They also switch their metabolism 49 
+from dependence on glucose processed via glycolysis in the glycosome to exploitation of 50 
+amino acids such as proline via the mitochondrial TCA cycle  [4]. Trypanosomes then multiply 51 
+as procyclics in the fly midgut before migrating anteriorly, first colonising the proventriculus or 52 
+cardia, the valve between the foregut and anterior midgut, and then the paired salivary glands 53 
+(Figure 1A ) [5,6]. Here trypanosomes attach and proliferate as epimastigotes characterised 54 
+by BARP  surface proteins [7], before final differentiation into infective metacyclic s that are 55 
+inoculated into a new host via the saliva.  56 
+ 57 
+Additionally, the  salivary glands  are the location of the non -obligatory sexual cycle of T. brucei , 58 
+which involves meiosis and the production of haploid gametes  [8,9]. As trypanosomes are 59 
+early diverging eukaryote s, their sexual processes are of particular interest becaus e the y 60 
+provide  insights into the evolution of sexual reproduction and meiosis . Although the 61 
+morphologies of the meiotic division stages and gametes have been described [8–10], little is 62 
+known about the transcriptional dynamics  that characterise the  sexual stages  because these 63 
+cells are a minority of the heterogenous cell population in the salivary glands . Sexual stages 64 
+are found during th e early phase  of establishmen t of salivary gland infection , with numbers 65 
+peaking about three weeks after fly infection  [8,9]. The sexual cycle  appears to be a sideshow 66 
+in the normal mitotic developmental program, as it occurs in clonal trypanosome lines and 67 
+does not need to be triggered by external factors such as the presence of another strain.  68 
+ 69 
+Single -cell RNAseq opens the door to study heterogenous populations of single -celled 70 
+parasites by delineating expression patterns of individual  cells allowing us to understand 71 
+continuous developmental processes , cell-type specific patterns of co -expression  and bet - 72 
+hedging  strategies  [11–17]. Recent  studi es have profiled T. brucei  populations  using  single - 73 
+cell droplet -based approaches  from BSF culture  to profile the development of stumpy forms 74 
+[18] as well as  in vivo  salivary gland parasites in order to identify a potential vaccine candidate  75 
+among mature metacyclics  [19] and the dynamics of VSG  expression in the developing 76 
+metacyclic parasites  [20]. These studies complement the previous bulk transcriptomic studies  77 
+in T. brucei  that identified the major changes in transcriptional patterns over time and 78 
+metacyclic development using either whole infected salivary glands or in vitro -derived 79 
+metacyclics from the R BP 6-inducible system [21–28]. Although these studies have been 80 
+essential to our understanding of the dynamics of gene expression in T. brucei , we still lack 81 
+an understanding of the molecular processing that characterize meiosis and sexual 82 
+development in kinetoplastids .  83 
+ 84 
+Here we have exploited scRNAseq  to investigate transcriptomes of the sexual stages of T. 85 
+brucei  that occur transiently in the heterogeneous trypanosome population in the fly salivary 86 
+glands.  We use d a modified Smart -seq2 protocol [12,13,29]  to profile  T. brucei  cells from 87 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 4 different tsetse tissues ( midgut, proventriculus, salivary glands ) at different  time point s during 88 
+development. We tied the observed transcriptomic profiles to specific developmental stages, 89 
+validated by immunofluorescence, and  identified cell -type specific markers , which revealed 90 
+the dynamics of surface protein  expression as well as a new cand idate gene that may be 91 
+involved in sexual development.  92 
+Results and Discussion  93 
+Generation of high -quality  transcriptomes from in vitro  procyclic forms  94 
+To confirm that the modified Smart -seq2 protocol produces  high-quality data for T. brucei , we 95 
+initially profiled 46 single -cell transcriptomes from in vitro  procyclic forms. We found a mean 96 
+of 2.6x106 mapped reads per cell and a  mean detection of 1756 genes per cell  (Figure S1A,  97 
+B), which  is a greater number of genes per cell than recently pu blished data from Hutchinson 98 
+et al 2021  [20] that used a droplet -based  method  on the same parasite stage (1258 genes per 99 
+cell). This further support s the use of Smart -seq2 to get in depth  transcriptomes  (high - 100 
+coverage  and full-length)  in a low-throughput , targeted fa shion  compared to droplet -based 101 
+methods  that have fewer genes detected  but are high er throughput  [12,30] . Additionally, we 102 
+observed high expression of  genes that encode  known procyclic surface antigens including 103 
+GPEET  and EP1-3 [2,31]  (Figure S1C). These data support the utility of our protocol to profile 104 
+single -cell expression profiles in kinetoplast ids. 105 
+Transcriptomes  of fly developmental stages  106 
+Having confirmed that the modified Smart -seq2 protocol would produce high -quality data from 107 
+T. brucei  in vitro  procyclic forms , we profiled parasite transcriptomes isolated from diverse 108 
+tsetse tissues at different timepoints, and from two T. brucei  strains as outlined in Figure 1A . 109 
+After quality control (Figure S2) , we obtained a total of 388 single -cell parasite transcriptomes: 110 
+78 from the midgut, 34 from the proventriculus and 276 from the salivary glands (Figure 1A).  111 
+Parasites from the midgut  and proventriculus were isolated from flies infected with T. brucei  112 
+strain 1738 dissected day 21 post infection ( pi); 53 parasites from the  SG were also derived 113 
+from these flies. A further 62 1738 parasites from the salivary glands  were collected on day 114 
+40 pi; these cells were derived from free ( spill-out from  tissue ) or attached ( enzymatically 115 
+disassociated ) cell populations to capture popul ations dominated by metacyclics or attached 116 
+epimastigotes and premetacyclics, respectively (Figure 1A) . A further experiment dissected 117 
+on day 24 pi aimed to analyse salivary gland  parasites from an experimental cross between 118 
+strains  1738 and J10; 86 cells were from single infections of 1738 (38) or J10 (48), and 75 119 
+were from the experimental cross.  We additionally used two cell preservation methods in the 120 
+collection of these data to allow for more flexibility in processing time. Although small 121 
+differences w ere observed in the number of genes detected between preservation methods, 122 
+this was confounded by timepoint, preventing us from fully understanding the impact of the 123 
+preservation techniques alone ( Figure S3 ).  124 
+ 125 
+To understand transcriptional variation  at the single -cell level  across tissues, strains, and time , 126 
+we performed dimensionality reduction with all 388 cells using UMAP  (Figure 1B) . We 127 
+observed that cells  grouped by their tissue of origin , with clusters representing midgut and 128 
+proventri culus trypanosomes and  two groups of salivary gland  parasites that we hypothesized 129 
+could represent different cell-types or  stages (Figure  1B). This idea was supported by the 130 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 5 distribution of time points across the two salivary gland  groups  with 21- and 24 -day pi cells 131 
+distributed throughout  the two groups , while the 40-day pi cells (squares) occupied the centre 132 
+and right -hand area; the left-hand  area therefore represents early  salivary gland  133 
+developmental stages , such as sexual stages, which are frequent at 21 – 24 days pi, but are 134 
+relatively scarce at 40 days pi compared to epimastigotes and metacyclics (Peacock et al, 135 
+2014) .  136 
+ 137 
+We next used consensus clustering to partition the  cells into six clusters  based on the top 138 
+average silhouette score in SC3  [32] (Figure 1C) . The midgut  and proventriculus  parasites  139 
+each f ormed a single cluster  (clusters C1 and C2 respectively) , whereas the salivary gland  140 
+cells divided into four clusters (C3 -C6). We identified 238 marker genes across the six clusters 141 
+allowing us to assign potential cell types  (AUROC >  0.75, p < 0.01, Table S 1, Figure 1D) . C1 142 
+and C5 had very few significant marker genes and C6 had none  (hence not included in Figure 143 
+1D). This is likely due to different overall levels of transcriptional activity across the cell types  144 
+as we observed fewer genes per cell fo r these clusters (Table S1) . For further 145 
+characterization, w e additionally identified the top 200 genes expressed in each cluster (Table 146 
+S2). Based on both the cluster markers and top genes of each cluster, we were able to assign  147 
+putative cell -types.   C1 a nd C2 showed expression patterns consistent with midgut procyclics 148 
+and proventricular forms , respectively , based on known marker genes and bulk transcriptomic 149 
+data [21,33]  (Tabl e S2) . C1 was characterized by a single marker gene , FHc (Tb927.3.4500) , 150 
+a fumarate hydratase,  which c atalyses conversion  of fum arate to malate in the TCA cycle  151 
+(Figure 1)   [4,34] . FHc was also the most significant marker gene for the midgut forms when 152 
+integrated with T. brucei single -cell data from [20], supporting the cell -type assignment across 153 
+datasets (Figure S4, Table S3) .  C1 also express ed several genes encoding surface proteins  154 
+at high levels ( EP1: Tb927.10.10260 , EP3-2: Tb927.6.520 , and EP2: Tb927.10.10250 ), as 155 
+well as three Proteins Associated with Differentiation  (PAD1 : Tb927.7.5930 , PAD2 : 156 
+Tb927.7.5940 , PAD7 : Tb927.7.5990 ) (Table S2) , which  are implicated as sensors of 157 
+environmental stimuli and trigger differentiation  [35].  C2 had several marker genes associated 158 
+with transport (e.g. amino acid transporter AATP11  and purine nucleotide transporter NT10 , 159 
+Figure 1), both also highly expressed in C1 cells (Table S2) . Procyclin EP2 was identified as 160 
+a marker gene for this cluster , though both EP1 and EP3 (Tb927.6.480) were also highly 161 
+expressed (Table S2) .  162 
+ 163 
+Cluster C3 comprise d day 21/24 pi early salivary gland developmental stages  (Figure 1 B, C) 164 
+including potential sexual forms . Notably,  we observed  high expression of the  gamete fusion 165 
+protein  HAP2  (Tb927 .10.10770) , which is known to be expressed in meiotic intermediates and 166 
+gametes  (Table S1)  [10]. An analogous  cluster was also identified by [20], which showed  high 167 
+expression of HAP2  and HOP1  (Tb927.10.5490 ), a meiosis -specific protein. Integration 168 
+across these two datasets showed the cells from both studies clustered together at a granular 169 
+level (Figure S 4, Table S 3). Other notable marker genes for this cluster were two leucine -rich 170 
+repeat (LRR) protein genes  (Tb927.9.14570, Tb 927.7.7180) , with a third also highly expressed 171 
+(Table S2) ; as LRRs are protein recognition motifs, this could be significant in gamete 172 
+interactions. Procyclin  genes  EP1, EP3 and GPEET  (Tb927.6.510)  (Table S2)  were highly 173 
+expressed, together with BARP  genes , which is the characteristic surface protein of 174 
+epimastigotes [7].  175 
+ 176 
+Several BARP  genes were the prominent marker transcripts in cluster C4 (Figure 1D) , 177 
+identifying this  cluster as salivary gland  epimastigotes, consistent with previous studies 178 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 6 [19,20] . The majority of the later time point (day 40 pi) cells were found in clusters C5 and C 6 179 
+(Figure 1B, C ), showing that these cluster s represent the later salivary gland  developmental 180 
+stages  including  mature metacyclics and/or their immediate precursors, pre - and nascent 181 
+metacyclics . However, the identities of these clusters remain unclear. C5 had only three 182 
+significant marker genes, two of which encode  zinc finger proteins  and one hypothetical 183 
+protein , and C6 none  (Figure 1D, Table S2 ). The zinc finger protein  genes , ZC3H11  184 
+(Tb927.5.810)  and ZC3H45  (Tb927.11.8470)  were  also identified as biomarkers of pre - 185 
+metac yclics (Meta 1 ) in Vigneron et al 2020  [19], and ZC3H11 was also identified as a highly 186 
+expressed gene in purified, culture -derived mature metacyclics  [27]. Several other highly 187 
+expressed genes of mature metacyclics ([27]) were also identified in our data for either C5 or 188 
+C6 (e.g. ZFP2 , HSP 110 ; Table S2). It is noteworthy that cluster C5 is predominantly J10, 189 
+while cluster C6 is predominantly 1738  (Figure 1D ), and hence these clusters may also 190 
+represent strain -specific rather than stage -specific expression differences.  Additionally, 191 
+mature and nascent metacyclics both have VSG on the surface  [36], and it is reasonab le to 192 
+suppose that pre -metacyclics already transcribe VSG s. In support of this, both previous 193 
+scRNAseq studies found high levels of expression of VSG s in cells identified as pre - 194 
+metacyclics (Meta 1, Vigneron et al, 2020; Pre-metacyclic, Hutchinson et al, 2021).  Here, 195 
+VSG s were not identified as abundant transcripts in either C5 or C6, likely because of  poor 196 
+match between  1738/J10 VSG  transcripts and the Tb927 reference genome , as VSG  197 
+repertoires are strain -specific . We next endeavoured  to identify the metacyclic  VSG  repertoire 198 
+of 1738 and J10, in order to confirm the cell -types of C5 and C6.  199 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 7  200 
+Figure 1. scRNA -seq analysis of trypanosome developmental stages in tsetse.  201 
+(A) A schematic of the trypanosome life cycle and collections  of the s ingle parasite transcriptomes from 202 
+midgut (MG ; blue ), proventriculus (PV ; turquoise ) and salivary glands (SG ; pink ) from different time 203 
+points  and strains . Trypanosomes show two conformations: trypomastigote with kinetoplast (small black 204 
+dot) posterior to nucleus (e.g. bloodstream  form, procyclic, metacyclic ) and with kinetoplast anterior to 205 
+nucleus  (e.g. epimastigote). (B) A UMAP of the 388 cells that passed QC across collections , coloured  206 
+by tissue of origin . (C) The UMAP coloured by cluster assignment.  (D) A heatmap  of the top significant  207 
+marker genes from each of the five cluster s that had marker genes  (AUROC >0.75 & adjusted p-value 208 
+< 0.01 ).  209 
+ 210 
+Expression of mVSG  transcripts  211 
+Mature  metacyclics can be unequivocally identified by their lack of expression of the cell 212 
+surface proteins GPEET, EP and BARP, replaced by expression of a single mVSG  gene in 213 
+each cell [27], but pre -metacyclics also transcribe mVSG s at high level  in [20]. To explore 214 
+. CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 8 mVSG  expression in salivary gl and-derived cells here, we first needed to identify  the mVSG  215 
+repertoire s of strains 1738 and J10 , which differ from those of previously published strains. 216 
+We built a de novo  transcriptome assembly based on all reads from the 388 tsetse -derived 217 
+cells and identified  putative  mVSG s by compari son of the resulting  ORFs to  the total VSG  218 
+repertoire of each strain, previously  identified using an HMM on full -genom e Illumina sequence 219 
+data [37]. These assemble d mVSG  transcripts were  then mapped to 1738 or J10 contigs to 220 
+place them in a genomic context. Using this method, w e identified  11 mVSG s that were 221 
+expressed in our dataset  all of which contained an  upstream mVSG  promoter  based on the 222 
+consensus sequence  [38,39] . Additionally, downstream telomeric repeats were present in six 223 
+of these contigs ( Figur e 2A ). Although several  ESAG s were found on the contigs, these were 224 
+up- not downstream of the promotor and therefore not part of the mVSG  expression site.  The 225 
+presence of the se characteristic features of mVSG  gave us further confidence that the 226 
+identified  transcripts were originating from bona fide  mVSG . Interestingly, J10 and 1738 227 
+shared one mVSG  (DN18105),  suggesting some level of conservation across strains. This is 228 
+the first identification of the mVSG  repertoire in these strains.   229 
+ 230 
+Individual parasite transcriptomes  were then mapped to the assembly  to generate counts for 231 
+each putative mVSG . MVSG  transcripts were expressed by most  cells in cluster C5, followed 232 
+in order by C4, C6 and C3 , with negligible expression in C1 and C2  (Figure 2B, C). Overall 233 
+levels of expression were highest in cluster C5 ( Figure 2 B, C, D), with 38% ( 16/42 cells ) 234 
+expressing more than one mVSG  (Figure 2 B, C, D). Multiple mVSG s were also expressed by 235 
+38% ( 6/16) and 21% ( 4/19) cells in clusters C4 and C 6 respectively, and a single cell in C3  236 
+(Figure 2C, 2D). [20] confirmed expression of two mVSG s in pre -metacyclics using single 237 
+molecule m RNA -FISH  and put forward  a model where multiple mVSG s are transcribed at low 238 
+levels initially, with a single mVSG  dominating expression  in the mature metacyclic forms . 239 
+Based on this model, C4 , C5 and C 6 all contain a high proportion of pre -metacyclics , as well 240 
+as some mature metacyclics . The mVSG s expressed varied over development  and between 241 
+strains, with DN1222 being the dominant transcript  in C5, which  were primarily J10 cells , and 242 
+DN16022  being  the dominant transcript  in C6, which were primarily 1738  cells (Figure 2D). 243 
+Observed expressed mVSG s are largely consistent with the VSG s present in their strain (when 244 
+there is sufficient read depth), but low read count and partial coverage result in ambiguous 245 
+assignment due to sequence conservation between VSG s.    246 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 9  247 
+ Figure 2. mVSG expression in fly-derived trypanosomes  248 
+(A) The genomic c ontext of 11 mVSG s identified in strains 1738 and J10. The sequences can be found 249 
+in supplementary file  1. (B) The transcript abundance of mVSG  across 388 fly -derived trypanosome 250 
+cells on the UMAP  coloured by the logged sum of the mVSG  counts in each cell and sized by the 251 
+number of different mVSG  detected in that cell.  (C) The b reakdown of mVSG  expression per cluster.  252 
+C5 had the highest  proportion of cells expressi ng mVSG  and the greatest proportion of those cells 253 
+expressi ng multiple mVSG . (D) A barchart of all cells expressing mVSG  (>1 read) organised by cluster 254 
+and strain. Strain -specific expression of mVSG was seen at high levels in C5 , which is primarily 255 
+composed of J10.  256 
+. CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 10 Pseudotime  analysis of salivary gland development  257 
+To understand fine -scale changes  in expression patterns during  development of salivary gland  258 
+parasites, we  focused on the 161 salivary gland  cells of strain 1738 collected  over three time 259 
+points  (day 21, 24, 40  pi). The UMAP projection of  these cells showed a general 260 
+correspondence with the cluster s identified in Figure 1C, with the left-hand  group of cells 261 
+representing clusters C3 and C4 (day 21/24 pi, early and late epimastigotes) and the right- 262 
+hand group  predominantly  representing cluster C6 which included most of the  day 40 pi 263 
+transcriptomes  (Figure 3A, B ). The small branch connect ing these two groups contained 264 
+many  cells collected from the  dissociated salivary gland  tissue , which  likely represent 265 
+attached  epimastigotes  and premetacyclics . Although we cannot rule out that these parasites 266 
+were  trapped unattached  cells, their enrichment at this bottleneck in the UMAP  indicates  their 267 
+importance in the developmental transition to  metacyclics  (Figure 3C).  268 
+ 269 
+We next used  Slingshot to order these cells in  pseudotime , revealing a trajectory running from 270 
+left to right from gametes and early epimastigotes to metacyclics  (Figure 3D). We discovered 271 
+692 genes  that were differentially expressed over this trajectory ( Figure 3E, Table S4) and 272 
+used hierarchical clustering to identify modules  of co-expressed genes. Modules  expressed 273 
+early in development were enriched for genes involved in negative regulation of mitotic cell 274 
+cycle and ATP metabolism  (modules  2 and 13, Figure 3E, Table S4), while  middle - 275 
+late modules  were enriched for genes involved in translation and the ribosome , perhaps 276 
+necessitated by the changes in surface proteins and metabolism associated with 277 
+differentiation from epimastigotes to metacyclics  (Figure 3E, Table S4).  278 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 11  279 
+Figure 3. Pseudotime  trajectory analysis of developing salivary gland parasites  280 
+1738 strain parasites collected from the salivary gland at day 21, 24 and 40 pi were used to map fine - 281 
+scale changes in gene expression over development. (A-D) A UMAP of the 161 1738 salivary glands  282 
+parasites coloured by global cluster assignment from Figure 1 (A), day PI (B), attachment treatment (C) 283 
+and pseudotime assignment (D). (E) A heatmap of 20 clusters of genes differentially expressed over 284 
+the pseudotim e trajectory from (D).  285 UMAP 1UMAP 2UMAP 1UMAP 2
+−10−505
+−20 −10 0 10 20
+UMAP 1UMAP 2
+010203040Pseudotime
+UMAP 1UMAP 2attachment
+attached
+freeUMAP 1UMAP 2time
+day21
+day24
+day40
+2
+1519
+11
+20
+14
+7
+5
+17
+4
+1816
+13
+9
+10
+6
+3
+12
+1UMAP1UMAP2
+UMAP1UMAP2A B
+C D
+E
+ribonucleoprotein complex, amide biosynthetic process neg regulation of mitotic cell cycle (RHSs, 12080)
+cell surface (BARPs )ribosome , translation
+ribonucleoprotein complex, translation
+ribosome translation
+ribosome , translation
+transport , localization (PAD6, GPEET)
+ATP metabolic process
+ribosome , translation
+calcium -mediated signaling 
+ribosome , peptide metabolic process
+ribosome , translation
+positive reg of cell proliferation, cell surface (BARPs)small nucleolar ribonucleoprotein complex
+gene expression
+cell surface (BARP, EP3 -2)
+8
+nonenonenonePseudotimecluster Top GO (notable genes)
+3
+2
+1
+0
+-1
+-2
+-3UMAP1UMAP2
+UMAP 1UMAP 2Cluster
+C3
+C4
+C5
+C6
+UMAP 1UMAP 2
+UMAP 1UMAP 2
+UMAP1UMAP2. CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 12 Identification of hybrid progeny and strain -specific expression  286 
+To investigate potential cell -types and cell -type specific responses that could be involved in 287 
+sexual reproduction at day 24 post -infection, we collected J10 and 1738 p arasites from both 288 
+single -strain  infected and co -infected tsetse.  In the co -infected treatment, we sorted  cells from  289 
+both strains based on fluorescence  (1738 GFP+, J10 RFP+) , and sorted a small number of 290 
+RFP+/GFP+ potential hybrid parasites  (16 sorted, 14 passed QC) . To confirm strain 291 
+assignment, we used Souporcell to cluster different genotypes based on SNPs in the RNA - 292 
+seq reads  [40]. The two genotype clusters identified were each composed of one of  the strains 293 
+based on fluorescent identification with FACS (1738 GFP+ = cluster 0; J10 RFP+ = 1), and 294 
+the potential hybrid progeny were identified as inter -genotypic doublets (clusters 0/1 and 1/0), 295 
+with alleles present from both strains ( Figure 4A). This confirmed that six of the RFP+/GFP+ 296 
+cells were genuine hybrids, while a further three  hybrid cells were identified from the RFP - 297 
+/GFP+ or RFP+/GFP - groups; as the GFP and RFP genes are present on only one homologue, 298 
+four hybrid genotypes with respect  to fluorescent protein genes are expected  [41]. Looking at 299 
+a UMAP of all day 24 pi cells, we observed some separation of strain in both the early and late 300 
+epimastigote cluster s (C3 and C4)  and clusters C5 and C6 (Figure 4B). However, we did not 301 
+see clear clustering based on the infection treatment (co - vs single -infection), suggesting that 302 
+there is no  strong  transcriptomic response to presence of another parasite strain ( Figure 4C). 303 
+In order to unde rstand if the observed strain -specific clustering was a result of different cell - 304 
+type composition or  differential expression between strains within a cell -type, we integrated 305 
+the data across strains using  Seurat v3 [42]. Using this method , we were able to co -cluster 306 
+the early epimastigote cells and identify 11 genes differentially expressed between the two 307 
+strains ( Figure S 5, Table S5). However,  the later stage cells seen in J10 had no 308 
+representation of 1738, suggesting this cell -type is unique to this strain at day 24 pi , which 309 
+could be observed if the strains have different developmental rates (Figure S5). 310 
+ 311 
+ 312 
+Figure 4. Classification of hybrid progeny  313 
+Souporcell was  used to assign genotypes based on SNPs found between the two strains. The two 314 
+genotype assignments  (0,1) were each primarily composed of one of the strains based on fluorescent 315 
+identification with FACS (1738 GFP+/RFP - = cluster 0; J10 GFP-/RFP+ = 1), and the potential hybrid 316 
+progeny were classified  as inter -genotypic doublets (clusters 0/1 and 1/0) . The likelihood ratio of cluster 317 
+0 assignment is shown for each of the three sorted populations (A). The UMAP of day 24 mixed - and 318 
+single -infection experiments coloured by strain assignment and shaped by Figure 1 cell cluster 319 
+assignment (B) and infection treatment (C). 320 
+Transcript levels of procyclin and candidate novel sexual stage genes correlate with 321 
+protein expression in vivo . 322 
+A primary aim of this study was to identify the sexual stages of T. brucei  and our results support 323 
+the hypothesis that cluster C3 (Figure 1 ) represents meiotic intermediates and gametes, 324 
+. CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 13 which are abundant around day 21 pi  [8–10]. Looking at expression of  genes encoding 325 
+proteins known to be essential for sexual reproduction, we found high levels of expression of 326 
+HAP2  and also GEX1  in cluste r C3, with some signal from the meiosis -specific genes DMC1  327 
+and HOP1  (Figure 5A).  Surprisingly, these cells also expressed the procyclin  gene  GPEET , 328 
+which is considered to be a marker of early procyclics  in the tsetse midgut, replaced by EP 329 
+procyclins in late procyclics  [31,43] . GPEET , EP1, HAP2  and GEX1  all have the highest 330 
+expression in cluster C3 (Figure 5B). We used immunofluorescence to tie  these observations 331 
+to specific morphologi cal forms and to validate the presence of GPEET on the surface of 332 
+salivary gland parasites  (Figure 5C, Table S6). We found that GPEET, together with EP and 333 
+BARP were present in >90% of the meiotic dividers and gametes (identified by morphological 334 
+features), and as expected absent in metacyclics  (Figure 5C). Epimastigotes  showed a 335 
+similar pattern to the sexual forms  but lower total proportions. Additionally, we looked at 336 
+proventricular  parasites and found expression  of EP and GPEET but no BARPs,  further 337 
+confirming our gene expression data is matched at the protein level for these markers.    338 
+ 339 
+Figure 5. Expression of surface antigens and genes involved in sexual reproduction 340 
+throughout development in the tsetse fly.   341 
+We observed co-expression of procyclic surface antigen genes  and HAP2  in early  parasite development 342 
+in the salivary glands (A) and this general pattern of expression was  also seen in proventricular forms 343 
+. CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 14 (C2) as well as putative epimastigotes (C4) that also had high expression of BARP s (B). 344 
+Immunofluorescence assays confirmed that these surface proteins  corresponded to their transcriptional 345 
+profiles and were present on the epimastigote and sexual stages  (C).    346 
+ 347 
+Cluster C3 was additionally characterised by strong and unique expression of Tb927.10.12080 348 
+(Figure 1D, Figure 5A,B, Figure 6A ), and we hypothesized that this gene may play a role in 349 
+sexual development. It encodes a hypothetical protein devoid of recognisable functional 350 
+domains that is well -conserved in other trypanos omes including T. congolense, T. vivax, T. 351 
+cruzi  and T. grayi, and the C -terminal domain in more distantly related members of the 352 
+trypanosomatid family such as Leishmania  spp. The gene falls upstream of two RNA binding 353 
+proteins (Tb927.10.12090 ( RBP7a ); Tb9 27.10.12100 ( RBP7b )) and the recently identified 354 
+long non -coding RNA, grumpy , which all play a role in stumpy form differentiation [44,45] . 355 
+Along with Tb927.10.12080, this genomic region could potentially act as a hotspot fo r 356 
+differentiation and developmental processes across the parasite life cycle. Localisation data 357 
+for Tb927.10.12080 from Tryptag.org is equivocal, showing punctate cytoplasmic 358 
+fluorescence for the N -terminal tagged protein and a mitochondrial location in a proportion of 359 
+cells for the C -terminal tagged protein. To investigate expression of this protein during 360 
+development in the tsetse fly, we used the 3’ UTR to regulate expression of GFP driven by the 361 
+procyclin promotor ( Figure S6 ). At 20 -22 days post infecti on, there was very little detectable 362 
+expression in midgut procyclics or proventricular forms, but strong expression in salivary gland 363 
+trypanosomes ( Figure 6B ). Overall, of the parasites from the salivary gland scored, 39% 364 
+(182/464) showed expression ( Table  S7). These included meiotic intermediates and both 365 
+1K1N and 2K1N gametes but not metacyclics or unattached epimastigotes ( Figure 6C,D ).  366 
+Cell types involved in the early stages of meiosis, such as meiotic dividers and 3N cells with 367 
+one diploid and two hap loid nuclei, had lower percentages of cells expressing (10% and 50% 368 
+respectively) than did those involved in the later stages of meiosis and in gametes (77 -80%;  369 
+Figure 6C  & Table S7 ). At 37 -38 days post infection, the percentage of fluorescent 370 
+trypanosomes  dropped (103/682; 15%) and these cells were misshapen with no recognisable 371 
+gametes or sexual intermediates. Further work is needed to understand the functional role of 372 
+Tb927.10.12080 in meiosis and sexual development; however, its unique pattern of transc ript 373 
+and protein expression indicate it could play a vital role in processes that allow for genetic 374 
+exchange in T. brucei  and perhaps more broadly in kinetoplastids.  375 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 15  376 
+Figure 6. Expression of Tb927.10.12080  coincides with sexual forms .  377 
+(A) Co-expression of Tb927.10.12080 with genes encoding HAP2 and GEX1, proteins associated with 378 
+gamete and nuclear fusion in eukaryotes, and the surface antigen genes  GPEET and EP1; co - 379 
+HAP2 GEX1 GPEET EP1
+0 4 8120 4 8120 4 8120 4 812051015
+Tb927.10.12080log2 countsCluster
+C1
+C2
+C3
+C4
+C5
+C6GPEET EP1HAP2 GEX1
+0 4 8 12 0 4 8 12051015
+051015
+Tb927.10.12080log2 counts
+Meiotic 
+10% 
+(3/29)3N
+50% 
+(5/10)2N
+80% 
+(28/35)1N
+83%
+(38/46)2N
+79%
+(34/43)Gametes
+77%
+(30/39)
+BF                    DAPI                12080 BF                   DAPI                12080 
+Meiotic
+3N
+2N
+3K1N
+1K1N
+Gamete
+2K1N
+Gamete
+Epimastigote
+MetacyclicDCA B
+BF 12080 BF & 12080
+. CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 16 expression i s seen in a subset of cells from C3 (Figure 1 D). (B) Salivary gland dissected 21 days pi 380 
+that is infected with T. brucei  1738 expressing GFP::Tb927.10. 12080 -3’UTR  transcribed from the 381 
+procyclin promotor . (C) Diagram showing m ajor cell types observed during  meiosis in T. brucei  (adapted 382 
+from Peacock et al 2021) ; nuclei are shown in black (4C or 2C  DNA contents ) or grey (1C , haploid ) and 383 
+kinetoplasts are shown as smaller black dots . Values beneath are the numbers and percentages of 384 
+cells recorded for each cell type ; both 1K1N and 2K1N gametes are included in  the gamete total . Full 385 
+data are presented in Table S 7.  (D) Trypanosomes from tsetse fly salivary gland spill -out 16 -21 days 386 
+pi with T. brucei  1738 expressing GFP::Tb927.10.12080 -3’UTR transcribed from the procyclin 387 
+promotor . Left to right: phase contrast , DAPI, GFP::Tb927.10.12080 -3’UTR. The scale bar represents 388 
+10 µm. 389 
+ 390 
+Conclusion  391 
+Here we applied single -cell RNA sequencing to explore the heterogeneous trypanosome 392 
+population s in the tsetse fly. These data provide a resource for the parasitology community , 393 
+which we have made available via an interactive we bsite ( http://cellatlas.mvls.gla.ac.uk/ ). 394 
+Additionally, this data set allowed us to elucidate the transcriptional profiles of key life cycle 395 
+stages  in the salivary glands including the sexual stages. From this mixture of cell types, we 396 
+were able to identify a cluster of cells that shared a particular transcriptomic profile 397 
+characterized by high expression of the gene encodi ng the gamete fusion protein HAP2, 398 
+together with several unstudied genes. One of these was a kinetoplastid-conser ved gene 399 
+Tb927.10.12080, which was exclusively expressed at high levels by meiotic intermediates and 400 
+gametes. We specul ate that this protein, currently of unknow n function, plays a role in gamete 401 
+formation and/or fusion. 402 
+ 403 
+Materials and Methods 404 
+Data collection 405 
+Trypanosome culture and tsetse  infection  406 
+The following tsetse-transmissible strains of Trypanosoma brucei brucei were used: T. b. 407 
+brucei J10 (MCRO/ZM/73/J10) and 1738 (MOVS/KE/70/EATRO 1738); each was genetically 408 
+modified to express a fluorescent protein gene (J10 RFP, 1738 GFP). Mating between these 409 
+strains has been demonstrated previously [41] and 1738 reliably produces large numbers of 410 
+gametes around day 21 post-infection [9]. Procyclic form (PF) trypanosomes were grown in 411 
+Cunningham’s medium (CM) [46] suppl emented with 15 % v/v heat-inactivated foetal calf 412 
+serum, 5 µg/ml hemin and 10 µg/ml gentamycin at 27oC. Tsetse flies (Glossina pallidipes) 413 
+were infected with PF trypanosomes, maintained and dissect ed as descr ibed previously [8]. 414 
+ 415 
+Parasite isolation from tsetse tissues  for scRNA -seq 416 
+Free swimming parasites were obtained from G. pallidipes by separ ately pooling tissues into 417 
+CM (5 midguts in 500 µl CM; 5 provent riculi in 50 µl CM; 20 sets of salivary glands  in 50 µl 418 
+CM). Tissues were incubated at RT for 10 minutes prior to filtration through a 100 µm filter. 419 
+Cells were washed once with 1 ml CM prior to preservation or sorting. At day 40 pi, the 420 
+parasites attached to the salivary glands  were isolated by disassociation of the tissue after the 421 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 17 10-minute incubation period. Forceps were used to transfer the tissue to an enzymatic solution 422 
+consisti ng of 200 µl Collagenase IV (1 mg/ml) and 25 µl of Elastase (4 mg/ml). The sample 423 
+was then incubated at 30°C for 40 min with shaking at 300 rpm. During the incubation, the 424 
+tissue was disrupted by pipetting up and down 40 times every 15 minutes at first wit h a p1000 425 
+pipette set to 150 µl and then with a p200 set to 100 µl once the tissue started to break  up.  426 
+Cell preservation  427 
+A subset of cells was preserved prior to cell sorting to allow for greater flexibility in the time 428 
+between collections and FACS. The day 40 pi salivary glands  parasites  (attached and free) 429 
+cells were fixed by  adding 200 µl of dithio -bis(succinimidyl propionate) (DSP; Lomant’s 430 
+reagent)  dropwise  to the cell pellet as described in [47]. DSP fixed  samples were incubated at 431 
+room temperature for 30 minutes prior to adding 4 µl 1 M Tris-HCl pH 7.5. Samples were then 432 
+stored at 4°C for up to 24 hours. Prior to sorting, DTT was added to a final concent ration of 50 433 
+mM. The day 24 pi salivary gland parasites (cross vs single infection) were preserved by 434 
+resuspending the cell pellet in 200 µl Hypothermosol-FRS (BioLifeSolutions) [48]. Samples 435 
+were then stored at 4°C for 5 hours prior to sorting. 436 
+Cell sorting, library preparation and sequencing  437 
+All parasite cells were sorted within 24 hours of collection on an Influx cell sorter (BD 438 
+Biosciences) with a 200 µm nozzl e or a Sony SH800 with 100 µm chip. Parasites were sorted 439 
+based on RFP and/or GFP fluorescence into nuclease -free 96 well plates containing lysis 440 
+buffer as descr ibed previously [12]. Sorted plates were spun at 1000 g for 10 seconds and 441 
+immediately placed on dry ice. Reverse transcription, PCR, and library preparation were 442 
+performed as descr ibed in [12]. Cells were multiplexed to 384 and sequenced on a single lane 443 
+of Illumina HiSeq2500 v4 with 75 bp paired-end reads.  444 
+Immunofluorescence  445 
+Salivary glands, proventriculi and midguts from infected flies (20-22 days pi) were pooled 446 
+separ ately into CM and incubated at room temperature (RT) for 10 minutes (to allow 447 
+trypanosomes to swim out of tissue) and then filtered through a 100 µm filter with PBS.   448 
+Trypanosomes were pelleted by centrifugation and resuspended in 100 µl PBS.  Cells were 449 
+fixed overnight at 4oC by adding 100 µl 6% paraformaldehyde, 0.1% glutaraldehyde in PBS,  450 
+and then washed twice with PBS before resuspensi on in 50 µl PBS. Cell suspensi ons were 451 
+pipetted onto 2 x 10 mm cover slips, allowed to settle for 20 mins in a humid cham ber, and 452 
+then liquid was removed and replaced by 2% BSA in PBS. After 30 mins liquid was removed 453 
+and cells incubat ed with 2% BSA in PBS containing diluted antibody  for 30 mins at RT. Rabbit 454 
+anti-GPEET (1:1000) and rabbit anti-BARP (1:1000) were a kind gift from Isobel Roditi, 455 
+University of Bern, Switzerland; mouse anti-EP mAB (1:100) was from Cedarlane. Cells were 456 
+washed three times with PBS and incubated with 2% BSA in PBS containing anti-rabbit FITC 457 
+(1:1000) and anti-mouse TRITC (1:1000) for 30 mins at RT. Cells were washed three times 458 
+with PBS,  briefly air dried, stained with DAPI  in VECTASHI ELD mounting medium (Vector 459 
+Labor atories) and viewed using a DMRB microscope (Leica) equipped with a Retiga Exi 460 
+camera (QImaging) and Volocity software (PerkinElmer). The whole area of the coverslip was 461 
+scanned systematically from top to bottom, capturing FITC, TRITC, DAPI  and phase contrast 462 
+images of each trypanosome. Digital images were analysed using ImageJ 463 
+(http://rsb.info.nih.gov/ij). 464 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 18 Tb927.10.12080 gene expression  465 
+The 3’ UTR of Tb927.10.12080 was amplified from genomic DNA of 1738 using the primers 466 
+5’- GATCCTCGAGTAGTGGCGAGTGTTTACAACAGTGTC  and 5’ - 467 
+GATCGGGCCCCTTGTGCGGATCCAAACAA, and inserted immediately downstream of a 468 
+GFP gene driven b y the procyclin promotor from plasmid backbone pHD449, which is 469 
+designed for insertion into the tubulin locus  (Figure S 6) [49,50] . The plasmid construct was 470 
+used for stable transfection of procyclic 1738 and following hygromycin selection, clones were 471 
+tsetse fly transmitted as described by Peacock et al 2011, 2014. Flies were dissected 10 to 40 472 
+days pi and o rgans viewed by fluorescence microscopy and imaged live or fixed in 2% 473 
+paraformaldehyde and stained with DAPI in VECTASHIELD mounting medium (Vector 474 
+Laboratories).   475 
+scRNAseq d ata analysis  476 
+Mapping and generation of expression matrices  477 
+Nextera adaptor seque nces were trimmed from fastq files using trim_galore ( -q 20 -a 478 
+CTGTCTCTTATACACATCT --paired --stringency 3 --length 50 -e 0.1) (v 0.4.3)  [51]. Trimmed 479 
+reads were mapped using HISAT2 (hisat2 --max-intronlen 5000 -p 12) (v 2.1.0) [52] to the T. 480 
+b. brucei 927 genom e. The GFF was conver ted to GTF using the UCSC genom e browser tool 481 
+[53]. Reads were then summed against genes using HTseq (htseq-count  -f bam -r pos -s no - 482 
+t CDS) (v 0.7.1) [54]. 483 
+Assembly of VSG transcripts  484 
+Because there is a lack of conservation of VSG s across T. brucei strains, we built a de novo  485 
+transcriptome assembly to identify the mVSG transcripts expressed in 1738 and J10. First, we 486 
+merged the BAM files across the 388 cells and converted to FASTQ using bedtools (v. 2.29.2) 487 
+[55]. Using Trinity (v. 2.1.1) [56] to assemble the transcripts from this merged file, we detected 488 
+53521 ‘genes’  with a mean contig length of 800 bp. We then mapped each cell to this assem bly 489 
+using RSEM (v. 1.3.3) to generate a counts matrix and used Transdecoder (v. 5.5.0) to detect 490 
+open reading frames [57]. BLASTp (v. 2.9.0) was used to match to putative VSG s that had 491 
+been curated independent ly from whole genom e data as descr ibed below.  Transcripts 492 
+with >90% identity were used for further analysis.  493 
+Genomes for the parent strains J10 and 1738 were assembled from 76 bp paired read Illumina 494 
+data using SPADES under  default parameters. Predicted mVSGs were identified to genom ic 495 
+loci, using BLAST against the assembled contigs with a percent identity across the entire 496 
+transcript >95%, alignments of a raw score of greater than 1000 were further investigated. 497 
+Additional open reading frames were identified by BLAST alignment of the curated 927 498 
+annot ated CDS set. Nhmmer was used to identify putative mVSG promoters from the 499 
+alignments [38,39].  500 
+Quality control and normalization  501 
+Quality control and visualisation was performed in Scater (v. 1.12.2) [58]. Cell quality was 502 
+assessed based on the distribution of genes detected per single-cell transcr iptome. Cells with 503 
+fewer than 40 genes or more than 3000 genes detected were removed,  as well as cells that 504 
+had fewer than 1000 total reads.  These QC thresholds allowed us to keep more cells in the 505 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 19 analysis that are likely to be less transcriptionally active such as mature metacyclics. Out of 506 
+515 parasites isolated from tsetse tissue that were sequenced, 388 passed quality control and 507 
+were used for downstream analyses. Raw count data was normalized using a deconvolution 508 
+size factor in Scran (v. 1.16.0) [59] to account for differences in overall level of expression 509 
+between cell -types.  510 
+Cell clustering, projection, and marker genes  511 
+In order to unbiasedly group transcriptomes based on similar expression profiles, 388 cells 512 
+collected from the tsetse were clustered using K -means clustering in SC3 (v. 1.12.0) [32]. 513 
+Dimensionality reduction was performed in Scater (v. 1.12.2) [58] using Principal Component 514 
+Analysis (PCA) with the 500 most variable genes based o n log2 normalised expression values. 515 
+Marker genes were identified for each cluster using SC3 (AUROC >0.75 & adjusted p-value < 516 
+0.01).  517 
+Identification of hybrid parasites  and data integration  518 
+To select different parasite genotypes (J10, 1738, or J10x1738 cro ss) in the mixed infection 519 
+treatment, we first FACS sorted based on GFP+ (1738), RFP+ (J10), or GFP+/RFP+ (hybrid) 520 
+expression. We then used souporcell (-k 2 -p 2) (v2.0) [40] to confirm genotype assi gnment 521 
+based on SNP profiles from the scRNA -seq. 522 
+ 523 
+To identif y genes that were differentially expressed between the two strains , we used Seurat  524 
+(v3.1.5) to integrated the data by identifying anchors with the FindIntegrationAnchors () and 525 
+IntegrateData() functions. The data was then clustered using FindNeighbors() with the top 30 526 
+principal  components and FindClusters() with a resolution  of 0.5.  Differential expression was 527 
+performed using the FindMarkers() function  (adjusted p-value < 0.001) . The same integration 528 
+methods were used to compare the data to [20] except that the top 20 principal components  529 
+were used, the cluster resolution was 0.8 and the FindConservedMarkers() function  identified 530 
+markers found in both studies  (max p-value < 0.001) . 531 
+Pseudotime and diff erential expression  532 
+To assess developmental progression in 1738 salivary glands  parasites from day 21 -, 24-, 533 
+and 40 -days pi, Slingshot (v. 1.8.0) was used to infer a pseudotime developmental trajectory 534 
+[60]. Genes differentially expressed over thi s trajectory were identified using the 535 
+associationTest() function in TradeSeq (v. 1.4.0)  [61]. 536 
+ 537 
+Data availability  538 
+Raw sequence data are available on the European Nucleotide Archive under accession 539 
+ERP132258 . The expression matrix and associated code will be available on Github at 540 
+https://github.com/vhowick/tryps _single_cell . The data are explorable via the Glasgow Cell 541 
+Atlas website at http://cellatlas.mvls.gla.ac.uk/.  542 
+ 543 
+Acknowledgements  544 
+We thank the UK Biotechnology and Biological Sciences Research Council (BB/R016437/ 1 545 
+and BB/R010188/ 1) and Wellcome Trust (http://www.wellcome.ac.uk/) for funding. The 546 
+Wellcome Sanger Institute is funded by the Wellcome Trust (Grant 206194/Z/17/Z), which 547 
+suppor ts M.K.N.L. V.M.H. is supported by a Sir Henry Dale Fellowship jointly funded by the 548 
+Wellcome Trust and the Royal Society (Grant 220185/Z/20/Z). We gratefully acknowledge the 549 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 20 generous supply of tsetse pupae from the International Atomic Energy Agency, Vienna.  We 550 
+thank the Sanger In stitute flow cytometry core facility for technical support and guidance . We 551 
+thank Thomas Otto and Jesse Ropp for development and deployment of the interactive 552 
+website.  553 
+ 554 
+Author Contributions  555 
+VMH , LP, CK, and CC designed and performed all experiments . VMH, LP, CK, and WG 556 
+analysed the data. WG and MKNL  sourced funding, provided scientific direction, and 557 
+supported experimental design . VMH, LP, CK and WG wrote the manuscript with contributions 558 
+from all authors.  559 
+ 560 
+References  561 
+ 562 
+1.  Matthews KR. The developmental cell biology of Trypanosoma brucei. J Cell Sci. 563 
+2005;118: 283 –290. doi:10.1242/jcs.01649  564 
+2.  Vassella E, Acosta -Serrano A, Studer E, Lee SH, Englund PT, Roditi I. Multiple procyclin 565 
+isoforms are expressed differentially d uring the development of insect forms of 566 
+Trypanosoma brucei. J Mol Biol. 2001;312: 597 –607. doi:10.1006/jmbi.2001.5004  567 
+3.  Bütikofer P, Vassella E, Mehlert A, Ferguson MAJ, Roditi I. Characterisation and cellular 568 
+localisation of a GPEET procyclin precursor  in Trypanosoma brucei insect forms. Mol 569 
+Biochem Parasitol. 2002;119: 87 –95. doi:10.1016/s0166 -6851(01)00398 -x 570 
+4.  Bringaud F, Rivière L, Coustou V. Energy metabolism of trypanosomatids: adaptation to 571 
+available carbon sources. Mol Biochem Parasitol. 2006;1 49: 1 –9. 572 
+doi:10.1016/j.molbiopara.2006.03.017  573 
+5.  Van Den Abbeele J, Claes Y, van Bockstaele D, Le Ray D, Coosemans M. Trypanosoma 574 
+brucei spp. development in the tsetse fly: characterization of the post -mesocyclic stages 575 
+in the foregut and proboscis. Paras itology. 1999;118 ( Pt 5): 469 –478. 576 
+doi:10.1017/s0031182099004217  577 
+6.  Sharma R, Peacock L, Gluenz E, Gull K, Gibson W, Carrington M. Asymmetric cell 578 
+division as a route to reduction in cell length and change in cell morphology in 579 
+trypanosomes. Protist. 200 8;159: 137 –151. doi:10.1016/j.protis.2007.07.004  580 
+7.  Urwyler S, Studer E, Renggli CK, Roditi I. A family of stage -specific alanine -rich proteins 581 
+on the surface of epimastigote forms of Trypanosoma brucei. Mol Microbiol. 2007;63: 582 
+218–228. doi:10.1111/j.1365 -2958.2006.05492.x  583 
+8.  Peacock L, Ferris V, Sharma R, Sunter J, Bailey M, Carrington M, et al. Identification of 584 
+the meiotic life cycle stage of Trypanosoma brucei in the tsetse fly. Proc Natl Acad Sci U 585 
+S A. 2011;108: 3671 –3676. doi:10.1073/pnas.101942310 8 586 
+9.  Peacock L, Bailey M, Carrington M, Gibson W. Meiosis and haploid gametes in the 587 
+pathogen Trypanosoma brucei. Curr Biol. 2014;24: 181 –186. 588 
+doi:10.1016/j.cub.2013.11.044  589 
+10.  Peacock L, Kay C, Farren C, Bailey M, Carrington M, Gibson W. Sequential prod uction 590 
+of gametes during meiosis in trypanosomes. Commun Biol. 2021;4: 555. 591 
+doi:10.1038/s42003 -021-02058 -5 592 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 21 11.  Poran A, Nötzel C, Aly O, Mencia -Trinchant N, Harris CT, Guzman ML, et al. Single -cell 593 
+RNA sequencing reveals a signature of sexual commitment i n malaria parasites. Nature. 594 
+2017;551: 95 –99. doi:10.1038/nature24280  595 
+12.  Reid AJ, Talman AM, Bennett HM, Gomes AR, Sanders MJ, Illingworth CJR, et al. Single - 596 
+cell RNA -seq reveals hidden transcriptional variation in malaria parasites. Elife. 2018;7: 597 
+e3310 5. doi:10.7554/eLife.33105  598 
+13.  Howick VM, Russell AJC, Andrews T, Heaton H, Reid AJ, Natarajan K, et al. The Malaria 599 
+Cell Atlas: Single parasite transcriptomes across the complete Plasmodium life cycle. 600 
+Science. 2019;365. doi:10.1126/science.aaw2619  601 
+14.  Real E, Howick VM, Dahalan FA, Witmer K, Cudini J, Andradi -Brown C, et al. A single - 602 
+cell atlas of Plasmodium falciparum transmission through the mosquito. Nat Commun. 603 
+2021;12: 3196. doi:10.1038/s41467 -021-23434 -z 604 
+15.  Witmer K, Dahalan FA, Metcalf T, Talma n AM, Howick VM, Lawniczak MKN. Using 605 
+scRNA -seq to Identify Transcriptional Variation in the Malaria Parasite Ookinete Stage. 606 
+Front Cell Infect Microbiol. 2021;11: 68. doi:10.3389/fcimb.2021.604129  607 
+16.  Sà JM, Cannon MV, Caleon RL, Wellems TE, Serre D. Sin gle-cell transcription analysis 608 
+of Plasmodium vivax blood -stage parasites identifies stage - and species -specific profiles 609 
+of expression. PLoS Biol. 2020;18: e3000711. doi:10.1371/journal.pbio.3000711  610 
+17.  Nötzel C, Kafsack BFC. There and back again: malari a parasite single -cell 611 
+transcriptomics comes full circle. Trends Parasitol. 2021. doi:10.1016/j.pt.2021.07.011  612 
+18.  Briggs EM, Rojas F, McCulloch R, Matthews KR, Otto TD. Single -cell transcriptomic 613 
+analysis of bloodstream Trypanosoma brucei reconstructs cell cycle progression and 614 
+developmental quorum sensing. Nat Commun. 2021;12: 5268. doi:10.1038/s41467 -021- 615 
+25607 -2 616 
+19.  Vigneron A, O’Neill MB, Weiss BL, Savage AF, Campbell OC, Kamhawi S, et al. Single - 617 
+cell RNA sequencing of Trypanosoma brucei from tsetse salivary glands unveils 618 
+metacyclogenesis and identifies potential transmission blocking antigens. Proc Natl Acad  619 
+Sci U S A. 2020. doi:10.1073/pnas.1914423117  620 
+20.  Hutchinson S, Foulon S, Crouzols A, Menafra R, Rotureau B, Griffiths AD, et al.  The 621 
+establishment of variant surface glycoprotein monoallelic expression revealed by single - 622 
+cell RNA -seq of Trypanosoma brucei in the tsetse fly salivary glands. PLoS Pathog 17(9): 623 
+e1009904.  (2021) https://doi.org/10.1371/journal.ppat.1009904  624 
+21.  Savage AF, Cerqueira GC, Regmi S, Wu Y, El Sayed NM, Aksoy S. Transcript expression 625 
+analysis of putative Trypanosoma brucei G PI-anchored surface proteins during 626 
+development in the tsetse and mammalian hosts. PLoS Negl Trop Dis. 2012;6: e1708. 627 
+doi:10.1371/journal.pntd.0001708  628 
+22.  Telleria EL, Benoit JB, Zhao X, Savage AF, Regmi S, Alves e Silva TL, et al. Insights into 629 
+the trypa nosome -host interactions revealed through transcriptomic analysis of parasitized 630 
+tsetse fly salivary glands. PLoS Negl Trop Dis. 2014;8: e2649. 631 
+doi:10.1371/journal.pntd.0002649  632 
+23.  Kolev NG, Ramey -Butler K, Cross GAM, Ullu E, Tschudi C. Developmental prog ression 633 
+to infectivity in Trypanosoma brucei triggered by an RNA -binding protein. Science. 634 
+2012;338: 1352 –1353. doi:10.1126/science.1229641  635 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 22 24.  Savage AF, Kolev NG, Franklin JB, Vigneron A, Aksoy S, Tschudi C. Transcriptome 636 
+Profiling of Trypanosoma brucei  Development in the Tsetse Fly Vector Glossina 637 
+morsitans. PLoS One. 2016;11: e0168877. doi:10.1371/journal.pone.0168877  638 
+25.  Naguleswaran A, Doiron N, Roditi I. RNA -Seq analysis validates the use of culture - 639 
+derived Trypanosoma brucei and provides new marke rs for mammalian and insect life - 640 
+cycle stages. BMC Genomics. 2018;19: 227. doi:10.1186/s12864 -018-4600 -6 641 
+26.  Ramey -Butler K, Ullu E, Kolev NG, Tschudi C. Synchronous expression of individual 642 
+metacyclic variant surface glycoprotein genes in Trypanosoma bru cei. Mol Biochem 643 
+Parasitol. 2015;200: 1 –4. doi:10.1016/j.molbiopara.2015.04.001  644 
+27.  Christiano R, Kolev NG, Shi H, Ullu E, Walther TC, Tschudi C. The proteome and 645 
+transcriptome of the infectious metacyclic form of Trypanosoma brucei define quiescent 646 
+cells primed for mammalian invasion. Mol Microbiol. 2017;106: 74 –92. 647 
+doi:10.1111/mmi.13754  648 
+28.  Doleželová E, Kunzová M, Dejung M, Levin M, Panicucci B, Regnault C, et al. Cell -based 649 
+and multi -omics profiling reveals dynamic metabolic repurposing of mitochondri a to drive 650 
+developmental progression of Trypanosoma brucei. PLoS Biol. 2020;18: e3000741. 651 
+doi:10.1371/journal.pbio.3000741  652 
+29.  Picelli S, Faridani OR, Björklund ÅK, Winberg G, Sagasser S, Sandberg R. Full -length 653 
+RNA -seq from single cells using Smart -seq2.  Nat Protoc. 2014;9: 171 –181. 654 
+doi:10.1038/nprot.2014.006  655 
+30.  Briggs EM, Warren FSL, Matthews KR, McCulloch R, Otto TD. Application of single -cell 656 
+transcriptomics to kinetoplastid research. Parasitology. 2021;148: 1223 –1236. 657 
+doi:10.1017/S003118202100041X  658 
+31.  Bütikofer P, Ruepp S, Boschung M, Roditi I. “GPEET” procyclin is the major surface 659 
+protein of procyclic culture forms of Trypanosoma brucei brucei strain 427. Biochem J. 660 
+1997;326 ( Pt 2): 415 –423. doi:10.1042/bj3260415  661 
+32.  Kiselev VY, Kirschner K, Sch aub MT, Andrews T, Yiu A, Chandra T, et al. SC3: consensus 662 
+clustering of single -cell RNA -seq data. Nat Methods. 2017;14: 483 –486. 663 
+doi:10.1038/nmeth.4236  664 
+33.  Naguleswaran A, Fernandes P, Bevkal S, Rehmann R, Nicholson P, Roditi I. 665 
+Developmental changes and  metabolic reprogramming during establishment of infection 666 
+and progression of Trypanosoma brucei brucei through its insect host. PLoS Negl Trop 667 
+Dis. 2021;15: e0009504. doi:10.1371/journal.pntd.0009504  668 
+34.  Coustou V, Biran M, Besteiro S, Rivière L, Baltz T , Franconi J -M, et al. Fumarate is an 669 
+essential intermediary metabolite produced by the procyclic Trypanosoma brucei. J Biol 670 
+Chem. 2006;281: 26832 –26846. doi:10.1074/jbc.M601377200  671 
+35.  Dean S, Marchetti R, Kirk K, Matthews KR. A surface transporter family  conveys the 672 
+trypanosome differentiation signal. Nature. 2009;459: 213 –217. doi:10.1038/nature07997  673 
+36.  Vickerman K. Developmental cycles and biology of pathogenic trypanosomes. Br Med 674 
+Bull. 1985;41: 105 –114. doi:10.1093/oxfordjournals.bmb.a072036  675 
+37.  Sistrom M, Evans B, Bjornson R, Gibson W, Balmer O, Mäser P, et al. Comparative 676 
+genomics reveals multiple genetic backgrounds of human pathogenicity in the 677 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 23 Trypanosoma brucei complex. Genome Biol Evol. 2014;6: 2811 –2819. 678 
+doi:10.1093/gbe/evu222  679 
+38.  Ginger ML , Blundell PA, Lewis AM, Browitt A, Günzl A, Barry JD. Ex vivo and in vitro 680 
+identification of a consensus promoter for VSG genes expressed by metacyclic -stage 681 
+trypanosomes in the tsetse fly. Eukaryot Cell. 2002;1: 1000 –1009. 682 
+doi:10.1128/EC.1.6.1000 -1009.20 02 683 
+39.  Cross GAM, Kim H -S, Wickstead B. Capturing the variant surface glycoprotein repertoire 684 
+(the VSGnome) of Trypanosoma brucei Lister 427. Mol Biochem Parasitol. 2014;195: 59 – 685 
+73. doi:10.1016/j.molbiopara.2014.06.004  686 
+40.  Heaton H, Talman AM, Knights A,  Imaz M, Gaffney DJ, Durbin R, et al. Souporcell: robust 687 
+clustering of single -cell RNA -seq data by genotype without reference genotypes. Nat 688 
+Methods. 2020. doi:10.1038/s41592 -020-0820 -1 689 
+41.  Gibson W, Peacock L, Ferris V, Williams K, Bailey M. The use of y ellow fluorescent 690 
+hybrids to indicate mating in Trypanosoma brucei. Parasit Vectors. 2008;1: 4. 691 
+doi:10.1186/1756 -3305 -1-4 692 
+42.  Butler A, Hoffman P, Smibert P, Papalexi E, Satija R. Integrating single -cell transcriptomic 693 
+data across different conditions, te chnologies, and species. Nat Biotechnol. 2018;36: 694 
+411–420. doi:10.1038/nbt.4096  695 
+43.  Vassella E, Den Abbeele JV, Bütikofer P, Renggli CK, Furger A, Brun R, et al. A major 696 
+surface glycoprotein of trypanosoma brucei is expressed transiently during developmen t 697 
+and can be regulated post -transcriptionally by glycerol or hypoxia. Genes Dev. 2000;14: 698 
+615–626. Available: https://www.ncbi.nlm.nih.gov/pubmed/10716949  699 
+44.  Guegan F, Neves  D, Sequeira  M, Notredame  C, Figueiredo  LM. A long non -coding RNA 700 
+controls parasite differentiation in  African trypanosomes. Biorxiv. 2020. 701 
+doi:10.1101/2020.05.03.074625  702 
+45.  Mony BM, MacGregor P, Ivens A, Rojas F, Cowton A, Young J, et al. Genome -wide 703 
+dissect ion of the quorum sensing signalling pathway in Trypanosoma brucei. Nature. 704 
+2014;505: 681 –685. doi:10.1038/nature12864  705 
+46.  Cunningham I. New culture medium for maintenance of tsetse tissues and growth of 706 
+trypanosomatids. J Protozool. 1977;24: 325 –329. doi :10.1111/j.1550 - 707 
+7408.1977.tb00987.x  708 
+47.  Attar M, Sharma E, Li S, Bryer C, Cubitt L, Broxholme J, et al. A practical solution for 709 
+preserving single cells for RNA sequencing. Sci Rep. 2018;8: 2151. doi:10.1038/s41598 - 710 
+018-20372 -7 711 
+48.  Wang W, Penland L, Gokc e O, Croote D, Quake SR. High fidelity hypothermic 712 
+preservation of primary tissues in organ transplant preservative for single cell 713 
+transcriptome analysis. BMC Genomics. 2018;19: 140. doi:10.1186/s12864 -018-4512 -5 714 
+49.  Biebinger S, Wirtz LE, Lorenz P, Clay ton C. Vectors for inducible expression of toxic gene 715 
+products in bloodstream and procyclic Trypanosoma brucei. Mol Biochem Parasitol. 716 
+1997;85: 99 –112. Available: https://www.ncbi.nlm.nih.gov/pubmed/9108552  717 
+50.  Bingle LE, Eastlake JL, Bailey M, Gibson WC.  A novel GFP approach for the analysis of 718 
+genetic exchange in trypanosomes allowing the in situ detection of mating events. 719 
+Microbiology. 2001;147: 3231 –3240. doi:10.1099/00221287 -147-12-3231  720 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 24 51.  Martin M. Cutadapt removes adapter sequences from high -throughput sequencing reads. 721 
+EMBnet.journal. 2011;17: 10–12. Available: 722 
+https://journal.embnet.org/index.php/embnetjournal/article/view/200/479  723 
+52.  Kim D, Langmead B, Salzberg SL. HISAT: a fast spliced aligner with low memory 724 
+requirements. Nat Methods. 2015;1 2: 357 –360. doi:10.1038/nmeth.3317  725 
+53.  Kuhn RM, Haussler D, Kent WJ. The UCSC genome browser and associated tools. Brief 726 
+Bioinform. 2013;14: 144 –161. doi:10.1093/bib/bbs038  727 
+54.  Anders S, Pyl PT, Huber W. HTSeq --a Python framework to work with high -throug hput 728 
+sequencing data. Bioinformatics. 2015;31: 166 –169. doi:10.1093/bioinformatics/btu638  729 
+55.  Quinlan AR, Hall IM. BEDTools: a flexible suite of utilities for comparing genomic features. 730 
+Bioinformatics. 2010;26: 841 –842. doi:10.1093/bioinformatics/btq033  731 
+56.  Grabherr MG, Haas BJ, Yassour M, Levin JZ, Thompson DA, Amit I, et al. Full -length 732 
+transcriptome assembly from RNA -Seq data without a reference genome. Nat Biotechnol. 733 
+2011;29: 644 –652. doi:10.1038/nbt.1883  734 
+57.  Haas BJ, Papanicolaou A, Yassour M, Gra bherr M, Blood PD, Bowden J, et al. De novo 735 
+transcript sequence reconstruction from RNA -seq using the Trinity platform for reference 736 
+generation and analysis. Nat Protoc. 2013;8: 1494 –1512. doi:10.1038/nprot.2013.084  737 
+58.  McCarthy DJ, Campbell KR, Lun ATL, Wills QF. Scater: pre -processing, quality control, 738 
+normalization and visualization of single -cell RNA -seq data in R. Bioinformatics. 2017;33: 739 
+1179 –1186. doi:10.1093/bioinformatics/btw777  740 
+59.  L. Lun AT, Bach K, Marioni JC. Pooling across cells to normalize  single -cell RNA 741 
+sequencing data with many zero counts. Genome Biol. 2016;17: 75. doi:10.1186/s13059 - 742 
+016-0947 -7 743 
+60.  Street K, Risso D, Fletcher RB, Das D, Ngai J, Yosef N, et al. Slingshot: cell lineage and 744 
+pseudotime inference for single -cell transcripto mics. BMC Genomics. 2018;19: 477. 745 
+doi:10.1186/s12864 -018-4772 -0 746 
+61.  Van den Berge K, Roux de Bézieux H, Street K, Saelens W, Cannoodt R, Saeys Y, et al. 747 
+Trajectory -based differential expression analysis for single -cell sequencing data. Nat 748 
+Commun. 2020;11 : 1201. doi:10.1038/s41467 -020-14766 -3 749 
+ 750 
+ 751 
+  752 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 25 Supplementary Information  753 
+ 754 
+ 755 
+Figure S1. Quality assessment and expression of marker genes in procyclic culture 756 
+singe -cell transcriptome s  757 
+Forty -eight transcriptomes were generated using Smart -seq2 from parasites in a procyclic 758 
+culture including a no cell and ten cell control. (A) The distribution of the total counts and total 759 
+features (genes) detected in these 48 transcriptomes. (B) The total features plotted against 760 
+total counts for the 46 single -cell transcriptomes shows a plateau as features and counts 761 
+increase,  suggest ing that sequencing was saturated for these cells.  We detected a mean of 762 
+2.6x106 reads and 1756 features per single -cell transcriptome. (C) Expression of procyclic 763 
+surface antigen genes  GPEET  (Tb927.6.510 ), EP1 (Tb927.10.10260 ), EP2 764 
+(Tb927.10.10250 ), EP3_1  (Tb927.6.520 ), EP3_2  (Tb927.6.480 ). 765 
+ 766 
+. CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 26  767 
+Figure S2. Quality control of insect stage parasites  768 
+The distribution of genes detected (left) and counts (right) in each cell across the three insect 769 
+tissues: midgut (MG), proventriculus (PV), and salivary glands (SG). Cells with fewer than 40 770 
+or more than 3000 genes per cell were removed. Additionally, cells wit h fewer than 1000 reads 771 
+were removed. Cut-offs are represented by the red vertical lines in each histogram. After QC 772 
+we detected a mean of 889 genes per cell and 1.1x105 counts per cell. 773 
+ 774 
+ 775 
+ 776 
+Figure S3. Assessment of preservation  methods of salivary gland parasites  777 
+The distribution of features  detected  in salivary gland cells across the two preservation 778 
+treatments (DSP and hypothermosol) compared to live parasites. Although there were slight 779 
+differences in detection between the different treatments,  caution must be taken in interpreting 780 
+0204060
+0 1000 2000 3000 4000 5000
+detectedcountfixation
+DSP
+hypotherm
+live. CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 27 these differences as the fixation methods are confou nded with the different timepoints 781 
+collected ( DSP: day 40 ; hypothermosol : day 24 ; live: day 21) .  782 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 28  783 
+Figure S 4. Integration with Hutchinson et al  784 
+All 388  tsetse gland transcriptomes  were  integrated with Hutchinson et al  data collected from 785 
+salivary glands using S eurat’s data integration function. Plots show the UMAP of integrated 786 
+data coloured by study (A), cluster identity from the different studies (paper_id) (B), integrated 787 
+cluster assignment (C), or gene of interest (D-F). FHc (Tb92 7.3.4500 ) was the top  marker 788 
+gene (based on adjusted p -value) for the midgut and proventricular form cluster 4 (D). 789 
+Tb927.7.380  (hypothetical protein, conserved)  was the top marker gene for cluster 3 which 790 
+contained gamete and epimastigote  forms. HAP2  (Tb927.10.10770) (F) was not a marker 791 
+gene for the gamete cluster likely because of its ubiquitous expression across non -metacyclic 792 
+forms.  Although we were able to identify  conserved marker genes across the two studies, 793 
+. CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 29 separation remained in the UMAP for all cell -types (A-B) and only the non -metacyclic forms 794 
+co-clustered across the two studies and only at a granular level. The metacylic forms likely did 795 
+not cluster together because of different VSG repertoires , and the separat ion across other 796 
+cell-types may be due to time point , strain -specific expression patterns , or collection methods. 797 
+Conserved marker genes for cluster s 3 and 4 can be found in Table S 3. 798 
+  799 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 30  800 
+ 801 
+ 802 
+Figure S5. Strain -specific gene expression  (A). A UMAP of the day 24 1738 and J10 SG 803 
+parasites integrated by strain . Points are coloured by strain and shaped by Figure 1 cluster. 804 
+(B). The integrated UMAP coloured by new cluster from the integration analysis . Cluster 0 has 805 
+a representation of both strains, whereas cluster 1 and 2 are  composed primarily of 1738 or 806 
+J10, respectively. (C) Differential expression was performed between strains within cluster 0. 807 
+The t en genes wer e differentially expressed between the two strains are displayed on a 808 
+heatmap.  809 
+. CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 31  810 
+ 811 
+Figure S6. Plasmid map for GFP: :Tb927.10.12080 -3’UTR  construct  812 
+Life cycle selective expression of Tb927.10.12080 was investigated through a reporter 813 
+construct where the expression of GFP was controlled by ~ 500 bp  of UTR downstream of the 814 
+gene. For this study a stable transformant line was generated in 1738 using the 3’ UTR from 815 
+its endogenous gene and integrated into the tubulin locus.  816 
+ 817 
+Supplemental data tables  818 
+(A) Table S1 Marker genes from Figure 1  819 
+(B) Table S2 Top 200 genes expressed in each cluster  820 
+(C) Table S3 Integration with Hutchinson marker genes  821 
+(D) Table S4 DE over pseudotime  822 
+(E) Table S5 DE between strains  823 
+(F) Table S6 IFA data  824 
+(G) Table S7 12080 data  825 
+ 826 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 32  827 
+Table S6. Surface protein expression of trypanosomes from salivary glands from tsetse 828 
+dissected 19 -21 days post infected feed, using immunofluorescence.  829 
+ 830 
+ 831 
+  832 Cell type TotalNotes
+NoV.faintFaintYesNo FaintYescells
+1K1N gamete 2 5 8 0 015 15all GPEET&EP       Total gametes:
+2K1N  gamete 2 3 311 19 1982%  GPEET&EP    90% GPEET&EP, 10% only EP
+2K1N meiotic 1 1 2 2all GPEET&EP
+3K1N 3 3 3
+4K1N 1 1 1                                    To tal intermediates:
+1K2N 2 2 4 4                                    1 /22 (5%) only EP;
+2K2N 1 3 4 4                                    2 1/22 (95%) GPEET&EP
+3K2N 1 1 5 7 7
+4K2N 1 1 1
+1K3N 1 1 1
+3K3N 1 1 1
+1K1N epi 2 2 2 1 5 61/6(17%)none;1/6(17%)EP;4/6(66%)GPEET&EP
+1K1N short epi 1 1 0 1GPEET&EP
+1K1N trypo 3 1 1 1 6 63/6 (50%) only EP; 3/6 (50%) GPEET&EP
+2K2N div trypo 1 1 0 1no GPEET or EP
+1K1N meta 6 6 0 6no GPEET or EP
+Total 15 11 12 40 8 169 78
+Cell type TotalNotes
+NoV.faintFaintYesNo V.faintYescells
+1K1N gamete 4 110 15 1573%  BARP&EP          Total gametes:
+2K1N  gamete 4 3 2 9 18 1878%  BARP&EP.         76% BARP&EP, 24% only EP
+2K1N meiotic 1 2 2 5 580%  BARP&EP
+3K1N 1 2 3 3
+1K2N 2 1 3 6 6                                       To tal intermediates: 
+2K2N 1 2 4 5 12 12                                       7 /36 (19%) only EP;
+3K2N 2 1 3 3                                      2 9/36 (81%) BARP&EP
+4K2N 1 1 1
+5K2N 1 1 2 2
+2K3N 2 2 2
+3K3N 1 2 2 5 5
+4K3N 1 1 2 2
+1K1N epi 1 2 6 9 9BARP&EP
+2K1N div epi 3 3 3BARP&EP
+2K2N div epi 2 1 3 6 62/6 (33%) only EP; 4/6 (67%) BARP&EP
+1K1N trypo 2 2 1 2 7 72/7 (29%) only EP; 5/7 (71%) BARP&EP
+1K1N pre-meta 1 1 1 1 0 21/2 (50%) only BARP; 1/2 (50%) BARP&EP
+1K1N meta 8 8 0 8no BARP or EP
+Total 28 13 17 51 9 199 109GPEET- GFP EP-RFP
+BARP- GFP EP-RFP. CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint  
+ 33 Table S7. Cell types recovered from tsetse salivary gland exudate  16-21 days post infection 833 
+with T. brucei  1738 expressing GFP:: Tb927.10.12080 -3’UTR  scored for GFP fluorescence.   834 
+ 835 
+Cell Type  Fluorescent  Non-Fluorescent  Total Cells  
+Epimastigote/Dividing epimastigote  0 (0%) 86 (100% ) 86 
+Trypomastigote/Dividing trypomastigote  0 (0%) 24 (100% ) 24 
+Asymmetric Divider  0 (0%) 19 (100%) 19 
+Pre-metacyclic/Dividing pre-metacyclic  0 (0%) 29 (100% ) 29 
+Metacyclic  0 3 (100% ) 3 
+Trypomastigote-Epimastigote divider  0 4 (100% ) 4 
+Meiotic Divider 3 (10%) 26 (90%) 29 
+Meiotic intermediate 3N   5 (50%) 5 (50%) 10 
+ Meiotic intermediate 2N    28 (80%) 7 (20%) 35 
+Meiotic intermediate 3K1N or 4K1N  38 (83%) 8 (17%) 46 
+Meiotic intermediate - final division  to two 
+gametes   34 (79%) 9 (21%) 43 
+1K1N Gamete 11 (65%) 6 (35%) 17 
+2K1N Gamete 19 (86%) 3 (14%) 22 
+Unidentifiable 44 (45%) 53 (55%) 97 
+TOTAL 182 (39%) 282 (61%) 464 
+ 836 
+ 837 . CC-BY 4.0 International license perpetuity. It is made available under apreprint (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in The copyright holder for this this version posted October 29, 2021. ; https://doi.org/10.1101/2021.10.13.463681doi: bioRxiv preprint 

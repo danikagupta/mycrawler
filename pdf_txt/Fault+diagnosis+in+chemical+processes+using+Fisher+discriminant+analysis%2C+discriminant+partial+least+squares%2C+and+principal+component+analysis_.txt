@@ -1,0 +1,493 @@
+. Chemometrics and Intelligent Laboratory Systems 50 2000 243±252
+www.elsevier.com rlocate rchemometrics
+Fault diagnosis in chemical processes using Fisher discriminant
+analysis, discriminant partial least squares, and principal
+component analysis
+Leo H. Chiang, Evan L. Russell, Richard D. Braatz)
+Large Scale Systems Research Laboratory, Department of Chemical Engineering, Uni ˝ersity of Illinois at Urbana-Champaign, 600 South
+Mathews A ˝enue, Box C-3, Urbana, IL 61801, USA
+Accepted 1 November 1999
+Abstract
+. Principal component analysis PCA is the most commonly used dimensionality reduction technique for detecting and
+diagnosing faults in chemical processes. Although PCA contains certain optimality properties in terms of fault detection, and
+. has been widely applied for fault diagnosis, it is not best suited for fault diagnosis. Discriminant partial least squares DPLS
+has been shown to improve fault diagnosis for small-scale classification problems as compared with PCA. Fisher's discrimi-
+. nant analysis FDA has advantages from a theoretical point of view. In this paper, we develop an information criterion that
+automatically determines the order of the dimensionality reduction for FDA and DPLS, and show that FDA and DPLS aremore proficient than PCA for diagnosing faults, both theoretically and by applying these techniques to simulated data col-lected from the Tennessee Eastman chemical plant simulator. q2000 Elsevier Science B.V. All rights reserved.
+Keywords: Fault diagnosis; Process monitoring; Pattern classification; Discriminant analysis; Chemometric methods; Fault detection; Large
+scale systems; Multivariate statistics; Dimensionality reduction; Principal component analysis; Discriminant partial least squares; Fisher'sdiscriminant analysis
+1. Introduction
+Large amounts of data are collected in many
+chemical processes. The data can be analyzed to de-termine whether or not a fault has occurred in theprocess, where a faultis defined as abnormal pro-
+cess behavior whether associated with equipment
+)Corresponding author. Tel.: q1-217-333-5073; fax: q1-217-
+333-5052.
+. E-mail address: braatz@uiuc.edu R.D. Braatz .failure, equipment wear, or extreme process distur-
+bances. This task of determining whether a fault hasoccurred is called fault detection , whereas fault di-
+agnosisis the task of determining which fault has
+occurred. The proficiency of fault detection and di-agnosis can be improved by using dimensionality re-duction techniques such as principal component
+. analysis PCA , discriminant partial least squares
+.  .DPLS , and Fisher's discriminant analysis FDA .
+Chemicalengineersin academiaand industryhave
+applied PCA for abstracting structure from multidi-
+wx mensional chemical process data 1 . PCA deter-
+0169-7439 r00r$ - see front matter q2000 Elsevier Science B.V. All rights reserved.
+. PII: S0169-7439 99 00061-1() L.H. Chiang et al. rChemometrics and Intelligent Laboratory Systems 50 2000 243±252 244
+mines the most accurate lower dimensional represen-
+tation of the data in terms of capturing the data direc-tions that have the most variance. The resulting lowerdimensional models have been used for detectingout-of-control status and for diagnosing disturbances
+wx leading to the abnormal process operation 2±7 .
+Several applications of PCA to real chemical datahave been conducted at DuPont and other companiesover the past 6 years, with much of the results pub-lished in conference proceedings and journal articles
+wx8±11 . Several academics have performed similar
+studies based on data collected from computer simu-
+wx lations of processes 3±6,12±15 .
+FDA provides an optimal lower dimensional rep-
+resentation in terms of discriminating among classes
+wxof data 16,17 , where for fault diagnosis, each class
+correspondsto data collectedduring a specificknownfault. Although FDA has been heavily studied in thepattern classification literature and is only slightlymore complex than PCA, its use for analyzing chem-icalprocessdataisnotdescribedintheliterature.Thisis interesting, since FDA should outperform PCAwhen the primary goal is to discriminate amongfaults. We suspect that part of the reason that FDAhas been ignored in the chemical process control lit-erature is that more chemical engineers read the
+. statistics literature where PCA is dominant than the
+ pattern classification literature where FDA is domi-
+.nant .
+. Discriminant Partial Least Squares DPLS , also
+known as Discriminant Projection to Latent Struc-tures, is a data decomposition method for maximiz-
+. ingcovariancebetweenpredictor independent block
+. Xand predicted dependent block Yfor each com-
+ponent, where the predicted variables are dummy
+. variables 1 or 0 where `1' indicates an in-class
+member while `0' indicates a non-class member
+wx18±20 . DPLS computes a lower dimensional repre-
+sentation, which maximizes the covariance betweenvariables in that space and the predicted variables
+wx11 .SeveralresearchershaveappliedDPLSandPCA
+to small-scale classification problems and showedthat DPLS improved class separation over PCA
+wx18,21 . In general, fewer factors are needed in DPLS
+wx to give the same level of prediction successes 21 .
+PCA, FDA, and DPLS and their application to
+fault diagnosis are described next. An informationcriterion for FDA and DPLS is developed for deter-mining the order of the dimensionality reduction
+without cross-validation. Then the proficiency ofthese techniques for fault diagnosis are evaluated byapplication to data collected from the TennesseeEastman chemical plant simulator.
+2. Methods
+2.1. PCA
+PCA is an optimal dimensionality reduction tech-
+nique in terms of capturing the variance of the data.PCA determines a set of orthogonal vectors, calledloading˝ectors, which can be ordered by the amount
+of variance explained in the loading vector direc-tions. Given nobservations of mmeasurement vari-
+ables stacked into a training data matrix XgRR
+n=m,
+the loading vectors can be calculated via the Singular
+. Value Decomposition SVD
+1TXsUSV 1.’ny1
+whereUgRRn=nandVgRRm=mare unitary matri-
+ces and the diagonal matrix SgRRn=mcontains the
+nonnegative real singular˝aluesof decreasing mag-
+.nitude sGsG...GsG0 . The loading vec-12 m
+tors are the orthonormal column vectors in the ma-
+trixV, and the variance of the training set projected
+along the ith column of Vis equal to s2.i
+2.1.1. Fault detection
+Normal operations can be characterized by em-
+2 wx ploying Hotelling's Tstatistic 2 :
+T2sxTPSy2PTx 2.a
+wherePincludes the loading vectors associated with
+thealargest singular values, Scontains the first aa
+rows and columns of S, andxis an observation vec-
+tor of dimension m. Given a number of loading vec-
+. tors,a, to include in Eq. 2 , the threshold can be
+calculated for the T2statistic using the probability
+distribution
+n2y1a.2Ts Fa,nya 3 .  .a annya.() L.H. Chiang et al. rChemometrics and Intelligent Laboratory Systems 50 2000 243±252 245
+. whereFa,nyais the upper 100 a% critical pointa
+of theF-distribution with aandnyadegrees of
+wx2 . freedom 22,23 . A value for the Tstatistic, Eq. 2 ,
+. greater than the threshold given by Eq. 3 indicates
+that a fault has occurred.
+The portion of the measurement space corre-
+sponding to the lowest myasingular values can be
+wx monitored by using the Qstatistic 12,24 .
+QsrTr,rsIyPPTx,4 .  .
+whereris the residual vector. Since the Qstatistic
+does not directly measure the variations along eachloading vector but measures the total sum of varia-tions in the space corresponding to the lowest mya
+singular values, the Qstatistic does not suffer from
+an over-sensitivity to inaccuracies in the lower singu-
+wx lar values 24 .
+The threshold for the Qstatistic can be computed
+wx from its approximate distribution 24
+1rh0 1r22c2uh uhh y1. .a20 20 0Qsu q1qa1 2u u1 1
+5.
+n 2i . 2. where us s,hs1y2uu r3u,ij saq1j01 3 2
+andcis the normal deviate corresponding to thea
+.upper 1 yapercentile.
+2.1.2. Reduction order
+A key step in a dimensionality reduction tech-
+nique is to determine the order of the reduction, thatis, its dimensionality. There exist several techniquesfor determining the number of loading vectors, a,t o
+wx maintain in the PCA model 12,25±28 . Parallel
+analysis determines the dimensionality of the PCAmodel by comparing the singular value profile to thatobtained by assuming independent measurementvariables. The dimension is determined by the pointat which the two profiles cross. This approach is par-ticularly attractive since it is intuitive, easy to auto-mate, and performs well in practice.
+2.1.3. Fault diagnosis
+Several researchers have proposed techniques to
+use principal component analysis for fault diagnosis.The simplest approach is construct a single PCA
+model and define regions in the lower dimensionalspace which classifies whether a particular fault has
+wx occurred 29 . This approach is unlikely to be effec-
+wx tivewhenasignificantnumberoffaultscanoccur 7 .
+Another approach is to compute the group of processvariableswhichmakethegreatestcontributionstothedeviations in the squared prediction error and the
+wxscores 3 . Although such information can narrow
+down the search for an assignable cause of abnormalbehavior, it will not unequivocally diagnose thecause. A related approach is to construct separate
+wx PCA models for each process unit 12 . A fault asso-
+ciated with a particular process unit is assumed tooccur if the PCA modelfor that unit indicatesthat theprocess is out-of-control. Again, this approach cannarrow down the cause of abnormal process opera-tions, it will not unequivocally diagnose the cause.This distinguishes these fault isolation techniques
+.which are based on non-supervised classification
+ from the fault diagnosis techniques which are based
+. on supervised classification of interest here. Diagno-
+wx sis approaches particular to sensor faults 30,31 will
+also not be considered further here because the focusis on more general types of faults.
+A PCA approach which can handle general multi-
+ple faults is to develop a separate PCA model basedon data collected during each specific fault situation,
+wx
+2wx and then apply the Q32 ,T4 , or other statistics
+wx4±7 applied to each PCA model to predict which
+fault or faults most likely occurred. This approach isessentially a combination of principal component
+wx analysis and discriminant analysis 5 .
+2.2. Fisher's discriminant analysis
+For fault diagnosis, data collected from the plant
+during specific faults is categorized into classes,where each class contains data representing a partic-ular fault. FDA is an optimal dimensionality reduc-tion technique in terms of maximizing the separabil-ity of these classes. It determines a set of projectionvectors that maximize the scatter between the classeswhile minimizing the scatter within each class.
+Stacking the training data for all classes into the
+matrixXgRR
+n=mand representing the ith row of X() L.H. Chiang et al. rChemometrics and Intelligent Laboratory Systems 50 2000 243±252 246
+with the column vector x, thetotal-scatter matrix isi
+wx16,17
+n
+TSsxyxx yx 6. . .t ii
+is1
+wherexis thetotal mean ˝ectorwhose elements
+correspondto the means of the columns of X. Let the
+matrixXcontain the rows of Xcorresponding toi
+classi, then
+TSs xyxx yx 7. . .i iiii
+xgXii
+isthewithin-scattermatrix forclassiwherexis thei
+mean vector for class i. Letcbe the number of
+classes, then
+c
+SsS 8. wi
+is1
+is thewithin-class-scatter matrix , and
+c
+TSsnxyxx yx 9. . .b ii i
+is1
+is thebetween-class-scatter matrix , wherenis thei
+number of observations in class i. The total-scatter
+matrix is equal to the sum of the between-scatter ma-
+wx trix and the within-scatter matrix 16 ,
+SsSqS.1 0 .tbw
+Assuming invertible S, the FDA vectors are deter-w
+mined by computing the singularities of the opti-
+mization problem
+vTSvbmax 11 .TvSv v/0w
+equations for the case of non-invertible Sare pro-w
+wx. videdelsewhere 33±35 . TheFDAvectorsareequal
+to the generalized eigenvectors of the eigenvalueproblem:
+Sws
+lSw 12.bii wi
+where the eigenvalues lindicate the degree ofi
+overall separability among the classes. Because the
+direction and not the magnitude of wis important,i
+55 the norm is usually chosen to be ws1.i2.2.1. Fault diagnosis
+While numerous researchers have developed tech-
+niques based on first constructing PCA models basedon data collected for each fault class, and then apply-ing some form of discriminant analysis or related ap-
+wx proach to diagnose faults 4±7,32 , the FDA ap-
+proach simultaneously uses all of the data to obtain asingle lower dimensional model used to diagnosefaults. The lower dimensional representation pro-vided by FDA can be employed with discriminantfunctions, such as the T
+2statistic, to diagnose faults.
+FDA can be used to detect faults by including a classof data collected during normal process operation.
+2.2.2. Reduction order
+. Akaike's information criterion AIC is a well-
+known method for selecting the model order for sys-
+wx tem identification 36 . The AIC contains an error
+term and a term which penalizes the model complex-ity. A strength of the AIC is that it relies only on in-
+. formation in one set of data the training data , un-
+like cross validation which requires either additionaldata or a partitioning of the original data set into twosets. We propose to determine the order of the FDAmodel by computing the dimensionality, a, which
+minimizes the information criterion
+a
+fa q 13 .  .n
+.wherefais the misclassification rate for the train-
+ing set by projecting the data onto the first aFDA
+vectors and nis the average number of observations
+. per class. Eq. 13 , which is similar in form to the
+AIC, appears to be reasonable since the penalty termscales relatively well with the error term. This isconfirmed later by application.
+2.3. Discriminant partial least squares
+DPLS is a dimensionality reduction technique for
+ maximizing covariance between the predictor inde-
+. .pendent block Xand the predicted dependent
+wx blockYfor each component 18±20,37 . DPLS
+models the relationship between XandYusing a se-
+ries of local least-squares fits. In DPLS, the trainingdata for pclasses are stacked into the data matrix
+XgRR
+n=m, whereqqqq...qqsnandqis12 pi() L.H. Chiang et al. rChemometrics and Intelligent Laboratory Systems 50 2000 243±252 247
+the number of observations for class i. There are two
+methods, known as PLS1 and PLS2, to model Y. The
+predicted block YgRRn=pin PLS2 is
+10 0 PPP0.. . ... . . PPP .. . .
+10 0 PPP0
+01 0 PPP0.. . ... . . PPP .. . .
+01 0 PPP0 Ys 14... ....PPP PPP . .... ....PPP PPP . ..
+00 0 PPP1.. . ... . . PPP .. . .
+00 0 PPP1
+where each column in Ycorresponds to a class. Each
+element of Yis filled with either oneorzero. The
+firstqelements of column 1 are filled with a `1',1
+which indicates that the first qrows ofXare data1
+from fault 1. In PLS1, the algorithm is run ptimes,
+each with the same X, but for each separate column
+. ofYin Eq. 14 . This results in one model for each
+class.
+The matrices XandYare autoscaled. The matrix
+Xis decomposed into a score matrix TgRRn=aand
+a loading matrix PgRRm=a, where ais the PLS
+.n=mcomponent order , plus a residual matrix EgRR
+wx38
+XsTPTqE 15.
+In PLS2, Yis decomposed into a score matrix Ug
+RRn=a, a loading matrix QgRRp=a, plus a residual
+matrixFUgRRn=p
+YsUQTqFU16.
+The estimated Yis related to Xthrough the score
+matrixT:
+YsTBQTqF 17.
+whereFis the prediction error matrix. The matrix B
+ is selected such that the induced 2-norm of Fthe
+wx 55 maximum singular value of F39 ,F, is mini-2
+wxmized 13 . In PLS1, similar steps are performed, re-
+sulting in
+ysTBqTqf 18.ii i iiwhereygRRnis theith column of Y,TgRRn=aisii
+the score matrix, BgRRa=ais the regression matrix,i
+qTgRRais the loading vector, and fgRRnis thei i
+prediction error vector. Since there are pcolumns in
+Y, the range of iis from 1 to p.
+The most popular algorithm used to compute the
+. . parameters of Eqs. 17 and 18 in the calibration
+step is known as Non-Iterative Partial Least Squares
+. wx NIPALS 11,38 .
+2.3.1. Fault diagnosis
+After the parameters have been determined, the
+predicted block Yof the training set using PLS1train1
+andthepredicted YofthetrainingsetusingPLS2train2
+are calculated for all orders. In general, the rows of
+w YandYwill not have the form 0,0,0,...,train1 train2
+x 1,..., 0,0 ; discriminant analysis is needed to predict
+classcat each observation k. One common ap-k
+proach is to define cto be the column index whosek
+element has maximum value among row k. This ap-
+proach works well in the ideal case; that is, the clas-sification is not overestimated nor underestimated
+overestimation means the score of an in-class mem-
+ber)1 and the score of a non-class member )0,
+while underestimation means the score of an in-classmember -1 and the score of a non-class member -
+.0 . This approach also works well if allof the scores
+wx are overestimated or underestimated 20 .
+However, if some of the scores are underesti-
+mated while others are overestimated, the above ap-proach can give poor results. A method to solve thisproblemis to take account of the underestimationandoverestimation of Yinto a second cycle of PLS al-
+wxgorithm 20 . For PLS1 and PLS2, the NIPALSis run
+for the second time by replacing YbyYandy
+train2 i
+. . by theith column of Yin Eqs. 17 and 18 , re-train1
+spectively. To distinguish between the normalPLS
+method and this adjusted method, PLS1 and PLS2
+are denoted as PLS1 and PLS2 , respectively.adj adj
+Here the orders for all PLS models are determined
+. using the proposed criterion 13 .
+Although numerous researchers have proposed
+fault diagnosis algorithms based on PCA, the PCAobjective of capturing the most variance is not di-rectly related to the objective of fault diagnosis. Assuch, the resulting lower dimensional space may con-tain little of the information required to discriminate() L.H. Chiang et al. rChemometrics and Intelligent Laboratory Systems 50 2000 243±252 248
+wx among various faults 21 . Since DPLS exploits fault
+information when constructing its lower dimensionalmodel, it would be expected that DPLS can providebetter fault diagnosis than PCA. Since the FDA ob-jective directly coincides with the objective of faultdiagnosis, it would be expected to outperform bothDPLS and PCA. Using the proposed FDA statistics,
+. and the FDAand DPLSorder selectioncriterion 13 ,
+these theoreticalpredictionsare should to be valid forthe Tennessee Eastman Industrial Challenge Prob-lem.
+3. Application
+The process simulator for the Tennessee Eastman
+.TE IndustrialChallengeProblemwascreatedbythe
+Eastman Chemical Company to provide a realisticindustrial process for evaluating process control and
+wx monitoring methods 40 . The TE process simulator
+has been widely used by the process monitoringcommunity as a source of data for comparing variouswx approaches 5,6,12,14,41±43 . The plant simulator is
+based on an actual chemical process where the com-ponents, kinetics, and operating conditions were
+. modified for proprietary reasons see Fig. 1 . The
+gaseous reactants A, C, D, and E and the inert B arefed to the reactor where the liquid products G and Hare formed. The reactions in the reactor are irre-versible, exothermic, and approximately first-orderwith respect to the reactant concentrations. The reac-tor product stream is cooled through a condenser andthen fed to a vapor±liquid separator. The vapor exit-ing the separator is recycled to the reactor feedthrough the compressor. A portion of the recyclestream is purged to keep the inert and byproductsfrom accumulating in the process. The condensed
+. components from the separator Stream 10 are
+pumped to the stripper. Stream 4 is used to strip theremaining reactants in Stream 10, and is combinedwith the recycle stream. The products G and H exit-ing the base of the stripper are sent to a downstreamprocess which is not included in this process. Thesimulation code allows 21 preprogrammed major
+Fig. 1. A diagram of the Tennessee Eastman process simulator.() L.H. Chiang et al. rChemometrics and Intelligent Laboratory Systems 50 2000 243±252 249
+process faults, as shown in Table 1. The plant-wide
+control structure recommended in Lyman and Geor-
+wxgakis 44 was implemented to generate the closed
+loop simulated process data for each fault.
+The training and testing data sets for each fault
+consisted of 500 and 960 observations, respectively.Note that only the training data was used in modelorder selection-the testing data is used to see how
+Table 1
+Process faults for the Tennessee Eastman process simulator
+Variable Description Type
+.IDV 1 A rC Feed Ratio, Step
+B Composition Constant
+.Stream 4
+.IDV 2 B Composition, Step
+ArC Ratio Constant
+.Stream 4
+.IDV 3 D Feed Temperature Step
+.Stream 2
+.IDV 4 Reactor Cooling Step
+Water Inlet Temperature
+.IDV 5 Condenser Cooling Step
+Water Inlet Temperature
+.IDV 6 A Feed Loss Step
+.Stream 1
+.IDV 7 C Header Pressure Step
+Loss Ð Reduced
+. Availability Stream 4
+.IDV 8 A, B, C Feed Composition Random Variation
+.Stream 4
+.IDV 9 D Feed Temperature Random Variation
+.Stream 2
+.IDV 10 C Feed Temperature Random Variation
+.Stream 4
+.IDV 11 Reactor Cooling Random Variation
+Water Inlet Temperature
+.IDV 12 Condenser Cooling Random Variation
+Water Inlet Temperature
+.IDV 13 Reaction Kinetics Slow Drift
+.IDV 14 Reactor Cooling Sticking
+Water Valve
+.IDV 15 Condenser Cooling Sticking
+Water Valve
+.IDV 16 Unknown
+.IDV 17 Unknown
+.IDV 18 Unknown
+.IDV 19 Unknown
+.IDV 20 Unknown
+.IDV 21 The valve for Stream 4 Constant Position
+was fixed at the steadystate positionwell the methods performed, and to determine the ef-
+. fectivenessofthemodelorderselectioncriterion 13 .
+Each data set started with no faults, and the faultswereintroduced1and8simulationhoursintotherun,respectively, for the training and testing data sets. Allthe manipulated and measurement variables exceptfor the agitation speed of the reactor's stirrer for a to-tal ofms52 variables were recorded. The data was
+ sampled every 3 min, and the random seed used to
+specify the stochastic measurement noise and distur-
+.bances was changed before the computation of the
+data set for each fault. Twenty-one testing sets were
+ generated using the preprogrammed faults Fault 1-
+. .21 . In additional, one testing set Fault 0 was gen-
+erated with no faults. The data were scaled in thestandardmannerbeforetheapplicationofPCA,FDA,and DPLS. That is, the sample mean was subtractedfrom each variable, and then divided by its standarddeviation. All the training and testing data sets havebeen made available at http: rrbrahms.scs.uiuc.edu.
+The overall misclassification rate for each mea-
+surewhenappliedtoalldisturbancesofthetestingsetare listed in Table 2. As anticipated by comparingtheir objectives, FDA produced the lowest overallmisclassification rate, followed by DPLS, and PCA.
+Plots of the misclassification rates of PLS and
+. FDA as a function of model order Fig. 2a±c indi-
+cate that FDA with any order greater than 10 outper-forms all of the PLS methods, with most of the sepa-ration between fault classes by FDA being providedby the first 13 generalized eigenvectors. This indi-cates that the superior fault diagnosis provided byFDA is inherent and not due to the model order se-
+. lection criteria used in this study Eq. 13 . Fig. 2a±c
+. also indicate that the AIC Eq. 13 does a good job
+in selecting the model order for both FDA, PLS, andadjusted PLS. For FDA, the AIC captures the shapeand slope of the misclassification rate curve for thetesting data. In Fig. 2b±c, the AIC curve nearly over-laps the classification rate curves for PLS2 and ad-justed PLS2, which indicates that the AIC will givesimilar model orders as cross-validation in thesecases. ForPLS1and adjustedPLS1, the AICdoesnotoverlap with the classification rate curves, but doeshave a minimum at approximately the same order aswhere the misclassification rate curves for the testingdata flatten out. Again, this indicates that the AICprovides good model orders for the PLS1 methods.() L.H. Chiang et al. rChemometrics and Intelligent Laboratory Systems 50 2000 243±252 250
+Table 2
+Overall misclassification rates and orders for the various models
+Method Basis Misclassification rate Order
+U 2PCA T 0.742 4±16
+PCA Q 0.609 ±
+2PCA TandQ0.667 ±
+PLS1 ± 0.565 13PLS2 ± 0.567 45PLS1 ± 0.576 16
+adj
+PLS2 ± 0.574 41adj
+2FDA T 0.206 51
+UOrder selection varies for each fault class.
+All PLS methods gave similar overall misclassifi-
+. cation rates see Table 2 . For a fixed model order,
+the PLS1 methods almost always gave better fault
+. diagnosisthanthePLS2methods seeFig.2b±c .The
+performance of the PLS1 methods was also less sen-sitive to order selection than the PLS2 methods, and
+ with the AIC resulting in lower model orders see
+.Table 2 . Fig. 2d indicates that the adjusted PLS
+methods provided more consistent misclassificationrates for various faults than the non-adjusted DPLS
+methods. For example, 7 of 21 classes had misclassi-fication rates between 0.90 to 1.00 using PLS1 andPLS2, respectively. However, only 2 of 21 classes fitin the range using PLS1 and PLS2 and the high-
+adj adj
+est misclassification rate was 0.93. Since the overallmisclassification rates for the methods are similar,this indicates that for the non-adjusted PLS methodsdo better for some faults, and the adjusted PLS meth-ods do better for others.
+The PCA-based measures produced higher mis-
+classification rates than the PLS and FDA measures.The main reason for this is that PCA reduces the di-mensionality of each class by using the informationin only one class but not the information from all theclasses. The measures for PCA based on the residual
+.spaceQ-statistic performed better than the mea-
+sures based on the score space. There are two rea-sonsformostofthediscriminatorypowerbeingintheresidual space. First, the residual space is larger than
+. the score space see Table 2 . Just by the larger size
+of the residual space, it can contain more discrimina-
+. Fig. 2. The overall misclassification rates for the training and testing sets and the information criterion AIC for various orders using FDA,
+PLS1, PLS2, PLS1 , and PLS2 and the standard deviation of misclassification rates for the testing set for various orders using PLS1,adj adj
+PLS2, PLS1 , and PLS2 .adj adj() L.H. Chiang et al. rChemometrics and Intelligent Laboratory Systems 50 2000 243±252 251
+tory power. Secondly, different faults tend to create
+differentstates,andthestatisticalpropertiestypicalofthe residual space enables it to contain more discrim-inatory power.
+4. Conclusions
+Fisher discriminant analysis and discriminant PLS
+were shown to be better dimensionality reductiontechniquesthanprincipalcomponentanalysisforfaultdiagnosis. Although numerous researchers have de-veloped techniques for using PCA to diagnose faults,it is not well suited because it does not take into ac-count the information between the classes when de-termining the lower dimensional representation. FDAprovides an optimal lower dimensional representa-tion in terms of maximizing the separation amongstseveral classes. The projection vectors are ordered interms of maximizing the scatter between the classeswhile minimizing the scatter within each class. Indiscriminant PLS, the covariance between the predic-
+. tor block data from all classes and predicted block
+.representation of class membership are maximized
+for each factor. Information between classes are usedwhen determining each factor. A model selection cri-terion for FDA and discriminant PLS were proposedbased on the Akaike information criterion. The tech-niques were applied to data collected from the Ten-nesseeEastmanchemicalplantsimulator,whereFDAperformed the best, followed by DPLS and PCA.
+Acknowledgements
+This work was supported by International Paper.
+References
+wx1 J.V. Kresta, T.E. Marlin, J.F. MacGregor, Can. J. Chem. Eng.
+.69 1991 35±47.
+wx . 2 T. Kourti, J.F. MacGregor, J. Quality Technol. 28 1996
+409±428.
+wx3 J.F. MacGregor, Proc. of the IFAC Conference on Advanced
+Control of Chemical Processes, Pergamon Press, New York,1994, pp. 427±435.
+wx4 A.C. Raich, A. Cinar, Proc. of the IFAC Conf. on Advanced
+Control of Chemical Processes, Pergamon, New York, 1994,pp. 427±435.wx5 A.C. Raich, A. Cinar, Chemometrics and Intelligent Labora-
+. tory Systems 30 1995 37±48.
+wx . 6 A.C. Raich, A. Cinar, AIChE J. 42 1996 995±1009.
+wx7 J. Zhang, E. Martin, A.J. Morris, Proc. of the American Con-
+trol Conf., IEEE Press, Piscataway, NJ, 1995, pp. 751±755.
+wx8 K.A. Kosanovich, M.J. Piovoso, K.S. Dahl, J.F. MacGregor,
+P.Nomikor,Proc.oftheAmericanControlConf.,IEEEPress,Piscataway, NJ, 1994, pp. 1294±1298.
+wx9 M.J. Piovoso, K.A. Kosanovich, R.K. Pearson, Proc. of the
+American Control Conf., Piscataway, IEEE Press, NJ, 1992,pp. 2359±2363.
+wx . 10 M.J. Piovoso,K.A. Kosanovich,Int.J.Control59 1994 743.
+wx . 11 B.M. Wise, N.B. Gallagher, J. Process Control 6 1996
+329±348.
+wx12 D.M. Himes, R.H. Storer, C. Georgakis, Proc. of the Ameri-
+can Control Conf., IEEE Press, Piscataway, NJ, 1994, pp.1279±1283.
+wx . 13 M.H. Kaspar, W.H. Ray, AIChE J. 38 1992 1593±1608.
+wx14 W. Ku, R.H. Storer, C. Georgakis, Chemometrics and Intelli-
+. gent Laboratory Systems 30 1995 179±196.
+wx . . 15 H. Tong, C.M. Crowe, AIChE J. 41 7 1995 1712±1722.
+wx16 R.O. Duda, P.E. Hart, Pattern Classification and Scene Anal-
+ysis, Wiley, New York, 1973.
+wx . 17 R. Hudlet, R. Johnson, in: J. Van Ryzin Ed. , Classification
+and clustering, Academic Press, New York, 1977, pp. 371±394.
+wx18 B.K. Alsberg, R. Goodacre, J.J. Rowland, D.B. Kell, Analyt-
+. ica Chimica Acta 348 1997 389±407.
+wx19 M. Defernez, K. Kemsley, Trends in Analytical Chemistry 16
+.1997 216±221.
+wx20 J. Nouwen, F. Lindgren, W. Karcher, B. Hansen, H.J.M.
+. Verharr, J.L.M. Hermens, Environ. Sci. Technol. 31 1997
+2313±2318.
+wx21 E.K. Kemsley, Chemometrics and Intelligent Laboratory Sys-
+.tems 33 1996 47±61.
+wx22 J.F. MacGregor, T. Kourti, Control Engineering Practice 3
+.1995 403±414.
+wx23 N.D. Tracy, J.C. Young, R.L. Mason, J. Quality Control 24
+.1992 88±95.
+wx . 24 J.E. Jackson, G.S. Mudholkar, Technometrics 21 1979
+341±349.
+wx . . 25 J.L. Horn, Psychometrica 30 2 1965 179±185.
+wx26 J.E. Jackson, A User's Guide to Principal Components, Wi-
+ley, New York, 1991.
+wx . 27 S. Wold, Technometrics 20 1978 397±405.
+wx . 28 W.R. Zwick, W.F. Velicer, Psychological Bulletin 99 3
+.1965 432±442.
+wx29 B.M. Wise, N.L. Ricker, D.F. Veltkamp, Upset and sensor
+failure detection in multivariate processes,Technical report,Eigenvector Research, Manson, WA, 1989.
+wx30 R. Dunia, S.J. Qin, T.F. Edgar, T.J. McAvoy, AIChE J. 42
+.1996 2797±2812.
+wx31 A. Negiz, A. Cinar, Proc. of the American Control Conf. Pis-
+cataway, IEEE Press, NJ, 1992, pp. 2364±2368.
+wx32 W. Ku, R.H. Storer, C. Georgakis, In AIChE Annual Meet-
+ing, 1993. Paper 149g.
+wx33 Y.Q.Cheng,Y.M.Zhuang,J.Y.Yang,PatternRecognition25
+.1992 101±111.() L.H. Chiang et al. rChemometrics and Intelligent Laboratory Systems 50 2000 243±252 252
+wx . 34 Z.Q. Hong, J.Y. Yang, Pattern Recognition 24 1991 317±
+324.
+wx . 35 Q. Tian, J. Opt. Soc. Am. A 5 1988 1670±1672.
+wx36 L. Ljung, System Identification: Theory for the User, Pren-
+tice-Hall, Englewood Cliffs, NJ, 1987.
+wx37 B.K. Alsberg, D.B. Kell, R. Goodacre, Analytical Chemistry
+.70 1998 4123±4133.
+wx . 38 P.Geladi,B.R. Kowalski,AnalyticaChimicaActa185 1986
+1±17.
+wx39 G.H. Golub, C.F. van Loan, Matrix Computations, Johns
+Hopkins Univ. Press, Baltimore, MD, 1983.wx . 40 J.J. Downs, E.F. Vogel, Comput. Chem. Eng. 17 1993
+245±255.
+wx . 41 G. Chen, T.J. McAvoy, J. Process Control 8 1997 409±420.
+wx42 C. Georgakis, B. Steadman, V. Liotta, Proc. of the 13th IFAC
+World Congress, IEEE Press, Piscataway, NJ, 1996, pp. 97±101.
+wx43 A.C. Raich, Proc. of the 13th IFAC World Congress, IEEE
+Press, Piscataway, NJ, 1996, pp. 283±288.
+wx . 44 P.R. Lyman, C. Georgakis, Comput. Chem. Eng. 19 1995
+321±331.

@@ -1,0 +1,3605 @@
+TD for SP & ML
+ICASSP 2017 Tutorial #12: Tensor Decomposition
+for Signal Processing and Machine Learning
+Presenters:
+N.D. Sidiropoulos, L. De Lathauwer, X. Fu, E.E. Papalexakis
+ Sunday, March 5 2017
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17T#12: TD for SP & ML February 3, 2017 1 / 222Main reference
+N.D. Sidiropoulos, L. De Lathauwer, X. Fu, K. Huang, E.E. Papalexakis, C. Faloutsos,
+“Tensor Decomposition for Signal Processing and Machine Learning ”,IEEE
+Trans. on Signal Processing , to appear in 2017 (overview paper 32 pages; + 12 pages
+supplement, plus code and demos; arXiv preprint 1607.01668v2).
+https://arxiv.org/abs/1607.01668
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 2 / 222Tensors?
+Atensor is an array whose elements are indexed by (i;j;k;:::)–
+more than two indexes.
+Purchase data: indexed by ‘user’, ‘item’, ‘seller’, ‘time’
+Movie rating data: indexed by ‘user’, ‘movie’, ‘time’
+MIMO radar: indexed by ‘angle’, ‘range’, ‘Doppler’, ‘proﬁles’
+...
+Tensor can also represent an operator – more later.
+A matrix is a second-order (AKA two-way ) tensor, whose elements
+are indexed by (i;j).
+Three-way tensors are easy to visualize “shoe boxes”.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 3 / 222Why Are We Interested in Tensors?
+Tensor algebra has many similarities with matrix algebra, but also
+some striking differences .
+Determining matrix rank is easy (SVD), but determining
+higher-order tensor rank is NP-hard.
+Low-rank matrix decomposition is easy (SVD), but tensor
+decomposition is NP-hard.
+A matrix can have an inﬁnite number of low-rank decompositions,
+but tensor decomposition is essentially unique under mild
+conditions.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 4 / 222Pertinent Applications
+Early developments: Psychometrics and Chemometrics
+Begining from the 1990s: Signal processing
+communications, radar,
+speech and audio,
+biomedical
+...
+Starting in mid-2000’s: Machine learning and data mining
+clustering
+dimensionality reduction
+latent factor models (topic mining & community detection)
+structured subspace learning
+...
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 5 / 222Chemometrics - Fluorescence Spectroscopy
+credit:
+http://www.chromedia.org/
+11
+01020
+050100150−50005001000
+excitationdata slab 5
+emission 01020
+050100150−2000200400600800
+excitationdata slab 16
+emission
+Fig. 6. An outlying slab (left) and a relatively clean slab (r ight) of the Dorrit
+data.
+dataset, and thus the recovered spectra are believed to be cl ose
+to the ground truth - see the row tagged as ‘from pure samples’
+in Fig. 7. We see that the spectra estimated by the proposed
+algorithm are visually very similar to those measured from t he
+pure samples. However, both of the nonnegativity-constrai ned
+ℓ1andℓ2PARAFAC algorithms yield clearly worse results
+- for both of them, an estimated emission spectrum and an
+estimated excitation spectrum are highly inconsistent wit h the
+results measured from the pure samples. It is also interesti ng
+to observe the weights of the slabs given by the proposed
+algorithm in Fig. 8. One can see that the algorithm automat-
+ically fully downweights slab 5, which is consistent with our
+observation (consistent with domain expert knowledge) tha t
+slab 5 is an extreme outlying sample (cf. Fig. 6). This veriﬁe s
+the effectiveness of our algorithm for joint slab selection and
+model ﬁtting.
+D. ENRON E-mail Data Mining
+In this subsection, we apply the proposed algorithm on the
+celebratedENRONE-mailcorpus.Thisdatasetcontainsthee -
+mail communications between 184persons within 44 months.
+Speciﬁcally, X(i, j, k )denotes the number of e-mails sent by
+person ito person jwithin month k. Many studies have been
+done for mining the social groups out of this data set [26],
+[27], [49]. In particular, [27] applied a sparsity-regular ized
+and non-negativity-constrained PARAFAC algorithm on this
+data set, and some interesting (and interpretable) results have
+been obtained. In particular, the signiﬁcant non-zero elem ents
+ofA(:, r)usually correspond to persons with similar ‘social’
+positions such as lawyers or executives.
+Here, we also aim at mining the social groups out of the
+ENRON data, while taking data for ‘outlying months’ into
+consideration. It is well known that the ENRON company
+went through a criminal investigation and ﬁnally ﬁled for
+bankruptcy. Hence, one may conjecture that the e-mail inter -
+action patterns between the social groups might be irregula r
+during the outbreak of the crisis. We ﬁt the data using the
+following formulation:
+min
+A,B,CK/summationdisplay
+k=1/parenleftBig/vextenddouble/vextenddoubleX(:,:, k)−AD k(C)BT/vextenddouble/vextenddouble2
+F+ǫ/parenrightBigp
+2
+λaf(A) +λb/ba∇dblB/ba∇dbl2
+F+λc/ba∇dblC/ba∇dbl2
+F
+s.t.A≥0,B≥0,C≥0,2040608010000.10.20.30.4
+wavelength (nm)emission (proposed)
+2040608010000.10.20.30.4
+wavelength (nm)emission (L1 PARAFAC w./ nn)2040608010000.10.20.30.4
+wavelength (nm)emission (L2 PARAFAC w./ nn)2040608010000.10.20.30.4
+wavelength (nm)emission (from pure samples)
+5101500.20.40.6
+wavelength (nm)excitation (proposed)
+5101500.20.40.6
+wavelength (nm)excitation (L1 PARAFAC w./ nn)5101500.20.40.6
+wavelength (nm)excitation (L2 PARAFAC w./ nn)5101500.20.4
+wavelength (nm)excitation (from pure samples)
+Fig. 7. The estimated emission and excitation curves obtained using the
+proposedalgorithm,aswellasnonnegativity-constrained ℓ2andℓ1PARAFAC
+ﬁtting.
+05101520253000.10.20.30.4
+index of slabweight of slab
+Fig. 8. The normalized weights of the samples obtained via IRAL S.
+where f(A)is a function that promotes sparsity following the
+insight in [27]; /ba∇dblB/ba∇dbl2
+Fand/ba∇dblC/ba∇dbl2
+Fare added to avoid scaling
+/ counter-scaling issues, as in the previous example. Notic e
+that here we use an aggressive sparsity promoting function
+f(A)from [41], which itself cannot be put in closed form –
+notwithstanding, the proximal operator of f(A)can be written
+inclosed-form,andthusiseasytoincorporateintoourADMM
+framework. We ﬁt the ENRON data with R= 5as in [27],
+and set λa= 6.5×10−2,λb=λc= 10−3. The same pre-
+processing as in [27], [49] is applied to the non-zero data to
+compress the dynamic range; i.e., all the non-zero raw data
+elements are transformed by an element-wise mapping x′=
+log2(x) + 1. As in the last subsection, the proposed algorithm
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 6 / 222Chemometrics - Fluorescence Spectroscopy
+Resolved spectra of different materials.
+11
+01020
+050100150−50005001000
+excitationdata slab 5
+emission 01020
+050100150−2000200400600800
+excitationdata slab 16
+emission
+Fig. 6. An outlying slab (left) and a relatively clean slab (r ight) of the Dorrit
+data.
+dataset, and thus the recovered spectra are believed to be cl ose
+to the ground truth - see the row tagged as ‘from pure samples’
+in Fig. 7. We see that the spectra estimated by the proposed
+algorithm are visually very similar to those measured from t he
+pure samples. However, both of the nonnegativity-constrai ned
+ℓ1andℓ2PARAFAC algorithms yield clearly worse results
+- for both of them, an estimated emission spectrum and an
+estimated excitation spectrum are highly inconsistent wit h the
+results measured from the pure samples. It is also interesti ng
+to observe the weights of the slabs given by the proposed
+algorithm in Fig. 8. One can see that the algorithm automat-
+ically fully downweights slab 5, which is consistent with our
+observation (consistent with domain expert knowledge) tha t
+slab 5 is an extreme outlying sample (cf. Fig. 6). This veriﬁe s
+the effectiveness of our algorithm for joint slab selection and
+model ﬁtting.
+D. ENRON E-mail Data Mining
+In this subsection, we apply the proposed algorithm on the
+celebratedENRONE-mailcorpus.Thisdatasetcontainsthee -
+mail communications between 184persons within 44 months.
+Speciﬁcally, X(i, j, k )denotes the number of e-mails sent by
+person ito person jwithin month k. Many studies have been
+done for mining the social groups out of this data set [26],
+[27], [49]. In particular, [27] applied a sparsity-regular ized
+and non-negativity-constrained PARAFAC algorithm on this
+data set, and some interesting (and interpretable) results have
+been obtained. In particular, the signiﬁcant non-zero elem ents
+ofA(:, r)usually correspond to persons with similar ‘social’
+positions such as lawyers or executives.
+Here, we also aim at mining the social groups out of the
+ENRON data, while taking data for ‘outlying months’ into
+consideration. It is well known that the ENRON company
+went through a criminal investigation and ﬁnally ﬁled for
+bankruptcy. Hence, one may conjecture that the e-mail inter -
+action patterns between the social groups might be irregula r
+during the outbreak of the crisis. We ﬁt the data using the
+following formulation:
+min
+A,B,CK/summationdisplay
+k=1/parenleftBig/vextenddouble/vextenddoubleX(:,:, k)−AD k(C)BT/vextenddouble/vextenddouble2
+F+ǫ/parenrightBigp
+2
+λaf(A) +λb/ba∇dblB/ba∇dbl2
+F+λc/ba∇dblC/ba∇dbl2
+F
+s.t.A≥0,B≥0,C≥0,2040608010000.10.20.30.4
+wavelength (nm)emission (proposed)
+2040608010000.10.20.30.4
+wavelength (nm)emission (L1 PARAFAC w./ nn)2040608010000.10.20.30.4
+wavelength (nm)emission (L2 PARAFAC w./ nn)2040608010000.10.20.30.4
+wavelength (nm)emission (from pure samples)
+5101500.20.40.6
+wavelength (nm)excitation (proposed)
+5101500.20.40.6
+wavelength (nm)excitation (L1 PARAFAC w./ nn)5101500.20.40.6
+wavelength (nm)excitation (L2 PARAFAC w./ nn)5101500.20.4
+wavelength (nm)excitation (from pure samples)
+Fig. 7. The estimated emission and excitation curves obtained using the
+proposedalgorithm,aswellasnonnegativity-constrained ℓ2andℓ1PARAFAC
+ﬁtting.
+05101520253000.10.20.30.4
+index of slabweight of slab
+Fig. 8. The normalized weights of the samples obtained via IRAL S.
+where f(A)is a function that promotes sparsity following the
+insight in [27]; /ba∇dblB/ba∇dbl2
+Fand/ba∇dblC/ba∇dbl2
+Fare added to avoid scaling
+/ counter-scaling issues, as in the previous example. Notic e
+that here we use an aggressive sparsity promoting function
+f(A)from [41], which itself cannot be put in closed form –
+notwithstanding, the proximal operator of f(A)can be written
+inclosed-form,andthusiseasytoincorporateintoourADMM
+framework. We ﬁt the ENRON data with R= 5as in [27],
+and set λa= 6.5×10−2,λb=λc= 10−3. The same pre-
+processing as in [27], [49] is applied to the non-zero data to
+compress the dynamic range; i.e., all the non-zero raw data
+elements are transformed by an element-wise mapping x′=
+log2(x) + 1. As in the last subsection, the proposed algorithm
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 7 / 222Signal Processing - Signal Separation
+Spectrum sensing in cognitive radio – the multiple transceiver
+case.
+1
+A Factor Analysis Framework for Power Spectra
+Separation and Multiple Emitter Localization
+Xiao Fu, Nicholas D. Sidiropoulos, John H. Tranter, and Wing-K in Ma
+Abstract—Spectrum sensing for cognitive radio has focused on
+detection and estimation of aggregate spectra, without regard
+for latent component identiﬁcation. Unraveling the constituent
+power spectra and the locations of ambient transmitters can be
+viewed as the next step towards situational awareness, which
+canfacilitateefﬁcientopportunistictransmissionandinterferenc e
+avoidance. This paper focuses on power spectra separation
+and multiple emitter localization using a network of multi-
+antenna receivers. A PARAllel FACtor analysis (PARAFAC)-
+based framework is proposed that offers an array of attractiv e
+features, including identiﬁability guarantees, ability to work
+with asynchronous receivers, and low communication overhead.
+Dealing with corrupt receiver reports due to shadowing or
+jamming can be a practically important concern in this con-
+text, and addressing it requires new theory and algorithms. A
+robust PARAFAC formulation and a corresponding factorization
+algorithm are proposed for this purpose, and identiﬁability of the
+latent factors is theoretically established for this more challenging
+setup. In addition to pertinent simulations, real experiments
+with a software radio prototype are used to demonstrate the
+effectiveness of the proposed approach.
+Index Terms — Spectrum estimation, spectra separation, emit-
+ter localization, tensor factorization, nonnegativity, robust es ti-
+mation, cognitive radio
+I. INTRODUCTION
+Cognitive radio can help resolve the problem of spectrum
+scarcity, by exploring and judiciously exploiting transmi ssion
+opportunities in space, time, and frequency. Spectrum sensing
+is the ﬁrst step towards this end, enabling secondary spectr um
+reuse while limiting collisions and persistent interferen ce to
+licensed users [2], [3].
+There is rich literature on spectrum sensing viewed as a
+set of parallel detection problems, one per frequency bin; s ee
+[4] for a recent tutorial. Wideband spectrum sensing genera lly
+requires high sampling rates, implying expensive analog-t o-
+digital converters (ADCs) that consume considerable amoun t
+of energy and can hardly ﬁt in portable devices. Exploiting
+Copyright (c) 2015 IEEE. Personal use of this material is permi tted.
+However, permission to use this material for any other purpose s must be
+obtained from the IEEE by sending a request to pubs-permissio ns@ieee.org.
+Original manuscript submitted to IEEE Trans. Signal Process. , January 15,
+2015; revised, May 12, 2015; accepted for publication, June 18, 2015. A
+conference version of part of this work was presented at ICAS SP 2014 [1].
+X. Fu was with the Department of Electronic Engineering, the C hinese
+University of Hong Kong, Shatin, N.T., Hong Kong; he is now wi th the
+Department of Electrical and Computer Engineering, Universi ty of Min-
+nesota, Minneapolis, MN, 55455, e-mail: xfu@umn.edu. N. D. Si diropoulos
+and J. H. Tranter are with the Department of Electrical and Comp uter
+Engineering, University of Minnesota, Minneapolis, MN, 55 455, e-mail:
+(nikos,trant004)@umn.edu. W.-K. Ma is with the Department of Electronic
+Engineering, the Chinese University of Hong Kong, Shatin, N .T., Hong Kong,
+e-mail: wkma@ieee.org.PU
+PU 1PU 1PU 1
+PU 1
+PU 2PU 2PU 2
+CR RX
+CR RXCR TX
+CR TXCRU
+band of interestband of interestfreq.
+freq.
+spacespace
+(a)
+(b)
+Fig. 1. Motivationforspectra separation andtransmitter lo calization. Primary
+user 1 (PU1) is engaged in two-way communication with another n ode (not
+shown) using the same set of frequencies to receive and transmi t in time-
+division duplex (TDD) mode. PU2 is likewise communicating with another
+node (not shown). (a) Using aggregate spectrum sensing, the cognitive radio
+units (CRU) see the band of interest fully occupied. Since PU 2 and CR
+receivers are co-located, beamforming cannot be used for spat ial interference
+avoidance. (b) If the individual PU power spectra and node lo cations can be
+estimated, on the other hand, the CR transmitter can modulate it s signal in
+the band occupied by PU1 and beamform towards the CR receiver / PU2.
+frequency-domain sparsity, compressive spectrum sensing can
+obtain accurate spectrum estimates at sub-Nyquist samplin g
+rates, without frequency sweeping [5]. Cooperative spectr um
+sensing schemes that use compressive sensing have been
+considered in [6], [7], where the spectrum is estimated loca lly,
+then consensus on globally fused sensing outcomes is reache d.
+Whereas most work on spectrum sensing (e.g., [4]–[7]) has
+focused on reconstructing the signal’s Fourier spectrum (i.e.,
+the Fourier transform of the signal itself), in cognitive ra dio
+and certain other applications only the power spectrum (PS)
+(i.e., the Fourier transform of the signal’s autocorrelati on) is
+needed – there is no reason to reconstruct or demodulate the
+time-domain signal itself [8]–[10]. It was shown in [9] that the
+sampling rate requirements can be considerably relaxed by e x-
+ploiting a low-order correlation model, without even requi ring
+spectrum sparsity. The main idea in this line of work is that
+power measurements are linear in the autocorrelation funct ion,
+hence a ﬁnite number of autocorrelation lags can be estimate d
+by building an over-determined system of linear equations.
+This autocorrelation-based parametrization also underpi ns re-
+cent work in so-called frugal sensing [11]–[13], dealing with
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 8 / 222Signal Processing - Signal Separation
+12
+source 1source 2
+∼3-4m∼
+3-4m
+∼
+0.3m∼6cm−65◦
+50◦
+receiver 1
+receiver 2
+Fig. 14. Experimental layout of two transmitter, two receiver network.
+The two single-antenna radios inside each dashed box are syn chronized with
+each other to act as a dual-antenna receiver; the two dashed b oxes are not
+synchronized with one another.
+yields visually better estimation of the second power spect rum
+(ESPRIT shows more residual leakage from the ﬁrst spectrum
+to the second).
+Table V summarizes the results of multiple laboratory
+experiments (averaged over 10 measurements), to illustrat e the
+consistency and effectiveness of our proposed framework. I n
+order to establish a metric for the performance of our power
+spectra separation, we deﬁne the side-lobe to main-lobe rat io
+(SMR) as our performance measurement. Speciﬁcally, let S1
+andS2denote the frequency index sets occupied by source 1
+and source 2, respectively. We deﬁne
+SMR =1
+2/parenleftbigg/bardblˆs1(:,S2)/bardbl1
+/bardblˆs1(:,S1)/bardbl1+/bardblˆs2(:,S1)/bardbl1
+/bardblˆs2(:,S2)/bardbl1/parenrightbigg
+;
+notice that SMR ∈[0,1], and since the power spectra from
+source 1 and source 2 do not overlap, S1andS2are disjoint,
+which is necessary for the SMR metric as deﬁned above to
+be meaningful. Note that lower SMRs signify better spectra
+separation performance. We observe that the average SMRs of
+the ESPRIT and TALS algorithms are reasonably small, while
+NMF exhibits approximately double SMR on average. The
+estimated average DOAs are also presented in Table V; one
+can see that both ESPRIT and TALS yield similar estimated
+DOAs. It should be noted that power spectra separation was
+consistently achieved over numerous trials with varying ge om-
+etry of source-receiver placement; DOA estimates exhibite d
+somewhat greater variation in accuracy.
+TABLE V
+THE ESTIMATED AVERAGE MRRS ANDDOAS BYESPRIT, TALS, AND
+NMFRESPECTIVELY .
+Algorithm Measure Avergae Result
+ESPRITSMR 0.1572
+DOAs (−67.1438◦,47.3884◦)
+TALSSMR 0.1014
+DOAs (−67.1433◦,53.0449◦)
+NMFSMR 0.2537
+DOAs -0 200 400 600 800 1000
+Index of frequency binNormalized PSDcontributed by source 1
+contributed by source 2
+Fig. 15. The measured power spectrum using y2,1(t).
+0 200 400 600 800 1000
+Index of frequency binNormalized PSD
+0 200 400 600 800 1000
+Index of frequency binNormalized PSD
+  ESPRIT
+TALS
+Fig. 16. The separated power spectra by ESPRIT and TALS, resp ectively.
+VIII. C ONCLUSION
+The problem of joint power spectra separation and source
+localization has been considered in this paper. Working in t he
+temporalcorrelationdomain,thisproblemhasbeenformula ted
+as a PARAFAC decomposition problem. This novel formu-
+lation does not require synchronization across the differe nt
+multi-antenna receivers, and it can exhibit better identiﬁ -
+ability than conventional spatial correlation-domain sen sor
+array processing approaches such as MI-SAP. Robustness
+issues have also been considered, and identiﬁability of the
+latent factors (and the receivers reporting corrupted data ) was
+theoretically established in this more challenging setup. A
+robust PARAFAC algorithm has been proposed to deal with
+this situation, and extensive simulations have shown that t he
+proposed approaches are effective. In addition to simulati ons,
+real experiments with a software radio prototype were used t o
+demonstrate the effectiveness of the proposed approach.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 9 / 222Signal Processing - Signal Separation
+12
+source 1source 2
+∼3-4m∼
+3-4m
+∼
+0.3m∼6cm−65◦
+50◦
+receiver 1
+receiver 2
+Fig. 14. Experimental layout of two transmitter, two receiver network.
+The two single-antenna radios inside each dashed box are synchronized wit h
+each other to act as a dual-antenna receiver; the two dashed boxes are not
+synchronized with one another.
+yields visually better estimation of the second power spectrum
+(ESPRIT shows more residual leakage from the ﬁrst spectrum
+to the second).
+Table V summarizes the results of multiple laboratory
+experiments (averaged over 10 measurements), to illustrate theconsistency and effectiveness of our proposed framework. In
+order to establish a metric for the performance of our power
+spectra separation, we deﬁne the side-lobe to main-lobe ratio(SMR) as our performance measurement. Speciﬁcally, let S
+1
+andS2denote the frequency index sets occupied by source 1
+and source 2, respectively. We deﬁne
+SMR =1
+2/parenleftbigg/bardblˆs1(:,S2)/bardbl1
+/bardblˆs1(:,S1)/bardbl1+/bardblˆs2(:,S1)/bardbl1
+/bardblˆs2(:,S2)/bardbl1/parenrightbigg
+;
+notice that SMR ∈[0,1], and since the power spectra from
+source 1 and source 2 do not overlap, S1andS2are disjoint,
+which is necessary for the SMR metric as deﬁned above tobe meaningful. Note that lower SMRs signify better spectra
+separation performance. We observe that the average SMRs of
+the ESPRIT and TALS algorithms are reasonably small, whileNMF exhibits approximately double SMR on average. The
+estimated average DOAs are also presented in Table V; one
+can see that both ESPRIT and TALS yield similar estimated
+DOAs. It should be noted that power spectra separation was
+consistently achieved over numerous trials with varying geom-etry of source-receiver placement; DOA estimates exhibited
+somewhat greater variation in accuracy.
+TABLE V
+THE ESTIMATED AVERAGE MRRS ANDDOASB YESPRIT, TALS, AND
+NMFRESPECTIVELY .
+Algorithm Measure Avergae Result
+ESPRITSMR 0.1572
+DOAs (−67.1438◦,47.3884◦)
+TALSSMR 0.1014
+DOAs (−67.1433◦,53.0449◦)
+NMFSMR 0.2537
+DOAs -0 200 400 600 800 1000
+Index of frequency binNormalized PSDcontributed by source 1
+contributed by source 2
+Fig. 15. The measured power spectrum using y2,1(t).
+0 200 400 600 800 1000
+Index of frequency binNormalized PSD
+0 200 400 600 800 1000
+Index of frequency binNormalized PSDESPRIT
+TALS
+Fig. 16. The separated power spectra by ESPRIT and TALS, respectively.
+VIII. C ONCLUSION
+The problem of joint power spectra separation and source
+localization has been considered in this paper. Working in the
+temporalcorrelationdomain,thisproblemhasbeenformulatedas a PARAFAC decomposition problem. This novel formu-
+lation does not require synchronization across the different
+multi-antenna receivers, and it can exhibit better identiﬁ-
+ability than conventional spatial correlation-domain sensor
+array processing approaches such as MI-SAP. Robustness
+issues have also been considered, and identiﬁability of the
+latent factors (and the receivers reporting corrupted data) was
+theoretically established in this more challenging setup. Arobust PARAFAC algorithm has been proposed to deal with
+this situation, and extensive simulations have shown that the
+proposed approaches are effective. In addition to simulations,
+real experiments with a software radio prototype were used to
+demonstrate the effectiveness of the proposed approach.
+12
+source 1source 2
+∼3-4m∼
+3-4m
+∼
+0.3m∼6cm−65◦
+50◦
+receiver 1
+receiver 2
+Fig. 14. Experimental layout of two transmitter, two receiver network.
+The two single-antenna radios inside each dashed box are syn chronized with
+each other to act as a dual-antenna receiver; the two dashed b oxes are not
+synchronized with one another.
+yields visually better estimation of the second power spect rum
+(ESPRIT shows more residual leakage from the ﬁrst spectrum
+to the second).
+Table V summarizes the results of multiple laboratory
+experiments (averaged over 10 measurements), to illustrat e the
+consistency and effectiveness of our proposed framework. I n
+order to establish a metric for the performance of our power
+spectra separation, we deﬁne the side-lobe to main-lobe rat io
+(SMR) as our performance measurement. Speciﬁcally, let S1
+andS2denote the frequency index sets occupied by source 1
+and source 2, respectively. We deﬁne
+SMR =1
+2/parenleftbigg/bardblˆs1(:,S2)/bardbl1
+/bardblˆs1(:,S1)/bardbl1+/bardblˆs2(:,S1)/bardbl1
+/bardblˆs2(:,S2)/bardbl1/parenrightbigg
+;
+notice that SMR ∈[0,1], and since the power spectra from
+source 1 and source 2 do not overlap, S1andS2are disjoint,
+which is necessary for the SMR metric as deﬁned above to
+be meaningful. Note that lower SMRs signify better spectra
+separation performance. We observe that the average SMRs of
+the ESPRIT and TALS algorithms are reasonably small, while
+NMF exhibits approximately double SMR on average. The
+estimated average DOAs are also presented in Table V; one
+can see that both ESPRIT and TALS yield similar estimated
+DOAs. It should be noted that power spectra separation was
+consistently achieved over numerous trials with varying ge om-
+etry of source-receiver placement; DOA estimates exhibite d
+somewhat greater variation in accuracy.
+TABLE V
+THE ESTIMATED AVERAGE MRRS ANDDOAS BYESPRIT, TALS, AND
+NMFRESPECTIVELY .
+Algorithm Measure Avergae Result
+ESPRITSMR 0.1572
+DOAs (−67.1438◦,47.3884◦)
+TALSSMR 0.1014
+DOAs (−67.1433◦,53.0449◦)
+NMFSMR 0.2537
+DOAs -0 200 400 600 800 1000
+Index of frequency binNormalized PSDcontributed by source 1
+contributed by source 2
+Fig. 15. The measured power spectrum using y2,1(t).
+0 200 400 600 800 1000
+Index of frequency binNormalized PSD
+0 200 400 600 800 1000
+Index of frequency binNormalized PSD
+  ESPRIT
+TALS
+Fig. 16. The separated power spectra by ESPRIT and TALS, resp ectively.
+VIII. C ONCLUSION
+The problem of joint power spectra separation and source
+localization has been considered in this paper. Working in t he
+temporalcorrelationdomain,thisproblemhasbeenformula ted
+as a PARAFAC decomposition problem. This novel formu-
+lation does not require synchronization across the differe nt
+multi-antenna receivers, and it can exhibit better identiﬁ -
+ability than conventional spatial correlation-domain sen sor
+array processing approaches such as MI-SAP. Robustness
+issues have also been considered, and identiﬁability of the
+latent factors (and the receivers reporting corrupted data ) was
+theoretically established in this more challenging setup. A
+robust PARAFAC algorithm has been proposed to deal with
+this situation, and extensive simulations have shown that t he
+proposed approaches are effective. In addition to simulati ons,
+real experiments with a software radio prototype were used t o
+demonstrate the effectiveness of the proposed approach.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 10 / 222Machine Learning - Social Network Co-clustering
+Email data from the Enron company.
+Indexed by ‘sender’, ‘receiver’, ‘month’ – a three-way tensor.
+23
+05101520253035404500.020.040.060.080.10.12weight
+monthchange of CEO, crisis breaks, bankrupcy
+Fig. 8. The normalized weights yielded by the proposed algorithm when app lied on the ENRON e-mail data.
+Fig. 8. This veriﬁes our guess: The interaction pattern duri ng this particular period is not regular,
+and downweighting these slabs can give us more clean social g roups.
+TABLE III
+THE DATA MINING RESULT OF THE ENRON E- MAIL CORPUS BY THE PROPOSED ALGORITHM .
+cluster 1 (Legal; 16 persons) cluster 2 (Excecutive; 18 persons) cluster 3 (Executive; 25 persons)
+Brenda Whitehead, N/A David Delainey, CEO ENA and Enron Energy Services Andy Zipper , VP Enron Online
+Dan Hyvl, N/A Drew Fossum, VP Transwestern Pipeline Company (ETS) Jeffrey Shankman, President Enron Global Markets
+Debra Perlingiere, Legal Specialist ENA Legal Elizabeth Sager, VP and Asst Legal Counsel ENA Legal Barry Tycholiz, VP Marketing
+Elizabeth Sager, VP and Asst Legal Counsel ENA Legal James Steffes, VP Government Affairs Richard Sanders, VP Enron Wholesale Services
+Jeff Hodge, Asst General Counsel ENA Legal Jeff Dasovich, Employee Government Relationship Executive James Steffes, VP Government Affairs
+Kay Mann, Lawyer John Lavorato, CEO Enron America Mark Haedicke, Managing Director ENA Legal
+Louise Kitchen, President Enron Online Kay Mann, Lawyer Greg Whalley, President
+Marie Heard, Senior Legal Specialist ENA Legal Kevin Presto, VP East Power Trading Jeff Dasovich, Employee Government Relationship Executive
+Mark Haedicke, Managing Director ENA Legal Margaret Carson, Employee Corporate and Environmental Policy Jeffery Skilling, CEO
+Mark Taylor , Manager Financial Trading Group ENA Legal Mark Haedicke, Managing Director ENA Legal Vince Kaminski, Manager Risk Management Head
+Richard Sanders, VP Enron Wholesale Services Philip Allen, VP West Desk Gas Trading Steven Kean, VP Chief of Staff
+Sara Shackleton, Employee ENA Legal Richard Sanders, VP Enron Wholesale Services Joannie Williamson, Executive Assistant
+Stacy Dickson, Employee ENA Legal Richard Shapiro , VP Regulatory Affairs John Arnold, VP Financial Enron Online
+Stephanie Panus, Senior Legal Specialist ENA Legal Sally Beck, COO John Lavorato, CEO Enron America
+Susan Bailey, Legal Assistant ENA Legal Shelley Corman, VP Regulatory Affairs Jonathan McKa, Director Canada Gas Trading
+Tana Jones, Employee Financial Trading Group ENA Legal Steven Kean, VP Chief of Staff Kenneth Lay, CEO
+Susan Scott, Employee Transwestern Pipeline Company (ETS) Liz Taylor, Executive Assistant to Greg Whalley
+Vince Kaminski, Manager Risk Management Head Louise Kitchen, President Enron Online
+cluser 4 (Trading; 12 persons) cluster 5 (Pipeline; 15 persons) Michelle Cash, N/A
+Chris Dorland, Manager Bill Rapp, N/A Mike McConnel, Executive VP Global Markets
+Eric Bas, Trader Texas Desk Gas Trading Darrell Schoolcraft, Employee Gas Control (ETS) Kevin Presto, VP East Power Trading
+Philip Allen, Manager Drew Fossum, VP Transwestern Pipeline Company (ETS) Richard Shapiro, VP Regulatory Affairs
+Kam Keiser, Employee Gas Kevin Hyatt, Director Asset Development TW Pipeline Business (ETS) Rick Buy, Manager Chief Risk Management Ofﬁcer
+Mark Whitt, Director Marketing Kimberly Watson, Employee Transwestern Pipeline Company (ETS) Sally Beck, COO
+Martin Cuilla, Manager Central Desk Gas Trading Lindy Donoho, Employee Transwestern Pipeline Company (ETS) Hunter Shively, VP Central Desk Gas Trading
+Matthew Lenhart, Analyst West Desk Gas Trading Lynn Blair, Employee Northern Natural Gas Pipeline (ETS)
+Michael Grigsby, Director West Desk Gas Trading Mark McConnell, Employee Transwestern Pipeline Company (ETS)
+Monique Sanchez, Associate West Desk Gas Trader (EWS) Michelle Lokay, Admin. Asst. Transwestern Pipeline Company (ETS)
+Susan Scott, Employee Transwestern Pipeline Company (ETS) Rod Hayslett, VP Also CFO and Treasurer
+Jane Tholt, VP West Desk Gas Trading Shelley Corman, VP Regulatory Affairs
+Philip Allen, VP West Desk Gas Trading Stanley Horton, President Enron Gas Pipeline
+Susan Scott, Employee Transwestern Pipeline Company (ETS)
+Teb Lokey, Manager Regulatory Affairs
+Tracy Geaccone, Manager (ETS)
+VIII. C ONCLUSION
+In this work, we considered the problem of low-rank tensor de composition in the presence of
+outlying slabs. Several practical motivating application s have been introduced. A conjugate aug-
+mented optimization framework has been proposed to deal wit h the formulated ℓpminimization-
+based factorization problem. The proposed algorithm featu res similar complexity as the classic
+TALS algorithm that is not robust to outlying slabs. Regulari zed and constrained optimization
+has also been considered by employing an ADMM update scheme. Simulations using synthetic
+March 31, 2015 DRAFT
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 11 / 222Machine Learning - Social Network Co-clustering
+23
+05101520253035404500.020.040.060.080.10.12weight
+monthchange of CEO, crisis breaks, bankrupcy
+Fig. 8. The normalized weights yielded by the proposed algorithm when app lied on the ENRON e-mail data.
+Fig. 8. This veriﬁes our guess: The interaction pattern duri ng this particular period is not regular,
+and downweighting these slabs can give us more clean social g roups.
+TABLE III
+THE DATA MINING RESULT OF THE ENRON E- MAIL CORPUS BY THE PROPOSED ALGORITHM .
+cluster 1 (Legal; 16 persons) cluster 2 (Excecutive; 18 persons) cluster 3 (Executive; 25 persons)
+Brenda Whitehead, N/A David Delainey, CEO ENA and Enron Energy Services Andy Zipper , VP Enron Online
+Dan Hyvl, N/A Drew Fossum, VP Transwestern Pipeline Company (ETS) Jeffrey Shankman, President Enron Global Markets
+Debra Perlingiere, Legal Specialist ENA Legal Elizabeth Sager, VP and Asst Legal Counsel ENA Legal Barry Tycholiz, VP Marketing
+Elizabeth Sager, VP and Asst Legal Counsel ENA Legal James Steffes, VP Government Affairs Richard Sanders, VP Enron Wholesale Services
+Jeff Hodge, Asst General Counsel ENA Legal Jeff Dasovich, Employee Government Relationship Executive James Steffes, VP Government Affairs
+Kay Mann, Lawyer John Lavorato, CEO Enron America Mark Haedicke, Managing Director ENA Legal
+Louise Kitchen, President Enron Online Kay Mann, Lawyer Greg Whalley, President
+Marie Heard, Senior Legal Specialist ENA Legal Kevin Presto, VP East Power Trading Jeff Dasovich, Employee Government Relationship Executive
+Mark Haedicke, Managing Director ENA Legal Margaret Carson, Employee Corporate and Environmental Policy Jeffery Skilling, CEO
+Mark Taylor , Manager Financial Trading Group ENA Legal Mark Haedicke, Managing Director ENA Legal Vince Kaminski, Manager Risk Management Head
+Richard Sanders, VP Enron Wholesale Services Philip Allen, VP West Desk Gas Trading Steven Kean, VP Chief of Staff
+Sara Shackleton, Employee ENA Legal Richard Sanders, VP Enron Wholesale Services Joannie Williamson, Executive Assistant
+Stacy Dickson, Employee ENA Legal Richard Shapiro , VP Regulatory Affairs John Arnold, VP Financial Enron Online
+Stephanie Panus, Senior Legal Specialist ENA Legal Sally Beck, COO John Lavorato, CEO Enron America
+Susan Bailey, Legal Assistant ENA Legal Shelley Corman, VP Regulatory Affairs Jonathan McKa, Director Canada Gas Trading
+Tana Jones, Employee Financial Trading Group ENA Legal Steven Kean, VP Chief of Staff Kenneth Lay, CEO
+Susan Scott, Employee Transwestern Pipeline Company (ETS) Liz Taylor, Executive Assistant to Greg Whalley
+Vince Kaminski, Manager Risk Management Head Louise Kitchen, President Enron Online
+cluser 4 (Trading; 12 persons) cluster 5 (Pipeline; 15 persons) Michelle Cash, N/A
+Chris Dorland, Manager Bill Rapp, N/A Mike McConnel, Executive VP Global Markets
+Eric Bas, Trader Texas Desk Gas Trading Darrell Schoolcraft, Employee Gas Control (ETS) Kevin Presto, VP East Power Trading
+Philip Allen, Manager Drew Fossum, VP Transwestern Pipeline Company (ETS) Richard Shapiro, VP Regulatory Affairs
+Kam Keiser, Employee Gas Kevin Hyatt, Director Asset Development TW Pipeline Business (ETS) Rick Buy, Manager Chief Risk Management Ofﬁcer
+Mark Whitt, Director Marketing Kimberly Watson, Employee Transwestern Pipeline Company (ETS) Sally Beck, COO
+Martin Cuilla, Manager Central Desk Gas Trading Lindy Donoho, Employee Transwestern Pipeline Company (ETS) Hunter Shively, VP Central Desk Gas Trading
+Matthew Lenhart, Analyst West Desk Gas Trading Lynn Blair, Employee Northern Natural Gas Pipeline (ETS)
+Michael Grigsby, Director West Desk Gas Trading Mark McConnell, Employee Transwestern Pipeline Company (ETS)
+Monique Sanchez, Associate West Desk Gas Trader (EWS) Michelle Lokay, Admin. Asst. Transwestern Pipeline Company (ETS)
+Susan Scott, Employee Transwestern Pipeline Company (ETS) Rod Hayslett, VP Also CFO and Treasurer
+Jane Tholt, VP West Desk Gas Trading Shelley Corman, VP Regulatory Affairs
+Philip Allen, VP West Desk Gas Trading Stanley Horton, President Enron Gas Pipeline
+Susan Scott, Employee Transwestern Pipeline Company (ETS)
+Teb Lokey, Manager Regulatory Affairs
+Tracy Geaccone, Manager (ETS)
+VIII. C ONCLUSION
+In this work, we considered the problem of low-rank tensor de composition in the presence of
+outlying slabs. Several practical motivating application s have been introduced. A conjugate aug-
+mented optimization framework has been proposed to deal wit h the formulated ℓpminimization-
+based factorization problem. The proposed algorithm featu res similar complexity as the classic
+TALS algorithm that is not robust to outlying slabs. Regulari zed and constrained optimization
+has also been considered by employing an ADMM update scheme. Simulations using synthetic
+March 31, 2015 DRAFT
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 12 / 222Goals of this course
+A comprehensive overview with sufﬁcient technical depth.
+Required background: First graduate courses in linear algebra,
+probability & random vectors. A bit of optimization will help, but not
+strictly required.
+Sufﬁcient technical details to allow graduate students to start
+tensor-related research; and practitioners to start developing
+tensor software.
+Proofs of and insights from special cases that convey the essence.
+Understand the basic (and very different) ways in which tensor
+decompositions are used in signal processing and machine
+learning.
+Various examples of how practical problems are formulated and
+solved as tensor decomposition problems.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 13 / 222Roadmap
+Preliminaries
+Rank and rank decomposition (CPD)
+Uniqueness, demystiﬁed
+Other models
+- Tucker, MLSVD
+- Tensor Trains, PARALIND / Block Component Decomposition, ...
+(brief)
+Algorithms
+- basic and constrained algorithms, factorization at scale
+Applications in signal processing and machine learning
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 14 / 222Rank & Rank Decomposition - Matrices
+Consider an IJmatrix X.
+colrank (X) :=no. of linearly indep. columns of X, i.e.,
+dim(range (X)).
+colrank (X)is the minimum k2Nsuch that X=ABT, where Ais
+anIkbasis of range (X), and BTiskJ.
+dim(range (XT)), which is the minimum `2Nsuch that XT=BAT
+() X=ABT, where BisJ`andATis`I.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 15 / 222Rank & Rank Decomposition - Matrices
+X=P`
+n=1anbT
+n, where A= [a1;;a`]andB= [b1;;b`].
+rank (X) =minimum msuch that X=Pm
+n=1anbT
+n.
+Easy to notice: colrank (X) =rowrank (X) =rank (X).
+The three deﬁnitions actually coincide!
+Obviously, rank (X)min(I;J).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 16 / 222Low-Rank Matrix Approximation
+In practice, we observe X=L+N.
+L=ABTis low-rank.
+Nrepresents noise and ‘unmodeled dynamics’.
+In many cases we are interested in the Lpart:
+min
+Ljrank (L)=`jjX Ljj2
+F() min
+A2RI`;B2RJ`jjX ABTjj2
+F:
+Solution: truncated SVD of X.
+X=UVT,L=U(:;1:`)(1:`;1:`)(V(:;1:`))T.
+A=U(:;1:`)(1:`;1:`),B=V(:;1:`).
+Even without noise, low-rank decomposition of Xis non-unique:
+ABT=AMM 1BT= (AM)(BM T)T;
+holds for any non-singular M.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 17 / 222Useful Products
+Kronecker product ofA(IK) and B(JL) is the IJKLmatrix
+A
+B:=2
+6664BA(1;1)BA(1;2) BA(1;K)
+BA(2;1)BA(2;2) BA(2;K)
+.........
+BA(I;1)BA(I;2) BA(I;K)3
+7775
+Properties:
+b
+a=vec(abT).
+vec 
+AMBT
+= (B
+A)vec(M).
+vec
+AMBT
+=vec KX
+k=1LX
+`=1A(:;k)M(k;`)(B(:;`))T!
+=KX
+k=1LX
+`=1M(k;`)B(:;`)
+A(:;k)
+= ( B
+A)vec(M):
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 18 / 222Useful Products - Cont’d
+The vectorization property is handy for computation:
+min
+MjjX AMBTjj2
+F() min
+mjjvec(X) (B
+A)mjj2
+2;
+where m=vec(M).
+Khatri-Rao Product :AB:= [a1
+b1;a`
+b`]:
+Deﬁne D=Diag (d)andd=diag (D). vec 
+ADBT
+= (BA)d;
+which is useful when dealing with the following
+min
+D=Diag (d)jjX ADBTjj2
+F() min
+djjvec(X) (BA)djj2
+2:
+Khatri–Rao product BAis a subset of columns from B
+A.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 19 / 222Useful Products - More Properties
+(A
+B)
+C=A
+(B
+C)(associative)
+Note though that A
+B6=B
+A(non-commutative).
+(A
+B)T=AT
+BT(note order, unlike (AB)T=BTAT).
+(A
+B)=A
+B=)(A
+B)H=AH
+BH
+,Hstand for conjugation and Hermitian transposition, respectively.
+(A
+B)(E
+F) = ( AE
+BF)( mixed product rule).
+(A
+B) 1=A 1
+B 1, for square A,B.
+IfA=U11VT
+1andB=U22VT
+2,A
+B= (U11VT
+1)
+(U22VT
+2)
+= (U1
+U2)(1
+2)(V1
+V2)T.
+rank (A
+B) =rank (A)rank (B).
+tr(A
+B) =tr(A)tr(B), for square A,B.
+det(A
+B) =det(A)det(B), for square A,B.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 20 / 222Useful Products - More Properties
+(AB)C=A(BC)(associative).
+AB6=BA(non-commutative).
+(A
+B)(EF) = ( AE)(BF)(mixed product rule).
+Heads-up: the mixed product rule plays an essential role in
+large-scale tensor computations.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 21 / 222Useful Products - Tensor Outer Product
+Tensor (outer) product ofa(I1)andb(J1)is deﬁned as
+theIJmatrix a}bwith elements
+(a}b)(i;j) =a(i)b(j)
+Note that a}b=abT.
+a}b}cwith elements (a}b}c)(i;j;k) =a(i)b(j)c(k).
+Naturally generalizes to three- and higher-way cases.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 22 / 222Tensor Rank
+Figure: Schematic of a rank-1 matrix and tensor.
+Arank-1 matrix X of size IJis an outer product of two vectors:
+X(i;j) =a(i)b(j),8i2f1;;Ig,j2f1;;Jg; i.e.,
+X=a}b:
+Arank-1 third-order tensor X of size IJKis an outer
+product of three vectors: X(i;j;k) =a(i)b(j)c(k); i.e.,
+X=a}b}c:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 23 / 222Tensor Rank
+Rank of matrix Xis the smallest FthatX=PF
+f=1af}bfholds for
+some af’s and bf’s.
+Rank of tensor X is the minimum number of rank-1 tensors
+needed to produce Xas their sum.
+A tensor of rank at most Fcan be written as
+X=FX
+f=1af}bf}cf() X(i;j;k) =FX
+f=1af(i)bf(j)cf(k)
+It is also customary to use X(i;j;k) =PF
+f=1ai;fbj;fck;f.
+LetA:= [a1;;aF],B:= [b1;;bF], and C:= [c1;;cF])
+X(i;j;k) =PF
+f=1A(i;f)B(j;f)C(k;f).
+For brevity, X=JA;B;CK.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 24 / 222Tensor Rank - Illustration
+a1 a2 a3b1 b2 b3c1 c2 c3
++ + =
+Figure: Schematic of tensor of rank three.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 25 / 222Slab Representations
+… …
+Frontal slabs Horizontal slabsLateral slabs
+Figure: Slab views of a three-way tensor.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 26 / 222Slab Representations - Towards Rank Decomposition
+Let us look at the frontal slab X (:;:;1)ofX:
+X(i;j;1) =FX
+f=1af(i)bf(j)cf(1) =)X(:;:;1) =FX
+f=1afbT
+fcf(1) =
+ADiag ([c1(1);c2(1);;cF(1)])BT=ADiag (C(1;:))BT:
+Denote D k(C) :=Diag (C(k;:))for brevity. Hence, for any k,
+X(:;:;k) =ADk(C)BT;vec(X(:;:;k)) = ( BA)(C(k;:))T;
+By parallel stacking, we obtain the matrix unfolding
+X3:= [vec(X(:;:;1));vec(X(:;:;2));;vec(X(:;:;K))]!
+X3= (BA)CT;(IJK):
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 27 / 222Slab Representations - Towards Rank Decomposition
+In the same vain, we may consider lateral slabs , e.g.,
+X(:;j;:) =ADj(B)CT!vec(X(:;j;:)) = ( CA)(B(j;:))T:
+Hence
+X2:= [vec(X(:;1;:));vec(X(:;2;:));;vec(X(:;J;:))]!
+X2= (CA)BT;(IKJ);
+Similarly for the horizontal slabs X (i;:;:) =BDi(A)CT,
+X1:= [vec(X(1;:;:));vec(X(2;:;:));;vec(X(I;:;:))]!
+X1= (CB)AT;(KJI):
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 28 / 222Slab Representations
+… …
+Frontal slabs Horizontal slabsLateral slabs
+Figure: Slab views of a three-way tensor.
+Frontal slabS :X(:;:;k) =ADk(C)BT.
+Horizontal slabs :X(i;:;:) =BDi(A)CT.
+Lateral slabs :X(:;j;:) =ADj(B)CT.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 29 / 222Low-rank Tensor Approximation
+Adopting a least squares criterion, the problem is
+min
+A;B;CjjX FX
+f=1af}bf}cfjj2
+F;
+Equivalently, we may consider
+min
+A;B;CjjX1 (CB)ATjj2
+F:
+Alternating optimization:
+A argmin
+AjjX1 (CB)ATjj2
+F;
+B argmin
+BjjX2 (CA)BTjj2
+F;
+C argmin
+CjjX3 (BA)CTjj2
+F;
+The above is widely known as Alternating Least Squares (ALS) .
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 30 / 222Bounds on Tensor Rank
+For an IJmatrix X, we know that rank (X)min(I;J), and
+rank (X) = min( I;J)almost surely.
+Considering X=ABTwhere AisIFandBisJF, the
+number of unknowns , ordegrees of freedom (DoF) in the ABT
+model is (I+J 1)F.
+The number of equations in X=ABTisIJ, suggesting that F(at
+most) of order min(I;J)may be needed.
+What can we say about IJKtensors X?
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 31 / 222Bounds on Tensor Rank
+ForX=PF
+f=1af}bf}cf, the DoF is (I+J+K 2)F.
+The number of equations is IJK.
+This suggests that
+FdIJK
+I+J+K 2e
+may be needed to describe an arbitrary tensor Xof size IJK.
+Suggests a 3rd-order tensor’s rank can potentially be
+min(IJ;JK;IK).
+In fact this turns out being sufﬁcient as well.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 32 / 222Bounds on Tensor Rank - An Intuitive Way to See It
+Denote X(:;:;k) =AkBT
+k.
+X(:;:;k)is of size IJ)AkandBkhave at most min(I;J)
+columns.
+LetA:= [A1;;AK],B:= [B1;;BK], and
+C:=IKK
+11min(I;J), we can synthesize XasX=JA;B;CK.
+Thekth frontal slab looks like
+X(:;:;k) = [A1;:::; AK]2
+66666640::: 0
+.........
+::: Imin(I;J):::
+.........
+0::: 03
+7777775[B1;:::; BK]T
+implies at most min(IK;JK)columns in A;B;Cto represent X.
+Using role symmetry, the rank upper bound is min(IK;JK;IJ).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 33 / 222A Lower Bound of Tensor Rank
+Concatenate the frontal slabs one next to each other
+[X(:;:;1)X(:;:;K)] =Ah
+Dk(C)BTDk(C)BTi
+Fmust bedim(range ([X(:;:;1)X(:;:;K)])).
+Deﬁne
+R1(X) :=dim colspan (X) :=dim spanfX(:;j;k)g8j;k;
+R2(X) :=dim rowspan (X) :=dim spanfX(i;:;k)g8i;k;
+R3(X) :=dim ﬁberspan (X) :=dim spanfX(i;j;:)g8i;j:
+We have max( R1;R2;R3)F.
+Combining with our previous argument on upper bound, we have
+max( R1;R2;R3)Fmin(R1R2;R2R3;R1R3):
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 34 / 222Typical, Generic, and Border Rank
+Consider a 222 tensor Xwhose elements are i.i.d., drawn
+from the standard normal distribution N(0;1).
+The rank of Xover the real ﬁeld , i.e., when we consider
+X=FX
+f=1af}bf}cf;af2R21;bf2R21;cf2R21;8f
+is
+rank (X) =2;with probability
+4
+3;with probability 1  
+4
+The rank of the same Xis 2 with probability 1 when decomposition
+over the complex ﬁeld.
+As another example, for X=randn(3,3,2),
+rank (X) =8
+>><
+>>:3;with probability1
+2
+4;with probability1
+2;overR;
+3;with probability 1 ;overC:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 35 / 222Typical & Generic Rank
+Consider the 222 case and denote S1:=X(:;:;1)and
+S2:=X(:;:;2).
+ForXto have rank (X) =2, we must be able to express these
+slabs as
+S1=AD1(C)BT;and S2=AD2(C)BT;
+for some 22 real or complex matrices A,B, and C.
+IfX=randn(2,2,2), S1andS2are nonsingular almost surely.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 36 / 222Typical & Generic Rank
+A,B,D1(C), and D2(C)must all be nonsingular too.
+Denoting ~A:=AD1(C),D:= (D1(C)) 1D2(C),BT= (~A) 1S1,
+andS2=~AD(~A) 1S1, leading to
+S2S 1
+1=~AD(~A) 1:
+For rank (X) =2 overR, the matrix S2S 1
+1should have two real
+eigenvalues.
+But complex conjugate eigenvalues do arise with positive
+probability.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 37 / 222Typical & Generic Rank
+We see that the rank of a tensor for decomposition over Ris a
+random variable that can take more than one value with positive
+probability.
+These values are called typical ranks .
+For decomposition over Cthe situation is different:
+rank (randn(2,2,2) ) =2 with probability 1.
+When there is only one typical rank (that occurs with probability 1
+then) we call it generic rank .
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 38 / 222Border Rank
+Consider X=u}u}v+u}v}u+v}u}u;where
+jjujj=jjvjj=1, withjuTvj6=1.
+Consider
+Xn=n(u+1
+nv)}(u+1
+nv)}(u+1
+nv) nu}u}u
+=u}u}v+u}v}u+v}u}u+
++1
+nv}v}u+ +1
+nu}v}v+1
+n2v}v}v;
+soXn=X+terms that vanish as n!1:
+Xhas rank equal to 3, but border rank equal to 2 [Com14].
+The above example shows the following is ill-posed in general:
+min
+faf;bf;cfgF
+f=1X FX
+f=1af}bf}cf2
+F:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 39 / 222Comments
+For a tensor of a given size, there is always one typical rank over
+C, which is therefore generic.
+ForI1I2 INtensors, this generic rank is the value
+dQN
+n=1InPN
+n=1In N+1e
+except for the so-called defective cases:
+(i)I1>QN
+n=2In PN
+n=2(In 1)
+(ii) the third-order case of dimension (4;4;3)
+(iii) the third-order cases of dimension (2p+1;2p+1;3),p2N
+(iv) the 4th-order cases of dimension (p;p;2;2),p2N
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 40 / 222Comments - Cont’d
+Typical rank may change when the tensor is constrained in some
+way; e.g., when the frontal slabs are symmetric.
+Consider, for example, a fully symmetric tensor, i.e., one such that
+X(i;j;k) =X(i;k;j) =X(j;i;k) =X(j;k;i) =X(k;i;j) =X(k;j;i).
+Then the symmetric rank ofN-way XoverCis deﬁned as the
+minimum Rsuch that X=PR
+r=1ar}ar}}ar.
+It has been shown that this symmetric rank equals d I+N 1
+N
+=Ie
+almost surely except in the defective cases
+(N;I) = ( 3;5);(4;3);(4;4);(4;5), where it is 1 higher [AH95].
+Taking N=3 as a special case, this formula gives(I+1)(I+2)
+6.
+We also remark that constraints such as nonnegativity of a factor
+matrix can strongly affect rank.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 41 / 222Tensor Rank
+Maximal and typical ranks for decomp. over R[KB09, Lan12].
+Table: Maximum attainable rank over R.
+Size Maximum attainable rank over R
+IJ2 min(I;J) + min( I;J;bmax( I;J)=2c)
+222 3
+333 5
+Table: Typical rank over R
+Size Typical ranks over R
+II2fI;I+1g
+IJ2,I>J min(I;2J)
+IJK,I>JK JK
+Table: Symmetry may affect typical rank.
+Size Typical ranks, R Typical ranks, R
+partial symmetry no symmetry
+II2fI;I+1gfI;I+1g
+9336 9
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 42 / 222Tensor Rank in Practice
+Given a particular tensor X, determining rank (X)is NP-hard
+[H˚as90].
+Is this an issue in practical applications of tensor decomposition?
+In applications, one is really interested in ﬁtting a model that has
+the “essential” or “meaningful” number of components – “signal
+rank”.
+Determining the signal rank is challenging, even in the matrix
+case.
+There exist heuristics that can help.
+... but, at the end of the day, the process generally involves some
+trial-and-error.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 43 / 222Tensors as Operators – Rank Matters
+Consider M1M2, where M1andM2are both 22 matrices.
+A naive implementation of P=M1M2requires 8 multiplications.
+The rank of a tensor can give an upper bound of the number of
+multiplications that is needed.
+Deﬁne [vec(P)]k=vec(M1)TXkvec(M2), e.g.,
+X1=2
+6641 0 0 0
+0 0 0 0
+0 1 0 0
+0 0 0 03
+775;
+then vec (M1)TXkvec(M2) =P(1;1).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 44 / 222Tensors as Operators – Rank Matters
+Assume that Xhas a decomposition Xk=ADk(C)BTwith rank F.
+Any element of Pcan be written as vec (M1)TADk(C)BTvec(M2).
+BTvec(M2)can be computed using Finner products, and the
+same is true for vec (M1)TA.
+If the elements of A,B,Ctake values inf0;1g, then these inner
+products require no multiplication.
+Letting uT:=vec(M1)TAandv:=BTvec(M2), it remains to
+compute uTDk(C)v=PF
+f=1u(f)v(f)C(k;f),8k2f1;2;3;4g.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 45 / 222Tensor as Operator – Rank Matters
+Fmultiplications to compute the products fu(f)v(f)gF
+f=1.
+The rest is all selections, additions, subtractions if Ctakes values
+inf0;1g.
+The rank of Strassen’s 4 44 tensor is 7, so F=7 sufﬁces.
+Contrast to the “naive” approach which entails F=8
+multiplications.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 46 / 222Are Matrix Unfoldings Rank-Revealing?
+Recall we have three unfoldings
+X1= (CB)AT;X2= (CA)BT;X3= (BA)CT
+If rank (CB) =rank (A) =F, then rank (X1) =F=rank (X).
+For this to happen it is necessary (but not sufﬁcient) that JKF,
+andIF, soFhas to be small: Fmin(I;JK).
+It follows that Fmax(min( I;JK);min(J;IK);min(K;IJ))is
+necessary to have a rank-revealing matricization of the tensor.
+However, we know that the (perhaps unattainable) upper bound
+onF=rank (X)isFmin(IJ;JK;IK).
+In more general (and more interesting cases) of tensor
+factorization,
+F=rank (X)max( rank (X1);rank (X2);rank (X3)):
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 47 / 222Going to Higher-Order
+Let us start with 4-way tensors:
+X(i;j;k;`) =FX
+f=1af(i)bf(j)cf(k)ef(`);88
+>><
+>>:i2f1;;Ig
+j2f1;;Jg
+k2f1;;Kg
+`2f1;;Lg
+or, equivalently X=FX
+f=1af}bf}cf}ef:
+Upon deﬁning A:= [a1;;aF],B:= [b1;;bF],
+C:= [c1;;cF],E:= [e1;;eF], we may also write
+X(i;j;k;`) =FX
+f=1A(i;f)B(j;f)C(k;f)E(`;f);
+and we sometimes also use X(i;j;k;`) =PF
+f=1ai;fbj;fck;fe`;f.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 48 / 222Going to Higher-Order
+Now consider X(:;:;:;1), which is a third-order tensor:
+X(i;j;k;1) =FX
+f=1ai;fbj;fck;fe1;f:
+let us vectorize X(:;:;:;1)into an IJK1 vector
+vec(vec(X(:;:;:;1))) = ( CBA)(E(1;:))T:
+Stacking one next to each other the vectors corresponding to
+X(:;:;:;1),X(:;:;:;2),,X(:;:;:;L), we obtain (CBA)ET;
+and after one more vec ()we get (ECBA)1.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 49 / 222Going to Higher-Order
+(ECBA)1= ((EC)(BA))1=vec 
+(BA)(EC)T
+:
+“Balanced” matricization of the 4th-order tensor:
+Xb= (BA)(EC)T:
+Xbisrank-revealing means Fmin(IJK;IJL;IKL;JKL)
+Looks better than the 3-order case? - but the rank upper bound is
+also much higher.
+In short: matricization can reveal tensor rank in low-rank cases
+only.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 50 / 222Going to Higher-Order
+For a general N-way tensor, we can write it in scalar form as
+X(i1;;iN) =FX
+f=1a(1)
+f(i1)a(N)
+f(iN) =FX
+f=1a(1)
+i1;fa(N)
+iN;f;
+and in (combinatorially!) many different ways, including
+XN= (AN 1 A1)AT
+N!vec(XN) = ( AN A1)1:
+We sometimes also use the shorthand vec (XN) = 
+1
+n=NAn
+1.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 51 / 222Reprise – what’s coming next
+CPD: Uniqueness, demystiﬁed
+Tucker
+MLSVD: Properties, analogies, computation
+Links between CPD and Tucker, MLSVD
+Other models:
+Tensor Trains
+Hierarchical Tucker
+PARALIND and Block-Term Decomposition
+Coupled Decompositions
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 52 / 222Reprise
+Most signiﬁcant advantage of tensors vs. matrices: low-rank
+tensor decomposition (essentially) unique for rank 1, even
+rank>#rows, columns, ﬁbers.
+For matrices, only true for rank =1 – not interesting, in most
+cases.
+But why tensors (of order 3) are so different may seem like a
+mystery ...
+Phase transition between second-order (matrices) and third- or
+higher-order tensors.
+Let’s shed some light into this phenomenon.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 53 / 222Essential uniqueness
+a1 a2 a3b1 b2 b3c1 c2 c3
++ + =
+Given tensor Xof rank F, its CPD is essentially unique iff the F
+rank-1 terms in its decomposition (the outer products or “chicken
+feet”) are unique;
+i.e., there is no other way to decompose Xfor the given number of
+terms.
+Can of course permute “chicken feet” without changing their sum
+!permutation ambiguity.
+Can scale a1byand counter-scale b1(orc1) by1
+.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 54 / 222Essential uniqueness
+a1 a2 a3b1 b2 b3c1 c2 c3
++ + =
+IfX=JA;B;CK, with A:IF,B:JF, and C:KF, then
+essential uniqueness means that A,B, and Care unique up to a
+common permutation and scaling / counter-scaling of columns.
+Meaning that if X=qA;B;Cy
+, for some A:IF,B:JF, and
+C:KF, then there exists a permutation matrix and diagonal
+scaling matrices 1;2;3such that
+A=A1;B=B2;C=C3;123=I:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 55 / 222Simple proof of uniqueness
+Consider IJ2 tensor Xof rank Fmin(I;J).
+X(1)=X(:;:;1) =AD1(C)BT;
+X(2)=X(:;:;2) =AD2(C)BT;
+Assume, for the moment, no zero element on the diagonals.
+eA:=AD1(C),D:= (D1(C)) 1D2(C).
+Then, X(1)=eABT;X(2)=eADBT, or
+X(1)
+X(2)
+="
+eA
+eAD#
+BT:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 56 / 222Simple proof of uniqueness
+[U;;V] =svdX(1)
+X(2)
+, i.e.,X(1)
+X(2)
+=UVT
+Assuming rank 
+X(1)
+=rank 
+X(2)
+=F()rank of all matrices is
+F)!
+U=U1
+U2
+="
+eA
+eAD#
+M="
+eAM
+eADM#
+;
+where matrix MisFFnonsingular.
+Compute auto- and cross-correlation
+R1=UT
+1U1=MTeATeAM =:QM;
+R2=UT
+1U2=MTeATeADM =QDM:
+Both R1andR2areFFnonsingular.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 57 / 222Simple proof of uniqueness
+What have we accomplished so far?
+Obtained equations involving square nonsingular matrices
+(instead of possibly tall, full column rank ones). Key step comes
+next: 
+R 1
+1R2
+M 1=M 1D
+M 1holds eigenvectors of
+R 1
+1R2
+, and Dholds eigenvalues
+(assumed to be distinct, for the moment).
+9freedom to scale eigenvectors (remain eigenvectors), and
+obviously one cannot recover the order of the columns of M 1.
+!permutation and scaling ambiguity in recovering M 1from
+eigendecomposition of
+R 1
+1R2
+.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 58 / 222Simple proof of uniqueness
+What we do recover is actually eM 1=M 1, where is a
+permutation matrix and is a nonsingular diagonal scaling matrix.
+If we useeM 1to recovereAfrom equation U1=eAM)
+eA=U1M 1, we will in fact recover eA.
+That is,eAup to the same column permutation and scaling that
+stem from the ambiguity in recovering M 1.
+Now easy to see that we can recover BandCby going back to
+the original equations for X(1)andX(2)and left-inverting A.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 59 / 222Simple proof of uniqueness
+During the course of the derivation, made assumptions in passing:
+that the slabs of Xhave rank F=rank (X), and
+that the eigenvalues in Dare distinct ()one row of Chas no zero
+elements).
+Next we revisit those, starting from the last one, and show that
+they can be made WLOG.
+First note that
+R 1
+1R2
+is diagonalizable (i.e., has a full set of
+linearly independent eigenvectors) by construction under our
+working assumptions.
+If two or more of its eigenvalues are identical though, then linear
+combinations of the corresponding eigenvectors are also
+eigenvectors, corresponding to the same eigenvalue. Hence
+distinct eigenvalues (elements of D) are necessary for
+uniqueness.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 60 / 222Simple proof of uniqueness
+Consider creating two random slab mixtures
+eX(1)=1;1X(1)+1;2X(2)=
+A 
+1;1D1(C) +1;2D2(C)
+BT;
+eX(2)=2;1X(1)+2;2X(2)=
+A 
+2;1D1(C) +2;2D2(C)
+BT:
+Net effect C eC:= C, and we draw  :=1;11;2
+2;12;2
+from
+i.i.d.U[0;1].
+All elements ofeC6=0, rank
+eX(1)
+=rank
+eX(2)
+=F, almost
+surely.
+Any two columns ofeC= corresponding two columns of C)
+distinct ratioseC(1;:)=eC(2;:)a.s. iff any two columns of Care
+linearly independent – Chas Kruskal rank 2.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 61 / 222Simple proof of uniqueness
+We have proven
+Theorem
+Given X=JA;B;CK, with A:IF,B:JF, and C:2F, if F>1
+it is necessary for uniqueness of A,Bthat k C=2. If, in addition
+rA=rB=F, then rank (X) =F and the decomposition of Xis
+essentially unique.
+ForK2 slices, consider two random slice mixtures to obtain
+Theorem
+Given X=JA;B;CK, with A:IF,B:JF, and C:KF, if F>1
+it is necessary for uniqueness of A,Bthat k C2. If, in addition
+rA=rB=F, then rank (X) =F and the decomposition of Xis
+essentially unique.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 62 / 222Intermediate result conveying ﬂavor of Kruskal’s
+Theorem
+Given X=JA;B;CK, with A:IF,B:JF, and C:KF, it is
+necessary for uniqueness of A,B,Cthat
+min(rAB;rBC;rCA) =F: (1)
+If F>1, then it is also necessary that
+min(kA;kB;kC)2: (2)
+If, in addition,
+rC=F; (3)
+and
+kA+kBF+2; (4)
+then the decomposition is essentially unique.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 63 / 222Intermediate result conveying ﬂavor of Kruskal’s
+Necessary conditions: consider
+X(JIK)= (AB)CT; (5)
+X(IKJ)= (CA)BT; (6)
+X(KJI)= (BC)AT: (7)
+Need the KRPs to be fcr, else can add a vector in the right null
+space of that Khatri-Rao product to any of the rows of the
+corresponding third matrix without affecting the data.
+Consider the F=2 case: if one can mix two rank-1 factors
+[meaning: use two linear combinations of the two factors instead
+of the pure factors themselves] without affecting their contribution
+to the data, then the model is not unique, irrespective of the
+remaining factors.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 64 / 222Intermediate result conveying ﬂavor of Kruskal’s
+Consider I2,J2,K2 case, assume WLOG that kA=1.
+This means that the two columns of Aare collinear, i.e.,
+xi;j;k=ai;1(bj;1ck;1+bj;2ck;2);
+which implies that the i-th slab of Xalong the ﬁrst mode is given by
+Xi=ai;1BCT;i=1;;I;
+where B= [b1b2], and C= [c1c2].
+Therefore, slabs along the ﬁrst mode are multiples of each other;
+a1=
+a1;1;;aI;1Tuniquely determined up to global scaling ( A
+determined up to scaling of its columns)
+... but9linear transformation freedom in choosing BandC.
+Tensor Xcomprises only copies of matrix X1; same as matrix
+decomposition.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 65 / 222Intermediate result conveying ﬂavor of Kruskal’s
+Sufﬁciency will be shown by contradiction.
+WLOG assume rC=F(implies that Cis tall or square), and
+rAB=F.
+Sufﬁces to consider square C, for otherwise Ccontains a square
+submatrix consisting of linearly independent rows.
+Amounts to discarding the remaining rows of C, or, equivalently,
+dispensing with certain data slabs along third mode.
+Sufﬁces to prove that the parameterization of Xin terms of A,B,
+and the row-truncated Cis unique based on part of the data. The
+uniqueness of the full Cthen follows trivially.
+Will use the following elementary fact, which is a very special case
+of the Permutation Lemma in [Kruskal, ’77].
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 66 / 222Simple case of Kruskal’s Permutation Lemma
+Let w (v)denote the number of nonzero elements (the weight ) ofv
+2CK.
+Consider two FFnonsingular matrices Cand C. Suppose that
+w(vTC) =1;8vjw(vTC) =1: (8)
+Meaning: for all vsuch that w (vTC) =1, it holds that w (vTC) =1
+as well.
+It then follows that C=C, where is a permutation matrix,
+andis a nonsingular diagonal scaling matrix.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 67 / 222Insight: simple case of Kruskal’s Permutation Lemma
+For a proof, note that if condition (8) holds, then
+C 1C=I=)C 1C=TD;
+where Dis a nonsingular diagonal matrix, and we have used that
+the product C 1Cis full rank, and its rows have weight one.
+It then follows that
+C=CTD() C=CD 1=C:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 68 / 222Intermediate result conveying ﬂavor of Kruskal’s
+Suppose X=JA;B;CK=qA;B;Cy
+. From (5), it follows that
+(AB)CT=X(JIK)= ABCT: (9)
+Since rAB=rC=F, it follows that rAB=rC=F.
+Taking linear combinations of the slabs along the third mode,
+KX
+k=1vkX(:;:;k) =Adiag (vTC)BT=Adiag (vTC)BT; (10)
+for all v:= [v1;;vF]T2CF.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 69 / 222Intermediate result conveying ﬂavor of Kruskal’s
+The rank of a matrix product is always less than or equal to the
+rank of any factor, and thus
+w(vTC) =rdiag (vTC)rAdiag (vTC)BT=rAdiag (vTC)BT: (11)
+Assume w (vTC) =1; then (11) implies rAdiag (vTC)BT1, and we
+wish to show that w (vTC) =1.
+Use shorthand w :=w(vTC). Using Sylvester’s inequality and the
+deﬁnition of k-rank:
+rAdiag (vTC)BTmin(kA;w) + min( kB;w) w:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 70 / 222Intermediate result conveying ﬂavor of Kruskal’s
+Hence
+min(kA;w) + min( kB;w) w1: (12)
+Consider cases:
+1Case of wmin(kA;kB): then (12) implies w 1, hence w =1,
+because Cis nonsingular and v6=0;
+2Case of min(kA;kB)wmax( kA;kB): then (12) implies
+min(kA;kB)1, which contradicts (2), thereby excluding this range
+of w from consideration;
+3Case of wmax( kA;kB): then (12) implies that w kA+kB 1.
+Under (4), however, this yields another contradiction, as it requires
+that wF+1, which is impossible since the maximum possible
+w=w(vTC)isF.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 71 / 222Intermediate result conveying ﬂavor of Kruskal’s
+We conclude that, under (1)-(2) and (3)-(4), w (vTC) =1 implies
+w(vTC) =1. From the elementary version of the Permutation
+Lemma, it follows that C=C.
+From (9) we now obtain
+h
+(AB)  AB
+Ti
+CT=0;
+and since Cis nonsingular,
+ AB
+= (AB) 1: (13)
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 72 / 222Intermediate result conveying ﬂavor of Kruskal’s
+It follows that, for every column af
+bfofABthere exists a
+unique column af0
+bf0ofABsuch that
+af
+bf=af0
+bf0f0:
+It only remains to account for uniqueness of the truncated rows of
+a possibly tall C, but this is now obvious from (9), (13), and (1).
+This completes the proof.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 73 / 222Full rank in one mode
+Assume only one of the loading matrices is full column rank,
+instead of two.
+Theorem (Jiang & Sidiropoulos, ’04)
+Given X=JA;B;CK, with A:IF,B:JF, and C:KF, and
+assuming r C=F, it holds that the decomposition X=JA;B;CKis
+essentially unique () nontrivial linear combinations of columns of
+ABcannot be written as 
+product of two vectors.
+Despite its conceptual simplicity and appeal, the above condition
+is hard to check.
+In [Jiang & Sidiropoulos, ’04] it is shown that it is possible to recast
+this condition as an equivalent criterion on the solutions of a
+system of quadratic equations – which is also hard to check, ...
+but serves as a stepping stone to easier conditions and even
+generalizations of the EVD-based computation.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 74 / 222Full rank in one mode: generic uniqueness
+Theorem (Chiantini & Ottaviani, 2012, Domanov & De
+Lathauwer, 2015, Strassen, 1983)
+Given X=JA;B;CK, with A:IF,B:JF, and C:KF, let
+KF and min(I;J)3. Then rank (X) =F and the decomposition of
+Xis essentially unique, almost surely, if and only if (I 1)(J 1)F.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 75 / 222Kruskal
+Most well-known result covered by [Kruskal ’77]:
+Theorem (Kruskal ’77)
+Given X=JA;B;CK, with A:IF,B:JF, and C:KF, if
+kA+kB+kC2F+2, then rank (X) =F and the decomposition of X
+is essentially unique.
+Kruskal’s condition is sharp, in the sense that there exist
+decompositions that are not unique as soon as Fgoes beyond the
+bound [Derksen, 2013].
+This does not mean that uniqueness is impossible beyond
+Kruskal’s bound!
+Uniqueness well beyond Kruskal’s bound, but not always – there
+exist counter-examples.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 76 / 222Generalization of Kruskal’s theorem to tensors of any
+order
+Theorem (Sidiropoulos & Bro, 2000)
+Given X=JA1;:::; ANK, with An:InF, ifPN
+n=1kAn2F+N 1,
+then the decomposition of Xin terms offAngN
+n=1is essentially unique.
+This condition is sharp in the same sense as the N=3 version is
+sharp [Derksen, 2013].
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 77 / 222Is low-rank tensor decomposition always unique?
+One may wonder whether CPD is unique almost surely for any
+value of Fstrictly less than the generic rank?
+Cf. equations-versus-unknowns discussion.
+Proven for symmetric decompositions, with few exceptions:
+(N;I;F) = ( 6;3;9);(4;4;9);(3;6;9)where there are two
+decompositions generically [Chiantini, 2016]
+For unsymmetric decompositions it has been veriﬁed for tensors
+up to 15000 entries that the only exceptions are
+(I1;;IN;F) = ( 4;4;3;5),(4;4;4;6),(6;6;3;8),
+(p;p;2;2;2p 1)forp2N,(2;2;2;2;2;5), and the so-called
+unbalanced case I1>,F, with=QN
+n=2In PN
+n=2(In 1)
+[Chiantini, 2014].
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 78 / 222Tucker and Multilinear SVD (MLSVD)
+AnyIJmatrix Xcan be decomposed via SVD as X=UVT,
+where UTU=I=UUT,VTV=I=VVT,(i;j)0,(i;j)>0
+only when j=iandirX, and(i;i)(i+1;i+1),8i.
+U:= [u1;;uI],V:= [v1;;vJ],f:=(f;f)
+X=U(:;1:F)(1:F;1:F)(V(:;1:F))T=FX
+f=1fufvT
+f
+Can we generalize the SVD to tensors, in a way that retains the
+many beautiful properties of matrix SVD?
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 79 / 222Tucker and Multilinear SVD (MLSVD)
+Intuitively, introduce KKmatrix W,WTW=I=WWT, and a
+nonnegative IJK core tensor such that (i;j;k)>0 only
+when k=j=i.
+I
+= IJ
+KK
+I
+JK
+UV
+W
+X GJ
+Figure: Diagonal tensor SVD?
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 80 / 222Tucker and Multilinear SVD (MLSVD)
+Can we write an arbitrary tensor Xin this way?
+Back-of-the-envelop calculation:
+DoF in model =I2+J2+K2+ min( I;J;K);
+# equations = IJK
+DoF<# equations :-(
+Contrast: for matrices: I2+J2+ min( I;J)>I2+J2>IJ, always!
+More formal look: postulated model can be written out as
+1u1}v1}w1+2u2}v2}w2++mum}vm}wm;
+where m:= min( I;J;K); so, a tensor of rank at most min(I;J;K),
+but we know that tensor rank can be (much) higher than that.
+Hence we certainly have to give up diagonality.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 81 / 222Tucker and Multilinear SVD (MLSVD)
+Consider instead a full (possibly dense, but ideally sparse) core
+tensor G
+I
+= IJ
+J
+KK
+I
+JK
+UV
+W
+X G
+Figure: The Tucker model
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 82 / 222Tucker and Multilinear SVD (MLSVD)
+Element-wise view
+= U(i,:)V(j,:)
+W(k,:)
+X(i,j,k) GiÆÆjÆk
+Figure: Element-wise view of the Tucker model
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 83 / 222Tucker and Multilinear SVD (MLSVD)
+From the last ﬁgure !
+X(i;j;k) =IX
+`=1JX
+m=1KX
+n=1G(`;m;n)U(i;`)V(j;m)W(k;n);
+or, equivalently,
+X=IX
+`=1JX
+m=1KX
+n=1G(`;m;n)U(:;`)}V(:;m)}W(:;n);
+orX=IX
+`=1JX
+m=1KX
+n=1G(`;m;n)u`}vm}wn: (14)
+Here u`:=U(:;`)and likewise for the vm,wn.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 84 / 222Tucker and Multilinear SVD (MLSVD)
+X=IX
+`=1JX
+m=1KX
+n=1G(`;m;n)u`}vm}wn
+Note that each column of Uinteracts with every column of Vand
+every column of Win this decomposition.
+The strength of this interaction is encoded in the corresponding
+element of G.
+Different from CPD, which only allows interactions between
+corresponding columns of A;B;C, i.e., the only outer products that
+can appear in the CPD are of type af}bf}cf.
+TheTucker model in (14) also allows “mixed” products of
+non-corresponding columns of U,V,W.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 85 / 222Tucker and Multilinear SVD (MLSVD)
+Note that anytensor Xcan be written in Tucker form (14), and a
+trivial way of doing so is to take U=III,V=IJJ,W=IKK, and
+G=X.
+Hence we may seek a possibly sparse G, which could help reveal
+the underlying “essential” interactions between triples of columns
+ofU,V,W.
+This is sometimes useful when one is interested in quasi-CPD
+models.
+The main interest in Tucker though is for ﬁnding subspaces and for
+tensor approximation purposes.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 86 / 222Tucker vs. CPD
+CPD appears to be a special case of the Tucker model,
+corresponding to G(`;m;n) =0 for all`;m;nexcept possibly for
+`=m=n.
+However, when U,V,Ware all square, such a restricted diagonal
+Tucker form can only model tensors up to rank min(I;J;K).
+If we allow “fat” (and therefore, clearly, non-orthogonal) U,V,Win
+Tucker though, it is possible to think of CPD as a special case of
+such a “blown-up” non-orthogonal Tucker model.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 87 / 222Tucker vs. CPD
+By similar token, if we allow column repetition in A,B,Cfor CPD,
+i.e.,
+every column of Ais repeated JKtimes, and we call the result U;
+every column of Bis repeated IKtimes, and we call the result V;
+every column of Cis repeated IJtimes, and we call the result W,
+then it is possible to think of non- ?Tucker as a special case of
+CPD, *but*, repeated columns !k-ranks = 1!very non-unique.
+In a nutshell,
+both CPD and Tucker are sum-of-outer-products models;
+one can argue that the most general form of one contains the other;
+what distinguishes the two is uniqueness,
+which is related but not tantamount to model parsimony
+(“minimality”);
+and modes of usage, which are quite different for the two models,
+as we will see.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 88 / 222MLSVD
+Tucker model in long vector form
+x:=vec(X) = ( U
+V
+W)g;
+where g:=vec(G); order of vectorization of Xonly affects order in
+which U,V,Wappear in the Kronecker product chain, and the
+permutation of the elements of g.
+From the properties of the Kronecker product, the expression
+above is the result of vectorization of matrix
+X1= (V
+W)G1UT
+where the KJImatrix X1contains all rows (mode-1 vectors) of
+tensor X, and the KJImatrix G1is a likewise reshaped form of
+the core tensor G.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 89 / 222MLSVD
+X1= (V
+W)G1UT
+Notice we can linearly transform the columns of Uand absorb the
+inverse transformation in G1, i.e.,
+G1UT=G1M T(UM)T;
+Hence the Tucker model is not unique.
+X1contains all rows of tensor X; letr1denote the row-rank
+(mode-1 rank) of X.
+WLOG can pick Uto be an Ir1orthonormal basis of the
+row-span of X, and absorb the linear transformation in G, which is
+thereby reduced from IJKtor1JK.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 90 / 222MLSVD
+Doing the same for other two modes !WLOG the Tucker model
+can be written in compact form as
+x:=vec(X) = ( Ur1
+Vr2
+Wr3)g;
+where Ur1isIr1,Vr2isJr2,Wr3isKr3, and g:=vec(G)is
+r1r2r31 – the vectorization of the r1r2r3reduced-size core
+tensor G.
+I I=J
+K
+JK
+UV
+XGr1
+r1r2
+r2r3r3W
+Figure: Compact (reduced) Tucker model: r1,r2,r3are the mode (row,
+column, ﬁber, resp.) ranks of X.Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 91 / 222MLSVD
+I I=J
+K
+JK
+UV
+XGr1
+r1r2
+r2r3r3W
+Figure: Compact (reduced) Tucker model: r1,r2,r3are the mode (row,
+column, ﬁber, resp.) ranks of X.
+Drop subscripts from Ur1,Vr2,Wr3for brevity.
+MLSVD (earlier name: HOSVD) = Tucker with orthonormal U,V,
+Wchosen as the right singular vectors of the matrix unfoldings X1,
+X2,X3, resp.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 92 / 222MLSVD
+Orthonormality of the columns of Ur1,Vr2,Wr3implies
+orthonormality of the columns of their Kronecker product.
+This is because (Ur1
+Vr2)T(Ur1
+Vr2) = ( UT
+r1
+VT
+r2)(Ur1
+Vr2) =
+(UT
+r1Ur1)
+(VT
+r2Vr2) =I
+I=I.
+Recall that
+x1?x2() xT
+1x2=0=)jjx1+x2jj2
+2=jjx1jj2
+2+jjx2jj2
+2.
+It follows that
+jjXjj2
+F:=X
+8i;j;kjX(i;j;k)j2=jjxjj2
+2=jjgjj2
+2=jjGjj2
+F;
+where x=vec(X), and g=vec(G).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 93 / 222MLSVD
+If we drop certain outer products from the decomposition
+x= (U
+V
+W)g, or equivalently from (14), i.e., set the
+corresponding core elements to zero, then, by orthonormality
+X bX2
+F=X
+(`;m;n)2DjG(`;m;n)j2;
+whereDis the set of dropped core element indices.
+So, if we order the elements of Gin order of decreasing
+magnitude, and discard the “tail”, then bXwill be close to X, and we
+can quantify the error without having to reconstruct X, take the
+difference and evaluate the norm.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 94 / 222MLSVD
+With the matrix SVD in mind, feel tempted to drop entire columns
+ofU,V,W.
+For matrix SVD, this corresponds to zeroing out small singular
+values on the diagonal of ; per Eckart–Y oung !best low-rank
+approximation.
+Can we do the same for higher-order tensors?
+Can permute the slabs of Gin any direction, and corresponding
+columns of U,V,Waccordingly – cf. (14).
+Bring the frontal slab with the highest energy jjG(:;:;n)jj2
+Fup front,
+then the one with second highest energy, etc.
+Likewise order the lateral slabs of the core without changing the
+energy of the frontal slabs ; etc.
+!compact the energy of the core on its upper-left-front corner.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 95 / 222MLSVD
+We can then truncate the core, keeping only its upper-left-front
+dominant part of size r0
+1r0
+2r0
+3, with r0
+1r1,r0
+2r2, and r0
+3r3.
+The resulting approximation error can be readily bounded as
+X bX2
+Fr1X
+`=r0
+1+1jjG(`;:;:)jj2
+F+r2X
+m=r0
+2+1jjG(:;m;:)jj2
+F
++r3X
+n=r0
+3+1jjG(:;:;n)jj2
+F;
+where we useas opposed to =because dropped elements may
+be counted up to three times (in particular, the lower-right-back
+ones).
+One can of course compute the exact error of such a truncation
+strategy, but this involves instantiating X bX.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 96 / 222MLSVD
+Truncation in general does not yield the best approximation of X
+for the given (r0
+1;r0
+2;r0
+3).
+There is no exact equivalent of the Eckart–Y oung theorem for
+tensors of order higher than two [Kolda, 2013].
+The best low multilinear rank approximation problem for tensors is
+NP-hard.
+Despite this “bummer”, much of the beauty of matrix SVD remains
+in MLSVD.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 97 / 222MLSVD
+Slabs of the core array Galong each mode are orthogonal to each
+other, i.e., (vec(G(`;:;:)))Tvec(G(`0;:;:)) = 0 for`06=`, and
+jjG(`;:;:)jjFequals the `-th singular value of X1.
+These properties generalize a property of matrix SVD, where
+“core matrix” of singular values is diagonal!its rows are
+orthogonal to each other; same true for columns.
+Diagonality!orthogonality of one-lower-order slabs (sub-tensors
+of order one less than the original tensor).
+Converse is not true, e.g., consider
+1 1
+1 1
+:
+Core diagonality not possible in general for higher-order tensors:
+DoF vs. # equations ...
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 98 / 222MLSVD
+... *but* all-orthogonality of one-lower-order slabs of the core
+array, and interpretation of their Frobenius norms as singular
+values of a certain matrix view of the tensor come WLOG +
+WLOPT (see next property).
+Intuitively pleasing result, ﬁrst pointed out by [De Lathauwer,
+2000]; motivates the analogy to matrix SVD.
+Simply truncating slabs (or elements) of the full core will not give
+the best low multilinear rank approximation of Xin the case of
+three- and higher-order tensors; but
+ErrorjjX bXjj2
+Fis in fact at most 3 times higher than the minimal
+error ( Ntimes higher in the N-th order case) [Grasedyck, 2012,
+Hackbusch 2012].
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 99 / 222MLSVD
+Error bound is actually the proper generalization of the
+Eckart–Y oung theorem.
+In the matrix case, because of diagonality there is only one
+summation and equality instead of inequality.
+Simply truncating the MLSVD at sufﬁciently high (r0
+1;r0
+2;r0
+3)is often
+enough to obtain a good approximation in practice – we may
+control the error as we wish, so long as we pick high enough
+(r0
+1;r0
+2;r0
+3).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 100 / 222MLSVD
+If we are interested in the best possible approximation of Xwith
+mode ranks (r0
+1;r0
+2;r0
+3), however, then we need the following
+(dropping the0s for brevity):
+Let
+bU;bV;bW;bG1
+be a solution to
+min
+(U;V;W;G1)jjX1 (V
+W)G1UTjj2
+F
+such that: U:Ir1;r1I;UTU=I
+V:Jr2;r2J;VTV=I
+W:Kr3;r3K;WTW=I
+G1:r3r2r1
+Claim: ThenbG1= (bV
+bW)TX1bU; andx
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 101 / 222MLSVD
+Substituting the conditionally optimal G1, problem recast in
+“concentrated” form
+max
+(U;V;W)jj(V
+W)TX1Ujj2
+F
+such that: U:Ir1;r1I;UTU=I
+V:Jr2;r2J;VTV=I
+W:Kr3;r3K;WTW=I
+bU=dominant r1-dim. right subspace of (bV
+bW)TX1;
+bV=dominant r2-dim. right subspace of (bU
+bW)TX2;
+bW=dominant r3-dim. right subspace of (bU
+bV)TX3;
+bG1has orthogonal columns; and
+n
+jjbG1(:;m)jj2
+2or1
+m=1=r1principal sing. vals of (bV
+bW)TX1.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 102 / 222MLSVD: Proof
+(Note: Each column ofbG1is a vectorized slab of the core arraybG)
+jjvec(X1) (U
+V
+W)vec(G1)jj2
+2=jjX1 (V
+W)G1UTjj2
+F.
+Conditioned on (orthonormal) U,V,Wthe optimal Gis given by
+vec(bG1) = ( U
+V
+W)Tvec(X1).
+ThereforebG1= (V
+W)TX1U.
+ConsiderjjX1 (V
+W)G1UTjj2
+F, and deﬁneeX1:= (V
+W)G1UT;
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 103 / 222MLSVD: Proof
+Use that
+jjX1 eX1jj2
+F=Tr((X1 eX1)T(X1 eX1)) =jjX1jj2
+F+jjeX1jj2
+F 2Tr(XT
+1eX1).
+Orthonormality of U,V,W)jjeX1jj2
+F=jjG1jj2
+F.
+Consider
+ 2Tr(XT
+1eX1) = 2Tr(XT
+1(V
+W)G1UT);
+Substitute G1= (V
+W)TX1Uto obtain
+ 2Tr(XT
+1(V
+W)(V
+W)TX1UUT):
+Using property of trace to bring rightmost to the left,
+ 2Tr(UTXT
+1(V
+W)(V
+W)TX1U) = 2Tr(GT
+1G1) = 2jjG1jj2
+F:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 104 / 222MLSVD: Proof
+It followsjjX1 (V
+W)G1UTjj2
+F=jjX1jj2
+F jjG1jj2
+F()
+maximizejjG1jj2
+F=jj(V
+W)TX1Ujj2
+F.
+SobUis the dominant right subspace of (bV
+bW)TX1;
+take it to be the r1principal right singular vectors of (bV
+bW)TX1.
+Corresponding results for bVandbWby role symmetry.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 105 / 222MLSVD: Proof
+To show thatbG1has orthogonal columns, letbG1= [bg1;1;;bg1;r1],
+bU= [bu1;;bur1], and consider
+bgT
+1;m1bg1;m2=buT
+m1XT
+1(bV
+bW)(bV
+bW)TX1bum2:
+Let ~UTbe the SVD of (bV
+bW)TX1.
+Then ~U= [bU;U], so
+(bV
+bW)TX1um2=m2m2
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 106 / 222MLSVD: Proof
+It follows, by virtue of orthonormality of left singular vectors of
+(bV
+bW)TX1(here()is the Kronecker delta)
+bgT
+1;m1bg1;m2=m1m2T
+m1m2=m1m2(m1 m2);
+By role symmetry, it follows that the slabs ofbGalong any mode
+are likewise orthogonal.
+As byproduct of last equation,
+jjbG(:;:;m)jj2
+F=jjbG1(:;m)jj2
+2=jjbg1;mjj2
+2=2
+m;
+that is, the Frobenius norms of the lateral core slabs are the r 1
+principal singular values of (bV
+bW)TX1.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 107 / 222Best rank-1 tensor approximation: NP-hard :-(
+The best rank-1 tensor approximation problem over Ris NP-hard
+[Hillar & Lim, 2013].
+So the best low multilinear rank approximation problem is also
+NP-hard (the best multilinear rank approximation with
+(r1;r2;r3) = ( 1;1;1)is the best rank-1 approximation).
+This is reﬂected in key limitation of MLSVD characterization:
+gives explicit expressions that relate the sought U,V,W, and G, ...
+but does not provide an explicit solution for any of them!
+On the other hand, characterization naturally suggests alternating
+least squares scheme x
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 108 / 222?-Tucker ALS
+?-Tucker ALS
+1Initialize:
+U=r1principal right singular vectors of X1;
+V=r2principal right singular vectors of X2;
+W=r3principal right singular vectors of X3;
+2repeat:
+U=r1principal right sing. vec. of (V
+W)TX1;
+V=r2principal right sing. vec. of (U
+W)TX2;
+W=r3principal right sing. vec. of (U
+V)TX3;
+until negligible change in jj(V
+W)TX1Ujj2
+F.
+3G1= (V
+W)TX1U.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 109 / 222?-Tucker ALS
+First variant of Tucker-ALS goes back to [Kroonenberg & De
+Leeuw].
+Initialization in step 1) [together with step 3)] is (truncated)
+MLSVD. Not optimal, but helps in most cases.
+Each variable update is conditionally optimal !reward
+jj(V
+W)TX1Ujj2
+Fis non-decreasing ( ,cost
+jjX1 (V
+W)G1UTjj2
+Fis non-increasing)
+Also bounded from above (resp. below), thus convergence of the
+reward (cost) sequence is guaranteed.
+Conceptual similarity of the above algorithm with ALS for CPD.
+Using MLSVD with somewhat higher (r1;r2;r3)can be
+computationally preferable to ALS.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 110 / 222Tucker for large-scale problems
+In the case of big data, even the computation of MLSVD may be
+prohibitive.
+Randomized projection approaches become more appealing.
+Draw the columns of U,V,Wfrom the columns, rows, ﬁbers of X:
+[Oseledets, 2008; Mahoney, 2008]. Drawback: no identiﬁability.
+“Completely” random projections: [Sidiropoulos et al. , 2012,
+2014]: Identiﬁability!
+Krylov subspace methods offer an alternative for large-scale
+problems; see [Savas, 2013] for Tucker-type extensions.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 111 / 222Compression as preprocessing: CANDELINC
+Consider a tensor Xin vectorized form, and corresponding CPD
+and orthogonal Tucker ( ?-Tucker) models
+x= (ABC)1= (U
+V
+W)g:
+Pre-multiplying with (U
+V
+W)T= (UT
+VT
+WT)and using
+the mixed-product rule for 
+,, we obtain
+g=
+(UTA)(VTB)(WTC)
+1;
+i.e., the Tucker core array G(shown above in vectorized form g)
+admits a CPD decomposition of rank (G)rank (X).
+Letr
+~A;~B;~Cz
+be a CPD of G, i.e., g= (~A~B~C)1. Then
+x= (U
+V
+W)g= (U
+V
+W)(~A~B~C)1=
+=
+(U~A)(V~B)(W~C)
+1;
+by the mixed product rule.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 112 / 222Compression as preprocessing: CANDELINC
+Assuming that the CPD of Xis essentially unique, it then follows
+that
+A=U~Aa;B=V~Bb;C=W~Cc;
+where is a permutation matrix and abc=I.
+It follows that
+UTA=~Aa;VTB=~Bb;WTC=~Cc;
+so that the CPD of Gis essentially unique, and therefore
+rank (G) =rank (X).
+This suggests that an attractive way to compute the CPD of Xis to
+ﬁrst compress, compute the CPD of G, and then “blow-up” the
+resulting factors, since A=U~A(up to column permutation and
+scaling).
+Also shows that A=UUTA, and likewise for the other two modes.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 113 / 222Compression as preprocessing: CANDELINC
+Caveat: discussion "assumes exact CPD and?-Tucker models;
+but also works for low-rank least-squares approximation, see
+Candelinc theorem of [Carroll et al. , 1980]; and [Bro & Andersson,
+1998].
+Does not work for a constrained CPD (e.g. one or more factor
+matrices nonnegative, monotonic, sparse, . . . )
+In ALS can still exploit multi-linearity, to update Uby solving a
+constrained and/or regularized linear least squares problem.
+ForG, we can use the vectorization property of the Kronecker
+product to bring it to the right, and then use a constrained or
+regularized linear least squares solver.
+By the mixed product rule, this last step entails pseudo-inversion
+of the U,V,Wmatrices, instead of their (much larger) Kronecker
+product.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 114 / 222Compression as preprocessing: Oblique Tucker
+This type of model is sometimes called oblique Tucker, to
+distinguish from orthogonal Tucker.
+More generally, one can ﬁt the constrained CPD in the
+uncompressed space, but with Xreplaced by its
+parameter-efﬁcient factorized representation.
+The structure of the latter may then be exploited to reduce the per
+iteration complexity; see [De Lathauwer, Tensorlab3, Asilomar
+2016].
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 115 / 222Other tensor models: Tensor Train (TT) and
+hierarchical Tucker (hTucker)
+?-Tucker/MLSVD approximation / compression limited to tensors
+of moderate order.
+Consider situation at order Nand assume for simplicity that
+r1=r2=:::=rN=r>1.
+Then the core tensor GhasrNentries.
+This exponential dependence of the number of entries on the
+tensor order Nis called the Curse of Dimensionality
+In such cases one may resort to a Tensor Train (TT)
+representation or a hierarchical Tucker (hTucker) decomposition
+instead [Oseledets, 2011], [Grasedyck, 2013].
+Caveat: approximation / compression only; no identiﬁability in
+general.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 116 / 222Tensor Train (TT) and hierarchical Tucker (hTucker)
+A TT of an N-th order tensor Xis of the form
+X(i1;i2;:::; iN) =X
+r1r2:::rN 1u(1)
+i1r1u(2)
+r1i2r2u(3)
+r2i3r3:::u(N)
+iNrN 1;(15)
+in which one can see U(1)as the locomotive and the next factors
+as the carriages.
+Each carriage “transports” one tensor dimension, and two
+consecutive carriages are connected through the summation over
+one common index.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 117 / 222Tensor Train (TT) and hierarchical Tucker (hTucker)
+Since every index appears at most twice and since there are no
+index cycles, the TT -format is “matrix-like”, i.e. a TT approximation
+can be computed using established techniques from numerical
+linear algebra, similarly to MLSVD.
+Number of entries is now O(NIr2), so the Curse of Dimensionality
+has been broken.
+hTucker is the extension in which the indices are organized in a
+binary tree.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 118 / 222PARALIND, Block Term Decomposition
+Possible to have unique decomposition in terms that are not even
+rank-1.
+Block Term Decompositions (BTD) [De Lathauwer, 2008, 2011]
+write a tensor as a sum of terms that have low multilinear rank.
+As in CPD, uniqueness of a BTD is up to a permutation of the
+terms. The scaling/counterscaling ambiguities within a rank-1
+term generalize to the indeterminacies in a Tucker representation.
+Expanding the block terms into sums of rank-1 terms with
+repeated vectors yields a form that is known as PARALIND [Bro,
+Harshman, Sidiropoulos, Lundy, 2009].
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 119 / 222Data Fusion: Coupled Decompositions
+Multiple data sets may be jointly analyzed by means of coupled
+decompositions of several matrices and/or tensors, possibly of
+different size.
+Harshman’s PARAFAC2 is early variant, in which coupling was
+imposed through a shared covariance matrix.
+In coupled setting, particular decompositions may inherit
+uniqueness from other decompositions; in particular, the
+decomposition of a data matrix may become unique thanks to
+coupling [Sorensen & De Lathauwer, 2015].
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 120 / 222Reprise – what’s coming up next
+Algorithms:
+Alternating Least Squares (ALS)
+Gradient Descent
+Quasi-Newton & Non-linear Least Squares
+Line Search
+Handling Missing Values
+Stochastic Gradient Descent (SGD)
+Imposing Constraints
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 121 / 222Introduction to ALS
+ALS is the “workhorse” algorithm for tensor decompositions
+Special case of Block Coordinate Descent (BCD)
+Flexible and easy to derive
+No parameters to tune
+General ALS iteration:
+1Fix all factors except for one
+2Solve the linear LS estimation problem for that factor
+3Cycle over all factors
+Today we will see ALS for CPD and Tucker
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 122 / 222ALS for CPD
+Suppose we ﬁx A;B, then update formula for Cis:
+C argmin
+CjjX3 (BA)CTjj2
+F;
+This is a simple linear Least Squares problem
+Solution :
+CT (BA)yX3:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 123 / 222ALS for CPD (contd.)
+The pseudo-inverse
+(BA)y=h
+(BA)T(BA)i 1
+(BA)T;
+can be simpliﬁed.
+We can show that
+(BA)T(BA) = ( BTB)(ATA);
+This only involves the Hadamard product of FFmatrices,
+Easy to invert for small ranks F
+Butnote that in case of big sparse data, small Fmay not be enough
+Thus the update of Ccan be performed as
+CT 
+(BTB)(ATA) 1
+(BA)TX3:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 124 / 222ALS for CPD (contd.)
+When Fis small
+(BA)TX3
+is the bottleneck
+Notice that BAisIJF, and X3isIJK.
+Brute-force computation of
+(BA)TX3
+needs IJFadditional memory and ﬂops to instantiate BA, even
+though the result is only FK, and IJKF ﬂops to actually
+compute the product – but see [BK07, VMV15, PTC13].
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 125 / 222ALS for CPD (contd.)
+When Xis sparse,
+NNZ (X)nonzero elements stored in a [i,j,k,value ]list
+Every nonzero element multiplies a column of (BA)T
+Result should be added to column k
+The speciﬁc column can be generated on-the-ﬂy with F+1 ﬂops,
+for an overall complexity of (2F+1)NNZ (X), without requiring any
+additional memory (other than that needed to store running
+estimates of A,B,C, and the data X).
+When Xis dense, the number of ﬂops is inevitably of order IJKF ,
+but still no additional memory is needed this way.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 126 / 222ALS for CPD (contd.)
+Computation can be parallelized in several ways
+See [BK07, KPHF12, RSSK14, CV14, SRSK15] for various
+resource-efﬁcient algorithms for matricized tensor times
+Khatri–Rao product (MTTKRP) computations.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 127 / 222ALS for Tucker
+As we saw previously, for ?-Tucker ALS we have:
+1Initialize:
+U=r1principal right singular vectors of X1;
+V=r2principal right singular vectors of X2;
+W=r3principal right singular vectors of X3;
+2repeat:
+U=r1principal right sing. vec. of (V
+W)TX1;
+V=r2principal right sing. vec. of (U
+W)TX2;
+W=r3principal right sing. vec. of (U
+V)TX3;
+until negligible change in jj(V
+W)TX1Ujj2
+F.
+3G1= (V
+W)TX1U.
+Steps 1 and 3 correspond to truncated MLSVD
+Not necessarily optimal, but very good initialization in most cases
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 128 / 222ALS for Tucker (contd.)
+ALS for?-Tucker ALS also called Higher Order Orthogonal
+Iteration (HOOI)
+Each variable update is optimal conditioned on the rest of the
+variables,
+Rewardjj(V
+W)TX1Ujj2
+Fis non-decreasing and bounded from
+above
+Convergence of the reward (cost) sequence is guaranteed
+First variant of Tucker-ALS goes back to [Kro08].
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 129 / 222ALS for Tucker (contd.)
+For?-Tucker ALS,
+Need to compute products of type (V
+W)TX1
+Then compute the principal right singular vectors of resulting
+r2r3Imatrix
+Column-generation idea can be used here as well to avoid
+intermediate memory explosion and exploit sparsity in Xwhen
+computing (V
+W)TX1.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 130 / 222ALS for Tucker (contd.)
+For oblique Tucker ALS need to compute
+((V
+W)G1)yX1for updating U
+ 
+Uy
+Vy
+Wy
+xfor updating g$G
+Requires pseudo-inverses of relatively small matrices,
+But note that
+((V
+W)G1)y6=Gy
+1(V
+W)y;
+Equality holds if V
+Wis full column rank andG1is full row rank,
+which requires r2r3r1.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 131 / 222Gradient Descent
+Consider the squared loss
+L(A;B;C) :=jjX1 (CB)ATjj2
+F=
+tr
+(X1 (CB)AT)T(X1 (CB)AT)
+=jjX1jj2
+F 
+2 tr
+XT
+1(CB)AT
++tr
+A(CB)T(CB)AT
+:
+Recall that (CB)T(CB) = ( CTC)(BTB)
+We may equivalently take the gradient of
+ 2 tr 
+XT
+1(CB)AT
++tr 
+A(CTC)(BTB)AT
+.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 132 / 222Gradient Descent (contd.)
+Arranging the gradient in the same format as A, we have
+@L(A;B;C)
+@A= 2XT
+1(CB) +2Ah
+(CTC)(BTB)i
+= 2
+XT
+1 A(CB)T
+(CB);
+Appealing to role symmetry, we likewise obtain
+@L(A;B;C)
+@B= 2XT
+2(CA) +2Bh
+(CTC)(ATA)i
+= 2
+XT
+2 B(CA)T
+(CA);
+@L(A;B;C)
+@C= 2XT
+3(BA) +2Ch
+(BTB)(ATA)i
+= 2
+XT
+3 C(BA)T
+(BA):
+With these gradient expressions at hand, we can employ any
+gradient-based algorithm for model ﬁtting.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 133 / 222Gradient Descent (contd.)
+Remark
+The conditional least squares update for Ais
+A h
+(CTC)(BTB)i 1
+(CB)TX1;
+This means that:
+Taking a gradient step or solving the LS sub-problem to
+(conditional) optimality involves computing the same quantities:
+(CTC)(BTB)and (CB)TX1.
+The only difference is that to take a gradient step you don’t need
+to invert the FF matrix (CTC)(BTB).
+For small F, each gradient step is essentially as expensive as an
+ALS step.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 134 / 222Quasi Newton & Non-linear Least Squares
+The well-known Newton descent algorithm uses a local quadratic
+approximation of the cost function L(A;B;C)to obtain a new step
+as the solution of the set of linear equations
+Hp= g;
+in which gandHare the gradient and Hessian of L, respectively.
+Computation of Hessian may be prohibitively expensive,
+Resort to an approximation
+Newton and Nonlinear Least Squares (NLS)
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 135 / 222Quasi Newton & Non-linear Least Squares (contd.)
+Quasi-Newton methods such as Nonlinear Conjugate Gradients
+(NCG) and (limited memory) BFGS use a diagonal plus low-rank
+matrix approximation of the Hessian.
+In combination with line search or trust region globalization
+strategies for step size selection, quasi-Newton does guarantee
+convergence to a stationary point
+Contrary to plain ALS, and its convergence is superlinear
+[SVD13, NW06]
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 136 / 222Quasi Newton & Non-linear Least Squares (contd.)
+NLS methods such as Gauss–Newton and Levenberg–Marquardt
+start from a local linear approximation of the residual
+X1 (CB)ATto approximate the Hessian as D'()TD'(),
+withD'()the Jacobian matrix of '()(whereis the
+parameter vector)
+The algebraic structure of D'()TD'()can be exploited to
+obtain a fast inexact NLS algorithm that has several favorable
+properties [TB06, SVD13].
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 137 / 222Quasi Newton & Non-linear Least Squares (contd.)
+Robustness : NLS has been observed to be more robust for
+difﬁcult decompositions than plain ALS [SVD13, TB06].
+Parallelizability :D'()TD'()can easily be split into smaller
+matrix-vector products ( N2in the N-th order case)
+Makes inexact NLS overall well-suited for parallel implementation.
+Variants for low multilinear rank approximation are discussed in
+[IAVHDL11, SL10] and references therein.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 138 / 222Line Search
+An important issue in numerical optimization is the choice of
+step-size
+We cam exploit the multi-linearity of the cost function [RCH08]
+Suppose we have determined an update (“search”) direction, say
+the negative gradient one.
+We seek to select the optimal step-size for the update
+2
+4A
+B
+C3
+5 2
+4A
+B
+C3
+5+2
+4A
+B
+C3
+5;
+and the goal is to
+min
+X1 ((C+C)(B+B)) (A+A)T2
+F:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 139 / 222Line Search (contd.)
+min
+X1 ((C+C)(B+B)) (A+A)T2
+F:
+Note that the above cost function is a polynomial of degree 6 in .
+We can determine the coefﬁcients c0;;c6of this polynomial by
+evaluating it for 7 different values of and solving
+2
+6664112
+16
+1
+122
+26
+2...
+172
+76
+73
+77752
+6664c0
+c1
+...
+c63
+7775=2
+6664`1
+`2
+...
+`73
+7775;
+where`1;;`7are the corresponding loss values.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 140 / 222Line Search (contd.)
+Once the coefﬁcients are determined, the derivative is the 5-th
+order polynomial c1+2c2++6c65
+Use numerical root ﬁnding to evaluate the loss at its roots and pick
+the best.
+This has a drawback :
+It requires 11 evaluations of the loss function.
+We can do half of that by working polynomial coeffs. out
+analytically
+Bottom line : optimal line search costs more than gradient
+computation per se (which roughly corresponds to 3 evaluations of
+the loss function)
+In practice, we typically use a small, or “good enough” .
+We resort to exact line search in more challenging cases
+(e.g.,“swamps”)
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 141 / 222Handling Missing Values
+Real data are never perfect
+Parts of data may be missing for various reasons
+Faulty measurement sensors
+Errors when storing data
+Partial observation of the data (e.g., recommendation
+systems/Netﬂix prize)
+...
+Need to modify algorithms to handle missing values
+In the case of recommendation systems, also need to use
+decomposition to estimate missing values.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 142 / 222Handling Missing Values (contd.)
+Consider the C-update step in ALS,
+min
+CjjX3 (BA)CTjj2
+F
+If there are missing elements in X(and so in X3), deﬁne the weight
+tensor
+W(i;j;k) =1;X(i;j;k) :available
+0; otherwise:;
+We now modify the update step as min CjjW3(X3 (BA)CT)jj2
+F
+where matrix W3is the matrix unfolding of tensor Wobtained in
+the same way that matrix X3is obtained by unfolding tensor X
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 143 / 222Handling Missing Values (contd.)
+min
+CjjW3(X3 (BA)CT)jj2
+F
+Notice that the Hadamard operation applies to the product
+((BA)CT), not to (BA)–
+This complicates things
+One may think of resorting to column-wise updates, but this does
+not work!
+Instead, if we perform row-wise updates on C, then we have to
+deal with minimizing over C(k;:)the squared norm of vector
+Diag (W3(:;k))X3(:;k) Diag (W3(:;k))(BA)(C(k;:))T;
+which is a simple linear least squares problem.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 144 / 222Handling Missing Values (contd.)
+There are two basic alternatives to the above strategy for handling
+missing data.
+Alternative 1
+Use derivative-based methods, such as (stochastic) gradient
+descent or Gauss-Newton
+Derivatives are easy to compute, even in the presence of W
+Stochastic gradient descent, computes gradient estimates by
+drawing only from the observed values
+This bypasses element-wise multiplication by W, stochastic
+gradient methods
+Deals with missing data in a natural and effortless way.
+Well known in the machine learning community, but seemingly
+under-appreciated in the signal processing community.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 145 / 222Handling Missing Values (contd.)
+Alternative 2
+Use Expectation-Maximization to impute the missing values
+together with the estimation of the model parameters A;B;C
+[TB05].
+Initially impute misses with the average of the available entries (or
+any other reasonable estimate)
+Efﬁciency Considerations
+For very big and sparse data, imputation is very inefﬁcient in
+terms of memory, and is thus avoided
+As a short-cut in large-scale applications, one may deliberately
+use only part of the available entries when estimating a
+decomposition [VDSD14]
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 146 / 222Stochastic Gradient Descent (SGD)
+Popular in the machine learning community for many types of
+convex non-convex problems
+In its simplest form:
+SGD randomly picks a data point X(i;j;k)from the available ones,
+takes a gradient step only for those model parameters that have an
+effect on X(i;j;k); that is, only the i-th row of A, the j-th row of B
+and the k-th row of C
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 147 / 222Stochastic Gradient Descent (SGD) (contd.)
+We have
+@
+@A(i;f) 
+X(i;j;k) FX
+f=1A(i;f)B(j;f)C(k;f)!2
+=
+ 20
+@X(i;j;k) FX
+f0=1A(i;f0)B(j;f0)C(k;f0)1
+AB(j;f)C(k;f);
+so that
+@
+@A(i;:)= 2 
+X(i;j;k) FX
+f=1A(i;f)B(j;f)C(k;f)!
+(B(j;:)C(k;:)):
+B(j;:)C(k;:)is used once outside and once inside the
+parenthesis
+2Fmultiplications for the update of A(i;:), and 6 Ffor the SGD
+update of A(i;:),B(j;:),C(k;:).
+Very cheap, especially for random access memory
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 148 / 222Stochastic Gradient Descent (SGD) (contd.)
+Missing elements
+SGD naturally deals with missing elements
+They are simply never sampled to execute an update
+This has made SGD very popular in recommendation systems
+Also because of efﬁciency in very large, sparse data
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 149 / 222Stochastic Gradient Descent (SGD) (contd.)
+One major drawback:
+Truly random disk access pattern is a bad idea
+Computation will be dominated from the disk I/O.
+Solution : Fetch blocks of data from secondary memory, and use
+intelligent caching strategies
+updates involving (stemming from) X(i;j;k)andX(i0;j0;k0)do not
+conﬂict with each other and can be executed in parallel, provided
+i06=i;j06=j;k06=k– where all three 6=must hold simultaneously
+Max number of parallel updates is min(fIngN
+n=1)in the general
+N-way case
+See [BTK+] for parallel SGD CPD algorithms
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 150 / 222Stochastic Gradient Descent (SGD) (contd.)
+Other Relevant Block Sampling Approaches :
+[VD]
+Efﬁciently decompose TB-size tensors without resorting to parallel
+computation
+Leverages CPD uniqueness of the sampled blocks to uniqueness of
+the CPD of the full tensor
+[PS12]
+Randomized block-sampling approach for very sparse datasets
+parallel CPD decomposition of multiple pseudo-randomly drawn
+sub-tensors, and combining the CPDs using anchor rows
+Sampling is based on mode densities
+Identiﬁability is guaranteed if the sub-tensors have unique CPD
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 151 / 222Imposing Constraints
+We are often interested in imposing constraints on a CPD model
+Why do we need this? CPD is essentially unique after all!
+In the next few slides we will review reasons why constraints are
+useful
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 152 / 222Imposing Constraints (contd.)
+Reasons to impose constraints:
+Restoring identiﬁability in otherwise non-identiﬁable cases;
+Improving estimation accuracy in relatively challenging
+(low-SNR, and/or barely identiﬁable, and/or numerically
+ill-conditioned) cases;
+Ensuring interpretability of the results (e.g., power spectra
+cannot take negative values); and
+As a remedy against ill-posedness
+There are many types of constraints that are relevant in many
+applications. We will review a representative list.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 153 / 222Imposing Constraints (contd.)
+Symmetry or Hermitian (conjugate) symmetry:
+Require B=A, orB=A, leading to X(:;:;k) =ADk(C)ATor
+X(:;:;k) =ADk(C)AH.
+This is actually only partial symmetry
+Corresponds to joint diagonalization of the frontal slabs, using a
+non-orthogonal and possibly fat diagonalizer A
+Full symmetry: C=B=A.
+Symmetric tensors arise when one considers higher-order
+statistics (HOS).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 154 / 222Imposing Constraints (contd.)
+Real-valued parameters:
+When X2RIJK, complex-valued A;B;Cmake little sense,
+Sometimes arise because tensor rank is sensitive to the ﬁeld over
+which the decomposition is taken
+Issue in some applications in Chemistry and Psychology
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 155 / 222Imposing Constraints (contd.)
+Element-wise non-negativity:
+A0 and/or B0, and/or C0.
+When all three are in effect, the resulting problem is known as
+non-negative tensor factorization (NTF).
+Non-negativity can help restore uniqueness
+Even non-negative matrix factorization (NMF) is unique under
+certain (stricter) conditions
+Example:
+When kC=1 CPD alone cannot be unique
+But if NMF of X(:;:;k) =ADk(C)BTis unique (this requires
+F<min(I;J)and a certain level of sparsity in AandB)
+non-negativity can still ensure essential uniqueness of A;B;C!
+Applications:
+Modeling power spectra
+Modeling “sum-of-parts” representation (generally interpretability )
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 156 / 222Imposing Constraints (contd.)
+Orthogonality: This e.g., may be the result of prewhitening
+[SDC+12].
+Probability simplex constraints: A (i;:)0,A(i;:)1=1,8i, or
+A(:;f)0,1TA(:;f) =1,8f, are useful when modeling
+allocations or probability distributions.
+Linear constraints: More general linear constraints on A;B;C
+are also broadly used. Can be column-wise, row-wise, or
+matrix-wise, such as tr (WA)b.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 157 / 222Imposing Constraints (contd.)
+Monotonicity and related constraints: Useful in cases where
+we deal with, e.g., concentrations that are known to be decaying,
+or spectra that are known to have a single or few peaks
+(unimodality, oligo-modality [BS98]).
+Sparsity: In many cases we know (an upper bound on) the
+number of nonzero elements of A;B;C, per column, row, or as a
+whole; or the number of nonzero columns or rows of A;B;C
+(group sparsity).
+Smoothness: Smoothness can be measured in different ways,
+but a simple one is in terms of convex quadratic inequalities such
+as2
+64 1 1 0 0
+0 1 1 0 0
+.........3
+75A2
+F
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 158 / 222Imposing Constraints (contd.)
+Data model constraints:
+All the above constraints apply to the model parameters.
+We may also be interested in constraints on the reconstructed
+model of the data, e.g.,
+(ABC)10;(element-wise) ;1T(ABC)1=1;
+IfXmodels a joint probability distribution, or in (ABC)1being
+“smooth” in a suitable sense.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 159 / 222Constrained matrix/tensor factorization
+Consider the (low-rank) matrix factorization problem:
+YWHT
+where the factor matrices WandHneed to satisfy some constraints:
+non-negative, sparse, etc.
+Numerous applications: NMF , dictionary learning, ...
+Constraints help resolve the non-uniqueness of unconstrained
+matrix factorization;
+... but also complicate the problem (even !NP-hard, e.g., SVD
+vs. NMF) and often require custom algorithm development.
+We need an algorithmic framework that is more efﬁcient andmore
+ﬂexible wrt the types of constraints it can readily accommodate.
+We also address tensor counterpart - already unique, but constraints
+!better estimates
+Y(1)(CB)AT
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 160 / 222Problem formulation
+Starting with constrained matrix factorization, we formulate the
+problem as
+minimize
+W;H1
+2kY WHTk2
+F+r(W) +r(H);
+andr()can take the value +1to incorporate hard constraints.
+Easily becomes NP-hard when there are constraints.
+Popular method: alternating optimization (AO).
+Key to accelerate algorithm: solve the sub-problems efﬁciently.
+We propose to solve the sub-problems using ADMM,
+hence the name AO-ADMM [Huang, Sidiropoulos, Liavas ’15]
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 161 / 222ADMM: scaled form
+Consider a convex optimization problem in the following form.
+minimize
+x;zf(x) +g(z)
+subject to Ax+Bz=c;
+The alternating direction method of multipliers [Boyd et al. , 2011]:
+x arg min
+xf(x) + (=2)kAx+Bz c+uk2
+2;
+z arg min
+zg(z) + (=2)kAx+Bz c+uk2
+2;
+u u+ (Ax+Bz c); dual update
+For convex problems, converges to the global solution.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 162 / 222ADMM inner-loop
+Adopting the alternating optimization framework, reformulate the
+sub-problem for Hin each AO iteration as
+minimize
+H;~H1
+2kY W~Hk2
+F+r(H)
+subject to H=~HT:
+ADMM iterates:
+~H (WTW+I) 1(WTY+(H+U)T);
+H arg min
+Hr(H) +
+2kH ~HT+Uk2
+F;
+U U+H ~HT:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 163 / 222Inner convergence
+Suppose Yismn,Hisnk.
+ADMM for convex problems is well studied.
+Linear convergence. Theoretically, best convergence rate given by
+=max(W)min(W);
+Empirically, =trace (WTW)=kworks almost as good (and much
+easier to obtain);
+Initialize HandUfrom the previous AO outer-loop, then optimality
+gap is bounded by the per-iteration improvement of an AO step;
+After10 AO outer-iterations, ADMM converges in only one
+inner-iteration.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 164 / 222Implementation: ~H
+~H (WTW+I) 1(WTY+(H+U)T)
+WTYandWTWonly need to be computed once,
+with complexityO(nnz(Y)k)andO(mk2)respectively;
+Can cache the Cholesky decomposition ( O(k3)) of
+WTW+I=LLT;
+Within one ADMM iteration, ~His obtained from
+one forward substitution and one backward substitution,
+with complexityO(nk2).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 165 / 222Implementation: H
+H arg min
+HrH(H) +
+2kH ~HT+Uk2
+F
+so-called proximity operator, in a lot of cases can be efﬁciently
+evaluated
+non-negative: H0;
+l1regularization: kHk1(soft thresholding);
+sum to one: H1=1orHT1=1;
+smoothness regularization: kTHk2
+Fwhere Tis tri-diagonal (linear
+complexity using banded-system solver).
+All withO(nk)complexity.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 166 / 222ADMM: summary
+1:Initialize HandUfrom previous AO iteration
+2:G=WTW,F=WTY
+3:=trace (G)=k
+4:Cholesky decomposition: G+I=LLT
+5:repeat
+6: ~H L TL 1(F+(H+U))by forward/backward substitution
+7: H arg min HrH(H) +
+2kH ~HT+Uk2
+F
+8: U U+H ~H
+9:until convergence
+10:return H andU.
+Most of the computations are done at line 2 and line 4;
+One iteration of ADMM has complexity = one ALS update;
+Only one matrix inversion is required (line 4).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 167 / 222Constrained PARAFAC
+It is easy to extend from 2-way to higher-way data arrays.
+For 3-way tensors, the update of Abecomes
+minimize
+A1
+2kY(1) (CB)ATk2
+F+r(A)
+Same sub-problem as the matrix case by letting Y=Y(1)and
+W= (CB), except that there are additional structures in W.
+WTW=CTCBTB, element-wise product;
+WTY= (CB)TY, usually the bottle-neck operation even in the
+unconstrained factorization case.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 168 / 222AO-ADMM: Reprise
+AO-ADMM can be viewed as a generalization of the workhorse ALS
+method:
+similar monotonic convergence property (due to AO);
+per-iteration complexity is almost the same;
+any smart implementation of ALS can easily be modiﬁed to handle
+constraints with the corresponding proximity operator:
+plug-and-play!!
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 169 / 222Non-negative Matrix Factorization(NMF): real data
+Sparse real data: Topic Detection and Tracking 2 (TDT2) text corpus,
+of size 1021236771.
+0 100 200 300 400 500 6000.650.70.750.80.85TDT2, k=300
+AO-ADMM
+accHALS
+AO-BPP
+0 100 200 300 400 500 600 700 8000.60.650.70.750.80.850.9TDT2, k=500
+AO-ADMM
+accHALS
+AO-BPP
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 170 / 222Non-negative PARAFAC: synthetic data
+Synthetically generate the true factors randomly i.i.d. exponential
+elements, with 50 %zeros. Then added Gaussian noise with variance
+0:01.
+0 100 200 300 400 50010−310−210−1100101
+time/secondsrelative error
+  
+HALS
+AO−BPP
+AO−ADMM
+ADMM
+(a) 500500500, rank 100
+0 50 100 150 200 250 300 350 40010−310−210−1100101
+time/secondsrelative error
+  
+HALS
+AO−BPP
+AO−ADMM
+ADMM (b) 1000500200, rank 100
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 171 / 222Non-negative PARAFAC: real data
+Sparse real data: Facebook Wall Posts, of size 46952 469511592.
+Used tensor toolboxto handle basic sparse tensor operations.
+time/seconds0 50 100 150normalized error
+0.9750.980.9850.990.9951Facebook Wall Posts, k=30
+AO-ADMM
+HALS
+AO-BPP
+time/seconds0 100 200 300 400 500 600normalized error
+0.950.960.970.980.991Facebook Wall Posts, k=100
+AO-ADMM
+HALS
+AO-BPP
+B. W. Bader, T. G. Kolda, et al. , “Matlab tensor toolbox v2.6”, Feb. 2015.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 172 / 222AO-ADMM: recap
+Efﬁciency: Uses ADMM to solve the subproblems, with
+computation caching, warm start, and good choice of ;
+Flexibility:
+Can handle many constraints on the latent factors with
+element-wise complexity;
+Can handle non-LS loss: missing values, l1ﬁtting, K-L divergence...
+Convergence:
+Monotonic decrease of the cost function;
+Adopting block successive upperbound minimization (BSUM) as
+the AO framework, we can guarantee that every limit point is a
+stationary point.
+Bottleneck: MTTKRP - same as ALS. So ...
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 173 / 222Back to ALS: MTTKRP
+C=X(3)(BA)(BTBATA)y
+A=X(1)(CB)(CTCBTB)y
+B=X(2)(CA)(CTCATA)y
+Computation and inversion of (CTCBTB)relatively easy:
+relatively small KF,JFmatrices, invert FFmatrix, usually
+Fis small
+Bottleneck is computing X(1)(CB); likewise X(2)(CA),
+X(3)(BA)
+Entire Xneeds to be accessed for each computation in each ALS
+iteration, data transport costs
+Memory access pattern is different for the three computations,
+making efﬁcient block caching very difﬁcult
+‘Solution’: replicate data three times in main (fast) memory :-(
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 174 / 222MTTKRP - Prior work
+Kolda et al, 2008 compute X(1)(CB)with 3 FNNZ ﬂops using
+NNZ intermediate memory (on top of that required to store the
+tensor). Does not provision for efﬁcient parallelization
+(accumulation step must be performed serially)
+Kang et al, 2012 compute X(1)(CB)with 5 FNNZ ﬂops using
+O(max( J+NNZ;K+NNZ ))intermediate memory. Parallel
+implementation.
+Choi et al, 2014 (DeFacTo): 2 F(NNZ +P)ﬂops, using
+(2NNZ +I+3P+2)memory, where Pis the number of
+non-empty J-mode ﬁbers. Parallel implementation.
+Room for considerable improvements in terms of memory- and
+computation-efﬁciency, esp. for high-performance parallel
+computing architectures
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 175 / 222[Ravindarn, Sidiropoulos, Smith, Karypis ’14]: Suite of
+three agorithms
+Algorithm 1: Output: M 1 X(1)(CB)2RIF
+1:M1 0
+2:fork=1;:::; Kdo
+3: M1 M1+X(:;:;k)Bdiag(C(k;:))
+4:end for
+Algorithm 2: Output: M 2 X(2)(CA)2RJF
+1:M2 0
+2:fork=1;:::; Kdo
+3: M2 M2+X(:;:;k)Adiag(C(k;:))
+4:end for
+Algorithm 3: Output: M 3 X(3)(BA)2RKF
+1:fork=1;:::; Kdo
+2: M3(k;:) 1T(A(X(:;:;k)B))
+3:end for
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 176 / 222Features
+Essentially no additional intermediate memory needed - updates
+ofA;BandCcan be effectively performed in place
+LetIkbe the number of non-empty rows and Jkbe the number of
+non-empty columns in X(:;:;k)and deﬁne NNZ 1:=KP
+k=1Ik,
+NNZ 2:=KP
+k=1Jk
+Algorithm 1: FNNZ 1+FNNZ 2+2FNNZ ﬂops. Kang: 5 FNNZ;
+Kolda 3 FNNZ. Note NNZ>NNZ 1;NNZ 2
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 177 / 222Features
+Algorithms 1, 2, 3 share the same tensor data access pattern -
+enabling efﬁcient orderly block caching / pre-fetching if the tensor
+is stored in slower / serially read memory, without need for
+three-fold replication ( !asymmetry between Algorithms 1, 2 and
+Algorithm 3)
+The loops can be parallelized across Kthreads, where each
+thread only requires access to an IJslice of the tensor. This
+favors parallel computation and distributed storage.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 178 / 222Imposing Constraints (contd.)
+Parametric constraints:
+All the above are non-parametric constraints.
+There are also important parametric constraints that often arise,
+particularly in signal processing applications.
+Examples:
+1Vandermonde or Toeplitz structure imposed on A,B,C
+This may reduce the number of parameters needed and suppress
+noise
+2Non-negativity can be parametrized as A(i;j) =2
+i;j; 2R
+3Magnitude constraint jA(i;j)j=1 as A(i;j) =ep 1i;j
+4Orthogonality may be parametrized via Jacobi rotations or
+Householder reﬂections.
+5Smoothness, probability simplex, and linear constraints can be
+formulated as parametric constraints
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 179 / 222Reprise – what’s coming up next
+Applications in Machine Learning
+Knowledge base completion.
+Recommender systems - collaborative ﬁltering.
+Factorization machines - multilinear classiﬁcation.
+Gaussian mixture model parameter estimation.
+Topic mining.
+Multilinear subspace learning.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 180 / 222Knowledge Base Completion
+NELL – Tom Mitchell @ CMU
+Given known facts of (subject, verb, object)-type such as (Obama,
+likes, football), (Donald, likes, football), (Donald, is, American)
+infer additional knowledge, such as (Obama, is, American).
+X
+objectsubjectverb
+a1b1c1
++
+a2b2c2
++
+aFbFcF
+::: +
+Y ou obviously need a model for this ... and the most basic
+algebraic model is low-rank ... but does low-rank make sense in
+this context?
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 181 / 222Knowledge Base Completion
+X
+objectsubjectverb
+a1b1c1
++
+a2b2c2
++
+aFbFcF
+::: +
+Think ... about matrix case in which you unfold verb-object in one
+long mode: the long rows for Obama and Donald are similar, so
+you copy entries from one to the other to make them identical $
+matrix completion!
+If you don’t unfold $tensor completion.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 182 / 222Recommender Systems: Collaborative Filtering
+Given usersmovies ( IJ) ratings matrix R.
+Low-rank approx. RUVT;U(IF),V(JF),F<< min(I;J).
+U(i;:): reduced-dim latent description of user i;
+V(j;:): reduced-dim latent description of movie j;
+RUVTimplies that user i’s rating of movie jis approximated as
+R(i;j)U(i;:)(V(j;:))T, i.e., the inner product of the latent
+descriptions of the i-th user and the j-th movie. Intuitive!
+Premise: every user is a linear combination of few ( F) user “types”
+(e.g., sports fan, college student, ... $rows of VT/ columns of V).
+Every movie is a linear combination of few movie types (e.g.,
+comedy, drama, documentary, ... $columns of U). Intuitive!
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 183 / 222Collaborative Filtering: Schematic
+= + +
+u2 u3v1 v2 v3
+customermovie
+=
+U=[u1u2 u3]V=[v1v2 v3]
+reduced -dim
+customer repu1customer type 1 customer type 2
+Fit model; predict using Ri,j=U(i,:)(Vj,:)T=σf=1Fuf(i)vf(j)R
+= UVTreduced -dim movie rep
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 184 / 222Recommender Systems: Collaborative Filtering
+Only very small % of the entries of Ris available – between 1 per
+thousand and 1 per 105in practice. Few people provide feedback.
+Goal: predict a user’s missing ratings using not only that user’s
+past ratings but also the ratings of all other users – hence the term
+collaborative ﬁltering .
+If we can ﬁnd UandVfrom the available ratings, then we can
+impute the missing ones using inner products of columns of Uand
+V. This suggests using the following formulation.
+min
+U;VW
+R UVT2
+F;
+where W(i;j) =1 ifR(i;j)is available, 0 otherwise.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 185 / 222Recommender Systems: Collaborative Filtering
+In practice, unclear what would be good F.
+Overestimate, use rank penalty to control over-ﬁtting and improve
+generalization.
+Rank of X= # nonzero singular values of X.
+Nuclear normjjXjj(sum of singular values) is commonly used
+convex surrogate ( jjjj 1vs.jjjj 0of vector of singular values).
+jjXjj= minU;VjX=UVT1
+2 
+jjUjj2
+F+jjVjj2
+F
+, so
+min
+U;VW
+R UVT2
+F+
+2
+jjUjj2
+F+jjVjj2
+F
+:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 186 / 222Recommender Systems: Collaborative Filtering
+Additional information on the context in which the ratings were
+given is often available: time, social context, gender, ...
+Every context type +1 mode !very sparse higher-order tensors.
+Bummer: approximating very sparse may require very high rank ...
+Analogy: matrix Iis full rank.
+CPD of usermovietime tensor Rw/ elements R(i;j;k)
+min
+A;B;CKX
+k=1W(:;:;k)
+R(:;:;k) ADk(C)BT2
+F;
+Xiong et al. : rank + smoothness regularization, Bayesian MCMC.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 187 / 222Machine learning interpretation of CPD
+IJK
+X_ = + +
+a2 a3b1 b2b3c1 c2 c3
+C=[c1c2 c3]customeritem
+=
+A=[a1a2 a3]B=[b1b2 b3]
+reduced -dim
+customer repa1customer type 1 customer type 2
+𝑋𝑖,𝑗,𝑘= 
+𝑓=1𝐹
+ 𝑎𝑓(𝑖)𝑏𝑓(𝑗)𝑐𝑓(𝑘
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 188 / 222From Matrix to Tensor: Context
+Karatzoglou et al. : used age as the third mode ( <18, 18-50, and
+>50), and non-?Tucker instead of CPD.
+min
+U;V;W;Gjj (R (U;V;W;G))jj2
+F+
+
+jjUjj2
+F+jjVjj2
+F+jjWjj2
+F
++jjGjj2
+F;
+Here (U;V;W;G)stands for Tucker model generated by
+U;V;W;G;
+jjXjj2
+Fis the sum of squared elements of tensor X.
+Note:jjUjj2
+F=Tr(UTU), soUTU=Iresists rank regularization.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 189 / 222Multilinear classiﬁcation
+In support vector machine (SVM) classiﬁcation, we use a linear
+mapping wTx=P
+iw(i)x(i)to discriminate between vectors
+belonging to two different classes: sign (wTx b).
+Augmenting each xwith a unit as last element (i.e., replacing xby
+[x;1]T) and likewise absorbing  binw!sign (wTx).
+Classiﬁer design: choice of vector w.
+Using a measure of classiﬁcation error as cost function.
+Hinge loss plus jjwjj2
+2for the popular soft margin approach.
+What if classes are not linearly separable?
+Standard ML approach: use kernels and the kernel trick.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 190 / 222Multilinear classiﬁcation
+What if classes are not linearly separable?
+Systems approach?
+Think about Taylor series ... higher-order polynomial
+approximation ... multivariate polynomial functions.
+First step: linear-quadratic function, also taking into account all
+pairwise products of input variables.
+Bilinear mapping xTWx=P
+i;jW(i;j)x(i)x(j) =vec 
+xTWx
+= 
+xT
+xT
+vec(W) = ( x
+x)Tvec(W).
+Augmenting xwith a unit as last element (i.e., replacing xby
+[x;1]T), higher-order mappings include lower-order ones.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 191 / 222Multilinear classiﬁcation
+More generally, multilinear mapping, e.g.,
+(x
+x
+x)Tvec(W) =P
+i;j;kW(i;j;k)x(i)x(j)x(k).
+Classiﬁer design problem boils down to designing a suitable
+matrix or tensor Wof weights.
+In order to em keep the number of model parameters low relative
+to the number of training samples (to enable statistically
+meaningful learning and generalization), a low-rank tensor model
+such as CPD (Steffen Rendle, 2010), or low multilinear rank one
+such as Tucker can be employed.
+Model parameters learned using a measure of classiﬁcation error
+as cost function.
+A simple optimization solution is to use SGD, drawing samples
+from the training set at random.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 192 / 222Gaussian mixture parameter estimation
+Consider FGaussiansN(f;2
+fI), wheref2RI1is the mean
+vector and 2
+fis the variance of the elements of the f-th Gaussian.
+Let= [1;;F]Tbe a prior distribution.
+Experiment: ﬁrst draw fm; then draw xmN (fm;2
+fmI).
+The distribution of xmis then a mixture of the FGaussians, i.e.,PF
+f=1fN(f;2
+fI).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 193 / 222Gaussian mixture parameter estimation
+Run Mindependent trials of the above experiment !fxmgM
+m=1.
+-1
+2-0.50
+30.5
+01
+21.5
+12
+-20
+-1
+-4-2
+GivenfxmgM
+m=1, estimate mixture parameters ff;2
+f;fgF
+f=1.
+Can also estimate FfromfxmgM
+m=1, but assume Fgiven to ease
+burden.
+Note conceptual similarity to k-means (here: F-means) clustering
+or vector quantization (VQ): main difference is that here we make
+an additional modeling assumption that the “point clouds” are
+isotropic Gaussian about their means.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 194 / 222Gaussian mixture parameter estimation
+Consider
+E[xm] =FX
+fm=1E[xmjfm]fm=FX
+f=1ff=M;
+where M:= [1;;F](IF). Next, consider
+E[xmxT
+m] =FX
+fm=1E[xmxT
+mjfm]fm=FX
+f=1
+fT
+f+2
+fI
+f
+=MDiag ()MT+ 2I;2:=FX
+f=12
+ff:
+It is tempting to consider third-order moments, which are easier to
+write out in scalar form
+E[xm(i)xm(j)xm(k)] =FX
+f=1E[xm(i)xm(j)xm(k)jf]f:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 195 / 222Gaussian mixture parameter estimation
+Conditioned on f,xm(i) =f(i) +zm(i), where zmN (0;2
+fI),
+and likewise for xm(j)andxm(k). Plugging these back into the
+above expression, and using that
+.If two out of three indices i;j;kare equal, then
+E[zm(i)zm(j)zm(k)jf] =0, due to zero mean and independence of
+the third; and
+.If all three indices are equal, then E[zm(i)zm(j)zm(k)jf] =0
+because the third moment of a zero-mean Gaussian is zero, we
+obtain
+E[xm(i)xm(j)xm(k)jf] =f(i)f(j)f(k)+
+2
+f(f(i)(j k) +f(j)(i k) +f(k)(i j));
+where()is the Kronecker delta.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 196 / 222Gaussian mixture parameter estimation
+Averaging over f,
+R(i;j;k):=E[xm(i)xm(j)xm(k)] =FX
+f=1ff(i)f(j)f(k)+
+FX
+f=1f2
+f(f(i)(j k) +f(j)(i k) +f(k)(i j)):
+Further assume, for simplicity, that 2
+f=2,8f, and2is known.
+ThenPF
+f=1ff(i) =E[xm(i)]can be easily estimated. So we
+may pre-compute the second term in the above equation, call it
+ (i;j;k), and form
+R(i;j;k)  (i;j;k) =FX
+f=1ff(i)f(j)f(k);
+which is evidently a symmetric CPD model of rank (at most) F.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 197 / 222Gaussian mixture parameter estimation
+R(i;j;k)  (i;j;k) =FX
+f=1ff(i)f(j)f(k):
+Note that, due to symmetry and the fact that f0, there is no
+ambiguity regarding the sign of f; but we can still set e.g.,
+0
+1=1
+31,0
+1=1
+1,0
+2=1+2 0
+1= 1
+1+2,1
+=0
+2
+2,
+and0
+2=1
+32, for some>0.
+However, we must further ensure that 0
+2>0, and0
+1< 1+2;
+both require >1
+1+2.
+We see that scaling ambiguity remains, and is important to resolve
+it here, otherwise we will obtain the wrong means and mixture
+probabilities.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 198 / 222Gaussian mixture parameter estimation
+Towards this end, consider lower-order statistics, namely E[xmxT
+m]
+andE[xm]. Note that,
+(MMM)= ((MD1=3)(MD1=3)(MD1=3))D 1
+but
+E[xm] =M6= (MD1=3)D 1;
+E[xmxT
+m] 2I=MDiag ()MT
+vec()!(MM)6= ((MD1=3)(MD1=3))D 1:
+This shows that no scaling ambiguity remains when we jointly ﬁt
+third and second (or third and ﬁrst) order statistics.
+For the general case, when the variances
+2
+f	F
+f=1are unknown
+and possibly different, see [Hsu, 2013]. A simpler work-around is
+to treat “diagonal slabs” (e.g., corresponding to j=k) as missing,
+ﬁt the model, then use it to estimate
+2
+f	F
+f=1and repeat.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 199 / 222Topic Mining
+Topic 1: Clinton, White 
+House, Scandal, 
+Lewinsky, grand jury…
+Topic 2: Utah, Chicago, 
+NBA, Jordan, Carl, jazz, 
+bull, basketball, final,…Topic 3: NASA, Columbia, 
+shuttle, space, 
+experiments, …
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 200 / 222Topic Mining
+Table: Mined topics from 5 classes of (1,683) articles of the TDT2 corpus.
+FastAnchor (classic) AnchorFree (proposed)
+allegations poll columbia gm bulls lewinsky gm shuttle bulls jonesboro
+lewinsky cnnusa shuttle motors jazz monica motors space jazz arkansas
+clinton gallup space plants nba starr plants columbia nba school
+lady allegations crew workers utah grand ﬂint astronauts chicago shooting
+white clinton astronauts michigan ﬁnals white workers nasa game boys
+hillary presidents nasa ﬂint game jury michigan crew utah teacher
+monica rating experiments strikes chicago house auto experiments ﬁnals students
+starr lewinsky mission auto jordan clinton plant rats jordan westside
+house president stories plant series counsel strikes mission malone middle
+husband approval ﬁx strike malone intern gms nervous michael 11year
+dissipate starr repair gms michael independent strike brain series ﬁre
+president white rats idled championship president union aboard championship girls
+intern monica unit production tonight investigation idled system karl mitchell
+affair house aboard walkouts lakers affair assembly weightlessness pippen shootings
+inﬁdelity hurting brain north win lewinskys production earth basketball suspects
+grand slipping system union karl relationship north mice win funerals
+jury americans broken assembly lewinsky sexual shut animals night children
+sexual public nervous talks games ken talks ﬁsh sixth killed
+justice sexual cleansing shut basketball former autoworkers neurological games 13year
+obstruction affair dioxide striking night starrs walkouts seven title johnson
+K. Huang, X. Fuand N.D. Sidiropoulos, “ Anchor-Free Correlated Topic
+Modeling: Identiﬁability and Algorithm ”, NIPS 2016. (equal contribution)
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 201 / 222Topic Mining
+Given a dictionary D=fw1;;wIgcomprising Ipossible words,
+atopic is a probability mass function (pmf) over D.
+Assume there are Ftopics overall, let pf:=Pr(wijf)be the pmf
+associated with topic f,fbe the probability that one may
+encounter a document associated with topic f, and
+:= [1;;f]T.
+We begin our discussion of topic modeling by assuming that each
+document is related to one and only one topic (or, document
+“type”).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 202 / 222Topic Mining
+Consider the following experiment:
+1) Draw a document at random;
+2) Sample mwords from it, independently, and at random (with
+replacement – the order in which words are drawn does not
+matter);
+3) Repeat (until you collect “enough samples” – to be qualiﬁed
+later).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 203 / 222Topic Mining
+Assume for the moment that Fis known. Goal is to estimate
+fpf;fgF
+f=1.
+Clearly, Pr (wi) =PF
+f=1Pr(wijf)f.
+Furthermore, the word co-occurrence probabilities
+Pr(wi;wj) :=Pr(word iand word jare drawn from the same
+document) satisfy
+Pr(wi;wj) =FX
+f=1Pr(wi;wjjf)f=FX
+f=1pf(i)pf(j)f;
+since the words are independently drawn from the document.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 204 / 222Topic Mining
+Deﬁne the matrix of word co-occurrence probabilities P(2)with
+elements P(2)(i;j) :=Pr(wi;wj), and the matrix of conditional pmfs
+C:= [p1;;pF]. Then
+P(2)=CDiag ()CT:
+Next, consider “trigrams” – i.e., probabilities of triples of words
+being drawn from the same document
+Pr(wi;wj;wk)=FX
+f=1Pr(wi;wj;wkjf)f=FX
+f=1pf(i)pf(j)pf(k)f:
+Deﬁne tensor P(3)with elements P(3)(i;j;k):=Pr(wi;wj;wk). Then
+P(3)admits a symmetric non-negative CPD model of rank (at
+most) F:
+P(3)= (CCC):
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 205 / 222Topic Mining
+Similar to but in fact simpler from the case of Gaussian mixture
+parameter estimation, since here, due to independent sampling
+withreplacement, the same expression holds even if two or three
+indices i;j;kare the same.
+We can estimate Candfrom the tensor P(3)and the matrix P(2).
+In reality, we will use empirical word co-occurrence counts to
+estimate P(3)andP(2), and for this we need to sample enough
+triples (“enough samples”).
+Once we have C, we can classify any document by estimating
+(part of) its conditional word pmf and comparing it to the columns
+ofC.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 206 / 222Topic Mining
+Next, consider the more realistic situation where each document
+is a mixture of topics, modeled by a pmf q(F1)that is itself
+drawn from a distribution ()over the (F 1)-dimensional
+probability simplex .
+Our working experiment is now modiﬁed as follows:
+1) For every document we sample, we draw q();
+2) For every word we sample from the given document, we ﬁrst
+draw a topic tfrom q– i.e., topic fis selected with probability q(f);
+3) Next, we draw a word pt;
+4) Goto 2, until you have sampled the desired number of words
+(e.g., three) from the given document;
+5) Goto 1, until you have collected enough samples (e.g., enough
+triples of words).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 207 / 222Topic Mining
+Then,
+Pr(wi;wjjt1;t2;q) =pt1(i)pt2(j) =)
+Pr(wi;wjjq) =FX
+t1=1FX
+t2=1pt1(i)pt2(j)q(t1)q(t2) =)
+Pr(wi;wj) =FX
+t1=1FX
+t2=1pt1(i)pt2(j)E[q(t1)q(t2)];
+where we notice that what comes into play is the second-order
+statistics E[q(t1)q(t2)](the correlation) of ().
+TheIImatrix Qwith elements Q(i;j) :=Pr(wi;wj)admits the
+decomposition Q=CECT, where E(t1;t2) :=E[q(t1)q(t2)].
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 208 / 222Topic Mining
+Likewise, it follows that, for the trigrams
+Pr(wi;wj;wk) =FX
+t1=1FX
+t2=1FX
+t3=1pt1(i)pt2(j)pt3(k)E[q(t1)q(t2)q(t3)];
+which involves the third-order statistics tensor Gof()with
+elements G(t1;t2;t3) :=E[q(t1)q(t2)q(t3)].
+Deﬁning the IIItensor Pwith elements
+P(i;j;k) :=Pr(wi;wj;wk), it follows that Padmits a symmetric
+Tucker decomposition:
+P=Tucker (C;C;C;G);withC= [p1;;pF]:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 209 / 222Topic Mining
+P=Tucker (C;C;C;G);withC= [p1;;pF]:
+Note that Cis element-wise non-negative, but in principle Gmay
+have negative elements.
+As we know, Tucker models are not identiﬁable in general – there
+is linear transformation freedom.
+This can be alleviated when one can assume sparsity in C
+[Anandkumar, 2013], G, or both (intuitively, this is because linear
+transformations generally do not preserve sparsity).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 210 / 222Topic Mining
+Recall: pairwise co-occurrence probability matrix Qwith elements
+Q(i;j) :=Pr(wi;wj)admits the decomposition Q=CECT, where
+E(t1;t2) :=E[q(t1)q(t2)]is the topic correlation matrix.
+Interestingly, Q=CECTis already identiﬁable under mild
+conditions if one uses the correct (VolMin) criterion:
+K. Huang, X. Fuand N.D. Sidiropoulos, “ Anchor-Free
+Correlated Topic Modeling: Identiﬁability and Algorithm ”,
+NIPS 2016. (equal contribution)
+Implies slab-by-slab identiﬁability of P=Tucker (C;C;C;G). More
+work in this direction currently underway.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 211 / 222Discriminative Subspace Learning
+Given X= [x1;;xM](NM) and associated class labels
+z= [z1;;zM](1M) for the columns of X.
+Find a dimensionality-reducing linear transformation Uof size
+NF,F<N(usually FN) such that
+min
+UjUTU=IMX
+m=18
+<
+:(1 )MX
+`=1jz`=zmjjUTxm UTx`jj2
+2 
+MX
+`=1jz`6=zmjjUTxm UTx`jj2
+29
+=
+;;
+where the ﬁrst (second) term measures the within-class
+(across-class) distance in reduced dimension space.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 212 / 222Discriminative Subspace Learning
+Interpretation: ﬁnd a dimensionality-reducing transformation that
+will map points close to each other in terms of Euclidean distance
+if they have the same class label, far otherwise.
+Find a subspace to project onto where we can easily visualize (if
+F=2 or 3) the point clouds of the different classes.
+Upon deﬁning
+wm;`:= (1 )1(z`=zm)( )1 1(z`=zm);
+where 1 (z`=zm) =1 ifz`=zm, 0 otherwise, we can compactly
+write the problem as follows
+min
+UjUTU=IMX
+m=1MX
+`=1jjUTxm UTx`jj2
+2wm;`:
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 213 / 222Discriminative Subspace Learning
+Expanding the squared norm and using properties of Tr (), we can
+write the cost function as
+MX
+m=1MX
+`=1jjUTxm UTx`jj2
+2wm;`=Tr(UUTY);
+where
+Y:=MX
+m=1MX
+`=1wm;`(xm x`)(xm x`)T:
+Notice that wm;`=w`;mby deﬁnition, and Yis symmetric. Let
+Y=VVTbe the eigendecomposition of Y, and note that
+Tr(UUTY) =Tr(UTYU). Clearly, Uopt=Fminor eigenvectors of Y
+(columns of Vcorresponding to the Fsmallest elements on the
+diagonal of ).
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 214 / 222Multilinear Subspace Learning
+Now, suppose that the columns in Xare in fact vectorized tensors.
+As an example, suppose that there exist common bases U(Ir1),
+V(Jr2),W(Kr3), such that
+xm(U
+V
+W)gm;8m2f1;;Mg;
+i.e., each xmcan be modeled using a ?-Tucker model with
+common mode bases, but different cores for different m.
+Think of (U
+V
+W)T(r1r2r3IJK) as a (Kronecker) structured
+dimensionality reducing transformation;
+Think of the vectorized core array gmas the low-dimensional
+(r1r2r31) representation of xm.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 215 / 222Multilinear Subspace Learning
+Want to ﬁnd U,V,Wsuch that the g’s corresponding to x’s in the
+same (different) class are close (far) from each other.
+Following the same development as before, using
+bgm= (U
+V
+W)Txm
+as the projection of xmin reduced-dimension space, we arrive at
+min
+U;V;WTr
+(U
+V
+W)(U
+V
+W)TY
+;
+subject to: UTU=I;VTV=I;WTW=I;
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 216 / 222Multilinear Subspace Learning
+Equivalently,
+min
+U;V;WTr
+((UUT)
+(VVT)
+(WWT))Y
+;
+subject to: UTU=I;VTV=I;WTW=I;
+It is now clear that, conditioned on, say, UandV, the update with
+respect to Wboils down to
+min
+WjWTW=ITr
+WWTZ
+;
+for some matrix Zthat depends on the values of UandV.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 217 / 222References I
+James Alexander and Andr ´e Hirschowitz.
+Polynomial interpolation in several variables.
+Journal of Algebraic Geometry , 4(2):201–222, 1995.
+B. W. Bader and T. G. Kolda.
+Efﬁcient MATLAB computations with sparse and factored tensors.
+SIAM Journal on Scientiﬁc Computing , 30(1):205–231, December 2007.
+R. Bro and N.D. Sidiropoulos.
+Least squares regression under unimodality and non-negativity constraints.
+Journal of Chemometrics , 12:223–247, 1998.
+A. Beutel, P . Talukdar, A. Kumar, C. Faloutsos, E. Papalexakis, and E. Xing.
+FlexiFaCT: Scalable Flexible Factorization of Coupled Tensors on Hadoop , chapter 13,
+pages 109–117.
+P . Comon.
+Tensors : A brief introduction.
+Signal Processing Magazine, IEEE , 31(3):44–53, May 2014.
+J. H. Choi and S. V. N. Vishwanathan.
+DFacTo: Distributed factorization of tensors.
+InAdvances in Neural Information Processing Systems , pages 1296–1304, 2014.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 218 / 222References II
+J. H˚astad.
+Tensor rank is np-complete.
+J. Algorithms , 11(4):644–654, December 1990.
+M. Ishteva, P .-A. Absil, S. Van Huffel, and L. De Lathauwer.
+Best low multilinear rank approximation of higher-order tensors, based on the riemannian
+trust-region scheme.
+SIAM Journal on Matrix Analysis and Applications , 32(1):115–135, 2011.
+T.G. Kolda and B.W. Bader.
+Tensor decompositions and applications.
+SIAM REVIEW , 51(3):455–500, 2009.
+U Kang, E. Papalexakis, A. Harpale, and C. Faloutsos.
+Gigatensor: scaling tensor analysis up by 100 times-algorithms and discoveries.
+InProceedings of the 18th ACM SIGKDD international conference on Knowledge discovery
+and data mining , pages 316–324. ACM, 2012.
+P .M. Kroonenberg.
+Applied multiway data analysis .
+Wiley, 2008.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 219 / 222References III
+J. Landsberg.
+Tensors: geometry and applications , volume 128.
+American Mathematical Soc., 2012.
+J. Nocedal and S. Wright.
+Numerical optimization .
+Springer Science & Business Media, 2006.
+C. Papalexakis, E.and Faloutsos and N. Sidiropoulos.
+Parcube: Sparse parallelizable tensor decompositions.
+InProceedings of the 2012 European Conference on Machine Learning and Knowledge
+Discovery in Databases - Volume Part I , ECML PKDD’12, pages 521–536, Berlin,
+Heidelberg, 2012. Springer-Verlag.
+A. H. Phan, P . Tichavsky, and A. Cichocki.
+Fast Alternating LS Algorithms for High Order CANDECOMP/PARAFAC Tensor
+Factorizations.
+IEEE Transactions on Signal Processing , 61(19):4834–4846, October 2013.
+doi: 10.1109/TSP .2013.2269903.
+M. Rajih, P . Comon, and R. Harshman.
+Enhanced line search: A novel method to accelerate parafac.
+SIAM Journal on Matrix Analysis and Applications , 30(3):1128–1147, 2008.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 220 / 222References IV
+N. Ravindran, N.D. Sidiropoulos, S. Smith, and G. Karypis.
+Memory-efﬁcient parallel computation of tensor and matrix products for big tensor
+decomposition.
+InAsilomar Conference on Signals, Systems, and Computers , pages 581–585, 2014.
+M. Sorensen, L. De Lathauwer, P . Comon, S. Icart, and L. Deneire.
+Canonical Polyadic Decomposition with a Columnwise Orthonormal Factor Matrix.
+SIAM Journal on Matrix Analysis and Applications , 33(4, Oct.-Dec.):1190–1213, 2012.
+B. Savas and L.-H. Lim.
+Quasi-newton methods on grassmannians and multilinear approximations of tensors.
+SIAM Journal on Scientiﬁc Computing , 32(6):3352–3393, 2010.
+S. Smith, N. Ravindran, N. D. Sidiropoulos, and G. Karypis.
+SPLATT: Efﬁcient and parallel sparse tensor-matrix multiplication.
+InIEEE International Parallel and Distributed Processing Symposium , 2015.
+L. Sorber, M. Van Barel, and L. De Lathauwer.
+Optimization-based algorithms for tensor decompositions: canonical polyadic
+decomposition, decomposition in rank-(Lr,Lr,1) terms and a new generalization.
+SIAM Journal on Optimization , 23(2):695–720, April 2013.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 221 / 222References V
+G. Tomasi and R. Bro.
+PARAFAC and missing values.
+Chemometrics and Intelligent Laboratory Systems , 75(2):163–180, 2005.
+G. Tomasi and R. Bro.
+A comparison of algorithms for ﬁtting the PARAFAC model.
+Computational Statistics and Data Analysis , 50(7):1700–1734, 2006.
+N. Vervliet and L. De Lathauwer.
+A randomized block sampling approach to canonical polyadic decomposition of large-scale
+tensors.
+IEEE Journal of Selected Topics in Signal Processing , 10(2):284–295.
+N. Vervliet, O. Debals, L. Sorber, and L De Lathauwer.
+Breaking the Curse of Dimensionality Using Decompositions of Incomplete Tensors:
+Tensor-based scientiﬁc computing in big data analysis.
+Signal Processing Magazine, IEEE , 31(5):71–79, September 2014.
+N. Vannieuwenhoven, K. Meerbergen, and R Vandebril.
+Computing the Gradient in Optimization Algorithms for the CP Decomposition in Constant
+Memory through Tensor Blocking.
+SIAM Journal on Scientiﬁc Computing , 37(3):C415–C438, 2015.
+Sidiropoulos, De Lathauwer, Fu, Papalexakis ICASSP’17 T#12: TD for SP & ML February 3, 2017 222 / 222

@@ -1,0 +1,1867 @@
+HAL Id: hal-04605468
+https://hal.science/hal-04605468
+Submitted on 7 Jun 2024
+HAL is a multi-disciplinary open access
+archive for the deposit and dissemination of sci-
+entific research documents, whether they are pub-
+lished or not. The documents may come from
+teaching and research institutions in F rance or
+abroad, or from public or private research centers.L’archive ouverte pluridisciplinaire HAL , est
+destinée au dépôt et à la diffusion de documents
+scientifiques de niveau recherche, publiés ou non,
+émanant des établissements d’enseignement et de
+recherche français ou étrangers, des laboratoires
+publics ou privés.
+Flow modeling and structural characterization in fungal
+pellets
+J. Sánchez-V argas, F.J. V aldés-Parada, L. Peraza-Reyes, Didier Lasseux, M.A.
+T rujillo-Roldán
+T o cite this version:
+J. Sánchez-V argas, F.J. V aldés-Parada, L. Peraza-Reyes, Didier Lasseux, M.A. T rujillo-Roldán. Flow
+modeling and structural characterization in fungal pellets. Journal of Theoretical Biology , 2024, 590,
+pp.111853. ￿10.1016/j.jtbi.2024.111853￿. ￿hal-04605468￿Journal of Theoretical Biology 590 (2024) 111853
+Available online 18 May 2024
+0022-5193/© 2024 The Authors. Published by Elsevier Ltd. This is an open access article under the CC BY license ( http://creativecommons.org/licenses/by/4.0/ ).
+Contents lists available at ScienceDirect
+Journal of Theoretical Biology
+journal homepage: www.elsevier.com/locate/yjtbi
+Flow modeling and structural characterization in fungal pellets✩
+J. Sánchez-Vargasa,b, F.J. Valdés-Paradac, L. Peraza-Reyesd, D. Lasseuxe,
+M.A. Trujillo-Roldána,f,∗
+aDepartamento de Biología Molecular y Biotecnología, Instituto de Investigaciones Biomédicas, Universidad Nacional Autónoma de México, 04510, CDMX, Mexico
+bPosgrado en Ciencias Bioquímicas, Universidad Nacional Autónoma de México, 04510, CDMX, Mexico
+cDivisión de Ciencias Básicas e Ingeniería, Universidad Autónoma Metropolitana-Iztapalapa, 09340, CDMX, Mexico
+dDepartamento de Bioquímica y Biología Estructural, Instituto de Fisiología Celular, Universidad Nacional Autónoma de México, 04510, CDMX, Mexico
+eUniversity of Bordeaux, CNRS, Bordeaux INP, I2M, UMR 5295, Bordeaux, F-33400, Talence, France
+fDepartamento de Bionanotecnología, Centro de Nanociencias y Nanotecnología, Universidad Nacional Autónoma de México, Ensenada, Baja California, Mexico
+A R T I C L E I N F O
+Keywords:
+Fluid mechanics
+Upscaling
+Mathematical model
+Laccaria trichodermophoraA B S T R A C T
+Fungal pellets are hierarchical systems that can be found in an ample variety of applications. Modeling
+transport phenomena in this type of systems is a challenging but necessary task to provide knowledge-
+based processes that improve the outcome of their biotechnological applications. In this work, an upscaled
+model for total mass and momentum transport in fungal pellets is implemented and analyzed, using elements
+of the volume averaging and adjoint homogenization methods departing from the governing equations at
+the microscale in the intracellular and extracellular phases. The biomass is assumed to be composed of a
+non-Newtonian fluid and the organelles impervious to momentum transport are modeled as a rigid solid
+phase. The upscaled equations contain effective-medium coefficients, which are predicted from the solution
+of adjoint closure problems in a three-dimensional periodic domains representative of the microstructure. The
+construction of these domains was performed for Laccaria trichodermophora based on observations of actual
+biological structures. The upscaled model was validated with direct numerical simulations in homogeneous
+portions of the pellets core. It is shown that no significant differences are observed when the dolipores are
+open or closed to fluid flow. By comparing the predictions of the average velocity in the extracellular phase
+resulting from the upscaled model with those from the classical Darcy equation ( i.e., assuming that the biomass
+is a solid phase) the contribution of the intracellular fluid phase was evidenced. This work sets the foundations
+for further studies dedicated to transport phenomena in this type of systems.
+1. Introduction
+Fungal cultures, filamentous and non-filamentous, are of interest in
+industry and research due to their essential role in many biotechno-
+logical processes. Some applications of fungal biomass are in wastew-
+ater treatment ( Espinosa-Ortiz et al. , 2016 ; Legorreta-Castañeda et al. ,
+2020 ), environmental systems ( Ángeles-Argáiz et al. , 2020 ), enzymes
+and metabolites production for food, pharmaceutical and other indus-
+trial applications ( Böl et al. , 2020 ; El-Gendi et al. , 2021 ).
+In submerged agitated cultures, mycelia ( i.e., clusters of branching
+hyphae) grow intertwined and form hemispherical porous structures
+named (bio)pellets. Due to the complex geometrical configurations
+formed in these structures and the variation of hyphal density (or pellet
+✩Funding information : Programa de Apoyo a Proyectos de Investigación e Innovación Tecnológica, Universidad Nacional Autónoma de México (PAPIIT-UNAM,
+IN211422, IV201220).
+∗Corresponding author at: Departamento de Biología Molecular y Biotecnología, Instituto de Investigaciones Biomédicas, Universidad Nacional Autónoma de
+México, 04510, CDMX, Mexico.
+E-mail address: maurotru@iibiomedicas.unam.mx (M.A. Trujillo-Roldán).porosity), different spatially homogeneous zones have been identi-
+fied ( Espinosa-Ortiz et al. , 2016 ; Reyes et al. , 2017 ; Li et al. , 2020 ). The
+intricate hyphal topologies may hinder oxygen and nutrients transport
+within the inner part of the pellets, where hyphal density usually
+increases, leading to a decreasing metabolic activity when approaching
+the center of the pellets, even reaching cease of activity or lysis ( Silva
+et al. , 2001 ; Hille et al. , 2005 ; Krull et al. , 2010 ). The presence,
+topology, compactness and thickness of these regions depend upon the
+fungal species, mycelia age and culture conditions. The latter include
+culture medium composition, pH, inoculum size and characteristics,
+agitation and aeration rates, geometry and bioreactor scale, and, in the
+case of stirred tank bioreactors, the type of impeller used (therefore also
+https://doi.org/10.1016/j.jtbi.2024.111853
+Received 19 December 2023; Received in revised form 11 April 2024; Accepted 14 May 2024Journal of Theoretical Biology 590 (2024) 111853
+2J. Sánchez-Vargas et al.
+the power supplied per unit volume, shear stress and viscous energy dis-
+sipation with respect to circulation time, among others) (Shamlou et al.,
+1994; Hellendoorn et al., 1998; Cui et al., 1998a; Silva et al., 2001;
+Hille et al., 2005; Kelly et al., 2006; Duarte, 2009; Krull et al., 2010).
+Also, hyphae can be either septated or non-septated (coenocytic). In
+the former case, hyphae are divided by septa (permeable barriers), into
+compartments of roughly the same length (Mouriño-Pérez, 2013). Septa
+may play some key roles in momentum transport (Van Driel et al.,
+2008; Mouriño-Pérez, 2013). The first one is to increase rigidity of
+the hyphae by providing additional cellular wall. The second one is
+related to prevention, to a limited extent, of mechanical damage at
+growing-tip regions. The last one is to localize damage and cytoplasmic
+loss to a certain portion of the hyphae and thus protect the remaining
+compartments. Moreover, the structural complexity of the septal region
+is species-dependent. For example, Basidiomycota possess a specialized
+septa denominated dolipores that control mass and momentum trans-
+port between adjacent compartments (Sumbali et al., 2005). All these
+factors, which depend on the microstructure, significantly influence
+transport phenomena within agitated pellet cultures (Hille et al., 2005,
+2009).
+Mass and momentum transport at the scale of hyphae impact the
+microorganism metabolism, viability and product formation, which
+ultimately have repercussions in hyphal growth (Böl et al., 2020).
+It is therefore of prime importance to study the effects of transport
+phenomena inside fungal pellets of varying constitutive morphologies.
+The culture of mycelium pellets is a hierarchical system with dif-
+ferent levels of scale, regardless the type of vessel used (Nielsen and
+Krabben, 1995; Davidson, 2007). In a hierarchical system, transport
+phenomena at a given scale are determined by the corresponding
+phenomena at the inferior scale(s) (see, for instance, Sánchez-Vargas
+and Valdés-Parada, 2022). As shown in Fig. 1, the hyphal scale is the
+smallest one for this system and it is also denoted as the microscale in
+the following. Here, only the individual hyphae and the culture medium
+are distinguished. Moreover, the characteristic length may correspond
+to either the maximal hyphal thickness or to the maximal distance
+between hyphae, which are on the order of microns (Roberson et al.,
+2014; Vetchinkina et al., 2017). Next is the pellet scale (also denoted
+themacroscale in this work), where the characteristic length may be
+associated to the diameter of the fungal pellets, i.e., on the order of
+hundreds of microns to millimeters (Pradella et al., 1990; Rossi et al.,
+2002, 2007). Finally, the largest scale corresponds to a portion of a flask
+or bioreactor, which is on the order of centimeters to meters. These
+two differ by the presence of bubbles in the bioreactor and incorporate
+different pellet sizes and disperse mycelium.
+The mathematical models found in the literature can be grouped
+according to the scale hierarchy proposed above. At the scale of hy-
+phae, probabilistic modeling has been used to describe their elongation
+and branching (Yang et al., 1992) and hyphal extension by vesicle
+incorporation to the tip wall (Bartnicki-Garcia et al., 1989), more
+recently expanded to a 3D model (Gierz and Bertnicki-Garcia, 2001)
+and including diffusive transport of vesicles (Tindemans et al., 2006).
+In the latter, vesicles are conceived as a chemical species for which
+mass transfer obeys Fick’s law, and focus was laid on the extending tip
+of a hypha, neglecting convective transport with respect to diffusive
+transport on the basis of a sufficiently small Péclet number value.
+This assumption precludes the application of the model to regions of
+the hypha, within the same cell but far from the extending tip, in
+which cytoplasmic flow contribution to mass transport gains impor-
+tance (Mogilner and Manhart, 2018). Deterministic modeling has been
+applied to describe the dynamics of the cytoskeleton (regarded as a
+viscoelastic fluid) and diffusive and advective (cytoskeleton-mediated)
+vesicle transport (Regalado and Sleeman, 1999). A different approach
+consists of the application of global species mass balances to model
+hyphal length extension due to turgidity and the concentration of
+vesicles or organelles based on their consumption or production ratesand volume flow rates of the cytoplasm or the cytoskeleton (King,
+2015).
+At the scale of pellets, probabilistic modeling was used in the work
+of Meyerhoff and Bellgardt (1995), consisting of a model to represent
+the processes of spore germination, pellet fragmentation due to shear
+stress and the pre-culture and culture of up to 100 pellets. In the work
+by Lejeune and Baron (1997), the model was extended from spore
+germination to pellet formation using fractal geometry to represent the
+complex pellets structure. These works represent some of the few mod-
+eling approaches that connect the first two scales of the system depicted
+in Fig. 1: the hyphae and pellet scales. Other works deal with mass and
+substrate diffusive transport and reaction in pellets through postulated
+time- and space-dependent models (Davidson, 1998; Boswell, 2003).
+Some other analyses are based upon population models that render a
+time-dependent class distribution based on pellet sizes, as described
+by Tough et al. (1995) and Tough and Prosser (1996). These two works
+consider both pellets growth and death, as well as fragmentation due
+to shear stress in submerged cultures, with pellet fragments serving
+as germinal points for generating new pellets. At this scale level,
+diffusive mass transport models are frequently postulated in the form
+of average equations, where the effective diffusion coefficient needs
+to be experimentally quantified (Cui et al., 1998a; Silva et al., 2001;
+Celler et al., 2012; Schmideder et al., 2019, 2020). It has been shown
+that the assumption of diffusive-driven mass transport inside the fungal
+pellets is only valid in specific scenarios, such as in very compact
+structures (Hille et al., 2009). In less-dense pellets, substrates transport
+occurs through turbulent diffusion and convective flow (Schügerl et al.,
+1983; Wittler et al., 1986; Hille et al., 2005; Krull et al., 2010), thus
+highlighting the relevance of also studying fluid flow inside these
+structures.
+Fluid flow at the microscale and macroscale have been scarcely
+studied in agitated pellet cultures, even though they provide valuable
+information about pellets mechanics and therefore represent the basis
+to study convective mass transport and relate it to the process pro-
+ductivity (Böl et al., 2020). Also, fluid flow analysis is required to
+study the effects of shear stress over pellet morphology by coupling the
+(total) mass and momentum balance equations. Moreover, momentum
+transport is fundamental in order to unveil the interconnection between
+growth, the mechanical forces applied, pellet shaving, species mass
+transport and vacuolization, some of the main factors that determine
+pellet structure and size during the culture (Paul et al., 1994; Shamlou
+et al., 1994; Cui et al., 1998b,a). This momentum multiscale analysis
+is typical in non-biological applications, such as catalytic inert pellets,
+fixed-bed reactors and other porous materials (Bear, 2018). Here Darcy
+or Darcy-like models are typically employed at the macroscale, which
+usually emerge as a result of an upscaling process of the governing
+equations at the microscale using methods such as volume averaging
+or homogenization (Kulkarni et al., 2008; Salejova et al., 2011; Das
+et al., 2018; Yang et al., 2023).
+Upscaling techniques are adequate to study multiscale processes by
+systematically filtering the relevant information from the lower scale
+levels and allowing the final model predictions to be influenced by all
+the underlying scales. As a salient feature of upscaling, the resulting
+model is mathematically simpler than its microscale counterpart, fa-
+cilitating its solution with less computational requirements. However,
+a drawback of upscaling approaches is that the analysis can only be
+performed in terms of average quantities. This implies that it is not
+possible to use the model to retrieve the detailed information at the
+lower scale levels. Also, accuracy of the upscaled model predictions
+strictly depends on the starting and upscaling assumptions taken in
+the following way. Firstly, the starting assumptions adopted at the
+microscale influence the pertinence with respect to naturally-occurring
+phenomena in the biological system. Given the complex nature of
+biological systems, approximations of the actual behavior are usually
+adopted. Secondly, upscaling assumptions should be carefully posed soJournal of Theoretical Biology 590 (2024) 111853
+3J. Sánchez-Vargas et al.
+Fig. 1. Diagram representing a shake flask and an aerated stirred tank bioreactor as hierarchical systems for the culture of fungal pellets, with their corresponding characteristic
+lengths as order of magnitude estimates. At scale level I (microscale), the individual hyphae and surrounding culture medium that make up the fungal pellet are observed. Level
+II (macroscale) corresponds to a fungal pellet, conceived as a porous biological (hyphal) structure while the liquid phase corresponds to the culture medium that floods the pores.
+In level III, the flask or bioreactor scales are identified.
+that the average model predictions are in agreement with the average
+of the model solution at the microscale.
+The goal of the present study is to formulate and apply an upscaled
+fluid mechanics model, considering the essential microscale system
+characteristics of fungal pellets. This work is the starting point of
+several studies directed at modeling this complex multiscale system
+and will serve as a first step towards studying species mass trans-
+port. Derivations are made taking elements from the volume aver-
+aging method ( Whitaker , 1999 ) and the adjoint homogenization ap-
+proach ( Bottaro , 2019 ), based on the works of Lasseux and Valdés-
+Parada (2022 ) and Sánchez-Vargas et al. (2023 ) for two-phase flow in
+porous materials. Results from the upscaling process are presented in
+Sections 3.2 and 3.3 for (total) mass and momentum transport, respec-
+tively. The mathematical model derived here has some generality as it
+is not formulated for a particular fungal species. However, to illustrate
+the use of the model, a case study using pellets of the ectomycorrhizal
+fungus Laccaria trichodermophora is considered. For this fungal species,
+a geometrical characterization of hyphae from shake flasks cultures,
+necessary for the model application, is presented in Section 3.4. A
+parametric analysis, along with the validation of the model via direct
+numerical simulations, are reported in Section 3.5. Finally, conclusions
+are drawn in Section 4.
+2. Methodology
+This section is divided in two parts. In the first one, the math-
+ematical descriptions and tools for performing the upscaling of the
+total mass and momentum balances equations are provided. The second
+part corresponds to the experimental methodology used to quantify
+the required characteristics for application of the mathematical modelson fungal pellets of Laccaria trichodermophora , chosen as a particular
+case study. Certainly, the model may be applied to any pellet-forming
+microorganism.
+2.1. Mathematical definitions and tools
+The derivation of the upscaled (macroscopic) mass and momen-
+tum balance equations can be made using a variety of techniques as
+reviewed by Battiato et al. (2019 ). In the present work, the upscal-
+ing process is performed taking elements from the volume averaging
+method ( Whitaker , 1999 ), the adjoint homogenization approach ( Bot-
+taro, 2019 ) and Green’s integral formulation. This approach requires
+accounting for the following elements: (1) the existence of an averaging
+domain, (2) the application of integral theorems, decomposition and
+series expansions and (3) the use of periodic unit cells. These three
+elements are explained in the following paragraphs.
+2.1.1. Existence of an averaging domain
+The application of an upscaling process is restricted to systems in
+which there is a separation of length scales between the microscale ( 𝓁)
+and the macroscale ( 𝐿) (Battiato et al. , 2019 ). As shown in Fig. 2, at the
+microscale, two phases are identified, namely, the extracellular fluid or
+culture medium, which is denoted as the 𝛾phase, and the intracellular
+fluid ( i.e., the𝛽phase). Both phases are separated by the fungal cell
+wall and membrane, which is modeled here as a dividing surface, for
+simplicity.
+In this way, the characteristic length 𝓁is associated to the maximum
+length between the width of the individual fungal cells ( 𝓁𝛽) or the
+distance between them ( 𝓁𝛾). In the following, 𝓁is assumed to be
+much smaller than the minimum length scale associated to the fungalJournal of Theoretical Biology 590 (2024) 111853
+4J. Sánchez-Vargas et al.
+Fig. 2. Sketch of the scale hierarchy under study in the present work. The macroscale
+corresponds to a pellet and the microscale to a sample of hyphal compartments. The
+main phases and characteristic lengths are identified, as well as the support scale used
+during the upscaling procedure.
+pellets (𝐿). This motivates defining an intermediate scale between the
+microscale and the macroscale ( i.e., asupport scale), of characteristic
+length𝑟0, at which upscaled models are applicable. Under this assump-
+tion, an averaging domain V, of measure 𝑉, is defined, containing
+portions of all the phases that make up the system and being representa-
+tive of the microscale configuration. In order to avoid losing important
+information from the microscale, 𝑟0must be much smaller than 𝐿.
+In systems in which the microscale geometry is regular (i.e., spatially
+periodic),𝓁and𝑟0could be of the same order of magnitude. However,
+in biological systems that degree of homogeneity is rarely met. In
+most systems, a separation in two orders of magnitude is a constraint
+generally adopted to satisfy the representativeness of the domain of size
+𝑟0(Whitaker , 1999 ). Regarding 𝐿, it must be larger (by two orders
+of magnitude) than 𝑟0to make upscaling pertinent. Nevertheless, it
+is worth remarking that this constraint on length scales separation
+may be overly severe and the upscaled models may still be applicable
+if there is only one order of magnitude of difference. In cases that
+do not comply with this last constraint, different approaches should
+be adopted, either by solving the microscale equations everywhere or
+using a different type of mathematical tool that allows application in
+non-regular geometries. Therefore, the characteristic length, 𝑟0, ofVis
+assumed to comply with the following constraint
+𝓁≪𝑟0≪𝐿. (1)
+It is desirable to experimentally verify this inequality prior to the
+application of the upscaled model so that the starting assumptions are
+met to assess its consistency with the model derivation.
+In terms of the averaging domain, superficial and intrinsic averaging
+operators of a piece-wise continuous pore-scale quantity, 𝜓𝛼, defined
+anywhere within the 𝛼phase (in the following, the subscript 𝛼is usedto represent either one of the fluid phases, i.e.,𝛼=𝛽,𝛾), are respectively
+defined by
+⟨𝜓𝛼⟩𝛼||𝐱𝛼=1
+𝑉∫V𝛼𝜓𝛼||𝐫𝛼𝑑𝑉, (2a)
+⟨𝜓𝛼⟩𝛼||𝐱𝛼=𝜀−1
+𝛼⟨𝜓𝛼⟩𝛼||𝐱𝛼=1
+𝑉𝛼∫V𝛼𝜓𝛼||𝐫𝛼𝑑𝑉. (2b)
+Here,V𝛼(of measure 𝑉𝛼) corresponds to the space occupied by the
+𝛼phase in V. Note that points in the 𝛼phase are located by the
+position vector 𝐫𝛼, with respect to a fixed coordinate system, while the
+resulting average is positioned at the barycenter of the 𝛼phase ( 𝐱𝛼=
+⟨𝐫𝛼⟩𝛼, as long as the 𝛼phase is incompressible). Moreover, the volume
+fraction of the 𝛼phase is defined as 𝜀𝛼=𝑉𝛼∕𝑉. When this macroscopic
+parameter exhibits negligible spatial variations within a given domain,
+such zone of the system can be classified as homogeneous at the support
+scale ( Whitaker , 1999 ). Therefore, this parameter is used later on to
+determine the existence of homogeneous regions in the fungal pellets.
+2.1.2. Integral theorems and series expansions
+The averaging process requires using the general transport theo-
+rem ( Bird et al. , 2002 ) and the spatial averaging theorem (see for
+example, Howes and Whitaker , 1985 ). These theorems are used in
+order to exchange (temporal and spatial) differentiation and spatial
+integration.
+Furthermore, a microscale quantity, 𝜓𝛼, can be expressed in terms
+of its intrinsic average and spatial deviations, ̃ 𝜓𝛼, as defined by Gray
+(1975 )
+𝜓𝛼||𝐫𝛼=⟨𝜓𝛼⟩𝛼||𝐫𝛼+̃ 𝜓𝛼||𝐫𝛼. (3)
+Note that the average term is evaluated at the same point as 𝜓𝛼
+and not at the phase barycenter. To overcome this issue, a Taylor
+series expansion can be used as follows (see, for example, Lasseux and
+Valdés-Parada (2023 ))
+⟨𝜓𝛼⟩𝛼||𝐫𝛼=⟨𝜓𝛼⟩𝛼||𝐱𝛼+𝐳𝛼⋅∇⟨𝜓𝛼⟩𝛼||𝐱𝛼
++1
+2𝐳𝛼𝐳𝛼∶∇∇⟨𝜓𝛼⟩𝛼||𝐱𝛼+…. (4)
+Here, 𝐳𝛼≡𝐫𝛼−𝐱𝛼is a position vector that locates the same point as
+𝐫𝛼but with respect to 𝐱𝛼. Substitution of the previous expression into
+Eq. (3) leads to
+𝜓𝛼||𝐫𝛼=̃ 𝜓𝛼||𝐫𝛼+⟨𝜓𝛼⟩𝛼||𝐱𝛼+𝐳𝛼⋅∇⟨𝜓𝛼⟩𝛼||𝐱𝛼
++1
+2𝐳𝛼𝐳𝛼∶∇∇⟨𝜓𝛼⟩𝛼||𝐱𝛼+…. (5)
+The above developments are used during the upscaling procedure
+while formulating the problem in a unit cell, as reported in the next
+paragraph.
+2.1.3. Periodic unit cells
+It is pertinent to mention that, for periodic realizations of the
+microstructure, the fluid velocity and deviations of other fields, like the
+pressure, can be assumed periodic over the averaging domain ( Lasseux
+and Valdés-Parada , 2022 ). This leads to propose the solution of boundary-
+value problems not in the entire domain but in a periodic unit cell
+that captures the essential features of the microscale. The use of a
+periodic unit cell is a convenience more than a necessity. System-
+specific experimental measurements must be performed, leading to
+construction of geometries that may be incorporated in periodic unit
+cells to represent the microscale structure ( Auriault et al. , 2009 ). This
+also implies that the averaging domain has to have homogeneity, at
+least in its geometrical properties. In the paragraphs that follow, it
+is shown that, while working in a periodic unit cell, adjoint closure
+problems are defined in order to derive the macroscale model for
+momentum transport. This can be done by using Green’s formula as
+reported in Appendix A of Sánchez-Vargas et al. (2022 ).Journal of Theoretical Biology 590 (2024) 111853
+5J. Sánchez-Vargas et al.
+2.2. Experimental materials and methods
+The model application requires the following information that can
+be obtained from experiments: (1) Measurement of the characteristic
+length scales 𝓁and𝐿in order to verify that 𝓁≪ 𝐿 (see (1)). (2)
+Quantification of the volume fraction of one of the fluid phases and de-
+termination of the existence of homogeneous regions inside the pellet.
+This step involves proposing values of 𝑟0that meet the inequality given
+in (1). (3) Information of the essential microscale geometrical features
+that should be incorporated in periodic unit cells. These experimental
+measurements are performed on fungal pellets of L. trichodermophora
+for illustration purposes.
+2.2.1. Microorganism and culture
+The CA15-F10 strain of L. trichodermophora , previously reported
+by Ángeles-Argáiz et al. (2020), was used. Biotin Folic Acid (BFA)
+culture medium was employed for plate culture, as well as liquid
+pre-inoculum and inoculum preparation, in the following composition:
+dextrose, 10 g L−1; peptone from gelatin, 2 g L−1; yeast extract, 0.2 g
+L−1; potassium phosphate dibasic (KH2PO4), 0.5 g L−1; magnesium
+sulphate, (MgSO4⋅7H2O) 0.5 g L−1; calcium chloride (CaCl2), 0.1 g L−1;
+zinc sulphate (ZnSO4), 1 mg L−1; manganese sulphate (MnSO4), 5 mg
+L−1; thiamine HCl, 50 μg L−1; biotin,1 μg L−1; folic acid, 100 μg L−1;
+inositol,5 μg L−1. The pH was set to 5.50 ±0.05 with the addition of
+0.5 M HCl, and 10 g L−1of bacteriological agar was added for solid
+medium preparation (Ángeles-Argáiz et al., 2020). All reagents were
+purchased from Merck-Sigma-Aldrich (USA).
+For pre-inoculum preparation, three samples of approximately
+9 mm2were cut from the periphery of 15-days-old colonies growing
+in BFA plates and used to inoculate a 250 mL Erlenmeyer baffled flask
+with 50 mL of BFA liquid medium (Gamboa-Suasnavart et al., 2011).
+The latter was grown for 10 days (until the exponential phase) under
+a controlled temperature of 25 ±2◦C in an orbital shaker (C25 New
+Brunswick Scientific, USA), with an orbital diameter of 2.54 cm, at 100
+rpm. From this flask, 1 mL of culture medium containing hyphae was
+used to inoculate a 250 mL baffled flask with 50 mL fresh BFA liquid
+medium (inoculum flask). The inoculum was incubated at 25 ±2◦C
+and agitation at 100 rpm for 10 days was carried out.
+From the inoculum, 1 mL of medium containing hyphae was taken,
+2% v/v, and added to 250 mL Erlenmeyer baffled flasks with 50 mL of
+defined culture medium with a carbon:nitrogen ratio of 16:1 and pH of
+5.5±0.1. The composition of the defined medium is that of BFA, re-
+placing the complex nutrients (peptone from gelatin and yeast extract)
+with 0.554 g L−1urea and 20 g L−1MES buffer (C6H13NO4S⋅xH2O).
+These baffled flasks were incubated at 25 ±2◦C and agitated at 100
+rpm in the same orbital shaker (C25 New Brunswick Scientific, USA).
+2.2.2. Pellets and clumps imaging and processing
+From baffled flask cultures, clumps and pellets were taken with
+a pipette and visualized on light microscopy. A Nikon A1R+ STORM
+confocal microscope was used in bright field, performing mosaic acqui-
+sitions in the median plane of each pellet. The images were processed
+with Fiji software (ImageJ2 version 2.9.0/1.53t) (Rueden et al., 2017).
+2.2.3. Volume fraction determination in pellets
+Four baffled flasks were inoculated and cultured as described in
+Section 2.2.1. A flask was taken on days 7, 14 and 21 (inter-spaced
+days during L. trichodermophora growth curve) and three samples of
+pellets were randomly selected from each flask. Samples were fixed and
+glucose-infiltrated following Vasquez-Martínez et al. (2023). Briefly,
+they were fixed with a 4% paraformaldehyde solution for 24 h and
+subsequently rinsed 4 times with phosphate-buffered saline (PBS 0.1
+M, pH 7.4, with: 0.026 g L−1NaH2PO4⋅H2O, 0.127 g L−1Na2HPO4
+and 0.085 g L−1NaCl) buffer solution. Afterwards, the pellets were
+incubated at 4◦C for 1 h in a 10% sucrose solution and then for 1 h at
+4◦C in a 20% sucrose solution. Finally, they were incubated for 24 h ina 30% sucrose solution at 4◦C. Individually, the pellets were placed in
+molds, embedded in Tissue Freezing Medium (Leica Biosystems) and
+freezed at−20◦C for 20 min. Frozen pellets were stored at −20◦C
+until sectioned. A Leica CM1520 cryostat operated at −18◦C was used
+for the sectioning and 13 μm thickness sections were obtained. They
+were placed on gelatin-adhesive slides, allowed to dry, and stained with
+toluidine blue.
+Three cuts at different depths of each pellet were selected and serial
+photographs along their diameter (as depicted in Fig. 3(a)) were taken
+with a Nikon Optiphot 2 microscope in bright field with a 20x objective.
+Later, the images were processed in the Fiji software (ImageJ2 version
+2.9.0/1.53t) (Rueden et al., 2017). Each image was converted to 16-
+bit, the mean method was used to adjust the threshold, and each
+photograph was divided by overlapping a grid with a random origin.
+The space occupied by the hyphae was quantified, starting at the center
+of the vertical axis, in square regions (averaging surfaces) of different
+sizes, namely 100, 200, 300, 400, 500, 600, 700, 800 and 900μm in side
+length. With these measurements, the extracellular volume fraction was
+calculated at different positions with respect to the pellet diameter ( 𝑥
+axis) and with different sizes of the averaging surface.
+Finally, the extracellular volume fraction corresponding to each av-
+eraging surface from each pellet section was quantified. This was done
+according to the scheme illustrated in Fig. 3(b). For each averaging
+surface within each section, located by its centroid, 𝑥, a unique value of
+the volume fraction was computed. This value results from averaging
+the phase indicator (taking the value 1 in the phase of interest and
+0 elsewhere) in the 𝑥and𝑦directions, thus compacting the structural
+information over the corresponding 2D region into a point value. A final
+computation of the mean and standard deviation of all the values was
+also performed.
+2.2.4. Hyphae length and width measurements inside the pellets
+From baffled flasks of 6–8 days of growth, young pellets and clumps
+(of approximately 3 mm in diameter, including both the core and hy-
+phal projections of the pellet) were taken and stained with FM4-64 (N-
+(3-triethyl-ammoniumpropyl)-4-(6-(4-(diethylamino) phenyl) hexatri-
+enyl) pyridinium dibromide, Molecular Probes, Thermo Sci. USA) at
+a concentration of 10 μM and an incubation time of 2 min. Stained
+cellular structures were observed on a LSM800 inverted laser scanning
+confocal microscope with an incubation chamber maintained at 25◦C,
+using a Plan-Apochromat 63x/1.4 oil immersion objective and a 488
+nm laser line. Transmitted light images were obtained with an Elec-
+tronically Switchable Illumination and Detection (ESID) module, and
+images of both channels were recorded simultaneously. Tile scans of
+Z-stacks acquired at 0.3 μm intervals (1- 2 μm in depth) were obtained
+for the complete diameter of each pellet. The hyphal length and width
+were quantified with the Fiji software at every section of the pellets.
+2.2.5. Dolipore visualization and measurements
+Four baffled flasks were inoculated and cultured as described in
+Section 2.2.1. A flask was taken on days 7, 14, and 21, and three pellets
+were randomly selected. Samples were treated with a methodology
+based on that reported by Antonio-Rubio et al. (2015) as follows. Pellets
+were fixed with a 4% paraformalin + 3% glutaraldehyde solution for
+24 h and washed twice with PBS. A 1% osmium tetroxide post-fixation
+was performed for 1 h and then washed with distilled water. Two
+successive rinses, with increasing concentrations of ethanol, were used
+for the dehydration of the samples. These concentrations were: 60%,
+70%, 80%, 90%, 96% and 100%. Afterwards, 2-propylene oxide washes
+were done. Subsequently, the impregnation of the resin in the samples
+was carried out gradually in the following order: epon:propylene oxide
+(1:2) for 1 h, epon:propylene oxide (1:1) for 24 h, epon:propylene oxide
+(2:1) for 24 h, epon pure for 24 h. The inclusion was carried out in
+silicone molds at 60◦C in an oven, for at least 24 h. The pellets were
+stored until cut at room temperature.Journal of Theoretical Biology 590 (2024) 111853
+6J. Sánchez-Vargas et al.
+Fig. 3. (a) Scheme of the procedure for experimental determination of the volume fraction of pellets. The procedure consists of making sections at different positions in the 𝑧
+direction and subsequently taking photographs along the section diameter. (b) Scheme of the averaging process at every position of the panoramic images. The process consists
+of compacting the information within averaging surfaces of the pellets section into a value that represents the volume fraction that is located at the geometric center, 𝑥, of the
+averaging surface.
+The pellets were sectioned at different positions along their diame-
+ter with a Leica Ultracut UCT ultramicrotome and a diamond blade.
+The sections were made with a thickness of 70 nm and placed in
+copper grids. The grids were double contrasted with uranyl acetate
+and lead citrate. To summarize, each grid was impregnated with 2.5%
+uranyl acetate for 10 min in a closed petri dish, protected from light.
+After abundant rinsing with Milli-Q water and drying, grids were
+impregnated with 0.3% alkaline lead citrate in a Petri dish, protected
+from light. Finally, grids were rinsed and let dry. Observations were
+performed in a LIBRA 120 Carl Zeiss transmission electron microscope
+for the quantification of the dolipore width.
+3. Results and discussion
+The formulation and implementation of the flow model in fungal
+pellets is reported. For this purpose, the first step is the statement of
+the microscale governing equations for fungal cultures that serve as a
+basis for upscaling of the total mass and momentum transport models
+presented next. The following step is the experimental characterization
+ofL. trichidermophora that is detailed before finally presenting the
+upscaled model predictions in a periodic unit cell constructed with
+the experimental data. The intention here is to illustrate the whole
+methodology that may be employed to model any other pellet-forming
+microorganism.
+3.1. Governing equations at the microscale
+Here, the governing equations for total mass and momentum trans-
+port at the microscale are presented along with the corresponding
+boundary conditions. This implies adopting a set of starting assump-
+tions, which are kept at minimum in order for the resulting upscaled
+model to be applicable over a wide range of biological systems.
+Focusing on (total) mass transport, assuming that both the in-
+tracellular and extracellular phases are incompressible ( i.e., the fluiddensity in each phase is constant both in space and time), the following
+expression is applicable at the microscale ( Bird et al. , 2002 )
+∇⋅𝐯𝛼=0,in the𝛼phase, (6a)
+where 𝐯𝛼is the fluid velocity in the 𝛼phase (𝛼=𝛽,𝛾).
+In both the extra- and intracellular phases, momentum transport
+is assumed to be stationary, i.e., time acceleration is neglected with
+respect to viscous effects. In addition, inertial effects are known to be
+relevant at least in the extracellular phase, as the Reynolds number
+inside the pellets has been estimated to be in the range between 7
+and 300, for Aspergillus niger , depending on pellet size and power input
+during the culture ( Hille et al. , 2005 ). Thus, for the sake of generality,
+inertial contributions are included in both phases. Also, gravity is
+considered as the only volume force in the system and its effects are
+included in both phases. Furthermore, a generalized Newtonian model
+for momentum transport is adopted in both phases. In the extracellular
+phase, this allows accounting for the influence of the concentration
+of salts and organic compounds from the culture medium and the
+accumulation of compounds produced by the microorganism to the
+extracellular medium during culture, as well as loose hyphae con-
+tributing to rheology at upper scale levels (see, for example, Bliatsiou
+et al. (2020 ) for pellet culture of filamentous fungi). In addition, the
+intracellular fluid is assumed to include the cytosol, organelles, vesicles,
+proteins and polymer networks. Therefore, it can be regarded as a
+pseudo-liquid phase. These components contribute to the rheology in
+this phase as reported by Mogilner and Manhart (2018 ). Furthermore,
+the cytoplasm of eukaryotic cells is known to have viscoelastic char-
+acteristics due to its content of cytoskeletal polymers, proteins and
+small organelles ( Stamenović , 2008 ; Ahmed et al. , 2018 ; Mathieu and
+Manneville , 2019 ). Consequently, the viscous stress tensor in both fluid
+phases (𝝉𝛼,𝛼=𝛽,𝛾) is given by 𝝉𝛼=𝜇(𝛤𝛼)(∇𝐯𝛼+∇𝐯𝑇
+𝛼), with𝜇(𝛤𝛼)
+being the apparent viscosity, which depends on the strain rate modulus,
+𝛤𝛼=√
+1
+2(∇𝐯𝛼+∇𝐯𝑇
+𝛼)∶(∇𝐯𝛼+∇𝐯𝑇
+𝛼).
+On the basis of the above considerations, following Bird et al.
+(2002 ), the equations that describe momentum transport at the mi-
+croscale for the extracellular and intracellular fluid phases are ( 𝛼=𝛽,𝛾)Journal of Theoretical Biology 590 (2024) 111853
+7J. Sánchez-Vargas et al.
+𝜌𝛼𝐯𝛼⋅∇𝐯𝛼=𝜌𝛼𝐠+∇⋅T𝑝𝛼in the𝛼phase, (6b)
+where the total stress tensor is defined as T𝑝𝛼=−I𝑝𝛼+𝝉𝛼. Moreover, 𝜌𝛼
+and𝑝𝛼are, respectively, the density and pressure of the 𝛼phase and g
+is the gravity acceleration vector.
+As mentioned in the previous section, the cell wall and membrane
+are modeled as a dividing surface, which is denoted as A𝛽𝛾(see Fig. 2).
+This is justified since the characteristic width of the cell wall and
+membrane is much smaller than the characteristic size of the cells ( i.e.,
+𝓁𝛽). At this boundary the most significant resistance to momentum
+transport occur. This is attributed to the structure of the cell wall, which
+is usually made of an arrangement of chitin and 𝛽-glucans that are
+coupled to a diverse set of polymers and glycosylated proteins, confer-
+ring the cell wall resistant but flexible characteristics. These properties
+allow the cell wall to comply with its biological function, acting as a
+protective boundary but also allowing growth, as well as nutrients and
+vesicles transport (Gow and Lenardon, 2022). Consequently, the stress
+jump condition can be written in the following form (Slattery et al.,
+2006)
+𝐧𝛽𝛾⋅(
+T𝑝𝛽−T𝑝𝛾)
+=𝜻atA𝛽𝛾. (6c)
+Here, 𝐧𝛽𝛾is the unit normal vector at A𝛽𝛾, directed from the 𝛽to the
+𝛾phase. In addition, the vector 𝜻represents the mechanical resistance
+of the cell wall and membrane, A𝛽𝛾.
+At this same boundary, continuity of the velocity fields in both
+phases is assumed to apply (see, for instance, Slattery et al., 2006). This
+is,
+𝐯𝛽=𝐯𝛾atA𝛽𝛾. (6d)
+This condition can be justified on the basis of the following. Firstly,
+although transport of chemical species takes place at the cell wall and
+membrane, it is assumed that this process does not change significantly
+the densities in both the intracellular and extracellular phases. This jus-
+tifies continuity of the normal component of the velocity vectors in each
+phase, equal to the normal component of the speed of displacement of
+the cell wall and membrane, 𝐰. This is,
+𝐧𝛽𝛾⋅𝐯𝛽=𝐧𝛽𝛾⋅𝐯𝛾=𝐧𝛽𝛾⋅𝐰,atA𝛽𝛾. (6e)
+Secondly, slip effects between the extra- and intracellular fluids at A𝛽𝛾
+are disregarded, which justifies assuming continuity of the tangential
+components of the velocity vectors.
+In this work, momentum transport within the organelles is not con-
+sidered. This is because in agitated pellet cultures, when moving from
+the extracellular medium to the organelles, there are many boundaries,
+including cell wall, cell membrane and organelle membranes, which are
+assumed to provoke a marked decrease in the amount of momentum
+experienced inside the organelles. In this way, momentum transport
+within the organelles is neglected with respect to momentum transport
+in the extra- and intracellular phases. In the following, large organelles
+(denoted as the 𝜎phase and with a characteristic length >1 μm, see
+Fig. 2) are assumed to behave as rigid and immobile solid inclusions
+that are impervious to momentum transport. This also implies that a
+no-slip boundary condition applies at the 𝛽-𝜎interface ( A𝛽𝜎).
+The focus of this model relies on non-septate hyphae for the sake of
+simplicity. The cell–cell boundary ( A𝛽𝛽′) can have different morpholo-
+gies depending on the fungal species under study. At these segments
+of the hypha, for some fungal species, the septum might completely
+separate adjacent compartments, while, for other species, septal pores
+are located at the mid-section of the septum. Moreover, these pores
+can be either open or occluded, as they play a role in regulation of
+mass and momentum transport along the hypha. If the septal pore is
+completely open or only partially occluded, momentum transport will
+take place between hyphal compartments (adjacent segments of the
+hypha that are separated by a septum). This means that, under theseconditions, the surface A𝛽𝛽′can be divided into a septated portion
+where 𝐯𝛽=𝟎(A𝛽𝑠) and another one available for flow ( A𝛽𝑓). In
+the latter, the velocity field is assumed periodic in the single spatial
+direction perpendicular to A𝛽𝑓. The above can be expressed as follows
+𝐯𝛽=𝟎,atA𝛽𝜎,A𝛽𝑠, (6f)
+𝐯𝛽(𝐫)=𝐯𝛽(𝐫+𝐥𝑓),atA𝛽𝑓. (6g)
+Here 𝐫and𝐥𝑓respectively represent a position vector and the periodic
+lattice vector. Notice that no momentum transport takes place in an oc-
+cluded pore, when present. This is because of the presence of a complex
+group of membranes, wall material and the dense proteinaceous plug
+at this surface, which limits momentum transport between adjacent
+compartments. Consequently, in this case the boundary condition at
+A𝛽𝑓reduces to the one given in (6f). Nevertheless, the boundary
+conditions given in Eqs. (6f) and (6g) are general and are kept as such
+in the developments that follow.
+3.2. Upscaling mass transport
+This section focuses on upscaling the total mass transport equations
+in both the intracellular and extracellular phases, using Eq. (6a) as
+a starting point. The resulting macroscale balance equation has been
+already derived in previous works dedicated to multi-phase flow in
+porous media systems (see for example Whitaker, 1986; Auriault, 1986)
+and the derivation is not repeated here. It shall be recalled that it results
+from applying the superficial averaging operator (Eq. (2a)) to Eq. (6a),
+and using the general and spatial averaging theorems, taking into
+account the interfacial boundary conditions. The resulting expression
+can be written in the following form
+𝑑𝜀𝛼
+𝑑𝑡+∇⋅⟨𝐯𝛼⟩𝛼=0. (7)
+To apply the above equation, the system has to comply with the
+starting assumptions. Nevertheless, Eq. (7) does not require assuming
+periodicity of the system geometry at the microscale.
+The first term in Eq. (7) accounts for the temporal variations of the
+volume fractions of each fluid phase and it can be associated to biomass
+growth (when 𝜀𝛽increases) or mycelium lysis (when 𝜀𝛽decreases)
+inside the pellet. These observations can be used in future works,
+where total mass balance is coupled with species transport equations
+to model cellular growth as reported by Wood and Whitaker (1999).
+The temporal dependence at the macroscale arises from the possible
+transient character of the cell wall and membrane, implicitly making
+the momentum problem at the microscopic scale time-dependent. This
+is true even if temporal acceleration is neglected with respect to viscous
+effects in the momentum transport equations, as considered above.
+It should be noted that, in steady state, the first term on the left-
+hand side of Eq. (7) is zero. Furthermore, the same result is obtained
+if the system geometry is spatially periodic so that the microscale fluid
+velocity in each phase is also periodic. In this way, ⟨𝐯𝛼⟩𝛼is spatially-
+invariant and Eq. (7) reduces to 𝑑𝜀𝛼∕𝑑𝑡= 0. Therefore, under any
+of these two circumstances the macroscopic mass balance equations
+reduce to
+∇⋅⟨𝐯𝛼⟩𝛼=0,Vperiodic or A𝛽𝛾stationary. (8)
+3.3. Upscaling momentum transport
+Recently, Sánchez-Vargas et al. (2023) derived an upscaled model
+for steady non-Newtonian inertial two-phase flow in homogeneous
+porous media. Although the physical system is strictly not the same
+here, the governing equations and boundary conditions at the mi-
+croscale are very similar. In fact, the difference lies in the incorporation
+of the cell–cell boundary conditions given in Eqs. (6f) and (6g) and
+differences in the boundary condition expressed in Eq. (6c). For thisJournal of Theoretical Biology 590 (2024) 111853
+8J. Sánchez-Vargas et al.
+reason, only the essential steps leading to the upscaled momentum bal-
+ance equations are recalled below and the reader is referred to the work
+by Sánchez-Vargas et al. (2023) (see also (Lasseux and Valdés-Parada,
+2022)) for a detailed description of the whole procedure.
+It is convenient to adopt the periodic unit cell assumption at the
+beginning of the derivations (Lasseux and Valdés-Parada, 2022). It must
+be emphasized that this assumption does not represent a limitation
+as it only exerts an influence at the closure level (microscale), with
+a vanishing effect at the macroscale. Furthermore, upscaled models
+that employ volume averaging (or other upscaling techniques that
+imply the periodicity assumption, such as homogenization (Auriault
+et al., 2009)), have been successfully used in practice, even in non-
+periodic systems (see, for example Nolen et al. (2008)). The procedure
+shown below consists in deriving a formal average solution of the flow
+problem by defining adjoint closure problems and relating them to
+the momentum transport equations using a Green’s function formalism.
+Therefore, it is convenient (albeit not mandatory) to consider periodic
+unit cells to reduce the solution domain of the adjoint closure problems.
+In a periodic unit cell, both the velocity and pressure spatial devi-
+ations can be assumed to be periodic. In this regard, Gray’s decompo-
+sition in the form given in Eq. (5) is applied to the terms containing
+the pressure in the microscale model (Eqs. (6)). It is worth recalling
+that, at the unit cell level, the macroscopic pressure gradient can
+be reasonably assumed to be constant. Under these conditions, the
+momentum transport problem in a periodic unit cell can be written as
+(𝛼=𝛽,𝛾)
+∇⋅𝐯𝛼=0,inV𝛼, (9a)
+𝜌𝛼𝐯𝛼⋅∇𝐯𝛼=−∇⟨𝑝𝛼⟩𝛼+𝜌𝛼𝐠+∇⋅T̃ 𝑝𝛼inV𝛼, (9b)
+𝐧𝛽𝛾⋅(
+T̃ 𝑝𝛽−T̃ 𝑝𝛾)
+=𝐧𝛽𝛾(
+⟨𝑝𝛽⟩𝛽|||𝐱𝛽−⟨𝑝𝛾⟩𝛾|||𝐱𝛾)
++𝐧𝛽𝛾𝐳𝛽𝛾⋅∇⟨𝑝𝛽⟩𝛽|||𝐱𝛽−𝐧𝛽𝛾𝐳𝛾𝛽⋅∇⟨𝑝𝛾⟩𝛾|||𝐱𝛾
++𝜻atA𝛽𝛾, (9c)
+𝐯𝛾=𝐯𝛽,atA𝛽𝛾, (9d)
+𝐯𝛽=𝟎,atA𝛽𝜎andA𝛽𝑠, (9e)
+𝐯𝛽(𝐫)=𝐯𝛽(𝐫+𝐥𝑓),atA𝛽𝑓, (9f)
+𝜓(𝐫+𝐥𝑖)=𝜓(𝐫), 𝑖=1,2,3;𝜓=𝐯𝛼,̃ 𝑝𝛼, (9g)
+⟨̃ 𝑝𝛼⟩𝛼=0, (9h)
+with
+T̃ 𝑝𝛼=−Ĩ 𝑝𝛼+𝜇(𝛤𝛼)(∇𝐯𝛼+∇𝐯𝑇
+𝛼). (9i)
+Eq. (9g) represents the periodicity condition in the three directions,
+with 𝐥𝑖being the unit cell lattice vectors (∑
+𝑖𝐥𝑖=𝐥𝑓). In addition,
+Eq. (9h) is an integral constraint for the pressure deviations, which
+is necessary to have a well-posed problem. In addition, note that
+in Eq. (9c) the Taylor series expansion given in Eq. (4) was used.
+At this point, it is convenient to emphasize that the resulting av-
+erage pressures contained in Eqs. (9) arise from different sources. In
+the extracellular phase, the pressure is the consequence of applied
+agitation, whereas in the intracellular phase, the macroscopic pressure
+is related to cytoskeleton-associated (Charras et al., 2008) and osmotic
+pressure generated (Keren et al., 2009) forces, these last two capable of
+acquiring similar orders in magnitude (Mogilner and Manhart, 2018).
+The latter, is caused by the higher ion concentration in the intracellular
+fluid with respect to the extracellular medium. Furthermore, as shown
+in Appendix B of the work by Lasseux and Valdés-Parada (2022),
+the macroscopic pressure gradients in both fluid phases can be safely
+assumed to be the same.
+In order to advance towards the derivation of macroscale balance
+equations, adjoint closure problems are proposed and reported in Ap-
+pendix A.1 (see Bottaro (2019) for details on how adjoint problems are
+constructed for upscaling).The flow problem defined in Eqs. (9) can then be related to the
+adjoint closure problems by means of Green’s formula as detailed
+by Sánchez-Vargas et al. (2023). This leads to the following macro-
+scopic momentum balance equations in each phase ( 𝛼,𝜅=𝛽,𝛾)
+⟨𝐯𝛼⟩𝛼=−H𝛼𝛼
+𝜇𝑟𝑒𝑓𝛼⋅(∇⟨𝑝𝛼⟩𝛼−𝜌𝛼𝐠)
+−H𝛼𝜅
+𝜇𝑟𝑒𝑓𝜅⋅(∇⟨𝑝𝜅⟩𝜅−𝜌𝜅𝐠)
++1
+𝜇𝑟𝑒𝑓𝛼𝑉∫A𝛽𝛾𝜻⋅D𝛼𝛼𝑑𝐴
++𝜌𝛾−𝜌𝛽
+𝜇𝑟𝑒𝑓𝛼𝑉∫A𝛽𝛾𝐧𝛽𝛾⋅𝐰𝐰⋅D𝛼𝛼𝑑𝐴. (10)
+Here, H𝛼𝛼andH𝛼𝜅(𝛼≠𝜅) are, respectively, the dominant and coupling
+apparent permeability tensors in the 𝛼phase, which are defined as
+H𝛼𝛼=⟨D𝛼𝛼⟩𝑇
+𝛼,H𝛼𝜅=𝜇𝑟𝑒𝑓𝜅
+𝜇𝑟𝑒𝑓𝛼⟨D𝜅𝛼⟩𝑇
+𝜅. (11)
+In the above equations, D𝛼𝛼andD𝜅𝛼are closure variables that solve
+problems (A.1) and (A.2).
+Eqs. (10) describe the average velocity of the fluid in the 𝛼phase
+(either the intracellular or extracellular fluid), in terms of four con-
+tributions: two bulk (Darcy-like) terms and two interfacial terms. The
+first (dominant Darcy-like) term represents the contribution to the flux,
+resulting from the macroscopic forcing applied in the phase under
+consideration, whereas the second (coupling Darcy-like) term describes,
+through viscous coupling, the contribution of the macroscopic pressure
+gradient in the adjacent phase. The last two terms in Eqs. (10) are the
+interfacial contributions to the movement of the fluids, one accounts
+for mechanical resistance effects, while the other one is produced by
+inertia at A𝛽𝛾.
+To conclude, it is pertinent to make three remarks about the
+macroscale model derived in the previous sections and its application.
+First, it is important to recall the underlying requirements that include
+satisfying the separation of length scales, as stated in inequality (1),
+which needs to be confirmed through experimental quantification of
+the constitutive elements of the system, i.e., the hyphae and pellet
+characteristic lengths in the present work. Also, as described in Sec-
+tion 3.1, the system must be composed of two incompressible fluids
+(extra- and intracellular fluids) separated by a delimiting element (in
+the present biological application, a cell wall and membrane) and a
+phase behaving as an immobile solid (in this case, the organelles)
+only in contact with one phase (the wetting phase, in the present
+case, the intracellular fluid). No restriction is imposed concerning the
+fluids rheology, as the model allows them to acquire a generalized
+Newtonian nature. Moreover, the intracellular fluid must be divided,
+either partially or completely, into compartments. It must be noted
+that this last configuration, if not encountered, requires the correction
+of the boundary conditions stated above in the microscale model, as
+well as in the closure problems with, nevertheless, the same upscaling
+methodology.
+Second, it is important to summarize the experimental information
+required from a particular biological system in order to apply the
+model. This includes the existence of representative regions inside the
+pellet, where the system topology should remain spatially homoge-
+neous on average. This can be assessed by verifying that the volume
+fractions of the phases remain constant. Also, and for the purpose of
+constructing the representative periodic unit cell, the length and width
+of the hyphal compartments and the determination of the presence and
+size of the septal pores is needed. Note that the system geometry is
+not required to be spatially periodic in order to apply the macroscale
+models. Furthermore, if periodicity cannot be reasonably assumed, as
+it may be the case in systems where there is no clear separation of
+length scales (for example in clumps or very small pellets), then the
+closure problems solution can still be applied, albeit in domains larger
+than a single unit cell. For convenience, the model can be solved in aJournal of Theoretical Biology 590 (2024) 111853
+9J. Sánchez-Vargas et al.
+Fig. 4. Bright-field micrography of clumps and pellets of L. trichodermophora , illustrating, in six different stages, the formation of consolidated pellets (hemispherical structures
+possessing a dense core and loose hyphal projections) from hyphal clumps (agglomeration of hyphae starting at their initial growing stage) during culture in agitated baffled flasks.
+The biomass is classified according to geometrical characteristics and size: young clumps (stages 1–2), mature clumps (stages 3–4), young pellets (stage 5) and consolidated pellets
+(stage 6). This process takes place constantly during the culture, which gives place to clumps and pellets of different sizes at all stages of the culture.
+Fig. 5. Sections of the core of a 7 days-old fungal pellet of L. trichodermophora , of448 μm in radius, at successive 𝑧positions measured from the center of the pellet: 0 μm (bottom),
+95 μm (middle) and 181 μm (top).
+dimensionless form, thus reducing the number of degrees of freedom.
+The parameters needed are the Reynolds number, the fluids viscosity
+ratio and rheological parameters of the fluid phases (precise definitions
+are given later on in Section 3.5).
+Third, as a result from the solution of the upscaled model, the
+predictions that this model provides are in terms of the average velocity
+of each fluid phase. Moreover, since the macroscale momentum model
+explicitly expresses all the contributions to the average velocity, each
+of them can be separately evaluated. This includes the determination
+of the intrinsic or apparent permeabilities of the pellets, depending on
+the presence of inertia, and the interfacial contributions to the average
+velocity.3.4. Characterization of Laccaria trichodermophora
+This section accounts for the experimental information required
+for the upscaled models application in geometries representative of L.
+trichodermophora pellets. It must be noted that, given the generality of
+the derived model, any other pellet-forming microorganism could have
+been used instead for the characterization and further evaluation of the
+model.
+An increase in size and hyphal density is observed by bright field
+confocal microscopy at the different stages of pellet formation ( Fig. 4).
+Based on their geometrical characteristics and size, the following
+nomenclature is adopted in the remainder of the article. Stages 1 andJournal of Theoretical Biology 590 (2024) 111853
+10J. Sánchez-Vargas et al.
+Fig. 6. Dependence of the volume fraction of the extracellular phase, 𝜀𝛾, with the area of the averaging surface for 7 days-old pellet sections (see Fig. 5) at different positions in
+𝑧and𝑥.𝑟2
+0indicates the area of the averaging surface. Each series represents a different position with respect to the center of the 𝑥axis of the pellet. (a) 𝑧=0 μm , (b)𝑧=95
+μm, (c)𝑧=181 μm . The shaded blue area represents the interval of 𝑟0corresponding to a representative size of the averaging surface.
+2 are denoted as young clumps , stages 3 and 4 correspond to mature
+clumps , stage 5 comprises young pellets and stage 6 corresponds to
+consolidated pellets .
+3.4.1. Identification of homogeneous regions
+Pellets of L. trichodermophora are hemispherical structures with a
+dense hyphal core and hyphal projections (Fig. 4, stages 5 and 6). In
+order to determine the presence of homogeneous regions inside the
+pellets,13 μm -thick sections were obtained from randomly selected
+stage-6 pellets, following the sampling procedure depicted in Fig. 3.
+Three sections per pellet (taken at different 𝑧positions) were analyzed,
+providing panoramic images of the core of a 7 days-old pellet (Fig. 5).
+The same type of analysis was performed on 14 and 21 days-old pellets
+(figures S1 and S2, respectively). It is important to notice that the
+hyphal projections do not exhibit spatially homogeneous regions, thus
+precluding the use of the model derived in this work in this zone
+of the pellets. Conversely, the pellets core appears to comply with
+this assumption. To confirm this observation, spatial properties were
+evaluated on square regions of different sizes, which are referred to
+as averaging surfaces, at different positions on the 𝑥axis of the three
+sections obtained for each pellet.
+For an averaging surface to be representative of the microscale,
+macroscopic properties (such as the volume fraction or permeability)
+must exhibit negligible variations as the averaging surface size changes.
+In the system under consideration, the volume fraction of the extracel-
+lular fluid phase, 𝜀𝛾, was experimentally quantified for this purpose.
+The results corresponding to a 7 days-old pellet are shown in Fig. 6(a)–
+(c) for sections at different positions in the 𝑧-direction. In all these
+figures,𝜀𝛾takes values from about 0.15 to 0.8, oscillating for smaller
+areas of the averaging surface and stabilizing above a certain threshold
+of averaging surface size, which depends upon the specific section. For
+the section at 0 μm in the𝑧position and 896 μm in diameter (Fig. 5,
+bottom),𝜀𝛾stabilizes at a value of the area of the averaging surface of
+4900 μm2. The same is true for the section at 181 μm in the𝑧position
+(Fig. 5, top). However, for the 865 μm section, located at 95 μm on
+the𝑧axis, stability is reached at 6 400 μm2(see Fig. 5, middle). For
+all these sections, the value of 𝜀𝛾remains roughly constant until the
+last value of 𝑟2
+0that was considered, i.e., 8100 μm2(Fig. 6(a) and (b))
+and 10,000 μm2(Fig. 6(c)). This means that the appropriate value of
+𝑟0is within the range of 70 and 100 μm . Representativeness may be
+even better achieved with 𝑟0larger than 100 μm . However, in the
+present experiment, the limit was the width of the panoramic image
+and the random positioning of the grid used for quantification. The
+results presented for a 7 days-old pellet of L. trichodermophora indicate
+the existence of homogeneous regions, regardless the positions under
+consideration, inside the structure. This meets the upscaling methodassumption previously stated. Similar results were obtained for the 14
+and 21 days-old pellets (figures S3 and S4, respectively).
+The extracellular volume fraction, 𝜀𝛾, varies along the pellet diam-
+eter in the range from about 0.25 to 0.65 for 7, 14 and 21 days-old
+pellets (Fig. 7). The average values of 𝜀𝛾in each pellet core and the
+corresponding standard deviation confirm some degree of homogeneity
+between the pellets of different sizes and culture times and can be
+estimated to be 0.405 ±0.091, 0.369 ±0.082 and 0.352 ±0.096 (with
+no significant differences among them), respectively for the 7, 14 and
+21 days-old pellets. Given the evident dispersion of 𝜀𝛾seen in Fig. 7,
+there are two possible approximations to use the upscaled model in this
+type of pellets. The first and more rigorous one is to solve the model in
+each homogeneous regions, which implies a solution for every value of
+volume fraction experimentally determined. This could be followed by
+a second averaging of the model predictions for a determined region,
+section or the whole pellet core. The second approximation consist in
+solving the upscaled model only for the average volume fraction of the
+pellet core, providing in this way a unique average velocity. For any of
+the above scenarios, it is still interesting to evaluate the effect of the
+volume fraction on the prediction of the average velocity in each phase.
+Therefore, values of 𝜀𝛾in the range from 0.3 to 0.65 will be used in
+Section 3.5 for the numerical simulations to evaluate the validity of the
+upscaled model in a fungal pellet. It must be noted that the presence of
+homogeneous regions was only assessed in pellets that were on stages 5
+and 6, because they are compliant with the separation of length scales.
+As a final note, the fact of the volume fraction of the pellets core is
+time-independent (as the average 𝜀𝛾from the 7, 14 and 21 days-old
+pellets are statistically the same) is in agreement with the quasi-steady
+assumption for momentum transport (see Section 3.1).
+3.4.2. Geometrical features at the microscale
+Now that the existence of homogeneous regions inside the pellet has
+been confirmed and the value of 𝑟0has been established, the hyphae,
+which are the basic element of the microstructure, must be charac-
+terized in order to construct a periodic unit cell in which the closure
+problems derived in Section 3.1 are to be solved. Young pellets and
+clumps (stages 2–5 of Fig. 4) of 6–8 days old were used to determine
+characteristics of the hyphae in three regions of the structure, namely
+the periphery, middle and center. These regions were identified by
+subdividing the panoramic images into five equal parts. In this way,
+the diametrically-opposed parts correspond to the periphery regions,
+while the two adjacent ones are referred to the middle regions and the
+remaining part is the center. With this procedure, it was assumed that
+these younger structures had similar hyphal geometries as pellets in
+stages 5 and 6.
+A typical configuration of hyphae inside a mature clump is shown
+in Fig. 8, where stained cell membranes are visualized along the radiusJournal of Theoretical Biology 590 (2024) 111853
+11J. Sánchez-Vargas et al.
+Fig. 7. Spatial dependence of the volume fraction of the extracellular phase, 𝜀𝛾, in the𝑧and𝑥directions for (a) 7 days-old pellet, (b) 14 days-old pellet and (c) 21 days-old
+pellet. (a)∙𝑧=0 μm (corresponding to a 896 μm section),■𝑧=95 μm (corresponding to a 865 μm section),▴𝑧=181 μm (corresponding to a 704 μm section). (b) ∙𝑧=0 μm
+(corresponding to a 1500 μm section),■𝑧=654 μm (corresponding to a 743 μm section),▴𝑧=728 μm (corresponding to a 512 μm section). (c) ∙𝑧=0 μm (corresponding to a
+1070 μm section),■𝑧=130 μm (corresponding to a 1040 μm section),▴𝑧=433 μm (corresponding to a 631 μm section). The blue line represents the average value of 𝜀𝛾in each
+pellet, obtained by averaging 𝜀𝛾of each individual homogeneous region in the pellet. The shaded blue region represents the interval of twice the standard deviation computed
+from the data, centered on the average value of 𝜀𝛾.
+Fig. 8. Typical configuration of hyphae inside a mature clump of L. trichodermophora of 6 days of culture. The panoramic image corresponds to the left half of the pellet.
+Fluorescence signal corresponds to membranes stained with FM4-64. The vertical marks at the bottom of the image indicate the approximate limits of the periphery, middle and
+center regions.
+Fig. 9. Transmission electron micrographs of dolipore structures taken at the core of a fungal pellet of L. trichodermophora of 7 days of culture. S: septum, black arrow: parenthesome,
+red arrow: dolipore plug.
+of a 6 days-old mycelial structure. Note that only three of the five parts
+in which the panoramic image was segmented are shown, as this image
+corresponds to only half of the pellet diameter. In this figure, a much
+denser network of hyphae is observed in the center, while the periphery
+is less populated, in accordance with Fig. 4.
+Through image analysis, the hyphae width, length (determined as
+the distance between adjacent septa) and branching frequency were
+measured in the three different established regions ( Table 1). With
+these results, it is evident that even if hyphal compartments have
+the same width among the defined regions, the length significantly
+increases towards the periphery. Note that the cell length is approxi-
+mately two orders of magnitude larger than its width. This relationshipis relevant and will be used in Section 3.5 for the construction of the
+periodic unit cell representative of the microstructure. In addition, it
+is important to remark that even though branching ( i.e., the increase
+in the amount of branches measured for a single compartment) takes
+place in the center and middle sections, the frequency is less than two.
+Furthermore, the vast majority of the young pellets and clumps volume
+corresponds to non-branched hyphae. For these reasons, branching is
+not considered in the unit cell design.
+As mentioned, the fulfillment of the separation of length scales
+between the microscale and the macroscale needs to be verified. For
+this, the characteristic lengths to be taken into account correspond
+to those of the hyphae width ( 𝓁) and homogeneous regions of theJournal of Theoretical Biology 590 (2024) 111853
+12J. Sánchez-Vargas et al.
+Table 1
+Geometrical characteristics of hyphae through different sections of three young pellets
+and clumps of L. trichodermophora cultures grown in baffled shake flasks.
+Concept Measurement
+Structure diameterd3.33±0.60 mm
+Hyphae widthe1.79±0.31 μm
+Hyphae length (periphery) 155.44±40.99 μm𝑎
+Hyphae length (middle) 103.75±17.86 μm𝑏
+Hyphae length (center) 76.23±16.99 μm𝑐
+Branches per hyphal compartment 0
+(periphery)
+Branches per hyphal compartment 0–1
+(middle)
+Branches per hyphal compartment 1–2
+(center)
+a,b,cIndicate significant difference ( 𝑝 <0.0002) among hyphal lengths belonging to
+different positions of the pellets and clumps. ANOVA, using Tukey post hoc test.
+dIncluding the pellet core and hyphal projections.
+eNo difference was observed in cell width among the established regions, therefore
+only one measurement is reported. In the center of the pellets very few irregular
+hyphae can measure up to 2.6 μm thick, these were not considered in the analysis.
+This measurement was confirmed via transmission electron microscopy.
+pellet (𝑟0). As reported in the above sections, 𝑟0>70–90 μm , while
+𝓁=1.79μm , suggesting a contrast of almost two orders of magnitude.
+In addition, the characteristic length of the pellets, 𝐿, is on the order
+of103μm. Therefore, the constraint given in inequality (1) is met. At
+this point it is pertinent to ponder about the applicability of the model
+to other types and sizes of pellets. To address this query, it is suggested
+that the following configurations could certainly be studied with the
+model derived in this work: Small (since 100μm in characteristic length
+or two orders of magnitude above the width of the hyphae) dense or
+loose pellets with regular inner structures. Large (with no upper limit in
+characteristic length) dense or loose pellets that do not possess a void
+domain at the center (due to cell lysis or any other factor), in any case
+the model could only be applied to the remaining homogeneous regions
+bordering the void center and far from their borders.
+The dolipore-parenthesome complex in Agaricomycotina plays a
+role in the selective transport of material between hyphal compart-
+ments, while allowing cytoplasmic continuity, when the channel re-
+mains unplugged (Patton and Marchant, 1978) and in general to cellu-
+lar homeostasis (Van Driel et al., 2008; Van Peer et al., 2009). In this
+case, the factors determining the magnitude of the space for fluid flow
+are both the diameter of the dolipore channel ( i.e., the free space for
+fluid flow, located in the dolipore structure and communicating hyphal
+compartments, subject to obstruction by a septal plug) and the diameter
+of the parenthesome holes, which behave as a sieve, preventing large
+organelles to block the flow through the dolipore (Van Driel, 2007). In
+Fig. 9 three different locations of inter-compartmental division struc-
+tures of L. trichodermophora are reported. The images show the septum,
+the dolipore and the associated perforate parenthesome. It must be
+noted that some of the dolipore structures appear to be associated
+with multivesicular or membrane bodies. This follows previous reports,
+where parenthesomes, which arise either from the endoplasmic reticu-
+lum or share a common ancestor with it (Van Driel, 2007; Van Peer
+et al., 2010), have been found to play a role in dolipore plugging
+by either producing or storing pore-plug material (Van Driel, 2007).
+ForL. trichodermophora , the average length for fluid flow through the
+dolipore (pore channel) was evaluated to be 98.9 ±7.6 nm (roughly
+6% of the hypha width), while the pores of the parenthesome have an
+average diameter of 76.6 ±7.0 nm. This feature is recalled during the
+construction of the periodic unit cell.
+In some cases, a plug of proteins (septal plug), which is placed in
+the dolipore channel, can be found depending on the needs of the
+hypha and has evolved to protect intracellular content during stress
+or hyphal damage (Van Driel et al., 2008). The presence of either an
+open or closed dolipore channel is dynamic and depends upon manyfactors including culture conditions such as carbon source availability,
+temperature, osmotic pressure or presence of toxic agents (Van Peer
+et al., 2009). In Fig. 9, it can be noted that the middle and right pictures
+exhibit a septal plug, seen as an electron-dense occluding material (Van
+Driel et al., 2008), blocking protoplasmic streaming and therefore mo-
+mentum transport. As noted by Van Peer et al. (2009), the probability
+of a plugged dolipore channel increases from the tip to the more
+distal compartments of hyphae. In the case of L. trichodermophora , the
+possibility of dolipores open to flow is considered, thus suggesting two
+different configurations of periodic unit cells to be used for numerical
+experiments in the following section.
+All the measurements reported in this section are consistent ( i.e.,
+of the same order of magnitude) with those reported in the litera-
+ture for other Agaricomycetes or Agaricales. For instance, Roberson
+et al. (2014) reported images of the Agaricomycete Auriscalpium vul-
+gare, where cells width and spacing for flow between hyphal com-
+partments were measured to be of about 6 μm and 50 nm, respec-
+tively. Raudaskoski (2019) reported hyphal compartments length of
+around150 μm for the Agarical Schizophyllum commune . Vetchinkina
+et al. (2017) studied the Agaricomycetes Ganoderma lucidum ,Grifola
+frondosa and the Agarical Lentinula edodes and described cells of width
+between 3 and 4μm, while the space for flow through the dolipore of G.
+lucidum andG. frondosa were quantified to be about 40 nm and 60 nm,
+respectively. Venneman et al. (2020) observed dolipore channels in
+nine different Serendipita species (Agarycomicetes) and quantified them
+in the range from 95 ±31 nm to 128 ±17 nm. Patton and Marchant
+(1978) analyzed the dolipore structure of 12 Agaricomycetes, among
+which there were four Agaricales, and reported parenthesome pore
+diameters mostly between 51 ±8 nm and 143 ±8 nm when excluding
+Aphilloporales. These observations are of relevance, as they suggest
+that the same architecture of periodic unit cell could be used to study
+many other species of Agaricomycetes.
+3.5. Macroscopic model predictions
+Before proceeding to the solution of the upscaled model, it is
+important to recall all the steps required for its application in any other
+(bio)pellet aside from the strain used here. First, the biological system
+to analyze must satisfy the starting assumption stated in Section 3.1.
+Second, experimental information about the biological system needs
+to be acquired, as described in Section 2.2, and the upscaling method
+assumptions must be confirmed. Third, the solution requires the con-
+struction of a 3D geometry, representative of the system configuration,
+in which the closure problems solution can be carried out in order to
+predict the macroscopic transport coefficients.
+Employing the experimental data, two periodic unit cell configura-
+tions were constructed for every volume fraction value (see Fig. 10).
+All the unit cells keep the same proportions of the cellular compart-
+ments, which consist in curved cylinders with ellipsoids and spheres
+inside representing large organelles ( >1 μm in characteristic length),
+impervious to momentum transport. It is assumed that these shapes are
+able to represent most of the organelles as a first approximation, since
+information in the literature is scarce for L. trichodermophora or other
+Basidiomycota. This choice could certainly be improved to include
+more complex geometries in future works. To generate unit cells with
+different volume fractions of the extracellular fluid, 𝜀𝛾, the quadran-
+gular prism representing this phase was increased or decreased in size
+(by increasing the width of the quadrangular base of the prism), but
+the cellular volume (including the intracellular fluid and organelles)
+remained unaltered. The volume fraction of the extracellular fluid was
+varied from 0.30 to 0.65, while the organelle volume fraction (with
+respect to the intracellular content) was arbitrarily fixed to 0.39. The
+mycelium curvature was given by a cosine function, whose amplitude
+corresponds to the maximum possible fitting inside the 𝛾phase domain.
+Consequently, the amplitude increased with 𝜀𝛾.Journal of Theoretical Biology 590 (2024) 111853
+13J. Sánchez-Vargas et al.
+Fig. 10. Scheme of a representative unit cell used for the closure problems solutions.
+The figures correspond to a single mycelial compartment with an open (middle) or
+closed (bottom) dolipore channel. The difference resides in the presence of a pore in
+the center of the face on both ends of the cell length (top image). Proportions between
+the length and width of the mycelial compartment, as well as the dolipore channel
+width, correspond to those from Section 3.4.2 with an arbitrary curvature. In this
+particular case, 𝜀𝛾=0.65and the curvature is given by the function 0.00225 cos(2𝜋𝑠),
+where𝑠is the position in the 𝑥direction. Periodicity was imposed in every direction
+of the unit cells.
+With the unit cell at hand, the microscopic mass and momentum
+balance equations are solved (this is referred to as the direct numerical
+simulation, DNS, in the following) assuming that body forces can be
+lumped into the macroscopic pressure gradient (yielding a modified
+macroscopic pressure gradient). Moreover, flow in both phases is as-
+sumed to result from a horizontal macroscopic pressure gradient forcing
+(along the 𝑥axis). Note that this forcing could also be applied in
+other directions, depending on the biological system. This force can be
+understood as the result of the stress exerted during agitation by the
+walls of the flask onto the bulk fluid which further transfer the forcing
+to the pellet. In the present case, it is taken as
+∇⟨𝑝𝛼⟩𝛼=𝜕⟨𝑝𝛼⟩𝛼
+𝜕𝑥𝐞𝑥=−ℎ𝐞𝑥. (12)
+The next step towards the solution of the model is to impose any
+additional required simplification with the purpose of adapting the
+general model derived here to particular scenarios and, incidentally,
+facilitating the computation of the solution. The possible assumptions
+that can be reasonably imposed depend upon the specific biological
+system under concern. In the rest of this section, the analysis is re-
+stricted to situations in which the cell wall and membrane only oppose
+mechanical resistances in the direction orthogonal to A𝛽𝛾. This is,
+𝜻=𝜁𝐧, where𝜁is a constant scalar in Eq. (6c). This means that the
+tangential mechanical contribution of the cell wall and membrane is
+assumed negligible with respect to its normal and constant counterpart.
+This assumption also allows simplifying the upscaled model. This is
+because, after application of the divergence theorem and taking into
+account the solenoidal nature of the closure variables (see Eqs. (A.1a)
+and (A.2a)), the third term on the right-hand side of Eq. (10) vanishes.
+To reduce the number of degrees of freedom of the upscaled mod-
+els, the dimensionless definitions reported in Appendix B of Sánchez-
+Vargas et al. (2023 ) are adopted and are recalled here as follows (the
+superscript∗denotes dimensionless quantities)
+𝐫∗=𝐫
+𝓁𝑐,𝐯∗
+𝛼=𝐯𝛼𝑡𝑟𝑒𝑓
+𝓁𝑐, 𝑝∗
+𝛼=𝑝𝛼𝑡𝑟𝑒𝑓
+𝜇𝑟𝑒𝑓𝛼,𝐻∗=𝐻𝓁𝑐, 𝜇∗=𝜇𝑟𝑒𝑓𝛽
+𝜇𝑟𝑒𝑓𝛾, 𝑅𝑒𝛼=𝜌𝛼𝓁2
+𝑐
+𝜇𝑟𝑒𝑓𝛼𝑡𝑟𝑒𝑓. (13)
+Here,𝓁𝑐is the length of the unit cell in the 𝑥direction,𝑡𝑟𝑒𝑓=𝜇𝑟𝑒𝑓𝛾
+ℎ𝓁𝑐is a
+reference time and ℎis the value of the macroscopic pressure gradient
+in the𝑥direction (see Eq. (12)). Moreover, 𝑅𝑒𝛼is the Reynolds number
+in the𝛼phase. In addition, the macroscopic forcing defined in Eq. (12)
+takes the following dimensionless form
+∇∗⟨𝑝∗
+𝛼⟩𝛼=−𝜇𝑟𝑒𝑓𝛾∕𝜇𝑟𝑒𝑓𝛼𝐞𝑥. (14)
+Using the above definitions and the assumptions stated in Sec-
+tion 3.3 and in previous paragraphs, the macroscopic velocities in the
+𝛼phase (𝛼=𝛽or𝛾) can be written in their dimensionless form as
+⟨𝐯∗
+𝛼⟩𝛼=𝝃∗
+𝛼𝛼+𝝃∗
+𝛼𝜅+𝝎∗
+𝛼, 𝛼≠𝜅, (15)
+where the following nomenclature is used
+𝝃∗
+𝛼𝛼=𝜇𝑟𝑒𝑓𝛾
+𝜇𝑟𝑒𝑓𝛼H∗
+𝛼𝛼⋅𝐞𝑥, (16a)
+𝝃∗
+𝛼𝜅=𝜇𝑟𝑒𝑓𝛾
+𝜇𝑟𝑒𝑓𝜅H∗
+𝛼𝜅⋅𝐞𝑥, (16b)
+𝝎∗
+𝛼=𝜇𝑟𝑒𝑓𝛾(𝑅𝑒𝛾−𝑅𝑒𝛽𝜇∗)
+𝜇𝑟𝑒𝑓𝛼𝑉∗ ∫A𝛽𝛾𝐧𝛽𝛾⋅𝐰∗𝐰∗⋅D∗
+𝛼𝛼𝑑𝐴∗. (16c)
+Here,𝝃∗
+𝛼𝛼and𝝃∗
+𝛼𝜅are defined as the dominant and coupling Darcy-like
+terms, respectively. Also, 𝝎∗
+𝛼stands for the interfacial term accounting
+for inertial effects.
+It must be noted that the dimensionless microscale flow problem
+and closure problems differ from those in Sánchez-Vargas et al. (2023 )
+only in the boundary conditions, where an additional boundary be-
+tween mycelial compartments has been incorporated in the present
+work. For the sake of brevity, these problems are not written here in
+their dimensionless form as they can be straightforwardly inferred from
+the above reference.
+For the numerical simulations, the culture medium ( 𝛾phase) is
+considered to be Newtonian while the intracellular fluid ( 𝛽phase)
+viscosity is supposed to obey the Carreau model given in the form
+𝜇(𝛤𝛽)=𝜇∞+(𝜇0−𝜇∞)[1+(𝜆𝛤𝛽)2](𝑛−1)∕2. (17)
+Here,𝜇∞and𝜇0(=𝜇𝑟𝑒𝑓𝛽) are the infinite and zero shear-rate vis-
+cosities,𝜆is the relaxation time, 𝑛the power-law index and 𝛤𝛽=√
+(∇𝐯+∇𝐯𝑇)∶(∇ 𝐯+∇𝐯𝑇)∕2is the strain-rate modulus. Following the
+works of Airiau and Bottaro (2020 ) and Sánchez-Vargas et al. (2022 ), it
+is assumed that 𝜇∞=0. Moreover, taking into account the definitions
+in Eq. (13) and considering that 𝜇𝑟𝑒𝑓𝛽=𝜇0, the Carreau model can be
+written in its dimensionless form as
+𝜇(𝛤𝛽)
+𝜇𝑟𝑒𝑓𝛽=[
+1+(𝜆∗𝛤∗
+𝛽)2](𝑛−1)∕2
+. (18)
+In the above equation 𝛤∗
+𝛽=𝛤𝛽𝑡𝑟𝑒𝑓and𝜆∗=𝜆∕𝑡𝑟𝑒𝑓. For the numerical
+simulations carried out in this work, 𝑛was set to 1.2, while 𝜆∗was fixed
+to 5, for the intracellular ( 𝛽) phase. This combination of parameters
+implies that the intracellular phase behaves as a shear-thickening fluid
+(i.e.,the apparent viscosity increases with the shear rate) ( Amoo and
+Fagbenle , 2020 ). Fluids that exhibit this type of behavior are concen-
+trated suspensions ( Amoo and Fagbenle , 2020 ), which resemble the
+conditions found inside fungal cells.
+To solve the closure problems, as well as to perform DNS (for
+validation), the finite-element software Comsol Multiphysics 6.1 was
+employed, using a direct MUMPS solver. A mesh refinement analysis
+was performed to guarantee that the results are independent of the
+mesh size. Once DNS was performed, the average velocities over the
+unit cell were computed in order to further compare them to their
+predictions form the macroscopic model for validation of the latter. It
+may be argued that DNS would require the numerical solution of the
+microscale flow model in an array of unit cells. However, since the fluidJournal of Theoretical Biology 590 (2024) 111853
+14J. Sánchez-Vargas et al.
+Fig. 11. Streamlines of the dimensionless intracellular and extracellular flow fields resulting from the solution of the microscopic flow problem (DNS) in a unit cell of a mycelial
+compartment with an open dolipore channel. Results are reported for five consecutive positions of 0.1 dimensionless length along the 𝑥axis, from top to bottom the left corner
+corresponds to: 𝑥=0.5,𝑥=0.6,𝑥=0.7,𝑥=0.8,𝑥=0.9. Other parameters are 𝜀𝛾=0.65,𝜇∗=𝜇𝑟𝑒𝑓𝛽∕𝜇𝑟𝑒𝑓𝛾=5,𝑅𝑒𝛾=1,𝑅𝑒𝛽=0.1,𝑛=1.2and𝜆∗=5. Gray objects represent large
+organelles ( ≥1 μm in characteristic length).
+velocity in both phases, as well as the geometry, are assumed periodic,
+it is sufficient to perform DNS in a single periodic unit cell that is the
+same for any other one in an array.
+The (dimensionless) average velocity in each phase from the macro-
+scopic model is directly obtained from Eq. (15), once each macroscopic
+term is evaluated. To do so, the solution of the closure problems given
+in Eqs. (A.1) and (A.2), once written in their dimensionless form, is
+required. To carry out this solution, the velocity field in both phases
+obtained from DNS was employed. Moreover, the viscosity field in the
+intracellular phase was pre-computed using Eq. (18) in which𝛤∗
+𝛽was
+evaluated from the 𝛽phase velocity field resulting from DNS. In the
+following paragraphs, an analysis of the prediction of the macroscale
+velocities and the corresponding validation with DNS are presented for
+different values of 𝜀𝛾and viscosity ratio, 𝜇∗.
+In Fig. 11, the flow streamlines are represented for both the in-
+tracellular and extracellular fluid phases. The mean flow, despite the
+apparent disorder of the streamlines, goes in the horizontal ( 𝑥) di-
+rection, in agreement with the horizontal macroscopic forcing applied
+to both phases. Here, gray objects represent large organelles, which
+behave as rigid solid obstacles for flow and produce deviations of
+the streamlines from the pressure-driven horizontal movement. Con-
+tinuity of the streamlines between the intracellular and extracellular
+phases can be observed in this figure, in agreement with the boundary
+conditions stated in Section 3.3.To analyze the influence of the volume fraction and of the rheology
+of the fluid phases on the average velocity in the intracellular and
+extracellular phases, these two parameters were considered in a variety
+of combinations, both in the DNS and in the prediction of the upscaled
+model. It must be noted that the viscosity ratios were selected based
+on previous reports of the viscosity values in both culture media and
+intracellular content, whereas the former was reported to lie in the
+range of 0.71 × 10−3and 3× 10−3Pa s ( Momen-Heravi et al. , 2012 ;
+Poon , 2022 ; ibidi GmbH , 2022 ), the latter varies between 0.75 ×10−3
+and 18× 10−3Pa s ( Parker et al. , 2010 ; Puchkov , 2013 ). This leads
+to a viscosity ratio in the range of 1 to 25 for a culture medium with
+a viscosity similar to water. Moreover, the Reynolds number was set
+to 1 in the extracellular phase, and this is motivated by the fact that,
+in pellets, densely populated hyphal structures do not usually allow im-
+portant internal inertial momentum transport ( Hille et al. , 2005 ). In the
+intracellular phase, the Reynolds number was set to 0.1, slightly above
+the maximum reported in the literature for animal cells ( Mogilner and
+Manhart , 2018 ). It is worth mentioning that, with the above set of
+parameters, the density ratio between the intracellular and extracellular
+phases is such that 0.1≲𝜌𝛽∕𝜌𝛾≲2.5. In this regard, the density of cells
+is reported in the range of 0.75 and 1.16 g mL−1(Häder et al. , 2005 ;
+Itoh et al. , 2021 ; Figueroa et al. , 2022 ), while culture medium density is
+measured between 0.996 and 1.015 g mL−1(Kastenhofer and Spadiut ,
+2020 ; Poon , 2022 ), yielding0.65≲𝜌𝛽∕𝜌𝛾≲1.16.Journal of Theoretical Biology 590 (2024) 111853
+15J. Sánchez-Vargas et al.
+Fig. 12. Average𝑥component of the dimensionless velocity in the intracellular ((a), (b)), ⟨𝑣∗
+𝛽𝑥⟩𝛽, or extracellular ((c), (d)), ⟨𝑣∗
+𝛾𝑥⟩𝛾, phase for a geometry with ((a), (c)) or without
+((b), (d)) an open dolipore channel. Predictions from the macroscopic model are represented as lines whereas DNS results are plotted as red dots. Results are reported for 𝜀𝛾in
+the range between 0.3 and 0.65, and for 𝜇∗=𝜇𝑟𝑒𝑓𝛽∕𝜇𝑟𝑒𝑓𝛾between 5 and 19, 𝑅𝑒𝛾=1,𝑅𝑒𝛽=0.1,𝑛=1.2and𝜆∗=5.
+Results on the 𝑥component of the average dimensionless velocity,
+⟨𝑣∗
+𝛼𝑥⟩𝛼(𝛼=𝛽or𝛾), obtained from numerical simulations are reported
+in Fig. 12, for two different geometries, considering or not momentum
+transport between mycelial compartments. It must be noted that the
+absence of momentum transport between adjacent compartments, as
+imposed with a closed dolipore, does not imply no species transport.
+From these results, the following comments are in order:
+•From the four graphs, (a)–(d), it is clear that the macroscopic
+model predictions are in excellent agreement with DNS. The rel-
+ative error between the two approaches is below 5%, taking DNS
+as the reference, regardless the degrees of freedom investigated in
+all the cases reported here. This validates the macroscopic model
+for the velocity, indicating a correct execution of the upscaling
+process. It is worth mentioning that this comparison with DNS
+should be regarded only as a first validation step (which assesses
+the pertinence of the upscaling assumptions) and encourages
+further validation with laboratory experiments to analyze the
+pertinence of the starting assumptions. It must be recognized that
+the latter poses a problem due to the difficulty to measure thefluid velocity at the level of a single fungal cell or of a represen-
+tative elementary volume portion, both in the intracellular and
+extracellular phases.
+•The𝑥component of the dimensionless average velocities in both
+the intracellular and extracellular fluid phases, respectively ⟨𝑣∗
+𝛽𝑥⟩𝛽
+and⟨𝑣∗
+𝛾𝑥⟩𝛾, increase with the extracellular volume fraction, 𝜀𝛾.
+Moreover, this effect is more pronounced as 𝜀𝛾increases.
+•The𝑥component of the dimensionless average intracellular ve-
+locity remains almost unchanged for an open (Fig. 12(a)), or
+closed dolipore channel (Fig. 12(b)) regardless the values of the
+extracellular phase volume fraction or the viscosity ratio under
+consideration here. This is also true for the extracellular fluid
+phase (see Fig. 12(c) for the open dolipore channel and 12(d) for
+the closed dolipore channel).
+•The𝑥component of the dimensionless average velocity in the
+extracellular phase is always larger (by roughly one order of
+magnitude) than that in the intracellular phase.
+An interesting advantage of the upscaled momentum transport
+model implemented here is the possibility of evaluating the relative
+contribution from each of the terms involved in the expression of theJournal of Theoretical Biology 590 (2024) 111853
+16J. Sánchez-Vargas et al.
+Table 2
+Contribution from each term of the macroscopic flow model to the prediction of the average velocity for different extracellular fluid volume fractions, 𝜀𝛾, and viscosity ratios,
+𝜇∗=𝜇𝑟𝑒𝑓𝛽∕𝜇𝑟𝑒𝑓𝛾.
+Open dolipore channel Closed dolipore channel
+𝜀𝛾=0.3 𝜀𝛾=0.65 𝜀𝛾=0.3 𝜀𝛾=0.65 𝜀𝛾=0.3 𝜀𝛾=0.65 𝜀𝛾=0.3 𝜀𝛾=0.65
+𝜇∗=5 𝜇∗=5 𝜇∗=19 𝜇∗=19 𝜇∗=5 𝜇∗=5 𝜇∗=19 𝜇∗=19
+⟨𝑣∗
+𝛽𝑥⟩𝛽 1.72×10−73.42×10−75.95×10−81.05×10−71.76×10−73.40×10−76.05×10−81.04×10−7
+Error𝛽(%) 0.18 2.40 0.12 2.65 0.72 0.07 0.55 0.30
+𝜉∗
+𝛽𝛽9.41×10−8(54.7%) 1.02×10−73.35×10−83.24×10−89.54×10−89.76×10−83.38×10−83.09×10−8
+𝜉∗
+𝛽𝛾7.78×10−8(45.2%) 2.42×10−72.59×10−87.35×10−88.05×10−82.45×10−72.67×10−87.41×10−8
+𝜔∗
+𝛽−1.64×10−19(≪0.1%) −5.49×10−167.88×10−215.25×10−175.30×10−20−5.15×10−16−5.74×10−215.30×10−17
+⟨𝑣∗
+𝛾𝑥⟩𝛾 4.47×10−76.38×10−63.08×10−75.36×10−64.60×10−76.59×10−63.16×10−75.53×10−6
+Error𝛾(%) 0.18 2.40 0.12 2.65 0.72 0.07 0.55 0.30
+𝜉∗
+𝛾𝛾3.70×10−7(82.8%) 6.14×10−62.83×10−75.28×10−63.80×10−76.36×10−62.89×10−75.46×10−6
+𝜉∗
+𝛾𝛽7.72×10−8(17.2%) 2.40×10−72.57×10−87.29×10−88.00×10−82.41×10−72.65×10−87.27×10−8
+𝜔∗
+𝛾8.77×10−20(≪0.1%) 1.17×10−15−2.64×10−20−1.12×10−166.45×10−191.31×10−15−4.20×10−20−1.16×10−16
+The error % is defined as Error𝛼(%) = 100× |⟨𝑣𝛼𝑥⟩𝛼𝐷𝑁𝑆−⟨𝑣𝛼𝑥⟩𝛼|∕⟨𝑣𝛼𝑥⟩𝛼𝐷𝑁𝑆 . Here,𝜉∗
+𝛼𝛼and𝜉∗
+𝛼𝜅stand, respectively, for the 𝑥-component of the dominant and coupling Darcy-like
+terms. Also, 𝜔∗
+𝛼stands for the 𝑥-component of the interfacial term accounting for inertial effects. 𝑅𝑒𝛾=1,𝑅𝑒𝛽=0.1,𝑛=1.2and𝜆∗=5.
+average velocity, and therefore, to identify the major ones and those
+which may be negligible. In Table 2, the contribution from each of the
+terms of the macroscopic momentum balance equations are reported
+for both the intracellular and extracellular phases. These results are
+presented for both open and closed dolipore channel configurations,
+two values of the volume fraction of the extracellular phase, 𝜀𝛾= 0.3
+and 0.65, and two viscosity ratios, 𝜇∗= 5and 19. From Table 2, the
+following remarks can be drawn:
+1. In all cases under consideration, the major contributions are
+from the Darcy-like (dominant and coupling) terms of the macro-
+scopic momentum equations as they represent together about
+99% of the average velocity.
+2. In the intracellular ( 𝛽) phase, both Darcy-like terms are equally
+predominant. For the extracellular ( 𝛾) phase, the coupling term
+is roughly one order of magnitude smaller than that involving
+the dominant permeability (corresponding to viscous effects in
+this phase) and represents between 82 and 98% of ⟨𝑣𝛾𝑥⟩𝛾.
+3. The interfacial term, in the present case, does not substantially
+contribute to the average velocity (its contribution is much less
+than 0.1%). This is attributed to the small values of the Reynolds
+numbers used in this work, in particular in the homogeneous
+core of the mycelial pellet. It is expected for the inertial contri-
+bution to play a more relevant role in the zone outside of the
+core (hyphal projections), where the Reynolds number usually
+takes larger values (Hille et al., 2005).
+Since, for the structure and flow conditions considered in this work,
+the interfacial inertial term can be neglected in the upscaled model,
+the remaining Darcy-like terms could certainly be merged (since the
+macroscopic pressure gradients are equal), so that Eq. (10) reduces to
+(𝛼,𝜅=𝛽,𝛾, 𝛼 ≠𝜅)
+⟨𝐯𝛼⟩𝛼=−(H𝛼𝛼
+𝜇𝑟𝑒𝑓𝛼+H𝛼𝜅
+𝜇𝑟𝑒𝑓𝜅)
+⋅∇⟨𝑝⟩. (19)
+Here,∇⟨𝑝⟩represents the modified pressure gradient within either
+the𝛽or the𝛾phase. Evidently, the above model is mathematically simi-
+lar to Darcy’s law, with a modified apparent permeability instead of the
+intrinsic permeability. This raises the question of using a much simpler
+model with flow only in the extracellular phase, so that the cellular
+region is treated as a rigid impervious solid phase. This approximation
+is proposed since (as seen in Fig. 11 and Table 2) the extracellular phase
+velocity is, in most cases, one order of magnitude larger than that of
+the intracellular phase. With this approach, the average velocity in the
+extracellular phase, considering a creeping ( 𝑅𝑒𝛾= 0) and Newtonian
+(𝜇𝑟𝑒𝑓𝛾=𝜇𝛾) flow, is given by the following macroscopic equation
+⟨𝐯𝛾⟩𝛾𝐷𝑎𝑟𝑐𝑦=−K𝛾
+𝜇𝛾⋅∇⟨𝑝⟩, (20)where K𝛾is the intrinsic permeability tensor of the porous structure
+where the solid (rigid) skeleton is the cellular phase. The intrinsic per-
+meability tensor is obtained from the solution of the following closure
+problem defined in a periodic unit cell and reported in Appendix A.2.
+To evaluate the pertinence of the latter approach, the prediction of
+the average velocity in the extracellular phase was computed from both
+the single-phase Darcy model (Eq. (20)) and the complete two-phase
+flow macroscopic model derived here (Eq. (15), 𝛼=𝛾, 𝜅=𝛽). This was
+performed with the following parameters for the modified Darcy model:
+𝑅𝑒𝛾=1,𝑅𝑒𝛽=0.1,𝑛=1.2and𝜆∗=5, with different values of 𝜇∗and𝜀𝛾
+and for the two dolipore configurations, while, for the classical Darcy
+model, the only variable was 𝜀𝛾. The relative difference between the
+two𝑥-components of the average velocity, taking the velocity obtained
+from the modified Darcy approach as the reference, is reported in
+Fig. 13. It can be seen that only for the largest values of the viscosity
+ratio,𝜇∗, and smaller volume fractions of the extracellular phase, 𝜀𝛾,
+the two approaches differ by about 6%. This is indeed expected since,
+in these situations where the intracellular phase occupies a large part
+of the unit cell and is much more viscous than the 𝛾phase, it seems
+reasonable to consider that the 𝛽phase behaves as a solid. In all the
+other situations the difference increases up to 47%. This is true both
+for the open and closed dolipore channel configurations, with a slightly
+larger relative difference in the latter case. These results highlight the
+pertinence of the two-phase flow model derived in this work and the
+role of viscous coupling, in particular, for the prediction of momentum
+transport in the extracellular phase.
+Finally, it must be mentioned that all the above analyses were
+performed with the upscaled model in its dimensionless form. However,
+with knowledge of the flow characteristics, (namely, viscosity and
+density of both phases and pressure gradient) as well as morphological
+properties of the structure (essentially, the curvature of the mycelial
+compartment), dimensional values of the macroscopic velocities can be
+evaluated for a particular system configuration.
+4. Conclusions
+In this work, total mass and momentum transport in fungal pellets
+were theoretically studied under an effective-medium approach. A
+model originally designed for porous media was adapted and imple-
+mented to fungal pellets. The governing equations at the microscale
+consider the steady and incompressible flow of two non-Newtonian flu-
+ids, separated by an interface. This implies regarding the cell membrane
+and wall as a dividing surface with structural resistance to momentum
+transport. In addition, organelles are assumed to be impervious to mo-
+mentum transport and are thus modeled as solid phases. Moreover, the
+model statement is versatile in the sense that it allows considering theJournal of Theoretical Biology 590 (2024) 111853
+17J. Sánchez-Vargas et al.
+Fig. 13. Comparison in the predictions of the 𝑥-component of the average velocity in the extracellular ( 𝛾) phase from the upscaled model derived in this work (modified Darcy)
+and from the classical Darcy model. Results are reported for a periodic unit cell (a) considering flow between hyphal compartments ( i.e., an open dolipore channel) and (b) without
+considering flow between compartments ( i.e., a closed dolipore channel). The difference percentage is defined as 100×|⟨𝑣𝛾𝑥⟩𝛾𝐷𝑎𝑟𝑐𝑦−⟨𝑣𝛾𝑥⟩𝛾|∕⟨𝑣𝛾𝑥⟩𝛾where⟨𝑣𝛾𝑥⟩𝛾and⟨𝑣𝛾𝑥⟩𝛾𝐷𝑎𝑟𝑐𝑦 are
+respectively given by Eqs. (15) and (20). Results are reported for 𝜀𝛾in the range between 0.3 and 0.65 for both models, and for 𝜇∗=𝜇𝑟𝑒𝑓𝛽∕𝜇𝑟𝑒𝑓𝛾between 5 and 19 for the modified
+Darcy model. For the latter, the following parameters were used: 𝑅𝑒𝛾=1,𝑅𝑒𝛽=0.1. The red line indicates a 5% difference threshold.
+dolipore channels to be either open or closed. The resulting upscaled
+momentum balance equations (see Eqs. (10)) comprise four terms
+namely: two Darcy-like terms (a dominant one and a coupling one), as
+well as two interfacial terms accounting for mechanical resistance and
+inertial effects. The effective-medium coefficients in these equations
+can be predicted from the solution of two adjoint closure problems in
+representative periodic unit cells.
+The application of the macroscopic model is restricted to homo-
+geneous zones of fungal pellets, which were experimentally identified
+through microscopic examination of pellets sections of L. trichoder-
+mophora as an illustrative example. The geometrical characteristics of
+the system required to construct the unit cell for the closure prob-
+lems solution were acquired using confocal and electron microscopy.
+Although the unit cells were specifically constructed for L. trichoder-
+mophora , there are certainly other fungal species that possess similar
+topological characteristics, which bestows some generality to the nu-
+merical simulations reported here. The macroscopic momentum bal-
+ance equations were validated with direct numerical simulations, yield-
+ing less than 5% of error in all cases under study. Regardless the
+presence or absence of an open dolipore channel, the predicted macro-
+scopic velocity in both the intracellular and extracellular phases was
+concluded to remain unaltered. This means that the dolipore configura-
+tion is unimportant in macroscopic momentum transport. Under the set
+of parameters considered here, the numerical results showed that the
+interfacial inertial term of the upscaled model did not play a significant
+role and thus was neglected with respect to the Darcy-like terms. This
+leads to a model having a mathematical structure resembling classical
+Darcy’s law (see Eq. (19)). Though mathematically similar in structure,
+the predictions of the macroscopic velocity in the extracellular phase
+from the two approaches were found to produce significantly different
+results (of up to 47%). This leads to the conclusion that classical Darcy’s
+law is not adequate, in general, to model momentum transport in fungal
+pellets and that the modified Darcy-like model derived here should be
+used instead, specially when the hyphae occupy more than 35% of the
+pellet volume and/or the intracellular phase is much less viscous than
+the extracellular phase.
+As a final note, it is worth recalling that the application of the
+macroscale model proposed here is bounded by the associated as-
+sumptions adopted both in the statement of the microscale model and
+through the upscaling process. Certainly, there are many biological sys-
+tems of interest that are compatible with these assumptions. These and
+other extensions of the derivations will be addressed in future works.In addition, the results presented here form the basis for studying both
+momentum transport at the hyphal projections and mass transport of
+species at the pellet core.
+CRediT authorship contribution statement
+J. Sánchez-Vargas: Writing – review & editing, Writing – orig-
+inal draft, Visualization, Software, Methodology, Investigation, For-
+mal analysis, Project administration, Conceptualization. F.J. Valdés-
+Parada: Writing – review & editing, Writing – original draft, Su-
+pervision, Resources, Methodology, Investigation, Software, Concep-
+tualization. L. Peraza-Reyes: Writing – review & editing, Resources,
+Methodology, Investigation. D. Lasseux: Writing – review & edit-
+ing, Methodology. M.A. Trujillo-Roldán: Writing – review & editing,
+Supervision, Resources, Project administration, Funding acquisition,
+Conceptualization.
+Declaration of competing interest
+The authors have no relevant financial or non-financial interests to
+disclose.
+Acknowledgments
+J. Sánchez-Vargas is a student in Programa de Doctorado
+en Ciencias Bioquímicas of Universidad Nacional Autónoma de México
+(UNAM) and this article is part of her PhD productivity. J. Sánchez-
+Vargas is grateful to Consejo Nacional de Humanidades, Ciencias
+𝑦Tecnologías (CONAHCyT) for providing her PhD scholarship (no.
+802319). M.A. Trujillo-Roldán thanks the sabbatical ‘‘Programa de
+Apoyos para la Superación del Personal Académico’’ PASPA-DGAPA-
+UNAM. The authors are thankful to Dr. Pedro Medina Granados for the
+materials and technical help provided during sample preparation and
+sectioning for optical and electron microscopy. Also, the authors thank
+Dr. Guadalupe Trinidad Zavala Padilla and Dr. Miguel Tapia Rodríguez
+for the support during image acquisition. Finally, the authors recognize
+the relevant discussions about fungal biology with Dr. Roberto Garibay
+Orijel. This manuscript was developed under the Institutional Program
+of the Instituto de Investigaciones Biomédicas UNAM: ‘‘La producción
+de biomoléculas de interés biomédico en bacterias 𝑦hongos’’.Journal of Theoretical Biology 590 (2024) 111853
+18J. Sánchez-Vargas et al.
+Funding
+This work was supported by ‘‘Programa de Apoyo a Proyectos de In-
+vestigación e Innovación Tecnológica, Universidad Nacional Autónoma
+de México’’ (PAPIIT-UNAM, IN211422, IV201220). Also, this work
+was supported by Consejo Nacional de Humanidades, Ciencias 𝑦Tec-
+nologías (CONAHCyT, grant CF-2023-I-1248). The funders had no role
+decision during publishing or preparation of the manuscript.
+Appendix A
+A.1. Modified Darcy closure problems
+The closure (or adjoint) problems that arise during the derivation of
+the upscaled model for momentum transport in both the extracellular
+and intracellular phases (Section 3.3) can be written as follows (see
+details in Sánchez-Vargas et al. (2023)) ( 𝛼=𝛽,𝛾)
+Problem I.
+∇⋅D𝛼𝛽=𝟎,inV𝛼, (A.1a)
+−𝜌𝛼
+𝜇𝑟𝑒𝑓𝛼𝐯𝛼⋅∇D𝛼𝛽=∇⋅T𝐝𝛼𝛽+𝛿𝐾
+𝛼𝛽I,inV𝛼, (A.1b)
+𝐧𝛽𝛾⋅𝜇𝑟𝑒𝑓𝛽T𝐝𝛽𝛽=𝐧𝛽𝛾⋅𝜇𝑟𝑒𝑓𝛾T𝐝𝛾𝛽,atA𝛽𝛾, (A.1c)
+D𝛽𝛽=D𝛾𝛽,atA𝛽𝛾, (A.1d)
+D𝛽𝛽=𝟎,atA𝛽𝜎andA𝛽𝑠, (A.1e)
+D𝛽𝛽(𝐫)=D𝛽𝛽(𝐫+𝐥𝑓),atA𝛽𝑓, (A.1f)
+𝜓(𝐫+𝐥𝑖)=𝜓(𝐫), 𝑖=1,2,3;𝜓=D𝛼𝛽,𝐝𝛼𝛽, (A.1g)
+𝐝𝛼𝛽=𝟎,at𝐫0
+𝛼. (A.1h)
+Problem II.
+∇⋅D𝛼𝛾=𝟎,inV𝛼, (A.2a)
+−𝜌𝛼
+𝜇𝑟𝑒𝑓𝛼𝐯𝛼⋅∇D𝛼𝛾=∇⋅T𝐝𝛼𝛾+𝛿𝐾
+𝛼𝛾I,inV𝛼, (A.2b)
+𝐧𝛽𝛾⋅𝜇𝑟𝑒𝑓𝛽T𝐝𝛽𝛾=𝐧𝛽𝛾⋅𝜇𝑟𝑒𝑓𝛾T𝐝𝛾𝛾,atA𝛽𝛾, (A.2c)
+D𝛽𝛾=D𝛾𝛾,atA𝛽𝛾, (A.2d)
+D𝛽𝛾=𝟎,atA𝛽𝜎andA𝛽𝑠, (A.2e)
+D𝛽𝛾(𝐫)=D𝛽𝛾(𝐫+𝐥𝑓),atA𝛽𝑓, (A.2f)
+𝜓(𝐫+𝐥𝑖)=𝜓(𝐫), 𝑖=1,2,3;𝜓=D𝛼𝛾,𝐝𝛼𝛾, (A.2g)
+𝐝𝛼𝛾=𝟎,at𝐫0
+𝛼. (A.2h)
+Note that these problems only differ by the location of the source
+term, which lies within the intracellular fluid phase in Problem I and
+in the extracellular fluid phase in Problem II, as indicated by the use
+of the Kronecker delta, 𝛿𝐾
+𝛼𝜅. In these problems, the following stress-like
+third-order tensor was used ( 𝛼,𝜅=𝛽,𝛾)
+T𝐝𝛼𝜅=−I𝐝𝛼𝜅+𝜇(𝛤𝛼)
+𝜇𝑟𝑒𝑓𝛼(
+∇D𝛼𝜅+∇D𝑇1
+𝛼𝜅)
+, (A.3)
+Here, Iis the identity tensor and the superscript 𝑇1denotes the trans-
+pose of a third-order tensor, which permutes the first two indices, i.e.,
+(∇B)𝑇1
+𝑖𝑗𝑘=(∇B)𝑗𝑖𝑘. Similarly to the microscale problem, the boundary
+conditions given by Eqs. (A.1h) and (A.2h) are needed in order for
+the closure problem to be well posed. In these equations, 𝐫0
+𝛼locates
+an arbitrary point in the 𝛼phase.
+A.2. Classical Darcy closure problem
+The closure problem required to compute the intrinsic permeability
+tensor is reported in Whitaker (1999, Chap. 4). It is given by∇⋅D𝛾=𝟎,inV𝛾, (A.4a)
+𝟎=∇⋅T𝐝𝛾+I,inV𝛾, (A.4b)
+D𝛾=𝟎,atA𝛽𝛾, (A.4c)
+𝜓(𝐫+𝐥𝑖)=𝜓(𝐫), 𝑖=1,2,3;𝜓=D𝛾,𝐝𝛾, (A.4d)
+𝐝𝛾=𝟎,at𝐫0
+𝛼, (A.4e)
+K𝛾=⟨D𝛾⟩𝛾. (A.4f)
+It must be noted that this problem is only defined in the extracellu-
+lar phase. This is in contrast with Problems I and II from Appendix A.1
+that are defined in each phase, hence composing a two-phase flow
+problem.
+Appendix B. Supplementary data
+Supplementary material related to this article can be found online
+at https://doi.org/10.1016/j.jtbi.2024.111853.
+References
+Ahmed, W.W., Fodor, É., Almonacid, M., Bussonnier, M., Verlhac, M.-H., Gov, N.,
+Visco, P., van Wijland, F., Betz, T., 2018. Active mechanics reveal molecular-scale
+force kinetics in living oocytes. Biophys. J. 114 (7), 1667–1679.
+Airiau, C., Bottaro, A., 2020. Flow of shear-thinning fluids through porous media. Adv.
+Water Resour. 143, 103658.
+Amoo, L.M., Fagbenle, R.L., 2020. Overview of non-Newtonian boundary layer flows
+and heat transfer. In: Applications of heat, mass and fluid boundary layers. Elsevier,
+pp. 413–435.
+Ángeles-Argáiz, R.E., Carmona-Reyes, I.A., Quintero-Corrales, C.A., Medina-Macías, F.J.,
+Blancas-Cabrera, A., Valdez-Cruz, N.A., Ulloa, M., Trujillo-Roldán, M.A., Garibay-
+Orijel, R., 2020. From field sampling to pneumatic bioreactor mycelia production of
+the ectomycorrhizal mushroom Laccaria trichodermophora . Fungal Biol. 124 (3–4),
+205–218.
+Antonio-Rubio, N.R., Villagrán-SantaCruz, M., Santos-Vázquez, A., Moreno-Mendoza, N.,
+2015. Gonadal morphogenesis and sex differentiation in the oviparous lizard,
+Sceloporus aeneus (Squamata: Phrynosomatidae). Zoomorphology 134, 279–289.
+Auriault, J., 1986. Remarques sur la loi de Darcy pour les écoulements biphasiques en
+milieu poreux. J. Méc. Théor. Appl. 141–153.
+Auriault, J.-L., Boutin, C., Geindreau, C., 2009. Homogenization of coupled phenomena
+in heterogenous media. ISTE & Wiley.
+Bartnicki-Garcia, S., Hergert, F., Gierz, G., 1989. Computer simulation of fungal
+morphogenesis and the mathematical basis for hyphal (tip) growth. Protoplasma
+153 (1–2), 46–57.
+Battiato, I., Ferrero V, P.T., Malley, D.O., Miller, C.T., Takhar, P.S., Valdés-Parada, F.J.,
+Wood, B.D., 2019. Theory and applications of macroscale models in porous media.
+Transp. Porous Media 130 (1), 5–76.
+Bear, J., 2018. Modeling phenomena of flow and transport in porous media. Springer,
+p. 767.
+Bird, R.B., Stewart, W.E., Lightfoot, E.N., 2002. Transport phenomena, second ed. John
+Wiley, New York.
+Bliatsiou, C., Schrinner, K., Waldherr, P., Tesche, S., Böhm, L., Kraume, M., Krull, R.,
+2020. Rheological characteristics of filamentous cultivation broths and suitable
+model fluids. Biochem. Eng. J. 163, 107746.
+Böl, M., Schrinner, K., Tesche, S., Krull, R., 2020. Challenges of influencing cellular
+morphology by morphology engineering techniques and mechanical induced stress
+on filamentous pellet systems—A critical review. Eng. Life Sci. 21 (3–4), 51–67.
+Boswell, G., 2003. Growth and function of fungal mycelia in heterogeneous
+environments. Bull. Math. Biol. 65 (3), 447–477.
+Bottaro, A., 2019. Flow over natural or engineered surfaces: an adjoint homogenization
+perspective. J. Fluid Mech. 877.
+Celler, K., Picioreanu, C., van Loosdrecht, M.C.M., van Wezel, G.P., 2012. Structured
+morphological modeling as a framework for rational strain design of Streptomyces
+species. Antonie Leeuwenhoek 102 (3), 409–423.
+Charras, G.T., Coughlin, M., Mitchison, T.J., Mahadevan, L., 2008. Life and times of a
+cellular bleb. Biophys. J. 94 (5), 1836–1853.
+Cui, Y., van der Lans, R., Giuseppin, M., Luyben, K., 1998a. Influence of fermentation
+conditions and scale on the submerged fermentation of Aspergillus awamori . Enzyme
+Microb. Technol. 23 (1–2), 157–167.
+Cui, Y.Q., Okkerse, W.J., van der Lans, R.G.J.M., Luyben, K.C.A.M., 1998b. Modeling
+and measurements of fungal growth and morphology in submerged fermentations.
+Biotechnol. Bioeng. 60 (2), 216–229.
+Das, S., Deen, N., Kuipers, J., 2018. Multiscale modeling of fixed-bed reactors with
+porous (open-cell foam) non-spherical particles: Hydrodynamics. Chem. Eng. J. 334,
+741–759.Journal of Theoretical Biology 590 (2024) 111853
+19J. Sánchez-Vargas et al.
+Davidson, F., 1998. Modelling the qualitative response of fungal mycelia to
+heterogeneous environments. J. Theoret. Biol. 195 (3), 281–292.
+Davidson, F.A., 2007. Mathematical modelling of mycelia: a question of scale. Fungal
+Biol. Rev. 21 (1), 30–41.
+Duarte, P.F.M., 2009. Estudos sobre o crescimento e a viabilidade de fungos ectomicor-
+rízicos em cultivo submerso (Ph.D. thesis). Universidade Federal de Santa Catarina,
+URL http://repositorio.ufsc.br/xmlui/handle/123456789/93164.
+El-Gendi, H., Saleh, A.K., Badierah, R., Redwan, E.M., El-Maradny, Y.A., El-
+Fakharany, E.M., 2021. A comprehensive insight into fungal enzymes: Structure,
+classification, and their role in Mankind’s challenges. J. Fungi 8 (1), 23.
+Espinosa-Ortiz, E.J., Rene, E.R., Pakshirajan, K., van Hullebusch, E.D., Lens, P.N., 2016.
+Fungal pelleted reactors in wastewater treatment: Applications and perspectives.
+Chem. Eng. J. 283, 553–571.
+Figueroa, B., Xu, F.X., Hu, R., Men, S., Fu, D., 2022. Quantitative imaging of
+intracellular density with ratiometric stimulated Raman scattering microscopy. J.
+Phys. Chem. B 126 (39), 7595–7603.
+Gamboa-Suasnavart, R.A., Valdez-Cruz, N.A., Cordova-Dávalos, L.E., Martínez-
+Sotelo, J.A., Servín-González, L., Espitia, C., Trujillo-Roldán, M.A., 2011. The
+O-mannosylation and production of recombinant APA (45/47 KDa) protein from
+Mycobacterium tuberculosis inStreptomyces lividans is affected by culture conditions
+in shake flasks. Microb. Cell Fact. 10 (1), 110.
+Gierz, G., Bertnicki-Garcia, S., 2001. A three-dimensional model of fungal morpho-
+genesis based on the vesicle supply center concept. J. Theoret. Biol. 208 (2),
+151–164.
+Gow, N.A.R., Lenardon, M.D., 2022. Architecture of the dynamic fungal cell wall. Nat.
+Rev. Microbiol. 21 (4), 248–259.
+Gray, W.G., 1975. A derivation of the equations for multi-phase transport. Chem. Eng.
+Sci. 30 (2), 229–233.
+Häder, D.-P., Hemmersbach, R., Lebert, M., 2005. Gravity and the Behavior of
+Unicellular Organisms, vol. 40, Cambridge University Press.
+Hellendoorn, L., Mulder, H., van den Heuvel, J.C., Ottengraf, S.P.P., 1998. Intrinsic
+kinetic parameters of the pellet forming fungus Aspergillus awamori . Biotechnol.
+Bioeng. 58 (5), 478–485.
+Hille, A., Neu, T., Hempel, D., Horn, H., 2005. Oxygen profiles and biomass distribution
+in biopellets of Aspergillus niger . Biotechnol. Bioeng. 92 (5), 614–623.
+Hille, A., Neu, T., Hempel, D., Horn, H., 2009. Effective diffusivities and mass fluxes
+in fungal biopellets. Biotechnol. Bioeng. 103 (6), 1202–1213.
+Howes, F.A., Whitaker, S., 1985. The spatial averaging theorem revisited. Chem. Eng.
+Sci. 40 (8), 1387–1392.
+ibidi GmbH, 2022. Application note 11: Shear stress and shear rates for ibidi 𝜇-slides
+based on numerical calculations. Techreport, ibidi GmbH, URL https://ibidi.com/
+img/cms/support/AN/AN11_Shear_stress.pdf, Version 6.1.
+Itoh, Y., Itoh, S., Naruse, H., Kagioka, T., Hue, M.T., Abe, M., Hayashi, M., 2021.
+Intracellular density is a novel indicator of differentiation stages of murine
+osteoblast lineage cells. J. Cell. Biochem. 122 (12), 1805–1816.
+Kastenhofer, J., Spadiut, O., 2020. Culture medium density as a simple monitoring tool
+for cell integrity of Escherichia coli . J. Biotechnol. 324, 100017.
+Kelly, S., Grimm, L., Bendig, C., Hempel, D., Krull, R., 2006. Effects of fluid dynamic
+induced shear stress on fungal growth and morphology. Process Biochem. 41 (10),
+2113–2117.
+Keren, K., Yam, P.T., Kinkhabwala, A., Mogilner, A., Theriot, J.A., 2009. Intracellular
+fluid flow in rapidly moving cells. Nature Cell Biol. 11 (10), 1219–1224.
+King, R., 2015. A framework for an organelle-based mathematical modeling of hyphae.
+Fungal Biol. Biotechnol. 2 (1).
+Krull, R., Cordes, C., Horn, H., Kampen, I., Kwade, A., Neu, T.R., Nörtemann, B., 2010.
+Morphology of filamentous fungi: Linking cellular biology to process engineering
+using Aspergillus niger . In: Biosystems engineering II. Springer Berlin Heidelberg,
+pp. 1–21.
+Kulkarni, K., Moon, J., Zhang, L., Lucia, A., Linninger, A.A., 2008. Multiscale modeling
+and solution multiplicity in catalytic pellet reactors. Ind. Eng. Chem. Res. 47 (22),
+8572–8581.
+Lasseux, D., Valdés-Parada, F.J., 2022. A macroscopic model for immiscible two-phase
+flow in porous media. J. Fluid Mech. 944, A43.
+Lasseux, D., Valdés-Parada, F.J., 2023. Upscaled dynamic capillary pressure for
+two-phase flow in porous media. J. Fluid Mech. 959, R2.
+Legorreta-Castañeda, A., Lucho-Constantino, C., Beltrán-Hernández, R., Coronel-
+Olivares, C., Vázquez-Rodríguez, G., 2020. Biosorption of water pollutants by fungal
+pellets. Water 12 (4), 1155.
+Lejeune, R., Baron, G.V., 1997. Simulation of growth of a filamentous fungus in 3
+dimensions. Biotechnol. Bioeng. 53 (2), 139–150.
+Li, L., Liang, T., Liu, W., Liu, Y., Ma, F., 2020. A comprehensive review of the mycelial
+pellet: Research status, applications, and future prospects. Ind. Eng. Chem. Res. 59
+(39), 16911–16922.
+Mathieu, S., Manneville, J.-B., 2019. Intracellular mechanics: connecting rheology and
+mechanotransduction. Curr. Opin. Cell Biol. 56, 34–44.
+Meyerhoff, J., Bellgardt, K.-H., 1995. A morphology-based model for fed-batch culti-
+vations of Penicillium chrysogenum growing in pellet form. J. Biotechnol. 38 (3),
+201–217.
+Mogilner, A., Manhart, A., 2018. Intracellular fluid mechanics: Coupling cytoplasmic
+flow with active cytoskeletal gel. Annu. Rev. Fluid Mech. 50 (1), 347–370.Momen-Heravi, F., Balaj, L., Alian, S., Trachtenberg, A.J., Hochberg, F.H., Skog, J.,
+Kuo, W.P., 2012. Impact of biofluid viscosity on size and sedimentation efficiency
+of the isolated microvesicles. Front. Physiol. 3, 162.
+Mouriño-Pérez, R.R., 2013. Septum development in filamentous ascomycetes. Fungal
+Biol. Rev. 27 (1), 1–9.
+Nielsen, J., Krabben, P., 1995. Hyphal growth and fragmentation of Penicillium
+chrysogenum in submerged cultures. Biotechnol. Bioeng. 46 (6), 588–598.
+Nolen, J., Papanicolaou, G., Pironneau, O., 2008. A framework for adaptive multiscale
+methods for elliptic problems. Multisc. Model. Simul. 7 (1), 171–196.
+Parker, W.C., Chakraborty, N., Vrikkis, R., Elliott, G., Smith, S., Moyer, P.J., 2010. High-
+resolution intracellular viscosity measurement using time-dependent fluorescence
+anisotropy. Opt. Express 18 (16), 16607.
+Patton, A.M., Marchant, R., 1978. A mathematical analysis of dolipore/parenthesome
+structure in basidiomycetes. J. Gen. Microbiol. 109 (2), 335–349.
+Paul, G.C., Kent, C.A., Thomas, C.R., 1994. Hyphal vocuolation and fragmentation in
+Penicillium chrysogenum . Biotechnol. Bioeng. 44 (5), 655–660.
+Poon, C., 2022. Measuring the density and viscosity of culture media for optimized
+computational fluid dynamics analysis of in vitro devices. J. Mech. Behav. Biomed.
+Mater. 126, 105024.
+Pradella, J.G.C., Zuccolo, M., Lopes, S.A.R., Oliveira, M.S., 1990. Pisolithus microcarpus
+vegetative mycelia production: effects of nitrogen sources and cultivation in stirred
+tank fermenter. Rev. Microbiol. 22 (1), 7–11.
+Puchkov, E.O., 2013. Intracellular viscosity: Methods of measurement and role in
+metabolism. Biochem. (Moscow) Suppl. Ser. A: Membr. Cell Biol. 7 (4), 270–279.
+Raudaskoski, M., 2019. The central role of septa in the basidiomycete Schizophyllum
+commune hyphal morphogenesis. Fungal Biol. 123 (9), 638–649.
+Regalado, C.M., Sleeman, B.D., 1999. Aggregation and collapse in a mechanical model
+of fungal tip growth. J. Math. Biol. 39 (2), 109–138.
+Reyes, M.G., Beltrán-Hernánez, R., Vázquez-Rodríguez, G., Coronel-Olivares, C.,
+Medina-Moreno, S., Juárez-Santillán, L., Lucho-Constantino, C., 2017. Formation,
+morphology and biotechnological applications of filamentous fungal pellets: A
+review. Rev. Mex. Ing. Quím. 16 (3), 703–720.
+Roberson, R.W., Abril, M., Blackwell, M., Letcher, P., McLaughlin, D.J., Mouriño-
+Pérez, R.R., Riquelme, M., Uchida, M., 2014. Hyphal structure. In: Cellular and
+molecular biology of filamentous fungi. ASM Press, pp. 8–24.
+Rossi, M.J., Furigo, Jr., A., Oliveira, V.L., 2007. Inoculant production of ectomycorrhizal
+fungi by solid and submerged fermentations. Food Technol. Biotechnol. 45 (3),
+277–286, URL https://hrcak.srce.hr/24175.
+Rossi, M.J., Souza, J., Oliveira, V.L., 2002. Inoculum production of the ectomycorrhizal
+fungus Pisolithus microcarpus in an airlift bioreactor. Appl. Microbiol. Biotechnol.
+59 (2–3), 175–181.
+Rueden, C.T., Schindelin, J., Hiner, M.C., DeZonia, B.E., Walter, A.E., Arena, E.T.,
+Eliceiri, K.W., 2017. ImageJ2: ImageJ for the next generation of scientific image
+data. BMC Bioinform. 18 (1), 529.
+Salejova, G., Grof, Z., Solcova, O., Schneider, P., Kosek, J., 2011. Strategy for predicting
+effective transport properties of complex porous structures. Comput. Chem. Eng. 35
+(2), 200–211.
+Sánchez-Vargas, J., Valdés-Parada, F.J., 2022. El lado matemático de la biotecnología:
+Un lenguaje poco entendido, pero con mucho potencial. Rev. Divulg. Cient. iBIO
+4 (2), 6–9.
+Sánchez-Vargas, J., Valdés-Parada, F.J., Lasseux, D., 2022. Macroscopic model for
+unsteady generalized Newtonian fluid flow in homogeneous porous media. J.
+Non-Newton. Fluid Mech. 306, 104840.
+Sánchez-Vargas, J., Valdés-Parada, F.J., Trujillo-Roldán, M.A., Lasseux, D., 2023.
+Macroscopic model for generalised Newtonian inertial two-phase flow in porous
+media. J. Fluid Mech. 970, A19.
+Schmideder, S., Barthel, L., Muller, H., Meyer, V., Briesen, H., 2019. From three-
+dimensional morphology to effective diffusivity in filamentous fungal pellets.
+Biotechnol. Bioeng. 116 (12), 3360–3371.
+Schmideder, S., Muller, H., Barthel, L., Friedrich, T., Niessen, L., Meyer, V., Briesen, H.,
+2020. Universal law for diffusive mass transport through mycelial networks.
+Biotechnol. Bioeng. 118 (2), 930–943.
+Schügerl, K., Wittler, R., Lorenz, T., 1983. The use of molds in pellet form. Trends
+Biotechnol. 1 (4), 120–123.
+Shamlou, P.A., Makagiansar, H., Ison, A., Lilly, M., Thomas, C., 1994. Turbulent
+breakage of filamentous microorganisms in submerged culture in mechanically
+stirred bioreactors. Chem. Eng. Sci. 49 (16), 2621–2631.
+Silva, E.E., Gutierrez, G., Dendooven, L., Jimenez, H., Ochoa-Tapia, J., 2001. A method
+to evaluate the isothermal effectiveness factor for dynamic oxygen into mycelial
+pellets in submerged cultures. Biotechnol. Prog. 17 (1), 95–103.
+Slattery, J.C., Sagis, L., Oh, E.-S., 2006. Interfacial transport phenomena, second ed.
+Springer.
+Stamenović, D., 2008. Rheological behavior of mammalian cells. Cell. Mol. Life Sci. 65
+(22), 3592–3605.
+Sumbali, G., Johri, B.M., Johrit, B.M., 2005. The fungi. Alpha Science International,
+Ltd, p. 312.
+Tindemans, S.H., Kern, N., Mulder, B.M., 2006. The diffusive vesicle supply center
+model for tip growth in fungal hyphae. J. Theoret. Biol. 238 (4), 937–948.
+Tough, A.J., Prosser, J.I., 1996. Experimental verification of a mathematical model
+for pelleted growth of Streptomyces coelicolor A3(2) in submerged batch culture.
+Microbiology 142 (3), 639–648.Journal of Theoretical Biology 590 (2024) 111853
+20J. Sánchez-Vargas et al.
+Tough, A.J., Pulham, J., Prosser, J.I., 1995. A mathematical model for the growth of
+mycelial pellet populations. Biotechnol. Bioeng. 46 (6), 561–572.
+Van Driel, K.G.A., 2007. Septal pore caps in Basidiomycetes, composition and
+ultrastructure (Ph.D. thesis). Utrecht University.
+Van Driel, K.G.A., Van Peer, A.F., Grijpstra, J., Wosten, H.A.B., Verkleij, A.J.,
+Muller, W.H., Boekhout, T., 2008. Septal pore cap protein SPC18, isolated from
+the basidiomycetous fungus Rhizoctonia solani , also resides in pore plugs. Eukaryotic
+Cell 7 (10), 1865–1873.
+Van Peer, A.F., Muller, W.H., Boekhout, T., Lugones, L.G., Wösten, H.A.B., 2009.
+Cytoplasmic continuity revisited: Closure of septa of the filamentous fungus
+Schizophyllum commune in response to environmental conditions. In: Idnurm, A.
+(Ed.), PLoS ONE 4 (6), e5977.
+Van Peer, A.F., Wang, F., Van Driel, K.G.A., De Jong, J.F., Van Donselaar, E.G.,
+Muller, W.H., Boekhout, T., Lugones, L.G., Wosten, H.A.B., 2010. The septal pore
+cap is an organelle that functions in vegetative growth and mushroom formation of
+the wood-rot fungus Schizophyllum commune . Environ. Microbiol. 12 (4), 833–844.
+Vasquez-Martínez, N., Guillén, D., Moreno-Mendieta, S.A., Medina-Granados, P.,
+Casañas-Pimentel, R.G., San Martín-Martínez, E., Morales, M.Á., Sanchez, S.,
+Rodríguez-Sanoja, R., 2023. In vivo tracing of immunostimulatory raw starch
+microparticles after mucosal administration. Eur. J. Pharmaceut. Biopharmaceut.
+187, 96–106.Venneman, J., Pawlick, J.S., Audenaert, K., Meyer, E., Demeyere, K., Leus, L., Baert, G.,
+Kogel, K.-H., Haesaert, G., Vereecke, D., Ehlers, K., 2020. Evaluation of genome
+size and quantitative features of the dolipore septum as taxonomic predictors for
+theSerendipita ‘williamsii’ species complex. Fungal Biol. 124 (9), 781–800.
+Vetchinkina, E., Kupryashina, M., Gorshkov, V., Ageeva, M., Gogolev, Y., Nikitina, V.,
+2017. Alteration in the ultrastructural morphology of mycelial hyphae and the
+dynamics of transcriptional activity of lytic enzyme genes during basidiomycete
+morphogenesis. J. Microbiol. 55 (4), 280–288.
+Whitaker, S., 1986. Flow in porous media II: The governing equations for immiscible,
+two-phase flow. Transp. Porous Media 1 (2), 105–125.
+Whitaker, S., 1999. The method of volume averaging. Springer Netherlands, Dordrecht.
+Wittler, R., Baumgartl, H., Lübbers, D.W., Schügerl, K., 1986. Investigations of oxy-
+gen transfer into Penicillium chrysogenum pellets by microprobe measurements.
+Biotechnol. Bioeng. 28 (7), 1024–1036.
+Wood, B.D., Whitaker, S., 1999. Cellular growth in biofilms. Biotechnol. Bioeng. 64
+(6), 656–670.
+Yang, H., Reichl, U., King, R., Gilles, E.D., 1992. Measurement and simulation of the
+morphological development of filamentous microorganisms. Biotechnol. Bioeng. 39
+(1), 44–48.
+Yang, X., Wang, S., Jin, H., He, Y., 2023. Pore-scale simulation of flow and mass
+transfer characteristics of porous particle. Chem. Eng. Sci. 267, 118301.

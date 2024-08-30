@@ -1,0 +1,673 @@
+Biometrika (1989), 76, 2, pp. 297-307
+Printed in Great Britain
+Regression and time series model selection in small samples
+BY CLIFFORD M. HURVICH
+Department of Statistics and Operations Research, New York University, New York
+NY 10003, U.S.A.
+AND CHIH-LING TSAI
+Division of Statistics, University of California, Davis, California 95616, U.S.A.
+SUMMARY
+A bias correction to the Akaike information criterion, AIC, is derived for regression
+and autoregressive time series models. The correction is of particular use when the sample
+size is small, or when the number of fitted parameters is a moderate to large fraction of
+the sample size. The corrected method, called AICC, is asymptotically efficient if the true
+model is infinite dimensional. Furthermore, when the true model is of finite dimension,
+AICC is found to provide better model order choices than any other asymptotically efficient
+method. Applications to nonstationary autoregressive and mixed autoregressive moving
+average time series models are also discussed.
+Some key words: AIC; Asymptotic efficiency; Kullback-Leibler information.
+1. INTRODUCTION
+The problems of regression and autoregressive model selection are closely related.
+Indeed, many of the proposed solutions can be applied equally well to both problems.
+One of the leading selection methods, and the primary focus of this paper, is the Akaike
+information criterion, AIC (Akaike, 1973). This was designed to be an approximately
+unbiased estimator of the expected Kullback-Leibler information of a fitted model. The
+minimum-Aic criterion produces a selected model which is, hopefully, close to the best
+possible choice.
+If the true model is infinite dimensional, a case which seems most realistic in practice,
+AIC provides an asymptotically efficient selection of a finite dimensional approximating
+model. If the true model is finite dimensional, however, the asymptotically efficient
+methods, e.g., Akaike's FPE (Akaike, 1970), AIC, and Parzen's CAT (Parzen, 1977), do
+not provide consistent model order selections. Consistency can be obtained (Hannan &
+Quinn, 1979; Schwarz, 1978) only at the cost of asymptotic efficiency. We feel that of
+the two properties, asymptotic efficiency is the more desirable. Nevertheless, the existing
+efficient methods suffer some severe shortcomings, which become particularly evident in
+the finite dimensional case. The methods tend to overfit severely unless strong restrictions
+are placed on the maximum allowable dimension of the candidate models. The imposition
+of such cut-offs, moreover, seems arbitrary and is especially problematic when the sample
+size is small.
+In the case of AIC, the cause of the overfitting problem becomes evident when one
+examines plots of AIC and the actual Kullback-Leibler information for the various
+candidate models. As m, the dimension of the candidate model, increases in comparison298 C. M. HURVICH AND C.-L. TSAI
+to n, the sample size, AIC becomes a strongly negatively biased estimate of the information.
+This bias can lead to overfitting, even if a maximum cut-off is imposed. The bias of AIC
+may be attributed to the progressive deterioration, as m/n is increased, in the accuracy
+of certain Taylor series expansions for the information used in the derivation of AIC.
+In this paper, we will obtain a bias-corrected version of AIC for nonlinear regression
+and autoregressive time series models. We achieve this by extending the applicability of
+the corrected AIC, AICC, method originally proposed for linear regression models by
+Sugiura (1978); AICC is asymptotically efficient, in both regression and time series. For
+linear regression, AICC is exactly unbiased, assuming that the candidate family of models
+includes the true model. For nonlinear regression and time series models, the unbiasedness
+of AICC is only approximate, since the motivation for AICC in these cases is based on
+asymptotic theory. In all cases, the reduction in bias is achieved without any increase in
+variance, since AICC may be written as the sum of AIC and a nonstochastic term. We
+explore the performance of AICC in small samples, by means of simulations in which the
+true model is finite dimensional. We find that the bias reduction of AICC compared to
+AIC is quite dramatic, as is the improvement in the selected model orders. Furthermore,
+a maximum model order cut-off is not needed for AICC. Among the efficient methods
+studied AICC is found to perform best. For small samples, AICC is able to out-perform
+even the consistent methods. In view of the theoretical and simulation results, we argiie
+that AICC should be used routinely in place of AIC for regression and autoregressive
+model selection. In addition, we present simulation results demonstrating the effectiveness
+of AICC for selection of nonstationary autoregressive and mixed autoregressive-moving
+average time series models.
+The remainder of this paper is organized as follows. Section 2 develops AICC for general
+regression models, and presents Monte Carlo results for linear regression model selection.
+Section 3 develops AICC and presents simulation results for autoregressive model selection.
+The criteria for regression and autoregressive models have exactly the same form. Section
+4 gives concluding remarks. An appendix outlines the derivation of AICC for autoregressive
+models.
+2. MODEL SELECTION FOR REGRESSION
+Here, we follow essentially the notation of Linhart & Zucchini (1986). Suppose data
+are generated by the operating model, i.e. true model,
+y = P + e, U)
+where
+y = (y\,---,yn)T, /A = (MI,--,AOT, E = (e,,...,en)T,
+and the e, are independent identically distributed normal random variables with mean
+zero and variance O-Q. Additional assumptions about the form of the operating model
+will be made below. Consider the approximating, or candidate, family of models
+y = h(6) + u, (2)
+where 0 is an m x 1 vector,
+u = (u,,..., un)T, h{6) = (ht(0),..., hn(6))T,
+h is assumed to be twice continuously differentiable in 6, and the u, are independent
+identically distributed normal with mean zero and variance a2. We refer to (2) as aModel selection in small samples 299
+model, or alternatively as a family of models, one model for each particular value of
+(0, a2). In the special case that the approximating family and operating model are both
+linear, we have h{0) = X0, /A = X080, where X and Xo are respectively n x m and n x m0
+matrices of full rank, and 60 is an m0 x 1 parameter vector. A useful measure of the
+discrepancy between the operating and approximating models is the Kullback-Leibler
+information
+A(0, a2) = EF{-2 log ge.
+where F denotes the operating model and ge,<j2{y) denotes the likelihood function under
+the approximating model. We have
+A(0, a2) = ~2EF log {(27rcrTin exp [ -{y -h(6)}T{y - h(0)}/(2a2)]}
+= n log (2TTO-2) + EF{fi + e -h(0)}T{n + e -h(6)}/<r2
+= n log (2TTO-2) + nal/a2 + {/i, - h{0)}r{(jL -h{d)}/cr2.
+A reasonable criterion for judging the quality of the approximating family in the light
+of the data is £F{A(0, a2)}, where 0 and &2 are the maximum likelihood estimates of 6
+and a2 in the approximating family: 6 minimizes {y - h(0)}T{y - h(0)}, and
+&2 = {y-h(0)}T{y-h(§)}/n.
+Ignoring the constant n log (2TT), we have
+A(6, a2) = n log &2 + naila2 + {ti-h(S)}T{ti-h(d)}/a2.
+Given a collection of competing approximating families, then, the one which minimizes
+£F{A(0, a2)} is, in a sense, closest to the truth, and is to be preferred. Of course,
+EF{A(0, <J2)} is unknown, but it can be estimated if certain additional assumptions are
+made. The Akaike information criterion
+Aic = n(logcr2+l) + 2(m + l), (3)
+where m is the dimensionality of the approximating model, was designed to provide an
+approximately unbiased estimate of EF{A(0, a2)}.
+We now assume that the approximating family includes the operating model. This is
+a strong assumption, but it is also used in the derivation of AIC (Linhart & Zucchini,
+1986, p. 245). In this case, the mean response function fi of the operating model can be
+written as /i = h(6*), where 0* is an m x 1 unknown vector. The linear expansion of h(0)
+at 0 = 0* is given by
+where V = dh/30 evaluated at 0 = 0*. Then under the operating model, 0 - 0* is approxi-
+mately multivariate normal, N{0,al(VTV)~1}, the quantity n&2/cr20 is approximately
+distributed as xl-m independently of 0 (Gallant, 1986, p. 17), and
+nm j a \ nm
+nm / a
+is approximately distributed as F(m, n — m). Thus,
+EF{A(0, &2)}^EF{n log a2) + n2/(n -m-2) + nm/(n -m-300 C. M. HURVICH AND C.-L. TSAI
+Consequently,
+„, 1 + m/nAicc = n log al+n-—-—\-(m + 2)/n
+is an approximately unbiased estimator of EF{A(6, a2)}. An equivalent form is
+,2(w + l)(m + 2) tA.
+AICC = AICH—- . (4)
+n — m — 2
+Thus, AICC is the sum of AIC and an additional nonstochastic penalty term,
+If the approximating models are linear, it follows from Shibata (1981, p. 53) that AICC
+is asymptotically efficient.
+For the remainder of this section, we assume for simplicity that the approximating
+family and operating model are both linear; h(6) = X0, /A = X060. If the approximating
+family includes the operating model, then V = X and fi = X9*. In this case, AICC is an
+exactly unbiased estimator of £F{A(0, a2)}, as originally given for the linear regression
+case by Sugiura (1978, eqn (3.5)). Curiously Sugiura (1978) did not explore the small-
+sample performance of AICC, and indeed for the two data sets he examined, AIC and
+AICC produced identical selections.
+To compare the small-sample performance of various selection criteria in the linear
+regression case, 100 realizations were generated from model (1) with (JL = X060, mo = 3,
+0O = (1,2, 3)T and <r%=\. TWO sample sizes were used: n = 10 and n = 20. There were
+seven candidate variables, stored in an n x 7 matrix X of independent identically dis-
+tributed normal random variables. The candidate models were linear, and included the
+columns of X in a sequentially nested fashion; i.e. the candidate model of dimension m
+consisted of columns 1,..., m of X. The true model consisted of Xo, the first 3 columns
+of X.
+For each realization, the following criteria were used to select a value of m: AICC,
+equation (4); AIC, equation (2); FPE (Akaike, 1970, eqn (4.7)); FPE4 (Bhansali & Down-
+ham, 1977, p. 547); HQ (Hannan & Quinn, 1979, p. 191); sic (Schwarz, 1978; Priestley,
+1981, p. 376); CP (Mallows, 1973, eqn (3)); and PRESS (Allen, 1974, p. 126). Of these
+criteria, HQ and sic are consistent (Shibata, 1986), and AICC, AIC, FPE, CP are asymptoti-
+cally efficient (Shibata, 1981, p. 53).
+For n = 10, the left-hand side of Table 1 gives the frequency of the order selected by
+the various criteria. Here, AICC clearly provides the best selection of m among all criteria
+Table 1. Frequency of order selected by various criteria in 100 realizations of regression
+model with m0 = 3, n = 10, 20
+Criterion
+AICC
+AIC
+FPE
+FPE4
+HQ
+SIC
+CP
+PRESS2
+2
+0
+0
+0
+0
+0
+0
+13
+96
+36
+46
+57
+24
+41
+61
+584
+n =
+2
+8
+12
+10
+11
+9
+8
+115
+10
+0
+6
+12
+9
+13
+10
+8
+12Selected model
+6
+0
+16
+9
+7
+13
+11
+6
+77
+0
+34
+21
+17
+39
+29
+17
+11order,
+2
+0
+0
+0
+0
+0
+0
+0
+0m
+3
+88
+64
+68
+87
+70
+84
+77
+754
+n =
+9
+13
+13
+7
+12
+8
+11
+135
+20
+2
+9
+8
+5
+8
+5
+7
+86
+1
+7
+6
+1
+6
+1
+3
+37
+0
+7
+5
+0
+4
+2
+2
+1Model selection in small samples 301
+studied. The other criteria often show a tendency to overfit the model. We focus now on
+a comparison between AIC and AICC, both of which are designed to be estimates of the
+Kullback-Leibler discrepancy. Figure 1 plots the average values of AIC, AICC and A(0, a2),
+DELTA, as functions of m. For m> m0, AIC is a strongly negatively biased estimator of
+£F{A(0, a2)}. As m is increased beyond m0, AIC first reaches a local maximum and then
+decreases, eventually falling below the value for m = m0. In contrast, the shape of AICC
+tends to mirror that of A(0, a2), particularly for m 3= m0, a region in which AICC is exactly
+unbiased for £F{A(0, a2)}. The average value of AICC attains a global minimum at the
+correct value, m =3.
+For n = 20 in Table 1, AICC still provides the best selection of m, although several of
+the other methods also performed well. Among the efficient criteria, AICC strongly
+outperformed its competitors.
+cu60
+40
+20
+n-
+DELTA J
+\
+1 1 1 1 1//
+'/
+/
+AICC
+AIC
+i i
+12 3 4 5 6 7
+Number of independent variables, m
+Fig. 1. Average criterion functions and Kullback-Leibler discrepancy in
+100 realizations from a regression model with mo = 3 and n = 10.
+3. MODEL SELECTION FOR AUTOREGRESSION
+Suppose that time series data x0,..., xn_, are generated from a Gaussian zero-mean
+weakly stationary stochastic process. The approximating model is an order-m autoregress-
+ive model with parameters a = (1, a,,..., am)T and white noise variance Pm fitted to the
+data by maximum likelihood or some other asymptotically equivalent method, e.g.
+least-squares or Burg's (1978) method. The AIC criterion for selecting an autoregressive
+model is given by
+In the Appendix it is shown that, if the approximating family includes the operating
+model, an approximately unbiased estimator of the Kullback-Leibler discrepancy is given
+by
+Aicc = n log Pm + n-m/n
+-(m + 2)/iT302 C. M. HURVICH AND C.-L. TSAI
+This has exactly the same form as the version of AICC obtained earlier for regression.
+Also as in the regression case, AICC and AIC are related by (4).
+To examine small-sample performance, 100 realizations were generated from the
+second-order autoregressive model
+x, = 0-99x,_1-0-8xl_2+el (t = 0,..., n -1),
+with e, independent identically distributed standard normal. Two sample sizes were used:
+n = 23 and n = 30. For each realization, Burg's method was used to fit candidate
+autoregressive models of orders 1,..., 20, and various criteria were used to select from
+among the candidate models. Most of the criteria examined here are direct generalizations
+of the corresponding regression criteria with Pm used in place of a2: AICC, AIC, FPE, HQ,
+SIC. Two additional criteria proposed specifically for time series were also examined:
+BIC (Akaike, 1978; Priestley, 1981, p. 375), and CAT (Parzen, 1977, eqn (2.9)). The efficient
+criteria were AICC) AIC, FPE (Shibata, 1980), and CAT (Bhansali, 1986). The consistent
+criteria were HQ, SIC, BIC.
+For n = 23, Table 2 gives first the frequency of the model orders selected by the criteria.
+Two different maximum model order cut-offs were used: max = 10, max = 20. For n = 23,
+max = 20, AICC performed best, followed closely by BIC, while all other criteria performed
+poorly. When max was reduced to 10, AICC was slightly outperformed by BIC, but AICC
+was still the best of the efficient methods. Figure 2 plots the average values of the
+Kullback-Leibler discrepancy, AICC and AIC as functions of m. The patterns are quite
+similar to those observed in Fig. 1 for the linear regression case.
+Table 2. Frequency of order selected by various criteria in 100 realizations of second-order
+autoregressive model with n = 23, first value, and n = 30, second value
+Criterion
+AICC
+AIC
+FPE
+HQ
+SIC
+BIC
+CAT1
+6,1
+1,0
+2,0
+1,0
+4,2
+4,0
+2,02
+80,73
+7,31
+19,41
+11,50
+31,82
+77,90
+20,433-5
+max = 20
+10,22
+2,12
+5,17
+3,12
+3, 8
+10, 8
+5,16Selected model
+6-10
+4,
+2,
+7,
+4,
+1,
+3,
+8,3
+6
+8
+7
+3
+0
+1011-20
+0, 1
+88,51
+67,34
+81,31
+61, 5
+6, 2
+65,31order, m
+1
+6,1
+3,0
+3,0
+4,1
+6,2
+5,0
+3,02
+max
+80,74
+52,52
+52,52
+56,64
+78,86
+81,91
+54,583-5
+= 10
+10,22
+19,28
+19,28
+19,22
+9, 9
+10, 8
+19,266-10
+4, 3
+26,20
+26,20
+21,13
+1, 3
+4, 1
+24,16
+For n = 30, the second entry in Table 2, AICC was strongly outperformed by the
+consistent methods sic and BIC, but AICC was still the best of the efficient methods, by
+a wide margin.
+In all cases, the value of the maximum cut-off had virtually no effect on the model
+chosen by AICC- For many of the other criteria, however, increasing the value of max
+tended to lead to increased overfitting of the model. To explore this further, Fig. 3(a),
+(b) plots the average criterion functions corresponding to the efficient and consistent
+methods, respectively, for n = 23. Except for AICC, the shapes corresponding to the
+efficient methods mirror the shape of AIC, and hence the criteria tend to favour large
+model orders, while the shape of AICC resembles that of DELTA. The consistent methods
+suffer from this overfitting problem as well, except for BIC.Model selection in small samples 303
+100
+80Criterion
+40
+20i
+DELTA /
+\ / /
+X^~-—r i i i i i i i i/ /
+/ /
+AIC
+-_^
+1 1 1 1 1 1 I^VJ 1 1 \
+1 2 20 4 6 8 10 12 14 16 18
+Model order, m
+Fig. 2. Average criterion functions and Kullback-Leibler discrepancy in
+100 realizations from an autoregressive model with mo = 2 and n =23.
+80(a)
+60
+40
+20
+-20DELTA/ /
+CAT
+\ —MCC
+FPE
+"\
+-N•--
+AIC
+1 5 10 15
+Model order2010
+0
+20 5 10 15
+Model Order
+Fig. 3. Average of all criterion functions and Kullback-Leibler discrepancy
+in 100 realizations from an autoregressive model with mo = 2 and n =23;
+(a) Efficient methods, (b) Consistent methods.
+4. DISCUSSION
+A common pattern in many of the criterion functions studied here is the eventual
+decline with increasing m, leading to overfitting of the model; see, for example, Fig. 1-3.
+Here, we show that the expectation of AIC has this pattern, thereby obtaining a partial
+theoretical explanation for the overfitting problem. In the autoregressive case, if the
+approximating family includes the operating model, and Pm is the operating white noise
+variance, then nPjPm is approximately distributed as xl-m, and
+(5)where iff is the digamma function (Johnson & Kotz, 1970, p. 198, eqn (67)). Thus,304 C. M. HURVICH AND C.-L. TSAI
+As a function of m, the right-hand side of (5) has the same concave shape as found in
+the AIC plots of Fig. 1-3. For the linear regression case, (5) is exact, if Pm, Pm are replaced
+by a2, O-Q, respectively.
+We have shown that AIC yields a biased estimate of the Kullback-Leibler information,
+and that this bias tends to cause overfitting of the model, in the cases of regression and
+autoregressive time series. We have also demonstrated that a bias-correction in AIC is
+able to overcome the above deficiencies.
+Additional time series models in which AIC, SIC and HQ have been applied include
+nonstationary autoregressions (Tsay, 1984) and mixed autoregressive moving averages,
+ARMA (Hannan, 1980). Here, we explore the potential applicability of AICC for these
+models, based on theoretical and simulation results.
+For stationary autoregressive models, Shibata (1976) obtained the asymptotic distribu-
+tion of the order selected by AIC. Hannan (1980) and Tsay (1984) generalized Shibata's
+result to nonstationary autoregressive and ARMA models, respectively. Since the difference
+between AIC, equation (3), and AICC, equation (4), is a nonstochastic term of order \/n,
+Theorem 1 of Shibata (1976, p. 119), Theorem 2 of Hannan (1980, p. 1073) and Theorem
+1 of Tsay (1984, p. 1427) can be extended directly to AICC.
+Next, we present simulation results on the behaviour of AICC for nonstationary
+autoregressive and ARMA model selection. All models were estimated by conditional
+maximum likelihood. One hundred realizations of the nonstationary third-order
+autoregression
+(l-B2)(l+0-95B)x, = e,
+were generated, with sample size n = 15, and e, independent identically distributed
+standard normal. Here, B is the backshift operator, Bx, = x,_,. Table 3 lists the frequency
+of the order selected by the criteria AICC, AIC, HQ and sic. Of these four criteria, AICC
+performs best. For the case of ARMA model selection, 100 realizations of the first-order
+moving average model x, = e, + 0-95e,_, were generated, with sample size n = 15, and e,
+independent identically distributed standard normal. Table 4 gives the frequency of the
+Table 3. Frequency of order selected by various criteria in 100 realiz-
+ations of nonstationary third-order autoregressive model with n = 15
+iterion
+AICC
+AIC
+HQ
+SICm = \
+8
+3
+3
+5m = 2
+11
+2
+2
+4Selected
+m=3
+45
+10
+10
+19model order
+m=4
+7
+11
+11
+12m = 5
+11
+10
+10
+9m =
+18
+64
+64
+51
+Table 4. Frequency of model selected by various criteria in 100 realizations of first-order
+moving average with n = 15. Candidate models are pure autoregressive, AR, pure moving
+average, MA, and mixed autoregressive-moving average, ARMA
+Model
+AR(1)-AR(4)
+AR(5)-AR(6)
+MA(1)
+MA(2)-MA(4)
+MA(5)-MA(10)AICC
+5
+13
+20
+10
+0AIC
+2
+38
+1
+3
+20HQ
+2
+38
+1
+3
+20sic
+1
+31
+5
+5
+14Model
+ARMA(1, 1)
+ARMA(1,2)
+ARMA(2, 1)
+ARMA(2, 2)AICC
+10
+12
+10
+20AIC
+4
+7
+1
+24HQ
+4
+7
+1
+24SIC
+5
+9
+4
+26Model selection in small samples 305
+model selected by AICC, AIC, HQ and sic. Here, the candidates included a variety of
+pure autoregressive, pure moving average and mixed ARMA models. Of the four criteria,
+AICC selected the correct model most frequently, in 20 cases. Further, the models selected
+by AICC, although often incorrect, were typically much more parsimonious than those
+selected by the other criteria.
+ACKNOWLEDGMENT
+The authors are grateful to the referee for suggesting the additional applications of
+AICC discussed in § 4.
+APPENDIX
+Derivation of AICC for autoregressive models
+Here, we suppose that univariate time series data xo,...,xn_, are available. The operating
+model is that the data form a piece of a realization of a Gaussian zero-mean weakly stationary
+stochastic process with autocovariance cr = E(x,x,_r) and spectral density
+1 °°f(co)=— X crexp(irw).2.TI r--oo
+Suppose that g(o>) is an even nonnegative integrable function on [—TT, TT]. An approximation due
+to Whittle (1953, p. 133) is that the corresponding log likelihood /(g) is such that
+-2/(g)-nlog(277-) +-f"277" J_x{log g(a>) +
+where
+2vn 1-0x, cxp(-iwt)
+is the periodogram. Since I(w) is an asymptotically unbiased estimator of f{<o), we have
+n\oS(2ir)+~ \ {logg(w)+f(cu)/g(w)}dco.
+Thus, the discrepancy function d{f, g) serves as an approximation to the Kullback-Leibler
+information.
+The approximating model is the order- m autoregressive model with parameters a =
+(1, ai,..., am)T and white noise variance Pm, fitted to the data by maximum likelihood or some
+other asymptotically equivalent method, e.g. least-squares or the Burg method. The resulting
+approximating spectral density is
+where d0 = 1, and the sum is over k = 0,..., m.
+We now assume that the approximating family includes the operating model. Then the process
+is an AR(WJ) process which is potentially degenerate to a lower-order autoregression. Let a =
+(1, a,,..., am)T, Pm be the solutions to the population Yule-Walker equations Rma =
+(Pm,0,...,0)T, where
+'Co
+?
+.c">C\
+Co
+Cm-l• •• cm
+... Cm_
+'" Co306 C. M. HURVICH AND C.-L. TSAI
+The final m entries of -Jn(a-a) are asymptotically normal iV(0, />„,#"'_,), and nPm/Pm is
+asymptotically distributed as xl-m, independently of a (Brockwell & Davis, 1987, p. 254).
+Assuming for the sake of mathematical tractability that these asymptotic results are exact for
+finite n, and using Kolmogorov's formula (Brockwell & Davis, 1987, p. 184) as well as basic
+properties of the Yule-Walker equations, we have
+= E(logPm)
+Idkexp(itok) do>
+= E(\ogPm) + E(arRma/Pm)
+±{a-a)TRm{a-a)/Pm}
+= £(log Pm) + nE{\/Xl-m) + -^— E{F(m, n - m)}
+n-m
+_ « n m n — m
+= E(\ogPm) ++
+= £(logPm) +n — m—2 n — m n — m—2
+n + m
+n-m-2
+Thus, we obtain the approximately unbiased estimator of E{d(f,f)} as
+. £ , 1 + m/n
+AICC = n log Pm + n ——
+It follows (Shibata, 1980, p. 160) that AICC is asymptotically efficient. Note that AICC obtained
+here is equivalent to the formula derived in § 2 for the regression case.
+REFERENCES
+AKAIKE, H. (1970). Statistical predictor identification. Ann. Inst. Statist. Math. 22, 203-17
+AKAIKE, H. (1973). Information theory and an extension of the maximum likelihood principle. In 2nd
+International Symposium on Information Theory, Ed. B.N. Petrov and F. Csaki, pp. 267-81. Budapest:
+Akademia Kiado.
+AKAIKE, H. (1978). A Bayesian analysis of the minimum AIC procedure. Ann. Inst. Statist. Math. A 30,9-14.
+ALLEN, D. M. (1974). The relationship between variable selection and data augmentation and a method
+for prediction. Technometrics 16, 125-7.
+BHANSALI, R. J. (1986). Asymptotically efficient selection of the order by the criterion autoregressive transfer
+function. Ann. Statist. 14, 315-25.
+BHANSALI, R. J. & DOWNHAM, D. Y. (1977). Some properties of the order of an autoregressive model
+selected by a generalization of Akaike's FPE criterion. Biometrika 64, 547-51.
+BROCKWELL, P. J. & DAVIS, R. A. (1987). Time Series: Theory and Methods. New York: Springer Verlag.
+BURG, J. P. (1978). A new analysis technique for time series data. In Modern Spectrum Analysis, Ed. D. G.
+Childers, pp. 42-8. New York: IEEE Press.
+GALLANT, A. R. (1986). Nonlinear Statistical Models. New York: Wiley.
+HANNAN, E. J. (1980). The estimation of the order of an ARMA process. Ann. Statist. 8, 1071-81.
+HANNAN, E. J. & QUINN, B. G. (1979). The determination of the order of autoregression. J. R. Statist Soc
+B 41, 190-5.Model selection in small samples 307
+JOHNSON, N. L. & KOTZ, S. (1970). Continuous Univariate Distributions-1. New York: Wiley.
+LINHART, H. & ZUCCHINI, W. (1986). Model Selection. New York: Wiley.
+MALLOWS, C. L. (1973). Some comments on Cp. Technometrics 12, 591-612.
+PARZEN, E. (1977). Multiple time series modeling: determining the order of approximating autoregressive
+schemes. In Multivariate Analysis IV, Ed. P. Krishnaiah, pp. 283-95. Amsterdam: North-Holland.
+PRIESTLEY, M. B. (1981). Spectral Analysis and Time Series. New York: Academic Press.
+SCHWARZ, G. (1978). Estimating the dimension of a model. Ann. Statist. 6, 461-4.
+SHIBATA, R. (1976). Selection of the order of an autoregressive model by Akaike's information criterion.
+Biometrika 63, 117-26.
+SHIBATA, R. (1980). Asymptotically efficient selection of the order of the model for estimating parameters
+of a linear process. Ann. Statist. 8, 147-64.
+SHIBATA, R. (1981). An optimal selection of regression variables. Biometrika 68, 45-54.
+SHIBATA, R. (1986). Consistency of model selection and parameter estimation. /. AppL Prob. 23A, (Essays
+in time series and allied processes), Ed. J. Gani and M. B. Priestley, pp. 127-41.
+SUGIURA, N. (1978). Further analysis of the data by Akaike's information criterion and the finite corrections.
+Comm. Statist. A7, 13-26.
+TSAY, R. S. (1984). Order selection in nonstationary autoregressive models. Ann. Statist. 12, 1425-33.
+WHITTLE, P. (1953). The analysis of multiple stationary time series. J.FL Statist. Soc B 15, 125-39.
+[Received May 1988. Revised July 1988]

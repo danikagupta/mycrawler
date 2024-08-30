@@ -1,0 +1,557 @@
+HANDBOOK OF
+ENVIRONMENTAL
+ENGINEERING
+CALCULATIONSABOUT THE EDITORS
+DR. C. C. L EEis the Fuel Cell Research Program Manager at the National Risk Management
+Research Laboratory of the U.S. Environmental Protection Agency in Cincinnati, Ohio.*
+He has more than 30 years of experience in conducting various engineering and researchprojects which often involve multimedia environmental issues ranging from air and waterpollution control to solid waste disposal. He has been recognized as a worldwide expert inthe thermal treatment of medical and hazardous wastes, witness his leading discussions onmedical waste disposal technologies at a meeting conducted by the Congressional Officeof Technology Assessment. He initiated and served as the Chairman of the First andSecond International Congresses on Toxic Comb ustion Byproducts (ICTCB) in 1989 and
+1991, respectively. The ICTCB has been holding its meetings every two years since its cre-ation in 1989.  Also, at the initiation of the U.S. State Department, he served as head of theU.S. delegation to the Conference on National Focal Points for Low- and Non-WasteTechnology (it was sponsored by the United Nations and held in Geneva, Switzerland onAugust 28–30, 1978). He has been invited to lecture on various issues regarding solidwaste disposal in numerous national and international conferences, and he has authored18 books and has published more than 175 papers and reports in various environmentalareas. Until recently, he was an adjunct professor with the University of Cincinnati in Ohioand was an assistant professor at the North Carolina State University before joining EPAin 1974. He received a B.S. from the National Taiwan University in 1964, and a MS andPhD from the North Carolina State University in 1968 and 1972, respectively.
+S
+HUNDARLINis Emeritus faculty, State Water Survey Division of University of Illinois. He
+received his PhD in Sanitary Engineering from Syracuse University. Dr. Lin holds an MS
+in Sanitary Engineering from University of Cincinnati and a BS in Civil Engineering fromNational Taiwan University. Dr. Lin has taught and conducted research since 1960 at theInstitute of Public Health of National Taiwan University and is a registered professionalengineer in Illinois. He has published nearly 100 articles and reports on water and waste-water engineering. In 1986, Dr. Lin received the Water Quality Division Best Paper Awardfor “ Giardia lamblia and Water Supply” from the American Water Works
+Association. Dr. Lin has over 40 years of experience in teaching, research, field and
+laboratory work, and practical engineering experience. Dr. Lin is a life member of theAmerican Society of Civil Engineers, the American Water Works Association, and the WaterEnvironment Federation.
+*Note : This book was written and edited by Dr. C. C. Lee in his private capacity. No official sup-
+port or endorsement by the U.S. Environmental Protection Agency is intended nor should be inferred.HANDBOOK OF
+ENVIRONMENTAL
+ENGINEERING
+CALCULATIONS
+C. C. Lee Editor in Chief
+Shun Dar Lin Associate Editor
+Second Edition
+New York   Chicago   San Francisco   Lisbon   London   Madrid
+Mexico City   Milan   New Delhi   San Juan   Seoul
+Singapore   Sydney   Toronto
+Copyright © 2007, 2000 by The McGraw-Hill Companies, Inc. All rights reserved. Except as permitted under the United States
+Copyright Act of 1976, no part of this publication may be reproduced or distributed in any form or by any means, or stored in a  
+database or retrieval system, without the prior written permission of the publisher.
+ISBN: 978-0-07-151112-4MHID: 0-07-151112-1The material in this eBook also appears in the print version of this title: ISBN: 978-0-07-147583-9,    
+MHID: 0-07-147583-4.
+All trademarks are trademarks of their respective owners. Rather than put a trademark symbol after every occurrence of a 
+trademarked name, we use names in an editorial fashion only, and to the bene ﬁ t of the trademark owner, with no intention of 
+infringement of the trademark. Where such designations appear in this book, they have been printed with initial caps.
+McGraw-Hill eBooks are available at special quantity discounts to use as premiums and sales promotions, or for use in corporate  
+training programs. To contact a representative please e-mail us at bulksales@mcgraw-hill.com.Information contained in this work has been obtained by The McGraw-Hill Companies, Inc. (“McGraw-Hill”) from sources believed 
+to be reliable. However, neither McGraw-Hill nor its authors guarantee the accuracy or completeness of any information publishe d 
+herein, and neither McGraw-Hill nor its authors shall be responsible for any errors, omissions, or damages arising out of use of this information. This work is published with the understanding that McGraw-Hill and its authors are supplying information but are not attempting to render engineering or other professional services. If such services are required, the assistance of an approp riate 
+professional should be sought.
+TERMS OF USEThis is a copyrighted work and The McGraw-Hill Companies, Inc. (“McGrawHill”) and its licensors reserve all rights in and to th e 
+work. Use of this work is subject to these terms. Except as permitted under the Copyright Act of 1976 and the right to store an d 
+retrieve one copy of the work, you may not decompile, disassemble, reverse engineer, reproduce, modify, create derivative works  
+based upon, transmit, distribute, disseminate, sell, publish or sublicense the work or any part of it without McGraw-Hill’s pri or 
+consent. You may use the work for your own noncommercial and personal use; any other use of the work is strictly prohibited. Yo ur 
+right to use the work may be terminated if you fail to comply with these terms.THE WORK IS PROVIDED “AS IS.” McGRAW-HILL AND ITS LICENSORS MAKE NO GUARANTEES OR 
+WARRANTIES AS TO THE ACCURACY , ADEQUACY OR COMPLETENESS OF OR RESULTS TO BE OBTAINED FROM USING THE WORK, INCLUDING ANY INFORMATION THAT CAN BE ACCESSED THROUGH THE WORK VIA HYPERLINK OR OTHERWISE, AND EXPRESSLY DISCLAIM ANY WARRANTY , EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. McGraw-Hill and its licensors do not warrant or guarantee that the functions contained in the work will meet your requirements or that its operation will be uninterrupted or error free. Neither McGraw-Hill nor its licensors shall be liable to you or anyone else for any inaccuracy, error or omission, regardless of cause, in the work or for any damages resulting therefrom. McGraw-Hill has  
+no responsibility for the content of any information accessed through the work. Under no circumstances shall McGraw-Hill and/or  
+its licensors be liable for any indirect, incidental, special, punitive, consequential or similar damages that result from the use of or inability to use the work, even if any of them has been advised of the possibility of such damages. This limitation of liability shall apply to any claim or cause whatsoever whether such claim or cause arises in contract, tort or otherwise.CONTENTS
+Contributors xi
+Preface xiii
+Part 1 Calculations of Water Quality Assessment and Control
+Chapter 1.1. Basic Science and Fundamentals 1.3
+1. Conversion Factors / 1.3
+2. Prefixes for SI Units / 1.8
+3. Mathematics / 1.8
+4. Basic Chemistry and Physics / 1.31
+5. Statistics / 1.50
+References / 1.69
+Chapter 1.2. Streams and Rivers 1.71
+1. General / 1.72
+2. Point Source Dilution / 1.72
+3. Discharge Measurement / 1.72
+4. Time of Travel / 1.73
+5. Dissolved Oxygen and Water Temperature / 1.74
+6. Biochemical Oxygen Demand Analysis / 1.78
+7. Streeter–Phelps Oxygen SAG Formula / 1.80
+8. BOD Models and K1Computation / 1.81
+9. Determination of Reaeration Rate Constant K2/1.102
+10. Sediment Oxygen Demand / 1.108
+11. Organic Sludge Deposits / 1.110
+12. Photosynthesis and Respiration / 1.111
+13. Natural Self-Purification in Streams / 1.112
+14. SOD of DO Usage / 1.131
+15. Apportionment of Stream Users / 1.131
+16. Velz Reaeration Curve (A Pragmatic Approach) / 1.137
+17. Stream DO Model (A Pragmatic Approach) / 1.141
+18. Biological Factors / 1.153
+References / 1.162
+Chapter 1.3. Lakes and Reservoirs 1.165
+1. Lakes and Impoundment Impairments / 1.165
+2. Lake Morphometry / 1.166
+3. Water Quality Models / 1.169
+4. Evaporation / 1.170
+5. The Clean Lakes Program / 1.175
+References / 1.203
+vChapter 1.4. Groundwater 1.207
+1. Definition / 1.207
+2. Hydrogeologic Parameters / 1.211
+3. Steady Flows in Aquifers / 1.220
+4. Anisotropic Aquifers / 1.221
+5. Unsteady (Nonequilibrium) Flows / 1.222
+6. Groundwater Contamination / 1.233
+7. Setback Zones / 1.236
+References / 1.241
+Chapter 1.5. Fundamental and Treatment Plant Hydraulics 1.243
+1. Definitions and Fluid Properties / 1.243
+2. Water Flow in Pipes / 1.250
+3. Pumps / 1.275
+4. Water Flow in Open Channels / 1.281
+5. Flow Measurements / 1.297
+References / 1.310
+Chapter 1.6. Public Water Supply 1.313
+1. Sources and Quantity of Water / 1.314
+2. Population Estimates / 1.316
+3. Water Requirements / 1.320
+4. Regulation for Water Quality / 1.324
+5. Water Treatment Processes / 1.332
+6. Aeration and Air Stripping / 1.333
+7. Solubility Equilibrium / 1.355
+8. Coagulation / 1.357
+9. Flocculation / 1.363
+10. Sedimentation / 1.367
+11. Filtration / 1.373
+12. Water Softening / 1.382
+13. Ion Exchange / 1.388
+14. Iron and Manganese Removal / 1.402
+15. Activated Carbon Adsorption / 1.406
+16. Membrane Processes / 1.409
+17. Residual from Water Plant / 1.414
+18. Disinfection / 1.418
+19. Water Fluoridation / 1.439
+References / 1.445
+Chapter 1.7. Wastewater Engineering 1.449
+1. What Is Wastewater? / 1.450
+2. Characteristics of Wastewater / 1.450
+3. Sewer Systems / 1.457
+4. Quantity of Wastewater / 1.459
+5. Urban Stormwater Management / 1.462
+6. Design of Storm Drainage Systems / 1.464
+7. Precipitation and Runoff / 1.464
+8. Stormwater Quality / 1.468
+9. Sewer Hydraulics / 1.473
+10. Sewer Appurtenances / 1.473vi CONTENTS11. Pumping Stations / 1.477
+12. Sewer Construction / 1.480
+13. Wastewater Treatment Systems / 1.482
+14. Screening Devices / 1.487
+15. Comminutors / 1.490
+16. Grit Chamber / 1.491
+17. Flow Equalization / 1.492
+18. Sedimentation / 1.495
+19. Primary Sedimentation Tanks / 1.507
+20. Biological (Secondary) Treatment Systems / 1.515
+21. Activated-Sludge Process / 1.517
+22. Trickling Filter / 1.574
+23. Rotating Biological Contactor / 1.586
+24. Dual Biological Treatment / 1.598
+25. Stabilization Ponds / 1.598
+26. Secondary Clarifier / 1.605
+27. Effluent Disinfection / 1.611
+28. Advanced Wastewater Treatment / 1.619
+29. Sludge (Residuals) Treatment and Disposal / 1.652
+References / 1.703
+Appendix A. Illinois Environmental Protection Agency’s
+Macroinvertebrate Tolerance List 1.711
+Appendix B. Well Function for Confined Aquifers 1.717
+Appendix C. Solubility Product Constants for Solution
+at or near Room Temperature 1.723
+Appendix D. Freundlich Adsorption Isotherm Constants
+for Toxic Organic Compounds 1.727
+Part 2 Solid Waste Calculations
+Chapter 2.1. Thermodynamics Used in Environmental Engineering 2.3
+1. Introduction / 2.4
+2. Thermodynamic Terms and Calculations / 2.4
+References / 2.137
+Chapter 2.2. Basic Combustion and Incineration 2.147
+1. Introduction / 2.148
+2. Basic Combustion Principles / 2.148
+3. Basic Mass and Energy Balance Calculation / 2.199
+4. Basic Incinerator Design / 2.220
+5. System Calculations / 2.239
+6. Evaluation of Permit Application Data / 2.294
+References / 2.315CONTENTS viiChapter 2.3. Practical Design of Waste Incineration 2.317
+1. Introduction / 2.317
+2. Combustion Process Calculations / 2.317
+3. Waste Combustion Systems / 2.333
+4. Control of Emissions from Combustion / 2.351
+5. Controlled and Uncontrolled Emission Factors / 2.373
+6. Conversions and Corrections / 2.378
+References / 2.384
+Chapter 2.4. Calculations for Permitting and Compliance 2.387
+1. Introduction / 2.387
+2. Calculations of Emissions from the Stack / 2.388
+3. Regulatory Emission Standards and Guidelines / 2.394
+4. Calculations to Confirm Compliance with Standards / 2.400
+5. Environmental Impact of Stack Emissions / 2.414
+6. Environmental Risk Assessment / 2.430
+References / 2.437
+Chapter 2.5. Calculational Procedures for Ash Stabilization and Solidification 2.439
+Section 2.5.1. Calculational Procedures for Ash Stabilization / 2.441
+1. Overview of Processing and Stabilizing Fly Ash / 2.441
+2. Calculations of Processing and Stabilizing Fly Ash / 2.445
+References / 2.449
+Appendix A. Material Safety Data Sheet / 2.450
+Appendix B. Material Safety Data Sheet. Fly Ash / 2.453
+Appendix C. Material Safety Data Sheet. Mixtures / 2.455
+Appendix D. Material Safety Data Sheet. CFBC Ash / 2.458
+Appendix E. Medical Waste Incinerator. Bottom Ash / 2.461
+Appendix F. Medical Waste Incinerator. Fly Ash / 2.462
+Section 2.5.2. Catalytic Extraction Processing: Calculating Procedures
+for Assessing Low Grade Material Processing Potential / 2.463
+3. Overview of Fundamental Catalytic Extraction Processing / 2.463
+4. Engineering Calculations of Catalytic Extraction Processing / 2.471
+References / 2.488
+Chapter 2.6. Incineration Technologies and Facility Requirements 2.491
+1. Introduction / 1.491
+2. Incineration Technology / 1.492
+3. Incineration Technology Summary / 1.537
+4. Resource Recovery System / 1.537
+5. Facility Design Feature / 1.550
+6. Summary of Incineration System / 1.570
+References / 1.572
+Part 3 Air Pollution Control Calculations
+Chapter 3.1. Air Emission Control 3.3
+1. Introduction / 3.3
+2. Air Pollution Definition / 3.4viii CONTENTS3. Pollution Emission Calculation / 3.9
+4. Gaseous Emission Control Techniques / 3.23
+5. Management of Incineration Residue / 3.125
+6. Accessory Equipment for Air Pollution Control / 3.127
+7. Monitoring Equipment / 3.139
+8. Recording Keeping / 3.140
+References / 3.140
+Chapter 3.2. Particulate Emission Control 3.143
+1. Introduction / 3.143
+2. Basics of Particulate Emission Control / 3.143
+3. Factors Affecting the Selection of Particulate Control Equipment / 3.166
+4. Particulate Emission Control Equipment / 3.168
+5. Particulate Concentration Calculation / 3.216
+6. Particulate Emission Control Cost / 3.218
+References / 3.221
+Chapter 3.3. Wet and Dry Scrubbers for Emission Control 3.223
+1. Introduction / 3.223
+2. Wet Absorption for Particulate Emission Control / 3.225
+3. Wet Absorption for Gaseous Emission Control / 3.241
+4. Wet Scrubbers for Particulate and Gaseous Emission Control / 3.242
+5. Dry Absorption for Gaseous Emission Control / 3.286
+6. Accessory Equipment for Scrubber / 3.292
+References / 3.297
+Part 4
+Chapter 4.1. Air Toxic Risk Assessment 4.1
+1. General / 4.4
+2. Emissions and Site Characterization / 4.4
+3. Air Dispersion Modelling for Air Toxics / 4.13
+4. Exposure Scenarios / 4.23
+5. Estimation of Media Concentrations / 4.28
+6. Quantifying Exposure / 4.83
+7. Human Health Risk and Hazard Calculations / 4.91
+8. Air Toxics Chemical and Physical Properties / 4.98
+9. Human Health Benchmarks / 4.108
+10. Terminology and Variable in Human Health Risk Assessment / 4.110
+References / 4.111
+Part 5
+Chapter 5.1. Fundamentals of Fuel Cell Technologies 5.3
+1. Introduction / 5.3
+2. Fuel Cell Descriptions / 5.4
+3. Calculations of Carnot Efficiency and Fuel Cell Efficiency / 5.11
+References / 5.14
+Index follows Chapter 5.1CONTENTS ixThis page intentionally left blank CONTRIBUTORS
+J. C. S. Chang U.S. Environmental Protection Agency, Research Triangle Park, North Carolina (CHAP . 3.1)
+Floyd Hasselriis Consulting Engineer, Forest Hills, New York (CHAPS . 2.2, 2.3, 2.4)
+Thomas C. Ho Department of Chemical Engineering, Lamar University, Beaumont, Texas (CHAP . 2.2)
+G. L. Huffman U.S. Environmental Protection Agency, Cincinnati, Ohio (CHAPS . 2.1, 2.2, 2.6, 3.1, 3.2, 3.3, 5.1)
+Carl F. Isonhart Mixer Systems, Inc., Pewaukee, Wisconsin (CHAP . 2.5)
+C. C. Lee U.S. Environmental Protection Agency, Cincinnati, Ohio (EDITOR IN CHIEF ;CHAPS . 2.1, 2.2, 2.6, 3.1,
+3.2, 3.3, 5.1)
+Shun Dar Lin Illinois State Water Survey, Peoria, Illinois (ASSOCIATE EDITOR ;CHAPS . 1.1 TO1.7)
+Christopher J. Nagel Quantum Catalytics, Fall River, Massachusetts (CHAP . 2.5)
+Jesse L. Thé Lakes Environmental Software and University of Waterloo, Canada (CHAP . 4.1)
+David A. Weeks. Risk Management & Engineering Ltd., Garland, Texas (CHAP . 4.1)
+xiThis page intentionally left blank PREFACE
+Because environmental problems are uncovered almost daily, this second edition has been created
+to meet the challenge of solving them. Environmental engineering encompasses many areas. It
+ranges from solid waste disposal, wastewater treatment, air pollution control, to life analysis.
+Although there are many publications relative to the descriptions of concepts and methodologies inthe environmental control area, the actual calculations relative to the field seldom appear in thesepublications. In addition to the scarcity of environmental calculations thousands of environmentalregulations from federal, state, and local regulators impact environmental engineering design everyday. Just keeping abreast of such regulations is an enormous task for engineers. The main objective
+of this book is, therefore, to provide step-by-step, practical calculational procedures on variousenvironmental subjects. More importantly, this book integrates the regulatory requirements into
+environmental designs so the result can make these designs more acceptable to regulators. The
+major subjects covered in the second edition include:
+1.Calculations of water quality assessment and control
+2.Solid waste treatment calculations
+3.Air pollution control calculations
+4.Air toxic risk assessment
+5.Fuel cell technologies
+A majority of the calculational examples provided in this book were developed by the authors
+themselves and the materials were excerpted from previous USEPA publications. Since its creation
+in 1970, the USEPA has published many environmental regulations and engineering reports. Many
+very interesting calculational examples were scattered throughout these publications. The huge vol-ume of EPA regulations and reports makes a search for example calculations extremely difficult andtime consuming. To help resolve this difficulty, many of these examples were collected and edited ina format for readers to easily understand. The citing of references for each example calculation isprovided herein. This is to expeditiously assist users in locating additional information, if needed.
+This book is intended to be a reference tool for those who are involved in the protection of
+air, water, and land resources. It is believed that the book will make many environmental jobs much
+easier. Lastly, the editor wishes to express his deep appreciation to the contributing authors who have
+spent so many of their days and nights to make this book possible.
+C. C. L
+EE
+xiiiThis page intentionally left blank HANDBOOK OF
+ENVIRONMENTAL
+ENGINEERING
+CALCULATIONSThis page intentionally left blank P●A●R●T●1
+CALCULATIONS OF WATER
+QUALITY ASSESSMENT
+AND CONTROL
+Part 1 of this book is written for use by the following readers: students taking coursework relating
+to public water supply, waste-water engineering or stream sanitation, practicing environmental
+(sanitary) engineers; regulatory officers responsible for the review and approval of engineeringproject proposals; operators, engineers, and managers of water and/or wastewater treatmentplants; and any other professionals, such as chemists and biologists, who have gained someknowledge of water/wastewater issues. This work will benefit all operators and managers of publicwater supply and of wastewater treatment plants, environmental design engineers, military envi-ronmental engineers, undergraduate and graduate students, regulatory officers, local public worksengineers, lake managers, and environmentalists.
+The chapters in Part 1 present the basic principles and concepts relating to water/wastewater
+engineering and provide illustrative examples of the subject. To the extent possible, examples relyon practical field data.  Each of the calculations provided herein are solved step-by-step in astreamlined manner that is intended to facilitate understanding. Calculations (step-by-step solu tions)
+range from calculations commonly used by operators to more complicated calculations requiredfor research or design.
+Advances and improvements in many fields are driven by competition or the need for increased
+profits. It may be fair to say, however, that advances and improvements in environmental engineeringare driven instead by regulation. The US Environmental Protection Agency (EPA) sets up maximum
+contaminant levels, which research and project designs must reach as a goal. The step-by-step solution
+examples provided in this book are informed by the integration of rules and regulations on everyaspect of waters and wastewaters. The author has performed an extensive survey of literature on sur face
+and groundwaters encountered in environmental engineering and compiled them in the followingchapters. Rules and regulations are described as simply as possible, and practical examples are given.
+The following chapters include calculations for basic science, surface waters ground water,
+drinking water treatment, and wastewater engineering. Chapter 1.1 covers conversion factorsbetween the two measurement systems, the United States (US) customary system and the SystemInternational (SI), basic mathematics for water and wastewater plant operators, fundamentalchemistry and physics, and basic statistics for environmental engineers.Chapter 1.2 comprises calculations for river and stream waters. Stream sanitation had been stud-
+ied for nearly 100 years. By the mid-twentieth century, theoretical and empirical models for assess-
+ing waste assimilating capacity of streams were well developed. Dissolved oxygen and bioc hemical
+oxygen demand in streams and rivers have been comprehensively illustrated in this chapter.
+Apportionment of stream users and pragmatic approaches for stream dissolved oxygen models arealso covered. From the 1950s through the 1980s, researchers focused extensively on wastewatertreatment. In 1970s, rotating biological contactors also became a hot subject. Design criteria andexamples for all of these are included. Some treatment and management technologies are no longersuitable in the United States. However, they are still of some use in developing countries.
+Chapter 1.3 is a compilation of adopted methods and documented research. In the early 1980s,
+the USEPA published Guidelines for Diagnostic and Feasibility Study of Public Owned Lakes
+(Clean Lakes Program, or CLP). This was intended to be used as a guideline for lake manage-
+ment. CLP and its calculation (evaluation) methods are present in this chapter. Hydrological,nutrient, and sediment budgets are presented for reservoir and lake waters. Techniques for classifi-cation of lake water quality, assessment of the lake trophic state index, and of lake use support arepresented.
+Calculations for groundwater are given in Chapter 1.4. They include groundwater hydrology,
+flow in aquifers, pumping and its influence zone, setback zone, and soil remediation. Well setbackzone is regulated by the state EPA. Determinations of setback zones are also included in the book.
+Well function for confined aquifers is presented in Appendix B.
+Hydraulics for environmental engineering is included in Chapter 1.5. This chapter covers fluid
+(water) properties and definitions; hydrostatics; fundamental concepts of water flow in pipes,weirs, orifices, and in open channel; and of flow measurements. Pipe networks for water supplydistribution systems and hydraulics for water and wastewater treatment plants are included.
+Chapters 1.6 and 1.7 cover each unit process for drinking water and wastewater treatments,
+respectively. The USEPA developed design criteria and guidelines for almost all unit processes.These two chapters depict the integration of regulations (or standards) into water and wastewaterdesign procedure. Water fluoridation and the CT values are incorporated in Chapter 1.6. Biosolids
+are discussed in detail in Chapter 1.7. These two chapters are the heart Part 1, providing the theo-
+retical considerations of unit processes, traditional (or empirical) design concepts, and integratedregulatory requirements.
+Most calculations provided herein use U.S. Customary units. Readers who use the International
+System (SI) may apply the conversion factors listed in Chapter 1.1. Answers are also generallygiven in SI for most of problems solved using U.S. units.
+The current edition corrects certain computational, typographical, and grammatical errors
+found in the previous edition. Drinking water quality standards, wastewater effluent standards,
+and several new examples have also been added. The author also wishes to acknowledge Meiling
+Lin, Heather Lin, Robert Greenlee, Luke Lin, Kevin Lin, Jau-hwan Tzeng, and Lucy Lin for theirassistance. Any reader suggestions and comments will be greatly appreciated.
+Shun Dar Lin1.2 PART 11.3CHAPTER 1.1
+BASIC SCIENCE AND
+FUNDAMENTALS
+Shun Dar Lin
+1 CONVERSION FACTORS 1.3
+2 PREFIXES FOR SI UNITS 1.83 MATHEMATICS 1.8
+3.1 Logarithms 1.9
+3.2 Basic Math 1.103.3 Threshold Odor
+Measurement 1.13
+3.4 Simple Ratio 1.143.5 Percentage 1.153.6 Significant Figures 1.193.7 Transformation of Units 1.213.8 Geometrical Formulas 1.26
+4 BASIC CHEMISTRY AND PHYSICS 1.31
+4.1 Density and Specific
+Gravity 1.31
+4.2 Chemical Solutions 1.334.3 pH 1.374.4 Mixing Solutions 1.404.5 Chemical Reactions and
+Dosages 1.424.6 Pumpage and Flow Rate 1.44
+5 STATISTICS 1.50
+5.1 Measure of Central Value 1.505.2 The Arithmetic Mean 1.505.3 The Medium 1.505.4 The Mode 1.505.5 Moving Average 1.515.6 The Geometric Mean 1.515.7 The Variance 1.525.8 The Standard Deviation 1.535.9 The Geometric Standard
+Deviation 1.54
+5.10 The Student’s t Test 1.545.11 Multiple Range Tests 1.565.12 Regression Analysis 1.595.13 Calculation of Data Quality
+Indicators 1.65
+REFERENCES 1.69
+1 CONVERSION FACTORS
+The units most commonly used by water and wastewater professionals in the United States are based
+on the complicated U.S. Customary System of Units. However, laboratory work is usually based on
+the metric system due to the convenient relationship between milliliters (mL), cubic centimeters
+(cm3), and grams (g). The International System of Units (SI) is used in all other countries. Factors
+for converting U.S. units to the SI are given below (Table 1.1) to four significant figures.
+EXAMPLE 1: Find degrees in Celsius of water at 68 /H11034F.
+Solution:
+/H11034C/H11005(/H11034F/H1100232)/H110035
+9/H11005(68/H1100232)/H110035
+9/H11005201.4 CHAPTER 1.1
+TABLE 1.1 Factors for Conversions
+U.S. Customary units Multiply by SI or U.S. Customary units
+Length
+inches (in) 2.540 centimeters (cm)
+0.0254 meters (m)
+feet (ft) 0.3048 m
+12 in
+yard (yd) 0.9144 m
+3f t
+miles 1.609 kilometers (km)
+1760 yd5280 ft
+Area
+square inch (sq in, in
+2) 6.452 square centimeters (cm2)
+square feet (sq ft, ft2) 0.0929 m2
+144 in2
+acre (a) 4047 square meters (m2)
+0.4047 hectare (ha)43,560 ft
+2
+0.001562 square miles
+square miles (mi2) 2.590 km2
+640 acres
+Volume 
+cubic feet (ft3) 28.32 liters (L)
+0.02832 m3
+7.48 US gallons (gal)6.23 Imperial gallons1728 cubic inches (in
+3)
+cubic yard (yd3) 0.7646 m3
+gallon (gal) 3.785 L
+0.003785 m3
+4 quarts (qt)8 pints (pt)128 fluid ounces (fl oz)0.1337 ft
+3
+million gallons (Mgal) 3785 m3
+quart (qt) 32 fl oz
+946 milliliters (mL)0.946 L
+acre /H11080feet (ac /H11080ft) 1.233 /H1100310
+/H110023cubic hectometers (hm3)
+1233 m3
+Weight
+pound (lb, #) 453.6 grams (gm or g)
+0.4536 kilograms (kg)7000 grains (gr)16 ounces (oz)
+grain 0.0648 gton (short) 2000 lb
+0.9072 tonnes (metric tons)
+ton (long) 2240 lbgallons of water (US) 8.34 lb
+Imperial gallon 10 lbBASIC SCIENCE AND FUNDAMENTALS 1.5
+TABLE 1.1 Factors for Conversions ( contd. )
+U.S. Customary units Multiply by SI or U.S. Customary units
+Unit weight
+ft3of water 62.4 lb
+7.48 gallon
+pound per cubic foot (lb/ft3) 157.09 newton per cubic meter (N/m3)
+16.02 kg force per square meter (kgf/m2)
+0.016 grams per cubic centimeter (g/cm3)
+Concentration
+parts per million (ppm) 1 mg/L
+8.34 lb/Mgal
+grain per gallon (gr/gal) 17.4 mg/L
+142.9 lb/Mgal
+Time
+day 24 hours (h)
+1440 minutes (min)86,400 seconds (s)
+hour 60 minminute 60 s
+Slope
+feet per mile 0.1894 meter per kilometer
+Velocity
+feet per second (ft/sec) 720 inches per minute
+0.3048 meter per second (m/s)30.48 cm/s0.6818 miles per hour (mph)
+inches per minute 0.043 cm/smiles per hour (mi/h) 0.4470 m/s
+26.82 m/min1.609 km/h
+knot 0.5144 m/s
+1.852 km/h
+Flowrate
+cubic feet per second (ft
+3/s, cfs) 0.646 million gallons daily (MGD)
+448.8 gallons per minutes (gpm)28.32 liter per second (L/s)0.02832 m
+3/s
+million gallons daily (MGD) 3.785 m3/d (CMD)
+0.04381 m3/s
+157.7 m3/h
+694 gallons per minute1.547 cubic feet per second (ft
+3/s)
+gallons per minute (gpm) 3.785 liters per minute (L/min)
+0.06308 liters per second (L/s)0.0000631 m
+3/s
+0.227 m3/h
+8.021 cubic feet per hour (ft3/h)
+0.002228 cubic feet per second (cfs, ft3/s)
+gallons per day 3.785 liters (or kilograms) per dayMGD per acre /H11080ft 0.4302 gpm per cubic yard
+acre /H11080feet per day 0.01427 m
+3/s
+Application (loading) rate
+pounds per square foot (lb/ft2) 4.8827 kilograms per square meter (kg/m2)1.6 CHAPTER 1.1
+TABLE 1.1 Factors for Conversions ( contd. )
+U.S. Customary units Multiply by SI or U.S. Customary units
+pounds per 1000 square foot 0.00488 kilograms per square meter per day
+per day (lb/1000 ft2/H11080d) (kg/m2/H11080d)
+pounds per cubic foot (lb/ft3) 16.017 kilograms per cubic meter (kg/m3)
+pounds per 1000 cubic foot 0.016 kilograms per cubic meter per day
+per day (lb/1000 ft3/H11080d) (kg/m3/H11080d)
+pounds per foot per hour (lb/ft /H11080h) 1.4882 kilograms per meter per hour
+(kg/m /H11080h)
+pounds per horse power per hour 0.608 kilograms per kilowatts per hour 
+(lb/hp /H11080h) (kg/kW /H11080h)
+pounds per acre per day (lb/acre /H11080d) 1.121 kilograms per hectare per day
+(kg/ha /H11080d)
+gallons per acre (gal/acre) 0.00935 m3/ha
+million gallons per acre (Mgal/acre) 0.93526 m3/m2
+million gallons per acre /H11080ft 0.43 gpm/yd3
+(Mgal/acre /H11080ft)
+gallons per square foot per day 0.04074 cubic meter per square meter per day
+(gal/ ft2/H11080d) (m3/m2/H11080d)
+0.04356 Mgal/acre /H11080d
+gallons per minute per square foot 58.674 m3/m2/H11080d
+(gpm/ ft2)
+square root of gpm per square foot 2.7 (L/s)0.5/ m2
+(gal/min)0.5/ft2
+gallons per day per foot (gal/d /H11080ft) 0.01242 m3/d/H11080m
+square foot per cubic foot (ft2/ ft3) 3.28 m2/m3
+cubic foot per gallon (ft3/gal) 7.48 m3/m3
+cubic foot per pound (ft3/lb) 0.06243 m3/kg
+62.43 L/kg
+cubic foot per 1000 cubic foot 1 L/ m3/H11080min
+per minute (ft3/1000 ft3/H11080min)
+Force
+pounds 0.4536 kilograms force (kgf)
+453.6 grams(g)4.448 newtons (N)
+Pressure
+pounds per square inch (lb/in
+2, psi) 2.309 feet head of water
+2.036 inches head of mercury51.71 mmHg6895 newtons per square meter (N/m
+2)
+/H11005pascal (Pa)
+0.0703 kgf/cm2
+703.1 kgf/m2
+0.0690 bars
+pounds per square foot (lb/ft2) 4.882 kgf/m2
+47.88 N/m2(Pa)
+pounds per cubic inch 0.01602 gmf/cm3
+16.017 gmf/L
+tons per square inch 1.5479 kg/mm2
+millibars (mb) 100 N/m2
+inches of mercury 345.34 kg/m2
+0.0345 kg/cm2
+0.0334 bar
+0.491 psi (lb/in2)BASIC SCIENCE AND FUNDAMENTALS 1.7
+TABLE 1.1 Factors for Conversions ( contd. )
+U.S. Customary units Multiply by SI or U.S. Customary units
+inches of water 248.84 pascals (Pa)
+atmosphere 101,325 Pa
+1013 millibars (1 mb /H11005100 Pa)
+14.696 psi (lb/in2)
+29.92 inches of mercury33.90 feet of water
+pascal (SI) 1.0 N/m
+2
+1.0/H11003 10/H110025bar
+1.0200 /H11003 10/H110025kg/m2
+9.8692 /H11003 10/H110026atmospheres (atm)
+1.40504 /H11003 10/H110024psi (lb/in2)
+4.0148 /H11003 10/H110023in, head of water
+7.5001 /H11003 10/H110024cm head of mercury
+Mass and density
+slug 14.594 kg
+32.174 lb (mass)
+pound 0.4536 kgslug per foot
+3515.4 kg/m3
+density ( /H9253) of water 62.4 lb/ft3at 50 /H11034F
+980.2 N/m3at 10 /H11034C
+specific wt ( /H9267) of water 1.94 slugs/ft3
+1000 kg/m3
+1 kg/L
+1 gram per milliliter (g/mL)
+Viscosity
+pound-second per foot3or slug 47.88 newton second per square
+per foot second meter (Ns/m2)
+square feet per second (ft2/s) 0.0929 m2/s
+Work
+British thermal units (Btu) 1.0551 kilo joules (kj)
+778 ft lb0.293 watt-h1 heat required to change 1 lb of water
+by 1/H11034F
+hp-h 2545 Btu
+0.746 kW-h
+kW-h 3413 Btu
+1.34 hp-h
+Power
+horsepower (hp) 550 ft lb per sec
+746 watt2545 Btu per h
+kilowatts (kW) 3413 Btu per hBtu per hour 0.293 watt
+12.96 ft lb per min0.00039 hp
+Temperature
+degree Fahrenheit ( /H11034F) ( /H11034F/H1100232)/H11003 (5/9) degree Celsius ( /H11034C)
+(/H11034C) ( /H11034C)/H11003(9/5) /H1100132 ( /H11034F)
+/H11034C/H11001273.15 Kelvin (K)

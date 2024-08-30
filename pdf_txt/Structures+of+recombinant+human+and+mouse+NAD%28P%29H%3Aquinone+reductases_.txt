@@ -1,0 +1,1537 @@
+RESEARCH ARTICLE
+Structural dynamics and functional cooperativity of human
+NQO1 by ambient temperature serial crystallography and
+simulations
+Alice Grieco1| Sergio Boneta2| José A. Gavira3| Angel L. Pey4|
+Shibom Basu5| Julien Orlans6| Daniele de Sanctis6| Milagros Medina2|
+Jose Manuel Martin-Garcia1
+1Department of Crystallography and Structural Biology, Institute of Physical Chemistry Blas Cabrera, Spanish National Research Council (CSIC),
+Madrid, Spain
+2Departamento de Bioquímica y Biología Molecular y Celular e Instituto de Biocomputaci /C19on y Física de Sistemas Complejos (BIFI), Universidad de
+Zaragoza, Zaragoza, Spain
+3Laboratory of Crystallographic Studies, IACT (CSIC-UGR), Armilla, Spain
+4Departamento de Química Física, Unidad de Excelencia en Química Aplicada a Biomedicina y Medioambiente e Instituto de Biotecnología,
+Universidad de Granada, Granada, Spain
+5European Molecular Biology Laboratory, Grenoble, France
+6ESRF—The European Synchrotron, Grenoble, France
+Correspondence
+Milagros Medina, Departamento deBioquímica y Biología Molecular y Celulare Instituto de Biocomputaci /C19on y Física de
+Sistemas Complejos (BIFI), Universidadde Zaragoza, Zaragoza, Spain.Email:
+mmedina@unizar.es
+Jose Manuel Martin-Garcia, Departmentof Crystallography and Structural Biology,Institute of Physical Chemistry BlasCabrera, Spanish National ResearchCouncil (CSIC), Serrano 119, 28006,Madrid, Spain.Email:
+jmmartin@iqf.csic.es
+Funding informationConsejería de Economía, Conocimiento,Empresas y Universidad, Junta deAndalucía, Grant/Award Number:P18-RT-2413; ERDF/Spanish Ministry ofScience, Innovation and Universities-StateResearch Agency, Grant/Award Number:Abstract
+The human NQO1 (hNQO1) is a flavin adenine nucleotide (FAD)-dependent
+oxidoreductase that catalyzes the two-electron reduction of quinones to hydro-
+quinones, being essential for the antioxidant defense system, stabilization of
+tumor suppressors, and activation of quinone-based chemotherapeutics. More-
+over, it is overexpressed in several tumors, which makes it an attractive cancerdrug target. To decipher new structural insights into the flavin reductive half-
+reaction of the catalytic mechanism of hNQO1, we have carried serial crystal-
+lography experiments at new ID29 beamline of the ESRF to determine, to the
+best of our knowledge, the first structure of the hNQO1 in complex with
+NADH. We have also performed molecular dynamics simulations of freehNQO1 and in complex with NADH. This is the first structural evidence that
+the hNQO1 functional cooperativity is driven by structural communication
+between the active sites through long-range propagation of cooperative effects
+across the hNQO1 structure. Both structural results and MD simulations have
+supported that the binding of NADH significantly decreases protein dynamics
+Alice Grieco and Sergio Boneta contributed equally to this study.
+Reviewing Editor: Jeanine AmacherReceived: 21 December 2023 Revised: 16 February 2024 Accepted: 17 February 2024
+DOI: 10.1002/pro.4957
+This is an open access article under the terms of the Creative Commons Attribution-NonCommercial-NoDerivs License, which permits use and distribution in any
+medium, provided the original work is properly cited, the use is non-commercial and no modifications or adaptations are made.
+© 2024 The Authors. Protein Science published by Wiley Periodicals LLC on behalf of The Protein Society.
+Protein Science. 2024;33:e4957. wileyonlinelibrary.com/journal/pro 1o f2 2
+https://doi.org/10.1002/pro.4957
+RTI2018-096246-B-I00; Gobierno de
+Arag/C19on, Grant/Award Number: E35-23R;
+ERDF/Counseling of EconomicTransformation, Industry, Knowledge andUniversities, Grant/Award Number: B-BIO-84-UGR20; The European UnionNextGenerationEU/PRTR, Grant/AwardNumber: CNS2022-135713; Comunidad deMadrid, Grant/Award Number: 2019-T1/BMD-15552; MCIN/AEI/10.13039/501100011033/ERDF,Grant/Award Number: MCIN/AEI/PID2022-136369NB-I00and stabilizes hNQO1 especially at the dimer core and interface. Altogether,
+these results pave the way for future time-resolved studies, both at x-ray free-
+electron lasers and synchrotrons, of the dynamics of hNQO1 upon binding to
+NADH as well as during the FAD cofactor reductive half-reaction. This knowl-
+edge will allow us to reveal unprecedented structural information of the rele-
+vance of the dynamics during the catalytic function of hNQO1.
+KEYWORDS
+cooperativity, flavoenzyme, human NQO1, microcrystals, oxidoreductase, protein dynamics,
+serial synchrotron x-ray crystallography
+1|INTRODUCTION
+The human NAD(P)H quinone oxidoreductase
+1 (hNQO1) is a flavo-oxidoreductase essential for theantioxidant defense system, stabilization of tumor sup-
+pressors, and activation of quinone-based chemothera-
+peutics (Pey et al.,
+2016 ; Ross & Siegel, 2017 ). Alterations
+in hNQO1 function are associated with cancer and with
+Alzheimer's and Parkinson's disease, making this enzyme
+an attractive target for drug discovery (Beaveret al.,
+2019 ). hNQO1 is a homodimer of 62 kDa with two
+identical 31 kDa interlocking protomers and two active
+sites. These active sites are located at the interface
+between the two protomers consisting of two domainsthat involve residues from both polypeptide chains and
+the corresponding two noncovalently bound flavin ade-
+nine nucleotide (FAD) cofactors, one at each catalytic site(Asher et al.,
+2006 ; Faig et al., 2000 ; Li et al., 1995 ; Skelly
+et al., 1999 ). hNQO1 primarily catalyzes the two-electron
+reduction of quinones to hydroquinones by a two-stepmechanism commonly known as “ping-pong ”(Anoz-
+Carbonell et al.,
+2020 ) (Scheme S1), in which the electron
+donor molecule NAD(P)H enters the active site and
+donates a hydride to the FAD cofactor reducing it to thehydroquinone state (namely FADH
+/C0). Then the oxidized
+NAD+leaves the active site, and it is eventually replaced
+by a quinone substrate that is subsequently reduced to itshydroquinone form by FADH
+/C0.
+Crystal structures of hNQO1 with and without the
+inhibitors dicoumarol and cibacron blue, chemothera-peutic drugs, and the substrate duroquinone, have shown
+that hNQO1 undergoes local conformational changes in
+which the active site opens and closes during the catalysis(Asher et al.,
+2006 ; Faig et al., 2000 ; Lienhart et al., 2014 ;
+Winski et al., 2001 ). However, the difficulty of obtaining
+structural and dynamic information on many of the
+intermediate states by standard macromolecular crystal-lography at synchrotrons, has limited the understanding
+of the redox mechanism of hNQO1. Other biophysicaltechniques including isothermal titration calorimetry,
+hydrogen/deuterium exchange, absorption spectroscopy,
+and stopped flow have supported the hypothesis that the
+two active/binding sites of hNQO1 act cooperatively anddisplay highly collective inter-domain and inter-
+monomer communication and dynamics (Clavería-
+Gimeno et al.,
+2017 ; Pacheco-Garcia et al., 2021 ;
+Pey, 2018 ; Pey et al., 2014 ). This coupled network of
+amino acids is sensitive to ligand binding as it decreases
+protein dynamics significantly and stabilizes hNQO1especially at the dimer core and interface. Such observa-tion provides experimental evidence for the two active
+sites in the homodimer catalyzing the hydride exchange
+with different rates being driven by structural communi-cation and the breaking and formation of hydrogen
+bonds and salt bridges across the hNQO1 protein struc-
+ture (Anoz-Carbonell et al.,
+2020 ; Pacheco-Garcia
+et al., 2021 ,2022 ). For this reason, understanding the
+hNQO1 redox mechanism and the conformational
+dynamics upon interaction with substrates is critical tounravel its roles as an antioxidant and potential target totreat cancer, neurological disorders and cardiovascular
+diseases (Beaver et al.,
+2019 ; Betancor-Fern /C19andez
+et al., 2018 ). However, a detailed structural explanation
+for these observations, and the derived mechanistic
+implications, is difficult to provide by standard crystallog-
+raphy as crystal freezing might select one conformationabove others (Fraser et al.,
+2011 ).
+Despite x-ray crystallography being the main way of
+uncovering the three-dimensional structures of bioma-cromolecules, traditionally, it has been viewed as a static
+technique, with limited applicability to study protein
+dynamics, which fundamentally relies on multiple con-formational states and the transitions between them.However, owing to the convergence of several recent
+experimental and technical developments, x-ray crystal-
+lography is increasingly well-positioned to provideinsights into the connection between protein flexibility
+and function. In this regard, the development of new2o f2 2 GRIECO ET AL .
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+light sources, such as x-ray free-electron lasers (XFELs)
+and sample handling procedures, has brought about aresurgence of room temperature crystallography through
+so-called serial femtosecond crystallography (SFX). Also,
+the high intensity of state-of-the-art synchrotron sources,combined with ultrafast detectors, has enabled similar
+experiments in the form of serial synchrotron crystallog-
+raphy (SSX). To date, the number of room temperatureSSX experiments (more than 60 experiments) has grown
+exponentially since the first experiment was conducted in
+2014 (Gati et al.,
+2014 ). A further development is repre-
+sented by the advent of diffraction-limited storage rings(Raimondi et al.,
+2023 ), capable of providing a much
+more brilliant beam at the sample position and allowing
+to perform diffraction experiments at short time scales.The new ID29 is the first beamline completely dedicated
+to room temperature serial crystallography at a fourth-
+generation storage ring. Recently, we have shown thebenefit of room temperature data collection using SFX by
+determining the SFX structure of hNQO1 (Doppler
+et al.,
+2023 ). Our results revealed that several residues in
+the catalytic site, described to play a key role in the func-
+tion of the protein, show an unexpected flexibility within
+the crystals (Doppler et al., 2023 ). This high plasticity of
+hNQO1 in the catalytic site provided us with the firststructural evidence that the hNQO1 functional negative
+cooperativity is driven by structural communication
+between the active sites through long-range propagationof cooperative effects across the protein structure.
+In the work presented here, we have conducted one
+of the first SSX experiments at the new ID29 beamline atthe ESRF Extremely Brilliant Source (ESRF-EBS) to
+determine, to the best of our knowledge, the first struc-
+ture of the hNQO1 in complex with NADH. Until now,the only structure of an NQO1 protein in complex withNADP
++was reported by Li et al. ( 1995 ) from rat liver.
+However, no structure was ever deposited in the PDB.
+With the goal of obtaining the first structure of thehNQO1 in complex with NADH, we have conducted SSX
+experiments at ID29 beamline of the ESRF-EBS, as well
+as performed molecular dynamics (MD) simulations toconfirm our experimental observations. The results pre-
+sented here will pave the way for future TR-SX studies
+both at XFELs and synchrotrons to study the dynamics ofhNQO1 upon binding of NADH. This knowledge will
+allow us to reveal unprecedented structural information
+of the kinetic mechanism that determines the catalyticfunction of hNQO1. Furthermore, gaining insights intothese functional aspects of hNQO1 at the molecular level
+will be valuable to advance in the design of new, more
+potent, and effective inhibitors that can be used in clini-cal realm.2|MATERIALS AND METHODS
+2.1 |Expression and purification of
+hNQO1 protein
+Protein expression and purification of hNQO1
+(EC 1.6.99.2) were performed as previously described
+(Doppler et al., 2023 ). Briefly, Escherichia coli BL21
+(DE3) cells containing the DNA sequence of hNQO1
+were grown overnight in LB culture medium supple-
+mented with 0.1 mg/mL ampicillin (LBA) at 37/C14C. This
+culture was diluted in 4 L of fresh LBA and grown at37
+/C14C until the optical density at 600 nm reached a
+value between 0.6 and 0.8. Expression was then induced
+with IPTG (isopropyl β-D-1-thiogalactopyranoside) at a
+final concentration of 0.5 mM. Induced cells were fur-
+ther incubated for 4 h at 28/C14C, harvested by centrifuga-
+tion and resuspended in 40 mL of binding buffer (BB;20 mM sodium phosphate, 300 mM NaCl, and 50 mM
+imidazole at pH 7.4) containing one EDTA-free protease
+Inhibitor tablet. Cells were lysed by sonication on ice.Lysate was cleared by centrifugation at 30,000 rpm at
+4
+/C14C for 40 min. The supernatant containing hNQO1
+was filtered through 0.45 μm filters and subsequently
+loaded onto immobilized Ni2+affinity chromatography
+column previously equilibrated with BB. After collecting
+the flowthrough, the column was washed with 20 col-
+umn volumes (CVs) of BB and eluted with 10 CVs ofelution buffer (BB containing 500 mM imidazole). The
+eluted protein was dialyzed against 50 mM K-HEPES at
+pH 7.4. NQO1 was further purified by size exclusionchromatography using a HiLoad 16/600 Superdex
+200 prep grade (GE Healthcare) column using the elu-
+tion buffer 20 mM K-HEPES pH 7.4, 200 mM NaCl,1 mM FAD. Pure protein was concentrated to a finalconcentration of 25 mg/mL, flash frozen and stored
+at/C080
+/C14C.
+2.2 |Protein crystallization
+Microcrystals of hNQO1 were obtained on-site at the
+ID29 Serial Macromolecular Crystallography (SMX)
+beamline at the ESRF-EBS by the batch with agitationmethod as follows: in a 3 mL glass vial, 150 μL of the pro-
+tein solution at 25 mg/mL were added dropwise to
+450μL of the precipitant solution (0.1 M Tris pH 8.5,
+0.2 M sodium acetate, 20% polyethylene glycol 3350)while stirring at 200 rpm. Upon addition of the protein,
+the solution turned turbid immediately and needle-
+shaped crystals of about 10 –30μm in their longest dimen-
+sion (Figure
+S1A) grew at room temperature in aboutGRIECO ET AL . 3o f2 2
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+1 h. Microcrystals of hNQO1 with the ligand NADH were
+obtained by the soaking method as follows (Figure S1B):
+a NADH solution of 100 mM was prepared in the protein
+crystallization buffer, then 5 μL of this solution were
+taken out, mixed with 50 μL of the original crystal slurry
+and incubated for 1 h before data collection. Microcrys-
+tals, initially yellow, turned clear immediately upon mix-
+ing, indicating the reduction of the enzyme by NADH.
+2.3 |Sample delivery using a small
+SOS chip
+Microcrystals of hNQO1 and hNQO1 with NADH at the
+concentration of 108crystals/mL were loaded by pipet-
+ting 3.5 μL of a crystal slurry and sandwiched between
+two 13 μm mylar films on a small version of the sheet-
+on-sheet sandwich chip (SOS chip) (Doak et al., 2018 )
+with an opening of 5 /C210 mm. The mylar –mylar sand-
+wich containing the crystal slurry was held in place and
+sealed by the sample holder. The mylar –sample –mylar
+sandwich was placed between the two half frames of the
+chip holder leading to further spreading and thinning of
+the film by capillary action. The two frame halves werethen sealed together with one clamping screw. Figure
+1a
+illustrates how sample loading in the SOS chip was
+carried out.2.4 |Serial synchrotron data collection
+at the new ID29 beamline
+The SSX data were collected at the new ID29 SMX beamline
+( O r l a n se ta l . ,m a n u s c r i p ti np r e p a r a t i o n )o ft h eE S R F - E B Susing a wavelength of 1.072 Å with a pulse length of 90 μsa t
+repetition rate of 231.25 Hz. The x-ray beam flux at the sam-
+ple was about 8 /C210
+14ph/s and focused to 4 /C22( H/C2V)
+μm (FWHM). Data were recorded with a newly developed
+MD3upSSX diffractometer (Arinax and EMBL-GR) and a
+JUNGFRAU 4M detector (Mozzanica et al., 2018)w i t hi n t e -
+gration time of 95 μs to ensure full recording of the x-ray
+pulse and automatically corrected for pedestal and geometri-
+cal reconstruction with a LI mA2 data acquisition library
+developed at the ESRF ( https://limagroup.gitlab-pages.esrf.
+fr/lima2/ ). The sample-to-detector distance was set to
+150 mm. The final data collection statistics for both proteins,
+free hNQO1 and hNQO1 in complex with NADH (hNQO1--NAD
++/H) are given in Table 1. The experimental setup is
+s h o w ni nF i g u r e 1b.
+2.5 |Data processing and structure
+determination
+All data processing was carried out remotely, after the
+experiment, using the new Virtual Infrastructure for
+FIGURE 1 Sample loading and data collection setup at the ID29 beamline. (a) Steps 1 –5 for loading the small SOS chip: (1) unscrew
+and place the chip in the chip holder; (2) place a mylar film over the chip; (3) apply the sample on the mylar film, place another mylar filmon top and screw again; (4) remove the excess mylar film; and (5) chip loaded and mounted. (b) Schematic diagram of the setup. A 1%
+bandwidth x-ray beam with a pulse length of 90 μs at repetition rate of 231.25 Hz was used. The x-rays hit the sample that is immobilized in
+the small SOS chip, which moves from left to right in a zig-zag pattern across the X–Yaxes. Diffraction is collected on a JUNGFRAU 4M
+detector.4o f2 2 GRIECO ET AL .
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Scientific Analysis (VISA; https://visa.esrf.fr ). Initial
+hit-finding was performed using a GPU version of Nano-
+PeakCell (Coquelle et al., 2015) implementing Peakfinder8
+algorithm (Kieffer et al., 2022). As hit finding parameters
+we used an SNR of 5.0 and a threshold of 1200. The Bragg
+reflections were integrated using the software package
+CrystFEL (White, 2019;W h i t ee ta l . , 2012) (version 0.10.1)after indexing was attempted with CrystFEL's indexamajig
+using the algorithms XGANDALF (Gevorkov et al., 2019),
+MOSFLM (Powell, 1999), and ASDF, in that order. The
+detector geometry file was further optimized by the geopti-
+mizer tool (Yefanov et al., 2015).
+MTZ files for phasing and refinement were generated
+by the CTRUNCATE program (Evans, 2011 ) from theTABLE 1 Serial x-ray data collection and refinement statistics.
+Free hNQO1 hNQO1-NAD+/H
+Data collection statistics
+X-ray source/beamline ID29 ID29No. chips used 5 6
+Data collection time (min) 40 48
+Wavelength (Å) 1072 Å 1072 Å
+Temperature (K) 295 K 295 K
+Detector JUNGFRAU 4M JUNGFRAU 4M
+Space group P2
+12121 P212121
+a,b,c(Å) 62.0, 108.0, 200.0 61.1, 106.8, 196.0
+α,β,γ(/C14) α=β=γ=90 α=β=γ=90
+Resolution range (Å) 100.0 –2.5 Å (2.56 –2.50 Å) 98.0 –2.7 Å (2.77 –2.70 Å)
+Completeness (%) 97.1% (96.0%) 100.0% (100.0%)
+CC* (%) 0.989 (0.532) 0.977 (0.523)
+Multiplicity 154.1 (42.3) 95.4 (33.9)R
+split 14.2 (150.3) 15.4 (97.6)
+Avg. I/ σ(I) 9.9 (1.8) 7.6 (0.8)
+Overall B factor from Wilson plot (Å2) 73.7 75.6
+Refinement statistics
+Resolution range (Å) 100.0 –2.5 Å (2.56 –2.50 Å) 98.0 –2.7 Å (2.77 –2.70 Å)
+No. of reflections, working set 41,455 32,476
+No. of reflections, test set 4581 3618R
+work/Rfree(%) 19.87%/23.87% 19.85%/24.25%
+No. of non-H atoms
+Protein 8996 9024
+Water 50 17
+Others 15 –
+Ligands 208 296
+R.m.s. deviations
+Bond length (Å) 0.006 0.005
+Bond angles (/C14) 1.372 1.178
+Average Bfactors (Å2) 70.0 66.0
+Ramachandran plot
+Favored (%) 97% 96%Allowed (%) 3% 4%
+Outliers (%) 0% 0%
+PDB code 8RFN 8RFM
+Note: Values for the outer shell are given in parentheses.GRIECO ET AL . 5o f2 2
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+CCP4 software package (Winn et al., 2011 ) and a fraction
+of 5% reflections were included in the generated R freeset.
+Initial phases of free hNQO1 and hNQO1-NAD+/H were
+obtained by molecular replacement with MOLREP
+(Vagin & Teplyakov, 1997 ). For the free hNQO1, we used
+our recently published SFX structure (PDB 8C9J
+[Doppler et al., 2023 ]) as the search model. In the case of
+hNQO1-NAD+/H, we used the free hNQO1 structure
+from this study as the search model. The obtained models
+were refined using alternate cycles of automated refine-
+ment using non-crystallographic symmetry (NCS) withREFMAC5 (Murshudov et al.,
+2011 ) and manual inspec-
+tion was performed with COOT (Emsley et al., 2010 ). The
+final refined structures were validated using the Protein
+Data Bank (PDB) validation service before deposition.The atomic coordinates and structure factors have been
+deposited in the PDB with accession codes PDBs 8RFN
+and 8RFM for the free hNQO1 and the complexhNQO1-NAD
++/H, respectively. The final refinement sta-
+tistics of both proteins are given in Table 1. Electron den-
+sity and simulated-annealing OMIT maps mF o-DF cwere
+calculated with the MAPS tool in the PHENIX software
+suite (Adams et al., 2010 ). All figures of the free hNQO1
+and hNQO1-NAD+/H structures presented in this manu-
+script were generated with UCSF CHIMERAX (version1.2) (Meng et al.,
+2023 ) or PYMOL (version 2.4.0)
+(Schrödinger LLC).
+2.6 |MD simulations
+Structural models of the hNQO1 protein were derived
+from former crystallographic data, PDB: 1D4A, selecting
+Chains A and C to form the homodimer structure. TheFAD cofactors were retained in their respective activesites. The positioning of NADH was manually adjusted
+based on similar protein structures with ligands (PDB:
+2F1O, 1DXO), and particularly considering the stereo-chemistry of the model early reported by Li et al. (
+1995 )
+and expected from experimental kinetic studies
+(Anoz-Carbonell et al., 2020 ), and similarly adjusted in
+both protomers. Before initiating any MD simulation, the
+structural models were prepared by removing all water
+molecules and the fine-tuning of the protonation of resi-dues at pH of 7.0 utilizing the PROPKA software (Olsson
+et al.,
+2011 ). MD simulations were carried out using
+GROMACS 2018.4 software (Abraham et al., 2015 ), and
+the protein parameters were defined with the AMBERff03 force field (Duan et al.,
+2003 ). Standard residue
+topologies were assigned using the GROMACS pdb2gmx
+tool, while FAD and NADH molecules were parame-trized using ab initio methods. Atomic charges for each
+atom were determined through the restrainedelectrostatic potential technique using Multiwfn (Lu &
+Chen,
+2012 ), following structure optimization at the
+HF/6-31G(d,p) level in Gaussian 09 (Frisch et al., 2009 ).
+These charges served as the initial parameters for the
+subsequent parametrization using the GAFF force field(Wang et al.,
+2006 ) via ACPYPE (Sousa da Silva &
+Vranken, 2012 ). To set periodic boundary conditions, the
+system was enclosed within a rhombic dodecahedronbox. Explicit water molecules were modeled using
+the TIP3P model. Neutralization of the system involved
+the replacement of random solute molecules with sodiumions. Before running production simulations, the studiedsystems underwent steepest descent minimization to alle-
+viate close contacts or clashes. Equilibration was
+achieved through short 500 ps simulations under theNVT ensemble, with initial velocities generated according
+to a Boltzmann distribution at 310 K and therefore differ-
+ent for each replicate. Subsequently, a 500 ps simulationunder the NPT ensemble at 1 atm was conducted. During
+both equilibration stages, harmonic potentials with a
+force constant of 1000 kJ/(mol nm) were applied torestrict the movement of the heavy atoms in the protein
+and ligand. Once the desired equilibrated conditions were
+met, the productive MD phase began with unrestrainedpositions for all atoms except hydrogen atoms, whichwere constrained using the LINCS algorithm
+(Hess,
+2008 ). Simulations were performed under an NPT
+ensemble at 310 K with a leap-frog integrator using 2 fstime steps, and data were collected every 10 ps. Long-
+range electrostatic interactions were computed using the
+Particle Mesh Ewald method, pressure was controlled viathe Parrinello –Rahman method, and temperature equili-
+bration was maintained through a modified Berendsen
+scheme. The simulations extended up to 200 ns, and eachtrajectory was replicated five times. All MD simulationswere executed on the CESAR supercomputer system at
+BIFI. Analysis of the simulations was performed using
+with custom scripts using GROMACS tools, the MDTrajlibrary (McGibbon et al.,
+2015 ) and PyMOL
+(Schrödinger LLC).
+3|RESULTS
+3.1 |Experimental setup at the new ID29
+beamline
+Serial crystallography data collection was performed at
+ID29, a brand-new energy tunable beamline at the 6 GeV
+storage ring of the new ESRF-EBS (Raimondi
+et al., 2023 ), the first high-energy fourth-generation syn-
+chrotron (Grenoble, France). A more detailed description
+of the beamline will be found in Orlans et al. (manuscript6o f2 2 GRIECO ET AL .
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+in preparation). For the study presented here, we used
+the fixed target serial crystallography data collection plat-form developed at ID29. Crystal slurry was delivered to
+the x-ray beam using a small version of the SOS chip
+(Doak et al.,
+2018 ) at room temperature (290 K). The
+exposure area on the chip was 4 /C28 mm and was sam-
+pled collecting diffraction images every 10 μm steps
+apart, in xandy, respectively. The scanning speed, which
+is defined by the beam pulses repetition rate and spacing,
+was 2.3 mm/s, implying that the sample is moving
+0.2μm during the x-ray pulse. The sample-to-detector
+distance was 150 mm that was equivalent to 1.8 Å at thedetector corners. This will change in the near future, so
+that datasets to resolutions as high as 1.2 Å in the detec-
+tor corners at 1.072 Å wavelength can be achieved. Aschematic view of the experimental setup used at ID29 is
+shown in Figure
+1b. For the free hNQO1 sample, a total
+of 21 μL (six chips) of crystal slurry were consumed for a
+complete data set. In the case of NQO1 with NADH, we
+consumed 24.5 μL of crystal slurry from seven chips.
+3.2 |Room temperature crystal
+structures of free hNQO1 andhNQO1-NAD+/H
+Despite the mylar sheets leading to three narrow rings on
+the detector, these were of sufficiently low intensity as tocause no difficulties in data analysis. A representative dif-
+fraction pattern for the complex hNQO1-NAD
++/H is
+shown in Figure S2. The hit rate varied from 80% to 87%.
+To prevent crystals from damaging effects, we collected
+data using a 10 /C210μm raster scan spacing at the cen-
+ters along horizontal and between rows, respectively. Atotal of 82,000 images were collected per chip in 8 min,which is too short to even observe dehydration effects so
+that no humidification was needed. Some images with
+multi-crystal diffraction were observed. All data collec-tion statistics are listed in Table
+1.
+Microcrystals of free hNQO1 belonged to the space
+group P2 12121with the following unit cell dimensions:
+a=62.0 Å, b=108.0 Å, c=200.0 Å, α=β=γ=90/C14,
+and diffracted to a resolution of /C242.5 Å resolution. To
+solve the structure of the free hNQO1, a total of 492,000frames were collected from five SOS chips (40 min), of
+which 302,781 were classified as hits by CrystFEL. About
+33% of the identified hits could then be indexed, givingrise to a total of 101,165 indexed, integrated, and mergedlattices. The structure was solved by molecular replace-
+ment using the PDB entry 8C9J of the SFX structure of
+free hNQO1 previously reported by Doppler et al. (
+2023 ),
+as a search model without the FADs, water, and ion mol-
+ecules. The structure was refined at a resolution of 2.7 Åwith R work and R freeof 19.87% and 23.87%, respectively.
+Figure S3illustrates the two physiological homodimers in
+the asymmetric unit (ASU) related by a non-
+crystallographic twofold axis of symmetry and showing
+the typical folding characteristic of hNQO1 (Bianchetet al.,
+2004 ). In the case of the complex hNQO1-NAD+/
+H, the microcrystals belonged to the space group P2 12121
+with shorter unit cell lengths dimensions: a=61.1 Å,
+b=106.8 Å, c=196.0 Å, showing that crystals shrink
+upon the binding of the NADH. The same hit finding
+and indexing procedure used for free hNQO1 was appliedfor the case of hNQO1-NAD
++/H. With 574,000 frames
+collected from six chips (48 min), an initial number of
+344,574 hits were identified, of which /C2460% were suc-
+cessfully indexed giving rise to individual 105,083 crystallattices. The structure was solved by molecular replace-
+ment using the structure of hNQO1 (this study) as search
+model. The structure was refined at a resolution of 2.7 Åwith R
+work and R freeof 19.85% and 24.25%, respectively.
+The final data collection and refinement statistics for this
+structure are given in Table 1, while Figure 2illustrates
+the two physiological homodimers in the ASU.
+The two structures could be modeled in the electron
+density from the N-terminus to the C-terminus withoutinterruptions and with excellent stereochemistry(Table
+1). The Ramachandran diagrams place nearly all
+residues within the favored and allowed regions, with
+only a few of them falling into the outlier region(Table
+1). The resulting experimental maps were of excel-
+lent quality revealing, besides the presence of FADs,
+other solvent molecules such as water molecules: 76 inthe free hNQO1 and 17 in the hNQO1-NAD
++/H models.
+The high-quality of the hNQO1 structures can be
+assessed from the electron 2mF o-DF cdensity maps
+shown for the catalytic site residues and the FAD cofac-tors (Figures
+3aand S4for hNQO1-NAD+/H and free
+hNQO1 structures, respectively). Simulated-annealing
+OMIT maps mF o-DF cwere calculated after removing the
+NAD+/H molecules from the refined model. The strong
+positive electron density (Figure 3b,c), where original
+coenzyme molecules were, is in good agreement with thefinal structural model and confirms the lack of model
+bias and, thus, the presence of the coenzyme in the
+model. Due to fact that the free hNQO1 andhNQO1-NAD
++/H datasets are non-isomorphous (unit
+cell lengths a,b, and cvary 1, 1.2, and 4 Å, respectively),
+Fo-Fomaps were not calculated (see Section 3.6for an
+explanation of this). It is important to note that theNAD
++/H molecules found in our structure are not bound
+to the same homodimer, but one of them is bound to one
+active site of one of the homodimers and the other one isbound to one of the active sites of the other homodimer
+in the ASU (Figures
+2and3). Also, the exact position andGRIECO ET AL . 7o f2 2
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+orientation of both NAD+/H molecules differs from one
+active site to another.
+3.3 |Structural comparison of free
+hNQO1 and hNQO1-NAD+/H and with
+related structures
+As mentioned above, the binding of the hydride donor
+NADH to hNQO1 led to an important reduction or
+shrinking of the unit cell lengths of up to 4 Å in the
+cdimension (Table 1), which shows the high flexibility of
+hNQO1 molecules within the crystal lattice. These differ-
+ences in the unit cell dimensions are reflected when
+aligning the two homodimers of the free hNQO1 andhNQO1-NAD
++/H structures (Figure 4a). A further analy-
+sis of the two structures with PISA server (Krissinel &
+Henrick, 2005 ) was carried out in which the FAD and
+NAD+/H molecules were removed. This analysis showed
+that the number of total contacts in the complex
+hNQO1-NAD+/H (6242) was significantly higher thanthat for the free structure (4588), indicating that the bind-
+ing of the NADH molecules rigidifies hNQO1. Conse-quently, the higher number of contacts observed in thecomplex led to an average reduction in the surface and
+buried areas of 1000 and 100 Å
+2, respectively (Table S1).
+Also, the number of hydrogen bonds throughout thestructures was 399 in the complex and 351 in the free
+structure. A further analysis of the contacts occurring at
+the homodimer interfaces shows that, overall, althoughthe total number of inter- and intra-molecular hydrogen
+bonds is just slightly higher in the case of the complex
+(171 hydrogen bonds for the complex and 167 for the freestructure) (Tables
+S2–S13), a redistribution of the hydro-
+gen bonds across the interface was produced. Figure 4b,c
+illustrate the intermolecular hydrogen bonds observed
+for the two homodimers of the free hNQO1 andhNQO1-NAD
++/H structures.
+A further evaluation of the hNQO1-NAD+/H complex
+was carried out by comparing it with previously reportedcrystal structures of hNQO1 both unliganded (free
+hNQO1 [this study], PDB 8C9J [Doppler et al.,
+2023 ], and
+FIGURE 2 Room temperature structure of the complex hNQO1-NAD+/H obtained at ID29. The two homodimers of hNQO1 found in
+the ASU (A:B and C:D) are depicted as surface representation. The individual monomers are highlighted in salmon (Chain A), yellow
+(Chain B), green (Chain C), and cyan (Chain D). The coenzyme molecules bound to Chain B (NAD+/HB) and Chain D (NAD+/HD), are
+represented as sticks in red. The cofactor FADs are shown as black sticks.
+FIGURE 3 Electron density and
+OMIT maps of the NQO1-NAD+/H
+structure. (a) Cartoon representation of
+the two homodimers of hNQO1.
+Electron density maps 2mF o-DF c
+contoured at 1 σof the FAD and
+NAD+/H molecules are shown as blue
+meshes. Residues in the catalytic sitesare shown as sticks. The right dash
+boxed panel shows a close-up view of
+the catalytic site dash boxed in the left
+panel. (b) Simulated-annealing OMIT
+maps mF
+o-DF ccontoured at 3 σof the
+NAD+/H molecule bound to Chain
+D. (c) Simulated-annealing OMIT maps
+mF o-DF ccontoured at 3 σof the
+NAD+/H molecule bound to Chain B.8o f2 2 GRIECO ET AL .
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+PDB 1D4A [Faig et al., 2000 ]), and in complex with
+NADH (computational model [this study]), the inhibitorPMSF (8OK0 [Grieco et al.,
+2023 ]), the natural substrate
+duroquinone (PDB 1DXO [Faig et al., 2000 ]), and various
+inhibitor molecules such as dicoumarol (PDB 5FUQ[Medina-Carmona et al.,
+2017 ]) and Cibracron blue (PDB
+4CF6 [Lienhart et al., 2014 ]), as well as a prodrug mole-
+cule (PDBs 1GG5 [Faig et al., 2001 ]). Overall, all NQO1
+homodimer structures aligned very well with each other,
+with RMSD values for all atoms between 0.301 and
+0.852 Å and with an average value of 0.423 Å. A superim-position of all structures is shown in Figure
+S5A. As one
+could expect, the higher structural differences are mainly
+found in the loop regions, the solvent exposed regions, as
+well as in the catalytic site regions, where the side chainsof several residues differ in conformation (Figure
+S5B).3.4 |Structural changes in the active site
+of hNQO1 upon binding of the hydridedonor NADH
+Since we have recently observed the existence of a high
+conformational heterogeneity of hNQO1 in the catalytic
+site with some of the residues being modeled in different
+conformations (Doppler et al., 2023 ), the structural
+changes of the catalytic sites of both structures, the free
+hNQO1 and hNQO1-NAD+/H, were analyzed individu-
+ally. Analysis of the hNQO1 protein with CASTp pro-gram (Tian et al.,
+2018 ), shows that, overall, the catalytic
+pocket of hNQO1 buries a total area of 824.02 Å2(volume
+694.64 Å3) that is found at the dimer interface and com-
+prises the binding pocket for the FAD molecule and theNAD
++/H molecule.
+FIGURE 4 Structural comparison of the free hNQO1 and the hNQO1-NAD+/H structures. (a) Cartoon representation of the
+superposition of the free hNQO1 and the complex hNQO1-NAD+/H structures. Color code used for the two structures is the same as that
+shown in Figures 2andS3. All FAD and NAD+/H molecules are shown in stick representation in black and red, respectively. The right
+panel is a closer view of the inlet highlighted in the left panel. (b) Hydrogen bonds (dashed gray lines) at the interfaces of the two
+homodimers in the free hNQO1 structure. (c) Hydrogen bonds (dashed gray lines) at the interfaces of the two homodimers in thehNQO1-NAD
++/H structure. Both in (b) and (c), protein monomers are shown as white surface representation with the interaction surfaces
+shown with the same color code as that in Figures 2andS3, the protomers have been separated for clarity and all FAD and NAD+/H
+molecules are shown in stick representation in black and red, respectively.GRIECO ET AL . 9o f2 2
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+3.4.1 | The FAD binding site
+Firstly, we carried out the analysis of the FAD catalytic
+pockets in the free hNQO1 and the hNQO1-NAD+/H
+structures. As described previously by Bianchet et al.
+(2004 ) and Li et al. ( 1995 ), the FADs are stabilized by
+establishing hydrogen bond interactions with residuesfrom one of the monomers of the homodimer that arelocated, primarily, at the bottom of the active site. In that
+study, it was assumed that the interactions established by
+the FAD and the protein residues were equivalent in thetwo FAD binding sites, however, since our structure is a
+room temperature structure and based on previous
+results from our group (Doppler et al.,
+2023 ), we decided
+to analyze the FAD sites from all chains in the ASU. In
+fact, we have observed some differences between the two
+binding sites of the two homodimers of both structures(Figures
+5andS6; Table 2) that might be relevant to the
+hNQO1 function. Overall, the interactions between
+the FAD and the free hNQO1 include in general the twooxygen and all nitrogen atoms of the isoalloxazine ring ofFAD and some of the residues located in one of the
+monomers including Trp105, Phe106, Gly149, Gly150,
+and Tyr155 (interactions 1 –3 and 5 –9 in Figure
+5). In
+addition, two of the oxygens of the ribitol fragment of the
+FAD are hydrogen bonded to Leu103, Leu 104, andThr147 (interactions 10 –15 in Figure 5). The diphosphate
+moiety hydrogen bonds, in general, with His11, Phe17,
+Asn18, and Thr147 of the main protomer, and occasion-
+ally with Gln66 of the other protomer (interactions 16 –24
+in Figure 5). Finally, the ribose/adenine moiety lies in a
+pocket composed of residues Thr15, Ser16, Phe17, Asn18,
+and Arg200 of the same protomer together with Asn64and Gln66 of the neighbor protomer, interacting mainlywith Arg200 through the adenine, although interactions
+with Asn64 of the second protomer through the ribose
+are also observed (interactions 25 –30 in Figure
+5). A
+more detailed illustration of all hydrogen bond interac-
+tions established by the FAD and the protein in free
+hNQO1 are shown in Figure S6and Table 2. A similar
+interaction signature was observed in the FAD binding
+site of the hNQO1-NAD+/H structure (Figures 5andS7;
+Table 2), which indicates that the binding of the
+NAD+/H molecules to the protein does not alter, at least
+not significantly, the FAD binding site. However, some
+variations in the hydrogen bond distances establishedbetween the FADs and the protein residues wereobserved when comparing both the free hNQO1 and the
+complex hNQO1-NAD
++/H (Table 2).
+A further comparison of the FAD binding sites of
+the two homodimers in the ASU of both the free
+hNQO1 and the complex hNQO1-NAD+/H is shown in
+FIGURE 5 Schematic representation of all hydrogen bond interactions occurring at the FAD binding site. (a) The binding site
+comprises most of the residues of one protomer and only two residues (Asn64* and Asn66*) of the other protomer. All interactions havebeen numbered from 1 to 30 (as listed in Table
+2) and highlighted using the same color code as in Table 2: Green for all interactions at the
+isoalloxazine moiety, blue for all interactions at the ribitol moiety, yellow for all interactions at the phosphates moiety, and pink for all
+interactions at the ribose and adenine moieties. Important to note that, for clarity, all residues, the FAD and the water molecule have beenmoved and displaced from their original positions in the structure, as well as all the interactions have been exaggerated. (b) Two-
+dimensional representation of the chemical structure of the FAD molecule. Atoms have been colored with the same code used for the
+interactions in (a). All hydrogen bond interactions were evaluated using PYMOL (Schrödinger LLC), which uses the Kabsch and Sander'sDSSP secondary structure assignment algorithm (Frishman & Argos,
+1995 ) considering a maximum cut-off distance of 3.5 Å and a minimum
+angle of 90/C14for hydrogen bond formation.10 of 22 GRIECO ET AL .
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Figure S8A,B . As can be seen, no significant differences
+were found for the protein residues. However, althoughall FAD molecules showed a similar conformation fromone to another within the active sites of each structure,
+with the biggest differences found in the ribose and
+adenine moieties (Figure
+S8C,D ), some relevant differ-
+ences were found when comparing the FAD molecules
+between the free hNQO1 and the hNQO1-NAD+/Hstructures (Figures S9and S10). As can be seen, the
+binding of the NADH induces conformational changesin all the FAD molecules, being more significant, over-all, in the isoalloxazine ring (Figures
+S9) and the ribose
+and adenine moieties (Figure S10). Also, and rather sur-
+prisingly, the biggest changes are produced in the FADsof Chains A and C, in which no NAD
++/H molecules
+are bound.TABLE 2 Hydrogen bond interactions established between the FAD molecules and the protein residues in the free hNQO1 and the
+complex hNQO1-NAD+/H.
+#FAD
+(atom)Residue
+(atom)Distance (Å)
+Free hNQO1 hNQO1-NAD+/H
+Chain
+AChain
+BChain
+CChain
+DChain
+AChain
+BChain
+CChain
+D
+1 O4 Phe106[N] 3.3 3.2 3.5 3.5 3.3 3.2 3.4 3.2
+2 O4 Trp105[N] 3.0 3.0 3.2 3.1 3.0 3.1 3.1 2.9
+3 N5 Trp105[N] 3.0 3.0 3.3 3.0 2.9 2.9 2.9 2.8
+4 N5 Water[O] – 3.3 – 3.4 ––––
+5 N3 Try155[OH] 3.0 3.2 3.0 3.1 3.1 3.1 3.1 3.2
+6 O2 Try155[OH] 2.7 2.8 2.7 2.9 2.6 2.6 2.5 2.7
+7 O2 Gly150[N] 3.4 3.6 3.2 3.3 3.2 3.4 3.2 3.3
+8 O2 Gly149[N] 3.5 3.6 3.4 3.4 3.5 2.5 3.5 3.5
+9 N1 Gly149[N] 3.4 – 3.3 3.5 3.4 3.4 3.3 3.4
+10 O20Gly149[N] 3.4 3.5 3.6 3.5 3.2 – 3.6 3.4
+11 O20Leu103[O] 2.8 3.1 2.9 3.8 2.9 2.7 2.7 2.8
+12 O20Leu103[N] –– 3.6 ––– 3.6 3.6
+13 O20Thr147[O] 3.3 3.5 3.2 3.3 3.2 3.4 3.2 3.2
+14 O40Thr147[O] 2.9 3.0 3.0 3.0 2.9 3.1 3.0 2.9
+15 O40Thr147[OG1] 2.7 2.7 2.6 2.6 2.5 2.6 2.3 2.4
+16 O50Thr147[OG1] 3.3 3.3 3.4 3.4 3.1 3.2 3.1 3.2
+17 O50Asn18[ND2] –––– 3.6 3.5 3.5 –
+18 O2P His11[NE2] 2.7 2.5 2.8 2.6 2.8 2.6 2.7 2.8
+19 O1P His11[NE2] –– 3.6 3.6 –– 3.5 3.5
+20 O1P Asn18[ND2] 3.1 3.2 3.1 3.0 3.1 3.1 3.0 2.9
+21 O1P Asn18[N] 3.2 3.1 3.2 3.3 3.1 3.0 3.2 3.2
+22 O1P Phe17[N] 3.4 3.2 3.3 3.6 3.2 3.1 3.3 3.3
+23 O2A Gln66[OE1] ––– 2.7 ––– 2.4
+24 O2A Gln66[NE2] 3.3 2.7 2.8 – 3.1 3.0 3.0 –
+25 O5B Phe17[N] 3.6 3.6 – 3.5 3.5 3.5 3.5 3.4
+26 O2B Asn64[ND2] 3.5 3.2 – 3.5 ––––
+27 O2B Asn64[OD1] ––––– 3.1 3.6 –
+28 N3A Arg200[NH2] – 3.1 3.3 –– 2.8 ––
+29 N3A Arg200[NE] 3.0 2.8 – 2.9 3.1 2.9 3.1 3.1
+Note: All of the FAD/protein interactions have been highlighted using the same color code as in Figure 4: Green for the isoalloxazine moiety, blue for the
+ribitol moiety, yellow for the phosphates moiety, and pink for the ribose and adenine moieties.GRIECO ET AL . 11 of 22
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Furthermore, water molecules also seem to play a rel-
+evant role in the stabilization of the FADs. Bianchet et al.(
+2004 ) reported the presence of three water molecules
+coordinating the ribitol and diphosphate moieties of
+FAD. Although none of these water molecules werefound in the structures reported in this study, we found
+others. In this regard, in our free hNQO1 structure there
+is a conserved water molecule right above the isoalloxa-zine ring that interacts, in two of the chains (Chains B
+and D), with its N5 atom (interaction 4 in Figure
+5). In
+the other two chains (Chains A and C), this water mole-cule hydrogen bonds with Tyr128 (not shown). This isthe first time these water molecules have been reported
+for hNQO1, which may have important implications in
+the stabilization of FAD and/or binding of NADH.Unlike in the free hNQO1, no water molecules were
+found in the FAD binding sites of the hNQO1-NAD
++/H
+structure. The absence of such water molecules in ChainsB and D is justified by the presence of the NAD
++/H mole-
+cules, which may displace them. In the case of the water
+molecule found in Chains A and C, the absence of thiswater molecule could be justified by conformational
+changes caused in these active sites by NADH binding at
+the others.
+3.4.2 | The NAD+/H binding site
+In our structure, we have captured the hydride donor
+NAD+/H in two different positions. We have observed a
+coenzyme molecule bound to the catalytic site of one ofthe homodimers through Chain B (NAD
++/HB), and
+another coenzyme molecule bound to the catalytic site of
+the other homodimer through Chain D (NAD+/HD)
+(Figures 2and3a). The fact that the hydride donor mole-
+cule is found in just one catalytic site of each homodimer
+agrees with the negative cooperativity previously reported
+in literature during hydride transfer (Anoz-Carbonellet al.,
+2020 ). Because the interaction of the coenzyme
+NADH is transient, as it must leave the catalytic site
+upon hydride transfer so that the redox reaction con-tinues, it must have fewer specific interactions with the
+protein than FAD.
+NAD+/HDmolecule
+The electron density maps 2mF o-DF caround the NAD+/
+HD(Figure 3a) indicate that the side face of the nicotin-
+amide motif of the NAD+/HDis stacked right on top of
+the middle ring of the isoalloxazine of FAD, thus estab-
+lishing a Van der Waal interaction of 3.4 Å distance with
+FAD (interactions 1 and 2 in Figure 6a). It is important
+to note that in this conformation the distance between
+the two atoms involved in the hydride exchange, the C4of the nicotinamide (C4N) and the N5 of the FAD, is
+3.4 Å (not shown). In addition, the NAD+/HDis further
+stabilized by five more interactions that involve residues
+of the same protomer that binds FAD and residues of the
+other protomer (Figure 6a). The carboxyamide moiety
+makes hydrogen bonds with His161 and Tyr128 (interac-
+tions 3 and 4 in Figure 6a). One hydroxyl of the ribose
+makes hydrogen bond with an oxygen of the ribose of theFAD molecule (interaction 6 in Figure
+6a). The oxygen of
+the ribose also establishes an interaction with Tyr128
+(interaction 5 in Figure 6a). Lastly, the second phosphate
+moiety of NAD+/H interacts with His194 (interaction
+7 in Figure 6a). All these interactions are shown in
+Figure 6a, and their distances listed in Table 3. As the
+microcrystals, initially yellow color, turned clear rightafter they were mixed with the NADH and the coenzyme
+molecule is pointed with its A face towards the isoalloxa-
+zine, we assume that the NAD
++/HDmolecule found at
+the catalytic site may presumably be NAD+, which has
+transferred the Pro-R hydride ion to the FAD, reducing it
+to FADH/C0(Anoz-Carbonell et al., 2020 ).
+NAD+/HBmolecule
+As mentioned above, there is an additional hydride donormolecule bound to Chain B of the other homodimer(Figure
+2). Figure 6bshows the interactions established
+between this NAD+/HBmolecule and the enzyme. The
+nicotinamide ring is parallel to the benzyl ring of the resi-due Tyr128, thus establishing a pi-interaction (interaction
+4 in Figure
+6b). The carboxyamide is interacting with
+His161, Tyr128, and the isoalloxazine ring of FADthrough its N1F (interactions 1 –3 in Figure
+6b). Two
+more interactions are established between the two ribose
+sugars and protein residues His194 and Asn233 (interac-tions 5 and 6 in Figure
+6a). All these interactions are
+shown in Figure 6b, and their distances listed in Table 4.
+Based on our complex structure and the orientation of
+this hydride donor molecule, it is hard to know whetherit has reacted (or not) with the FAD so that this molecule
+could be either on its way to the catalytic site (as NADH)
+or on its way out from it upon reaction (as NAD
++).
+3.5 |Dynamic properties of FAD and
+NAD+/H and how they correlate with x-ray
+structures
+The static picture provided by the crystal structures is not
+sufficient to fully understand highly dynamic processes
+such as the conformational changes occurring at and
+near the catalytic site during competent allocation ofNADH in the active site to achieve subsequent hydride
+transfer from the C4N of the nicotinamide of NADH to12 of 22 GRIECO ET AL .
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+the N5 of the FAD isoalloxazine. To further characterize
+the interaction network and the dynamic properties ofthe FAD and NAD
++/H sites, the structure and dynamics
+of hNQO1 homodimers, in the free and in the NADHcomplex states, were investigated by MD simulations. In
+all cases, the FAD cofactor was simulated in its oxidizedstate, while NADH was in its reduced state. Thus, gener-
+ated models for the complex would correspond to that for
+FIGURE 6 Hydrogen bond interactions at the NAD+/H binding sites in the two homodimers of the complex NQO1-NAD+/H. (a) Stick
+representation of the molecule NAD+/HD, the FADH/C0and all residues involved in the formation of the NAD+/H binding site of the
+homodimer C:D. (b) Stick representation of the molecule NAD+/HB, the FAD and all residues involved in the formation of the NAD+/H
+binding site of the homodimer A:B. The color code of the protein residues is the same as that shown in Figure 2. The color code of the
+FADH/C0and the FAD is the same as that shown in Figure S6. All hydrogen bond interactions established between the NAD+/H molecules
+and both the protein residues, and the FADs have been labeled and shown as black dashes. The pi-interactions are labeled and dashed in red.
+(c) Two-dimensional representation of the chemical structure of the NADH molecule.
+TABLE 3 Hydrogen bond and pi-
+interactions established between the
+NAD+/HDmolecule and the protein
+residues.InteractionaResidue (chain)/atom Residue (chain)/atom Distance (Å)
+1bNicotinamide ring Isoalloxazine ring 3.6
+2bNicotinamide ring Isoalloxazine ring 3.9
+3 NAD (D)/N7N His161 (D)/NE2 3.54 Tyr128 (C)/OH NAD (D)/N7N 3.1
+5 Tyr128 (C)/OH NAD (D)/O4D 3.3
+6 NAD (D)/O2D FAD (D)/O3
+03.7
+7 NAD (D)/O2A His194 (D)/NE2 2.8
+aAll interactions in this table correspond to those from Figure 6a.
+bPi-interactions are highlighted in bold.
+TABLE 4 Hydrogen bond and pi-
+interactions established between the
+NAD+/HBmolecule and the protein
+residues.InteractionaResidue (chain)/atom Residue (chain)/atom Distance (Å)
+1 NAD (B)/N7N FAD (B)/N1 3.6
+2 NAD (B)/N7N Tyr128 (A)/OH 2.9
+3 NAD (B)/N7N His161 (B)/NE2 2.8
+4bNicotinamide ring Tyr128 ring 3.3
+5 NAD (B)/O4D His194 (B)/NE2 2.9
+6 Asn233 (A)/N NAD (B)/O2B 3.4
+aAll interactions in this table correspond to those from Figure 6b.
+bPi-interactions are highlighted in bold.GRIECO ET AL . 13 of 22
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+the reactants for the flavin reductive half-reaction. Five
+MD replicates of 200 ns each were run for each structure,
+with overall atomic positions remaining close to the start-ing crystallographic structures with equilibrated average
+C
+αRMSD fluctuations of 1.9 ± 0.2 Å for the free hNQO1
+and 1.6 ± 0.2 Å for the hNQO1-NADH complex.Figure
+S11A shows the RMSDs for the C αof the five rep-
+licates along the entire MD simulation for the free
+hNQO1and hNQO1-NADH models. Noticeably, the most
+relevant differences occur at the FAD and NADH bindingsites (Figure
+7; Molecular Movies V1and V2). In good
+agreement with what we observed in the crystallographicresults (Figure S5), residues at the FAD and, particularly,
+NADH binding sites show high flexibility. Among the
+highest ones are those observed at residues Asn64,Gln66, and Arg200, interacting with the ribose and ade-
+nine motifs of the FAD, and Tyr126, Tyr128, Phe232, and
+Asn233, interacting with the nicotinamide and adenineof NADH (Figures
+7and S11B,C ; Molecular Movies V1
+and V2). It is important to note that, in both, the free
+hNQO1 and the hNQO1-NADH models, the two catalytic
+sites behave as independent sites throughout the simula-tions, showing different protein-FAD and protein-NADH
+signatures in terms of interaction frequency and motional
+FIGURE 7 Structural dynamics of the FAD and NADH binding sites in the MD simulations. (a) Superposition of the FAD and NADH
+binding sites for two randomly picked times from each of the five replicates. All residues comprising the FAD and NADH binding sites of
+the protomer at the active site labeled as 1 are shown in stick representation. (b) Superposition of the FAD and NADH binding sites for tworandomly picked times from each of the five replicates. All residues comprising the FAD and NADH binding sites of the protomer at the
+active site labeled as 2 are shown in stick representation. (c) Superposition of the NAD
++/HBmolecule (black sticks) in the hNQO1-NAD+/H
+complex to the NADH binding site 1 at 60 ns simulation from replicate 4. (d) Superposition of the NAD+/HDmolecule (black sticks) in the
+hNQO1-NAD+/H complex to the NADH binding site 1 at 30 ns simulation from replicate 2. All residues in (c) and (d) comprising the
+NAD+/H binding site are shown as sticks in the same color as that in (a) and (b).14 of 22 GRIECO ET AL .
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+flexibility, as reflected in Figures 7and S12–S15 and
+Tables S14–S19. A more detailed analysis of what hap-
+pens during the simulations at both the FAD and NADH
+binding sites is described below.
+3.5.1 | The FAD binding site
+Regarding the FAD, in agreement with the crystal struc-tures, the position of residues interacting with the isoal-
+loxazine ring is rather stable, but flexibility considerablyincreases in those interacting with the ribitol moiety and,particularly, with the adenosine monophosphate (AMP).
+All this is quantitatively reported in Tables
+S14andS15,
+which illustrate how the polar interactions involving thenicotinamide (shown in Figure
+5) are in general popu-
+lated between 70% and 100% of the simulated time in the
+evaluated replicates, while those for the AMP portion areconsiderably less populated. More in particular, polar
+interactions with the adenine moiety are hardly stabi-
+lized, leaving it free to move with fixed position. In thisregard, the Arg200 has been seen to interact sometimes
+with the ribose ring and sometimes with the adenine.
+Furthermore, the analysis of the RMSD and RMSF-B fac-tors of FAD during the simulation time show that therearrangement and movement of the two cofactors
+within the hNQO1 homodimer are not symmetrical
+(Figures
+S12A ,S13A , and S14A ; Table S19). As average, a
+twofold ratio is observed for the FAD RMSD of one pro-
+tomer regarding the other within the hNQO1 homodi-
+mer, while RMSF-B factors particularly show higherdispersion in the position of the adenine atoms regarding
+those of the FAD cofactor. Remarkably, average values
+for dispersion of FAD RMSF-B factors are relatively high,particularly at the adenine moiety. In other words, theconformation/position of the FAD seen in one of the
+active sites of the protein is not the same as that seen in
+the other active site at the same time, and the active sitesof hNQO1 are characterized by a high cofactor mobility.
+Noticeably, in the presence of NADH, an overall decrease
+in FAD fluctuation is also observed (Figures
+S12B ,S13B ,
+and S14B ; Table S19), with again the FAD molecule of
+one catalytic site showing more fluctuation than the
+other.
+3.5.2 | The NADH binding site
+Regarding NADH, the nicotinamide ring moves within
+its binding cavity (Figures 7,S12C ,S13C , and S14C ;
+Tables S16–S19), being in general almost kind of parallel
+to the isoalloxazine ring of the FAD cofactor (Molecular
+Movie V2). Nonetheless, it explores alternativeconformations (Molecular Movie V2), being even
+observed in some frames of replicate 4 at one of the activesites in positions nearly perpendicular to the FAD
+(Figure
+7c), adopting, interestingly, a conformation that
+resembles that observed for the NAD+/HBmolecule of
+the crystal structure (Figure 6b). The position of the resi-
+dues that interact with NADH changes along the simu-
+lated time and replicates, but it is particularly thenicotinamide the moiety that is anchored to the protein
+in a parallel conformation to the FAD isoalloxazine
+(Figure
+7d; Tables S16–S18; Molecular Movies V1and
+V2), like what was observed for the NAD+/HDmolecule
+of the crystal structure (Figure 6a). Large mobility is
+envisaged for the NADH from its RMSD values, while
+RMSF-B factors for its different atoms confirm its AMPportion as more flexible than its nicotinamide
+(Figures
+S12C ,S13C , and S14C ; Table S19). Same as in
+the crystal structures, Tyr126 and Tyr128 show high flexi-bility (Figure
+S11), but the OH of Tyr126 usually stacks
+against the nicotinamide ring along with residues Phe178
+and Trp105, keeping the nicotinamide buried(Figures
+S15and S16). Also, Tyr128 pairs its OH with
+opposite nicotinamide and stays generally in that posi-
+tion, although occasionally it flips over and interacts itsOH with the O7N and/or N7N atoms of NADH(Molecular Movie
+V2). The rest of the NADH molecule is
+very flexible, exploring multiple conformations, and hav-
+ing few polar interactions with protein residues, as wellas with the FAD. This was also observed in the crystal
+structure of the complex hNQO1-NAD
++/H (this study).
+All this can be seen in Figures S12C ,S13C ,S14C , and S15
+and Tables S16–S18. These data illustrate high RMSD
+values for the NADH molecules at both active sites and
+the highest RMSF-B factor values at the AMP moiety ofNADH. Moreover, they also show how the polar and pi-
+stacking interactions shown in Figure
+6for the crystal
+structure of the hNQO1-NAD+/H complex vary during
+the entire simulation. Furthermore, as observed withFAD, the conformation/position of the NADH molecule,
+and particularly of its nicotinamide regarding the isoal-
+loxazine of FAD, is not symmetrical throughout the sim-ulations, thus showing differential fluctuation at the two
+catalytic sites (Figures
+S13C andS14C ).
+3.6 |Crystal packing of hNQO1
+homodimers in microcrystals differs fromthat in large crystals
+A further evaluation of the hNQO1 crystal packing was
+carried out by comparing the two hNQO1 crystal struc-tures presented in this study with the crystal structures
+recently published by our group for hNQO1 in theGRIECO ET AL . 15 of 22
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+absence of NADH coenzyme (PDB 8C9J, [Doppler
+et al., 2023 ]) and hNQO1 in complex with the inhibitor
+PMSF (PDB 8OK0) (Grieco et al., 2023 ). Although all
+these structures were obtained from crystals grown in the
+exact same crystallization conditions, the rearrangementof the double hNQO1 homodimer observed in the ASU
+for the structure with PMSF differs from that observed in
+structures from microcrystals (Figure
+8a). Regardless of
+the crystal structure, a structural alignment of the indi-vidual two hNQO1 homodimers leads to all hNQO1
+homodimers aligning very well with each other (not
+shown). However, when the two homodimers are sub-jected, at once, to a structural alignment, clear differences
+arise in that one of the homodimers always alignsperfectly well while the other does not (Figure
+8a). A
+visual analysis of the two homodimers showed that thehomodimers rearrangement in the microcrystals differs
+significantly from that observed in the large crystals.
+A further analysis of the homodimers interface with
+the PISA server (Krissinel & Henrick,
+2005 ) shows that
+the two homodimers in the room temperature structures
+of the free hNQO1 (PDB 8C9J [Doppler et al., 2023 ]; and
+this study) and the complex hNQO1-NAD+/H (this
+study), enclose a surface area that is similar in size
+(930 Å2on average), while the cryo-structure of hNQO1
+in complex with PMSF (PDB 8OK0 [Grieco et al., 2023 ])
+buries a smaller surface area of 775 Å2. From this analy-
+sis, we have also found out that there are significant
+FIGURE 8 Comparison of the packing in the two homodimers of hNQO1 from different structures. (a) Superposition of the two
+homodimers in the microcrystals of the free hNQO1 (orange) and hNQO1-NAD+/H (red), this study, and PDB 8C9J (light blue) (Doppler
+et al., 2023 ), to the two homodimers in the large crystals of PDB 8OK0 (purple) (Grieco et al., 2023 ). (b) Surface representation of the free
+hNQO1 structure (this study). The FADs are shown as black sticks. (c) Surface representation of the hNQO1 in complex with PMSF (PDB
+8OK0) (Grieco et al., 2023 ). The FADs are shown as gray sticks. d) Schematic diagram of the intra-homodimer (solid black lines) and inter-
+homodimer (dashed red lines) interactions established in the microcrystals. As shown in (a), the two homodimers are stabilized throughinteractions between Chains A and B of one of the homodimers and Chain C of the other homodimer with no participation of monomer D
+(yellow). (e) Schematic diagram of the intra-homodimer (solid black lines) and inter-homodimer (dashed red lines) interactions established
+in the large crystals. As shown in (b), the two homodimers are stabilized through interactions between Chains A and B of one of thehomodimers and Chains C and D of the other homodimer.16 of 22 GRIECO ET AL .
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+differences in the residues that participate in the inter-
+faces between the two homodimers. As can be seen inFigure
+8bfor the homodimers in the microcrystals, they
+are kept by interactions established by the two protomers
+of one of the homodimers and just one protomer of theother homodimer with no participation from the other
+one. However, in the case of the large and cryo-cooled
+crystals, the two homodimers are kept through interac-tions established by all the protomers of the two homodi-
+mers (Figure
+8c). A schematic diagram of how this
+homodimer rearrangement occurs in the microcrystalsand in the large crystals can be seen better in Figure
+8d,e.
+Putting all this together, we hypothesize that the way we
+produce our microcrystals at high supersaturation
+reached very fast increasing the nucleation rate, influ-ences the way the two homodimers are rearranged within
+the crystals.
+To further confirm this hypothesis, the crystal pack-
+ing analysis was extended to other structures of hNQO1
+in which large crystals were obtained from very similar
+or identical crystallization conditions such as PDB 5A4K(Lienhart et al.,
+2017 ) and 5EA2 (Pidugu et al., 2016 ) for
+the free hNQO1, and 6FY4 (Strandback et al., 2020 )
+for the hNQO1 in complex with the ligand BPPSA, asmall molecular chaperone. All these three structuresshowed two homodimers in the ASU as well. A compari-
+son of these three structures with that of hNQO1 in com-
+plex with PMSF (PDB 8OK0) (Grieco et al.,
+2023 ), shows
+that the homodimers exhibit the same rearrangement
+within the large crystals (Figure S17A ), this being differ-
+ent from the homodimer rearrangement observed in themicrocrystals (Figure
+S17B ).
+4|DISCUSSION
+4.1 |hNQO1 is fully active in
+microcrystals showing they are suitable fortime-resolved experiments
+Proteins are not static entities but rather they fluctuate
+between alternative conformational states defined by a
+complex energy landscape (Frauenfelder et al., 1991 )t o
+accomplish their biological functions. The redistributionor“population shift ”of the conformational ensemble is
+the basis of cooperativity and allosterism (Hilser,
+2010 ;
+Motlagh et al., 2014 ). Structural and biochemical studies
+of oxygen-carrying tetrameric hemoglobins have had apivotal role in explaining the phenomenon of cooperativ-
+ity and allostery (Kavanaugh et al.,
+2005 ). X-ray crystal-
+lography has traditionally been viewed as a statictechnique, with limited applicability to allostery and
+cooperativity. The reason for that is because, typically,protein crystals tend to be seen as static entities and
+therefore unsuitable for studying allosteric and coopera-tivity, given that these events involve conformational
+changes. However, it has been known for a long time that
+most enzymes remain catalytically active within crystals(Doscher & Richards,
+1963 ), although the environment
+within a crystal lattice has little resemblance to the actual
+cellular environment of a protein. Proteins are highlydynamic molecules, but even though the lattice restrains
+their accessible conformational space, they retain a
+remarkable degree of plasticity (Forneris et al.,
+2014 ) and
+often display surprisingly large-scale conformationalchanges during ligand binding (Stagno et al.,
+2017 ). The
+accessible conformational space depends on how the pro-
+tein is packed in a given crystal form, and analysis ofmultiple crystal forms gives a more complete picture
+of the conformational landscape (Tyka et al.,
+2011 ).
+However, owing to the convergence of several recent
+experimental and technical developments, x-ray crystal-
+lography is increasingly well-positioned to provide
+insights into the connection between protein flexibilityand function. In this regard, it has been shown that crys-
+tal packing in microcrystals is key to studying reaction
+mechanisms by mix-and-inject serial crystallographytechnology (Olmos et al.,
+2018 ; Schmidt, 2020 ). To this
+end, in the study presented here, we report the crystallo-
+graphic structures of the hNQO1 in its free form and in
+complex with the hydride donor NADH as obtained frommicrocrystals at room temperature by serial crystallogra-
+phy experiments. We have noticed that, for crystals
+grown in the same crystallization conditions, the rearran-gement of the two hNQO1 homodimers in the microcrys-
+tals is different to that observed in hNQO1's large crystals
+(Figure
+8). Although this has never been reported in the
+literature, we believe that, for this case, the way we growthe microcrystals, much faster than we typically used to
+grow large crystals, affects the packing of the molecules
+within the crystals. Also, because of this, the catalytic siteis more accessible in microcrystals than in large crystals,
+enabling the large hydride donor molecule to diffuse into
+the crystals and, thus, allowing us to determine the struc-ture of the complex hNQO1-NAD
++/H.
+A question that may arise from our hNQO1-NAD+/H
+structure is whether the two NAD+/H molecules found
+at the catalytic pockets (NAD+/HBand NAD+/HD)
+reacted with the enzyme. Based on the static structures
+presented in our study, it is hard to reach a conclusion.To assess whether hNQO1 protein remains enzymaticallyactive within microcrystals grown from the batch with
+agitation method, the microcrystals, initially yellow due
+to the presence of the oxidized FAD cofactor, turned clearimmediately upon mixing them with NADH. This color
+change confirms the reduction of the enzyme by NADHGRIECO ET AL . 17 of 22
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+and, thus, indicates that hNQO1 is catalytically active
+within crystals. Based on this finding we could assumethat the reaction has finished at least at one of the cata-
+lytic sites, so the hydride transfer from NADH to FAD
+has occurred. Thus, we hypothesized that at least one butprobably the two NADH molecules (NAD
++/HBand
+NAD+/HD) must be NAD+and the two FAD mole-
+cules FADH/C0.
+4.2 |The binding of the coenzyme
+NADH reduces the plasticity of hNQO1 inmicrocrystals
+So far, the only structure reported on the literature (but
+not deposited in PDB) of a NQO1 protein in complex
+with the coenzyme was produced with the NADP+oxi-
+dized form of the coenzyme (Li et al., 1995 ). NADP+is
+not the NQO1's substrate but the product of the reductive
+half-reaction produced after the reduced substrate,
+NADPH, transfers a hydride to the enzyme FAD cofactor.With that said, the crystal structure of the complex
+hNQO1-NAD
++/H reported in this study is, to the best of
+our knowledge, the first structure of a natural relevantsubstrate, NADH in this case, being observed in complexwith an NQO1 enzyme's family. An overall comparative
+structural analysis of the hNQO1 in the crystal structures
+of the free hNQO1 with the complex hNQO1-NAD
++/H,
+revealed that the binding of the hydride donor NADH
+reduces the plasticity of the enzyme homodimers, as
+reflected by the shrinking of the unit cell dimensions(Table
+1). A more careful analysis reveals that, upon
+binding of the NADH, there is a rearrangement in the
+signature of the hydrogen bond interactions (in numberand length) observed at the catalytic sites between theprotein residues and the FAD molecules in the two
+homodimers (Figures
+5,S6andS7; Table 2). More inter-
+estingly, this structural rearrangement propagates acrossthe homodimeric interfaces of the two homodimers, as
+reflected by the number of inter- and intra-molecular
+hydrogen bonding interactions (Figure
+4; Tables S2–S13).
+4.3 |New structural and dynamics
+insights into the function of hNQO1
+hNQO1 catalyzes the two-electron reduction of quinones
+to hydroquinones by a two-step redox mechanism (Anoz-Carbonell et al.,
+2020 ), which has been widely studied by
+multiple biophysical and biochemical techniques and has
+been shown to use cooperative regulation (Anoz-Carbonell et al.,
+2020 ; Clavería-Gimeno et al., 2017 ;
+Pacheco-Garcia et al., 2021 ; Pey, 2018 ; Pey et al., 2014 ).Essentially, cooperativity is manifested when the binding
+of a ligand to a protein alters the affinity for subsequentbinding of the same or a different ligand. In this process
+a chemical or molecular signal is transmitted from one
+site in a protein to another to alter its structure and/ordynamics and therefore its function. Many protein
+enzymes, like hNQO1, utilize cooperative regulation to
+modulate their catalytic activity by binding to a regula-tory molecule, an activator or inhibitor, that modifies
+binding sites for reaction substrates. However, it remains
+unclear how to decipher which local regions of a proteinstructure are conformationally coupled to each other.Therefore, the understanding of the molecular mecha-
+nism of hNQO1 has been limited by the complexity of its
+redox mechanism and by the difficulty in obtaining struc-tural and dynamic information on the intermediate states
+by standard macromolecular crystallography.
+Interestingly, the structure of the complex
+hNQO1-NAD
++/H shows a molecule of the hydride donor
+bound to just one of the protomers of each of the two
+homodimers found in the ASU (Figure 2), which agrees
+well with the negative cooperativity from studies of
+hNQO1 in solution (Anoz-Carbonell et al., 2020 ; Cla-
+vería-Gimeno et al., 2017 ; Pacheco-Garcia et al., 2021 ;
+Pey, 2018 ; Pey et al., 2014 ). Furthermore, the two mole-
+cules of the hydride donor (named NAD+/HBand
+NAD+/HDin this study) have been captured in two dif-
+ferent conformations.
+As reported by our group recently for the free
+hNQO1, the residues Tyr128 and Phe232, which gate the
+pocket, swinging in and out, showed a high flexibilityand thus were modeled in various conformations
+(Doppler et al.,
+2023 ). In the structures presented here,
+these two residues also showed a high flexibility(Figure
+S5C). This observation was also made in the MD
+simulations, in which more dramatic changes are partic-
+ularly seen for residues Tyr128 and Phe232. In contrast to
+crystal structures, the Tyr126 was also observed to behighly flexible during the simulations. It is important to
+note that, these three residues, Tyr126, Ty128, and
+Ph232, are strictly conserved and envisaged as keyplayers in the enzymatic function of NQO1 (Asher
+et al.,
+2005 ; Li et al., 1995 ; Pandey et al., 2020 ).
+In addition to the structural changes observed at the
+protein level, conformational changes have been
+observed at the FAD level upon binding of NADH, being
+these changes more relevant for the isoalloxazine ringand the ribose and adenine moieties (Figures
+S9and
+S10), especially in those protomers where no NAD+/H
+molecules were found. In a recent study by Maestre-
+Reyna et al. ( 2022 ), they reported the first structural
+description of the microscopic processes of the
+photoreduction of a DNA photolyase by using pump-18 of 22 GRIECO ET AL .
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+probe time-resolved serial crystallography at an XFEL.
+DNA photolyases are flavoproteins containing, likeNQO1, an FAD molecule as cofactor. In their study, they
+observed big geometric changes of the isoalloxazine moi-
+ety of FAD molecule during its reduction to FADH
+/C0
+upon light excitation (Maestre-Reyna et al., 2022 ). In the
+crystal structure of our complex hNQO1-NAD+/H,
+although conformational changes have been observed forthe isoalloxazine moiety (Figure
+S9), these are too subtle,
+which may indicate that the reaction has simply finished.
+However, similar geometric changes of the isoalloxazinehave been occasionally captured in some snapshots ofour MD simulations, even though they only account for
+FAD molecules in their oxidized state (Molecular
+Movies
+V1andV2). So that, to investigate these changes
+in the isoalloxazine experimentally, time-resolved experi-
+ments at XFELs would be needed.
+It is well known that computational approaches com-
+plement experimental methods and provide powerful
+tools to study cooperativity, with MD simulations provid-
+ing dynamic details. The large number of snapshots gen-erated from MD simulations captures the motion of the
+proteins, thus providing insights into the population shift
+of the protein conformational ensemble. To this end, amore careful analysis of the complex of hNQO1 withNADH was carried out using MD simulations. It is
+important to note that both our structural and computa-
+tional results match perfectly well. In this regard, fromthis analysis we have noticed that both the FAD and the
+NADH molecules are extremely dynamic even when
+bound to the enzyme (Figures
+7andS12–S14). Regarding
+the FAD, the MD simulations show, overall, an extremely
+more flexible FAD than that observed in the crystals, par-
+ticularly in its AMP moiety. In the case of the NADHmolecules, they are mainly anchored to the proteinthrough its nicotinamide moiety, which stacks against
+the FAD isoalloxazine in a binding pocket formed by
+numerous aromatic residues (Figures
+S15andS16), being
+the rest of the NADH molecule highly flexible and hardly
+interacting with protein residues throughout the simula-
+tions (Tables S16–S18). This high plasticity of the NADH
+is also reflected in our crystals and explains why the elec-
+tron density surrounding the two NAD+/H molecules is
+either poor or lacking, especially in the ribitol and thephosphates moieties, as well as the ribose next to the ade-
+nine (Figure
+3). This effect is more pronounced in the
+case of the NAD+/HBmolecule.
+5|CONCLUSIONS
+The crystal structures reported in this study for hNQO1
+are the first structures coming out from the newbeamline ID29. More importantly, both structural results
+and MD simulations have supported that the two cata-lytic sites of hNQO1 act cooperatively and display highly
+collective inter-domain and inter-monomer communica-
+tion and dynamics. This coupled network of amino acidsis sensitive to ligand binding. In fact, the binding of
+NADH significantly decreases protein dynamics and sta-
+bilizes hNQO1 especially at the dimer core and interface,providing the first structural evidence that the hNQO1
+functional cooperativity is driven by structural communi-
+cation between the active sites through long-range propa-gation of cooperative effects across the hNQO1 proteinstructure. The flexibility and negative cooperativity of
+hNQO1 seen in the room temperature structure of the
+complex and the MD simulations are important featuresin obtaining a more complete picture of the function and
+dynamics of this enzyme, and the approaches delineated
+are critical steps needed for pursuing time-resolved crys-tallographic studies. In this sense, we are currently devel-
+oping time-resolved experiments with XFELs and the
+results from these experiments will be published else-where. Therefore, understanding the dynamics of the
+redox mechanism of hNQO1 and of its interaction with
+ligands is critical to unravel its role as an antioxidant andas a potential target to treat common diseases in whichhNQO1 is involved, advancing the design of new, more
+potent, and effective inhibitors that can be used in the
+clinical setting.
+AUTHOR CONTRIBUTIONS
+Jose Manuel Martin-Garcia: Conceptualization; funding
+acquisition; investigation; writing –original draft; writing –
+review and editing; project admi nistration; supervision; vali-
+dation; visualization. Alice Grieco: Writing –review and
+editing; investigation; writing –original draft; visualization.
+Sergio Boneta: Investigation; writing –review and editing;
+formal analysis; visualization. José A. Gavira: Investigation;
+writing –review and editing. Angel L. Pey: Writing –origi-
+nal draft; funding acquisition; writing –review and editing.
+Shibom Basu: Data curation; resources; writing –review
+and editing. Julien Orlans: Writing –review and editing;
+data curation; resources. D a n i e l ed eS a n c t i s : Data curation;
+resources; writing –review and editing. Milagros Medina:
+Conceptualization; investigation; funding acquisition;writing –original draft; writing –review and editing; super-
+vision; formal analysis; validation; visualization.
+ACKNOWLEDGMENTS
+Julien Orlans, Shibom Basu, and Daniele de Sanctis
+would like to acknowledge members of the ESRF-EMBL
+Joint Structural Biology Group (JSBG) and other supportgroups in the commissioning and operation of the new
+ID29. The results reported here were collected from theGRIECO ET AL . 19 of 22
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+BAG proposal number MX2427. Sergio Boneta and Mila-
+gros Medina would like to acknowledge the use of theinstrumentation provided by the National Facility ICTS,
+Centro de Supercomputaci /C19on de Arag /C19on (CESAR), at
+Universidad de Zaragoza. The European Union NextGen-erationEU/PRTR (Grant number CNS2022-135713), the
+MCIN/AEI/10.13039/501100011033/ERDF (Grant num-
+ber MCIN/AEI/PID2022-136369NB-I00); Ayuda deAtracci /C19on y Retenci /C19on de Talento Investigador from the
+Community of Madrid (Grant number 2019-T1/BMD-
+15552); ERDF/Spanish Ministry of Science, Innovationand Universities-State Research Agency (Grant numberRTI2018-096246-B-I00), Consejería de Economía, Conoci-
+miento, Empresas y Universidad, Junta de Andalucía
+(Grant number P18-RT-2413), ERDF/Counseling of Eco-nomic Transformation, Industry, Knowledge and Univer-
+sities (Grant number B-BIO-84-UGR20), Gobierno de
+Aragon (Grant number E35-23R).
+CONFLICT OF INTEREST STATEMENT
+The authors declare no conflict of interest.
+DATA AVAILABILITY STATEMENT
+The structural data for the free hNQO1 and the com-plex hNQO1-NAD
++/H generated in this study are avail-
+able in the Protein Data Bank repository ( https://www.
+rcsb.org/ ) under accession codes PDB 8RFN and 8RFM,
+respectively.
+ORCID
+Milagros Medina https://orcid.org/0000-0001-8743-
+0182
+Jose Manuel Martin-Garcia https://orcid.org/0000-
+0002-4558-3858
+REFERENCES
+Abraham MJ, Murtola T, Schulz R, P /C19all S, Smith JC, Hess B, et al.
+GROMACS: high performance molecular simulations through
+multi-level parallelism from laptops to supercomputers. Soft-
+wareX. 2015;1:19 –25.https://doi.org/10.1016/j.softx.2015.06.001
+Adams PD, Afonine PV, Bunkoczi G, Chen VB, Davis IW,
+Echols N, et al. PHENIX: a comprehensive Python-based sys-tem for macromolecular structure solution. Acta Crystallogr DBiol Crystallogr. 2010;66:213 –21.
+https://doi.org/10.1107/
+S0907444909052925
+Anoz-Carbonell E, Timson DJ, Pey AL, Medina M. The catalytic
+cycle of the antioxidant and cancer-associated human NQO1enzyme: hydride transfer, conformational dynamics and func-tional cooperativity. Antioxidants. 2020;9(9):772.
+https://doi.
+org/10.3390/antiox9090772
+Asher G, Dym O, Tsvetkov P, Adler J, Shaul Y. The crystal structure
+of NAD(P)H quinone oxidoreductase 1 in complex with its
+potent inhibitor dicoumarol. Biochemistry. 2006;45(20):6372 –8.
+https://doi.org/10.1021/bi0600087Asher G, Tsvetkov P, Kahana C, Shaul Y. A mechanism of
+ubiquitin-independent proteasomal degradation of the tumorsuppressors P53 and P73. Genes Dev. 2005;19(3):316 –21.
+https://doi.org/10.1101/gad.319905
+Beaver SK, Mesa-Torres N, Pey AL, Timson DJ. NQO1: a target for
+the treatment of cancer and neurological diseases, and a model
+to understand loss of function disease mechanisms. Biochim
+Biophys Acta Proteins Proteom. 2019;1867(7-8):663 –76.https://
+doi.org/10.1016/j.bbapap.2019.05.002
+Betancor-Fern /C19andez I, Timson DJ, Salido E, Pey AL. Natural (and
+unnatural) small molecules as pharmacological chaperones andinhibitors in cancer. In: Ulloa-Aguirre A, Tao Y-X, editors. Tar-
+geting trafficking in drug development: handbook of experi-
+mental pharmacology. Cham: Springer InternationalPublishing; 2018. p. 155 –90.
+https://doi.org/10.1007/164_
+2017_55
+Bianchet MA, Faig M, Mario Amzel L. Structure and mechanism of
+NAD[P]H:quinone acceptor oxidoreductases (NQO). In: Sies H,Packer L, editors. Methods in enzymology. Volume 382. Else-
+vier; 2004. p. 144 –74.
+https://doi.org/10.1016/S0076-6879(04)
+82009-3
+Clavería-Gimeno R, Velazquez-Campoy A, Pey AL. Thermodynam-
+ics of cooperative binding of FAD to human NQO1: implica-tions to understanding cofactor-dependent function andstability of the flavoproteome. Arch Biochem Biophys. 2017;
+636:17–27.
+https://doi.org/10.1016/j.abb.2017.10.020
+Coquelle N, Brewster AS, Kapp U, Shilova A, Weinhausen B,
+Burghammer M, et al. Raster-scanning serial protein crystallog-raphy using micro-and nano-focused synchrotron beams. ActaCrystallogr D Biol Crystallogr. 2015;71:1184 –96.
+https://doi.org/
+10.1107/S1399004715004514
+Doak RB, Kovacs GN, Gorel A, Foucar L, Barends TRM,
+Grünbein ML, et al. Crystallography on a chip —without the
+chip: sheet-on-sheet sandwich. Acta Crystallogr D StructBiol. 2018;74(10):1000 –7.
+https://doi.org/10.1107/S2059798318
+011634
+Doppler D, Sonker M, Egatz-gomez A, Grieco A, Zaare S,
+Jernigan R, et al. Lab on a chip modular droplet injector for
+sample conservation conformational heterogeneity in the
+disease-associated NQO1 enzyme. Lab Chip. 2023;23:3016 –33.
+https://doi.org/10.1039/d3lc00176h
+Doscher MS, Richards FM. The activity of an enzyme in the crystal-
+line state: ribonuclease S. J Biol Chem. 1963;238(7):2399 –406.
+https://doi.org/10.1016/s0021-9258(19)67984-6
+Duan Y, Wu C, Chowdhury S, Lee MC, Xiong G, Zhang W, et al. A
+point-charge force field for molecular mechanics simulations ofproteins based on condensed-phase quantum mechanical calcu-lations. J Comput Chem. 2003;24(16):1999 –2012.
+https://doi.
+org/10.1002/jcc.10349
+Emsley P, Lohkamp B, Scott WG, Cowtan K. Features and develop-
+ment of Coot. Acta Crystallogr D Biol Crystallogr. 2010;66:486 –
+501. https://doi.org/10.1107/S0907444910007493
+Evans PR. An introduction to data reduction: space-group determi-
+nation, scaling and intensity statistics. Acta Crystallogr D BiolCrystallogr. 2011;67(4):282 –92.
+https://doi.org/10.1107/
+S090744491003982X
+Faig M, Bianchet MA, Talalay P, Chen S, Winski S, Ross D, et al.
+Structures of recombinant human and mouse NAD(P)H:qui-
+none oxidoreductases: species comparison and structural20 of 22 GRIECO ET AL .
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+changes with substrate binding and release. Proc Natl Acad Sci
+U S A. 2000;97(7):3177 –82.https://doi.org/10.1073/pnas.97.7.
+3177
+Faig M, Bianchet MA, Winski S, Hargreaves R, Moody CJ,
+Hudnott AR, et al. Structure-based development of anticancerdrugs: complexes of NAD(P)H:quinone oxidoreductase 1 with
+chemotherapeutic quinones. Structure. 2001;9(8):659 –67.
+https://doi.org/10.1016/S0969-2126(01)00636-0
+Forneris F, Tom Burnley B, Gros P. Ensemble refinement shows
+conformational flexibility in crystal structures of human com-plement factor D. Acta Crystallogr D Biol Crystallogr. 2014;70(3):733 –43.
+https://doi.org/10.1107/S1399004713032549
+Fraser JS, van den Bedem H, Samelson AJ, Lang PT, Holton JM,
+Echols N, et al. Accessing protein conformational ensemblesusing room-temperature X-ray crystallography. Proc Natl AcadSci U S A. 2011;108(39):16247 –52.
+https://doi.org/10.1073/pnas.
+1111325108
+Frauenfelder H, Sligar SG, Wolynes PG. The energy landscapes and
+motions of proteins. Science. 1991;254(5038):1598 –603. https://
+doi.org/10.1126/science.1749933
+Frisch MJ, Trucks GW, Schlegel HB, Scuseria GE, Robb MA,
+Cheeseman JR, et al. Gaussian 09, Revision A.1 . 2009.
+Frishman D, Argos P. Knowledge-based protein secondary structure
+assignment. Proteins. 1995;23(4):566 –79. https://doi.org/10.
+1002/prot.340230412
+Gati C, Bourenkov G, Klinge M, Rehders D, Stellato F, Oberthür D,
+et al. Serial crystallography on in vivo grown microcrystals
+using synchrotron radiation. IUCrJ. 2014;1(2):87 –94.https://
+doi.org/10.1107/S2052252513033939
+Gevorkov Y, Yefanov O, Barty A, White TA, Mariani V, Brehm W,
+et al. XGANDALF —extended gradient descent algorithm for
+lattice finding. Acta Crystallogr A Found Adv. 2019;75:694 –704.
+https://doi.org/10.1107/S2053273319010593
+Grieco A, Ruiz-Fresneda MA, G /C19omez-Mulas A, Pacheco-García JL,
+Quereda-Moraleda I, Pey AL, et al. Structural dynamics at theactive site of the cancer-associated flavoenzyme NQO1 probedby chemical modification with PMSF. FEBS Lett. 2023;597:2687–98.
+https://doi.org/10.1002/1873-3468.14738
+Hess B. P-LINCS: a parallel linear constraint solver for molecular
+simulation. J Chem Theory Comput. 2008;4(1):116 –22.https://
+doi.org/10.1021/ct700200b
+Hilser VJ. An ensemble view of allostery. Science. 2010;327(5966):
+653–4.https://doi.org/10.1126/science.1186121
+Kavanaugh JS, Rogers PH, Arnone A. Crystallographic evidence for
+a new ensemble of ligand-induced allosteric transitions in
+hemoglobin: the T-to-T(high) quaternary transitions. Biochem-istry. 2005;44(16):6101 –21.
+https://doi.org/10.1021/bi047813a
+Kieffer J, Coquelle N, Santoni G, Basu S, Debionne S, Homs A,
+et al. Real-time pre-processing of serial crystallography. ActaCrystallogr A. 2022;78(a2):e263.
+https://doi.org/10.1107/
+S2053273322094530
+Krissinel E, Henrick K. Detection of protein assemblies in crys-
+tals. In: Berthold MR, Glen RC, Diederichs K, Kohlbacher O,Fischer I, editors. Berlin, Heidelberg: Springer; 2005.p. 163–74.
+Li R, Bianchet MA, Talalay P, Mario Amzel L. The three-
+dimensional structure of NAD(P)H:quinone reductase a flavo-
+protein involved in cancer chemoprotection and chemotherapy:
+mechanism of the two-electron reduction. Proc Natl Acad Sci US A. 1995;92(19):8846 –50.
+https://doi.org/10.1073/pnas.92.19.
+8846
+Lienhart WD, Gudipati V, Uhl MK, Binter A, Pulido SA, Saf R,
+et al. Collapse of the native structure caused by a single aminoacid exchange in human NAD(P)H:quinone oxidoreductase.FEBS J. 2014;281(20):4691 –704.
+https://doi.org/10.1111/febs.
+12975
+Lienhart WD, Strandback E, Gudipati V, Koch K, Binter A,
+Uhl MK, et al. Catalytic competence, structure and stability ofthe cancer-associated R139W variant of the human NAD(P)H:quinone oxidoreductase 1 (NQO1). FEBS J. 2017;284(8):1233 –
+45.
+https://doi.org/10.1111/febs.14051
+Lu T, Chen F. Multiwfn: a multifunctional wavefunction analyzer.
+J Comput Chem. 2012;33(5):580 –92.https://doi.org/10.1002/
+jcc.22885
+Maestre-Reyna M, Yang C-H, Nango E, Huang W-C, Ngurah
+Putu EPG, W-J W, et al. Serial crystallography capturesdynamic control of sequential electron and proton transferevents in a flavoenzyme. Nat Chem. 2022;14(6):677 –85.
+https://
+doi.org/10.1038/s41557-022-00922-3
+McGibbon RT, Beauchamp KA, Harrigan MP, Klein C, Swails JM,
+Hern/C19andez CX, et al. MDTraj: a modern open library for the
+analysis of molecular dynamics trajectories. Biophys J. 2015;109(8):1528 –32.
+https://doi.org/10.1016/j.bpj.2015.08.015
+Medina-Carmona E, Fuchs JE, Gavira JA, Mesa-Torres N, Neira JL,
+Salido E, et al. Enhanced vulnerability of human proteins
+towards disease-associated inactivation through divergent evo-lution. Hum Mol Genet. 2017;26(18):3531 –44.
+https://doi.org/
+10.1093/hmg/ddx238
+Meng EC, Goddard TD, Pettersen EF, Couch GS, Pearson ZJ,
+Morris JH, et al. UCSF ChimeraX: tools for structure buildingand analysis. Protein Sci. 2023;32(11):e4792.
+https://doi.org/10.
+1002/pro.4792
+Motlagh HN, Wrabl JO, Li J, Hilser VJ. The ensemble nature of
+allostery. Nature. 2014;508(7496):331 –9.https://doi.org/10.
+1038/nature13001
+Mozzanica A, Andrä M, Barten R, Bergamaschi A, Chiriotti S,
+Brückner M, et al. The JUNGFRAU detector for applications at
+synchrotron light sources and XFELs. Synchrotron Radiat.
+News. 2018;31(6):16 –20.https://doi.org/10.1080/08940886.2018.
+1528429
+Murshudov GN, Skub /C19ak P, Lebedev AA, Pannu NS, Steiner RA,
+Nicholls RA, et al. REFMAC5 for the refinement of macromo-lecular crystal structures. Acta Crystallogr D Biol Crystallogr.
+2011;67(4):355 –67.
+https://doi.org/10.1107/S0907444911001314
+Olmos JL, Pandey S, Martin-Garcia JM, Calvey G, Katz A,
+Knoska J, et al. Enzyme intermediates captured ‘on the Fly ’by
+mix-and-inject serial crystallography. BMC Biol. 2018;16:59.
+https://doi.org/10.1186/s12915-018-0524-5
+Olsson MHM, Søndergaard CR, Rostkowski M, Jensen JH.
+PROPKA3: consistent treatment of internal and surface resi-
+dues in empirical PKa predictions. J Chem Theory Comput.
+2011;7(2):525 –37.https://doi.org/10.1021/ct100578z
+Pacheco-Garcia JL, Anoz-Carbonell E, Vankova P, Kannan A,
+Palomino-Morales R, Mesa-Torres N, et al. Structural basis ofthe pleiotropic and specific phenotypic consequences of mis-sense mutations in the multifunctional NAD(P)H:quinone oxi-
+doreductase 1 and their pharmacological rescue. Redox Biol.
+2021;46:102112.
+https://doi.org/10.1016/j.redox.2021.102112GRIECO ET AL . 21 of 22
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License
+Pacheco-Garcia JL, Loginov DS, Anoz-carbonell E, Vankova P,
+Palomino-morales R, Salido E, et al. Allosteric communicationin the multifunctional and redox NQO1 protein studied bycavity-making mutations. Antioxidants. 2022;11(6):1110.
+https://doi.org/10.3390/antiox11061110
+Pandey P, Avula B, Khan IA, Khan SI, Navarro VJ, Doerksen RJ,
+et al. Potential modulation of human NAD[P]H-quinone oxido-
+reductase 1 (NQO1) by EGCG and its metabolites —a system-
+atic computational study. Chem Res Toxicol. 2020;33(11):2749 –
+64.https://doi.org/10.1021/acs.chemrestox.9b00450
+Pey AL. Biophysical and functional perturbation analyses at cancer-
+associated P187 and K240 sites of the multifunctional
+NADP(H):quinone oxidoreductase 1. Int J Biol Macromol.
+2018;118:1912 –23. https://doi.org/10.1016/j.ijbiomac.2018.
+07.051
+Pey AL, Megarity CF, Medina-Carmona E, Timson DJ. Natural
+small molecules as stabilizers and activators of cancer-associated NQO1 polymorphisms. Curr Drug Targets. 2016;17(13):1506 –14.
+https://doi.org/10.2174/13894501176661601
+01121610
+Pey AL, Megarity CF, Timson DJ. FAD binding overcomes defects
+in activity and stability displayed by cancer-associated variantsof human NQO1. Biochim Biophys Acta. 2014;1842(11):2163 –
+73.
+https://doi.org/10.1016/j.bbadis.2014.08.011
+Pidugu LSM, Emmanuel Mbimba JC, Ahmad M, Pozharski E,
+Sausville EA, Emadi A, et al. A direct interaction between
+NQO1 and a chemotherapeutic dimeric naphthoquinone. BMCStruct Biol. 2016;16:1.
+https://doi.org/10.1186/s12900-016-
+0052-x
+Powell HR. The Rossmann Fourier autoindexing algorithm in
+MOSFLM. Acta Crystallogr D Biol Crystallogr. 1999;55(10):1690–5.
+https://doi.org/10.1107/S0907444999009506
+Raimondi P, Benabderrahmane C, Berkvens P, Biasci JC,
+Borowiec P, Bouteille J-F, et al. The extremely brilliant sourcestorage ring of the European Synchrotron Radiation Facility.Commun Phys. 2023;6(1):82.
+https://doi.org/10.1038/s42005-
+023-01195-z
+Ross D, Siegel D. Functions of NQO1 in cellular protection and
+CoQ10 metabolism and its potential role as a redox sensitive
+molecular switch. Front Physiol. 2017;8:595. https://doi.org/10.
+3389/fphys.2017.00595
+Schmidt M. Reaction initiation in enzyme crystals by diffusion of
+substrate. Crystals. 2020;10(2):116. https://doi.org/10.3390/
+cryst10020116
+Skelly JV, Sanderson MR, Suter DA, Baumann U, Read MA,
+Gregory DSJ, et al. Crystal structure of human DT-diaphorase:a model for interaction with the cytotoxic prodrug 5-(aziridin-1-yl)-2,4-dinitrobenzamide (CB1954). J Med Chem. 1999;42(21):4325 –30.
+https://doi.org/10.1021/jm991060m
+Sousa da Silva AW, Vranken WF. ACPYPE —AnteChamber PYthon
+parser InterfacE. BMC Res Notes. 2012;5:367. https://doi.org/
+10.1186/1756-0500-5-367
+Stagno JR, Bhandari YR, Conrad CE, Liu Y, Wang Y-X. Real-time
+crystallographic studies of the adenine riboswitch using anX-ray free-electron laser. FEBS J. 2017;284(20):3374 –80.
+https://
+doi.org/10.1111/febs.14110Strandback E, Lienhart W-D, Hromic-Jahjefendic A, Bourgeois B,
+Högler A, Waltenstorfer D, et al. A small molecule chaperonerescues the stability and activity of a cancer-associated variantof NAD(P)H:quinone oxidoreductase 1 in vitro. FEBS Lett.2020;594(3):424 –38.
+https://doi.org/10.1002/1873-3468.13636
+Tian W, Chen C, Lei X, Zhao J, Liang J. CASTp 3.0: computed atlas
+of surface topography of proteins. Nucleic Acids Res. 2018;
+46(W1):W363 –7.https://doi.org/10.1093/nar/gky473
+Tyka MD, Keedy DA, André I, Dimaio F, Song Y, Richardson DC,
+et al. Alternate states of proteins revealed by detailed energylandscape mapping. J Mol Biol. 2011;405(2):607 –18.
+https://doi.
+org/10.1016/j.jmb.2010.11.008
+Vagin A, Teplyakov A. MOLREP: an automated program for molec-
+ular replacement. J Appl Cryst. 1997;30(6):1022 –5.https://doi.
+org/10.1107/S0021889897006766
+Wang J, Wang W, Kollman PA, Case DA. Automatic atom type and
+bond type perception in molecular mechanical calculations.J Mol Graph Model. 2006;25(2):247 –60.
+https://doi.org/10.1016/
+j.jmgm.2005.12.005
+White TA. Processing serial crystallography data with CrystFEL: a
+step-by-step guide. Acta Crystallogr D Biol Crystallogr. 2019;75:219–33.
+https://doi.org/10.1107/S205979831801238X
+White TA, Kirian RA, Martin AV, Aquila A, Nass K, Barty A, et al.
+CrystFEL : a software suite for snapshot serial crystallography.
+J Appl Cryst. 2012;45(2):335 –41. https://doi.org/10.1107/
+S0021889812002312
+Winn MD, Ballard CC, Cowtan KD, Dodson EJ, Emsley P,
+Evans PR, et al. Overview of the CCP4 suite and current devel-opments. Acta Crystallogr D Biol Crystallogr. 2011;67(4):235 –
+42.
+https://doi.org/10.1107/S0907444910045749
+Winski SL, Faig M, Bianchet MA, Siegel D, Swann E, Fung K, et al.
+Characterization of a mechanism-based inhibitor of NAD(P)H:
+quinone oxidoreductase 1 by biochemical, x-ray crystallo-
+graphic, and mass spectrometric approaches. Biochemistry.2001;40(50):15135 –42.
+https://doi.org/10.1021/bi011324i
+Yefanov O, Mariani V, Gati C, White TA, Chapman HN, Barty A.
+Accurate determination of segmented X-ray detector geometry.Opt Express. 2015;23(22):28459 –70.
+https://doi.org/10.1364/OE.
+23.028459
+SUPPORTING INFORMATION
+Additional supporting information can be found onlinein the Supporting Information section at the end of this
+article.
+How to cite this article: Grieco A, Boneta S,
+Gavira JA, Pey AL, Basu S, Orlans J, et al.
+Structural dynamics and functional cooperativityof human NQO1 by ambient temperature serial
+crystallography and simulations. Protein Science.
+2024;33(4):e4957.
+https://doi.org/10.1002/pro.495722 of 22 GRIECO ET AL .
+ 1469896x, 2024, 4, Downloaded from https://onlinelibrary.wiley.com/doi/10.1002/pro.4957 by Csic Organización Central Om (Oficialia Mayor) (Urici), Wiley Online Library on [13/05/2024]. See the Terms and Conditions (https://onlinelibrary.wiley.com/terms-and-conditions) on Wiley Online Library for rules of use; OA articles are governed by the applicable Creative Commons License

@@ -1,0 +1,740 @@
+Multiple Locus Linkage Analysis of Genomewide
+Expression in Yeast
+John D. Storey1*, Joshua M. Akey2, Leonid Kruglyak3,4*
+1Department of Biostatistics, University of Washington, Seattle, Washington, United States of America, 2Department of Genome Sciences, University of Washington, Seattle,
+Washington, United States of America, 3Department of Ecology and Evolutionary Biology, Princeton University, Princeton, New Jersey, United States of America, 4Lewis-
+Sigler Institute for Integrative Genomics, Princeton University, Princeton, New Jersey, United States of America
+With the ability to measure thousands of related phenotypes from a single biological sample, it is now feasible to
+genetically dissect systems-level biological phenomena. The genetics of transcriptional regulation and protein
+abundance are likely to be complex, meaning that genetic variation at multiple loci will influence these phenotypes.
+Several recent studies have investigated the role of genetic variation in transcription by applying traditional linkageanalysis methods to genomewide expression data, where each gene expression level was treated as a quantitative traitand analyzed separately from one another. Here, we develop a new, computationally efficient method for
+simultaneously mapping multiple gene expression quantitative trait loci that directly uses all of the available data.
+Information shared across gene expression traits is captured in a way that makes minimal assumptions about thestatistical properties of the data. The method produces easy-to-interpret measures of statistical significance for both
+individual loci and the overall joint significance of multiple loci selected for a given expression trait. We apply the new
+method to a cross between two strains of the budding yeast Saccharomyces cerevisiae, and estimate that at least 37%
+of all gene expression traits show two simultaneous linkages, where we have allowed for epistatic interactions. Pairs of
+jointly linking quantitative trait loci are identified with high confidence for 170 gene expression traits, where it is
+expected that both loci are true positives for at least 153 traits. In addition, we are able to show that epistatic
+interactions contribute to gene expression variation for at least 14% of all traits. We compare the proposed approachto an exhaustive two-dimensional scan over all pairs of loci. Surprisingly, we demonstrate that an exhaustive two-
+dimensional scan is less powerful than the sequential search used here. In addition, we show that a two-dimensional
+scan does not truly allow one to test for simultaneous linkage, and the statistical significance measured from thisexisting method cannot be interpreted among many traits.
+Citation: Storey JD, Akey JM, Kruglyak L (2005) Multiple locus linkage analysis of genomewide expression in yeast. PLoS Biol 3(8): e267.
+Introduction
+Genetic linkage analysis has traditionally been applied to
+one or very few traits at a time. It is now possible tosimultaneously measure thousands of related ‘‘traits ’’from
+high-throughput technologies such as DNA [1,2] and protein
+microarrays [3]. It is therefore necessary to extend linkageanalysis techniques so that thousands of traits can besimultaneously analyzed, particularly when the traits arecomplex and it is desirable to identify multiple locicontributing to phenotypic variation. Performing linkageanalysis on many traits compounds difﬁculties that arealready present in a conventional analysis [4], although it
+also provides the opportunity to borrow information across
+the traits in such a way that more informative conclusions canbe drawn. Here, we focus on linkage analysis of genomewideexpression data obtained from DNA microarrays. Recentstudies in a variety of organisms [5–13] have unambiguouslyshown that heritable variation in gene expression levels ispervasive. Therefore, there is considerable interest in
+delineating the genetic architecture of transcriptional varia-
+tion at the genomewide level.
+Existing linkage analysis techniques have already been
+applied to genomewide expression in yeast, mice, maize, andhumans [5–7]. In a cross between two strains of the buddingyeast Saccharomyces cerevisiae, linkage scans were performed
+separately on the expression levels of approximately 6,000
+genes. It was shown that hundreds of these ‘‘gene expressiontraits ’’show linkage to at least one locus, and many traits
+appear to be inﬂuenced by multiple quantitative trait loci
+(QTL) [5,7,14]. However, multiple locus linkage analysis has
+not been applied to this dataset. A well accepted approach for
+mapping two loci, and for identifying epistatic interactions, is
+to perform an exhaustive two-dimensional (2D) linkage
+analysis in which all pair-wise positions in the genome are
+tested for linkage. However, 2D scans are extremely computa-
+tionally demanding when applied to thousands of phenotypes
+and may suffer from low statistical power due to the large
+number of hypothesis tests performed.
+Although several other approaches exist for mapping
+multiple loci that are linked to a quantitative trait, none of
+these methods allows the individual and joint signiﬁcance of
+the loci to be unequivocally assessed. Here, the joint
+signiﬁcance is the case where allof the multiple loci are
+Received March 15, 2005; Accepted June 1, 2005; Published July 26, 2005
+DOI: 10.1371/journal.pbio.0030267
+Copyright: /C2112005 Storey et al. This is an open-access article distributed under the
+terms of the Creative Commons Attribution License, which permits unrestricted
+use, distribution, and reproduction in any medium, provided the original work is
+properly cited.
+Abbreviations: 1D, one-dimensional; 2D, two-dimensional; FDR, false discovery rate;
+kb, kilobase; QTL, quantitative trait loci
+Academic Editor: Lon Cardon, University of Oxford, United Kingdom
+*To whom correspondence should be addressed. E-mail: jstorey@u.washington.edu
+(JDS); leonid@genomics.princeton.edu (LK)
+PLoS Biology | www.plosbiology.org August 2005 | Volume 3 | Issue 8 | e267 0001
+Open access, freely available online PLoSBIOLOGYtruly linked, not just a subset of them. Thresholding based on
+the joint signiﬁcance becomes particularly important when
+examining many quantitative traits at once. One common
+approach for identifying multiple QTL is to use a modelselection algorithm [15–18], where the goal is to identify the
+subset of loci comprising the best model according to some
+optimality criterion. Using this approach, it is difﬁcult to
+search over the enormous number of potential models and to
+provide a criterion for the best model that is biologicallymeaningful. Furthermore, for models that include multiple
+QTL, it is difﬁcult to determine which of these are true QTL
+and which have been included in the model by chance.
+Another approach is to a priori form a model that includes a
+certain set of pre-chosen loci spanning the genome, and thentest whether each remaining locus signiﬁcantly improves the
+model in this larger multiple locus model [19–23]. The
+motivation for this mapping approach and its derivatives
+such as multiple interval mapping is that the pre-chosen loci
+explain residual variation of other unknown QTL. It is
+difﬁcult to formulate a pre-chosen model for each expression
+trait, and again it is difﬁcult to interpret the joint signiﬁcanceamong multiple loci.
+To address these issues, we have developed a new method
+for mapping multiple loci and identifying epistatic inter-
+actions when analyzing thousands of phenotypes, such as
+gene expression levels. Information shared across expression
+traits is employed in a way that allows us to make minimal
+assumptions about the statistical properties of the data. Ourmethod permits easy-to-inter pret statistical signiﬁcance
+analysis of individual loci, as well as the overall joint
+signiﬁcance of multiple loci identiﬁed for any given expres-
+sion trait. Strengths of both the model selection and
+composite interval mapping methods have been incorpo-rated, which turns out to be more straightforward when
+analyzing many traits simultaneously. Rather than trying to
+estimate the true model underlying the expression trait by
+seeking the ‘‘best model, ’’or by assuming a certain model of
+genetic background and testing for the inclusion of addi-
+tional loci, we propose to measure the probability that a locus is
+in the true model given the data, without ever speciﬁcally
+estimating the entire true model. This overcomes some of the
+difﬁculties incurred by applying the two existing approaches
+to this problem. However, if one were considering only a
+single trait, it would be very difﬁcult to calculate this
+probability without making strong assumptions. Here, weuse a nonparametric approach that allows us to calculate
+conservative estimates of these posterior probabilities of
+linkage. The nonparametric approach is possible because
+many related traits are considered simultaneously.
+We applied the method to the S. cerevisiae experiment and
+show that at least 37% of all gene expression traits show joint
+linkage to two loci. Pairs of jointly linking QTL could beidentiﬁed with high conﬁdence for 170 gene expression traits.
+Bioinformatics analysis of these 170 signiﬁcant expression
+traits and their corresponding QTL begins to provide
+intriguing insights into the genetic architecture of transcrip-
+tional variation. In addition, we are able to show that epistaticinteractions contribute to gene expression variation in at
+least 14% of all traits. Our proposed approach overcomes the
+inherent computational and statistical difﬁculties that arise
+when performing an exhaustive search on thousands of traits
+at once. Moreover, the availability of thousands of traits for asingle set of meioses allows us to show that, for this
+experiment, a full 2D scan is not as powerful as the sequential
+search method we employ, even though the locus pairsselected by the two methods overlap substantially. We alsoshow that 2D scans do not allow one to test for joint linkageof a pair of loci, only whether at least one of the pair is linked.
+This is shown to be particularly problematic when analyzing
+thousands of phenotypes.
+Results
+The data used in this study were derived from a cross
+between two haploid strains of the budding yeast S. cerevisiae :
+a standard laboratory strain and a wild isolate from a
+California vineyard. Gene expression measurements wereobtained for 6,216 open reading frames in 112 haploidsegregants, and dichotomous genotypes were identiﬁed at
+3,312 markers covering 99% of the genome [14]. Using these
+experimental data, we developed and applied a new computa-tionally efﬁcient method for simultaneously mapping multi-p l eg e n ee x p r e s s i o nQ T La n d identifying epistatic
+interactions. The models and methods used here are
+appropriate for haploid organisms, although the ideas may
+be extended to diploid and higher ploidy organisms in theusual way [24].
+2D Linkage Scan
+Initially, we applied an exhaustive 2D linkage scan in order
+to identify expression traits that are signiﬁcantly linked to
+pairs of loci or that are signiﬁcant for epistasis. In performingthese signiﬁcance tests, we considered a linear model thatfully parameterizes the quantitative trait in terms of all four
+possible genotypes. This model can be written as
+expression ¼baseline level þlocus1 effect þlocus2 effect
+þlocus13locus2 joint effect þnoise : ð1Þ
+Traditionally, genetic linkage is said to exist between the
+trait and a pair of loci if any of the locus effects aresigniﬁcantly different than zero, but not necessarily all ofthem [24]. Epistasis exists only if the locus1 3locus2
+interaction is signiﬁcantly different from zero. This linear
+model approach to identifying QTLs is well justiﬁed [24] andhas been shown to be especially useful when the markers aredensely sampled [18].
+The test for pair-wise linkage was performed as follows. For
+each expression trait, a linear model was ﬁt by least squares to
+each pair of loci. The locus pair with the largest F-statistic
+comparing the full model to the baseline model was selectedfor that trait. For the test of epistasis, a similar procedure wasperformed, except an F-statistic was computed that com-pared the full model to the purely additive model, which
+directly assesses the contribution of the interaction term. The
+signiﬁcance of each locus pair selected for linkage wascomputed using a standard permutation technique againstthe null hypothesis of no linkage to either locus [25]. For the
+test of epistasis, we used a similar permutation technique to
+assess the signiﬁcance of the locus1 3locus2 interaction [26].
+The end-product of these tests is a p-value and a pair of loci
+for each expression trait. Using the false discovery rate (FDR)quantity to correct for multiple comparisons [27,28], there
+were 3,540 traits signiﬁcantly linked to a locus pair at the 5%
+FDR threshold. Note that in this case, a ‘‘false discovery ’’must
+PLoS Biology | www.plosbiology.org August 2005 | Volume 3 | Issue 8 | e267 0002
+Linkage Analysis of Genomewide Expressionbe deﬁned as a trait where both selected loci are false
+positives, and thus many of the ‘‘true discovery ’’traits could
+have one false-positive locus. In the test for epistasis, nosigniﬁcant results were obtained; the number of signiﬁcant
+tests at each cut-off mirrored the number found under the
+null permutations.
+The exhaustive 2D search proved to be unsatisfactory for a
+number of reasons. Most obviously, the number of multiple-locus models that have to be considered is computationally
+and statistically challenging for pairs of loci, and prohibitive
+for three or more loci. With 3,312 markers and 6,216expression traits, one has to consider more than 18 millionsingle-locus models to simply test for linkage between every
+expression trait and locus. More than 27 billion tests have to
+be performed to consider all two-locus models for everyexpression trait, and more than 27 trillion tests to consider all
+three-locus models for every expression trait. In addition, it is
+likely that by searching over so many models, the statisticalpower to detect linkage is severely attenuated because of themultiple comparison problem. Secondly, when employing an
+exhaustive 2D scan, there is no statistically rigorous method
+to test for joint linkage, which exists only if both loci havenonzero terms in the full model. In other words, thesigniﬁcance of an individual locus selected for an expression
+trait is confounded with the overall signiﬁcance of the pair of
+loci. Since p-values are calculated against the null hypothesis
+of no linkage, a highly signiﬁcant result may be due to only
+one locus being truly linked while the other locus is included
+by chance. This confounding is especially problematic whenconsidering thousands of traits simultaneously. Since pairs ofloci that show large marginal effects are preferentially
+selected when testing thousands of traits for linkage, one
+cannot examine marginal effects of individual loci among themost signiﬁcant linkages in an unbiased fashion. Therefore,
+by chance it may appear that both loci explain a large
+proportion of variance of the trait. Ideally, a measure ofsigniﬁcance for each locus would be available, and then ajoint measure of signiﬁcance for all loci would be calculated.
+In our case, we did not want to call a trait signiﬁcantly linked
+ifeither of the loci were a false positive. Finally, a decision
+must be made as to which traits to call signiﬁcantly linked. Ifthe goal is to avoid any false-positive loci when calling a trait
+signiﬁcant, then there is no simple p-value that can be formed
+for this purpose. This follows because the null hypothesisconsists of multiple scenarios, and there is no readily
+available null distribution to describe this. Therefore, a more
+sophisticated method must be used to assess the signiﬁcanceof thousands of multi-locus models.
+Stepwise Search More Powerful than 2D Search
+One potential way to improve the exhaustive 2D scan is to
+use another method for selecting pairs of loci. In particular,
+one can select loci in a sequential manner, cutting down thenumber of models considered to 2 33,312, instead of more
+than 5 million. One readily available method for selecting loci
+in a sequential manner is forward stepwise regression. Here,
+one selects a primary locus that shows the most signiﬁcantone-dimensional (1D) linkage, i.e., the one that has the largest
+LOD score. This is equivalent to identifying the locus that
+yields the smallest residual sum of squares when regressingthe expression trait on the inheritance pattern at that locus[24]. Next, a secondary locus is chosen that yields the largestLOD score conditional on the primary locus being linked.
+Again, this is equivalent to choosing a locus that minimizes
+the residual sum of squares when regressing the expression
+trait on both the secondary locus and the primary locuscontained in the same model. A tertiary locus may be selected
+by including the previous two loci in the regression, and so
+on.
+One can use this forward stepwise regression technique
+simply as a way to select pairs of loci for each trait, and thenthe signiﬁcance analysis can be repeated as before. It has been
+hypothesized that failing to consider all possible two-locus
+models through an exhaustive 2D search (e.g., selecting loci in
+a sequential fashion) may lead to a loss in power or to missing
+important interactions between loci [29]. The yeast expres-
+sion dataset presents a rare opportunity to test this idea; in a
+typical study, only one quantitative trait is measured and onlyone scan is performed, which makes it difﬁcult to compare
+different multi-locus selection methods. Simulation-based
+comparisons make a number of assumptions that may not
+always be true. Here, we are able to make a direct comparison
+based on thousands of related scans, all conditional on thesame set of meioses. Thus, we compared the exhaustive 2D
+search to a simple sequential search method by repeating
+every step exactly as above, except that the sequential search
+method was used to select pairs of loci (see Materials and
+Methods). At FDR cut-offs of 1% and 5%, there are 2,780 and
+4,271 signiﬁcant pair-wise linkages, respectively. At these
+same cut-offs, the 2D search yielded substantially fewer: 1,715and 3,540 signiﬁcant linkages. Figure 1A shows the number of
+signiﬁcant pair-wise linkages over a range of p-value thresh-
+olds, where it can be seen that the sequential scan consistently
+ﬁnds a greater number. Since any given p-value threshold
+results in the same number of expected false positives foreach type of search, this is empirical evidence that the
+sequential search is more powerful. A 2D search could still
+produce more biologically meaningful results. In order to
+assess this, we measured the overlap in selected locus pairs
+among the traits corresponding to the 3,000 most signiﬁcant
+linkages identiﬁed by the 2D method. The locus pairs selected
+by the two methods for each given trait were considered to beequivalent if the same two chromosomes were identiﬁed and
+the respective chromosomal locations of the loci were within
+50 kilobases (kb) of each other. Under this deﬁnition, 90% of
+the locus pairs were found to be equivalent between the two
+methods.
+The sequential search was also more powerful for identify-
+ing epistasis relative to the exhaustive 2D scan. Figure 1B
+shows the number of traits called signiﬁcant for epistasis over
+a range of p-value thresholds, where it can be seen that the
+sequential search is again more powerful. Neither search
+method yielded a trait with high signiﬁcance for epistasis.
+However, from the sequential method we are able to estimatethat at least 14% of the traits are operating under epistasis,
+whereas due to a lack of power the 2D search estimate is 0%.
+This estimate is obtained by the following reasoning, which
+has been rigorously developed elsewhere [27,28]. If the locus
+pair identiﬁed for each transcript were a false positive, thedistribution of p-values across all transcripts would be ﬂat and
+uniformly distributed between zero and one; thus, the shape
+of the observed distribution of p-values can be used to
+estimate the total proportion of false positives. The more
+powerful a set of statistical tests are, the more this ﬂatness can
+PLoS Biology | www.plosbiology.org August 2005 | Volume 3 | Issue 8 | e267 0003
+Linkage Analysis of Genomewide Expressionbe distinguished from the signal. We did not see much
+overlap in locus pairs selected among the two searchmethods, but this is not surprising given that the 2D search
+apparently produces only noise.
+Therefore, for this particular experiment, the sequential
+search is more powerful than the exhaustive 2D search inidentifying pair-wise linkage and detecting epistasis. The
+sequential search also appears to extract a biological signal
+that is similar to that from the 2D search. However, it is notpossible to conclude whether these properties would hold inother experiments or for different sample sizes. Also, the
+comparison was made based on signiﬁcance assessed against
+the null hypothesis of no linkage, which is not a solution tothe problem of detecting joint linkage. The sequential
+approach as implemented above still suffers from the
+problem that signiﬁcance can be driven by a single locuswhile the other locus is a false positive. However, sequentiallyselecting loci allows their individual signiﬁcance to be
+assessed, which we show is crucial in detecting true joint
+linkage. We discuss how to assess individual and jointsigniﬁcance for the sequential approach below; we note that
+the same methods would not work without a number of
+potentially unjustiﬁable assumptions for the exhaustive 2Dsearch.
+Proposed Approach
+We developed a method to overcome the following
+problems associated with existing approaches: a prohibitivelylarge number of multi-locus models are considered, a clear
+measure of signiﬁcance among individual loci is not available,
+and the desired alternative hypothesis that allselected loci
+are linked for each trait is not tested. The method can be
+summarized in four steps.
+Step 1. For each expression trait, Lloci are identiﬁed
+through a sequential locus selection procedure, as above.
+Step 2. At each stage of the sequential search, a Bayesian
+technique is employed to calculate the probability that the
+locus is linked to the expression trait, conditional on theassumption that the previously chosen loci are also linked.
+Step 3. The locus-speciﬁc probabilities are combined to
+form the probability that all loci are simultaneously linked to
+the expression trait.
+The overall probabilities of linkage from Step 3 provide a
+ranking of the traits from most signiﬁcant to least signiﬁcant.
+It is then necessary to select a set of traits, each of which has ahigh probability of being linked to all loci simultaneously. Inorder to guide this choice, we propose a method to assess the
+statistical signiﬁcance of a given set of traits.
+Step 4. A signiﬁcant expression trait is called a false
+discovery if any of the loci selected for that trait is a false
+positive. That is, a true discovery is an expression trait where
+allselected loci are truly linked. A new approach for
+estimating the FDR among a set of signiﬁcant traits isemployed that directly utilizes the probabilities calculated in
+Step 3.
+The starting point for the method is to deﬁne a multi-locus
+model that may include varying numbers of loci, where it isclear how one modiﬁes the model to include an additional
+locus. Here, we continue to use the fully parameterized
+model. For zero, one, and two loci, the model may be written,respectively, as
+Figure 1. A Power Comparison of the 2D Locus Pair Search and the
+Sequential Search
+The number of significant traits over a range of p-value thresholds are
+shown. Since any given p-value threshold results in the same number of
+expected false positives, these plots give empirical evidence that thesequential search is more powerful than the 2D search.(A) Plot of the number of traits significant for linkage versus the p-value
+threshold.(B) Plot of the number of traits significant for epistasis versus the p-value
+threshold. The gray line, which shows the number of expected falsepositives for each p-value cut-off, is similar to the number called
+significant under the exhaustive 2D search.
+DOI: 10.1371/journal.pbio.0030267.g001
+PLoS Biology | www.plosbiology.org August 2005 | Volume 3 | Issue 8 | e267 0004
+Linkage Analysis of Genomewide ExpressionðM0Þexpression ¼baseline level þnoise ;
+ðM1Þexpression ¼baseline level þlocus1 þnoise ;
+ðM2Þexpression ¼baseline level þlocus1 þlocus2
+þlocus13locus2 þnoise ; ð2Þ
+where, for example, ‘‘locus1 ’’is the main effect for the
+primary locus, and ‘‘locus1 3locus2 ’’is the epistatic
+interaction between the primary and secondary loci (Materi-als and Methods). A sequential search can then be performedto identify the top linked locus for each expression trait,
+which involves ﬁnding the locus that offers the greatest
+improvement in goodness of ﬁt when comparing model M1 tomodel M0. This primary locus is then included in models M1and M2, and a secondary locus is identiﬁed that provides thegreatest improvement in goodness of ﬁt when comparingmodel M2 to model M1. Continuing this process, an orderedset of Lloci for each expression trait can be identiﬁed. Here
+we consider only L¼2 loci, but the method can be applied to
+larger numbers of loci.
+The Bayesian posterior probability that the primary locus
+for each trait shows linkage can be written as Pr(locus 1
+linked jData). Since the secondary locus is identiﬁed condi-
+tional on the presence of the primary locus, the probabilitythat it is linked is calculated conditionally on the primarylocus being linked: Pr(locus 2 linked jlocus 1 linked, Data).
+Note that probabilities may be formed analogously for Lloci,
+with the ﬁnal probability being Pr(locus L linked jloci 1,...,L-1
+linked, Data). These conditional probabilities are concep-
+tually consistent with the procedure used to select loci. For
+example, the secondary locus is not called signiﬁcant unlessthe primary locus is also called signiﬁcant, since it was used inidentifying the secondary locus.
+The above probabilities give a measure of signiﬁcance to
+each locus. However, one would also like to know the joint
+signiﬁcance of the loci. The probability that allloci are linked
+to the expression trait is simply the product of the locus-speciﬁc probabilities. For example,
+Prðloci 1 and 2 are linked jData Þ
+¼Prðlocus 1 linked jData Þ
+3Prðlocus 2 linked jlocus 1 linked ;Data Þ: ð3Þ
+These joint-linkage probabilities can be used to select traits
+that are signiﬁcant for having all loci jointly linked by callingall traits signiﬁcant that have a joint-linkage probabilityexceeding some threshold. For example, all traits with Pr(loci
+1 and 2 are linked jData) /C210.90 may be called signiﬁcant.
+This threshold is equivalent to ranking the traits forsigniﬁcance by the size of the joint-linkage probability.
+(Variations on this ranking procedure are possible, depend-
+ing on the goals of the study; e.g., one may want to consideronly traits that have all locus-speciﬁc linkages probabilities at0.95 or greater—see Materials and Methods.) In order todecide on a reasonable threshold, an error rate associatedwith the thresholding rule is assessed. For example, howreliable is the list of traits that have a joint-linkage probabilityof 0.90 or greater? The FDR concept is attractive in this casesince thousands of traits are simultaneously being assessed,and we would like to select several without incurring toomany mistakes. The FDR is typically deﬁned and estimated interms of multiple hypothesis tests [27,28]. However, the ‘‘null
+hypothesis ’’here is complicated because it includes any
+scenario where one or both of the loci are not truly linked.However, when assuming a Bayesian model, the FDR has beenshown to be equal to a Bayesian posterior probability [30],and the FDR concept and estimation methodology can beextended to accommodate our situation.
+A trait is deﬁned to be a ‘‘false discovery ’’for joint linkage
+if any of its selected loci is a false positive. In standardmultiple hypothesis testing situations, the false discovery hasbeen estimated as the ratio of the estimated number of falsepositive divided by the observed number of tests calledsigniﬁcant. For a given threshold we place on the traits, it isstraightforward to count how many are called signiﬁcant, butit is not as easy to estimate the expected number of falsepositives because the null distribution of the joint-linkageprobabilities is not available. However, when identifying pairsof loci for each trait, the probability a trait is a false discoveryis 1/C0Pr(loci 1 and 2 are linked jData). Therefore, the overall
+expected number of false discoveries is the sum of the1/C0Pr(loci 1 and 2 are linked jData) over all traits called
+signiﬁcant for two-locus linkage. An estimate of the propor-tion of false discoveries among signiﬁcant linkages is then
+FDR ¼
+estimated number of false discoveries
+number of significant two-locus linkages
+¼P1/C0Prðloci 1 and 2 are linked jData Þ
+number of significant two-locus linkages; ð4Þ
+where again the summation is taken over all traits called
+signiﬁcant for a two-locus linkage. This estimate can bejustiﬁed in the context of Bayesian representations of theFDR, but it also has connections to p-value based estimates
+([30]; Materials and Methods). For example, in our study thereare 72 traits that have two-locus joint-linkage probabilities of0.90 or greater. Summing all 72 corresponding quantities1/C0Pr(loci 1 and 2 are linked jData), there are 4.8 expected
+false discovery two-locus linkages among these. Therefore,the FDR estimate of this particular threshold is 4.8/72 ¼6.7%.
+In practice, the locus-speciﬁc and joint-linkage probabil-
+ities must be estimated. Due to the massive amount ofavailable data, we form nonparametric estimates of theprobabilities rather than making assumptions about theirdistributions. At each stage of the locus selection, the strengthof linkage is quantiﬁed by a standard F-statistic used tocompare two models (M1 versus M0 or M2 versus M1). Thestatistics associated with the primary and secondary loci foreach trait are the maximal F-statistics among all loci. Sincethese maximal statistics do not have a known null distribu-tion, the null distributions are simulated. The quantitativetrait values are permuted and the maximal statistics arerecomputed [25] to give permutation null statistics. Note thatwhen the null statistics are simulated for the secondary loci,the fact that the primary loci are assumed to be truly linked istaken into account [26]. That is, the null statistics corre-sponding to the secondary loci are calculated conditionallyon the genotypes of the primary loci. We performed ﬁvepermutations to yield sets of 6,216 35 simulated null statistics
+corresponding to the primary and secondary locus selections.The observed statistics and null statistics corresponding tothe primary loci are used to estimate the linkage probabilities
+PLoS Biology | www.plosbiology.org August 2005 | Volume 3 | Issue 8 | e267 0005
+Linkage Analysis of Genomewide ExpressionPr(locus 1 linked jData) for each trait. Similarly, the observed
+and null statistics corresponding to the secondary loci areused to estimate Pr(locus 2 linked jlocus 1 linked, Data) for
+each trait.
+A key aspect of our proposed approach is that loci are
+selected one at a time for each given expression trait. In thetraditional approach, pairs of loci are selected together sothat among these locus pairs, zero, one, or two loci may betruly linked. Therefore, it is not possible to model all threecases without making a number of assumptions. However,since we select only one locus at a time, there are only twopossible outcomes at each selection step: the locus is eitherlinked or not. The statistics calculated at each locus selectionstage are a mixture of the two distributions corresponding tothese linked and unlinked loci. The permutation nullstatistics represent one component of this mixture and canbe used in conjunction with the observed statistics toconservatively estimate the locus-speciﬁc linkage probabil-ities. Figure 2 shows a plot of the strategy used to form theseestimates. The solid black line is an empirical probabilitydensity (i.e., smoothed histogram) of the 6,216 observedstatistics calculated from the secondary loci. This density is amixture of a null density corresponding to statistics ofunlinked loci, and an alternative density corresponding tostatistics of linked loci. The solid grey line is an empiricalprobability density of the permutation null statistics, which
+has been drawn to reﬂect its relative contribution to the black
+mixture density of observed statistics. The observed statisticsand permutation null statistics can be used to conservativelyestimate the proportion of true linkages among all secondaryloci ([27]; Materials and Methods), which is the mixingproportion of the null density and the prior probability oflinkage. In order to calculate the locus-speciﬁc linkageprobability, the ratio of the null density to the mixturedensity must also be estimated. This ratio is estimated byadaptively considering the relative frequency of null statisticsto observed statistics in small intervals around each possiblevalue of the observed statistics (Materials and Methods). Oncethe locus-speciﬁc linkage probabilities are estimated, thesequantities are plugged into the above proposed procedure toobtain a set of signiﬁcant two-locus linkages.
+Two-Locus Joint Linkage Applied to Gene expression
+Traits in Yeast
+We applied the proposed method for two-locus linkage
+analysis to the S. cerevisiae experiment. Based on the joint-
+linkage probabilities, we estimate that 2,300 traits (approx-imately 37%) are jointly linked to two loci, although wecannot identify all of these with high conﬁdence. Of these2,300 traits, 170 can be identiﬁed at a FDR of 10%. Amongthese 170 traits, the primary locus FDR is less than 0.2%.Therefore, we expect that at most 17 of these joint linkagesinclude a single false-positive locus, and about zero includetwo false-positive loci.
+Recall that when a more liberal deﬁnition of two-locus
+linkage was used, where only one locus was required to belinked, about 4,000 linkages were called signiﬁcant at a FDRof 5%. However, in that situation it was not clear whetherboth loci or just a single locus were truly linked. Because weidentify only 170 signiﬁcant joint linkages at a FDR of 10%, itappears that many of the 4,000 signiﬁcant linkages from theother approach were due to only a single locus being trulylinked. When comparing our method to a traditional 1D
+linkage scan where the top two linkage peaks are taken assigniﬁcant, we ﬁnd 3.3 to 8.7 times more linkages at FDR cut-offs ranging from 1% to 10% (Materials and Methods). Theseobservations indicate that our proposed approach provides a
+new and statistically rigorous framework for distinguishing
+between genetic models.
+To better understand the molecular mechanisms under-
+lying the observed linkages for these traits, we searched forcis-acting effects. Here a cislinkage is said to occur if one of
+the two linkage peaks coincides with the position of theencoding gene corresponding to the expression trait. In total,58 traits demonstrate a cislinkage (Table S1), which has two
+important implications. First, the observation of a cislinkage
+immediately suggests a candidate QTL that can be exper-
+imentally tested. Second, these results demonstrate thatvariation in the expression level for a given trait cannotsimply be dichotomized into either cisortrans effects, as both
+can simultaneously contribute to variation in gene expressionlevels.
+Several previous linkage analyses of gene expression levels
+in yeast and other organisms have shown that linkages arenonrandomly distributed throughout the genome and tend tocluster into speciﬁc locations [5-7,31]. In order to get a broad
+view of the distribution of joint linkages throughout the
+genome, we ﬁrst divided the genome into 550-kb bins andcounted the number of jointly signiﬁcant traits at a FDR /C20
+10% in each pair-wise bin (Figure 3A), where simulationsdemonstrate that the number of bins expected to have threeor more two-locus linkages by chance is less than one. Figure3A indicates that the genomic distribution of joint linkages
+Figure 2. An Example of the Locus-Specific Linkage Probability
+Estimation Applied to the Secondary Loci
+The estimated density of the observed statistics is plotted (solid black).
+This density is modeled as a weighted mixture of probability densities
+corresponding to the ‘‘null ’’unlinked secondary loci (solid grey) and the
+‘‘alternative ’’linked secondary loci (dashed grey). The estimated
+posterior probability of linkage is also shown (dashed black).DOI: 10.1371/journal.pbio.0030267.g002
+PLoS Biology | www.plosbiology.org August 2005 | Volume 3 | Issue 8 | e267 0006
+Linkage Analysis of Genomewide Expressiondoes not solely follow simple patterns, which is evidence that
+the ‘‘joint ’’linkage here is meaningful. To test whether
+similar observations would extend to pairs of linkages on aﬁner scale, we further divided the genome into 50-kb bins andcounted the number of signiﬁcant joint linkages occurring ineach bin. We observed 10 pair-wise bins with three or moretraits (Figure 3B), where the number expected by chance ismuch less than one. This suggests that the same pair of QTLor closely linked QTL contribute to variation in the geneexpression levels among all traits falling into any given 50-kbpair-wise bin. Not surprisingly, groups of traits deﬁned bylinkage bins possess similar biological functions (Table S2).For example, the 12 traits that jointly link to nearly identicalpositions on Chromosomes 3 and 8 are predominantlyinvolved in the mating response. The linkage peak onChromosome 3 maps to the precise location of the yeastmating type locus MAT . The parental strains are of opposite
+mating type, and mating type segregates in the cross. We showelsewhere that variation in the expression of genes in thisgroup is indeed explained by inheritance at MAT on
+Chromosome 3 and at the pheromone response gene GPA1
+on Chromosome 8 [32]. Common biological themes can beassigned to the majority of the remaining clusters includingamino acid and mitochondria metabolism (13 traits deﬁnedby linkage to regions on Chromosomes 3 and 13), mitochon-drial tricarboxylic acid cycle (ten traits deﬁned by linkage toregions on opposite ends of Chromosome 15), and responseto stress (ﬁve traits deﬁned by linkage to Chromosomes 6 and10). Table S2 provides a complete list of genes and putativebiological functions for the ten pair-wise bins with three ormore traits.
+Another interesting observation that emerges from the
+spatial distribution of joint linkages is that distinct groups areconnected by a common linkage peak. For example, of the 10pair-wise bins with three or more linked traits, there arethree that share a common linkage to the exact same positionon Chromosome 15 (Table S2). Many of the genes in thesethree groups are localized to the mitochondria, suggesting animportant QTL on Chromosome 15 that mediates expressionlevels for numerous mitochondria related genes. An attrac-tive candidate QTL for this region is IRA2 , which is a
+regulator of the RAS-cAMP pathway [33] that is located inboth the cytoplasm and mitochondria. More generally, theseresults intimate that multiple locus mapping of geneexpression levels may be useful in reconstructing regulatorynetworks by identifying shared linkages across traits.
+Discussion
+We developed a new, computationally efﬁcient statistical
+method for simultaneously mapping multiple QTL. Whereasconventional linkage analysis has been widely and successfullyapplied to study one or very few traits at a time, our methodis appropriate for analyzing thousands of phenotypes. Pairsof loci were identiﬁed sequentially rather than considering allpossible combinations, which was shown to be empiricallymore powerful. The model used to select pairs of lociincluded an interaction term allowing for possible epistasis.This sequential approach will of course miss locus pairs withprimarily epistatic effects (i.e., little or no main effect foreither locus), and these may be biologically interesting orimportant. Also, we have not included any special modiﬁca-tions to handle the case where two QTL are closely linked,
+although such modiﬁcations are likely possible. Even though
+it is not likely that two locus models give a complete pictureof gene regulation [14], such analyses may still providevaluable information as we have shown here and elsewhere
+[32]. Since including only two loci may have an adverse effect
+on power when many QTL affect a trait, it may be helpful toadapt composite interval mapping methods to our approach.However, we were able to observe a number of signiﬁcant
+linkages using two QTL models.
+A major challenge that our method overcomes is to assign
+joint signiﬁcance to the pairs of loci. When identifying linked
+loci in a sequential manner, it is tempting to apply a readily
+available signiﬁcance threshold at each stage. For example,existing p-value based FDR methods could have been applied
+at the ﬁrst stage to identify a set of signiﬁcant primary loci.
+The procedure could then have been repeated on this
+signiﬁcant subset to obtain a set of signiﬁcant secondaryloci. Although this may initially appear to be valid, biases areincurred because of the high-dimensional nature of the
+problem. Speciﬁcally, the set of primary loci called signiﬁcant
+at the ﬁrst stage explain a large proportion of variance oftheir corresponding expression traits, even if the primary lociare false positives. This must be taken into consideration
+when assessing the signiﬁcance of secondary loci, which is not
+the case in simplistic sequential applications of existing p-
+value based methodology. In our approach, we explicitly tookinto account the sequential selection procedure in order to
+obtain an overall signiﬁcance measure of joint linkage.
+As technological advances in gene, protein, and metabolite
+proﬁling continue to be made, we anticipate that statistical
+methods such as the one proposed here will provide
+important insights into the genetic architecture of complexand quantitative traits.
+Materials and Methods
+Expression measurements. These expression data have recently
+been reported elsewhere [14]. Brieﬂy, 112 F1 segregants (one from
+each tetrad) were grown from a cross involving parental strainsBY4716, isogenic to the lab strain S288C, and the wild isolate RM11-
+1a [5,7,14]. RNA was isolated and cDNA was hybridized to micro-
+arrays [5,7,14]. Each hybridization was done in the presence of thesame BY reference material, and all reported expression values are
+log
+2(sample/BY reference), averaged over two dye-swapped arrays.
+Each array [34] assayed 6,216 yeast ORFs, 13 of which were spottedtwice, and we did not incorporate special corrections for potential
+cross-hybridization [35].
+Genotyping procedure. As previously reported [14], GeneChip
+Yeast Genome S98 microarrays were purchased from Affymetrix
+(Santa Clara, California, United States). Genomic DNA was isolatedand genotype-calling algorithms were performed as before on all 112
+F1 segregants [5]. The resulting genetic map of 3,312 markers covered
+more than 99% of the genome [5]. When genetic markers are sparse,
+interval mapping methods [36] can be used to impute mixtures of
+pseudo-markers in between known observed markers in an attemptto increase power to detect linkage. However, more than 90% of
+adjacent markers have ﬁve or less differences among the 112 progeny,
+and only 1,226 unique sets of alleles exist among the 3,312 typed. Inthis case, it sufﬁced to test for linkage only at these unique sets of
+alleles. The method proposed here is easily extended to the interval
+mapping paradigm.
+Exhaustive 2D test for linkage and epistasis. All pairs of loci were
+tested for linkage to a given trait based on an F-statistic comparingthe least ﬁtted two-locus full model to the null model of no linkage. In
+order to ease the computational burden, we considered only 613
+equally spaced loci and we did not consider any pairs of loci locatedon the same chromosome. For each trait, the pair of loci with the
+largest F-statistic was selected. A p-value was calculated for each
+PLoS Biology | www.plosbiology.org August 2005 | Volume 3 | Issue 8 | e267 0007
+Linkage Analysis of Genomewide ExpressionPLoS Biology | www.plosbiology.org August 2005 | Volume 3 | Issue 8 | e267 0008
+Linkage Analysis of Genomewide Expressionselected pair by using a standard permutation technique [25]: the
+ordering of the arrays was randomly permuted, and a new maximal F-
+statistic was recorded for each trait. Five permutations were carriedout, and the p-value was calculated as the frequency of simulated null
+F-statistics that exceed the observed statistic. Note that in doing this,the null F-statistics were pooled across traits (giving 5 36,216 null
+statistics). This can be justiﬁed by noting that the F-statistic is a
+pivotal statistic and the number of observations (112) is reasonably
+large. For the test of epistasis, an F-statistic was formed for each pairof loci that compared the full model ﬁt to a purely additive model ﬁt,which directly tests for an interaction between the two loci. For eachtrait, the pair of loci with the largest F-statistic was selected. Incalculating p-values, a similar permutation technique was performed
+that also takes into account the fact that the null model is the additive
+model [26]. The p-values were corrected for multiple testing by
+employing the FDR [27,28].
+Comparison between 2D and sequential selection procedures. In
+order to compare the power of the 2D and sequential selectionprocedures, the sequential locus selection procedure (describedbelow) was also performed exactly as above, on the same loci, the
+same null permutations, etc. Therefore, the only aspect compared is
+the exact procedure used to choose a pair of loci. The p-values were
+obtained from a test against the null hypothesis of no linkage and atest against the null hypothesis of no epistasis. These were comparedbetween the two procedures, and the sequential procedure showedmore power in both scenarios (see Results).
+Sequential selection of locus pairs. For each ﬁxed trait i,the
+primary locus was chosen as the one showing the most single linkage
+to the trait. Speciﬁcally, an F-statistic was calculated for each locusthat compares the goodness of ﬁt of the least squares model underthe case of no linkage to the least squares model under the case that asingle locus is linked. The secondary locus is similarly chosen byﬁtting a least squares model of trait ion its primary locus and each
+additional locus under the full two-locus model (which includes their
+additive terms and an interaction term). The locus showing the bestimprovement in ﬁt, again quantiﬁed by a standard F-statistic, ischosen as the secondary locus. Although pairs of loci residing on thesame chromosome were not considered in the comparison to theexhaustive 2D search approach, we place no restriction on loci in the
+main proposed method, i.e., all available loci are considered at each
+stage of the sequential selection.
+Calculation of observed and null statistics used to estimate locus-
+speciﬁc linkage probabilities. Let F
+i1be the maximal F-statistic
+corresponding to the primary locus for each trait i¼1,..., 6,216. Let
+Fi2be the maximal F-statistic corresponding to the secondary locus
+for each trait i¼1,..., 6,216. In general, Lloci may be sequentially
+selected and F ijanalogously calculated, j¼1,...,L .
+Statistics from the null distributions were simulated by randomly
+permuting the ordering of the arrays and calculating a new maximalF-statistic for each trait [25]. For the secondary locus nulldistribution, the permutations take place within each segregantgroup corresponding to the primary locus, which takes into account
+the fact that the null distribution on the secondary locus statistics is
+calculated under the assumption that the primary locus is truly linked[26]. Five permutations were carried out for each selection stage toyield sets of null statistics F
+i10band Fi20bfor i¼1,..., 6,216 and
+b¼1,..., 5. The null F-statistics corresponding to a given locus
+selection stage were pooled across traits, yielding 5 36,216 null
+statistics. This can be justiﬁed again by noting that the F-statistic is an
+asymptotically pivotal statistic and the number of observations (112)is reasonably large.
+Nonparametric estimation of locus-speciﬁc and joint-linkage
+probabilities. The observed F
+ijand null Fi10bare directly used to
+estimate the locus-speciﬁc linkage probabilities. Deﬁne ‘ij¼1 if the
+jth marker chosen for trait iis linked, and ‘ij¼0 if no linkage exists; i
+¼1,..., 6,216 and j¼1,...,L. A standard Bayesian analysis would
+parameterize a model for the data and also assign prior probabilitiesto the ‘
+i1,‘i2,...,‘iL. Since there is an enormous amount of data
+available, we can avoid making some of these assumptions. Let Fijbe
+the statistic corresponding to the jth locus chosen for trait i. First, wereplace Pr(‘ij¼1j‘i1¼1,...,‘i,j/C01¼1, Data) with Pr(‘ij¼1j‘i1¼1,
+...,‘i,j/C01¼1,Fij) which may lead to a loss of information at the cost of
+making less assumptions. The Fijand F ij0bare calculated under the
+assumption that ‘i1¼1,...,‘i,j/C01¼1 so this is a coherent formulation.
+All of the information shown in Figure 2 is not needed in order to
+simply estimate the locus-speciﬁc linkage probabilities. There areessentially only two components that need to be estimated. Take, forexample, the calculation of the primary locus probability of linkage,and suppose that the null and alternative distributions of F
+i1have
+probability density functions g0and g1, respectively. Then if p0of the
+primary loci are not linked and p1are linked, a randomly selected Fi1
+follows the mixture density g ¼p0g0þp1g1. (The density functions g0
+and g1and prior probabilities p0andp1are not assumed to be the
+same at each locus selection stage. Also, if Fi1j‘i1differ between the
+traits, one can view g0and g1as the average of these.) According to
+Bayes theorem, the posterior probability of linkage for the primarylocus is
+Prð‘
+i1¼1jFi1Þ¼p1g1ðFi1Þ
+p0g0ðFi1Þþp1g1ðFi1Þ
+¼1/C0p0g0ðFi1Þ
+p0g0ðFi1Þþp1g1ðFi1Þ: ð5Þ
+Since Fi1are observations from g¼p0g0þp1g1function, and the
+simulated null F0b
+i1are observations from g0, these two sets of statistics
+can be used to estimate the likelihood ratio g0/g, where we deﬁne R(F)
+¼g0(F)/g(F). Anderson and Blair [37] have shown that with a ﬁxed
+number of observations from two probability densities, it is valid toestimate their likelihood ratio by performing a logistic regressionwhere, say, the F
+i1are called ‘‘successes ’’and the F0b
+i1are called
+‘‘failures. ’’Methods to perform this logistic regression with a
+nonparametric link function ha ve been previously developed
+[37,38]. Using this technique, we form an estimate of the likelihoodratio function denoted by ^R. Speciﬁcally, the link function is
+parameterized by a natural cubic spline as previously described[38], with 6,216 knots evenly distributed among all observed and nullstatistics. A similar procedure has been applied in several applica-tions, for example, in identifying differentially expressed genes [39].
+The quantity p
+0is estimated by
+^p0ðcÞ¼fFi1/C20c;i¼1;...;6216 g
+fF0b
+i1/C20c;i¼1;...;6216 ;b¼1;...;5g=5ð6Þ
+This estimate was originally formulated for use in estimating p-value
+based FDRs [27,28]. It is strai ghtforward to show under our
+assumptions that the expected value of ^p0ðcÞis greater than or equal
+top0, thus providing a conservative estimate. Adjusting the tuning
+parameter callows one to balance bias and variance in the estimate.
+In order to automatically deal with the choice of c, we smoothed over
+a range of cusing a technique previously described [28]. In this
+context, another estimate of p0has been suggested as 1 =max F^RðFÞ
+[39]; however, we found this to be much too unstable. For the primaryloci we estimate ^p
+0¼15%, and for the secondary loci ^p0¼59%. The
+overall primary locus linkage probability estimate is then
+^Prð‘i1¼1jData Þ¼1/C0^p0^RðFi1Þð 7Þ
+fori¼1, . . . , 6,216. The secondary locus linkage probability estimate
+(and any subsequently selected locus) is formed analogously based onits observed statistics F
+i2and simulated null statistics F0b
+i2. Finally, the
+two-locus joint-linkage probability is estimated by
+^Prð‘i1¼1;‘i2¼1jData Þ
+¼ ^Prð‘i1¼1jData Þ3^Prð‘i2¼1j‘i1¼1;Data Þ: ð8Þ
+FDR estimation. We ranked the traits for signiﬁcance by the
+magnitude of the ^Prð‘i1¼1;‘i2¼1jData Þand chose signiﬁcance
+cut-offs by calling all trait-locus pair combinations signiﬁcant thathave ^Prð‘
+i1¼1;‘i2¼1jData Þ/C21kfor some k. Let Skbe the set of
+traits called signiﬁcant with this threshold and Skbe the number ofFigure 3. A Plot of the Locus Pair Positions Corresponding to the 170 Traits Significant for Joint Linkage
+(A) A plot of the significant locus pair positions when each chromosome has been partitioned into equally sized bins less than or equal to 550 kb. The
+number of significant traits showing linkage to locus pairs in each pair-wise bin is denoted. The number on each axis indicates the chromosome
+number; a dash denotes a bin division.
+(B) A plot constructed analogously to (A), except bins less than or equal to 50 kb are used, and only bins with three or more traits significant for jointlinkage are numbered.
+DOI: 10.1371/journal.pbio.0030267.g003
+PLoS Biology | www.plosbiology.org August 2005 | Volume 3 | Issue 8 | e267 0009
+Linkage Analysis of Genomewide Expressiontraits called signiﬁcant. Deﬁning a trait to be a false discovery if
+either locus is a false positive, we estimated the FDR by
+^FDR ðSkÞ¼estimated number of traits that are false discoveries
+total number of traits called significant
+¼X
+i2Sk1/C0^Prð‘i1¼1;‘i2¼1jData Þ
+jSkj: ð9Þ
+Setting k¼0.84, we estimate the FDR to be 10%. The estimate can
+be generalized to Lloci by simply replacing ^Prð‘i1¼1;‘i2¼1jData Þ
+with ^Prð‘i1¼1;...;‘iL¼1jData Þ. This procedure can also be made
+more general by noting that any thresholding rule may be used. For
+example, if one wants to consider traits where both locus-speciﬁc
+linkage probabilities reach a certain level, one may deﬁne Skby those
+traits where min½^Prð‘i1¼1jData Þ;^Prð‘i2¼1j‘i1¼1;Data Þ/C138 /C21k. Sup-
+pose that one wants to guarantee that ^FDR ðSkÞ/C205%, but it is
+unknown how many loci Lto choose for each trait. Deﬁne
+^Li¼argmaxL^Prð‘i1¼1;...;‘iL¼1jData Þ/C210:95; if this is not true
+for any value set ^Li¼0. Calling all traits iand top ^Liloci jointly linked
+(among traits with ^Li.0), then it follows that ^FDR /C205% over this set.
+Rather than motivating this estimate of the FDR from a model-
+based Bayesian framework [40,41], we can justify it from the morecommon frequentist viewpoint. The FDR is usually estimated among
+multiple hypothesis tests where the null hypothesis is simple (i.e.,
+contains only one parameter value). However, here the null
+hypothesis consists of the three scenarios where ð‘
+i1¼0;‘i2¼0Þ,
+ð‘i1¼0;‘i2¼1Þ, and ð‘i1¼1;‘i2¼0Þ. Using previously developed
+theory [30], it follows that
+FDRðSÞ¼Prð‘i1¼0o r ‘i2¼0ji2SÞ
+¼expected number of false discovery traits in S
+expected number significant traits in S: ð10Þ
+In situations where the FDR can be written in this way, it has been
+shown in a variety of scenarios that estimates of the form
+^FDR ðSÞ¼estimate of the expected number of false discovery traits in S
+observed number of significant traits in S:ð11Þ
+control the FDR as long as the estimated number of expected false
+discoveries is conservative as the number of traits gets large [42].Speciﬁcally, we can consider the ^Prð‘
+i1¼1;‘i2¼1jData Þto be
+random variables and view the numerator and denominator of the
+estimate to be based on the empirical distribution function of these
+random variables. It has been shown that as long as the empirical
+distribution function converges properly, then the above FDRestimate is conservative not only at a ﬁxed threshold, but also at all
+adaptively chosen thresholds [42]. The main hurdle to overcome
+beyond this existing theory [42] is to show that ^RðFÞis a consistent
+estimate of g
+0(F)/g(F) in such a way that the convergence of the
+empirical distribution function is not adversely affected. Nonpara-
+metric logistic regression is quite ﬂexible and provides consistentestimates in a fairly general sense as long as the smoothness of the
+link function decreases at a proper rate [38]. Thus, a reasonably
+general frequentist justiﬁcation of our approach based on existing
+theory appears to be within reach. A battery of simulations (data not
+shown) indicates that our proposed approach provides reliablesigniﬁcance estimates in a variety of scenarios.Comparison between 1D linkage scan and proposed method. In a
+traditional 1D linkage scan, a statistic is calculated at each markerand a signiﬁcance threshold is applied to these in order to ﬁndmarkers showing signiﬁcant linkage. It is possible that more than onelinkage statistic will exceed the threshold. Therefore, one could viewthis procedure as a multiple locus linkage analysis. We compared thisapproach to our proposed method by thresholding the two toplinkage peaks for each trait. (Peaks were considered to be distinct ifthey lay on different chromosomes.) A p-value was calculated for each
+trait under the alternative hypothesis that both peaks are truelinkages, making the hypothesis test equivalent to ours. Speciﬁcally,
+thep-value was deﬁned to be the probability that a statistic exceeded
+the minimum of the two peaks under the case of no linkage. The p-
+values were then used to estimate the FDR at various signiﬁcance cut-offs [28]. Since this 1D approach does not take into account anyinteraction between the two loci, we compared it to our proposedmethod when using a purely additive model in order to select loci. Wefound that our method yields 3.3 to 8.7 times more linkages at FDRcut-offs ranging from 1% to 10%.
+Supporting Information
+Table S1. Information about the 170 Traits That Possess Joint
+Linkage at FDR Less Than or Equal to 10%
+The ‘‘q-value-Joint ’’column gives the q-value for joint linkage,
+where a q-value is the FDR analog of the p-value. In the ‘‘Cis ’’
+column, zero denotes no cislinkage, one denotes cislinkage to the
+primary locus (locus 1), and two denotes cislinkage to the secondary
+locus (locus 2).
+Found at DOI: 10.1371/journal.pbio.0030267.st001 (44 KB PDF).
+Table S2. Linkages That Cluster according to the Pair-Wise Position
+of the Two Loci
+The genome was split into 50-kb pair-wise bins, and the number of
+signiﬁcant linkages at FDR less than or equal to 10% falling into eachbin was recorded. For any bin containing more than three linkages,the exact marker positions and expression traits are listed below.
+Found at DOI: 10.1371/journal.pbio.0030267.st002 (49 KB PDF).
+Accession Numbers The expression data reported in this paper have
+been deposited in the Gene Expression Omnibus (GEO) (http://www.ncbi.nlm.nih.gov/geo) database (GSE1990).
+Acknowledgments
+This work was supported in part by NIH grants R01 HG002913–01(JDS) and R37 MH59520–06 (LK), National Science FoundationPostdoctoral Fellowship 0305916 (JMA), and by the Howard HughesMedical Institute (LK). LK is a James S. McDonnell Centennial Fellow.We thank J. Whittle for generating microarray data, R. Brem forseveral useful discussions, and three anonymous referees for helpfulcomments on the manuscript.
+Competing interests. The authors have declared that no competing
+interests exist.
+Author contributions. JDS, JMA, and LK conceived and designed
+the experiments, analyzed the data, and wrote the paper.
+&
+References
+1. Schena M, Shalon D, Davis RW, Brown PO (1995) Quantitative monitoring
+of gene expression patterns with a complementary DNA microarray.
+Science 270: 467–470.
+2. Lockhart DJ, Dong H, Byrne MC, Follettie MT, Gallo MV, et al. (1996)
+Expression monitoring by hybridization to high-density oligonucleotidearrays. Nat Biotech 14: 1675–1680.
+3. MacBeath G, Schreiber SL (2000) Printing proteins as microarrays for high-
+throughput function determination. Science 289: 1760–1763.
+4. Lan H, Stoehr JP, Nadler ST, Schueler KL, Yandell BS, et al. (2003)
+Dimension reduction for mapping mrna abundance as quantitative traits.
+Genetics 164: 1607–1614.
+5. Brem RB, Yvert G, Clinton R, Kruglyak L (2002) Genetic dissection of
+transcriptional regulation in budding yeast. Science 296: 752–755.
+6. Schadt EE, Monks SA, Drake TA, Lusis AJ, Che N, et al. (2003) Genetics of
+gene expression surveyed in maize, mouse, and man. Nature 422: 297–302.
+7. Yvert G, Brem RB, Whittle J, Akey JM, Foss E, et al. (2003) Trans-actingregulatory variation in Saccharomyces cerevisiae and the role of transcription
+factors. Nat Genet 35: 57–64.
+8. Cowles CR, Hirschhorn JN, Altshuler D, Lander ES (2002) Detection of
+regulatory variation in mouse genomes. Nat Genet 32: 432–437.
+9. Oleksiak MF, Churchill GA, Crawford DL (2002) Variation in gene
+expression within and among natural populations. Nat Genet 32: 261–266.
+10. Jin W, Riley RM, Wolﬁnger RD, White KP, Passador-Gurgel G, et al. (2002)
+The contributions of sex, genotype and age to transcriptional variance inDrosophila melanogaster . Nat Genet 29: 389–395.
+11. Yan H, Yuan W, Velculescu VE, Vogelstein B, Kinzler KW (2002) Allelic
+variation in human gene expression. Science 297: 1143.
+12. Rockman MV, Wray GA (2002) Abundant raw material for cis-regulatory
+evolution in humans. Mol Biol Evol 19: 1991–2004.
+13. Cheung VG, Conlin LK, Weber TM, Arcaro M, Jen KY, et al. (2003) Natural
+variation in human gene expression assessed in lymphoblastoid cells. NatGenet 33: 422–425.
+14. Brem RB, Kruglyak L (2005) The landscape of genetic complexity across 5700
+gene expression traits in yeast. Proc Natl Acad Sci U S A 102: 1572–1577.
+PLoS Biology | www.plosbiology.org August 2005 | Volume 3 | Issue 8 | e267 0010
+Linkage Analysis of Genomewide Expression15. Zeng ZB, Kao CH, Basten CJ (1999) Estimating the genetic architecture of
+quantitative traits. Genet Res 74: 279–289.
+16. Ball RD (2001) Bayesian methods for quantitative trait loci mapping based
+on model selection: Approximate analysis using the Bayesian information
+criterion. Genetics 159: 1351–1364.
+17. Piepho HP, Gauch HG (2001) Marker pair selection for mapping
+quantitative trait loci. Genetics 157: 433–444.
+18. Broman KW, Speed TP (2002) A model selection approach for the
+identiﬁcation of quantitative trait loci in experimental crosses (with
+discussion). J R Stat Soc [Ser B] 64: 641–656.
+19. Zeng ZB (1993) Theoretical basis for separation of multiple linked gene
+effects in mapping quantitative trait loci. Proc Natl Acad Sci U S A 90:
+10972–10976.
+20. Jansen R (1993) A general mixture model for mapping quantitative trait
+loci by using molecular markers. Theor Appl Genet 85: 252–260.
+21. Zeng ZB (1994) Precision mapping of quantitative trait loci. Genetics 136:
+1457–1468.
+22. Jansen RC, Stam P (1994) High resolution of quantitative traits into
+multiple loci via interval mapping. Genetics 136: 1447–1455.
+23. Kao CH, Zeng ZB, Teasdale RD (1999) Multiple interval mapping for
+quantitative trait loci. Genetics 152: 1203–1216.
+24. Lynch M, Walsh B (1998) Genetics and analysis of quantitative traits.
+Sunderland (Massachusetts): Sinauer. 980 p.
+25. Churchill GA, Doerge RW (1994) Empirical threshold values for quantita-
+tive trait mapping. Genetics 138: 963–971.
+26. Doerge RW, Churchill GA (1996) Permutation tests for multiple loci
+affecting a quantitative character. Genetics 142: 285–294.
+27. Storey JD (2002) A direct approach to false discovery rates. J R Stat Soc [Ser
+B] 64: 479–498.
+28. Storey JD, Tibshirani R (2003) Statistical signiﬁcance for genome-wide
+studies. Proc Natl Acad Sci U S A 100: 9440–9445.
+29. Frankel WN, Schork NJ (1996) Who’s afraid of epistasis? Nat Genet 14: 371–
+373.30. Storey JD (2003) The positive false discovery rate: A Bayesian interpreta-
+tion and the q-value. Annals of Statistics 31: 2013–2035.
+31. Morley M, Molony CM, Weber TM, Devlin JL, Ewens KG, et al. (2004)
+Genetic analysis of genome-wide variation in human gene expression.
+Nature 430: 743–747.
+32. Brem RB, Storey JD, Whittle J, Kruglyak L (2005) Genetic interactions
+between polymorphisms that affect gene expression in yeast. Nature: In
+press.
+33. Tanaka K, Matsumoto K, Tohe A (1989) IRA1, an inhibitory regulator of the
+RAS-cyclic AMP pathway in Saccharomyces cerevisiae . Mol Cell Biol 9: 757–768.
+34. Fazzio TG, Kooperberg C, Goldmark JP, Neal C, Basom R, et al. (2001)
+Widespread collaboration of Isw2 and Sin3-Rpd3 chromatin remodeling
+complexes in transcriptional repression. Mol Cell Biol 21: 6450–6460.
+35. Talla E, Tekaia F, Brino L, Dujon B (2003) A novel design of whole-genome
+microarray probes for Saccharomyces cerevisiae which minimizes cross-
+hybridization. BMC Genomics 4: 38.
+36. Lander ES, Botstein D (1989) Mapping mendelian factors underlying
+quantitative traits using RFLP linkage maps. Genetics 121: 185–199.
+37. Anderson JA, Blair V (1982) Penalized maximum likelihood estimation in
+logistic regression and discrimination. Biometrika 69: 123–136.
+38. Green PJ, Silverman BW (1994) Nonparametric regression and generalized
+linear models: A roughness penalty approach. New York: Chapman andHall. 182 p.
+39. Efron B, Tibshirani R, Storey JD, Tusher V (2001) Empirical Bayes analysis
+of a microarray experiment. J Am Stat Assoc 96: 1151–1160.
+40. Genovese C, Wasserman L (2002) Bayesian and frequentist multiple
+hypothesis testing. Bayesian Statistics 7: 145–162.
+41. Newton MA, Noueiry A, Sarkar D, Ahlquist P (2004) Detecting differential
+gene expression with a semiparametric hierarchical mixture method.
+Biostatistics 5: 155–176.
+42. Storey JD, Taylor JE, Siegmund D (2004) Strong control, conservative point
+estimation, and simultaneous conservative consistency of false discovery
+rates: A uniﬁed approach. J R Stat Soc [Ser B] 66: 187–205.
+PLoS Biology | www.plosbiology.org August 2005 | Volume 3 | Issue 8 | e267 0011
+Linkage Analysis of Genomewide Expression

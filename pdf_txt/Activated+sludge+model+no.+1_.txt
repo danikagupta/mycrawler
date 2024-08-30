@@ -1,0 +1,405 @@
+ 1 A General Description of the Activated Sludge 
+Model No. 1 (ASM1) 
+ 
+This text is primarily taken (with permission) from the PhD thesis 
+U. Jeppsson (1996). Modelling aspects of wastewater treatment processes. Lund 
+Institute of Technology, ISBN 91-88934-00-4   
+Introduction 
+ 
+In 1983, the International Association on Water Quality
+1 (IAWQ, formerly 
+IAWPRC) formed a task group, which was to promote development, and facilitate the application of, practical models for design and operation of biological wastewater treatment systems. The first goal was to review existing models and the second goal was to reach a consensus concerning the simplest mathematical model having the capability of realistically predicting the performance of single-sludge systems carrying out carbon oxidation, nitrification and denitrification. The final result was presented in 1987. Today the model is named Activated Sludge Model No 1, abbreviated ASM1 .  
+ Although the model has been extended since then, for example to incorporate more fractions of COD to accommodate new experimental observations to describe growth and population dynamics of floc forming and filamentous bacteria to include new processes for describing enhanced biological phosphorus 
+removal
+2, the original model is probably still the most widely used for 
+describing WWT processes all over the world. Due to its major impact on the WWT community it deserves some extra attention and it can still be considered as a ‘state-of-the-art’ model when biological phosphorus removal is not considered.  Many basic concepts were adapted from an earlier model called the University of Cape Town (UCT) model. Important concepts adapted were the bisubstrate 
+hypothesis  and the death-regeneration hypothesis . In accordance with practical 
+experiments, it was proposed that the biodegradable COD in the influent 
+wastewater consisted of two fractions: readily and slowly biodegradable COD. This was the bisubstrate hypothesis presented around 1980. The readily biodegradable COD was assumed to consist of simple molecules able to pass through the cell wall and immediately be used for synthesis by the organisms. The slowly biodegradable COD, which consisted of larger complex molecules, were enmeshed by the sludge mass, adsorbed and then required extracellular 
+                                                
+1 The organisation is now called International Water Association IWA. 
+2 This model is called ASM2.  2 enzymatic breakdown (often referred to as hydrolysis ) before being transferred 
+through the cell wall and used for metabolism. The above approach was claimed 
+to significantly improve the model predictions of the process under cyclic load 
+and flow conditions.  The death-regeneration hypothesis was introduced in an attempt to single out the different reactions that take place when organisms die. The traditional 
+endogenous respiration concept described how a fraction of the organism mass 
+disappeared to provide energy for maintenance. However, practical experiments with varying anaerobic and aerobic conditions in a reactor showed that the endogenous respiration model was not satisfactory. It could not explain the rapid oxygen uptake rate that occurred when a reactor was made aerobic after an anaerobic period. In the death-regeneration model, the decayed cell material was released through lysis. One fraction was non-biodegradable and remained as an inert residue while the remaining fraction was considered to be slowly biodegradable. It could thus return to the process and be used by the remaining organisms as substrate through hydrolysis, consequently providing an explanation to the observation described above as a build up of biodegradable material during the anaerobic period.  Besides the carbonaceous conversion aspects described above, it was shown in 1981 that the bisubstrate and death-regeneration approach could be integrated in 
+a consistent manner with the transformations of nitrogen. 
+  In similarity to the UCT model, the Monod relationship was used to describe the growth rate of both heterotrophic and autotrophic organisms. COD was selected as the suitable parameter for defining the carbon material as it provides a link between electron equivalents in the organic substrate, the biomass and the oxygen utilized. Furthermore, mass balances can be made in terms of COD. 
+ 
+Some substantial modifications were also proposed by the IAWQ task group with regard to the UCT model in terms of the enmeshment-adsorption (storage) and in the solubilization (hydrolysis) concepts. The task group rejected the view that the biodegradable particulate COD was adsorbed and stored on the organism mass. Instead they proposed that the enmeshed biodegradable material was hydrolysed to readily biodegradable COD, and released to the bulk liquid by the action of extracellular enzymes secreted by the organism mass. With regard to denitrification, the group separated the processes of hydrolysis and growth. Finally, the fate of the organic nitrogen and source of organic nitrogen for synthesis were treated somewhat differently. The task group also introduced the concept of switching functions to gradually turn process rate equations on and off as the environmental conditions were changed (mainly between aerobic  3 and anoxic conditions). The switching functions are ‘Monod-like’ expressions 
+that are mathematically continuous and thereby reduce the problems of 
+numerical instability during simulations. Furthermore, the work of the group 
+promoted the structural presentation of biokinetic models via a matrix format, which was easy to read and understand, and consolidated much of the existing knowledge on the activated sludge process (ASP). The ASM1 in the matrix format is given in the end of this document.  
+ 
+As a comparison, the fourteen process equations of the UCT model were reduced to eight in the ASM1 whereas the number of state variables was only reduced by one (from fourteen to thirteen). An evaluation of the two models revealed more or less identical predictions under most operating conditions when the models had been properly calibrated.   
+State Variables – COD Components in ASM1  
+ 
+The carbon material in ASM1 is divided into biodegradable COD, non-biodegradable COD (inert material) and biomass, see Figure 1. Note that a soluble component is denoted S and a particulate component is denoted X. The biodegradable COD is further divided into readily biodegradable substrate (S
+S) and slowly biodegradable substrate ( XS). The readily biodegradable 
+substrate is hypothesized to consist of simple soluble molecules that can be 
+readily absorbed by the organisms and metabolized for energy and synthesis, whereas the slowly biodegradable substrate is assumed to be made up of particulate/colloidal/complex organic molecules that require enzymatic breakdown prior to absorption and utilization. Note that a fraction of the slowly biodegradable substrate may actually be soluble although it is treated as a particulate material in the model. The non-biodegradable COD is divided into soluble ( S
+I) and particulate ( XI) material. Both are considered to be unaffected 
+by the biological action in the system. The inert soluble material leaves the 
+system by the secondary clarifier effluent, whereas the inert particulate material is enmeshed in the sludge mass and accumulates as inert VSS (volatile suspended solids). The inert particulate material will be removed from the system by the removal of excess sludge and to some extent be present in the settler effluent as well. Moreover, the active biomass is divided into two types of organisms: heterotrophic biomass ( X
+B,H) and autotrophic biomass ( XB,A). 
+Finally, an extra state variable ( XP) for modelling the inert particulate products 
+arising from biomass decay is included.  In summary, the total COD balance of ASM1 is given by  
+COD
+tot= S I+ SS + XS+ XB,H + XB,A + XI+ XP  4  
+Note that from a practical point, XI and XP may be merged to one variable. 
+ 
+ 
+Total CO D
+Biodegradab le
+CODActive ma ss
+CODNonbiode g.
+COD
+Soluble
+SSParticulat e
+XSHeterotroph s
+XB,HAutotroph s
+XB,A
+Soluble
+SIParticulat e
+XI & XP
+ 
+ 
+Figure 1.  COD components in ASM1.  
+ 
+  
+State Variables – Nitrogen Components in ASM1  
+ 
+The nitrogenous material in the wastewater is divided according to Figure 2. Based on measurements of total Kjeldahl nitrogen (TKN), the nitrogen is divided into ammonia nitrogen ( S
+NH), organically bound nitrogen and active 
+mass nitrogen, that is, a fraction of the biomass which is assumed to be nitrogen. Similar to the division of the organic material, the organically bound nitrogen is divided into soluble and particulate fractions, which in turn may be biodegradable or non-biodegradable. It should be noted that only particulate biodegradable organic nitrogen ( X
+ND) and soluble biodegradable organic 
+nitrogen ( SND) are explicitly included in the model. The active mass nitrogen 
+(XNB) is included in the model only in the sense that decay of biomass will lead 
+to a production of particulate biodegradable organic nitrogen. Organic nitrogen associated with the inert organic particulate products ( X
+NP) and the inert organic 
+particulate matter ( XNI) can easily be calculated, although not described in the 
+model matrix. Finally, the nitrification of ammonia to nitrate nitrogen ( SNO) is 
+considered as a single step process.   5 Total Kjeldahl N
+TKN
+Free & salin e
+ammonia, SNHActive mass N
+XNBOrganical ly
+bound N
+SNDSoluble
+organic NParticulat e
+organic NNitrate &
+nitrite N, SNO
+Nonbiodeg. N
+SNINonbiodeg. N
+XNI & XNPBiodeg.
+NXND
+ 
+ 
+Figure 2. Nitrogen components in ASM1.  
+ 
+   
+State Variables – Other Components in ASM1  
+ 
+The last two components described in the ASM1 are the dissolved oxygen concentration ( S
+O), expressed as negative COD, and the alkalinity ( SALK). 
+The alkalinity does not affect any other processes in the model.   
+Dynamic Processes  
+ 
+The different processes incorporated in the ASM1 are briefly described below.  
+ Aerobic growth of heterotrophic biomass X
+B,H: A fraction of the readily 
+biodegradable substrate (S S) is used for growth of heterotrophic biomass and the 
+balance is oxidized for energy giving rise to an associated oxygen demand. The 
+growth is modelled using Monod kinetics. Ammonia is used as the nitrogen source for synthesis and incorporated into the cell mass. Both the concentration of S
+S and SO may be rate limiting for the growth process. This process is 
+generally the main contributor to the production of new biomass and removal of COD. 
+  6 Anoxic growth of heterotrophic biomass (denitrification) : In the absence of 
+oxygen the heterotrophic organisms are capable of using nitrate as the terminal 
+electron acceptor with SS as substrate. The process will lead to a production of 
+heterotrophic biomass and nitrogen gas (denitrification). The nitrogen gas is a result of the reduction of nitrate with an associated alkalinity change. The same Monod kinetics as used for the aerobic growth is applied except that the kinetic 
+rate expression is multiplied by a factor 
+ηg (<1). This reduced rate could either 
+be caused by a lower maximum growth rate under anoxic conditions or because 
+only a fraction of the heterotrophic biomass is able to function with nitrate as electron acceptor. Ammonia serves as the nitrogen source for cell synthesis. 
+  
+ Aerobic growth of autotrophic biomass X B,A (nitrification) : Ammonia is 
+oxidized to nitrate via a single-step process (nitrification) resulting in production 
+of autotrophic biomass and giving rise to an associated oxygen demand. Ammonia is also used as the nitrogen source for synthesis and incorporated into the cell mass. The process has a marked effect on the alkalinity (both from the conversion of ammonia into biomass and by the oxidation of ammonia to nitrate) and the total oxygen demand. The effect on the amount of formed biomass is small as the yield of the autotrophic nitrifiers is low. Once again the growth rate is modelled using Monod kinetics. 
+ 
+ Decay of heterotrophic biomass : The process is modelled according to the 
+death-regeneration hypothesis. The organisms die at a certain rate and a portion 
+of the material is considered to be non-biodegradable and adds to the X P 
+fraction. The remainder adds to the pool of slowly biodegradable substrate (X S). 
+The organic nitrogen associated with the XS becomes available as particulate 
+organic nitrogen. No loss of COD is involved and no electron acceptor is utilized. The process is assumed to continue with the same rate under aerobic, anoxic and anaerobic conditions. 
+ 
+Decay of autotrophic biomass : The process is modelled in the same way as 
+used to describe decay of heterotrophs. 
+ 
+ Ammonification of soluble organic nitrogen : Biodegradable soluble organic 
+nitrogen is converted to ammonia in a first-order process mediated by the active heterotrophs. 
+ 
+ Hydrolysis of entrapped organics : Slowly biodegradable substrate (X S) 
+enmeshed in the sludge mass is broken down extracellularly, producing readily 
+biodegradable substrate (S S) available to the organisms for growth. The process 
+is modelled on the basis of surface reaction kinetics and occurs only under 
+aerobic and anoxic conditions. The rate of hydrolysis is reduced under anoxic 
+conditions compared with aerobic conditions by a factor ηh (<1). The rate is also  7 first-order with respect to the heterotrophic biomass present but saturates as the 
+amount of entrapped substrate becomes large in proportion to the biomass. 
+ 
+ Hydrolysis of entrapped organic nitrogen : Biodegradable particulate organic 
+nitrogen is broken down to soluble organic nitrogen at a rate defined by the hydrolysis reaction for entrapped organics described above.   
+Model Parameters  
+ 
+The selection of values for the kinetic and stoichiometric coefficients of a 
+mathematical model is known as model calibration. In the case of activated 
+sludge models, the calibration has traditionally been carried out through specific and well-controlled experiments at pilot and bench-scale plants assuming constant operating conditions. However, the values obtained in such a way may not be totally reliable for two prime reasons. The first reason being the difficulty of configuring and operating a small-scale plant in exactly the same way as a 
+full-scale plant and thereby introducing a risk of changing the behaviour of the 
+microorganism population and also the conditions that influence the values of the parameters which should be determined. The second reason is that the experiments and calculations are often based on the fact that the coefficients are constants. Since the experiments may take several days or even weeks to perform, they are not carried out very often. Many of the parameters are time variant and some of them may change considerably over a limited period of time. Factors such as plant configuration, operating conditions, microorganism population dynamics, degree of inhibition by toxic compounds, composition of the influent wastewater, temperature, pH, etc., all affect the values of the process parameters. The same type of problem is even more emphasized for characterizing the influent wastewater. While the parameters discussed above may change their values considerable over a period of a few days, the characteristics of the influent wastewater may change significantly within a few 
+hours. The fact that the influence of the influent wastewater composition on the 
+model behaviour is usually large, further amplifies these difficulties.  By examining the sensitivity, variability, and uncertainty of the model parameters, an indication is given as to which coefficients are most important to determine accurately. Such an investigation has been performed for ASM1. It states that for plants performing nitrification and denitrification, the model show little sensitivity with regard to the COD due to the long mean cell residence time. The parameters that are considered to be the most important ones for this type of process are the 
+ 
+  8  decay rate of heterotrophs; 
+ 
+ growth rate for anoxic growth of heterotrophs; 
+  maximum specific hydrolysis rate;   half-saturation coefficient for hydrolysis; 
+ 
+ correction factor for anoxic hydrolysis;   maximum specific growth rate of autotrophs. 
+ 
+It has also been demonstrated how different sets of parameter values may lead to approximately the same model behaviour. This is due to the fact that many model coefficients are correlated. It implies that parameters can often not be adjusted one by one, but rather a whole set must be tuned simultaneously. Some examples of such interrelations are given below. 
+ 
+ Growth rate and decay rate – increased growth and decay rate may produce an identical net growth rate but will increase the oxygen demand and speed up the 
+substrate cycling. 
+  Yield and growth rate – increased yield and growth rate may outbalance each other with respect to substrate conversion rate but will increase the oxygen consumption.   Yield and heterotrophs in the influent wastewater – high yield and a low concentration of heterotrophs in the influent wastewater is equal to a low yield 
+and a high concentration of heterotrophs in the influent. 
+ The situation outlined above is an indication that methods for identifying and estimating the non-measurable state variables and model parameters have to be employed. This should be done in order to extract all possible information from available on-line measurements as well as from laboratory investigations.  As an example, values for the model parameters suggested by the task group are presented in Table 1. Note that many parameter values are strongly influenced by the environmental conditions and should be regarded more as average values indicating a reasonable order of magnitude. As a comparison, values commonly found in the literature are provided for some of the coefficients. 
+ 
+  9 Table 1.    Typical model parameter values at neutral pH. 
+ 
+ 
+IAWQ model parameters symbol unit 20 ˚C 10 ˚C literature Stoichiometric parametersHeterotrophic yield
+YH
+g cell COD formed (g COD oxidized)
+-1
+0.67 0.67 0.38-0.75Autotrophic yield
+YA
+g cell COD formed (g N oxidized)
+-1
+0.24 0.24 0.07-0.28Fraction of biomass yielding particulate products
+fP
+dimensionless 0.08 0.08 –Mass N/mass COD in biomass
+iXB
+g N (g COD)
+-1 in biomass 0.086 0.086 –Mass N/mass COD in products from biomass
+iXP
+g N (gCOD)
+-1 in endogenous mass 0.06 0.06 –Kinetic parametersHeterotrophic max. specific growth rate day
+-1
+ 
+6.0 3.0 0.6-13.2Heterotrophic decay rate
+bH
+day
+-1
+0.62 0.20 0.05-1.6Half-saturation coefficient (hsc) for heterotrophs
+K
+S
+g COD m
+-3
+20 20 5-225Oxygen hsc for heterotrophs
+K
+O,H
+g O
+2 m
+-3
+0.20 0.20 0.01-0.20Nitrate hsc for denitrifying heterotrophs
+K
+NO
+g NO
+3-N m
+-3
+0.50 0.50 0.1-0.5Autotrophic max. specific growth rate day
+-1
+ 
+0.80 0.30 0.2-1.0Autotrophic decay rate
+bA
+day
+-1
+0.20 0.10 0.05-0.2Oxygen hsc for autotrophs
+K
+O,A
+g O
+2 m
+-3
+0.4 0.4 0.4-2.0Ammonia hsc for autotrophs
+K
+NH
+g NH
+3-N m
+-3
+1.0 1.0 –Correction factor for anoxic growth of heterotrophsηg
+dimensionless 0.8 0.8 0.6-1.0Ammonification rate
+ka
+ m
+3 (g COD day)
+-1
+0.08 0.04 –Max. specific hydrolysis rate
+kh
+g slowly biodeg. COD (g cell COD day)
+-1
+3.0 1.0 –Hsc for hydrolysis of slowly biodeg. substrate
+K
+X
+g slowly biodeg. COD (g cell COD)
+-1
+0.03 0.01 –Correction factor for anoxic hydrolysisηh
+dimensionless 0.4 0.4 –ˆµ
+Hˆµ
+A
+  10 Model Equations  
+ 
+Based on the above description, we can now formulate the full set of ordinary 
+differential equations, making up the ASM1 (not taking the flow terms into consideration). Each model equation is written explicitly, in order to 
+demonstrate the full complexity which is somewhat hidden when using the 
+matrix format.  The dynamic behaviour of the heterotrophic biomass concentration is affected by three different processes; aerobic growth, anoxic growth and decay, see 
+column five in the process matrix at the end of this document. The rate of 
+change of X
+B,H is given by 
+ 
+HB H HB
+NO NONO
+O HOHO
+S SS
+Hg HB
+O HOO
+S SS
+HHBXb XS KS
+S KK
+S KSXS KS
+S KS
+dtdX
+, ,
+,,
+,
+,,−+ + +++ +=∧ ∧
+µη µ  
+  
+The situation for the autotrophic biomass concentration is simpler since the autotrophs do not grow in an anoxic environment. Reading from column six yields  
+AB A AB
+O AOO
+NH NHNH
+AABXb XS KS
+S KS
+dtdX
+, ,
+,,−+ +=∧
+µ  
+  (3.12) 
+ 
+The concentration of readily biodegradable substrate is reduced by the growth of heterotrophic bacteria (in both aerobic and anoxic conditions) and is increased 
+by hydrolysis of slowly biodegradable substrate. The differential equation 
+describing this is directly obtained from column two:   
+ 
+  11 The concentration of slowly biodegradable substrate is increased by the 
+recycling of dead bacteria according to the death-regeneration hypothesis and 
+decreased by the hydrolysis process according to column four: 
+ 
+ 
+ 
+The shortest model equation is the one describing the concentration of inert particulate products arising from biomass decay, which is obtained from column seven:  
+ 
+ 
+ The concentration of particulate organic nitrogen is increased by biomass decay and decreased by the hydrolysis process according to column 12:  
+ 
+ 
+The concentration of soluble organic nitrogen is affected by ammonification and hydrolysis, according to column 11. 
+ 
+The ammonia concentration is affected by growth of all microorganisms as 
+ammonia is used as the nitrogen source for incorporation into the cell mass, see column 10. The concentration is also decreased by the nitrification process and  12 increased as a result of ammonification of soluble organic nitrogen. This leads to 
+the following rather complex differential equation 
+ 
+ 
+ 
+The concentration of nitrate is only involved in two processes according to column nine. It is increased by nitrification and decreased by denitrification.   
+ 
+ 
+Finally, the oxygen concentration in the wastewater is reduced by the aerobic growth of heterotrophic and autotrophic biomass, according to column eight:  
+ 
+ 
+The equations above clearly show why the matrix format is preferred for describing this type of complex model. On the other hand, the matrix format may create an illusion for the non-experienced reader that, for example, the ASM1 is not very complex.  
+Some final comments regarding the ASM1 equations are required. The factor 
+2.86 in the stoichiometric expression for anoxic growth of heterotrophic biomass in column two, row two, is the oxygen equivalence for conversion of nitrate nitrogen to nitrogen gas and it is included to maintain consistent units on a COD basis. The value is theoretical and means that if all the organic matter added to the denitrification reactor were only converted to CO2 and H2O, it would require 1/2.86=0.35 gNO3–N for each gCOD removed.   13  
+Similarly, the 4.57 term in the stoichiometric expression for aerobic growth of 
+autotrophs in column eight, row 3, is the theoretical oxygen demand associated 
+with the oxidation of ammonia nitrogen to nitrate nitrogen, i.e., 4.57 gO2/gNH3–N is consumed. Due to the death-regeneration hypothesis used in the model, the heterotrophic decay rate is not the traditionally decay parameter used to describe endogenous decay, instead the value is significantly larger.  
+ 
+Note that the specific decay rate coefficient for autotrophic bacteria, b
+A, in the 
+ASM1, is numerically equivalent to the traditional decay rate constant. This 
+follows from the fact that the recycling of organic matter that results from decay occurs through the activity of the heterotrophic biomass and not by the 
+autotrophic biomass. Also the coefficient f
+P, representing the fraction of the 
+biomass that ends up as inert particulate products following decay, is affected by 
+the death-regeneration description. If the decay is modelled as endogenous decay, this value is usually assumed to be approximately 0.2 (i.e., 20%), 
+whereas the recycling of biomass by death-regeneration results in the use of a 
+significantly lower value in order to end up with the same amount of particulate inert mass.   
+Model Restrictions 
+ 
+A certain number of simplifications and assumptions must be made in order to 
+make a model of a WWT system practically useful. Some of these are associated 
+with the physical system itself, while others concern the mathematical model. A number of such restrictions concerning the ASM1 are summarized below.   The system operates at constant temperature. In order to allow for temperature variations an Arrhenius equation may, however, be used to adjust the model parameters within a certain region.   The pH is constant and near neutrality. The inclusion of alkalinity in the model allows the user to detect potential problems with pH control.   The coefficients in the rate expressions have been assumed to have constant values. This means that changes in the wastewater character cannot be properly 
+handled by the model (if not the rate expressions are made time varying). 
+  The effects of limitations of nitrogen, phosphorus and other inorganic nutrients on the removal of organic substrate and on cell growth have not been considered. Thus, care must be taken to be sure that sufficient quantities of inorganic nutrients are present to allow for balanced growth.   14  The correction factors for denitrification are fixed and constant for a given 
+wastewater. 
+ 
+ The coefficients for nitrification are assumed to be constant and to incorporate any inhibitory effects that other waste constituents are likely to have on them.   The heterotrophic biomass is homogeneous and does not undergo changes in 
+species diversity with time. This means that effects of substrate concentration 
+gradients, reactor configuration, etc. on sludge settleability is not considered.   The entrapment of particulate organic matter in the biomass is assumed to be instantaneous.   Hydrolysis of organic matter and organic nitrogen are coupled and occur simultaneously with equal rates.   The type of electron acceptor present does not affect the loss of active biomass by decay or the heterotrophic yield coefficient.  
+ 
+  
+ 
+ 
+ 
+    
+ 
+ 
+ 
+ 
+  15  
+The ASM1 – Matrix Format 
+ 
+ 16  
+  
+ 
+Further Readings and Model Developments 
+ 
+The key reference to ASM1 is 
+ 
+M. Henze, C. P. L. Grady Jr., W. Gujer, G. R. Marais and T. Matsuo (1987). Activated sludge 
+model no. 1. Scientific and Technical Report No. 1,IAWPRC}, London 
+ 
+Since the fundamental publication above, ASM1 has been described and applied 
+in numerous publications. The following two theses give thoroughly 
+descriptions of ASM1:  
+U. Jeppsson (1996). Modelling aspects of wastew ater treatment processes. Lund Institute of 
+Technology, Dept. of Industrial Electrical Eng. and Automation, ISBN 91-88934-00-4; 
+CODEN:LUTEDX/(TEIE-1010)/1-444/(1996). This thesis can be downloaded from 
+http://www.iea.lth.se/publications/point/Theses/pdf_files/LTH-IEA-1010.pdf 
+ 
+Petersen Britta (2000). Calibration, identifiability and optimal experimental design of 
+activated sludge models.  PhD. Thesis. Faculty of Agricultural and Applied Biological Sciences. Ghent University. This thesis can be downloaded from http://biomath.rug.ac.be/publications/download/petersenbritta_sum.pdf 
+ 
+As mentioned previously, ASM1 has been extended for biological phosphorus removal. This model is named ASM2 (a newer version also exists, ASM2d). A key reference is  
+W. Gujer, M. Henze, T. Mino, T. Matsuo, M. C. Wentzel and G. R. Marais (1995). The 
+Activated Sludge Model No. 2: biological phosphorus removal. Water Science and 
+Technology Vol 31 No 2 pp 1–11. 
+The ASM3 is an extension of ASM1 where the main difference is the 
+recognition of the importance of storage polymers in the heterotrophic 
+conversion, see 
+W. Gujer, M. Henze, T. Mino and M. van Loosdrecht (1999). Activated Sludge Model No. 3. 
+Water Science and Technology Vol 39 No 1 pp 183–193.   
+A model for anaerobic digestions (using many of the ASM’s concepts) has also 
+been proposed see 
+D.J. Batstone, J. Keller, I. Angelidaki, S.V. Kalyuzhnyi, S.G. Pavlostathis, A. Rozzi, W.T.M. 
+Sanders, H. Siegrist and V.A. Vavilin (2002). The IWA Anaerobic Digestion Model No 1 
+(ADM1).  Water Science & Technology Vol 45 No 10 pp 65–73 . 

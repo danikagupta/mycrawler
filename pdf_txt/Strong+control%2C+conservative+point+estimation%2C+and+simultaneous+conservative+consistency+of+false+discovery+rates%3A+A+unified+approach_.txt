@@ -1,0 +1,849 @@
+2004 Royal Statistical Society 1369–7412/04/66187J. R. Statist. Soc. B (2004)
+66,Part 1,pp.187–205
+Strong control, conservative point estimation and
+simultaneous conservative consistency of falsediscovery rates: a uniﬁed approach
+John D. Storey,
+University of Washington, Seattle, USA
+and Jonathan E. Taylor and David Siegmund
+Stanford University, Stanford, USA
+[Received June 2002. Final revision June 2003]
+Summary. The false discovery rate (FDR) is a multiple hypothesis testing quantity that describes
+the expected proportion of false positive results among all rejected null hypotheses. Benjaminiand Hochberg introduced this quantity and proved that a particular step-up p-value method con-
+trols the FDR. Storey introduced a point estimate of the FDR for ﬁxed significance regions. Theformer approach conservatively controls the FDR at a ﬁxed predetermined level, and the latterprovides a conservatively biased estimate of the FDR for a ﬁxed predetermined significanceregion. In this work, we show in both ﬁnite sample and asymptotic settings that the goals of thetwo approaches are essentially equivalent. In particular, the FDR point estimates can be usedto deﬁne valid FDR controlling procedures. In the asymptotic setting, we also show that the pointestimates can be used to estimate the FDR conservatively over all significance regions simul-taneously, which is equivalent to controlling the FDR at all levels simultaneously. The main toolthat we use is to translate existing FDR methods into procedures involving empirical processes.
+This simpliﬁes ﬁnite sample proofs, provides a framework for asymptotic results and proves that
+these procedures are valid even under certain forms of dependence.
+Keywords : Multiple comparisons; Positive false discovery rate; P-values; Q-values;
+Simultaneous inference
+1. Introduction
+Classically, the goal of multiple hypothesis testing has been to guard against making one or
+more type I errors among a family of hypothesis tests. In an innovative paper, Benjamini andHochberg (1995) introduced a new multiple-hypothesis testing error measure with a differentgoal in mind—to control the proportion of type I errors among all rejected null hypotheses.This is useful in exploratory analyses, where we are more concerned with having mostly trueﬁndings among several, rather than guarding against one or more false positive results.
+Table 1 describes the various outcomes when applying some significance rule to perform m
+hypothesistests.Inthiswork,weassumethatthe mhypothesistestshavecorresponding p-values
+p
+1,..., pm. The significance rule that we consider rejects null hypotheses with corresponding
+p-values that are less than or equal to some threshold, which can be ﬁxed or data dependent.
+We are particularly interested in V, the number of type I errors (false positive results), and
+Address for correspondence : John D. Storey, Department of Biostatistics, University of Washington, Box
+357232, Seattle, WA98195-7232, USA.E-mail: jstorey@u.washington.edu188 J. D. Storey, J. E. Taylor and D. Siegmund
+Table 1. Possible outcomes from mhypothesis tests
+based on a significance rule
+Accept null Reject null Total
+hypothesis hypothesis
+Null true UV m 0
+Alternative true TS m 1
+WR m
+R, the total number of rejected null hypotheses. The familywise error rate (FWER) is deﬁned
+to be
+FWER =Pr.V/greaterorequalslant1/,
+and thefalse discovery rate (FDR) is deﬁned to be (Benjamini and Hochberg, 1995)
+FDR=E/bracketleftbiggV
+R∨1/bracketrightbigg
+=E/bracketleftbiggV
+R/vextendsingle/vextendsingle/vextendsingle/vextendsingleR>0/bracketrightbigg
+Pr.R >0/, .1/
+where R∨1=max.R,1/. The effect of ‘ R∨1’ in the denominator of the ﬁrst expectation is
+to set V=R=0 when R=0. As explained in Benjamini and Hochberg (1995), the FDR offers
+a less strict multiple-testing criterion than the FWER, and the FDR may be more appropriatefor some applications.
+Two approaches to providing conservative FDR procedures are the following. One is to ﬁx
+theacceptableFDRlevelbeforehand,andtoﬁndadata-dependentthresholdingrulesothattheFDRofthisruleislessthanorequaltotheprechosenlevel.ThisistheapproachthatwastakenbyBenjaminiandHochberg(1995),forexample.Anotheristoﬁxthethresholdingrule,andtoform an estimate of the FDR whose expectation is greater than or equal to the true FDR overthat significance region. This is the approach that was taken by Storey (2002), for example. Ineithercase,wewanttobeconservativeregardlessofthevalueof m
+0,whichisusuallyunknown.
+Ifthisholdsthen‘strongcontrol’isprovided.‘Weakcontrol’isprovidedwhentheprocedureisconservative only when m
+0=m; in general this is not of interest in the FDR case (Benjamini
+and Hochberg, 1995). Throughout this paper, ‘control’ implicitly means strong control unlessexplicitly stated otherwise.
+Benjamini and Hochberg (1995) proved by induction that the following procedure (referred
+to here as the BH procedure) controls the FDR at level αwhen the p-values following the null
+distribution are independent and uniformly distributed.
+Step 1: letp
+.1//lessorequalslant.../lessorequalslantp.m/be the ordered, observed p-values.
+Step 2: calculate ˆk=max{1/lessorequalslantk/lessorequalslantm:p.k//lessorequalslantαk=m}.
+Step3:i fˆkexists,thenrejectnullhypothesescorrespondingto p.1//lessorequalslant.../lessorequalslantp.ˆk/.Otherwise,
+reject nothing.
+Other sequential p-value FDR controlling methods have been suggested (e.g. Benjamini and
+Liu(1999)).TheBHprocedurewasoriginallyintroducedbySimes(1986)tocontrolweaklytheFWER when all p-values are independent, but it provides strong control of the FDR as well.
+Let FDR .t/denote the FDR when rejecting all null hypotheses with p
+i/lessorequalslanttfori=1,..., m.
+Fort∈[0,1], we deﬁne the following empirical processes based on the notation in Table 1:False Discovery Rates 189
+V.t/=#{nullpi:pi/lessorequalslantt},
+S.t/=#{alternative pi:pi/lessorequalslantt},
+R.t/=V.t/+S.t/=#{pi:pi/lessorequalslantt}:
+
+.2/
+AdditionalprocessescanbedeﬁnedfortheothervariablesinTable1.Intermsoftheseempirical
+processes, we have
+FDR .t/=E/bracketleftbiggV.t/
+R.t/∨1/bracketrightbigg
+:
+Forﬁxed t,Storey(2002)providedafamilyofconservativelybiasedpointestimatesofFDR .t/.
+Inthispaperwedenotetheseestimatesby /hatwideFDR λ.t/,where λ∈[0,1/isatuningparameterthat
+isexplainedlater.TheBHprocedureinducesadata-dependentthreshold p.ˆk/ratherthansome
+ﬁxed t.InSection2weshowthattheBHprocedureissimplyarandomthresholdingprocedure
+which is found by choosing tso that the natural empirical estimator t={R.t/=m }of FDR .t/
+(whichinfactisthespecialcase /hatwideFDR λ=0.t/)isboundedby α.Intheorem2,weprovideanalter-
+nativeproofofstrongcontroloftheBHprocedurewithasimplemartingaleargumentappliedto the empirical processes V.t/andR.t/. Theorem 3 shows that the analogous thresholding
+procedure using the estimates /hatwideFDR
+λ.t/for general λ∈[0,1/maintains strong control of the
+FDR at a predetermined level. Thus, we essentially provide a new family of FDR controllingprocedures and show that the goals of the two approaches can be met with this one family ofestimates.AnothermotivationforstudyingthisgeneralclassofFDRcontrollingproceduresisthat/hatwideFDR
+λ=0.t/is the most conservatively biased estimate of all λ∈[0,1/(see Storey (2002)
+and the proof of theorem 1).
+Our main results in the ﬁnite sample setting, theorems 2 and 3, formulate these procedures
+in terms of empirical processes. Besides allowing simple proofs of the ﬁnite sample results, theempiricalprocessapproachsetsthestageforourasymptoticresultsintheorems4and5,whereweprovideconditionsunderwhichasymptoticcontroloftheFDRcanbeachieved.Theproofsarestraightforward,relyingonlyonconvergenceoftheunderlyingempiricalprocesses,andnotlarge deviation inequalities as in Genovese and Wasserman (2002a). This also allows for thepresence of certain forms of dependence.
+Intheasymptoticsetting,weprovideaconservativeestimateoftheerrorrateoverallsignifi-
+canceregions simultaneously ,whichisessentiallyequivalenttocontrollingtheFDRatalllevels
+simultaneously. In theorem 6 we show that the estimates of FDR .t/deﬁned in Storey (2002)
+provide an asymptotic form of simultaneous control if the corresponding empirical processesconverge. Thus, asymptotically, the goals of the two approaches are equivalent and there is noneedtodistinguishbetweenthem.Aslightlydifferentviewofthisistoassignasimultaneouslyconservative multiple-testing measure of significance to each test. In theorem 7, we show thesimultaneous conservative consistency of Storey’s (2002) q-value estimates, which assign mea-
+sures of significance to each test in terms of FDRs.
+The point of view that was taken in Storey (2002) allows an additional error measure to be
+considered, the positive false discovery rate pFDR, whose motivation can be found in Storey(2001):
+pFDR =E/bracketleftbiggV
+R/vextendsingle/vextendsingle/vextendsingle/vextendsingleR>0/bracketrightbigg
+:
+Inanasymptoticsetting,pFDRandtheFDRareequivalent,andconsequentlyanyasymptotic
+results about the FDR can essentially be directly translated into results for pFDR.190 J. D. Storey, J. E. Taylor and D. Siegmund
+OtherasymptoticpropertiesoftheFDRhavepreviouslybeenstudied(GenoveseandWass-
+erman,2002a,b;FinnerandRoters,2001,2002).WearenottheﬁrsttostudyFDRprocedureswhenthe p-valuesaredependent(YekutieliandBenjamini,1999;BenjaminiandYekutieli,2001;
+Storey and Tibshirani, 2001), but our empirical process approach puts the asymptotic anddependence issues into one, coherent, framework. It should be mentioned, though, that ourframework does not enable us to prove ﬁnite sample results in the dependence setting withoutfurther assumptions on the underlying distributions, e.g. the positive regression dependenceproperty that is discussed in Benjamini and Yekutieli (2001).
+It has previously been pointed out that the BH procedure can be made less conservative by
+incorporatinganestimateoftheproportionoftruenullhypotheses(BenjaminiandHochberg,1995, 2000; Storey, 2002). Benjamini and Hochberg (2000) proposed a data-adaptive proce-dureforestimatingthisproportionandmodifyingtheBHprocedure.However,therehasbeenno proof that this procedure provides strong control of the FDR. Extending Storey’s (2002)more tractable method, we can prove strong control of our proposed procedure, which alsoincorporates an estimate of the proportion of true null hypotheses.
+The lay-out of the paper is as follows. In Section 2 we formally describe our proposed pro-
+ceduresandmainresults.SomenumericalresultsarepresentedinSection3.Section4outlinesproofs of the ﬁnite sample results, and Section 5of the asymptotic results. Finally, Section 6provides a numerical method for automatically picking a tuning parameter used in the proce-dures proposed.
+2. Procedures proposed and main results
+Inthissectionweformallydescribetheproceduresproposedandmainresultsofthiswork.We
+ﬁrstreviewthepointestimateapproachforaﬁxedsignificanceregion;thenweintroduceanFDRcontrolling procedure in terms of our FDR point estimate, and we describe the simultaneousconservative consistency of the estimates.
+2.1./hatwideFDR
+λ(t) is a conservative point estimate of FDR( t)
+Recallthat,foranon-randomsignificancethreshold t,FDR .t/denotestheFDRwhenrejecting
+all null hypotheses with p-values less than or equal to t. The estimate of FDR .t/proposed in
+Storey (2002) is
+/hatwideFDR λ.t/=ˆπ0.λ/t
+{R.t/∨1}=m:. 3/
+Theterm ˆ π0.λ/isanestimateof π0≡m0=m,theproportionoftruenullhypotheses.Thisestimate
+depends on the tuning parameter λand is deﬁned as
+ˆπ0.λ/=W.λ/
+.1−λ/m, .4/
+where W.λ/=m−R.λ/(seeTable1).Thereasoningbehind ˆ π0.λ/isthefollowing.Aslongas
+each test has a reasonable power, then most of the p-values near 1 should be null. There-
+fore, for a well-chosen λ, we expect about π0.1−λ/of thep-values to lie in the interval
+.λ,1], because the null p-values are uniformly distributed. Therefore, W.λ/=m≈π0.1−λ/,
+where E[ˆπ0.λ/]/greaterorequalslantπ0when the p-values corresponding to the true null hypotheses are uni-
+formly distributed (or stochastically greater). There is an inherent bias–variance trade-off inthe choice of λ. In most cases, when λgrows smaller, the bias of ˆ π
+0.λ/grows larger, but the
+variance becomes smaller. Therefore, λcan be chosen to try to balance this trade-off. TheFalse Discovery Rates 191
+interested reader is referred to Storey (2002) for a detailed motivation of this and related
+estimates.
+Our ﬁrst result is an extension of the conservative bias result of Storey (2002). The only
+assumption that we make is that the p-values corresponding to the true null hypotheses are
+independent and uniformly distributed, whereas Storey (2002) assumed an independent andidentically distributed mixture model of the p-values and stochastic ordering. Our assump-
+tions are the same as those used to show strong control of the BH procedure in Benjamini andHochberg (1995).
+Theorem1. Supposethatthe p-valuescorrespondingtothetruenullhypothesesareindepen-
+dent and uniformly distributed. Then, for ﬁxed λ∈[0,1/,E[/hatwideFDR
+λ.t/]/greaterorequalslantFDR .t/.
+2.2. Using/hatwideFDR λ(t) to control the false discovery rate strongly
+We now use/hatwideFDR λ.t/to derive a new class of FDR controlling procedures, of which the BH
+procedure is a special case. Since /hatwideFDR λ.t/is a conservative point estimate of FDR .t/,i ti s
+tempting to try to use /hatwideFDR λ.t/to provide strong control, i.e., if we want to control the FDR
+at level α, we take the largest tsuch that/hatwideFDR λ.t//lessorequalslantαas the significance threshold. We show
+that this heuristic procedure controls the FDR.
+Sequential p-value methods estimate an appropriate significance threshold based on the
+p-values and the prechosen level α. Thus, we deﬁne the following function that chooses the
+cut point based on some function Fdeﬁned on [0,1]:
+tα.F/=sup{0/lessorequalslantt/lessorequalslant1:F.t//lessorequalslantα}:. 5/
+In words, tα.F/ﬁnds the largest tsuch that F.t//lessorequalslantα. We shall be particularly concerned with
+the thresholding rule tα./hatwideFDR λ/=sup{0/lessorequalslantt/lessorequalslant1:/hatwideFDR λ.t//lessorequalslantα}. A slightly modiﬁed version
+is considered for ﬁnite sample results. Since tα./hatwideFDR λ/is a random variable, we write for ease
+of notation
+FDR{tα./hatwideFDR λ/}∆=E/bracketleftBigg
+V{tα./hatwideFDR λ/}
+R{tα./hatwideFDR λ/}∨1/bracketrightBigg
+:
+The thresholding rule tα./hatwideFDR λ/has a useful interpretation in the context of the BH proce-
+dure. Under the assumption of independent and uniformly distributed null p-values, the BH
+procedurecontrolstheFDRatexactlylevel π0α(seeFinnerandRoters(2001),Benjaminiand
+Yekutieli (2001) and theorem 2 below). Thus, it follows that, if mis replaced with π0min the
+BH procedure, then the FDR is controlled exactly at level α. This eliminates the conservative
+biasoftheBHprocedureandthereforeincreasestheaverageproportionoffalsenullhypothesesthatarerejectedateach α(whichcouldbestatedasanincreaseintheoverall‘averagepower’).
+A strategy to increase the power is then to replace min the BH procedure with our estimate
+ˆπ
+0.λ/m. This makes the procedure more accurate in the sense that the true level of FDR con-
+trol is asymptotically closer to αthan the BH procedure (theorem 4). The thresholding rule
+tα./hatwideFDR λ/operationally makes this exact change to the BH procedure. Specifically, consider
+the following two lemmas.
+Lemma 1. Thep-value step-up method tα./hatwideFDR λ=0/is equivalent to the BH procedure.
+Proof.Noting that ˆ π0.λ=0/=1, this follows by the proof of the next proposition. ✷192 J. D. Storey, J. E. Taylor and D. Siegmund
+Lemma2. Ingeneral,the p-valuestep-upmethod tα./hatwideFDR λ/isequivalenttotheBHprocedure
+withmreplaced by ˆ π0.λ/m.
+Proof.Wemustshowthat p.ˆkλ//lessorequalslanttα./hatwideFDR λ/<p.ˆkλ+1/whereˆkλistheˆkintheBHprocedure
+with mreplaced by ˆ π0.λ/m. Ignoring the cases where R.t/=0, in which case both procedures
+reject no p-values, the inequalities follow immediately once it is noted that the BH procedure
+for selecting ˆkλis simply ˆkλ=max{k:/hatwideFDR λ.p.k///lessorequalslantα}. ✷
+Fortheﬁnitesamplecasewithindependentnull p-values,weproposeanewFDRcontrolling
+step-up method with two minor modiﬁcations to /hatwideFDR λ.I fλ>0, we want to guarantee that
+ˆπ0.λ/>0; recall that ˆ π0.λ=0/=1. Thus, for λ>0 we replace ˆ π0.λ/in/hatwideFDR λwith
+ˆπÅ
+0.λ/=W.λ/+1
+.1−λ/m:
+We must also limit the significance threshold to the region [0, λ]. Therefore, the estimate of
+FDR .t/that we use for the ﬁnite sample case is
+/hatwideFDRÅ
+λ.t/=
+
+ˆπÅ
+0.λ/t
+{R.t/∨1}=m,i f t/lessorequalslantλ,
+1, if t>λ..6/
+These modiﬁcations allow us to prove in the ﬁnite sample case that the tα./hatwideFDRÅ
+λ/procedure
+controls the FDR. This last modiﬁcation has little effect on the procedure, as explained laterinthissection.Bothmodiﬁcationsareunnecessarytoproveasymptoticcontrol,asisshownintheorem 4. We summarize the procedure as follows.
+Step 1: letαbe the prechosen level at which to control the FDR.
+Step 2: for any ﬁxed significance region [0, t], estimate FDR .t/by either/hatwideFDR
+λ.t/given in
+equation (3) or/hatwideFDRÅ
+λ.t/given in equation (6).
+Step 3: for small mwhere the null p-values are independent, reject all null hypotheses cor-
+responding to pi/lessorequalslanttα./hatwideFDRÅ
+λ/forλ>0, and pi/lessorequalslanttα./hatwideFDR λ=0/forλ=0.
+Step4: forlarge mwherethe p-valuesmeetthe‘weakdependence’conditionsoftheorem4,
+reject all null hypotheses corresponding to pi/lessorequalslanttα./hatwideFDR λ/.
+Thefollowingtworesultsconcerningtheﬁnitesamplepropertiesofourproposedprocedure
+areproveninSection4.Theorem2hasbeenshownbefore(BenjaminiandHochberg,1995;Ben-jaminiandYekutieli,2001),butournewproofusesmartingalemethods.Theproofoftheorem2easily leads to a proof of theorem 3.
+Theorem 2 (Benjamini and Hochberg, 1995). If the p-values corresponding to the true null
+hypotheses are independent, then
+FDR{t
+α./hatwideFDR λ=0/}=π0α/lessorequalslantα:
+That is, the BH procedure controls the FDR exactly at level π0αand conservatively at level α.
+Now consider the procedure with λ>0.
+Theorem 3. If thep-values corresponding to the true null hypotheses are independent, then,
+forλ>0,
+FDR{tα./hatwideFDRÅ
+λ/}/lessorequalslant.1−λπ0m/α/lessorequalslantα:False Discovery Rates 193
+Therefore, the thresholding procedure tα./hatwideFDRÅ
+λ/strongly controls the FDR at level α.
+Remark 1. Reasonably chosen λwill tend to be larger than tα./hatwideFDRÅ
+λ/, so in practice
+there should be little difference between tα./hatwideFDRÅ
+λ/andtα./hatwideFDR λ/. Consider that
+FDR .t/≈E[V.t/]=E[R.t/]/lessorequalslantα
+implies
+t/lessorequalslant.1−π0/α
+π0.1−α/
+since E[R.t/]=m/lessorequalslantπ0t+.1−π0/. Even with a small π0=0:75and a large α=0:20, it approxi-
+mately follows that, if FDR .t//lessorequalslantα, then t/lessmuch0:1. Therefore, using λover the range λ=0,0:1,
+0:2,...,0 :9, for example, implies that tα./hatwideFDRÅ
+λ/will essentially be equivalent to tα./hatwideFDR λ/.
+FDRs are most useful in cases in which many hypotheses are tested. Moreover, in areas of
+potential application (astrophysics, brain imaging and gene expression data), mis typically of
+the order of several thousand. For large m, the assumption of independence can be replaced
+with‘weakdependence’(deﬁnedbelow).Fortheremainderofthissection,weconsiderthelargemcase.
+The asymptotic theorems require the almost sure pointwise convergence of the empirical
+distributions of the null p-values and alternative p-values. Recall the empirical processes V.t/
+andS.t/that are deﬁned in equation (2). Therefore, V.t/=m
+0andS.t/=m1are the empirical dis-
+tribution functions of the null and alternative hypotheses respectively. We make the followingassumptions for our asymptotic results:
+lim
+m→∞/braceleftBigV.t/
+m0/bracerightBig
+=G0.t/and limm→∞/braceleftBigS.t/
+m1/bracerightBig
+=G1.t/almost surely for each t∈.0,1], .7/
+where G0andG1are continuous functions;
+0<G0.t//lessorequalslanttfor each t∈.0,1]; .8/
+limm→∞.m0=m/≡π0exists :. 9/
+The asymptotic results also hold if the assumption that G0andG1are continuous is replaced
+by the pointwise convergence of left limits of the empirical distribution functions. We deﬁneweak dependence to be any type of dependence where equation (7) can hold. Dependence in
+ﬁniteblocks,ergodicdependenceandcertainmixingdistributionsareallcandidatestomeettheweak dependence criterion.
+Our ﬁrst result shows that t
+α./hatwideFDR λ/asymptotically provides strong control of the FDR
+under the above assumptions. Deﬁne
+/hatwideFDR∞
+λ.t/∆=/braceleftbigg1−G0.λ/
+1−λπ0+1−G1.λ/
+1−λπ1/bracerightbigg
+G0.t//slashbigg
+{π0G0.t/+π1G1.t/},
+which is the pointwise limit of /hatwideFDR λ.t/under the assumptions of equations (7)–(9).
+Theorem 4. Suppose that the convergence assumptions of equations (7)–(9) hold. If there is
+at∈.0,1] such that/hatwideFDR∞
+λ.t/ < α, then194 J. D. Storey, J. E. Taylor and D. Siegmund
+limsup
+m→∞[FDR {tα./hatwideFDR λ/}]/lessorequalslantα:
+A generalization of theorem 1 of Genovese and Wasserman (2002a) is possible by using
+our approach. We specifically show that, if /hatwideFDR λconverges almost surely pointwise to
+somelimit/hatwideFDR∞
+λ,thentherandomthresholdingrule tα./hatwideFDR λ/convergestothedeterministic
+ruletα./hatwideFDR∞
+λ/.
+Theorem 5. Suppose that the convergence assumptions of equations (7)–(9) hold. Then
+limm→∞{tα./hatwideFDR λ/}=tα./hatwideFDR∞
+λ/
+almost surely if/hatwideFDR∞
+λ.·/has a non-zero derivative at 0 <tα./hatwideFDR∞
+λ/<1.
+We now state a conservative consistency result of tα./hatwideFDR λ/, but we ﬁrst deﬁne
+FDR∞.t/∆=π0G0.t/
+π0G0.t/+π1G1.t/,
+whichisthepointwiselimitofFDR .t/undertheconvergenceassumptionsofequations(7)–(9).
+Corollary 1. Under the convergence assumptions of equations (7)–(9), we have that
+limm→∞{tα.FDR /}=tα.FDR∞/and lim m→∞{tα./hatwideFDR λ/−tα.FDR /}/lessorequalslant0 almost surely.
+This ﬁnal result shows that, for λ>0,tα./hatwideFDR λ/is asymptotically less conservative than
+the BH procedure and therefore has greater asymptotic power.
+Corollary 2. Suppose that the convergence assumptions of equations (7)–(9) hold, and
+G0. t /<G 1.t/fort∈.0,1/. Then for any 0 <λ<1
+limm→∞{tα./hatwideFDR λ=0/}<limm→∞{tα./hatwideFDR λ/}<limm→∞{tα.FDR /} almost surely :
+Therefore, the procedure with 0 <λ<1 will asymptotically reject a higher proportion of false
+null hypotheses for the same chosen α.
+Theproofsofcorollaries1and2arestraightforward,soweomitthem.Itisconceivablethat,
+undertheassumptionsofcorollary2,theleastpossibleconservativethresholdingprocedureisa limit of the family of t
+α./hatwideFDR λ/.
+Under certain ﬁnite sample cases, there is positive probability that ˆ π0.λ/>1f o r λ>0, in
+which case the procedure could reject fewer hypotheses than the BH procedure. However, ascaneasilybeseenintheproofsoftheaboveresults,ifwereplace ˆ π
+0.λ/withmin {/hatwideπ0.λ/,1},then
+alltheasymptoticresultsstillhold.Theprocedurewiththisminoradjustmentthereforealwayscalls at least as many p-values significant as the BH procedure. Also note that the automatic
+method for choosing λin Section 6 prevents any λfrom being chosen where ˆ π
+0.λ/>1, so this
+is a moot point in practice.
+2.3./hatwideFDR λ(t) is simultaneously conservatively consistent for FDR( t)
+As discussed in Section 1, it can be difﬁcult to choose a significance threshold tor FDR con-
+trollinglevel αbeforeanydataareseen,soitisusefultoshowthat /hatwideFDR λ.t//greaterorequalslantFDR .t/forall t
+simultaneously.Undertheconvergenceassumptionsofequations(7)–(9),wecanshowaversionof the above property in the following theorem.False Discovery Rates 195
+Theorem 6. Suppose that the convergence assumptions of equations (7)–(9) hold. Then, for
+each δ>0,
+limm→∞inf
+t/greaterorequalslantδ{/hatwideFDR λ.t/−FDR .t/}/greaterorequalslant0 and limm→∞inf
+t/greaterorequalslantδ/braceleftbigg
+/hatwideFDR λ.t/−V.t/
+R.t/∨1/bracerightbigg
+/greaterorequalslant0
+with probability 1.
+ThisresultholdsnotonlyforFDR .t/butalsofortherealizedproportionoffalsediscoveries
+V.t/={R.t/∨1}.
+As will be seen from the proofs in Section 5, the above uniform convergence follows directly
+from the arguments that are used in the proof of the Glivenko–Cantelli theorem, based onthepointwiseconvergenceofthecorrespondingempiricaldistributionfunctionstocontinuouslimits. Therefore, we have now shown that the point estimates can be used to estimate conser-vatively the FDR over all significance regions simultaneously. This can be equivalently viewedas controlling the FDR at all levels simultaneously, making the goals of the two approachesasymptotically equivalent.
+2.4. Simultaneous conservative consistency of the estimated q-values
+In single-hypothesis testing, it is common to report the p-value as a measure of significance of
+the test rather than whether or not the null hypothesis was rejected at a predetermined level. Iftheorem6holds,thenintheorywecanavoidhavingtocontroltheFDRataﬁxedlevelandjustexamine/hatwideFDR
+λ.pi/fori=1,..., m. To assign a measure of significance in terms of FDR to a
+particular p-value pi, there are beneﬁts to reporting the minimum FDR at which this p-value
+canbecalledsignificantratherthan /hatwideFDR λ.pi/.Thiscanbeaccomplishedthroughthe‘ q-value’
+which is proposed in Storey (2001).
+To be precise, suppose that
+(a)Hi=0o rHi=1 according to whether the ith null hypothesis is true or not,
+(b)Hi∼IIDBernoulli .π1/so that Pr .Hi=0/=π0and Pr .Hi=1/=π1and
+(c)Pi|Hi∼IID.1−Hi/G0+HiG1.
+Storey (2001) showed that
+E/bracketleftbiggV.t/
+R.t//vextendsingle/vextendsingle/vextendsingle/vextendsingleR.t/ >0/bracketrightbigg
+=Pr.H
+i=0|Pi/lessorequalslantt/,
+where Pr .Hi=0|Pi/lessorequalslantt/is the same for each ibecause of the independent and identically dis-
+tributed data assumptions. The expectation on the left-hand side is called the positive falsediscovery rate, pFDR. In the spirit of the definition of the p-value, Storey (2001) deﬁned
+q-value .p
+i/=min
+t/greaterorequalslantpi{pFDR .t/},
+i.e.theq-valueofastatisticistheminimumpFDRatwhichthatstatisticcanbecalledsignificant.
+Under assumptions (a)–(c), it follows that
+q-value .pi/=min
+t/greaterorequalslantpi{Pr.Hi=0|Pi/lessorequalslantt/},
+whichisaBayesiananalogueofthe p-value—orrathera‘BayesianposteriortypeIerrorrate’,a
+conceptsuggestedasearlyasMorton(1955).FurtherpropertiesandmotivationcanbefoundinStorey(2001).Also,anapplicationoftheconnectionbetweenPr .H
+i=0|Pi/lessorequalslantt/andposterior
+probabilities can be found in Efron et al.(2001).196 J. D. Storey, J. E. Taylor and D. Siegmund
+Storey (2002) estimated pFDR .t/by/hatwidepFDRλ.t/=/hatwideFDR λ.t/={1−.1−t/m}and estimated
+q-value .pi/by
+ˆqλ.pi/=inf
+t/greaterorequalslantpi{/hatwidepFDRλ.t/}:. 10/
+Motivated by the posterior probability estimate
+/hatwidePrλ.Hi=0|Pi/lessorequalslantt/=ˆπ0.λ/t
+R.t/=m,
+another clearly motivated estimate of the q-value is
+ˆqλ.pi/=inf
+t/greaterorequalslantpi{/hatwidePrλ.Hi=0|Pi/lessorequalslantt/}, .11/
+whichequalsinf t/greaterorequalslantpi{/hatwideFDR λ.t/}.Undertheweakdependencecriteria,wecanprovethat ˆ qλ.pi/
+isasymptoticallyconservative,regardlessofdefinition(10)or(11).Moreover,wecanshowthat
+ˆqλ.·/issimultaneously conservatively consistent over all arguments in the following sense.
+Theorem 7. Suppose that the convergence assumptions of equations (7)–(9) hold. Then, for
+each δ>0,
+limm→∞inf
+t/greaterorequalslantδ{ˆqλ.t/−q-value .t/}/greaterorequalslant0 almost surely :
+Adjusted p-values, which are deﬁned in terms of a particular step-up or step-down method,
+are usually justiﬁed by strong control of the method at a singlepredetermined level α(Shaffer,
+1995).Here,wehaveprovidedamoregeneralresultinthesensethatwehaveshowncontrolatallα/greaterorequalslantδ,whichistheconditionthatisnecessaryforadjusted p-valuesorestimated q-valuesto
+be simultaneously conservative.
+3. Numerical studies
+We now present numerical results in both an independent p-value example and a dependent
+p-value example. In each of these examples, the average power is deﬁned to be the power aver-
+aged over each true alternative hypothesis.
+3.1. Independence example
+WeﬁrstpresentasimplenumericalstudytocomparetheaveragepowerofourproposedFDR
+controllingprocedurewiththatoftheBenjaminiandHochberg(1995)procedure.Weperformedm=1000 one-sided hypothesis tests with null distribution N.0,1/and alternative distribution
+N.2,1/.W el e t m
+0=100,...,900and generated 1000 sets of 1000 normal random variables
+for each m0-value. The BH procedure and proposed ﬁnite sample procedure tα./hatwideFDRÅ
+λ/were
+performedatlevels α=0:01and α=0:05.Forsimplicity,weset λ=0:5forbothcasesinour
+procedure. Fig. 1 shows the average power of the procedure proposed PP versusBH. It can be
+seen that the increase in power that we achieve is greater the smaller m0is. This makes sense
+because the difference in our proposed procedure PP over BH is that it estimates π0, where
+π0=m0=m.
+Secondly,weperformed3000hypothesistestsoftheabovedistributionswith m0=2400.The
+ˆqλ.pi/werecalculatedateach p-value pi,aswellasthetrue q-value .pi/.Thesecalculationsare
+displayedinFig.2.Itcanbeseenthat ˆ qλ.·//greaterorequalslantq-value .·/overallp-valuessimultaneously,which
+is exactly the result of theorem 7.False Discovery Rates 197
+
+
+
+
+
+
+average power
+200 400 600 8000.0 0.2 0.4 0.6
+
+
+
+
+
+
+
+average power
+200 400 600 8000.0 0.2 0.4 0.6 0.8
+
+
+
+
+(a) (b)
+Fig. 1. Average power versus m0for the proposed procedure for small m( ) and the Benjamini and
+Hochberg (1995) procedure ( -------):(a)FDR controlled at level αD0:01; (b) FDR controlled at level αD0:05
+(there is an increase in power under the proposed procedure in both (a) and (b))
+                                     
+p-valueq-value
+0.0 0.2 0.4 0.6 0.8 1.00.0 0.2 0.4 0.6 0.8
+Fig. 2. ˆqλ./SOH/andq-value ./SOH/evaluated at each p-value for 3000 tests of N.0,1/versus N.2,1/with m0D2400
+( , actual q-values; ----- , q-values)
+3.2. Dependence example
+OursecondnumericalstudyillustratestheasymptoticcontroloftheFDR,evenunderacertain
+formofdependence.Thenullstatisticshave N.0,1/marginaldistributionswith m0=2400and
+the alternative distributions have marginal distribution N.2,1/with m1=600. The statistics
+have correlation ±0:4 in groups of 10. Specifically, for 1 /lessorequalslantj/lessorequalslantk/lessorequalslant10,198 J. D. Storey, J. E. Taylor and D. Siegmund
+0.00 0.05 0.10 0.15 0.200.00 0.05 0.10 0.15 0.20FDR
+0.00 0.05 0.10 0.15 0.200.0 0.1 0.2 0.3 0.4 0.5 0.6Power
+αα
+(a) (b)
+Fig. 3. (a) FDR when performing the BH ( /SOH/SOH/SOH/SOH/SOH/SOH/SOH ) ,P P( ----- )a n d optimal ( ) procedures at level
+αand (b) average power attained under these three procedures: it can be seen that tα./hatwideFDRλD0:5/(PP)
+attains the control and power near that of the optimal procedure whereas the more conservativet
+α./hatwideFDRλD0/(BH) does not
+Σjk=/braceleftBigg1, j=k,
+0:4, j<k/lessorequalslant5,
+−0:4, j/lessorequalslant5,k>5,
+and
+cov.T1,:::,T3000/=Σ⊗I300×300,
+the Kronecker product of ΣandI300×300. These statistics apparently do not meet the ‘positive
+regression dependence’ condition of Benjamini and Yekutieli (2001).
+1000datasetsweregenerated,andforeachone tα./hatwideFDR λ/wascalculatedfor α=0:005,0.01,
+0.05,0.10,0.20.Weused λ=0(BH), λ=0:5(PP)andtheexactthreshold(optimal)whichcan
+beattainedbyusingthetrue π0=0:80inourproposedprocedure.ThetrueFDRandtheaverage
+powerwerecalculatedforalltheseprocedures.Fig.3showsthatallthreeprocedurescontroltheFDRatlevel α,asthetheoryasserts.Moreover, t
+α./hatwideFDR λ=0:5/attainsthecontrolandpowernear
+thatoftheoptimalprocedure,showingtheimprovementofourproposedmethodologyoverBen-jamini and Hochberg’s (1995) methodology. The numbers from this study are listed in Table 2.
+4. Finite sample proofs
+We ﬁrst prove the conservative bias of /hatwideFDR
+λ.t/under the assumption that the p-values cor-
+responding to the true null hypotheses are independent and uniformly distributed.
+4.1. Proof of theorem 1
+First assume that t<λ. Then
+E[/hatwideFDR λ.t/−FDR .t/]/greaterorequalslantE/bracketleftbigg[{m0−V.λ/}=.1−λ/]t−V.t/
+R.t/∨1/bracketrightbigg
+=E/bracketleftbigg
+E/bracketleftbigg[{m0−V.λ/}=.1−λ/]t−V.t/
+R.t/∨1/vextendsingle/vextendsingle/vextendsingle/vextendsingleV.t/,S.t//bracketrightbigg/bracketrightbigg
+=E/bracketleftbigg{m
+0t−V.t/}=.1−t/
+R.t/∨1/bracketrightbigg
+:False Discovery Rates 199
+Table 2. Numerical study of tα./hatwideFDRλD0/(BH), tα./hatwideFDRλD0:5/(PP) and the optimal proce-
+dure under dependence †
+α FDRfor the following methods: Average power for the following methods:
+BH PP Optimal BH PP Optimal
+0.0050.00343 0.00492 0.005 16 0.0172 0.0218 0.0221
+(5×10−4)( 6 ×10−4)( 7 ×10−4)( 4 ×10−4)( 4 ×10−4)( 4 ×10−4)
+0.01 0.00828 0.00934 0.00952 0.0376 0.0477 0.0483
+(7×10−4)( 6 ×10−4)( 6 ×10−4)( 6 ×10−4)( 6 ×10−4)( 6 ×10−4)
+0.050.0403 0.0497 0.05 03 0.188 0.225 0.227
+(6×10−4)( 6 ×10−4)( 6 ×10−4)( 9 ×10−4)( 9 ×10−4)( 9 ×10−4)
+0.10 0.0804 0.0994 0.101 0.326 0.377 0.380
+(7×10−4)( 7 ×10−4)( 7 ×10−4)( 9 ×10−4)( 9 ×10−4)( 9 ×10−4)
+0.20 0.161 0.199 0.201 0.512 0.578 0.582
+(8×10−4)( 8 ×10−4)( 8 ×10−4)( 8 ×10−4)( 9 ×10−4)( 8 ×10−4)
+†The Monte Carlo standard error is listed beloweach number.
+In going from the second to the third line, we use the fact that
+m0−V.λ/|V.t/∼binomial {m0−V.t/,.1−λ/=.1−t/}:
+Next, assume that t/greaterorequalslantλso that
+V.λ/|V.t/∼binomial {V.t/,λ=t}:
+Redoing the computation as above shows that
+E[/hatwideFDR λ.t/−FDR .t/]/greaterorequalslantE/bracketleftbigg{m0t−V.t/}=.1−λ/
+R.t/∨1/bracketrightbigg
+:
+The ﬁnal result follows by showing that E[{m0t−V.t/}={R.t/∨1}]/greaterorequalslant0:However,
+E/bracketleftbiggm0t−V.t/
+R.t/∨1/bracketrightbigg
+/greaterorequalslantE/bracketleftbigg{m0t−V.t/}=.1−t/
+R.t/∨11{V.t//greaterorequalslant1}/bracketrightbigg
+=E/bracketleftbigg
+E/bracketleftbigg{m0t−V.t/}=.1−t/
+V.t/+S.t/1{V.t//greaterorequalslant1}/vextendsingle/vextendsingle/vextendsingle/vextendsingleS.t//bracketrightbigg/bracketrightbigg
+:
+The conclusion now follows from Jensen’s inequality. ✷
+We now prove theorems 2 and 3 by using martingale methods. A similar argument has been
+used to prove the ballot theorem (see Chow et al.(1971), page 26), where the argument is
+attributed to G. Simons). See also Durrett (1996), page 267, where an unnecessary additionalconditionisimposed.Weusethefactthattherandomvariable t
+α./hatwideFDRÅ
+λ/isastoppingtimewith
+respecttoacertainﬁltration,whichallowstheuseoftheoptionalstoppingtheorem.Recalltheempirical processes V.t/,S.t/andR.t/deﬁned in expression (2). We view ‘time’ (i.e. the thresh-
+oldst)asrunningbackwardsintheseempiricalprocesses.Theproofthat V.t/=tisamartingale
+with time running backwards is easily shown, so we omit the proof here.
+Lemma 3. If thep-values of the m
+0true null hypotheses are independent, then V.t/=tfor
+0/lessorequalslantt<1isamartingalewithtimerunningbackwardswithrespecttotheﬁltration Ft=σ.1{pi/lessorequalslants},
+t/lessorequalslants/lessorequalslant1,i=1,..., m/, i.e., for s/lessorequalslantt,E[V.s/=s|Ft]=V.t/=t.200 J. D. Storey, J. E. Taylor and D. Siegmund
+The following elementary lemma, whose proof is also omitted, incorporates the stopping
+times (thresholding rules) into our martingale framework.
+Lemma 4. The random variable tα./hatwideFDR λ=0/is a stopping time with respect to Ft, with
+time running backwards. Further, for λ>0,tα./hatwideFDRÅ
+λ/is a stopping time with respect to
+Fλ
+t=/triangleFt∧λ.
+We are now ready to prove theorems 2 and 3. Recall that π0=m0=m.
+4.2. Proof of theorem 2
+Noting that the process m t=R.t/has only upward jumps and has a ﬁnal value of 1, we see that
+R{tα./hatwideFDR λ=0/}=tα./hatwideFDR λ=0/m=α.Therefore,theratiowhoseexpectationwemustcalculate
+can be expressed as
+V{tα./hatwideFDR λ=0/}
+R{tα./hatwideFDR λ=0/}=α
+mV{tα./hatwideFDR λ=0/}
+tα./hatwideFDR λ=0/:
+Noting that V.t/=tstopped at tα./hatwideFDR λ=0/is bounded by m=α, the optional stopping theorem
+then implies
+FDR{tα./hatwideFDR λ=0/}=α
+mE/bracketleftBigg
+V{tα./hatwideFDR λ=0/}
+tα./hatwideFDR λ=0//bracketrightBigg
+=α
+mE[V.1/]=m0
+mα:
+4.3. Proof of theorem 3
+Abbreviate tα./hatwideFDRÅ
+λ/bytλ
+α.I f/hatwideFDRÅ
+λ.λ//greaterorequalslantαthen it can be seen that R.tλ
+α/=tλ
+αmˆπÅ
+0.λ/=α
+similarly to above. Moreover, when /hatwideFDRÅ
+λ.λ//greaterorequalslantα, then V.t/=tstopped at tλ
+αis bounded by
+m.m−1/={.1−λ/α}. Thus,
+FDR .tλ
+α/=E/bracketleftBigg
+V.tλ
+α/
+R.tλα/;/hatwideFDRÅ
+λ.λ//greaterorequalslantα/bracketrightBigg
++E/bracketleftBigg
+V.tλ
+α/
+R.tλα/;/hatwideFDRÅ
+λ.λ/<α/bracketrightBigg
+:
+Now
+E/bracketleftBigg
+V.tλ
+α/
+R.tλα/;/hatwideFDRÅ
+λ.λ//greaterorequalslantα/bracketrightBigg
+=E/bracketleftBigg
+α1−λ
+W.λ/+1V.tλ
+α/
+tλα;/hatwideFDRÅ
+λ.λ//greaterorequalslantα/bracketrightBigg
+=E/bracketleftBigg
+α1−λ
+W.λ/+1E/bracketleftBigg
+V.tλ
+α/
+tλα/vextendsingle/vextendsingle/vextendsingle/vextendsingle/vextendsingleF
+λ/bracketrightBigg
+;/hatwideFDRÅ
+λ.λ//greaterorequalslantα/bracketrightBigg
+=E/bracketleftbigg
+α1−λ
+W.λ/+1V.λ/
+λ;/hatwideFDRÅ
+λ.λ//greaterorequalslantα/bracketrightbigg
+,
+where the last step follows by the optional stopping theorem. It also easily follows that
+E/bracketleftBigg
+V.tλ
+α/
+R.tλα/;/hatwideFDRÅ
+λ.λ/<α/bracketrightBigg
+/lessorequalslantE/bracketleftbigg
+α1−λ
+W.λ/+1V.λ/
+λ;/hatwideFDRÅ
+λ.λ/<α/bracketrightbigg
+:False Discovery Rates 201
+The upper bound follows by
+FDR .tλ
+α//lessorequalslantE/bracketleftbigg1−λ
+W.λ/+1V.λ/
+λα/bracketrightbigg
+/lessorequalslantE/bracketleftbigg1−λ
+m0−V.λ/+1V.λ/
+λα/bracketrightbigg
+=.1−λm0/α/lessorequalslantα:
+5. Large sample proofs
+Inthissection,weproveseveraltheoremsthatassumetheconvergenceassumptionsofequations
+(7)–(9).
+5.1. Proof of theorem 4
+Lett/primebe the t/prime>0 such that α−/hatwideFDR∞
+λ.t/prime/=">0. Therefore, we can take msufﬁciently
+largethat |/hatwideFDR∞
+λ.t/prime/−/hatwideFDR λ.t/prime/|<" =2 whichimpliesthat /hatwideFDR λ.t/prime/<αandtα./hatwideFDR λ//greaterorequalslantt/prime.
+Therefore, liminf m→∞{tα./hatwideFDR λ/}/greaterorequalslantt/primewith probability 1. By theorem 6 it follows that with
+probability 1
+liminfm→∞/bracketleftBigg
+/hatwideFDR λ{tα./hatwideFDR λ/}−V{tα./hatwideFDR λ/}
+R{tα./hatwideFDR λ/}∨1/bracketrightBigg
+/greaterorequalslantlimm→∞inf
+t/greaterorequalslantδ/braceleftbigg
+/hatwideFDR λ.t/−V.t/
+R.t/∨1/bracerightbigg
+/greaterorequalslant0
+forδ=t/prime=2.Since/hatwideFDR λ{tα./hatwideFDR λ/}/lessorequalslantαit follows that
+limsup
+m→∞/bracketleftBigg
+V{tα./hatwideFDR λ/}
+R{tα./hatwideFDR λ/}∨1/bracketrightBigg
+/lessorequalslantα,
+with probability 1. By Fatou’s lemma,
+limsup
+m→∞/parenleftBigg
+E/bracketleftBigg
+V{tα./hatwideFDR λ/}
+R{tα./hatwideFDR λ/}∨1/bracketrightBigg/parenrightBigg
+/lessorequalslantE/bracketleftBigg
+limsup
+m→∞/bracketleftBigg
+V{tα./hatwideFDR λ/}
+R{tα./hatwideFDR λ/}∨1/bracketrightBigg/bracketrightBigg
+/lessorequalslantα:
+5.2. Proof of theorem 5
+Fort/prime>tα./hatwideFDR∞
+λ/,w eh a v et h a t/hatwideFDR∞
+λ.t/prime/−/hatwideFDR∞
+λ{tα./hatwideFDR∞
+λ/}="for some ">0. Thus,
+we can take msufﬁciently large that |/hatwideFDR∞
+λ.t/prime/−/hatwideFDR λ.t/prime/|<" =2, and thus/hatwideFDR λ.t/prime/>α
+eventually with probability 1. Hence limsupm→∞{tα./hatwideFDR λ/}/lessorequalslanttα./hatwideFDR∞
+λ/almost surely. If
+/hatwideFDR∞
+λ.·/has a non-zero derivative at tα./hatwideFDR∞
+λ/, then it must be a positive derivative. Other-
+wise, the definition of tα./hatwideFDR∞
+λ/would be violated. Thus, there is a neighbourhood, say
+of size δ>0, such that, for t/prime∈[tα./hatwideFDR∞
+λ/−δ,tα./hatwideFDR∞
+λ/], we have
+/hatwideFDR∞
+λ.t/prime/</hatwideFDR∞
+λ{tα./hatwideFDR∞
+λ/}:
+By a similar argument to that for the previous case, we have that, for any t/primein this neighbour-
+hood,/hatwideFDR λ.t/prime/<αeventuallywithprobability1.Thusliminf m→∞{tα./hatwideFDR λ/}/greaterorequalslanttα./hatwideFDR∞
+λ/
+almost surely. Putting these together, we have the result.202 J. D. Storey, J. E. Taylor and D. Siegmund
+5.3. Proof of theorem 6
+By an easy modiﬁcation of the Glivenko–Cantelli theorem,
+limm→∞sup
+0/lessorequalslantt/lessorequalslant1/vextendsingle/vextendsingle/vextendsingle/vextendsingleV.t/
+m−π0G0.t//vextendsingle/vextendsingle/vextendsingle/vextendsingle=0 almost surely,
+lim
+m→∞sup
+0/lessorequalslantt/lessorequalslant1/vextendsingle/vextendsingle/vextendsingle/vextendsingle{V.t/+S.t/}∨1
+m−{π0G0.t/+π1G1.t/}/vextendsingle/vextendsingle/vextendsingle/vextendsingle=0 almost surely,
+where V.t/+S.t/=R.t/.T a k ea n y δ>0. Then
+lim
+m→∞sup
+t/greaterorequalslantδ/vextendsingle/vextendsingle/vextendsingle/vextendsingleV.t/
+{V.t/+S.t/}∨1−π0mG0.t/
+{V.t/+S.t/}∨1/vextendsingle/vextendsingle/vextendsingle/vextendsingle
+/lessorequalslantlim
+m→∞/vextendsingle/vextendsingle/vextendsingle/vextendsinglem
+{V.δ/+S.δ/}∨1/vextendsingle/vextendsingle/vextendsingle/vextendsinglesup
+t/greaterorequalslantδ/vextendsingle/vextendsingle/vextendsingle/vextendsingleV.t/
+m−π0G0.t//vextendsingle/vextendsingle/vextendsingle/vextendsingle=0 almost surely :.12/
+Since lim
+minft/greaterorequalslantδ{ˆπ0.λ/t−π0G0.t/}/greaterorequalslant0 almost surely, it follows that
+limm→∞inf
+t/greaterorequalslantδ/braceleftbigg
+/hatwideFDR λ.t/−V.t/
+R.t/∨1/bracerightbigg
+/greaterorequalslant0 almost surely :
+to show that lim m→∞inft/greaterorequalslantδ{/hatwideFDR λ.t/−FDR .t/}/greaterorequalslant0, it sufﬁces to show that
+limm→∞sup
+t/greaterorequalslantδ/vextendsingle/vextendsingle/vextendsingle/vextendsingleV.t/
+R.t/∨1−FDR .t//vextendsingle/vextendsingle/vextendsingle/vextendsingle=0 almost surely :. 13/
+Since π
+0G0.δ/+π1G1.δ/>0andthesearebothnon-decreasingfunctions,itisstraightfor-
+ward to show that
+limm→∞sup
+t/greaterorequalslantδ/vextendsingle/vextendsingle/vextendsingle/vextendsinglem
+{V.t/+S.t/}∨1−1
+π0G0.t/+π1G1.t//vextendsingle/vextendsingle/vextendsingle/vextendsingle=0 almost surely :
+Using this, inequality (12) from above and the triangle inequality, we obtain
+0=lim
+m→∞sup
+t/greaterorequalslantδ/vextendsingle/vextendsingle/vextendsingle/vextendsingleV.t/−mπ
+0G0.t/
+{V.t/+S.t/}∨1/vextendsingle/vextendsingle/vextendsingle/vextendsingle
++lim
+m→∞sup
+t/greaterorequalslantδ/vextendsingle/vextendsingle/vextendsingle/vextendsinglemπ
+0G0.t/
+{V.t/+S.t/}∨1−π0G0.t/
+π0G0.t/+π1G1.t//vextendsingle/vextendsingle/vextendsingle/vextendsinglealmost surely :
+/greaterorequalslantlim
+m→∞sup
+t/greaterorequalslantδ/vextendsingle/vextendsingle/vextendsingle/vextendsingleV.t/
+R.t/∨1−π0G0.t/
+π0G0.t/+π1G1.t//vextendsingle/vextendsingle/vextendsingle/vextendsingle/greaterorequalslant0 almost surely :. 14/
+Now
+/vextendsingle/vextendsingle/vextendsingle/vextendsingleV.t/
+R.t/∨1−π0G0.t/
+π0G0.t/+π1G1.t//vextendsingle/vextendsingle/vextendsingle/vextendsingle/lessorequalslant2,False Discovery Rates 203
+so it follows that
+0=E/bracketleftBigg
+limm→∞sup
+t/greaterorequalslantδ/vextendsingle/vextendsingle/vextendsingle/vextendsingleV.t/
+R.t/∨1−π0G0.t/
+π0G0.t/+π1G1.t//vextendsingle/vextendsingle/vextendsingle/vextendsingle/bracketrightBigg
+=lim
+m→∞/parenleftBigg
+E/bracketleftBigg
+sup
+t/greaterorequalslantδ/vextendsingle/vextendsingle/vextendsingle/vextendsingleV.t/
+R.t/∨1−π0G0.t/
+π0G0.t/+π1G1.t//vextendsingle/vextendsingle/vextendsingle/vextendsingle/bracketrightBigg/parenrightBigg
+/greaterorequalslantlim
+m→∞sup
+t/greaterorequalslantδ/vextendsingle/vextendsingle/vextendsingle/vextendsingleE/bracketleftbiggV.t/
+R.t/∨1/bracketrightbigg
+−π0G0.t/
+π0G0.t/+π1G1.t//vextendsingle/vextendsingle/vextendsingle/vextendsingle/greaterorequalslant0,
+where E[V.t/={R.t/∨1}]=FDR .t/.Applyingthetriangleinequalitytothisresultandequation
+(14) implies that equation (13) holds, which completes the proof.
+5.4. Proof of theorem 7
+It follows from a minor modiﬁcation to the proof of theorem 6 that with probability 1
+lim
+m→∞inf
+t/greaterorequalslantδ{/hatwidepFDRλ.t/−pFDR .t/}/greaterorequalslant0
+for each δ>0. Therefore, for each t>0, it is straightforward to show that with probability 1
+limm→∞/vextendsingle/vextendsingle/vextendsingleinf
+s/greaterorequalslantt{/hatwidepFDRλ.s/}−inf
+s/greaterorequalslantt{pFDR .s/}/vextendsingle/vextendsingle/vextendsingle/greaterorequalslant0:
+This is just another way of writing that with probability 1
+lim
+m→∞{ˆqλ.t/−q-value .t/}/greaterorequalslant0,
+for each t>0. Now ˆ qλ.t/∧1 andq-value .t/are both non-decreasing cadlag functions with
+rangein[0,1].Moreover,theyeachshowpointwiseconvergencetocontinuouslimitswherethelimit of ˆ q
+λ.t/∧1 dominates that of q-value .t/. It follows by the same arguments proving the
+Glivenko–Cantelli theorem (Billingsley, 1968) and similar steps to the proof of theorem 6 that
+limm→∞inf
+t/greaterorequalslantδ{ˆqλ.t/∧1−q-value .t/}/greaterorequalslant0:
+The desired result follows because lim m→∞inft/greaterorequalslantδ{ˆqλ.t/−ˆqλ.t/∧1}/greaterorequalslant0. If we use the
+alternative definition ˆ qλ.t/=infs/greaterorequalslantt{/hatwidePrλ.H=0|P/lessorequalslants/}=infs/greaterorequalslantt{/hatwideFDR λ.s/}, then the proof
+is analogous.
+6. Automatically choosing λ
+The procedures that we have considered require the choice of a tuning parameter λin the esti-
+mate ˆ π0.λ/, which has a clear bias–variance trade-off. Since the mean-squared error (MSE)
+lends a reasonable balance between bias and variance, our proposed automatic choice of λis
+an estimate of the value that minimizes E[{ˆπ0.λ/−π0}2]. The procedure that we propose is
+summarized in the following algorithm.
+Step1: forsomerangeof λ,sayR={0,0:05,0:10,...,0 :95},calculate ˆ π0.λ/asinSection2.
+Step 2: for each λ∈R, form Bbootstrap versions ˆ πÅb
+0.λ/of the estimate, b=1,..., B,b y
+taking bootstrap samples of the p-values.204 J. D. Storey, J. E. Taylor and D. Siegmund
+Step 3: for each λ∈R, estimate its respective MSE as
+/hatwideMSE .λ/=1
+BB/summationtext
+b=1[ˆπÅb
+0.λ/−min
+λ/prime∈R{ˆπ0.λ/prime/}]2:
+Step 4: setˆλ=argmin λ∈R{/hatwideMSE .λ/}. Our overall estimate of π0is ˆπ0=ˆπ0.ˆλ/.
+MotivationforthiscanbefoundinStorey(2002),whereasimilarmethodforautomatically
+choosing λin/hatwideFDR λ.t/was proposed. To assess the accuracy of the procedure proposed, we
+performed numerical experiments that are similar to those in Storey (2002) (the data are notshown).ThisprocedureworkedequallywellinthesensethattheMSEthatwasestimatedfromthe bootstrap procedure on average had a minimum that was close to that of the true MSE.
+Thetheoreticalresultsinthisworkareforﬁxed λanddonotincludeanautomaticchoiceof
+λ. It is straightforward to show that, for a ﬁxed and ﬁnite R, the results of theorems 4, 6 and 7
+continue to hold with λ=ˆλ. Moreover, as long as the size of Rgrows at an appropriate rate
+(slower than m), it should be possible to show that the asymptotic results still hold. We leave
+thedetailstotheinterestedreader.GenoveseandWasserman(2002b)havederivedconservativeasymptotic properties of the /hatwideFDR
+λ.t/estimates as λ→1 smoothly in masm→∞, which is a
+more aggressive procedure than the procedure above.
+7. Discussion
+We have shown that /hatwideFDR λ.t/can be used
+(a) to estimate FDRs for ﬁxed significance regions,
+(b) to estimate significance regions for ﬁxed FDRs and(c) to estimate FDRs simultaneously over the naturally occurring significance regions.
+We have approached the problem of dependence by using asymptotic arguments. When weak
+dependence exists and the number of tests is large, then our methods are valid to use. Underindependenceandmixturemodelassumptions,GenoveseandWasserman(2002b)showedthat
+/hatwideFDR
+λ.t/and/hatwidepFDRλ.t/converge to a tight Gaussian process. A functional delta method is
+employedtoderiveasymptoticvalidityresultsforproceduresbasedondata-dependentthresh-olds.GenoveseandWasserman(2002b)alsostudiedtherealizedproportionoffalsediscoveriesV.t/=R.t/ as a stochastic process. There are two main differences between our approach and
+theirs. The ﬁrst is that they viewed these procedures in terms of data-dependent thresholdingrules (which is very similar to the BH viewpoint), whereas we worked from the standpoint ofestimating the FDR from a ﬁxed threshold. The second difference is that they made strongerassumptions (independence, a mixture model and large m), whereas we only require indepen-
+denceofthenull p-valuesfortheﬁnitesampleresults,andpointwiseconvergenceoftheempirical
+distribution functions of the null and alternative p-values for the asymptotic results.
+Wehaveshowninbothaﬁnitesamplesettingandanasymptoticsettingthatthegoalsofthe
+‘ﬁxed FDR level’ and ‘ﬁxed significance threshold’ approaches can be accomplished withthe same estimates. For this family of estimates, this is a uniﬁcation of the two approaches.In the asymptotic setting, we have also shown that the point estimates can be used to estimateconservatively the FDR over all significance regions simultaneously, which is equivalent tocontrolling the FDR at all levels simultaneously. This allowed us to prove the simultaneousconservative consistency of the estimated q-values, which is the ﬁrst proof (to our knowledge)
+that FDR-adjusted p-values can be used in a simultaneous fashion with some guarantee that
+theystillprovidecontroloftheFDR.Themaintoolthatwehaveusedinthisworkistotrans-False Discovery Rates 205
+late existing FDR methods into procedures involving empirical processes. This simpliﬁes ﬁnite
+sample proofs and provides a framework for asymptotic results. Of future interest will be tostudy the optimality properties of our procedures, as well as to develop methods that exploitany known structure for a particular application.
+8. Software
+The methodology that has been described in this paper is available as a suite of S-PLUS and
+R functions at http://faculty.washington.edu/ ∼storey/qvalue/ .
+Acknowledgements
+We thank the Associate Editor and referees for their helpful comments. It was brought to our
+attention after this paper had been accepted for publication that an unpublished manuscriptbyBenjamini,YekutieliandKriegerprovesFDRcontrolatasinglelevel αforanotherrelated
+procedure. We thank them for pointing this out.
+References
+Benjamini,Y.andHochberg,Y.(1995)Controllingthefalsediscoveryrate:apracticalandpowerfulapproachto
+multiple testing. J. R. Statist. Soc. B,57, 289–300.
+Benjamini,Y.andHochberg,Y.(2000)Ontheadaptivecontrolofthefalsediscoveryrateinmultipletestingwith
+independent statistics. J. Educ. Behav. Statist. ,25, 60–83.
+Benjamini,Y.andLiu,W.(1999)Astep-downmultiplehypothesisprocedurethatcontrolsthefalsediscoveryrate
+under independence. J. Statist. Planng Inf. ,82, 163–170.
+Benjamini,Y.andYekutieli,D.(2001)Thecontrolofthefalsediscoveryrateinmultipletestingunderdependency.
+Ann. Statist. ,29, 1165–1188.
+Billingsley, P. (1968) Convergence of Probability Measures . NewYork: Wiley.
+Chow,Y.S.,Robbins,H.E.andSiegmund,D.(1971) GreatExpectations:theTheoryofOptimalStopping .Boston:
+Houghton Mifflin.
+Durrett, R. (1996) Probability: Theory and Examples , 2nd edn. Belmont: Duxbury.
+Efron,B.,Tibshirani,R.,Storey,J.D.andTusher,V.(2001)EmpiricalBayesanalysisofamicroarrayexperiment.
+J. Am. Statist. Ass. ,96, 1151–1160.
+Finner,H.andRoters,M.(2001)OnthefalsediscoveryrateandexpectedtypeIerrors. Biometr.J. ,43,985–1005.
+Finner,H.andRoters,M.(2002)MultiplehypothesestestingandexpectednumberoftypeIerrors. Ann.Statist. ,
+30, 220–238.
+Genovese, C. and Wasserman, L. (2002a) Operating characteristics and extensions of the false discovery rate
+procedure. J. R. Statist. Soc. B,64, 499–517.
+Genovese, C. and Wasserman, L. (2002b) False discovery rates. Technical Report . Department of Statistics,
+Carnegie Mellon University, Pittsburgh.
+Morton, N. E. (1955) Sequential tests for the detection of linkage. Am. J. Hum. Genet. ,7, 277–318.
+Shaffer, J. (1995) Multiple hypothesis testing. A. Rev. Psychol. ,46, 561–584.
+Simes,R.J.(1986)AnimprovedBonferroniprocedureformultipletestsofsignificance. Biometrika ,73,751–754.
+Storey, J. D. (2001) The positive false discovery rate: a Bayesian interpretation and the q-value.Ann. Statist. ,t o
+be published.
+Storey, J. D. (2002) Adirect approach to false discovery rates. J. R. Statist. Soc. B,64, 479–498.
+Storey, J. D. and Tibshirani, R. (2001) Estimating false discovery rates under dependence, with applications to
+DNAmicroarrays. Technical Report 2001-18 . Department of Statistics, Stanford University, Stanford.
+Yekutieli,D.andBenjamini,Y.(1999)Resampling-basedfalsediscoveryratecontrollingmultipletestprocedures
+for correlated test statistics. J. Statist. Planng Inf. ,82, 171–196.

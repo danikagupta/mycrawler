@@ -1,0 +1,309 @@
+660 The Canadian Journal of Chemical Engineering, Volume 81, June-August  2003
+Airlift reactors (ALR) are ﬁnding increasing applications in chemical
+industry, biochemical fermentation and biological wastewatertreatment processes (Blenke, 1979; Chisti, 1989; Saez et al .,
+1998). There are two types of ALR: internal and external loop. Internalloop reactors consist of concentric tubes or split vessels, in which a partof the gas is entrained into the downcomer, whereas external loopreactors are two conduits connected at the top and the bottom, inwhich little or no gas recirculates into the downcomer. The part in whichthe sparger is located is called the riser, and the other is the downcomer.The driving force, based on the static pressure difference, or the mixturedensity difference, between the riser and the downcomer generates theloop liquid circulation. Compared with conventional reactors, such asstirred tank reactors or bubble columns, shear stress is relatively constantand mild throughout the reactor. For design of an airlift reactor, it is necessary to have accurate estimatesof the phase holdups and velocities in the riser and downcomer. Severalliterature studies have focused on the estimation of these hydrodynamicparameters (Calvo and Leton, 1991; Calvo and Leton, 1996; Camarasaet al., 2001a; Camarasa et al ., 2001b; Chisti, 1989; Cockx et al ., 1997;
+Dhaouadi et al ., 1996; Heijnen et al ., 1997; Marquez et al ., 1999;
+Merchuk et al ., 1996; Oey et al ., 2001; Saez et al ., 1998; See et al ., 1999;
+van Benthum et al ., 1999). In particular, the velocities of the liquid in the
+downcomer and riser are crucially dependent on the frictional losses,which in turn are determined by the geometry of the reactor and theoperating conditions. Several empirical correlations have been proposedfor the estimation of these hydrodynamic parameters; however, thesecorrelations are restricted in their applicability to the geometry for whichthey were determined. Extrapolation to other geometries, scales andoperating conditions is fraught with uncertainty. 
+Several recent publications have established the potential of 
+computational ﬂuid synamics (CFD) for describing the hydrodynamics ofbubble columns (Jakobsen et al ., 1997; Joshi, 2001; Krishna et al ., 1999a,
+2000a; Krishna and Van Baten, 2001; Krishna et al ., 2000b; Krishna et al .,
+2001; Pan et al ., 2000; Sanyal et al ., 1999; Sokolichin and Eigenberger,
+1999; van Baten and Krishna, 2001). The major objective of the presentcommunication is to develop a CFD model for internal airlift reactors andto test its validity by comparison with experimental data obtained incolumns of three different conﬁgurations. After checking the ability ofthe CFD approach to reproduce the measured data, the model is used
+*Author to whom correspondence may be addressed. E-mail address:
+krishna@ science.uva.nlUsing CFD to Describe the Hydrodynamics of
+Internal Air-lift Reactors
+Jasper M. van Baten, Jürg Ellenberger and Rajamani Krishna*
+Department of Chemical Engineering, University of Amsterdam, Nieuwe Achtergracht 166, 1018 WV Amsterdam,
+The Netherlands
+The hydrodynamics of three conﬁgurations of
+internal airlift reactors, two with riser diameters of 0.1m and one with a riser diameter of 0.24 m, operatingwith air–water system, have been experimentallyinvestigated for a range of superﬁcial gas velocities.The experimental results are compared with a modelusing computational fluid dynamics (CFD) withEulerian descriptions of the gas and liquid phases.Interactions between the bubbles and the liquid aretaken into account by means of a momentumexchange, or drag coefﬁcient based on a literaturecorrelation. The turbulence in the liquid phase isdescribed using the k-emodel. The CFD model shows
+good agreement with the measured data on gasholdup, liquid velocity in the downcomer and in theriser for all three conﬁgurations. The developed CFDmodel has the potential of being applied as a tool forscaling up. 
+L’hydrodynamique de trois configurations de
+réacteurs airlift interne, dont le diamètre de colonnemontante est de 0,1 m pour deux d’entre eux et de0,24 m pour le troisième, fonctionnant avec unsystème air-eau, a été étudiée de manière expérimen-tale pour une gamme de vitesse de gaz superﬁcielle.Les résultats expérimentaux sont comparés à ceuxd’un modèle utilisant la mécanique des fluidesnumérique (CFD) avec des descriptions eulériennesdes phases de gaz et de liquide. Les interactions entreles bulles et le liquide sont prises en compte au moyende l’échange de quantité de mouvement ou du coefﬁ-cient de traînée basé sur une corrélation de la littéra-ture scientiﬁque. On décrit la turbulence dans la phaseliquide à l’aide du modèle k-e. Le modèle de CFD
+montre un bon accord avec les données mesurées surla rétention de gaz, la vitesse de liquide dans ledéversoir et dans la colonne montante pour les troisconﬁgurations. Le modèle de CFD mis au point pourraêtre appliqué en tant qu’outil pour des mises àl’échelle.
+Keywords: airlift reactor, gas hold up, scale effects,
+computational ﬂuid dynamics, liquid circulations.to predict the inﬂuence of geometry and scale on the reactor
+hydrodynamics. 
+Experimental Set-up and Results
+Three different conﬁgurations of an internal airlift reactor
+were investigated. Conﬁguration I, consists of a polyacrylatecolumn with an inner diameter of 0.15 m and a length of 2 m.At the bottom of the column, the gas phase is introducedthrough a perforated plate with 625 holes of 0.5 mm indiameter. A polyacrylate draft tube (riser) of 0.10 m inner and0.11 m outer diameter with a height of 2.02 m is mounted intothe column 0.10 m above the gas distributor. In order to avoidgas ﬂow into the downcomer section, a gas-liquid separator is
+mounted at the top of the column of 1 m in height and 0.38 min diameter. 
+In Conﬁguration II, the same riser of internal diameter 0.15
+m was housed in a column of 0.174 m internal diameter; theother dimensions and method of gas distribution were identicalto that of Conﬁguration I.
+In Conﬁguration III, a riser diameter of 0.24 m (inner
+diameter) and height of 2.02 m is housed inside a column of0.38 m diameter; other dimensions are speciﬁed in Figure 1.The distributor is made up of 2750 holes of 0.5 mm in diameter. 
+The liquid velocity in the downcomer is determined by inject ing,
+The Canadian Journal of Chemical Engineering, Volume 81, June-August  2003 661Figure 1. Experimental set up of internal airlift reactor with Conﬁguration III.
+as a pulse, 1 mL of salt tracer (saturated aqueous solution of
+NaCl) by means of a syringe S1 at a position near the top of thedowncomer. The tracer response to this salt tracer injection ismeasured at two positions, A and D in Figure 1, by means ofconductivity cells (Metrohm) placed near the top and bottomof the downcomer, separated by a distance of 1.88 m. Theconductivity cells are connected to a Consort K920 portableconductivity meter, and the transient voltage signals arerecorded continuously on a PC. From the delay in theresponses, Dt, the downcomer liquid velocity is determined
+from 1.88/ Dt. For determination of the liquid velocity in the
+riser, 1 mL of saturated aqueous solution NaCl is injected as apulse near the bottom of the riser in the central region througha 1 mm stainless steel capillary by means of a syringe S2. Theresponse is monitored by two conductivity probes at positionsC and B, separated by a distance of 1.0 m. From the delay inthe responses, Dt, the liquid velocity in the riser is determined
+from 1.0/ Dt. The gas holdup in the riser section is determined
+by pressure drop measurement between the same twopositions, B and C, as indicated for the conductivity cells. Twoclosed-ended stainless steel tubes with a hole of 1.0 mm facingat a right angle to the ﬂow direction are ﬁxed into the risersection, the distance between the holes being 1.0 m. The
+pressure is transmitted through these tubes to a Validyne DP 15pressure transducer with a range of 0 to 2200 Pa. The measuringtime of the pressure signal is 120 s with a sampling frequencyof 2Hz. The mean value of the pressure drop signals is used tocalculate the gas holdup.
+Similar measurement strategies were used for Conﬁgurations
+I and II. All experiments in the three conﬁgurations were carriedout at atmospheric pressure conditions with the air–watersystem. The column is ﬁlled with demineralised water to aheight of 2.5 m. The hydrodynamics of the airlift system wasstudied for superﬁcial gas velocities, U
+G(based on the riser
+cross-sectional area) in the range 0.0 to 0.20 m/s. For this rangeof U
+Gvalues, there was no entrainment of gas in the
+downcomer. Also, due to the high liquid recirculations,homogenous bubbly ﬂow was maintained in all the experi ments;
+this could be veriﬁed visually.  In the simulations, therefore, weassumed uniform bubble sizes for all the runs.
+Development of CFD model
+For either gas or liquid phase the volume-averaged mass andmomentum conservation equations in the Eulerian frameworkare given by:
+where, r
+k, uk, and ekrepresent, respectively, the macroscopic
+density, velocity, and volume fraction of phase k;mk, effis the
+effective viscosity of the ﬂuid phase k, including the molecular
+and turbulent contributions. pis the pressure, Mkl, the
+interphase momentum exchange between phase kand phase l
+and gis the gravitational vector. 
+The momentum exchange between the gas (subscript G) and
+liquid (subscript L) phases is given by:
+Here, the interphase drag coefﬁcient is calculated from (Clift et al .,
+1978):
+where dbis the equivalent diameter of the bubbles. For a single
+bubble rising in a quiescent liquid, the rise velocity Vb0can be
+calculated from the drag coefﬁcient:
+(6)Vg
+C
+dbLG
+D
+bL0 3
+4=- ( ) rr
+r(4)
+(5)CE
+EgdD
+LG b=
+=-2
+3
+2ö
+with
+ö()rr
+s(3) Mu u u uLGD
+bLGG L GLC
+d, =È
+ÎÍ˘
+˚˙ - ( ) -3
+4re(1)
+(2)∂( )
+∂+—◊( )=
+∂( )
+∂+—◊( )=— + — ( )Ê
+Ëˆ
+¯
+-— + +erre
+rere m e
+er ekk
+kkk
+kkk
+kkkk k e f f kk k
+kk l k kt
+t
+pu
+uuu u u
+Mg0
+,T
+662 The Canadian Journal of Chemical Engineering, Volume 81, June-August  2003Figure 2. Experimental data on single bubble rise velocity as a function
+of bubble diameter (Krishna et al ., 1999b), compared with predictions
+of the drag model adopted in this work.
+Table 1. Properties used in the CFD simulations.
+Liquid (water) Gas (air)  
+Viscosity, m/ [Pa·s] 1 ¥10–31.7 ¥10–5
+Density, r/ [kg/m3] 998 1.3  
+Surface tension, s/ [N/m] 0.073The calculations of the single bubble rise velocity Vb0using
+Equations (4), (5) and (6) compare very well with the risevelocity of single air bubbles in water in a column of 0.1 mdiameter (Krishna et al ., 1999b); see Figure 2. We note that the
+rise velocity is practically independent of the bubble size in the3 to 8 mm range. For the simulations reported here, we choosea bubble diameter d
+b= 5 mm.We have only included the drag force contribution to ML,G,
+in keeping with the works of Sanyal et al. (1999) and Sokolichinand Eigenberger (1999). The contributions of the added massand lift forces were both ignored in the present analysisbecause these were veriﬁed to provide a negligible contribu-tion. 
+For the continuous liquid phase, the turbulent contribution
+to the stress tensor is evaluated by means of k-emodel, using
+standard single-phase parameters C
+m = 0.09, C1e = 1.44, C2e =
+1.92, sk= 1 and se= 1.3. The applicability of the k-emodel has
+been considered in detail by Sokolichin and Eigenberger(1999). No turbulence model is used for calculating the velocityﬁelds inside the dispersed bubble phases.
+A commercial CFD package CFX, versions 4.2 and 4.4, of
+AEA Technology, Harwell, UK, was used to solve the equationsof continuity and momentum. This package is a ﬁnite volumesolver, using body-ﬁtted grids. The grids are non-staggered andall variables are evaluated at the cell centres. An improvedversion of the Rhie and Chow (1983) algorithm is used tocalculate the velocity at the cell faces. The pressure-velocitycoupling is obtained using the SIMPLEC algorithm (vanDoormal and Raithby, 1984). For the convective terms inEquations (1) and (2), hybrid differencing was used. A fullyimplicit backward differencing scheme was used for the timeintegration. 
+Most of the simulations were carried out using axi-symmetric
+2D grids. The computational spaces are shown in Figure 3 forConﬁgurations I, II and III and the grid details are as speciﬁedin Table 2. 
+The gas was injected homogeneously over the complete
+bottom region (over an area equivalent to the sum of the cross-sectional areas of the riser, the downcomer and the draft tube).A pressure boundary condition was applied to the top of thecolumn because in the experiments the top of the column isopen to atmosphere. A standard no-slip boundary conditionwas applied at all walls. The time stepping strategy used in allsimulations was 100 steps at 5 ¥ 10
+–5s, 100 steps at 1 ¥ 10–4s,
+100 steps at 5 ¥ 10–4s, 100 steps at 1 ¥ 10–3s, 200 steps at 3
+¥ 10–3s, 1400 steps at 5 ¥ 10–3s, and 1000 steps at 1 ¥ 10–2s.
+This is more than sufﬁcient to reach steady state, which wasindicated by a situation in which all of the variables remainedconstant. To prevent start-up problems, the system was initial-ized by setting the gas holdup within the riser to 10%, andsetting an initial upward velocity of 0.05 m/s in the riser, and amatching downward velocity in the downcomer.
+The simulations were carried out on Silicon Graphics Power
+Indigo workstations with 75 MHz R8000 processors, a SiliconGraphics O2 workstation with a 150 MHz R10000 processor,and a Windows NT PC with a single Pentium Celeronproces sor running at 500 MHz. Each simulation was completed
+in about two days. Further details of the simulations areavailable on our Web sites: http://ct-cr4.chem.uva.nl/airlift/
+andhttp://ct-cr4.chem.uva.nl/airlift38/.
+In order to test the validity of the assumption of 2D axi-
+symmetry, one fully three-dimensional simulation was carriedout for Conﬁguration III operating at U
+G= 0.16 m/s. The 3D
+grid consisted of a total of 138 500 cells, with 10 cells in theazimuthal direction. The 3D simulation was carried out on aSilicon Graphics Power Challenge machine employing sixR10000 processors in parallel; this simulation took 7 days tocomplete 10 000 time steps.
+The Canadian Journal of Chemical Engineering, Volume 81, June-August  2003 663Figure 3. Computational grid details for Conﬁgurations I, II and III. 
+Simulation Results and Comparison with
+Experiments
+A typical transient approach to steady-state of the gas and
+liquid velocities, at the centre of the column, are shown inFigure 4 for Conﬁguration III operating at a superﬁcial gasvelocity U
+G= 0.16 m/s. Figure 4a shows that the 2D axi-
+symmetric simulation reaches steady state within 10 s. Thesteady-state values of all the hydrodynamic parameters weredetermined at a position 1.75 m above the distributor andreported below. The transient behaviour of the corresponding3D simulation shows that quasi-steady state is achieved after 15s time steps; see Figure 4b. For the 3D simulation results, timeaveraged values for 15 to 20 s time interval are reported below. 
+The steady-state radial velocity proﬁles, from 2D simulations, of
+the gas and liquid phases are shown in Figure 5 for ConﬁgurationsI, II and III. For low superﬁcial gas velocities, U
+G, both gas and liquid
+phase can be considered to be virtually in plug ﬂow. With increasingsuperﬁcial gas velocities, both gas and liquid phases lose their plugﬂow character and the velocity proﬁles assume a parabolic shape.The parabolic velocity proﬁle becomes more prominent with
+increasing riser diameter, as we move to Conﬁguration III.
+The radial distribution of gas holdup, obtained from 2D
+simulations are shown in Figure 6. Within the central core of theriser, the gas holdup proﬁles are nearly uniform over thecomplete range of U
+Gvalues for Conﬁgurations I and II. In
+Conﬁguration II, with a larger downcomer area, there is anincrease in gas holdup near the riser wall.  The reason for this isthat the larger sized liquid circulation cells at the riser bottomtends to move the gas towards the wall.  Animations of thehydrodynamics comparing Conﬁgurations I and II, near the riserbottom on our Web site: http://ct-cr4.chem.uva.nl/airlift/
+demonstrates the reasons behind the differences in the gasholdup distribution. For Conﬁguration III, the gas holdup showsa pronounced increase in the gas holdup at the centre of thecolumn with increasing U
+Gvalues in this case the liquid recircu-
+lations tend to move the gas towards the center of the columnas is evident in the animations on our Web site: http://ct-
+cr4.chem.uva.nl/airlift38/.
+664 The Canadian Journal of Chemical Engineering, Volume 81, June-August  2003Figure 4. Transient approach to steady state of velocities and gas holdup in the riser. Simulation results for Conﬁguration III operating  at a superﬁ-
+cial gas velocity UG= 0.16 m/s in the riser, at a height of 1.75 m above the distributor. (a) 2D axi-symmetric simulation, and (b) 3D simulation.
+Animations can be viewed on the Web site: http://ct-cr4.chem.uva.nl/airlift38/.
+Table 2. Details of computational grids for the three-column conﬁgurations. See Figure 3 for a schematic overview of the grid geometry. The
+draft tube has a thickness of 0.005 m for all geometries.
+Conﬁguration (A) (B) (C) (D) (E) (F) (G) (H) cells   
+I 0.075 m/15 cells 0.19 m/38 cells  2.08 m/208 cells 0.98 m/98 cells 3.06 m/306 cells 0.09 m 2.02 m 0.05 m 6844  
+II 0.087 m/18 cells 0.19 m/38 cells  2.08 m/208 cells 0.98 m/98 cells 3.06 m/306 cells 0.09 m 2.02 m 0.05 m 7468  III 0.19 m/38 cells 0.315 m/63 cells 2.02 m/202 cells 0.98 m/98 cells 3.00 m/300 cells 0.10 m 2.03 m 0.12 m 13850The Canadian Journal of Chemical Engineering, Volume 81, June-August  2003 665Figure 5. Radial distribution of gas velocity VG(r) and liquid velocity VL(r) for varying superﬁcial gas velocities UGin the riser, at a height of 1.75 m above
+the distributor. 2D axi-symmetric simulation results for Conﬁgurations I, II and III. Animations can be viewed on the Web site:  http://ct-cr4.chem.uva.nl/airlift/.
+In order to check the assumption of axi-symmetry in the 2D
+simulations reported above, we compare the 2D and 3D simula tion
+results for Conﬁguration III for UG= 0.16 m/s; see Figure 7.
+Forcing axi-symmetry makes the 2D simulations of the liquid
+velocity attain a more parabolic shape. In the 3D simula tions, the
+gas and liquid phase slosh from side to side, as can be
+evidenced in the animations on our Web site: http://ct-
+cr4.chem.uva.nl/airlift38/. This side-ways sloshing makes the
+time-averaged velocity proﬁles ﬂatter; see Figure 7a. The cross-section averaged values of the liquid velocity for the 2D
+666 The Canadian Journal of Chemical Engineering, Volume 81, June-August  2003Figure 6. Radial distribution of gas holdup eG(r) for varying superﬁcial gas
+velocities UGin the riser, at a height of 1.75 m above the distributor. 2D
+axi-symmetric simulation results for Conﬁgurations I, II and III. Animationscan be viewed on the Web site: http://ct-cr4.chem.uva.nl/airlift/.
+Figure 7. Comparison of 2D axi-symmetric and 3D simulation results
+for (a) radial distribution of liquid velocity VL(r) and (b) radial distribu tion
+of gas holdup eG(r). Data at a height of 1.75 m above the distributor.
+Simulation results for Conﬁguration III operating at a superﬁcial gasvelocity U
+G= 0.16 m/s in the riser. Animations can be viewed on the
+Web site: http://ct-cr4.chem.uva.nl/airlift38/.
+and 3D simulations are, respectively, 1.19 and 1.15 m/s. The
+gas holdup distribution for the 3D simulation is also ﬂatter thanthat obtained from the axi-symmetric simulations; see Figure7b. The cross-section averaged values of the gas holdup for the2D and 3D simulations are, respectively, 0.109 and 0.114.
+The cross-section area averaged (interstitial) liquid velocities
+in the riser and downcomer, and gas holdup values in the riser,obtained from the 2D axi-symmetric simulations, are comparedin Figure 8 with the experimentally determined values.  
+Let us ﬁrst compare the results for Conﬁgurations I and II,
+that have the same riser diameter. Conﬁguration II has a largerdowncomer area; the frictional losses are smaller and thereforea higher volume of liquid is recirculated. The higher liquidrecirculations cause a smaller slip velocity between the gas andliquid phases, and consequently a smaller gas holdup. The CFDsimulations are able to pick up these geometry effects very welland there is very good agreement with experiments for bothConﬁgurations I and II.
+For Conﬁguration III, both riser and downcomer areas are
+larger than those for Conﬁgurations I and II. Even though theright trends are predicted and the agreement between the CFDsimulations and experiment is less good for Congﬁguration III.  Conclusions
+We have developed a CFD model to describe the hydrodynamics
+of an internal airlift reactor. The following major conclusionscan be drawn:
+•The assumption of 2D axi-symmetry leads to radial proﬁles
+of velocity that have a more parabolic character than that forfully 3D simulations.  The cross-section area averaged valuesof gas holdup and phase velocities for 2D and 3D simulations
+for Conﬁguration III are, however, close to one another; thisresult suggests that the assumption of axi-symmetric is validfor the geometry used in the experimental setup.
+•There is good agreement between the 2D simulations and
+experiments; this suggests that geometry effects areproperly accounted for by the CFD model.
+Acknowledgements
+The Netherlands Organization for Scientific Research (NWO) is
+gratefully acknowledged for providing ﬁnancial assistance in the formof a programmasubsidie for development of novel concepts in reactiveseparations technology.
+The Canadian Journal of Chemical Engineering, Volume 81, June-August  2003
+667Figure 8. Comparison of experimental data and 2D axi-symmetric simulations for gas holdup in the riser, average interstitial liquid veloc ity in the
+downcomer and riser.
+Nomenclature
+CDdrag coefﬁcient
+dbdiameter of bubble, (m)
+Eö Eötvös number, ( g(rL–rG)db2/s) 
+g gravitational acceleration, 9.81 (m·s–2)
+g gravitational vector, (m·s–2)
+M interphase momentum exchange term, (N/m3)
+p system pressure, (Pa)
+r radial coordinate, (m)
+t time, (s)
+u velocity vector, (m/s)
+uLinterstitial liquid velocity, (m·s–1)
+UGsuperﬁcial gas velocity in the riser, (m·s–1)
+VG(r) radial distribution of interstitial gas velocity, (m·s–1)
+VL(r) radial distribution of interstitial liquid velocity, (m·s–1)
+Vb0single bubble rise velocity, (m·s–1)
+Greek
+e total gas hold up
+eG(r) radial distribution of gas holdup
+m viscosity of ﬂuid phase, (Pa·s) 
+r density of phase, (kg·m–3) 
+s surface tension of liquid phase, (N·m–1) 
+Subscripts
+G referring to gas
+L referring to liquid
+k,l referring to phase kand lrespectively
+rise in the riser 
+down in the downcomer 
+References
+Blenke, H., “Loop Reactors”, Adv. Biochem. Eng. 13, 121–215 (1979).
+Calvo, E.G. and P. Leton, “A Fluid Dynamic-Model for Bubble-Columns
+and Airlift Reactors”, Chem. Eng. Sci. 46, 2947–2951 (1991).
+Calvo, E.G. and P. Leton, “Prediction of Gas Hold-up and Liquid Velocity
+in Airlift Reactors using Two-phase Flow Friction Coefficients”,J. Chem. Technol. Biotechnol. 67, 388–396 (1996).
+Camarasa, E., E. Carvalho, L.A.C. Meleiro, R. Maciel, A. Domingues, G. Wild,
+S. Poncin, N. Midoux and J. Bouillard, “Development of a CompleteModel for an Air-lift Reactor”, Chem. Eng. Sci. 56, 493–502 (2001a).
+Camarasa, E., L.A.C. Meleiro, E. Carvalho, A. Domingues, R. Maciel, G.
+Wild, S. Poncin, N. Midoux and J. Bouillard, “A Complete Model for
+Oxidation Air-lift Reactors”, Comput. Chem. Eng. 25, 577–584
+(2001b).
+Chisti, M.Y., “Airlift Bioreactors”, Elsevier Applied Science, London, UK (1989).Clift, R., J.R. Grace and M.E. Weber, “Bubbles, Drops and Particles”,
+Academic Press, San Diego, CA (1978).
+Cockx, A., A. Line, M. Roustan, Z. DoQuang and V. Lazarova, “Numerical
+Simulation and Physical Modeling of the Hydrodynamics in an Air-liftInternal Loop Reactor”, Chem. Eng. Sci. 52, 3787–3793 (1997).
+Dhaouadi, H., S. Poncin, J.M. Hornut, G. Wild and P. Oinas,
+“Hydrodynamics of an Airlift Reactor: Experiments and Modeling”,Chem. Eng. Sci. 51, 2625–2630 (1996).
+Heijnen, J.J., J. Hols, R.G.J.M. van der Lans, H.L.M. van Leeuwen, A.
+Mulder and R. Weltevrede, “A Simple Hydrodynamic Model for theLiquid Circulation Velocity in a Full-scale Two- and Three-phaseInternal Airlift Reactor Operating in the Gas Recirculation Regime”,Chem. Eng. Sci. 52, 2527–2540 (1997).
+Jakobsen, H.A., B.H. Sannaes, S. Grevskott and H. F. Svendsen,
+“Modeling of Vertical Bubble-driven Flows”, Ind. Eng. Chem. Res. 36,
+4050–4072 (1997).Joshi, J.B., “Computational Flow Modeling and Design of Bubble
+Column Reactors”, Chem. Eng. Sci. 56, 5893–5933 (2001).
+Krishna, R., M.I. Urseanu, J.M. van Baten and J. Ellenberger, “Inﬂuence
+of Scale on the Hydrodynamics of Bubble Columns Operating in theChurn-turbulent Regime: Experiments vs. Eulerian Simulations”,Chem. Eng. Sci. 54, 4903–4911 (1999a).
+Krishna, R., M.I. Urseanu, J.M. van Baten and J. Ellenberger, “Liquid
+Phase Dispersion in Bubble Columns Operating in the Churn-Turbulent Flow Regime”, Chem. Eng. J. 78, 43–51 (2000a).
+Krishna, R., M.I. Urseanu, J.M. van Baten and J. Ellenberger, “Wall Effects
+on the Rise of Single Gas Bubbles in Liquids”, Int. Commun. HeatMass Transf. 26, 781–790 (1999b).
+Krishna, R. and J.M. Van Baten, “Scaling up Bubble Column Reactors
+with the Aid of CFD”, Chem. Eng. Res. Des. 79, 283–309 (2001).
+Krishna, R., J.M. van Baten and M.I. Urseanu, “Three-phase Eulerian
+Simulations of Bubble Column Reactors Operating in the Churn-Turbulent Regime: a Scale up Strategy”, Chem. Eng. Sci. 55,
+3275–3286 (2000b).
+Krishna, R., J.M. van Baten, M.I. Urseanu and J. Ellenberger, “Design and
+Scale up of a Bubble Column Slurry Reactor for Fischer-TropschSynthesis”, Chem. Eng. Sci. 56, 537–545 (2001).
+Marquez, M.A., R.J. Amend, R.G. Carbonell, A.E. Saez and G.W. Roberts,
+“Hydrodynamics of Gas-lift Reactors with a Fast, Liquid-phaseReaction”, Chem. Eng. Sci. 54, 2263–2271 (1999).
+Merchuk, J.C., N. Ladwa, A. Cameron, M. Bulmer, I. Berzin and A.M.
+Pickett, “Liquid Flow and Mixing in Concentric Tube Air-lift Reactors”,J. Chem. Technol. Biotechnol. 66, 174–182 (1996).
+Oey, R.S., R.F. Mudde, L.M. Portela and H.E.A. van den Akker,
+“Simulation of a Slurry Airlift using a Two-ﬂuid Model”, Chem. Eng.Sci. 56, 673–681 (2001).
+Pan, Y., M.P. Dudukovic and M. Chang, “Numerical Investigation of
+Gas-driven Flow in 2-D Bubble Columns”, AIChE J. 46, 434–449
+(2000).
+Rhie, C.M. and W.L. Chow, “Numerical Study of the Turbulent Flow Past
+an Airfoil with Trailing Edge Separation”, AIAA J. 21, 1525–1532
+(1983).
+Saez, A.E., M.A. Marquez, G.W. Roberts and R. G. Carbonell,
+“Hydrodynamic Model for Gas-lift Reactors”, AIChE J. 44, 1413–1423
+(1998).
+Sanyal, J., S. Vasquez, S. Roy and M. P. Dudukovic, “Numerical
+Simulation of Gas-liquid Dynamics in Cylindrical Bubble ColumnReactors”, Chem. Eng. Sci. 54, 5071–5083 (1999).
+See, K.H., G.W. Roberts and A.E. Saez, “Effect of Drag and Frictional
+Losses on the Hydrodynamics of Gas-lift Reactors”, A.I.Ch.E.J. 45,
+2467–2471 (1999).
+Sokolichin, A. and G. Eigenberger, “Applicability of the Standard k-
+epsilon Turbulence Model to the Dynamic Simulation of BubbleColumns: Part I. Detailed numerical simulations”, Chem. Eng. Sci. 54,
+2273–2284 (1999).
+van Baten, J.M. and R. Krishna, “Eulerian Simulations for Determination
+of the Axial Dispersion of Liquid and Gas Phases in Bubble ColumnsOperating in the Churn-turbulent Regime”, Chem. Eng. Sci. 56,
+503–512 (2001).
+van Benthum, W.A.J., R. van der Lans, M.C.M. van Loosdrecht and J. J.
+Heijnen, “Bubble Recirculation Regimes in an Internal-loop AirliftReactor”, Chem. Eng. Sci. 54, 3995–4006 (1999).
+van Doormal, J. and G.D. Raithby, “Enhancement of the SIMPLE
+Method for Predicting Incompressible Flows”, Numer. Heat Transfer7, 147–163 (1984).  
+Manuscript received September 19, 2002; revised manuscript received
+April 8, 2003; accepted for publication May 22, 2003.
+668 The Canadian Journal of Chemical Engineering, Volume 81, June-August  2003

@@ -1,0 +1,217 @@
+Vol. 39 No. 3 
+Feature Jo11mal of the Communications Research Laboratory 
+Printed in Tokyo, Japan Novemb UE1992
+pp. 477-484 
+THREE-DIMENSIONAL LIGHT MICROSCOPE WORKSTATION 
+FOR THE ANALYSIS OF THE CELL 
+By 
+Yasushi HIRAOKA 
+ABSTRACT 
+We have developed a high-resolution, three-dimensional light microscope system for the 
+non-destructive analysis of three-dimensional dynamics ofliving cells. The system is comprised 
+of a fluorescence microscope, a cooled charge-coupled device (CCD) and a computer, and allows 
+the three-dimensional image data collection, image processing and image analysis to be carried out 
+on a single workstation. Substantial improvement in the microscopic resolution has been made by 
+computational image processing and it has become possible to analyze small subcellular structures 
+in three dimensions. 
+1. Introduction 
+Light microscopy provides a powerful tool to study structure hfunction relationship of the cell, 
+allowing the entire cell to be examined in the living state. Especially molecular specificity of imaging 
+in fluorescence microscopy, specific molecules can be selectively visualized within a cell< 1 >. Also 
+fluorescent dyes that are dependent on intracellular environments, such as calcium concentration or 
+pH, have been developed<2><3>, and the information at the molecular level can be measured within an 
+individual cell. 
+A microscopic image is basically two-dimensional whereas cellular structures are intrinsically 
+three-dimensional. One way to obtain three-dimensional images on a light microscope is to take a set 
+of two-dimensional images at different focal planes by stepping a microscope focus and stack them 
+together to reconstruct the three-dimensional image (Fig. 1 ). However, a problem to be taken up here 
+is that a microscopic image of a three-dimensional object contains not only the true information from 
+the infocus plane, but also the out-of-focus information from neighboring regions of the object. This 
+is due to the fact that the point light source does not focus onto a single point, but instead is three-
+dimensionally spread out by the passage through a microscope. Thus, the out-of focus image 
+information contaminates the infocus image. This opticalgbluÎinghof the microscopic image greatly 
+reduces the resolution of the microscope. Thus, it is necessary to eliminate the out-of-focus 
+information to obtain high resolution three-dimensional images<4>. 
+To obtain high-resolution, three-dimensional images from a light microscope, we have developed 
+a computer-controlled light microscope system in conjunction with computational image processing. 
+This system can perform three-dimensional image data collection, image processing and image 
+analysis on a single workstation and enables us to analyze small subcellular structures in three 
+dimensions. 
+477 478 
+FOCAL 
+PLANE 
+OBJEC'I1VE 
+LENS 
+IMAGE 
+PLANE Y. Hiraoka 
+E3 
+Fig. 1 Three-dimensional optical section microscopy. 
+2. Three-Dimensional Light Microscope Workstation 
+The three-dimensional light microscope system consists of three mDorcomponents: a fluorescent 
+microscope, a cooled CCD and a computer that controls the microscope and the CCD (Fig. 2). Three-
+dimensional images are taken on the CCD by stepping the microscope focus at constant intervals. 
+Focus movement is made by a stepping motor with 50,000 steps per revolution attached to the 
+microscope focus knob. The one step in the rotation coÅEesponds to 4 nm in the microscope focus. A 
+scientific-grade, cooled CCD is an ideal image detector for the three-dimensional image processing, 
+having high geometrical and numerical accuracy(S)(6l. CCD chip is kept at-40C by the Pertier cooling 
+to reduce thermal noise. The CCD is, with its high sensitivity and low noise, ideal for the live cell 
+observation which requires low levels of illumination. 
+Fluorescence microscopy provides a poweiilapproach, allowing multiple specific molecules in 
+a cell to be observed simultaneously. Our microscope system is designed so that the three-dimensional 
+images can be recorded efficiently and accurately from the multiply-stained specimens<7>. As illus-
+trated in Fig. 2, optical filters for several wavelengths are mounted on a revolving wheel and switch 
+fluorescent wavelengths are switched by revolving the filter wheel under the computer control; a 
+dychroic mirror is designed to allow 4 kinds of wavelength to be observed simultaneously without 
+switching. Operations of optical filter switching, image collection, and focus movement is made under 
+the computer control. 
+3. Three-Dimensional Image Formation in a Light Microscope 
+A microscopic image is not an exact representation of the real object, but instead is distorted by 
+optical gblurringh. As light from each of the individual points in the object is three-dimensionally 
+spread out in a microscope, a microscope image is formed as a summation of such spread points of Three-Di111e11sio11al Light 1\lficroscope Worksta1i o11for the Analìisof the Cell 479 
+STEP 3: 
+IMAGE ANALYSIS 
+MICROSCOPE 
+STEP 1: 
+IMAGE COLLECTION 
+Lamp 
+G
+Shutter STEP 2: 
+l\1AGE PROCESSING 
+CCD CAMERA 
+êêESample 
+Double wavelength 
+dichroic mirror 
+Fig. 2 Microscope system description. System overview (upper panel) and microscope layout 
+(lower panel). 480 Y. Hiraoka 
+Point-Spread Fundion 
+Three-Dimensional Image Formation 
+Fig. 3 Three-dimensional image formation in a light microscope. Point-spread function (upper) 
+and microscopic image formation (lower). 
+light. Formation of three-dimensional microscopic images is schematically illustrated in Fig. 3. In a 
+mathematical term, the image-forming properties ofa microscope are described by the point-spread 
+function (PSF) which decribes how the point light is spread out by the passage through a microscope 
+in three dimensions. The intensity distribution of the microscopic image is obtained as the convolution 
+of the object intensity distribution with the PSF. 
+In an actual microscope, in addition to the theoretically-predicted image distortion, residual 
+aberration in the objective lens can cause the additional deviation from the theoretical behavior. 
+Especially with a high-numerical apeureobjective lens which is used for high-resolution analysis, 
+deviation from the theory is remarkable. For this reason, we first experimentally determine image-
+forming properties of the microscope closely in accordance with actual observation conditions. 
+Measurement of the PSF is made utilizing very small fluorescent beads (0.1 Êmin diameter) that can 
+be regarded as a point light source<8>. The observation conditions are then optimized based upon the 
+experimentally-determined PSF, and three-dimensional microscopic images are obtained under the 
+optimized conditions. The out-of-focus image contamination is removed by the computational image 
+processing using the PSF determined under the same optimized conditions. 
+4. Image Processing and Analysis 
+A microscopic image contains the out-of-focus image information as described previously, and 
+it is necessary to remove the out-of-focus information in order to analyze small subcellular structures 
+in high resolution. After three-dimensional images are recorded on a computer, the out-of-focus 
+information is removed by the computational image processing to improve the resolution. Several Three-Di111ellsio11al Ligh1 Microscope Works ^¿1io11for1he Amilrsis o/1he Cell 481 
+kinds of software to lønovethe out-of-focus information have been devbloped.We routinely use 
+either of the following two methods(4) The first of these is the nearest-neighbor method wherbonly
+the contribution from each plain above and bblowthe infocus planbistakbninto the computation. The 
+advantage of this 111bthodis that the out-of-focus information can be removed almost in real time and 
+thus processed images can bbdisplaybdsimultaneously during thbimagedata collection. This method 
+is effective especially for the thrbe-dimensionalimages oulelatively large structures taken at large 
+Fig. 4 High-resolution optical sectioning in a fixed specimen. An example ofoptical sections from 
+a three-dimensional data stack before (A) and after (B) the removal of out-of-focus image 
+contamination.Ñhree-dimensional image data were obtained at 0.25 Êm focus intervals; 
+each displayed section is separated by 0.5 Êm in z. Reproduced from Journal of Cell Bi-
+ology<10>. 482 l'. Hiraoka 
+focus intbIvals (larger than 0.5 pm). Thbsecondone is the iterative deconvolution method allow1ng 
+the three-di111bnsionaldeconvolution to be donbsequentially e111ploying thebntireth1eb|di111ensional
+stack of i111age data. This 111ethod is used, for higlgresolutionanalysis of the s111all intracbllular
+structurbs.ln this case, three-di111ensional images are collected atúnefocus intervals (0.1-0.25 ~tm) 
+Although high-1esolution images can be obtained, a considerable extent of co111putaion is required 
+Thus it is desired to choose a method according to the resolution requirbd
+5. Three iDimensional, Non-Destructive Analysis of Cellular Structures 
+We have analyzed the chro111osome structure and its dyna111ics during the cell cyclbusingthis 
+Focus 0(] OIICl
+5:25 iØLº
+5:00 .;.itçC4ø.. AÝ> I D 
+Ò 
+ 
+I.s 4:35 
+E [1VàAêj|¡àY
+@ B
+ 4:10 
+g|C.C»F~ C.C¹B
+3:45 Õ¥ìe4¹\ujB
+3:20 |h ¯¯J
+@ 
+2:55 ðêE½
+@ 
+[|5Êm4E[[EcXE|L 
+Fig. 5 Time-lapse optical sectioning in a live specimen. Single nucleus displayed as a focus series 
+(left to right) and as a time course (top to bottom). Optical section was taken at I Êm focus 
+intervals. Numbers on the left represent time to the next nuclear division in miwmte:seconcl.
+Reproduced from Journal of Cell Biology<10l. Three-Dimensional Light Microscope Workstation for the Ana(vsis of the Cell 483 
+microscope system<9><10>. At first the high-resolution three-dimensional analysis was made with the 
+chemically-fixed specimens stained with a DNA-specific fluorescent dye. Three-dimensional arE
+rangement of the individual chromosomes was determined within a nucleus (Fig. 4). Furthermore 
+fluorescent visualization of the chromosomes in live specimens has allowed dynamic behavior of the 
+chromosomes to be observed continuously (Fig. 5). 
+In high-resolution analysis, specimens are chemically-fixed and three-dimensional images are 
+collected at fine focus intervals of0.1-0.25 Êm. In the example shown in Fig. 4, the three-dimensional 
+image data were collected at an interval of0.25 Êm and out-of-focus information was removed by the 
+iterative deconvolution. 
+From the obtained high-resolution image data, a model of the chromosome aÅangement was 
+constructed. On the other hand, in case ofliving cell observation, the data collection rate is limited by, 
+in many cases, the rate of the structural changes. This compels us to take a limited number of three-
+dimensional images (typically 5-10 planes) at relatively low resolution (focus intervals of0.5-1 Êm ). 
+Despite of the low resolution, observation of live cells not only eliminates the possibility of artifact 
+accompanied with fixation, but also is useful for direct continuous observation of the structural 
+changes in individual cases. 
+6. Perspectives 
+An attempt to visualize three-dimensional cellular structures directly in three dimensions using 
+a light microscope is in international trends in the field of cell biology. Importance of such three-
+dimensional imaging technologies is becoming gradually perceived in this country as well. The three-
+dimensional microscope system described herein is not a goal of our research but instead a starting 
+point. We have ahead of us several points to be improved in the technology. The greatest limitation 
+in the three-dimensional microscopy at present is that the resolution in a direction of the optical axis 
+is remarkably low compared with the one within the focal plane. The substantial solution for this 
+problem can be found in a method to reconstruct the three-dimensional images by obtaining multiple 
+data setsdomdifferent directions, ideally from directions separated by 90 degrees< 11 >. On the other 
+hand, the technological difficulty in making real-time analysis of live cells resides with the fact that 
+spatial resolution is liable to be sacrificed because it trades off with the rate of the structural changes. 
+At present, the temporal resolution is limited by the CCD read-out rate. To raise the temporal 
+resolution without sacrificing the spatial resolution, a higher rate of CCD read-out is required. 
+As a long term prospect, it is challenging to make possible the manipulation of the cells by means 
+of light. In principle, it should be possible to manipulate cellular events without contact by inducing 
+photochemical reactions in a small confined regions within a cell. To restrict the photochemical 
+reaction in a small region, it is necessary for excitation to be restricted onto a focal point based on a 
+two-photon absorption process<12>. The effects of the excited photo-active substances are analyzed 
+with the three-dimensional microscope system in the cells. We believe that our three-dimensional 
+microscope system described here has a wide range of applications in imaging and manipulating 
+cellular events. 
+References 
+(1) A. Waggoner, R. DeBiasio, P. Conrad, G. R. Bright, L. Ernst, K. Ryan, M. Nederlof, and D. 
+L. TaylorCgMultiple spectral parameter imagingChMethods in Cell Biol., 30, pp. 449-4 78, 1989. 484 Y. Hiraoka 
+(2) R. Y. Tsien, Fluorescent indicator of ion concentrations, Methods in Cell Biol., 30, pp. 127-
+156, 1989. 
+(3) R. Y. Tsien and A. WaggonerCgFluorophores for confocal microscopy: Photophysics and 
+photochemistry Chin The Handbook of Biological Confocal Microscopy, edited by J. Pawley, 
+pp. 169-178, IMP Press, Madison, Wisconsin, 1989. 
+(4) D. A. Agard, Y. Hiraoka, P. Shaw, and J. W. SedatCgFluorescence microscopy in three 
+dimensions ChMethods in Cell Biol., 30, pp. 353-377, 1989. 
+( 5) Y. Hiraoka, J. W. Sedat, and D. A. AgardCgThe use of a charge-coupled device for quantitative 
+optical microscopy of biological structuresChScience, 238, pp. 36-41, 1987. 
+(6) R. S. Aikens, D. A. Agard, andJ. W. SedatCgSolid-state imagers for microscopy ChMethods in 
+Cell Biol., 29, pp. 291-313, 1989. 
+(7) Y. Hiraoka, J. R. Swedlow, M. R. Paddy, D. A. Agard, and J. W. SedatCgThree-dimensional 
+multiple-wavelength fluorescence microscopy for the structural analysis of biological pheE
+nomena," Seminars in Cell Biol., 2, pp. 153-165, 1991. 
+(8) Y. Hiraoka, J. W. Sedat, and D. A. AgardCgDetermination of three-dimensional imaging 
+properties of a light microscope system: Partial confocal behavior in epifluorescence micro-
+scopyChBiophys. J., 57, pp. 325-333, 1990. 
+(9) Y. Hiraoka, J. S. Minden, J. R. Swedlow, J. W. Sedat, and D. A. AgardC@ocalpoints for 
+chromosome condensation and decondensation from three-dimensional in vivo time-lapse 
+microscopy ChNature, 342, pp. 293-296, 1989. 
+(10) Y. Hiraoka, D. A. Agard, andJ. W. SedatCDemporaland spatial coordination of chromosome 
+movement, spindle formation and nuclear envelope breakdown during prometaphase in 
+Drosophila melanogaster embryosChJ. Cell Biol., 111, pp. 2815-2828, 1990. 
+(11) P. J. Shaw, D. A. Agard, Y. Hiraoka, and J. W. SedatCgTilted view reconstruction in optical 
+microscopy: Three-dimensional reconstruction of Drosophila melanogaster embryo nucleiCh 
+Biophys. J., 55, pp. l 01-110, 1989. 
+(12) W. Denk, J. H. Strickler, and W. W. WebbCgTwohphoton laser scanning fluorescence 
+microscopy ChScience, 246, pp. 73-76, 1990. 

@@ -1,0 +1,452 @@
+A COMPARISON OF PRINCIPAL COMPONENT ANALYSIS,
+MULTIWAY PRINCIPAL COMPONENT ANALYSIS, TRILINEAR
+DECOMPOSITION AND PARALLEL FACTOR ANALYSIS FOR
+FAULT DETECTION IN A SEMICONDUCTOR ETCH PROCESS
+BARRY M. WISE,1* NEAL B. GALLAGHER,1STEPHANIE WATTS BUTLER,2DANIEL D. WHITE JR2
+AND GABRIEL G. BARNA2
+1Eigenvector Research, Inc., 830 Wapato Lake Road, Manson, WA 98831, USA
+2Texas Instruments, 13536 North Central Expressway, MS 944, Dallas, TX 75265, USA
+SUMMARY
+Multivariatestatisticalprocesscontrol(MSPC)toolshavebeendevelopedformonitoringaLam9600TCPmetal
+etcher at Texas Instruments. These tools are used to determine if the etch process is operating normally or if a
+system fault has occurred. Application of these methods is complicated because the etch process data exhibit alarge amount ofnormal systematic variation. Variations due tofaults ofprocessconcern can be relatively minor
+in comparison. The Lam 9600 used in this study is equipped with several sensor systems including engineering
+variables(e.g.pressure,gasﬂowratesandpower),spatiallyresolvedoptical emissionspectroscopy(OES)oftheplasma and a radio-frequency monitoring (RFM) system to monitor the power and phase relationships of theplasma generator. A variety of analysis methods and data preprocessing techniques have been tested for their
+sensitivity to speciﬁc system faults. These methods have been applied to data from each of the sensor systems
+separatelyandincombination.Theperformanceofthemethodsonasetofbenchmarkfaultdetectionproblemsispresented and the strengths and weaknesses of the methods are discussed, along with the relative advantages ofeach of the sensor systems. Copyright Ó1999 John Wiley & Sons, Ltd.
+KEY WORDS: fault detection; measurement selection; multivariate statistical process control; principal
+component analysis; multiway principal component analysis; trilinear decomposition;parallel factor analysis
+1. INTRODUCTION
+Semiconductor processes, like many chemical processes, are becoming more measurement-rich all
+the time. A wide variety of sensors and sensor systems are available. The goal of adding sensors, of
+course, is to reduce costs and/or improve the ﬁnal product quality through improved process controlor fault detection. Often, however, it is not apparent what sensors will be useful in meeting thesegoals.Forsensorstobeuseful,theymustbesensitivetovariationsintheprocessandbestableenoughto provide information over extended time periods. In addition, methods used to treat process datamust be speciﬁed, as they will also impact sensitivity and robustness performance.
+Recently, ‘chemometric techniques’ have been applied to process (as opposed to analyticalJOURNAL OF CHEMOMETRICS
+J. Chemometrics 13,379–396 (1999)
+*Correspondence to: B. M. Wise, Eigenvector Research, Inc., 830 Wapato Lake Road, Manson, WA 98831, USA.
+E-mail: bmw@eigenvector.com
+CCC 0886–9383/99/040379–18 $17.50
+Copyright Ó1999 John Wiley & Sons, Ltd.Received 22 September 1998
+Accepted 17 March 1999chemistry) problems. These applications can be roughly divided between those directed at
+maintenance of process instruments, e.g. calibration, and those that are concerned with maintenanceofthe process itself, e.g. statisticalprocesscontroland fault detection. Ourfocuswill be onthe latterarea. In this paper we describe a study performed on a Lam 9600 metal etcher to determine which ofthree sensor systems, alone and in combination, and what data treatment method are the mostsensitive to a series of known faults. One of the most often used chemometric techniques, principal
+component analysis (PCA), will be reviewed, along with an adaptation of PCA for use with three-
+dimensional arrays, multiway PCA (MPCA). These methods were originally used on these data inWiseet al.
+1Trilinear decomposition (TLD) and parallel factor analysis (PARAFAC) will also be
+consideredhere.TheissueofrobustnessofthesensorsandmethodsoverlongperiodsisdiscussedinGallagher et al.
+2
+2. THE METAL ETCH PROCESS
+There are many stepsinthe manufactureofsemiconductors.Thisproject wasfocused onan Alstack
+etch process performed on the commercially available Lam 9600 plasma etch tool.3The goal of this
+process is to etch the TiN/A1–0 ×5% Cu/TiN/oxide stack with an inductively coupled BCl 3/Cl2
+plasma. The key parameters of interest are the linewidth of the etched A1 line (speciﬁcally the
+linewidth reduction in relation to the incoming resist linewidth), uniformity across the wafer and the
+oxide loss.
+The standard recipe for the process consists of a series of six steps. The ﬁrst two are for gas ﬂow
+andpressurestabilization.Step3isabriefplasmaignitionstep.Step4isthemainetchoftheA1layerterminating at the A1 endpoint, with step 5 acting as the over-etch for the underlying TiN and oxidelayers. Note that this is a single-chemistry etch process, i.e. the process chemistry is identical duringsteps 3–5. Step 6 vents the chamber. The process ‘proﬁle’ as indicated by the endpoint A signal (theplasma emission intensity measured by a ﬁlter spectrometer) is shown in Figure 1. The stabilization
+step is followed by the three etch regions: Al, TiN and oxide etch.
+3. PROCESS SENSORS
+Sensor selection is a primary consideration when planning a fault detection and classiﬁcation (FDC)
+system. In the etch process it would be ideal to have sensors which directly reﬂected the state of the
+wafers in the process. However, with a few exceptions, wafer state sensors are typically unavailablein original equipment manufacturer (OEM) processing tools. Thus the alternative is to select morecommonly available process state sensors, with the understanding that wafer state information willhave to be inferred.
+Themetal etcherusedforthisstudywasequippedwiththreesensorsystems:machinestate,radio-
+frequency monitors (RFMs), and optical emission spectroscopy (OES). The machine state sensors,builtintotheprocessingtool,collectmachinedataduringwaferprocessing.Themachinedataconsist
+of40processsetpointsandmeasuredandcontrolledvariablessampledat1sintervalsduringtheetch.
+Theseareengineeringvariablessuchasgasﬂowrates,chamberpressureandRFpower.Inthiswork,non-setpoint process variables with some normal variation were used for monitoring, as shown inTable 1. Also, the physics of the problem suggests that these variables should be relevant to processand ﬁnal product state.
+The RFM sensors measure the voltage, current and phase relationships at the fundamental
+frequency of 13 ×56MHz and the next four harmonics at four locations in the RFcontrol system. The
+resulting 70 values are sampled every 3s. The presence of each chemical species affects the plasma
+power and phase relationships in unique ways; thus the RFM sensors provide a surprising amount of
+chemical information.380
+B. M. WISE ET AL.
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)TheOESisusedtomonitortheplasmaintherangefrom245to800nminthreelocationsabovethe
+wafer using ﬁber optics. The original data consist of 2042 channels per location; however, in thiswork the data were preprocessed by integrating a much smaller number of peaks (40) in each of thethree spectra which correspond to process gases and species evolving from the wafer owing to theetch.
+A major objective of this work was to determine which sensors, or combinations of sensors, are
+most useful for detecting process faults. Data from the three sensors systems were used to developmodels of the process in a variety of ways, and the ability of the models to detect faults was tested.
+4. PROCESS SHIFTS AND DRIFT
+Ideally, under normal conditions a process would be stationary, i.e. retain the same mean and
+covariance structure over time. Unfortunately, measurements from the etch process are clearly non-
+stationary. Changes in the data are primarily due to three sources: aging of the etcher over a clean
+cycle(theperiodoftimebetweenroutinemaintenanceofthemachine) asresidueaccumulatesontheinside of the chamber; differences in the incoming materials due to changes in upstream processes;anddriftintheprocess-monitoringsensorsthemselves.Inaddition,processmaintenancecanresultinsudden shifts in the mean. The result is that it is normal for the process data to show considerablevariation over time. The shift in process mean and covariance is shown graphically in Figure 2. Theprocess mean drifts during a clean cycle, then shifts suddenly during maintenance. The process
+Table 1. Machine state variables used for process monitoring
+1 BCl 3ﬂow
+2C l 2ﬂow
+3 RF bottom power4 RFB reﬂected power
+5 Endpoint A detector
+6 Helium pressure7 Chamber pressure8 RF tuner
+9 RF load
+10 Phase error11 RF power
+12 RF impedance
+13 TCP tuner14 TCP phase error15 TCP impedance
+16 TCP top power17 TCP reﬂected power18 TCP load
+19 Vat valve
+Figure 1. Endpoint traceCOMPARISON OF METHODS FOR FAULT DETECTION 381
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)covariance also drifts, but typically much more slowly. These variations are often much larger than
+changes due to actual process faults.
+5. DATA TREATMENT
+Chemical and manufacturing processes are becoming more heavily instrumented and the data are
+recordedmorefrequently.Thisiscreatingadataoverload,andtheresultisthatagooddealofthedataare ‘wasted’, i.e. no useful information is obtained from them. The problem is one of bothcompression and extraction. Generally, there is a great deal of correlated or redundant informationprovided by process sensors. This information must be compressed in a manner that retains theessential information and is more easily displayed than each of the process variables individually.
+Also, often essential information lies not in any individual process variable but in how the variables
+change with respect to one another, i.e. how they covary. In this case the information must beextracted from the data. Furthermore, in the presence oflarge amounts ofnoise it wouldbe desirableto take advantage of some sort of signal averaging.
+5.1. Principal component analysis
+Principal component analysis (PCA) is a favorite tool of chemometricians for data compression and
+information extraction.
+4–7PCA ﬁnds combinations of variables or factorsthat describe major trends
+in a data set. Mathematically, PCA relies on an eigenvector decomposition of the covariance orcorrelationmatrixoftheprocessvariables.InthisworkwewillusetheconventionthatrowsofadatamatrixXcorrespond to samples while columns correspond to variables. For a given data matrix X
+withmrows and ncolumns the covariance matrix of Xis deﬁned as
+covX
+XTX
+mÿ11
+This assumes that the columns of Xhave been ‘mean centered’, i.e. adjusted to have zero mean by
+subtractingthemeanofeachcolumn.Ifthecolumnsof Xhavebeen‘autoscaled’,i.e.adjustedtozero
+mean and unit variance by dividing each column by its standard deviation, equation (1) gives thecorrelation matrix of X. (Unless otherwise noted, it is assumed that data are either mean centered or
+autoscaled prior to analysis.) PCA decomposes the data matrix Xas the sum of the outer product of
+vectorst
+iandpiplus a residual matrix E:
+Figure 2. Moving mean and covariance382 B. M. WISE ET AL.
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)Xt1pT
+1t2pT
+2...tkpT
+kETPTE 2
+Herekmustbelessthan orequal tothe smaller dimension of X,i.e.kmin[m,n].Thet ivectors are
+known as scoresand contain information on how the samplesrelate to each other. The pivectors are
+eigenvectors of the covariance matrix, i.e. for each pi
+covXpiipi 3
+whereiis theeigenvalue associated with the eigenvector pi. In PCA the piare known as loadings
+and contain information on how variables relate to each other. The tiform an orthogonal set
+tT
+itj0 fori6j, while the piare orthonormalpT
+ipj0 fori6j;pT
+ipj1 forij. Note that
+forXand anyti,pipair
+Xpiti 4
+Thisisbecausethescorevector tiisthelinearcombinationoftheoriginal Xdatadeﬁnedby pi.Theti,
+pipairs are arranged in descending order according to the associated i. Theiare a measure of the
+amountof variancedescribedbythe ti,pipair.Inthiscontextwecanthinkofvarianceas information .
+Because the ti,pipairs are in descending order of i, the ﬁrst pair capture:the largest amount of
+information ofany pair in the decomposition. In fact, it can be shownthat the t1,p1pair captures the
+greatest amount of variation in the data that it is possible to capture with a linear factor. Subsequentpairs capture the greatest possible variance remaining at that step.
+The concept of principal components (PCs) is shown graphically in Figure 3. The ﬁgure shows a
+three-dimensionaldatasetwherethedatalieprimarilyinaplane;thusthedataarewelldescribedbyatwo-PC model. The ﬁrst eigenvector or PC aligns with the greatest variation in the data, while thesecondPCalignswiththegreatestamountofvariationthatisorthogonaltotheﬁrstPC.Generallyitis
+found that the data can be adequately described using far fewer principal components than original
+variables, i.e. kn.
+Figure 3. Principal component model of three-dimensional data set lying primarily in a single plane showing Q
+andT2outliersCOMPARISON OF METHODS FOR FAULT DETECTION 383
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)Itisalsopossibletocalculatealackofmodelﬁtstatistic, Q,foreachsample. Qissimplythesumof
+squares of each row (sample) of E(from equation (2)); for example, for the jth sample in X,xj,
+QjejeT
+jxjIÿPkPT
+kxT
+j 5
+whereejis thejth row of E,Pkis the matrix of the ﬁrst kloading vectors retained in the PCA model
+(where each vector is a column of Pk) andIis the identity matrix of appropriate size ( nn). TheQ
+statisticindicates howwelleachsampleconformstothePCAmodel.Itisameasureoftheamountof
+variation in each sample notcaptured by the kprincipal components retained in the model.
+Ameasureofthevariation withinthePCAmodelisgivenbyHotelling’s T2statistic.T2isthesum
+of normalized squared scores deﬁned as
+T2
+jtjlÿ1tT
+jxjPlÿ1PTxT
+j 6
+wheretjreferstothe jthrowof Tk,thematrixof kscorevectorsfromthePCAmodel.Thematrix l71
+is a diagonal matrix containing the inverse eigenvalues associated with the keigenvectors (principal
+components)retainedinthemodel.Statisticallimitscanbedevelopedfor QandT2(alongwithlimits
+on the scores and individual residuals).4,6
+5.2. Applying an existing PCA model: MSPC
+Once a PCA model has been developed (including mean and variance scaling vectors, eigenvalues,
+loadings, statistical limits on the scores, QandT2), it can be used with new process data to detect
+changes in the system generating the data. Scores for new data, ti,new, can be obtained for new data
+Xnewwithequation(4)usingtheoriginalloadingvectors pi.Inasimilarfashion,new QandT2canbe
+obtainedwithequations(5)and(6)bysubstituting xi,newforxi.Whenonemonitorsthesevaluesasthe
+process proceeds, the result is multivariate statistical process control (MSPC).8–13
+In this work we will use primarily QandT2for detecting system faults when using PCA and
+MPCA(see below).Some discussionofthe geometric interpretation of QandT2isperhapsin order.
+Asnotedabove, Qisameasureofthevariation inthedataoutsidetheplaneofthePCAmodel.Refer
+againtothecaseofthreevariableswherethedataarerestrictedtolieonaplaneasshowninFigure3.Such a system would be well described by a two-PC model. Qis a measure of the distance off the
+plane formed by the ﬁrst two PCs. In fact,pQis the Euclidean distance of the operating point from
+theplaneformedbythetwo-PCmodel.Apointwithanunusuallylarge Qvalueisdepicted inFigure
+3. TheQlimit deﬁnes a distance off the plane that is considered unusual for normal operating
+conditions. T
+2, on the other hand, is a measure of the distance from the multivariate mean to the
+projectionoftheoperatingpointontotheplanedeﬁnedbythetwoPCs.The T2limitdeﬁnesanellipse
+ontheplanewithinwhichtheoperatingpointnormallyprojects.Again,Figure3showsapointwithahighT
+2value.
+In practice, violations of the QandT2limits generally occur for different reasons. Assuming a
+normal value of Q,aT2fault indicates that the processhas gone outside the usual range of operation
+but in a direction ofvariation common to the process. In some sense there istoo much ortoo little ofsomethingnormallypresentintheprocess.A Qfaultindicatesthattheprocesshasgoneinanentirely
+new direction— something entirely new has happened. It is our experience that most process faults
+show up in Q. Very few faults are detected by T
+2alone.384 B. M. WISE ET AL.
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)5.3. Multiway PCA
+The PCAmethod outlined above takesno explicit account of the ordered nature of a data set, i.e. the
+fact that the data were collected in a sequential manner. Reordering the samples in PCA wouldproduce identical results. There are methods that explicitly consider that the data are ordered. Theseare referred to as multiway methods because the data are usually organized into time-ordered blocksthat are each representative of a single sample or process run. The blocks are then arranged intomultiway matrices. Multiway methods are particularly useful for the analysis of batch process data.
+Consider the three-dimensional data array shown in Figure 4. A data matrix of this type would be
+typical ofa series ofrunsofa batch process such asourexampleofsemiconductor processing where
+each ‘batch’ is a wafer. Here there are j=1,2,…, Jvariables measured at times k=1,2,…, K
+throughoutthebatch(nottobeconfusedwith kprincipalcomponents).Similardatawillexiston i=1,
+2, …,Iruns of the batch process. The data can be summarized in the three-dimensional ( IJK)
+array
+X. Different batch runs (samples) are arranged along the vertical side, different process
+measurements (variables) alongthe horizontal side, and time recedes into the ﬁgure. Each horizontalslice through the array is a JKmatrix representing the time history for all variables of a particular
+batch or sample. Each vertical slice made parallel to the front face of the cube is an IJmatrix
+representingthe valuesofall the variables inall the batchestaken at acommontime. Avertical slice
+made parallel to the side of the cube (the time axis) would represent an IKmatrix of all the time
+histories of a single variable for all the batches.
+There are several methods for decomposing the array
+X.14These methods include trilinear
+decomposition (TLD)15and parallel factor analysis (PARAFAC).16,17Initially we will consider one
+ofthemorestraightforwardapproaches,thatofmultiwayPCA(MPCA).18Eachofthedecomposition
+methods places different constraints on the resulting matrices and vectors.
+MPCA is statistically and algorithmically consistent with PCA and has the same goals and
+beneﬁts.19,20InMPCAthearray Xisdecomposedasthesummationoftheproductofscorevectors( t)
+and loading matrices ( P) plus a residual array Ethat is minimized in a least squares sense:
+XXR
+r1tr/C10PrE 7
+Figure 4. Three-dimensional data array and multiway PCA decompositionCOMPARISON OF METHODS FOR FAULT DETECTION 385
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)This decomposition is shown graphically in Figure 4. It is done in accordance with the principles of
+PCA and separates the data into two parts. The noise or residual part Eis as small as possible and is
+associated with non-deterministic variation in the data. The systematic part, the sum of the tr6Pr,
+expresses the deterministic variation as one fraction ( t) related only to batches and a second fraction
+(P) related to variables and their time variation.
+MPCA is equivalent to performing PCA on a large two-dimensional matrix formed by unfolding
+thethree-wayarray Xinoneofsixpossibleways,onlythreeofwhicharemathematicallyunique.For
+example, one might unfold Xin such a way as to put each of its vertical slices ( IJ) side by side to
+theright,startingwiththeslicecorrespondingtotheﬁrsttimeinterval.Theresultingtwo-dimensionalmatrix has dimensions IJK. This particular unfolding allows one to analyze variability among the
+batchesin
+Xbysummarizinginformationinthedatawithrespecttovariablesandtheirtimevariation.
+Amathematicallyequivalentunfoldingwouldbetotakeslicesoffthesideof Xandplacethemdown
+the time axis, which also forms a matrix with dimensions IJK. (The latter unfolding orders the
+matrix with the historyofeach variable kept together, while the former ordersthe matrix with all the
+measurements taken at the same time kept together.) One might also be interested in unfolding Xin
+other ways; however, the unfoldingdiscussedabove (or its mathematical equivalent) isthe only waythat keeps batch (sample)-speciﬁc information separate from time and variable information.
+TheMPCAalgorithmproceedsasfollows.Firstthematrixisunfoldedinoneofthetwoequivalent
+waysdescribedabove.Eachcolumnoftheresultingmatrixisthenmeancenteredand,ifappropriate,scaledtounitvariance(autoscaled).Aneigenvectordecompositionasdescribedinequations(1–3)isthen applied to the unfolded
+X. Each of the p, however, is really an unfolded version of the loading
+matrixPr.After the pare obtained, the Prcan be obtainedbyreversing the unfoldingprocedure.Ina
+similarmannerthethree-wayarray EcanbeformedbyfoldingthePCAresidualmatrix E.TheQand
+T2statistics can be calculated using the unfolded solution as shown in equations (5) and (6).
+This version of MPCA explains variation in measured variables about their average trajectories.
+Subtracting the average trajectory from each variable (accomplished by mean centering the columnsof the unfolded matrix X) removes large amounts of normal variation from the process data. The ith
+elements of the tscore vectors correspond to the ith batch (sample) and summarize the overall
+variation in this batch with respect to the other batches in the database over the entire history of thebatch. The Ploading matrices summarize the time variation in the measured variables about their
+average trajectories. The elements of Pare the weights, which when applied to each variable at each
+timeintervalwithinabatch,givethe tscoresforthatbatch.AdditionalexamplesofMPCAforMSPC
+can be found in References 21–23.
+5.4. Trilinear decomposition and PARAFAC
+MPCAisinsomesensea‘poorman’s’multiwaytechniqueasitreliesuponatwo-waymethod(PCA)
+and rearrangement of the original data. An additional problem is that the loading matrices are very
+difﬁcult to interpret as they convolute time and variable information. TLD and PARAFAC are truemultiway methods in that they decompose the original array into factors in each of the originaldimensions. The TLD and PARAFAC model is
+d
+ijkXR
+r1airbjrckreijk 8
+whereRis chosen such that Ewith elements eijkhas small norm. This is the trilinear model. If Ais
+deﬁnedsuchthatits rthcolumnis ar,andlikewisefor BandC,thentheouterproductof ar,brandcr
+is therth triad of the PARAFAC model. This model is shown graphically in Figure 5. In words, the386 B. M. WISE ET AL.
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)PARAFAC and TLD model is a summation over the outer product of vector triads. Note that, in
+contrast with PCA, in multiway models the factors are referred to as loadings in all dimensions.
+One very important property of the PARAFAC decomposition is that, under very mild
+assumptions, it is unique.24,25The result is that A,BandCgive pure component responses and
+relative concentration estimates directly. This is a very powerful advantage of the method when
+interpretation of the models is important.
+The major difference between TLD and PARAFAC is in how the models are identiﬁed. In
+PARAFAC the model is identiﬁed using an alternating least squares (ALS) procedure or by directoptimization of the parameters, or a combination of the two approaches. In the ALS approach thefactors in a particular dimension are estimated as a least squares ﬁt of the factors in the remainingdimensions to the data. This process is repeated on each dimension sequentially until the solutionconverges. The result is a set of factors which ﬁt the data in a least squares sense, i.e. minimize the
+sum of squared residuals. This can also be accomplished by direct optimization of the factors in all
+dimensions. Note that, unlike PCA, the number of factors must be decided before applying thealgorithm, and all factors are determined simultaneously.
+The TLD model is identiﬁed by application of the generalized rank annihilation method
+(GRAM).
+26,27GRAM uses the QZ algorithm28to solve for the joint invariant subspace of a pair of
+matrices. In TLD this pair of matrices is made up of linear combinations of the original samplematrices chosen in such a way as to contain variation from all the factors in the data. The factorsobtainedfromtheGRAMsteparethenﬁttotheoriginaldatainasingleleastsquaresstep.Themajor
+advantage of TLD is that it is computationally much faster than PARAFAC. When used with
+relativelynoisydata,however,dependinguponthealgorithmused,applicationofGRAMcanleadtoimaginarysolutionswhichhave nophysical interpretation.
+29These factorscan berotatedback tothe
+nearest real solution,30,31but in our experience the results are often not satisfactory.
+Preprocessingisan important aspect ofapplyingmultiwaymodels.25Ingeneral, onewouldliketo
+apply centering and scaling of the data in such a way that the trilinearity of the model would bemaintained.However,whenthereisnotheoryofthesystembeinginvestigatedthatsuggestshowthisbe done (such as in spectral data where the trilinear model is expected to hold on the raw data),
+preprocessingbecomesmoreofatrial-and-errorprocedure.Inthiswork,severaldifferentprocedures
+were tested as discussed below.
+5.5. Applying TLD and PARAFAC to new data
+Once a TLD or PARAFAC model has been identiﬁed, it is a simple matter to ﬁt the model to new
+data. Usually, the loading sample order is ﬁt to the other two ordersusing a single least squares step.Fit residuals, similar to Qin PCA and MPCA models, can also be calculated. The question then
+becomes whetherthe newloadingsandresidualsare signiﬁcantly different from those ofthe original
+dataonwhichthemodelwasdeveloped.Unfortunately,statistical testsfortheloadingsandresiduals
+Figure 5. TLD and PARAFAC modelCOMPARISON OF METHODS FOR FAULT DETECTION 387
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)inthesemodelsarenotwellestablished, inpartbecauseitisdifﬁculttodeterminethepropernumber
+of degrees of freedom to use in the calculations. In this work, limits were developed for loadings byassuming that the loadings were normally distributed. Limits were then calculated based on thestandard normal variate. Limits on the residuals were determined directly from the ﬁtted data, e.g. a90%conﬁdencelimitwasestimatedasresidualforwhich90%ofthecalibrationsampleswerelower.Clearly there is room for improvement here. However, in use this approximation makes little
+difference in the following study as very few samples were borderline.
+5.6. Data preprocessing
+BeforeapplyingPCAorMPCA,severaloptionsareavailableforpreprocessingthedata.InPCAone
+wouldoftensimplydetermineasinglemeanandvarianceforscalingthedataandapplythisscalingtoalladditional data. Inourcurrent example,however,itisknownthatprocessdriftoccursandthattheprocess mean may shift. Thus one might consider mean centering the data from each wafer toeliminate the effect of drift. It is also possible to continually rebuild PCA models so that they arebased only on recent data.
+2,32
+An additional complication involves stretching of the time axis in the data record. In the etch
+process, time line stretching causes blocks of data from each wafer to have different numbers of
+samples.Thisisduetodifferinglengthsoftheetchbecauseofchangesinlayerthickness.Onewayto
+approach thisistosimplyaverage thedatafromeach waferoverallavailablesamplesandworkwithonlyamean.Anotherapproachwouldbetoselectaspeciﬁednumberofsampleswheresomepointinthe selected record corresponds to some particular process event. This approach was used for theMPCA,TLDandPARAFACmodels.Theprocessevent wasthe‘peak’ofthetitaniumetch (pointatwhich the Ti concentration was highest in the plasma, which is evident from the endpoint and RFMdata).Inrelatedworkwehavealsousedspeechrecognitionmethodssuchasdynamictimewarpingtomap the process response back onto a reference trace.
+3,33
+As will be seen in the following sections, the data pretreatment method can have a signiﬁcant
+impact on the overall sensitivity and robustness of the method.
+6. INDUCED FAULT EXPERIMENTS
+Aseriesofthreeexperiments(29,31and33)wereperformedwherefaultswereintentionallyinduced
+bychangingtheTCPpower,RFpower,pressure,Cl 2orBCl 3ﬂowrateandHechuckpressure.These
+three experiments consisted of a total of 129 wafers with 21 faults.
+Tomake thetest morerepresentativeofanactualsensorfailure, theanalysiswasdonewith‘reset’
+values:valuesforthecontrolledvariable whichwasintentionallymovedoffitssetpointwereresettohave the same mean asits normal baseline value, i.e. the controlled variable which waschangedwasresettolooknormal inthedata ﬁle.Forexample,iftheinducedfault wasachange intheTCPpowerfrom350to400W,thedataﬁlevalueoftheTCPpowerwasresetfromameanof400backto350by
+addition of a constant bias. The resulting data look as if the controller was seeing a biased sensor for
+TCP power and adjusting accordingly: TCP power would appear normal, but it would not be. Theeffect of a TCP power offset, however, should be evident (we hope) in the remaining processvariables, because the apparent relationship between the TCP power and the remaining variablesshould be different.
+The three induced fault experiments were run at widely spaced intervals (in February, March and
+April 1996 respectively). Process drift is apparent in the data: each experiment has a signiﬁcantlydifferentmultivariatemean.ThisisevidentinFigure6,whichshowsthescoresontheﬁrsttwoPCsof
+the machinestate data forall three experiments. The data clearly split intothree groups,one foreach
+oftheexperiments.Thissuggeststhatmodelsbasedonallthedatawilldeﬁneamuchlargerregionof388
+B. M. WISE ET AL.
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)themultivariatespaceasnormalvariationthanwouldamodelofasingleexperiment.Wewillreferto
+a model of all the data as a global model, and a model of each of the single experiments as a localmodel.
+7. RESULTS
+Datafromexperiments29,31and33wereusedtotestthesensitivityofPCAandMPCAfordetecting
+the induced faults. Machine state, RFM and OES data were available for each of these experiments.As described above, these experiments included some wafers where the setpoints for some variableswereoffsetfromthenormalrecipe.Priortoanalysis,datafromthesensorsthatmeasureeachoftheseparameters (and are used for feedback control) were ‘reset’ to their means from previous runs. All
+subsequent analysis was performed using the PLS_Toolbox 2 ×0 software
+34running under MATLAB
+5.35
+Severaldifferentapproacheswereemployedinthedevelopmentofthefaultdetectionmodelsused
+in this test. To get a direct comparison of the sensitivity of the process sensors, only data from theseexperiments were used in model development (very few additional data exist where all three sensorsystems are available). Models were developed that were intended to mimic the local and globalbehavior of the process. Local models were built using only data from a particular experiment, i.e. amodel was built using data from the normal wafers from an experiment and was used to test the
+remaining wafers. The local models were intended to represent the upper limit of what might be
+achievable with models that update themselves continuously and thus are always local. Globalmodels were developed using the normal wafers from all the experiments simultaneously and thentested on the fault wafers. This represents the case where models span a large amount of long-termprocess variation or drift, i.e. include lot-to-lot and over-a-maintenance-cycle effects. These modelsincluded a larger amount of variation as normal than the local models.
+The data were also preprocessed in a number of different ways prior to analysis. For some tests,
+data from each wafer were reduced toa single vector ofmeansofthe variables over the entire wafer.
+In other cases, raw data were used for model development. Analysis was also performed using raw
+data wheredata fromeach ofthewaferswerecenteredtotheir ownmean. When thismethod isused,
+Figure 6. Scores on ﬁrst two PCs from analysis of experiment 29, 31 and 33 induced fault dataCOMPARISON OF METHODS FOR FAULT DETECTION 389
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)only faults which change the covariance matrix of the wafers can be detected.
+Multiway analysiswas also performed. In these instances each sample in the analysisincludesthe
+time history of the process sensors. As described above, the same number of samples was used foreach wafer during model development and testing. For machine state data, 70 samples were used,includingthelast25datapointsfromstep4andtheﬁrst45datapointsforstep5.Similarly,25and28data samples were used from the RFM and OES respectively. RFM and OES variables that mirrored
+theprocessendpointtracewerefoundandaconsistentnumberofsampleswereselectedoneitherside
+of the peak of the TiN etch.
+Data for the MPCA models were ‘group scaled’. Here the array is unfolded to a two-dimensional
+matrixthatisbatchesby(timesteps*variables).Groupscalingisappliedsothat,aftersubtractingthemeantrajectory,eachvariable‘block’isadjustedtohavethesamevariance.ForTLDandPARAFACthe data were ‘autoscaled’. The array is unfolded to a two-dimensional matrix that is (batches* timesteps) by original variables. The result was autoscaled, then refolded. The MPCA-style scaling wasalsoappliedtothemachinedatapriortoTLDandPARAFACanalysis.Theresultsweresimilartothe
+Table 2. Results of sensitivity tests for single sensor systems
+390 B. M. WISE ET AL.
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)‘autoscaling’procedureabove,butonaverage notquiteasgood.NoscalingwasappliedtoOESdata
+as they have a natural zero and should ﬁt the trilinear model best with no scaling.
+Sensitivity results for the machine state, RFM and OES sensors used individually are shown in
+Table 2. The results for the sensors in combination are shown in Table 3. Results for the TLD andPARAFAC models on individual sensor systems are shown in Table 4. The faults are listed in thesecondcolumnofeachtable.Notethatonlyfaultswherealldatawereavailableareconsideredinthe
+table;thusthereare19faultslistedratherthantheoriginal21.InTables2and3theresultsforstraight
+PCA models are shown on the left for ﬁve different data pretreatment approaches. MPCA modelresults are shown on the right for three different data pretreatment approaches. Six differentcombinations of sensors are considered for each method/preprocessing combination: machine state,RFM,OES(Table2),machinestate RFMOES,machinestate RFMandmachinestate OES
+(Table 3).Asymbolinthebodyofthetable indicatesthattheparticularcombinationofdata analysismethod, pretreatment and sensorscaught the particular fault. Anopen symbol indicatesthat the faultexceeded the 99% conﬁdence limit, while a full symbol indicates that the fault exceeded the 99%
+Table 3. Results of sensitivity tests for combinations of sensor systems
+COMPARISON OF METHODS FOR FAULT DETECTION 391
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)limit by a factor of ﬁve or more. Note, however, that for analysis of the raw data an open symbol
+indicates that more than 15% of the time samples exceeded the 95% conﬁdence limit, while a full
+symbolindicatesthatover30%ofthesamplesexceededthe95%conﬁdencelimit.Also,sensorswerenot considered in combination using the raw data, since the data acquisition times are notsynchronized between the sensors. Combinations of sensors were not considered for TLD andPARAFAC models for the same reason. Note also that no distinction is made between 99% and599% in the TLD and PARAFAC results.
+The number of faults caught with each method and single sensor system is shown in Table 5. The
+upperportionofthetablegivestheresultsforglobalmodels(modelsbasedonallthreeexperiments),
+whilethelowerportionofthetablegivestheresultsforlocalmodels(separatemodelsforeachofthe
+three experiments).Table 4. Results of sensitivity tests for single sensor systems with TLD and PARAFAC
+392 B. M. WISE ET AL.
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)8. DISCUSSION
+Several trends are evident upon examination of the results. It is clear that local models outperform
+global models. In Tables 2–4 all local models performed better than all similarly conﬁgured globalmodels. This is particularly apparent in Table 5. This is expected because global models include alarger amount of variation as normal. Thus faults are smaller relative to the normal process variationincluded in global models and are therefore more difﬁcult to detect. PCA on the wafer means issomewhatmoresensitivethanPCAonrawdataformachinestatedatabutnotforRFMandOES.Theincreased sensitivity with machine data, which tend to have a larger proportion of unmodeled
+variance, is probably signal averaging, i.e. it is easier to see a shift in the mean when signals are
+averaged over many samples. With OES and RFM data there is generally very little unmodeledvariance in the raw data, and changes are more easily detected in the raw data.
+In this analysis, MPCA does not perform better than PCA of the raw data. However, in previous
+analyses,withdifferentarrangementsofthedata,MPCAdidperformbetter onthemachinestateandOESsensorsbutnottheRFM.ItisexpectedthatMPCAwillbemoresensitivetosometypesoffaultsthan PCA because the time-ordered nature of the data is considered explicitly. Faults which changetheshapeoftheprocesstrajectory,butnottheoverallmeanandcovariance,wouldbedetectablewith
+MPCAbutnotwithPCA.Changesinshapecanincludestretchingduetolengtheningorshorteningof
+someperiodsoftheetch.Inpreviousanalysis,datawerearrangedforMPCAbyincludingaspeciﬁednumber ofsamplesstartingfrom thebeginningoftherun,asopposedtoincluding data centeredonaparticularfeaturenearthemiddleoftherun.MPCAmodelsaremoresensitivetostretchingwhenthestarting points are ﬁxed in the data record, rather than a point near the center. It is not clear whyMPCAdoesnotleadtoincreasedsensitivitywhenusedwiththe RFMdata. Itmaybethat theshapesof the RFM trajectories are inherently more variable, making changes to them harder to detect.
+PARAFAC performed slightly better than TLD, which was equivalent to PCA on the means, as
+shown in Table 5. The differences between TLD and PARAFAC may be due to problems resulting
+from imaginary solutions, which, when rotated back to real solutions, still tend not to be as good asthe PARAFAC solutions.
+Methods based on wafers centered to their own mean are less sensitive than those based on raw
+data,asmightbeexpected.However,thereareseveralinstanceswheretheanalysisonmean-centeredwafers detects faults whereas analysis of the means does not. This suggests that these techniquescould be used simultaneously.
+The overall performance of the different sensors is similar; however, the OES sensor appears to
+degradethemostasthemodelsarechangedfromlocaltoglobal.Thisisnodoubtduetothevarylarge
+amount of drift in the OES signals over the course of a clean cycle due to residue build-up on theTable 5. Faults detected for each combination of sensor, method and timescale
+TLD PARAFAC MPCA PCA/mean
+Global Machine 11 12 10 10
+RFM 7 6 11 9
+OES 9 6 6 5
+Local Machine 14 17 11 16
+RFM 12 14 14 12OES 12 11 6 13
+Mean 10 ×81 1 ×09 ×71 0 ×8COMPARISON OF METHODS FOR FAULT DETECTION 393
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)chamber window. The sensitivity of RFM models, on the other hand, changed little when they were
+localorglobal.ThissuggeststhattheRFMsensorsarethemoststableand/orleastsensitivetolot-to-lot changes that do not affect processing.
+The best combination of sensors is machine state plus RFM. This combination is more successful
+for detecting faults than any of the sensors alone or in combination when global models are
+considered. When OES data are combined with machine state and RFM data, the ability to detectfaults generally decreases in the global models. This is not necessarily true for local models wherelong-term variation in the OES is not important.
+The data from Table 5 (single sensor group results) were arranged in a three-way matrix and
+modeledby PARAFAC.Aone-factor model ﬁt the data reasonably well, with a root-mean-square ﬁterrorof1×75.ThePARAFACloadingsareshowninFigure7.Herethetrendsareclear:machinedata
+tend to catch more faults than RFM, which is better than OES. PARAFAC models are slightly more
+sensitivetofaultsthanTLDandPCAonthemeans,whicharebetterthanMPCA.Localmodelscatch
+more faults than global models. This example illustrates one of the outstanding features ofPARAFAC,whichistheeaseofinterpretationofthemodel.Note,however,thattwo-wayanalysisofvariance shows that the difference in methods is not signiﬁcant. The difference in sensors issigniﬁcant at 99%, as is the difference between global and local models.
+9. CONCLUSIONS
+Thisstudyhasshownhowonecansystematicallystepthroughtheoptionsforsensorsystemsanddata
+treatmentforfaultdetectionsystemsinordertoselectthebestmeasurementsandanalysismethodfor
+Figure 7. PARAFAC loadings of sensitivity results394 B. M. WISE ET AL.
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)theparticularjob.Forthisparticularapplication,PARAFACappearedtoworkbest,followedclosely
+byPCAonthemeansandTLD.GiventhesimplicityofPCAofthemeans,thismightbeareasonablechoice in practice. The major unresolved issue in this paper concerns how one might deal withprocess and sensor drift. It is apparent that this had the single largest effect on the ability to detectsensor faults in this study. This issue is the subject of our companion study.
+2
+REFERENCES
+1. B. M. Wise, N. B. Gallagher, S. W. Butler, D. White and G. G. Barna, ‘Development and benchmarking of
+multivariate statistical process control tools for a semiconductor etch process: impact of measurement
+selectionanddatatreatmentonsensitivity’, IFACSAFEPROCESS’97 ,KingstonuponHull,1997,pp.35–42.
+2. N.B.Gallagher,B.M.Wise,S.W.Butler,D.D.WhiteJrandG.G.Barna,‘Developmentandbenchmarking
+of multivariate statistical process control tools for a semiconductor etch process: improving robustness
+through model updating’, presented at ADCHEM 1997 , Banff, 1997.
+3. G. G. Barna, ‘Procedures for implementing sensor-based fault detection and classiﬁcation (FDC) for
+advanced process control (APC)’, SEMATECH Technical Transfer Document 97013235A-XFR (1997).
+4. J. E. Jackson, A User’s Guide to Principal Components , Wiley, New York (1991).
+5. B. M. Wise and B. R. Kowalski, ‘Process chemometrics’, in Process Analytical Chemistry , pp. 259–312,
+Blackie, London (1995).
+6. B. M. Wise and N. B. Gallagher, ‘The process chemometrics approach to chemical process fault detection
+and supervision’, J. Process Control ,6, 329–348 (1996).
+7. S.Wold,K.EsbensenandP.Geladi,‘Principalcomponentsanalysis’, ChemometricsIntell.Lab.Syst. 2,37–
+52 (1987).
+8. B.M.WiseandA.H.McMakin,‘Astatisticaltechniqueforanalyzingdatafromliquid-fedceramicmelters’,
+PNL-SA-15267 , Paciﬁc Northwest Laboratory, Richland, WA (1987).
+9. B. M. Wise, D.J.Veltkamn, B. Davis, N.L. Ricker and B. R. Kowalski, ‘Principal components analysis for
+monitoring the West Valley liquid fed ceramic melter’, presented at Waste, Management ’88 , Tucson, AZ,
+1988.
+10. B.M.Wise,andN.L.Ricker,‘Feedbackstrategiesinmultiplesensorsystems’, AIChESymp.Ser. 85, 19–23
+(1989).
+11. B. M. Wise, N. L. Ricker, D. J. Veltkamp and B. R. Kowalski, ‘A theoretical basis for the use of principal
+components models for monitoring multivariate processes’, Process Control Qual. 1, 41–51 (1990).
+12. B. M. Wise, D. J. Veltkamp, N. L. Ricker, B. R. Kowalski, S. M. Barnes and V. Arakali, ‘Application of
+multivariate statistical process control (MSPC) to the West Valley slurry-fed ceramic melter process’,
+presented at Waste Management ’91 , Tucson, AZ, 1991.
+13. J. V. Kresta, J. F. MacGregor and T. E. Marlin, ‘Multivariate statistical monitoring of process operating
+performance’, Can. J. Chem. Engng. 69, 35–47 (1991).
+14. P. Geladi, ‘Analysis of multi-way (multi-mode) data’, Chemometrics Intell. Lab. Syst. 7, 11–30 (1989).
+15. E. Sanchez and B.R.Kowalski,‘Tensorial resolution: adirect trilinear decomposition’, J.Chemometrics ,4,
+29–45 (1990).
+16. A. K. Smilde and D. A. Doornbos, ‘Three way methods for the calibration of chromatographic systems:
+comparing PARAFAC and three-way PLS’, J. Chemometrics. 5, 345–360 (1991).
+17. A. K. Smilde, Y. Wang and B. R. Kowalski, ‘Theory of medium-rank second-order calibration with
+restricted-Tucker models’, J. Chemometrics. 8, 21–36 (1994).
+18. S. Wold, P. Geladi, K. Esbensen and J. Ohman, ‘Multi-way principal components and PLS analysis’, J.
+Chemometrics ,1, 41–56 (1987).
+19. P. Nomikos and J. F. MacGregor, ‘Monitoring batch processes using multiway principal component
+analysis’, AIChE J. 40, 1361–1375 (1994).
+20. P. Nomikosand J.F.MacGregor, ‘Multivariate SPCcharts for monitoring batch processes’, Technometrics.
+37, 97–108 (1995).
+21. K. A. Kosanovich, M. J. Piovoso, K. S. Dahl, J. F. MacGregor and P. Nomikos, ‘Multi-way PCA applied to
+an industrial batch process’, presented at Am. Control Conf. 1994.
+22. N.B.Gallagher,B.M.WiseandC.W.Stewart,‘Application ofmulti-wayprincipal componentsanalysisto
+nuclear waste storage tank monitoring’, Comput. Chem. Engng. 20, S739–S744 (1996).COMPARISON OF METHODS FOR FAULT DETECTION 395
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)23. B. M. Wise and N. B. Gallagher, ‘Multi-way analysis in process monitoring and modeling’, AIChE Symp.
+Ser.316, 271–274 (1997).
+24. R. Bro, ‘PARAFAC. Tutorial and applications’, Chemometrics Intell. Lab. Syst. 38, 149–171 (1997).
+25. R. Bro, ‘Multi-way analysis in the food industry—models, algorithms and applications’, Doctoral Thesis ,
+University of Amsterdam (1998).
+26. E. Sanchez and B. R. Kowalski, ‘Tensorial calibration: II. Second-order calibration’, J. Chemometrics. 2,
+265–280 (1988).
+27. B.E.Wilson, E.Sanchez and B.R.Kowalski,‘Animproved algorithm forthe generalized rankannihilation
+method’, J. Chemometrics. 3, 493–498 (1989).
+28. C. B. Moler and G. W. Stewart, SIAM J. Numer. Anal. 10, 241 (1973).
+29. K. Faber, ‘On solving generalized eigenvalue problems using MATLAB’, J. Chemometrics ,11, 87–91
+(1997).
+30. S. Li, J. C. Hamilton and P. J. Gemperline, ‘Generalized rank annihilation method using similarity
+transformations’, Anal. Chem. 64, 599–607 (1992).
+31. S. Li and P. J. Gemperline, ‘Eliminating complex eigenvectors and eigenvalues in multiway analyses using
+the direct trilinear decomposition method’, J. Chemometrics. 7, 77–78 (1993).
+32. S. Wold, ‘Exponentially weighted principal components analysis’, Chemometrics Intell. Lab.Syst. 23, 149–
+161 (1994).
+33. D.White,G.G.Barna,S.W.Butler,B.M.WiseandN.B.Gallagher,‘Methodologyforrobustandsensitive
+fault detection’, Electrochem. Soc. Proc. 97–9, 55–79, (1997).
+34. B.M.WiseandN.B.Gallagher,PLS_ToolboxforUsewithMATLAB,Version2 ×0,EigenvectorResearch,
+Manson, WA (1998).
+35.MATLAB 5 User’s Guide , The MathWorks, Natick, MA (1998).396 B. M. WISE ET AL.
+Copyright Ó1999 John Wiley & Sons, Ltd. J. Chemometrics ,13, 379–396 (1999)

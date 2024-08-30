@@ -1,0 +1,1213 @@
+This is a repository copy of RANS simulation of bubble coalescence and break-up in 
+bubbly two-phase flows .
+White Rose Research Online URL for this paper:
+http://eprints.whiterose.ac.uk/97805/
+Version: Accepted Version
+Article:
+Colombo, M and Fairweather, M (2016) RANS simulation of b ubble coalescence and 
+break-up in bubbly two-phase flows. Chemical Engineering Science, 146. pp. 207-225. 
+ISSN 0009-2509 
+https://doi.org/10.1016/j.ces.2016.02.034
+© 2016, Elsevier. Licensed under the Creative Commons 
+Attribution-NonCommercial-NoDerivatives 4.0 International 
+http://creativecommons.org/licenses/by-nc-nd/4.0/
+eprints@whiterose.ac.uk
+https://eprints.whiterose.ac.uk/
+Reuse 
+Unless indicated otherwise, fulltext items are protected b y copyright with all rights reserved. The copyright 
+exception in section 29 of the Copyright, Designs and Pate nts Act 1988 allows the making of a single copy 
+solely for the purpose of non-commercial research or privat e study within the limits of fair dealing. The 
+publisher or other rights-holder may allow further rep roduction and re-use of this version - refer to the Whit e 
+Rose Research Online record for this item. Where records identify the publisher as the copyright holder, 
+users can verify any specific terms of use on the publisher’s w ebsite. 
+Takedown 
+If you consider content in White Rose Research Online to b e in breach of UK law, please notify us by 
+emailing eprints@whiterose.ac.uk including the URL of th e record and the reason for the withdrawal request. 1 
+ RANS simulation of bubble coalescence and break-up in bubbly two-phase flows 1 
+ 2 
+Marco Colombo* and Michael Fairweather 3 
+Institute of Particle Science and Engineering, School of Chemical and Process Engineering, 4 
+University of Leeds, Leeds LS2 9JT, United Kingdom 5 
+E-mail addresses: M.Colombo@leeds.ac.uk (Mar co Colombo); M.Fairweather@leeds.ac.uk 6 
+(Michael Fairweather) 7 
+*Corresponding Author: +44 (0) 113 343 2351 8 
+ 9 
+Abstract 10 
+ 11 
+In bubbly flows, the bubble size dist ribution dictates the in terfacial area availabl e for the interphase 12 
+transfer processes and, therefor e, understanding the behaviour a nd the average features of the 13 
+bubble population is crucial for the pred iction of these kinds of flows. In this work, by means of the 14 
+STAR-CCM+ code, the SȖ population balance model is coupled w ith an Eulerian-Eulerian two-fluid 15 
+approach and tested against data on upward bubbly pipe flows. The SȖ model, based on the moments 16 
+of the bubble size distribution, tracks the evolut ion of the bubble sizes due to bubble break-up and 17 
+bubble coalescence. Good accuracy for the averag e bubble diameter, the velocity and the void 18 
+fraction radial profiles is achieved with a modified  coalescence source. Numerical results show that 19 
+better predictions are obtained when these flows are considered to be coalescence dominated, but, 20 
+nevertheless, additional knowledge is required to progress in the development of coalescence and 21 
+break-up models that include all the possible res ponsible mechanisms. In th is regard, there is a 22 
+requirement for experimental data  that will allow validation of both the predicted bubble diameter 23 
+distribution and the intensity of  the turbulence in the continuous phase which has a significant 24 
+impact on coalescence and break-up models. An a dvanced version of the model described, that 25 2 
+ includes a Reynolds stress turbulence formulation and two groups of bubbles to account for the 26 
+opposite behaviour of spherical bubbles, which accumu late close to the pipe wall, and cap bubbles, 27 
+that migrate towards the pipe centre, is propose d. The Reynolds stress model is found to better 28 
+handle the interactions between the turbulence and the interphase forces, and the use of only two 29 
+bubble groups seems sufficient to describe the whole bubble spectrum and the bubbly flow regime 30 
+up to the transition to slug flow. 31 
+ 32 
+Keywords : Bubbly flow; RANS modelling; populatio n balance; method of moments; bubble 33 
+diameter distribution. 34 
+ 35 
+  36 3 
+ 1. Introduction 37 
+ 38 
+Gas-liquid bubbly flows are common to a variety of processes encountered in numerous industrial 39 
+sectors, including the nuclear sect or as well as chemical and petr o-chemical, oil and gas, mining, 40 
+pharmaceutical and refrigeration industries, amongs t others. In the nuclear industry, knowledge of 41 
+the hydrodynamics of the two-phase flow is esse ntial for the design and operation of boiling water 42 
+reactors and natural circulation systems, and in the prediction of accident scenarios for pressurized 43 
+water reactors as well as for other types of reac tor. In chemical reactors,  such as bubble columns 44 
+and stirred tanks, gas bubbles ar e dispersed in the liquid phase to increase phase mixing and 45 
+enhance heat and mass transfer processes. 46 
+ 47 
+In these flows, the exchange of mass, moment um and energy between the phases depends on the 48 
+flow conditions, and on the interfac ial area concentration in partic ular. This, in bubbly flows, is 49 
+determined by the number and the size of the bubbles  that are dispersed in the continuous liquid. 50 
+Often, bubbles are not monodispersed and their di stribution is far from steady, and evolves 51 
+continuously in space and time, following intera ctions between the bubbles and the continuous 52 
+phase and collisions between neighbouring bubbles (Lucas et al., 2005; 2010). These interactions 53 
+induce bubble shrinkage and growth due to the pre ssure field and bubble break-up and coalescence, 54 
+and, in boiling or reacting flows, also wall bo iling, evaporation and mass transfer. The bubble 55 
+distribution is therefore governed  by these phenomena that, with  bubble behaviour strongly related 56 
+to bubble size and shape (Tomiyama et al., 1998), dete rmine the local flow field, which, at the same 57 
+time, affect the ratios of mass tran sfer, break-up and coalescence. In  view of this strong coupling, 58 
+understanding the evolution of th e local bubble size distribution in  these kinds of flows still 59 
+represents a rather complex task which, nevertheless, is necessary if we are to be able to predict 60 
+them with any degree of accuracy. 61 4 
+  62 
+The use of computational fluid dynamic (CFD) techni ques, applied today in design and as well as a 63 
+development tool in most of the engineering disc iplines, has the potential to significantly improve 64 
+our ability to predict the mentioned processes. At  the present time, application of multiphase CFD 65 
+to industrial and system-scale calculations has been  mainly limited to two-fluid Eulerian-Eulerian, 66 
+Reynolds-averaged Navier-Stokes (RANS) base d models (Prosperetti and Tryggvason, 2009; 67 
+Tryggvason and Buongiorno, 2010). The use of more adva nced techniques, such as direct numerical 68 
+simulation and large eddy simulation with interf ace tracking methods (Toutan t et al., 2008; Dabiri 69 
+and Tryggvason, 2015), or Lagrangian  tracking techniques (Molin et  al., 2012), recently coupled 70 
+with immersed boundary methods (San tarelli et al., 2015), is mostly c onstrained to very simple flow 71 
+conditions in view of the required computa tional resources (Tryggva son and Buongiorno, 2010).  72 
+ 73 
+In two-fluid Eulerian-Eulerian RANS models, the conservation equations for each phase are derived 74 
+from averaging procedures. Therefore, the details of the interphase struct ure are not resolved and 75 
+interface exchange terms requi re explicit modelling (Fox, 2012; Prosperetti and Tryggvason, 2009). 76 
+In these models, the bubble diameter is often needed  as an input parameter that, therefore, becomes 77 
+vital to properly predict the fl uid dynamic behaviour of the syst em. Here, possible limitations can 78 
+be avoided by coupling the CFD model with the population balance equation (PBE) approach which 79 
+tracks the behaviour of the bubbl e size distribution in both phys ical and internal (e.g. bubble 80 
+diameter or bubble volume) coordi nate spaces (Buffo et al., 2013; Marchisio and Fox, 2005). The 81 
+use of a PBE combined with CF D has been identified as a cruc ial development for the accurate 82 
+prediction of bubbly flows, and significant advances have been achieved in recent years using this 83 
+approach (Buffo et al., 2013; Ch eung et al., 2009, 2013; Lehr et al., 2002; Liao et al., 2015; Lo and 84 
+Zhang, 2009; Marchisio and Fox, 2005, 2007; Nguyen et al., 2013; Yao and Morel, 2004). 85 
+ 86 5 
+ Many approaches have been considered for the solu tion of the PBE within a CFD code (Buffo et al., 87 
+2013). In class methods, the internal  coordinate space, which is us ually the bubble size spectrum, is 88 
+discretized into numerous size classes and the PBE is  integrated over each class to give a finite set 89 
+of discrete PBEs (Kumar and Ramkrishna, 19 96; Liao et al., 2015; Lo, 1996; Nandanwar and 90 
+Kumar, 2008; Wang et al., 2005). In each class, bubbles may be considered as all having the same 91 
+size (zero-order methods) or a specified distribution (higher-ord er methods), often a low-order 92 
+polynomial (Vanni, 2000). In Monte Carlo methods, st ochastic differential e quations are solved for 93 
+a finite number of artificial r ealizations of the dispersed pha se population (Lee and Matsoukas, 94 
+2000; Lin et al., 2002; Zhao et  al., 2007). For both the class and Monte Carlo methods, the 95 
+drawback is the high computational cost involv ed. Respectively, the solution of at least one 96 
+conservation equation for each class, with all the relevant source and sink terms, is requi red, or a 97 
+very high number of realizations is necessary. In the last two decades, many authors have focused 98 
+their efforts on the development of the interfacial area transport equation, in  the context of both 99 
+two-fluid CFD models and one-dimensional, advan ced thermal hydraulic syst em codes (Hibiki and 100 
+Ishii, 2000; Nguyen et al., 2013; Smith et al., 2012; Sun et al., 2004; Wu et al., 1998; Yao and 101 
+Morel, 2004). Being derived from averaging ov er the whole bubble diamet er spectrum, no bubble 102 
+size distribution is retained and si mplifying assumptions are often made, such as the use of constant 103 
+or simple linear distributions (Ishii and Hibi ki, 2006; Smith et al., 2012). Recently, promising 104 
+results were achieved with progr essively more advanced appr oaches based on the method of 105 
+moments, originally introduced by Hulburt and Ka tz (1964). This method is based on the solution 106 
+of a set of transport equations for the lower-order moments of the dispersed phase distribution 107 
+(Marchisio and Fox, 2005). Progressively, more advanced methods have been developed, in 108 
+particular in the categor y of quadrature-based methods of moment s, such as the di rect quadrature 109 
+method (Marchisio and Fox, 2005) and the cond itional quadrature method (Yuan and Fox, 2011). 110 
+Overall, these methods are reported to provid e good predictive accuracy without excessive 111 
+computational cost (Buffo et al ., 2013; Marchisio and Fox, 2005). The SȖ model, proposed by Lo 112 6 
+ and Rao (2007) for droplet two-pha se flows, involves a limited number of moments of the bubble 113 
+size probability distribution, which is assumed to follow a log-normal shape. The model was later 114 
+extended to bubbly flows by Lo and Zhang (2009) an d its ability to predic t with a reasonable 115 
+accuracy a number of differen t flows was demonstrated.  116 
+ 117 
+Alongside the method of solution, the other key aspect in regards to population balance based 118 
+approaches is the availability of reliable closure models for the coalescence and break-up 119 
+mechanisms. This issue has recently been the subj ect of numerous researches (Liao et al., 2015; Luo 120 
+and Svendsen, 1996; Mukin, 2014; Prince and Blanch, 1990; Wang et al., 2005; Yao and Morel, 121 
+2004), and thorough reviews have been provided by Liao and Lucas (2009) for the break-up 122 
+mechanism and by Liao and Lucas (2010) for the coalescence mechanism. Despite this, however, 123 
+commonly accepted and reliable models have not yet emerged in view of the intrinsic c omplexity 124 
+encountered when modelling coalescence and break -up in turbulent bubbly flows. Amongst others, 125 
+the strong mutual interactions wi th the two-phase turbul ence, for which a general and mature model 126 
+is not yet available, and the coupling and rela tive importance of the different competitive 127 
+mechanisms (e.g. turbulent collisi on, wake entrainment, shearing-off)  prevent substan tial progresses 128 
+on the subject being achieved and, therefore, further understanding is required. The ongoing 129 
+modelling effort is supported by the experimental  data available from a number of studies 130 
+(Grossetete, 1995; Hibiki and Ishii, 1999; Hibiki  et al., 2001; Liu, 1993; Lucas et al., 2005, 2010; 131 
+Prasser et al., 2007; Sanyal et al., 1999). In particular, detailed m easurements of the average bubble 132 
+size and the bubble size distribution have been obtained using the wire-mesh sensor technique 133 
+(Lucas et al., 2005, 2010; Prasser et al., 2007).  134 
+ 135 
+In this paper, the SȖ model, implemented in the STAR-CCM+ code (CD-adapco, 2014), is combined 136 
+with an Eulerian-Eulerian two fluid model and te sted against data on ai r-water bubbly flows in 137 
+pipes. With the aim to improve our ability to predict these flows and th e evolution of the bubble 138 7 
+ diameter distribution, a differe nt coalescence model is introdu ced and optimized. By means of 139 
+sensitivity studies, the relative impact of bubble break-up and coales cence, and the influence of the 140 
+continuous phase turbulence and th e bubble-induced turbulence, are in vestigated. In terms of the 141 
+turbulent flow field, and in view of the infl uence it has on the accuracy of the predictions, a 142 
+Reynolds stress turbulence model is also incl uded with the aim of extending the models 143 
+applicability to more complex fl ows, affected by known shortcomi ngs of two-equation turbulence 144 
+models. In bubbly flows, which are polydisperse by nature, the size determines the behaviour of the 145 
+bubble, with small spherical bubbles flowing near the pipe wall and larger, deformed cap bubbles, 146 
+migrating towards the pipe centre (Tomiyama et al., 2002b). Clearly, predicting this behaviour is 147 
+mandatory if a general model capable of ha ndling the entire bubble size spectrum is to be 148 
+developed. In this regard, two bubble classes, each one with its own behaviour , are introduced in the 149 
+final section of the paper. The ability of such a model, limited to only two bubble classes, to predi ct 150 
+the whole bubble spectrum and the transition between  wall-peaked and core-p eaked void profiles, is 151 
+then tested.  152 
+ 153 
+2. Experimental data 154 
+ 155 
+For any CFD technique to be applied with confid ence, it is mandatory that the model has been 156 
+previously validated against releva nt experimental data. In this work, seven experiments from Liu 157 
+(1993), Hibiki and Ishii (1999), Hibi ki et al. (2001) and Lucas et al. (2005) were considered. The 158 
+experimental conditions consider ed are summarized in Table 1. 159 
+ 160 
+Table 1: Experimental database used for validation. 161 
+Case Source jw [m s-1] ja [m s-1] Įavg [-] dB,avg [mm] Re L [-] 
+Hi1 Hibiki et al. (2001)  0.986 0.242 0.191 3.4 49989 
+Hi2 Hibiki et al. (2001)  2.01 0.471 0.230 3.7 101903 
+HI1 Hibiki and Ishii (1999)  0.262 0.0549 0.245 3.4 6641 
+HI2 Hibiki and Ishii (1999)  1.75 0.399 0.253 3.8 44361 
+L1 Liu (1993) 1.0 0.2 0.160 4.2 57086 
+L2 Liu (1993) 3.0 0.2 0.062 3.4 171257 
+Lu1 Lucas et al. (2005)  0.255 0.0368 0.072 - 13030 
+  162 8 
+ Liu (1993) conducted experiments in a vertical pipe of 0.0572 m i.d. to study the bubble diameter 163 
+and entrance length effects on the void fraction distribution in upward air-water bubbly flows. 164 
+Bubble velocity, void fraction and average bubble diameter radial profiles were obtained from 165 
+measurements at different axial locations. Hibi ki and Ishii (1999), and Hibiki et al. (2001), 166 
+measured water and air velocity, turbulence intensity, void fraction, bubble diameter and interfacial 167 
+area concentration radial profiles at three consecutive axial locations and for an  air-water bubbly 168 
+flows in vertical pipes of diameter 0.0254 m an d 0.0508 m. Lucas et al. (2005) used a wire-mesh 169 
+sensor to study air-water upw ard flows inside a 0.0512 m di ameter pipe. High-resolution 170 
+measurements of the void fraction and the b ubble diameter distribu tion were obtained. The 171 
+experiments extended over a wide range of the bubble diameter spectrum, including some mixed 172 
+radial void profiles where both spherical and cap bubbles were present, one of which was 173 
+specifically included in the database to validate the model with two bubble classes. Over the whole 174 
+database, the water superficial velocity  considered is in the range 0.262 m s-1 < jw < 3.0 m s-1 and 175 
+the air superficial velocity  is in the range 0.0368 m s-1 < ja < 0.471 m s-1. Average void fraction Įavg 176 
+and average bubble diameters dB,avg reported in Table 1 were calcula ted by means of integration of 177 
+the experimental profiles at the last measurem ent station. Table 1 also includes values of the 178 
+Reynolds number of the flows, based on the characteristic dimension along the pipe.   179 
+ 180 
+3. Mathematical model 181 
+ 182 
+In a two-fluid Eulerian-Eulerian mo del, each phase is described by a set of averaged conservation 183 
+equations. As the cases considered in this paper are limited to adiabatic ai r-water flows, only the 184 
+continuity and momentum equatio ns are solved, with the phases treated as incompressible with 185 
+constant properties: 186 
+ 187 
+߲
+ݐ߲ሺߙ௞ߩ௞ሻ൅߲
+ݔ߲௜൫ߙ௞ߩ௞ܷ௜ǡ௞൯ൌͲ  (1)
+ 188 9 
+ ߲
+ݐ߲൫ߙ௞ߩ௞ܷ௜ǡ௞൯൅߲
+ݔ߲௝൫ߙ௞ߩ௞ܷ௜ǡ௞ܷ௝ǡ௞൯ൌെ ߙ ௞߲
+ݔ߲௜݌௞൅߲
+ݔ߲௝ൣߙ௞൫߬௜௝ǡ௞൅߬௜௝ǡ௞ோ௘൯൧ ൅ ߙ ௞ߩ௞݃௜൅ܯ ௜ǡ௞ (2)
+ 189 
+In the above equations, Įk represents the volume fraction of phase k, whereas in the following, only 190 
+Į will be used to specify the void fraction of air. ȡ is the density, U the velocity, p the pressure and 191 
+g the gravitati onal acceleration. Ĳ and ĲRe are the laminar and turbulent stress tensors, respectively, 192 
+and Mk accounts for the momentum exchanges between the phases. In the interfacial term, the drag 193 
+force, lift force, wall force and turb ulent dispersion force are included:  194 
+ 195 
+ࡹ௞ൌࡲ ௗ൅ࡲ ௟൅ࡲ ௪൅ࡲ ௧ௗ (3)
+ 196 
+The drag force represents the resistance opposed to bubble motion relative to the surrounding liquid 197 
+and is expressed as: 198 
+ 199 
+ࡲௗൌ͵
+Ͷܥ஽
+݀஻ߩߙ௖ȁࢁ௥ȁࢁ௥ (4)
+ 200 
+Here, Ur is the relative velocity between  the phases and the subscript c identifies the continuous 201 
+phase, which is water for all the experiments in Table 1.  The drag coefficient, CD, was calculated 202 
+using the model of Tomiyama et al . (2002a), where the effect of the bubble aspect ratio  on the drag 203 
+was also accounted for (Hosokawa and Tomiyama, 2009) using: 204 
+ 205 
+ܥ஽ൌͺ
+͵݋ܧ
+ܧଶଷൗሺͳെܧଶሻିଵ݋ܧ ൅ ͳ͸ܧସଷൗܨିଶ (5)
+ 206 
+Here, F is a function of th e bubble aspect ratio E. The bubble aspect ratio was derived from the 207 
+following correlation and as a functio n of the distance from the wall yw (Colombo et al., 2015): 208 10 
+  209 
+ܧൌm a x ൤ͳǤͲ െ ͲǤ͵ͷݕ௪
+݀஻ǡܧ଴൨ (6)
+ 210 
+E0 is calculated from the expression given by Welleck et al. (1966), where Eo is the Eötvös number: 211 
+ 212 
+ܧ଴ൌͳ
+ͳ ൅ ͲǤͳ͸͵݋ܧ଴Ǥ଻ହ଻ (7)
+ 213 
+A lift force, perpendicular to th e direction of motion, is experien ced by bubbles moving in a shear 214 
+flow (Auton, 1987), according to: 215 
+ 216 
+ࡲ௟ൌܥ ௅ߩߙ௖ࢁ௥	x	ሺ	׏x	ࢁ ௖ሻ (8)
+ 217 
+In a pipe, the lift force has a strong influence on the radial movement of the bubbles and therefore 218 
+on the void fraction radial dist ribution. Generally, a positive va lue of the lift coefficient CL 219 
+characterizes spherical bubbles, which are pushed towards the pi pe wall by the lift force. In 220 
+contrast, larger bubbles, deformed by the inertia of the surrounding liq uid, experience a negative lift 221 
+force and move towards the centre of the pipe (Tomiyama et al., 2002b). In air-water flows, a 222 
+critical bubble diameter range for the change of sign in the lift coefficient between 5. 0 mm and 6.0 223 
+mm was given by Tomiyama et al. (2002b). These aut hors also expressed the lift coefficient as a 224 
+function of the Eötvös number, an approach adopted  in other investigations  (e.g. Krepper et al., 225 
+2008; Rzehak and Krepper, 2013). In this work, however, and in view of previously observed 226 
+discrepancies between calculations and experimental  data when using such an approach, constant 227 
+values were chosen. More specifically, CL = 0.1 was used for wall-peak ed (Lahey and Drew, 2001; 228 
+Lopez de Bertodano et al., 1994), and CL = -0.05 for core-peaked, void profiles.  229 
+ 230 11 
+ The presence of a solid wall modifies the flow field around the bubbles and the asymmetry in the 231 
+flow distribution generates a hydrodynamic pressu re difference on the bubble surface that keeps 232 
+bubbles away from the wall (Antal et al., 1991): 233 
+ 234 
+ࡲ௪ൌm a x ൬Ͳǡ ܥ௪ǡଵ൅ܥ௪ǡଶ݀஻
+ݕ௪൰ߩߙ௖ȁࢁ࢘ȁଶ
+݀஻࢔࢝( 9)
+ 235 
+In this equation, nw is the normal to the wall and Cw1 and Cw2 are constants that modulate the 236 
+strength and the region of influence of the wall force. Here, values of Cw1 = -0.4 and Cw2 = 0.3 were 237 
+used (Colombo et al., 2015). Finally, the turbulent di spersion force was modelled as (Burns et al., 238 
+2004): 239 
+ 240 
+ࡲ௧ௗൌ͵
+Ͷܥ஽ߩߙ௖ȁࢁ௥ȁ
+݀஻ߥ௧ǡ௖
+ߪఈ൬ͳ
+ߙ൅ͳ
+ሺͳെߙ ሻ൰׏Ƚ (10)
+ 241 
+where Ȟt,c is the turbulent kinematic viscosity of the continuous phase, obtained from the turbulent 242 
+viscosity ȝt,c, calculated from the single-phase relation (more details can be found in the following 243 
+Section 3.1, where the turbulence model is pres ented), divided by the continuous phase density ȡc. 244 
+ıĮ is the turbulent Prandtl number for the void fraction, assume d equal to 1.0 (Burns et al., 2004). 245 
+ 246 
+3.1. Multiphase turbulence modelling 247 
+ 248 
+Turbulence was solved only in the continuous pha se, with a multiphase formulation (CD-adapco, 249 
+2014) of the standard k-İ turbulence model (Jones and Launder, 1972): 250 
+ 251 
+߲
+ݐ߲൫ሺͳെߙ ሻߩ௖݇௖൯൅߲
+ݔ߲௜ቀሺͳെߙ ሻߩ௖ܷ௜ǡ௖݇௖ቁ
+ൌ߲
+ݔ߲௜൤ሺͳെߙ ሻ൬ߤ௖൅ߤ௧ǡ௖
+ߪ௞൰߲݇௖
+ݔ߲௜൨൅ሺͳെߙ ሻ൫ܲ௞ǡ௖െߩ௖ߝ௖൯൅ሺͳെߙ ሻܵ௞஻ூ (11)12 
+  252 
+߲
+ݐ߲൫ሺͳെߙ ሻߩ௖ߝ௖൯൅߲
+ݔ߲௜ቀሺͳെߙ ሻߩ௖ܷ௜ǡ௖ߝ௖ቁ
+ൌ߲
+ݔ߲௜൤ሺͳെߙ ሻ൬ߤ௖൅ߤ௧ǡ௖
+ߪఌ൰ߝ߲௖
+ݔ߲௜൨൅ሺͳെߙ ሻߝ௖
+݇௖൫ܥఌǡଵܲ௞ǡ௖െܥఌǡଶߩ௖ߝ௖൯൅ሺͳെߙ ሻܵఌ஻ூ (12)
+ 253 
+In the equations above,  Pk,c is the production term due to shear and SkBI and SİBI the source terms 254 
+due to bubble-induced turbulen ce. The turbulent viscosity ȝt,c was evaluated from the single-phase 255 
+relation: 256 
+ 257 
+ߤ௧ǡ௖ൌܥ ఓߩ௖݇௖ଶ
+ߝ௖ (13)
+ 258 
+Turbulence was not resolved in the dispersed phas e, but was obtained from the continuous phase. 259 
+More specifically, it was directly related to the turbulence of th e continuous phase by means of a 260 
+response coefficient Ct, assumed equal to unity (Gosman et al., 1992; Troshko and Hassan, 2001). 261 
+Experimental measurements do in fact suggest that a value of unity is approached starting from void 262 
+fractions as small as 6 % (Behzadi et al., 2004).  263 
+ 264 
+In bubby flows, the generation of turbulence by the bubbles often modifies significantly the 265 
+turbulence in the continuous phase, with respect to the single-phase flow (Lance and Bataille, 1991; 266 
+Shawkat et al., 2007; Wang et al., 1987). The bubbl e contribution to turbulence was accounted for 267 
+with bubble-induced source terms in  Eq. (12) and Eq. (13). In pa rticular, the drag force was 268 
+considered as the only source of turbulence generation due to the bubbles and all the energy lost by 269 
+the bubbles to drag was assumed to be converted  into turbulence kinetic energy inside the bubble 270 
+wakes (Kataoka and Serizawa, 1989; Rzehak and Krepper, 2013; Troshko and Hassan, 2001): 271 
+ 272 13 
+ ܵ௞஻ூൌܭ ஻ூࡲࢊࢁ࢘( 14)
+ 273 
+The corresponding turbulence dissipa tion rate source is equal to the turbulence kinetic energy 274 
+source divided by the timescale of  the bubble-induced turbulence ĲBI. In this work, the mixed 275 
+timescale introduced by Rzehak and Krepper (2013) wa s chosen, derived from the velocity scale of 276 
+the turbulence and the lengt h scale of the bubbles:  277 
+ 278 
+ܵఌ஻ூൌܥ ఌǡ஻ூܵ௞஻ூ
+߬஻ூൌͳ Ǥ Ͳ݇଴Ǥହ
+݀஻ܵ௞஻ூ (15)
+ 279 
+The mixed timescale is expected to mimic the split of eddies which move past the bubbles (Rzehak 280 
+and Krepper, 2013) and the shift of  the energy of turbulence to sm aller length scales observed in 281 
+experiments (Lance and Bataille, 1991; Shawkat et al., 2007). The mixed timescale, used in 282 
+combination with the coefficient KBI = 0.25 in Eq. (14), has been found to provide accurate 283 
+predictions over a wide range of bubbly pipe flows (Colombo et al., 2015). 284 
+ 285 
+A multiphase Reynolds stress turbulence model (RSM ) was also included in the overall model and, 286 
+based on the single-phase formula tion, the Reynolds stresses ( Rij = Ĳi,jRe/ȡc) are given by (CD- 287 
+adapco, 2014): 288 
+ 289 
+߲
+ݐ߲ቀሺͳെߙ ሻߩ௖ܴ௜௝ቁ൅߲
+ݔ߲௝ቀሺͳെߙ ሻߩ௖ܷ௜ǡ௖ܴ௜௝ቁ
+ൌ߲
+ݔ߲௝ൣሺͳെߙ ሻܦ௜௝൧൅ሺͳെߙ ሻ൫ܲ௜௝൅ߔ ௜௝െߝ௜௝൯൅ሺͳെߙ ሻܵ௜௝஻ூ (16)
+ 290 
+Here, Pij is the turbulence production.  The Reynolds stress diffusion Dij was modelled accordingly 291 
+to Daly and Harlow (1970), whilst the isotropic hypothesis was used for the turbulence dissipation 292 14 
+ rate term İij. Ȱij is the pressure-strain co rrelation, accounting for pre ssure fluctuations that 293 
+redistribute the turbulence kine tic energy amongst the Reynolds stress components. This was 294 
+modelled using the SSG model which is quadr atically non-linear in the anisotropy tensor 295 
+(Speziale et al., 1991): 296 
+ 297 
+ߔ௜௝ൌെሾܥଵ௔ߝ൅ܥ ଵ௕ݎݐሺܲሻሿܽ௜௝൅ܥଶߝ൬ܽ௜௞ܽ௞௝െͳ
+͵ܽ௠௡ܽ௠௡ߜ௜௝൰൅ቂܥଷ௔െܥଷ௕൫ܽ௜௝ܽ௜௝൯଴Ǥହቃܵ݇௜௝
+൅ܥସ݇൬ܽ௜௞ܵ௝௞൅ܽ௝௞ܵ௜௞െʹ
+͵ܽ௠௡ܵ௠௡ߜ௜௝൰൅ܥହ൫ܽ௜௞ܹ௝௞൅ܽ௝௞ܹ௜௞൯ (17)
+ 298 
+In Eq. (17),  aij, Sij and Wij are components of the anisotropy, stra in rate and rotation rate tensors, 299 
+respectively. The bubble-induced turbulence source term was calculated using Eq. (14) and then 300 
+split amongst the normal Reynolds stress com ponents following Colombo et al. (2015): 301 
+ 302 
+ܵ௜௝஻ூൌ൥ͳǤͲ ͲǤͲ ͲǤͲ
+ͲǤͲ ͲǤͷ ͲǤͲ
+ͲǤͲ ͲǤͲ ͲǤͷ൩ܵ௞஻ூ (18)
+ 303 
+Values of the coefficients used for the k-İ model and the RSM can be found in Table 2. 304 
+ 305 
+Table 2. Coefficients of the turbulence models. 306 
+k-İ ık = 1.0; ıİ = 1.3; C1İ = 1.44; C2İ = 1.92; Cȝ = 0.09 
+RSM SSG C1a = 1.7; C1b = 0.9; C2 = 1.05; C3a = 0.8; C3b = 0.65; C4 = 0.625; C5 = 0.2 
+ 307 
+ 308 
+3.2. The SȖ model 309 
+ 310 
+The SȖ model (Lo and Rao, 2007; Lo and Zhang, 2009) was used to model the evolution of the 311 
+bubble population following break-up and coalescen ce events. In the SȖ model, the bubble size 312 
+distribution is assumed to obey to a pre- defined log-normal probability distribution P(d B). 313 
+Therefore, it is not necessary to divide the bubble size spectrum into a la rge number of bubble 314 15 
+ classes, but the bubble population can be charac terized from a limited number of parameters, SȖ, 315 
+related to  the moments of the bubble size distribution MȖ: 316 
+ 317 
+ܵఊൌܯ݊ ఊൌ݊න݀஻ఊܲሺ݀஻ሻஶ
+଴݀ሺ݀஻ሻ (19)
+ 318 
+where n is the bubble number density. The zeroth order moment is equal to the bubble number 319 
+density  n, whereas S2 and S3 are closely related to the interfacial area concentration ai and to the 320 
+void fraction: 321 
+ 322 
+ܵ଴ൌ݊ Ǣ 	 ܵ ଶൌ	 ݊න݀஻ଶܲሺ݀஻ሻஶ
+଴݀ሺ݀஻ሻൌܽ௜
+ߨǢܵଷൌ݊න݀஻ଷܲሺ݀஻ሻஶ
+଴݀ሺ݀஻ሻൌ͸ߙ
+ߨ( 20)
+ 323 
+From a knowledge of S2 and S3, the average bubble diameter can  be determined by using the 324 
+definition of the Sauter mean diameter (SMD): 325 
+ 326 
+݀ௌெൌ݀ ଷଶൌܵଷ
+ܵଶൌ͸ߙ
+ܽ௜ (21)
+ 327 
+In addition, the variance of the dist ribution can also be calculated: 328 
+ 329 
+ߪଶൌl n൬݀ଷଶ
+݀ଷ଴൰ൌl nቈሺܵଷܵଶΤሻ
+ሺܵଷܵ଴ΤሻଵଷΤ቉ (22)
+ 330 
+The two average diameters, d32 and d30, are equal only in presence of  a homogeneous distribution. 331 
+Once the model is combined with a two-fluid Eu lerianEulerian model that solves for the void 332 
+fraction, S3 is known, and only two additional moments, namely S0 and S2, are sufficient to 333 16 
+ characterize the bubble size distribution. For each moment, a transport equation of the following 334 
+type needs to be solved: 335 
+ 336 
+߲ܵఊ
+ݐ߲൅׏ή൫ ܵ ఊࢁ௔൯ൌܵ௕௥ఊ൅ܵ௖௟ఊ (23)
+ 337 
+In this equation, the velocity of the air Ua is given by the two-fluid model and SȖbr and SȖcl are 338 
+source terms that account for bubble break-up and coalescence in the Ȗth moment equation. Amongst 339 
+the different mechanisms, interact ions induced by turbulence were a ssumed to be dominant (Lo and 340 
+Zhang, 2009; Yao and Morel, 2004) and the only sour ces of break-up and coalescence in Eq. (23). 341 
+ 342 
+The source term for bubble break-up is expressed as: 343 
+ 344 
+ܵ௕௥ఊൌනܭ௕௥οܵఊ௕௥ܲ݊ሺ݀஻ሻ݀ሺ݀஻ሻஶ
+଴ (24)
+ 345 
+Here, Kbr is the break-up rate, which is th e reciprocal of the break-up time Ĳbr. ǻSȖbr is the change in 346 
+SȖ due to a single break-up event, which, from conservation of volume, is: 347 
+ 348 
+οܵఊ௕௥ൌ݀஻ఊቆܰ௙ଷିఊ
+ఊെͳ ቇ  (25)
+ 349 
+The number of daughter bubbles Nf was assumed equal to 2 (Lo and Zhang, 2009; Luo and 350 
+Svendsen, 1996; Yao and Morel, 2004). The break-up source term then becomes: 351 
+ 352 
+ܵ௕௥ఊൌන݀஻ఊቆܰ௙ଷିఊ
+ଷൗെͳ ቇ
+߬௕௥ܲ݊ሺ݀஻ሻ݀ሺ݀஻ሻஶ
+଴ (26)17 
+  353 
+The break-up timescale follows from the frequency of  the second oscillation mode of a droplet (Lo 354 
+and Zhang, 2009): 355 
+ 356 
+߬௕௥ൌʹ ݇ߨ ௕௥ඨ͵ߩௗ൅ʹ ߩ ௖
+ͳͻʹߪ݀஻ଷ (27)
+ 357 
+where kbr =0.2, the subscript d identifies the di spersed phase and ı is the surface tension. The break- 358 
+up criterion was expressed as a f unction of a critical Weber number We cr, therefore a bubble breaks 359 
+when the Weber number is highe r than the critical value: 360 
+ 361 
+݀௖௥ൌሺͳ൅ܥ ఈሻ൬ʹܹ݁ߪ ௖௥
+ߩ௖൰ଷହΤ
+ߝିଶ ହΤ (28)
+ 362 
+CĮ, equal to 4.6, is a correction fact or that accounts for nearby bubbles  that disrupt the influence of 363 
+the surrounding inertial for ces. In Lo and Zhang (2009), We cr = 0.31, whilst in Yao and Morel 364 
+(2004), We cr = 1.24. 365 
+ 366 
+The general source term for bubble coalescence is: 367 
+ 368 
+ܵ௖௟ఊൌනන ܭ௖௟ௗǡௗᇱοܵఊǡ௖௟ௗಳǡௗಳᇲ
+݊ଶܲሺ݀஻ᇱሻ݀ሺ݀஻ᇱሻܲሺ݀஻ሻ݀ሺ݀஻ሻஶ
+଴ஶ
+଴ (29)
+ 369 
+Here, ܭ௖௟ௗǡௗᇱ is the coalescence rate betw een two bubbles with diameters dB and dB, and οܵఊǡ௖௟ௗಳǡௗಳᇲ
+ is 370 
+the change in SȖ due to a single coalescence event.  To avoid excessive complication, a uniform 371 18 
+ bubble distribution with an e quivalent mean diameter deq was assumed when computing the change 372 
+in SȖ due to a single coalescence event (Lo and Zhang, 2009): 373 
+ 374 
+οܵఊǡ௖௟ௗǡௗᇱൌ݀௘௤ఊ൫ʹఊଷΤെʹ ൯  (30)
+ 375 
+The coalescence rate is expressed as: 376 
+ 377 
+ܭ௖௟ௗǡௗᇱൌܨ ௖௟݇௖௟݀௘௤ଶݑ௥ܲ௖௟ (31)
+ 378 
+Following Chester (1991), Lo and Zhang (2009) cons idered two different coalescence mechanisms 379 
+resulting from viscous and inertial collisions. For viscous coalescence, the film  drainage model was 380 
+applied for the coalescence probability (Prince and Blanch, 1990). When two bubbles collide, they 381 
+trap a thin liquid film between them that preven ts coalescence. If the interaction time in the 382 
+turbulent flow is sufficient for the film to drain out until rupture of the film  occurs, then the bubbles 383 
+coalesce, otherwise the bubbles ar e separated and coalescence does not occur. The drainage time 384 
+was calculated from a model for a partially mobile interface and a quasi-stea dy flow in the film (Lo 385 
+and Zhang, 2009): 386 
+ 387 
+ݐௗൌߤߨௗඥܨ௜
+ʹ݄௖௥ቆ݀௘௤
+Ͷߪߨቇ (32)
+ 388 
+Here,  Fi is the interaction force during collision and hcr the critical film thickness (Lo and Zhang, 389 
+2009).  The coalescence probability is then expressed from the interaction time ti and the drainage 390 
+time td: 391 
+ 392 19 
+ ܲ௖௟ൌ݌ݔ݁ ሺെݐௗݐ௜Τሻൌ݌ݔ݁ ሺݐௗߛሶሻ (33)
+ 393 
+where the interaction tim e is the inverse of the Kolmogorov shear rate: 394 
+ 395 
+ߛሶ ൌඨߩߝ௖
+ߤ௖ (34)
+ 396 
+Finally, in Eq. (31), kcl = (8ʌ/3)0.5 and the relative velo city between the bubbles ur = ߛሶ݀௘௤. 397 
+Alternatively, for inertial collision, kcl = (2ʌ/15)0.5 and ur = ( İdeq)1/3. With regard to the probability 398 
+of coalescence, the major role is  played by bubble shape oscillations and, therefore, the coalescence 399 
+probability was expressed following Chester (1988): 400 
+ 401 
+ܲ௖௟ൌߔ௠௔௫
+ߨቈͳെ݇௖௟ǡଶଶሺܹ݁ െ ܹ݁ ଴ሻଶ
+ߔ௠௔௫ଶ቉ଵଶΤ
+ (35)
+ 402 
+where ĭmax is the maximum phase difference (Lo and Zhang, 2009), kcl,2 = 12.7, We 0 = 0.8 We cr and 403 
+h0 = 8.3 hcr.  404 
+ 405 
+A different coalescence model, proposed by Yao a nd Morel (2004), was also considered in this 406 
+work. When using the Yao and Morel (2004) approach, the break -up model described above was 407 
+retained, except for the value of We crit which was modified to 1.24, fo llowing the authors proposal.  408 
+In Yao and Morel (2004), the number of coalescen ce events per unit volume and unit time, which is 409 
+assumed to be mainly due to the collisio ns induced by turbulence, is expressed as: 410 
+ 411 
+ܭ௖௟ௗǡௗᇱ݊ଶൌെ ܥ ଵߝଵଷൗߙଶ
+݀ௌெଵଵଷൗͳ
+݃ሺߙሻ൅ܥଶඥܹܹ݁݁ ௖௥௜௧Τ݌ݔ݁൬െܥଷටܹܹ݁݁௖௥௜௧ൗ ൰ (36)20 
+  412 
+The first part of this equation represents the collision rate between the bubbles, whilst the 413 
+exponential function describes the probability of coalescence fo llowing a collision event. The 414 
+function g(Į) accounts for the effect of th e packing of the bubbles when  the void fraction is higher 415 
+than a certain value. From Yao and Morel (2004), C1 = 2.86, C2 = 1.922, C3 = 1.017 and We crit = 416 
+1.24. 417 
+ 418 
+When two groups of bubbles were included, add itional source terms were added to the mass and 419 
+momentum conservation equations to account for the exchanges between the groups. In a similar 420 
+manner as above, the conservation equation for the moment of the bubble size distribution becomes: 421 
+ 422 
+߲ܵఊǡ௡
+ݐ߲൅׏ή൫ ܵ ఊǡ௡ࢁ௔ǡ௡൯ൌܵ௕௥ǡ௡ఊ൅ܵ௖௟ǡ௡ఊ൅ܦ௕௥ǡ௡ఊ൅ܤ௖௟ǡ௡ఊ൅ܤ௕௥ǡ௡ఊ൅ܦ௖௟ǡ௡ఊ (37)
+ 423 
+In this equation, the subscript n identifies the bubble group a nd assumes the values s for spherical 424 
+bubbles and c for cap bubbles. DȖbr and DȖcl are source terms for the d eath of bubbles by break-up to 425 
+the previous group and by coalescence to the following group. Conversely, BȖbr and BȖcl are due to 426 
+the birth of bubbles by coalescence from the prev ious group and by break-up from the following 427 
+group. Obviously, when only two groups are consider ed, Eq. (37) simplifies and the only source 428 
+terms to be considered are the death of cap bubbles which gives rise to the birth of spherical bubbles 429 
+by break-up, and the death of spherical bubbles with the birth of cap bubbles by coalescence. 430 
+ 431 
+In this work, break-up of cap bubbles into spherical bubbles has been neglec ted, with this 432 
+assumption explained and justified in detail in the results section. To calculate the additional 433 
+sources accounting for exchanges between groups, using Eq. (29), Eq. (30) and the hypothesis of a 434 21 
+ uniform bubble distribution for the coalescence sour ce, the source terms for the death of spherical 435 
+bubbles by coalescence are obtained as: 436 
+ 437 
+ܦ௖௟ǡ௦଴ൌെ ʹή ቀܭ௖௟ǡ௦ௗǡௗᇲ݊௦ଶቁ݂ሺ݀஻ሻ (38)
+ 438 
+ܦ௖௟ǡ௦ଶൌെ ʹ ݀ ௘௤ଶቀܭ௖௟ǡ௦ௗǡௗᇲ݊௦ଶቁ݂ሺ݀஻ሻ (39)
+ 439 
+f(dB) is a function that expresses the probability that a coalesce nce event between two spherical 440 
+bubbles leads to the birth of a cap bubble. Therefore,  it is the ratio of th e number of coalescence 441 
+events that generate a cap bubble to the total number of coalescence events amongst the spherical 442 
+bubble population. The coefficients -2 and -2 d2eq are calculated from the second contribution to Eq. 443 
+(30) and reflect the fact that, in these events, the results is not a net change in the value of SȖ for the 444 
+spherical bubbles, but a loss of two bubbles a nd their interfacial ar ea to the cap bubbles. 445 
+Accordingly, from the first contribution to Eq. (30), the gain in SȖ in the cap bubble group due to 446 
+coalescence events in the spheri cal bubble group is obtained as: 447 
+ 448 
+ܤ௖௟ǡ௖଴ൌቀܭ௖௟ǡ௖ௗǡௗᇲ݊௖ଶቁ݂ሺ݀஻ሻ (40)
+ 449 
+ܤ௖௟ǡ௖ଶൌͳ Ǥ ͷ ͻή݀ ௘௤ଶቀܭ௖௟ǡ௖ௗǡௗᇲ݊௖ଶቁ݂ሺ݀஻ሻ (41)
+  450 
+From Eq. (38), the mass source from spherical to cap bubbles can be ob tained, using the volume 451 
+average bubble diameter: 452 
+ 453 
+߁௦௖ൌെ ߁ ௖௦ൌെ ܦ௖௟ǡ௦଴݀ߨଷ଴ǡ௦ଷ
+͸ߩ௔ (42)22 
+  454 
+Finally, for simplicity, the function f(dB) was assumed equal to ratio of the SMD to the critical 455 
+diameter: 456 
+ 457 
+݂ሺ݀஻ሻൌ݀ௌெ
+݀௖ (43)
+  458 
+In the previous equation, dc is the critical diameter at wh ich bubble behaviour changes from a 459 
+spherical bubble to a cap bubble. 460 
+ 461 
+The overall model, implemented in the STAR-CCM + CFD code (CD-adapco, 2014), was solved in 462 
+a two-dimensional axisymmetric geometry. At the inlet, fully-developed pha se velocities and void 463 
+fraction boundary conditions were im posed, together with an imposed pressure at the outlet and the 464 
+no-slip condition at the wall. Expe rimental measurements of averag e bubble diameter at the first 465 
+measurement station were used for the bubble diameter inlet boundary condition. Therefore, 466 
+experimental measurements at the last station were  compared against predictions at a distance from 467 
+the inlet equal to that between the first and the last measurem ent stations. Strict convergence of 468 
+residuals was ensured, together with a mass ba lance error lower than 0.01 % for both phases. 469 
+Experiment HI2 was selected for a mesh sensitiv ity study, the results of which are presented in 470 
+Figure 1 in terms of the radial profiles of wate r velocity, turbulence ki netic energy, void fraction 471 
+and SMD. The radial profiles are shown as a function of the normalized radial position r/R, which is 472 
+equal to 0 at the pipe centre and to 1 at the pipe wall. Four grids were tested with a progressively 473 
+increasing number of equidistant grid nodes (10  100, 15  150, 20  200, and 25  250). The 474 
+water velocity and void fraction di stributions are rather  insensitive to the number of nodes, but 475 
+some differences between the vari ous grids are apparent  for the turbulence kinetic energy and the 476 
+SMD. From the results in Figure 1, the grid with 20  200 nodes was chosen for other simulations. 477 23 
+ All grids had a first grid node higher than, but close, to y+ = 30, which is the lower limit for the use 478 
+of wall functions. 479 
+ 480 
+Figure 1. Mesh sensitivity study in terms of radi al and axial node numbers for experiment HI2. 481 
+Water velocity (a), turbulence kinetic energy (b), void fraction (c) and SMD (d) radial profiles are 482 
+presented. 483 
+  484 
+ 485 
+4. Results and discussion 486 
+ 487 
+This section describes and discus ses the simulation results and co mparisons against experimental 488 
+data. First, the experiments of Liu (1993), Hibiki  and Ishii (1999) and Hibi ki et al. (2001) were 489 
+simulated with the YM model (Yao and Morel, 2004)  and the results are presented in Figure 2 and 490 
+Figure 3. As can be seen, the YM model generally  overestimates the average bubble diameter. In 491 
+particular, marked overestimations were obtained at  the lowest liquid veloci ties (Hi1, HI1 and L1), 492 
+whereas, at higher velocities (Hi2, HI2 and L2), the overestimation is reduced and, for experiment 493 
+24 
+ HI2 (Figure 3a) only, good agreement with data is found. The tendency of the YM model to over- 494 
+predict the bubble diameter has already been noted by Cheung et  al. (2007) and Nguyen et al. 495 
+(2013). To serve as a benchmark, predictions from the LZ model (Lo and Zhang, 2009) are also 496 
+included in Figure 2 and Figure 3. Overall, the LZ model provides be tter accuracy when predicting 497 
+the average bubble diameter. Neve rtheless, and similar to YM, a strong dependency on the liquid 498 
+velocity is apparent. At low velocity, good agr eement, or limited overestimation of the bubble 499 
+diameter, was obtained (with resp ect to YM) but, at higher velo cities, LZ under predicts the 500 
+experiments. In addition, as already reported in Lo and Zhang (2009), the bubble diameter is 501 
+generally under predicted in the near wall region, probably as  a consequence of the excessively 502 
+strong bubble break-up rate there.  503 
+ 504 
+The availability of experimental data allowed a further optimization of the YM  model to be made. 505 
+As the over prediction of the bubble diameter is possibly due to an excessive amount of bubble 506 
+coalescence in the flow, this was limited by modifying the value of We crit in Eq. (36), where it 507 
+mainly impacts the coalescence probability. Therefore, a lower We crit reduces the coalescence 508 
+probability or, from a different perspective, it re duces the interaction time available to the liquid 509 
+film trapped between the two colliding bubbles to drain out. Calibration of the model was limited to 510 
+the coalescence model (the model for break-up was not changed from that of Lo and Zhang (2009), 511 
+except for the value of We crit, equal to 1.24 for YM). Even if th e average bubble diameter is still 512 
+overestimated at low liquid velo city and underestimated at hi gh liquid veloc ity, acceptable 513 
+agreement was achieved in all the tested conditions with We crit = 0.10 (YM opt. lines in Figure 2 514 
+and Figure 3). Overall, the improvement in the accu racy with respect to the original YM and LZ 515 
+models is significant. In th e near wall region, where LZ si gnificantly under predicts the 516 
+experimental data, the value of  the bubble diameter is well pred icted, with the exception of 517 
+experiment HI1 (Figure 2g) in which the flow rate is particularly low. In addition, for the LZ model, 518 
+optimization on a case-by-case basis has been found necessary to reach a comparable accuracy (Lo 519 25 
+ and Zhang, 2009), whereas, in this work, the same value of We crit was maintained for all flow 520 
+conditions considered. In view of this finding,  additional research work is required to develop more 521 
+general and accurate models of bubble break-up and coalescence. 522 
+ 523 
+Figure 2 and Figure 3 also show radi al profiles of the mean water ve locity and void fraction (for L1 524 
+and L2, Figure 3e and Figure 3h, the air velocity is also provided). Overall, simulation results are in 525 
+good agreement with the experiments. The mean velo city is under predicted for L2 and, but only in 526 
+the pipe core region, for Hi1. With regards to the void fraction, the best agreement is found for the 527 
+wall-peaked void profiles (Figure 2c, Figure 3f a nd Figure 3i). In contrast , the core-peaked void 528 
+profiles were more difficult to predict. As it is po ssible to see from Figure 2 and Figure 3, a larger 529 
+bubble size spectrum characterizes th e core-peaked void profiles (Hi2, HI1 and HI2) with respect to 530 
+the wall-peaked profiles, where the average bubble diameter radial di stribution is generally flatter. 531 
+This complicates the simulation of the momentum tran sfer at the interphase, even with the use of a 532 
+population balance model. As shown in Figure 2f, Figure 2i and Figure 3c, a sharp increase in the 533 
+near wall region, followed by an almost flat profile, is usually predicted. The experiments, however, 534 
+show a more gentle but continuous increase of the void fraction towards the pi pe centre. Predictions 535 
+are similar amongst the three different models consid ered. This suggests that it is the interphase 536 
+momentum forces (lift and wall forces in particul ar) that mostly determine the radial void fraction 537 
+and mean velocity profiles. In this regard, the use of constant lift force co efficients, not dependent 538 
+on the bubble diameter, may significan tly inhibit changes in the lift force induced by changes in the 539 
+latter diameter.  540 
+ 541 
+The role of the critical Weber number in the YM model is the focus of the results given in Fi gure 4, 542 
+where the average bubble diameter profile is shown for three different values of We crit. It has 543 
+already been mentioned how  We crit mainly affects the coalescence pr obability. Specifically, a lower 544 
+We crit reduces the coalescence pr obability and, therefore,  the average bubble diam eter. This effect is 545 26 
+ equivalent to reducing the inte raction time available for the liquid film trapped between two 546 
+colliding bubbles to drain out, or, equivalently, to increasing the tim e required by this liquid film to 547 
+drain out. Figure 4 includes two diffe rent experimental datasets. It is  observed that th e reduction in 548 
+coalescence with We crit is higher at the low flow rate (Fig ure 4a), while the effect of a lower We crit is 549 
+reduced at the higher flow rate (Figure 4b). At high flow rates, therefore, the interaction time is low 550 
+given the high level of turbulen ce, and hence the coalescence proba bility has a co rrespondingly low 551 
+value. As a consequence, the amount of decrease achievable by tuning We crit is also low. At low 552 
+flow rates, in contrast, the coalescence probability is higher due to the longe r interaction times that 553 
+occur in a low level turbulence fi eld, and hence this probability can  be significantly affected by a 554 
+change in the value of We crit. 555 
+ 556 
+ 557 27 
+  558 
+Figure 2. SMD, mean water velocity and void fracti on radial profiles compared against experiments 559 
+Hi1 (a-c), Hi2 (d-f) and HI1 (g-i). Simulation results are shown for LZ (---), YM (- -) in its standard 560 
+form (Eq. 36) and after optimization (YM opt., ).  561 
+ 562 
+ 563 
+28 
+  564 
+Figure 3. SMD, mean velocity and void fraction ra dial profiles compared against experiments HI2 565 
+(a-c), L1 (d-f) and L2 (g-i). Simulation results are shown for LZ (---), YM (- -) in its standard form 566 
+(Eq. 36) and after optimization (YM opt., ).  567 
+ 568 
+ 569 
+29 
+  570 
+Figure 4. SMD radial profiles obtained with YM and We crit = 0.1 ( ), We crit = 0.25 (- -) and  571 
+We crit = 1.24 (---). Predictions ar e compared against experime nts Hi1 (a) and Hi2 (b).  572 
+  573 
+4.1. Effect of the break-up model 574 
+ 575 
+As mentioned, no changes were introduced in th e break-up model, except for the value of the We crit, 576 
+which, for YM, was increased to 1.24 following the authors proposal (Yao and Morel, 2004). Since 577 
+no clear indications of the amount of bubble break- up occurring are available for the flows studied 578 
+in this work, additional simulati ons neglecting break-up were made to evaluate the impact of the 579 
+break-up model on the predictions. In  Figure 5, four of the experiments were predicted with and 580 
+without accounting for break-up. For the majority of  the pipe cross-section, the effect of break-up 581 
+on the bubble diameter distribution is  seen to be negligible. In the near wall region, break-up is 582 
+effective in reducing the average bubble diameter, but only at the highest li quid velocities (Figure 583 
+5b and Figure 5d). At low velocities, break-up is ne gligible even in the region close to the wall 584 
+(Figure 5a and Figure 5c). Overall, and in view of the agreement obtained with these experiments, 585 
+these results suggest that coalescence is  the dominant mechanism in these flows. 586 
+ 587 
+Since only the net result of the combined action of both break-up and coalescence is available in 588 
+terms of the experimental data, this being the average bubble diameter, additional sensiti vity studies 589 
+30 
+ were made, increasing the impact of both. The same We crit value of 0.25 was adopted in both the 590 
+break-up and the coalescence models. The increase in the rate of coalescence with a higher critical 591 
+Weber number was already addressed in Figure 4. A lower We crit in the break-up model increases 592 
+the break-up rate since a lower energy is re quired to break-up the bubble. The value of We crit 593 
+adopted is now close to that used in the LZ mode l and, therefore, a comparable amount of break-up 594 
+is to be expected. The results are presented in Fi gure 6. Even if some impr ovement is obtained for a 595 
+number of flows (Figure 6a, Fi gure 6c and Figure 6e), excessi ve break-up causes an under 596 
+prediction of bubble diameter at high liquid velocities (Figure 6b, Figure 6d and Figure 6f). In 597 
+addition, and except for experiment HI1 (Figure 6c), the bubble diamet er is always underestimated 598 
+in the near wall region, where, in vi ew of the higher levels of turbul ence, break-up is expected to be 599 
+more significant. Again, these results are similar to those obtained with the LZ model (Figure 2 and 600 
+Figure 3), for which an excessive amount of break -up, in particular in the near wall region, has 601 
+already been reported (Lo and Zhang, 2009). This further supports the case for these flows being 602 
+coalescence dominated. 603 
+Overall, and despite the previous results, it rema ins difficult to precisely evaluate the accuracy of 604 
+the model with regard to the competitive action of coalescence and break-up, and the mechanisms 605 
+involved. As mentioned, only the net result is available through data on the average bubble 606 
+diameter. Therefore, additional knowledge is re quired on the physics of these flows, and on the 607 
+interaction between bubbles and with the continuous phase in particular. The lack of information on 608 
+these processes is a significant constraint on the fu rther development of these models that needs to 609 
+be overcome if more accurate modelling is to be achieved. As an example, the recent tendency has 610 
+been to include all possible mechanisms of  bubble break-up and coalescence (e.g. turbulent 611 
+collision, wake entrainment, shearing-off) (Liao et al., 2015; Smith et al., 2012; Sun et al., 2004). 612 
+Even if this may benefit the generality of the de veloped models, the relative influence of each 613 
+mechanism has been generally optimized with a dditional constants tuned against average bubble 614 
+diameter measurements, which, at the present time , is the only real option available to modellers. 615 31 
+ Without a clear knowledge of the effective impact  of each mechanism as a function of the flow 616 
+conditions, however, accurate prediction of the average bubble diameter does not guarantee the 617 
+accuracy of each individual model, and possibly incr eases the uncertainty in the results and limits 618 
+the applicability of the m odel itself. In view of this, advances must rely on the availability of more 619 
+detailed experimental measurements or, perhaps,  accurate direct numerical simulations of bubble 620 
+behaviour. 621 
+ 622 
+ 623 32 
+  624 
+Figure 5. SMD radial profiles with ( ) and without (- -) considering the eff ect of bubble break-up 625 
+in the flow. Predictions are compared against experiments Hi1 (a), Hi2 (b), L1 (c) and L2 (d).  626 
+ 627 
+33 
+  628 
+Figure 6. SMD radial profiles at different rates of  coalescence and break-up of bubbles in the flow 629 
+(We crit,br = 1.24 and We crit,cl = 0.1 ( );  We crit,br = 0.25 and We crit,cl = 0.25 (- -)). Predictions are 630 
+compared against the experiments in Table 1. 631 
+ 632 
+4.2. Continuous phase turbulence sensitivity 633 
+ 634 
+Turbulence parameters affect in different ways the models for co alescence and break-up, and, as the 635 
+latter models are based on the collision of bubbles due  to turbulence, they ar e expected to have a 636 
+significant impact on results. The sensitivity to th e turbulence model predictions has already been 637 
+investigated in some literature studies (Nguye n et al., 2013; Yao and Morel, 2004), but, in many 638 
+more, the assessment and optimization of the co alescence and break-up models was carried out 639 
+without considering the accuracy of the turbulence predictions. The aim of this section, therefore, is 640 
+to address the dependency of results on the continuous phase turbulence.  641 
+ 642 
+In bubbly flows, the contribution of the bubbles to the continuous phase turbulence is accounted for, 643 
+in the k-İ turbulence model, by source terms in the equations of that model (Eq. (11) and Eq. (12), 644 
+Section 3.1).  645 
+34 
+  646 
+Figure 7 shows radial profiles of the predicted SM D as a function of the amount of bubble-induced 647 
+turbulence, together with the continuous phase streamwise turbulence intensities I. Turbulence 648 
+measurements are available only from Hibiki a nd Ishii (1999) and Hibiki  et al. (2001), where 649 
+turbulence intensity was calculated by dividing the streamwise r.m.s of  the velocity fluctuations by 650 
+the maximum liquid velocity. Three different case s are considered: no bubbl e-induced turbulence, 651 
+and Eq. (14) with KBI = 0.25 and KBI = 1.0.  At low flow rates (HI1, Figure 7i), or for wall-peaked 652 
+void profiles (Hi1, Figure 7g, and L1, Figure 7k), where the presence of the bubbles induces a flat 653 
+mean velocity profile and a strong reduction of th e shear-induced turbulence production in the pipe 654 
+centre, the contribution of  the bubble-induced turbulence is signi ficant. For the high flow rate wall- 655 
+peaked case (L2, Figure 7l), where the turbulence level is already high and the void fraction in the 656 
+pipe centre is low, and the core-peaked void profiles (Hi2, Figure 7h, and HI2, Figure 7j), where the 657 
+shear-induced production remains significant, the im pact of the bubble-induced  contribution is less. 658 
+In the first case scenario, signifi cant differences in the turbulen ce level cause bubble diameter 659 
+profiles to be very different from  one another (Figure 7a, Figure 7c and Figure 7e). This means that 660 
+these results are depend ent on the continuous phase turbulence and, for some flows, on the bubble- 661 
+induced turbulence model as well. Therefore, fo r a proper model validation, both the average 662 
+bubble diameter and the continuous phase turbulen ce predictions need to be compared against 663 
+experiments. Conversely, the results may be depe ndent not only on the flow s used for validation, 664 
+but also on the specific bubble-indu ced turbulence model. Unfortuna tely, turbulence measurements 665 
+are not available for all the experi ments considered. Moreover, for th e data of Hibiki  et al. (2001), 666 
+turbulence levels were always under predicted, ev en when considering all the drag force to be 667 
+converted to turbulence kinetic energy. It must be pointed out that the turbul ence intensities in these 668 
+data appear significantly higher than for other experiments in the literature having comparable 669 
+geometry and flow conditions (L iu, 1998; Serizawa et  al., 1975; Wang et al., 1987). For HI1 and 670 
+HI2, instead, satisfactory predictions were obtaine d. In view of the limited number of simultaneous 671 35 
+ measurements of both the bubble diameter distribut ion and the flow turbulence, some additional 672 
+comparisons are shown in Figure 8, taking advantage of a previous validation of the bubble-induced 673 
+turbulence model (Eq. (14) and Eq. (15)), which s howed satisfactory accuracy over a wide range of 674 
+conditions (Colombo and Fairweather, 2015). In Figure 8, radial profiles of the r.m.s. of streamwise 675 
+velocity fluctuations are compared against differ ent bubbly flow data in ve rtical pipes. For these 676 
+validations, the bubble diameter wa s fixed and assumed equal to expe rimental observations, even if 677 
+only rough averaged values were available for the majority of the experiments. Even if some 678 
+discrepancies are still apparent , the overall agreement can be considered satisfactory. This 679 
+additional validation, although useful, did not allow a comparison of bubble diameter and 680 
+turbulence for the same experiment and, therefore, c oncerns related to data av ailability still remain. 681 
+Recently, the development of advanced experimental techniques has allowed detailed 682 
+measurements of the average bubble diameter and the bubble diameter distribution (Lucas et al., 683 
+2005, 2010; Prasser et al., 2007). However,  in view of the previous re sults and to better support the 684 
+modelling effort, experimental measurements need  to allow not only the validation of the bubble 685 
+diameter distribution, but also of th e continuous phase turbulence level. 686 
+ 687 
+In Figure 7, YM predicts a higher SMD, therefore a higher coalescence ratio, with a decrease in the 688 
+continuous phase turbulence. Collisi on rate increases with turbulen ce, while coalescence probability 689 
+reduces, with the latter being th e dominant effect. This qualit atively behaviour needs further 690 
+examination. In Figure 9, the same sensitivity study is made for the LZ model, for experiments Hi1, 691 
+Hi2 and L1. The turbulence intensity behaviour  remains the same, but the bubble diameter 692 
+predictions are changed. At low liquid veloc ity (Hi1 and L1) and without the bubble-induced 693 
+turbulence model, bubble diameter is high at the wall, where the turbulence remains high, whereas 694 
+it is low in the centre of the pipe due to the reduc ed turbulence in this region. When the turbulence 695 
+level is increased, the coalescence is also incr eased, and, consequently, the SMD. With a further 696 
+increase of the turbulence, the bubble diameter is  reduced by a decrease of  the coalescence or, more 697 36 
+ likely, by an increase of bubble break-up, which is  higher for this model (Section 4.2). At high 698 
+velocity (Hi2), the break-up is already high ev en without including b ubble-induced turbulence. 699 
+Therefore, with an increase of th e turbulence level, the break-up is  further increased and a decrease 700 
+of the SMD is observed. For YM, even if a reduction in the coalescence following an increase of the 701 
+turbulence, at already high turbulen ce levels, cannot be excluded, in the limit of zero turbulence, an 702 
+increase of the coalescence is expected following an increase in the turbulence. Therefore, despite 703 
+the good accuracy shown, the qualitative behaviour of  YM with the turbulence level, which is 704 
+different from that of LZ, suggests the need fo r additional future verification of these models. 705 37 
+  706 
+Figure 7. SMD (a-f) and turbulence intensity (g-l) radial profiles without bubble-induced turbulence 707 
+(---), and with bubble-induced turbulence, and for KBI = 0.25 ( ) and KBI = 1.0 (- -). Predictions, 708 
+obtained with YM and We crit = 0.1, are compared against experiments in Table 1. 709 
+ 710 
+38 
+  711 
+Figure 8. Radial profiles of r.m.s. of streamwise velocity fluctuati ons compared against experiments 712 
+in bubbly pipe flows (Colombo and Fairw eather, 2015). (a) Liu and Bankoff (1993), jw = 1.087 m/s, 713 
+ja = 0.112 m/s (∆); Serizawa et al. (1975), jw = 1.03 m/s, ja = 0.291 m/s (ż); Liu and Bankoff (1993), 714 
+jw = 0.376 m/s, ja = 0.347 m/s (Ƒ). (b) Wang et al. (1987), jw = 0.71 m/s, ja = 0.1 m/s (∆); Liu 715 
+(1998), jw = 1.0 m/s, ja = 0.22 m/s (ż); Serizawa et al. (1975), jw = 1.03 m/s, ja = 0.436 m/s (Ƒ). 716 
+ 717 
+ 718 
+Figure 9. SMD (a-c) and turbulen ce intensity (d-f) radial profiles without bubble-induced 719 
+turbulence (---), and with bubble induced turbulence, and for KBI = 0.25 ( ) and KBI = 1.0 (- -). 720 
+Predictions, obtained with LZ, are compared against experiments Hi1 (a,d), Hi2 (b,e) and L1 (c,f). 721 
+ 722 
+39 
+ 4.3. Reynolds stress turbulence model 723 
+ 724 
+Using the YM model, the same tests were repeated  with a Reynolds stress turbulence model and the 725 
+results are presented in Figure 10 and Figure 11. A comparable leve l of agreement with data is 726 
+found using both turbulence models for the SMD profiles (Figure 10 a-c and Figure 11 a-c), and 727 
+similar velocity profiles were  obtained (Figure 10 d-f and Figure 11 d-f). Similar void fraction 728 
+profiles were also obtained for the wall-peaked  cases (Figure 10g, Figure 11h and Figure 11i), 729 
+although for the core-peaked profiles, the behaviour of  the void fraction is reproduced better by the 730 
+RSM (Figure 10h, Figure 10i and Figure 11g). More sp ecifically, in such cas es the void fraction 731 
+gently increases from the wall towards the pipe centre. However, for the k-İ model, the increase is 732 
+sharper near the wall, and the profile is then fl atter towards the pipe centre. In a turbulent bubbly 733 
+flow, the turbulence may interact w ith the interphase forces, inducing a radial pressure gradient in 734 
+the flow that impacts upon the distribution of the di spersed phase (Ullrich et al., 2014). Generally, 735 
+since the turbulence is higher near the wall, the pressure accordingly increases towards the pipe 736 
+centre. It is this pressure gradie nt that is likely responsible for the over predicted void fraction peak 737 
+for experiment L2 (Figure 11i). 738 
+ 739 
+In bubbly pipe flows, the turbulen ce is anisotropic, and this anis otropy can be reproduced using a 740 
+Reynolds stress model (Colombo et al., 2015). Therefor e, different results should be expected when 741 
+using a k-İ model, because of the different turbulent stre sses, or if the turbulence kinetic energy is 742 
+added to the pressure. It must be noted, howev er, that differences between the two turbulence 743 
+modelling approaches might be obscured by the in fluence of the interfacial momentum forces, 744 
+which have been the object  of a significant amount of optimizatio n and refinement in  the past. It is 745 
+the opinion of the authors, however, that even wh en a similar accuracy is obtained (wall-peaked 746 
+profiles), the use of a Reynolds stress formulation pr ovides more insight into the distinctive features 747 
+of the flow and should assist th e development of models of more  general applicability. In this 748 40 
+ regard, Ullrich et al. (2014) pred icted some wall-peaked void fraction profiles with an RSM, whilst 749 
+neglecting lift and wall reflection forces.  750 
+ 751 
+Differences between the turbulence model predictions are also apparent in the turbulence intensity 752 
+profiles (Figure 10 j-l and Figure 11 j-l). These, ev en if small for the majority of cases, induce 753 
+differences in the coalescence rates which, as di scussed in the previous section, are strongly 754 
+dependent on the turbulence in the continuous phase . The different coalescence rates, together with 755 
+differences in the void frac tion profiles, can be cons idered the reason for the slight disparity in the 756 
+bubble diameter and the mean ve locity profiles between the k-İ model and the RSM. 757 
+  758 
+ 759 41 
+  760 
+Figure 10. SMD (a-c), mean velocity (d-f), void frac tion (g-i) and turbulence intensity (j-l) radial 761 
+profiles compared against experiments Hi1, Hi 2 and HI1. Predictions were obtained with a k-İ ( ) 762 
+and a Reynolds stress (---) tu rbulence formulation.  763 
+42 
+  764 
+Figure 11. SMD (a-c), mean velocity (d-f), void frac tion (g-i) and turbulence intensity (j-l) radial 765 
+profiles compared against experiments HI2, L1 and L2. Predictions were obtained with a k-İ ( ) 766 
+and a Reynolds stress (---) turbulence formulation. 767 
+ 768 
+43 
+ 4.4. Two-group model 769 
+ 770 
+It was mentioned in the introduction how bubbly flow s are generally characte rized by polidispersity 771 
+and by an extended range of bubble sizes. The compar isons in the previous sections demonstrated 772 
+the different behaviour of sphe rical and larger cap bubbles, show ing wall-peaked or core-peaked 773 
+void fraction profiles induced by the value of the average bubble diameter. When both types of 774 
+bubble are present in a comparable amount, the voi d fraction profile may exhibit both wall- and 775 
+core-peaked features, as is the case for the expe riment L1, depicted in Figure 12 (Lucas et al., 776 
+2005). These experiments are particul arly difficult to predict because the distinctive features of both 777 
+bubble types must be reproduced. Therefore, an a dvanced model with two different bubble classes 778 
+was specifically implemented to predict these kinds  of flows. In view of the results from the 779 
+previous sections, and the in ge neral negligible impact of break- up, only the additional sources due 780 
+to the coalescence of two spherica l bubbles into a cap bubble were considered. For this case, the 781 
+value of the critical diameter dc was assumed equal to 5 mm. Comp arison against experimental data 782 
+is provided in Figure 12, based on the RSM predic tions. As shown in the figure, the void fraction 783 
+radial profile and the behaviour of both the spherical and the cap bubbles are well predicted. Near 784 
+the wall, the void fraction profile increases rapidly b ecause of the presence there of the majority of 785 
+the spherical bubbles. After a region where it remain s almost flat, the void fraction increases again 786 
+towards the pipe centre where the cap bubbles accu mulate, pushed there by the negative lift force. 787 
+In a similar manner, close to the wall, the averag e bubble diameter is close to the average diameter 788 
+of the spherical bubbles, whereas it tends to the average diameter  of the cap bubbles towards the 789 
+pipe centre.  790 
+ 791 
+The bubble size distribution, wh ich is tracked by the Sy model, is shown at three different axial 792 
+locations in Figure 13. The plots display hdB, which is, following the work  of Lucas et al. (2005), 793 
+the contribution of each bubble size to the total void fraction: 794 
+ 795 44 
+ ݄ௗಳൌ݀ሺߙሻ
+݀ሺ݀஻ሻ (44)
+ 796 
+In this way, the contribution of larger bubbles, which are few in number but carry a significant 797 
+amount of the total air volume, is properly account ed for (Lucas et al., 2005). Experimental data 798 
+were obtained by averaging over the whole pipe cross-section. For the predictions, the bubble 799 
+distribution was extracted from th e simulation at each node and is s hown in Figure 13 for the near- 800 
+wall region (Figure 13a) and fo r the pipe centre (Figure 13b). At the first ax ial location ( L/D = 8.4), 801 
+two distinct peaks are shown in both the experiment al and the numerical results. Starting from the 802 
+inlet, the predominance of coales cence events leads to the form ation of larger bubbles, as is 803 
+demonstrated by the second peak in the profile at around 6 mm. Obviously, being still close to the 804 
+inlet, large bubbles repres ent only a small fraction of the tota l void fraction. At this location, the 805 
+total void fraction is overestimated, as can be seen from the higher peak values predicted. This is 806 
+due to the fact that it was not possible to match th e inlet conditions of the e xperiment exactly due to 807 
+lack of data, in particular for the velocity of the phases. Therefore, some distance from the inlet is 808 
+required for the flow to establish. Predicted values of the void fraction at the two other locations are 809 
+indeed significantly closer to the experime ntal values. At the second axial location ( L/D = 29.9), the 810 
+bubble population evolves and, since coalescence re mains predominant, the number of larger 811 
+bubbles increases. Two distin ctive peaks are still pres ent, but the larger diam eter peak is now the 812 
+greatest. This shift of the bubble diameter spectr um to larger values is well reproduced by the 813 
+simulation, with the main differen ce with experiment bei ng a larger number of bubbles in the region 814 
+between the two peaks. At the final location ( L/D = 59.2), the larger bubbles  are in the majority, 815 
+with the first peak at around 4 mm now being very  small. The same evolution is found in the 816 
+simulation, with a more diffuse distribution and an  extended spectrum of diam eters. It should be 817 
+noted that the variance of the dist ribution is lower and the first peak still present near the wall where 818 
+the majority of the spherical bubbles are present.  In contrast, near the pipe centre, where the 819 45 
+ majority of the larger bubbles accumulate, the aver aged experimental spectr um is overestimated and 820 
+the bubble population extends to even higher valu es of the bubble diameter. The experimental 821 
+profile, therefore, can be qualitativ ely considered an average of th ese two behaviours. In view of 822 
+these results, the evolution of the bubble diameter  distribution is predicted with a satisfactory 823 
+accuracy, even with the rather simple model adopt ed which could be subject to numerous further 824 
+improvements. Therefore, the ch allenge of predicting the whole bubble size spectrum from small 825 
+spherical to large cap bubbles seems to be ma nageable with the use of only two bubble groups. 826 
+ 827 
+ 828 
+Figure 12. Void fraction (a) and SM D (b) radial profiles consideri ng two bubble classes. Along with 829 
+total values ( ), which are compared against Lu1 e xperiment, predictions for spherical (- -) and 830 
+cap bubbles (---) are also shown. 831 
+ 832 
+46 
+  833 
+Figure 13. Bubble diameter distribution extracted from  the simulations (lines) compared against the 834 
+experiments (markers) at three axial locations: L/D = 8.4 (x, - -);  L/D = 29.9 ( ż, --); L/D = 59.2 ( Ƒ, 835 
+). Simulation results are displayed in two diffe rent locations: (a) pipe wall; (b) pipe centre. 836 
+ 837 
+ 838 
+5. Conclusions 839 
+ 840 
+In this work, the SȖ model (Lo and Zhang, 2009), based on the moments of the bubble size 841 
+distribution, was coupled with an Eulerian-Eul erian two-fluid model with the STAR-CCM+ code, 842 
+and tested against the data fr om seven upward bubbly flow expe riments in pipes. Through the SȖ 843 
+model, the evolution of the bubble size distributi on was followed through the flows, so that the 844 
+average SMD and the interfacial area concentration, which are cruc ial for the prediction of the 845 
+phase interactions, could be  tracked. Being based on th e method of moments, the SȖ model also has 846 
+the advantage that the required computational resources are limited. The addition of a diff erent 847 
+coalescence model (Yao and Morel, 2004), based on the collision of bubbles in turbulence and on 848 
+the film drainage model, and further optimized ag ainst the experiments, allowed reproduction of the 849 
+experimental radial profiles of the average bubble diameter. More specifically, a constant crit ical 850 
+Weber number value of 0.10 in th e coalescence model was suffici ent to obtain a satisfactory 851 
+predictive accuracy. 852 
+ 853 
+47 
+ A sensitivity study suggested a neg ligible effect of the bubble break-up model and the best results 854 
+were achieved by considering these flows to be  dominated by bubble coalescence. However, the 855 
+lack of availability of experime ntal data, limited to the average bubble diameter alone, constrains  856 
+research work in the field. In particular, it is extremely difficult to evaluate the competitive 857 
+contributions of break-up and coalescence, and to  extend the modelling to cover all possible 858 
+mechanisms involved. Therefore, additional know ledge is required, by means of experiments or 859 
+direct numerical simulations. Continuous phase tur bulence was noted to significantly influence the 860 
+predictions of the model. In this regard, validati on of turbulence models need s to be carried out in 861 
+conjunction with that for the bubble diameter evolution, and requires the availability of additional 862 
+complete datasets. In addition, different coal escence models were found to display different 863 
+qualitative behaviour following changes in the flow  field turbulence level, and this requires further 864 
+investigation. 865 
+ 866 
+Lastly, an advanced version of the overall mode l described was tested. This included a Reynolds 867 
+stress turbulence formulation and two groups of bubbles, accounting for spherical bubbles 868 
+accumulating close to the wall and cap bubbles migr ating towards the pipe centre. The RSM, in 869 
+addition to performing better in flows where known shortcomings of two-equation turbulence 870 
+models are present, provides be tter accuracy in predicting core -peaked void fraction profiles and 871 
+properly accounts for the interaction between the turbulence and the interphase forces. Comparison 872 
+with a complex void fraction profile suggested that extension of the model to only two bubble 873 
+groups is sufficient to describe the whole bubble spectrum, and the bubbly flow regime up to the 874 
+transition to slug flow, even though additional comparisons with  data are necessary.    875 
+  876 
+Acknowledgements 877 
+ 878 
+The authors gratefully acknowledge the financia l support of the EPSRC under grant EP/K007777/1, 879 
+Thermal Hydraulics for Boiling and Passive Sy stems, part of the UK-India Civil Nuclear 880 48 
+ Collaboration. The authors are also grateful to Dr. Andrew Splaws ki and Dr. Simon Lo from CD- 881 
+adapco for the valuable tec hnical and scien tific support. 882 
+ 883 
+References 884 
+Antal, S.P., Lahey Jr, R.T., Flaherty, J.E., 1991. An alysis of phase distribution in fully developed 885 
+laminar bubbly two-phase flow. Int.  J. Multiphas. Flow 17, 635-652. 886 
+Auton, T.R., 1987. The lift force on a spherical body in a rotationa l flow. J. Fluid Mech. 183, 199- 887 
+218. 888 
+Behzadi, A., Issa, R.I., Rusche, H., 2004. Modelling of dispersed bubble and droplet flow at high 889 
+phase fractions. Chem. Eng. Sci. 59, 759-770. 890 
+Buffo, A., Vanni, M., Marchisio, D.L., Fox, R.O ., 2013. Multivariate Quadra ture-Based Moments 891 
+Methods for turbulent polydisperse gas-liquid systems. Int. J. Multiphas. Flow 50, 41-57. 892 
+Burns, A.D., Frank, T., Hamill, I., Shi, J.M., 2004. The Favre averaged drag model for turbulent 893 
+dispersion in Eulerian multi-phase flows. 5th International Conference on Multiphase Flow, 894 
+Yokohama, Japan, May 30  June 4, paper 392.  895 
+CD-adapco, 2014. STAR-CCM+® Version 9.06 User Guide. 896 
+Chester, A.K., 1988. Local coalescence rates in em ulsions: a model for collision and film thinning 897 
+process when drop inertia dominates. BRITE Report I-31. 898 
+Chester, A.K., 1991. The modeling of coalescence proces ses in fluid-liquid disp ersions: A review of 899 
+current understanding. Chem. Eng. Res. Des.: T I Chem. Eng.-Lond. 69(A), 259-270.  900 
+Cheung, S.C.P., Deju, L., Yeoh, G.H., Tu, J.Y., 2013. Modelling of bubble- size distribution in 901 
+isothermal gas-liquid flows: numerical assessmen t of population balance approaches. Nucl. Eng. 902 
+Des. 265, 120-136. 903 
+Cheung, S.C.P., Yeoh, G.H., Tu, J.Y., 2009. A review of population balance modelling for 904 
+isothermal bubbly flows. J. Comput. Multiphas. Flow 1, 161-199. 905 
+Cheung, S.C.P., Yeoh, G.H., Tu, J.Y., 2007. On the modelling of population balance in isothermal 906 
+vertical bubbly flos-Average bubble number density approach. Chem. Eng. Process. 46, 742-756. 907 49 
+ Colombo, M., Fairweather, M., Lo, S., Splaws ki, A., 2015. Multiphase RANS simulation of 908 
+turbulent bubbly flows. 16th International Topical Meeti ng on Nuclear Reactor Thermal 909 
+Hydraulics, Chicago, USA, August 30  September 4. 910 
+Dabiri, S., Tryggvason, G., 2015. Heat transfer in turbulent bubbly flow  in vertical channels. Chem. 911 
+Eng. Sci. 122, 106-113. 912 
+Daly, B.J., Harlow, F.H., 1970. Transport equati ons of turbulence. Phys. Fluids 13, 2634-2649.  913 
+Fox, R., 2012. Large-Eddy-Simulation tools for multiphase flows. Annu. Rev. Fluid Mech. 44, 47- 914 
+76. 915 
+Gosman, A.D., Lekakou, C., Politis, S., Issa, R. I., Looney, M.K., 1992. Multidimensional modeling 916 
+of turbulent two-phase flows in stirred vessels. AIChE J. 38, 1946-1956. 917 
+Grossetete, C., 1995. Experimental investigation and preliminary numerical simulations of void 918 
+profile development in a verti cal cylindrical pipe. In: Serizaw a, A., Fukano, T., Bataille, J. 919 
+(Eds.), 2nd International Conference on Multiphase Flow, Kyoto, Japan, April 3-7, IF1-1-10. 920 
+Hibiki, T., Ishii, M., 1999. Expe rimental study on interfacial area  transport in bubbly two-phase 921 
+flows. Int. J. Heat Mass Tran. 42, 3019-3035.  922 
+Hibiki, T., Ishii, M., 2000. One-group interfacial area transport of bubbly fl ows in vertical round 923 
+tubes. Int. J. Heat Mass Tran. 43, 2711-2726. 924 
+Hibiki, T., Ishii, M., Xiao, Z., 2001. Axial interfacial area transport of  vertical bubbly flows. Int. J. 925 
+Heat Mass Tran. 44, 1869-1888. 926 
+Hosokawa, S., Tomiyama, A., 2009. Multi-fluid si mulation of turbulent bubbly pipe flow. Chem. 927 
+Eng. Sci. 64, 5308-5318. 928 
+Hulburt, H.M., Katz, S., 1964. Some problems in  particle technology. Chem. Eng. Sci. 19, 555-574. 929 
+Ishii, M., Hibiki, T., 2006. Thermo-fluid dynamics of two-phase flows. Springer. 930 
+Jones, W.P., Launder, B.E., 1972. The prediction of laminarization with a two-equation model of 931 
+turbulence. Int. J. Heat Mass Tran. 15, 301-314. 932 50 
+ Kataoka, I., Serizawa, A., 1989. Basic equations of tu rbulence in gas-liquid tw o-phase flow. Int. J. 933 
+Multiphas. Flow 15, 843-855. 934 
+Krepper, E., Lucas, D., Frank, T., Prasser, H. M., Zwart, P.J., 2008. The inhomogeneous MUSIG 935 
+model for the simulation of polydisper sed flows. Nucl. Eng. Des. 238, 1690-1702.  936 
+Kumar, S., Ramkrishna, D., 1996. On the solution of population balance equations by discretization 937 
+I. A fixed pivot technique. Chem. Eng. Sci. 51(8), 1311-1332. 938 
+Lahey Jr, R.T., Drew, D.A., 2001. The analysis of  two-phase flow and heat transfer using a 939 
+multidimensional, four field, two-fl uid model. Nucl. Eng. Des. 204, 29-44. 940 
+Lance, M., Bataille, J., 1991. Turbulence in the li quid phase of a uniform bubbly air-water flow. J. 941 
+Fluid Mech. 222, 95-118. 942 
+Lee, K., Matsoukas, T., 2000. Simultaneous co agulation and break-up using constant- N Monte 943 
+Carlo. Powder Technol. 110, 82-89. 944 
+Lehr, F., Millies, M., Mewes, D., 2002. Bubble-si ze distributions and fl ow fields in bubble 945 
+columns. AIChE J. 48(11), 2426-2441. 946 
+Liao, Y., Lucas, D., 2009. A literature review of th eoretical models for drop and bubble breakup in 947 
+turbulent dispersions. Chem. Eng. Sci. 64, 3389-3406. 948 
+Liao, Y., Lucas, D., 2010. A literature review on mechanisms and models for the coalescence 949 
+process of fluid particles. Chem. Eng. Sci. 65, 2851-2864. 950 
+Liao, Y., Rzehak, R., Lucas, D., Krepper, E., 2015. Baseline closure model for dispersed bubbly 951 
+flow: bubble coalescence and breakup. Chem. Eng. Sci. 122, 336-349. 952 
+Lin, Y., Lee, K., Matsoukas, T., 2002. Solution of  the population balance equation using constant- 953 
+number Monte Carlo. Chem. Eng. Sci. 57, 2241-2252. 954 
+Liu, T.J., 1993. Bubble size and entr ance length effects on void develo pment in a vertical channel. 955 
+Int. J. Multiphas. Flow 19(1), 99-113. 956 
+Liu, T.J., Bankoff, S.G., 1993. Structur e of air-water bubbly flow in a ve rtical pipe  I. Liquid mean 957 
+velocity and turbulence measurements . Int. J. Heat Mass Tran. 36, 1049-1060. 958 51 
+ Liu, T.J., 1998. The role of bubble size on liquid phase  on liquid phase turbulent structure in two- 959 
+phase bubbly flows. Proceedings of the 3rd International Conference on Multiphase Flow, Lyon, 960 
+France, June 8-12. 961 
+Lo, S., 1996. Application of the MUSIG mode l to bubbly flows. AEAT-1096, AEA Technology. 962 
+Lo, S., Rao, P., 2007. Modelling of  droplet breakup and coalescence in an oil-water pipeline. 6th 963 
+International Conference on Multiphase Flow, Leipzig, Germany, July 9-13, Paper 136. 964 
+Lo, S., Zhang, D., 2009. Modelling of break-up and co alescence in bubbly tw o-phase flows. J. 965 
+Comput. Multiphas. Flow 1, 23-38. 966 
+Lopez de Bertodano, M., Lahey Jr, R.T., Jones, O.C., 1994. Phase distributi on in bubbly two-phase 967 
+flow in vertical ducts. Int. J. Multiphas. Flow 20, 805-818. 968 
+Lucas, D., Beyer, M., Szalinski, L., Schutz, P., 2010. A new database on the evolution of air-water 969 
+flows along a large vertical pipe. Int. J. Therm. Sci. 49, 664-674. 970 
+Lucas, D., Krepper, E., Prasser, H.M., 2005. Developmen t of co-current air-water flow in a vertical 971 
+pipe. Int. J. Multiphas. Flow 31, 1304-1328. 972 
+Luo, H., Svendsen, H.F., 1996. Theoretical mode l for drop and bubble breakup in turbulent 973 
+dispersions. AIChE J. 42(5), 1225-1233. 974 
+Marchisio, D.L., Fox, R.O., 2005. Solution of popul ation balance equations  using the direct 975 
+quadrature method of moment s. Aerosol Sci. 36, 43-73. 976 
+Marchisio, D.L., Fox, R.O., 2007. Multiphase reacti ng flows: modelling and simulation. Springer. 977 
+Molin, D., Marchioli, C., Sold ati, A., 2012. Turbulence modulat ion and microbubble dynamics in 978 
+vertical channel flow. Int. J. Multiphas. Flow 42, 80-95. 979 
+Mukin R.V., 2014. Modeling of bubble coalescence a nd break-up in turbulent bubbly flow. Int. J. 980 
+Multiphas. Flow 62, 52-66. 981 
+Nandanwar, M.N., Kumar, S., 20 08. A new discretizatio n of space for the solution of multi- 982 
+dimensional population balance eq uations. Chem. Eng. Sci. 63, 2198-2210. 983 52 
+ Nguyen, V.T., Song, C.H., Bae, B.U., Euh, D.J., 2013. Modeling of bubble coalescence and break- 984 
+up considering turbulent suppression phenomena in bubbly two-phase flow. Int. J. Multiphas. 985 
+Flow 54, 31-42. 986 
+Prasser, H.M., Beyer, M., Carl, H., Gregor, S., Lucas, D., Pietrusk e, H., Schutze, P., Weiss, F.P., 987 
+2007. Evolution of the structure of  a gas-liquid two-phase flow in  a large vertical pipe. Nucl. 988 
+Eng. Des. 237, 1848-1861. 989 
+Prince, M.J., Blanch, H.W., 1990. Bubble coalescence and break-up in air-sp arged bubble columns. 990 
+AIChE J. 36(10), 1485-1499. 991 
+Prosperetti, A., Tryggvason, G., 2009. Computati onal methods for multiphase flow. Cambridge 992 
+University Press. 993 
+Rzehak, R., Krepper, E., 2013. CFD modeling of bubble-induced turbulence. Int. J. Multiphas. 994 
+Flow 55, 138-155. 995 
+Santarelli, C., Roussel, J., Fröhl ich, J., 2016. Budget analysis of th e turbulent kinetic energy for 996 
+bubbly flow in a vertical cha nnel. Chem. Eng. Sci. 141, 46-62. 997 
+Sanyal, J., Vasquez, S., Roy, S., Dudukovic, M. P., 1999. Numerical simu lation of gas-liquid 998 
+dynamics in cylindrical bubble column  reactors. Chem. Eng. Sci. 54, 5071-5083. 999 
+Serizawa, A., Kataoka, I., Michiyos hi, I., 1975. Turbulence structur e of air-water bubbly flow-II. 1000 
+Local properties. Int. J. Multiphas. Flow 2, 235-246. 1001 
+Shawkat, M.E., Ching, C.Y., Shoukri, M., 2007. On  the liquid turbulence energy spectra in two- 1002 
+phase bubbly flow in a large diameter pi pe. Int. J. Multiphas. Flow 33, 300-316. 1003 
+Smith, T.R., Schlegel, J.P., Hibiki, T., Ishii, M., 2012. Mechanistic modeling of interfacial area 1004 
+transport in large diameter pipes.  Int. J. Multiphas. Flow 47, 1-16. 1005 
+Speziale, C.G., Sarkar, S., Gatski, T.B., 1991. Modelling the pressure-strain correlation of 1006 
+turbulence: An invariant dynamical syst em approach. J. Fluid Mech. 227, 245-272. 1007 
+Sun, X., Kim, S., Ishii, M., Beus, S.G., 2004. Mode ling of bubble coalescence and disintegration in 1008 
+confined upward two-phase flow. Nucl. Eng. Des. 230, 3-26. 1009 53 
+ Tomiyama, A., Tamai, H., Zun, I., Hosokawa, S., 1998. Transverse migration of single bubbles in 1010 
+simple shear flows. Chem. Eng. Sci. 57, 1849-1858. 1011 
+Tomiyama, A., Celata, G.P., Hosokawa, S., Yoshida,  S., 2002a. Terminal velocity of single bubbles 1012 
+in surface tension dominant regime. Int. J. Multiphas. Flow 28, 1497-1519. 1013 
+Tomiyama, A., Tamai, H., Zun, I., Hosokawa, S ., 2002b. Transverse migration of single bubbles in 1014 
+simple shear flows. Chem. Eng. Sci. 57, 1849-1858. 1015 
+Toutant, A., Labourasse, E., Lebaigue, O., Sim onin, O., 2008. DNS of the interaction between a 1016 
+deformable buoyant bubble and a sp atially decaying turbulence: A pr iori test for LES two-phase 1017 
+flow modelling. Com put. Fluids 37, 877-886. 1018 
+Troshko, A.A., Hassan, Y.A., 2001. A two-equation turbulence model of turbulent bubbly flows. 1019 
+Int. J. Multiphas. Flow 27, 1965-2000. 1020 
+Tryggvason, G., Buongiorno, J., 2010. The role of dir ect numerical simulati ons in validation and 1021 
+verification. Computational Flui d Dynamics (CFD) for Nuclear Reactor Safety Applications 1022 
+OECD-NEA Workshop, Bethesda, USA September 14-16. 1023 
+Ullrich, M., Maduta, R., Jakirlic, S., 2014. Turbulent bubbly flow in a vertical  pipe computed by an 1024 
+eddy-resolving Reynolds stress model. 10th International ERCOFTAC Symposium on 1025 
+Engineering Turbulence Modelling and Meas urements, Marbella, Spain, September 17-19. 1026 
+Vanni, M., 2000. Approximate population balance equa tions for aggregation-breakage processess. 1027 
+J. Colloid Interf. Sci. 221, 143-160. 1028 
+Wang, S.K., Lee, S.J., Jones Jr, O.C., Lahey Jr, R.T., 1987. 3-D turbulence  structure and phase 1029 
+distribution measurements in bubbly two-phase  flows. Int. J. Multiphas. Flow 13, 327-343. 1030 
+Wang, T., Wang, J., Jin, Y., 2005. Theoretical predic tion of flow regime transition in bubble 1031 
+columns by the population balance model. Chem. Eng. Sci. 60, 6199-6209. 1032 
+Welleck, R.M., Agrawal, A.K., Skelland, A.H.P ., 1966. Shape of liquid drops moving in liquid 1033 
+media. AIChE J. 12, 854-862. 1034 54 
+ Wu, K., Kim, S., Ishii, M., Beus, S.G., 1998. One-gr oup interfacial area transp ort in vertical bubbly 1035 
+flow. Int. J. Heat Mass Tran. 41, 1103-1112. 1036 
+Yao, W. and Morel, C., 2004. Volumetric interf acial area prediction in upward bubbly two-phase 1037 
+flow. Int. J. Heat Mass Tran. 47, 307-328. 1038 
+Yuan, C., Fox, R.O., 2011. Conditional quadrature method of moments for kinetic equations. J. 1039 
+Comput. Phys. 230, 8216-8246. 1040 
+Zhao, H., Maisels, A., Matsoukas, T., Zheng, C., 2007. Analysis of four Monte-Carlo methods for 1041 
+the solution of population balances in disp ersed systems. Powder Technol. 173, 38-50. 1042 
+ 1043 
+ 1044 

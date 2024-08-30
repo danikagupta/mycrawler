@@ -1,0 +1,1225 @@
+UNIT 6.3 Getting a Tree Fast: Neighbor Joining,
+FastME, and Distance-Based Methods
+Distance methods, and especially Neighbor Joining (NJ; Saitou and Nei, 1987), are
+popular methods for reconstructing phylogenies from alignments of DNA or proteinsequences (
+UNIT 2.3 ). They are fast, allowing hundreds and even thousands of taxa to be
+dealt with by ordinary computers. The speed of these methods greatly simpliﬁes the use ofthe bootstrap procedure (Page and Holmes, 1998; Graur and Li, 2000), which assesses theconﬁdence level of inferred clades. They provide a simple way to incorporate knowledgeof the evolution of the sequences being studied, depending on how the distance matrix isestimated. Numerous simulation studies have demonstrated their topological accuracy,
+and, unlike parsimony methods, they are not hampered by inconsistency (or “Felsenstein
+zone”; Swofford et al., 1996). The popularity of NJ, among the numerous existingdistance-based methods, is explained by its speed and by the fact that its topologicalaccuracy remains relatively close to that of recent approaches—i.e., FITCH (Felsenstein,1997), BIONJ (Gascuel, 1997a), WEIGHBOR (Bruno et al., 2000), and FastME (Desperand Gascuel, 2002, 2004). However, several simulation studies (e.g., Vinh and V onHaeseler, 2005) showed that, with a high number of taxa, NJ is outperformed by FastME,both in terms of computing time and topological accuracy. Therefore, this latter programshould be considered preferable for large-scale studies.
+NJ and other current distance methods do not assume a molecular clock (Page and
+Holmes, 1998), as opposed to the Unweighted Pair Group Method Using Arithmeticaverages (UPGMA; Sokal and Michener, 1958), which is precluded for most phylogeneticstudies. The basic assumption is that sequences have been evolving along a tree andindependently among the lineages. This tree can differ from the species tree in cases ofhorizontal transfer or sequence duplication (
+UNIT 6.1 ). Other assumptions are related to
+the sequence evolution model used to estimate distances. Models applicable to distance
+methods are homogeneous (i.e., constant over time) and assume that each site in thesequence evolves independently. However, some model parameters can differ from siteto site. For example, mutation rates can vary across sites to represent structural/functionalconstraints on the residues, or the fast rate of the third codon position.
+Distance methods are thus “model based,” just like maximum-likelihood methods (see
+Swofford et al., 1996, for discussion of these methods and comparison between them).However, the way the computations are performed is simpler and more approximate.Consequently, distance methods are faster than maximum-likelihood methods, but donot achieve the same topological accuracy. The comparison with parsimony is morecomplicated, since parsimony is sometimes inconsistent, but accurate when no long(e.g., outgroup) branch tends to attract other branches and perturb the resulting tree.A good practical approach is then to avoid parsimony when long branch attraction issuspected and otherwise to run both parsimony and distance approaches and comparethe results.
+Application of any distance-based method usually requires the following steps
+(see Fig. 6.3.1).
+a. Choose a sequence evolution model and use it to estimate the distance matrix
+(Support Protocols 1 and 2).
+b. Run the tree-building algorithm (Basic Protocol or Alternate Protocols 1, 2, or 3)
+and eventually return to step (a), for example to check that the resulting tree is
+Contributed by Richard Desper and Olivier Gascuel
+Current Protocols in Bioinformatics (2006) 6.3.1-6.3.28
+Copyright C/circlecopyrt2006 by John Wiley & Sons, Inc.Inferring
+EvolutionaryRelationships
+6.3.1
+Supplement 15Getting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.2
+Supplement 15 Current Protocols in Bioinformatics
+Figure 6.3.1 Flowchart illustrating the relationship between the multiple protocols presented in
+this unit.
+not too sensitive to the model parameter values. The inﬂuence of taxon sampling,
+notably the presence/absence of the outgroup taxa, also has to be checked.
+c. Perform the bootstrap procedure to assess the signiﬁcance level of the inferred
+clades (Support Protocol 3).
+BASIC
+PROTOCOLUSING THE NEIGHBOR PROGRAM FROM THE PHYLIP PACKAGE TO
+CONSTRUCT A PHYLOGENETIC TREE
+This protocol describes the use of NEIGHBOR (see Fig. 6.3.1), included in the PHYLIP
+3.6 package (latest 3.65 version is identical; Felsenstein, 1989), which is distributed byJoe Felsenstein (University of Washington) and is one of the most widely used softwarepackages in phylogeny studies. NEIGHBOR is the PHYLIP implementation of NeighborJoining (Saitou and Nei, 1987). Distance estimation is performed using DNADIST orPROTDIST (Support Protocols 1 and 2). To accomplish the bootstrap procedure, ﬁrstresample the sites using SEQBOOT (Support Protocol 3), then apply DNADIST orPROTDIST, run NEIGHBOR, and extract the bootstrap tree using CONSENSE (SupportInferring
+Evolutionary
+Relationships
+6.3.3
+Current Protocols in Bioinformatics Supplement 15Protocol 3). Finally, the resulting tree can be drawn using a program such as TreeView
+(UNIT 6.2 ) or NJplot (Perri `ere and Gouy, 1996).
+Necessary Resources
+Hardware
+PHYLIP executables are available for Windows, Mac OS 9 and OS X, and Linux.
+The PHYLIP C source code is also available for Unix, Linux, or OpenVMS
+systems.
+Software
+PHYLIP is available for free from http://evolution.genetics.washington.edu/phylip.
+html. The package contains C source codes, documentation ﬁles, and a number
+of different types of executables. Its Web page contains information on PHYLIP
+and ways to transfer the executables, source code, and documentation. The
+documentation is remarkably clear and complete, and provides a number ofuseful references.
+Files
+NEIGHBOR requires a distance matrix (or a set of distance matrices when the
+bootstrap procedure is used), which is estimated by DNADIST (Support
+Protocol 1) or PROTDIST (Support Protocol 2) from a multiple sequence
+alignment (e.g.,
+UNIT 2.3 ). The ﬁle contains a number of taxa on its ﬁrst line. Each
+taxon starts a new line with the taxon name, followed by the distance to the other
+taxa, and there is a new line after every nine distances. Taxon names have tencharacters and must be blank-ﬁlled to be of that length. The default matrix
+format is square (Fig. 6.3.2) with zero distances on the diagonal. In the case of
+multiple matrices, as obtained with the bootstrap, matrices are given in the sameformat one after the other, without omitting the number of taxa at the beginning
+of each new matrix.
+1. Download and install PHYLIP according to the program documentation (see Nec-
+essary Resources, above).
+2. Generate a distance matrix for the multiple sequence alignment of interest by run-
+ning either DNADIST (for DNA sequence alignments; see Support Protocol 1) orPROTDIST (for protein sequence alignments; see Support Protocol 2).
+3. Begin a NEIGHBOR session in PHYLIP by double clicking on its icon.4. At the prompt, enter the distance matrix ﬁle name and the name for the outﬁle, which
+will contain a simple representation of the output tree. The default ﬁles are infile
+andoutfile , respectively, but the authors strongly recommend redeﬁning these
+ﬁles to avoid possible confusions or deleting previously computed ﬁles.
+Figure 6.3.2 Distance matrix in square format.Getting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.4
+Supplement 15 Current Protocols in Bioinformatics
+Figure 6.3.3 The NEIGHBOR screen showing options for renaming ﬁles as well as options for settings and
+their defaults.
+When a ﬁle called infile already exists in the PHYLIP directory, NEIGHBOR does not
+ask for the input ﬁle and reads the existing infile . Similarly, the option of renaming
+the output is only given if a ﬁle called outfile already exists. If no such ﬁle exists,
+NEIGHBOR automatically writes the output to a ﬁle called outfile .
+5. After entering the ﬁle information, select among several options (see Fig. 6.3.3),
+which, a priori, have to be used with their default values, except Min the case
+of the bootstrap procedure. When options have been determined, type Yto run
+NEIGHBOR.
+These options are as follows. Ndeﬁnes the method to be used; NJ (default option) is
+preferred over UPGMA, which assumes a molecular clock. Omakes it possible to specify
+which species is to be used to root the tree; when Ois on, the user is asked for the rank
+of the outgroup species in the input (matrix) ﬁle, otherwise the default outgroup speciesis the ﬁrst; this outgroup (rooting) species is used in the tree printed in the outﬁle. Land
+Rhave to be switched on when the matrix is not square but lower-triangular and upper-
+triangular, respectively. Shas to be on when the data contain subreplicates; it allows
+NEIGHBOR to read the input data, but the number of replicates is ignored. Jenables
+one to choose a random order of species; the user is then asked for a “seed”; however,NEIGHBOR is almost insensitive to species ordering. Mhas to be used in the case of
+the bootstrap procedure (Support Protocol 3) to provide the number of pseudo-matrices.0deﬁnes the terminal type; this may affect the ability of the programs to display their
+menus and results, but the none option is usually sufﬁcient. The 1and2options are
+used to check the data and the progress of run; the authors suggest switching them off,notably for large trees and bootstrap studies. When 3is Yes (default value), the tree or
+trees are printed in the outfile ; this is useful to quickly visualize trees with moderateInferring
+Evolutionary
+Relationships
+6.3.5
+Current Protocols in Bioinformatics Supplement 15
+Figure 6.3.4 T wo trees in Newick format, which were obtained from the distance matrix in Figure
+6.3.2 by BIONJ and NEIGHBOR, respectively. Both trees have identical topologies, but slightly
+different branch lengths.
+Figure 6.3.5 T reeView representation of the BIONJ tree of Figure 6.3.4.
+numbers of taxa. When 4is Yes (default value), the trees are written in Newick format in
+theouttree ﬁle, and can then be drawn using TreeView ( UNIT 6.2 ) or, in case of multiple
+data sets, combined by CONSENSE to obtain the bootstrap tree (Support Protocol 3).To change the default values, simply type the option character. For example, typing 2
+changes the progress of run status from Yes toNo, and typing 2again returns one to Yes .
+6. Finally, NEIGHBOR asks for the outtree ﬁle, which will contain the tree in
+Newick format ( UNIT 6.2 ). The resulting tree can be visualized in the outfile ,b u t
+a better view is obtained by applying TreeView ( UNIT 6.2 ) to the outtree ﬁle.
+The option of renaming the outtree ﬁle is only given if a ﬁle called outtree already
+exists. If no such ﬁle exists, NEIGHBOR automatically writes the output to a ﬁle calledouttree , which may be a source of confusion. Inferred trees are unrooted and written
+in Newick format (
+UNIT 6.2 ). For example, the BIONJ tree in Figure 6.3.4 is made of
+three subtrees, containing ( Candida tr,Candida al, andSaccharomy ), (Taph-
+rina dandProtomyces ) and ( Athelia bo,Spongipell , and Filobasidi ),
+respectively, as can be shown from its TreeView representation (Fig. 6.3.5; see UNIT 6.2
+for discussion of TreeView and Newick). Each subtree is made up of two subtrees or taxa;the numbers in Figure 6.3.4 indicate the branch lengths. Both trees in Figure 6.3.4 haveidentical topologies (even when the way they are encoded in Newick format looks quitedifferent) but (slightly) different branch lengths.Getting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.6
+Supplement 15 Current Protocols in Bioinformatics
+Figure 6.3.6 NEIGHBOR tree, as represented in the outfile .
+Applying NEIGHBOR to the matrix of Figure 6.3.2, one obtains in the outfile the tree
+shown in Figure 6.3.6, while in the outtree ﬁle we have the second tree from Figure
+6.3.4, in Newick format. This tree is equivalent to that of Figure 6.3.5.
+7. To assess the tree quality, bootstrap the tree according to Support Protocol 3.
+SUPPORT
+PROTOCOL 1DISTANCE MATRIX ESTIMATION FROM DNA (OR RNA) SEQUENCES
+USING DNADIST
+Distance estimation is the ﬁrst step in reconstructing a phylogenetic tree using a distance-
+based method. DNADIST, from the PHYLIP package, estimates the pairwise evolution-ary distances between nucleotide sequences under various models of nucleotide substi-tutions. These models account for hidden substitutions and incorporate knowledge aboutthe mutation process. Distance estimation is based on the maximum-likelihood principle(Swofford et al., 1996). The model choice is sensitive and inﬂuences the distance values,and then the tree to be constructed. DNADIST reads a multiple sequence alignment andoutputs a distance matrix. When the bootstrap procedure is used, the input ﬁle containsthe pseudo-alignments one after the other, and the output ﬁle contains the correspondingpseudo-matrices in the same order.
+Necessary Resources
+Hardware
+PHYLIP executables are available for Windows, Mac OS 9 and OS X, and Linux.
+The PHYLIP C source code is also available for Unix, Linux, or OpenVMSsystems.
+Software
+DNADIST is part of the PHYLIP package. PHYLIP is available for free from
+http://evolution.genetics.washington.edu/phylip.html . The package contains C
+source codes, documentation ﬁles, and a number of different types of
+executables. Its Web page contains information on PHYLIP and ways to transferthe executables, source code, and documentation. The documentation is
+remarkably clear and complete, and provides a number of useful references.
+Files
+DNADIST requires DNA multiple sequence alignments in PHYLIP format, as
+obtained from alignment programs such as ClustalX (
+UNIT 2.3 ). The ﬁrst line
+contains the number of taxa and sites; next come the taxon data with a new lineper taxon. Taxon names have ten characters and must be blank-ﬁlled to be of thatInferring
+Evolutionary
+Relationships
+6.3.7
+Current Protocols in Bioinformatics Supplement 15
+Figure 6.3.7 Alignment in interleaved PHYLIP format.
+Figure 6.3.8 Alignment in sequential PHYLIP format.
+length. The taxon names are followed by the sequences, which must either be
+“interleaved” or “sequential” (Figs. 6.3.7 and 6.3.8). The sequences can haveinternal blanks in the sequence but there must be no extra blanks at the end of
+the terminated line. The three symbols N,Xand?indicate an unknown
+nucleotide while a dash (–) indicates a deletion. In the case of multiple data sets,as provided by SEQBOOT, pseudo-alignments are given in the same format one
+after the other, without omitting the number of taxa and the number of sites at
+the beginning of each new set.
+1. Download and install the PHYLIP package, and initialize a DNADIST session by
+double clicking on its icon.
+2. At the prompt, enter the sequence alignment ﬁle name and the name for the output,
+which will contain the distance matrix. The default ﬁles are infile andoutfile ,
+respectively, but the authors strongly recommend redeﬁning these ﬁles to avoidpossible confusion, or deletion of previously computed ﬁles.
+If a ﬁle called infile already exists in the PHYLIP directory, DNADIST does not ask for
+the input ﬁle, but reads the existing infile . Similarly, the option of renaming the output
+is only given if a ﬁle called outfile already exists. If no such ﬁle exists, DNADIST
+automatically writes the output to a ﬁle called outfile .Getting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.8
+Supplement 15 Current Protocols in Bioinformatics
+Figure 6.3.9 The DNADIST screen with options for renaming ﬁles and setting parameters. The
+default parameters are shown.
+3. Then the menu of Figure 6.3.9 appears, which asks for important and sensitive
+choices.
+The remaining steps of this protocol primarily describe options requiring in-depth expla-
+nations or where the default values often need to be changed. More details are given in theDNADIST documentation. To change the default values, simply type the option character.For example, typing Ichanges the sequence format from interleaved to sequential, and
+typing Iagain returns to the interleaved format.
+Set the parameters
+4.Ddeﬁnes the substitution model. All models assume that sites evolve independently.
+The four available models are nested, i.e., Jukes-Cantor is a special case of Kimura,which is a special case of F84, which is a special case of LogDet. Jukes-Cantor(Jukes and Cantor, 1969) assumes only one substitution rate, Kimura (Kimura,1980) allows for a difference between transition and transversion rates, while F84(Kishino and Hasegawa, 1989; Felsenstein and Churchill, 1996) is similar to Kimurabut allows for different frequencies of the four nucleotides, and LogDet does notimpose any restriction on the 16 rates (except those induced by the Markovian natureof the process). So LogDet (Steel, 1994) is the most ﬂexible model, but is oftenoverparametrized, unless the sequences are very long (say >3000). F84 (the default
+option) is a good compromise, notably when the base frequencies are not equal.When they are almost equal, Kimura is a good choice, while Jukes-Cantor is overlysimple in most cases.
+Note that all sites (informative or not) must be given to DNADIST for these models to be
+used in the correct way.
+5.Gasks whether or not the substitution rates vary across sites. Biologically speaking,
+the answer is clearly yes. It has been demonstrated that the Gamma distribution(Swofford et al., 1996), which is deﬁned by a parameter usually denoted as α,i saInferring
+Evolutionary
+Relationships
+6.3.9
+Current Protocols in Bioinformatics Supplement 15good model to account for this variability. αwas estimated between 0.05 and 1.0 for
+numerous data sets (Yang, 1966), which indicates that rates strongly vary across sites(variability increases as αdecreases). However, the default option of DNADIST is
+to not correct for this variability (i.e., α=∞), which is a common practice.
+Jin and Nei (1990) recommend using α= 1.0 or 2.0. The authors have recently demon-
+strated (Guindon and Gascuel, 2002) that uncorrected distances are often better suited,especially when the molecular clock is more or less satisﬁed. Therefore, a pragmaticapproach is to use the default option, and to check whether or not using a reasonablevalue (e.g., 1.0 or 2.0) for αchanges the result.
+However, DNADIST does not use the standard αparameter, but rather the “coefﬁcient
+of variation” (CV), which is equal to 1/ α
+1/2. One obtains CV =2.0, 1.0, and 0.5 when
+α=0.25, 1.0, and 4.0, respectively. Moreover, the LogDet model cannot be combined
+with the gamma correction.
+6.Tasks for the transition/transversion ratio. The default value is 2.0, and there is no
+way to estimate this value within PHYLIP.
+Hopefully, the results are not very sensitive to the value of this parameter (unless it is
+extreme). It is possible to estimate it using simple formulas from Kimura (1980).
+7.Callows user-deﬁned categories, for example to specify that third-position bases
+have a different rate than ﬁrst and second positions. This option allows the user tomake up to 9 categories of sites, but, as with the LogDet model, using too manycategories can make the model overparametrized. The user is asked for the relativerates within each category. The assignment of rates to sites is then made by readinga ﬁle whose default name is categories .
+An example and more details are given in the DNADIST documentation. There is no
+program from PHYLIP for estimating the different rates, but just as with the above ratio,these parameters are not very sensitive (unless extreme).
+8.Wallows the user to select subsets of sites. Basically it has to remain “No” (the
+default value), unless the user wants to check the inﬂuence of various categories ofsites.
+See DNADIST documentation for more details.
+9.Fmust remain as Yes in any practical situation.
+10.Ldeﬁnes the matrix format, square (default value) or lower-triangular.
+11.Mhas to be used in the bootstrap procedure (see Support Protocol 3). The user is then
+asked for the number of pseudo-alignments in the input ﬁle. Otherwise the default
+value (No) is required.
+12.Ideﬁnes the multiple sequence alignment format, which is interleaved or sequential
+(Fig. 6.3.7 and 6.3.8, respectively).
+13. Once all options have been determined, type Yto compute the distance matrix.
+With the working example of Figure 6.3.7 and all default values, DNADIST returns the
+matrix of Figure 6.3.2.
+SUPPORT
+PROTOCOL 2DISTANCE MATRIX ESTIMATION FROM PROTEINS USING PROTDIST
+PROTDIST is analogous to DNADIST (Support Protocol 1). It is ﬁrst necessary to provide
+the ﬁle names, which the program initially assumes to be infile andoutfile (see
+Fig. 6.3.10). The infile contains the protein multiple sequence alignment ( UNIT 2.3 ).
+The format is analogous to that used with nucleotide sequences (Support Protocol 1),except that, with proteins, the three symbols X,-,a n d?indicate an unknown amino acid,Getting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.10
+Supplement 15 Current Protocols in Bioinformatics
+Figure 6.3.10 The PROTDIST screen showing options for renaming ﬁles and setting parameters. The default
+parameter settings are shown.
+a deletion, and an unknown including deletion, respectively (see PHYLIP documentation
+sequence.html for more details). The ﬁnal distance matrix is written to outfile ,
+unless the user selects a different name. After providing the ﬁle names, the user thendeals with the options (see Fig. 6.3.10). The main option is P, which selects among
+ﬁve substitution models differing depending on the matrix of substitution rates. Thesubstitution models are as follows:
+Dayhoff PAM 001 matrix. This matrix (Dayhoff et al., 1979) is an empirical one that
+scales probabilities of change from one amino acid to another, assuming that the totalchange between the two amino acid sequences is 1% (
+UNIT 3.5 ). It allows the evolutionary
+distance to be computed in terms of expected fraction of amino acids changed.
+PMB (Probability Matrix from Blocks). This model is derived (Veerassamy et al., 2003)
+using the Blocks database of conserved protein motifs and is a continuation of BLOSUM
+scoring matrices, which are widely used for protein sequence alignments ( UNIT 3.5 ). Note
+that this model is only available in the latest PHYLIP version (3.65).
+Jones-Taylor-Thornton model. This model (Jones et al., 1992) is analogous to PAM, but
+the estimation of the probabilities of change is based on a much larger set of proteins.Thus it is to be preferred over the original PAM.
+Kimura’s distance. This model (Kimura, 1983) assumes only one substitution rate, and
+does not take into account which amino acids differ.
+The Categories distance. This model, devised by Joe Felsenstein, is conceptually close to
+Kimura’s two-parameter model for DNA sequences (Kimura, 1980). The amino acids aregrouped into a series of categories, and a distinction is made between transitions (changewithin a category) and transversions (change from one category to another). When thisoption is selected, the user is asked for a number of other options (e.g., the amino acidcategorization), but the authors suggest using default values that approximate the PAMmodel (
+UNIT 3.5 ).Inferring
+Evolutionary
+Relationships
+6.3.11
+Current Protocols in Bioinformatics Supplement 15As already stated, the Jones-Taylor-Thornton model is preferred over PAM in any sit-
+uation, while PMB seems to be an interesting (but new) option. These three models,however, require heavy computation, and the same holds for the Categories model. TheKimura model is therefore a good option for large data sets or atypical (e.g., membrane)proteins. For the other options, see comments on DNADIST in Support Protocol 1.
+SUPPORT
+PROTOCOL 3BOOTSTRAPPING USING SEQBOOT AND CONSENSE
+A tree such as that shown in Figure 6.3.5 does not indicate the reliability of the inferred
+clades. The bootstrap procedure is a sound and accurate way to obtain this information,and its use is greatly facilitated by the speed of distance methods. Within PHYLIP, thebootstrap procedure is achieved as shown in the ﬂowchart of Figure 6.3.1. It successivelyuses: (1) SEQBOOT, (2) DNADIST or PROTDIST, (3) NEIGHBOR (or any otherdistance method, see Alternate Protocols 1 and 2), and (4) CONSENSE.
+Necessary Resources
+Hardware
+PHYLIP executables are available for pre-386 DOS, 386/486/Pentium DOS,
+Windows 3.1, Windows 95/98/NT, 68k Macintosh, or PowerMac. The PHYLIP
+C source code is also available for Unix, Linux, or VMS systems.
+Software
+SEQBOOT and CONSENSE are part of the PHYLIP Package. PHYLIP is
+available for free from http://evolution.genetics.washington.edu/phylip.html .T h e
+package contains C source codes, documentation ﬁles, and a number of different
+types of executables. Its Web page contains information on PHYLIP and ways to
+transfer the executables, source code, and documentation. The documentation isremarkably clear and complete, and provides a number of useful references.
+Files
+SEQBOOT requires a multiple sequence alignment in the PHYLIP format, as
+obtained from alignment programs, such as ClustalX (
+UNIT 2.3 ); it computes
+pseudo-alignments by sampling at random with replacement the sites in the
+original (input) alignment, and outputs these pseudo-alignments in the PHYLIPformat. Pseudo-alignments are processed by DNADIST or PROTDIST (Support
+Protocols 1 and 2) and transformed into pseudo-matrices, which are written in
+the PHYLIP format. The pseudo-matrix ﬁle is then used by NEIGHBOR tobuild pseudo-trees, written in Newick format (Basic Protocol and
+UNIT 6.2 ).
+Finally, the pseudo-tree ﬁle is used in CONSENSE to obtain the bootstrap tree,
+also written in Newick format.
+1. After downloading and installing PHYLIP, start a SEQBOOT session by doing
+double clicking on its icon.
+2. Create pseudo-alignments from the aligned sequences using SEQBOOT.
+The SEQBOOT screen is illustrated along with its options in Figure 6.3.11. To obtain more
+reliable results, the Roption, which corresponds to the number of replicates, has to be
+changed from 100 (the default value) to 1000 (or more in large studies). SEQBOOT allowsfor site categories and weights (options WandC, see Support Protocol 1). Fcan be used
+for large studies to save space on one’s system (see SEQBOOT documentation ﬁle). I,0,1
+and2have the same meaning as in other PHYLIP programs (see Support Protocol 1); the
+authors suggest switching 2to avoid displaying the (extensive and useless) progress
+of run on the terminal. The default values have to be conserved for the other options,
+which correspond to non-sequence data ( D) or other resampling procedures ( JandB).Getting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.12
+Supplement 15 Current Protocols in Bioinformatics
+Figure 6.3.11 The SEQBOOT screen showing options for renaming ﬁles and setting parameters. The default
+parameters are shown.
+3. Apply DNADIST (Support Protocol 1) to the pseudo-alignment ﬁle to obtain the
+pseudo-matrices.
+DNADIST is used as described in Support Protocol 1, except that the number of data sets
+(replicates) must be given using the Moption. Switching the 2option is also relevant.
+4. Apply NEIGHBOR (Basic Protocol) or any other distance method (Alternate Proto-
+cols 1 and 2) to the pseudo-matrix ﬁle, indicating the number of matrices with theMoption, and switching the 2option.
+5. Obtain the bootstrap tree by double-clicking CONSENSE and applying it to the
+pseudo-tree ﬁle.
+The CONSENSE screen is illustrated along with its options in Figure 6.3.12. The default
+input ﬁle name is intree , while, as for NEIGHBOR (Basic Protocol), the outfile
+will contain a simple representation of the bootstrap tree. The Coption deﬁnes the type
+of consensus method; MRorMre should be selected. The former will provide only clades
+occurring in more than 50% of the pseudo-trees, while the latter will complete these wellsupported clades by clades below 50%; only bootstrap supports above 50% have a clearmathematical meaning (Berry and Gascuel, 1996), but lower supports can be informativein some cases. The threshold of clade selection can also be user-deﬁned by selecting M1.
+Ohas the same meaning as for NEIGHBOR (Basic Protocol) and can be used to deﬁne the
+outgroup species. Rhas to remain No when using NEIGHBOR and related methods that
+infer unrooted trees. Tdeﬁnes the terminal type, just like 0in other PHYLIP programs
+(Basic Protocol). When 1is on, CONSENSE outputs in outfile the species list and
+all clades that belong to at least one of the pseudo-trees. When option 3is turned off,
+theoutfile is not created and this cancels (among other things) the previous option.
+When option 4is on, the bootstrap tree in Newick format in written in the outtree ﬁle.
+Finally, switching on the 2(progress of run) option is relevant.Inferring
+Evolutionary
+Relationships
+6.3.13
+Current Protocols in Bioinformatics Supplement 15
+Figure 6.3.12 The CONSENSE screen showing options for renaming ﬁles and setting parameters. The
+default parameters are shown.
+Figure 6.3.13 T reeView representation of the bootstrap tree that is obtained with NEIGHBOR
+with 1000 replicates. Bootstrap supports are associated with internal branches (or clades). Forexample, Spongipell, Athelia
+bois supported by 790 pseudo-trees out of 1000.
+6. Finally, CONSENSE requests a new name for the outtree ﬁle. Although it is
+possible to view the resulting tree in the outfile , a better view is obtained by
+applying TreeView ( UNIT 6.2 ) to the outtree ﬁle.
+When applying these steps (with 1000 replicates) to the original alignment of Figure
+6.3.7, the bootstrap tree of Figure 6.3.13 is obtained. The branch lengths correspond tothe bootstrap supports, which are explicitly shown in the case of internal branches. Notethat due to the random nature of the process, bootstrap supports can differ slightly fromone run to another.Getting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.14
+Supplement 15 Current Protocols in BioinformaticsALTERNATE
+PROTOCOL 1USING BIONJ, WEIGHBOR, OR FITCH TO CONSTRUCT A TREE
+This protocol provides descriptions of BIONJ and WEIGHBOR, which are PHYLIP-
+compatible, and FITCH, which is available in PHYLIP. These three programs have a
+higher topological accuracy than NEIGHBOR. The resulting trees, however, are often
+similar or identical to NEIGHBOR trees, at least with a low number of taxa (e.g., <20).
+When this number increases, the various methods tend to return different trees, and theiradvantage over NEIGHBOR increases. BIONJ is about the same speed as NEIGHBOR;WEIGHBOR is about 500 times slower than NEIGHBOR; and FITCH is even slower thanWEIGHBOR (see below for more details). The matrix distance computation (SupportProtocols 1 and 2) and the bootstrap procedure (Support Protocol 3), are not describedhere, since they are performed exactly as with NEIGHBOR (Basic Protocol).
+Using BIONJ
+BIONJ is available free from http://www.lirmm.fr/ ∼w3ifa/MAAS/BIONJ/BIONJ.html .
+This Web page contains documentation and articles, test sets, and executables for Win-dows PC and PowerMac, as well as the C source code. Once downloaded (and compiledon Unix and related systems), BIONJ must be placed in the PHYLIP directory.
+BIONJ asks for the distance matrix input ﬁle and the name of the tree output ﬁle. The
+distance matrix must be square and written in PHYLIP format. The ﬁle can contain one orseveral matrices, as obtained when using SEQBOOT plus DNADIST or PROTDIST, butthe user is not asked for the number of matrices. BIONJ then returns as many trees as thereare matrices. These trees are written in Newick format (
+UNIT 6.2 ). In case of a single matrix,
+the resulting tree can be viewed using TreeView ( UNIT 6.2 ). With multiple matrices and
+trees, CONSENSE (Support Protocol 3) must be used, just as with NEIGHBOR (BasicProtocol).
+Applying BIONJ to the matrix of Figure 6.3.2, the tree of Figure 6.3.4 is obtained, with
+TreeView representation as shown in Figure 6.3.5. This tree differs from the NEIGHBORtree (Basic Protocol) by the branch lengths but not by the topology, which is not surprisingin view of the low number of taxa.
+Using WEIGHBOR
+WEIGHBOR is available in C source code free from http://www.t10.lanl.gov/
+billb/weighbor/ . This Web page contains documentation, the seminal article, the C source
+code, and selected executables for the Windows, Linux, and Solaris operating systems.Then, WEIGHBOR must be placed into the PHYLIP directory.
+Just like BIONJ, WEIGHBOR asks for the input and output ﬁles, and the input ﬁle can
+contain one or several matrices. WEIGHBOR then asks for the sequence length andthe number of symbols, i.e., 4 for DNA or RNA sequences and 20 for proteins. Whenthe input ﬁle contains several matrices, WEIGHBOR returns the same number of trees,which must be dealt with by CONSENSE (Support Protocol 3), just as with NEIGHBOR(Basic Protocol).
+Using FITCH
+FITCH is available in PHYLIP and runs on numerous systems (see Basic Protocol,Necessary Resources).
+FITCH is able to deal with multiple data sets, just as NEIGHBOR, BIONJ, or WEIGH-
+BOR, and its menu is analogous to that of NEIGHBOR (see Basic Protocol). All optionsmust, a priori, conserve their default values, except GandJwhich can be used to search
+the tree space more extensively (at the expense of longer run times). Gcan be switched
+toYes to search for global rearrangements that improve the least-squares ﬁt of the tree.Inferring
+Evolutionary
+Relationships
+6.3.15
+Current Protocols in Bioinformatics Supplement 15Jtakes advantage of the fact that FITCH does not systematically ﬁnd the same tree,
+depending on the taxon ordering. When Jis switched to Yes, FITCH asks for a seed to
+initiate the random ordering procedure, and then for the number of times the random-ization procedure has to be used. The resulting tree is the best tree that is obtained fromall random orderings. The higher their number, the better the solution, but the longer thecomputing time. A value of 10 seems to be a reasonable compromise, but is too high for
+large data sets, for which the Joption has to be switched off.
+ALTERNATE
+PROTOCOL 2USING FastME TO CONSTRUCT A TREE
+This protocol provides a description of the phylogeny program FastME, which is
+PHYLIP-compatible. FastME builds trees with high accuracy, at least as accurately
+as WEIGHBOR and FITCH in simulations, but it builds the trees much more quickly,
+even more quickly than NEIGHBOR and BIONJ. This protocol describes FastME ver-sion 1.0, which has been fully studied and published (Desper and Gascuel, 2002, 2004),but a new version will be made available soon that handles all of the tasks of distancemethods, including calculating distance matrices from sequence data and bootstrapping.FastME 1.0 only builds trees, just like NEIGHBOR. The matrix distance computation(Support Protocols 1 and 2) and the bootstrap procedure (Support Protocol 3) are notdescribed here, since they are performed exactly as with NEIGHBOR (Basic Protocol).
+FastME complies with the minimum evolution principle (ME), which involves minimiz-
+ing the tree length (sum of branch lengths). The general approach is to do a topologysearch, calculating the tree length for each topology and searching for the topology withshortest tree length. FastME can do the search efﬁciently by using small topologicalmoves, leading to changes in tree length that can be calculated quickly, without recalcu-lating each individual branch length. It then starts from an initial tree and reﬁnes this treeuntil no more moves improve the current tree.
+Necessary Resources
+Hardware
+FastME is written in C, and can be used on any platform that supports a C
+compiler. Executables are available for Windows, Linux, and Macintosh
+operating systems. These are command-line executables, but a PHYLIP-type
+interface is expected to be released soon. Software is available at the FastMEhome page ( http://atgc.lirmm.fr/fastme/ )
+Software
+The FastME program ( http://www.lirmm.fr/fastme )
+Files
+See
+UNIT 2.3 for the input formats. The input ﬁle can contain multiple data sets, if the
+user chooses, but each matrix should be square (as opposed to upper- or lower-
+diagonal).
+1. FastME is called from the command prompt on all machines. To use FastME, open
+a command-line shell window (e.g., on a Windows machine by choosing CommandPrompt under Accessories in the Start menu, or by choosing Run from the Startmenu and typing cmd in the text box). Switch to the directory containing the data
+ﬁle(s) and call FastME by typing fastme at the command prompt, with the required
+arguments described below.Getting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.16
+Supplement 15 Current Protocols in BioinformaticsAll the options described in the following steps are displayed as part of the online help,
+which is obtained by the command fastme - -h; see Figure 6.3.14. The bottom line in
+this ﬁgure runs FastME with default options, an input ﬁle called distfile that contains
+1000 distance matrices, and an output ﬁle called treefile .
+2. Use --i [name of input file] to specify the name of the input ﬁle, replacing
+the brackets and text within them with the name of the input ﬁle.
+3. Use --b BME ,--b GME (or--b NS ) to specify the method for building the initial
+tree. BME and GME are the greedy insertion algorithms introduced in (Desper andGascuel, 2002); BME ( --b BME ) greedily uses balanced least-squares minimum
+evolution, while GME ( --b GME ) uses ordinary least-squares minimum evolution.
+NS (-b NS ) uses the neighbor-joining algorithm described in the Basic Protocol.
+With n taxa, the fastest option is to use GME, which requires computational time pro-
+portional only to n2. BME requires time proportional to n2diam(T), where diam(T) is
+the diameter of the tree, i.e., the length (number of branches) of the longest path in T.BME is the default option, being the most accurate, but GME is slightly faster and givestopological accuracy similar to that of BME after post-processing. GME and BME are“greedy,” i.e., they iteratively build on partial solutions by optimally inserting the newtaxon, keeping the partial tree ﬁxed. NS requires time proportional to n
+3and performs
+the same optimization as BME, over a slightly larger search space.
+4. Alternatively, use --t [filename of starting tree topology] to start
+the topology search from a user-provided starting tree topology, instead of the BMEor GME tree.
+For example, it can be relevant to start with NJ (Basic Protocol) or BIONJ (Alternate
+Protocol 1) trees, which tend to be more accurate than GME and BME while beingrelatively fast (but, again, the difference tends to disappear after post-processing).
+5. Use --n [number of trees/matrices input] to input the number of data
+sets to be considered. The default value for this parameter is 1.
+6. Use --o [filename for tree output] to specify the name of the output
+ﬁle for the trees.
+7. Use --sto specify type of nearest-neighbor interchanges (NNIs), or tree swapping,
+to be used as a post-processing step. FastME can do NNIs to search the tree topologyspace, while seeking to optimize either the balanced least-squares ( --s BME ) or the
+ordinary least-squares ( --s OLS ) minimum evolution criterion. It is also possible to
+forego this step using ( --s none ).
+Figure 6.3.14 FastME screen (in command-prompt window) showing options for renaming ﬁles
+and setting parameters.Inferring
+Evolutionary
+Relationships
+6.3.17
+Current Protocols in Bioinformatics Supplement 15The default is to use balanced least-squares ( --s BME ), and it is recommended to use this
+setting. The post-processing step is where FastME gets its power. Each NNI requires onlytime proportional to n, if OLS minimum evolution is used, or proportional to n diam(T) ifbalanced least-squares minimum is used. The latter option is recommended, as the BLSmethod has been shown to be considerably more accurate than OLS minimum evolutionwhen biological data sets are considered.
+8. Use ---w b (for balanced) or --w O (for OLS) to select branch lengths to assign to a
+topology.
+This option is only needed if −tis selected with an input topology, and −s none is
+selected, implying no topology searching is done. In this case FastME just estimates thebranch lengths of this topology, according to one of the two approaches. Again, BME(−wb on the command line) should be preferred with biological data sets.
+ALTERNATE
+PROTOCOL 3COMPUTING NJ TREES USING CLUSTAL
+This protocol describes the use of Clustal (see UNIT 2.3 ) to build neighbor-joining (NJ)
+trees. Although Clustal is not intended primarily as a tree-building program, it is a useful
+tool for quickly getting a tree for a set of sequences. On the other hand, it does not provide
+the user with all of the possibilities of PHYLIP, notably concerning distance estimation.The program is available in two versions: ClustalX (Thompson et al., 1997), which hasa graphical interface, and ClustalW, which has a text-based interface. ClustalW can beused interactively through a simple menu system or from the command line, which makesit a useful tool for batch processing alignments or generating phylogenies as part of aCGI script. This protocol will provide instructions for both the graphical interface ofClustalX, and the ClustalW command line.
+Clustal can output trees in a variety of formats. The default is the Newick format used
+by many phylogenetic programs (see
+UNIT 6.2 and Basic Protocol). Clustal can also write
+trees in its own format, and can save the pairwise distances in PHYLIP format.
+Necessary Resources
+Hardware
+Clustal can be run on Macintosh, Windows, and Unix systems. For full details see
+UNIT 2.3 .
+Software
+ClustalX or ClustalW
+Files
+See UNIT 2.3 for the input formats.
+Building an NJ tree
+Before building a tree there are various options the user can set that control how the
+pairwise distances between sequences are computed, and the output format for the tree.In ClustalX these options are set using the commands on the Trees menu (Fig. 6.3.15);in ClustalW they are set on the command line.
+1. Install ClustalX or ClustalW and create a multiple sequence alignment (
+UNIT 2.3 ).
+2. Selecting the Exclude positions with gaps option (command-line equivalent in
+ClustalW, /TOSSGAPS ) forces Clustal to ignore any site where a gap occurs in
+any of the sequences when computing pairwise distances (Fig. 6.3.15).
+A priori, this command should be chosen, because distance estimation from sequences
+with gaps does not have sound mathematical foundations. However, removing all sitesGetting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.18
+Supplement 15 Current Protocols in Bioinformatics
+Figure 6.3.15 The T rees menu in the program ClustalX showing the menu commands and
+dialog boxes used to control how the program constructs neighbor-joining trees. Note that Exclude
+Positions with Gaps and Correct for Multiple Substitutions are not selected. If they were selected,
+a check mark would appear next to each option.
+with a gap sometimes makes the phylogenetic signal so low that the resulting tree is no
+longer supported in the bootstrap procedure. So both approaches should be tested.
+3. If the user selects the Correct for multiple substitutions option (indicated by a tick
+beside the menu command; command-line equivalent in ClustalW, /KIMURA ), then
+ClustalX will use either the Kimura 2-parameter model (Kimura, 1980) or Kimura’s(1983) correction for nucleotides and proteins, respectively, to compute pairwisedistances between sequences.
+This should be the default option. If this option is not chosen, then there is no correction
+for multiple substitutions.
+4. Select the output format.
+The menu of options for ClustalX is shown in Figure 6.3.15. The default output treeformat is the Newick (or “PHYLIP”) format. The command-line equivalent (ClustalW)f o rt h i sf o r m a ti s : /OUTPUTTREE=phylip . ClustalX can also write trees in its own
+format by checking the CLUSTAL format tree box ( /OUTPUTTREE=nj) , and can save
+the pairwise distances in PHYLIP format by checking the PHYLIP distance matrix box(/OUTPUTTREE=dist ).
+5. Having set the options for the analysis and output (or having simply taken the
+defaults), the command Draw N-J Tree will construct the tree.
+In ClustalX the user is presented with a dialog box asking for conﬁrmation of the output
+tree ﬁle name. Typically, the tree ﬁle is given the name of the user’s sequence ﬁle plus theextension .phb . Click on OK to construct the tree. However, the Draw N-J Tree command
+is somewhat oddly named, as it does not “draw” the tree. To see the tree, you will needto use a tree drawing program such as TreeView (
+UNIT 6.2 ). The command-line equivalent
+for an NJ tree using the default settings is:
+clustalw/INFILE=your-aligned-sequence-file/TREE
+To use the Kimura correction, and ignore all sites with gaps, the command-line equivalentis:
+clustalw/INFILE=your-aligned-sequence-file/TREE/
+KIMURA/TOSSGAPS.Inferring
+Evolutionary
+Relationships
+6.3.19
+Current Protocols in Bioinformatics Supplement 15The bootstrap procedure
+In addition to the options that affect tree construction above, there are additional options
+relevant to bootstrapping.
+6. Clustal stores the bootstrap values in the tree description inside square brackets,
+either as branch labels or as node labels.
+The alternative placements are controlled by the Output Tree Format Options menu (Fig.
+6.3.15). As discussed in UNIT 6.2 , there is little consensus on how to store bootstrap values
+in tree descriptions. Widely used programs such as TreeView ( UNIT 6.2 ) do not recognize
+bootstrap values stored as branch labels, and so in order to display these values inTreeView the bootstrap values must be placed on the nodes (command-line equivalent,/BOOTLABELS=node ).
+7. Having set the options for the bootstrap analysis and output, the command Bootstrap
+N-J Tree will perform the bootstrapping.
+In ClustalX the user is presented with a dialog box asking for a “seed” for the random
+number generator used to create the bootstrap pseudoreplicates, the number of pseu-doreplicates (“trials”) to generate (the default is 1000), and the name of the ﬁle to whichthe bootstrap tree will be written (typically the tree ﬁle is given the name of your sequenceﬁle plus the extension .phb ; see Fig. 6.3.15). Click on the OK button to perform the boot-
+strapping. The command-line equivalent is: clustalw/INFILE=your-aligned-
+sequence-file/BOOTSTRAP .
+GUIDELINES FOR UNDERSTANDING RESULTS
+Phylogenetic trees reconstructed by distance methods do not fundamentally differ from
+trees reconstructed by any other approach (see UNIT 6.1 ). The main speciﬁcity is related
+to branch lengths. NJ and BIONJ can provide negative branch-length estimates, whichhave to be seen as null. Such negative values do not indicate any sort of “reverseevolution.” Null (or close to zero) branches indicate an irresolution of the tree, which may
+correspond to a multifurcation, but more likely reﬂects the weakness of the phylogenetic
+signal. WEIGHBOR consistently set the negative branches to zero, while FITCH andFastME never provide negative branches as a result of the principles upon which they arebased.
+The strength of the inferred branches is measured by the bootstrap procedure. Short
+branches are generally poorly supported, but with distance-based approaches it may hap-pen that long branches also have a low support. The bootstrap procedure must thereforebe used, which is done at low computation cost due to the speed of these approaches.The interpretation of bootstrap supports is a difﬁcult question, but any branch witha support lower than 50% should be considered an irresolution (Berry and Gascuel,1996).
+However, in some cases wrong inferences can have high bootstrap support. For example,
+when very long sequences are used (as is the case when several genes are combined withinthe same study), bootstrapping the data does not change the resulting tree, which maybe partly erroneous. The stability of the tree then has to be tested by other approaches.Notably, the tree must be robust with respect to the presence/absence of the outgroup,which possibly attracts some ingroup taxa, to model parameter variations, and to genesampling when several genes are combined.Getting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.20
+Supplement 15 Current Protocols in BioinformaticsCOMMENTARY
+Background Information
+The rationale of distance-based approaches
+LetSbe the set of sequences being studied
+and Tthe true evolutionary tree of these se-
+quences. Assume that the sequences have been
+correctly aligned, so that the sites correspond
+to homologous positions (see UNITS 2.1 & 2.4 ).
+Now consider the true number of substitutions
+that is attached to every branch of T, i.e., the
+number of substitutions that occurred in the
+past from the sequence situated at one branch
+extremity to the sequence at the other extrem-ity. These substitution numbers are unknown
+but well deﬁned. They induce the evolution-
+ary distance between any pair of taxa, as thesum of the substitution numbers attached to the
+path separating both taxa in T. In other words,
+the evolutionary distance between any pair oftaxa is equal to the number of substitutions
+from one sequence to the other. For mathe-
+matical reasons ﬁrst discovered by Zaretskii(1965), there is an equivalence between the
+above-deﬁned distance and T. Knowing Tand
+the substitution numbers per branch allows the
+computation of the pairwise distances between
+taxa. More importantly, the true tree Tand the
+substitution numbers per branch can be recon-
+structed from the matrix Dof pairwise evolu-
+tionary distances.
+Obviously, and unfortunately, the true num-
+ber of substitutions that separates any pair of
+taxa is unknown. Due to hidden (parallel orconvergent) mutation events, the true num-
+ber of substitutions is always greater than or
+equal to the number of observed differencesbetween both sequences. When the number
+of differences is small, both quantities are
+close. However, the gap increases when theevolutionary distance increases. The distance-
+based approach therefore involves estimating
+the evolutionary distance from the observeddifferences, assuming a stochastic model of
+sequence evolution. The simplest model, that
+of Jukes and Cantor (1969), supposes that all
+sites evolve independently and identically ac-
+cording to a Markovian process that is deﬁnedby a unique parameter representing the instan-
+taneous probability of change from one nu-
+cleotide to another. This model establishes amathematical relationship between the evo-
+lutionary distance (now deﬁned as the ratio
+between the true number of substitutions andthe sequence length) and the proportion of ob-
+served differences. More realistic models have
+been proposed, such as those described above(Support Protocols 1 and 2), but the basic prin-
+ciple remains identical. An estimate ˆDofDis
+ﬁrst computed, and then an estimate ˆTofT
+is computed using ˆD. The accuracy of ˆTin-
+creases with the reliability of ˆD.
+The estimated evolutionary distance ma-
+trix ˆDno longer exactly ﬁts a tree,
+but is usually very close to a tree. For
+example, the working data set of Figure6.3.7 has been extracted from TreeBASE
+(http://www.treebase.org/treebase/index.html )
+and corresponds to 67 fungal sequences(accession no. M520). DNADIST and
+NEIGHBOR with default options construct
+a tree that explains more than 98% of thevariance in the distance matrix (this value
+was computed by a simple program devised
+by one of the authors, which is not available
+from PHYLIP). The resulting tree and the
+distance matrix are thus extremely close, sothe mere principle of the distance approach
+appears to be well founded in this case (and
+in most cases).
+Even though the estimated distance ma-
+trix is usually very close to a tree, tree re-
+construction from such an approximate matrixis much less obvious than in the ideal case
+where the matrix perfectly ﬁts a tree. Vari-
+ous methods have been proposed, which dif-fer according to the criterion they optimize
+and according to their tree-building strategy.
+For all known criteria, the optimization task isNP-hard (i.e., can require exponential comput-
+ing time) so all practical methods are heuristic
+and do not guarantee that the best tree willbe found. However, due to the closeness be-
+tween the distance matrix and a tree, all (rea-
+sonable) methods usually ﬁnd similar trees
+that are fairly accurate estimates of the true
+tree.
+Neighbor-Joining algorithm
+Neighbor Joining (NJ) is derived from AD-
+DTREE (Sattath and Tversky, 1977). It was
+proposed by Saitou and Nei (1987) and studied
+in depth by several authors (Studier andKeppler, 1988; Rzhetsky and Nei, 1993;
+Atteson, 1997; Gascuel, 1997b; Desper and
+Gascuel, 2005).
+NJ is an agglomerative algorithm. At each
+step, it uses the distance matrix ˆD=δ
+ijwhere i
+andjare either taxa or clusters of taxa agglom-
+erated during previous steps. Based on these
+distances, two taxa are selected to be merged.Denoting ras the number of “taxa” in ˆD, and
+Q
+ijas the criterion value for the agglomerationInferring
+Evolutionary
+Relationships
+6.3.21
+Current Protocols in Bioinformatics Supplement 15ofiandj, the pair agglomerated is the one min-
+imizing:
+Equation 6.3.1
+Once the pair i,jto agglomerate is selected,
+NJ creates a new node uwhich represents the
+root of the new cluster. NJ then estimates the
+branch lengths δiuandδjuand reduces the dis-
+tance matrix by replacing the distances relativeto taxa iandjby those between the new node
+uand any other node xusing:
+Equation 6.3.2
+The process stops when r=2, with the last
+branch length being equal to the last value inthe distance matrix. The successive mergings
+achieved by NEIGHBOR are available in its
+outﬁle.
+TheQcriterion enables numerous interpre-
+tations, the most popular being that it corre-sponds to the least-squares length estimate of
+the tree under construction. However, this re-
+sult was fully proven only recently by the au-thors of this unit in Desper and Gascuel (2005),
+where they showed that NJ actually minimizes
+the balanced least-squares tree length estimate,ﬁrst proposed by Pauplin (2000); see below
+for further discussion. Accordingly, NJ tends
+to produce a tree with minimal length. Moreimportantly, when applied to any tree distance
+Dthat perfectly ﬁts a tree T,Qdesignates with
+certainty a pair of neighbors of T. This induces
+the statistical consistency of NJ, which is an
+essential property of phylogeny reconstruction
+methods, i.e., NJ recovers the true tree Twith
+certainty, as soon as ˆDis sufﬁciently close to
+the true evolutionary distance matrix D.
+The BIONJ algorithm
+The BIONJ algorithm (Gascuel, 1997a) is
+a variant of NJ. It is based on the fact that NJremains consistent when its reduction formula
+(see Equation 6.3.2) is replaced by:
+Equation 6.3.3
+where λijis any number in [0,1] that varies
+depending on the merged pair i,jbut not on x.
+So once the pair i, jhas been selected, BIONJ
+computes the value λ∗
+ijthat minimizes the sumof the variances of the δuxestimates. In this
+way, more reliable estimates will be available
+to select the pairs of taxa to be agglomeratedduring the next steps. Moreover, since the pro-
+cess is repeated at each step, these estimates
+will become better and better in comparisonwith NJ estimates as the algorithm proceeds.
+To achieve this, BIONJ uses a simple ﬁrst-
+order model of variances and covariancesof evolutionary distance estimates obtained
+from sequences. This model indicates that
+the variance of any distance estimate δ
+xyis
+approximately proportional to δxy, while the
+covariance of δxyandδztis roughly propor-
+tional to the length of the intersection of paths(x,y) and ( z,t) in the true tree T(Nei and Jin,
+1989; Bulmer, 1991). This yields the formula:
+Equation 6.3.4
+where ϕis a correction term that depends on
+δiuandδju(at least when iand jare origi-
+nal taxa). When δiuandδjuare equal, then
+ϕ=0,λ∗
+ij=1/2, and BIONJ is equivalent to
+NJ. When both differ, i.e., when the substitu-
+tion rates vary among lineages, ϕbecomes not
+null and places more conﬁdence on the shorter
+and hence more reliable distance. So BIONJ
+has a clear advantage over NJ when the molec-ular clock is markedly violated, whereas both
+methods are close in the opposite case.
+WEIGHBOR
+WEIGHBOR follows the same agglomer-
+ative scheme as NJ. It modiﬁes the reductionstep, in a way analogous to BIONJ, but also
+modiﬁes the selection step to take into account
+the high variance of long-distance estimates.Instead of using NJ’s selection criterion (see
+Equation 6.3.1), WEIGHBOR combines two
+criteria. When iandjare neighbors in Tand
+when ˆDperfectly ﬁts T, then one has the two
+following properties:
+Equation 6.3.5
+Since ˆDis imperfect, these properties are
+only approximately satisﬁed, and one has to
+ﬁnd the pair iand jthat ﬁts them best.
+To achieve this, WEIGHBOR assumes that
+distance estimates are mutually independentGetting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.22
+Supplement 15 Current Protocols in Bioinformaticsand have Gaussian distribution with variance
+as induced by the Jukes and Cantor (1969)
+model. Within this model, the variance of thedistance estimate is proportional to the dis-
+tance around 0 (as in the BIONJ model), but
+increases exponentially when the distance be-comes larger. This model allows one to com-
+pute the likelihood that iandjare neighbors.
+Considering the above deﬁned additivity, onehas the following criterion (to be minimized):
+Equation 6.3.6
+where the bar denotes the average over k(/negationslash=
+i,j). A similar criterion corresponds to the
+positivity property. Additivity is used to in-
+dicate the best pairs, which are ﬁnally se-lected using Positivity . This approach, which
+fully takes into account the high variance of
+long evolutionary distances, makes WEIGH-BOR more resistant than NJ and BIONJ to
+the inﬂuence (attraction or distraction) of long
+branches.
+FITCH
+FITCH is the implementation (Felsenstein,
+1997) of the basic principles described in the
+seminal paper of Fitch and Margoliash (1967).Its algorithmic strategy is not agglomerative
+but additive. FITCH constructs a tree by iter-
+atively adding taxa to a growing tree. At eachstep, it performs tree swapping to improve the
+goodness-of-ﬁt, using nearest-neighbor inter-
+change (i.e., exchange of subtrees separatedby 3 branches). Finally, once a ﬁrst tree has
+been constructed, it optionally (see discus-
+sion of FITCH in Alternate Protocol 1) per-
+forms a more extensive search in the tree
+space by considering global rearrangements—every subtree is removed from the tree and put
+back on in all possible ways so as to have
+a better chance of ﬁnding a better tree. Theresulting tree may be sensitive to the initial
+taxon ordering, even when the swapping pro-
+cedures tend to lower its inﬂuence. So the jum-bling procedure (Alternate Protocol 1) must
+be used, unless there are computational time
+constraints.
+FITCH optimizes the weighted least-
+squares criterion. Let ( δ
+ij) be the matrix of
+distance estimates and ( ˆtij) the distance matrix
+induced by the inferred tree ˆTand its branch
+lengths. The weighted least-squares ﬁtting ofˆTis deﬁned by:
+Equation 6.3.7
+where VAR[δij] is the variance of the δijesti-
+mate. This criterion has to be minimized, and
+has value 0 when ˆTperfectly represents ( δij).
+Various solutions are possible for the variance
+ofδij, which may be written as VAR[δij]=δp
+ij.
+When the power pis null, all variances are
+equal to 1.0, and the higher variance of long
+distances is not taken into account. When p=
+1, the variance of δijis equal to δij, and the
+model is equivalent to that of BIONJ without
+the covariance terms. The best results, how-
+ever, are obtained with p=2, which corre-
+sponds to the solution of Fitch and Margoliash
+(1967) and is quite close to the WEIGHBOR
+model. This is the default option of FITCH.
+The criterion in the above sum of squares
+equation not only concerns the topology of ˆT,
+but also its branch lengths. Minimizing this cri-
+terion induces branch length estimates which
+have to be positive for the approach to be con-sistent. This is one other default option (to be
+conserved) of FITCH.
+FastME
+FastME builds trees using the following
+principle. For each tree T, least-squares length
+estimates are assigned to each branch. Next,the sum of the branch lengths is calculated
+and set to the value l(T). The tree minimizing
+l(T)is chosen, which is in spirit analogous to
+parsimony, but this choice requires (relatively)
+complex mathematical explanations to be
+fully understood (Desper and Gascuel, 2005).FastME allows the user to search topolo-
+gies when branch lengths are estimated either
+by ordinary least-squares (OLS) or balanced
+least-squares (BLS). Ordinary least-squares
+branch lengths are assigned according to Equa-tion 6.3.7, with p=0 and variances constant.
+Balanced least-squares (Pauplin, 2000; Desper
+and Gascuel, 2004) represents a weightedscheme per Equation 6.3.7, with:
+Equation 6.3.8
+where pijis the path length (number of
+branches) from taxon ito taxon jinT. In other
+words, variances in the balanced least-squares
+scheme increase exponentially as a function
+of the evolutionary distance, in a way similar
+to WEIGHBOR’s.Inferring
+Evolutionary
+Relationships
+6.3.23
+Current Protocols in Bioinformatics Supplement 15FastME builds an initial tree additively, as
+does FITCH. Each taxon iis inserted opti-
+mally into the tree built on the ﬁrst ( i– 1) taxa.
+Alternatively, the user can provide the initial
+topology, e.g., using NJ or BIONJ.
+From the initial topology, FastME searches
+through the space of tree topologies by test-
+ing each possible nearest neighbor interchange
+(NNI; Fig. 6.3.16). This search can be per-formed quickly, as each possible NNI can be
+tested in constant time. While either OLS or
+BLS length estimates can be used, this dis-cussion will focus on the latter, which have
+been demonstrated to have better statistical
+properties for biological data sets (Desper andGascuel, 2004). The value of the topology
+change can be expressed as a linear sum of
+“balanced” average distances.
+Balanced average distances (Pauplin, 2000)
+are deﬁned with respect to a tree T.I faandb
+are leaves of T,δ
+T
+{a}|{b}=δT
+ab, the distance from
+atobinT, is deﬁned. More generally, if Aand
+Bare the leaf sets of two disjoint subtrees of T,
+δT
+A|Bis deﬁned recursively. Presuming that it
+is not the case that both AandBare singleton
+sets, without loss of generality there are twosubtrees B
+1and B2that meet at an internal
+node to form B. Then the equation:
+Equation 6.3.9
+is deﬁned. Suppose T→T/primeis the topology
+transformation resulting from the NNI in Fig-
+ure 6.3.16. Then:
+Equation 6.3.10FastME ﬁrst calculates the value of δT
+U|Vfor
+each pair of disjoint subtrees U,VinT.U s i n g
+the structure of T, this can be done in time
+proportional to n2, where nis the number of
+taxa. After this is done, each possible value ofan NNI can be calculated using Eq. 6.3.10 in
+constant time. Once the optimal NNI is found,
+the topology is changed and the matrix of aver-
+age distances is updated in time proportional to
+ndiam( T), where diam( T) is the length (num-
+ber of branches) of the longest path between
+any taxon pair.
+Desper and Gascuel (2002) and Vinh and
+V on Haeseler (2005) showed via simulations
+that BLS FastME post-processing improves
+the quality of the output tree when the inputtree is produced by any of the major distance
+algorithms. Furthermore, the authors of this
+unit have demonstrated (Desper and Gascuel2005) that the NJ algorithm is another type
+of greedy algorithm optimizing the BLS cri-
+terion, albeit with a restricted search space;Equation 6.3.1 represents the difference in
+BLS tree length that is obtained by agglom-
+erating the pair i,j, and NJ greedily agglomer-
+ates taxon pairs until a fully resolved trees is
+obtained.
+Method comparison
+Numerous computer simulations have been
+performed to compare the topological accu-racy of phylogeny reconstruction methods.
+The principle is: (a) consider a “true tree,” (b)
+evolve an initial random sequence along thistree to obtain “contemporary sequences,” (c)
+reconstruct a tree from these sequences, (d)
+ﬁnally, compare the inferred tree to the truetree. Drawing deﬁnitive conclusions from such
+a study is difﬁcult because the results depend
+on the true tree, on the evolutionary condi-tions, and on numerous parameters. Moreover,
+numerous available studies have considered a
+Figure 6.3.16 Nearest Neighbor Interchange (NNI) swapping subtrees Band C.Getting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.24
+Supplement 15 Current Protocols in Bioinformatics
+Figure 6.3.17 T opological accuracy of NEIGHBOR (N), FastME (M), DNAP ARS (D) and PHYML
+(P) with 5000 randomly generated 40-taxon T rees. Maximum pairwise divergence is given innumber of substitutions per site. T opological accuracy is measured by the number of clades in the
+inferred tree that are not in the correct tree, divided by the total number of clades; 0.0 corresponds
+to identical trees, while 1.0 means that both trees have no clade in common.
+low number of true trees and few taxa (usually
+12 or less).
+The authors of this unit have recently tried
+to overcome these limits by randomly generat-
+ing thousands of trees, with realistic numbers
+of taxa (from 24 to 100), under a broad vari-ety of evolutionary conditions. Figure 6.3.17
+displays the topological accuracy of four pro-
+grams: NJ, FastME, DNAPARS (parsimony-based algorithm used with default options,
+from the PHYLIP package), and PHYML
+(Guindon and Gascuel, 2003), which is a fastmaximum-likelihood algorithm. The results
+were obtained with 40-taxon trees generated
+using the standard Yule-Harding speciation
+process, maximum pairwise divergence uni-
+formly drawn from [0.1,1.1], and the molec-ular clock varying from full satisfaction to
+strong violation. Figure 6.3.17 clearly shows
+the advantage of using FastME rather thanNJ, as FastME is more accurate than NJ
+whatever the maximum pairwise divergence
+among taxa. With this data set, WEIGHBORand FITCH are very close to FastME, while
+BIONJ accuracy is midway between NJ’s and
+FastME’s (results not shown). Moreover, Fig-ure 6.3.17 gives a clear view of the relative
+topological accuracy of the three main ap-
+proaches: distance, parsimony, and maximum-likelihood. The latter is the best method in
+all conditions, and the gap with the other ap-
+proaches is rather impressive. DNAPARS isglobally equivalent to FastME, but its relative
+accuracy depends on the maximum-pairwise
+divergence; it performs well with low evolu-tionary rates, but its performance is no better
+than NJ’s under the opposite condition.
+More taxa are required to distinguish
+among the best distance-based methods. In
+Desper and Gascuel (2004), the authors of this
+unit generated 100-taxon trees using the Al-dous distribution on trees, which generalizes
+the simple Yule-Harding distribution. 600-bp
+DNA sequences were evolved through eachtree topology, with rates of evolution varying
+from site to site according to a covarion model
+(Galtier, 2001). From the resulting DNA
+sequences, distance matrices were calculated
+using the Nei and Jin (1989) estimate forgamma-distributed rates. Algorithms tested
+included FastME, NJ, WEIGHBOR, and the
+weighted least squares heuristic search ofPAUP
+∗, which is similar to FITCH but much
+faster. Results indicated that FastME has best
+topological accuracy, whatever the value ofvarious simulation parameters related to tree
+shape, molecular clock violation, maximum
+pairwise divergence, and covarion model ofsequence evolution.
+Finally, very large-scale simulations with
+thousands of taxa were published recentlyby Vinh and von Haeseler (2005), to com-
+pare fast distance methods, i.e., NJ, BIONJ,
+BME (FastME’s greedy insertion algorithmInferring
+Evolutionary
+Relationships
+6.3.25
+Current Protocols in Bioinformatics Supplement 15based on balanced minimum evolution), and
+STC (Vinh and von Haeseler’s own method
+based on the use of short triplets). They foundthat STC produced the best initial topologies
+for post-processing, followed by BME. More
+importantly, they also found that FastMEpost-processing (with balanced minimum evo-
+lution) improved the topological accuracy,
+without regard to which algorithm was usedto select an initial topology. Furthermore,
+the accuracy was fairly uniform after post-
+processing without regard to the selectionof the initial topology. Thus, it appears that
+FastME post-processing is the key step here,
+and that it should be used whenever large datasets are analyzed. Moreover, as the initial tree-
+building algorithm has low inﬂuence, using
+the BME algorithm for this purpose (FastME
+default option) is a simple, fast and accurate
+solution.
+It can be seen that contrast between meth-
+ods in Figure 6.3.17 is not very high, even
+when signiﬁcant. The contrast between runtimes in Table 6.3.1 is much more impres-
+sive. NJ, BIONJ, and FastME are one or-
+der of magnitude faster than any of the othermethods. They require about one-half sec-ond to deal with 250 taxa, and Vinh and V on
+Haeseler (2005) showed that these three meth-ods need only a few minutes to build a tree with
+5000 taxa on a standard computer (see Howe
+et al., 2002, for the analysis of even larger datasets). In fact, they require much less time than
+DNADIST requires to compute the matrix of
+pairwise distances. But this latter program israther slow, due to the use of optimization-
+based distance estimators, and faster analytical
+solutions do exist to estimate evolutionary dis-tances. WEIGHBOR is about 500 times slower
+than NJ and is only applicable to data sets with
+up to a few hundred sequences, while FITCHis very slow, as it requires about 12 hr to an-
+alyze 250 taxa. DNAPARS is also quite slow,
+as it requires ∼8 hr to deal with 250 taxa, but
+TNT (see Internet Resources) is much faster
+and ﬁnds better trees (24 parsimony steps, with250 taxa) than DNAPARS. DNAML is also
+slow, even when using the speedier option (as
+performed by the authors of this unit), and re-quires about 100 min to deal with 250 taxa;
+moreover, its results in terms of likelihood are
+rather poor as compared to PHYML (DNAMLtree is about 500 log likelihood points below
+PHYML’s, with 250 taxa). Finally, PHYML is
+Table 6.3.1 Run Times for Various T ree-Building Methods
+Run time (sec)
+Number of taxa
+Methoda,b,c40 100 250
+DNADIST 0.09 0.65 25
+FastME 0.008 0.055 0.34
+NJ 0.0045 0.035 0.25BIONJ 0.0052 0.055 0.60WEIGHBOR 1.1 18 255FITCH 6 335 43,200DNAPARS 6 230 30,000TNT 5 13 330DNAML 26 186 6,000
+PHYML 7.5 20 390
+aDistance estimation:, DNADIST; distance-based tree building methods, FastME,
+NJ, BIONJ, WEIGHBOR, and FITCH; parsimony methods, DNAPARS and TNT;
+maximum-likelihood methods, DNAML and PHYML.
+bTNT was run with 500 (40 and 100 taxa) or 50 (250 taxa) starting points and
+TBR option. All other programs were run with default options and K2P model of
+sequence evolution. 40-taxon and 100-taxon (simulated) data sets were taken from
+(Guindon and Gascuel, 2003); results were averaged over 5000 and 30 data sets,
+respectively. The 250-taxon (biological) data set was used in (Stamatakis et al.,
+2004) to compare maximum-likelihood programs.
+cRun times are in seconds with a Windows PC 1.8 MHz and 1.0 Gb RAM.Getting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.26
+Supplement 15 Current Protocols in Bioinformaticsrather efﬁcient as it requires about 6 min with
+250 taxa; it can be used up to 500 taxa and has
+very good topological accuracy (Figure 6.3.17;Guindon and Gascuel, 2003).
+These results show that, with very large
+data sets, e.g., >1000 taxa, the distance ap-
+proach is the only one to be applicable, as soon
+as fast algorithms are used, i.e., NJ, BIONJ,
+or FastME. FastME should be preferred, asit clearly has the best topological accuracy
+among the distance methods, while NJ is worse
+and BIONJ is in between (Vinh and V onHaeseler, 2005). With large data sets involving
+a few hundred taxa, fast parsimony (e.g., TNT)
+and maximum-likelihood (e.g., PHYML) pro-grams become applicable, and the latter should
+be preferred over any other approach, as it
+has the best topological accuracy. However,
+distance methods are still of interest for fast
+exploratory study, and to perform bootstrapanalysis, which is very demanding in terms of
+computing time. Finally, with moderate data
+sets, e.g., <100 taxa, all methods are applica-
+ble; the use of distance methods should then
+be limited to fast analysis, and maximum-
+likelihood should be employed in othercases.
+Critical Parameters and
+Troubleshooting
+Distance-based approaches are sensitive to
+the way evolutionary distances are estimated.When the sequences exhibit few differences,
+all sequence evolution models become equiv-
+alent, and the model choice is not crucial.For example, when two sequences have 0.1
+sites that differ with 0.07 transitions and 0.03
+transversions, the Jukes and Cantor distanceestimate is equal to 0.1073, the Kimura two-
+parameter estimate is 0.1086, and the Jin and
+Nei estimate (with α=1.0) is 0.1183. Dis-
+tance estimation, however, becomes very sen-
+sitive to the model choice when the maximum
+pairwise divergence among the sequences in-
+creases. For example, consider two sequences
+with half of the sites being different, with 0.35transitions and 0.15 transversions, the Jukes
+and Cantor estimate is equal to 0.824, the
+Kimura two-parameter estimate is 1.037, andthe Jin and Nei estimate ( α=1.0) is 2.940.
+Therefore, data sets where the sequence di-
+vergence is too high (say >1.0) must be con-
+sidered suspicious and should be discarded.
+Note that the presence of such high divergence
+makes the alignment itself very difﬁcult andprone to errors. With more reasonable max-
+imum divergence, the stability of the results
+despite model variations is a positive point.Moreover, the presence of distant outgrouptaxa is a perturbation factor in all reconstruc-
+tion steps (alignment, distance estimation, and
+tree building) and should be avoided, at leastin a ﬁrst analysis.
+Suggestions for Further Analysis
+Distance methods are available in numer-
+ous phylogeny software packages. Notably,
+PAUP∗(release 4.0b10; UNIT 6.4 ) provides very
+fast versions of NJ, FITCH, and BIONJ, as
+well as a larger variety of evolutionary distance
+estimates than that provided by DNADIST andPROTDIST. DAMBE (Xia et al., 2001) also
+contains an implementation of FastME and a
+complete environment to perform bootstrap,drawing the trees and computing the distances.
+Parsimony approaches do not outperform
+distance methods (see Fig. 6.3.17), but their
+principle is so different that ﬁnding the same
+tree using both is generally considered to be astrong support for that tree. PAUP
+∗(UNIT 6.4 )
+and TNT (see Internet Resources) provide fast
+parsimony implementations.
+PHYML (Guindon and Gascuel, 2003)
+is a fast and accurate maximum likelihood
+software (see Fig. 6.3.17 and Table 6.3.1),which should be preferred over other ap-
+proaches with data sets that are not too large
+(<500 taxa). PHYML is freely downloadable
+athttp://atgc.lirmm.fr/phyml/ , where a Web
+server is also available.
+Literature Cited
+Atteson, K. 1997. The performance of the NJ
+method of phylogeny reconstruction. InMath-
+ematical Hierarchies and Biology (B. Mirkin,F.R. McMorris, F.S. Roberts, and A. Rzhetsky,eds.) pp.133-148. American Mathematical So-ciety, Providence, R.I.
+Berry, V . and Gascuel, O. 1996. Interpretation of
+bootstrap trees: Threshold of clade selection andinduced gain. Mol. Biol. Evol. 13:999-1011.
+Bruno, W.J., Socci, N.D., and Halpern, A.L. 2000.
+Weighted neighbor joining: A likelihood-basedapproach to distance-based phylogeny recon-struction. Mol. Biol. Evol. 17:189-197.
+Bulmer, M. 1991. Use of the method of generalized
+least squares in reconstructing phylogenies fromsequence data. Mol. Biol. Evol. 8:868-883.
+Dayhoff, M.O., Schwartz, R.M., and Orcutt, B.C.
+1979. A model for evolutionary change in pro-teins. InAtlas of Protein Sequence and Structure
+(M.O. Dayhoff, ed.), vol. 5, pp. 345-352.
+Desper, R. and Gascuel, O. 2002. Fast and accurate
+phylogeny reconstruction algorithms based onthe minimum-evolution principle. J. Comp. Biol.
+9:687-705.
+Desper, R. and Gascuel, O. 2004. Theoretical
+foundation of the balanced minimum evolutionmethod of phylogenetic inference and its rela-
+tionship to weighted least-squares tree ﬁtting.
+Mol. Biol. Evol. 21:587-598.Inferring
+Evolutionary
+Relationships
+6.3.27
+Current Protocols in Bioinformatics Supplement 15Desper, R. and Gascuel, O. 2005. The minimum
+evolution distance-based approach to phylo-genetic inference. InMathematics of Evolu-
+tion and Phylogeny (O. Gascuel, ed.) pp. 1-32.Oxford University Press, Oxford.
+Felsenstein, J. 1989. PHYLIP–Phylogeny inference
+package (version 3.2). Cladistics 5:164-166.
+Felsenstein, J. 1997. An alternating least-squares
+approach to inferring phylogenies from pairwisedistances. Syst. Biol. 46:101-111.
+Felsenstein, J. and Churchill, G.A. 1996. A hid-
+den Markov model approach to variation amongsites in rate of evolution Mol. Biol. Evol. 13:
+93-104
+Fitch, W.M. and Margoliash, E. 1967. Construction
+of phylogenetic trees. Science 155:279-284.
+Galtier, N. 2001. Maximum-likelihood phyloge-
+netic analysis under a covarion-like model. Mol.
+Biol. Evol. 18:866-873.
+Gascuel, O. 1997a. BIONJ: An improved version
+of the NJ algorithm based on a simple model ofsequence data. Mol. Biol. Evol. 14:685-695.
+Gascuel, O. 1997b. Concerning the NJ algorithm
+and its unweighted version, UNJ. Mathemati-cal Hierarchies and Biology (B. Mirkin, F.R.McMorris, F.S. Roberts, and A. Rzhetsky, eds.)pp. 149-170. American Mathematical Society,Providence, R.I.
+Graur, D. and Li, W.-H. 2000. Fundamentals
+of Molecular Evolution. Sinauer Associates,Sunderland, Mass.
+Guindon, S. and Gascuel, O. 2002. Efﬁcient biased
+estimation of evolutionary distances when sub-stitution rates vary across sites. Mol. Biol. Evol.
+19:534-543.
+Guindon, S. and Gascuel, O. 2003. A simple, fast,
+and accurate algorithm to estimate large phy-
+logenies by maximum likelihood. Syst. Biol.
+52:696-704.
+Howe, K., Bateman, A., and Durbin, R. 2002.
+QuickTree: Building huge Neighbour-Joiningtrees of protein sequences. Bioinformatics
+18:1546-1547.
+Jin, L. and Nei, M. 1990. Limitations of the evolu-
+tionary parsimony method of phylogenetic anal-ysis. Mol. Biol. Evol. 7:82-102.
+Jones, D.T., Taylor, W.R., and Thornton, J.M. 1992.
+The rapid generation of mutation data matricesfrom protein sequences. Comput. Appl. Biosci.
+8:275-82.
+Jukes, T.H. and Cantor, C.R. 1969. Evolution of pro-
+tein molecules. Mammalian Protein Metabolism(H. N. Munro, ed.) pp.21-132. Academic Press,New York.
+Kimura, M. 1980. A simple method for estimating
+evolutionary rates of base substitutions throughcomparative studies of nucleotide sequences. J.
+Mol. Evol. 16:111-120.
+Kimura, M. 1983. The Neutral Theory of Molec-
+ular Evolution. Cambridge University Press,Cambridge, U.K.Kishino, H. and Hasegawa, M. 1989. Evaluation
+of the maximum likelihood estimate of the evo-lutionary tree topologies from DNA sequencedata, and the branching order in Hominoidea J.
+Mol. Evol. 29:170-179.
+Nei, M. and Jin, L. 1989. Variances of the average
+numbers of nucleotide substitutions within andbetween populations. Mol. Biol. Evol. 6:290-
+300.
+Page, R.D.M. and Holmes, E.C. 1998. Molecular
+Evolution: A Phylogenetic Approach. BlackwellScientiﬁc, Oxford, U.K.
+Pauplin, Y . 2000. Direct calculation of a tree length
+using a distance matrix. J. Mol. Evol. 51:41-47.
+Perri `ere, G. and Gouy, M. 1996. WWW-Query: An
+on-line retrieval system for biological sequencebanks. Biochimie 78:364-369.
+Rzhetsky, A. and Nei, M. 1993. Theoretical founda-
+tion of the minimum-evolution method of phy-logenetic inference. Mol. Biol. Evol. 10:1073-
+1095.
+Saitou, N. and Nei, M. 1987. The neighbor-joining
+method: A new method for reconstruction of
+phylogenetic trees. Mol. Biol. Evol. 4:406-425.
+Sattath, S. and Tversky, A. 1977. Additive similarity
+trees. Psychometrika 42:319-345.
+Sokal, R.R. and Michener, C.D. 1958. A statistical
+method for evaluating systematic relationships.Univ. Kans. Sci. Bull. 38:1409-1438.
+Stamatakis, A., Ludwig, T., and Meier, H. 2004.
+RAxML-III: A fast program for maximumlikelihood-based inference of large phylogenetic
+trees. Bioinformatics 21:456-463.
+Steel, M.A. 1994. Recovering a tree from the
+Markov leaf colourations it generates under aMarkov model. Appl. Math. Lett. 7:19-23.
+Studier, J.A. and Keppler, K.J. 1988. A note on the
+neighbor-joining algorithm of Saitou and Nei.Mol. Biol. Evol. 5:729-31.
+Swofford, D.L., Olsen, G.L., Waddell, P.J., and
+Hillis, D.M. 1996. Phylogenetic inference. In
+Molecular Systematics (D.M. Hillis, C. Moritz,
+and B.K. Mable, eds.) pp. 407-514. Sinauer As-sociates, Sunderland, Mass.
+Thompson, J.D., Gibson, T.J., Plewniak, F.,
+Jeanmougin, F., and Higgins, D.G. 1997. TheClustalX windows interface: Flexible strategiesfor multiple sequence alignment aided by qual-ity analysis tools. Nucleic Acids Res. 25:4876-
+4882.
+Veerassamy, S., Smith, A., and Tillier, E.R. 2003. A
+transition probability model for amino acid sub-stitutions from blocks. J. Comput Biol. 10:997-
+1010.
+Vinh, L.S. and von Haeseler, A. 2005. Shortest
+triplet clustering: Reconstructing large phylo-genies using representative sets. BMC Bionﬁr-
+matics 6:92.
+Xia, X. and Xie, Z. 2001. DAMBE: Data analysis
+in molecular biology and evolution. J. Hered.
+92:371-373.Getting a Tree
+Fast: Neighbor
+Joining, FastME,
+and Distance-
+Based Methods
+6.3.28
+Supplement 15 Current Protocols in BioinformaticsYang, Z. 1996. Among-site rate variation and its
+impact on phylogenetic analyses. TREE 11:367-
+372.
+Zaretskii, K. 1965. Reconstructing a tree from the
+distances between its leaves. Uspehi Mathe-
+maticheskikh Nauk 20:90-92 (in Russian).
+Internet Resources
+http://atgc.lirmm.fr/fastme
+This web page from the authors provides FastME
+C source code and binaries for Windows, MAC OSand LINUX, as well as several papers to under-stand in depth the minimum evolution principle, itsalgorithms and its properties.
+http://atgc.lirmm.fr/phyml
+This web page provides PHYML binaries for Win-
+dows, MAC OS and LINUX, and a web server torun PHYML online.
+http://www.cladistics.com/webtnt.html
+Goloboff, P ., Farris, S., and Nixon, K. 2000. TNT:
+Tree analysis using new technology. Beta version,published by the authors, Tucum ´an, Argentina.http://evolution.genetics.washington.edu/phylip/
+software.html
+Joe Felsenstein’s Web page, containing an exten-
+sive list of phylogeny software programs, includingnumerous distance-based methods.
+Contributed by Richard Desper
+Department of BiologyUniversity College
+London, United Kingdom
+Olivier Gascuel
+Equipe “M ´ethodes et Algorithmes pour la
+Bioinformatique”
+LRMM-CNRSMontpellier, France

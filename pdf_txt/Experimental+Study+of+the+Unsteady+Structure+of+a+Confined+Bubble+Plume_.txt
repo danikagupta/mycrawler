@@ -1,0 +1,620 @@
+Helmholtz-Zentrum Dresden-Rossendorf (HZDR)
+Investigation of Bubble Plume Oscillations by Euler-Euler Simulation
+Fleck, S.; Rzehak, R.;
+Originally published:
+July 2019
+Chemical Engineering Science 207(2019), 853-861
+DOI: https://doi.org/10.1016/j.ces.2019.07.011
+Perma-Link to Publication Repository of HZDR:
+https://www.hzdr.de/publications/Publ-29428
+Release of the secondary publication 
+on the basis of the German Copyright Law § 38 Section 4.
+CC BY-NC-ND 1 Investigation of Bubble Plume Oscillations  by Euler -Euler Simulation  
+ 
+Sebastian Fleck1,2, Roland Rzehak1* 
+ 
+1 Helmholtz -Zentrum Dresden – Rossendorf, Institute of Fluid Dynamics,  
+Bautzner Landstrasse 400, D -01328  Dresden, Germany  
+2 Technische Universität  Dresden, Chair of Chemical Reaction Engineering and Process 
+Plant, Münchnerplatz 3, D -01062 Dresden, Germany  
+ 
+ 
+Abstract  
+For practical applications the Euler -Euler two -fluid model relies on suitable closure relations 
+describing interfacial exchange process es. An ongoing effort at HZDR has led to a validated 
+set of closures for adiabatic bubbly flows that is applicable under a rather broad range of 
+conditions  including flows in pipes and bubble columns. Up to now , however, only flows 
+with stationary mean val ues have been considered. The present contribution extends the 
+model validation to dynamic flow phenomena by considering a periodically oscillating 
+bubble plume. Consequently, the turbulence model then runs in URANS mode. L iterature 
+data for a partially ae rated flat rectangular bubble column are used for comparison. In 
+particular, r esults for the plume oscillation period show good agreement  between 
+simulation and experiment.  
+ 
+ 
+Keywords:  bubble colum ns, dispersed gas liquid multiphase flow, Euler -Euler two fluid 
+model, closure relations, CFD simulation, model validation  
+                                                      
+*   Corresponding author. E -mail: r.rzehak@hzdr.de   2 TABLE OF CONTENTS  
+1 INTRODUCTION  ................................ ................................ ......................  3 
+2 SUMMARY OF EXPERIMEN TAL DATA  ................................ .................  5 
+3 MODEL DESCRIPTION AND NUME RICAL SETUP  ...............................  7 
+4 SIMULATION RESULTS  ................................ ................................ .........  9 
+ Average velocities and gas fraction  ................................ .....................  9 
+4.1 Plume oscillation period  ................................ ................................ ...... 14 
+4.25 CONCLUSIONS  ................................ ................................ .....................  16 
+6 NOMENCLATURE  ................................ ................................ .................  16 
+7 REFERENCES  ................................ ................................ .......................  17 
+ 
+   3 1 INTRODUCTION  
+ 
+Bubbly flows are common in many engineering disciplin es comprising  chemical engineering , 
+mineral processing, and biotechnology . The fluid dynamics of such systems  displays  complex 
+behavior for which to date only partial understanding is available . Consequently , design and 
+optimization of  technical equipment involving bubbly flow present a great challenge. In this 
+situation, CFD simulations bear the potential of identifying energy - and resource - efficient 
+solutions which are prohibitively expensive and time -consuming to uncover by conventi onal 
+semi -empirical methods.  
+CFD simulations of dispersed bubbly flow on the scale of technical equipment are feasible 
+within the Eulerian two -fluid framework of interpenetrating continua. Since phenomena 
+occurring on the scale of individual bubbles or gr oups thereof are not resolved in this 
+approach , accurate numerical predictions rely on suitable closure relations  describing the  
+physics of these  small - scale phenomena . As a first step towards a predictive model, a set of 
+baseline closures applicable to adiabatic bubbly flows has been proposed in Rzehak and 
+Krepper (2013)  comprising  the exchange of momentum between  gas and liquid phases and 
+the effects of the dispersed bubbles on the turbulence of the liquid carrier phase. 
+Comparison s between different m odel alternatives were made to select the most promising 
+candidate for less deeply investigated submodels ( Rzehak et al. 2012, Rzehak and Krepper 
+2013a ). Subsequently this baseline model has been applied to a number of diverse test 
+cases to assure its vali dity for a broad range of conditions  (Rzehak et al. 2017, Shi and 
+Rzehak 2018  and references therein) . This is a prerequisite to facilitate  reliable  predictions 
+in situations  where no data exist against which the model results could be compared, such 
+that it is not possible to make adjustments and the model has to be used in exactly the way 
+it was proposed. This venture is continued in the present work.  
+For the purpose of model validation it is vital that i n addition to local values of the phase 
+fraction  and velocity field s, information on the bubble size is available  as well , since virtually 
+all of the closure models used in Euler -Euler simulation s depend on this variable. Moreover, 
+some parametric variation  of its value would be desirable in order to ma ke a meaningful 
+comparison between different models.  Data selected according to these criteria  have been 
+used in the validation studies mentioned above . However, only flows with stationary mean 
+values were considered so far.  The purpose of the present work  is to extend the validation 
+of the baseline model to a dynamic flow situation , namely  a periodically oscillating  bubble 
+plume . This is a flow pattern that develops in bubble columns with localized gas injection  as 
+sketched in Figure 1 below . In these devices the average motion of the gas stream 
+emanating from the sparger is  not in a straight vertical path , but instead it is  deflected 
+sidewards. If the depth of the column i s rather thin and the fill height exceeds a certain 
+level , a periodic oscillation occurs between deflection to either side along the column width.  
+This presents a time -dependent flow in which the period of the plume oscillations provide s 
+a measure to valid ate the dynamic predictions of the baseline model.  
+Early observations  of the basic phenomena were made by Lin et al. (1996), Delnoij et al. 
+(1997) , Becker et al. (1999) , and Pfleger et al. (1999) . Mainly the depe ndence of the period 
+of the bubble plume oscillations  on the gas volume flux was studied. Rensen and Roig (2001)  
+cast their own and previous experimental data for the dependency of the plume oscillation 
+period on various system parameters in dimensionless form.  Buwa and Ranade (2002, 2004, 
+2005)  conducted a rather comprehensive study which included  spargers  producing bubbles  4 of different size in addition to varying aspect ratio (i.e. fill height over column width) and gas 
+flow rate. Based on their own and previous data they also proposed a correla tion for the 
+plume oscillation period in dimensionless form.  Diaz et al. (2006 , 2008) focused on 
+characterizing the regimes of oscillating as opposed to stationary plumes in terms of aspect 
+ratio  and gas flow rate.  An oscillating plume was found if the asp ect ratio exceeded a certain 
+value around 2 while under this condition the oscillation period did not depend appreciably 
+on the aspect ratio. A more recent investigation in this line was made by Upadhyay et al. 
+(2013)  based on  the newly available technique  of Computer Aided Radioactive Particle 
+Tracking (CARPT) . The experiments of Julia et al . (2007)  considered variation of the size of 
+the sparged region and the crossover between partially and fully aerated columns.  Cachaza 
+et al. (2011) and Laupsien  et al. (2017) performed experiments to investigate effects of 
+material properties, namely surface tension and viscosity, respectively.  With the exception 
+of surface tension, all parameters were included in the experiments of Liu et al. ( 2019). A 
+correlati on for the plume oscillation frequency  was given in that work as well .  
+Some of the previous studies also contained results from simulations of the respective 
+setup. Delnoij et al. (1997) applied the Euler -Lagrange  framework accounting for drag , lift, 
+and virtual mass force s acting on the bubbles. N o turbulence was considered in either 
+phase . Pfleger et al. (1999) employed the Euler -Euler  framework  with a single phase k - 
+turbulence model for the liquid  and turbulent dispersion was included by a diffusive term in 
+the continuity equation . Only the drag force was taken into account.  The work of Buwa and 
+Ranade (2002) was again based on the Euler -Euler  framework , for some  of the calculations  
+coupled with a population -balance equation.  Again a  single phase k - turbulence model was 
+used for the liquid  and turbulent dispersion was included by a diffusive term in the 
+continuity equation . Forces acting on the bubbles , however , comprised in addition to drag  
+also lift and virtual mass force s. A few f urther works devoted entirely to simulations have 
+appeared  as well. Buwa et al.  (2006) showed Euler -Lagrange  simulations of their 
+experiments with similar modeling of bubble forces  as liquid phase turbulence  as in their 
+earlier Euler -Euler simulations. Turbulent dispersion was modeled by a discrete random 
+walk model. Gupta and Roy (2013) investigated the setup of Upadhyay et al. (2013) by a 
+coupled Euler -Euler population -balance framework. Drag, lift, and virtual mass force were 
+considered and a RNG k - turbulence model was applied to the gas -liquid mixture.  
+As may be seen, the previous simulations have used rather different overall approaches and 
+different submodels for specific effects. This makes it difficult to select an appropriate 
+model for  future applications , in particular where true predictions are sought (i.e. no data 
+are available). Therefore it is advantageous to apply the baseline model introduced  at the 
+outset , and this is the objective of the present work. From the available experimental da ta, 
+the study of Buwa and Ranade (2002, 2004, 2005)  comes closest to the criteria defined 
+above, and hence this is chosen as the core of the  comparison.  Supplementary data for very 
+similar configurations are taken from Pfleger et al. (1999) and Diaz et al.  (2006) as well as 
+Darmana et al. (2007), a study that focused more on mass transfer and chemical reaction, 
+but also has data on the plume oscillations.  A description  of the se experiments  is given in 
+section 2. The applied baseline model  is summarized  in section 3  with references to more 
+detailed presentations that have been given previously . The simulation results are then 
+presented in section 4 and compared to the measurements. The comparison with the data 
+from Darmana et al. (2007) is taken from an earlier simulation study using the same model 
+as the present one (Krauß and Rzehak 2018). Conclusions are  offered  in section 5.     5 2 SUMMARY OF EXPERIMEN TAL DATA  
+In a series of works Buwa and Ranade (2002, 2004, 2005) investigated flows in a thin 
+rectangular bubble column with localized gas injection in the center of the bottom plate as 
+sketched in Figure 1. In all cases the aspect ratio of the column (i.e. the ratio of fill height to 
+width , 𝐻/𝐷) was larger than 2 , such that an oscillating bubble plume develops (e.g. Diaz et 
+al. 2006 ). The mai n parameters that were varied in the experiments are g as flow rate and 
+aspect ratio. The former assumed values  between  𝐽𝐺= 0.14  and 0.73 cm/s . For the latter, a 
+lower value was 𝐻/𝐷 = 2.25 and a higher value was in the range  
+𝐻/𝐷 = 4.5 … 5.5. In addition , two different types of spargers were used , where one 
+consisted of a perforated plate with 8 individual holes , the other one was a sintered disc. 
+The main difference between the two sparger types was that they produced bubbles of 
+different size. Details of the arrangement did not show appreciable effects. Air was used for 
+the gas and tap water for the liquid.  Temperature and pressure are not specified  explicitly  
+but presumably were at ambient values.  
+ 
+Figure 1: Sketch of the bubble column 
+geometry . 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 6 The plume oscillation frequency was found by applying a Fourier transform to a time  series 
+of fluctuating wall pressure in Buwa and Ranade (2002) and of fluctuating gas fraction in 
+Buwa and Ranade  (2004 ). Bubble sizes were determined in Buwa and Ranade (2002) using 
+high speed digital photography. Measurements of gas fraction were taken  along lateral 
+profiles in the mid -plane of the channel at various axial locations above the inlet  in Buwa 
+and Rana de (2002, 2005) by a conductivity probe .  
+Additional data on oscillating bubble plumes are available from several other sources. 
+Profiles of the mean liquid velocity were obtained in Pfleger et al. (1999) by means of LDA  
+for a setup matching the one of Buw a and Ranade (2002, 2004, 2005) with the perforated 
+plate sparger . Data on the total gas fraction are given in Diaz et al. (2006) for a column 
+which measures only 40 mm in depth, but otherwise has the same geometry  as Buwa and 
+Ranade (2002, 2004, 2005)  and Pfleger et al. (1999) . Finally, mean gas velocity profile and 
+plume oscillation frequency were reported  by Darmana et al. (2007) for N2 bubbles in 
+aqueous NaOH solution  in a bubble column with an aspect ratio of 5, a depth of 30 mm, and 
+a sparger cons isting of 21 needles. The gas volume flux was 0.7 cm/s and the bubble size 5.5 
+mm in these experiments. The slight variations in the experiment al conditions  of Diaz et al. 
+(2006) and Darmana et al . (2007)  appear to have at most a minor impact  on the large scale 
+features of the flow under investigation here.  
+   7 3 MODEL DESCRIPTION AND NUMERICAL SETUP  
+The physical models used for the simulations  are exactly the same as used in a number of 
+previous studies . Since extensive  descriptions have been presen ted repeat edly, only a  rather 
+concise summary is given here  for the sake of completeness together with references to the 
+original works.  Material properties, geometry , and boundary conditions suitable for the 
+present application are specified in detail.  
+The conservation equations for two -phase flow are summarized as follows  (e.g. Drew and 
+Passman 1998, Yeoh and Tu 2010, Ishii and Hibiki 2011) . 
+The phasic continuity equations read  
+ 𝜕
+𝜕𝑡(𝛼𝐺𝜌𝐺)+ ∇∙(𝛼𝐺𝜌𝐺𝒖𝐺)= 0   (1) 
+ 𝜕
+𝜕𝑡(𝛼𝐿𝜌𝐿) + ∇∙(𝛼𝐿𝜌𝐿𝒖𝐿) = 0  , (2) 
+while  the phasic momentum equations are  
+ 𝜕
+𝜕𝑡(𝛼𝐺𝜌𝐺𝒖𝐺)+ ∇∙(𝛼𝐺𝜌𝐺𝒖𝐺⊗𝒖𝐺)
+= −𝛼𝐺∇𝑝𝐺+ ∇∙(𝛼𝐺𝐓𝐺)+𝛼𝐺𝜌𝐺𝒈+𝑭𝐺𝑖𝑛𝑡𝑒𝑟 (3) 
+ 𝜕
+𝜕𝑡(𝛼𝐿𝜌𝐿𝒖𝐿) + ∇∙(𝛼𝐿𝜌𝐿𝒖𝐿⊗𝒖𝐿)  
+= −𝛼𝐿∇𝑝𝐿+ ∇∙(𝛼𝐿𝐓𝐿)  +𝛼𝐿𝜌𝐿𝒈+𝑭𝐿𝑖𝑛𝑡𝑒𝑟
+ . (4) 
+The term s 𝑭𝑖𝑛𝑡𝑒𝑟 in Eqs. (3) and (4) account for the momentum transfer between the 
+phases. Due to momentum conservation the relati on 𝑭𝐺𝑖𝑛𝑡𝑒𝑟=−𝑭𝐿𝑖𝑛𝑡𝑒𝑟 holds.  According to 
+the baseline model applied herein , the interphase force  comprises of a number of 
+contributions summarized in Table  1 together with the closure correlation used for each. 
+Further details and validation studies can be found e.g. in Ziegenhein et al. (2013), Rzehak et 
+al. (2015), Liao et al. 2016, Rzehak and K repper (2015), or Rzehak et al. (2017a) .  
+ 
+Table 1: Summary of bubble force correlations.  
+force  reference  
+drag   Ishii and Zuber (1979) , single bubbles  
+shear lift  Tomiyama et al. (2002)  
+wall lift  Hosokawa et al. (2002)  
+turbulent  dispersion  Burns et al. (2004)  
+virtual mass  constant coefficient CVM = ½ 
+ 
+The stress tensor   
+ 𝐓= ( 𝜇+ 𝜇𝑡𝑢𝑟𝑏)(∇𝒖+(∇𝒖)𝑇) (5) 
+comprises  both viscous and turbulent contributions . For the liquid phase, the turbulent  
+dynamic viscosity 𝜇𝐿𝑡𝑢𝑟𝑏
+  is calculated from a k -ω SST model with additional source terms 
+accounting for the bubble - induced turbulence . Due to the low density and small spatial 
+scales of the bubbles , turbulence may be neglected for the gas phase by setting  𝜇𝐺𝑡𝑢𝑟𝑏=0.  8 Further details on the turbulence modeling are given  e.g. in Rzehak and Krepper (2013a), 
+Rzehak and Kriebitzsch (2015), Ziegenhein et al. (2017) or Pare kh and Rzehak (2018).  
+To obtain a complete system of equations additional  relat ions are needed . Assuming each 
+phase to be incompressible, these are an  expression  for the overall conservatio n of volume, 
+𝛼𝐺+𝛼𝐿=1, and the assumption of pressure  equilibrium , 𝑝𝐺=𝑝𝐿=𝑝. 
+The m aterial p roperties  used correspond to air bubbles in water at atmospheric  pressure 
+and 25°C temperature and are summarized in Table 2. 
+ 
+Table 2: Summary of m aterial properties . 
+𝜌𝐿 997 kg / m³ 
+𝜇𝐿 8.899e -4 kg / (m s) 
+𝜌𝐺 1,185  kg / m³ 
+𝜇𝐺 1.831e -5 kg / (m s) 
+𝜎 0.072 N  / m 
+ 
+The simulations are performed using the commercial  software ANSYS CFX 17.2 . The full 
+volume of the column up to the  ungassed  fill height is considered as the computational 
+domain . A degassing boundary condition is applied at the top of the domain. The sparger is 
+modeled as a region of 24 x 12 mm size in the center of the bottom of the domain on which 
+an inlet boundary condition  is pr escribed.  The area of this region corresponds to the area 
+occupied by the sparger in the experiment, while details of the arrangement of the hole s are 
+neglected. The gas flux through this area is set to the desired value for the case under 
+considerat ion. On the rest of the bottom as well as on the side walls of the domain , a no -slip 
+condition i s used for the liquid phase and a free -slip condition for the gas phase , assuming 
+that direct contacts between the bubbles and the walls are negligible. To avoi d the need to 
+resolve the viscous sub -layer, a single phase turbulent wall function assuming a smooth wall 
+is applied which consists of a blend between inertial and viscous sub -layers (referred to as 
+“automatic wall -function treatment” in the ANSYS -CFX use r guide).  Simulations are run in a 
+time -dependent mode corresponding to an URANS treatment of turbulence  (Ziegenhein et 
+al. 2017). A s a consequence, time -averaging is applied to all quantities . A grid spacing of 
+~3 mm in all space directions was determined as suitable in a grid independence study. In 
+Figure 2 and Figure 3 results for a finer grid with ~2 mm grid spacing are shown for 
+comparison. Deviations between results for the  vertical component of liquid velocity and  
+gas fraction on both grids are seen to be small already. The difference obtained  for the 
+period of plume oscillations is less than 2%. Similarly an averaging interval of 300  s was 
+determined to yield converged averages  of all quantities . The b ubbl e size  was taken as 5 .0 
+mm for the perforated plate  sparger and 2. 2 mm for the sintered disc sparger  in accordance 
+with the experiments  of Buwa and Ranade (2002) . 
+ 
+   9 4 SIMULATION RESULTS  
+Since the different works summarized in section 2 use different combinations of parameters 
+and provide different measured quantities, a suitable selection ha s to be made in order to 
+keep the number of simulations within reasonable bounds while  providing the best possible 
+comparison with the experimental data. The test conditions chosen for the simulations are 
+listed  in Table 3. The available mea surement data for each case will be discussed  together 
+with the comparison  to the simulation results, first for the time -averaged phasic velocities 
+and phase fractions, then for the plume oscillation period, which is a dynamic property of 
+the flow.  
+ 
+test case  𝐻/𝐷 sparger  𝐽𝐺 𝑑𝐵 
+ -  cm/s  mm 
+N1 2.25  perforated plate  0.14  5.0 
+N2 2.25  perforated plate  0.16  5.0 
+N3 2.25  perforated plate  0.73  5.0 
+N4 4.5 perforated plate  0.16  5.0 
+N5 4.5 perforated plate  0.73  5.0 
+N6 2.25  perforated plate  0.30 5.0 
+N7 2.25  perforated plate  0.44  5.0 
+N8 2.25  perforated plate  0.59  5.0 
+N9 4.5 perforated plate  0.30 5.0 
+N10 4.5 perforated plate  0.44  5.0 
+N11 4.5 perforated plate  0.59  5.0 
+F1 2.25  sintered disc 0.16  2.2 
+F2 2.25  sintered disc 0.30 2.2 
+F3 2.25  sintered disc 0.44  2.2 
+F4 2.25  sintered disc 0.59  2.2 
+F5 2.25  sintered disc 0.73  2.2 
+ 
+Table 3: Summary of test conditions  used for the simulations .  
+ 
+ Average velocities and gas fraction  4.1
+First, test case N1 is considered, for which lateral profiles of the liquid velocity are available 
+at different heights (130, 250, and 370 mm) of the column from Pfleger et al. (1999) and at 
+the highest level a gas fraction profile is available from Buwa a nd Ranade (2002). The gas 
+volume flux for these experiments is 𝐽𝐺= 0.14 cm/s and the column aspect ratio is 𝐻/𝐷=
+ 2.25 , exactly matching the values used in the simulations . Comparison of the  
+measurements with the corresponding results of the present sim ulations is shown in Figure  10 2 and Figure 3, respectively. For the liquid velocity, good agreement is found at the lowest 
+level, while at t he higher levels, the simulations overestimate the peak value of the velocity 
+in the center of the column as well as the recirculating velocity near the column walls. For 
+the gas fraction, agreement between simulation and experiment is very good. A notable  
+asymmetry between left and right halves of the experimental profiles for both liquid 
+velocity and gas fraction points to the fact that averaging was performed over a too short 
+time interval containing too few oscillation periods of the bubble plume. In th e simulation 
+results such an asymmetry is not seen.  
+A profile of gas velocity for conditions close to test case N5 (specifically 𝐽𝐺= 0.7 cm/s , 
+𝐻/𝐷= 5, and 𝑑𝑏= 5.5 mm ) is available from a previous study (Krauß and Rzehak, 2018). 
+There, simulations we re run using the same model as the present investigation and 
+compared to experimental data from Darmana et al. (2007). Since these results nicely 
+complement the present study , they are included in  Figure 4. It can be seen that the peak of 
+the calculated gas velocity matches the measurements very well, while the calculated values 
+near the wall are too high in comparison.  
+For the test cases N2 to N5, further data on the gas fractions are available from Buwa and 
+Ranade (2005).  The experimental conditions comprise two values of the gas volume flux  
+𝐽𝐺= 0.16 and 0.73 cm/s , the lower of which is similar to that of test case N 1, and two values 
+of the column aspect ratio 𝐻/𝐷= 2.25 and 4.5 , again exactly matching the values used in 
+the simulations . Measurements  are taken at three levels as indicated in Figure 5, where they 
+are compared to the corresponding simulation results. At the lowest level, the simulated 
+profiles are too peaked. This effect is more pronounced for the higher value of the gas 
+volume flux and for the lower value of the aspect ratio, where the measurement level  is at a 
+smaller fraction of the total fill height.  At the higher levels, the simulations agree very well 
+with the measurements for the lower value of the gas flux and both values of the a spect 
+ratio. For the higher value of the gas flux the simulations tend to have too broad shoulders. 
+At the lower value of the aspect ratio quantitative agreement with the experimental data is 
+still good, but at  the higher value of the aspect ratio signific ant deviations are seen . 
+To further elucidate  this behavior, gas fraction profiles obtained from the simulations of all 
+test cases N1 to N11 are shown in Figure 6 at the highest measurement level for both values 
+of the aspect ratio . This includes  further  values of the gas volume flux intermediate to those 
+of Figure 5 for which no measured gas fraction profiles are available . With increasing gas 
+volume flux, the peak gas fraction obviously increases. At the same time however, the 
+profile shape changes from a rather narrow peak to a broader shape with shoulders on each 
+side. For the same value of the gas volume flux, the change is more pronounced at the 
+higher value of the aspect ratio.  
+Finally, Figure 7 shows a comparison of the total gas fraction contained in the entire column 
+for test cases N1-N3 and N6 -N8, i.e. those with the lower value of the aspect ratio . For these 
+conditions, experimental data are available from Diaz et al. (200 6). The agreement between 
+simulation and experiment for this quantity is very good.  
+  11 y = 370 mm  
+ 
+y = 370 mm 
+ y = 2 50 mm  
+ Figure 3: Gas fraction profile for test N1. 
+Symbols: experimental data from Buwa and 
+Ranade  (2002); Lines: present  simulation 
+results  (dashed line for finer grid as described 
+in section 3). y = 130 mm  
+ 
+y = 750 mm 
+ 
+Figure 2: Vertical liquid velocity profiles for 
+test N1. Symbols: experimental data from 
+Pfleger et al. (1999); Lines: present  simulation 
+results  (dashed lines for finer grid as described 
+in section 3). Figure 4: Vertical gas velocity profile for 
+conditions close to test N5. Symbols: 
+experimental data from Darmana et al. (2007); 
+Lines: simulation results  from Krauß  and 
+Rzehak (2018) using the same model as the 
+present investigation.  
+ 
+ 12 y = 325 mm 
+ 
+y = 690 mm  
+ y = 2 10 mm 
+ 
+y = 450 mm  
+ y = 80 mm  
+ 
+y = 210 mm 
+ 
+Figure 5: Gas fraction  profiles  for tests N2 to N5 . Symbols: experimental data from Buwa 
+and Ranade (2005); Lines: present  simulation results . 
+ 13  
+ 
+Figure 6: Simulated g as fraction  profile s at the highest measurement level (lines) for all gas 
+flow rates at H/D=2.25 ( tests N1-N3 and N6-N8, top) and H/D=2.25 (tests N4-N5 and N9-
+N11, bottom) . Experimental d ata (symbols) from Buwa and Ranade (2005) are added where 
+available . 
+ 
+Figure 7: Total  gas fraction inside the column for H/D=2.25 (tests N1-N3 and N6-N8) as 
+function of gas volume flux . Crosses : experimental data from Diaz et al. (2006 ); Circles : 
+present  simulation results . 
+ 
+ 
+ 14  
+A possible origin of the deviations between simulations and experiments , which are found 
+for the gas fractions at higher values of the gas volume flux and the higher value of the 
+aspect ratio in Figure 5, is the occurrence of coalescence b etween the bubbles. This effect 
+would increase with the gas volume flux due to the higher gas fraction. Also it would be 
+more pronounced at higher aspect ratio since then the residence time of the bubbles is 
+higher. Unfortunately, measurements of the distr ibution of the bubbles size at different 
+heights of the column, which could unambiguously prove the occurrence of bubble 
+coalescence, are not available. In the simulations this effect has been neglected to a first 
+approximation, because models to describe it are not well -established as of yet. This is 
+largely due to a general lack of the kind of data just mentioned, which are necessary to 
+validate such models. Disagreement in the gas fraction near the inlet in Figure 5 can be 
+attributed to a shortcoming in the inlet conditions.  
+An explanation of the deviations for the liquid velocities in Figure 2 is not obvious. This 
+deviation is particularly surprising in view of the good agreement of the gas fractions fo r 
+these experimental conditions and the fact that the deviations for the gas velocities in  
+Figure 4 point in the other direction, i.e. a too high rather than too low value near the 
+sidewalls of the column. The gas velocity being too high near the column walls in turn is at 
+least consistent wi th the too broad gas fraction profile identified above as a possible 
+consequence of the occurrence of bubble coalescence.  
+Comparison can also be made with the simulations of Buwa et al. (2002) based on a model 
+quite similar to the present one. For case N1,  these previous simulations also gave good 
+agreement for the gas fractions, but the liquid velocity there was underpredicted , rather 
+than overpredicted , by a similar amount. The good agreement of the gas fraction profile 
+suggests that differences in the mo dels applied for the non -drag forces are of minor 
+importance. Differences in the bubble -induced turbulence modeling causing a different 
+profile of turbulent viscosity thus remain as  a likely cause for the deviations  in the liquid 
+velocity . 
+ Plume oscillatio n period  4.2
+For all considered test cases t he period of plume oscillations (POP) was determined fr om 
+the simulation results by averaging the time interval between zero crossings in a time series 
+of the x -component of the liquid velocity at a point in the cent er of the column cross section 
+at height 𝑦= 250 mm . A comparison with various  experimental results is shown in Figure 8, 
+in the left part for an aspect ratio 𝐻/𝐷= 2.25  and in the right part for 𝐻/𝐷= 4.5 in the 
+present simulations. In the latter case , the experiments of Buwa and Ranade  (2002) were 
+taken at a slightly different value 𝐻/𝐷= 5.5. Results from the previous study (Krauß and 
+Rzehak, 2018) comparing simulation results  based on the same model as in  the present 
+work to experimental data  on the plume oscillations at 𝐻/𝐷= 5.0 from  Darm ana et al . 
+(2007) are also included.  
+Compared to the perforated plate sparger data from different sources at the lower value of 
+the aspect ratio, there is quite good agreement for all values of 𝐽𝐺 within the range of 
+experimental uncertainty evidenced b y the deviations between the different experimental 
+data sets. At the lowest values of 𝐽𝐺, an error in the reported value of the gas volume flux 
+could also be important since the dependence is rather steep. Compared to the sintered  15 disc sparger , which pr oduces smaller bubbles , agreement is good for the lower values of 𝐽𝐺, 
+but the simulation tends to underpredict the experimental data for 𝐽𝐺≥0.4. In this range 
+also a different behavior between the two sparger types becomes visible in the 
+experimental data : For the sintered disc sparger the POP tends to a constant value while it 
+continually decreases for the perforated plate sparger.  This behavior  was explained by Buwa 
+and Ranade  (2002) by visual observations showing that the sintered disc sparger at hi gher 
+flow rates produced very much larger bubbles than the perforated plate sparger. Moreover , 
+it was suggested that this is due to coalescence near the sparger.  This explanation again 
+matches the present simulation results, where coalescence is neglected,  but due to the lack 
+of data on the bubble size distribution a direct verification is not feasible.   
+Comparing experimental data for the POP at different values of the aspect ratio it was noted 
+by Buwa and Ranade  (2004) that there is only a small influence at least in the range of 
+parameters considered herein. This conclusion is confirmed by the present simulations, 
+which give similar results for both values of the aspect ratio considered. Neglecting the 
+small dif ference between the setups, good agreement between the present simulations and 
+the experiment is also found for the higher value  of the aspect ratio . Only the previous 
+simulations of (Krauß and Rzehak, 2018) show a significant deviation from all other tren ds.   
+  
+ 
+Figure 8: Period of plume oscillations for all tests. Left side: aspect ratio H/D=2.25; Right side  
+aspect ratio H/D=4.5 in the present simulations, H/D=5.5 in the data of Buwa and Ranade  
+(2002) and H/D=5.0 in the works of Krauß and Rzehak (2018) and Darmana et al (2007) . Dark 
+blue color: perforated plate  sparger, light orange color: sintered disc sparger. Small crosses : 
+experimental data from Buwa and Ranade (2002, 2004); Large crosses: e xperimental data 
+from Diaz et al (2006) and Darmana et al (2007) ; Small circles : present  simulation results ; 
+Large circle: simulation results from Krauß and Rzehak (2018) . 
+  
+ 16 5 CONCLUSIONS  
+A series of previous works to validate a single set of closure models for different bubbly 
+flows has been extended to the case of an oscillating bubble plume as an example of a time -
+dependent flow. The overall agreement with the available experimental data  was found 
+quite go od, in particular for the plume oscillation period.  Part of the observed deviations 
+could be due to the fact that a monodisperse approximation has been used for the 
+simulations and bubble coalescence was neglected. Models needed to inclu de such effects 
+have not yet reached a stage where they can be relied on  (Liao et al. 2015) . In part this is 
+due to the unavailability of data that resolve the bubble size distribution at different heights 
+of a bubble column. Additional potential for model  improvement is seen in the accurate 
+description of bubble -induced turbulence.  Despite the obvious possibilities for 
+improvement, the proposed hydrodynamic closure models  form a suitable basis to include 
+further effects such as mass transfer (e.g. Rzehak 2016) and chemical reactions (e.g. Krauß 
+and Rzehak 2017) for which there is a strong desire from the application side.  
+ 
+6 NOMENCLATURE  
+Symbol  Unit  Denomination  
+𝑑𝐵 m bubble diameter  
+𝐷 m column width  
+𝐹 N m-3 force per unit volume  
+𝑔 m s-2 acceleration of gravity  
+𝐻 m fill height of bubble column  
+𝐽 m s-1 superficial velocity = volumetric flux  
+𝑘 m2 s-2 specific turbulent kinetic energy  
+𝑝 N m-2 pressure  
+𝑃𝑂𝑃  s period of plume oscillations  
+𝑡 s time  
+𝑇 m column depth  
+𝐓 N m-2 stress tensor  
+𝒖 m s-1 mean velocity vector  
+v m s-1 mean vertical velocity  
+𝑥 m axial coordinate  
+𝑦 m vertical coordinate  
+𝑧 m spanwise coordinate  
+𝛼 - phase fraction  
+𝜖 m2 s-3 turbulent dissipation rate  
+𝜇 kg m-1 s-1 dynamic viscosity  
+𝜌 kg m-3 density   17 𝜎 N m-1 surface tension  
+𝜔 s-1 turbulent frequency  
+ 
+Index Denomination  
+𝑡𝑢𝑟𝑏  turbulent  
+𝐺 gas phase  
+𝑖𝑛𝑡𝑒𝑟  at interface  
+𝐿 liquid phase  
+ 
+7 REFERENCES  
+Becker, S., Bie, H. D., and Sweeney, J., 1999 . Dynamic flow behaviour in bubble columns. 
+Chemical Engineering Science  54, 4929 –4935.  
+Burns, A.  D., Frank, T., Hamill, I., Shi, J. -M., 2004. The Favre averaged drag model for 
+turbulence dispersio n in Eulerian  multi -phase flows.  Proc. 5th Int. Conf. on Multiphase Flow , 
+ICMF2004, Yokohama, Japan.  
+Buwa, V. V., and Ranade, V. V., 2002 . Dynamics of gas -liquid flow in a rectangular bubble 
+column: Experiments and single/multi -group CFD simulations. Chemical Engineering Science  
+57, 4715 –4736.  
+Buwa, V. V., and Ranade, V. V., 2004 . Characterization of dynamics of gas –liquid flows in 
+rectangular bubble columns. AIChE Journal  50, 2394 –2407.  
+Buwa, V. V., and Ranade, V. V., 2005 . Characterization of gas -liquid flows  in rectangular 
+bubble columns using conductivity probes. Chemical Engineering Communications  192, 
+1129 –1150.  
+Buwa, V. V., Deo, D. S., and Ranade, V. V., 2006 . Eulerian -Lagrangian simulations of unsteady 
+gas-liquid flows in bubble columns. International Jo urnal of Multiphase Flow  32, 864 –885.  
+Cachaza, E. M., D iaz, M. E., Montes, F. J., and Galan, M. A., 2011. Unified study of flow 
+regimes and gas holdup in the presence of positive and negative surfactants in a non -
+uniformly aerated bubble column. Chemical E ngineering Science  66, 4047 –4058.  
+Darmana, D. , Henket, R. , Deen, N.,  Kuipers, J. , 2007 Detailed modelling of hydrodynamics, 
+mass transfer and chemical reactions in a bubble column using a discrete bubble model . 
+Chemical Engineering Science  62, 2556 –2575 . 
+Delnoij, E., Kuipers, J. H., and Swaaij, van W. W., 1997 . Dynamic simulation of gas -liquid two -
+phase flow: effect of column aspect ratio on the flow structure. Chemical Engineering 
+Science  52, 3759 –3772.  
+Diaz, M. E., Montes, F. J., and Galan, M. A., 2006 . Influence of Aspect Ratio and Superficial 
+Gas Velocity on the Evolution of Unsteady Flow Structures and Flow Transitions in a 
+Rectangular Two -Dimensional Bubble Column. Industrial & Engineering Chemistry Research  
+45, 7301 –7312.   18 Diaz, M. E., Iranzo, A., Cua dra, D., Barbero, R., Montes, F. J., and Galan, M. A., 2008. 
+Numerical simulation of the gas –liquid flow in a laboratory scale bubble column: Influence 
+of bubble size distribution and non -drag forces. Chemical Engineering Journal  139, 363–379.  
+Drew, D. A.,  Passman, S. L., 1998. Theory of Multicomponent Fluids, Springer . 
+Gupta, A. and Roy, S. , 2013 . Euler –Euler simulation of bubbly flow in a rectangular bubble 
+column: Experimental validation with Radioactive Particle Trackin g. Chemical Engineering 
+Journal  225, 818–836. 
+Hosokawa, S., Tomiyama, A., Misaki, S. and Hamada, T., 2002. Lateral migration of single 
+bubbles due to the presence of wall. Proc. ASME Joint U.S. -European Fluids Engineering 
+Division Conference, FEDSM2002 , Montreal, Canada.  
+Ishii, M. and  Hibiki, T., 2011. Thermo -fluid dynamics of two -phase flow. Springer , 2nd ed.  
+Ishii, M. and  Zuber, N., 1979. Drag coefficient and relative velocity in bubbly, droplet or 
+particulate flows . AIChE Journal  25, 843–855.  
+Julia, J. E., Hern andez, L., Chiva, S., and Vela, A., 2007 . Hydrodynamic characterization of a 
+needle sparger rectangular bubble column: Homogeneous flow, static bubble plume and 
+oscillating bubble plume. Chemical Engineering Science  62, 6361 –6377.  
+Krauß, M. and Rzehak, R., 2017. Reactive absorp tion of CO2 in NaOH: Detailed study of 
+enhancement -factor models . Chemical Engineering Science  166, 193 –209. 
+Krauß, M. and Rzehak, R., 2018. Reactive absorption of CO2 in NaOH: An Euler -Euler 
+simulation study . Chemical Engineering Science  181, 199 –214. 
+Laupsien, D., Cockx, A., and Line, A., 2017 . Bubble plume oscillations in viscous fluids. 
+Chemical Engineering & Technology  40, 1484 –1493.  
+Liao, Y., Rzehak , R., Lucas, D. and Krepper, E. , 2015. Baseline Closure Model for Dispersed 
+Bubbly Flow: Bubble -Coalescence and Breakup. Chemical Engineering Science  122, 336 –349.  
+Liao, J., Ziegenhein, T., and Rzehak, R., 2016. Bubbly flow in an airlift column: A CFD study. 
+Journal of Chemical Technolo gy & Biotechnology 91, 2904 –2915.  
+Lin, T. -J., Reese, J., Hong, T., and Fan, L. -S., 1996 . Quantitative analysis and computation of 
+two-dimensional bubble columns. AIChE Journal  42, 301 –318.  
+Liu, L., Yan, H., Ziegenhein, T., Hessenkemper, H., Li, Q., Lucas, D., 2019 . A systematic 
+experimental study and dimensionless analysis of bubble plume oscillations in rectangular 
+bubble columns. Chemical Engineering Science, under consideration .  
+Parekh, J. and Rzehak, R., 2018 . Euler -Euler multiphase CFD -simulation with full Reynolds 
+stress model and anisotropic bubble -induced turbulence . International Journal of 
+Multiphase Flow  99, 231 –245. 
+Pfleger, D., Gomes, S., Gilbert, N., and  Wagner, H. -G., 1999. Hydrodynamic simulations of 
+laboratory scale bubble columns fundamental studies of the Eulerian –Eulerian modelling 
+approach. Chemical Engineering Science  54, 5091 –5099.  
+Rensen, J. M., and  Roig, V., 2001 . Experimental study of the unst eady structure of a confined 
+bubble plume. International Journal of Multiphase Flow  27, 1431 –1449.   19 Rzehak, R. 2016. Modeling of mass -transfer in bubbly flows encompassing different 
+mechanisms . Chemical Engineering Science  151, 139 –143.  
+Rzehak, R., Krauß, M ., Kovats, P., and Zähringer, K., 2017a. Fluid dynamics in a bubble 
+column: New experiments and simulations . International Journal of Multiphase Flow  89, 
+299–312.  
+Rzehak, R. and Krepper, E. , 2013.  Bubble -induced turbulence: Comparison of CFD models . 
+Nuclear Engineering and Design  258, 57 –65. 
+Rzehak, R. and Krepper, E., 2013 a. CFD modeling of bubble -induced turbulence. 
+International Journal of Multiphase Flow  55, 138–155.  
+Rzehak , R.  and Krepper , E., 2015. Bubbly flows with fixed polydispersity: Validation of a 
+baseline closure m odel.  Nuclear Engineering and Design  287, 108 –118.  
+Rzehak, R., Krepper, E., Liao, Y., Ziegenhein, T., Kriebitzsch, S. and Lucas, D., 2015. Baseline 
+model for the simulation of bubbly flows. Chemical Engineering and Technol ogy 38, 1972 –
+1978 . 
+Rzehak, R., Krepper, E., 2016. Euler -Euler simulation of mass -transfer in bubbly flows . 
+Chemical Engineering Science  155, 459 –568.  
+Rzehak, R. and Kriebitzsch, S., 2015. Multiphase CFD -simulation of bubbly pipe flow: A code 
+comparison. International Journal of Multiphase Flow  68, 135 –152.  
+Rzehak, R., Ziegenhein, T., Kriebitzsch, S., Krepper, E., and Lucas, D., 2017.  
+Unified modeling of bubbly flows in pipes, bubble columns, and airlift columns . 
+Chemical Enginee ring Science  157, 147 –158. 
+Shi, P. and Rzehak, R., 2017. Bubbly flow in stirred tanks: Euler -Euler / RANS modeling . 
+Chemical Engineering Science  190, 419–435. 
+Tomiyama, A., Tamai, H., Zun, I. , and Hosokawa, S., 2002. Transverse migration of single 
+bubbles in simple shear flows . Chemical Engineering Science  57, 1849–1858.  
+Upadhyay, R. K., Pant, H. J., and Roy, S., 2013 . Liquid flow patterns in rectangular air -water 
+bubble column investigated with Radioactive Particle Tracking. Chemical Engineering Science  
+96, 152 –164.  
+Yeoh , G. H. and Tu, J. Y., 2010. Computational Techniques for Multiphase Flows — Basics 
+and Applications, Butterworth -Heinemann . 
+Ziegenhein, T., Rzehak, R., Krepper, E. and Lucas, D., 2013. Numerical simulation of 
+polydispersed flow in bubble -columns with the inhomogeneous multi -size-group model . 
+Chemie Ingenieur Technik  85, 1080 –1091.  
+Ziegenhein, T., Rzehak, R., Ma, T., and Lucas, D., 2017. A unified approach for modeling 
+uniform and non -uniform bubbly flows.  Canadian Journal of Chemical Engineering   95, 170–
+179.  
+ 
+ 

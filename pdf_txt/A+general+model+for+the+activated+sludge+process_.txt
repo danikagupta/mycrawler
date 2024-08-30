@@ -1,0 +1,423 @@
+ A Brief History of Activated Sludge Process Models and Simulators  •  1-1 A Brief History of Activated 
+Sludge Process Models and Simulators 
+Background 
+Computer modeling of system behavior has had a significant impact on the 
+development of design procedures for activat ed sludge systems in recent years.  For 
+full-scale plant operation it has also found application as an optimization tool in assessing the effects of changes in waste flows and loads, operational modifications 
+(e.g. changes in recycles), and proposed modifications to plant configuration.  
+Modeling has also proved valuable in operator training; through simulation exercises using the model, the operator acquires "instant" experience in the behavior to be 
+expected with changes in inputs, system configuration and operational strategies. 
+The utility of simulation models becomes almost essential for nutrient removal 
+systems incorporating nitrification, denitrification and excess biological phosphorus 
+removal (NDEBPR), in addition to carbonac eous removal.  In these systems the 
+behavior involves a large number of compounds and biological reactions, many of 
+which interact.  An NDEBPR system involves at least three separate groups of 
+microorganism (polyP or phosphorus-accumulating heterotrophs, non-polyP heterotrophs, nitrifying autotrophs) operating on a large number of chemical 
+components in three distinct environmental regimes (aerobic zones, anoxic zones 
+where nitrate but not oxygen is present, an d anaerobic zones where both nitrate and 
+oxygen are excluded as far as possible).  These features make for complex behavior 
+that has increased the level of difficulty in design, operation and control. 
+Activated Sludge Models  
+A full appreciation of the 
+models can only be obtained 
+through a detailed study of 
+the literature. Currently the approach to modeling activated sludge systems is to use mechanistic 
+models. These mechanistic models incorp orate mathematical expressions that 
+represent the biological interactions, based on hypotheses proposed for the biological 
+processes occurring within the system (Dold et al. , 1980; Grady et al. , 1986; Dold 
+and Marais, 1986; Henze et al. , 1987a, b; Dold, 1990; Wentzel et al. , 1992; Henze et 
+al., 1994, 1995; Barker and Dold, 1997a,b; Henze et al. , 1999).  It is useful to briefly 
+review the historical development of the current generation of models.  A Brief History of Activated Sludge Process Models and Simulators  •  1-2 In 1982 the International Association on Water Pollution Research and Control 
+(IAWPRC, then IAWQ, and now IWA) appointed a task group to review modeling 
+of activated sludge systems incorporating carbonaceous energy removal, 
+nitrification and denitrification .  The initial deliberations of the group resulted in a 
+preliminary version of the "IAWPRC model" (Grady et al. , 1986).  Dold and Marais 
+(1986) conducted a comprehensive evaluatio n of the preliminary model.  It was 
+proposed that certain changes should be made, in particular with respect to the way in which the fate of organic nitrogen was modeled.  These changes were 
+subsequently adopted in the final version of the IAWPRC Activated Sludge Model 
+No. 1 [ASM1] (Henze et al. , 1987a, 1987b). 
+The task group drew on a wide range of information in formulating the ASM1 
+model.  One research initiative that had a major influence on the model was the 
+dynamic activated sludge model developed by Marais and co-workers at the 
+University of Cape Town (Dold et al. , 1980; van Haandel et al. , 1981).  This 
+dynamic model evolved out of the steady state model of Marais and Ekama (1976).  The steady state model, in turn, constituted a development from a number of 
+previous models for carbonaceous and nitrogenous material conversion and removal 
+(McKinney, 1962; McKinney and Ooten, 1969; Lawrence and McCarty, 1970; Downing et al., 1964). 
+The ASM1 model did not include the phenomenon of excess biological phosphorus 
+removal (EBPR).  Excess biological phosphorus removal (EBPR) is a microbial 
+process which involves the cultivation, within the mixed community, of 
+microorganisms that have the ability to take up phosphorus in excess of that required for growth.  The net effect of this uptake is a reduced effluent phosphorus 
+concentration that can be less than 1mg/L in a well-operated system.  The removal of 
+phosphorus is achieved through the microbially mediated storage of polyphosphate granules which can occupy up to 60% of the cell volume with a phosphorus mass as 
+much as 38% of the volatile suspended solids (Lotter et al. , 1986; Wentzel et al. , 
+1989).  Polyphosphate storage is encouraged in these systems by exposing the biomass to anaerobic and aerobic stages  sequentially, favoring the growth of 
+polyphosphate-accumulating f acultative anaerobes.  
+Within an EBPR system, characteristic beha vior is observed in each stage of the 
+process (Figure 1).  During the anaerobi c stage, substrate is sequestered by the 
+biomass and converted internally to  polyhydroxyalkanoates (PHAs) while 
+phosphorus is released from the biomass causi ng an increase in soluble phosphate.  
+During the aerobic stage, PHA degradation occurs and soluble phosphate is 
+accumulated as polyphosphate within the biomass, leaving a reduced level of 
+phosphorus in the effluent. 
+TimeConcentrationsAEROBIC ANAEROBIC
+Soluble Phosphate
+PHA
+Soluble Substrate
+  A Brief History of Activated Sludge Process Models and Simulators  •  1-3 Figure 1. Schematic illustrati on of characteristic EBPR be haviour in an anaerobic/aerobic 
+sequenced bioreactor. 
+Proposed explanations of the biochemical behavioral patterns associated with P 
+release and uptake (and net P removal) have been presented in a number of models; 
+for example, that of Comeau et al.  (1986), extended and modified by Wentzel et al.  
+(1986), and that of Mino et al.  (1987).  The biochemical models are largely in 
+agreement regarding the biochemical control mechanisms and have provided an 
+explanation for the essential requirements for attaining EBPR; namely, an alternating 
+anaerobic/aerobic sequence w ith the provision of short-chain fatty acids (SCFA) 
+during the anaerobic phase [also referred to as volatile fatty acids (VFA)].  These 
+SCFA are taken up by the polyP organisms and stored as organic polymers, 
+generally as either poly- β-hydroxybutyrate (PHB) or poly- β-hydroxyvalerate (PHV) 
+[referred to collectively as poly- β-hydroxyalkanaotes (PHA).] 
+Since Comeau et al.  (1986) and Wentzel et al.  (1986) first introduced their 
+biochemical models of excess biological phosphorus removal (EBPR), a substantial 
+amount of research has resulted in variations to the original models (Mino et al. , 
+1987; Arun et al. , 1988; Wentzel et al. , 1991; Satoh et al. , 1994; Smolders et al. , 
+1994).  However, the essence of the orig inal models remains.   More recently 
+biochemical models have been proposed as extensions of these, but which include 
+both glycogen-accumulating organisms (GAO s) and PAOs co-existing in these 
+systems (Copp and Dold, 1999).   It is proposed that observed behavior in EBPR 
+systems is the net result of the combined behavior of both GAOs and PAOs and that 
+the proportion of GAOs and PAOs in a si ngle culture can significantly affect the 
+behavior of the mixed microbial community.  It is proposed that PAOs possess a 
+selective advantage in the presence of  sufficient phosphorus, but limiting PAO 
+growth by limiting the available phosphorus allows for the proliferation of GAOs.  Both PAOs and GAOs anaerobically sequester substrate that is stored internally as 
+PHA.  Under aerobic conditions, the brea kdown of PHA provides the carbon and 
+energy for growth utilizing ox ygen as a terminal electr on acceptor.  In PAOs, excess 
+energy generation is stored as polyphosphate whereas GAOs store excess energy as 
+carbohydrate (glycogen). 
+For "normal" municipal wastewater the SCFA  content usually is minimal.  In EBPR 
+systems the readily biodegradable COD comp onent is transformed to SCFA by the 
+non-polyP organism mass, thereby making SCFA available to the polyP organisms (Meganck et al. , 1985; Brodisch, 1985; Wentzel et al. , 1985).  Aside from this 
+linkage, the polyP and non-polyP organisms in EBPR systems have been shown to 
+act essentially independently of one another.  For this reason Wentzel et al.  (1988) 
+adopted the approach of developing "enhanced" cultures of polyP organisms as the 
+basis for studying the kinetics and stoichiometry of EBPR without the behavior 
+being masked by that of the non-polyP organisms. 
+Enhanced cultures of polyP organisms were developed by Wentzel et al.  (1988) in 
+continuous flow activated sludge systems (modified Bardenpho and UCT process 
+configurations), with acetate as the only or ganic substrate.  The sludge mass in these 
+systems was shown to comp rise the polyP organism Acinetobacter spp. in excess of 
+90 percent.  Based on observations of the continuous flow systems and batch experiments using mixed liquor drawn from these systems, Wentzel et al.  (1989a, 
+1989b) developed a kinetic mechanistic model for the enhanced culture EBPR 
+system.  The model provided a very reasonable description of the response observed in a number of continuous flow enhanced culture systems and the batch experiments 
+with a single set of kinetic and stoichiometric parameters .  The enhanced culture 
+model constituted a most significant step towards the development of a general activated sludge model capable of modeling the biological processes of  A Brief History of Activated Sludge Process Models and Simulators  •  1-4 carbonaceous energy removal, n itrification, de nitrification and excess biological 
+phosphorus removal . 
+Dold (1990, 1991) merged the ASM1 model for non-polyP heterotrophic organisms 
+and autotrophic organisms (Henze et al. , 1987a, 1987b) and the Wentzel et al. 
+(1989b) model for polyP organisms.  In combining the models, certain extensions 
+and modifications were incorporated in  both the ASM1 and the Wentzel model 
+components.  Since the initial development this NDEBPR model has been evaluated 
+extensively against experimental data from  laboratory-scale and full-scale treatment 
+plants.  This has lead to further model refinement (Barker and Dold, 1997a, 1997b).  
+The IAWQ task group also extended ASM1 to include simulation of combined 
+NDEBPR processes.  The initial ASM2 model was proposed as “a compromise 
+between complexity and simplicity, and between the many viewpoints on how the 
+correct model should look like.  It should  be used as a conceptual platform for 
+further model development.” (Henze et al. , 1994a).  Since the initial presentation of 
+ASM2 the model has undergone refinements, and the current version is denoted as 
+ASM2d  (Henze et al. , 1999). 
+Different simulators may 
+incorporate slightly different 
+activated sludge models. Most municipal wastewater  treatment plant simulators incorporate the ASM2d 
+activated sludge model (e.g. GPS-X, Stoat, EFOR).  One exception is the BioWin 
+simulator, which is based on the Barker and Dold (1997a) model.  In many respects 
+the models are very similar.  However, a number of differences should be recognized; for example: 
+• In anoxic growth the heterotroph biomass yield is less than for aerobic 
+growth (Copp and Dold, 1998).  This is incorporated in the BioWin 
+model, but not in ASM2d. 
+• A number of studies have identified COD mass balance problems in 
+nutrient removal sludge systems (Power et al. , 1992; Randall et al. , 
+1992; Wable et al. , 1992; Smyth, 1994; Wable et al. , 1994; Barker and 
+Dold, 1995, 1996).  This manifests itself as a reduction in both sludge 
+production and oxygen demand in NDEBPR systems (with anaerobic 
+zones) compared to aerobic-only or  anoxic-aerobic systems.  This 
+apparent COD “disappearance” is incorporated empirically in the 
+BioWin model, but not in ASM2d. 
+The mechanistic activated sludge NDEBPR models incorporate a large number of 
+stoichiometric and kinetic parameters relating to the different organism masses.  It 
+should be recognized that the different variations of the IAWQ-type models imply differences in model structure.  Therefor e, it is important to recognize that 
+parameters in one model cannot necessarily be transferred directly to other models 
+(even where the parameters sometimes have the same name) .  Nevertheless, the true 
+test (and utility) of any particular model should be whether or not the model can:  
+• satisfactorily track the changes in a range of key parameters (e.g. 
+soluble phosphorus, ammonia, nitrate concentrations; volatile 
+suspended solids concentration; oxygen demand; etc.). 
+• in different types of systems [e.g . aerobic systems (with and without 
+nitrification), ND systems, EBPR  systems, NDEBPR systems (under 
+steady state and dynamic conditions)] 
+• operated over a range of conditions (sludge age, recycle rates, etc.) 
+using a single set of model kinetic and stoichiometric parameters .  A Brief History of Activated Sludge Process Models and Simulators  •  1-5 Models versus  Simulators 
+The biological models should not be confused with simulation models.  A simulator 
+incorporates the biological model (and also models for other unit operations), and 
+must link the units of a specific system acco rding to the particular flow scheme.  
+Figure 2 highlights the requirements for setting up a simulation of a typical 
+wastewater treatment facility that incorp orates the activated sludge process.  
+Depending upon the intended use of the simulator, information is needed on the inputs to the process, its configuration, and its operating conditions (Wilson and 
+Dold, 1998). 
+ 
+Figure 2.  Essential Requirements for Wast ewater Treatment Proc ess Simulation (Wilson and 
+Dold, 1998). 
+The BioWin Simulator 
+BioWin is a Microsoft Windows-based simulator used world-wide in the analysis 
+and design of wastewater treatment plants.   Figure 3 shows an example of a nutrient 
+removal system configuration set up in BioWin.  Many different process units can be 
+included to “build” a specific treatment  plant configuration; for example: 
+• Various influent elements for setting up wastewater inputs, storm flow 
+inputs, or methanol addition streams. 
+• Equalization tanks. 
+• Continuous flow bioreactors incorp orating sophisticated means for 
+simulating the performance of diffused aeration systems. 
+• Variable volume / batch reactors. 
+• Various sequencing batch reactor (SBR) modules: single tank units, or 
+SBRs with one or two hydraulically -linked prezones that are either 
+continuously mixed or that allow settling of solids when the decant 
+zone is in a settling phase.  A Brief History of Activated Sludge Process Models and Simulators  •  1-6 • Aerobic digesters. 
+• Grit removal tanks. 
+• Primary settling tanks. 
+• Secondary settling tanks, where solid s removal performance is either 
+specified by the user, or where sludge settling behavior is based on flux 
+theory using a one-dimensional model. 
+• A generic dewatering unit where the user specifies both solids capture 
+and flow split between the thickened and un-thickened streams.  This 
+unit can be applied to simulating a range of dewatering processes such 
+as centrifuges, belt presses, disso lved air flotation units, etc. 
+• Mixers and splitters for directing flow between units in the 
+configuration.  The user has full flexibility for specifying details of 
+splits in streams (by actual rate, fr action, ratio, flow  pacing, according 
+to a timed schedule, etc.). 
+ 
+ 
+Figure 3.  Example of a process configuration set up in BioWin. 
+The facility to view simulation results ra pidly, and in detail, is of paramount 
+importance in the design and analysis of systems.  BioWin incorporates an Album 
+for this purpose.  The Album consists of a series of tabbed pages (somewhat like 
+spreadsheet programs) showing simulation results in tabular and/or graphical format.  Figure 4 shows example views of Album pages. 
+BioWin offers a number of features to aid in creating attractive, professional reports, 
+and includes its own internal Notes editor to help keep track of project details.  It is very easy to get results from BioWin into a word processor or spreadsheet. Charts, 
+tables, system configuration layouts, etc. can be copied and pasted from BioWin to 
+reports. Tables can be exported as tabbed text and then quickly converted to tables.  A Brief History of Activated Sludge Process Models and Simulators  •  1-7 BioWin’s on-line Help and Tutorials prov ide comprehensive user support.  Further 
+resources, such as downloadable configur ation files and a Discussion Forum, are 
+available from the EnviroSim Web site http://www.envirosim.com. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 4.  Examples of Album pages in BioWin.  A Brief History of Activated Sludge Process Models and Simulators  •  1-2 Simulator Calibration 
+Some degree of calibration usually is required for a simulator to accurately predict 
+effluent characteristics, sludge produc tion, oxygen requirements, etc.  The 
+importance of this step in the simulation process cannot be over-emphasized since inappropriate calibration can lead to erroneous interpretation of simulator output as 
+well as incorrect or non-optimal designs. 
+Different  terminology is 
+sometimes used to describe 
+“sludge age”.  For example, solids retention time (SRT) or 
+mean cell residence time 
+(MCRT). In terms of Figure 2, to simulate an activat ed sludge system, it is necessary to obtain 
+details of the physical conf iguration (reactor volumes, clarifier dimensions, etc.), 
+operating conditions (wastage rate, recycle rates, DO concentrations, etc.) and the 
+influent loading pattern (flow rate, COD, TKN, etc.).  All of this information 
+essentially is “measurable”, and it should be  possible to establish this data without 
+difficulty.  [In practice, problems often ar e encountered with determining the sludge 
+wastage.  This is crucial as it determines the system sludge age / solids retention time 
+(SRT).  Also, influent concentration measurements often are unreliable as a result of 
+sampling problems]. 
+In addition to the “measurable” parameters, the current generation of biological 
+models require information on: 
+• Influent wastewater composition 
+• Model kinetic and stoichiometric parameters 
+Influent Wastewater Characteristics 
+Even though model structures 
+may differ, the division of 
+influent COD and TKN is 
+common to the different models. The term “wastewater characteristics” refers to the partitioning of influent organic 
+material into biodegradable and inert portions, the ammonia portion of the total nitrogen, and so on.  The influent wastewater characteristics may vary, often 
+appreciably, from one municipa l waste to another.  Wastewater characteristics have a 
+very significant impact on system performance, particularly for nutrient removal 
+systems.  A single characteristic such as  the readily biodegradable COD fraction can 
+determine whether or not a system designed for excess phosphorus removal will in fact remove phosphorus.  Therefore, if the model is to provide reasonable predictions 
+of system behavior, adequate knowledge of  wastewater characteristics is extremely 
+important. 
+Activated Sludge Model Kinetic and Stoichiometric 
+Parameters 
+The biological models contain many stoichiometric and kinetic parameters ; for 
+example, yields and growth rates.  Several studies have shown that the stoichiometric 
+and kinetic parameters (with one notable exception discussed below) do not change 
+appreciably for different systems treating municipal wastewaters .  For example, the 
+decay rate estimated from the decline in oxygen utilization rate in a batch aerobic 
+sludge digestion test is very similar for activated sludge drawn from aerobic systems 
+in different parts of the world (at least at 20°C).  The uniformity of parameters likely 
+reflects uniformity in the composition of municipal wastewaters, and a resultant similarity in the diversity of the microorganism populations in different systems.  A Brief History of Activated Sludge Process Models and Simulators  •  1-3 If large changes in default 
+kinetic and stoichiometric 
+parameters are necessary to 
+match simulated and 
+measured results this usually 
+indicates that the system or the wastewater was not 
+properly characterized.  The 
+most common problem is poor information on sludge 
+wastage. 
+ 
+Consult Peer Review Group:  
+Is there agreement on this broad statement?  Note that 
+the statement applies only to 
+municipal systems. It is proposed that the values for the stoichiometric and kinetic model parameters 
+tabulated for a particular model (presumably derived from calibration studies on a 
+range of treatment systems) should be acce ptable initial estimat es, and should not 
+require substantial adjustment in model calibration exercises. 
+The exception referred to above is the maximu m specific growth rate of the nitrifiers, 
+µ
+A.  This parameter shows marked varia tions between systems treating different 
+wastewaters.  In the models, nitrification usually is considered as a single step 
+process mediated by one group of nitrifying  autotrophic bacteria.  The growth rate 
+parameter for the nitrifiers ( µA) defines the maximum specific growth rate of this 
+surrogate organism mass.  Values for µA (at 20 oC) ranging from 0.2 to 1.0 d-1 have 
+been observed in activated sludge system s treating a number of different municipal 
+wastewaters (WRC, 1984).  It has been suggested that the variation appears to 
+correlate with the extent of the industrial component in the wastewater; with increased industrial input there likely is an increased possibility of inhibition of 
+nitrifying organisms.  However, many other factors influence nitrification behavior; 
+for example, pH, Alkalinity, etc.  This pa rameter has a major impact on  nutrient 
+removal system design and performance, and obviously on model predictions as 
+well.  Therefore, special attention should be paid to measurement or estimation of 
+µ
+A.  In a sense, µA can be regarded as a wastewater characteristic. 
+References 
+Barker, P. S., and Dold, P. L. (1995).  COD and nitrogen mass balances in 
+activated sludge systems.  Wat. Res.,  29, 633. 
+Barker, P. S., and Dold, P. L. ( 1996).  Sludge production and oxygen 
+demand in nutrient removal activated sludge systems.  Wat. Sci. Tech. , 
+34(5-6), 43-50. 
+Barker, P.S. and Dold, P.L. (1997a).  General Model for Biological Nutrient 
+Removal Activated Sludge Systems:  Model Presentation.  Water 
+Environ. Res. , 69, 969. 
+Barker, P.S. and Dold, P.L. (1997b).  General Model for Biological Nutrient 
+Removal Activated Sludge Systems:  Model Application.  Water 
+Environ. Res. , 69, 985. 
+Brodisch, K. E. U. (1985).  Interaction of different groups of micro-
+organisms in biological phosphate removal. Wat. Sci. Tech. , 17(11/12), 
+89. 
+Comeau, Y., Hall, K. J., Hancock, R. E. W., and Oldham, W. K. (1986).  
+Biochemical model for enhanced biological phosphorus removal.  
+Water Research , 20, 1511-1521. 
+Copp J. B. and Dold P. L. (1999).  Influence of influent phosphorus 
+concentration on an excess biological phosphorus removal sequencing 
+batch reactor   Part III:  biochemical explanation. Wat Res . (submitted).  
+Copp J. B. and Dold P. L. (1999).  Comparing sludge production under 
+aerobic and anoxic conditions.  Wat. Sci. Technol. , 38, 285-294. 
+Dold, P. L. (1990).  A general activated sludge model incorporating 
+biological excess phosphorus removal. Proc. C.S.C.E. Annual Conf.   
+May, Hamilton, Canada.   A Brief History of Activated Sludge Process Models and Simulators  •  1-4 Dold, P. L. (1991).  Modification du modele general des boues activees 
+pour tenir compte de la dephosphatation.  Sciences et Techniques de 
+L'eau , 24, 229. 
+Dold, P. L., Ekama, G. A., and Marais, G. v R. (1980).  A general model for 
+the activated sludge process.  Prog. Water Technol. , 12, 47. 
+Dold, P. L., and Marais, G. v R. (1986).  Evaluation of the general activated 
+sludge model proposed by the IAWPRC task group. Wat. Sci. Tech. , 
+18(6), 63. 
+Downing, A. L., Painter, H. A., and Knowles, G. (1964).  Nitrification in 
+the activated sludge process. J. Proc. Inst. Sew. Purif. , 64, 130. 
+Ekama, G. A., Dold, P. L., and Marais,G. v R. (1986).  Procedures for 
+determining influent COD fractions and the maximum specific growth 
+rate of heterotrophs in activated sludge systems.  Wat. Sci. Tech. , 18(6), 
+91. 
+Gibson, J. (1991).  Activated sludge system modelling using the IAWPRC 
+model. M.Eng. Thesis, Dep. Civ. Eng., McMaster University, Hamilton, Ontario, Canada.  
+Grady, C. P. L., Gujer, W., Henze, M., Marais, G. v R., and Matsuo, T. 
+(1986).  A model for single-sludg e wastewater treatment systems. Wat. 
+Sci. Tech. , 18(6), 47. 
+Henze, M., Grady, C. P. L., Gujer, W., Marais, G. v R., and Matsuo, T. 
+(1987a).  Activated Sludge Model No. 1,  IAWPRC Scientific and 
+Technical Report No. 1 , IAWPRC, London. 
+Henze, M., Grady, C. P. L., Gujer, W., Marais, G. v R., and Matsuo, T. 
+(1987b).  A general model for single sludge wastewater treatment 
+systems. Water Research , 21, 505. 
+Henze, M., Gujer, W., Mino, T., Mats uo, T., Wentzel, M., and Marais, G. v 
+R. (1994a).  Activated sludge model no. 2.  IAWQ Scientific and 
+Technical Report No. 3 , IAWQ, London.  
+Henze, M., Gujer, W., Mino, T., Mats uo, T., Wentzel, M., and Marais, G. v 
+R. (1995a).  The Activated Sludge Model No. 2 : Biological 
+Phosphorus Removal.  Wat. Sci. Tech., 31(2), 1-11. 
+Henze, M., Gujer, W., Mino, T., Mats uo, T., Wentzel, M., and Marais, G. v 
+R. (1995b).  Wastewater and bioma ss characterization for the activated 
+sludge model no. 2: biological phosphorus removal.  Wat. Sci. Tech., 
+31(2), 13-23. 
+Henze, M., Gujer, W., Mino, T., Matsuo , T., Wentzel, M., Marais, G. v R. , 
+and van Loostrecht, M. (1999).  Activated Sludge Model No. 2d, 
+ASM2D.  Wat. Sci. Tech., 39(1), 165-182. 
+Lawrence, A. W., and McCarty, P. L. (1970).  Unified basis for biological 
+treatment design and operation. J. San. Eng. Div. , ASCE , 96, 757. 
+Marais, G. v. R., and Ekama, G. A. (1 976).  The activated sludge process: 
+part 1 - steady state behaviour. Water SA , 2, 163. 
+McKinney, R. E. (1962).  Mathemat ics of complete mixing activated 
+sludge. J. San. Eng. Div. , ASCE , 88, SA3, Proc Paper 3133, 87. 
+McKinney, R. E., and Ooten, R. J. (1969).  Concepts of complete mixing 
+activated sludge. Trans 19th San Eng Conf , University of Kansas, 32.  A Brief History of Activated Sludge Process Models and Simulators  •  1-5 Meganck, M., Malnou, D., Le Flohic, P., Faup, G. M., and Rovel, J. M. 
+(1985).  The importance of acidogenic microflora in biological 
+phosphorus removal.  Wat. Sci. Tech.  , 17(11/12), 199. 
+Mino, T., Arun, V., Tsuzuki, Y., and Matsuo, T. (1987).  Effect of 
+phosphorus accumulation on acetate metabolism in the biological 
+phosphorus removal process. In: Advances in Water Pollution Control - 
+Biological Phosphate Removal from Wastewaters  (R Ramadori: ed.), 
+Pergamon Press, Oxford. 
+Power, S. P. B., Ekama, G. A., Wentzel, M. C., and Marais, G. v R. (1992). 
+Chemical phosphorus removal from municipal wastewater by the 
+addition of waste alum sludge to the activated sludge system.  Research 
+Report W66, Dept. Civil Eng., Univ. Cape Town. 
+Smolders, G. J. F., van der Meij, J., van Loosdrecht, M. C. M., and Heijnen, 
+J. J. (1994).  Model of the anaerobic metabolism of the biological phosphorus removal process: stoichiometry and pH influence. Biotech. 
+Bioeng. , 43, 461. 
+Smyth, S. A. (1994).  Sludge production in aerobic and anoxic activated 
+sludge systems. M.Eng. Thesis, Dept . Civ. Eng., McMaster University, 
+Hamilton, Ontario, Canada. 
+Van Haandel, A. C., Ekama, G. A., and Marais, G. v. R. (1981).  The 
+activated sludge process: part 3 - single sludge denitrification. Water 
+Research , 15, 1135. 
+Wentzel, M. C., Dold, P. L., Ekama, G. A., and Marais, G. v. R. (1985).  
+Kinetics of biological phosphorus release.  Wat. Sci. Tech. , 17(11/12), 
+57. 
+Wentzel, M. C.,  Ekama, G.A., and Marais, G. v. R. (1992).  Processes and 
+Modelling of Nitrification Den itrification Biological Excess 
+Phosphorus Removal Systems - A Review.  Water Sci. Tech. , 25(6), 
+59-82. 
+Wentzel, M. C., Lotter, L. H., Loewenthal, R. E., and Marais, G. v. R. 
+(1986).  Metabolic behaviour of a cinetobacter spp. in enhanced 
+biological phosphorus removal - a biochemical model. Water SA , 12, 
+209. 
+Wentzel, M. C., Loewenthal, R. E., Ek ama G. A. and Marais, G. v. R. 
+(1988).  Enhanced polyphosphate organism cultures in activated sludge 
+systems. part I: enhanced culture development. Water SA , 14, 81. 
+Wentzel, M. C., Ekama, G. A., Loewenthal, R. E., Dold, P. L., and Marais, 
+G. v. R. (1989a).  Enhanced polyphosphate organism cultures in 
+activated sludge systems. part II: experimental behaviour. Water SA , 
+15, 71. 
+Wentzel, M. C., Dold, P. L., Ekama, G. A., and Marais, G. v. R. (1989b).  
+Enhanced polyphosphate organism cultures in activated sludge 
+systems. part III: kinetic model.  Water SA , 15, 89. 
+Wentzel, M. C., Ekama, G. A., Dold, P. L., and Marais, G. v. R. (1990).  
+Biological excess phosphorus removal - steady state process design. 
+Water SA , 16, 29. 
+Wilson A W and P L Dold (1998).  General methodology for applying 
+process simulators to wastewater treatment plants.  Proc. 71
+st Annual 
+Conference of the Water Environment Federation , Miami (October).  A Brief History of Activated Sludge Process Models and Simulators  •  1-6 WRC (1984) Theory, design and operation of nutrient removal activated 
+sludge processes .  Water Research Commission, P. O. Box 824, 
+Pretoria, South Africa. 

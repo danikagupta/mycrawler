@@ -1,0 +1,142 @@
+Estimating the Dimension of a Model
+Gideon Schwarz
+The Annals of Statistics , Vol. 6, No. 2. (Mar., 1978), pp. 461-464.
+Stable URL:
+http://links.jstor.org/sici?sici=0090-5364%28197803%296%3A2%3C461%3AETDOAM%3E2.0.CO%3B2-5
+The Annals of Statistics is currently published by Institute of Mathematical Statistics.
+Your use of the JSTOR archive indicates your acceptance of JSTOR's Terms and Conditions of Use, available at
+http://www.jstor.org/about/terms.html . JSTOR's Terms and Conditions of Use provides, in part, that unless you have obtained
+prior permission, you may not download an entire issue of a journal or multiple copies of articles, and you may use content in
+the JSTOR archive only for your personal, non-commercial use.
+Please contact the publisher regarding any further use of this work. Publisher contact information may be obtained at
+http://www.jstor.org/journals/ims.html .
+Each copy of any part of a JSTOR transmission must contain the same copyright notice that appears on the screen or printed
+page of such transmission.
+JSTOR is an independent not-for-profit organization dedicated to and preserving a digital archive of scholarly journals. For
+more information regarding JSTOR, please contact support@jstor.org.
+http://www.jstor.org
+Thu Apr 5 14:27:58 2007The Annals of Statistics 
+1978, Vol. 6, No.2, 461-464 
+ESTIMATING THE DIMENSION OF A MODEL1 
+BY GIDEON SCHWARZ 
+Hebrew University 
+The problem of selecting one of a number of models of different 
+dimensions is treated by finding its Bayes solution, and evaluating the 
+leading terms of its asymptotic expansion. These terms are a valid 
+large-sample criterion beyond the Bayesian context, since they do not 
+depend on the a priori distribution. 
+. 1. Introduction. Statisticians are often faced with the problem of choosing 
+the appropriate dimensionality of a model that will fit a given set of observations. 
+Typical examples of this problem are the choice of degree for a polynomial re-
+gression and the choice of order for a multi-step Markov chain. 
+In such cases the maximum likelihood principle invariably leads to choosing 
+the highest possible dimension. Therefore it cannot be the right formalization 
+of the intuitive notion of choosing the "right" dimension. An extension of 
+the maximum likelihood principle is suggested by Akaike [l] for the slightly 
+more general problem of choosing among different models with different 
+numbers of parameters. His suggestion amounts to maximizing the likelihood 
+function separately for each model j, obtaining, say, Mj(Xl, . . .,X,), and then 
+choosing the model for which log Mj(Xl, . ..,X,) -kj is largest, where kj is the 
+dimension of the model. We present an alternative approach to the problem. 
+In a model of given dimension maximum likelihood estimators can be obtained 
+as large-sample limits of the Bayes estimators for arbitrary nowhere vanishing 
+a priori distributions. 
+Therefore we look for the appropriate modification of maximum likelihood 
+for our case, by studying the asymptotic beavior of Bayes estimators under a 
+special class of priors. These priors are not absolutely continuous, since they 
+put positive probability on some lower-dimentional subspaces of the parameter 
+space, namely the subspaces that correspond to the competing models. In the 
+large-sample limit, the leading term of the Bayes estimator turns out to be just 
+the maximum likelihood estimator. Only in the next term something new is 
+obtained. This was to be expected, sinc,e (as was shown in [2] and [3], albeit 
+for sequential testing) the leading term depends on the prior only through its 
+support, while the second order term does reflect singularities of the a priori 
+distribution. We shall arrive at the following procedure: 
+Choose the model for which log Mj(Xl, . .,X,) --&kj log n is largest. 
+The validity of this procedure as a large-sample version of Bayes procedures 
+Received August 1976; revised February 1977. 
+1 Written while the author was a Fellow of the Institute for Advanced Studies on Mt. Scopus. 
+AMS 1970 subject classifications. Primary 62F99, 62599. 
+Key words and phrases. Dimension, Akaike information criterion, asymptotics. 
+461 462 GIDEON SCHWARZ 
+will be established here for the case of independent, identically distributed ob- 
+servations, and linear models. 
+2. The exact Bayes procedure. In a general parameter space, there is no 
+intrinsic linear structure. We therefore assume that observations come from a 
+Koopman-Darmois family, i.e., relative to some fixed measure on the sample 
+space they possess a density of the form 
+where t9 ranges over the natural parameter space O, a convex subset of the K-
+dimensional Euclidean space, and y is the sufficient K-dimensional statistic. The 
+competing models are given by sets of the form mi n O, where each mi is a ki- 
+dimensional linear submanifold of K-dimensional space. 
+Fitting the asymptotic nature of the result, the a priori distribution need not 
+be known exactly. It suffices to assume that it is of the form Cajpj, where ai 
+is the a priori probability of the jth model being the true one, and pi, the con- 
+ditional a priori distribution of 0 given the jth model, has a kj-dimensional den- 
+sity that is bounded and locally bounded away form zero throughout mi n @. 
+This implies mutual orthogonality of the pj, since the intersection of two 
+distinct linear manifolds either is one of them, or has lower dimensions than 
+both. 
+Finally, we assume a fixed penalty for guessing the wrong model. (Actually, 
+a loss that depends on 0 and on the guess would yield the same asymptotic 
+results, provided the loss function stays between two fixed positive bounds for 
+all wrong decisions.) Under this assumption, the Bayes solution consists of selec- 
+ting the model that is a posteriori most probable. Via Bayes' formula that is 
+equivalent to choosing the j that maximizes 
+S(Y, n, j) = log \ ai exp((Y o t9 -b(t9))n) dpi(t9) , 
+where the integral extends over mj n 0, and Y is the averaged y-statistic 
+(lln) C y(Xi)-
+3. Asymptotics. The asymptotic expansion of S(y, n, j) could be obtained 
+from results in an earlier paper [3] as a special case. We shall, however, keep 
+this paper self-contained by outlining a proof of the necessary result directly. 
+PROPOSITION. For fixed Y and j, as n tends to co, 
+S(Y, n, j) = n sup (Y o t9 -b(B)) -+kj log n + R 
+where the remainder R = R(Y, n, j) is bounded in n for fixed Y and j. 
+PROOF. We shall proceed in steps. 
+LEMMA1. The proposition holds when Y o B -b(t9) = A -lllt9 -Bolla where 
+R > 0, 8, is a fixed vector in mi, and pj is Lebesgue measure on mi. ESTIMATING THE DIMENSION OF A MODEL 
+Explicit evaluation of the integral yields ~x~(lr/nR)~i 2e*A, and 
+sup A -R118 -6,1j2= A . 
+Therefore 
+S(Y, n, j) = nA -$kj log (nl/lr) + log ai 
+establishes the proposition for this case, with R = $kilog (lr/R) + log aj. 
+LEMMA2. If two bounded positive random variables U and V agree on the set 
+where either exceeds p for some 0 < p < sup U, then 
+log E(U*) -log E(VX) 0--t 
+as n--+ co. 
+Clearly it suffices to show that this holds for V that vanishes where U (p. 
+In this case 0 (U" -V" 5 p", and therefore 
+and we only have to show log (1 + (pn/E(V"))) -+ 0. Now (E(Vm))'/" --+ sup V 
+(a well-known fact on L, norms) and sup V = sup U > p yield for p/(E(Vn))'/" 
+a limit strictly less than 1, hence p"/E(V*) tends to zero, and so does log (1 + 
+(P"/E(V"))). 
+LEMMA 3. For some 0 < p < eA, where A = sup (Y o 6 -b(B)), a vector 6,, 
+and some positive 2, and I,, the following holds wherever exp(Y o 6 -b(6)) > p: 
+As is well known, the matrix of second-order derivatives of b(6) is the covari- 
+ance matrix of y, and hence positive definite. Therefore Y o 6 -b(6) is strictly 
+convex, and is easily seen to attain its maximum. Let 8, be the point where the 
+maximum A is attained. The Taylor expansion of Y o 6 -b(6) around 8, now 
+yields the stated inequalities for some neighborhood of B,, if 21, and 21, are 
+larger and smaller than all the eigenvalues of the matrix of second order deriva- 
+tives of b(6) at 6,. By strict convexity it is now easy to determine p < eA so 
+that it will bound exp(Y o 6 -b(6)) outside that neighborhood. 
+The proposition is now proved by combining the lemmas, and the assumption 
+of local boundedness of the density function of ,ujon mi n 0. 
+Qualitatively both our procedure and Akaike's give "a mathematical formula- 
+tion of the principle of parsimony in model building." Quantitatively, since our 
+procedure differs from Akaike's only in that the dimension is multiplied by 
+3 log n, our procedure leans more than Akaike's towards lower-dimensional 
+models (when there are 8 or more observations). For large numbers of obser- 
+vations the procedures differ markedly from each other. If the assumptions we 
+made in Section 2 are accepted, Akaike's criterion cannot be asymptotically 
+optimal. This would contradict any proof of its optimality, but no such proof 
+seems to have been published, and the heuristics of Akaike [I] and of Tong [4] 
+do not seem to lead to any such proof. 464 GIDEON SCHWARZ 
+REFERENCES 
+[I] AKAIKE, H. (1974). A new look at the statistical identification model. ZEEE Trans. Auto. 
+Control 19 7 16-723. 
+[2] SCHWARZ, G. (1969). A second order approximation to optimal sampling regions. Ann. 
+Math. Statist. 40 313-315. 
+[3] SCHWARZ, 	 Ann. Math. Statist. 42 1003-1009. G. (1971). A sequential Student test. 
+[4] 	TONG,H. (1975). Determination of the order of a Markov chain by Akaike's information 
+criterion. J. Appl. Prob. 12 488-497. 

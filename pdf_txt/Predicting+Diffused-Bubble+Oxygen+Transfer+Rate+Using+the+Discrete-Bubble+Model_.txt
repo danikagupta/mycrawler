@@ -1,0 +1,534 @@
+Water Research 36 (2002) 4627–4635
+Predicting diffused-bubble oxygen transfer rate using the
+discrete-bubble model
+Daniel F. McGinnis, John C. Little*
+Department of Civil and Environmental Engineering, Virginia Polytechnic Institute and State University, Blacksburg,
+VA 24061-0246, USA
+Abstract
+A discrete-bubble model that predicts the rate of oxygen transfer in diffused-bubble systems is evaluated. Key inputs
+are the applied gas ﬂow rate and the initial bubble size distribution. The model accounts for changes in the volume of
+individual bubbles due to transfer of oxygen and nitrogen (and hence changing partial pressure), variation inhydrostatic pressure, and changes in temperature. The bubble-rise velocity and mass-transfer coefﬁcient, both known
+functionsofthebubblediameter,arecontinuallyadjusted.Themodelisappliedtopredicttheresultsofdiffused-bubble
+oxygen transfer tests conducted in a 14-m deep tank at three air ﬂow rates. All of the test data are predicted to within15%. The rangeof bubble diameters (0.2–2mm) spans the region of greatest variation in rise velocityandmass-transfer
+coefﬁcient. For simplicity, the Sauter-mean diameter is used rather than the full bubble size distribution without loss of
+accuracy.Themodelshouldproveusefulinthedesignandoptimizationofhypolimneticoxygenationsystems,aswellasother diffused-bubble applications. r2002 Elsevier Science Ltd. All rights reserved.
+Keywords: Aeration; Diffuser; Distribution; Mass transfer; Rise velocity
+1. Introduction
+Thermal stratiﬁcation of reservoirs mayresult in
+substantial hypolimnetic oxygen depletion. Low dis-
+solved oxygen (DO) levels have a negative impact oncold-water ﬁsheries, hydropower discharges, and the
+drinking-water treatment process. In water-supply
+reservoirs, low DO maylead to the production ofhydrogen sulﬁde andammonia andcan causethe release
+of soluble reduced iron and manganese from the
+sediments. Iron, manganese, and hydrogen sulﬁdeimpart undesirable color, taste, and odor to the water
+requiring additional treatment prior to distribution
+[1]. The increased oxidant demand at the watertreatment plant increases costs and, if organic matterispresent,mayincrease theconcentrationofdisinfection
+byproducts.
+In the case of hydropower reservoirs, the US Federal
+EnergyRegulatoryCommission ty picallyrequires thatreleases meet local in-stream water-qualitystandards [2]
+with minimum DO levels of about 5gm
+/C03.A sa
+consequence, hydropower operators must frequently
+add large quantities of oxygen to stored water prior to
+or during discharge. For example, the Tennessee ValleyAuthority(TVA) spends about $2M annuallyon
+liquid oxygen that is added to several of their hydro-
+power reservoirs [3]. Hypolimnetic oxygenation has alsobeen proposed bythe US ArmyCorps of Engineers to
+replace ﬁsh habitat [4], creating an environment up-
+stream of a hydropower dam that is preferred by cold-water species.
+Hypolimnetic oxygenation is used to replenish DO in
+reservoirs while preserving stratiﬁcation. Well-designedhypolimnetic oxygenators provide measurable increasesin DO levels [5], decrease total iron, manganese, and
+hydrogen sulﬁde concentrations [6,7], and decrease blue-
+green algae concentrations in some cases [8,9]. Threeprinciple devices are typically used for hypolimnetic
+oxygenation: the Speece Cone [10,11], the airlift aerator
+[12–15], and the bubble plume [16]. Typically, pure
+*Corresponding author.
+0043-1354/02/$-see front matter r2002 Elsevier Science Ltd. All rights reserved.
+PII: S0043-1354(02)00175-6oxygen is used in the Speece Cone, air is used in airlift
+aerators, and either oxygen or air is used in bubbleplumes.
+In all three oxygenation devices, gas bubbles in
+contact with water facilitate interfacial transfer ofoxygen, as well as nitrogen and other soluble gases.Bubble size is a critical parameter in these diffused-
+bubble systems because it determines the interfacial
+surface area, bubble-rise velocity, and mass-transfercoefﬁcient [17]. In addition, bubble size mayvary
+signiﬁcantlyas the bubbles pass through the sy stem,
+especiallywhen pure oxy gen is used. For these reasons,W.uestetal.[16]usedadiscrete-bubblemodeltoaccount
+for changes in the volume (due to gas transfer,
+hydrostatic pressure, and water temperature) of indivi-dual bubbles rising within a bubble plume. This
+approach has subsequentlybeen applied to airlift
+aerators [13,18], the Speece Cone [10], and a bubbleplume [19,20]. Although limited versions of thisapproach have been used in diffused-bubble wastewater
+and ozonation systems [21–23], the discrete-bubble
+model has yet to be independently veriﬁed.
+In this paper, the discrete-bubble model is used to
+predict the rate of oxygen transfer during diffused-
+bubble aeration, based solelyon knowledge of the initialbubble-size distribution and the applied air ﬂow rate. In
+addition, it is shown that the Sauter-mean diameter [24]
+maybe used instead of a bubble size distributionwithout anyloss of computational accuracy .2. Experimental methods
+2.1. Oxygen transfer tests
+Oxygen transfer tests were conducted in a 14-m
+high/C22-m diameter tank with a porous ‘‘soaker’’ hose
+diffuser [2] used to generate bubble-plumes. A schematicrepresentation of the diffuser arrangement is shown in
+Fig. 1. A 1.5-m length of diffuser with 2 /C21.5-m lengths
+of 6.4-mm diameter porous hose was located 0.6mabove the base of the tank. DO in the water was
+removed using sodium sulﬁte with cobalt chloride as a
+catalyst. Tests were performed at air ﬂow rates of 0.43,0.68, and 2.88Nm
+3h/C01, where 1Nm3denotes 1m3of
+gas at 1bar and 0 1C. The air ﬂow rate was measuredNomenclature
+A surface area, m2
+C aqueous-phase concentration, molm/C03
+CDdrag coefﬁcient, dimensionless
+d bubble diameter, m, mm
+D diffusion coefﬁcient, m2s/C01
+g gravitational constant, ms/C02
+H Henry’s constant, molm/C03bar/C01
+J mass-transfer ﬂux, molm/C02s/C01
+KLliquid-side mass-transfer coefﬁcient, ms/C01
+m mass, mol
+M mass ﬂux, mols/C01
+n number of bubbles
+N number ﬂux of bubbles, s/C01
+P pressure, bar
+q gas ﬂow rate per unit length, m2s/C01
+Q volumetric ﬂow rate, m3s/C01
+r bubble radius, m
+R ideal gas constant, m3barmol/C01K/C01
+Re Reynolds number, dimensionless
+Sc Schmidt number, dimensionless
+t time, s
+T temperature, 1C, Kv velocity, ms/C01
+V volume, m3
+Y gas-phase mole fraction, dimensionless
+z depth, m
+Greek letters
+m viscosity, kgm/C01s/C01
+r density, kgm/C03
+s interfacial surface tension, Nm/C01
+Subscripts
+0 initial3, 2 Sauter-meanb bubble
+d diffuser
+G gasi individual, partial
+L liquid
+s saturatedstd standard
+x horizontal
+z vertical
+AnchorBuoyancyControl Pipe
+PorousHoseOxygen/Air
+SupplyPipe
+Fig.1. Schematic of TVA’s porous ‘‘soaker’’ hose diffuser.D.F. McGinnis, J.C. Little / Water Research 36 (2002) 4627–4635 4628using a calibrated rotameter. The temperature of the
+water remained constant at 23 1C during the tests. DO
+was measured using probes placed in the tank at depths
+of 3, 8, and 12m below the water surface.
+2.2. Measurement and representation of bubble-size
+distribution
+In a separate series of experiments, a single 30-cm
+length of porous hose was placed 50cm above the baseof the tank, and positioned 9cm behind a glass porthole
+along with a graduated scale (2-mm resolution). Tests
+were conducted at four air ﬂow rates and at waterdepths of 6.7 and 12.5m to determine the effect of air
+ﬂow rate and hydrostatic pressure on initial bubble size.
+Duplicate tests were performed at approximatelythesame air ﬂow rates and water depth. As shown in Fig. 2,photographs of the bubble swarm immediatelyabove
+the porous hose were taken through the porthole.
+The photographs were digitized and 20 bubbles were
+randomlyselected for measurement. Previous research
+suggests that a total of 20 bubbles will provide a
+representative sample [25–27]. Because the larger bub-bles are typically not perfectly spherical, the horizontaland vertical axis of each bubble was measured. The
+surface area of a bubble, A;is
+A¼pd
+xdzðmm2Þ; ð1Þ
+where dxand dzare the bubble diameters in the
+horizontal and vertical axis, respectively. The equivalent
+spherical diameter is
+d¼ﬃﬃﬃﬃ
+A
+pr
+ðmmÞ: ð2Þ
+Because of the increased complexityof apply ing the
+discrete-bubble model using the entire bubble sizedistribution, a Sauter-mean diameter was calculated
+for each distribution. The Sauter-mean diameter is the
+diameter of a sphere having the same volume-to-surfaceratio as the distribution of bubbles [28,24], or
+d
+3;2¼Pn
+i¼1d3
+iPn
+i¼1d2
+iðmmÞ; ð3Þ
+where diis the diameter of the individual bubbles and n
+is the number of bubbles in the sample. This formulagives more weight to larger bubbles, and is therefore
+more representative for mass transfer than the mean
+bubble diameter [24].
+3. Discrete-bubble model
+The discrete-bubble model, ﬁrst adopted byW .uest
+et al. [16], is applied to bubbles that rise in plug ﬂowthrough a tank of well-mixed water. The initial bubble
+size distribution and the rate of bubble formation are
+assumed to be constant. Bubble coalescence and masstransfer of gases other than nitrogen and oxygen are
+considered negligible. The water and air temperatures
+are assumed to be equal and constant. Mass transferthrough the water surface at the top of the tank is
+neglected. Finally, it is assumed that a distribution of
+bubble sizes maybe represented bythe Sauter-meandiameter.
+The mass-transfer ﬂux (for either oxygen or nitrogen)
+across the surface of a bubble is
+J¼K
+LðCs/C0CÞðmolm/C02s/C01Þ; ð4Þ
+where KLis the liquid-side mass-transfer coefﬁcient, Cs
+is the equilibrium concentration at the gas/water inter-
+face, and Cis the bulk aqueous-phase concentration.
+For both oxygen and nitrogen, gas-side mass-transfer
+resistance maybe neglected. Henry ’s law is used to
+calculate the equilibrium concentration, or
+Cs¼HP iðmolm/C03Þ; ð5Þ
+where His Henry’s constant and Piis the partial
+pressure of the gas at a given depth. Combining Eqs. (4)
+and (5) yields
+J¼KLðHP i/C0CÞðmolm/C02s/C01Þ: ð6Þ
+Fig.2. Photograph of bubbles formed bya porous diffuser at a
+water depth of 12.5m. The actual air ﬂow rate per unit length
+for this 30-cm section was q¼0:83m2h/C01yielding a Sauter-
+mean bubble diameter of 1.9mm.D.F. McGinnis, J.C. Little / Water Research 36 (2002) 4627–4635 4629Substituting the surface area of a bubble of radius r
+gives the rate of mass transfer for a single bubble as
+dm
+dt¼/C0KLðHP i/C0CÞ4pr2ðmols/C01Þ: ð7Þ
+The vertical location of the bubble is related to the
+bubble-rise velocity, vb;and anyinduced vertical water
+velocity, v;by
+dz
+dt¼vþvbðms/C01Þ; ð8Þ
+where zis the vertical coordinate of the tank. Although
+the bulk of the water in the tank is assumed to be well-mixed, it is likelythat a weak plume is formedimmediatelyabove the diffuser in the core of the tank.
+For simplicity, it is assumed that the induced plume
+velocityis low relative to the bubble-rise velocity .Combining Eqs. (7) and (8) gives the mass of gaseous
+species transferred per bubble per unit height of tank
+dm
+dz¼/C0KLðHP i/C0CÞ4pr2
+vbðmolm/C01Þ: ð9Þ
+The number ﬂux of bubbles entering the tank, N;is
+calculated from the initial bubble volume, V0;and the
+actual volumetric gas ﬂow rate at the diffuser, Q0;or
+N¼Q0
+V0ðs/C01Þ: ð10Þ
+Multiplying Eq. (9) by Nand expressing it in terms of
+M;the molar ﬂow rate of gas, yields
+dM
+dz¼/C0KLðHP i/C0CÞ4pr2N
+vbðmolm/C01s/C01Þ: ð11Þ
+If the bulk aqueous-phase concentration does not
+change signiﬁcantlyduring the time a bubble takes to
+rise through the tank, the pseudo-steady-state assump-
+tion maybe invoked. Eq. (11) is integrated numerically ,for both oxygen and nitrogen, to obtain the change in
+the molar ﬂow rate while the gas bubble is in contact
+with the water. His a function of water temperature,
+while v
+band KLare functions of r;the radius of the
+bubble. The bubble radius changes in response to
+decreasing hydrostatic pressure as well as the amountof oxygen and nitrogen transferred between the bubble
+and the water. This results in a change in the partialpressure of oxygen and nitrogen within the bubble,which is recalculated as the bubble rises through the
+tank. As summarized in Table 1, relationships for v
+bTable 1
+Correlation equations for Henry’s constant (molm/C03bar/C01), mass transfer coefﬁcient (ms/C01), and bubble-rise velocity(ms/C01) [16]
+Correlation equation RangeH
+O¼2:12525:021/C210/C02Tþ5:77/C210/C04T2(Tin1C)
+HN¼1:04222:450/C210/C02Tþ3:171/C210/C04T2(Tin1C)
+KL¼0:6r ro6:67/C210/C04m
+KL¼4/C210/C04rX6:67/C210/C04m
+vb¼4474 r1:357ro7/C210/C04m
+vb¼0:23 7/C210/C04pro5:1/C210/C03m
+vb¼4:202r0:547rX5:1/C210/C03m
+Bubble Diameter (mm)0.1 1 10 100Bubble Rise Velocity (cm s-1)
+110100
+Tap Wate r
+Distilled Water
+Wüest et al. (1 992)
+Equation 14
+Equation 17
+Fig. 3. Bubble-rise velocityas a function of bubble diameter.
+Data from Haberman and Morton [31].
+Bubble Diameter (mm)0                 1                2                 3                4                 5Mass Transfer Coefficient (cm s-1)
+0.000.010.020.030.040.050.060.07
+Motarjemi and Jameson (1978)
+Wüest et al. (1992)Range
+Fig. 4. Liquid-side mass-transfer coefﬁcient for individual
+bubblesasafunctionofbubblediameter.DatafromMotarjemiand Jameson [17].D.F. McGinnis, J.C. Little / Water Research 36 (2002) 4627–4635 4630(Fig.3) and KL(Fig.4) were developed byW .uest et al.
+[16] based on experimental data for bubble-rise velocity
+[31] and the mass-transfer coefﬁcient [17]. Using these
+relationships and the changing bubble radius, both thebubble-rise velocityand the mass-transfer coefﬁcient are
+recalculated as the bubble travels up the tank. Once the
+bubble reaches the top of the tank, the overall change inthe molar ﬂow rate of gas (both oxygen and nitrogen) isused to incrementallycalculate the evolving bulk
+aqueous-phase concentration as a function of time.
+The initial DO concentration, water temperature, and
+depth are known, as well as the initial Sauter-mean
+diameter of the bubble swarm formed at the diffuser.
+The initial dissolved nitrogen concentration is assumedto be at equilibrium with the atmosphere. The initial
+molar ﬂow rate of gaseous oxygen or nitrogen is
+M
+0¼Y0PstdQstd
+RTstdðmols/C01Þ; ð12Þ
+where Y0isthe initial mole fractionof thegas, Pstdisthe
+standard pressure, Qstdis the gas ﬂow rate at standard
+temperature and pressure (0 1C and 1bar), Ris the ideal
+gas constant, and Tstdis the standard temperature.
+4. Results and discussion
+The results of the three oxygen transfer tests are
+showninFig.5.Foreachofthetests,theresponseofthe
+three oxygen probes (located near the top, middle, andbottom of the tank) was virtuallyidentical, conﬁrming
+that the water in the tank can be considered well-mixed.
+Because the data obtained from the three probes werealmostequal,the threedatasetswereaveragedtoobtainone representative oxygen concentration proﬁle for each
+experiment. To applythe discrete-bubble model, theinitial bubble size for each of the air ﬂow rates is
+required.
+Fig. 6 summarizes the results of the bubble size
+measurements. The measured initial Sauter-mean dia-
+meterisshownasafunctionoftheactualvolumetricgasﬂow rate for the tests performed at depths of 6.7 and
+12.5m. Since there was essentiallyno difference between
+the bubble sizes formed at these two different depths, asimple linear relationship was developed relating bubblesize to gas ﬂow rate:
+d
+3;2¼1:12þ0:938qðmmÞ; ð13Þ
+where qis the actual gas ﬂow rate per unit length of
+porous hose in units of m2h/C01. Eq. (13), which was
+derived from data collected using a 30-cm length of
+porous hose, was then used to predict the initial bubble
+size for each of the three diffuser experiments. TheSauter-mean diameters obtained were 1.2, 1.2, and
+1.6mm for the 0.43, 0.68 and 2.88Nm
+3h/C01tests,
+respectively. These bubble sizes and the measured airﬂow rates were used as input to the discrete-bubble
+model to predict the oxygen concentration as a function
+of time. The predicted results are compared in Fig.7 totheaverageofthevaluesmeasuredwiththethreeoxygen
+probes. The observed and predicted DO curves compare
+well, with root mean square errors of 0.65, 0.60 and 1.31for the 0.43, 0.68 and 2.88Nm
+3h/C01tests, respectively.
+The initial predicted oxygen transfer efﬁciency ranges
+from 94.4% at the lowest air ﬂow rate to 88.1% at the
+highest air ﬂow rate. Although the model tends to over-estimate the oxygen concentrations, nearly all of the
+predictions fall within 15% of the observed data, as
+shown in Fig.8. As indicated in Fig. 6, the indepen-dentlymeasured initial bubble sizes had a relativelyhigh
+degree of variability. Given that the model is sensitive to
+the initial bubble size, it maybe that the bubble-sizeTime (min)0 200 400 600 800 1000Dissolved Oxygen (g m-3)
+024681012142.88 Nm3h-1
+0.68 Nm3h-1
+0.43 Nm3h-1
+Fig.5. Mass-transfer test results showing measured DO con-
+centrations as a function of time. Data were collected using
+three oxygen probes located at depths of 3, 8, and 12m.Gas Flow Rate per Unit Length Porous Hose (m2h-1)0.0 0.2 0.4 0.6 0.8 1.0Sauter Mean Diameter (mm)
+0.00.51.01.52.02.53.0
+Depth = 6.7 mete rs
+Depth = 12.5 metersRegression Line
+Fig. 6. Initial bubble size formed byporous hose as a function
+of gas ﬂow rate and water depth. Bars represent 1 standarddeviation.D.F. McGinnis, J.C. Little / Water Research 36 (2002) 4627–4635 4631estimation procedure is the primarysource of the
+modest error. In the following sections, some of thekeyassumptions and limitations of the discrete-bubblemodel are brieﬂyevaluated.
+4.1. Bubble-size distribution
+The Sauter-mean diameter maynot accuratelyrepre-
+sent the average bubble-rise velocityor mass-transfercoefﬁcient of the bubble swarm. Smaller bubbles, inparticular, have rise velocities and mass-transfer coefﬁ-
+cients that are verysensitive to bubble diameter. To
+check the validityof the Sauter-mean diameter, thediscrete-bubble model was modiﬁed to accommodate a
+range of bubble sizes. The bubble size distribution for
+the 0.68Nm
+3h/C01oxygen transfer test was obtained
+from the bubble size data measured at 0.09m2h/C01
+because the actual ﬂow rates (i.e., measured at the
+diffuser depth) per unit length of porous hose wereapproximatelyequal. As shown in Fig. 9, the initial
+bubble diameters in this distribution varyfrom 0.2 to
+1.5mm and span the range of rapid variation in bubble-rise velocityand mass-transfer coefﬁcient. Fig.9 also
+shows the ﬁnal bubble size distribution predicted for the
+bubbles at the top of the tank. Using the entire bubblesize distribution instead of the Sauter-mean diameter
+produced a similar rate of oxygen transfer, as shown in
+Fig. 10.
+4.2. Bubble-rise velocity
+The discrete-bubble model uses correlation equations
+to determine terminal rise velocitybased on data
+collected byHaberman and Morton [31]. As shown in
+Fig. 3, for diameters between 1 and 2mm, the bubble-Observed DO Concentration(gm-3)02468 1 0 1 2Predicted DO Concentration(gm-3)
+024681012
+0.43Nm3h-1
+0.68Nm3h-1
+2.88Nm3h-1+15%
+-15%
+Fig.8. Predicted versus observed DO concentrations.Bubble Diameter (mm)0.0 0.2 0.4 0.6 0.8 1.0 1.2 1.4 1.6 1.8Frequency
+0.000.050.100.150.200.250.30
+Initial
+Final
+Fig. 9. Initial (measured) and ﬁnal (predicted) bubble size
+distribution, based on the oxygen transfer experiment con-
+ducted at an air ﬂow rate of 0.68Nm3h/C01.
+Time (min)160 165 170 175 180Dissolved Oxygen (g m-3)
+8.008.058.108.158.20
+Sauter Mean Diameter
+Induced Plume Ve locity
+Theoretical Rise Velocity
+Bubble Size Distribution
+Fig. 10. Comparison of discrete-bubble model predictions
+based on Sauter-mean diameter to those obtained byintrodu-cinganinducedplumevelocity,usingthetheoreticalbubble-rise
+velocity, and using a bubble size distribution.Time (min)0 100 200 300 400 500 600Dissolved Oxygen (g m-3)
+02468101214
+Observ ed
+Predicted2.88 Nm3h-1
+0.68 Nm3h-1
+0.43 Nm3h-1
+Fig.7. Average observed DO concentrations versus those
+predicted using the discrete-bubble model.D.F. McGinnis, J.C. Little / Water Research 36 (2002) 4627–4635 4632rise velocities in distilled and tap water are quite
+different, with the W .uest et al. [16] correlation falling
+between the two data sets. Since bubbles in tap water
+smaller than about 2mm behave as rigid spheres withregard to rise velocity[31], the terminal rise velocitycan
+be calculated from
+v
+b¼4dbgð1/C0rG=rLÞ
+3CD/C20/C211=2
+; ð14Þ
+where rGandrLare the densities of the gas and liquid,
+respectively. CDis the drag coefﬁcient, expressed as
+CD¼24
+Reþ3ﬃﬃﬃﬃﬃﬃ
+Rep þ0:34; ð15Þ
+where Re;the Reynolds number, is
+Re¼vbdbrL
+mLð16Þ
+andmLis the dynamic viscosity of water. Fig. 3 shows
+that Eq. (14) predicts the tap water data up to a bubblediameter of 2.6mm.
+Larger bubbles begin to experience surface oscilla-
+tions and the rise of the bubble can be compared to awave traveling in an ideal ﬂuid [29]. Based on this waveanalogy, the rise velocity of larger bubbles can be
+predicted [29] by
+v
+b¼ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+2s
+dbðrLþrGÞþgdb
+2s
+; ð17Þ
+where sis the interfacial surface tension of water. Fig. 3
+shows that Eq. (17) can be used to predict the rise
+velocityfor bubbles larger than 2.6mm in tap water.Since the tap water data appear more appropriate for
+hypolimnetic oxygenation, Eqs. (14) and (17) can be
+used to predict the theoretical rise velocityfor the entirerange of bubble sizes and have the added beneﬁt ofincluding the dependence on temperature. However,
+using the theoretical rise velocityinstead of the W .uest
+et al. [16] correlation made essentiallyno difference tothe model predictions, with values shown for compara-
+tive purposes in Fig. 10.
+4.3. Mass-transfer coefﬁcient
+The mass-transfer coefﬁcient is also estimated using a
+correlation equation developed byW .uest et al. [16]. The
+correlation shown in Fig. 4 gives the mass-transfer
+coefﬁcient for oxygen and nitrogen as a function of
+bubble radius for bubbles of diameter less thanapproximately1.3mm, and assumes a constant mass-
+transfer coefﬁcient for bubbles larger than 1.3mm in
+diameter. Unfortunately, the data in Fig.4 were notreferenced to a speciﬁc water temperature [17] and could
+not be corrected to the temperature of the oxygen
+transfer tests (23 1C). The temperature dependence ofthe mass-transfer coefﬁcient is given [30] by
+K
+LðT1CÞ¼KLð201CÞScð201CÞ
+ScðT1CÞ/C20/C211=2
+; ð18Þ
+where
+Sc¼mL
+rLDLð19Þ
+istheSchmidtnumberand DListhediffusioncoefﬁcient
+of oxygen or nitrogen in water. Assuming the data of
+Motarjemi and Jameson [17] were collected at 20 1C, the
+mass-transfer coefﬁcients for both oxygen and nitrogenwould increase byabout 8% because the experiments
+wereconductedat23 1C.However,thiscorrectionmakes
+verylittle difference to the predicted oxy gen concentra-tion proﬁles shown in Fig. 7 because the oxygen transfer
+process is approaching saturation. This holds at the
+beginning of the experiment when the oxygen transferefﬁciencyis high, as well as towards the end of the
+experiment when the aqueous concentration approaches
+steadystate.
+4.4. Induced water velocity
+Another assumption made during the application of
+the model is that anyinduced water velocityis
+negligible. If this assumption is not correct, then thewater velocitywould decrease the bubble contact timeand reduce the extent to which the model over-predicts
+the experimental data. Efforts were madeto measure the
+induced water velocity, but it was found to be less than0.04ms
+/C01, the lower measurement limit of the velocity
+meter used. The discrete-bubble model was modiﬁed to
+include a uniform vertical velocity(see Eq. (8)) equal to0.04ms
+/C01, but Fig. 10 shows that this results in onlya
+modest decrease in the predicted oxygen concentrations.
+5. Conclusion
+The predictions of the discrete-bubble model were
+compared to the results of diffused-bubble oxygen
+transfer tests conducted in a 14-m deep tank at threeair ﬂow rates. Required model inputs are the gas ﬂow
+rate and the initial bubble size distribution. Although
+the bubble-size distribution can be taken into account,using the Sauter-mean diameter is simpler and providesequivalent results. Based on correlation equations for
+bubble-rise velocityand the mass-transfer coefﬁcient
+developed byW .uest et al. [16], the model predicts all the
+oxygen transfer test data to within 15%. The range of
+bubblediametersmeasuredduringthetestswasfrom0.2
+to 2mm, spanning the region of greatest variation in risevelocityand mass-transfer coefﬁcient. The discrete-
+bubble model has also been applied to predict oxygen
+transfer in a full-scale airlift aerator [18], where theD.F. McGinnis, J.C. Little / Water Research 36 (2002) 4627–4635 4633range of bubble diameters was from about 2 to 4mm.
+Although the model tends to over-estimate the rate of
+oxygen transfer in the well-mixed tank and under-
+estimate the rate in the airlift aerator, the combinedresults suggest that the model is reliable for bubble sizes
+between 0.2 and 4mm. In both cases, the initial bubble
+sizes were measured in laboratoryexperiments carriedout completelyindependent of the oxy gen transfer tests.Since both sets of data had a relativelyhigh degree of
+variabilityand because the model is sensitive to initial
+bubble size, it appears plausible that the bubble-sizeestimation procedure is the primarysource of the
+modest error.
+The discrete-bubble model has been successfullyused
+to predict oxygen transfer in a well-mixed tank (this
+work),anairliftaerator[18],andabubbleplume[19,20].
+The discrete-bubble approach has also been applied tothe Speece Cone [10], but the model could not be fully
+veriﬁed due to a lack of experimental data. Because it is
+known that hypolimnetic oxygenators can inducevarying degrees of mixing in a stratiﬁed reservoir [19],the suite of models is being coupled with a hydro-
+dynamic and water-quality reservoir model so that
+oxygenation systems can be designed more effectivelyand operated more efﬁciently.
+Acknowledgements
+Financial support was provided bythe National
+Science Foundation (NSF) through an NSF CAREERAward (Grant No. 9624488) with supplemental fund-ing from the Tennessee ValleyAuthorityand
+Roanoke County, Virginia. Special thanks are extended
+to Vickie Burris for her assistance with the experimentalwork.
+References
+[1] Cooke GD, Carlson RE. Reservoir management for water
+qualityand THM precursor control. AWWA Research
+Foundation, Denver, CO, 1989. 387pp.
+[2] MobleyMH.TVAreservoiraerationdiffusersystem,TVA
+Technical Paper 97-3. ASCE Waterpower ‘97, Atlanta,GA, August 5–8, 1997.
+[3] Hauser GE. Personal communication. TVA Engineering
+Lab, 129 Pine Rd, Norris, TN 37828, 2000.
+[4] United States ArmyCorps of Engineers. 3.7.2 habitat
+replacement system. From the Draft Environmental
+Assessment and Finding of No Signiﬁcant Impact, R. B.Russell Dam and Lake Project Pumped Storage, Novem-ber 1998.
+[5] G .achter R. Ten years experience with artiﬁcial mixing and
+oxygenation of prealpine lakes. Lake Reserv Manage1995;11:141.[6] McQueen DJ, Lean DRS. Hypolimnetic aeration: an
+overview. Water Pollut Res J Can 1986;21:205–17.
+[7] ThomasJA,FunkWH,MooreBC,BuddWW.Shortterm
+changes in Newman Lake following hypolimnetic aeration
+with Speece Cone. Lake Reserv Manage 1994;9:111–3.
+[8] GemzaA.Somepracticalaspectsofwholelakemixingand
+hypolimnetic oxygenation. Ecological impacts of aerationon lakes and reservoirs in southern Ontario. Lake ReservManage 1995;11:141.
+[9] KortmannRW,KnoeckleinGW,BonnellCH.Aerationof
+stratiﬁed lakes: theoryand practice. Lake Reserv Manage1994;8:99–120.
+[10] McGinnis DF, Little JC. Bubble dynamics and oxygen
+transfer in a Speece Cone. Water Sci Technol 1998;37(2):285–92.
+[11] SpeeceRE,RayyanF,MurfeeG.Alternativeconsiderations
+in the oxygenation of reservoir discharges and rivers. In:Speece RE, Malina Jr JF, editors. Applications of commer-cial oxygen to water and wastewater systems. Austin, TX:Center for Research in Water Resources, 1973. p. 342–61.
+[12] AshleyKI. Hy polimnetic aeration: practical design and
+application. Water Res 1985;19:735–40.
+[13] BurrisVL,LittleJC.Bubbledynamicsandoxygentransfer
+in a hypolimnetic aerator. Water Sci Technol 1998;37(2):293–300.
+[14] Fast AW, Dorr VA, Rosen RJ. A submerged hypolimnion
+aerator. Water Resour Res 1975;11:287–93.
+[15] LittleJC.Hypolimneticaerators:predictingoxygentransfer
+and hydrodynamics. Water Res 1995;29:2475–82.
+[16] W .uest A, Brooks NH, Imboden DM. Bubble plume
+modeling for lake restoration. Water Resour Res 1992;28:3235–50.
+[17] Motarjemi M, Jameson GJ. Mass transfer from verysmall
+bubbles—theoptimumbubblesizeforaeration.ChemEngSci 1978;33:1415–23.
+[18] Burris VL, McGinnis DF, Little JC. Predicting oxygen
+transfer and water ﬂow rate in airlift aerators. Water Res,2002 this issue.
+[19] Little JC, McGinnis DF. Hypolimnetic oxygenation:
+predicting performance using a discrete-bubble model.Water Sci Technol: Water Supply2001;1(4):185–91.
+[20] McGinnis DF, Little JC, W .uest A. Hypolimnetic oxygena-
+tion: coupling bubble-plume and reservoir models. Pro-ceedings of Asian WATERQUAL, IWA RegionalConference, Fukuoka, Japan, September 2001.
+[21] Bin AK. Application of a single-bubble model in estima-
+tion of ozone transfer efﬁciencyin water. Ozone Sci Eng1995;17:469–84.
+[22] Bischof F, Durst F, Hofken M, Sommerfeld M. Theore-
+tical considerations about the development of efﬁcientaeration systems for activated sludge treatment. AerationTechnol: ASME 187;1994:27–38.
+[23] P .opel HJ, Wagner M. Prediction of oxygen transfer from
+simple measurements of bubble characteristics. Water SciTechnol 1991;23:1941–50.
+[24] Orsat V, Vigneault C, Raghavan GSV. Air diffusers
+characterization using a digitized image analysis system.Appl Eng Agric 1993;9:115–21.
+[25] AshleyKI, Hall KJ. Factors inﬂuencing oxy gen transfer in
+hypolimnetic aeration systems. Verh Int Verein Limnol1990;24:179–83.D.F. McGinnis, J.C. Little / Water Research 36 (2002) 4627–4635 4634[26] AshleyKI, Hall KJ, Mavinic DS. Factors inﬂuencing
+oxygen transfer in ﬁne pore diffused aeration. Water Res
+1991;25:1479–86.
+[27] Chen S, Timmons MB, AneshansleyDJ, Bisogni Jr JJ.
+Bubble size distribution in a bubble column appliedto aquaculture systems. Aquaculture Eng 1993;11:
+267–80.
+[28] Chisti MY. Airlift bioreactors. New York, NY: Elsevier
+Science Publishing, 1989. 345pp.[29] Jamialahmadi M, Branch C, M .uller-Steinhagen H. Term-
+inal bubble rise velocityin liquids. Trans IChemE
+1994:2(Part A);119–22.
+[30] Daniil EI, Gulliver JS. Temperature dependence of liquid-
+ﬁlm coefﬁcient for gas transfer. J Environ Eng 1988;114(5):1224–9.
+[31] Haberman WL, Morton RK. An experimental studyof
+bubbles moving in liquids. Proc Am Soc Civ Eng 1954;80:379–427.D.F. McGinnis, J.C. Little / Water Research 36 (2002) 4627–4635 4635

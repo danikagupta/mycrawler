@@ -1,0 +1,1322 @@
+Pergamon 
+096%0661(95)00014-3 Control Fag. Practice, VoL 3, No. 3, pp. 403-414, 1995 
+Copyright © 1995 E~vvict Scimc¢ Ltd 
+Printed in Great Britain. All rightz reaetved 
+0967-0661/95 $9.50 + 0.00 
+STATISTICAL PROCESS CONTROL OF 
+MULTIVARIATE PROCESSES 
+J.F. MacGregor and T. Kourtl 
+Chemical Engineering Department, McMaster Advanced Control Conaortium, McMaster University, 
+Hamilton, Ontario L8S 4L7, Canada 
+(Received August 1994; in final form January 1995) 
+Abstract: With process computers routinely collecting measurements on large numbers of 
+process variables, multivariate statistical methods for the analysis, monitoring and diagnosis of 
+process operating performance have received increasing attention. Extensions of traditional 
+univariate Shewhart, CUSUM and EWMA control charts to multivariate quality control situ- 
+ations are based on Hotelling's T 2 statistic. Recent approaches to multivariate statistical process 
+control which utilize not only product quality data (Y), but also all of the available process 
+variable data (X) are based on multivariate statistical projection methods (Principal Component 
+Analysis (PCA) and Partial Least Squares (PLS)). This paper gives an overview of these 
+methods, and their use for the statistical process control of both continuous and batch multivariate 
+processes. Examples are provided of their use for analysing the operations of a mineral processing 
+plant, for on-line monitoring and fault diagnosis of a continuous polymerization process and 
+for the on-line monitoring of an industrial batch polymerization reactor. 
+Keywords: Batch processes, Control charts, Fauk diagnosis, Multivariable processes, Principal 
+component analysis, Process monitoring, Statistical process control. 
+1. INTRODUCTION 
+Statistical Process Control (SPC) concepts and methods 
+have become very important in the manufacturing and 
+process industries. Their objective is to monitor the 
+performance of a process over time in order to verify 
+that the process is remaining in a "state of statistical 
+control". Such a state of control is said to exist if certain 
+process or product variables remain close to their desired 
+values and the only source of variation is "common- 
+cause" variation, that is, variation which affects the 
+process all the time and is essentially unavoidable within 
+the current process. SIC charts such as Sbewhart, 
+CUSUM and EWMA chars are used to monitor key 
+product variables in order to detect the occurrence of 
+any event having a "special" or "assignable" cause. By 
+finding assignable causes, long-term nnprovements in 
+the process and in product quality can be achieved by 
+eliminating the causes or improving the process or its 
+operating procedures. 
+It is important to note that both the concepts and methods 
+of SPC are totally different from those of automatic 
+feedback process control. In general the two approaches 
+are totally complementary. Automatic feedback control 
+should be applied wherever possible to reduce vari- 
+ability in important process and product variables. 
+Feedback controllers compensate for the predictable 
+component of disturbances in important variables by 
+adjusting other process variables and thereby transfer- 
+ring the variability into these less important manipulated 
+variables (Downs and Doss, 1991). SIC monitoring methods should be applied on top of the process and its 
+automatic control system in order to detect process 
+behaviour that indicates the occurrence of a special 
+event. By diagnosing causes for the event and removing 
+them (rather than simply continuing to compensate for 
+them), the process is improved. 
+Unfortunately, most SPC methods are based on charting 
+only a small number of variables, usually the final 
+product quality variables (Y), and examining them one 
+at a time. These approaches are totally inadequate for 
+most modern process industries. They ignore the fact 
+that with computers hooked up to nearly every industrial 
+process, massive amounts of data are being collected 
+continually on perhaps hundreds of process variables 
+(X). Measurements on variables such as temperatures, 
+pressure, flowrates, etc., are available every second. 
+Final product quality variables (Y), such as polymer 
+molecular weights or melt index, cut points in distilla- 
+tions, etc., are available on a much less frequent basis. 
+All such data should be used to extract information in 
+any effective scheme for monitoring and diagnosing 
+operating performance. However, all these variables are 
+not independent of one another. Only a few underlying 
+events are driving a process at any time, and all these 
+measurements are simply different reflections of these 
+same underlying events. Therefore, examining them 
+one variable at a time, as though they were independent, 
+makes interpretation and diagnosis extremely difficult. 
+Such methods only look at the magnitude of the devi- 
+ation in each variable independently of all others. Only 
+multivariate methods that treat all the data 
+403 
+404 J.F. MacGregor and T. Kourti 
+simultaneously can also extract information on the 
+directionality of the process variations, that is on how 
+all the variables are behaving relative to one another. 
+Furthermore, when important events occur in processes 
+they are often difficult to detect because the signal to 
+noise ratio is very low in each variable. But multivariate 
+methods can extract confirming information from 
+observations on many variables and can reduce the noise 
+levels through averaging. 
+This paper presents an overview on both traditional and 
+new multivariate SPC methods for monitoring and 
+diagnosing process operating performance. Traditional 
+methods for multivariate quality control (based only on 
+the product quality measurements) are reviewed in 
+Section 2. Some multivariate statistical projection 
+methods (Principal Components Analysis (PCA) and 
+Partial Least Squares (PLS)) which form the basis of 
+new approaches to multivariate SPC (which use all the 
+process data X as well as the quality data Y) are 
+summarized and their similarities and differences with 
+the traditional methods are discussed in Section 3. The 
+use of these multivariate statistical projection methods 
+for analyzing and interpreting historical plant operating 
+records available in computer databases is also dis- 
+cussed. New multivariate SPC methods for the on-line 
+monitoring and diagnosis of process operating 
+performance in both continuous and batch processes are 
+presented and illustrated in Section 4. Section 5 dis- 
+cusses some practical issues concerning the correct 
+application of these methods. clearly be confused. The same customer apparently 
+liked all the other lots of product sent to him, many of 
+them with values of Yl and Y2 much further from target. 
+The true situation is only revealed in the multivariate yx 
+vs Y2 plot where it is seen that the lot of product indicated 
+by the ® is clearly outside the joint confidence region, 
+and is clearly different from the normal "in - control" 
+population of product. 
+t'rl ~ * 
+t-- ¢"3 t-" ~ .................... ........................... ..... UCL 
+' ".',,' i .'. "'" • 
+".... 
+y, "~.,fr_.~._ ', , , , ,, , ?" MEAN 
+: "F; i "' ." • ....... Y2- ~I- le_ _~ .............. .* ............... LCL 
+SAMPLE NUMBER ; ,..- 
+l 
+t" 
+2. MULTIVARIATE CHARTS FOR STATIS- 
+TICAL QUALITY CONTROL 
+In most industries, traditional univariate control charts 
+like Shewhart (Shewhart, 1931), CUSUM (Woodward 
+and Goldsmith, 1964) and EWMA (Roberts, 1959; 
+Hunter, 1986) are used for separately monitoring key 
+measurements on the final product which in some way 
+define the quality of that product. The difficulty with 
+this approach is that these quality variables are not 
+independent of one another, nor does any one of them 
+adequately define product quality by itself. Product 
+quality is only defined by the correct simultaneous 
+values of all the measured properties, that is, it is a 
+multivariate property. 
+The difficulty with using independent univariate control 
+charts can be illustrated by reference to Figure 1. Here 
+only two quality variables (y~, Y2) are considered for ease 
+of illustration. Suppose that, when the process is in a 
+state of statistical control where only common cause 
+variation is present, yl and Y2 follow a multivariate 
+Normal distribution and are correlated (Pyly2 = -0.94 ) as 
+illustrated in the joint plot ofyz vs Y2 in Figure 1. The 
+ellipse represents a contour for the in-control process, 
+with 99 % confidence limits, and the asterisks represent 
+a set of observations from this distribution. The same 
+observations are also plotted in Figure 1 as individual 
+Shewhart charts on y~ and Y2 versus sample number 
+(time) with their corresponding upper (UCL) and lower 
+(LCL) control limits (99% confidence limits). Note that 
+by inspection of each of the individual Shewhart charts 
+the process appears to be clearly in a state of statistical 
+control, and none of the individual observations gives 
+any indication of a problem. The only indication of any 
+difficulty is that a customer has complained about the 
+performance of the product corresponding to the ® in 
+Figure 1. If only univariate charts were used, one would Figure 1. Quality control of two variables illustrating 
+the misleading nature of univariate charts. 
+In spite of the misleading nature of univariate quality 
+control charts they continue to be almost the only form 
+of monitoring used by industry. However, several 
+multivariate extensions of the Shewhart, CUSUM and 
+EWMA based on Hotelling's T 2 statistic have been 
+proposed in the literature (see review articles by Wierda 
+(1994) and Sparks (1992)). 
+2.1 Multivariate Shewhart Charts 
+In situations where one observes a vector of q variables 
+Yqxl at each time period multivariate X 2 and T 2 charts are 
+used. The T 2 chart has its origins in the work of Hotelling 
+(1947), and several references discuss the charts in more 
+detail (Alt, 1977, 1985; Alt and Smith, 1988; Ryan, 
+1989; and Jackson, 1991). 
+Given a (qx 1) vector of measurements y on q, normally 
+distributed variables with an in-control covariance 
+matrix E one can test whether the vector ~t of the means 
+of these variables is at its desired target x by computing 
+the statistic : 
+g2=(y-~)r:c-~(y-x) (1) 
+This statistic will be distributed as a central Chi-squared 
+distribution with q degrees of freedom if ~t = x. A 
+multivariate Chi-squared control chart can be con- 
+structed by plotting g z versus time with an upper control 
+limit (UCL) given by X~(q) where tx is an appropriate 
+level of significance for performing the test (e.g. a = 
+0.01). 
+Control of Multivariate Processes 405 
+Note that this multivariate test overcomes the difficulty 
+illustrated in the example of Figure 1, where univariate 
+charts were incapable of detecting the special event 
+denoted by ®. The Z2 statistic in equation (1) represents 
+the directed or weighted distance (Mahalanobis dis- 
+tance) of any point from the target x. All points lying 
+on the ellipse in Figure 1 would have the same value of 
+Z2. Hence, a ~2 chart would detect as a special event any 
+point lying outside of the ellipse. (Notice that the ellipse 
+is the solution to equation (1) for Z2=~(q), for two 
+variables). 
+When the in-control covariance matrix Y~ is not known, 
+it must be estimated from a sample of n past multivariate 
+observations as 
+n 
+S = (n_ 1)-~ y (y _~)(y _~)r (2) 
+i=l 
+When new multivariate observations (y) are obtained, 
+then Hotelling's T 2 statistic given by C i = Max{0, C i_ 1 + d-l(Ixl - X)Y'-l(Yi - X) - d/2} (6) 
+to test for this specific shift in mean from x to Ix~. 
+To generalize the test against all alternatives (HI:Ix ~ x) 
+several extensions of the univariate CUSUM have been 
+proposed. Crosier (1988) proposed computing I a at 
+each point and then computing the CUSUM of the scalar 
+distance T" (or its square root) as 
+C, =Max{0, Ci_,+Ti-k } (7) 
+with initial condition Co -> 0. This CUSUM scheme 
+signals an out-of-control situation when C~ > h. 
+Crosier also proposed replacing the scalar quantities of 
+the univariate CUSUM by their vector counterparts and 
+computing the vector CUSUM 
+s,=o if Ci <_ k 
+=(si_~+y,-x)(1-k/C) if C~>k (8) 
+T 2 = (y - z)rs-l(y - x) (3) 
+can be plotted against time. An upper control limit on 
+this chart is given by: 
+7r~c z _ (n - 1) (n + 1 )q F,(q, n - q) (4) 
+n(n - q) 
+where F~,(q, n - q) is the upper 100a% critical point of 
+the F-distribution with q and n - q degrees of freedom 
+(Tracy et al., 1992)• 
+The above charts are for a single new multivariate 
+observation vector at each time. If an average of m new 
+multivariate observations are to be used at each time or 
+if the estimate of the variance S is based on pooling 
+estimates from rational subgroups, then the above def- 
+initions of the Z 2 and T 2 charts and their UCL's must be 
+correspondingly redefined (Wierda, 1994)• 
+Furthermore, if the charts are utilized to examine past 
+data that are also used in computing S, then the distri- 
+butional properties of T 2 are different from the above 
+(Tracy et al., 1992; Wierda, 1994). 
+Once an out of control signal is detected the challenge 
+is to determine which variables are responsible for it 
+(i.e., identify the variables whose means have shifted). 
+Several approaches have been suggested for this task 
+(Wierda, 1994; Kourti and MacGregor, 1994; Fuchs and 
+Benjamini, 1994). 
+2.2 Multivariate CUSUM Charts 
+Cumulative Sum (CUSUM) charts are based on using a 
+sequence of sequential probability ratio tests. Consider 
+a sequence of random variables y~, Y2 ..- distributed 
+independently as Np(~ Y.), and it is desired to test H0 : 
+IX = x versus H1 : Ix = Ixl- Let d2= (Ix~- x)rz-l(g 1 -x) 
+define the squared length of the shift in mean, then the 
+sequential probability ratio test rejects the null 
+hypothesis whenever 
+log tx ~. {d-'(ix~-x)r=~Cy~-x)-d/2} > (5) i=l d 
+where a is the level of significance chosen. Healy 
+(1987) used this result to propose plotting the CUSUM where Ci is the weighted length 
+{(si- t +Yi - x)r~-l(si- l +Yi -x)} m. 
+The scheme signals an out-of-control situation when- 
+ever 
+Z, = max{0, C, -k} > h. (9) 
+A reference value k = d2/2 is usually chosen. This choice 
+minimizes the average run length or ARL (average 
+number of samples required to detect a deviation for the 
+first time) at deviation d for a given on-target ARL. The 
+on-target ARL is determined by the choice of the control 
+limit h. Pignatiello and Runger (1990) have proposed 
+another variant of the multivariate CUSUM. 
+These CUSUM charts use all of the observations since 
+the detection of the last special event rather than only 
+the last observation vector as in the Shewhaxt type charts. 
+Their advantage over the latter charts is that their 
+average run lengths are smaller for small shifts in the 
+process mean. 
+2.3 The Multivariate EWMA 
+Multivariate EWMA charts compute the exponentially 
+weighted moving average of the vector process (Lowry 
+et al., 1992) 
+z i = R(Yi - x) + (I- R)zi_ ~ (10) 
+where R = diagonal {rl, r2 ..... r.} and 0 < rj < 1;j = 1, 
+.... p. Large values of r, give more smoothing and better 
+detection of small sl~fts. The MEWMA gives an 
+out-of-control signal when 
+Q~ = zrE~lZl > h (11) 
+where the control limit h is chosen to achieve a specified 
+in-control ARL. When all the r1 are equal (rj -- r, for 
+j=l,2,...p) the covariance matrix is given by 
+r[1 - (1 - r) ~] E 
+f2~ - 2 - r 
+where E = Coy (Y). (12) 
+The properties of the MEWMA chart are quite similar 
+to those of the multivariate CUSUMs. 
+406 J.F. MacGregor and T. Kourti 
+3. MULTIVARIATE STATISTICAL PROJEC- 
+TION METHODS 
+3.1 Principal Component Analysis 
+When the number of measured quality variables (q) is 
+large one often finds that they are highly correlated with 
+one another and their covariance matrix Z is nearly 
+singular. A common procedure for reducing the 
+dimensionality of the quality variable space is Principal 
+Component Analysis (PCA). (Wold et al., 1987; Mardia 
+et al., 1989; Jackson, 1991). The first principal com- 
+ponent (PC) of y is defined as that linear combination 
+q = pry that has maximum variance subject to Iptl = 1. 
+The second PC is that linear combination defined by 
+t2 = pry which has next greatest variance subject to Ip:l 
+-- 1, and subject to the condition that it be uncorrelated 
+with (orthogonal to) the first PC (tt). Additional PC's 
+up to q are similarly defined. It is easily shown that the 
+principal component loading vectors Pi are the eigen- 
+vectors of the covariance matrix (g) of Y, and the 
+corresponding eigenvalues 0q) are the variances of the 
+PC's (i.e., Var(t~) =~,i). In practice Z is not known and 
+is estimated by (n - 1)-~YrY where Y is the (nxq) matrix 
+of mean centered and scaled measurements. Hence the 
+sample principal component loadings are computed as 
+the eigenvectors of the (q x q) matrix (yr y). The 
+principal component scores are defined as the observed 
+values of the principal components for each of the n 
+observation vectors (i.e., t i = Y pi T, i -- 1, 2 ..... q). In 
+effect PCA decomposes the observation matrix Y as: 
+Y = Tpr= ~ tlP/r (13) 
+i=1 
+PCA is scale-dependent, and so the Y matrix must be 
+scaled in some meaningful way. The most usual form 
+of scaling is to scale all variables to unit variance and 
+then perform PCA on the correlation matrix. Alterna- 
+tively, in quality-control situations, scaling the Y's 
+inversely proportional to their specification limits or 
+some other measure of relative importance is usually 
+more meaningful. 
+In practice, one rarely needs to compute all the q 
+eigenvectors, since most of the variability in the data are 
+captured in the first few PC's; 2 or 3 PC's are often 
+sufficient to explain most of the predictable variations 
+in the product. The NIPALS algorithm, (Geladi and 
+Kowalski, 1986) is ideal for computing the principal 
+components in a sequential manner when the number of 
+variables is large. The number of PC's that provide an 
+adequate description of the data can be assessed using 
+a number of methods (Jackson, 1991) with cross- 
+validation (Wold, 1978) being perhaps the most reliable. 
+By retaining only the first A PC's the Y matrix is 
+approximated by: 
+A 
+= ~ t~p~ r. (14) 
+i=[ 
+3.2 Quality Control Charts Based on Principal 
+Components 
+Having established a PCA model based on historical 
+data collected when only common cause variation was 
+present, future behaviour can be referenced against this 
+"in-control" model. New multivariate observations can 
+be projected onto the plane defined by the PCA loading vectors to obtain their scores (t i .... = pTynew) , and the 
+residuals e, ew=y,,w-~,ew, where ~,ew=Pata ..... and 
+tA .... is the (A x 1) vector of scores from the model and 
+PA is the (q × A) matrix ofloadings. Multivariate control 
+charts based on Hotelling's T: can be plotted based on 
+the first A PC's, where 
+i=l~ (15) 
+and sty(= ~,i) is the estimated variance of t i. If A = 2, a 
+joint h vs t2 plot can be used. 
+Note that the traditional Hotelling's T 2 in equation (3) 
+is equivalent (Mardia, Kent and Bibby, 1989; Kourti and 
+MacGregor, 1994) to: 
+T2=i~L~= ~'l t2 ~ t 2 A t 2 q ti 2 
+s~ X s + y s ~ (16) 
+1 i=1 ti t~ i=A+I t~ 
+By scaling each t~ 2 by the reciprocal of its variance each 
+PC term plays an equal role in the computation of T 2 
+irrespective of the amount of variance it explains in the 
+Y matrix. This illustrates some of the problems with 
+using T ~ when the variables are highly correlated and E 
+is very ill-conditioned. When the number of variables 
+(q) is large, E is often singular and cannot be inverted, 
+nor can all the eigenvectors be obtained. Even if it can, 
+the last PC's (i = A + 1 ..... q) in equation (16) explain 
+very little of the variance of Y and generally represent 
+random noise. By dividing these t~'s by their very small 
+variances, slight deviations in these ti's which have 
+almost no effect on Y will lead to an out-of-control signal 
+in T ~. Therefore, TJ based on the first A (cross-validated) 
+PC' s provides a test for deviations in the product quality 
+variables that are of greatest importance to the variance 
+of Y. 
+However, monitoring product quality via TA 2 based on 
+the first A PC's is not sufficient. This will only detect 
+whether or not the variation in the quality variables in 
+the plane of the first A PC's is greater than can be 
+explained by common cause. If a totally new type of 
+special event occurs which was not present in the 
+reference data used to develop the in-control PCA 
+model, then new PC's will appear and the new obser- 
+vations Yn~w will move off the plane• Such new events 
+can be detected by computing the squared prediction 
+error (SPEy) of the residuals of new observations (Kresta 
+et al., 1991). 
+q 
+SPEy = Z(y .... i- Y .... ,)z (17) i=1 
+This statistic is also referred to as the Q-statistic 
+(Jackson, 1991), or distance to the model. It represents 
+the squared perpendicular distance of a new multivariate 
+observation from the plane. When the process is 
+"in-control", this value of SPE. or Q should be small• • . . J. . 
+Upper control limits for this staUstmc can be computed, 
+from historical data, using approximate results for the 
+distribution of quadratic forms (Jackson, 1991; Nomi- 
+kos and MacGregor, 1995). In the modelling stage and 
+when the process is "in control", SPEy represents 
+unstructured fluctuations (noise) that cannot be 
+accounted for by the model. When an unusual event 
+occurs that results in a change in the covariance structure 
+of Y, it will be detected by a high value of SPE. ; a high 
+value of SPEy means that the projection model is not 
+Control of Multivariate Processes 407 
+valid for that observation. A very effective set of 
+multivariate control charts is therefore a T 2 chart on the 
+A dominant orthogonal PC's (t~ ..... tA) plus a SPEy chart. 
+3.3 PLS - Partial Least Squares 
+Given two matrices, an (n x m) process variable data 
+matrix X, and an (n x q) matrix of corresponding product 
+quality data Y, one would like to extract latent variables 
+that not only explain the variation in the process data 
+(X), but that variation in X which is most predictive of 
+the product quality data (Y). PLS is a method (or really 
+a class of methods) which accomplish this by working 
+on the sample covariance matrix (xTy)(yTx). In the 
+most common version ofPLS (H6skuldsson, 1988), the 
+first PLS latent variable tt = wrx is that linear combi- 
+nation of the x-variables that maximizes the covariance 
+between it and the Y space. The first PLS loading vector 
+wt is the first eigenvector of the sample covariance 
+matrix X r Y yT X. Once the scores tl ffi Xw] for the first 
+component have been computed the columns of X are 
+regressed on tl to give a regression vector p~ = Xt~/tTtt 
+and the X matrix is deflated to give residuals 
+X2 = X- tlp~ r. The second latent variable is then com- 
+puted as t2 = wrx where w2 is the first eigenvector of 
+x2T y yT X2 and so on. As in PCA the new latent vectors 
+or scores (t~, t2 ..... ) and the loading vectors (w], w2 .... ) 
+are orthogonal. For large ill-conditioned data sets, it is 
+usually convenient to calculate the PLS latent variables 
+sequentially via the NIPALS algorithm (Geladi and 
+Kowalski, 1986) and to stop based on cross-validation 
+criteria. 
+3.4 Analysis of Historical Process Data Sets 
+Although massive amounts of process data are being 
+collected and stored in databases for most industrial 
+processes, very little analysis and interpretation of these 
+data is being performed. This is because of the over- 
+whelming size of the databases and the very ill- 
+conditioned nature of the routine operating data being 
+collected. Furthermore, the signal-to-noise ratio is often 
+poor in these data, and there are often significant 
+amounts of missing data. However, all these problems 
+are well addressed by the multivariate statistical pro- 
+jection methods of PCA and PLS. By examining the 
+behaviour of the process data in the projection spaces 
+defined by the small number of latent variables (tl, t2, 
+.... t^), and interpreting process movements in this 
+reduced space by examining the corresponding space 
+defined by the loading vectors (Pl, P2 ..... PA) or (w~, w 2, 
+.... WA) in the case of PLS, it is often possible to extract 
+very useful information from these databases, and to use 
+this information to improve the process. 
+There are several interesting examples of using these 
+methods to analyze process data. Denney et al. (1985) 
+applied the methods to the analysis of an industrial 
+sulphur recovery unit. Moteki and Arai (1986) used 
+them to analyse a low-density polyethylene process and 
+to find new operating conditions. Wise et al. (1991) 
+applied PCA to analyze and diagnose systematic vari- 
+ations in the behaviour of a slurry-fed ceramic melter 
+process. Slama (1991) used PCA and PLS to analyze 
+data on more than 300 process variables and 11 product 
+grades from the fluidized bed catalytic cracking and 
+fractionation section of a refinery. Skagerberg et al. (1992) applied PLS to predict polymer properties from 
+measured temperature profiles in a tubular low-density 
+polyethylene process, and to interpret the behaviour of 
+this process. Dayal et al. (1994) used PLS to model the 
+dynamic behaviour of a continuous Kamyr digester in 
+a pulp mill, and diagnosed the reasons for poor control 
+of Kappa number by examining the loading plots (w], 
+w2). 
+! ' ! [ i i i "'I~ ~ " : 
+2 , ....... U .... . * .. * + ++ 
+.-2°'t.3 ~: " " ~i 1111 : : . " "~:, ,. z.~.:.. :.~]t~..:. "P';+ ~'..~.~..''+~',,'.43"~:,." .... ":+:'~ :,., ......... :~ ........ 
+i 
+-12 -i0 -8 -6 -4 -2 0 2 4 6 
+8COtlm tl 
+41 t T ~ 
+2 
+, ............... i ................ i....-+-.!....i......... " ............ i 0 
+m ¸ 
+-3 
+-4 
+-5 
+*6 
+-12 -10 -8 -6 -4 -2 0 2 6 
+Scores t, 
+Figure 2. PLS scores plots for several hundred hours of 
+operation of the rougher scavenger unit of a mineral 
+flotation process, t~ vs h, and t~ vs h. (Hodouin et al. 
+(1993); With permission from CIM Bulletin ). 
+5 ................... • .................. 
+4 ..... 
+A 
+3 . .............. 
+2 
+1 
+0 
+-1 
+-2 
+-3 -s2 -to -8 -~ -4 -2 o 2 
+Score t~ 
+Figure 3. PLS scores plot for several hundred hours of 
+operation of the cleaning section of the flotation 
+process, t~ vs t 2. (Hodouin et al. (1993); With 
+permission from CIM Bulletin). 
+408 J.F. MacGregor and T. Kourti 
+Hodouin et al. (1993) used PCA and PLS to analyze and 
+interpret the behaviour of mineral flotation and grinding 
+circuits in a large mineral processing plant. Historical 
+data from 350 hours of operation were retrieved from 
+computer files. The difficulty with such massive data 
+sets is first to find out where in the data there is useful 
+information. The projections of hourly average data 
+(after gross outliers were removed) into the plane 
+defined by the first three latent variables are shown in 
+Figure 2 for the rougher scavenger (RS) unit and in 
+Figure 3 for the cleaner regrinding (CR) unit. The data 
+points appear to cluster into 3 distinct regions which 
+corresponded to different operating conditions. Simply 
+examining the individual plots of the process variables 
+would be confusing and would not reveal such infor- 
+mation. By focusing attention on the transitions between 
+the regions one can learn most of what there is to know 
+about the 350 hours of operation. To help diagnose the 
+reasons for these shifts in process operation, one can 
+interrogate the underlying multivariate model (as dis- 
+cussed below in Section 4.2) and display the process 
+variable contributions to these shifts. Cluster C for 
+example corresponds to low copper in the feed, low RS 
+concentrate flowrate, low lead recovery, high frother 
+and low promoter feedrate. 
+4. MULTIVARIATE STATISTICAL PROCESS 
+CONTROL 
+The main approach of statistical quality control (SQC) 
+methods developed throughout the statistical literature 
+has been to monitor only product quality data (Y). 
+However, in these approaches, all of the data on the 
+process variables (X) are being, ignored. If one truly 
+wants to do Statistical Process Control (SPC), one must 
+look at all of these process data as well. There are often 
+hundreds of process variables, and they are measured 
+much more frequently (and usually more accurately) 
+than the product quality data (Y). Furthermore, any 
+special events which occur will also have their finger- 
+prints in these process data (X). Sometimes product 
+quality is only determined by the performance of the 
+product later, in another process (e.g. catalyst 
+conditioning- performance of catalyst is assessed later 
+in polymer production). It would be useful to know if 
+the product is good before using it; monitoring the 
+process would help in the early detection of poor-quality 
+product. 
+There are several other reasons why monitoring the 
+process is advantageous. Sometimes, only a few prop- 
+erties of the product are measured, but these are not 
+sufficient to define entirely the product quality. For 
+example, if only rheological properties of a polymer are 
+measured, any variation in end-use application that arise 
+due to variation in chemical structure (branching, 
+composition, end-group concentration) will not be 
+captured by following only product properties. In these 
+cases the process data may contain more information 
+about events with special causes that may affect the 
+product quality (product performance). 
+Finally, even if product quality measurements are fre- 
+quently available, monitoring the process may help in 
+diagnosing assignable causes for an event. When 
+monitoring product quality, even if it is determined 
+which quality variable caused the multivariate chart to 
+go out of limits, it may still be difficult to determine 
+what went wrong in the process. Several combinations 
+of process conditions may cause the same product property to change. Monitoring the process would help 
+identify one combination of process variables and 
+therefore determine the underlying cause more easily. 
+Certainly, one could apply the previously discussed 
+SQC charting methods directly to the x variables as well 
+(Kourti and MacGregor, 1994). However, as discussed 
+previously, with large numbers of highly correlated 
+variables, these methods are impractical. Furthermore, 
+they offer no way of relating the X and Y data, and 
+least-squares regression analysis is also impractical in 
+this situation. Another problem is that these methods 
+cannot handle missing data arising from sensor failure, 
+etc.. The most practical approaches to multivariate SPC 
+appear to be those based on multivariate statistical 
+projection methods such as PCA and PLS. The methods 
+are ideal for handling the large number of highly 
+correlated and noisy process variable measurements that 
+are being collected by process computers on a routine 
+basis; these methods can also handle missing data. 
+4.1 Monitoring Continuous Processes 
+An essential part of SPC is to establish multivariate 
+control charts to detect special events as they occur, and 
+to diagnose possible causes for them while the infor- 
+mation is fresh. The philosophy applied in developing 
+multivariate SPC procedures based on projection 
+methods, is the same as that used for the univariate or 
+multivariate Shewhart charts. An appropriate reference 
+set is chosen which defines the normal operating con- 
+ditions for a particular process. In other words, a PCA 
+or PLS model is built based on data collected from 
+various periods of plant operation when performance 
+was good. Any periods containing variations arising 
+from special events that one would like to detect in the 
+future are omitted at this stage. The choice of this 
+reference set is critical to the successful application of 
+the procedure, as discussed by Kresta et al. (1991). 
+The multivariate control chart is now a T2-chart on the 
+first A latent variables (equation (15)). Added to this is 
+a chart on SPEx where: 
+m 
+SPEx= x ^ 2 ~" ( .... i --X .... i) (18) 
+i=1 
+where xn,w is computed from the reference PLS or PCA 
+model. This latter plot will detect the occurrence of any 
+new events which cause the process to move away from 
+the hyperplane defined by the reference model. Control 
+limits for the T 2 charts are chosen in the same manner 
+as previously discussed, and the UCL on SPE~ is based 
+on the Chi-squared approximation (Q-statistic (Jackson, 
+1991); Nomikos and MacGregor, 1995). 
+The main concepts behind the development and use of 
+these multivariate SPC charts for mohitodng continuous 
+processes were laid out by Kresta et al. (1991), Wise et 
+al. (1991), Wise and Ricker (1991), and MacGregor et 
+al. (1991a, b). Several illustrations of the methods were 
+also presented in those papers, along with the algorithms 
+and details on estimating control limits. 
+The basic approach is illustrated here with the moni- 
+toring of a simulated multi-section high-pres sure tubular 
+reactor process for the manufacture of low-density 
+polyethylene (LDPE) (MacGregor et al., 1994a). 
+Simulated data were generated for this study using the 
+models described in (Kiparissides et al., 1993). Mea- 
+surements are available on a frequent basis on all process 
+Control of Multivariate Processes 409 
+variables (X) - reactor temperature profiles in each 
+section, feedrates on all component streams, cooling 
+system flows and temperatures, and pressures in each 
+reactor section. Every hour, measurements are available 
+on product quality and productivity (Y) - polymer 
+molecular weights and branching properties, and con- 
+version of monomer to polymer. Using data collected 
+(X, Y) when the process was operating well, and no 
+special events were present, a PLS model using only 
+three latent variables (A = 3) was able to explain 90.0 
+% of the variation in the Y data. 
+120 FOULING IN S F/2OND SECI'ION OF LDPE REACTOR 
+I00 
+80 
+T32 6~ 
+4C 
+2C 
+0' I0 20 30 40 50 
+OBSERVATION NUMBER I 5 
+;2 
+60 
+4~ 
+350 
+300 
+250 
+200 
+150 
+10(3 
+50 
+0' 55 
+3 
+12 
+10 20 30 40 50 
+OBSERVATION NUMBER 60 
+Figure 4. T 2 Chart on 3 scores and squared prediction 
+error chart for monitoring a LDPE process. Points 
+51 - 55 denote a period where fouling gradually 
+occurred in the second zone of the reactor. 
+Figure 4 illustrates the use of a 1a^ (A=3) chart and an 
+SP~ chart to monitor the behaviour of the reactor when 
+there is an increasing level of fouling in the second 
+section of the reactor. Unnumbered points indicate past 
+conditions of normal operation. Fouling starts at point 
+51. Notice that both the T~3 and the squared prediction 
+error plots quickly detected the onset of this special 
+event and alarmed an out-of-control situation, on-line, 
+before lab data on product quality became available. 
+4.2 Fault Diagnosis 
+Both univariate and multivariate SPC charts are based 
+on statistical tests to detect any deviations from the 
+in-control reference distribution upon which the models 
+and charts have been built. In classical quality control approaches which chart only quality variables, once an 
+out-of-control signal has been given, it is then left up to 
+the process operators and engineers to try to diagnose 
+an assignable cause using their process knowledge and 
+a one-at-a-time inspection of process variables. How- 
+ever, multivariate charts based on PLS or PCA provide 
+a much greater capability for diagnosing assignable 
+causes. By interrogating the underlying PLS or PCA 
+model at the point where an event has been detected, 
+one can extract diagnostic or contribution plots which 
+reveal the group of process variables making the greatest 
+contributions to the deviations in the SPE~ and the scores 
+(Miller et al., 1993; MacGregor et al., 1994a; Kourti and 
+MacGregor, 1994; Wise and Ricker, 1991). Although 
+these plots will not unequivocally diagnose the cause, 
+they will provide much greater insight into possible 
+causes and thereby greatly narrow the search. 
+Consider the out-of-control alarms shown in Figure 4 
+for the LDPE process. Diagnostic plots showing the 
+contribution of the process variables to the SPE~ at point 
+51 are shown in Figure 5. These contribution plots point 
+to the temperature of the reaction mixture at the exit 
+from zone 2 and the temperature of the cooling agent 
+into the jacket of the second zone as being the main 
+process variables that are showing inconsistency (and 
+contributing to the large values of SPE~). This combi- 
+nation of variables would imply heat transfer problems 
+and could lead the operator to suspect fouling. 
+Diagnostic plots can also be constructed for the variable 
+contribution on the scores. If the SPE~ is within limits 
+and TA 2 out of limits, contribution plots on the scores 
+(tl, or t2 ..... or tA) would indicate combinations of process 
+variables that contributed to out of normal values for the 
+scores. (The detection of the score(s) responsible for the 2 out of limits signal for T^ is discussed in (Kourti and 
+MacGregor, 1994)). 
+21] 
+18 
+116 
+14 
+12 
+I0 
+8 
+6 
+4 
+2 
+0 0 FOULING IN SECOND SECTION OF LDPE REACTOR 
+~ in_2 
+2 4 6 8 10 12 
+PROCESS VARIABI.ES FSq 
+14 16 
+Figure 5. Contribution plot showing the process variable 
+contributions to the SPEx for point 51. 
+4.3 Multi-block PLS 
+The monitoring and diagnostic charts discussed in the 
+previous sections may be difficult to interpret when the 
+number of variables included in the X space is very large. 
+The combined use of multi-block PLS (MB-PLS) and 
+contribution plots may facilitate this task. In the 
+MB-PLS approach, large sets of process variables (X) 
+are broken into meaningful blocks; usually each block 
+corresponds to a process unit, or a section of a unit. 
+410 J.F. MacGregor mad T. Kourti 
+Multivariate monitoring charts for important subsec- 
+tions of the plant, as well as for the entire process, can 
+be constructed. The principles behind multi-block data 
+analysis methods and their algorithms can be found in 
+(Wold, 1982) and (Wangen and Kowalski, 1988). 
+Details on the application of multi-block PLS for process 
+monitoring and the corresponding algorithm can be 
+found in (MacGregor et al., 1994a) where MB-PLS is 
+used for monitoring and diagnosing an LDPE reactor. 
+Each block corresponds to one zone. Plots of h vs h and 
+SPE, obtained for each block of the process, were 
+utilized to detect an abnormal event in the zone it 
+occurred in; then contribution plots were successfully 
+used to assign causes for it. 
+Multiblock PLS is not simply a PLS between each X 
+block and Y. The blocks are weighted in such a way 
+that they are most predictive of Y. The monitoring space 
+is determined by one model rather than separate models 
+for each block. If there are time delays between process 
+units the data can be time shifted to accommodate for 
+the delays. 
+4.4 Data Compression 
+A major difficulty that often arises in computer data- 
+bases is that univariate data compression methods are 
+used to minimize the amount of data that needs to be 
+stored. These methods usually destroy the essential 
+multivariate nature of the process data, and eliminate 
+much of the useful information. A much more useful 
+method of data compression, and one that would retain 
+the true multivariate nature of the data, would be to store 
+the scores of the first A latent variables (T^) and the 
+loading matrix (PA). From this, the original variables 
+can always be reconstructed as :K = TAP r as long as no 
+special event occurs that is not predicted by the model. 
+In this latter case, the SPC detection scheme would alarm 
+such an event, and the data during this period should not 
+be compressed, but retained in its entirety for analysis 
+and fault diagnosis. By employing multivariate SPC 
+schemes based on PCA and PLS as discussed earlier, 
+these latent vectors will be computed in real-time, and 
+hence such a data-compression scheme is already 
+included within the SPC scheme. 
+4.5 Multivariate SPC for Batch Processes 
+In much of the specialty chemical, pharmaceutical and 
+other manufacturing industries, batch processes are used 
+extensively. The use of the multivariate statistical 
+projection methods has been extended to the analysis 
+and the on-line monitoring and diagnosis of batch 
+processes (MacGregor and Nomikos, 1992; Nomikos 
+and MacGregor, 1994a, 1994b, 1995; MacGregor et al., 
+1994b). Typical data from batch processes include 
+time-varying trajectories of all the measured process 
+variables throughout the duration of each batch (X), 
+product quality measurements (Y) at the end of each 
+batch, and batch recipe and charge conditions (Z) at the 
+start of each batch. If such data are available in a 
+historical database on many past batches, multivariate 
+PCA and PLS models can be developed for analyzing 
+these historical batches and for establishing on-line SPC 
+charts for monitoring the progress of each new batch. 
+Since the process data (X) is now a three-dimensional 
+array (batch run x variable x time), Nomikos and 
+MacGregor used three-dimensional or multi-way PCA (MPCA) and PLS (MPLS) methods. Multi-way PCA 
+and PLS methods have been discussed in a series of 
+articles (Lohm011er and Wold, 1980; Wold et al., 1987; 
+Geladi, 1989; Smilde and Doornbos, 1991). Nomikos 
+and MacGregor proposed approaches for handling the 
+fact that one dimension (time) is evolving during the 
+progress of a new batch, and for establishing control 
+limits on the multivariate SPE and score plots. In their 
+approach the X matrix is manipulated in such a way, that 
+the non-linear trajectory of each variable is subtracted 
+upon meancentering, thus converting a non-linear 
+problem to one that can be tackled with linear methods 
+such as PCA and PLS. 
+t4 
+-10 
+-20 "l m "12 
+tl 
+t3 2O 
+15 
+10 
+5 
+0 
+-5 
+-10 
+-15 
+-20 .~j .3 10 18 
+.4.2 .6 ~ .13 ".t5 j4 ;2 
+.7. 
+16 
+J2jt .21 
+-19 .17 
+-15 -10 -5 0 5 10 15 
+t2 
+Figure 6. Plots ofh - t4 and t2 - t3 for 25 batches. Batches 
+#24 and #25 have produced products with unusual 
+properties. 
+The application of MPCA to monitoring batch processes 
+is illustrated here with an example. Data from 25 batches 
+from an industrial polymerization reactor were pro- 
+vided. Four quality properties (Yi, Y2, Y3, Y4) are used to 
+characterize the product and measurements on these 
+properties become available several hours after the 
+production of the polymer. For each batch, the quality 
+measurements and the corresponding trajectories of 10 
+process variables for 90 time intervals were provided. 
+(After proper alignment of the data 83 time intervals 
+were used.) Two batches were characterized as "bad" 
+by the producer. For one of the batch products the value 
+of y] was lower than usual while for the other the values 
+for Y2, Y3 and Y4 were unusually high. In a preliminary 
+analysis, MPCA was performed on all the batches (i.e., 
+on the three - way array X with dimensions 25x10×83), 
+Control of Multivariate Processes 411 
+to test if the method would be able to discriminate 
+between "good" and "bad" batches with the available 
+process data; in other words to assess if the system was 
+observable. Figure 6 shows the projections of the 
+process conditions of these 25 batches on the score 
+planes (t 1 - t4) and (t 2 - t~) defined by the 4 first principal 
+components. Itcan be seen that in the (h - t4) plot, batches 
+#24 (low Yt) and #25 (unusual y2, Y3, Y4) are out of the 
+main cluster (or, normal operating region) formed by 
+the rest of the batches. It is interesting to see that the 
+problems in these two batches appear in only two scores 
+and that these are different scores, which means that 
+different combinations of variables affect different 
+properties (t4 for yt, and h for Y2, Y3, Y4). 
+3 
+2.5 
+2 
+T4 1.5 
+°°.°,°,°°°* 
+*° 
+°% * .° • ° .• °*°.,•°****°******•'** 
+• °. • ... ° .° .° 
+"•° °°." "'°. • 
+"''~b ~ 3o' 4b ~ 6o' ~ 8o' 
+TIME 90 
+25 
+20 
+15 
+10 
+5 " 
+° 
+0 ..°, * ° ° • • 
+*°° ° 
+° .° .• ° • ..• 
+• ..° • * • 
+• . ° 
+° . . ° ° . °.......* 
+90 
+Figure 7. Monitoring a Good Batch. T^ 2 statistic and 
+SPE,. 
+Having established the observability of faults with the 
+analysis of past data, a model was built to summarize 
+the information contained in the 23 good batches about 
+the normal operating region of the process. This model 
+was then used as statistical reference to classify new 
+batches as normal ("good") or abnormal ("bad"), in the 
+way described in 0Nomikos and MacGregor, 1994a. 
+1995). New batches are classified by monitoring the T^ ~ 
+statistic calculated from the first A latent variables 
+(scores) and by monitoring SPE at each time interval k; 
+when both of these quantities stay within the limits of 
+normal operation (specified by the model) then the batch 
+is accepted as good. Figure 7 shows the SPE response as a function of time, 
+and the T^ 2 (A--4) statistic of a batch that was eventually 
+classified as "good". Notice that both of these quantities 
+remain well within the confidence intervals throughout 
+the batch. (The solid line corresponds to a 99% limit and 
+the dashed line to a 95% limit for the SPE plots; for TA 2 
+the solid line corresponds to 95 % limit and the dashed 
+to 90 % limit.) 
+14 
+12 
+10 
+1"4 2 s 
+6 
+*° 
+4 .'.° 
+. "..• .°.'..• 
+TIME 90 
+16~ 
+12~ 
+10C 
+4C 
+20 B 
+B ~ 
+%°°, 
+"I'IMB 90 
+200 
+10(3 
+C • • • •.°'"'"'• 
+• %°•• .... %. ." 
+.*•.. • ...••.•°•.... 
+• • ..'" ~ ........ : ....... ~ ............. .~ 
+• .. •. 
+10 20 30 40 50 60 70 80 90 
+TIME 
+Figure 8. Monitoring Batch #25 (a bad batch). TA 2 
+statistic, SPE x and of t 1 for the duration of the batch. 
+412 J.F. MaeOregor and T. Kourti 
+Figure 8 shows how batch #25 would have behaved, had 
+the model been in use on-line, when the data for this 
+batch were becoming available. (Points indicated by an 
+asterisk in a circle, plot out of the co-ordinate limits of 
+the graph). Notice that almost all the points are out of 
+the 95% limit in the SPE, while the T42 statistic goes out 
+of limits after 15 time intervals into the batch run. 
+(Similarly for batch #24 the two statistics moved out of 
+their limits early in the run). A plot of tt versus time for 
+batch #25 reveals that this latent variable goes out of 
+limits after few time intervals into the run. Note that all 
+of these charts quickly revealed that batches 24 and 25 
+were "unusual" very early in the runs. Upon diagnosis 
+of the nature of the fault, corrective action might be 
+taken. If such action to save the batch were not possible, 
+at least the product from the batch could be isolated and 
+not blended with good product. 
+This was a feasibility study for this on-going project. 
+Usually more good batches (more than 50) are required 
+in order to obtain a representative sample of sufficient 
+size to correctly estimate the confidence limits for the 
+normal operating region. 
+The proposed monitoring charts are in accordance with 
+the SPC requirements in that they can be easily displayed 
+and interpreted, and they can quickly detect a fault. 
+Furthermore, it is also possible to provide the operators 
+with diagnostic information by interrogating the 
+underlying MPCA, MPLS or multi-way multiblock PLS 
+model. Other industrial applications of these methods 
+have been reported for the analysis of historical batch 
+databases by Kosanovich et al. (1994), and for the 
+monitoring of a different batch polymerization by 
+Nomikos and MacGregor (1995). 
+5. PRACTICAL ISSUES 
+Several issues that arise when applying these methods 
+to industrial data are briefly discussed here. 
+5.1 Reference Data Set for Modelling 
+When dealing with empirical modelling the data set 
+upon which the model will be based should be carefully 
+chosen to satisfy the needs of the intended application. Model For Monitoring Purposes, In monitoring, a 
+specific operating region of interest is tackled. Only data 
+corresponding to good / acceptable product, or accept- 
+able conditions should be included; faults or distur- 
+bances are excluded from this model. The objective is 
+to model good operating behaviour only, and to test for 
+any future deviations from this model. 
+5.2 Linear vs Nonlinear Models 
+It has been argued that nonlinear models may be nec- 
+essary to model batch or continuous processes. Again, 
+the model depends on the application. If the model is 
+used for monitoring, linear models are usually sufficient 
+to describe process fluctuations around an operating 
+point. Although the behaviour of the process variables 
+is nonlinear in batch processes, the data are meancent- 
+ered in the method discussed in Section 4.5 in such a 
+way that the non-linear trajectory is subtracted and the 
+deviations of the variables from the trajectory can be 
+modelled with a linear model. 
+If the models are build for inferential purposes and cover 
+a wide range of operating regions, then nonlinear models 
+may be necessary. Nonlinear versions of PLS have been 
+reported (Frank, 1990; Wold, 1992; Htskuldsson, 
+1992). 
+5.3 Dynamic Models 
+The projection methods discussed here are capable of 
+dealing with dynamic situations. In batch monitoring 
+dynamics has already been accounted for as illustrated 
+in Section 4.5. 
+When modelling continuous dynamic processes, lagged 
+variables of x and y variables can be included in the X 
+matrix. Multivariate time series analysis is discussed 
+for PCA by Jollife (1986) and Jackson (1991) and for 
+PLS by Wold et al. (1984) and MacGregor et al. (199 lc). 
+Time delays are accounted for by time shifting. An 
+industrial example where plant data was both time 
+shifted, to account for time delays between X and Y, and 
+lagged to account for autocorrelations in Y, is described 
+in (Dayal et al., 1994). 
+Inferential Modelling. When the objective is to infer the 
+values of product quality (Y) from process data obtained 
+at different operating regions, then the set of data that 
+will be used for modelling should have representative 
+values of the Y properties and the process variables over 
+all the possible operating regions. (Values for Y should 
+cover the whole range of specifications of the quality 
+properties and data points should be evenly distributed.) 
+Ideally, for inferential purposes, a designed set of 
+experiments with data from different operating regions 
+properly weighted, would be required. 
+Historical Analysis. When analyzing historical data, 
+initially all the data should be used. If the projection 
+indicates clusters with only a few points in them, or 
+individual outliers, these data should not be discarded, 
+but investigated. True outliers (measurement errors) 
+should be discarded. If there are clusters of only a few 
+points that are identified as reflecting some real, unusual 
+event, then more data points are needed in this region to 
+model the behaviour of these events. 5.4 Single or Multiple Models for Quality Properties 
+One of the advantages of PLS over linear regression is 
+that all the quality properties (Y) can be modelled 
+together and related to X in a single model. When the 
+quality properties are not correlated, it is customary to 
+built a model that relates X to each y variable separately. 
+This approach is satisfactory in general if the model is 
+just being used for calibration, inferential control or 
+prediction. For monitoring purposes, however, since 
+quality is a multivariate property, it is important to fit 
+all the variables from the Y space in a single model in 
+order to obtain a single low-dimensional monitoring 
+space. 
+Control of Multivariate Processes 413 
+6. SUMMARY 
+This paper has provided justifications for the use of 
+multivariate statistical process control, and has reviewed 
+some of the traditional statistical control charting 
+methods for monitoring product quality data (Y). 
+However to truly perform multivariate statistical pro- 
+cess control, one must utilize not just the final product 
+data (Y) but all the data on process variables (X) that 
+are being routinely collected by process computers. SPC 
+approaches based on multivariate statistical projection 
+methods (PCA and PLS) have been developed for this 
+purpose. The ideas behind these new approaches, and 
+the literature on them, are reviewed. Multivariate 
+control charts in the projection spaces provide powerful 
+methods for both detecting out-of-control situations, and 
+diagnosing assignable causes, and they are applicable to 
+both continuous and batch processes. The only 
+requirement for applying these methods is the existence 
+of a good database on past operations. For this reason, 
+they have attracted wide interest, and are rapidly being 
+applied in many industries. 
+REFERENCES 
+Alt, F.B. (1977). Economic design of control charts for 
+correlated, multivariate observations. Ph.D. dis- 
+sertation, Georgia Institute of Technology. 
+Alt, F.B. (1985), Multivariate quality control. In S. 
+Kotz and N.L. Johnson (Eds.), Encyclopedia of 
+StatisticaISciences Vol. 6, pp. 110-122. Wiley, New 
+York. 
+Alt, F.B. and N.D. Smith (1988). Multivariate process 
+control. In P.R. Krishnaiah and C.R. Rao (Eds.), 
+Handbook of Statistics, Vol. 7, pp. 333-351. 
+North-Holland, Amsterdam. 
+Crosier, R.B. (1988). Multivariate generalizations of 
+cumulative sum quality-control schemes. Techno- 
+metrics, 30, 291-303. 
+Dayal, B., J.F. MacGregor, P.A. Taylor, R. Kildaw and 
+S. Mareikic (1994). Application of feedforward 
+neural networks and partial least squares regression 
+for modelling Kappa number in a continuous Kamyr 
+digester. Pulp andPaper Canada, 95, No. 1, 26-32. 
+Denney, D.W., J. MacKay, T. MacHattie, C. Flora and 
+E. Mastracci (1985). Application of pattern recog- 
+nition techniques to process unit data. CSChE 
+Conference, Sarnia, Ontario, Canada. 
+Downs, J.J. and J.E. Doss (1991). Present status and 
+future needs - A view from North American industry. 
+In Y. Arkun and H. Ray, (Eds.), AIChE Symposium 
+Proceedings of the Fourth International Conference 
+on Chemical Process Control, Padre Island, TX, 
+February 17-22, AIChE Publication, No. P-67, New 
+York. 
+Frank, I.E. (1990). A nonlinear PLS model. Chemo- 
+metrics and Intelligent Laboratory systems. 8, 
+109-119. 
+Fuchs, C. and Y. Benjamini (1994). Multivariate profile 
+charts for statistical process control. Technometrics, 
+36, 182-195. 
+Geladi, P. and B.R. Kowalski (1986). Partial least- 
+squares regression: A tutorial. Anal. Chim. Acta, 
+185, 1-17. 
+Geladi, P., (1989). Analysis of multi-way (multi-mode) 
+data. Chemometrics and Intelligent Laboratory 
+Systems, 7, 11-30. 
+Healy, J.D. (1987). A note on multivariate CUSUM 
+procedures. Technometrics, 29, 409-412. Hodouin, D., J.F. MacGregor, M. Hou and M. Franklin 
+(1993). Multivariate statistical analysis of mineral 
+processing plant data. CIM Bulletin Mineral Pro- 
+cessing, 86 (975), 23 - 34. 
+Htskuldsson, A. (1988). PLS regression methods. J. 
+Chemometrics, 2, 211-228. 
+Htskuldsson, A. (1992). Quadratic PLS regression. J. 
+Chemometrics, 6, 307-334. 
+Hotelling, H. (1947). Multivariate quality control, 
+illustrated by the air testing of sample bombsights. 
+In C. Eisenhart, M.W. Hastay, and W.A. Wallis 
+(Eds.), Techniques of Statistical Analysis, pp. 
+113-184. McGraw-Hill, New York. 
+Hunter, J.S. (1986). Exponentially weighted moving 
+average. J. Qual. Technol., 18, 203-210. 
+Jackson, J.E. (1991). A User's Guide to Principal 
+Components, John Wiley and Sons, Inc., New York. 
+Jollife, I.T. (1986). Principal Component Analysis, 
+Springer Series in Statistics, Springer Verlag, New 
+York. 
+Kipadssides, C., G. Veros, G. Kalfas, M. Koutoudi and 
+C. Kantzia. (1993). A comprehensive mathematical 
+model of a multizone tubular high pressure LDPE 
+reactor. Chem. Eng. Communications 
+Kosanovich, K.A., M.J. Piovoso, K.S. Dahl, J.F. Mac- 
+Gregor and P. Nomikos (1994). Multi- way PCA 
+applied to an industrial batch process. Proceedings, 
+American Control Conference 1994, Baltimore MD. 
+Volume 2, pp. 1294 - 1298. 
+Kourti, T. and J.F. MacGregor (1994). Recent devel- 
+opments in multivariate SIC methods for monitor- 
+ing and diagnosing process and product 
+performance. Submitted to the Journal of Quality 
+Technology. 
+Kresta, J., J.F. MacGregor and T.E. Marlin (1991). 
+Multivariate statistical monitoring of process oper- 
+ating performance. Can. J. Chem. Eng., 69, 35-47. 
+Lohmtller, J. and Wold, H. (1980). Presented at the 
+European Meeting of Psycometrics Society, Groni- 
+gen, Netherlands. 
+Lowry, C.A., W.H. Woodall, C.W. Champ, and S.E. 
+Rigdon (1992). A multivariate exponentially 
+weighted moving average control chart. Techno- 
+metrics, 34, 46-53. 
+MacGregor, J.F., T.E. Marlin, J. Kresta and B. Skag- 
+erberg (1991a). Multivariate statistical methods in 
+process analysis and control. In Y. Arkun and H. Ray, 
+(Eds.), AIChE Symposium Proceedings of the 
+Fourth International Conference on Chemical 
+Process Control, Padre Island, TX, February 17-22, 
+AIChE Publication, No. P-67, pp. 17 -22, New York. 
+MacGregor, J.F., B. Skagerberg and C. Kiparissides 
+(1991b). Multivariate statistical process control and 
+property inference applied to low density polyeth- 
+ylene reactors. IFAC Syrup. ADCHEM'91, Tou- 
+louse, France, Oct. 1991., pp. 131-135, Pergamon 
+Press. 
+MacGregor, J.F., T. Kourti and J. Kresta (1991c). 
+Multivariate Identification: A study of several 
+methods. IFA C International Symposium, 
+ADCHEM'91, (Toulouse, France) Proceedings, 
+Pergamon Press, pp. 369-375. 
+MacGregor, J.F. and P. Nomikos (1992). Monitoring 
+batch processes. In Reklaitis, Rippin, Hortacsu and 
+Sunol (Eds.), Proceedings NATO Advanced Study 
+Institute (ASI) for Batch Processing Systems Eng., 
+May 29-June 7, 1992, Antalya, Turkey, 
+Springer-Verlag, New York. 
+414 J.F. MacGregor and T. Kourti 
+MacGregor, J.F., C. Jaeckle, C. Kiparissides and M. 
+Koutoudi (1994a). Monitoring and diagnosis of 
+process operating performance by multi-block PLS 
+methods with an application to low density poly- 
+ethylene production, AIChE J., 40, 826-838. 
+MacGregor, J.F., P. Nomikos and T. Kourti (1994b). 
+Multivariate statistical process control of batch 
+processes using PCA and PLS. In Preprints IFAC, 
+ADCHEM 1994, Kyoto, Japan. pp. 525-530. 
+Mardia, K.V., J.T. Kent and J.M. Bibby (1989). Mul- 
+tivariate Analysis. Academic Press, London. 
+Miller, P., R.E. Swanson and C.F. Heckler (1993). 
+Contribution plots: The missing link in multivariate 
+quality control. Presented at the 37th Annual Fall 
+Conf. ASQC, Rochester, NY. 
+Moteki, Y. and Y. Arai (1986). Operation planning and 
+quality design of a polymer process. Proc. IFAC 
+Syrup., DYCORD-86, Bournemouth, UK, pp. 
+159-166. 
+Nomikos, P. and J.F. MacGregor (1994a). Monitoring 
+of batch processes using multi-way principal com- 
+ponent analysis. Amer. Inst. Chem. Eng. J.,40, 
+1361-1375. 
+Nomikos, P. and J.F. MacGregor (1994b). Multi-way 
+partial least squares in monitoring batch processes. 
+First International Chemometrics lnternet Confer- 
+ence. September 1994. 
+Nomikos, P. and J.F. MacGregor (1995). Multivariate 
+SPC charts for monitoring batch processes. Tech- 
+nometrics, 37(1). 
+Pignatiello, J.J., Jr. and G.C. Runger (1990). Compar- 
+isons of multivariate CUSUM charts. Journal of 
+Quality Technology, 22, 173-186. 
+Ryan, T.P. (1989). Statistical Methods for Quality 
+Improvement, Wiley, New York. 
+Roberts, S. W. (1959) Control chart tests based on 
+geometric moving averages. Technometrics, 1, 
+239-250. 
+Shewhart, W.A. (1931). Economic Control of Quality 
+of Manufactured Product. Van Nostrand, Princeton, 
+N.J. 
+Skagerberg, B., J.F. MacGregor and C. Kiparissides 
+(1992). Multivariate data analysis applied to low- 
+density polyethylene reactors. Chemometrics and 
+Int. Lab. Syst., 14, 341-356. 
+Slama, C.F. (1991). Multivariate statistical analysis of 
+data obtained from an industrial fluidized catalytic 
+process using PCA and PLS. M.Eng. Thesis, 
+Department of Chemical Engineering, McMaster 
+University, Hamilton, Ontario, Canada. 
+Smilde, A.K., and D.A. Doombos. (1991). Three-way 
+methods for the calibration of chromatographic 
+systems: comparing PARAFAC and three-way PLS. 
+Journal of Chemometrics, 5, 345-360. 
+Sparks, R.S. (1992). Quality control with multivariate 
+data. Austral. J. Statist., 34, 375-390. 
+Tracy, N.D., J.C. Young, and R.L. Mason (1992). 
+Multivariate control charts for individual observa- 
+tions. Journal of Quality Technology, 24, 88-95. 
+Wangen, L.E. and Kowalski, B. (1988). A multiblock 
+partial least squares algorithm for investigating 
+complex chemical systems. J. Chemometrics, 3, 
+3 -20. 
+Wierda, S. J. (1994). Multivariate statistical process 
+control - recent results and directions for future 
+research. Statistica Neerlandica, 48 (2) 147-168. 
+Wise, B.M., D.J. Veltkamp, N.L. Ricker, B.R. 
+Kowalski, S. Barnes and V. Arakali (1991). 
+Application of multivariate statistical process con- 
+trol (MSPC) to the West Valley slurry-red ceramic 
+melter process. Waste Management '91 Proc., 
+Tucson, Arizona. Wise, B.M. and N.L. Ricker (1991). Recent advances 
+in multivariate statistical process control improving 
+robustness and sensitivity. IFAC Symp. 
+ADCHEM'91, Toulouse, France, Oct. 1991., pp. 
+125-130, Pergamon Press. 
+Wold, S. (1978). Cross-validatory estimation of the 
+number of components in factor and principal 
+components model. Technometrics, 20 (4), 397-405. 
+Wold, H. (1982). Soft Modelling. The basic design and 
+some extensions. In K.G. Joreskog and H. Wold 
+(Eds)., Systems under Indirect Observation, 2., 
+Chapter 1, North Holland, Amsterdam. 
+Wold, S., C. Albano, W.J. Dunn In, U. Edlund, K. 
+Esbensen, P. Geladi, S. Hellberg, E. Johansson, W. 
+Lindberg and M. Sj6strtm (1984). Multivariate Data 
+Analysis in Chemistry. In: Chemometrics. Mathe- 
+matics and Statistics in Chemistry (B. Kowalski, 
+Ed.), NATO - ASI, D. Reidel Publishing Company, 
+pp. 17-95. 
+Wold, S., P. Geladi, K. Esbensen, and J. Ohman (1987). 
+Multi-way principal components and PLS analysis. 
+Journal of Chemometrics, 1, 41-56. 
+Wold, S. (1992). Nonlinear partial least squares mod- 
+elling. II Spline inner relation. Chemometrics and 
+Intelligent Laboratory Systems, 14, 71-84. 
+Woodward, R.H., and P.L. Goldsmith (1964). Cumu- 
+lative Sum Techniques. Oliver and Boyd. London. 

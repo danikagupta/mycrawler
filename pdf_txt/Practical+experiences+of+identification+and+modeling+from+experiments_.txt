@@ -1,0 +1,2801 @@
+-6/%6/*7&34*5:
+1
+0
+
+#
+P
+Y
+
+
+
+
+
+
+
+
+
+
+
+-
+V
+O
+E
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Modeling and Identification of a Nuclear Reactor
+Olsson, Gustaf
+1975
+Document Version: 
+Publisher's PDF, also known as Version of record
+Link to publication
+Citation for published version (APA): 
+Olsson, G. (1975). Modeling and Identification of a Nuclear Reactor . (Technical Reports TFRT-7075). 
+Department of Automatic Control, Lund Institute of Technology (LTH).
+Total number of authors: 
+1
+General rights
+Unless other specific re-use rights are stated the following general rights apply:
+Copyright and moral rights for the publications made accessible in the public portal are retained by the authors
+and/or other copyright owners and it is a condition of accessing publications that users recognise and abide by the
+legal requirements associated with these rights.
+ • Users may download and print one copy of any publication from the public portal for the purpose of private study
+or research.
+ • You may not further distribute the material or use it for any profit-making activity or commercial gain
+ • You may freely distribute the URL identifying the publication in the public portal
+Read more about Creative commons licenses: https://creativecommons.org/licenses/
+Take down policy
+If you believe that this document breaches copyright please contact us providing details, and we will remove
+access to the work immediately and investigate your claim.aÇ{ç*?0T5
+MODELING
+NUC LEARAND IDENTIFICATION OF A
+REACTOR
+a
+G.OLSSON
+Report 7504 (C) Februori 1975
+Lund lnstitute of Technotogy
+Deportment of Automotic Controli
+Chapter
+MODELT\iG A,ND TDENîTFTCATTON OF A NUCLEAR REACTOR.
+Gustaf O1sson
+Department of Automatic Control
+Lund Institute of Technology
+3-22007 Lund, Sweden
+ï TNTRODUCTTON
+II.DESCRTPTTON OF THE NUCLEAR REACTOR
+A. Plant Description
+B. ReactÍvity Feed.backs
+C. Step Responses
+TIT.EXPERTMENTS
+A. Summary of the Experj-ments
+B. Internal Controllers
+C. Experi-mental Design Considerations
+D. fnstruments and Actuators
+rv.TDENTIFICATTON METHODS
+A. Multiple-Input-Single-Output Structure
+B. Multivariable Structures
+C. A Vector Difference Equation Approach
+D. Recursive Parameter EstimatÍon
+E. Model Verification
+F. CompuÈational AspectsLl-
+v.}IULTIPLE.TNPUT STNGLE-OUTPUT MODELS
+A. Nuclear Power
+B. Primary Pressure
+C. Secondary and Tertiary pressures
+D. The Problem of Negative Real Discrete poles
+vI.\IECTOR DTFFERENCE EQUATTONS
+A. Correlation Analysis
+B. MaxÍmum Likelihood. (ML) Identifications
+C. Simulatíons
+VIT. A STATE MODEL
+A. Derivation of a Model Structure
+B. Parameter Identification
+VTIT. RECURSIVE TDENTTFTCATTON
+A. Influence of Subcooling power
+B. Parameter Tracking
+ACKNOWTEDGE¡,IENTS
+REFERENCES
+The purpose of this paper i-s to find linear sLochas-
+tic models of different structures f,or a nuclear reactor.
+The models will be used for control. The results are based
+on experÍments performed on the Halden Boiling i,u'ater Reac-
+tor (HBWR), Norway, in cooperation with the OECD Halden Reac-
+tor Project. The plant is consiclered a multÍvariabre sys-l" l_ l_
+tem. Spatial effects are neglected. Three inputs have
+been used in the experiments. Problems relating to expe-
+rimental desj-gn, data preparation, choice of mod.eI struc-
+ture, identification methods, comÞutations and model ve-
+rifj-cations are considered.. The dynamics of the reactor
+i-s briefly described, and the identification results are
+compared to theoretical or empirical experier:ces. Maxj,mum
+likelihood technique is used. predominantly for parameter
+estimati-on.1
+ïTNTRODUCTTON
+Some representative results from modeling and iden-
+tificatj-on experj-ments on the Halden Boiling Water Reac-
+tor, (HeWn), Nonvay, are presented in this paper. Linear
+ínput-output models as r.¡eIl as time invariant and. time va-
+ri-able linear state models have been used as model struc-
+tures. Some of the results are presented previously in
+tf 31 , while others are ne\^r.
+The purpose of the paper is to describe the diffe-
+rent phases of id.entification and modeling of a complex
+dynami-cal system. Dífferent identification method.s have
+been used to demonstrate the applicability of identifica-
+tion technique as a tool to explore the dynamics of a nu-
+clear reactor.
+.¡{ nuclear reactor is an example of a very conplex
+dynamical system and offers some special features. There
+j-s a wide span of time constants in the system. The neut-
+ron kineLics is very fast, and the dominating kinetics
+time constant j-s about 0.1 second. The typical time con-
+stants for actuators and instru¡nent dynamics vary betv¡een
+fractions of a second and about one second. The fuel e1e-
+ment heat dynamics are of Lhe order of a few seconds. The
+heat transfer in moderator and coolant channels as well
+as the hydraulics is of the order of sorne seconds rip to2
+some minute. The heat transfer through the heat removal
+circuits wi-II take one to several ¡ninutes. Xenon oscilla-
+tions have a time period of the order of days. On an even
+longer time scale there are the burn out phenomena due to
+fuel consumption.
+Several nonlinear phenomena are important in a nu-
+clear reactor. The dynamics of the coolant channels are
+very complex. The relation beÈween boiling boundary, void
+contents and reactivity j-s generally highly nonlinear and
+very difficult to model. The heat exchanger dynami-cs and.
+steam generation are also significantly nonlj-near.
+Many phenomena are spatially dependent. Power d.istri-
+bution oscillations due to xenon are not negligible in a
+large reactor. The spatial variations of void content and
+temperature j-n the coolant channels -arê essential, dynani-
+ca1 phenomena. The neutron d.istribution is not homogeneous
+since the fuel elements are burnt out at different rates
+in different parts of the core.
+A model used for controller d.esign cannot include
+all the mentioned phenomena in detail. A large number of
+compromizes must be made j-n order to make the model not
+too large and sti11 accurate. The purpose of this paper
+has primarily been to find linear models for steady state
+control. The nuclear power and the primary pressure then
+are the most important outputs to be controlled. This li-3
+mits the i-nteresting span of time constants to be smaller
+than sonte minutes. The results of the investigation show
+that the dynamics of the reactor generally can be described
+by quite low order models. It r.vil1 be demonstrated that
+identification is a useful tool to find simpler descrip-
+tions of such a cornplex process.
+Modelj-ng and identifj-cation problems for nucl-ear
+power reactors have been considered extensively. The l'laxi-
+mum Likelihood (ML) method is compared rvj-th other methods
+for a reactivity-nuclear power modet by Gustavsson t4l.
+Sage et, aI I5l use a least sguares approach to iden-
+tify parameters in a reactor ¡node1. Ciechanorvicz et a1 t6l
+use spectral analysis to i,lentify parameters in a sirnple
+linear model. Recursive identification or parameter track-
+ing has been reported by different authors. Habegger et a1
+t7l apply Extended Kalman techniques to track pararneters
+in a nuclear system. Moore et al t8l use a combination of
+least squares and IrlL approach to get an adaptive control-
+scheme of a model of a pressuri-zed v¡ater reactor.
+The dynamics of the Halden reactor has been studied
+extensively before. single input experiments have been
+performed, e.g. step response analysis by Brcu\{ers [9],
+freguency analysis by Tosi et a1 [10], pseudo random
+reactivity perturbati-on experiments b]' fishman tlIl and4
+noise experiments by Eurola t121. Bj/r1o et eI t13l have
+re¡nrted alinear multivariahle model of the HBWR. The
+vessel pressure dynamics and core dynamics have been
+studied with recursive least sguares techniques by Roggen-
+bauer t14 l.
+Four different approaches tothe model building tech-
+report: niques are investigated j-n thj-s
+o
+oo
+omultiple-input - single-output models with no á priori
+assumption about physical behaviour,
+multivari-able (vector difference) model-s without phy-
+sj-cal á. priori knowledge,
+estimatÍon of parameters j-n linear time invariant
+state models wj-th known structure and á priori noise
+structure assumptions,
+estj-mation of time variable parameters in linear sto-
+chastic state models.
+It is natural that a model wj-th no á priori assump-
+tion about the physics does not demand physical insight
+into the process, at least not to get parameter values. In
+general there is no physical interpretatj-on of the para-
+meters, and it is therefore sometimes difficult to verify
+the models in more general terms. On the other hand, such
+a model can Eive a good insight into the required con-5
+plexity of a more structured model. The validity of the
+model is limited to the same operational conditions for
+the plant as those during the identification experiment.
+As a nuclear reactor is a multivariable system, the
+second approach is an atte¡npt to take the couplings of
+the system j-nto consideration without too many å priori
+assumptj-ons. Compromises about the noise have to be made.
+The approach gi-ves a better idea of the couplings in the
+system, and it is then easier to derive reasonable struc-
+tures for more advanced models.
+A state model with some of the parameters unknorcn
+naturally requires more insight into the process. fn such
+a model the parameters have physical interpretations. If
+the assumptions on the structure are perfect, the rnodel
+accuracy can be high. On the other h_and, if the assuÌìp-
+tions are imperfect, the model can be more inaccurate
+than an input-output model without á priori assumptions.
+The identification would then be constrained into too few
+degrees of freedom, eiLher because of too few free para-
+meters or of a wrong á priori structure.
+In order to be valid for varying operating condi-
+tions the plant model should be nonlinear. AlternatJ-ve1y
+it has here been assurned a time varying linear state mo-
+deI. Some of the variable parameters then have been tracked6
+by recursive identification techniques.
+The paper is organized as follows. In section TI,
+the reactor plant is described and. its dynamics are stu-
+died. qualj-t.atively. A summary of the experinents selected.
+is mad.e in sectj-on III. Experimental design is also consi-
+deredr âs well as instrumentation and actuator characte-
+rístics. The identification methods used are briefllz pre-
+sented in section IV. Maximum likelihood id.entification
+technique has been applied predominantly. The multiple-
+i"nput - single-output mod.els are d.iscussed i-n sectj_on V.
+Although accurate mod.els were found, the linearity of the
+models is a limitation, and it is doubtful if they are va-
+lid in'a large operational range. Improvements of the ac-
+curacy \Â/ere obtained by introducing other couplings by a
+vector dj-fference equatJ-on approach in section VI. In chap-
+ter vrr a linear state vector moceL structure is preser:ted..
+Parameters of thi-s structure are id.entified. The recursive
+paranreter tracking is finally described briefly in section
+VTTI.7
+ÏÏ. DESCRTPTION OF THE NUCLEAR RE.ACTOR..
+A short description of the reactor is gitren to pro-
+vide a physical background. fn the first paragraph the
+different parÈs of the plant are briefly descri_bed. In pa-
+ragraph B the most important dynamical reactivity feeobacks
+are considered. Finally it is discussed how changes in the
+three actual inputs propagate through the system
+A. Plant Descriotion.
+The reactor plant has been d.escribed elser,.'here in
+great detailr e.9. in Jamne et al tfSl and several other
+reports from the Halden Reactor project, e.g. tg 131.
+For easy reference some main features of the plant are
+descri-bed here.
+A simplified sketch of the plant rvith its heat re-
+moval circuits is shown in Fig. 1. The HBWR. is a natural
+circulation, boiling heavy water reactor. It can be ope-
+rated at power levels up to 25 Mi,.¡ and at 24OoC.
+1 . Core and Prirnary Circuit.
+fn the primary circuit heavy water is
+a closed loop. This circuit consists of the
+sel, steam transformers ancl a subcooler A.circulated in
+reactor \¡es-
+The latter onesI
+are heat exchangers for t'he steam and rqater circulation
+loops respectively.
+The core consists of enriched uranium fuel moderated
+by heavy v¿at!)r. There are 100 fuel assemblies in the core
+arranged in a hexagonal pattern each element being 88 cm
+in length. The core diameter j-s 16? cm and is surrounded
+by a radial reflector with a thickness 51 cm. The bottom
+reflector i-s 38 cm thick.
+The fuel elements in the core have shrouds into r,¡hich
+heavy rvater from the moderator enters through the holes in
+the bot.tom section. The shrouds create a defined flov¡ pat-
+tern, and can separate the upstreaning mixture of steam
+and water from the d.ownstreaming water betv¡een the elements.
+The lower part of the core is not boiling while the ucper
+part is. The water in the system is close to the saturation
+temperature.
+The mixture of steam and water leaves the shrouds
+-through hoLes at the top and separation of water and stea¡o
+takes p1ace. The steam passes fron the reactor vessel
+through the primary sid.e of a heat exchanger called the
+steam transformer. As the steam is condensed i-t is pu¡nped
+together with water fronr the bulk of the noderator through
+the primary siCe of the s'"ibcooler A fFigs . 1, 2) . The water9
+is cooled a few degrees below the saturation temperature
+and. then reci-rculated into the vessel.
+The reactivity is controlled by 30 absorbtj-on roi.s
+which can be :.nserted into ti:e core.
+2. Subcoolinq Circuit.
+The mass flow of subcooled water is controlled by a
+valve 11á (VA 770). As the subcooled water enters the moCe-
+I
+rator it mainly affects the moderator temperature. The main
+purpose of the subcooling circuit is to suppress boiJ-ing of
+the moderator. To a lower extent it conÈrols the reactivity
+of the core.
+îhe water loop is to some extent símilar to the coo-
+lant flow circulation system in a light water BWR, even if
+there are major differences. In the HBI{R this system is not
+primarily designed for control purposes, and thus the flow
+and also the reactivity feedback are much smaller than in a
+1i9ht rvater B!{R. The void reactivity feedback is about 20
+pcm/z void (1 pcm = 10-5) in the HBI{R compared to about 125
+pcm/? void j-n a BWR.
+Because of the limited control authorÍty of the valve
+o1 it. co:rtrol the nuclear pov¿er in
+as compared to a light rn¡ater
+tire absorbtion rods.cannot alone
+a wide rangethe HBÌ{R
+over
+be complenented byBWR. It nust10
+3. Secondarv andTertiary Circuj-ts.
+The secondary circuit is closed and fil1ed r+ith light
+water (seeFi-gs. I, 2).'I{ater coming frorn the steam d.rum is
+circulated through the secondary sid.e of the steam trans-
+former and back to the steam drum. The secondary circuj-t
+also includes a steam flow from the steam drum t,o the pri--
+mary side of a steam generator where it is condensed.
+The cond.ensed r¿sater returns via the hot ¡¡e1l to the
+subcooler B, where primarily feedwater is preheated. The
+water is further heated up in the subcooler A before it
+returns to the steam drum. This steam drum mainly serves
+as a separator for steam and water.
+The tertiary circuit is an open loop circuit of Iight.
+water. The water is heated up to form steam j-n the seconda-
+ry side of the steam generator. The steam can be used by
+consumers through a valve .2 (VB 282). The plant has no
+turbiner but u, shourd normally be the turbine controller.
+The steam can be recirculated via the feedwater tank and
+the subcooler B to the stea¡n generator.11
+B. Reactivitv Feedbacks
+The essential part of the dynamics has to do rvi-th the
+reactivity feedbacks. For the discussion we refer to Fig.
+3. The net reactivity determines the nucl-ear power whj-ch
+is produced in the core. This net reactivity is a sum of
+several feedback effects. The nucl ear power is created
+through the fissj-on, which can be descri-bed by the kinetic
+eguations, j-ncluding delayed neutrons. This power gene-
+rates heat which is transferred through the fuel elements.
+A change in fuel temperature causes a negative reactivity
+feedback. The heat frux transfers heat vi-a the fuel e1e-
+ments and the moderator into the coolant. The mod.erator
+dynamics describes the temperature and void distribution
+in the moderator. rt is related to the steam pressure, and
+\^7ateï and steam velocities.
+rt shourd be remarked that there are some important
+differences between light water and heavy water boiling
+reactors. Tn Hro systems almost alr the mode:iator is boir-
+ing. fn DrO systems the boiling takes place only in a
+fraction of the moderator space, because the moderator-to-
+fuel ratio is relatively large. Therefore moders of light
+water boiling reactors, which are descrj-bed in the Ìitera-
+ture, such as Fleck tro], differ from the HBI^IR in basic as-
+sumptions.T2
+The heat flux consists of several components. Except
+the nuclear power it j-s determi-ned b1' gañìrna and. neutron
+heating as well as the subcooling pol'rer. The coolant chan-
+nel dynamics (the void and temperature distributions in
+the coolant channels) is primarily determined by the heat
+f1ux, but also by the vessel pressure, the steam and water
+velocitj-es as well as the channer inlet temperature. This
+one in turn depends on the noderator temperature. Natural-
+ly those phenomena are spatially d.ependent. Therefore it
+should be emphasizeð., that not only lþs total heat flux
+but also the spati-al distributions of void contents, water
+velocities and neutron flux distribution will certainly in-
+fruence the total power. rf the mo'del should include al-1
+those phenomena, however, it would be too complex for con-
+trol purposes. Therefore the variables are weighted over
+the space, and some crucial assumptions, especial-ly about
+the hydraulics, have to be made. BeCauËê of this, it is
+also in some cases difficult to give a physical explana-
+tion of certain parameters, as they in essence are combi-
+nations of several microscopj-c coefficients. The reactivi-
+ty feedbacks from temperatures and void contents are cru-
+cial for the total plant behavj-our. The physical explana-
+tion for reactivity couplings can be studied. in standard
+textbooks, like Glasstone-Ed.lund [17], King [18], I"leghreb-
+lian-Holmes [19], weaver t201.l_J
+Another 5-mportant reactivity feed.back has to do with
+fj-ssion products with extremely high neutron absorbtion,
+such as xenon. Transients due to xenon can aÞpear j-n two
+ways. one type of xenon transients appears at h5-gh neutron
+flux levels and is enforced due to power changes. Thj-s va-
+ries the average concentration of xenon, and consequentry
+the neutron level. As all the experiments have been per-
+formed at almost constant power, no such power transients
+are actual
+The other type of xenon feedback occurs in reactors
+with large geometri-cal dimensions. There the xenon con-
+centration can oscillate spatially between di fferent parts
+of the core, thus creat.Íng hot spots of power, rvhile the
+average power is constant. such phenomena have been ana-
+lyzed by several authorsr e.9. T{iberg t21l and. olsson 1,221
+and will not be considered here becäusé of tv¡o reasons.
+First, the oscillations are too slow to be of interesÈ
+herer âs the primary purpose Ís to keep nuclear power and
+primary pressure constant. second, the Hal-den reactor has
+small geometrical dimensj-ons so that the spatial oscilla-
+tlons are too much damped to be of any interest.
+The essential disturbances tothe system consist of
+absorbtion rods or changes reactivity perturbations from the14
+in the steam consunption.
+quite comprehensive descriptj-on of the details of
+the HBI{R dynamics can be found in Vollmer et al t23l and
+Euro1a L241.
+C. SteResonses.
+For the following discussion it is useful to har¡e
+an over\¡j-ew of the major physical phenonena of the p1ant.
+The purpose is to provide this by qualitative discussion
+of step responses and the major physical phenornena that
+are involved.. The results are based on both theoretical
+considerations and. practical- experj-ences.
+1. Subcooling Valve u1'
+Assume that the valve 11 (VA 770) is closed steprvise.
+As only small changes are discussed linear relations ere
+assumed. The downcomer subcooled flov¡ F6 (see Figs. 2, 4)
+decreases rapidly as the valve closes. The water tempera-
+ture T100 just before the subcooler is not affected, but
+the subcoored water flow temperature TB is decreased v¡ith
+a few seconds t:-rne constant (Fig. 4).
+The heat flow delivered to the
+tbe subcoolJ-ng power Q. This poh:er
+gy balances over the heat exchanqersubcooler A is called
+is calculated from ener-
+(subcooler A) and is a15
+functi-on of the product of the temperature change of T8
+and the flow change of F6.
+It is possible to empirically relate the subcooling
+power j-n a simple fashion, to F6, TB and u,, r âs can be vi-
+zualized. by Fig. 4. As the flow F6 is closely related to
+the valve openì-ng u, r the subcooling poh?er change can be
+written
+6Q(s)
+r¿here s is Lhe Laplace operator.
+The subcooling povrer can also empirically be written as a
+function of T8:
+6Q(t) = or6(TB) + s2d (r8)
+dr
+where o1 > 0, sz
+The effect of closing the valve is thus, that more
+heat energy is returned to the core. The bubble formation
+in the moderator is amplified, and this phenomenon direct-
+ly causes a negatlrre reactivity feedba.ck. Because of this
+the nuclear power d.ecreases quite rapidl-ya.,o(rB(s)) +.2 a e[urts))16
+fn a longer time scale several- secondary effects take
+place, which is illustrated by the step response in Fig. 5,
+As the nuclea-r po\der d.ecreases, the vessel pressure and the
+temperatures also decrease. other reactivity feedbacks no!¡
+are beginning to act and the nuclear power is slorvly re-
+turned t.o a more positj-ve value.
+The vessel pressure naturally is coupled through the
+steam transformer to the secondary and the tertiary cir-
+cuits. Those pressures therefore slottly follow the pres*
+sure decrease in the vessel. the steam production in the
+primary circuit is, however, influenced to a lesser deg-
+ree.
+When u. is
+inlet f1ol F41closed. only a
+(rig. 2 ) canslight decrease of
+be observed. Thethe steam
+same is Lrue
+for the flow F28 in the secondary circuj-t,
+2. Consumers Stearn Valve u2'
+À sudden íncrease of the valve ooening u, (W 282) for
+the tertiary steam flow directly increases the tertiary
+steam flow F21 (see Figs. 6 and 2) . Consequently the ter-
+tiary pressure {P62} will be decreased witl: a dominating
+time constant of about one minute.
+The ternperature T55 is strongly coupled to the pres-LI
+sure variations and i-t follows the pressure P62 c1oseI1z.
+Also the flow F16 is increased., but delayed a ferv seconCs
+after the flov¿ F21. The feedwater temperatures T60 and T61
+are quite unaffected by u".
+When the heat flow through the secondary side of the
+steam generator is d.ecreased also the secondary press.ure
+P6I will decrease (Fig. 6). The temperature T18 is close-
+ly coupled to the pressure and follows P61 quite we1l.
+The hot well temperature T57 and. the secondary water tem-
+perature T81 are relatively constant despi-te changes ín u,
+The flows F27 and. F28 are varying quite noticeably.
+The dynamics is, however, significantly influenced. by an
+internal cont::olIer. The hot well level is kept constanl
+in all the experiments by a valve controlling the flow F28,
+The flows F27 and F28 increase when the valve u., is opened-
+The pressure drop in the tertiary and secondary cir-
+cuits is propagated to t-he primary circuit with a 2-3 mi-
+nutesr time delay, and thus the vessel pressure P13 is de-
+creased (l'Íg. 6). A pressure drop in the core will cause
+the void to increase in the first moment, and the boiling
+boundary will fa1l. The reactivity feedback from void there-
+fore has the effect to decrease the nuclear power in the
+first moment. When the power decreases, however, the steam
+wrproduction also decreases, thus creatj-ng a smaller void
+content and a higher boiling boundary agaÍn. This causes
+the nucl-ear power to increase. As indicated by the expe-
+rimental step response in Fig. 7 the nuclear poh,'er shorcs
+a non minimum phase behaviour.
+The cont:or power from u, is significantly larger than
+that of u, r a fact which is illustrated by the step respon-
+ses in Figs. 5 and 7. on the other hand, the valve u, can
+change the nuclear power much more rapid.ly than the valve
+ù2, so they complement each other dynamically. rn a light
+water BT{R, as mentioned before, there is not such a great
+difference in control authority betrveen u1 and ur.18
+From an ídentification point of view the
+certaÍnly the best input for studies of the
+ßcircuit dynamj-cs. The valve 11 naturally has
+influence on the subcooling circuit.l'alve ul-s2
+heat remor¡al
+the strongest
+3Control Rod Reactivitv u2.
+By inserting or withdrarving the absorbtion rods the
+nuclear power can be rapidly and significantly changed..
+This dynamics is very rapid and is governed mainly by the
+delayed neutrons. If the rods are properly positioned.r so
+that the reactivity change per step is large enough, the
+rods can control the nuclear Ðo'.{er verv r^¡ell. ït should
+be observed, however, that also the flux distribution ge-19
+nerally is affected by the rods. Ploreover, wearing out
+problems should be considered, which means that the rods
+should not be used. for frequent control movements.
+The nuclear power transfers heat to the fuel elenents
+quite rapidl¡r with a time constant of the order 5-10 se-
+conds. The tenperatures of the moderator and coolant increase
+more slowIy. The pressure changes are quite slol, of the
+order half a minute for the vessel pressure to about a fev¡
+minutes for the Èertiary pressure.
+TIT. E>GERTMENTS.
+In this section v¡e will consider experimental design
+problems, such as choice of input signals and measurements.
+The selected experj-ments are summarized and the data hand-
+ling problems are mentioned. Tn all the experiments the in-
+put disturbances were generated in the IBlf 1800 cornputer,
+connected to the plant. All measurements were also registered
+using the computer.20
+l\. Su¡nmary of theExoeriments
+ïn table 1 the main
+tions are sho',vn for theof the operaling condi-
+experirnents.features
+selected
+Summary ofTABLE 1
+the identification experiments
+Expu,' (3)
+vA770u, (3)
+v8282u, (steps)
+RodsNuclear
+power (l"IW)Subcooling
+power (l.Îtf )
+1
+2
+3
+4
+5
+6
+7*.7*.2.5
++3
++3
+*,2
+*2.53 (1: ,15,17)
+3 (13,17,19)
+3 (13,17,19)
+2 (20 ,21)
+1(20)
+2 (20 ,21)o?
+9 .95
+10
+10
+10
+8,0
+10.01. 3s
+I .8s
+1 .95
+1 .95
+2.O
+1.1
+1 .95*1 .35
+The valve amplitud.es are defined in * openinq. The re_
+activity is defined. in "steps,,¡ rrhere one stec reactivity
+is defi-ned as the reactivity correspond.ing to the rnovenent
+of the rod step motors one step. rt corresponcs to 7-10 pcm
+reactivity, dependj-ng on the position of the rods. The fi-
+gures in brackets undcr ui in t.able 1 define the rod num_
+bers, The rods are noved in paraIlel one step up anC do-¡,n.Most
+i,.e. 6000
+than 20002t
+of the experiments contain more than
+seconds. For identification purposes
+samples have been used at the time.3000 saniÞ1es,
+not more
+For safe':y reasons it was sometimes necessary to move
+some control- :od manually in order to keep the nuclear power
+and vessel pressure within permitted. limits.
+B. fnternal Controllers.
+It was important to study the plant in open loop ope-
+ration, and therefore some controllers were removedr prima-
+rily the nuclear power controller, which keeps the nuclear
+power within desj-red limits by adjusting the absorbtion
+rods
+The primary (vessel) pressure is controlled by a PID
+controller acting on the valve u, (Ve 282) ' For safety rea-
+sons 1t was not allowed. to remove this control in the first
+experiment series, here represented by experiment 1. As
+this control loop has a ti¡ne constant of more than one mi-
+nute, the fast time constants stil1 could be determined.
+When more experiences had been gained, it was alIowed. to
+remove also the pressure controller, experiments 2-7.
+Other loca1 controllers were acting ASbefore, i.e.22
+control of the hot well level and steam gienerator level
+as well as return flow to the feeCwater tank. These con-
+trollers, however, do not influence the determination of
+the overall dynamics.
+C. Experimental Design Consideratj-ons.
+In the design of input signals and operating levels
+a large number of conditions have to be considered.. A ge-
+neral survey of such problems have been described in Gus-
+tavsson t251.
+In order to gain a good signal-to-noise ratio a large
+input amplitude is desj-red. Through preliminary experiments
+j-t was foundr that three rods moved one step in parallel
+could disturb the nuclear power about 0.5 l"1l{ from the ope-
+rating level of about 10 MW. The upper limit of the changes
+in u,, , v2 and u3 were determined by nonlinear effects.
+One experiment was done in order to cover a wider range
+of operational conditions, expt. 7. The subcoolingi power \.¡as
+changed along a desired ramp. lhe parameters of a time vari-
+able model then were identified recursively (see VITI).
+Tlre major time
+They will determine
+input signals. The.constants were discussed in I and
+the desired frequency cont.ent of
+upper limit of the frequency \çasïf.
+the
+deter-23
+mined by practical reasonsr ês the computer sampling time
+was fixed to 2 seconds. By experience we also know, that
+in one identification experiment it is difficult to accu-
+rately determine time constants spanning more than about
+2 decades, i"e. here from some second to a few minutes.
+In all the reported experiments pseudo random binary
+sequences (PRBS) have been applied as inputs as it was de-
+sj,rable to get persistently exciting signals. In the case
+of several ínputs, the signals have been chosen so as to
+be independent. As the pressure control was in action in
+expt. 1, the inpul signal was chosen to excite time con-
+stants essentially smaller than one minute. Tn experiments
+2-7 the sequence v¡as chosen with longer pulses in order to
+get better estj-mation of the long time constants.
+There are different rules of Èhumb in the literature
+how to choose a sui'Lable PRBS sequence, and those rules can
+give quite different results, as dernonstrated here. Briggs
+et aI 1261 have made a d.etailed analysis of the pRBS se-
+quence. According to their rules the period time of the se-
+quence should be at least 5 times the longest time constant
+T* of the process. Another rule of thumb says, that the
+longest pulse of the seguence should be at least 3*T*. Then
+the process is allorr'ed to reach a new steady state during
+the pulse, and the estirnalion of the gain and J-argest time
+constant will be improved. The PRBS sequence for expt. 124
+lras chosen with the shortest pulse length of 2 seconds, a
+period time of gg1 samples (almost 2000 seconds) and a
+longest pulse length of only 1 I seconds. I{ith the cited
+rules applied to this sequence it limits the longest time
+constant either to 400 seconds or to 6 seconCs, a signi-
+ficant difference. Thus it is found. that the PRBS sequence
+can be too fast for the 1ow frequencies. Thj-s fact has been
+obserrzed also e.g. by Gustavsson t25l and Cumming [27J,
+t281.
+For the second PRBS sequence the period time is stil1
+about 2000 seconds but the longest pulse is 196 seconds.
+Àccordj-ng to the referred. rules the longest time constanl
+then could be 60-400 seconds. The shortest pulse was cho-
+sen 12 seconds, but stíl1 the sampling time is 2 seconds.
+It is shown in section V, that the sampling tiroe and, not
+only the input, seguence is importa"t ior the accuraclz of
+the long time constants.
+D. Instruments and Actuators.
+The variables recorded during tne experi¡nents are i¡-
+dicated in Fig. 2. The meaning of the letters are
+Ppressure
+steam or water flow
+temperature
+nuclear powerF
+T
+c25
+The HBirrR instrumentation is described in detail else-
+where, see 1,291. Here only the main features are summarized.
+The pressures are registered as dj-fferential pressures in
+the three circuits (P1 3 , P61 , P62) with conventional DP
+celLs with a range of about *0.3 bar.
+The flows are generally measured rn'ith venturj- meters
+plus differential pressure cel1s. The temperatures are mea-
+sured by thermocouples. The nucLear power is measured by
+an ion chamber C10.
+The pressure ce11s and flow meters in the primary cir-
+cuit have time constants around one second. The tempera-
+tures, however, are registered much fasterr at about 0.1 se-
+cond. The instrumentation does not generally cause any prob-
+1em, as the important dynamics generally are much slov¿er. The
+actuator time constants are not negligible. To move a valve
+through its whole range takes about 6 seconds. A tlpical tirce
+delay for the valve t1 j-n the experiments hzas therefore about 1
+second. For the valve u2 the corresponding delay was about
+half a second
+The instrument noise of
+clear channel are well known
+e.g. t9 12J. For
+-is about *0.03 ¡,II{.the pressure meters and the nu-
+from previous experirnents, see
+the nuclear pohrer the measurement noise
+The standard deviation for thedifferen-
+determined. tial pressure meters has also been experimentally26
+Typical values are 0.5.10-4 units. The pressure unit is
+expressed as pressure variation Civided by total pressure.
+During the experiments the total rrarj-atj-on of e.g. the
+-) vessel pressure was about *0.5.10 units. This means,
+that the noj-se to signal ratj-o was about 12.
+The A/D converter has 11 bít resolution, and, conver-
+sion errors must be considered. For the nuclear power mea-
+surements the total pohrer is rneasured and. converted.. As
+the power variations are most about 53 of the total power
+the conversion errors are not negligible, especially for
+long input pulses, when the variations of the signal are
+smaIl. The eror is estimated to be about 5.10-3 lruto. The
+quantization errors must also be consiCered for the pres-
+sure meters, see V.D.
+During the experiments 35 variables !ùere recorded,
+some of them only for checking up purposes. The d.ata were
+logged on the IBlf 1800 computer and r,,¡ere measured with z
+seconds sampling -i-nterval by a 100 Hz relay multiplexer.
+Because of the multiplexer the measurements couId. be up
+to 0.3 seconds separated in tj-me for the same sampli-ng j-n-
+terval. The sample and hold circuit arso introduced a time
+constant, about 0.35 sec.2i
+IV. IDENTIFICÄTION i'TETHODS.
+For the preliminary anal1'sis of the experimental da-
+ta and. for the first model approaches simple methods were
+used to find rough estimates of the input-output relation-
+ships. Step response analysis and correlation analysis
+were used to verify preliminary models and to design new
+experiments. For the parameter estimation the l'laximum Like-
+lihoocr method has been used except for the recursive esti-
+matj-on, where an Extend.ed Kalman filter is applied.
+In this section the methods are su¡rmarized. For detailed
+descript,j-ons a large number of papers are available, see
+e.g. .A,ström-Eykhoff [30], Eykhoff [31], and ]lehraet aI t321.
+A. !).[ultiple-fnput-Single-Output (]lISO) Structure.
+The plant dynamics is represented by the canonical forr,r,
+introduced by Âström et al t33l
+-1 -1 (1 + a1q -i- anq-n) y (r) (bilq +
+4 ¿¡q)
+-tp=li=1
++ cnq-n) e (t) u, (t) +. ¡,(1 + "19+
+ït
+Li=1-4*i tq ') u, (t)or
+_1ex (e ')y (t) + rc*(q 1)e{t)(1)28
+\?here q is the shif t operator and p the nunlcer of inputs.
+A*, B* and C* are d.efj-ned as corresponding polynomials in
+_'lq '. It is trivj-al to extend the model to j-nclude both
+time delays and direct input terms, correspond.ing to a co-
+effici-ent br. in (1 ) . Moreover initial conditions can be
+estimated.
+Tf e (t,) is assumed to be a seguence of independent
+gaussian random variables the paranneters êi, bi, cj_ and
+À can be determined usi-ng the method of Maximum Likeli-
+hood (I{L). The method is d.escribed in detail elsewhere,
+e.g. [30 33], and only some remarks will be made here.
+The likelihood function L(ê;I) for the unknown para-
+meters
+e'(ut a2 cpnb t' b11
+:--"rr)(2t
+(3)is given by
+ln L (9; À)1
+N2
+2114I7NZnÀ*const.I
+P-Ei=1¿
+where the resid.uals e (t) are d.efined by
+[ô* (q-1 ) ]e (t)-1
+¡Â*1n-1)v(r) e1 tq=t ) u, (t) land Â*,
+Bf andl-
+riance29
+and C* are esti¡nates of the polynoraíals
+N j-s the number of samples and ),2 is the
+of the residuals.
+=?Nv (0)
+the numberBTaÀ*
+^^tt= i
+(s)n*
+The maxim:,zation problem reduces to the problem of mi-
+nimi zLng the -l-oss function
+2(4) e(t)
+with respect to the unknown parameters. tr{hen the estimate
+e is calculated the parameter À can be solved. from the mi-
+nimum value of the loss functionN
+I
+L='1v=+
+;2
+rn t¡gl it is shown that the estimates are consÍstent,
+asymptotically normal and efficj-ent under quite mird con-
+ditions. The parameter À can be i-nterpreted. as the standard
+deviation of the one step prediction error. The technj_que
+gives not only the estimates but also their standard devi-
+ations from the Cramér-Rao inequality.
+As
+orderof parameters j-n the model or the system
+á priori a sta.tistical test. can J:e done is not given30
+in order to find the proper model. The loss function should.
+not decrease si-gnificantly if the right ord.er has been
+reached and more parameters are added.. rt is shown in t33l
+that the quantity
+vn
+F2tr't2 i Dr )D,
+-l(6)
+n2n
+1
+asymptotically has
+ber of parametersan F-dj.stri-bution, whereri j-s the num-
+loss functions. and Vrr. the correspondi_ng
+The residuals should
+time and in relationalso be tested for independence in
+to the inputs.
+An alternative test function d.ue to Akaike t34l has
+arso been used besides the F test. An rnformation crite-
+rion Ís defined,1lfN-Vnz
+vn2
+J= Il+ ¿nlr2lN-k(7)
+where N is the number of samples, k the number of parame-
+ters u.rrd. ¡,2 the measurement noise covariance. Typically J
+às a functíon of k has a minimum for the right number of
+parameters.
+The ML identlfication method has been
+in a large nurnber of applications. Surveysextensively useC
+are given in [25],31
+[30] and Í321.
+'8. Multivariable Structures.
+The ML m.:thod. has been generalized to the multivari-
+able case. rt, is desirable to estimate a paräneter vector
+0 of a linear continuous mod.el
+dx=Axdt+Budt+dv (8)
+dy=Cxdt+Dud.t+de (e)
+The model is written in discrete time and. in innova-
+tions form in ord.er to simplify the noise estimation, ac-
+cording to .Âström t35l or Mehra [36],
+x (t+1) = qx (t ) + Iu (t¡ + Xe (t)
+(10 )
+wherey(t) = Cx(t) + Du(t) + e(t)
+ô=eA (0)
+rA(g)sdsB (e)
+ana x (t) denotes the conCitional mean of x (t) , given pre-
+vious measurement values y(t-1 ), y(t-2),e{iIj32
+The noise e (t) is no\,r a sequence of independ.ent gaus-
+sian random vector variables. The likelihood. function (3)
+is generalized to the form
+Zn L(g,R)T-1t(t) R¿ (-.-),Nln:--l)Lt=1
+-lt"detR+const
+where R is the covariance of e (t) and is assumed to be
+constant. The loss function ("f. (4)J is
+V=detT¿(t)e(r)
+1Ni*:(11)
+(12¡
+(13)Eaton t37l has shown that the loss function can be
+minimized independently of R. As soon as the rninimum of
+V is for¡.nd. an estimate of R can be achieved,
+i = *.Ïr, (.) ,t (.)
+which is a generalization of (5).
+several strong theorems have also been stated about
+the multivariable caser e.g. see Âströra et a] [30], t'Iehra
+[36], woo [38], caines [39], Ljung [40] and. ]Íehra et al
+t411.33
+C. A Vector Difference Eguation Aoproach.
+rn order to finc alternative models for the reactor
+also a vector difference approach rvas tried. simplifying
+assumptions of the noise are rnade in order to identifl, Lhe
+vector difference equation row by row. The noise assunptions
+are only adequate if there are weak couplings between the
+outputs considered.
+The structure of the system is generalized from (1) to
+[r + a18-1 Ao-1lv (tl
++
+e(r) = [r + c1ø-1 ++
+{rr * o1n-' +-1+Cq"l *n- r
++ Arrg-n]v (tl
+ì+ B-q "lu(t) Ir: -)[r + cre-1 + ... + crre-n]e{t) (14 )
+(1s ¡where the capital letters assign constant matrices, while
+Y ¡ u and e are vectors. rt i-s clear that, there is nc one-
+to-one correspondence between (1a¡ and (I0). The likeli-
+hood function is sti1l (11) where the residuals are defined
+by
+rf
+["rn 1+34
+ff it is desired to identify the mod.e1 row by
+then the loss function has to be written as a sum
+functions. This is possible if R is diagonal,
+R = d.iag(À2
+n2Iro9¡,
+ofn
+) (16 )
+1
+and each matrix C, is diagonal as rvelI. The assumption
+means, that every output of the model is disturbed by a
+separate noise source, independent of other noise sour-
+ces. With such assumptions all the parameters of A' Bj-
+and C, are identifiable.
+The parameter estimates are not unbiased, consistent
+or with minimum vari-ance as for the single output case.
+St.ill these multivariable models night ind.icate interest-
+ing couplings which will be shown in section \rf;
+D. Recursive Parameter Ëstimation.
+If the unknown parameters ê in the system (9 10)
+are time variable there is no computationally simple op-
+timal method. to track the parameters recursively. A large
+number of suboptimal methods therefore have been proposed,
+and. the Extended Kalman filter is one of the si-rnplest ones
+to fÍnd the parameters. The unknown parameter vector is
+estimated as part of an extended. state vector. The algo-35
+rithm used. here is described in detail in Olsson-Holst
+t421, rçhere a literature survey of the application of
+suboptimal filters has been done as l¡ell.
+The parameter vector ê is assumed to be constant
+but driven by independent noisê wr
+e(r+1 ) = 0(r) + w(r) (17 )
+The artificial noise covari-ance d.etermines how fast
+the parameter can be tracked. In the use of Extend.ed
+Kalman filter there is no simple way to choose the value
+of cov(w). Tt has to be found by trial and, error, and de-
+pends on the system noise as r..¡e11 as the variability of
+the parameters. It may, however, be found. off-line using
+the lll, method 132J, t41l and then kept fixed j_n the Ex-
+tend.ed Kalman filter.
+The sample covariance matrix of the residuals
+o (t) = y (t) cx (t lt-1 ) - Du (r) (18)
+can be used as a test quantity to judge the quality of
+the results. the resid.uals should be a sequence of zero
+mean independent stochastj-c variables.36
+E. $odel Verification.
+Generally the problem of verifying a model is stiIl
+an art. Many different types of tests have to be performed
+in order to check the model behaviour. Here only the open
+loop behaviour of different models has been compared. It
+should, however, be emphasized that the final test of a
+model should be performed in closed loop. Then t.he real-
+process should be controlled by a control-ler based on the
+achieved model. The model has also to be tested if it is
+really predictive. Then a model achj-eved from one experi-
+ment should be compared with the real output from another
+experiment.
+Even if the parameters of trvo models are close to each
+other, their step responses might be quite differer:t. If
+two models have similar Bode d.iag.rams they could reveal
+quite different time behaviour. Even if the residuals are
+zeto mean and white it does not mean that a better model,
+cannot be found. These examples indicate, that the moCel
+verification is most important and also difficult.
+As the IfL method is based heavily on the residual pro-
+perties, the residua.l.s should primarily be t.ested for in-
+dependence and normality and independence to the j_nputs.
+The loss function changes are testeC. against the F-37
+test quantity (6) in the IvIISO case complemented with the
+Akai-ke test (7). The model error, defined. as the d.iffe-
+rence between the real output and the output of the d.e-
+terministic part of the mode1, is computed.
+The standard deviation of the parameters has been
+checked. If the model order is too high, then the Fisher
+Information matrix becomes singular, which means that cor-
+responding parameter estimates are linearly correlated and
+the parameter covarj-ances wil1 be very high. -
+The discrete models have often been transformed to
+continuous models in order to compare time constants and.
+zeroes with physical knowledge. Bode plots have been ca1-
+culated and simulations have been performed.
+Single-input-single-output models then have been writ-
+ten in the transfer function form
+t2
+I1lt1
+Ti=Íki
+T.s + 1l_,.jI
+i+lsl
+%j1
+L
++ 2es +1l)c (s)k
+0+ (1e)(+1
+where n1 * nZ is the order of the system.Some
+given in38
+F. Computat.ional Ã.spects.
+practical considerations on the computations e.re
+this paragraph.
+1 . Data Analysis.
+Before the measurement d.ata is used for parameter es-
+tirnation, several stages of prelimj-nary data analysis are
+execuLed. The variables are plotted in order to detect out-
+1iers, trends and abnormal behaviour. The relation betr.¡een
+inputs and outputs can be inspected and the signal to
+noise ratios could be visualized. l1ean values are subtrac-
+ted and trend corrections are made in some cases. cross
+correlation analysis has also been performed in order to
+verify relations between the different variables.
+The data preparatíon and analysis part of the identi-
+fication work should not be underestimated. Data must, be
+in suitable form, programs must be slream-Ij.ned and be
+supplied with adequate inputs and outputs.
+2. Identification Prograrns.
+Most of tire data analysis and identifications have
+. been performed on the Univac 1 1 08 cornputer at the Lund,
+university Data center. The program package for IrlTSo iden-
+tification was wrj-tten by Gustavsson t431. The ML identi-
+fication program for multivariai¡le systenis has been writ-39
+ten by Källström, see [44]. The Extended Kalman prograln
+is described in OIsson-Holst 1421.
+In data analysis, parameter estimation or mod.el veri-
+fication the control engineer must often check intermediate
+results before he can proceed. to the next step of the mo-
+deling phase. It is therefore virtually impossible and not
+even desirable to automate all the different partial deci-
+sions and create one general model building program.
+\.
+The need for interactive prograrns rras realized a long
+tj-me ago at the Department of Automatic Control at Lund.
+Instj-tute of Technology, and such a prograrn system IDPAC
+has now been constructed to solve I'IISO identification and
+data analysj-s problems on an ínteractive basis, see Gus-
+tavsson 1251, [4S]. Hov¡ever, most of the identÍfications
+discussed in the present paper were performed before the
+interactive progran was compleÈed.40
+V. MULTIPLE-TNPUT-STNGLE-OUTPUT I{ODELS.
+In this section rve will consi-d.er models for four im-
+portant variables of the p1ant, ví2. the nuclear power
+and the primary (vessel), second.ary and terti-ary pressures,
+called C10 , P1 3 , P61 and P6 2 respectively in Fig. 2 .
+Correlation analysis between the actual inputs and out-
+puts has been applied in order to get a more substantial
+informatj-on about the couplings in the plant, than was pre-
+sented. in section II. The actual cross correl-ations are
+drav,¡n in table 2. Some correlations are quite clear (e.g,
+v2 + P62) while some others are obscure (u3 * P61). The t"rÏ,
+identification gave, however, a signifi.cant relation in the
+Iat.ter cese.
+TABLE 2
+Quaritatj-ve correlations between the examined inputs and
+outputs (max. time lag 10 min.).
+Output
+InputNuclear
+pov/er C10Vessel-
+pressure
+Pl3Secondarv
+rlressure
+P61Tertiary
+pressure
+P62
+ul
+(vA770 )
+u2
+(vB2B2 )
+t3
+(rods )4T
+The j-nteraction between the actual inputs and. ou-uputs
+could be qualitatively understood if Fig. 2 is considered..
+The influence of the d.ifferent inputs \,,'ere discussed in IT.C.
+The valve ur (VA 770) has a linited control authority but in-I
+fluences the nuclear power significantly. The influence on
+the pressures is, hor¡'ever, quite smalI. It is natural that
+a disturbance from u,, is successively damped out from the
+subcooling circuit, to the core and further to the seconda-
+ry and tertiary heat removal circuits. the vaIv" u2 (Ve 282)
+has a much higher control authority than u, and therefore
+the relatíon to all the actual outputs are quite clear. Na-
+turally the valve has the fastest and greatest resr:ollse in
+the tertiary circuit but the response is damped i nto the
+secondary and primarlz circuits. In an analog way it is un-
+derstood, that the rod (u3) influence on the nuclear power
+is significant while the influence on the primâryr seconda-
+ry and tertiary pressures is getting successively smaLler.
+A. Nuclear Porver.
+In II.B it was demonstrated that the nuclear po\A¡er re:
+sponse on reactivity disturbances is very fast. Compared.
+to the sampling time of 2 seconds it is prompt, which cor-
+responds to a direct term bO in the model (1 ) . The valves
+will disturb the nucLear power through the reactivity feed.-
+backs and consequently the dominating tine constants for
+these loops will be longer.A'+z
+1. Reactivity fnpu ).
+In preliminary experime¡rts, see [1], it was found,
+that the reactivity input nuclear power output loop
+could be descrj-bed by third or fourth order dynamics. The
+time constants j-n experiment 1 rvere found to be 0 .7 , 8.9
+and about 500 seconds respectively. Typically the input
+PRBS sequence was very fast (see rrr.c) and the sl-ors time
+constant has consequently been determined poorly.
+Now, \{e consider experi_ments Z and 3 where the rod re-
+activity input is used. fn expt. 2 there is only this in-
+putr but in expt. 3 the valve u2 is also perturbed ind^e-
+pendently. Now, if the system is linear, the superposi-
+tion principle should be valid. As the experinentar con-
+ditj-ons are essentially the same for experiments 2 and 3
+the moder parameters should be similar. Tabre 3 shoivs the
+parameters for model (1) with corres-ponding standard devi-
+ations from the cramér-Rao inequality. The results show
+that at least the ai and b, parameters are close to each
+other with the differences well within one standard devi_-
+ation. The ci parameters, however, show a larger d.iscrepan-
+cy. This is quite reasonabre, as different modes have been
+excited in the two experiments.
+rt is noticed that the c2 coefficients are quite sma1l
+in both cases. A model rvith only c, = 0, however, should
+have no clear ph)'sical interpretation. rf instead c, is43
+TABLE 3
+rd.entification results relating the nuclear power to the
+steam valve (ur) and. to reactivity (ur).
+Þ'perinent 2 3 2 3
+"1 "1
+a2
+a3rÞ2000
+4 .662*..A41
+.71 3*.045
+-.044* .01 6
+.236+.009
+.221*.929
+-.853r.024
+.402*.025N=1 900
+-1.626*.078
+.683t .082
+-.044x .017
+")u2 (*10-)
+-.151*.057
+.1 34r .098
+-.098r.060
+.233r .01 0
+.232*.026
+-.837*.034
+.386r.045-.726* .047
+-.049r.043
+-.063r . 031-.579r .084
+.025* .034
+-.054+ .025
+-1c2
+c^3
+bt
+b-1 I.253*1 0.282*10
+2
+b3
+bo
+bPoles .981; .607¡
+.o74.966; .58't
+.078
+u, (*10) u, (*10)
+b1
+b2
+neglected no better model could be obtaj-ned.
+Now consider the continuous transfer functions corre-
+sponding to the parameters in table 3. Their coefficients
+(see eqn. (19)J , are listed in table 4. The term kO cor-
+responds to the prompt j-nput bO in model (1). No standard
+deviations are derived from the results in table 3.44
+TABLE 4
+Continuous transfer functions of nuclear po\der.
+ExP.
+ïnput2
+u33
+t33
+o2
+T1 (sec. )
+l2 (sec, )
+T¡ (sec. )
+kO,t 1 0
+k1*10
+k2*1 o
+k3*100.8
+4.A
+104
+0.24
+0.76
+-0.23
+0.0960.23
+0. 78
+-0.29
+0.350
+-0.021
+0.088
+-0.950.8
+??
+59
+There is found a very fast time constant of 0.8 seconds.
+It is clearly significant d.espite the sampling interval
+of 2 seconds. It can be explained by the actuator d.yna-
+mícs. Due to the sampling theorem it is still possible to
+detect the fast tj-me constant. similar experiences are re-
+ported by Gustavsson t251.
+The next time constant is determined. to 3.7 or 4 se-
+conds. The fuel dynamics shourd have a time constant of
+about 8-10 seconds and the result from expt. 1 seeins to45
+be reasonable. There are, of course, other dynamical ef-
+fects added to the computed ti¡ne constant, such as pres-
+sure and flow variations, whj-ch explain the smaller value.
+The longest time constant is deterr,iined quj-te poorly, espe-
+cially in expt. 1. rt comes from the heat removal circuit
+dynamics and it should be of the order one or two minutes.
+As remarked before the poor accuracy j_s partly due to
+the input sequence. The longest pulse of 1 96 seconds is
+apparently not long enough, see IfI.C. The short sam¡:ling
+interval is also important. The actual discrete pole is
+situated close to the unit circle, see tabre 3. Therefore
+a small numerical error in the computations can create a
+si-gnificant change of the time constant. For example, if
+the pole 0.981 is changed *0.001 the corresponding time
+constant would be moved from 1 04 to 1 1 0 or 99 seconds re-
+spectively.
+ì.,¡ow consider the coef ficients ki of table 4, which in-
+dicate how the different modes are amplified.. Fj-rst com-
+pare the rod influence on different modes. The reactivity
+input is most significant in the fast modes. Thus both ko
+and k, are significant and quite similar in the two expe-I
+riments. Especially k, is rnuch larger in expt. 3. This
+might indicate, that the low frequencies have been more
+excited in expt. 3 due to the extra input from ur. Irre al-
+so notice the negative sign of kr. Tt shows a clear nega-
+tive reactivity feed.back from the fuel temperature.46
+2'. Steam Valve Inutu
+Table 3 shows c1ear1y, that the b, parameters corre-
+spondj-ng to u, (vs 282) are less accurate than those cor-
+responding to u, (rod.s). This is natural, as the nuclear
+power is perturbed more by the rods than by the valv. 12.
+An attempt was maCe to get better mod.el accuracy by
+introducing different time delays for u2, but no improve-
+ment was obtained. The time constants are, of course, the
+sarne as for the rod i-nput in expt. 3, but the mod.e ampli-
+fi-cations are different. Table 4 shows that the low fre-
+quenci-es are more amplified. by u, than the high ones. The
+relative infruence of u, and. u, is also shown by table 4.
+The rod input u, dominates in the fast modes (kt and k2),
+while the valve dominates in the low frequency range (k3).
+The statÍc amplification from the valve u2 to the nuclear
+povrer should be positive (see If .C). fn tables 3 and 4 it.
+is negati-ve, and the model has no non-minimum phase beha-
+viour. Expt. 5 gives similar results. The explanaticn for
+this discrepancy has to do with the sanpling time, experi-
+ment length and input sequence. previous step responses
+showed a slow non-minimum phase response (Fig. 7) . It takes
+about two minutes for the step response Èo get positive af-
+ter the negative undershoot. This behavi-our is too slow to
+be detected in the experiments. Therefore the nodel has a
+negative numerator (k: in table 4) for the slow time con-
+stant. observe, however, that the signs of k, and k, are47
+reasonable in accordance v¡ith t.he discussion of fI.C.
+The standard d.eviation I of the one step ¡rred.iction
+error in table 3 is 0.025 and 0.028 ¡î{ respectively,
+which is close to the instrument noise level, see III.D.
+A section of expt. 3 has been plotted in Fig. 8. The
+plots can demonstrate scme features of the j-dentification
+method. The nuclear power has a negative trend. between 56
+and 62 minutes. At about t - 62 it suddenly increases
+again. The model, however, does not fo11ow the slow trend
+and the positive change. The residuals 6 are large at time
+62. The reason is, that an absorbtion rod was moved manual-
+}y during the experiment to keep the power within permitted
+Iimits. This i-nput couId, of course, have been added to the
+other inputs. ft was not included here in order to show,
+how the ML method can detect abnormal behaviour durirrg an
+experíment.
+3. Subcooli-ng Valve Input (uI1
+In expt. 5 the valves 11 and. u, were moved 5-ndepend.ent-
+ly of each other and a corresponding model of the nuclear
+power was obtained. This roodel is also of third order. In
+contrast to previous models there are complex po1es. The
+continuous transfer function is written in one real and. one
+complex nrode, according to (19). The coefficients are shown
+in table 5.Input u1 vz
+T1 (sec. )
+,1
+oo
+e-0.58
+k31 .62
+1
+3OQ *1
+The complex poles are lightly damped. The period time
+is about 28 seconds. Similar oscillations have been ob-
+served. earlier when the subcooling valve has been moved,
+see Bjfir1o et al t461. A significant-amplification of t.he
+nuclear power was achieved when the valve was exciting the
+system at a period of about 25 seconds.
+The fast tÍme constants which were excited by the ab-
+sorbtj-on rod. have not been detected here bl' the valves. A
+slow time constant of 68 seconds is found and is not too
+far away from what was obtaj-ned in expt. 3, where valve u,
+was also perturbed.48
+TÄ3LE 5
+Continuous transfer function
+nuclear povrer, exÐt 5of the
+68
+0.1 I
+0.23
+0.27
+-1 03
+5.2
+ind.icates that the system is
+there are two zeroes in the*10
+x10
+The negative value of "1
+non minimum phase. Actuallyright half plane of
+nuclear power.49
+the transfer function from u, to the
+B. Primary Pressure.
+Primary pressure input-out,put models have been stu-
+died. in a similar way to those for the nuclear povJer. The
+steam valve u, is the dominating input, and. generally the
+pressure dynamics is much slower than the nuclear po\.ver
+dynamics, as the pressure has to be influenced through
+the heat flux (see Fig. 3). Most of the id.entified. ¡nod.els
+are of order three or four. fn rrost cases the fourth order
+models have large parameter covariances, even if the loss
+function is acceptable, indicating that the third. order mo-
+dels may be adequate.
+1Reactivity fn1).tu
+The influence from u, is much less than for the nuclear
+power. From experiments 1 and 2 the mod.els obtained were
+quite poor, though third order models were accepted when
+parameter accuracy, loss function, and residual tests were
+considered. The parameters of expt. 2 are shor,¡n in table 6
+and its continuous transform (19) Ín table 7.
+The fast time constant related to the actuator dynamics
+is still statistically significant. A combj-nation of actua-
+tor dynamj-cs and. the fuel dynamics rnight explain the 2 se-50
+cond. time constant. The longest time constant is again re-
+lated to tkre heat removal circuit dynamics.
+T.Þ3LE 6
+!1ode1s from different experiments relating prirnary (vessel)
+press:re to the different input signals. .
+Exp. 2
+1 0003
+19004
+1 0005
+1 000 N
+t1-2.304*.006
+1 .665* .01 1
+-.361 *.006
+u3 (*104
+.497 * .01 7
+-.490r.017
+0
+-1 .176*.029
+.41 7 *. .0 47
+-.081 *.029
+-Á,.663*10
+.997 i .909 i
+.398-2 .077 *. .007
+1 .349* .A12
+-.269*.006
+Au2 (*1 0 ')-2.7 21 *.031
+1.414*.058
+-.291* .027
+u2 ¡*t o4)-2 .155* . 01 7
+1.478*.C31
+-.321r.C15
+..1 (*1 05
+-.1 59*.080
+-.0?5t .1 40
+.390È.083
+Å.u2 (*1 ')
+.*r-.oru
+- .229* .01 7
+0
+-.751È.036
+.405*.037
+-.031 * .033
+-Ã.753* 1 0
+.987i.7C8;
+.459az
+a3
+bt
+b2
+b3
+b
+1
+b2
+b
+"13
+c2
+ca
+I-.060* .01 4
+- .221r .025
+.079* .01 6
+u3 (*1 o4 )
+,453r.025
+-.1E1*.045
+:.1 B0* . 025
+-. 89 3x .027
+.395r.036
+-.024* .027
+.A.7 24*10-.252*.01 0
+13 (*104
+.O92*.055
+.467*.098
+-.498*.057
+-.790*.047
+.328*.058
+.032*.046
+-^-7 49*10
+.984i.736¡
+.401.983i.7Q5i
+.387Poles51
+T.ABLE 7
+Continuous transfer functions relating prirnary pressure to
+: . the d.j-f ferent inputs.
+Exp.
+Input3 4 5 2
+u^Jt2o3.'2 o3 u1t2
+T1 sec 2.2
+T2 sec 20
+T3 sec 6652.1
+5.8
+1192.2
+6.5
+1232.6
+5.8
+157
+kt
+k2
+k3.10-0.64
+8.0
+39-0.13
+4.1
+-71-1 .6
+3.2
+29-0.87
+8.5
+-1 06-2.5
+4.8
+220.45
+-1 .3
+8.6-1 .4
+7.7
+-11 4.10
+.104
+4
+4
+2. Steam Valve Tnput (u.).z-
+DÍfferent results from experiments 3, 4 and 5 will now
+be compared. In all the fcurth order mod.els a negatS-ve disc-
+rete pole was found. As such a model has no continuous cor-
+responding model it is difficult to make any physical i¡:ter-
+prelations. Therefore the third order moCels are d.iscussed,
+The problem with negatJ-ve discrete poles is considered fur-
+ther in paragraph E. fn all models the parameter "3 is poor-
+ly determined and may be set to zero
+There is a long time constant corresponding to a pole
+very close to the unit circle in the discrete model. As l¡e-
+fore, this causes a poor accuracy of the J-ong time constant,
+and the static amplification j-s also inaccurate. The fo1-52
+lowÍng points should be noted:
+(i) The ai parameters in the three experirnents
+close to each other.arequite
+(ii) Consi-der the b, parameters corresponding to u2 in
+table 6. Experiments 3 and 4 are compared. In expt. 4 bt
+and b, were removed in order to get better parameter co-
+variances. No signif icant change of the loss function r.¡as
+observed. Correspond.ing parameter b1 ir experiment 5 could.
+also have been eliminated. Now look at the b, parameters
+for the reactivity input ur. In expt. 4, bt is much smaller
+than in experiments 2 and 3. There is no obvious explana-
+tÍon available. The elimination of b, and b, in expt. 4 for
+the input u, changed the actual parameter a little amount.
+Probably the dj-fference between the experiments has to do
+with the fact, that differenL rods were used in expt. 4
+than in previous experiments.
+(Íii) The parameter standard deviation depend.s asymptoti-
+cally on rÑ, where N is the number of samples. The results
+in experiments 3 and 4 can be compared, and the parameter
+covariances roughly follow such a law.
+(iv) The
+representtj-me constants of about 2 and 6 seconds probably
+conbinations of actuator dynamics and fuel dynarnics.53
+(v) Fig. 9 shows a plot of the prinary pressure related
+to the steam valve and reactivity inputs in experiment 3.
+The mod.el i-s based on data from 40 to 72 mi-n. and the si-
+mulation of the model is made for the time after 72 min.
+Observe, that the model error makes a posj-tive jurnp at
+about t = 85" The reason is, that a control rod was moved
+manually. As the manual change is not included in the si-
+mulation a model error results. At the same time there is
+a large value in the residuals ¿ which can be observed es
+a pulse in the plot.
+(vi) The model error varies s1owly with a peri-od of seve-
+ral minutes. This indicates that there are slow time ccn-
+stants which are not accurately found. in the model. In
+closed loop, however, such slow variations can be taken
+care of easily by the controller.
+3. Subcool-in Val'¡e fnutu
+The subcooling valve (u,, ) has been used as an input
+in expt. 5, and the model is shown in the tables 6 and 7 . Thg
+time constants were di scussed in previous section. In or-
+der to compare the influence from the different vaives u1
+and u, the coeffj-cients k, from experiments 4 and 5 are
+compared in table 7. The following ooints should be noted:
+(i) Even though the static
+curacy in the identj.ficationamplification has a poor
+it is clear fronr expt. 5,ac-54
+that the steam valve amplification is al¡out 1 0 times 1ar-
+ger and of different sign than that of the subcooling va1ve.
+A better determinatj-on of the statj-c amplification must be
+mad.e with larger sampli-ng intervals and longer input pulses.
+The reason to use a longer salrpling inlerva1 is, that the
+poles then art: not situated so close to the unit circle. Nu-
+merical i-naccuracies do noÈ become so critical.
+(ii) The oscillations which could be observed in the nu-
+clear power as a result of subcooling valve perturbations
+are not observed in the primary pressure.
+(iii) The standard deviation À of the prediction error (see
+table 6) varies from 0.66'10-4 to 0.25*10-4" rt is consi-
+dered satisfactory compared to the instrumentation noise
+level, di-scussed in chapter ffÏ.D.
+C. Secondary and Tertiarv pressur
+In the introduction of section V it was emphasized
+that the influence of the steam valve u, is strong for the
+secondary and tertiary cj-rcuits. Especially the correlation
+to the tertiary pressure is very good. on the other hand.
+the influences from the reactir¡ity or the subcooling valve
+changes are poor or negligible.55
+1Reactivi ïnutu
+Because of the poor correlation only a f,irst ord.er
+significant mcdel was found for the secondary pressure. À
+time delay of 6 seconds was estimated (cf. table 2). No
+relation at a-''1 between u, and the tertiary pressure was
+found by the ìlL identifications
+2. Steam Valve Int(u.) .
+fn table I the identification results are shown. con-
+sÍd.er the first column, where the secondary pressure is re-
+lated to the steam valve and. the reactivity. when the pre-
+sent model is compared with a second order model, a high
+test quantity (6) j-s achieved (F = 124). Therefore the third
+order model is accepted over the second order model. The
+table shows that the b, esti-mates corresponding to reacti-
+vity input are much more inaccurate than those for the
+steam valve input.
+The continuous model
+table 9. The longest time
+other two can be compared
+primary pressure, table 7.
+time constant 0.66 seconds
+(1)J was tried out, and a
+achieved. However,
+were found.(19) time constants are shown in
+constant is not very precise. The
+to corresponding results for the
+fnstead of accepting the fast
+a direct input term [bO + 0 in
+significantly better result was
+only models with negative discrete poles56
+TABLE 8
+Models from different experiments relating
+he.at removal círcuit pressures to .d,i.f f.erent inputs "
+Output
+Ð<p.Sec. press.
+ÅSec. press.
+..3Tert. press.
+'3Tert. press.
+" "'3
+t1
+bI
+va2
+t3-1.87'l*.023
+.918*.A44
+-.040*.023
+-.'115*.005
+-.087*.01 2
+.173*.009
+u, (*100)
+-.170*.131
+.388*.252
+-. f 83*.1 35
+-1.323+.043
+.575r.082
+-.076*.054
+-?.194.10 '
+.986;.843;
+.048-1.898r.015
+,938r.031
+-.038*.017
+u, {*104)
+.574*.168
+u, (*10)
+-.109*.004
+-.075*.01 0
+.163*.006
+-1.256*.021
+.450*.028
+-.023*. 023
+-ã.188. 10 '
+.989;.865;,
+.044-1 .559 *.412
+.568*.01 1
+-.1 29 *.003
+.120*.003
+-.385*.073
+-.030*.047
+-t.479.10'
+2.171
+.979; .580-1.534r.003
+.543*.003
+-¡ 039 *.0003
+-.077*.0006
+.'103r.0004
+.434r.028
+.089*.026
+.174.10
+.2873
+.977i.556-Ju, (*10) ur(*100) u,(*100)
+b0
+b2
+b3
+b1
+b2
+b3
+"1
+c2
+ca
+l,
+Poles57
+TABLE
+Continuous transfer functions relating secondary and ter-
+tiarl' pressures to the different inputs
+Ouþut
+Ð<pt.Sec. press.
+4S,ec. press.
+5Terb.. Þress.
+"'3ært. press.
+'3
+T2t1
+3(sec)
+(sec)
+(sec)0.7
+11.7
+138
+o.24
+-1.02
+-12.6
+u, (*103)
+-0.023
+-0.1 31
+1.790.6
+13.8
+178
+?u, (x10")
+0.22
+-1.21
+-1 3.63.7
+126
+-0.27
+-1.373.4
+98
+-0.039
+-0.25
+-1 .15T
+u, (*103) u, {*104) u, (*104)
+ko
+k1
+k2
+k3
+kt
+k2
+k3u, {,tl O6)
+0.001 s
+-31.6
+430
+For the tertiary pressure it is natural to expect the
+fastest time constant to be even smaller. In fact, this
+time constant is too small to be estinated with the actual
+sampling time and a second order model is found with the
+shortest time constant 3.7 second.s (tables I and g , third
+columns). A cl-oser exarnination of Fig. 6 will also reveal58
+one long and one shorÈ time constant for the tertiary Fres-
+sure. By adding a d.irect j-nput term bO an exceptional- im-
+provement of the loss function is found' corresponding to
+an F test quantity of 8124 (column 4 in tables 8 and. 9). A1-
+so the parameter accuracy is improved. A significant improve-
+ment of the loss function can be achieved for third. order mo-
+dels, but negati-ve discrete poles or pole zero cancella-
+tion appears. The time constants for the tertiary pressure
+are smaller than for the secondary pressure, which is natu-
+ral (see table 9).
+fig. 10 shows a plot of the secondary pressure in expt.
+3, related to steam valve and reactivity. The model is based
+on an observation record from 40 72 min. in the experinrent
+and is used t.o predict from 80 to 94 min. The residuals have
+a distinct spike at about 84 min. and the model error makes
+a posi-tive change. The reason is the' satne as for the prima-
+ry pressure, Fig. 9. The tertiary pressure from expt, 3 is
+plotted in Fig. 11. It is based on 1900 data and simulated
+on the same data set. The plot shows the same part of the ex-
+periment. as !.ig. 8. The manual movement of a rod is revealed
+also here by the model- error change at about 62 min.
+3. Subcooli-ng Valve Input (u)_1
+The correlation between u., and the second.ary and terti-
+ary pressures is poor, wh5-ch has been discussed before. A
+significant l,IL rnodel was, horvever, found for the secondary59
+pressure, and. the parameters are shol,rn in tables 8 and 9
+column 2.
+The stand.ard d.eviation of the one step predict.j_on er-
+ror j-s larger'th.r, f,or the primary pressure (cf . tables 6
+and 8) but is sti11 considered satisfactory with respect
+to the instrumentati-on noise.
+D. The Problem of Neqative Real Discrete poles.
+In several models, especially those of high order
+(third or fourth) negative real poles of the discrete mo-
+del have appeared. since these models have no continuous
+analog they cannot be given physi-cal interpretations.
+St.ill they may be useful for time discrete regulators.
+The following reasons may be given for negative discrete
+poles: _
+(i) The negative pole may reflect that the order is too
+high. Generally there is a correspondíng zero close to
+the pole in the C* or j-n the B* polynomial, but not al-
+vrays in both. cancellation may be possible. rn the reac-
+tor models cancellation between the A* and c* have been
+the most corlìmon case. The noj-se thus can be represented
+by a lower order transfer function, a fact which has been
+observed. in many practical situations by e,g. Bohlin L47]"
+Söderström t48l has also analyzed cancellation probJ_ens.60
+(ii) Quantization error may cause negative discrete poles
+as pointed out by .Â.ström t¿gl. por the secondary pressure
+and to a lesser extent for the primary pressure, negative
+poles \.\7ere quite co¡lmon. The quantization error of the 11
+bit. converter for the pressures is at least 0.8*10-4 nor-
+malized units. The standard deviation of the one step pre-
+dictor error is 0.7*10-4 for the primary and 1.9*10-4 for
+the secondary pressure. Thus the quantizatj-on error cannot
+be neglected in comparison with the residuals. As the nu-
+clear po\¡¡er one step prediction errors have been about
+0.025 1"1!l in comparison with the quantj-zation error 0.005
+Mw (see rrr.D) this quantization error is not so serious,
+even though only the total power j-s measured.
+(j-ii) For the secondary pressure models of second order
+two mini-ma of the loss functi-on appeared in expts. 3 and
+4. The models have about the same Loss function. rn one
+model there is one negative real po1e, in the other both
+the poles are positive real. This probrem of non-unique-
+ness of the I'IL estimates has been analyzed by söderström
+tso]. similar results can also be found for the nuclear
+power related to the reactivity inpuL61
+VI. VECTOR DIFFERENCE EQUATIONS.
+In preceeding MISO models the couplings between the
+outputs or state variables of the plant have been neglec-
+ted. In ord.er to take the couplings between the inputs and
+outputs into account the vector d.ifference approach, de-
+scribed in fV.C, was tried. out. The results then are com-
+pared with the MISO rnodels.
+From a computational point of view this approach is
+also a MISO identificationr âs one row at a time of the
+vector difference equation is.identified. Then the other
+outputs are used as auxiliary variables. Apart from the
+noise approxi-matj-on there is also another error source as
+the different "inputs" are not ind.ependent of each other.
+This will also be discussed.
+A. Correlation Analysis.
+In table 2 the correlation between the "real" inputs
+and the actual outputs j-s shown. Here also other pai_rs of
+inputs and outputs have been stud.ied to find out. the sig-
+nificant causality relations. The input has been whitened.
+and corresponding impulse response has been estimated using
+Fast Fourier Transform technique. Generally 2000 data points
+!{ere used.62
+TÀBLE 1 O
+Qualitative correlations between some. se.lected variables.
+Pt3 P61 P62
+Nuclear power C1 0
+Vessel pressure P1 3
+Secondary pressure P61
+Tertiary pressure P620
++ ++
+++
+The correlation results are shown i-n table 10. The
+signs indicate a positive or negative correlation betrceen
+the variables. Two si-gns .means a clear cross correlation,
+one sign a 1ow signal to noise ratio, a question mark a
+poor correlation while a zero means insignificant corre-
+lation.
+B. I'faximum Likelihood (ML) Tdentifi-cati-ons.
+Some specific results from expt. 3
+cussed in order to demonstrate the model
+r.¡hen couplings are taken into account.wil-I now be dis-
+characteristics
+Table 3 shows, that the best possible model with nu-
+clear power (C1O) as function of u, and u, is charactel'ized
+by 13 parameters (pIus 3 initial conditions), i.e. 16 para-
+meters which give. À = 0.0282. If the vessel pressure (p13)
+is added to the mod,el, it can be i¡.rproved signi.ficantly. A63
+second order model now with three inputs corresponds
+to 13 parameters and. À = 0.0282. Significant improvements
+of the loss function i-s obtai-ned for a third. order model
+(19 paranieters) with. À = 0.0277 (F = 6). Without the pri-
+mary pressure as an auxiliary input no improvement is found
+when the numh,er of parameters is increased to more than 13.
+The correlation analysis indicated that the secondary and
+tertiary pressures are not coupled to the nuclear power.
+It is verified by the ML identificationr âS no improvement
+is obt,ained by add.ing those variables as auxiliary inputs.
+The plot of the model output in Fig. 12 shorvs an in-
+teresting behaviour compared. to the previous model output,
+Fig. 8. The new model can follow the d.rÍft of the nuclear
+power between 56 and 62 minutes much better. During this
+time the input u, j-s negative most of the time, and. conse-
+quently the pressures are forced to rise, which j_n turn
+decreases the nuclear power. Thus the drift of the nuclear
+power is noticed through the vessel pressure p13, and, the
+model error change at t N 62 is consequently not so d.is-
+tinct. Even if the loss function is significantly smaller
+for the new model, the residuals in the two models look si-
+milar to each other. In principle there is only a slight.
+scali-ng of the residuals, The autocovariance does not change
+much.
+The irnproveinent is enphasized also for the vessel64
+pressure. The smallest loss functj-on for the vessel pres-
+sure related to u, and u, in expt. 3 v¡as obtained for or-
+der four and 20 parameters (cf. table 6). It corresponCs
+to l. = 0.714*10-4. ïf the nuclear power and secondary pres-
+sure are added, a third order model wi-th 21 parameters gives
+I = 0.633*10-'1. A comparison between those models corre-
+sponds to an il test quantity (6) of 270 (1000 data). Ir is
+quite reasonable, that the vessel pressure moder can be sig-
+nificantly irnproved by including other process variables.
+The gains from both the rods and the steam valve to the
+vessel pressure are quite sma11. According to Fig. 3 a re-
+activity change is first noticed in the nuclear power be-
+fore it propa.gates to the vessel pressure. Therefore the
+knowledge of the nuclear power together with the reactivi-
+ty input significantly increases the inforn'ration about the
+vessel pressure. Likewise, a change in the steam flow varve
+causes pressure changes in the heat removal circuits which
+propagate towards the reactor vesse,l . of similar reasons as
+above, the knowlecae of not only the steam valve j-nput but
+also the secondary pressure "input" gives a better determi-'
+nation of the vessel pressure.
+The tertiary pressure will also be discussed. The IvIL
+identification gave significant mod.els with both the stea¡n
+valve u, and. the secondary pressure as inputs. Accord.ing
+to table I (col. 4) the best model with only u, as input has 9 pa-
+rameters (including Ínitial conditions) and | = 0.174*10-3.
+ìq"'r65
+If the nuclear power and secondary pressure are added, a
+third order model with 21 parameters gives. À = 0.633*10-4.
+A comparison l:etween those models correspond.s to an F test
+quantity (7) of 270 (1OOO data). It is quite reasonable,
+that the vesscrl pressure model can be significantly improved
+by including other process variables. The gains fronr both
+the rod.s and the steam valve to the vessel pressure are
+quite small. According to Fig. 3 a reactivity change is
+first noticed in the nuclear power before it propagates
+to the vessel pressure. Therefore the knorvledge of the nu-
+clear power together wj-th reacLivity input significantly
+increases the information about the vessel pressure. Like-
+wise, a change j-n the steam flow valr¡e causes pressure
+changes in the heat removal circuits which propagate to-
+wards the reactor vessel. Of similar reasons as above,
+the knowledge of not only the steam valve input but also
+the secondary pressure "input" gives a better determina-
+tion of the vessel pressure.
+The tertiary pressure will also be discussed. The
+ML identification gave signifj-cant models with both the
+steam valve u, and the secondary pressure as inputs. Ac-
+cord.ing to table 10 the best model with only u, as input
+has 9 parameters (including initial cond.itions) and À =
+-?= 0.174*10 With P61 added tCI the model a second order
+mod.el with 12. parameters is accepted. as the best one rvith
+I - 0.156*10-3, correspcnCing to an F test quantity (6) of66
+155. No correlatj-on was found earlier betvreen u., r u3 and
+the tertiary pressure. The primary and secondary pressures
+are then lj-nks fro¡n the core dynamics to the tertiary pres-
+sure P62. The correlation analysis showed that P62 should.
+be related al.;;o to the vessel pressure, buÈ the M.L j-Centi-
+fications dit not reveal such a relationship. The reason
+is, that the primary and secondary pressures are strongly
+correlated, so al-1 causality relations from primary to ter-
+tiary pressures can be explained by the secondary pressure
+alone.
+Now compare the plots in Figs. 11 and 13. The mod.eI
+error is signifi-cantly reduced. As for the nuclear power,
+the residual amplitudes are d.ecreased but the two real-j-za-
+tions and^ their covariances are quite similar.
+C. Simulations.
+The whole vector difference equation (VDE) with the
+two inputs u2 and u, arrd. the four outputs can now be writ-
+ten in the form (14), The model contains three A, mat.rices,
+four B, matrices and three C, matrj-ces. The deterministic
+part of the mod.el contains 47 parameters, 28 in the A, mat-
+rices and 19 in the B, matrj-ces. The diagonal C, mairices
+contain 10 parameters.
+The different a.ssumptions of the noise (see III.C)67
+and the inputs are tested by simulation of the VDE. Ì.Il:en
+each row of the VDE was si¡nulated. separatelyr âs in Figs.
+12 and 13, then all the auxiliary variables had their ob-
+served values. ?trl:en the whole VDE is simulated, then only
+the true inputs 12, u3 have their observed values given.
+It j-s natural, that the output error then is larger. Be-
+cause of the new relations found, the model error is, how-
+ever, stil1 smaller than for the Ì'ITSO models¡ âs in Figs.
+8 11. In Figs . 14 and 15 the nuclear pol{er and the ter-
+tíary pressure are plotted from the VDE simulation made
+for inputs from expt. 3. Figs. 14 and 15 should be com-
+pared to the Figs. 8, 12 and 11, 13 respecti-vely.
+It is demonstrated that the VDE mod.e1 output error
+j-s (in mean square) between the results of MISO identifi-
+cation and row-by-row VDE identification. Observe, however,
+that slow variations occur quite obvj-ously aJ-so here.
+VTT. A STATE }IODEL.
+From a control point of view it is interesting to
+get an accurate and sti1l reasonably sma11 model of the
+plant. An attempt is made to formulate a state rnodel in
+order to achieve better physical interpretation of the mo-
+deI parameters. In this section a nodel is id.entified. from
+expt. 4 using only two inputs u2 and ur. ?r struciure of68
+the plant model is derived first and the essential
+mations are accounted for. then the id.entification
+are presented and discussed
+A. Derivation of a lîodel Structure.
+In section II the qualitative behaviour of the plant
+was discussed., and by identification some of the most es-
+sential relations were confirmed. Iiere an attempt j-s made
+to quant.ify the assumptions of physical couplings betv¡een
+the different process variables. The goal is to find a li-
+near state variable description.
+It is assumed, that the varj-ations are sma1l¡ so
+that the nonlinear effects are negligible. The state va-
+:¡iables are defined as devÍations from stationary values,
+1. KinetÍcs.
+The neutron leve1 n* j-s proportional to the nuclear
+power C10. If one group of d.elayed neutrons is assuned
+the neutron d.ensity equation isapproxi-
+results
+(20 )dn*õk+n* ßÀcdr
+where n* i-s the neutron
+delayed neutrons, g thedensity, c the concentration of
+delayed neutron fraction, I aL69
+weighted average value of the d.ecay consta¡rts of the pre-
+cursors of the six groups of delayed. neutrons, { the neut-
+ron generatÍon time and. ôk = keff-1 ng reactivity. The last
+term is discussed in paragraph 6.
+The one group description of delayed neutrons is
+dcÀc (21) =ßt*
+Ldr
+As the neutron kinetics is very fast compared. to
+other phenomena in the plant a prornpt ju¡np approximation
+is made, i.e. d.n*/dt is put to zero. This makes the nu-
+clear pov¡er an algebraic equation of the other state va-
+riables, according to (20) .
+2. Fuel Temperature Dynamics.
+The heat content of the fuel elements is represented
+by the average fuel temperature gf" As it. is influenced. by
+heat transfer through the fission and is decreased by the
+coolant, the following dynami-cs
+d0fT (22]/
+dt.gf+ Y1n
+is assumed, where ì-, are constants and T, is an averag.e
+time constant for the fuel elements determined by their
+total heat capacity. rt is inÍtia11y assumed to be g se-* T2o. f70
+conds.
+ted by
+ent T2The coolant temPerature 9" wi-1l
+an average water tenPerature ê*
+is found to be close to zero.1={-av }ra rêñrêcên-
+and. the coeffici-
+3. Coolant andÌ'{oderator DvnarrLi cs .
+The hydraulics, coolant and moderator dynamics are
+probably the most complex features of the plant. Here se-
+veral crucial approximations are made. All the water con-
+tent in the core is represented by an average water tem-
+perature êw, which then (together with fuel temperature)
+represents the heat flux in the core. The voj-d content is
+strongly related to both heat flux and vessel pressure'
+and therefore it is here i-nvolved in those state variables.
+The vessel pressure p1 gives, of courser ro infor-
+mation about the void distribution along the coolant chan-
+nels. The reactivity feedback from void, depends not only
+on the average void but also on the spatial distribution
+of the void. Moreover the boiling boundary is not taken
+into account, and it is a critical variable.
+It has been demonstrated in section TI that the sub-
+cooled flow temperature (AT8) is related to both the v¡ater
+temperature 0* and to the reactivity. This dynamics has
+not been i-ncluded in the present state modelr âs tle valve
+11 \^¡as not moved in the selected experiment. The teinpera-
+ture changes therefore were not si.qnificant.7L
+The structure of the water ternperature equation can
+now be formulated. Because of the large v¡ater mass the
+heat capacity is large, and correspor.uron time constant
+is of the ord.er minutes. rnitially it i.s assuned to be
+1 00 seconds.
+The heat flux.whi-ch can change tl¡e water temperature
+can be represented. by the three states, fuel temperature,
+subcooled water temperature and the heat transfer through
+the steam transformer. part of the heat is also due to the
+fact that all the fission power j-s not captured in the fuel,
+but in the moderator. The coupling to the subcooled water
+has been neglected. The heat flux through the steam trans-
+former is for the moment reÞresented by the term q,,. Then
+the water equation is formulated as
+d
+w+ T:gt + Y491g
+w
+Q3')d.r
+4Vessel Pressure Dvnamics.
+According to the assumptions abeut the coolant the
+pressure must reflect many different f,eatures. Thj-s means,
+that the equation parameters are combi.nations of many phy-
+sicar phenomena anc it. is tberefore very difficult to make
+any theoretical derivation of their numerical r'alues.g T
+!ì7
+The vessel pressure is certainly related to the heat72
+flux from the fuel elements and the water temperature. To
+a very smal1 extent it 5.s related. to the subcooled tenpe-
+rature. No identifj-cation has veri-fied. any significant re-
+lation. In any case tl¡e influence from the subcooled tem-
+perature is neglected in the present experiment.
+The vessel pressure also depends on the steam removal
+through the steam transformer to the secondary circuit. ff
+this energy flux is represented as before by q1 the pres-
+sure equation structure is
+dp1
+. a ÊY.ldtrr* y60f * y70, + Tgel tad I
+5. Heat Removal Circuit Dynamics.
+The dynamical coupling between the reactor core and
+the steam circuits is through the vessel pressure and the
+primary steam flow. As remarked before there is also a
+weak coupling to the water circuits through the subcooler
+A. The subcooling temperature and flow then can represent
+the essential variables for this coupling.
+The heat transfer in the steam transformers and in
+the subcoolers now is considered. The functi-onal difference
+between the steara transformers and the subcoolers is, thaÈ
+tbe latter ones hat'e one phase flow (water) both irr the pri:nary73
+and in the second.ary ci-rcuits. rn order to simplify the mo-
+del as much as possible only the steam phase is considered..
+rt is known, that the water is only slightly subcooled in
+the circuits. varj-ations j-n the subcooling are considered.
+as stochasÈic disturbances to the pressures.
+The mass and energy balance equations for the heat.
+exchangers have been formulated earlier by Eurola 124J.
+As the steam is close to saturation it is reasonable as
+remarked in sectíon II - that the temperature variations
+are assumed proportional to the pressure variations. There-
+fore the pressure is used to represent the enthalpy.
+The primary steam flow variations (F41 ) are not neg-
+Iigibler ês soon as the steam valve v2 has been moved
+Identifications have shown that it is also significantly
+refated to the primary pressure and to some extent to the
+nuclear power. Therefore $¡e assume here that the enthalpy
+on the primary side of the steam transformer is described
+only by the vessel pressure. In section II.C it is ind.i-
+cated that the temperáture variations on the second.ary
+side are small. Therefore the secondary side enthalpy is
+also represented just by the pressure. The consequence of
+these arguments is, that the energy term q, in eqs, (23)
+and (24) can be replaced by the secondary pressure p2. I^iith
+sÍmilar argunrents the tertiary circuit d.ynamics is d,escribed,
+by only one state variable, the tertiary pressure p3.74
+The secondary pressure dynamics is conseguently as-
+sumed. to be
+( 2s)
+where glZ and g* are the heat fluxes from the primary to
+secondary and. from second.ary to tertiary circuits respec-
+tively. The heat fluxes are assumed to be related to ti:e
+pressures in the following vray:
+912 = u1P1 u2Pz
+9Z: = u3P2 u4P3
+where v¿ìre consta:rts. This results inl-dPz,ZT=Q1Z'9ZZ
+d.t'
+dP"
+* = Tgpt * T1 oPz * Y1t P3clt(26 )
+Q7lFor the tertiary system v¡e have
+dPg.¡ 
+=- = 82¡ - 9g
+ot,
+where q, is the heat removed from the tertiary system.
+We assurne75
+93=t5P3+u6u2
+The state equati-on then J-s
+(28 )
+6. Reactivity Feedbacks.
+The reactivity term ôk in eq. (20 ) defines the coup-
+ling between the kinetic equations and the rest of the
+pIant. The feedback effects have been ind.icated in Fig. 3.
+The void. content has been representêd by vessel pressure
+and by water temperature. As the steam removal influences
+the void content we also include the secondary pressure
+arnong the reactivity feed.backs. f t is assumed that a li-
+near relati-on holds ,dP.
+Ë = rlzPz * T1 3p3 + r14u2
+ôk = o3 + ì--159f + T169* + T1Zp1 * ylgpZ (2el
+where 13 represents the net reactivity from the rods. The
+feedback from the subcooled water is neglected..76
+7. Summary
+To summarj-ze the structurei tbe state vector of
+the linear model is defined as
+*1 delayed neutrons c (21)
+x2 fuel temperature êf þZ)
+x3 water temperature g* (23 )
+x4 vessel pressure p1 Q4)
+*5 secondary pressure p2 |.26)
+xt tertiary pressurê Þ. (28 )' 'J
+d*=Ax+Bu
+dr.¡
+The input vector has only the two Ínputs steam valve
+and reactivity.
+the mod.e1 is d.escribed by
+(30)
+A_o ^12 t13 u14 
+"15
+az1 a2z 423 u24 a2s
+o t32 "33 t34 t35
+o u42 t43 u44 t45
+000"54"55
+0000"650
+0
+0
+0
+ã*56
+t66blz
+bzz
+þ=0
+0
+0
+0
+0
+b0
+0
+0
+0(3r)
+6177
+The underlined elements wi-lI be discussed. in section
+VIIT.
+The three pressures p1 - p3 are measured, but the nu-
+clear power h.rs not been used. as an output. The general
+form of the n'lclear power related to the other state va-
+riables j-s derj-ved from (20) and (2g) but the parameters
+are unknown. fn order to limit the complexity of unknown
+parameters the nuclear power aeasurements therefore are
+not used
+The output equation then j-s
+vCx
+where
+c
+The
+ted. First00010
+00001
+000000
+0
+1(32)
+B. Parameter Ïdentification.
+identlfication of the state model is now presen-
+the noise is discussed.78
+1Noise Description.
+In III.D the instrument noise is considered and i.s
+found to be quite smalI. Thus the major contrj-bution to
+the residuals are due to process noise and moder errors.
+There are many noise sollrces in the plant, a fact
+rvhich is demonstrated by the }frso identifications. The
+boiling is a large noise source term, which affects x4.
+Temperature variations in coolant, subcooled water affect
+x3. The saturation temperature is changed. due to heat frux
+variations. varying degrees of subcoorj-ng in the water
+phase ín the heat removal circuj-ts wirl disturb the pres-
+sures x5 and xu. Also the flow variations in the cÍrcuits
+create disturbances
+The process noise terms also can represent mod.eling
+errors to some extent
+2. Identification Results.
+The stochastic structure of the system is d.escribed
+by eqs. (8) (9). From expt. 4 a sequence of 800 samples
+have been used..
+In the
+were assumed.
+in the A and
+sponding tofirst approach the matrices K and. D of (10)
+to be zero. I^Iith I parameters assumed. unknown
+B matrices a minimum point was found corre-79
+tr (R)0.123 10-3
+(see (13) ) . This corresponds to standard devi-ations of
+-) the predj-ction errors 0.50*10 - (vessel pressure),
+-) -)0.74*10' (secondary pressure) and 0.66*10 ' (tertiary
+pressure). These errors are very large compared. to pre-
+vious Mrso results (0.7*1 a-4, 0.19*10-3, 0.17*10-3 re-
+spectively). Moreover, the residuals were not accepted
+to be white noise.
+It l_s
+First only
+tried , k41,c1ear, that process noise must be included.
+three non-zero elements of the K matrix v¡ere
+kSZ and k.r.
+In order to limit the computations not more than
+15 parameters at a time were assumed to be unknown in the
+A, B and K matrices. V{ith K included a significant j-m-
+provement was obtained. The loss function decreased. no-
+ticeably. The standard deviations of the prediction er-
+rors for the three pressures were 0.88*10-3, 0.96*10-3
+-tand 0.15*10 - respectively. Those values are stiIl too
+large compared to the MISO results.
+It is demonstrateC thatit is not tri-viaI to find
+form. Several improvements a correct structure in state
+can be made¡ and. work is inprogress to improve the nod.elBO
+structure. It is clear, that the number of parameters in
+the A and. B natrj-ces (31 ) can be j-ncreased.. In the VDE
+approach not less than 34 significant parameters were
+found in the deterministic part of the model relating two
+inputs to the three selected output pressures. In the
+state equation identj-fication the number of degrees of
+freedom (equal to the nunrber of parameters to be identi-
+fied) for fitting the observed data has been reduced. fn
+A and B (31) there are only 25 parameters" Clearly the
+number of states should be Íncrea.sed. The assumptions
+about the core d.ynamics have to be more elaborate. One
+varÍable describing the void content and two different
+states for the coolant and moderator temperature would
+be a significant improvement. Moreover, previous identi-
+fications showed, that the primary steam flow probably
+should be considered a separate state variable. It is
+also clear, that one state for each heat removal circuit
+is too little. The present state mod.el has no time con-
+stant smaller than 6 seconds, and the results in v.c. cle-
+arly demonstrated that fast modes are important. Thus ad-
+ditional states are needed to describe the secondary and
+tertiary pressures better.
+It is difficuit to find good. initial values of the
+K matrix, as they do not have any intuitive physical in-
+terpretatj-on. Tt i:c navbe easier to guess parameters in
+the process noise covariance matrix, and then transform
+to K by using a Riccati equation t441.81
+The computational work is b1' no means trivial. The
+likelihood function is ¡rinimized numerically. The gradi-
+ents are computed numerically using fini-ue differences,
+and a Fletcher-Powell algorithm is used for minimi-zation.
+Manual interaction has to be done to a large extent d.ur-
+ing the minimj-zation. The intermediate results have to
+be judged if they are reasonable. Otherwise it is easy
+to get unreasonable computational tj-mes, depending on
+too slow convergence, wrong step lengths etc.
+Fig. 16 the first part of expt. 4 is plotted.
+The best model hitherto is compared to the real output
+values.
+VTII. RECURSTVE TDEI{TIFTCATTON.
+In expt. 7 the operating 1eveI is changed signifi-
+cantly by means of the subcooling. A time variable linear
+model could describe this phenomenon. Here an Extended
+Kalman filter has been applied in order to recursively
+track the varying parameters.82
+.4,. Influence of Subcooling Power.
+The general nature of the subcooling effects were
+discussed in sectj-on II.A and C. The quantitative influ-
+ence of varying subcooling power has been studied by com-
+paring experiments 6 (table 1) and 4. Tt was found, that
+not all the parameters in the A matrix (31 ) changedr êx-
+cept mainly the underlined ones.
+Genera}ly a lower subcooling power means a lesser
+degree of stability. Mainly the reactivity feedback coef-
+ficÍents (Fig. 3) will be affected. As they are hidden j-n
+the system equation coefficients a couple of examples are
+g5-ven here.
+Às soon as the subcooling power decreases there j-s
+a higher probability for boiling j-n the moderator. The
+total void content increases. The sensS-tivity to pressure
+changes will then -rlse and. the vessel pressure influence
+on reactivÍty will gro$¡. with a prompt jump approximation
+this means that x1 and x, are primarily i-nfluenced, i.e.
+the parameters u,l' and arn (31). Às an example u14 = - 0.24
+from expt 4 with 1.95 Mhr subcooling, and a14 = - 0.64 at
+expt 6 with 1.1 tvl?ù subcooling.
+In experiment
+nually from 1.95 to7 the subcooling povrer was
+1.4 M{ during 15 minutes,changed ma-
+rvhile u2and.83
+u3 !ì¡ere d.isturbeC (table 1) . The subcooling power is shown
+in Fig. 17 (upper fig.). It r¡¡as not included in the model
+but considered as an external distiubance source. The ini-
+tial condition for expt. 7 is the same as the operating
+l-evel- of expt. 4. Therefore the model described in vrr.B
+j-s used as the starting model for Lhe recursir¡e paraneter
+estimation.
+B. Parameter Tracking"
+The observed variables from expt. 7 were put into an
+Extended Ka1man filter (see IV.D) and the six time-varying
+parameters were tracked. There is no \^ray to find optimal
+-estimates of time-variable parameters in a multivariable
+system. It j-s known, that the Extended Kalman fj-lter most
+often gives unreliable confidence limits on the parameter
+estimates. Several compensations for lfri= have been pro-
+posed. 1,42J. Here, hovrever, the main interest has been to
+test the simplest possible filter to track the parameters.
+The sj-x unknown parameters were described as eq.
+(12¡ with an artificial noise v¡. rnitialry the covariance
+matrix of w was chosen diagonal, and only trial and error
+methods were used to find sui-table values. rt r^¡as found
+that the diagonal elements of cov(w) should lie between
+10-6 and 1a-7, i.e. somer,r'haJ'- smaller than the process
+noise covariance elements. This is reasonable, as the84
+para:neters afe assumed to vary slowly
+state variables. With too sma11 values
+trackS-ng was too j_nsens j-tive.cornpared tothe
+the of cov (w)
+rn Fig. 17 an example is shown. six parameters were
+estimated simultaneously and a14r discussed above, is d.is-
+played. The parameter is approaching -0.4 which seems to
+be a plausible resultr âS the subccoling reaches 1,4 .iu!rl.
+rt i-s natural to try to minimize the number of time
+varíable parameters, as the computing time grows very fast
+with the size of the extended state vector. Attempts with
+only two time-variabre parameters were not successful, but
+three parameters could be reasonably accurate.
+The computing tÍme for the Extended. Kalman filter
+may be a severe constraint on an on-line computer. Here
+the extended state vector consists of 12 states v¡hich means
+a considerable computational burd.en. Probably even more
+state variables should be included. in order to improve the
+modeI. Therefore it j-s crucial to simplify the carculations
+as much as possible and a tailor made filter has to be de-
+fined.8s
+ACKNOI4ILEDGE}IENTS.
+This work has been partially supported by the sv¡edish
+Board for Technical Development. The research has been per-
+fornred in cooperation wiÈh the OECD Halden Reactor project.
+The author is especially indepted to Dr. R. Grumbach, ì.1r. H.
+Roggenbauer and I1r. R. Karlsson (nov¡ with Atomenergi AB, Sweden)
+with the Halden Reactor project for their participation and.
+interest: The permission of the project to publish the results
+is also gratefully acknowledged.
+The team work at the Department of Aut.omatic Control has
+been most va1uable. Professor K.J. Âström has contributed wi-th
+constructi-ve criticism, new id.eas and never failing encouraging
+support. Dr. r. Gustavsson has throughout the work shared his
+knowledge of identification and has been of invaluable help.
+Mr. C. KäIlström wrote Èhe state model identification prograrì.
+Mr. J. Holst has cooperated with the author on subopt.imal fil-
+tering problems. Dr. B. Wittenmark has contributed with valuable
+comments and corrections when read.ì-ng the manuscript. Mrs. G.
+Chrj-stensen has typed the manuscript, and }liss B.¡f. Carlsson has
+prepared the figurest1l
+ï.2J
+t3l
+t4l
+lsl
+t6lB6
+REFERENCES.
+G. olsson: l{aximum Likelihood rd.entification of some
+Loops of the Hald.en Boiling I{ater Reactor, Report
+7207, Department of Automatic Control, Lund Insti-
+tute of Technology, Lund., 1972.
+H. Roggenbauer, I^f. Seifritz, and G. Olsson: Identi-
+fícation and Adjoint problems of process Computer
+Control, Enlarcred Ha1den Prorarnme Group Meeting
+Loen, Norway, 1972.
+G. Olsson: Modeling and. Id.entificatÍon of Nuclear
+Power Reactor Dynamics from Multivariable Experi-
+ments,Proc. 3rd IFACSylnp.on Identificati-on and
+stem Parameter EstirnatÍon , the Hague, the ìTether-
+lands, L973.
+I. Gustavsson: Comparison of Different Methods for
+rdentification of Linear Models for Tndustrial pro-
+cesses,AutomaticaI1972, VoI. 8, pp. 127-t42.
+A.P. Sage and G.trt. Masters:
+deling of Nuclear Reactors,
+L967, NS-14, pp. 279-285.Id,entification and lto-
+IEEE Trans. Nuc1.Sci. ,
+w. ciechanowi-cz and s. Bogumil: on the on-l-ine sta-
+tistical rdentification of Nuclear power Reactor Ðv-
+namics, Nucl. Sci.Engr., 1968, Vol. 31, pp. 474-483.
+L-J. Habegger and R.E. Bailey: Þtinímum variance Esti-
+mation of Paraneters and states in Nuclear power sys-[7]87
+tems,
+1969.Proc. 4th IFAC Congress, Warsaw, paper !2.2,
+R.L. Moore and F. Schweppe: trlodel Identifj-cation
+for Adaptive Control of Nuclear power plants, Lq-to-
+matica, 1973, Vol. 9, pp. 309-318
+A. Brouu,ers: Step Perturbation Experiments with the
+HBI^IR. second Fuel charge, oEcD Halden Reactor project,
+HPR-51, 1964.
+v. îosi and F. Âkerhielm: sinusoidal Reacti-vity per-
+turbation Experiments with the HBWR second Fuer charge,
+OECD Halden Reactor project, I{pR-49, 1964.
+Y- Fishman: Pseudorandom Reactivity perturbation Ex-
+periments with the HBWR second Fuel charge, oEcD Hal-
+den Reactor Project, HpR-50, 1964.
+T. Euro1a: Noise Experiments with the HBITIR Second
+Fuel Charge, OECD ltalden Reactor project, HpR-53,
+tg64.
+T.J. Bjlrlo et a1: Digital plant Control of the Hal-
+den B'trIR by a Concept Based on $lodern Control Theory,
+Nucl. Sci. Engr., L970, VoI. 39¡ Ftr. 231-240.
+t14l H. Roggenbauer: Real-Time Nucrear power plant parame-
+ter rdentification wi-th a process computer, proc.
+3rd IFAC Symp. on Tdentifica tionand Systern Para:reterl - -- ' l
+'l r ^
+- ,:ì¡.r--
+l8l
+tel
+t 10l
+t 111
+l 12l
+Ir¡l
+Estimation the Hague, the NetherlanCs, 1973.88
+tfSl E. Jamne and J.G. Siverts: Description of the tíBI,iR
+Plant, OECD Halden Reactor project, HpR-95, 1967 -
+t16l J.À. Fleck, Jr.:
+I{ater Reactors,
+11, pp. 114-130.The Dynamic Behaviour of Boiling
+J. Nuc1. Energy, Part A, 1960, Vo1.
+t17l S. Glasstone and M.C. Edlund: The Elements of lîu-
+clear Reactor Theory, Van Nost.rand, Princeton, N.J.,
+L952.
+t18l c.D.c. King
+York, 1964.: l{uclear Power Systems Macltlillan, New
+[19] R.V. Meghreblian and Ð.K. Holmes: Reactor Ànalysis,
+Elsevier, New York, 1968.
+t21l D. Wíberg:Optimal Control of Nuclear Reactor Sys-
+tems, Advances in Control Svstems(C. Leond.es, Ed.),McGraw-Hill, New York, 1960.
+t20] L.E. Weaver: Reactor Dvnamics
+Lzz)
+Izs 1
+1,241and Control, .Arnerican
+Vol. 5, Academic Press, N.y . r rL967 .
+G. Olsson: Simplified Models of Xenon Spatial Oscil-
+lations, Atomkernenergie, 197A, Vo1. 16, No. 2, pp.
+91-98.
+H- vollmer and A.J.I^I. Anderson: Development of a Dy-
+namic }lode1 for Heavlr l{ater Boiling Reactors and
+rts Application to the HBhB., oEcD Halden Reactor pro-
+ject, HPR-54, 1964.
+T. Eurola: Dynamic l,îod.el of the HBI{R Heat Removal
+circui-ts, oEcD HaLden Reactor project, HpR-62, 1964.89
+125) r. Gustavsson: survey of Applications of rdentj_fica-
+tion in che¡nical and physical processes, Automatica ,
+1975, vo1.11r pp.1-1 A
+'1.267P.A.N. Briggs, K.R. God.frey, and p.H. Hammond: Esti-
+mation of Process Dynamic characteristics by correra-
+tion Methods Using pseudo Rand.om Signals, proc. Ist
+ïFAC Sr¡mp.Identification in Automatic Control Sys-
+tems, Prague, 1967.
+l27l r.c. cumming: Frequency of rnput signal in rdentifi-
+cation, Proc. 2nd. IFAC Symp. Identification andPro-
+cess Parameter Estimation , Prague | 1970.
+t28l r.c. cumming: on-line rdentification for the computer
+Control of a Cold Rolling Mill,Automatica , L972, Vo1.
+l2e)8, pp. 531-541.
+F. Pettersen: Description of System Har¿ware for the
+Main Process Computer InstallatÍon at the HB,Þ]R, OECD
+Halden Reactor Project, HpR-123, 1971.
+t30l K.J. Âström and p.
+Survey, AutomaticaEykhoff: System Identification, a
+, L97!, VoI. 7, pp. 123-L62.
+t31l P. Eykhoff: Eystem Identifica , Wi1ey, !974.
+I32l R.K. Mehra and J.S. T\zler: Case Stud.ies in Aircraft
+Parameter Identification, proc. 3rd IFAC Son
+Identification and-Çystem Far
+Hague, the Netherland.s, 1923.ameter Ðstirnation, thet33l K.J. Âström and T. Bohlin: Numerical Tdentification
+of Linear Dynamic Systems from Normal Operating Re-90
+IFAC Svrnp. Theorvon Self-Adaptive Control
+(p.H. Hammond, ed.), Tedd.ington, Eng1., p1e-
+num Pres;s r N. Y. , 19 6 5 .cords,
+Systems
+[34 ] H. Akaike:
+Ann. Inst.Statistical Predictor
+Statist. Irfath., ]-97o rIdentification,
+Vol. 22, No. 2, pp.
+243-2L7.
+t35 I K.J. Âström:
+demic Press,Introduction to Stochastic Control, Aca-
+N.Y. , 1970.
+t36 I R.K. Mehra: Identification of Stochastic
+tems Usj-ng Kalman Filter Representation,
+L97I, Vol. 9, No. 1r pp. 28-31.Lj-near Sys-
+AIAA Journal î
+t37l J. Eaton: rdentification for control purposes, IEEE
+Wínter Meetinq, It.Y. L967.
+t38l K.T. tfoo: Identification of Noisy
+on Ïdentification and Systems,
+Process Parameter Estimation, Prague, 1970.MaxÍmum Likelihood
+Proc. 2nd IFAC Svmir.
+P.E. Caines: The Parameter Estimation of State Vari-
+able Mode1s of Multivariable T,inear Systems, Contr,ol
+systems centre Report No. 146, The univ. of lulanchester,
+Inst. of Sci. and Techn., April, 1971.
+L- Ljung: on consistency for prediction Error rdenti-
+fication Methods, Report 74as, Dept. of Àutomatic con-
+trol, Lund..Inst. of Technology, Lund, !974.[3e]
+t 40l91
+t41l R.K. Mehra and P.s. Krishnaprasad: A uni-fied Approach
+to the Structural Estimation of Distributed Lass and
+Stochastj-c Differential Equations, Third NBER. Confe-
+rence on Stochastic Control and Economic Systens
+1.421
+[¿¡]
+t44l
+t¿sl
+t 46llilashington D. C. , May, 197 4 .
+G. Olsson and. J. Holst: A Conparati-ve Study of Subop-
+timal Filters for Parameter Estimation, Report 7324,
+Dept. of Automatic Control, Lund Inst. of Techn.,
+Lund, 1973.
+ï. Gustavsson: parametric rdentification of lr1ultiple
+Input, Single Output Linear Dynamj-cal Systems, Report
+6907, Dept. of Automatic Control, Lund Inst. of Techn. ¡
+Lund, 1969.
+K.J. .Âström and. C. Källström: Application of System
+rdentification Techniques to the Determination of ship
+Dynamics, Proc. 3rd IFAC S¡¡mp. on Tdentification and
+Svstem Pararneter Estimation , the Hague, the Netherland.s,
+1973.
+r. Gustavsson, s. selander and J. I{ieslander: ïDpAC user,s
+Guide, Report 7331, Dept. of Automatic Control, Lund.
+Inst. of Techn., l,und, L973.
+T.J- Bjlrlo et aI: Apprication of Mod.ern control Theo-
+ry for Regulation of the Nuclear power and. the Reactor
+vesser Pressure of the HBWR, oEcÐ Harden Reactor pro-
+ject, HPR-131, Halden, !97J-.92
+lall T. Bohlin: On the }laximum Likelihood. lrlethod. of Iden-
+tification, IEM J. Res. and Dev.¿ 1970, Vol. 14, pp.
+t48l
+Í4e1
+Is0]41-51.
+T. Söd.erström: Test of Common Factors of Ïd.entified
+Models. Application to the Generalized Least Squares
+Method, Report 7328, Dept. of Auto¡ratic Control, Lund
+Inst. of Techn., Lund,1973.
+K.J. Âström, private communication, 1975.
+T. Söderström: On the UnÍqueness of lîaximum Likeli-
+hood Identification, Automatica , L975, Vol. 11r Fp.
+193-197._vÂLvE__Ur(vB 282)
+STEAM OUTtgl
+FEÊO WATCfr
+ÍANKc3lrrRoL R0
+- -- ---l''--
+NEACTIVITY
+(u3)
+f5 UB COOL gR5
+Flg. L. Slmpllfled flow sheet of the HBWR p1ant.
+Reprlntecl by courtesy of the llalden Reactor project.(.
+(
+&-BSlEAM
+GEN.
+.tt-/\SlEA M
+ORUM
+-!rSlEAM
+IRA NS F.
+( vA 770t-
+SUBCOOLEO
+wÂrER FtowPt
+- ñ-Ë ¡elo-q-
+esSEVFWl1I
+)sT8
+I
+IR!3
+üVIIVE u2
+-(vB 282) l SrSaU oUTLET
+rôa-
+51
+'VAWE ul
+(v^ 770)
+PRIMANY SECONDÂRY TERTIARY
+varlables registered for the iclentif icatlons.
+Reprlnted by courtesy of the Halden Reactgr project.f(t
+5CAFETO WÂTER
+l"E0Ê¡rpj
+I. TTMPERAIURES
+P . PT'ES5UNES
+F'FL0w5
+C:NEUTRON FTUX
+Flg. 2{
+Sorbtion 9eff nucleor eot
+Pig- 3. Reactivity feedbacks in the reactor dynanics.pres -
+>u¡ g
+stec I
+¡1¡3¡i: r:
+}J\.¡ \kikticrf ission hect
+trcnsfef uet
+etemenispower f lux
+fue[treQc
+steomproduc-
+tion u1temp.
+voidsteqm
+f tow
+æ2hydrou-
+ticscoolont
+e3
+&,4
+a5mcder-
+ator
+a65SUBCOOLING VALVE u(Y")
+SUBCOOLING FLOW F6
+SUBCOOLING TEMP. TB CC)
+SUBCOOLING POWER (MW)
+NUCLE,AR POWER (MW)
+3t+ 525
+4
+4
+10.2
+3
+I
+2 0 710
+Fig. 4. Typical responses to changes in ur.Tlrne (min)B
+10
+9.6
+I
+3
+2VALVE VA, 770 (%)
+NUCLEAR POWER (MW)
+I
+3
+2.PRIMARY PRESSURE (d ifference, bor) P13
+SECONDARY PRESSURE (differenc e, bor) P61
+ÏERTIARY PRESSURE (difference, bor) PG2
+0 1 2 J 4
+Time (min)
+, FÍg. 5. Typical- responses to a step change in ur.3.
+5TERTIARY PRESSURE çxtOz)STEAM VALVE (
+2otlo
+2.50
+.00
+-2.50
+5.00
+.00
+-5,00
+2,OO
+.o0
+-2. 00
+2.00
+.ooSECONDARY PRESSURE ( XlO)
+PRTMARY PRESSURE (*i02 )2
+810l+ 6 14 16
+Tinie (min)-2.00
+Fig. 6. Typical responses to changes in ur.1231VALVE VB 282 (%)
+NUCLEAR POWER (MW)
+Fig. 7. Nuclear power response to step change in ur.o
+I
+5
+Time (mÌn)!/ | br-1r-¡
+2.5
+0
+-2
+2
+-2
+10.50ROD (STEPS) t¡
+NUCLEAR PO\,VER (MW)
+MODEL ERROR (1"1W)
+RESIDUA.LS
+50 52 5/. 56 58 60 62 64
+. Time trnin )
+F:¡-$. B. Mode-1. of the nrr.cl.ûF.r FcwÉ_ì;.. (br:ok_er, Line) rel_ated
+to u'r' airrì. uu. îhe oÌ:s.--rvcci v¿lì,or aïe .rom a part'
+cif cxpt 3.10.0
+9.
+0.5
+0
+- 0.5
+o.2
+0
+-0.2ì
+II
+-1--Jr\
+ü1,^J
+lr
+,.'ï,ç$hll.''ií i{ill^.1-\1,,4il¡*\UïI
+þ.'it[,ì,,å*'ii 'i;;r{"n$,,,i','{#'¿
+2.5
+-z
+2
+a0
+0ROD (STEPS) ug
+PRIMARY PRESSURE (xl02)
+MODEL ERROR (x102)
+RESTDUALS (*102)
+BO 82B/' BS BB90 92 942
+-2
+.5
+:5
+2
+Fig. 9. ¡4ode1 of the priaiarlr pressu-re (brcken U:re) rel_ated t" "iimg (nTn)U- afd' U^. lPhe ci--.sor¡zad rr:r'ì:r¡c ¡rn €,.-^* ^ *^r{ ^€ ---r2.5
+-z
+2
+-¿
+1ROD (STEPS) u
+SECONDARY PRESSURE (*102
+$4ODEL ERROR (*i02 ))
+-1
+RESIDUALS (*102¡
+;f ;,l.l'
+'itiotiliiìriffi.i
+Itì,
+0I84 B BB 294Fig.10. t'lodel of the secorida::v pressure {þroken 1lnel (min)0
+relaLed. to o2 anC t!.. Tl"le obsel-ved va-l-ties ere
+€rnm : h=r+ ^ç ^r,âå :tL.,
+2
+-20
+5
+-5
+1STEAM VALVEu2 (oio¡
+2TERTIARY PRESSURE (xi0)
+MODEL ËRROR (x1&t
+RESIDLJALS ( 
+"102)Ï
+0
+0
+1
+0.2
+0
+-0.2-50 52 5/- 56 58 60 62
+Time lmìn)Fig,'J-I. Mod.el of the tertiar]' pressu::e (broken line)s4
+related to u2. The observei. values are frorir a pa=t
+of expt 3.10.5NUCLEAR POWER(Mw)
+MODEL ERROR (N4w)10.
+9.s
+0.5
+0
+-0.5
+4.2
+0RËSIDUALS
+50 52 5/. 56- 0.2
+58 6062 64
+Time (min)
+F'ig.12. llo<leI of the nuclear power (broken line) related.
+to .tZ, u3 and. the primary pressure. The observed
+val_ues are fro¡a parÈ of expt 3.5
+-5
+0.2s
+-0.25
+0.1
+-0J{utttuu¡0TERTIARY PRESSURE (*lo2)
+MODEL ERROR ( *1oZ)
+0
+RESIDUALS (X1O)2
+0
+50 5254 56 58 6062 64
+Time (min)
+rig- 13. Mod.el of the tertiary pressure (broken line)
+reLated to u2 and the secondary pressure.
+The observed. values are from a part of expt 3.05
+-5STEAM VALVE u(T")
+ROD u(STEPS)
+PRIMARY PRESSURE
+SECONDARV PRESSURE
+TERT¡ARY PRËSSURE1
+0
+1
+-2
+.02
+.oa
+-.o2
+.02
+.oa
+.42
+.05
+.t0
+6 L 2 12 1tr
+Time (¡nini-.CIs
+0 B 10t0.sNUCLEAR POWER ( MW)
+MODEL ERROR(MW)
+rig' 14' Nuclear po\^¡er output from the vDr simuration.A part of expt 3 j-s shown.
+TERTIARY PIìESSURE (olo2)
+MODEL ERROR ( *io2 )10.0
+9.5
+0.5t
+0
+-0.
+5
+-5
+10
+0
+150 52 s456 58 60 62
+ïme (minl
+!'ig' 15' Tertiary pressure output from the vDE sirnur-atj-on.A part of expt 3 j.s shown
+1¡6/.
+--* Ft;,-o2
+-o.Â
+2.0
+!-Subcooiing power (ì'{W} \'',
+.""ì3t,5 .üT ¡;i
+Tinr* irnin)
+Estimation of -'i.me-varying paraneters v¡ith the
+Extencled Kalman filter in expt 7. Among the
+six estinatecl parameters *14 is shor.¡n, The sub
+eool5"ng is changed mar¡uell./.Fig.L7"

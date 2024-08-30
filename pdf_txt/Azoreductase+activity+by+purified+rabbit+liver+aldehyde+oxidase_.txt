@@ -1,0 +1,948 @@
+DMD #85787  
+ 
+ 1  
+The Time -course of Aldehyde Oxidase  and the Reason Why  it is 
+Nonlinear  
+ 
+ 
+Armina Abbasi, Erickson M. Paragas, Carolyn A. Joswig -Jones,  
+John T. Rodgers, and Jeffrey P. Jones  
+ 
+ 
+Department of Chemistry, Washington State University, Pullman, WA 99164 -4630  
+ 
+  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 2  
+ 
+Number of pages:  40 
+Number of Figure s: 8 
+Number of Tables:  3 
+Number of references:  40 
+Number of words in Abstract:  225 
+Number of words in Introduction:  624 
+Number of words in Discussion:  1251 
+ 
+Abbreviations:  [2Fe-2S], iron -sulfur cluster ; 5NQ, 5 -nitroquinoline ; AIC, Akaike information 
+criterion ; AOX, aldehyde oxidase ; CL int, intrinsic clearance ; DACA, N -(2-
+dimethylamino)ethyl)acridine -4-carboxamide ; DMSO, dimethyl sulfoxide ; EDTA, 
+ethylenediaminetetraacetic acid ; FAD, Flavin adenine dinucleotide ; HAO, purified expressed 
+human aldehyde oxidase ; HLC, human liver cytosol ; Km, Michaelis -Menten constant; K I, 
+dissociation constant for substrate inhibition;  Ki, equilibrium dissociat ion constant for a 
+Running title:  
+ 
+ 
+ 
+ 
+ 
+Corresponding author:  
+Why is AO nonlinear over time?  
+ 
+Jeffrey P. Jones, Ph.D.  
+Department of Chemistry  
+Washington State University  
+Pullman, WA 99164 -4630  
+  
+Tel: +1(509) 592 -8790  
+E-mail: jpj@wsu.edu  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 3 competitive inhibitor;  MA, multispecies allometry ; MAM, modulated activity model ; MM, 
+Michaelis -Menten ; MoCo, molybdenum pterin cofactor ; O6BG, O6-benzylguanine ; PAR, peak 
+area ratio ; ROS, reactive oxygen species ; SOD, superoxide dismutase ; SSS, single -species scaling ; 
+TDI, time dependent inhibitor ; LC -MS/MS, liquid chromatography -tandem mass spectrometry ; 
+VMAX, maximum velocity ; V/K, intrinsic clearance . 
+  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 4 Abstract:  
+Many promising drug candidates metabolized by Aldehyde Oxidase (AOX) fail during the clinical 
+trial due to underestimation of their clearance. AO X is species specific and this makes traditional 
+allometric studies a poor choice for estimating human clearance. Other studies have suggested 
+using half -life calculated b y measuring substrate depletion to measure the clearance. In this study, 
+we are proposing using numerical fitting to  enzymatic pathways other t han Michaelis -Menten  
+(MM)  to avoid missing the initial high turn -over rate of product formation . Here, product 
+formation over 240 -minute time -course of s ix AOX substrates, O6-benzylguanine,  DACA, 
+zaleplon , phthalazine, BIBX1382 and zoniporide have been provided to illustrate enzyme 
+deactivation over time to help better understand why MM kinetics sometimes lead to 
+underestimation of rate constants . Based on the data provided in this paper , the total velocity for 
+substrates becomes slower than the initial velocity by 3.1, 6.5, 2.9, 32.2, 2.7 and 0.2 fold 
+respectively  in human expressed pur ified enzyme (HAO) while the Km remains constant . Also, our 
+studies on the role of reactive oxygen species (ROS) such as superoxide and hydrogen peroxide 
+shows that ROS did not significantly alter the change in enzyme activity over time. Providing a 
+new electron acceptor, 5 -nitroquinoline, did however alter the change in rate over time for a 
+number of compounds. The data also illustrate the difficulties in using substrate disappearance to 
+estimate intrinsic clearance ( V/K). 
+ 
+ 
+ 
+ 
+ This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 5 Introduction:  
+Aldehyde oxi dase (AO X) is a cytosolic protein belonging to the family of molybdoflavoenzymes 
+(Mendel, 2009) . It is found most extensively in liver but it is also expressed in kidney, lungs, the 
+gastrointestinal tract and skin. AO X is a homodimer  enzyme that needs four cofactors in each one 
+of its 150 kDa  subunits to be active. These cofactors including molybdenum pterin cofactor 
+(MoCo), two iron -sulfu r clusters [2Fe -2S] and a f lavin adenine dinucleotide  (FAD) site (Garattini 
+et al., 2008; Mendel, 2009) . The final electron acceptor for the flow of electrons from the MoCo 
+site to the flavin site is molecular oxygen which  form s reactive oxygen species (ROS) O2•- and 
+H2O2. AO X is capable of both oxidative and reductive transformation s of a wide range of 
+compounds. AOX oxidative substrates include aldehydes, aromatic heterocycles , iminium ions  
+and azaheterocycles . While AOX reductive substrates include sulfoxides, nitro compounds, N-
+oxides , nitrates,  nitrites and molecular oxygen (Krenitsky et al., 1972; Kitamura and Tatsumi, 
+1984; Stoddart and Levine, 1992; Li et al., 2009b; Pryde et al., 2010; Maia et al., 2015) . AO X 
+reduction s have recently been gaining attention (Konishi et al., 2017; Paragas et al., 2017a; Amano 
+et al., 2018) . Previously,  it was believed that AO X reduction only occurs under anaerobic 
+conditions  (Li et al., 2009a; Weidert et al., 2014; Maia et al., 2015) . recently it was pro ved that 
+reduction by AOX can also occur under normal oxygen condition and at a different site than where 
+substrate oxidation happens . 
+ 
+More than 90% of metabolic breakdown of drugs and x enobiotics is through  the P450 family  of 
+enzymes (Lynch and Price, 2007) . However, recent ef forts toward making drugs more stable to 
+P450 metabolism has also had the effect  of mak ing them susceptible to clearance by other 
+pathways. This has turned the attention to studying other enzymatic pathways, particularly AO X, This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 6 in drug metabolism. Although extensive studies have been done on prediction of intrinsic clearance  
+(CL int)  for P450 -cleared compounds (Dalvie et al ., 2010a) , the ability to obtain a close estimation 
+of in vivo clearance from in vitro  data for AO X-mediated metabolism has not yet been developed . 
+Traditional allometric scaling assumes that drug elimination mechanism is conserved across 
+species but this is not the case for AO X since there is a noticeable difference in AO X activity 
+between  human and preclinical species. In species, such as rat and mouse, substrate is metabolized 
+by different isoenzymes, AOX1 and AOX3, while it is not metabolized at all by AO X in dogs , 
+which do not produce active AO  (Kaye et al., 1984; Dalvie et al., 2010b; Garattini and Terao, 
+2012) . Recent  efforts to predict clearance  have used  novel allometric studies using single -species 
+scaling (SSS) or multispecies allometry (MA) to scale in vitro CL int, rat, guinea pig, monkey and 
+minipig to human in vitro CL int (Crouch et al., 2018) . Another method proposed to predict in vivo 
+metab olism from in vitro CL int is by monitoring substrate depletion in time and then use the half -
+life to scale up the results to the whole human body (Zientek et al., 2010) . 
+ 
+Atypical kinetics of cytochrome P450 family of enzymes has already been extensively studied  
+(Korzekwa et al., 1998; Hutzler and Tracy, 2002) . However, this  kind of behavior is not specific  
+to that family. Many AO substrates deviate from Michaelis -Menten  (MM)  steady state kinetics. 
+The enzyme is nonlinear over time and it is apparent that multiple substrate can bind to the enzyme 
+resulting in substrate inhibition (Barr et al., 2014) . MM kinetics  requires  a single  active  site per 
+enzyme and it also requires each site to operate independent ly from others  in a homodimeric 
+protein .  
+ This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 7 In this paper, we have used three  enzyme systems, human liver S9 fraction , human liver cytosol 
+(HLC) and purified expressed human AO X (HAO) to monitor product formation over a  240-
+minute time course for s ix substrates . We evaluate whether product is formed at a constant rate 
+over the time course, which we define as a linear time course, or if the enzyme changes rate over 
+time (nonlinear).  Furthermore , since oxygen plays an important role in the enzyme cycle  as the 
+ultimate electron acceptor (Pryde et al., 2010) , we check for any loss of a ctivity related to oxygen 
+consumption or reduction during the catalytic cycle by using superoxide dismutase (SOD) and 
+catalase to remove ROS  and determine the affinity of oxygen for human AO . This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 8 Materials and methods:  
+N-(2-dimethylamino)ethyl)acridine -4-carboxamide ( DACA ) was synthesized as described 
+previously  (Paragas et al., 2017b) . O6-benzylguanine (O 6BG) and zaleplon , were purchased from 
+Toronto Research Chemicals (ON, Canada), zoniporide  and dantrolene  from Cayman Chemical 
+Company (Ann Arbor, MI), BIBX 1382  from Tocris Bioscience (Bristol, UK), and internal 
+standards (phenacetin and 2-methly -4(3H)-quinazolinone), phth alazine, protocatechuic ac id, 
+protocatechuate 3,4 -dioxygenase ( Pseudomonas sp .), glucose oxidase ( Aspergillus sp. ), glu cose, 
+catalase  (bovine liver),  and superoxide dismutase (SOD, bovine erythrocytes) were purchased 
+from Sigma -Aldrich  (St. Lou is, MO). The standard metabolites were synthesized and purified as 
+previously described (Paragas et al., 2017b)  except 1 -phthalazinone which was purchased from 
+Sigma -Aldrich (St. Louis, MO). 5 -nitroquinoline was purchased from TCI America (Portland , 
+OR). The monobasic potassium phosphate, dibasic potassiu m phosphate and 
+ethylenediaminetetraacetic acid (EDTA) used for the potassium phosphate buffer were purchased 
+from JT Baker (Center Valley, PA). Human liver S9 fraction, pooled from 20 donors (gender ratio 
+not specified, lot # 3212595), was purchaced from BD Gentest (Corning, NY).  Human liver 
+cytosol (HLC), pooled from 50 individual donors (30 male and 20 female , lot # 1410012 ), was 
+purchased from XenoTech (Lenexa, KS). Expression and purification of human AOX ( HAO ) was 
+performed following the method previously described (Alfaro et al., 2009; Paragas et al., 2017b) . 
+The total amount of AOX in HLC and HAO was quantified by liquid chromatography -tandem 
+mass spectrometry (LC -MS/MS)  (Barr et al.,  2013) . 
+ 
+General incubation conditions.  Each incubation vial contained 5 times the Km amount of each 
+substrate in 25  mM potassium phosphate buffer ( pH 7.4) containing 0.1 mM EDTA. Samples were This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 9 pre-incubated for 5 minutes at 37 °C.  The reaction was started by adding the HLC (0.0051 µM 
+final AO concentration ) or HAO ( 0.0192 -0.043 µM). Total reaction volume was 3 ml and 200 µL 
+of the reaction vial was taken out and quenched immediately at times 0, 2, 4, 10, 20, 30, 45, 60, 
+120, 240 minutes. The time points fo r phthalazine were slightly different, 0, 0.5, 1, 1.5, 2, 2.5, 3, 
+4, 5, 10, 20, 45, 75, 135, 240 minutes, due to its immediate transition to nonlinearity. Samples 
+were quenched using 50 µL of 1 M formic acid containing known concentration of IS  (either 
+phenacetin or 2 -methly -4(3H)-quinazolinone) . Incubation with the human liver S9 fraction (20 
+mg/ml) was only done for the substrate O6BG  as an example to check the results in a more intact 
+cellular fraction . The samples were then centrifuged at 16 ,100g for 10 minutes  in an Eppendorf 
+centrifuge 5415D and the supernatant was collected for LC -MS/MS. For experiments done to 
+check the effect of ROS, the incubation conditions were similar except 250 U/mL catalase and 250 
+U/mL of SOD were added to the reaction  before pre -incubation. Same for reactions in which 5NQ 
+was used. Five times the Km amount of 5NQ (200 µM) in the presence of oxygen was added to the 
+reaction before the pre -incubation . All the experiments were done in triplicates and the goodness 
+of fits were assessed using the Akaike Information Criteria (AIC) value s. 
+ 
+Oxygen K m calculation. The Km for oxygen was measured using saturating concentration of 
+phathalazine . HLC was incubated with protocatechuate 3,4 -dioxygenase (1 U/mL) and 
+protocathechuic acid (20 mM) . The oxygen concentration was monitored using Robust oxygen 
+probe (Pyroscience, Germany). Aliquots were collected when the needed oxygen concentration 
+was re ached and added to a vial containing 50 mM phthalazine. The phthalazine assay was 
+incubated at 37 °C for 2.5 minutes. The final reaction volume was 100 µL. The reaction was This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 10 quenched by the addition of 25 µL of 1 M formic acid containing 25 µM phenacetin, as  internal 
+standard.  
+ 
+Data analysis. Numerical fitting in Mathematica 11.0.1.0 (Wolfram Research, Champaign, IL) 
+was performed using the NDSolve function with MaxSteps → 10000 and PrecisionGoal → ¥ . k1 
+was fixed to 270 µM s-1 and k 2 was set to k 1´ Km for each substrate. Model fitting was done using 
+the NonlinearModelFit function with 1/Y weighting. G oodness of fit was evaluated by AIC and 
+RSquared commands. Dataset simulation was done using the rate constants derived from the 
+numerical fitting.  GraphP ad Prism 7.0c (GraphPad Software Inc., San Diego, CA) was used for 
+developing saturation curves . The data was fitted to three different kinetic models; namely, 
+Michaelis -Menten (MM), dead model and the modulated activity model (MAM) (Fig. 4)  the 
+graphical results of the fits are given for all substrates in supplemental information  (supplemental 
+Fig. 1) . Several s ubstrate inhibition model s were also developed (Supplemental Fig. 2). These 
+model s were tested on two of our substrates which were r eported to exhibit substrate inhibition, 
+DACA and phthalazine , (Obach et al. , 2004; Paragas et al., 2017b) . The fit s to these model s were 
+either  almost identical to the MAM or could not fit the data points well (Supplemental Fig. 3 and 
+Supplemental Table 1).  
+Liquid Chromatography – Mass Spectrometry. Samples were analyzed using an LC -20AD 
+series high performance liquid chromatography system (Shimadzu, Columbia, MD) fitted with an 
+HTC PAL autosampler (LEAP Technologies, Carrboro, NC). Chromatography was performed 
+using two columns, a L una C18 column (50 ´ 2.0 m m, 5 µm; Phenomenex, Torrance, CA) and a 
+Luna C18 column (100 ´ 2.0 mm, 5 µm; Phenomenex, Torrance, CA). Mobile phase A consisted 
+of 0.05% (by volume) formic acid and 0.2% acetic acid (MilliporeSigma, Billerica, MA) in water, This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 11 and mobile phase B comprised 90% acetonitrile (MilliporeSigma, Billerica, MA), 9.9% water, and 
+0.1% formic acid ( Fischer Scientific, Pittsburgh, PA) . The quantitation was conducted on an API 
+4000 Q -Trap mass spectrometry system (Applied Biosystems/MDS Sciex, Foster City, CA) with 
+turbospray ESI operating in positive ion mode. For O6BG and 8 -oxo-O6BG, the initial condition 
+was 10% mobile phase B and 90% mobile phase A for 0.3 minutes. The concentration of mobile 
+phase B was ramped  up to 95% at 2.2 minutes and held constant for 0.1 minutes , followed by a 
+linear gradient back to 10% B for 0.9 min.  For DACA, zaleplon, zoniporide and BIBX 1382  
+together with their respective metabolites, the initial condition was 10% mobile phase B and 90% 
+mobile phase A  until 0.3 minutes . The concentration of mobile phase B was ramped  up to 75% at 
+2.2 minutes and held constant for 0.1 minutes before ramping down to 10% again at 3.1 minutes 
+and held constant for 0.9 minutes. For zaleplon the initial cond ition until 0.3 minutes was 10% 
+mobile phase B and 90% mobile phase A. The concentration of mobile phase B then ramps up to 
+95% at 2.2 minutes and held constant for 0.1 minutes before ramping down to 10% again at 3.1 
+minutes and held constant for 0.9 minut es. For phthalazine the initial condition until 2 minutes 
+was 10% mobile phase B and 90% mobile phase A. The concentration of mobile phase B then 
+ramps up to 80% at 8 minutes and held constant for 0.5 minutes before ramping down to 10% 
+again at 9 minutes a nd held constant for 1 minute. The mass spectrometer tuning parameters used 
+for all the compounds were as follows: collision gas, medium; curtain gas, 20; ion spray voltage 
+4900; ion source gas 1, 35; ion source gas 2, 55; desolvation temperature 600; decl ustering 
+potential, 70; entrance potential, 10; cell exit potential, 15; and the collision energy was 25 for 
+O6BG, DACA, zaleplon and zoniporide. The only differing factor for BIBX and Phthalazine was 
+the collision energy which were 65 and 35 respectively.  The flow rate for O6BG, DACA, 
+zoniporide and BIBX (including their respective metabolites) was 0.4 mL/min. The flowrate for This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 12 zaleplon and phthalazine together with their corresponding metabolites was  0.3 mL/min and 0.35 
+mL/min , respectively . The  substrates and  metabolites were detected using multiple reaction 
+monitoring mode by monitoring the following m/z transitions:  2-oxo-zoniporide, 337 → 278 
+(Dalvie et al., 2010b) ;  DACA -acridone, 310.2 → 265.0 (Barr and Jones, 2013) ; 8-oxo-O6BG, 
+258.2 → 91 (Barr et al., 2015) ; 5-oxo-zaleplon, 322.3 → 280.1 (Hutzler et al., 2012) ; BIBU1476 , 
+404.1  ® 373.1 ; 3-oxo-XK469, 361.2  ® 315; 1-phthalazinone, 147.1  ® 118; aminodantrolene, 
+285.15 → 186.0 (Amano et al., 2018) ; and the internal standards (IS) were either 2 -methyl -4(3H)-
+quinazolinone 161.0 → 120.0 or phenacetin 180.2 → 110.1, as specified.  All the metabolic 
+reactions are summarized in ( Fig. 1). 
+  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 13 Results:  
+Time course  
+The data indicates that AOX  cataly sis rates are not constant over time and in most case s the enzyme 
+appears to be less active as time progresses depending on the substrate. For example, in the case 
+of phthalazine the linear range of enzymatic activity is very short ( less than 3  minutes) and in other 
+instances such as zoniporide the enzymatic activity remains almost linear and may even  increase 
+slightly over 240 -min incubation time  (Fig. 2).  It should be noted that we do not have metabolic 
+standards for BIBX 1382  and zoniporide  so the rate constants are not accurate.  These compounds 
+are included since they support that most reactions are nonlinear over time.  For these compounds 
+we report peak area ratio (PAR) instead of  µmoles/min.  
+ 
+A source of purified enzyme was used to con firm that the data from HLC is mainly the result of 
+AOX activity and no other enzyme sources in liver cytosol. From comparing the plots for both 
+enzyme sources, it is evident that the linearity of both sets are very similar and this suggests that 
+the nonli nearity in time is the result of change in the activity of AO X (Fig. 3). The results from 
+incubation of O6BG with S9 fraction shows that the same mechanism persists even in a more intact 
+cell system (Supplementa l Fig. 4). 
+ 
+Data fitting using Mathematica  
+The assumption for MM kinetics is that the enzyme produces product in a linear fashion over time.  
+This is obviously not the case, and we could not get a good fit for this model to our results. For the 
+dead model the differential equation s are solved based  on the kinetic scheme that suggests an 
+irreversible loss of enzymatic activity over time. Finally , we tested a model in which it is assumed  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 14 that the enzyme is altered over time to have a slower rate of reaction and therefore runs with a 
+lower efficiency after a certain period of time.  This last model could be a result of a number of 
+changes in the enzyme, such as a slow conformational change, or chemical modification, such as 
+oxidation of amino acids by ROS.    
+ 
+ Although in many cases the MM model gives a visually acceptable fit, the AIC values predict  that 
+the MAM, in which the enzyme activity is altered over time, is the kinetic model that describes 
+the enzymatic behavior best with zoniporide being the only exce ption. The importance of using 
+the right model can be fur ther emphasized by seeing up to almost 40 -fold difference between the  
+rate constants related to each model in HAO or  HLC (Tables 1 and 2). The differences between 
+these rate constants are substrate s pecific, thus scaling is not an option and one must use the correct 
+model to get a correct intrinsic clearance. Based on the assumption that the fast initial rate (k 3) is 
+what happens in the in vivo situation, we can use the  intrinsic clearance  (V/K) and then use 
+equation 1 to scale up the calculations to clearance per body weight. In addition, we have also done  
+the calculations with k 5 instead of k 3 to present how m issing the fast initial rate due to experimental 
+errors in choosing the linear portion  of the time -course plot may lead to underestimation of 
+clearance by using the apparent k 3 which will be similar to k 5.  
+ 
+𝐶𝑙′$%&,()=𝑘3
+𝐾.×30×1023	µ𝑚𝑜𝑙	𝐴𝑂
+𝑔	𝑙𝑖𝑣𝑒𝑟×21	𝑔	𝑙𝑖𝑣𝑒𝑟
+𝑘𝑔	𝑏.𝑤𝑡.			(𝑒𝑞.1) 
+ 
+The amount of AOX in the liver in  the formula above  was previously calculated in our lab to be 
+21-40 pmol AOX/mg liver and we have used the average amount for our calculations (Barr et al., 
+2013) . We have provided the intrinsic clearance in HAO for MAM in comparison to the linear This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 15 model and the in vivo data (Table 3). The data shows a significant improvement of in vitro 
+clearance for the MAM. This difference becomes increasingly noticeable with longer  incubation 
+times. Unfortunately, the number of the substrates that we were able to calculate the intrinsic 
+clearance for are few. However, the MAM data shows a great improvement for all three substrates  
+in comparison wit h what was previously reported in the literature (Zientek et al., 2010)  
+ 
+Some potential r easons behind nonlinearity in enzyme activity  
+A number of mechanisms could be responsible for this loss of activity. First, we hypothesized that 
+the loss of activity was a result of the enzyme inactivation by the reactive oxygen species (ROS) 
+super oxide and hydrogen pe roxide which is generated during the catalytic cycle. To test this 
+theory, we used superoxide dismutase and catalase. Catalase was used to remove hydrogen 
+peroxide  and s uperoxide is removed by SOD . By using these two enzyme sources we expected to 
+see an in crease in the linearity of enzyme activity. No significant change in enzyme linearity was 
+observed in either HLC or HAO. However, some inconsistencies were observed between HLC and 
+HAO activities with or without using SOD and catalase. In the case of HLC a ll substrates showed 
+some to very little improvement in activity except O6BG but in the case of HAO almost the 
+opposite trend was observed. Unlike what happened in HLC, the activity decreased with adding 
+oxygen species scavengers for DACA and zoniporide wh ile it increased for O6BG. In the case of 
+zaleplon and BIBX there was little to no improvement in activity the same as what was observed 
+in HLC ( Fig. 5 and Fig. 6). What was consistent was that in any case no improvement in linearity 
+of the time -course plo ts was observed. Given  these results  it is not likely  that ROS are not the main 
+reason for nonlinear kinetics , although the ROS could modify the enzyme prior to dif fusing away 
+from the flavin binding site.     This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 16  
+Substrate depletion over time  
+Another potential reason for the nonlinearity is a substantial decrease in the oxidative substrate 
+concentration. The amount of substrate disappearance as calculated by the amount of product 
+form ed indicates that the amount of substrate consumed was less than 10% of the total substrate 
+in most cases. We have simulated substrate disappe arance to demonstrate this ( Fig. 7) assuming 
+1M of product is formed from 1M of substrate. This should be the same e ven for the substrates 
+that we don’t have the standards for since we have used five times the Km amount for all the 
+substrates. This indicates that substrate depletion is not significant  for the oxidative substrates. 
+However, the reductive substrate oxygen  could also be significantly depleted.  In our laboratory, 
+and under the conditions of our reaction, the oxygen concentration is very close to 213 µM.  Since 
+one to two oxygen  molecules  are consumed per catalytic cycle it appears that only a small fraction 
+of the substrate oxygen is consumed.   However , one might still se e nonlinearity over time if the 
+Km value for oxygen is ver y high.  We measured the Km value to be around 2 µM for human AOX . 
+To double -check our results, we have used the data published earlier for a reductive substrate of 
+AOX,  dantrolene  (Amano et al., 2018) . Since d antrolene gets reduced by AOX  to aminodentrolene 
+by a three step process similar to 5NQ (Paragas et al., 2017a)  , it will compete for the reduction 
+site of the enzyme with oxygen. W e have  used the K mapp reported in the paper mentioned above  
+for d antrolene  (65 µM) and the  Km of this substra te was also measured in our lab under anaerobic 
+condition  (4.7 µM, unpublished data , manuscript in preparation ). This enabled us to  calculate the 
+Ki for oxygen  to be approximately 15.6 µM by using the equation K mapp= K m (1+ [I]/K i) assuming 
+that the oxygen  concentration, [I],  is close to 213 µM when the atmospheric pressure ranges from  
+765-780 mm Hg at 37°C (Weiss, 1970) . Since either way, the oxygen K m is much smaller than its This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 17 concentration present during the reaction, depletion of the substrate oxygen is not a factor in the 
+nonlinearity.   
+ 
+Using 5NQ as a reductive substrate  
+A third hypothesis is  that maybe the enzyme is slow to reduce oxygen, and that the fast rate is an 
+initial rate prior to the complete reduction of the enzyme . This problem should be more evident in 
+the case of substrates with high turn -over rate  and to some extent this is what we observe . To test 
+this hypothesis , we used 5NQ as a reducing substrate to substitute for oxygen in the enzyme  cycle . 
+Since 5NQ reduction is a 6 -electron reduction we would observe a change in the enzyme activity 
+if electron transfer has become rate -limiting  once we substitute  this substrate for molecular oxygen 
+which only needs 2 electrons to be reduced . 5NQ is red uced by AOX to 5 -aminoquinoline.  Unlike 
+its isomer,  6-nitroquinoline , 5NQ can  be both oxidized and reduced by  AOX under normal oxygen 
+condition (Rajapakse et al., 2013) . Time-course results indicate that we do see a change in activity 
+with alternate reducing substrate as one would expect if electrons are transferred more slowly (Fig. 
+8). This is consistent with our previous results showing that once an oxidative substrate is present, 
+5NQ has an increased affinity for the  flavin site where it can compete with oxygen  (Paragas et al., 
+2017a) . This can lead to a disruption in enzyme oxidation  and may be the reason for the observed 
+loss in enzyme activity.  While this is consistent with the data, the complicated kinetics means that 
+a number of possibilities are likely since a few factors can affect electron flow through the enzyme.  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 18 Discussion:  
+After monitoring the changes in AOX  activity over time  in both HAO and HLC  for six oxidative 
+substrates . We found  that the enzyme does not behave linearly over time  for most substrates .   We 
+used three different kinetic models to determine what  was likely happening kinetically over time. 
+Initially we assumed that the enzyme loses its activity completely  over tim e, in other words it dies.   
+This leads to better fits than the MM model, but still does not describe the data very well . The next 
+hypothesis was that the enzyme is altered over time and therefore runs with a lower efficiency after 
+a certain period of time , this gave the best fits for all of the substrates except zoniporide .  
+Representative  fits to each model , for the substrate O6BG , are shown in Fig. 4 and for all substrate 
+in supplemental information .   
+ 
+Next, we checked for possible reasons behind loss of activity in AOX. Although it has been 
+mentioned before that superoxide has little effect on biological molecules and enzymes, there have 
+been instances like cytochrome c where it does compromise enzyme a ctivity often by oxidation of 
+thiols  (Searle and Willson, 1980; Kundu et al., 2007) . To check if ROS altered enzyme activity,  
+we decided to also check the ef fect by removing them with SOD and catalase. Based on the results , 
+no significant change in enzyme linearity was observed with or without using ROS  scavengers 
+showing that ROS are not altering  enzymatic behavior.  
+ 
+Subst antial decrease in substrate concentration can also lead to similar changes in  enzyme linearity 
+but this hypothesis was rejected by determining the amount of oxidative substrate depletion .  
+Simul ation results for the  substrates show that most of the substrates are not  extensively consumed 
+from  their initial concentration  and since  the initial concentrations was  five times the Km this This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 19 should not lead to nonlinear kinetics  (Fig. 7).  As for the reductive substrate of AOX, O 2, (Garattini 
+et al., 2003; Pryde et al., 2010)   we have determined that its Km is approximately  2-16 µM  and 
+based on the atmospheric pressure  where the experiment was done, the concentration of oxygen is 
+around 2 13 µM. We know that among the substrates that we used, even the substrate with the 
+fastest turn -over rate would only consume between 20 -40 µmoles  of oxygen leaving the 
+concentration in  the reaction vial  more than 5 times the K m and the reaction would be zero order 
+with respect to oxygen  
+ 
+To regenerate AOX after oxidation  of substrate  we need to transfer electrons from the Moco 
+through the iron-sulfur clusters to the FAD before we reduce  oxygen.  If this electron transfer path 
+is slow, reduced AOX  will build -up and reduction  of oxygen  will become the rate -limiting step . 
+This is consistent with the fact that a kinetic isotope effect was observed  upon substrate oxidation  
+on V/K but not V max (Alfaro et al., 2009).   This hypothesis  is also consistent  with our time-course 
+plots where the fast initial rate decreases as more and more enzyme s get trapped in their reduced 
+state.  To test this hypothesis w e used 5NQ as a source of reductive substrate  that will compete 
+with oxygen in accepting electrons from AOX  to check whether a disruption  of electron transfer  
+is the reason behind the loss in enzyme activity. Since 5NQ needs 6 electrons to get reduced to 5 -
+aminoquinoline  (Paragas et al., 2017a) ,  this should change the rat e of the second kinetic phase 
+after the enzyme becomes reduced.  The data i n Fig. 8 is consistent with  the slowing of electron  
+transfer and  a change in the rate-limiting step from oxidation to reduction.  However,  one caveat 
+with this conclusion is that the rates for the slow reaction (k 5) for all the substrates  should be the 
+same,  since  the rate limiting step on the second kinetic phase of the reaction is the oxidation of 
+enzyme by O 2 and should be substrate  independent.  However, looking at the k 5 values for the This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 20 substrates we can see up to a 3 -fold difference. In addition to that, if this was the case, we would 
+also expect similar looking plots for substrates that exhibit similar k 3 values such as DACA and 
+O6BG.  But looking at the plots, we can se e O6BG time -course plot looks much more linear than 
+DACA. This can be explained if we  consider the effect of substrate inhibition.  It appears that 
+O6BG does not show any substrate inhibition (Barr et al., 2015)  while the reported K I value for 
+DACA was 91 µM (Paragas et al., 2017b) . We hypothesize  that the second substrate molecule 
+would bind to the reduction site and therefore mak e the reduction happen even more slowly,  the 
+same effect that we saw by using a reductive substrate  5NQ , and that is why the k 5 value for DACA 
+is lower than that of O6BG. It is also worth mentioning that phthalazine also exhibits substrate 
+inhibition and the reported value of K I for this substrate is 250 µM (Obach et al., 2004) .  However 
+since  DACA is a more effective inhibitor of electron transfer to oxygen  compared with pthalazin e, 
+DACA has a slower rate in the second kinetic phase .  Attempts to fit substrate inhibition did not 
+improve the overall fit,  as might be expected, given that the model already can fit each single 
+substrate dataset very well.  The fits are given in supplemental Figure 2 for O -6BG .   
+ 
+In this work, the in trinsic clearance values were also compared using the rate constants derived 
+from the MAM and MM models . The results show a significant improvement of clearance 
+estimation for MAM.  Given that the initial rate calculations only account for how the enzyme 
+behave s for a very short period of time , longer incubation times are needed  for a more 
+comprehensive assessment of the enzyme kinetics. U sing the MM model leads to  a considerable 
+underprediction of intrinsic clearance in vitro due to negligence towards the fast initial turn -over 
+rate. One assumption behind the residual underprediction using MAM can be refer red back to the 
+involvement of extrahepatic clearance. This factor has also been considered for in silico estimation This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 21 of  intrinsic clearance by AO (Jones and Korzekwa, 2013)  and the in vivo -in vitro correlation plot 
+is consistant with this assumption (Supplemental Fig. 5). We admit tha t we cannot be certain this 
+is the case, although the know n underestimation of V/K supports this conclusion.  Futherm ore the 
+rate of reaction, to some extent , can be predicted by the reactivity of the substrate  that is oxidized, 
+while if the second phase is oxidation of the enzyme no such correlation would be expected to 
+exist  (Zhang et al., 2018)    
+ 
+Overall, the main goal of this paper is to show that almost all AOX catalyzed reactions are 
+nonlinear over time, and that ignoring this leads to an underestimation of clearance . We have 
+shown that there can be up to 40 -fold under -prediction of the reaction rate by simply assuming 
+linear kinetics.  We believe that the constant under -prediction of drug clearance by AOX  is due to 
+the rapid slowing of the reaction rate once the reaction is started a nd that even short incubations 
+would not lead to a n accurate determination of the k cat. In this  paper, we are using numerical fitting 
+to get the closest approximation of the real initial rate value by fitting the metabolite formation 
+over 4 -hour period  instead of only using  the short “linear” region of the plot . MAM  seems to do 
+well in describing the enzymatic pathway in whic h the enzyme’s life is divided into two stages. 
+The first one being a fully active enzyme and the second being the stage where the enzyme forms 
+metabolite at a slower rate.  
+  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 22  
+Acknowledgements  
+We would like to thank Dr. Dmitri  R. Davydov  for helping with oxygen K m measurements.  
+  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 23 Authorship Contributions  
+Participation in research design : Abbasi, Rodgers, and  Jones.  
+Performed data analysis : Abbasi, Paragas,  and Joswig -Jones . 
+Wrote or contributed  to the writing of the manuscript : Abbasi, Paragas, and Jones .  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 24 References:  
+Alfaro J, Joswig -Jones C, Ouyang W, Nichols J, Crouch G, and Jones J (2009) Purification and 
+mechanism of human aldehyde oxidase expressed in Escherichia coli. Drug Metab Dispos  
+37:2393 -2398.  
+Amano T, Fukami T, Ogiso T, Hirose D, Jones J,  Taniguchi T, and Nakajima M (2018) Identification 
+of enzymes responsible for dantrolene metabolism in the human liver: A clue to uncover 
+the cause of liver injury. Biochem Pharmacol  151: 69-78. 
+Barr J, Choughule K, and Jones J (2014) Enzyme kinetics, inhib ition, and regioselectivity of 
+aldehyde oxidase, in: Enzyme kinetics in drug metabolism: fundamentals and applications  
+(Nagar S, Argikar U, and Tweedie D eds), pp 167 -186.  
+Barr J and Jones J (2013) Evidence for substrate -dependent inhibition profiles for h uman liver 
+aldehyde oxidase. Drug Metab Dispos  41:24-29. 
+Barr J, Jones J, Joswig -Jones C, and Rock D (2013) Absolute quantification of aldehyde oxidase 
+protein in human liver using liquid chromatography -tandem mass spectrometry. Mol 
+Pharm  10:3842 -3849.  
+Barr J, Jones J, Oberlies N, and Paine M (2015) Inhibition of human aldehyde oxidase activity by 
+diet-derived constituents: structural influence, enzyme -ligand interactions, and clinical 
+relevance. Drug Metab Dispos  43:34-41. 
+Crouch RD, Hutzler JM, and Dan iels JS (2018) A novel in vitro allometric scaling methodology for 
+aldehyde oxidase substrates to enable selection of appropriate species for traditional 
+allometry. Xenobiotica  48:219-231.  
+Dalvie D, Kang P, Loi CM, Goulet L, and Nair S (2010a) Influence of  Heteroaromatic Rings on ADME 
+Properties of Drugs . 
+Dalvie D, Zhang C, Chen W, Smolarek T, Obach RS, and Loi C -M (2010b) Cross -Species Comparison 
+of the Metabolism and Excretion of Zoniporide: Contribution of Aldehyde Oxidase to 
+Interspecies Differences. Drug Metab Dispos  38:641-654.  
+Garattini E, Fratelli M, and Terao M (2008) Mammalian aldehyde oxidases: genetics, evolution 
+and biochemistry. Cell Mol Life Sci  65:1019 -1048.  
+Garattini E, Mendel R, Romao MJ, Wright R, and Terao M (2003) Mammalian molybdo -
+flavo enzymes, an expanding family of proteins: structure, genetics, regulation, function 
+and pathophysiology. Biochem J  372: 15-32. 
+Garattini E and Terao M (2012) The role of aldehyde oxidase in drug metabolism. Expert Opin 
+Drug Metab Toxicol  8:487-503.  
+Hutzler J and Tracy T (2002) Atypical kinetic profiles in drug metabolism reactions. Drug Metab 
+Dispos  30:355-362.  
+Hutzler M, Yang Y, Albaugh D, Fullenwider C, Schmenk J, and Fisher M (2012) Characterization of 
+aldehyde oxidase enzyme activity in cryoprese rved human hepatocytes. Drug Metab 
+Dispos  40:267-275.  
+Jones JP and Korzekwa KR (2013) Predicting Intrinsic Clearance for Drugs and Drug Candidates 
+Metabolized by Aldehyde Oxidase. Mol Pharm  10:1262 -1268.  
+Kaye B, Offerman JL, Reid JL, Elliott HL, and Hillis  WS (1984) A species -difference in the 
+presystematic metabolism of carbazeran in dog and man. Xenobiotica  14:935-945.  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 25 Kitamura S and Tatsumi K (1984) Involvement of liver aldehyde oxidase in the reduction of 
+nicotinamide N -oxide. Biochem Biophys Res Commun  120: 602-606.  
+Konishi K, Fukami T, Gotoh S, and Nakajima M (2017) Identification of enzymes responsible for 
+nitrazepam metabolism and toxicity in human. Biochem Pharmacol  140: 150-160.  
+Korzekwa KR, Krishnamachary N, Shou M, Ogai A, Parise RA, Rettie AE, Gon zalez FJ, and Tracy TS 
+(1998) Evaluation of atypical cytochrome P450 kinetics with two -substrate models: 
+evidence that multiple substrates can simultaneously bind to cytochrome P450 active 
+sites. Biochemistry  37:4137 -4147.  
+Krenitsky TA, Neil SM, Elion GB, and Hitchings GH (1972) A COMPARISON OF THE SPECIFICITIES 
+OF XANTHINE OXIDASE EC -1.2.3.2 AND ALDEHYDE OXIDASE EC -1.2.3.1. Arch Biochem 
+Biophys  150: 585-599.  
+Kundu T, Hille R, Velayutham M, and Zweier J (2007) Characterization of superoxide production 
+from a ldehyde oxidase: an important source of oxidants in biological tissues. Arch 
+Biochem Biophys  460: 113-121.  
+Li H, Kundu T, and Zweier J (2009a) Characterization of the magnitude and mechanism of 
+aldehyde oxidase -mediated nitric oxide production from nitrite.  J Biol Chem  284: 33850 -
+33858.  
+Li HT, Kundu TK, and Zweier JL (2009b) Aldehyde oxidase catalyzes nitrite reduction: an important 
+nitric oxide producing pathway during ischemia. Faseb J  23. 
+Lynch T and Price A (2007) The effect of cytochrome P450 metabolism on drug response, 
+interactions, and adverse effects. Am Fam Physician  76:391-396.  
+Maia L, Pereira V, Mira L, and Moura J (2015) Nitrite reductase activity of rat and human xanthine 
+oxidase, xanthine dehydrogenase, and aldehyde oxidase: evaluation of their contribution 
+to NO formation in vivo. Biochemistry  54:685-710.  
+Mendel RR (2009) Cell biology of molybdenum. Biofactors  35:429-434.  
+Obach RS, Huynh P, Allen MC, and Beedham C (2004) Human liver aldehyde oxidase: Inhibition 
+by 239 drugs. J Clin Pharmacol  44:7-19. 
+Paragas EM, Humphreys SC, Min J, Joswig -Jones CA, and Jones JP (2017a) The two faces of 
+aldehyde oxidase: Oxidative and reductive transformations of 5 -nitroquinoline. Biochem 
+Pharmacol  145: 210-217.  
+Paragas EM, Humphreys SC, Min J, Joswig -Jones CA, Le imkuhler S, and Jones JP (2017b) ecoAO: 
+A Simple System for the Study of Human Aldehyde Oxidases Role in Drug Metabolism. 
+ACS Omega  2:4820 -4827.  
+Pryde DC, Dalvie D, Hu Q, Jones P, Obach RS, and Tran T -D (2010) Aldehyde oxidase: an enzyme 
+of emerging import ance in drug discovery. J Med Chem  53:8441 -8460.  
+Rajapakse A, Linder C, Morrison R, Sarkar U, Leigh N, Barnes C, Daniels S, and Gates K (2013) 
+Enzymatic conversion of 6 -nitroquinoline to the fluorophore 6 -aminoquinoline selectively 
+under hypoxic conditions . Chem Res Toxicol  26:555-563.  
+Searle AJ and Willson RL (1980) Glutathione Peroxidase: Effect of Superoxide, Hydroxyl and 
+Bromine Free Radicals on Enzyme Activity. International Journal of Radiation Biology and 
+Related Studies in Physics, Chemistry and Med icine  37:213-217.  
+Stoddart AM and Levine WG (1992) AZOREDUCTASE ACTIVITY BY PURIFIED RABBIT LIVER 
+ALDEHYDE OXIDASE. Biochem Pharmacol  43:2227 -2235.  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 26 Weidert E, Schoenborn S, Cantu -Medellin N, Choughule K, Jones J, and Kelley E (2014) Inhibition 
+of xanthine oxidase by the aldehyde oxidase inhibitor raloxifene: implications for 
+identifying molybdopterin nitrite reductases. Nitric Oxide  37:41-45. 
+Weiss RF  (1970) The solubility of nitrogen, oxygen and argon in water and seawater. Deep Sea 
+Research  17:721-735.  
+Zhang JW, Xiao W, Gao ZT, Yu ZT, and Zhang JY (2018) Metabolism of c -Met kinase inhibitors 
+containing quinoline by aldehyde oxidase, electron donating  and steric hindrance effect. 
+Drug Metabolism and Disposition :dmd.118.081919.  
+Zientek M, Jiang Y, Youdim K, and Obach RS (2010) In Vitro -In Vivo Correlation for Intrinsic 
+Clearance for Drugs Metabolized by Human Aldehyde Oxidase. Drug Metab Dispos  
+38:1322 -1327.  
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 27 Footnotes  
+This work was supported by the National Institute of General Medical Sciences [GM100874].  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 28 Legends for Figures  
+ 
+Fig. 1. Summary of AOX -catal yzed reactions for the substrates used in this study.  
+ 
+Fig. 2 . Five times the Km amount of the substrates: A) O 6BG, B) DACA, C) zaleplon, D) 
+phthalazine E) BIBX1382, F) z oniporide were incubated with human liver cytosol (HLC, 0.0051 
+µM AO) at 37 °C and samples were quenched at different time points over 240 minutes (n= 3, P< 
+0.001). Data fitting was performed using the MAM. Based on the results unlike the MM 
+assumption, the en zyme activity is not linear over time.  
+ 
+Fig. 3 . Five times the Km amount of the substrates: A) O 6BG, B) DACA, C) zaleplon, D) 
+phthalazine E) BIBX1382, F) z oniporide were incubated with Purified expressed human AOX 
+(HAO, 0.0192 µM) in the same way as HLC to  compare the time -course plots and make sure AOX 
+is the enzyme responsible for metabolism. Fitting to product formation was performed using the 
+MAM (n= 3, P< 0.001).  
+ 
+Fig. 4 . Two different kinetic models were developed to compare the numerical fitting of time-
+course data with MM. A) MM model, B) Dead enzyme model, C) MAM. Akaike values were 
+provided by Mathematica to compare the goodness of fit proving the MAM is the best model to 
+fit the time -course data for most substrates except for z oniporide.  Data fit ting plots  for O6BG is 
+provided next to each kinet ic scheme for comparison.  The Akaike values for O6BG are provided 
+on the bottom right side of each plot.  
+ This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 29 Fig. 5 . Catalase a nd super oxide dismutase (SOD, 250 U/ml) were used to remove reactive oxygen 
+species (ROS) that were suspected to affect the enzymatic activ ity. Human liver cytosol (HLC, 
+0.0051 µM AO) was used to start the reactions (n= 3, P< 0.001). No significant change in linearity 
+of the enzyme was observe d once these reagents were used  sugges ting that ROS are not the reason 
+behind the decrease in enzymatic efficacy.  
+ 
+Fig. 6 . Catalase and super oxide dismutase (SOD, 250 U/ml) were used to remove reactive oxygen 
+species (ROS) that were suspected to affect the enzymatic activity for purified HAO . No 
+significant change in linearity of the enzyme was observed once these reagents were used 
+suggesting that ROS are not the reason behind the decrease in enzymatic efficacy.  
+ 
+ 
+Fig. 7 . Substrate consumption simul ation for A) O6BG, B) DACA, C) zaleplon and D) 
+phthalazine were done using the kinetic parameters obtained from fitting the product formation 
+data in purified expressed human AOX (HAO) to the MAM using Mathematica. This could not 
+be done for the substrates which  we d o not have the product standards.   
+ 
+ 
+Fig. 8 . Five times the Km amount of the substrates were used with saturating amount of 5 -
+nitroquinoline ( 5NQ, 200 µM) and HAO (0.0192 µM) was used to start the reaction (n= 3, P< 
+0.001).  
+  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 30 Tables  
+TABLE 1  
+Rate constants related to each model for different substrates in HLC  
+substrate  rate constants  MAM  Dead model  MM  O6BG k3 (1/min) 25.444 12.954 8.691 
+k4 (1/min) 0.057 0.006 --- 
+k5 (1/min) 13.708 --- --- DAC A k3 (1/min) 33.004 19.449 6.209 
+k4 (1/min) 0.044 0.024 --- 
+k5 (1/min) 6.086 --- --- zaleplon k3 (1/min) 1.238 0.853 0.46 
+k4 (1/min) 0.028 0.011 --- 
+k5 (1/min) 0.604 --- --- phthalazine k3 (1/min) 466.834 351.727 11.086 
+k4 (1/min) 0.335 0.366 --- 
+k5 (1/min) 8.523 --- --- BIBX* k3 (1/min) 0.279 0.253 0.125 
+k4 (1/min) 0.012 0.012 --- 
+k5 (1/min) 0.097 --- --- zoniporide* k3 (1/min) 0.082 0.079 0.085 
+k4 (1/min) -0.023 -0.001 --- 
+k5 (1/min) 0.163 --- --- 
+*rate constants are based on peak area ratio (PAR)  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 31 TABLE 2  
+Rate constants related to each model for different substrates in HAO.  
+substrate  rate constants  MAM  Dead model  MM  O6BG k3 (1/min) 21.955 16.154 6.896 
+k4 (1/min) 0.025 0.016 --- 
+k5 (1/min) 7.003 --- --- DAC A k3 (1/min) 23.282 20.353 6.307 
+k4 (1/min) 0.020 0.025 --- 
+k5 (1/min) 3.577 --- --- zaleplon k3 (1/min) 6.248 3.387 1.660 
+k4 (1/min) 0.044 0.013 --- 
+k5 (1/min) 2.152 --- --- phthalazine k3 (1/min) 167.355 79.953 4.403 
+k4 (1/min) 0.489 0.246 --- 
+k5 (1/min) 5.195 --- --- BIBX1382*  k3 (1/min) 5.971 2.673 1.679 
+k4 (1/min) 0.070 0.012 --- 
+k5 (1/min) 2.157 --- --- zoniporide* k3 (1/min) 0.412 0.412 0.400 
+k4 (1/min) -0.0002  0.0005  --- 
+k5 (1/min) 1.825 --- --- 
+*rate constants are based on PAR  
+  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from DMD #85787  
+ 
+ 32  
+TABLE 3 
+Comparison between intrinsic clearance in HAO between different models in  vitro and the in 
+vivo intrinsic clearance in literature.  
+ 
+Drug  Cl’int,AO  (in vitro, ml/(min.kg))  Cl’int,AO (in vivo, ml/(min. kg))  Reference  
+  MAM 
+(using k3) MAM  
+(using k5) MM      
+O6BG 202 65 64 360 (Dolan et al., 1998)  
+DAC A 1183 182 320 3600  (Kestell et al., 1999)  
+zaleplon 43 15 11 65 (Rosen et al., 1999)  
+ 
+ 
+  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from  
+ 33 Figures  
+ 
+ NNNO
+NHNH2HNN
+N
+HON
+N
+N NH
+NO
+H2NN
+H
+N
+HONO
+N
+HNNO
+NHNH2HN
+N
+N N
+HH
+NO
+H2NNNN
+CNN
+O
+O
+ON
+HNN
+CNN
+O
+ON
+NNNH
+N
+NNHF
+Cl
+N
+N
+HNNH
+N
+NNHF
+Cl
+O
+NN
+NHN
+ODACA DACA-acridone
+zoniporide 2-oxo-zoniporide
+O6-bezylguanine 8-oxo-O6-bezylguanineBIBX1382 BIBU1476
+zaleplon 5-oxo-zaleplon
+phthalazine 1-phthalazinoneNNO2
+N
+HNO2
+O NNH2
+5-nitroquinoline 2-oxo-5-nitroquinoline 5-aminoquinoline
+O2N
+O
+NNNHO
+OH2N
+O
+NNNHO
+O dantrolene aminodantrolene
+Fig. 1.  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from  
+ 34  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+0 50 100 150 200 2500246810
+Time, minutes[P],μM
+A) 
+0 50 100 150 200 25001234567
+Time, minutes[P],μM
+B
+) 
+0 50 100 150 200 2500.00.10.20.30.40.5
+Time, minutes[P],μM
+C) 
+0 50 100 150 200 2500.000.020.040.060.080.100.120.14
+Time, minutesPAR
+F) 
+0 50 100 150 200 2500.000.020.040.060.080.100.120.14
+Time, minutesPAR
+E) 0 50 100 150 200 25002468101214
+Time, minutes[P],μM
+D) 
+Fig. 2. This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from  
+ 35  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 0 50 100 150 200 2500510152025
+Time, minutes[P],μM
+A) 
+0 50 100 150 200 2500510152025
+Time, minutes[P],μM
+B) 
+0 50 100 150 200 25001234567
+Time, minutes[P],μM
+C) 
+0 50 100 150 200 250051015
+Time, minutes[P],μM
+D) 
+0 50 100 150 200 250012345
+Time, minutesPAR
+E) 
+0 50 100 150 200 2500.00.51.01.52.0
+Time, minutesPAR
+F) 
+Fig. 3 . This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from  
+ 36  
+  
+Fig. 4 . E+ S ES E+ Pk1
+k2k3E+ S ES E+ P
+E*Sk1
+k2k3
+k4E+ S ES E+ P
+E*Sk1
+k2k3
+k4
+E*+ P E*+ Sk1
+k2k5
+0 50 100 150 200 2500510152025
+Time, minutes[P],μM
+0 50 100 150 200 2500510152025
+Time, minutes[P],μM
+0 50 100 150 200 2500510152025
+Time, minutes[P],μM
+A) 
+B) 
+C) 
+AIC=96.861  
+AIC=14.601  
+AIC= -33.537  This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from  
+ 37  
+  
+0 50 100 150 200 2500246810
+Time, minutes[P],μM-Catalase and SOD
++Catalase and SOD
+A) 
+0 50 100 150 200 25001234567
+Time, minutes[P],μM -Catalase and SOD
++Catalase and SOD
+B) 
+0 50 100 150 200 2500.00.10.20.30.40.5
+Time, minutes[P],μM-Catalase and SOD
++Catalase and SOD
+C) 
+0 50 100 150 200 2500.000.020.040.060.080.100.120.14
+Time, minutesPAR-Catalase and SOD
++Catalase and SOD
+F) 
+0 50 100 150 200 2500.000.020.040.060.080.100.120.14
+Time, minutesPAR-Catalase and SOD
++Catalase and SOD
+E) 0 50 100 150 200 25002468101214
+Time, minutes[P],μM -Catalase and SOD
++Catalase and SOD
+D) 
+Fig. 5. This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from  
+ 38  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  D) 0 50 100 150 200 25002468101214
+Time, minutes[P],μM-Catalase and SOD
++Catalase and SOD
+A) 
+ B) 
+0 50 100 150 200 250051015
+Time, minutes[P],μM-Catalase and SOD
++Catalase and SOD
+0 50 100 150 200 2500.00.10.20.30.40.50.6
+Time, minutes[P],μM-Catalase and SOD
++Catalase and SOD
+C) 
+0 50 100 150 200 250051015
+Time, minutes[P],μM-Catalase and SOD
++Catalase and SOD
+0 50 100 150 200 2500.00.51.01.5
+Time, minutesPAR-Catalase and SOD
++Catalase and SOD
+E) 
+0 50 100 150 200 250051015
+Time, minutesPAR-Catalase and SOD
++Catalase and SOD
+F) 
+ Fig. 6. This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from  
+ 39  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 0 50 100 150 200050100150200250300350
+Time, minutes[S],μM
+A) 
+0 50 100 150 200010203040506070
+Time, minutes[S],μM
+B) 
+0 50 100 150 2000100200300400500
+Time, minutes[S],μM
+C) 
+0 50 100 150 200010203040506070
+Time, minutes[S],μM
+D) 
+Fig. 7. This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from  
+ 40  
+ 
+ 
+ 
+ 
+ 0 50 100 150 200 2500510152025
+Time, minutes[P],μM-5NQ
++5NQ
+A) 
+0 50 100 150 200 2500510152025
+Time, minutes[P],μM-5NQ
++5NQ
+B) 
+0 50 100 150 200 25001234567
+Time, minutes[P],μM-5NQ
++5NQ
+C) 
+0 50 100 150 200 250051015
+Time, minutes[P],μM-5NQ
++5NQ
+D) 
+0 50 100 150 200 250012345
+Time, minutesPAR-5NQ
++5NQ
+E) 
+ F) 
+0 50 100 150 200 25001234
+Time, minutesPAR-5NQ
++5NQ
+Fig. 8. This article has not been copyedited and formatted. The final version may differ from this version.DMD Fast Forward. Published on February 20, 2019 as DOI: 10.1124/dmd.118.085787 at ASPET Journals on August 29, 2024 dmd.aspetjournals.org Downloaded from 

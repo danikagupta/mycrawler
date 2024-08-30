@@ -1,0 +1,2421 @@
+THE USE OF ACTIVATED SLUDGE MODEL NO. 3 TO 
+MODEL AN ACTIVATED SLUDGE UNIT AT AN 
+INDUSTRIAL WASTEWATER TREATMENT 
+FACILITY 
+ 
+ 
+   By 
+   Brian Wintle 
+   Master of Science, Environmental Engineering 
+Oklahoma State University 
+   Stillwater, Oklahoma 
+   2008 
+ 
+ 
+   Submitted to the Faculty of the 
+   Graduate College of the 
+   Oklahoma State University 
+   in partial fulfillment of 
+   the requirements for 
+   the Degree of 
+   MASTER OF SCIENCE  
+   December, 2008  ii    THE USE OF ACTIVATED SLUDGE MODEL NO. 3 
+TO MODEL AN ACTIVATED SLUDGE UNIT AT AN 
+INDUSTRIAL WASTEWATER TREATMENT 
+FACILITY 
+ 
+ 
+ 
+ 
+ 
+   Thesis Approved: 
+ 
+ 
+   Dr. Greg Wilber 
+   Thesis Adviser 
+ 
+Dr. Dee Ann Sanders 
+ 
+   Dr. John Veenstra  
+ 
+  Dr. A. Gordon Emslie 
+   Dean of the Graduate College 
+ 
+ 
+ 
+ 
+ 
+  iii  ACKNOWLEDGMENTS 
+ 
+Department of Civil and Environmental Engineering, Oklahoma State University  
+  iv TABLE OF CONTENTS 
+ 
+Chapter          Page 
+ 
+I. INTRODUCTION ......................................................................................................1 
+ 
+ Introduction ..............................................................................................................2 
+ Objective ..................................................................................................................2 
+  
+II. REVIEW OF LITERATURE....................................................................................3 
+  
+ Activated Sludge Model ..........................................................................................4 
+ Activated Sludge Model No. 1.................................................................................4 
+ Activated Sludge Model No. 2...............................................................................10 
+ Activated Sludge Model No. 3...............................................................................18 
+ Application of Activated Sludge Model No. 3 ......................................................23 
+ Analytical Model ...................................................................................................24 
+ 
+III. METHODOLOGY ................................................................................................29 
+ 
+ Activated Sludge Model No. 3 Validation .............................................................30 
+ Example 1 Complete-Mixed Activated Sludge Process Design for BOD Remova l 
+Only and BOD Removal with Nitrification ...........................................................30 
+ Example 2 Anoxic/ Aerobic Process Design .........................................................32 
+ Description of Wastewater Treatment Process ......................................................34 
+ Utilizing ASM 3 to Model the ASU at the Industrial Wastewater Treatme nt Facility 
+................................................................................................................................35 
+ ASM 3 Input Parameter Sensitivity Analysis ........................................................38 
+ Utilizing ASM 3 to Estimate the Reduction of Effluent Ammonium Concentration 
+................................................................................................................................39 
+ 
+IV. FINDINGS .............................................................................................................42 
+ 
+ Activated Sludge Model No. 3 Validation .............................................................43 
+ Example 1 Complete-Mixed Activated Sludge Process Design for BOD Remova l 
+Only and BOD Removal with Nitrification ...........................................................43 
+ Example 2 Anoxic/ Aerobic Process Design .........................................................44 
+ Utilizing ASM 3 to Model the ASU at the Industrial Wastewater Treatme nt Facility 
+................................................................................................................................44 
+ ASM 3 Input Parameter Sensitivity Analysis ........................................................44 
+ Utilizing ASM 3 to Estimate the Reduction of Effluent Ammonium Concentration 
+................................................................................................................................46 
+ 
+V.  CONCLUSION ......................................................................................................49 
+ 
+ Activated Sludge Model No. 3 Validation .............................................................50  vChapter          Page 
+ 
+ Utilizing ASM 3 to Model the ASU  at the Industrial Wastewater Treatment Facility 
+................................................................................................................................50 
+ ASM 3 Input Parameter Sensitivity Analysis ........................................................44 
+ 
+ Utilizing ASM 3 to Estimate the Reduction of Effluent Ammonium Concentration 
+................................................................................................................................50 
+ 
+REFERENCES ............................................................................................................51 
+ 
+APPENDICES .............................................................................................................53 
+  vi LIST OF TABLES 
+ 
+ 
+Table           Page 
+ 
+   Table 1-   ASM 2 Percent Error ................................................................................14 
+   Table 2-   ASM 2 Percent Error ................................................................................14 
+   Table 3-   ASM 2 Percent Error ................................................................................14 
+   Table 4-   ASM 3 Model Inputs ................................................................................20 
+   Table 5-   ASM 3 Kinetic Parameters .......................................................................20 
+   Table 6-   ASM 3 Stoichiometric Parameters ...........................................................21 
+   Table 7-   Adjusted Model Parameters .....................................................................24 
+   Table 8-   Measured and Predicted Treatment Values ..............................................24 
+   Table 9-   Example 1 ASM 3 Parameter Inputs ........................................................30 
+   Table 10- Example 1 ASM 3 Inputs .........................................................................32 
+   Table 11- Example 2 Parameter Inputs .....................................................................32 
+   Table 12- Example 2 ASM 3 Inputs .........................................................................34 
+   Table 13- Known ASU Parameters ...........................................................................35 
+   Table 14- ASU ASM 3 Input Parameters .................................................................37 
+   Table 15- ASU ASM 3 Model Inputs .......................................................................38 
+   Table 16- Model Inputs- Increase Dissolved Oxygen ..............................................39 
+   Table 17- Parameter Inputs- Reduced SRT ..............................................................40 
+   Table 18- Example 8-2 HRT Prediction Comparison...............................................43 
+   Table 19- Example 8-2 HRT Prediction Comparison...............................................43 
+   Table 20- Example 8-5 HRT Prediction Comparison...............................................44 
+   Table 21- Effluent Prediction Comparison ...............................................................44 
+   Table 22- Predicted Effluent Ammonium Concentration- Increased Dissolved Ox ygen 
+......................................................................................................................................47 
+   Table 23- Predicted Effluent Ammonium Concentration- Reduction in SRT ..........48 
+    
+ 
+  vii LIST OF FIGURES 
+ 
+Figure           Page 
+ 
+   Fig. 1-   ASM 1 ...........................................................................................................9 
+   Fig. 2-   ASM 2 .........................................................................................................15 
+   Fig. 3-   ASM 2 .........................................................................................................16 
+   Fig. 4-   ASM 2 Switching Function .........................................................................17 
+   Fig. 5-   Flow of COD in ASM 1 and ASM 3 ...........................................................19 
+   Fig. 6-   ASM 3 .........................................................................................................22 
+   Fig. 7-   Box Model ...................................................................................................25 
+   Fig. 8-   Analytical Model-Wastewater Treatment Process ......................................25 
+   Fig. 9-   Process Flow Diagram ................................................................................35 
+   Fig. 10- Sensitivity analysis- Aerobic yield of heterotrophic biomass (YH, O 2) .....45 
+   Fig. 11- Sensitivity analysis- Yield of autotrophic biomass per NO3-N (YA) ........46 
+   Fig. 12- Predicted Effluent Ammonium Concentration- Increased Dissolved Oxy gen 
+......................................................................................................................................47 
+   Fig. 13- Predicted Effluent Ammonium Concentration- Reduction in SRT ............48 
+  1CHAPTER I 
+ 
+ 
+INTRODUCTION 
+  2Introduction 
+ 
+Biological treatment of waste is a very important aspect of public health.  T here are 
+varying types of treatment processes that are found today in wastewater tr eatment.  
+Activated sludge is a very effective and common way to remove pollutants from 
+wastewater.  Activated sludge is a secondary wastewater treatment pro cess used to 
+remove biochemical oxygen demand (BOD) from wastewater.  More recently  the 
+activated sludge process has been modified to remove nutrients from wastewate r as well.   
+ In a wastewater stream, such as a municipal wastewater stream, there  are high 
+amounts of organic material and ammonium.  The organic material is the “food” for 
+microorganisms.  Microorganisms utilize the organic material and oxygen for ene rgy and 
+reproduction.  Ammonium can be utilized by certain bacteria in such a way that w ill 
+create an oxygen demand.  Therefore, when this waste stream is emitted i nto the 
+environment, it will exert an oxygen demand on the receiving water.   Lower oxygen wil l 
+dramatically affect the ecology of surface water.  Therefore, this was te source must be 
+degraded prior to entering the environment.  
+ An activated sludge treatment process creates a controlled environment whe re this 
+waste can be degraded.  A waste stream will enter a reactor or reactors w here the waste 
+will be utilized by bacteria.  The energy will be used for either cell mainte nance or 
+reproduction.  This culture of bacteria will then be settled out in a secondary clarif ier and 
+pumped out of the system.  When the waste stream leaves the secondary treatment 
+process it is significantly lower in oxygen demanding materials.   
+There are two different waste streams that must be treated prior to discha rge into 
+the environment.  The more common waste stream is municipal waste.  Municipal waste  
+is typically high in primary settle able solids, degradable organic materi al and nutrients.  
+Municipal waste streams tend to be homogenous from facility to facility. 
+Typically an industrial waste stream is high in complex organic materia ls and 
+toxics.  Although, industrial waste streams vary a great deal.  Additionall y, industrial 
+waste streams tend to have a lower flow when compared to municipal waste str eams.  
+The treatment of municipal and industrial biological treatment process is sim ilar.  
+Therefore both waste streams can be modeled mathematically in similar fa shion.  For this 
+paper, an investigation will be into treatment of an industrial waste stream.  The 
+investigation will be conducted with an existing industrial waste stream.  Da ta was 
+collected from the industrial wastewater treatment facility.   
+ 
+ 
+Objective 
+ 
+The objective of this research is to (I) introduce the Activated Sludge M odels (ASM), (II) 
+examine the validity of Activated Sludge Model No. 3 (ASM 3), (III) apply ASM 3 t o a 
+specific industrial activated sludge unit to determine if the model accuratel y predicts the 
+effluent ammonium concentration, (IV) determine the ammonium concentration 
+sensitivity when stoichiometric parameters are varied, and (V) investig ate changes in 
+model inputs to reduce the effluent concentration of ammonium.  
+  3CHAPTER II 
+ 
+ 
+REVIEW OF LITERATURE 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  4Activated Sludge Model 
+ 
+Biodegradation involves different types of bacteria populations and many input 
+constituents.  Necessary constituents must be present and bacteria must be cul tured in a 
+specific way in order to encourage degradation of organic material.  The acti vated sludge 
+process mirrors what occurs in nature, but in a controlled environment.  What can occur 
+in weeks in the natural environment can be controlled through wastewater treatment pl ant 
+operations to occur in hours.  Therefore, the activated sludge process is a complex 
+operation.   
+ With the advent of modern biology and chemistry coupled with the creation of the 
+Clean Water Act, there has been a need to model accurately the activated sl udge process.  
+Engineers have made assumptions to simplify this process to create a mana geable model.  
+The Activated Sludge Models (ASM) describe specific types of bacter ial behavior, with 
+respect to uptake of organic material and nutrients.  The Activated Sludge Models  have 
+been shown to accurately describe these processes in an effective way. (Dold et  al. 1980) 
+ Activated Sludge Model No. 1 was developed to model BOD and nitrogen 
+removal.  Activated Sludge Model No. 1 did not effectively describe all nutrient r emoval.  
+Therefore Activated Sludge Model No. 2 was developed to incorporate, more accurate ly, 
+biological nutrient removal of nitrogen and phosphorus.  Although, Activated Sludge 
+Model No. 2 was far more complex which created model operational difficulties.  
+Activated Sludge Model No. 3 was developed to incorporate the simplicity of Activated 
+Sludge Model No. 1 along with the accurate description of nutrient removal that is 
+provided in Activated Sludge Model No. 2.   
+ 
+Activated Sludge Model No. 1 
+ 
+The Activated Sludge Model No. 2 (or ASM 2) was expanded from the Activated 
+Sludge Model No. 1 (or ASM 1).  Therefore, it is important to first understand ASM 1 to 
+gain the necessary foundation for the ASM 2.  (Dold et al. 1980) 
+The Activated Sludge Model No. 1 was first developed in the early 1980s to be a 
+comprehensive wastewater modeling tool.  A group of environmental scientists was  
+formed under the direction of the International Association of Water Quality ( or IAWQ) 
+to formulate the ASM 1.  The model incorporated BOD removal, nitrification, and de-
+nitrification of the wastewater.  The ASM1 is a matrix format model that uti lizes existing 
+and accepted wastewater treatment formulas.  These wastewater form ulas are derived 
+from a macro analysis of microbiology.  The bacterial culture that is grown in the 
+wastewater treatment facility is broken into two different cultures:  the  heterotrophic 
+biomass and the autotrophic biomass (nitrifying bacteria).  These two culture s are then 
+modeled in time as they degrade substrate and remove nitrogen from the waste st ream.  
+ASM 1 uses 13 wastewater characteristics to define the model’s inputs.  These  
+characteristics are to be obtained experimentally from data gathered from t he wastewater 
+treatment reactor that is to be modeled.  (Metcalf et al. 2003)  (Dold et al. 1986)  (Dold et 
+al. 1980)  
+The characteristics are: 
+ 
+ = Inert particulate organic matter (mg/L) Xi  5 
+This is the amount of non re-actable organic material present in the influent.  This is  
+highly dependent on the wastewater source.  This is typically the larger organic  
+particulate material that will settle in the secondary clarifier.   
+ 
+ = Slowly biodegradable substrate (mg/L as COD) 
+ 
+This is the amount of organic material that is smaller than the particulate orga nic matter 
+but not dissolved into solution that is present in the influent.  This is another variable that  
+is highly dependent on the wastewater source.  This material will eventually  be degraded 
+in the reactor if present for enough time.  If the material is not degraded it  will settle out 
+in the secondary clarifier. 
+ 
+= Heterotrophic biomass (mg/L as COD) 
+ 
+Heterotrophic biomass is the concentration of bacteria in the reactor that uses or ganic 
+carbon as the carbon source to create new biomass.  These are the bacteria that uti lize 
+substrate in an aerobic reactor.  This concentration can be controlled through normal 
+operation of the wastewater treatment plant (WWTP). 
+ 
+= Autotrophic biomass (mg/L as COD) 
+ 
+Autotrophic biomass is the concentration of bacteria in the reactor that uses carbon 
+dioxide (or other carbon compounds) as the carbon source for reproduction.  These are 
+the nitrifying bacteria.  This concentration can be controlled through normal operat ion of 
+the WWTP. 
+ 
+= Debris from biomass death and lysis (mg/L as COD) 
+ 
+This is the concentration of dead biomass in the reactor/ reactors.  This can be contr olled 
+through normal WWTP operations. 
+ 
+ = Inert soluble organic matter (mg/L as COD) 
+ 
+This is the concentration of organic material present in the influent that will not  
+biodegrade in the reactor.  This is another variable that depends highly on the waste water 
+source.  
+ 
+ = Readily biodegradable substrate (mg/L as COD) 
+ 
+This is the easily biodegradable organic material found in the influent.  This is esse ntially 
+the carbon source utilized by the heterotrophic biomass.  The amount present in the 
+influent will depend highly on the wastewater source. 
+ 
+ = Dissolved oxygen (mg/L as O 2) 
+ Xs 
+XBH,  
+XBA,  
+XD 
+Si 
+Ss 
+So  6The dissolved oxygen concentration is the amount present in the reactor/ reactors.  The 
+value can typically be controlled through normal WWTP operations. 
+ 
+ = Nitrate-nitrogen (mg/L as N) 
+ 
+This is the influent nitrate concentration.  This value will depend on the wastewater 
+source. 
+ 
+ = Ammonia-nitrogen (mg/L as N) 
+ 
+Ammonia-nitrogen is the influent ammonia concentration. 
+ 
+ = Soluble biodegradable organic nitrogen (mg/L as N) 
+ 
+Soluble organic nitrogen is the concentration of dissolved degradable nitrogen prese nt in 
+the influent.  The amount depends on the wastewater source. 
+ 
+ = Particulate degradable organic nitrogen (mg/L as N) 
+ 
+This is the amount of non-dissolved biodegradable organic nitrogen.  This amount 
+depends on the wastewater source.  
+ 
+ = Alkalinity (molar units) 
+ 
+Alkalinity is the amount of carbonates, bicarbonates and hydroxide present in the 
+wastewater.  The amount of alkalinity will depend on the wastewater source. 
+ 
+Additionally, to simplify the model, a number of variables in the descriptive 
+equations can be held constant.  (Metcalf et al. 2003)  In the ASM 1 model there a re 19 
+fixed values.  The values used for these inputs are typical and accepted values, as  found 
+in Metcalf and Eddy. (Metcalf et al. 2003) 
+ 
+=  0.60 (g biomass COD/ g COD utilized) Yield constant 
+ 
+=  0.08 (g cell debris/ g biomass COD) Yield constant 
+ 
+ 
+=  0.086 (g N/ g active biomass COD) Yield constant 
+ 
+ 
+=  0.06 (g N/ g biomass debris COD) Yield constant 
+ 
+=  0.24 (g biomass COD/ g N oxidized) Yield constant 
+ 
+=  6.0 (d -1)Maximum specific growth rate of heterotrophic bacteria 
+ SNO  
+SNH  
+SNS  
+XNS  
+SALK  
+YH 
+fD 
+in
+xb  
+in
+xd  
+YA 
+uH  7=  20.0 (mg/L) Half-velocity constant for heterotrophic bacteria 
+ 
+=  0.10 (mg/L) DO half-velocity constant 
+ 
+=  0.20 (mg/L) Nitrate half-velocity constant 
+ 
+=  0.40 (g/ g-d) Decay/ lysis coefficient, heterotrophic 
+ 
+=  0.80 (g/ g) Fraction of heterotrophic using nitrate under anoxic 
+conditions 
+=  0.40 (g/ g) Fraction of anoxic/ aerobic hydrolysis rate fraction  
+ 
+=  0.16 (L/ mg COD-d) Ammonification rate constant 
+ 
+=  2.21 (g/ g-d) Particulate hydrolysis half-velocity constant 
+ 
+=  0.15 (g/ g-d) Hydrolysis half-velocity constant 
+ 
+=  0.76 (g/ g-d) Autotrophic maximum specific growth rate 
+ 
+=  1.0 (mg/L) Autotrophic half-velocity constant 
+ 
+=  0.75 (mg/L) DO half-velocity constant for autotrophs 
+ 
+=  0.07 (g/ g-d) Decay constant for autotrophs 
+ 
+ 
+ 
+ 
+ASM 1 was originally designed to be a “paper” model, in the format of a matri x as shown 
+in Figure 1.  (Metcalf et al. 2003)  However, with the advent of the personal comput er, 
+the model has been incorporated into programs such as Microsoft Excel®.   
+ 
+Example 1-1 is used to explain how Activated Sludge Model No. 1 operates.  Example 1-
+1 is an exercise to show how the process component and the process rate function 
+together within the model. (Metcalf et al. 2003) 
+ 
+Example 1-1:  Reaction for debris from biomass death and lysis (XD).  The user wi ll first 
+examine Column 5 (X D) and Column 14.   
+ 
+Process Component Matrix Format Process Rate 
+XD 
+(Column 5)  r ML 3−T1−,  
+(Column 14)  
+fD Row 4 bLH XBH, ⋅ 
+fD Row 5 bLA XBA ⋅ Ks 
+KOH,  
+KNO  
+bLH,  
+ng 
+nh 
+Ka 
+Kh 
+KX 
+uA 
+KNH  
+KOA,  
+bLA,   8 
+Under this column there are only two terms in rows 4 and 5.  These two terms are then 
+multiplied by their respective process rates which can be found in Column 14.   
+ 
+Process Component x Process Rate 
+fDbLH XBH, ⋅ 
+fDbLA XBA ⋅ 
+ 
+ 
+ 
+Once multiplied the terms in rows 4 and 5 are added together.  This is the overall react ion 
+process for the biomass death and lysis.   
+ 
+= fDbLH XB H, ⋅( )⋅ fDbLA XBA ⋅( )⋅ +  RXD   9 
+Fig. 1- ASM 1 
+ 10 Activated Sludge Model No. 2 
+ 
+Activated Sludge Model No. 2 (or ASM 2) essentially builds on ASM 1.  ASM 2 
+was developed in the late 1980s.  ASM 2 takes into account biological excess phosphorus 
+removal.  Phosphorus is a very important building block for all organisms.  It is essentia l 
+for cell reproduction of algae.  Municipal waste streams typically have betw een 4-16 
+mg/L of phosphorus.  (Metcalf et al. 2003)  This additional phosphorus can create algae 
+blooms in the receiving waters.  Algae blooms negatively impact the recrea tional use and 
+ecology of surface water.  In a conventional activated sludge treatment pla nt, very little 
+phosphorus is utilized by organisms for reproduction.  Under the correct conditions, 
+certain heterotrophic bacteria will store large amounts of phosphorus inside their  cells.  
+These special bacteria are called polyP heterotrophs.  The ASM 2 allows for the 
+incorporation of the polyP heterotrophs into the model.  (Barker et al. 1997) 
+The incorporation of the additional parameters created a larger and more 
+complicated model.  Therefore some of the input variables were modified for ease of  use.  
+The ASM 2 has 19 parameter input variables.  The ASM 2 model inputs are defined 
+experimentally just as the ASM 1.  Listed below is a comparison of some key te rms in 
+Activated Sludge Model No. 2 and their counterpart in Activated Sludge Model No. 1.  
+(Metcalf et al. 2003)  (Barker et al. 1997)   
+ 
+ASM 2         ASM 1 Equivalent 
+ 
+=  Active non-polyP heterotrophic biomass  
+(g cell COD/ m 3) 
+ 
+=  Active autotrophic biomass (g cell COD/ m 3)
+   
+ 
+=  Active polyP heterotrophic biomass    - 
+(g cell COD/ m 3) 
+The active polyP heterotrophic biomass is the concentration of bacteria that store  large 
+amounts of phosphorus.  The concentration can be controlled through normal biomass 
+wasting. 
+ 
+=  Endogenous mass (g cell COD/ m 3) 
+ 
+=  Enmeshed slowly biodegradable substrate  
+(g cell COD/ m 3) 
+ 
+=  Readily biodegradable “complex” substrate 
+(g cell COD/ m 3) 
+ 
+=  Readily biodegradable short chain fatty acid (SCFA) substrate - 
+(g cell COD/ m 3) 
+ ZH XBH,  
+XBA,  ZA 
+ZP 
+XD ZE 
+Xs SENM  
+Ss 
+SBSC  
+SBSA   11 The readily biodegradable short chain fatty acid (SCFA ) is essentially t he amount of 
+poly-b-hydroxybutyrate (PHB) that can be utilized by the polyP organisms.  T his 
+concentration is found in the influent and it is highly dependent on the waste source. 
+ 
+=  Stored SCFA      - 
+(g cell COD/ m 3) 
+ 
+Stored SCFA is the amount that is converted into PHB and stored by the polyP organis m 
+in the anaerobic phase of the treatment process.  This can be controlled to a certai n extent 
+through biomass wasting. 
+ 
+=  Particulate un-biodegradable matter 
+(g cell COD/ m 3) 
+ 
+=  Un-biodegradable soluble substrate 
+(g cell COD/ m 3) 
+ 
+=  Releasable stored polyP (g P/ m 3)    - 
+ 
+This is the amount of polyP that can be released in ensuing anaerobic conditions.  This is  
+usually small amounts; therefore PP-LO is in the subscript.  This is an uncontroll able 
+value. 
+ 
+=  Fixed stored polyP (g P/ m 3)    - 
+ 
+This is the amount of polyP that will not be released in ensuing anaerobic conditions. 
+This is usually large amounts; therefore, PP-HI is in the subscript.  This is a n 
+uncontrollable value. 
+ 
+=  Soluble phosphate (g P/ m 3)     - 
+ 
+This is the amount of dissolved phosphate that is found in the influent and converted 
+phosphate in the anaerobic treatment phase.  Phosphate is utilized and stored by the polyP  
+organisms in the anoxic/ aerobic phase of the treatment process.   
+ 
+=  Particulate biodegradable organic nitrogen  
+(g N/ m 3)  
+ 
+=  Soluble biodegradable organic nitrogen 
+(g N/ m 3) 
+ 
+=  Nitrate nitrogen 
+(g N/ m 3) 
+ 
+=  Ammonium nitrogen 
+(g N/ m 3) SPHB  
+SUP  Xi 
+Si SUS  
+PPP LO − 
+PPP HI − 
+PO4  
+XNS  NBP  
+SNS  NBS  
+SNO  NO3  
+SNH  NH3   12  
+=  Un-biodegradable soluble nitrogen   - 
+(g N/ m 3) 
+ 
+This is the amount of nitrogen that is dissolved in solution but will not be utilized by 
+nitrifying bacteria.   This amount is found in the influent thus the concentration depends 
+on the waste source. 
+ 
+=  Oxygen (g / m 3)     
+   
+Due to the model’s additional input parameters, ASM 2 also has additional constants.  
+The ASM 2 has 33 stoichiometric parameters, which are organized into the three ba cteria 
+subsets that are modeled in the ASM 2.  (Baker et al. 1997) 
+The parameters are as follows: 
+ 
+Non-polyP Heterotrophs 
+ 
+=  0.666 (g cell COD yield/ g COD utilized) Aerobic yield 
+constant 
+ 
+= 0 666 (g cell COD yield/ g COD utilized) Anoxic yield 
+constant 
+ 
+=  0.100 (g cell COD yield/ g COD utilized) Anaerobic yield 
+constant 
+=  0.50 (g S BSA  COD/ g S BSC  COD) Fermentation S BSA  yield 
+ 
+=  0.90 (g S BSC  COD/ g S ENM  COD) Anoxic hydrolysis efficiency 
+factor 
+=  0.60 (g S BSC  COD/ g S ENM  COD) Anaerobic hydrolysis efficiency 
+factor 
+=  0.068 (g N/ g COD active organisms) Nitrogen content of active 
+mass 
+=  0.068 (g N/ g COD endogenous residue) Nitrogen content of 
+endogenous mass 
+=  0.021 (g P/ g COD active organisms) Phosphorus content of 
+active mass 
+=  0.021 (g P/ g COD endogenous residue) Phosphorus content of 
+endogenous mass 
+=  0.08 (g COD endogenous mass/ g COD active mass) Fraction of 
+active mass remaining as endogenous residue 
+=  1.48 (g COD/ g VSS) Ratio COD:VSS 
+ 
+ 
+PolyP Heterotrophs 
+ NUS  
+So SO 
+YHAER , 
+YH ANOX , 
+YH ANA , 
+YAC  
+EANOX  
+EANA  
+fN ZH , 
+fNZEH , 
+fP ZH , 
+fNZEH , 
+fEP H, 
+fCV H,  13 =  0.639 (g cell COD yield/ g COD utilized) Yield constant 
+ 
+=  0.95 (g P/ g stored COD) P uptake/ COD utilized in aerobic 
+growth 
+=  0.55 (g P/ g stored COD) P uptake/ COD utilized in anoxic 
+growth 
+=  0.889 (g PHB COD/ g S BSA  COD) PHB yield on sequestration of 
+SBSA  
+=  0.070 (g N/ g COD active organisms) Nitrogen content of active 
+mass 
+=  0.070 (g N/ g COD endogenous residue) Nitrogen content of 
+endogenous mass 
+=  0.070 (g N/ g COD endogenous residue) Nitrogen content of 
+soluble un-biodegradable COD 
+=  0.021 (g P/ g COD active organisms) Phosphorus content of 
+active mass excluding polyP content 
+=  0.021 (g P/ g COD endogenous residue) Phosphorus content of 
+endogenous mass 
+=  0.25 (g COD endogenous mass/ g COD active mass) Fraction of 
+active mass remaining as particulate un-bio. endogenous residue 
+ 
+=  0.20 (g COD/ g COD active mass) Fraction of active mass 
+remaining as soluble un-biodegradable residue 
+=  0.52 (g P/ g S BSA  COD) P release/ SCFA COD uptake for 
+sequestration  
+=   1.42 (g COD/ g VSS) Ratio COD:VSS 
+ 
+=  0.94 (g P/ g P) Fraction of taken up P which can be released 
+ 
+ 
+Autotrophs 
+ 
+=  0.150 (g cell COD yield/ g N utilized) Yield constant 
+ 
+=  0.068 (g N/ g COD active organisms) Nitrogen content of active 
+mass 
+=  0.068 (g N/ g COD endogenous residue) Nitrogen content of 
+endogenous mass 
+=  0.021 (g P/ g COD active organisms) Phosphorus content of 
+active mass 
+=  0.021 (g P/ g COD endogenous residue) Phosphorus content of 
+endogenous mass 
+=  0.08 (g COD endogenous mass/ g COD active mass) Fraction of 
+active mass remaining as endogenous residue 
+=  1.42 (g COD/ g VSS) Ratio COD:VSS 
+ YP 
+fP UPT1 , 
+fP UPT2 , 
+YPHB  
+fNZP , 
+fNZEP , 
+fNSEP , 
+fPZP , 
+fPZEP , 
+fEP P, 
+fES P, 
+fPREL , 
+fCV P, 
+fPP  
+YA 
+fN ZA , 
+fNZEA , 
+fP ZA , 
+fPZEA , 
+fEP A, 
+fCV A,  14  
+The model takes far greater organization because of its additional paramete r inputs.  The 
+ASM 2 is attached as Figure 2 and Figure 3.  Also, ASM 2 can be incorporated into 
+Microsoft Excel.  The model allows for switching function input as well.  The switc hing 
+functions are defined in the attached Figure 4. (Barker et al. 1997) 
+ 
+ 
+The use of the ASM 2 is exactly the same as the ASM 1.  See Example 1-1, pg 7.   
+ 
+ASM 2 accurately predicts process and effluent values.  Table 1, Table 2, and Table 3 are  
+comparison of measured effluent values and ASM 2 predicted effluent values.  (Ba rker et 
+al. 1997)  Also, the following tables compare the predicted aeration basin control val ues, 
+such as the oxygen uptake rate (OUR) and the volatile suspended solids (VSS) with the  
+measured values.  Three different activated sludge processes were modele d.  The percent 
+error is the deviation of predicted ASM 2 values from the actual measured value s.  Model 
+prediction error could be due to the unpredictable nature of biological organisms.  E ven 
+with so many input values, the model still only designates three different kinds of 
+organisms.  This is done for a macro analysis of the system.  When looking at a reac tor 
+sample under the microscope, there will be hundreds of different kinds of organisms.  
+Error could be caused by parameter uncertainty.  Input values are determined f rom 
+experimental testing of the wastewater influent and activated sludge const ituents.  These 
+systems can change very rapidly, thereby changing the input parameters an d constants.   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+(Barker et al. 1997)  (Barker et al. 1997) 
+ 
+ 
+ 
+ 
+ 
+         (Barker et al. 1997) 
+ 
+ 
+ 
+ 
+ 
+ Table 3- Percent Error 
+Reactor % 
+VSS (g VSS/m 3) 5.5 
+P VSS (g P / g VSS) 3.4 
+OUR (g O 2/m 3)  
+Aerobic Reactor 1 3.2 
+Aerobic Reactor 2 11.3 
+Aerobic Reactor 3 7.4 
+Underflow Reactor 0.7 
+Effluent  
+TKN (g N/m 3) 6.0 
+NO3 (g N/m 3) 21.4 
+P (g P/m 3) 23.5 Table 2- Percent Error 
+Reactor % 
+VSS (g VSS/m 3) 2.9 
+OUR (g O 2/m 3) 5.8 
+Effluent  
+TKN (g N/m 3) 5.2 
+NO3 (g N/m 3) 2.2 Table 1- Percent Error 
+Reactor % 
+VSS (g VSS/m 3) 9.2 
+OUR (g O 2/m 3) 1.0 
+Effluent  
+TKN (g N/m 3) 2.9 
+NO3 (g N/m 3) 4.5  15  
+Fig. 2- ASM 2 
+ 16 Fig. 3- ASM 2 
+ 17 ASM 2 
+                       
+Fig. 4- ASM 2 Switching Functions 
+(Barker et al. 1997) AirYesHet 
+AirNoHet 
+AirYesAut 
+AirNoAut 
+NH 3Yes 
+NH 3No 
+NO 3Yes 
+NO 3No 
+PO 4GroYes 
+PO 4GroNo 
+PO 4UptYes 
+Po 4UptNo 
+SBSA Yes 
+SBSA No 
+PolyPYes 
+PolyPNo 1AirNoHet −
+1AirYesHet −
+1AirNoAut −
+1AirYesAut −
+1NH 3No −
+1NH 3Yes −
+1NO 3No −
+1NO 3Yes −
+1PO 4GroNo −
+1PO 4GroYes −
+1Po 4UptNo −
+1PO 4UptYes −
+1SBSA No −
+1SBSA Yes −
+1PolyPNo −
+1PolyPYes −SO
+KOHET SO+
+KOHET 
+KOHET SO+
+SO
+KOAUT SO+
+KOAUT 
+KOAUT SO+
+NH3 
+KNA NH3 +
+KNA 
+KNA NH3 +
+NO3 
+KNO NO3 +
+KNO 
+KNO NO3 +
+PO4 
+KLP GRO −PO4 +
+KLP GRO −
+KLP GRO −PO4 +
+PO4 
+KLP UPT −PO4 +
+KLP GRO −
+KLP UPT −PO4 +
+SBSA 
+KSSEQ SBSA +
+KSSEQ 
+KSSEQ SBSA +
+PPP LO −
+KXP PPP LO −+
+KXP 
+KXP PPP LO −+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Switching Function  
+Switching Function Equivalent  
+Definition  18 Activated Sludge Model No. 3 
+ 
+Activated Sludge Model No. 3 (ASM 3) was developed in 1999 as a solution to the short 
+comings of ASM 1.  ASM 1 does not have the necessary limitations built into the model 
+to deal with nitrogen and alkalinity inputs.  This can lead the user to negative 
+concentrations of ammonium.  ASM 3 eliminates the soluble and particulate nitrogen 
+from the model as two separate variables.  ASM 3 also eliminates the kinetics  of 
+ammonification.  These eliminations were due to the difficulty in measuring spe cific 
+parameters.  ASM 3 differentiates the decay rates of nitrifiers under diff erent processes 
+within different stages of the reactor.  ASM 3 also incorporates an observable  section of 
+the model to directly predict the mixed liquor suspended solids (MLSS) concentrat ion.  
+These changes were to simplify the model and, to a certain extent, to allow  for easier use 
+by the user.  Fig. 5 is a visual representation of the model. (Gujer et al. 1999)  (Koch e t 
+al. 2000)   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  19  
+                                    
+Fig. 5- Flow of COD in ASM 1 and ASM 3 
+ (Gujer et al. 1999) 
+ 20  ASM 3 has 13 model inputs, 21 kinetic parameters and 16 stoichmetric 
+parameters.  The input parameters are segregated into two categories:  solu ble and 
+particulate.  The first letter of the input variable is either X (particula te) or S (soluble).  
+The subscripted second letter represents the specific component it represents .  See below 
+for input variable definitions. 
+ 
+This model was input into Microsoft Excel.  Microsoft Excel was used as the plat form for 
+ASM 3 because of its ease of use and is highly available for any user.  The format t hat 
+was chosen separates the model into sheets.  The first sheet is the model inputs.  This  is 
+where the user can change any of the inputs they wish.  Different applications of the  
+model require different model inputs.   
+ 
+Table 4- ASM 3 Model Inputs 
+Model Inputs 
+SO 1  0 g O2 m-3 Dissolved Oxygen 
+SI 52  g COD m-3 Inert Soluble Material 
+SS 80  g COD m-3 Readily Biodegradable Organic Substrate 
+SNH 28  g N m-3 Ammonium Plus Ammonia Nitrogen 
+SN2 0  g N m-3 Dinitrogen 
+SNO 0  g N m-3 Nitrate Plus Nitrite Nitrogen 
+SHCO  5 mole HCO3- m-3 Alkalinity 
+XI 30  g COD m-3 Inert Particulate Organic Material 
+XS 96  g COD m-3 Slowly Biodegradable Organic Material 
+XH 1415  g COD m-3 Heterotrophic Organisms 
+XSTO 0.25  g COD m-3 A Cell Internal Storage Product of Hetero trophic Organisms 
+XA 88  g COD m-3 Nitrifying Organisms 
+XTS 3000  g TSS m-3 Total Suspended Solids 
+ (Gujer et al. 1999) 
+ 
+The second sheet is the kinetic and stoichmetric input parameters.  The input par ameters 
+listed are typical values.  These typical values come from a typical munici pal waste 
+stream.  For a more accurate use of ASM 3 the user should use case specific i nput 
+parameters.  Each waste stream can vary depending on region or demographics.  W aste 
+streams can also vary depending on if the source is residential, commercial or i ndustrial.  
+These can be determined through batch analysis.  Batch analysis is an acce ptable way to 
+determine the parameters if there are no existing reactor data.  If the re are reactor data 
+then the stoichmetric parameters can be determined mathematically. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Table 5- ASM 3 Kinetic Parameters 
+Model Constants 
+Kinetic Parameters  21 Symbol Characterization Value  Units 
+kH Hydrolysis rate constant 3  g XS g-1 XH d-1 
+KX Hydrolysis saturation constant 1  g XS g-1 XH 
+Heterotrophic organisms, denitrification, XH 
+kSTO Storage rate constant 5  g SS g-1 XH d-1 
+nNO Anoxic reduction factor 0.6    
+KO Saturation constant for SO 0.2  g O2 m-3 
+KNO Saturation constant for SNO 0.5  g NO3- - Nm-3 
+KS Saturation constant for substrate SS 2  g COD m-3 
+KSTO Saturation constant for XSTO 1  g XSTO g-1 XH 
+uH Heterotrophic max. growth rate 1  d-1 
+KNH Saturation constant for ammonium, SNH 0.01  g N m-3 
+KHCO Bicarbonate saturation constant of XH 0.1  mole HCO3- m-3 
+bH,O2 Aerobic endog. respiration rate of XH 0.2  d-1 
+bH,NO Anoxic endog. respiration rate of XH 0.1  d-1 
+bSTO,O2 Aerobic respiration rate of XSTO 0.2  d-1 
+bSTO,NO  Anoxic respiration rate for XSTO 0.1  d-1 
+Autotrophic organisms, nitrification, XA 
+uA Autotrophic max. growth rate XA 1  d-1 
+KA,NH Ammonium substrate saturation for XA 1  g N m-3 
+KA,O Oxygen saturation for nitrifiers 0.5  g O2 m-3 
+KA,HCO Bicarbonate saturation for nitrifiers 0.5  mole HCO3- m-3 
+bA,O2 Aerobic endog. respiration rate of XA 0.15  d-1 
+bA,NO Anoxic endog. respiration rate of XA 0.05  d-1 
+Note:  All values are at 20 degrees C   
+ (Gujer et al. 1999) 
+Table 6- ASM 3 Stoichiometric Parameters 
+Stoichiometric parameters   
+Symbol Characterization Value  Units   
+fSI  Production of SI in Hydrolysis 0  g SI g-1 XS   
+fXI Production of XI in endog. Biomass respiration 0.1  g SI g-1 XS   
+YSTO,O2 Aerobic yield of stored product per SS 0.85  g XSTO g-1 SS   
+YSTO,NO  Anoxic yield of stored product per SS 0.8  g XSTO g-1 SS   
+YH,O2 Aerobic yield of heterotrophic biomass 0.63  g XH g-1 XSTO   
+YH,NO Anoxic yield of heterotrophic biomass 0.54  g XH g-1 XSTO   
+YA Yield of autotrophic biomass per NO3-N 0.24  g XA g-1 SNO   
+iNSI N content of SI 0.01  g N g-1 SI   
+INSS N content of SS 0.03  g N g-1 SS   
+iNXI N content of XI 0.02  g N g-1 XI    
+iNXS N content of XS 0.04  g N g-1 XS   
+iNBM N content of biomass, XH, XA 0.07  g N g-1 XH or A VSS   
+iTSXI TSS to COD ratio for XI 0.75  g TS g-1 XI 0.75  g VSS g-1 XI 
+iTSXS TSS to COD ratio for XS 0.75  g TS g-1 XS 0.75  g VSS g-1 XS 
+iTSBM TSS to COD ratio for biomass, XH, XA 0.9  g TS g-1 XH or 
+A 0.75  g VSS g-1 XH or 
+A 
+iTSSTO TSS to COD ratio for XSTO based on PHB 0.6  g TS g-1 XSTO 0.6  g VSS g-1 XSTO 
+(Gujer et al. 1999) 
+  22                                           
+Fig. 6- ASM 3 (Gujer et al. 1999) 
+ 
+ 23 Application of Activated Sludge Model No. 3 
+ 
+Over the last 20 years the Activated Sludge Models have a proven record for predicti ng 
+reasonably well the desired output parameters.  In more recent years, ASM 3 has been 
+specifically applied to the prediction of nitrification and denitrification.  Ac tivated Sludge 
+Model No. 3 (ASM 3) has been utilized almost exclusively for modeling of municipal 
+waste treatment.  (Iacopozzi et al. 2007) 
+ 
+ASM 3 is a model that can require case specific input parameters to be adde d.  In recently 
+released papers, nitrification-denitrification was modeled as a two-s tep process.  Due to 
+the increased complexity, the model kinetics and stoichiometric parameters have to be 
+adjusted.  This has been done to account for the more complex treatment options such as 
+the Single reactor High activity Ammonia Removal Over Nitrite (SHARO N) and the 
+Sequencing Batch Reactor (SBR).  Additionally, special consideration has been t aken to 
+optimize operational costs and discharge limits.  Other attempts have been made t o 
+expand specifically ASM 3 into accurately predicting biological phosphorus remova l.  
+The BIO-P addition to ASM 3 expanded the model by an additional 13 process 
+components and 4 variables.  The expansion of ASM has been successful in predicting 
+and optimizing treatment operations.  (Iacopozzi et al. 2007)  (Rieger et al. 2001) 
+ 
+Attempts to analytically model industrial processes have been limited and ha ve usually 
+been case specific.  Recently an empirical model was used to evaluate biologic al 
+treatment of petrochemical plant.  This model incorporated physical stripping of volatile 
+organic carbons (VOC’s) and biological removal of chemical oxygen demand (COD).  
+This model did have limited success in removal prediction.  The limited success can be  
+attributed to a rather simple model to describe a complex treatment situatio n.  (Maqueda 
+et al. 2006) 
+ 
+There has been limited use of the Activated Sludge Models when applied to industrial 
+treatment processes.  Two reasons for this are due to the increased temperatur e of the 
+waste stream and the usual toxic nature of industrial wastes.  Recently, howe ver, there 
+has been an application of ASM 3 to oil refinery’s wastewater treatment f acilities.  The 
+goals of the research project were: to apply the general model constants to the refinery 
+influent wastewater characteristics; to evaluate ASM 3 when applied to oi l refinery 
+wastewater treatment; to evaluate the kinetic and stoichiometric param eters through the 
+use of batch tests; and to optimize the wastewater treatment plant performa nce.  The 
+treatment facility is arranged with three aeration basins in a seri es that empties into a 
+single clarifier.  The refinery influent temperature averages 34 degree C.  S ix sampling 
+points were used to evaluate the model performance.  (Pinzon Pardo et al. 2007) 
+ 
+Modifications were made to the default values of ASM 3.  The particulate COD of the  
+total COD was reduced to 10% for this application.  Therefore, readily biodegrada ble 
+COD was much higher for the oil refinery influent.  Additionally, the autotrophic y ield 
+constant was lowered to .5 d-1.  This change was appropriate due to the toxic nature of 
+the waste stream.    24 Overall, the general model constants were appropriate when applied to the oil r efinery 
+waste treatment.  The model prediction became much closer when the four stoich iometric 
+parameters were modified.  The four modified stoichiometric parameters  were nitrogen 
+content of particulate inert, autotrophic maximum growth rate, anoxic yield  of stored 
+products and the anoxic reduction factor.  Modifications to these parameters are 
+demonstrated in Table 7.  Table 8 is a comparison between the ASM 3 predicted 
+treatment values.  The research used ASM 3 to accurately predict treatment  values.  
+(Pinzon Pardo et al. 2007) 
+ 
+Table 7- Adjusted Model Parameters 
+Parameter Symbol Study ASM default Unit 
+Nitrogen 
+content of 
+particulate inert iN,Xi .030 .020 gN gXi^-1 
+Autotrophic 
+maximum 
+growth rate  
+YA 0.50 1.0 d^-1 
+Anoxic yield of 
+stored products YSTO,NO 0.50 0.80 gCOD(XSTO) 
+gCOD^-1 
+Anoxic 
+reduction factor nNO 0.30 0.60 - 
+(Pinzon Pardo et al. 2007) 
+ 
+Table 8- Measured and Predicted Treatment Values 
+ 
+ 
+ 
+ 
+ 
+ 
+(Pinzon Pardo et al. 2007) 
+ 
+The Activated Sludge Model No. 3 has had limited use in describing the fate of organic 
+material and nutrients.  Although, ASM 3 has not experienced as wide spread use as the 
+analytical model in academia or in engineering practice.  Therefore, it is  necessary to 
+understand the more common method of describing the fate of organic material and 
+nutrients in an activated sludge process.  The analytical model is the most common w ay 
+of modeling biological removal of BOD and nutrients.  
+ 
+Analytical Model 
+ 
+The analytical modeling used in biological treatment uses a mass balance approach with a 
+fixed volume.  The model for biomass in the system assumes accumulation = inflow  – 
+outflow + net growth.  Fig. 8 is a visual representation of the model approach.   
+  Effluent Biomass 
+ COD NH4-
+N NO3-
+N TSS VSS TKN  
+Measured 
+Average  34+/- 
+9 1+/- 
+1 3+/- 
+3 6573+/- 458 4009+/- 438 206  
+After Calibration 41  0.2  4 6269  3823  206   25 
+ 
+Fig. 7- Box Model 
+(Metcalf et al. 2003) 
+ 
+The box model approach is used in many other applications to simplify calculations.  
+This approach is specific to the activated sludge process by creating a bounda ry system 
+around the aeration basin and clarifier.  Fig. 9 demonstrates the approach.   
+ 
+ 
+Fig. 8- Analytical Model-Wastewater Treatment Process 
+(Metcalf et al. 2003) 
+Biomass Mass Balance 
+ 
+=  
+ 
+ 
+Parameters 
+ 
+=  Rate of change of biomass concentration in reactor (gVSS/m^3-day) 
+ 
+ 
+=  Reactor volume (m^3) 
+ 
+=  Influent flow (m^3/day) 
+ 
+=  Concentration of biomass in influent (gVSS/m^3) 
+ QX oQ Qw−( )Xe− QwXR− rsV+ dx 
+dt V 
+dx 
+dt V 
+V 
+Q 
+Xo  26 =  Waste sludge flowrate (m^3/day) 
+ 
+=  Concentration of biomass in effluent (gVSS/m^3) 
+ 
+=  Concentration of biomass in return line from clarifier (gVSS/m^3) 
+ 
+=  Net rate of biomass production (gVSS/m^3-day) 
+ 
+Assume steady-state and initial microorganism concentration can be neg lected  
+ 
+=  0 
+ 
+ 
+= 
+ 
+Combine with growth rate of biomass 
+ 
+= 
+ 
+ 
+=  Concentration of the biomass in the reactor (gVSS/m^3) 
+ 
+Solids retention time (SRT = days) equal to the inverse of the left side of the equa tion 
+ 
+= 
+ 
+ 
+Combine the solids retention time with equation 
+ 
+=   
+ 
+(Metcalf et al. 2003) 
+ 
+Substrate Mass Balance 
+ 
+The same method for developing a biomass mass balance can be used for substrate  
+utilization. 
+ 
+=   
+ 
+ 
+Parameters 
+ 
+=  Influent flow (m^3/day) 
+ 
+ Qw 
+Xe 
+XR 
+rs 
+dx 
+dt  
+Q Qw−( )Xe⋅QwXR⋅ − rsV 
+Q Qw−( )Xe⋅QwXR⋅ −
+VX  Y−rsu 
+X⋅kd− 
+X 
+1
+Y−rsu 
+X⋅kd−
+
+ 
+SRT  
+VX 
+Q QW−( )Xe⋅QWXR⋅ + SRT  
+Q So⋅Q S⋅−rsu V⋅ − 
+ds 
+dt V 
+Q  27  
+=  Reactor volume (m^3) 
+ 
+=  Rate of substrate concentration change due to utilization (g/m^3-day) 
+ 
+=  Influent substrate concentration (g/m^3) 
+ 
+=  Effluent substrate concentration (g/m^3) 
+ 
+Assume steady-state  
+ 
+=  0 
+ 
+ 
+Rate of substrate utilization is: 
+ 
+=   
+ 
+ 
+=  Concentration of the biomass in the reactor (gVSS/m^3) 
+ 
+=  maximum specific substrate utilization rate (g S / g VSS) 
+ 
+=  Half velocity constant (g/m^3) 
+ 
+Combine the rate of substrate utilization and rearrange  
+ 
+=   
+ 
+(Metcalf et al. 2003) 
+ 
+These presented equations are the basic equations that have been used to model the fat e 
+of biomass and substrate through a wastewater treatment process.  Other equati ons have 
+been developed by expanding the basic biomass and substrate equations.   
+ 
+Additionally this model has been adapted to predict the fate of nitrogen in a wastew ater 
+treatment process. 
+ 
+Nitrification 
+ 
+=   
+ 
+ 
+Parameters 
+ 
+=  Specific growth rate of nitrifying bacteria (g cells/ g cells)  V 
+rsu  
+So 
+S 
+ds 
+dt  
+k−X⋅S⋅
+ksS+ rsu  
+X 
+k 
+ks 
+V
+Qk X⋅S⋅( )
+kSS+⋅ SoS− 
+µnm N⋅( )
+KnN+
+
+
+
+DO 
+KoDO +
+
+kdn − µn  
+µn  28  
+=  Maximum specific growth rate of nitrifying bacteria (g cells/ g 
+cells) 
+ 
+=  Nitrogen concentration (g/m^3) 
+ 
+=  Half velocity constant (g/m^3) 
+ 
+=  Endogenous decay coefficient for nitrifying bacteria (g VSS/ g VSS-
+day) 
+ 
+=  Dissolved oxygen concentration (g/m^3) 
+ 
+=  Half saturation coefficient (g/m^3) 
+ 
+(Metcalf et al. 2003) 
+ 
+Denitrification 
+ 
+=   
+ 
+= 
+ 
+ 
+Parameters 
+ 
+=  Nitrifying biomass yield (g VSS/ g bcCOD) 
+ 
+=  Total biomass yield (g VSS/ g bcCOD) 
+ 
+(Metcalf et al. 2003) 
+ 
+Overall, the analytical model is the more common way to predict the fate of  wastewater 
+constituents.  The analytical model is used for optimization and design of wastewate r 
+treatment processes.  The accuracy of the model depends on how precisely the consta nts 
+represent the biological activity.  Parameter constants can introduce error i nto the model.  
+Constants can be chosen using accepted values or can be determined through 
+experimental analysis.  The model has been well proven through years of trial a nd error.  
+In the United States the overwhelming majority of wastewater treatme nt facilities were 
+designed using the analytical model.  (Metcalf et al. 2003) 
+ 
+Chapter III will determine the validity of ASM 3 when incorporated into Micr osoft Excel 
+and apply ASM 3 to a case specific industrial activated sludge unit to determine if the  
+model accurately predicts the effluent ammonium concentration.  Additionally, Chapte r 
+III will investigate changes in model inputs to reduce the effluent concentrati on of 
+ammonium. µnm  
+N 
+Kn 
+kdn  
+DO  
+Do 
+Y
+1 kdn SRT ⋅ + Yn 
+gbsCOD 
+gNO 3N− 2.86 
+1 1.42Yn− 
+Yn 
+Y  29 CHAPTER III 
+ 
+ 
+METHODOLOGY 
+ 
+   30 Activated Sludge Model No. 3 (ASM 3) Validation 
+ 
+ASM 3 was validated through a peer review process.  ASM 3 is accepted in the scient ific 
+community but does not experience wide-spread use in the design community.  The 
+analytical model has been more widely used for reactor design.  (Koch et al.  2000) 
+ 
+This section will investigate how accurate ASM 3 predicts reactor tank desi gn.  It was not 
+reasonable to use ASM 3 to design a treatment facility and then construct a full  scale 
+treatment facility.  It also was not reasonable to construct a pilot tre atment facility.  
+Therefore, design investigation was done exclusively on paper to compare ASM 3 a nd 
+the analytical model reactor design.  For this investigation, accepted Metc alf and Eddy 
+design examples were used.  These design examples are completed by using  the 
+analytical method.  Example 8-2 and Example 8-5 in Metcalf and Eddy are common 
+reactor design examples that are widely used in academia for upper level w astewater 
+process design classes.  Example 8-2 and Example 8-5 are found in the appendix secti on 
+of this paper.  Example 1 and Example 2 are based on Example 8-2 and Example 8-5 
+from Metcalf and Eddy, respectively.  (Metcalf et al. 2003) 
+ 
+Example 1 Complete-Mixed Activated Sludge Process Design for BOD Rem oval 
+Only and for BOD Removal with Nitrification 
+ 
+Example 1 focuses on the design of the reactor tank only.  The constituents used for the 
+design are given municipal primary effluent values.  Flows, dissolved oxygen, oxygen 
+transfer efficiency, SRT, and MLSS used for the design are all given va lues.  (Metcalf et 
+al. 2003) 
+ 
+The first part of Example 1 is to predict the hydraulic retention time (HRT ) for BOD 
+removal only.  The model expressed organic substrate in terms of chemical oxyge n 
+demand (COD) not biological oxygen demand (BOD).  Therefore, BOD must be 
+converted into biodegradable COD.  The influent biodegradable COD was estimated t o 
+be 224 g COD m-3.  This estimation was done by using a typical multiplier of 1.6 times 
+the BOD.  The goal is to find the required hydraulic retention time (HRT) to c onvert 224 
+g COD m-3 of organic material into additional biomass, water, and carbon dioxide.  The 
+parameter inputs are presented in Table 9 and the model inputs are demonstrate d in Table 
+10.  (Metcalf et al. 2003) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  31 Table 9- Example 1 ASM 3 Parameter Inputs 
+Model Constants 
+Kinetic Parameters 
+Symbol Characterization Value  Units 
+kH Hydrolysis rate constant 1  g XS g-1 XH d-1 
+KX Hydrolysis saturation constant 1  g XS g-1 XH 
+Heterotrophic organisms, denitrification, XH 
+kSTO Storage rate constant 1  g SS g-1 XH d-1 
+nNO Anoxic reduction factor 0.6    
+KO Saturation constant for SO 0.2  g O2 m-3 
+KNO Saturation constant for SNO 0.5  g NO3- - Nm-3 
+KS Saturation constant for substrate SS 2  g COD m-3 
+KSTO Saturation constant for XSTO 1  g XSTO g-1 XH 
+uH Heterotrophic max. growth rate 0.65  d-1 
+KNH Saturation constant for ammonium, SNH 0.01  g N m-3 
+KHCO Bicarbonate saturation constant of XH 0.1  mole HCO3- m-
+3 
+bH,O2 Aerobic endog. respiration rate of XH 0.2  d-1 
+bH,NO Anoxic endog. respiration rate of XH 0.1  d-1 
+bSTO,O2 Aerobic respiration rate of XSTO 0.2  d-1 
+bSTO,NO Anoxic respiration rate for XSTO 0.1  d-1 
+Autotrophic organisms, nitrification, XA 
+uA Autotrophic max. growth rate XA 0.12  d-1 
+KA,NH Ammonium substrate saturation for XA 1  g N m-3 
+KA,O Oxygen saturation for nitrifiers 0.5  g O2 m-3 
+KA,HCO Bicarbonate saturation for nitrifiers 0.5  mole HCO3- m-
+3 
+bA,O2 Aerobic endog. respiration rate of XA 0.15  d-1 
+bA,NO Anoxic endog. respiration rate of XA 0.05  d-1 
+Note:  All values are at 20 degrees C   
+    
+Stoichiometric parameters 
+Symbol Characterization Value  Units 
+fSI  Production of SI in Hydrolysis 0  g SI g-1 XS 
+fXI Production of XI in endog. Biomass respiration 0.06  g SI g-1 XS 
+YSTO,O2 Aerobic yield of stored product per SS 0.8  g XSTO g-1 SS 
+YSTO,NO  Anoxic yield of stored product per SS 0.13  g XSTO g-1 SS 
+YH,O2 Aerobic yield of heterotrophic biomass 0.65  g XH g-1 XSTO 
+YH,NO Anoxic yield of heterotrophic biomass 0.54  g XH g-1 XSTO 
+YA Yield of autotrophic biomass per NO3-N 0.12  g XA g-1 SNO 
+iNSI N content of SI 0 g N g-1 SI 
+INSS N content of SS 0 g N g-1 SS 
+iNXI N content of XI 0.02  g N g-1 XI  
+iNXS N content of XS 0.04  g N g-1 XS 
+iNBM N content of biomass, XH, XA 0.12  g N g-1 XH or A 
+iTSXI TSS to COD ratio for XI 0.75  g TS g-1 XI 
+iTSXS TSS to COD ratio for XS 0.75  g TS g-1 XS 
+iTSBM TSS to COD ratio for biomass, XH, XA 0.9  g TS g-1 XH or 
+A  32 iTSSTO TSS to COD ratio for XSTO based on PHB 0.6  g TS g-1 XSTO 
+ 
+Table 10- Example 1 ASM 3 Inputs 
+Model Inputs 
+SO 2  0 g O2 m-3 Dissolved Oxygen 
+SI 52  g COD m-3 Inert Soluble Material 
+SS 80  g COD m-3 Readily Biodegradable Organic Substrate 
+SNH 28  g N m-3 Ammonium Plus Ammonia Nitrogen 
+SN2 0  g N m-3 Dinitrogen 
+SNO 0  g N m-3 Nitrate Plus Nitrite Nitrogen 
+SHCO  5 mole HCO3- m-3 Alkalinity 
+XI 30  g COD m-3 Inert Particulate Organic Material 
+XS 62  g COD m-3 Slowly Biodegradable Organic Material 
+XH 1415  g COD m-3 Heterotrophic Organisms 
+XSTO 0.25  g COD m-3 A Cell Internal Storage Product of Hetero trophic Organisms 
+XA 88  g COD m-3 Nitrifying Organisms 
+XTS 3000  g TSS m-3 Total Suspended Solids 
+ 
+The model prediction results are presented in Chapter IV Table 18. 
+ 
+The second part of Example 1 is to predict the HRT for BOD removal and nitrificat ion.  
+For this part of the example, focus is put on the removal of ammonium by conversion 
+into nitrate.  For this section of the example, the same parameter inputs and model i nputs 
+(demonstrated in Table 9 and Table 10) will be used to predict the required HRT to 
+convert 28 g N m-3 of ammonium to nitrate.  The model prediction results are 
+demonstrated in Chapter IV Table 19.  (Metcalf et al. 2003) 
+ 
+ 
+Example 2 Anoxic/ Aerobic Process Design 
+ 
+Example 2 is a continuation of Example 1.  Example 3 is the denitrification ste p utilizing 
+the same wastewater constituents as Example 1.  The differences to ASM  3 are that the 
+model input’s dissolved oxygen and nitrate concentration have been changed.  The 
+dissolved oxygen is inputted as 0 to represent the anoxic zone of the reactor basin.  The 
+nitrate concentration is 28 g N m-3 because the ammonium concentration has been 
+converted to nitrate in the nitrification process in Example 1.  The goal is to calcul ate the 
+required HRT of the anoxic zone required to convert 22 g N m-3 of nitrate to nitrogen gas 
+and oxygen.  The parameter inputs and model inputs are presented in Table 11 and Table 
+12. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  33 Table 11- Example 2 Parameter Inputs 
+Model Constants 
+Kinetic Parameters 
+Symbol Characterization Value  Units 
+kH Hydrolysis rate constant 1  g XS g-1 XH d-1 
+KX Hydrolysis saturation constant 1  g XS g-1 XH 
+Heterotrophic organisms, denitrification, XH 
+kSTO Storage rate constant 1  g SS g-1 XH d-1 
+nNO Anoxic reduction factor 0.6    
+KO Saturation constant for SO 0.2  g O2 m-3 
+KNO Saturation constant for SNO 0.5  g NO3- - Nm-3 
+KS Saturation constant for substrate SS 2  g COD m-3 
+KSTO Saturation constant for XSTO 1  g XSTO g-1 XH 
+uH Heterotrophic max. growth rate 0.65  d-1 
+KNH Saturation constant for ammonium, SNH 0.01  g N m-3 
+KHCO Bicarbonate saturation constant of XH 0.1  mole HCO3- m-
+3 
+bH,O2 Aerobic endog. respiration rate of XH 0.2  d-1 
+bH,NO Anoxic endog. respiration rate of XH 0.1  d-1 
+bSTO,O2 Aerobic respiration rate of XSTO 0.2  d-1 
+bSTO,NO Anoxic respiration rate for XSTO 0.1  d-1 
+Autotrophic organisms, nitrification, XA 
+uA Autotrophic max. growth rate XA 0.12  d-1 
+KA,NH Ammonium substrate saturation for XA 1  g N m-3 
+KA,O Oxygen saturation for nitrifiers 0.5  g O2 m-3 
+KA,HCO Bicarbonate saturation for nitrifiers 0.5  mole HCO3- m-
+3 
+bA,O2 Aerobic endog. respiration rate of XA 0.15  d-1 
+bA,NO Anoxic endog. respiration rate of XA 0.05  d-1 
+Note:  All values are at 20 degrees C   
+    
+Stoichiometric parameters 
+Symbol Characterization Value  Units 
+fSI  Production of SI in Hydrolysis 0  g SI g-1 XS 
+fXI Production of XI in endog. Biomass respiration 0.06  g SI g-1 XS 
+YSTO,O2 Aerobic yield of stored product per SS 0.8  g XSTO g-1 SS 
+YSTO,NO  Anoxic yield of stored product per SS 0.13  g XSTO g-1 SS 
+YH,O2 Aerobic yield of heterotrophic biomass 0.65  g XH g-1 XSTO 
+YH,NO Anoxic yield of heterotrophic biomass 0.54  g XH g-1 XSTO 
+YA Yield of autotrophic biomass per NO3-N 0.12  g XA g-1 SNO 
+iNSI N content of SI 0 g N g-1 SI 
+INSS N content of SS 0 g N g-1 SS 
+iNXI N content of XI 0.02  g N g-1 XI  
+iNXS N content of XS 0.04  g N g-1 XS 
+iNBM N content of biomass, XH, XA 0.12  g N g-1 XH or A 
+iTSXI TSS to COD ratio for XI 0.75  g TS g-1 XI 
+iTSXS TSS to COD ratio for XS 0.75  g TS g-1 XS 
+iTSBM TSS to COD ratio for biomass, XH, XA 0.9  g TS g-1 XH or 
+A  34 iTSSTO TSS to COD ratio for XSTO based on PHB 0.6  g TS g-1 XSTO 
+ 
+Table 12- Example 2 ASM 3 Inputs 
+Model Inputs 
+SO 0  0 g O2 m-3 Dissolved Oxygen 
+SI 52  g COD m-3 Inert Soluable Material 
+SS 80  g COD m-3 Readily Biodegradable Organic Substrate 
+SNH 0  g N m-3 Ammonium Plus Ammonia Nitrogen 
+SN2 0  g N m-3 Dinitrogen 
+SNO 28  g N m-3 Nitrate Plus Nitrite Nitrogen 
+SHCO  5 mole HCO3- m-3 Alkalinity 
+XI 30  g COD m-3 Inert Particulate Organic Material 
+XS 62  g COD m-3 Slowly Biodegradable Organic Material 
+XH 1415  g COD m-3 Heterotrophic Organisms 
+XSTO 0.25  g COD m-3 A Cell Internal Storage Product of Hetero trophic Organisms 
+XA 88  g COD m-3 Nitrifying Organisms 
+XTS 3000  g TSS m-3 Total Suspended Solids 
+ 
+The model prediction of the required HRT is presented in Chapter IV Table 20.  (Me tcalf 
+et al. 2003) 
+ 
+The comparison of the analytical model and ASM 3 is complete.  Now ASM 3 will be 
+applied to the activated sludge unit at the industrial wastewater treatment fa cility.  In 
+order to gain a better understanding of the industrial wastewater treatme nt facility a 
+description has been provided. 
+ 
+Description of Wastewater Treatment Process 
+ 
+All wastes from refining process end up at the headworks of the industrial trea tment 
+facility.  As the process diagram shows there are different waste stre ams that enter the 
+treatment facility.  Some waste streams are from processes and ot hers are from 
+groundwater/ stormwater.  Due to the site contamination, the groundwater and 
+stormwater are treated along with the refining waste products.   
+ 
+The industrial wastewater treatment facility of study operates somew hat similarly to a 
+secondary municipal wastewater treatment facility.  The activated sl udge units (ASUs), is 
+where the aerobic biological treatment occurs.  From the ASUs the waste s tream travels 
+to a secondary clarifier.  In the secondary clarifier the endogenous and active  bacteria, as 
+well as any solid material, are settled out of solution.  This mixture of solids i s called 
+sludge.  Some of the sludge is then recycled back into the aeration basins, while the re st 
+is pumped out of the system.   
+ 
+For this paper the activated sludge units’ (ASUs) biodegradation will be modeled 
+exclusively.  Due to presence of an equalization basin, each of the ASUs expe riences the 
+same flow and organic loading.  The ASUs are exactly the same volumes.  Addi tionally, 
+each ASU experiences the same mixed liquor concentration and dissolved oxygen.   35 Therefore, it is reasonable to say that they will have very similar biodegra dation 
+characteristics.  Figure 9 is a process flow diagram of the biological t reatment process. 
+ 
+ 
+        
+          
+Fig. 9- Process Flow Diagram 
+ 
+ 
+Utilizing ASM 3 to Model the ASU at the Industrial Wastewater Treatment Facility 
+ 
+The known ASU input parameters for the industrial wastewater treatment faci lity are 
+presented in Table 13.  The hydraulic parameters and the MLVSS data are from  the 
+operators of the industrial wastewater treatment facility.  All other da ta was determined 
+through experimentation by a field technician. 
+ 
+Table 13- Known ASU Parameters 
+Hydraulic Parameters 
+Volume 4896  m3 
+Flow 4940  m3 d-1 
+HRT 0.99  D 
+Influent Parameters 
+BOD 141  g BOD m-3 
+sCOD 225  g COD m-3 
+NH3-N 8.6  g N m-3 
+tCOD 370  g COD m-3 
+Reactor Parameters 
+DO 0.8  0 g O2 m-3 
+MLVSS 2600  g VSS m-3 
+ 
+The ASU parameters are not typical for an industrial wastewater.  As pre viously stated, 
+industrial wastewaters are typically higher in BOD and are lower in flow .  This is all the 
+data that is given to describe the ASU.  Not all the information required is given.  
+Therefore, engineering assumptions and estimations will need to be made i n order to 
+model accurately the existing ASU.  The approach will be to input all necessary  data into 
+ASM 3 in order to accurately predict effluent concentrations of BOD and ammonium.   36 The effluent ammonium concentration is being focused on because ammonium lowers 
+the dissolved oxygen concentration in receiving waters.  Therefore the industr ial 
+wastewater treatment facility has a discharge permit.  Currently t he facility meets the 
+requirements of its discharge permit.  In the future, the allowable ammonium  discharge 
+could be lowered.  The industrial wastewater treatment facility would like t o model their 
+ASUs to determine if there are any process controls that can be adjusted to ens ure that 
+they meet any future regulation. 
+ 
+ 
+Assumptions and Estimations 
+ 
+This waste stream would not be considered a typical municipal waste stream.  This 
+treatment facility likely experiences a high concentration of potenti ally toxic substances 
+as well as complex organic compounds.  Toxic and complex organic substances usually 
+slow down the degradation of BOD.    A typical design value for a municipal wastew ater 
+SRT is 12.5 days to ensure nitrification.  Nitrification does occur at the fac ility currently.  
+Therefore, a longer SRT of 14 days was chosen in order to ensure that nitrificati on 
+occurred even under toxic loadings.  The lower end of the heterotrophic and autotrophic 
+yield range was chosen to represent the nature of the wastewater.  Estimat ion of the 
+active heterotrophic biomass was made by utilizing an equation from the analy tical 
+model.  The following equation was used for the estimation 
+ 
+= 
+ 
+ 
+= Flow (m3 d-1) 
+ 
+=  Sludge Retention Time (d) 
+ 
+=  Volume (m3) 
+ 
+=  Hetertrohpic Yield (g VSS/ g COD) 
+ 
+=  Influent COD (g COD m-3) 
+ 
+=  Effluent COD (g COD m-3) 
+ 
+=  Endogenous Decay (d-1) 
+ 
+Typically, the autotrophic organisms concentration represents 3.7% of the act ive 
+biomass.  (Metcalf et al. 2003)  Due to the reduction of the autrotrophic yield coe fficient, 
+the percentage was lowered to 2.9%.  The upper limit of the endogenous decay term was 
+chosen due to the likely toxicity of the waste stream.  A slowed substrate storag e and 
+utilization rate was chosen due to the presence of complex organic compounds.   
+Assumptions were made on the nature of the influent COD.  It was assumed that the re is 
+twice as much inert soluble material as there is readily biodegradable subst rate.  This was Q SRT ( )
+VY SoS−( )
+1 kdSRT ⋅+⋅  Xb 
+Q 
+SRT  
+V 
+Y 
+So 
+S 
+kd  37 done to estimate more accurately the nature of the waste stream.  This is  significantly 
+different than a typical municipal waste stream.  The assumed and known inputs are 
+presented in Table 14 and Table 15.   
+Table 14-ASU ASM 3 Input Parameters 
+Model Constants 
+Kinetic Parameters 
+Symbol Characterization Value  Units 
+kH Hydrolysis rate constant 1.00  g XS g-1 XH 
+d-1 
+KX Hydrolysis saturation constant 1.00  g XS g-1 XH  
+Heterotrophic organisms, 
+denitrification, XH      
+kSTO Storage rate constant 0.53  g SS g-1 XH 
+d-1 
+nNO Anoxic reduction factor 0.3    
+KO Saturation constant for SO 0.2  g O2 m-3 
+KNO Saturation constant for SNO 0.5  g NO3- - 
+Nm-3 
+KS Saturation constant for substrate SS 2  g COD m-3 
+KSTO Saturation constant for XSTO 1  g XSTO g-1 
+XH 
+uH Heterotrophic max. growth rate 0.65  d-1 
+KNH Saturation constant for ammonium, 
+SNH 0.01  g N m-3 
+KHCO Bicarbonate saturation constant of 
+XH 0.1  mole HCO3- 
+m-3 
+bH,O2 Aerobic endog. respiration rate of XH 0.2  d-1 
+bH,NO Anoxic endog. respiration rate of XH 0.1  d-1 
+bSTO,O2 Aerobic respiration rate of XSTO 0.2  d-1 
+bSTO,NO Anoxic respiration rate for XSTO 0.1  d-1 
+Autotrophic organisms, 
+nitrification, XA      
+uA Autotrophic max. growth rate XA 0.07  d-1 
+KA,NH Ammonium substrate saturation for 
+XA 1 g N m-3 
+KA,O Oxygen saturation for nitrifiers 0.6  g O2 m-3 
+KA,HCO Bicarbonate saturation for nitrifiers 0.5  mole HCO3- 
+m-3 
+bA,O2 Aerobic endog. respiration rate of XA 0.15  d-1 
+bA,NO Anoxic endog. respiration rate of XA 0.05  d-1 
+    
+    
+Stoichiometric parameters 
+Symbol Characterization Value  Units 
+fSI  Production of SI in Hydrolysis 0  g SI g-1 XS 
+fXI Production of XI in endog. Biomass 
+respiration 0.12  g SI g-1 XS 
+YSTO,O2 Aerobic yield of stored product per 
+SS 0.6  g XSTO g-1 
+SS 
+YSTO,NO Anoxic yield of stored product per SS 0.5  g XSTO g-1 
+SS  38 YH,O2 Aerobic yield of heterotrophic 
+biomass 0.295  g XH g-1 
+XSTO 
+YH,NO Anoxic yield of heterotrophic biomass 0.2  g XH g-1 
+XSTO 
+YA Yield of autotrophic biomass per 
+NO3-N 0.1  g XA g-1 
+SNO 
+iNSI N content of SI 0  g N g-1 SI 
+INSS N content of SS 0  g N g-1 SS 
+iNXI N content of XI 0.03  g N g-1 XI  
+iNXS N content of XS 0.04  g N g-1 XS 
+iNBM N content of biomass, XH, XA 0.12  g N g-1 XH 
+or A 
+iTSXI TSS to COD ratio for XI 0.75  g TS g-1 XI 
+iTSXS TSS to COD ratio for XS 0.75  g TS g-1 XS 
+iTSBM TSS to COD ratio for biomass, XH, 
+XA 0.9  g TS g-1 XH 
+or A 
+iTSSTO TSS to COD ratio for XSTO based on 
+PHB 0.6  g TS g-1 
+XSTO 
+ 
+Table 15-ASU ASM 3 Model Inputs 
+Model Inputs 
+SO 0.8  0 g O2 m-3 Dissolved Oxygen 
+SI 80  g COD m-3 Inert Soluble Material 
+SS 53  g COD m-3 Readily Biodegradable Organic Substrate 
+SNH 8.6  g N m-3 Ammonium Plus Ammonia Nitrogen 
+SN2 0  g N m-3 Dinitrogen 
+SNO 0  g N m-3 Nitrate Plus Nitrite Nitrogen 
+SHCO  5 mole HCO3- m-3 Alkalinity 
+XI 30  g COD m-3 Inert Particulate Organic Material 
+XS 62  g COD m-3 Slowly Biodegradable Organic Material 
+XH 528  g COD m-3 Heterotrophic Organisms 
+XSTO 0.25  g COD m-3 A Cell Internal Storage Product of Hetero trophic Organisms 
+XA 15.5  g COD m-3 Nitrifying Organisms 
+XTS 3000  g TSS m-3 Total Suspended Solids 
+ 
+The predicted BOD and ammonium concentration are presented in Chapter IV Table 21 . 
+ 
+ASM 3 has been applied to the activated sludge units of the industrial waste trea tment 
+facility.  ASM 3 will now be used to investigation effluent concentration through proce ss 
+control.  Only process control inputs will be varied to maximize ammonium removal . 
+ 
+ASM 3 Input Parameter Sensitivity Analysis 
+ 
+The goal of this section is to change certain input parameters to determine how  sensitivity 
+the effluent ammonium concentration is when input parameters are varied.  The f ocus 
+will be on stoichiometric input parameters.  The parameters of interest ar e the aerobic 
+yield of heterotrophic biomass (YH, O2) and the yield of autotrophic biomass per NO 3-N 
+(YA).   
+  39 The aerobic yield of heterotrophic biomass (YH, O2) will be varied from .295 to .5 g 
+biomass per g COD in increments of .05 g biomass per g COD.  This will be conducted to 
+determine how sensitive ASM 3 effluent ammonium concentration is to the effects of  
+changes in the aerobic yield of heterotrophic biomass. 
+ 
+Additionally, the yield of autotrophic biomass per NO3-N (YA) will be varied fr om .1 to 
+.15 g biomass per g NH3-N with increments of .01 g biomass per g NH3-N.  This will be  
+conducted to determine how sensitive ASM 3 effluent ammonium concentration is to the 
+effects of changes in the yield of autotrophic biomass. 
+ 
+Utilizing ASM 3 to Estimate the Reduction of Effluent Ammonium C oncentration 
+ 
+The focus of this section is to change the process control reactor inputs to reduce the 
+effluent ammonium concentration.  The focus will be on two process control inputs.  The 
+dissolved oxygen concentration and the SRT can be controlled by ASU operator.  The 
+operator can increase or decrease the dissolved oxygen concentration by increas ing or 
+decreasing the diffused air blowers.  The SRT can be increased or decreas ed by 
+increasing or decreasing the waste sludge pumping rate.  ASM 3 will be  modified 
+through the following options: 
+ 
+Option 1:   Increase the dissolved oxygen from 0.8 to 2 g O2 m-3 in increments of .1 
+g O2 m-3 only.   
+Use the same parameter inputs demonstrated in Table 14.   
+ 
+Increasing the dissolved oxygen concentration creates a situation where more  available 
+oxygen would be available to the nitrifying bacterial culture.  With more av ailable 
+oxygen the nitrifiers could then utilize more ammonium to create more nitrate s.  
+ 
+Table 16- Model Inputs- Increase Dissolved Oxygen 
+Model Inputs 
+SO 2  0 g O2 m-3 Dissolved Oxygen 
+SI 80  g COD m-3 Inert Soluable Material 
+SS 53  g COD m-3 Readily Biodegradable Organic Substrate 
+SNH 8.6  g N m-3 Ammonium Plus Ammonia Nitrogen 
+SN2 0  g N m-3 Dinitrogen 
+SNO 0  g N m-3 Nitrate Plus Nitrite Nitrogen 
+SHCO  5 mole HCO3- m-3 Alkalinity 
+XI 30  g COD m-3 Inert Particulate Organic Material 
+XS 62  g COD m-3 Slowly Biodegradable Organic Material 
+XH 528  g COD m-3 Heterotrophic Organisms 
+XSTO 0.25  g COD m-3 A Cell Internal Storage Product of Hetero trophic Organisms 
+XA 15.5  g COD m-3 Nitrifying Organisms 
+XTS 3000  g TSS m-3 Total Suspended Solids 
+ 
+The increase in the dissolved oxygen is represented in the change in variable SO.  All  
+other model inputs are held constant from Table 15.   
+  40 The predicted effluent ammonium concentration is demonstrated in Chapter IV Table 22 . 
+ 
+Option 2:   Reduce the SRT from 14 to 10 days in increments of 1 day only. 
+Use the same model inputs as presented in Table 15. 
+ 
+Reducing the SRT will create a more overall active biomass.  The overall biomas s 
+includes the nitrifying bacterial culture.  If the nitrifiers are more a ctive then they will 
+utilize more ammonium to create more nitrates.  Although, if the SRT is to low then 
+nitrification will not occur under typical dissolved oxygen concentrations.  For a 
+dissolved oxygen concentration of .8 g O2 m-3 the theoretical SRT should not be lower 
+than 8 days.  (Metcalf et al. 2003)   
+ 
+Table 17- Parameter Inputs- Reduced SRT 
+Model Constants 
+Kinetic Parameters 
+Symbol Characterization Value  Units 
+kH Hydrolysis rate constant 1.00  g XS g-1 
+XH d-1 
+KX Hydrolysis saturation constant 1.00  g XS g-1 
+XH 
+Heterotrophic organisms, 
+denitrification, XH      
+kSTO Storage rate constant 0.53  g SS g-1 
+XH d-1 
+nNO Anoxic reduction factor 0.3    
+KO Saturation constant for SO 0.2  g O2 m-3 
+KNO Saturation constant for SNO 0.5  g NO3- - 
+Nm-3 
+KS Saturation constant for substrate SS 2  g COD m-3 
+KSTO Saturation constant for XSTO 1  g XSTO g-1 
+XH 
+uH Heterotrophic max. growth rate 0.65  d-1 
+KNH Saturation constant for ammonium, 
+SNH 0.01  g N m-3 
+KHCO Bicarbonate saturation constant of 
+XH 0.1  mole 
+HCO3- m-3 
+bH,O2 Aerobic endog. respiration rate of 
+XH 0.2  d-1 
+bH,NO Anoxic endog. respiration rate of XH 0.1  d-1 
+bSTO,O2 Aerobic respiration rate of XSTO 0.2  d-1 
+bSTO,NO Anoxic respiration rate for XSTO 0.1  d-1 
+Autotrophic organisms, 
+nitrification, XA      
+uA Autotrophic max. growth rate XA 0.1  d-1 
+KA,NH Ammonium substrate saturation for 
+XA 1 g N m-3 
+KA,O Oxygen saturation for nitrifiers 0.6  g O2 m-3 
+KA,HCO Bicarbonate saturation for nitrifiers 0.5  mole 
+HCO3- m-3 
+bA,O2 Aerobic endog. respiration rate of 
+XA 0.15  d-1  41 bA,NO Anoxic endog. respiration rate of XA 0.05  d-1 
+    
+    
+Stoichiometric parameters 
+Symbol Characterization Value  Units 
+fSI  Production of SI in Hydrolysis 0  g SI g-1 XS 
+fXI Production of XI in endog. Biomass 
+respiration 0.12  g SI g-1 XS 
+YSTO,O2 Aerobic yield of stored product per 
+SS 0.6  g XSTO g-1 
+SS 
+YSTO,NO Anoxic yield of stored product per 
+SS 0.5  g XSTO g-1 
+SS 
+YH,O2 Aerobic yield of heterotrophic 
+biomass 0.295  g XH g-1 
+XSTO 
+YH,NO Anoxic yield of heterotrophic 
+biomass 0.2  g XH g-1 
+XSTO 
+YA Yield of autotrophic biomass per 
+NO3-N 0.1  g XA g-1 
+SNO 
+iNSI N content of SI 0  g N g-1 SI 
+INSS N content of SS 0  g N g-1 SS 
+iNXI N content of XI 0.03  g N g-1 XI  
+iNXS N content of XS 0.04  g N g-1 XS 
+iNBM N content of biomass, XH, XA 0.12  g N g-1 XH 
+or A 
+iTSXI TSS to COD ratio for XI 0.75  g TS g-1 XI 
+iTSXS TSS to COD ratio for XS 0.75  g TS g-1 XS  
+iTSBM TSS to COD ratio for biomass, XH, 
+XA 0.9  g TS g-1 
+XH or A 
+iTSSTO TSS to COD ratio for XSTO based 
+on PHB 0.6  g TS g-1 
+XSTO 
+ 
+ 
+The reduction in the SRT is represented in the change in variable uA (uA = 1/SRT).  Al l 
+other parameter inputs are held constant from Table 14.   
+ 
+The predicted effluent ammonium concentration is presented in Chapter IV Table 23 . 42 CHAPTER IV 
+ 
+ 
+FINDINGS 
+  43 Activated Sludge Model No. 3 (ASM 3) Validation 
+ 
+As presented in Chapter III, the validation process was completed by compari ng the 
+traditional analytical model with ASM 3.  The purpose was to predict through ASM 3 a  
+required HRT to remove a given concentration of substrate.  The required HRT is t hen 
+compared to the analytical model which is a more accepted way of predicting a  required 
+HRT.  The results of the investigation are presented in Table 18 for BOD removal onl y 
+and BOD removal with nitrification is presented in Table 19.  The results of investig ation 
+are presented in Table 20 for denitrification.  
+ 
+Example 1 Complete-Mixed Activated Sludge Process Design for BOD Rem oval 
+Only and for BOD Removal with Nitrification 
+ 
+Table 18- Example 1 Required HRT Comparison 
+Example 1 BOD Removal Only 
+  ASM 3 Analytical  % 
+Deviation  
+Influent sCOD 224 mg/L 224 mg/L   
+Effluent sCOD  0 0   
+Predicted 
+HRT 4.29 hrs 4.3 hrs 0.34  
+ 
+ASM 3 accurately predicts the same required HRT as the analytical model.  Thi s HRT 
+can then be used for reactor design. The .34 % deviation would be considered negligible. 
+ 
+Table 19- Example 1 Required HRT Comparison  
+Example 1 BOD Removal and Nitrification  
+  ASM 3 Analytical  % 
+Deviation  
+Influent NH3-N 28 mg/L 28 mg/L   
+Effluent NH3-N  0 0   
+Predicted HRT 9.9 hrs 9 hrs 10  
+ 
+ASM 3 predicts a longer required HRT than the analytical model.  This does not me an 
+that the required HRT that ASM 3 predicted is incorrect.  ASM 3 is more conservati ve 
+than the analytical model when modeling nitrification.  ASM 3 incorporates 13 model 
+inputs, 21 kinetic parameters and 16 stoichiometric parameters.  The analytica l model 
+utilizes 4 equations with 5 stoichiometric parameters and 5 input variables.  T he 
+conservatism that is incorporated into ASM 3 could be due to the complexity of the 
+model.  Although the simplicity of the analytical model is one of the reasons it is  more 
+widely accepted in the engineering profession and in academia.  The 10 % additi onal 
+conservatism would be considered acceptable in the engineering profession.  
+ 
+ 
+ 
+ 
+ 
+  44  
+Example 2 Anoxic/ Aerobic Process Design 
+ 
+Table 20- Example 2 Required HRT Comparison  
+Example 2 Denitrification  
+  ASM 3 Analytical  % 
+Deviation  
+Influent NO3-N 28 mg/L 28 mg/L   
+Effluent NO3-N 6 mg/L 6 mg/L   
+Predicted HRT 2.1 hrs 1.5 hrs 41  
+ 
+ASM 3 predicts a longer required HRT than the analytical model.  The ASM 3 pre dicted 
+minimum HRT for denitrification appears to be overly conservative.  Since the  analytical 
+model answer stated that an HRT of 2.5 hrs is acceptable, this leads the user to beli eve 
+that an acceptable answer is between 1.5 and 2.5 hrs.  The predicted ASM 3 HRT is 
+acceptable under the range standard.  
+ 
+ 
+Utilizing ASM 3 to Model the ASU at the Industrial Wastewater Treatment Facility 
+ 
+As presented in Chapter III, ASM 3 was utilized to predict the effluent concentr ation of 
+soluble COD (sCOD) and ammonium (NH3-N) in an industrial waste treatment proc ess.  
+The predicted effluent concentrations were then compared to measured effluent dat a.  
+The goal was to use ASM 3 to accurately predict the measured effluent values . The 
+results of the investigation are presented in Table 21. 
+ 
+Table 21- Effluent Prediction Comparison 
+ASU 
+  ASM 3 Measured % 
+Error 
+Influent sCOD 225 mg/L 225 mg/L   
+Effluent sCOD 11.4 mg/L 12.3 mg/L 7.2 
+Influent NH3-N 8.6 mg/L 8.6 mg/L   
+Effluent NH3-N 3.1 mg/L 3.6 mg/L 13.8 
+HRT .99 days .99 days   
+ 
+ASM 3 accurately predicts ammonium and COD removal when compared to the 
+measured data.  The error could be attributed to the estimated inputs, the unpredicta ble 
+nature of microorganisms and the toxicity of the waste stream.  Additional ly the error 
+could be to due to error introduced during collection of the measured data. 
+ 
+ASM 3 Input Parameter Sensitivity Analysis 
+ 
+As presented in Chapter III, an investigation was conducted into ASM 3 effluent 
+ammonium concentration sensitivity when stoichiometric parameters are va ried. 
+As previously stated, YH, O2 was varied from .295 to .5 g biomass per g COD in 
+increments of .05 g biomass per g COD.  The results are presented in Figure 10.  45  
+ 
+Effluent NH3-N vs. YH, O2 
+00.5 11.5 22.5 33.5 
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 
+YH, O2 (g biomass g-1 COD) NH3-N (g N m-3) 
+ 
+Figure 10- Sensitivity analysis- Aerobic yield of heterotrophic biomas s (YH, O2) 
+ 
+Effluent ammonium concentration is very sensitive to changes in YH, O2.  This is wha t 
+was expected because YH, O2 is a stoichiometric parameter that is the r atio of biomass 
+yield to COD concentration.  If a culture of bacteria has a higher ratio then mor e biomass 
+will be created, thus increasing the concentration of active nitrifying bact eria.  This will 
+lower the effluent concentration of ammonium.  Also a culture of bacteria with a hi gh 
+YH, O2 places more emphasis on producing more bacteria.  A bacterial culture wi th a 
+lower YH, O2 places more emphasis on cell maintenance.  An industrial wastewate r used 
+for this study would encourage a bacterial culture to perform more cell main tenance. 
+ 
+As previously stated, YA was varied from .1 to .15 g biomass per g NH3-N with 
+increments of .01 g biomass per g NH3-N.  The results are presented in Figure 11. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  46  
+ 
+ 
+Effluent NH3-N vs. YA 
+2.6 2.65 2.7 2.75 2.8 2.85 2.9 2.95 33.05 3.1 3.15 
+0 0.02 0.04 0.06 0.08 0.1 0.12 0.14 0.16 
+YA (g biomass g-1 NH3-N) NH3-N (g N m-3) 
+ 
+Fig. 11- Sensitivity analysis- Yield of autotrophic biomass per NO3-N (YA)  
+ 
+Effluent ammonium concentration is sensitive to changes in YA.  This is what was 
+expected because YA is a stoichiometric parameter that is the ratio of autotrophic 
+biomass yield to NH3-N concentration.  If a culture of bacteria has a higher  ratio then 
+more biomass will be created, thus increasing the concentration of active nitrif ying 
+bacteria.  This will lower the effluent concentration of ammonium.  Also a culture  of 
+bacteria with a high YA places more emphasis on producing more bacteria.  A ba cterial 
+culture with a lower YA places more emphasis on cell maintenance.  An industri al 
+wastewater used for this study would encourage a bacterial culture to perfor m more cell 
+maintenance.  What was not expected is that when YH, O2 was varied the effluent 
+concentration of NH3-N decrease at a faster than YA was varied. 
+ 
+Utilizing ASM 3 to Estimate the Reduction of Effluent Ammonium Con centration 
+ 
+As presented in Chapter III, ASM 3 was then used to predict the effluent ammonium 
+concentration by varying process control variables.  Specifically the dissolve d oxygen 
+concentration and SRT were varied.   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  47  
+ 
+The dissolved oxygen was increased from .8 to 2 g O2 m-3 by increments of .1 g O2 m-3.  
+The results are presented in Figure 12 and Table 22. 
+ 
+Effluent NH3-N vs. Dissolved Oxygen 
+00.5 11.5 22.5 33.5 
+0 0.5 1 1.5 2 2.5 
+DO (g O2 m-3) NH3-N (g N m-3) 
+ 
+Fig. 12- Predicted Effluent Ammonium Concentration- Increased Dissolved Ox ygen 
+ 
+Figure 12 demonstrates that as the DO is increased the ammonium concentration 
+decreases.  This is what is typically observed in wastewater treatment f acilities.  As 
+previously stated in Chapter III, creating an environment where more oxygen is  available 
+will convert more ammonium to nitrate.    
+ 
+Table 22- Predicted Effluent Ammonium Concentration- Increased Dissolved O xygen 
+ASU 
+  ASM 3 ASM 3 % Ammonium Reduction 
+(Theoretical) 
+Dissolved Oxygen  0.8 mg/L 2 mg/L   
+Influent NH3-N 8.6 mg/L 8.6 mg/L   
+Effluent NH3-N 3.1 mg/L 1.19 mg/L 61.3 
+HRT .99 days .99 days   
+ 
+ 
+ASM 3 predicts that an increase of dissolved oxygen concentration from 0.8 to 2 g O2 m-
+3 will reduce the effluent ammonium concentration by 61.3%.  This is a theoretical 
+ammonium reduction percentage.  63.1 % reduction would be a signifgant reduction in 
+ammonium concentration.  In an industrial wastewater treatment facility  the actual 
+reduction could be more or less.  The reason the reduction could be more or less is due to 
+the difficulties in predicting the behavior of microorganisms. 
+ 
+ 
+ 
+  48  
+ 
+The SRT was decreased from 14 to 10 days by increments of 1 day.  The results are 
+presented in Figure 13 and Table 23. 
+ 
+NH3-N vs. SRT 
+00.5 11.5 22.5 33.5 
+0 2 4 6 8 10 12 14 16 
+SRT (days) NH3-N (g N m-3) 
+ 
+Fig. 13- Predicted Effluent Ammonium Concentration- Reduction in SRT 
+ 
+The Figure 13 indicates that if the SRT is reduced the ammonium concentration wil l be 
+reduced also.  As previously stated in Chapter III there is a theoretical mi nimum SRT.  
+For the dissolved oxygen concentration of .8 g O2 m-3 the theoretical minimum SRT i s 8 
+days.  ASM 3 has incorporated a minimum SRT in the form of nitrifying organism 
+concentration (XA).  If the minimum SRT drops below 8 days, the ASM 3 user should 
+input XA is equal to 0.  If XA is equal to 0, nitrification will not occur in ASM 3.  In 
+ASM 3 the SRT and concentration of nitrifying bacteria are independent input 
+parameters.  In an activated sludge treatment facility they are dependent  input parameters.  
+The user of ASM 3 must recognize that this is the case.   
+ 
+ASU 
+  ASM 3 ASM 3 % Ammonium Reduction  
+(Theoretical) 
+SRT 14 10   
+Influent NH3-N 8.6 mg/L 8.6 mg/L   
+Effluent NH3-N 3.1 mg/L .75 mg/L 75.8 
+HRT .99 days .99 days   
+Table 23- Predicted Effluent Ammonium Concentration- Reduction in SRT 
+ 
+ASM 3 predicts that a reduction in the SRT from 14 to 10 days will reduce the effluent 
+ammonium concentration by 75.8%.  This is a theoretical ammonium reduction 
+percentage.  75.8 % reduction would be a signifgant reduction in ammonium 
+concentration.  As previously stated in Chapter III, only the input parameter uA wa s 
+adjusted.  In the industrial wastewater treatment facility, an adjustment  of the SRT would  49 also adjust other input parameters.  It is unknown which input parameters would adjust, 
+other than XA, as the SRT is lowered.    50 CHAPTER V 
+ 
+ 
+CONCLUSION 
+  51 Conclusion 
+ 
+As previously stated in Chapter IV, the validation process was completed by com paring 
+the analytical model with ASM 3.  ASM 3 was utilized to predict the effluent 
+concentration of soluble COD (sCOD) and ammonium (NH3-N); an investigation was 
+conducted into ASM 3 effluent ammonium concentration sensitivity when stoichiometri c 
+parameters are varied; and ASM 3 was then used to predict the effluent ammonium 
+concentration by varying process control variables.  This section of the paper wil l discuss 
+conclusions that can be drawn from the Chapter IV.  The section will highlight the 
+significant findings of the paper.   
+ 
+ASM 3 Validation 
+ 
+• ASM 3 can be used for the design of an activated sludge reactor basin that is for 
+BOD removal only and BOD removal with nitrification.   
+• ASM 3 is more conservative than the analytical model for a design of reactor 
+basins.   
+• It was hypothesized that ASM 3 conservatism could be attributed to ASM 3 
+complexities when compared to the analytical model. 
+• The analytical model is easy to use and more widely accepted in the engineeri ng 
+profession.  However, it appears that ASM 3 has potential for design applications.  
+ 
+ 
+Utilizing ASM 3 to Model the ASU at the Industrial Wastewater Treatment Facility 
+ 
+• The nature of the waste stream led to an assumption of slowed microorganism 
+activity.  This assumption appears to have been validated by the performance of 
+the model. 
+• ASM 3 successfully modeled the effluent BOD and ammonium concentration of 
+the ASU. 
+•  
+ 
+ASM 3 Input Parameter Sensitivity Analysis 
+ 
+• The model is sensitive to changes to aerobic yield of heterotrophic biomass (Y H, 
+O2) and the yield of autotrophic biomass per NO3-N (YA). 
+• The effluent ammonium concentration decreases at a faster rate with cha nges to 
+YH, O2 than with changes to YA. 
+ 
+Utilizing ASM 3 to Estimate the Reduction of Effluent Ammonium Con centration 
+ 
+• ASM 3 predicts that increasing the dissolved oxygen from .8 to 2 g O2 m-3 will 
+decrease the effluent ammonium concentration. 
+• ASM 3 predicts that reducing the SRT from 14 to 10 days will decrease the 
+effluent ammonium concentration.  52 • Nitrification within ASM 3 is particularly sensitive to the SRT and dissolved 
+oxygen. 
+• In ASM 3, the SRT is independent of autotrophic biomass concentration. 
+• If adjusting the SRT, special care must be taken to ensure the nitrifying bio mass 
+concentration is reasonable. 
+• The model must be used with care as small changes in the SRT or dissolved 
+oxygen could significantly change the model inputs and stoichiometric 
+parameters. 
+ 
+Recommendations for Future Work 
+ 
+• To ensure accuracy of the ASM 3, batch tests should be conducted to develop 
+model and parameter inputs. 
+• Future work could be conducted into the area of developing more specific input 
+parameters.  53 REFERENCES 
+1.  Metcalf & Eddy, Inc.  2003.  Wastewater Engineering Treatment and Reus e: 
+Fourth Edition .  New York:  McGraw-Hill. 
+2.  Baker, P.S.; Dold, P.L.  1997.  General model for biological nutrient removal 
+activated-sludge systems:  model presentation.  Water Environment Research, 69, 
+696. 
+3.  Baker, P.S.; Dold, P.L.  1997.  General model for biological nutrient removal 
+activated-sludge systems:  model application.  Water Environment Research, 69, 
+685. 
+4.  Gujer, W; Henze, M; Mino, T; Loosdrecht, M.V.  1999.  Activated sludge model 
+no. 3.  Water Science and Technology , 39, 1, 183-193. 
+5.  Koch, G; Kuhni, M; Gujer, W; Siegrist, H.  2000.  Calibration and validation of 
+activated sludge model no. 3 for a Swiss municipal wastewater.  Water Research , 
+34, 14, 3580-3590. 
+6.  Rieger, L; Koch, G; Kuhni, M; Gujer, W; Siegrist, H.  2001.  The EAWAG bio-p 
+module for activated sludge model no. 3.   Water Research , 35, 16, 3887-3903. 
+7.  Koch, G; Kuhni, M; Rieger, L; Siegrist, H.  2001.  Calibration and validation of 
+an ASM3-based steady-state model for activated sludge systems-partII:   
+prediction of phosphorus removal.  Water Research , 35, 9, 2246-2255. 
+8.  Van Veldhuizen, H.M; Van Loosdrecht, M.C.M; Heijnen, J.J.  1999.  Modeling 
+biological phosphorus and nitrogen removal in a full scale activated sludge 
+process.  Water Research , 33, 16, 3459-3468. 
+9.  Wichern, M; Obenaus, F; Wulf, P; Rosenwinkel, K.H.  2001.  Modelling of full-
+scale wastewater treatment plants with different treatment processe s using the 
+activated sludge model no. 3.  Water Science and Technology , 44, 1, 49-56. 
+10.  Mino, T; San Pedro, D.C; Yamamoto, S; Matsuo, T.  1997.  Application of the 
+IAWQ activated sludge model to nutrient removal process.  Water Science and 
+Technology , 35, 8, 111-118. 
+11.  Griffiths, P.  1994.  Modifications to the IAWPRC task group general activated 
+sludge model.  Water Research , 28, 3, 657-664. 
+12.  Iacopozzi, I; Innocenti, V; Marsili-Libelli, S; Giusti, E.  2007.  A modified 
+activated sludge model no. 3 (ASM3) with two-step nitrification-denitrific ation.  
+Environmental Modeling and Software , 22, 847-861. 
+13.  Dold, P.L; Ekama, G.A; Marais, G.  1980.  A general model for the activated 
+sludge process.  Program Water Technology , 12, 44-77. 
+14.  Dold, P.L; Marais, G.  1986.  Evaluation of the general activated sludge model 
+proposed by the IAWPRC task group.  Water Science and Technology , 18, 63-89. 
+15.  Pinzon Pardo, A.L; Brdjanovic, D; Moussa, M.S; Lopez-Vazquez, C.M; Meijer, 
+S.C.F; Van Straten, H.H.A; Janssem, A.J.H; Amy, G; Van Loosdrecht, M.C.M.  
+2007.  Modeling of an oil refinery wastewater treatment plant.  Environmental 
+Technology , 28, 11, 1273-1284. 
+16.  Maqueda, M.A.M; Martinez, S.A; Narvaez, D; Rodriguez, M.G; Agullar, R; 
+Herrero, V.M.  2006.  Dynamic modeling of an activated sludge system of a 
+petrochemical plant operation at high temperatures.  Water Science and 
+Technology , 53, 11, 135-142.  54 17.  Moussa, M.S; Hooij,ams, C.M; Lubberding, H.J; Gijzen, H.J; Van Loosdrecht, 
+M.C.M.  2005.  Modeling nitrification, heterotrophic growth and predation in 
+activated sludge.  Environmental Research , 39, 20, 5080-5098. 
+18.  Bing-Jie Ni; Han-Qing Yu.  2008.  An approach for modeling two-step 
+denitrification in activated sludge systems.  Chemical Engineering Science , 63, 6, 
+1449-1459.  55 APPENDICES 
+ 
+ 
+ 
+ 
+ 
+  
+  VITA 
+ 
+Brian Wintle 
+ 
+Candidate for the Degree of 
+ 
+Master of Science  
+ 
+ 
+Thesis:    THE USE OF ACTIVATED SLUDGE MODEL NO. 3 TO MODEL AN 
+ACTIVATED SLUDGE UNIT AT A PETROLEUM REFINERY 
+WASTEWATER TREATMENT FACILITY 
+ 
+ 
+Major Field:  Environmental Engineering 
+ 
+Biographical: 
+ 
+Personal Data:   
+ 
+Education: 
+Completed the requirements for the Bachelor of Science Civil and 
+Environmental Engineering at University of Maine, Orono, Maine in May, 
+2007. 
+Completed the requirements for the Master of Science Environmental 
+Engineering at Oklahoma State University, Stillwater, Oklahoma in Decem ber, 
+2008. 
+  
+ 
+Experience:   
+ 
+Professional Memberships:   
+ 
+ 
+ 
+ 
+  
+ 
+ADVISER’S APPROVAL:   Dr. Greg Wilber 
+ 
+ 
+  Name: Brian Wintle                                  Date of Degree: December, 2008 
+ 
+Institution: Oklahoma State University         Location: Stillwater, Oklahoma 
+ 
+Title of Study: THE USE OF ACTIVATED SLUDGE MODEL NO. 3 TO MODEL AN  
+ACTIVATED SLUDGE UNIT AT AN INDUSTRIAL WASTEWATER 
+TREATMENT FACILITY 
+ 
+Pages in Study: 54               Candidate for the Degree of Master of Science 
+Major Field: Environmental Engineering 
+ 
+Scope and Method of Study:  
+ 
+The objective of this research is to (I) introduce the Activated Sludge Model s (ASM), (II) 
+examine the validity of Activated Sludge Model No. 3 (ASM 3), (III) apply ASM 3 to a  
+specific industrial activated sludge unit to determine if the model accurately  predicts the 
+effluent ammonium concentration, (IV) determine the ammonium concentration 
+sensitivity when stoichiometric parameters are varied, and (V) investig ate changes in 
+model inputs to reduce the effluent concentration of ammonium.   
+ 
+To achieve the objectives of the paper, this work will (I) review literature pertaining to 
+the Activated Sludge Models, (II) apply Activated Sludge Model No. 3 to example 
+problems from environmental engineering literature, (III) apply ASM 3 to the  industrial 
+activated sludge unit to replicate the measured effluent, (IV) change stoi chiometric 
+parameters within ASM 3 to determine what occurs to the effluent ammonium 
+concentration, and (V) change input parameters that can be controlled through proces s 
+control to determine what occurs to the effluent ammonium concentration. 
+ 
+Findings and Conclusions:   
+ 
+Through this work, it was found that ASM 3 can be used for the design of an activated 
+sludge reactor basin that is for BOD removal only and BOD removal with nitrifi cation.  
+ASM 3 can be used to model an ASU at an industrial wastewater treatment facilit y.  The 
+model is sensitive to changes to aerobic yield of heterotrophic biomass (YH, O2) a nd the 
+yield of autotrophic biomass per NO3-N (YA).  For this ASU, the general tre nd is that if 
+the dissolved oxygen is increased and the SRT is reduced then the effluent ammonium 
+concentration should be reduced. 
+ 
+ 
+ 
+ 
+ 

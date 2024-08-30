@@ -1,0 +1,356 @@
+ARTICLE
+Calibration of Wide-Field Deconvolution Microscopy for Quantitative
+Fluorescence Imaging
+Ji-Sook Lee,1Tse-Luen (Erika) Wee,2,3and Claire M. Brown2,3
+Departments of1Biochemistry and2Physiology and3Life Sciences Complex Advanced BioImaging Facility ABIF, McGill
+University, Montreal, Quebec, Canada
+Deconvolution enhances contrast in ﬂuorescence microscopy images, especially in low-contrast, high-
+background wide-ﬁeld microscope images, improving characterization of features within the sample. Decon-volution can also be combined with other imaging modalities, such as confocal microscopy, and mostsoftware programs seek to improve resolution as well as contrast. Quantitative image analyses requireinstrument calibration and with deconvolution, necessitate that this process itself preserves the relativequantitative relationships between ﬂuorescence intensities. To ensure that the quantitative nature of the dataremains unaltered, deconvolution algorithms need to be tested thoroughly. This study investigated whetherthe deconvolution algorithms in AutoQuant X3 preserve relative quantitative intensity data. InSpeck Greencalibration microspheres were prepared for imaging, z-stacks were collected using a wide-ﬁeld microscope,and the images were deconvolved using the iterative deconvolution algorithms with default settings.Afterwards, the mean intensities and volumes of microspheres in the original and the deconvolved imageswere measured. Deconvolved data sets showed higher average microsphere intensities and smaller volumesthan the original wide-ﬁeld data sets. In original and deconvolved data sets, intensity means showed linearrelationships with the relative microsphere intensities given by the manufacturer. Importantly, upon normal-ization, the trend lines were found to have similar slopes. In original and deconvolved images, the volumes ofthe microspheres were quite uniform for all relative microsphere intensities. We were able to show thatAutoQuant X3 deconvolution software data are quantitative. In general, the protocol presented can be usedto calibrate any ﬂuorescence microscope or image processing and analysis procedure.
+K
+EYWORDS :microspheres, intensity, volume
+INTRODUCTION
+At the primary step of observing and imaging, microscopes
+are completely visually oriented. Image processing, how-ever, with the various software programs available, allowsfor the quantification of various aspects of the specimen. Inparticular, fluorescence microscopy has been used to quan-tify the localization, dynamics, and interactions of cellularmolecules.
+1–3Also, many techniques enable quantification
+of fluorescence intensity: fluorescence recovery after pho-tobleaching, fluorescence loss in photo-bleaching, fluores-cence resonance energy transfer, and fluorescence lifetimeimaging.
+1,2,4Such quantification of data allows for the
+measurement and scaling of the intensity values so thatchanges indistinguishable by the eye may be measured.Several considerations need to be addressed when per-
+forming quantitative analysis. First, illumination stabilityof the light source can be one of the main sources ofvariability.
+1,2,5In wide-field microscopes, the output of the
+mercury lamps can fluctuate up to 10% on time-scales ofmilliseconds to seconds and becomes more prominent asthe lamp ages.
+1,2Another source of noise is the photon shot
+noise or the uncertainty in the charge-coupled device(CCD) camera detection of a photon.
+1,2The relative con-
+tribution of shot noise decreases with increasing photoncounts; hence, to minimize photon shot noise, as manyphotons as possible need to be collected without damagingthe sample.
+1,2
+With wide-field microscopes, pixels in a large field of
+view are imaged simultaneously. The collection of a largeamount of light, including out-of-focus light, results inhigh sensitivity. However, the wide-field images also havereduced contrast as a result of significant background fromthe out-of-focus light. On the other hand, confocal laser-scanning microscopes (CLSMs) illuminate the samplepoint-by-point and remove out-of-focus light by passing
+ADDRESS CORRESPONDENCE TO : Claire M. Brown, ABIF, McGill Univer-
+sity, 3649 Promenade Sir William Osler Bellini Bldg., Rm.137a, Mon-treal, QC, Canada H3G 0B1 (Phone: 514-677-7493; Fax: 514-398-7452; E-mail: claire.brown@mcgill.ca).doi: 10.7171/jbt.14-2501-002
+xxxxxx
+xxxxxx
+Journal of Biomolecular Techniques 25:31–40 © 2014 ABRFonly the in-focus-emitted fluorescence through a pinhole;
+hence, confocal microscopes improve the image con-trast.
+1,2In turn, the exclusion of much of the out-of-focus
+light leads to lower sensitivity of CLSMs when compared
+with wide-field microscopes.
+Furthermore, CCD cameras used with wide-field mi-
+croscopes have better quantum efficiency—the percent ofphotons that reaches the detector that are converted intophoto electrons or signal within the images—than thephotomultiplier tubes used with CLSMs.
+6Consequently,
+in situations with little out-of-focus light [e.g., thin speci-
+mens (/H1102130/H9262m) or thick specimens with the fluorescence
+signal confined to a narrow volume], wide-field imagingproduces “statistically better-defined images” for the sameamount of illumination.
+1,2,6Deconvolution can then be
+used to improve the contrast in these images to levels
+comparable with CLSMs.
+When light travels through the microscope, it is dif-
+fracted by the optical elements. As a result of diffraction,the light is spread, and subresolution objects appear biggerthan they actually are. The resultant, three-dimensional(3D) distribution of each point of fluorescence within thespecimen is referred to as the point-spread function(PSF).
+1,2,7In other words, when the subresolution object is
+imaged it is convolved by the optics and looks like a PSF
+that is much larger than the original object in the image.1,2
+Deconvolution is the process of estimating the mor-
+phology of the actual object that gave rise to the blurredimage. There are three major types of deconvolution ap-proaches: deblurring, restorative, and restorative blind de-convolution.
+Deblurring or Nearest Neighbor-Based Deconvolution
+The deblurring method removes the out-of-focus light inan image with the assumption that most of the out-of-focuslight results from its two “neighbors”: the image axialsection above and the section below. The method worksespecially well with low numerical aperture lenses or rela-tively large section spacings.
+1,2As a result of the assump -
+tions and simple estimates of the out-of-focus light, how-ever, there are inherent errors with the method, and itshould not be used for quantitative analysis.
+1,2However, as
+it can be calculated rapidly, deblurring methods can be
+used to produce high-contrast images for quickly evaluat-ing sample morphology.
+1,2
+Restorative Deconvolution
+Restorative deconvolution methods use the theoretical ormeasured PSF to try to estimate the actual object thatproduced the image before it was convolved with thePSF.
+1,2The PSF can be calculated (theoretical PSF) based
+on the optical properties of the microscope (e.g., objectivelens, numerical aperture, sampling frequency, color of
+light) or measured using subresolution fluorescent micro-spheres [ /H11011100 nm diameter for high numerical aperture
+(NA) objectives]. After an estimation of the object is made,this estimation is convolved with the PSF to generate a newimage, which is compared with the original collected im-age, and the difference between the two images is deter-mined using algorithm-dependent techniques. If the differ-ence between the images is larger than a predeterminedfactor, then the process is repeated until the estimatedimage is not significantly different than the collected im-age. The term iterative is used for this repetition. Anadvantage of restorative deconvolution is that the out-of-focus light is not removed, such as light rejected by thepinhole in confocal imaging, but is rather reassigned to itsoriginal location, yielding images with a much higher sig-nal-to-noise (S/N) ratio than the initial wide-field images.Huygens (Scientific Volume Imaging, The Netherlands)and AutoQuant X3 (Media Cybernetics, Rockville, MD,USA) are examples of commercial software packages thatoffer restorative deconvolution algorithms. DeconvolutionLab is a plug-in that is available for ImageJ or FIJI, but itrequires the user to measure the PSF of their microscope.Deconvolution Lab is more geared to advanced deconvo-lution users but offers a lot of flexibility, with seven differ-ent deconvolution algorithms from which to choose.
+8,9In
+general, it is best to use a carefully measured PSF for
+deconvolution, as it will provide the algorithm with theexact characteristics of the microscope. However, if the PSFis not measured properly, it will introduce errors in theanalysis, and the theoretical PSF would be a better startingpoint for the algorithm. For detailed instructions, on howto prepare subresolution microsphere samples and manu-facture specific protocols on how to measure CLSM PSFs,see Cole et al.
+7These protocols can be adapted easily for
+measuring wide-field microscope PSFs.
+Blind Deconvolution
+Blind deconvolution is an extension to restorative de-
+convolution. However, in this case, both the object andthe PSF are treated as unknown. The initial PSF estimateis the theoretical function, but then, the PSF is modifiedas part of the deconvolution algorithm, which derivesthe PSF from the actual image data. Afterwards, themorphology of the object is estimated and convolvedwith the derived PSF. In the subsequent iterations, notonly is the object estimation altered but also, the PSFestimate.
+10,11AutoQuant X3 (Media Cybernetics) is a
+commercial software package that has an optional algo-
+rithm for blind deconvolution.LEE ET AL. / QUANTITATIVE WIDE-FIELD DECONVOLUTION
+32 JOURNAL OF BIOMOLECULAR TECHNIQUES, VOLUME 25, ISSUE 1, APRIL 2014Aberrations
+It should be noted that aberrations as a result of instrument
+performance, objective lens quality, and sample prepara-tion have a significant impact on any fluorescence imagingexperiment, including deconvolution analysis. If the mi-croscope stage drifts, the z-focus drifts, or the DIC opticsare in place, the PSF of the microscope or of the imagestacks will not be accurate.
+7If objective lenses are not
+performing well and show aberrations, such as coma or
+astigmatisms, the lenses need to be repaired or replaced. Ifsamples are not prepared properly with the correct cover-slip thickness or if the sample mounting media are notwell-matched with the immersion media, then sphericalaberrations can be a problem. Spherical aberrations causeasymmetric distortions in the PSF, and these aberrationschange and typically become more problematic when im-aging deeper into thick specimens.
+12–15They can be min -
+imized by matching the indices of refraction of the samplemounting medium and the lens immersion medium as wellas possible. Spherical aberrations are most prominent whenimaging into aqueous samples with oil immersion lenses.Many deconvolution algorithms have correction featuresand/or image preprocessing steps that can minimize spher-ical aberrations. The ideal way to correct for sphericalaberrations is to measure the actual PSF of the microscope
+using subresolution fluorescent microspheres.
+7In this
+study, we looked specifically at microspheres that were in
+close proximity to the coverslip and used 0.170 mm-thickcoverslips so spherical aberrations were not an issue (seeSupplemental Fig. 1).
+There is a great deal of previous work that has looked at
+quantitative deconvolution.
+1,2,16However, in this study,
+we present a simple and straightforward protocol for testing
+whether wide-field microscopes are quantitative and whether de-convolution algorithms maintain that quantitative intensity
+relationship in 3D image stacks of fluorescent calibration micro-
+spheres. Many researchers use image deconvolution as away to improve measurements of the 3D morphology ofsamples and also to improve image S/N. However, decon-volution is often not a central part of their research. There-fore, we wanted to test the simplest scenario using thedefault parameters of the commercial AutoQuant X3 de-convolution software package and inputting the theoreticalPSF in the algorithm. This is a scenario many people use inthe McGill Advanced BioImaging Facility (ABIF). Itshould be noted that much time could be spent measuringinstrument PSFs and optimizing deconvolution algorithmsettings for more ideal performance, but that was not theaim of this study. For further general and advanced infor-mation on deconvolution, there are many informative be-ginner and advanced articles.
+1,2,11,14,16–18MATERIALS AND METHODS
+Reagents
+●InSpeck Green (505/515), 2.5 /H9262m calibration mi-
+crospheres with relative intensities of 0.2%, 0.8%,2.3%, 10.6%, 30.0%, and 100%, Cat. No. I-7219(Life Technologies, Carlsbad, CA, USA); note: eachset of calibration microspheres comes with a lot-specific set of flow cytometry data, giving the preciseintensity relationship between the microspheres.
+●No. 1.5 coverslips, 18 mm /H1100318 mm, certified to be
+0.170/H110060.005 mm, Cat. No. 474030-9010-000
+(Carl Zeiss Canada, Toronto, ON)
+●Microscope slides, Fisherbrand, Cat. No. 12-552-3
+(Fisher Scientific, Ottawa, ON, Canada)
+●ProLong Gold mounting medium, Cat. No.
+P36934 (Life Technologies)
+Equipment
+●Power of the mercury lamp was measured using a
+FieldMaxII-TOP Laser Power/Energy Meter, Cat.No. 1098580 (Coherent, Santa Clara, CA, USA).
+●Images were collected using an Axiovert 200M fully
+automated inverted microscope, the AxioVisionsoftware, 100 /H11003/1.40-NA Plan-Apochromat lens,
+13 FITC 450–490 filter cube, and AxioCammonochrome camera (1388 /H110031040 pixels; 0.0645
+/H9262m). All microscope components were from Carl
+Zeiss (Jena, Germany).
+Preparation of the Fluorescent Calibration Microsphere
+Slides (As Adapted from Cole et al.7)
+1. InSpeck Green calibration microspheres, from 0%
+to 100% relative intensity, were vortexed briefly.
+2. The microspheres were sonicated in a water bath for
+20 min to break up any aggregates.
+3. The lab bench tabletop was wiped clean with etha-
+nol. Gloves were worn for succeeding steps to avoidfingerprint smudges on the slides and coverslips.
+4. Microscope slides were washed with 70% ethanol
+and wiped dry with Kimwipes.
+5. No. 1.5 coverslips were washed with 70% ethanol
+and held with forceps in a Bunsen burner flame, twotimes. Take care, as the glass cracks if flamed for toolong. This creates a hydrophilic surface on the glass,allowing for better spreading of the microspheredroplet. Carrying out the step once often left blotsof dirt on the coverslips; repetition ensured clean,shiny coverslip surfaces. A separate coverslip wasprepared for each relative intensity of calibrationmicrospheres that was used.LEE ET AL. / QUANTITATIVE WIDE-FIELD DECONVOLUTION
+JOURNAL OF BIOMOLECULAR TECHNIQUES, VOLUME 25, ISSUE 1, APRIL 2014 336. Right before pipetting the microspheres onto the
+coverslips, the microsphere vials were vortexedbriefly.
+7. A sample of 10 /H9262l calibration microsphere solution
+of each intensity was pipetted onto each coverslip.The coverslips were then covered with a metal panor aluminum foil to protect them from light anddust.
+8. Solutions were dried on the coverslips for 1–2 h.9. A small drop of ProLong Gold was applied onto
+each microscope slide. ProLong Gold has a refrac-tive index of 1.46, which nearly matches the indicesof refraction of the glass and immersion oil(1.515).
+7The similar indices of refraction increase
+microscope resolution by decreasing the loss of
+highly diffracted light from refraction at the inter-faces of different media.
+7
+10. Using forceps, the coverslips were placed with the
+microspheres facing down onto the ProLong Gold.Coverslips were held at a 45° angle and then re-leased slowly to minimize the formation of air bub-bles. Then, the coverslip was pressed lightly with acotton-tip applicator to force any air bubbles to theedges of the coverslip and out of the sample.
+11. Each slide was then flipped over and propped up at
+each end with an empty microscope slide placedlengthwise so that the microspheres stayed on thecoverslip.
+12. The samples were kept in the dark at room temper-
+ature overnight for the ProLong Gold to cure.
+Microsphere Imaging
+1. The mercury arc lamp and the wide-field micro-
+scope were turned on.
+2. The power of the mercury lamp (100 W) was ad-
+justed to 50% and warmed up for at least 30 min forstabilization of the output intensity. It is best not touse the lamp below 50% intensity, as fluctuations inpower output can occur. Note that not all mercurylamps have this kind of power adjustment.
+3. While the lamp was heating up, the 100 /H11003oil im-
+mersion 1.4-NA objective lens was cleaned. Anyexcess oil on the lens was removed by folding a pieceof lens paper three times lengthwise into a longrectangle and sweeping it across the lens three times,using a fresh area of the paper with each sweep.
+7The
+process was repeated two more times: once with lens
+cleaner and once with distilled water on the paper.
+4. The filter cube was set to FITC 450–490 nm.5. Before proceeding to imaging, the FieldMaxII-
+TOP Laser Power/Energy Meter (Coherent) wasused to measure the lamp power directly. The de-tector was placed on the 10 /H11003objective lens and
+immobilized using Blu-Tack. A wavelength ( /H9261)o f
+470 nm was set, the light in the room was turnedoff, and the power meter was zeroed by pressing on“Zero”. Subsequently, the fluorescent lamp shutterwas opened, and the measurement of the power wasobtained by pressing on “Auto”. Power measure-ments at 0.5% and 5% lamp intensity were ob-tained by placing neutral density (ND) filters of 1%or 10% directly in the light path, respectively. Afterthe measurements were recorded, the power meterdetector was removed from the objective lens.
+6. The 100 /H11003/1.40-NA Plan-Apochromat oil immer-
+sion lens was put in place, and a small drop ofimmersion oil standardized for room temperaturewas applied.
+7. A calibration microsphere slide was placed, cover-
+slip facing down, on the objective lens and viewedthrough the eyepieces. After focusing in a region ofsparse microsphere concentration (to allow for sin-gle microsphere intensity measurements), the mi-crospheres were viewed in the software with the liveimaging function.
+8. We ensured that the imaging settings were not
+resulting in detector saturation. Many softwarepackages have an image display look-up table thatshows pixels reading zero as one color and satu-rated pixels as another color, with all other pixelsshowing up as grayscale. In the Zeiss software, theoverexposure button in the live view was used toverify that the microsphere intensity signal wasnot saturated in the images. The overexposurefeature shows pixels reading zero as blue, satu-rated pixels red, and all other pixels with grayscaleintensities. It is imperative for quantitative fluo-rescence data of the corresponding intensitiesthat the intensities do not exceed the linear rangeof the detection system.
+1,2,11To attenuate satu -
+ration, ND filters could be put in place, or thepower of the mercury lamp could be adjusteddirectly if the lamp has the capability. For theprotection of the sample and the fluorophores, itis always best to reduce the intensity of the inci-dent light whenever possible. Saturation can alsobe avoided by using shorter camera exposuretimes.
+9. A z-stack, with a pixel size in x,y, and zaxes of
+0.0645 /H110030.0645 /H110030.3/H9262m, respectively, was
+collected. The sampling should adhere to Nyquistsampling or higher for deconvolution. Cole et al.
+7
+show a table of suggested lateral and axial resolu-tions for various lenses and also provide equationsLEE ET AL. / QUANTITATIVE WIDE-FIELD DECONVOLUTION
+34 JOURNAL OF BIOMOLECULAR TECHNIQUES, VOLUME 25, ISSUE 1, APRIL 2014to make the calculations on one’s own. It was veri-
+fied that: (1) significant sampling was obtained fordeconvolution, and (2) the entire microsphere wasimaged within the z-stack.
+10.At least three z-stacks were acquired of different
+microspheres in different fields of view.
+11.Once the z-stack was collected, it was saved as (1)
+the original software file format (.zvi) and (2) the16-bit .tif file format with 0% compression.
+12.Steps 7–11 were repeated for the microsphere slides
+of various relative intensities.
+13.All images were taken at a single imaging session to
+avoid changes in lamp intensity.
+Image Processing
+Images were deconvolved using the restorative iterative
+deconvolution algorithm with default settings, without orwith the addition of blind deconvolution in AutoQuant X3(Media Cybernetics). Based on our experience in a lifesciences core facility, the majority of users of commercialdeconvolution software does not spend a significantamount of time studying and optimizing deconvolutionsoftware settings. Therefore, all programs were used withthe default settings, unless noted otherwise. Afterwards,Imaris version 7.5.2 or version 7.6.2 (Bitplane, SouthWindsor, CT, USA) was used to measure the mean inten-sity and volume of the microspheres in the original and thedeconvolved images. In Imaris, the surface function wasused to create an isosurface of each of the microspheres.Settings of “Surface area detail level” of 0.5 /H9262m and “back-
+ground subtraction with diameter of largest sphere whichfits into the object” of 0.3 /H9262m were used. The surfaces were
+generated using the intensity thresholding automaticallydetermined by the software. The Imaris automatic thresh-olding is based on k-means clustering and dividing theimage intensity histogram into two populations using thealgorithm developed by Ridler and Calvard.
+19This
+method of thresholding is very robust and offers an objec-
+tive way to identify the microsphere boundaries withoutany user bias. If necessary, the microsphere selections werefiltered using a minimum voxel threshold to remove smallvolume object artifacts. The voxel thresholding enabled thesame number of microspheres to be measured for thecorresponding image stacks in the wide-field and the de-convolved images so that the same microspheres were ac-counting for the statistics of each image set.
+RESULTS
+To determine whether the AutoQuant X3 iterative decon-volution algorithm, with or without blind deconvolution,retains the relative quantitative fluorescence intensity in-formation, three sets (Set 1, 2, and 3) of microscope slideswere prepared separately with calibration microspheres of
+six different relative intensities of 0.2%, 0.8%, 2.3%,10.6%, 30.0%, and 100%, given by the manufacturer. Atleast three wide-field microscope z-stack images were takenof each microsphere slide in different regions of the sample.For Set 1, all microspheres were imaged using 0.5% powerand 120 ms exposure time. For Set 2, all microspheres wereimaged using 0.5% power and 80 ms exposure time. ForSet 3, the mercury bulb power was low, and the micro-spheres of lower intensities (0.2% and 0.8%) were not
+visible at 0.5% mercury lamp power. Consequently,
+0.2%, 0.8%, and 2.3% microspheres were imaged with 5%power, and 10.6%, 30.0%, and 100% microspheres wereimaged with 0.5% power. The exposure time of 80 ms wasused for all microsphere slides in Set 3. The exposure timesand measured lamp powers were used to scale the micro-sphere intensities so they could be compared between datasets. All z-stacks were deconvolved using the iterative de-convolution algorithm, with or without blind deconvolu-tion, using the default settings in AutoQuant X3 (Fig. 1).One sample of 0% microsphere intensity (i.e. unlabelledmicrospheres) was prepared and no fluorescence signal wasobserved. As expected, following blind deconvolution,there was improved image contrast and decreased out-of-focus blur (compare Fig. 1A with B). This is especiallyprominent in the xz-axis and yz-axis views with the disap-
+pearance of the emanating cones of out-of-focus light(compare Fig. 1C with D). Note that there is some asym-metry in the profile of these microspheres (see yzandzy
+profiles in Fig. 1C). This could be a result of (1) a slightdefect in the objective lens, leading to a coma artifact(Supplemental Fig. 1); (2) indices of refraction differencesbetween the immersion oil and the ProLong Gold; or (3)lensing effects that can be seen with these large micro-spheres. Blind deconvolution reassigns the out-of-focuslight to its original location; therefore, the intensities of themicrospheres increase significantly, as evident when thesame intensity display scale is applied on the original wide-field and blind deconvolution images (Fig. 2) Note that themicrospheres are barely visible (Fig. 2A) on the same inten-sity scale as the high-intensity blind deconvolution images(Fig. 2B).
+Subsequently, Imaris 3D image analysis software was
+used to measure the mean intensity and volume of themicrospheres in the original and the deconvolved images.The quantitative data for multiple image stacks at relativemicrosphere intensities were then averaged for the originalwide-field data, the iterative deconvolved data, and theiterative blind deconvolved data.
+As the deconvolution algorithms reassign the out-of-
+focus light to its origin, higher S/N ratios are seen. Thus,the following expected observations were made:LEE ET AL. / QUANTITATIVE WIDE-FIELD DECONVOLUTION
+JOURNAL OF BIOMOLECULAR TECHNIQUES, VOLUME 25, ISSUE 1, APRIL 2014 351. The deconvolved microspheres have fivefold higher
+average intensities than the wide-field microspheresfor all microsphere intensities (Table 1 and Fig. 3A).
+2. The deconvolved microspheres have /H1101170% lower
+volumes than the wide-field microspheres for allmicrosphere intensities as a result of increased con-trast and the fact that the deconvolution algorithmminimizes the distortion of microsphere within theimage and the spreading of light caused by diffrac-tion (Table 1 and Fig. 3C).
+Quantitative Intensity Information
+The data from the images taken at 5% mercury lamp
+power were adjusted to the 0.5% power by multiplying
+the measured power ratio of the mercury bulb power at0.5% (0.0535 mW) and 5% power (0.6460 mW), whichis 0.0828, to each intensity measurement derived fromImaris. Then, the relative average intensity of the cali-bration microspheres in the wide-field and the decon-volved images were graphed against the actual micro-sphere intensities from the manufacturer. Subsequently,
+a linear line of regression was fit to the scatter plots to seeif the relationship between the defined relative micro-sphere intensity and the measured mean intensityshowed the expected linear relationship (Fig. 3A).
+Intensity means of microspheres from original and
+deconvolved images showed linear correlation, with therelative microsphere intensities from the manufacturer’sspecifications (Table 1 and Fig. 3B). The intensity datafrom the 100% intensity microspheres were consistentlylower than expected, by /H1101120%, compared with the other
+microspheres in the original images. This is likely a result ofsome dye self-quenching with the high concentration ofdye in the 100% intensity microspheres. Hence, furtheranalyses were carried out with just the five calibrationmicrospheres of lower intensities: 0.2%, 0.8%, 2.3%,10.6%, and 30.0%.
+The mean intensity of each calibration microsphere
+was normalized by first dividing by the maximum intensity
+FIGURE 1
+Original and deconvolved wide-ﬁeld microscope
+images of calibration microspheres. (A) An xy,xz,
+and yzview of 30% InSpeck Green ﬂuorescent
+calibration microspheres imaged on a Zeiss Axio-vert 200M microscope with a 100 /H11003/1.4-NA oil
+immersion lens and AxioCam high-resolutioncamera with mercury lamp power of 0.5% andexposure time of 120 ms. (B) Images as in Adeconvolved with the blind deconvolution algo-rithm and the default settings in AutoQuant X3.(C and D) Zoomed-in images of one of the micro-spheres in A and B, respectively. Image displaysettings were adjusted independently so imagesappear to be of similar intensity, although decon-volved images have much higher intensities. Scalebars are 10 /H9262m (A and B) and 3 /H9262m (C and D).
+FIGURE 2
+Original and deconvolved wide-ﬁeld mi-
+croscope images of calibration micro-spheres viewed with the same intensitydisplay settings. Images were collectedas in Fig. 1 but with original image dis-play settings (A) adjusted with the samedisplay settings as the blind decon-volved images (B) to emphasize that de-convolved images have a much higherS/N. Scale bars are 50 /H9262m.LEE ET AL. / QUANTITATIVE WIDE-FIELD DECONVOLUTION
+36 JOURNAL OF BIOMOLECULAR TECHNIQUES, VOLUME 25, ISSUE 1, APRIL 2014for all of the microspheres in a given sample (i.e. 30.0%
+microspheres) for a specific experimental run and thenaveraging all of the microsphere intensities. When thenormalized intensity means were graphed against the actualmicrosphere intensities, all three experimental data sets(Sets 1, 2, and 3) yielded trend lines with slopes of /H110110.03
+and coefficient of determination ( R
+2) values of /H110220.98—
+before and after deconvolution. As the slopes of the graphs
+reflect the quantitative relationship between various fluo-rescence intensities, the similar magnitudes in-slope for theoriginal images and the deconvolved images clearly indicatethat deconvolution using the AutoQuant X3 blind decon-volution algorithm preserves the relative quantitative in-tensity data (Fig. 3B).
+Data from all three experiments were combined for
+original data, iterative deconvolution data, and iterativeblind deconvolution data. All data sets resulted in lineartrend lines with similar slopes (0.0331, 0.0327, and0.0333, respectively) and high R
+2values (0.9869, 0.9911,
+and 0.9905, respectively; Fig. 3B). There was no significant
+difference between the iterative deconvolution and theiterative blind deconvolution. This is not surprising, as thePSF for these images is very close to the theoretical (Sup-plemental Fig. 1), and images were collected of micro-spheres near the coverslip in a thin sample. Blind deconvo-lution is particularly useful when imaging deep intosamples when it is difficult to have an accurately measuredPSF and when spherical aberrations can be significant.
+Volume
+The volumes of the calibration microspheres in the originalwide-field images and the deconvolved images were deter-mined using the Imaris software. As expected, for all threeexperiments, the average volumes are consistent across the
+microspheres of different fluorescence intensities for theoriginal wide-field and deconvolved images (Table 1 andFig. 3C). Deconvolution did decrease the average volumefrom 19 /H110062t o1 3 /H110062/H9262m
+3, as a result of increased
+contrast and the reassignment of out-of-focus light toward
+the center of the microspheres, which restores microsphereshape. The deconvolved microsphere image volume of 13/H9262m
+3is approaching the expected volume of 8 /H9262m3, based
+on the sphere diameter of 2.5 /H9262m. The microspheres do
+not appear spherical as a result of diffraction along thez-axis. In fact, they are distorted and oblong along the
+z-axis. Therefore, the microsphere volume measurements
+are expected to be larger than the actual microsphere size.Deconvolution does improve the z-axis resolution but does
+not completely correct the microsphere distortion, so vol-ume measurements are still much larger than expected.There was no significant difference in the measured micro-TABLE 1
+Average intensity mean and volume, of microspheres plus or minus the SD from three experiments
+Bead
+intensity(%)Number of
+image
+stacksNumber
+of
+beadsIntensity
+mean origi-
+nal dataVolume ( /H9262m
+3)
+original dataIntensity mean
+iterative
+deconvolutionVolume ( /H9262m3)
+iterative
+deconvolutionIntensity mean
+iterative blind
+deconvolutionVolume ( /H9262m3)
+iterative blind
+deconvolution
+0.2 14 83 56 /H1100641 9 /H110062 180 /H1100630 13 /H110062 160 /H1100630 15 /H110063
+0.8 14 88 126 /H1100614 19 /H110062 620 /H1100695 13 /H110062 650 /H11006100 14 /H110062
+2.3 15 121 310 /H1100642 18 /H110062 2150 /H11006490 12 /H110061 2160 /H11006350 12 /H110061
+10.6 13 67 1280 /H11006190 18 /H110061 8450 /H110061560 12 /H110061 8600 /H110061400 12 /H110061
+30.0 15 131 3280 /H11006550 20 /H110062 24,300 /H110065400 12 /H110062 22,400 /H110064100 13 /H110062
+Average 19 /H1100621 2 /H1100621 3 /H110062
+Intensity and volume data are presented for original wide-ﬁeld data, iterative deconvolution data, and iterative blind deconvolution data.LEE ET AL. / QUANTITATIVE WIDE-FIELD DECONVOLUTION
+JOURNAL OF BIOMOLECULAR TECHNIQUES, VOLUME 25, ISSUE 1, APRIL 2014 37FIGURE 3
+Wide-ﬁeld calibration, increased inten-
+sity, and preservation of the quantitativemean intensity relationship upon decon-volution and reduction in microspherevolume. Graphs of the average micro-sphere intensity (A), average normalized
+microsphere intensity (B), and average mi-crosphere volume (C), as determinedusing Imaris 3D image analysis softwarefor the original wide-ﬁeld data (blue dia-monds), iterative deconvolution data(red squares), and iterative blind decon-volution data (green triangles), plottedagainst the relative microsphere intensi-ties given by the microsphere manufac-turer. (A and B) Lines are linear regression
+best ﬁts. (C) Horizontal lines correspond tothe average volume of all of the micro-spheres from all three slide sets for eachcondition. Error bars are
+SDof the mean
+values for three experiments.LEE ET AL. / QUANTITATIVE WIDE-FIELD DECONVOLUTION
+38 JOURNAL OF BIOMOLECULAR TECHNIQUES, VOLUME 25, ISSUE 1, APRIL 2014sphere volumes between the iterative deconvolution and
+iterative blind deconvolution data (Table 1 and Fig 3C).
+We attempted to repeat our analysis using Huygens
+Essential deconvolution software. When using the defaultsettings in the software and a theoretical PSF, we foundmicrospheres to be very symmetric and less oblong alongthez-axis than the original or the AutoQuant X3 deconvo-
+lution data (average volume of 10 /H110062). However, the inten-
+sity data did not maintain a linear relationship. We areconvinced that this is a file-formatting/scaling-factor issuecausing a distortion of the intensity information, but wewere unable to correct this using the Huygens Essentialsoftware. Thus, the Huygens software can likely give quan-titative intensity data but not using the default settings andfile formats available with Huygens Essential. HuygensProfessional would likely yield quantitative data but re-quires more advanced deconvolution training, and usersneed to spend considerable time setting up and optimizingthe deconvolution algorithm settings and learn how toadjust the scaling factor during file-format conversions.
+DISCUSSION
+In this study, our aims were to calibrate our wide-fieldmicroscope and determine whether the AutoQuant X3restorative deconvolution algorithms retained quantitativeintensity information. Data collected using calibration mi-crospheres supported that our wide-field microscope isquantitative, and they did indeed show a linear response tothe different intensity microspheres (Fig. 3A and B). Fol-lowing deconvolution, this linear response is not onlymaintained but also shows similar magnitudes in-slopeupon normalization (Fig. 3A and B). As the slope of theplots reflect a change in the quantitative relationship betweenvarious fluorescence intensities, the similar magnitudes in-slope clearly indicate that deconvolution preserves the relativerelationship between fluorescence intensities. The robustnessof the calibration yielded the wide-field and deconvolutiongraphs of the intensity means against the actual microsphereintensities, with slopes of /H110110.03 and R
+2values of /H110220.985,
+before and after deconvolution (Fig. 3B).
+As a result of deconvolution algorithms reassigning the
+out-of-focus light to their origin, higher S/N images areseen following deconvolution, and the microspheres havehigher intensity means and much rounder shapes (Figs. 1and 2). As a result, the deconvolved microspheres havelower volumes than the wide-field image microspheres(Table 1 and Fig. 3C). Deconvolution decreased the mea-sured volume to 70% of the original image volumes, whichis much closer to the expected volume of 8 /H9262m
+3, based on
+the actual microsphere size.
+It should be noted that in our hands, the 100% inten-
+sity microspheres had lower average intensity means andsums than expected, and they were eliminated from further
+analysis. This may be caused by the phenomenon of con-centration quenching that causes highly concentrated fluo-rophores to have lower intensities than expected as a resultof the intermolecular quenching between nearby fluoro-phores.
+20
+It is imperative for any quantitative imaging experi-
+ments to test and validate that the equipment is generatingquantitative data. It is also important to validate that anyimage processing or analysis steps applied to the data main-tain quantitative intensity information. Overall, we havepresented a protocol for calibration microsphere samplepreparation, imaging, and analysis. This protocol should beuseful to others for calibrating instruments for quantitativeimaging and ensuring instrument quality control. In addi-tion, we have demonstrated that the iterative deconvolu-tion and iterative blind deconvolution algorithms in Auto-Quant X3 maintain the linear relationship in calibratedmicrosphere intensities and more importantly, their rela-tive intensity changes. We are now confident that the use ofAutoQuant X3 is appropriate and accurate for quantitativefluorescence imaging.
+ACKNOWLEDGMENTS
+All images were collected and analyzed in the McGill University Life
+Sciences Complex ABIF. Purchase of equipment in the facility was madepossible with funding from the Canadian Foundation for Innovation(CFI) and the Ministère du Développement Économique, Innovation etExportation Québec (MDEIE). The authors thank Scientific VolumeImaging for providing a license for Huygens Essential and Media Cy-bernetics for providing an AutoQuant X3 license for testing purposes.
+DISCLOSURE
+The authors declare no conflict of interest.
+REFERENCES
+1. Swedlow JR. Quantitative fluorescence microscopy and image
+deconvolution. Methods Cell Biol 2003;72:349–367.
+2. Swedlow JR. Quantitative fluorescence microscopy and image
+deconvolution. Methods Cell Biol 2007;81:447–465.
+3. Esposito A, Schlachter S, Schierle GS, Elder AD, Diaspro A,
+Wouters FS, et al. Quantitative fluorescence microscopy tech-niques. Methods Mol Biol 2009;586:117–142.
+4. Pawley J. The 39 steps: a cautionary tale of quantitative 3-D
+fluorescence microscopy. BioTechniques 2000;28:884–886,
+888.
+5. Stack RF, Bayles CJ, Girard AM, Martin K, Opansky C, Schulz
+K, et al. Quality assurance testing for modern optical imagingsystems. Microsc Microanal 2011;17:598–606.
+6 Shaw PJ. Comparison of widefield/deconvoltuion and confocal
+microscopy for three-dimensional imaging. In Pawley J (ed):
+Handbook of Biological Confocal Microscopy , 3rd ed, New York,
+NY, USA: Springer, 2006;453–467.
+7. Cole RW, Jinadasa T, Brown CM. Measuring and interpreting
+point spread functions to determine confocal microscope reso-lution and ensure quality control. Nat Prot 2011;6:1929–1941.LEE ET AL. / QUANTITATIVE WIDE-FIELD DECONVOLUTION
+JOURNAL OF BIOMOLECULAR TECHNIQUES, VOLUME 25, ISSUE 1, APRIL 2014 398. Griffa A, Garin N, Sage D. Comparison of deconvolution
+software in 3D microscopy: a user point of view—part 1.Imaging Microsc 2010;12:43–45.
+9. Griffa A, Garin N, Sage D. Comparison of deconvolution
+software: a user point of view—part 2. Imaging Microsc 2010;12:
+41–43.
+10. Krishnamurthi V, Liu YH, Bhattacharyya S, Turner JN,
+Holmes TJ. Blind deconvolution of fluorescence micro-graphs by maximum-likelihood estimation. Appl Optics 1995;
+34:6633–6647.
+11 Holmes TJ, Biggs D, Abu-Tarif A. Blind deconvolution. In
+Pawley J (ed): Handbook of Biological Confocal Microscopy , 3rd ed,
+New York, NY, USA: Springer, 2006;468–487.
+12. Scalettar BA, Swedlow JR, Sedat JW, Agard DA. Dispersion,
+aberration and deconvolution in multi-wavelength fluorescenceimages. J Microsc 1996;182:50–60.
+13. Booth MJ, Wilson T. Strategies for the compensation of speci-
+men-induced spherical aberration in confocal microscopy ofskin. J Microsc 2000;200:68–74.
+14. Murray JM. Methods for imaging thick specimens: confocalmicroscopy, deconvolution, and structured illumination. Cold
+Spring Harb Protoc 2011;2011:1399–1437.
+15. Yuan S, Preza C. Point-spread function engineering to reduce
+the impact of spherical aberration on 3D computationalfluorescence microscopy imaging. Opt Express 2011;19:
+23298–23314.
+16. Swedlow JR, Platani M. Live cell imaging using wide-field
+microscopy and deconvolution. Cell Struct Funct 2002;27:
+335–341.
+17. McNally JG, Karpova T, Cooper J, Conchello JA. Three-di-
+mensional imaging by deconvolution microscopy. Methods
+1999;19:373–385.
+18. Wallace W, Schaefer LH, Swedlow JR. A workingperson’s guide
+to deconvolution in light microscopy. Biotechniques 2001;31:
+1076–1078, 1080, 1082 passim.
+19. Ridler TW, Calvard S. Picture thresholding using an iterative
+selection method. IEEE Trans Syst Man Cybernet 1978;8:
+630–632.
+20. Brown CM. Fluorescence microscopy—avoiding the pitfalls. J
+Cell Sci 2007;120:1703–1705.LEE ET AL. / QUANTITATIVE WIDE-FIELD DECONVOLUTION
+40 JOURNAL OF BIOMOLECULAR TECHNIQUES, VOLUME 25, ISSUE 1, APRIL 2014

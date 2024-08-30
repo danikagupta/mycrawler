@@ -1,0 +1,455 @@
+Empirical Statistical Model To Estimate the
+Accuracy of Peptide Identifications Made byMS/MS and Database Search
+Andrew Keller,*,²Alexey I. Nesvizhskii,*,²Eugene Kolker, and Ruedi Aebersold
+Institute for Systems Biology, 1441 North 34th Street, Seattle, Washington 98103
+We present a statistical model to estimate the accuracy
+of peptide assignments to tandem mass (MS/MS) spectramade by database search applications such as SEQUEST.Employing the expectation maximization algorithm, theanalysis learns to distinguish correct from incorrectdatabase search results, computing probabilities thatpeptide assignments to spectra are correct based upondatabase search scores and the number of tryptic terminiof peptides. Using SEQUEST search results for spectragenerated from a sample of known protein components,we demonstrate that the computed probabilities areaccurate and have high power to discriminate betweencorrectly and incorrectly assigned peptides. This analysismakes it possible to filter large volumes of MS/MSdatabase search results with predictable false identifica-tion error rates and can serve as a common standard bywhich the results of different research groups are com-pared.
+A major goal of proteomics research is to catalog and quantify
+the proteins and protein complexes present in cells grown undera variety of conditions.
+1,2Tandem mass spectrometry (MS/MS)
+has been particularly useful for determining the protein compo-nents of complex mixtures.
+3-6Proteins in a sample are first
+digested into smaller peptides, usually by the enzyme trypsin, andsubjected to reverse-phase chromatography. Peptides are thenionized and fragmented to produce signature MS/MS spectra thatare used for identification. Most frequently, peptide identificationsare made by searching MS/MS spectra against a sequencedatabase to find the best matching database peptide.
+7From these
+peptide assignments to spectra, the original proteins present inthe sample are inferred. Posttranslational modifications to peptidescan be investigated by searching spectra against a database while
+allowing for specific peptide modifications.
+8-10Labeling methods,
+such as differential isotopic labeling of cysteines with the ICATreagent, can be combined with MS/MS database search toquantify the levels of proteins in one sample relative to those ina reference.
+11-13In addition, peptides corresponding to MS/MS
+spectra can be derived without a database search by de novosequencing.
+13-15This is particularly useful for samples from
+organisms with polymorphic mutations or unsequenced genomes.De novo sequencing can also be combined with a databasesearch.
+14,16 -17
+Over the past few years, MS/MS with database search has
+been used increasingly for high-throughput analysis of complexprotein samples. This has been made possible by automateddatabase search software such as SEQUEST,
+18Mascot,19and
+Sonar.20These applications compare each spectrum against those
+expected for all possible peptides obtained from a sequencedatabase that have masses within an error tolerance of theprecursor ion mass. Each spectrum is then assigned the databasepeptide with the highest overall score, or set of scores, that reflectsvarious aspects of the fit between spectrum and peptide. Thesescores help discriminate between correct and incorrect peptideassignments to spectra and, hence, facilitate detection of falseidentifications. They are often based on counts of common
+* Corresponding authors. Fax: 206-732-1299. E-mails: akeller@
+systemsbiology.org; nesvi@systemsbiology.org.
+²These authors contributed equally to this work.
+(1) Pandey, A.; Mann, M. Nature 2000 ,405, 837 -846.
+(2) Aebersold, R.; Goodlett, D. R. Chem. Rev .2001 ,101, 269 -287.
+(3) Link, A. J.; Eng, J.; Schieltz, D. M.; Carmack, E.; et al. Nat. Biotechnol .1999 ,
+17, 676 -682.
+(4) Washburn, M. P.; Wolters, D.; Yates, J. R. Nat. Biotechnol .2001 ,19, 242 -
+247.
+(5) Gavin, A.; Bosche, M.; Krause, R.; Grandi, P.; et al. Nature 2002 ,415, 141 -
+147.
+(6) Ho, Y.; Gruhler, A.; Heilbut, A.; Bader, G. D.; et al. Nature 2002 ,415, 180 -
+183.
+(7) Fenyo, D. Curr. Opin. Biotechnol .2000 ,11, 391 -395.(8) Yates, J. R., III; Eng, J. K.; McCormack, A. L.; Schieltz, D. Anal. Chem .1995 ,
+67(8), 1426 -1436.
+(9) Pevzner, P. A.; Mulyukov, Z.; Dancik, V.; Tang, C. L. Genome Res .2001 ,
+11, 290 -299.
+(10) Liebler, D. C.; Hansen, B. T.; Davey, S. W.; Tiscareno, L.; Mason, D. E.
+Anal. Chem .2002 ,74, 203-210.
+(11) Oda, Y.; Huang, K.; Cross, F. R.; Cowburn, D.; Chait, B. T. Proc. Natl. Acad.
+Sci.1999 ,96, 6591 -6596.
+(12) Gygi, S. P.; Rist, B.; Gerber, S. A.; Turecek, F.; Gelb, M. H.; Aebersold, R.
+Nat. Biotechnol .1999 ,17, 994 -999.
+(13) Goodlett, D. R.; Keller, A.; Watts, J. D.; Newitt, R.; et al. Rapid Commun.
+Mass Spectrom .2001 ,15, 1214 -1221.
+(14) Taylor, J. A.; Johnson, R. S. Rapid Commun. Mass Spectrom .1997 ,11, 1067 -
+1075.
+(15) Chen, T.; Kao, M.; Tepel, M.; Rush, J.; Church, G. The 11th Annual SIAM-
+ACM Symposium on Discrete Algorithms (SODA 2000) , San Francisco, 2000;
+ACM Press: New York; pp 389 -398.
+(16) Mann, M.; Wilm, M. Anal. Chem .1994 ,66(24), 4390 -4399.
+(17) Shevchenko, A.; Sunyaev, S.; Loboda, A.; Shevchenko, A.; et al. Anal. Chem .
+2001 ,73, 1917 -1926.
+(18) Eng, J. K.; McCormack, A. L.; Yates J. R. III. J. Am. Soc. Mass Spectrom .
+1994 ,5, 976 -989.
+(19) Perkins, D. N.; Pappin, D. J. C.; Creasy, D. M.; Cottrell, J. S. Electrophoresis
+1999 ,20, 3551 -3567.
+(20) Field, H. I.; Fenyo, D.; Beavis, R. C. Proteomics 2002 ,2,3 6-47.Anal. Chem. 2002,74,5383 -5392
+10.1021/ac025747h CCC: $22.00 © 2002 American Chemical Society Analytical Chemistry, Vol. 74, No. 20, October 15, 2002 5383
+Published on Web 09/12/2002fragment ion masses between the observed spectrum and that
+predicted for the peptide but can reflect additional information,such as the difference in mass between spectrum parent ion andpeptide. The SCOPE algorithm uses a probabilistic scoringscheme that can incroporate a priori knowledge regarding anexperiment.
+21
+A current challenge for high-throughput proteomics is to use
+database search results from large numbers of MS/MS spectrain order to derive a list of identified peptides and their corre-sponding proteins. This task necessarily entails distinguishingcorrect peptide assignments from false identifications amongdatabase search results. In the case of small datasets, this can beachieved by researchers with expertise manually verifying thepeptide assignments to spectra made by database search pro-grams. However, such a time-consuming approach is not feasiblefor high-throughput analysis of large datasets containing tens ofthousands of spectra or when expertise is not available. Alterna-tively, researchers can attempt to separate the correct fromincorrect peptide assignments by applying filtering criteria basedupon database search scores and properties of the assignedpeptides, such as the number of tryptic termini.
+3-4,22However,
+the numbers of rejected correct identifications and accepted falseidentifications that result from applying such filters are not known,nor how those numbers are affected by mass spectrometer, samplepreparation, or spectrum quality. In addition, researchers oftenuse different filtering criteria, making it particularly difficult tocompare their results to one another.
+In this work, we describe in detail a robust and accurate
+statistical model to assess the validity of peptide identificationsmade by MS/MS and database search. Each peptide assignmentto a spectrum is evaluated with respect to all other assignmentsin the dataset, including necessarily some incorrect assignments.Employing database search scores and the number of tryptictermini of the assigned peptides, the method applies machinelearning techniques to distinguish correctly from incorrectlyassigned peptides in the dataset, and in so doing, computes foreach peptide assignment to a spectrum a probability of beingcorrect. We apply this method to SEQUEST database searchresults for ESI-MS/MS spectra generated from a control sampleof 18 purified proteins.
+23Using this dataset with peptide assign-
+ments of known validity, we demonstrate that the computedprobabilities are accurate and have high power to discriminatebetween correctly and incorrectly assigned peptides.
+This statistical analysis promises to be of great value to high-
+throughput proteomics. Accurate probabilities with high discrimi-nating power obviate the need for laborious manual verificationof MS/MS database search results in the case of all but the mostuncertain peptide identifications and enable filtering of data withpredictable false identification error rates. This should facilitatethe benchmarking of various mass spectrometer settings andexperimental procedures to identify those that maximize thenumber of identifications per sample or per unit time. It can alsoserve as a common standard by which the results of differentresearch groups, using different mass spectrometers, and evendifferent database search software, can be compared. It is
+interesting to note that similar advantages have been realized inthe field of large-scale DNA sequencing with the development ofmathematical models for the estimation of errors in ªrawº DNAsequence data.
+24-26
+EXPERIMENTAL DATASETS
+Tandem mass spectra used in this study were generated from
+22 LC/MS/MS runs on a control sample composed of 18 purifiedproteins at a variety of concentrations, as previously described.
+23
+For each LC/MS/MS run, a control sample proteolyzed withtrypsin was subjected to ESI-MS/MS. A training dataset of peptideassignments with known validity was obtained by searching thesespectra with the SEQUEST analysis program
+18using a Drosophila
+peptide database27appended with sequences of the 18 control
+proteins. The database also included sequences of several humanproteins, such as keratin, that are common sample contaminants.Since the low-resolution ESI ion trap mass spectrometer used togenerate the MS/MS spectra cannot distinguish between [M +
+2H]
+2+and [M +3H]3+precursor ions, each spectrum was
+searched by SEQUEST against the database and assigned apeptide separately for each precursor ion charge. This analysisproduced a training dataset with 18 496 peptide assignments tospectra of [M +2H]
+2+ions and 18 044 peptide assignments to
+spectra of [M +3H]3+ions. The 504 spectra of [M +H]+ions
+were omitted from the analysis. SEQUEST peptide assignmentscorresponding to the 18 control sample proteins or commoncontaminants could occur by chance and, hence, were manuallyscrutinized to determine whether they were correct. All peptideassignments corresponding to proteins other than the 18 in thecontrol samples and the common contaminants were inferred tobe incorrect. In total, 1687 peptide assignments to spectra of [M+2H]
+2+ions and 1011 to spectra of [M +3H]3+ions were
+determined to be correct.
+A distinct test dataset of peptide assignments to spectra was
+obtained by searching the same spectra from above with SE-QUEST using a human peptide database
+27appended with se-
+quences of the 18 proteins of the control sample. This databaseis 2.5 times larger than that used for the training data, and it isexpected to generate different SEQUEST score distributions andperhaps different correct and incorrect peptide assignments. Onceagain, all correct peptide assignments corresponding to one ofthe 18 control sample proteins or common contaminants weremanually confirmed. Altogether, 1658 peptide assignments tospectra of [M +2H]
+2+ions and 1001 to spectra of [M +3H]3+
+ions were determined to be correct.
+RESULTS AND DISCUSSION
+Discriminant Function Analysis to Combine Database
+Search Scores. A useful statistical model to assess the validity
+of peptide assignments should enable discrimination betweencorrect and incorrect peptide assignments on the basis of readilyavailable information regarding the spectrum and assigned pep-tide. All database searching tools include with each peptide
+(21) Bafna, V.; Edwards, N. Bioinformatics 2001 ,17, S13 -S21.
+(22) Han, D. K.; Eng, J.; Zhou, H.; Aebersold, R. Nat. Biotechnol .2001 ,19, 946 -
+951.
+(23) Keller, A.; Purvine, S.; Nesvizhskii, A. I.; Stolyar, S. et al. OMICS 2002 ,6
+(2), 207 -212.(24) Lawrence, C. B.; Solovyev, V. V. Nucleic Acids Res .1994 ,22, 1272 -1280.
+(25) Ewing, B.; Hillier, L.; Wendl, M. C.; Green, P. Genome Res .1998 ,8, 175 -
+185.
+(26) Ewing, B.; Green, P. Genome Res .1998 ,8, 186 -194.
+(27) Extracted from ftp://ftp.ncicrf.gov/pub/nonredun/protein.nrdb.Z.
+5384Analytical Chemistry, Vol. 74, No. 20, October 15, 2002assignment to a spectrum a score or set of scores that reflects
+the likelihood that the given assignment is correct. Using Bayes'Law and denoting correct and incorrect peptide assignments asª+º and ª -º, respectively, the probability that a particular peptide
+assignment with database search scores, x
+1,x2, ...,xS, is correct,
+p(+jx1,x2, ...,xS), can be computed as
+where p(x1,x2, ...,xSj+) and p(x 1,x2, ...,xSj-) are the probabilities
+of scores x1,x2, ...,xSamong correctly and incorrectly assigned
+peptides, respectively, and p(+) and p(-) are prior probabilities
+of a correct and incorrect peptide assignment, respectively. Theprior probabilities are the overall proportion of correct or incorrectpeptide assignments in the dataset. To compute probabilities usingeq 1, joint probability distributions for database search scoresamong correct and incorrect peptide assignments must be derivedfrom training data with peptide assignments of known validity orlearned from the data itself. In either case, this becomes moredifficult as the number of database search scores, S, increases.
+Discriminant function analysis can be used to combine together
+any number of database search scores ,x
+1,x2, ...,xS,into a single
+discriminant score that best separates training data into twogroups by class, correct and incorrect peptide assignments.
+28The
+discriminant score, F, is a weighted combination of the database
+search scores, computed according to the discriminant function
+with constant c0and weights ciderived in such a way that the
+ratio of between-class variation to within-class variation is maxi-mized under the assumption of multivariate normality. Derivingthe discriminant function requires training data with peptideassignments of known validity. The resulting discriminant scorecan be substituted into eq 1 in place of the original database searchscores to enable tractable calculation of probabilities that retainas much discriminating power as possible using a single weightedcombination of the scores,
+where p(+jF)is the probability that the peptide assignment with
+discriminant score Fis correct, and p(Fj+) and p(Fj-) are the
+probabilities of Faccording to the discriminant score distributions
+among correct and incorrect peptide assignments, respectively.
+Discriminant function analysis was applied to SEQUEST
+database search scores using the training dataset of search resultswith known validity for spectra generated from a control sampleof 18 proteins. Spectra of poor quality, as determined by a scorereflecting several spectrum properties,
+29were omitted during thederivation of the discriminant functions. Such ªdata cleaningº
+excluded 7070 spectra of [M +2H]2+ions and 6995 spectra of
+[M+3H]3+ions, >99% of which were incorrectly assigned, and
+led to functions with improved discrimination between correct andincorrect peptide assignments to spectra, even when applied tothe entire ªuncleanedº training dataset. Four SEQUEST scoreswere found to contribute significantly to discrimination and wereincluded in the final discriminant function analysis: 1. cross-correlation (Xcorr), a measure based on the number of peaks ofcommon mass between observed and expected spectra, and usedas a primary criterion for peptide assignments; 2. ¢C
+n, the relative
+difference between the first and second highest Xcorr score forall peptides queried from the database; 3. SpRank, a measure ofhow well the assigned peptide scored relative to those of similarmass in the database, using a preliminary correlation metric; 4.d
+M, the absolute value of the difference in mass between the
+precursor ion of the spectrum and the assigned peptide. Separateanalyses were applied to spectra of [M +2H]
+2+and [M +3H]3+
+precursor ions, since they give rise to different Xcorr and ¢Cn
+score distributions. Analysis of spectra of [M +H]+precursor
+ions was not pursued, given their poor representation in thetraining dataset.
+Transformations of some input scores significantly improved
+the discrimination power of this approach. For example, increaseddiscrimination between correct and incorrect peptide assignmentswas achieved by taking the natural log of Xcorr and SpRank ,which
+reduces the variance of those scores, prior to discriminant analysis.A strong dependence of Xcorr on the length of assigned peptideswas observed (see Supporting Information). Xcorr reflects thenumber of matches between ion fragments in the observed andpredicted spectra and thus tends to be larger for assignments oflong peptides, which have many fragment ions, than for assign-ments of short peptides. As a result, assignments of short peptidescan be difficult to classify, since even correct assignments resultin relatively small Xcorr scores. Length dependence of Xcorrscores was largely reduced by the transformation to Xcorr ′,
+where Lis the length (number of amino acids) of the assigned
+peptide, N
+Lis the number of fragment ions expected for a peptide
+of length L, and LCis a specified length threshold beyond which
+Xcorr is independent of peptide length, corresponding to numberof fragment ions N
+C. Values of NLandLClikely depend on the
+detectable mass range of the mass spectrometer. Nevertheless,N
+Lcan be sufficiently approximated as 2 Land 4 Lfor the case of
+[M+2H]2+and [M +3H]3+precursor ions, respectively, since
+the major contributions to Xcorr are due to b and y ions. LCwas
+set at the peptide length beyond which Xcorr was found to belargely length-independent (15 and 25 for the case of [M +2H]
+2+
+and [M +3H]3+precursor ions, respectively). The transformation
+of Xcorr to Xcorr ′improved discrimination between correct and
+incorrect peptide assignments. It is interesting to note that a
+(28) Tabachnick, B. G.; Fidell, L. S. Using Multivariate Statistics , 4th ed.; Allyn
+and Bacon: Needham Heights, MA, 2001. (29) Nesvizhskii, A. I. Manuscript in preparation.p(+jx1,x2, ...,xS))
+p(x1,x2, ...,xSj+)p(+)
+p(x1,x2, ...,xSj+)p(+)+p(x1,x2, ...,xSj-)p(-)(1)
+F(x1,x2, ...,xS))c0+∑
+i)1S
+cixi (2)
+p(+jF))p(Fj+)p(+)
+p(Fj+)p(+)+p(Fj-)p(-)(3)Xcorr ©){ln(Xcorr)
+ln(NL),ifL<LC
+ln(Xcorr)
+ln(NC),ifLgLC(4)
+Analytical Chemistry, Vol. 74, No. 20, October 15, 2002 5385similar transformation of FASTA and Smith -Waterman sequence
+similarity scores has been successfully employed to reduce theirsequence-length dependence.
+30
+The discriminant functions derived from the training data for
+spectra of [M +2H]2+and [M +3H]3+ions are listed in Table 1.
+From the magnitude of correlations between variables anddiscriminant score given by the loading matrix, it is evident thatthe SEQUEST Xcorr and ¢C
+nscores contribute to most of the
+discrimination achieved between correctly and incorrectly as-signed peptides. With the two scores, excellent linear separationbetween classes and normality was observed, thus validating theuse of linear discriminant analysis for distinguishing correct andincorrect peptide assignments (see Supporting Information).Results with the training dataset support the effectiveness of thediscriminant score. For example, among spectra of [M +2H]
+2+
+precursor ion charge, 84% of correct peptide assignments had
+discriminant scores of 1.7 or greater, whereas 99% of incorrectpeptide assignments had scores below that threshold.
+Calculation of probabilities that peptide assignments are correct
+using eq 3 requires accurate models of discriminant scoredistributions. The observed discriminant score positive (correctpeptide assignments) and negative (incorrect peptide assign-ments) distributions for spectra of [M +2H]
+2+and [M +3H]3+
+precursor ions in the training dataset are shown in Figure 1A and
+B, respectively. These distributions were obtained by placingspectra in bins of width 0.2 according to discriminant score, andcounting the resulting total number in each bin. Several param-etrized distributions were assessed for their fit to these distribu-tions. A Gaussian distribution offers a close approximation to theobserved discriminant score distributions among correct peptideassignments (Figure 1). Hence, the probability that a correctpeptide assignment has discriminant score Fcan be computed
+according to a Gaussian distribution with calculated mean íand
+standard deviation ó.
+In contrast, the discriminant score negative distributions were
+noticeably asymmetric, having an extended right tail, and weresatisfactorily modeled by a gamma distribution (Figure 1). The
+probability of a discriminant score Ffor an incorrect peptide
+assignment can thus be computed as
+with parameter çset below the minimum Fvalue in the dataset,
+and parameters Rand âcomputed using the method of mo-
+ments.
+31Substituting the expressions for p(Fj+) and p(Fj-), along
+with the computed prior probabilities, into eq 3 should enablethe calculation of accurate probabilities that peptides assigned tospectra in the training dataset are correct.
+Computing Probabilities with NTT Distributions. When the
+enzyme trypsin is used to break proteins into small fragmentsamenable to MS/MS, database search of spectra can be performedin a constrained manner against only those peptides predicted to
+(30) Pearson, W. R. Protein Sci. 1995 ,4, 1145 -1160.(31) Johnson, N. L.; Kotz, S. Continuous Univariate Distributions . John Wiley &
+Sons: New York, 1994.Table 1. Discriminant Functions Derived from Training
+Dataset Spectra of [M +2H]2+and [M +3H]3+
+Precursor Ionsa
+[M+2H]2+[M+3H]3+
+variable coefficient correlation coefficient correlation
+Xcorr′ 8.362 0.798 9.933 0.698
+¢Cn 7.386 0.746 11.149 0.806
+ln SpRank -0.194 -0.510 -0.201 -0.491
+dM -0.314 -0.306 -0.277 -0.251
+constant -0.959 -1.460
+aThe coefficients weighting each variable are indicated, as well as
+the correlation between each variable and the discriminant functiongiven by the loading matrix, indicative of the contribution of eachvariable to discrimination. Contributions can range from none (cor-relation of 0) to complete (correlation of (1).
+Figure 1. Trainingdatadiscriminantscoredistributions.Discriminant
+score positive (correct peptide assignments) and negative (incorrectpeptideassignments)disbributionsforspectraof(A)[M +2H]
+2+and
+(B)[M +3H]3+precursorionsinthetrainingdataset(solidline).Also
+shown are Gaussian and gamma distributions for the correct andincorrectpeptideassignments,respectively,computedbythemethodof moments (dashed line).
+p(Fj-))(F-ç)R-1e-(F-ç)/â
+âR¡(R)(6)
+p(Fj+))1
+x2ðóe-(F-í)2/2ó2(5)
+5386Analytical Chemistry, Vol. 74, No. 20, October 15, 2002be products of trypsin digestion. This has the advantage of saving
+computation time by reducing the search space. Alternatively,database search can be performed in an unconstrained manneragainst all peptides in the database. This has the advantage ofpotentially identifying peptides that result from nontryptic cleav-age, for example, by protease contaminants in the sample or fromnonenzymatic cleavage during ionization for ESI-MS/MS.
+In the case of unconstrained database searches, such as the
+SEQUEST searches used in this study, the number of tryptictermini (NTT) of peptides assigned to spectra is valuable informa-tion for assessing whether the assignments are correct and hasoften been used as partial criteria for accepting peptide assign-ments.
+3-4,22This number, which can be 0, 1, or 2, measures how
+many of the peptide termini, on the basis of amino acid sequence,are consistent with cleavage by trypsin. The NTT distributions(the relative numbers of peptides with 0, 1, or 2 tryptic termini)among correct and incorrect peptide assignments are sufficientlydistinct to be of use for computing the probability that a peptideassignment is correct. Whereas the NTT distributions for incorrectpeptide assignments are expected to be predominantly NTT )0,
+reflecting the frequencies of amino acids recognized by trypsin(lysine and arginine) in the database used for search, those forcorrect peptide assignments are expected to be predominantlyNTT )2. In the training dataset, for example, of the incorrectly
+assigned peptides, 80% had NTT )0, 19% had NTT )1, and 1%
+had NTT )2, whereas of the correctly assigned peptides, 3% had
+NTT )0, 23% had NTT )1, and 74% had NTT )2. Taking into
+account NTT information in addition to the discriminant scorewhen computing probabilities should result in improved discrimi-nation between correct and incorrect results of unconstraineddatabase searches. That is because even if two peptide assign-ments, one with NTT )0 and the other with NTT )2, have the
+same discriminant score, the latter is more likely to be correctsince peptides with NTT )2 are highly enriched among correct
+assignments.
+Combining together information regarding NTT as well as
+discriminant score for a spectrum, the probability that a peptideassignment is correct, p(+jF, NTT ), can be expressed using
+Bayes' Law,
+where p(F, NTT j+) and p(F, NTT j-) are the probabilities of F
+and NTT according to the positive and negative joint probabilitydistributions, respectively. One expects the discriminant score andNTT distributions to be independent of one another, both forcorrect and incorrect peptide assignments, as long as the database
+search scores are not strongly dependent on the number of tryptictermini of peptides. This is true in the case of SEQUEST.Normalized discriminant score distributions are plotted in Figure2 for correct and incorrect peptide assignments to spectra of [M+2H]
+2+precursor ions in the training dataset, showing each
+separately for cases in which the assigned peptide has 0, 1, or 2tryptic termini. It is evident that the discriminant score distribu-tions are very similar for all values of NTT, verifying that thediscriminant score and NTT distributions can be consideredindependent among correct and incorrect peptide assignments.
+Incorporating this independence assumption into eq 7 yields thesimplified expression for computing the probability that a peptideassignment with discriminant score Fand number of tryptic
+termini NTT is correct,
+where p(NTTj+) and p(NTTj-) are the probabilities of NTT
+according to the distributions among correct and incorrect peptideassignments, respectively. If the database search is constrainedto consider only fully tryptic peptides, then all assigned peptideswill have NTT )2, effectively reducing eq 8 to eq 3. The strategy
+outlined in this section for incorporating NTT information intocomputed probabilities should be generalizable to the use ofenzymes other than trypsin, as well.
+Mixture Model Distributions of Correct and Incorrect
+Peptide Assignments. Although the training data prior prob-
+abilities and discriminant score and NTT distributions of correctand incorrect peptide assignments could be used as a ªglobalmodelº to compute probabilities that any test spectrum assignmentis correct according to eq 8, such a model would not likely berobust enough to produce accurate probabilities for a wide varietyof datasets. That is in part because the discriminant scoredistributions can vary significantly from dataset to dataset. Forexample, in the case of SEQUEST, Xcorr, one of the primarycontributors to the discriminant score, is strongly affected by thelevels of signal to noise in the spectra. Less than accuratecomputed probabilities would also result from variations in theNTT distributions of correctly assigned peptides, which aresensitive to the efficiency of sample trypsinization and the presenceof protease contaminants in the sample. In addition, the NTTdistributions of incorrectly assigned peptides, though morepredictable, can nonetheless vary depending on the frequency of
+p(+jF, NTT) )p(F, NTT j+)p(+)
+p(F, NTT j+)p(+)+p(F, NTT j-)p(-)(7)
+Figure 2. Independence of distributions of discriminant score and
+number of tryptic termini (NTT) among correct and incorrect peptideassignments.Normalizeddiscriminantscorepositive(correctpeptideassignments) and negative (incorrect peptide assignments) distribu-tionsfortrainingdataspectraof[M +2H]
+2+precursorionsareshown
+separately for NTT values of 0, 1, and 2.
+p(+jF,NTT) )
+p(Fj+)p(NTTj+)p(+)
+p(Fj+)p(NTTj+)p(+)+p(Fj-)p(NTTj-)p(-)(8)
+Analytical Chemistry, Vol. 74, No. 20, October 15, 2002 5387the amino acids recognized by trypsin (e.g. lysine and arginine)
+in the particular database used for search. Finally, a global modelwill not adequately reflect the expected variations in priorprobabilities (the relative numbers of correctly and incorrectlyassigned spectra) from dataset to dataset because of severalfactors, such as sample purity and spectral quality.
+A robust alternative to using a global model based upon
+distributions derived from the training data is to derive the priorprobabilities and discriminant score and NTT distributions amongcorrect and incorrect peptide assignments empirically from eachdataset as a mixture model using the expectation maximization(EM) algorithm.
+32In the mixture model, each spectrum contrib-
+utes to distributions of both correct and incorrect peptideassignments in proportion to its computed probability of beingcorrectly and incorrectly assigned, respectively. It is the task ofthe EM algorithm to learn the likelihood that each peptideassignment in the dataset is correct vs incorrect. At the outset,the EM algorithm makes initial estimates of the prior probabilitiesand discriminant score and NTT distributions among correct andincorrect peptide assignments. It then finds distributions that bestfit the observed data by a two-step iterative process. In the firststep, probabilities that spectra are correctly assigned, p(+jF,
+NTT), are calculated according to eq 8 using current estimates
+of the distributions. In the second step, the prior probabilities anddiscriminant score and NTT distributions among correct peptideassignments are computed using all spectra in the dataset, eachweighted by the current estimate that it is correctly assigned,p(+jF, NTT ). Similarly, the distributions among incorrect peptide
+assignments are computed, also using all spectra in the dataset,but in this case, each is weighted by the current estimate that itis incorrectly assigned, (1 -p(+jF, NTT)).
+For example, during the second step of the EM algorithm, the
+prior probability of a correct peptide assignment in a dataset of N
+spectra is computed as
+where F
+iand NTT iare the discriminant score and NTT value,
+respectively, for the peptide assignment to spectrum i. The
+discriminant score positive distribution is modeled as a Gaussiandistribution, and the probability of a particular discriminant score,F, among correct peptide assignments is therefore given by eq 5
+with mean íand standard deviation ó, computed from all spectra
+as
+Finally, the probability that a correct peptide assignment has a
+particular number of tryptic termini, p(NTTj+), is computed asthe proportion of p(+) contributed by all spectra jassigned
+peptides with that value of NTT.
+The discriminant score and NTT distributions among incorrect
+peptide assignments are computed in an analogous manner,modeling the discriminant score negative distribution as a gammadistribution according to eq 6.
+The EM algorithm two-step process of computing p(+jF, NTT)
+for spectra using current estimates of the prior probabilities anddiscriminant score and NTT distributions and computing the priorprobabilities and discriminant score and NTT distributions usingcurrent estimates of p(+jF, NTT) is repeated until no significant
+changes in the distributions result. With each iteration, themixture model distributions more closely match the observed data(see Supporting Information for an illustration of the EM algorithmapplied to the training data). Upon termination of the algorithm,final probabilities that peptides assigned to spectra are correctare computed according to eq 8 using the learned distribu-tions.
+The EM algorithm is not guaranteed to find the most likely
+distributions of correct and incorrect peptide assignments in adataset, so several constraints are imposed in order to guide thederivation of accurate distributions. For example, the discriminantscore distribution for correct peptide assignments is initializedwith that computed from the training data, which is expected tobe similar, although not identical, to that of most datasets analyzed.The discriminant score distribution for incorrect peptide assign-ments in the mixture model is initialized with the distributionderived from data with NTT )0, since the majority of such cases
+are expected to be incorrect peptide assignments. The çparameter
+value of the distribution is fixed during all subsequent rounds ofthe EM algorithm. In addition, the mixture model probabilitiesof all spectra with discriminant scores smaller than the initialdiscriminant score negative distribution mean are fixed at 0 toenforce that they be considered incorrectly assigned.
+Combined Probabilities for [M +2H]
+2+and [M +3H]3+
+Precursor Ions. In the analysis thus far described, independent
+models are employed to estimate the probability that a peptide isassigned correctly to a spectrum of either an [M +2H]
+2+or [M
++3H]3+precursor ion. This is justified when the precursor ion
+charge is known. In the case of high-resolution mass spectrometry,such as quadropole time-of-flight, the charge of the precursor ioncan be determined by deconvoluting the isotopic pattern. In thecase of low-resolution mass spectrometry, the precursor ioncharge is generally not known, but it can in some cases bedetermined by computational methods.
+33,34In addition, database
+search applications can query each spectrum against a databaseseparately for both [M +2H]
+2+and [M +3H]3+precursor ion
+cases and report only one peptide assignment per spectrumcorresponding to the (putatively correct) charge state yielding thehigher final score.
+(32) Dempster, A.; Laird, N.; Revow, M. J. R. Stat. Soc .1977 ,B39 (1), 1 -38.(33) Sadygov, R. G.; Eng, J.; Durr, E.; Saraf, A.; et al. J. Proteome Res .2002 ,1
+(3), 211 -215.
+(34) Perez, R. E.; Asara, J. M.; Lane, W. L. Proceedings of the 50th ASMS
+Conference on Mass Spectrometry and Allied Topics , Orlando, FL, 2002; in
+press.p(+))1
+N∑
+i)1N
+p(+jFi, NTTi) (9)
+í)1
+Np(+)∑
+ip(+jFi, NTTi)Fi (10)
+ó)x1
+Np(+)∑
+ip(+jFi, NTTi)(Fi-í)2(11)p(NTTj+))1
+Np(+)∑
+{jjNTT j)NTT}p(+jFj, NTTj) (12)
+5388Analytical Chemistry, Vol. 74, No. 20, October 15, 2002When the precursor ion charge of a spectrum is not known
+and database search results for both the [M +2H]2+and [M +
+3H]3+ion cases are reported, there must be a suitable means to
+reconcile the peptide assignments for each ion case. For example,the ion trap spectra of this study were searched by SEQUESTand assigned peptides for both [M +2H]
+2+and [M +3H]3+ion
+cases, yet each spectrum can realistically have a correct peptideassignment for at most one precursor ion case. Using the mixturemodels for [M +2H]
+2+and [M +3H]3+precursor ions described
+above, probabilities are computed that the peptide assignmentsare correct for each case independently, with no constraints that,for example, prevent probabilities of 1 being computed for peptideassignments to both precursor ion cases of the same spectrum.
+As a means of combining together the results of both [M +
+2H]
+2+and [M +3H]3+precursor ion models in a realistic way in
+cases in which the ion charge is not known, probabilities computedby each model to the same spectrum are adjusted downward bythe multiplicative factor, ( p
+2++p3+-p2+p3+)/(p2++p3+), where
+p2+andp3+are the independently computed probabilities that
+peptide assignments to a spectrum are correct for the [M +2H]2+
+and [M +3H]3+ion cases, respectively. This adjustment to the
+probabilities should have minimal effect on the great majority ofspectra for which p
+2+p3+is small. It effectively removes the
+unrealistic joint probability (assuming independence) that peptidesassigned to a spectrum are correct for both [M +2H]2+and [M
++3H]3+ion cases simultaneously. For example, in the case in
+which both p2+andp3+are initially 1 for a particular spectrum,
+they are each reduced to 0.5. This adjustment ensures in generalthat probabilities that peptide assignments are correct for bothprecursor ion cases of the same spectrum do not sum to morethan unity.
+Test Data Mixture Model Probabilities. The mixture model
+EM method was applied to a test dataset of combined MS/MSspectra generated from 22 different LC/MS/MS runs on a controlsample of 18 proteins. These spectra were searched usingSEQUEST against the human peptide database appended withsequences of the control proteins. This test dataset, similar to thetraining dataset described above, has SEQUEST peptide assign-ments with known validity and can be used to evaluate the mixturemodel method for computing probabilities that spectra areassigned correctly. Convergence of the EM algorithm wasachieved within 10 iterations. Figure 3A,B shows the discriminantscore positive and negative distributions derived by the mixturemodel EM method for spectra of [M +2H]
+2+and [M +3H]3+
+precursor ions, respectively. It is evident that they closely match
+the actual positive and negative distributions of the test dataset.Close correlation between actual and model-derived prior prob-abilities and NTT distributions was also observed.
+Figure 3. Test data discriminant score distributions and probabilities. Actual (solid line) and mixture model derived (dashed line) discriminant
+score positive (correct peptide assignments) and negative (incorrect peptide assignments) distributions for test data spectra of (A) [M +2H]2+
+and (B) [M +3H]3+precursor ions. Actual probability (fraction of database search results that are correct) (solid line) and computed probability
+(dashedline)plottedseparatelyforpeptideassignmentswiththenumberoftryptictermini(NTT)equalto0,1,or2forspectraof(C)[M +2H]2+
+and (D) [M +3H]3+precursor ions.
+Analytical Chemistry, Vol. 74, No. 20, October 15, 2002 5389Probabilities that peptide assignments are correct were com-
+puted according to eq 8 using the positive and negative distribu-tions estimated by the mixture model. Figure 3C,D shows forspectra of [M +2H]
+2+and [M +3H]3+ions, respectively, the
+computed probability and actual probability (fraction of databasesearch results that are correct) plotted as a function of discriminantscore separately for peptide assignments with NTT equal to 0, 1,or 2. Good agreement is evident for all values of NTT, justifyingthe assumption used to compute probabilities that for correctand incorrect peptide assignments, the discriminant scores andNTT are independent. As expected, assignments of peptideswith NTT )2 had much higher probabilities for any discrimi-
+nant score relative to assignments of peptides with NTT )0
+or 1, reflecting the much higher proportion of peptides with NTT)2 among correct assignments than among incorrect assign-
+ments.
+The accuracy of computed probabilities is further demonstrated
+by plotting the actual probability that peptide assignments arecorrect as a function of computed probability for the combinedtest data spectra of [M +2H]
+2+and [M +3H]3+ions (Figure 4).
+Spectra were sorted by computed probability, and then the meancomputed probability and actual probability were determinedwithin a sliding window of 100 spectra. Good correspondencebetween computed and actual probabilities over most of the entire0-1 range is evident, indicating that the computed probabilities
+are an accurate reflection of the likelihood that peptides arecorrectly assigned to spectra. This validates the mixture modelEM method, and suggests that computed probabilities thatpeptides are correctly assigned to MS/MS spectra could be usedeffectively in a statistical model to estimate the likelihood thatproteins corresponding to those peptides are present in thesample.
+To evaluate the mixture model EM analysis method on smaller
+datasets, it was applied to database search results for each of the22 test data LC/MS/MS runs separately to derive 22 differentmixture models. LC/MS/MS runs typically produce only 1000 -2000 spectra. Computed probabilities from the individual models
+were then combined and sorted to enable calculation of a meancomputed probability and actual probability within a slidingwindow of 100 spectra, as previously described. Figure 4 showsthat probabilities computed for individual LC/MS/MS runs arenearly as accurate as those computed from a single model of thecombined data. Interestingly, even more accurate computedprobabilities were obtained by removing poor quality spectra fromthe datasets prior to analysis.
+29Such data cleaning resulted in
+discriminant score negative distributions that were more faithfullymodeled by a gamma distribution. These results demonstrate thatthe mixture model is generally applicable to database searchresults for small numbers of spectra obtained from individual LC/MS/MS runs.
+Sensitivity and Error Rates with Minimum Computed
+Probability Thresholds. A useful statistical model, in addition
+to yielding accurate probabilities, should enable good discrimina-tion between correct and incorrect database search results. Anideal model would enable complete separation between correctand incorrect peptide assignments, the former assigned prob-abilities close to unity, the latter, close to 0. In practice, one canaccept all peptide assignments having a computed probabilitygreater than or equal to a user-specified minimum threshold. Arelatively low minimum threshold can be used to ensure highsensitivity (fraction of all correct peptide assignments accepted),yet often with the cost of a higher false identification error rate(fraction of accepted peptide assignments that are incorrect).Alternatively, a relatively high minimum threshold can be usedto achieve a lower error rate at the expense of decreasedsensitivity. The optimal tradeoff between sensitivity and errorwill depend on the relative importance given to each by theuser.
+The sensitivity/error rate tradeoff for the combined test dataset
+is illustrated in Figure 5A. Each point along the curve representsthe results of using a different minimum probability threshold toaccept all peptide assignments with computed probabilities at leastas great. The bottom right corner (denoted with an asterisk)corresponds to an ideal data filter with 100% sensitivity and 0%error. For comparison, the plot also shows the results of usingseveral conventional means of filtering data based upon SEQUESTscores and NTT. It is evident that data filters based on theprobabilities computed from the model outperform each conven-tional filter, achieving much higher sensitivity and, hence, agreater number of correct identifications, for the same rate oferror. For example, employing a conservative set of SEQUESTscore and NTT thresholds (no. 5 in Figure 5A: Xcorr g2,¢C
+ng
+0.1, SpRank e50, NTT )2) yields 61% sensitivity with an error
+of 2.5%, whereas employing a minimum probability threshold ( p
+g0.65) yields 89% sensitivity with the same level of error. Filtering
+data based upon computed probabilities in this case thereforeconfers 46% more correct peptide identifications than filtering data
+based upon SEQUEST scores and NTT.
+To take advantage of good discrimination between correct and
+incorrect peptide assignments, a user must choose an appropriateminimum probability threshold to employ for a particular dataset.Accurate probabilities generated by the mixture model enable theexpected sensitivity, 〈Sens〉, and expected false identification error
+Figure 4. Accuracyofcomputedprobabilities.Theactualprobability
+(fractionofpeptideassignmentsthatarecorrect)amongspectrawithindicated computed probabilities, determined either from a singlemixture model using all 22 test data LC/MS/MS runs (solid line), orfrom 22 mixture models, each derived from an individual LC/MS/MSrun(dashedline).Theexpectedprobabilityisalsoshown(dotted45 °
+line).
+5390
+Analytical Chemistry, Vol. 74, No. 20, October 15, 2002rate,〈Err〉, for any minimum probability threshold value, pT,t o
+be calculated,
+where piis the probablity that the peptide assigned to spectrum
+iis correct, and the indicated sums are either over all spectra i,
+or over only those spectra with pigpT. The sensitivity and errorrates predicted by the model for the test dataset agree well with
+those observed (Figure 5B) and can be used to select theminimum probability threshold that achieves the optimal tradeoffbetween the two or a specified false identification error rate. Theuse of such a threshold greatly facilitates high-throughput analysisof peptide identifications made by MS/MS and database search.
+Future Work. The discriminant functions used throughout
+this work were derived using spectra produced on a single ESIion trap mass spectrometer from a control sample of knownprotein components. It is possible that these functions may notbe optimal for data produced from all other types of massspectrometers (e.g., ESI-qTOF, MALDI-qTOF). One solution isto derive new discriminant functions specifically optimized for usewith each different spectrometer type. This could be achievedusing search results for spectra generated from a control sampleof known components, as described in this work. Alternatively, itmay be possible to learn an optimal discriminant function fromconventional data by initially applying the mixture model EMmethod with the suboptimal discriminant score and then usingthe resulting estimated probabilities that peptide assignments arecorrect to weight the data in a derivation of a new discriminantfunction that optimally separates the data on the basis of thoseestimates. This procedure can be iterated until no significantchange in the discriminant function results. We are currentlyexploring the feasibility of such an approach.
+As described above, the mixture model discriminant score
+negative distribution is initialized using data with NTT )0, which
+are predominantly incorrect. This is not possible for results of adatabase search with constraints on the minimum number oftryptic termini of assigned peptides. As an alternative means ofguiding the derivation of the discriminant function negativedistribution when data with NTT )0 are not present, a set of
+ªknown incorrect peptide assignmentsº of equal number to thedata, can be included in the mixture model during iterations ofthe EM algorithm. These incorrect assignments can be obtained,for example, by searching the dataset with SEQUEST using adatabase in which all protein sequences in the original databasehave been reversed. Such a database preserves the tryptic peptidelength distribution of the original, yet ensures that all peptideassignments resulting from its use are incorrect (provided thatall those present by chance in the original database are removed).Preliminary results using this strategy are encouraging.
+The mixture model EM method is currently being extended
+to analyze peptide assignments to spectra of [M +H]
++precursor
+ions. It can also be adapted to utilize additional information whenavailable, such as the number of missed tryptic cleavages
+35and
+the expected pI of the peptide,36or in the case of experiments
+employing various chemical labels such as the ICAT reagent, thepresence or absence of labeled amino acids in the assigned peptideor additional features of the spectrum related to that label. Inaddition, this approach is not specific to SEQUEST, but can inprinciple be applied to the results of any spectrum database searchanalysis.
+Computed probabilities that peptides are correctly assigned
+to MS/MS spectra can be used to estimate the likelihood for the
+(35) Parker, K. C. J. Am. Soc. Mass Spectrom .2002 ,13,22-39.
+(36) Zuo, X.; Speicher, D. W. Proteomics 2002 ,2,5 8-68.
+Figure 5. Sensitivity and false identification error rates using
+minimum computed probability thresholds. (A) Sensitivity/error ratetradeoff employing thresholds based upon computed mixture modelprobabilities(solidline).Alsoshownareresultsofusingconventionalfiltering criteria based upon SEQUEST scores and the number oftryptic termini (NTT) of assigned peptides: (1) ref 4; (2) Xcorr [M +
+2H]
+2+ions g2, Xcorr [M +3H]3+ions g2.5, ¢Cng0.1, SpRank e
+50, NTT g1; (3) Xcorr g2,¢Cng0.1, SpRank e50, NTT g1; (4)
+Xcorr [M +2H]2+ions g2, Xcorr [M +3H]3+ions g2.5, ¢Cng0.1,
+SpRank e50, NTT )2; (5) Xcorr g2,¢Cng0.1, SpRank e50,
+NTT )2. The result of using an ideal data filter conferring 100%
+sensitivity and 0% error is indicated by an asterisk in the lower rightcorner. (B) Observed (solid line) and model-predicted (dashed line)sensitivity and error rate as a function of minimum computedprobability threshold.
+〈Sens〉)∑
+{ijpigpT}pi/∑
+ipi (13)
+〈Err〉)∑
+{ijpigpT}(1-pi)/∑
+{ijpigpT}1 (14)
+Analytical Chemistry, Vol. 74, No. 20, October 15, 2002 5391presence of proteins corresponding to those peptides in a sample.37
+Interestingly, correct peptide assignments, more than incorrect
+ones, tend to correspond to ªmultihitº proteins, those to whichother correctly assigned peptides correspond. This trend isparticularly pronounced for large datasets or samples of lowcomplexity and can be exploited by adjusting the probabilities ofassigned peptides to reflect whether their corresponding proteinsare ªmultihitº in the dataset.
+CONCLUSIONS
+The statistical model described in this work enables high
+throughput analysis of MS/MS database search results and canserve as a useful standard by which the results of differentresearch groups, using different mass spectrometers, and evendifferent database search software, can be compared. It requiresminimal user interaction and adds little execution time in additionto the database search. It eliminates the need to manually analyzedatabase search results to assess whether they are correct. Theprobabilities computed by this analysis can instead be usedeffectively to identify correct peptide assignments and filter datawith predictable false identification error rates. They also serveas useful inputs for estimating the likelihood of the presence ofcorresponding proteins in the sample.
+Currently, the software implementing the mixture model EM
+analysis consists of a series of stand-alone Perl scripts that arerun on Linux. It is available to the public as open source at http://www.systemsbiology.org/research/software.html. A Windows
+version of the software is also planned. Although the currentversion employs a discriminant function suitable for SEQUESTsearch results, its modular nature facilitates substituting alternativediscriminant functions produced for scores of other databasesearch tools, or simply single scores of such tools, to enablestatistical analysis of a wide variety of database search applications.
+ACKNOWLEDGMENT
+This work was supported by DOE Grant DE-FG03-01ER63218
+to E.K. and by NCI Grants R33CA93302 and R33CA84698,sponsored research agreement from Oxford GlycoSciences, anda gift from Merck & Co., Inc. to R.A.. We thank Andy Siegel,Jimmy Eng, and Jeff Ranish for helpful discussions. We alsoappreciate contributions from Dave Goodlett, Sergey Stolyar, andSam Purvine regarding the datasets of spectra generated fromthe control sample and the comments of Jamie Sherman regardingthe manuscript.
+SUPPORTING INFORMATION AVAILABLE
+Data illustrating the length independence of Xcorr ′, the
+contributions of Xcorr ′and¢Cnto the discriminant function, and
+the mixture model EM algorithm applied to the training datasetspectra of [M +2H]
+2+precursor ions. This material is available
+free of charge via the Internet at http://pubs.acs.org/.
+Received for review May 2, 2002. Accepted August 9,
+2002.
+AC025747H(37) Nesvizhskii, A. I.; Keller, A.; Aebersold, R.; Kolker, E. Manuscript in
+preparation.
+5392Analytical Chemistry, Vol. 74, No. 20, October 15, 2002

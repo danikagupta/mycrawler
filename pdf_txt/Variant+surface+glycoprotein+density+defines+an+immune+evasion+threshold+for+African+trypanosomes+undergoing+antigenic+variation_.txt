@@ -1,0 +1,742 @@
+A Structural Classification of the Variant Surface Glycoproteins of the African 1 
+Trypanosome  2 
+Authors:  Sara Đakovi ć1, Johan Zeelen1, Anastasia Gkeka2, Monica Chandra1,2, Konstantina Foti1, 3 
+Monique van St raaten1, Evi P. Vlachou2, Francisco  Aresta -Branco1,2, Joseph P. Verdi2, F. Nina 4 
+Papavasiliou2†, C. Erec Stebbins1† 5 
+Affiliations:  6 
+1Division of Structural Biology of Infection and Immunity, German Cancer Research Center, 7 
+Heidelberg, Germany.  8 
+2Division of Immune Diversity, German Cancer Research Center, Heidelber g, Germany.  9 
+ 10 
+†Correspondence to: e.stebbins@dkfz -heidelberg.de   11 
+  12 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  2  13 
+ABSTRACT  14 
+Long -term immune evasion by the African trypanosome is achieved through repetitive cy cles of 15 
+surface protein replacement with antigenically distinct versions of the dense Variant Surface 16 
+Glycoprotein (VSG) coat. Thousands of VSG genes and pseudo -genes exist in the parasite genome 17 
+that, together with genetic recombination mechanisms , allow for essentially unlimited immune 18 
+escape from the host ’s adaptive immune system. The diversity space of the "VSG nome" at the 19 
+protein level was thought to be limited to a few related folds whose structures were determined 20 
+more than 30 years ago. However, rec ent progress has shown that the VSGs possess significantly 21 
+more architectural variation than had been appreciated . Here we combine experimental X-ray 22 
+crystallography  with deep -learning structural prediction using Alphafold to produce models of 23 
+hundreds of VSG proteins . We c lassify the VSG nome into groups based on protein architecture 24 
+and oligomerization  state, contextualiz e recent bioinformatics clustering schemes , and extensively 25 
+map VSG -diversity space. We demonstrate that in addition to the structural va riability and post - 26 
+translational modifications observed  thus far , VSGs are also characterized by variations in 27 
+oligomerization state and possess inherent flexibility and alternative conformations, lending 28 
+additional variability to what is exposed to the im mune system. Finally, these  additional 29 
+experimental structures and the hundreds of Alphafold predictions confirm that the molecular 30 
+surfaces of the VSGs remain distinct from variant to variant, supporting the hypothesis that protein 31 
+surface diversity is ce ntral to the process of antigenic variation used by this organism during 32 
+infection.    33 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  3  34 
+INTRODUCTION  35 
+African trypanosomiasis  is a human and animal infectious disease  caused by several 36 
+species of protozoan parasites of the genus  Trypanosoma  [1,2] . These single -celled, euk aryotic 37 
+parasites  can live and reproduce extracellularly in the bloodstream of the host,  and are transmitted 38 
+by the tsetse fl y vector  (Glossina sp. ) [3]. The geographical range of the tsetse fl y in Africa 39 
+correlates to the distribution of human trypanosomiasis , which today covers a region of 8 million 40 
+km2 between 14 and 20 degrees latitude  [4]. African trypanosomiasis has hampered Central 41 
+Africa's economic progress due to  its impact on both human and  livestock  populations  [5,6] . 42 
+Within the blood, the trypanosome population is continuously  exposed to the host ’s 43 
+immune system, yet is able to thrive and persist. This feat is made possible by a highly optimized 44 
+system of antigenic variation, in which the ~10 million,  monoallellically  expressed molecules  of 45 
+the Variant Surface Glycop rotein (VSG) coat undergo repeated cycles of “switching”, a process 46 
+by which antigenically distin ct VSGs are expressed at different times  [7–9]. This creates a cyclic 47 
+process of trypanosome growth to high parasitemia, immune response and clearance of the 48 
+dominant VSG  variants, and the subsequent growth of immune -escape variants expressing 49 
+different VSGs. This process renders the host in a perpetual state of infection that c annot be cleared 50 
+without pharmacological intervention, typically leading to long -term mo rbidity and mortality  [10]. 51 
+Central to this process are the thousands of VSG genes and pseudogenes in the parasite genome 52 
+that serve as the parasite’s extensive  antigen repertoire. . 53 
+The mature VSG proteins are attached to the c ell surface by a GPI -anchor, and consist of 54 
+two main regions: (1) a large, N -terminal domain (NTD) of roughly 300 -400 amino acids that is 55 
+most distal to the membrane and (2) a smaller, membrane -proximal C -terminal domain (CTD) 56 
+spanning 80-120 amino acid s beneath the NTD that harbors the GPI -anchor  [11]. Multiple studies 57 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  4 have shown that the CTD is minimally immunogenic  [12] and quite possibly inaccessible to the 58 
+immune system when i t is part of the coat  [12,13] , which correlates well with it being much more 59 
+highly conserved in sequence than the NTD  [14,15] . The NTD is therefore p resumed to be the 60 
+most antigenic portion of the VSG. Consistent with this hypothesis, the NTD typically shows 61 
+approximately  10-30% identity from variant to variant  [14]. Most of the conserved residues occur 62 
+in the architecturally common  regions of the VSGs, whereas the molecular surfaces (as visualized 63 
+by pro tein structures) show very little similarity  [11]. 64 
+Therefore, at the heart of antigenic variation in the African trypanosome are the NTDs of 65 
+the VSG s. These large subdomains are elongated folds centered on a three -helix bundle scaffold. 66 
+The three -helix bundle is a ubiquitous fold harbored in proteins with diverse activities, where the 67 
+structural elements specific for differing  function s are often coded by sequences inserted between 68 
+the helices or at the termini of the scaffold. All VSGs s tudied to date  are so structured, possess ing 69 
+subdomains at spatially opposite ends of the bundle: a top lobe and bottom lobe. The recent 70 
+elucidation of additional VSG structures upturned the notion that all VSGs would possess highly  71 
+similar protein fold s to the initial structures determined in the 1990s. What is now evident from 72 
+recent work is that the VSGs possess much more architectural and topological variation than had 73 
+initially been appreciated  [16–18].  74 
+Furthermore, for the thirty years after the determination of the first VSG structures, it was 75 
+assumed that all VSGs were homo dimers . However, more recent structures and biochemical 76 
+analys es have shown that two broad VSG classes can be distinguished by their oligomeric state: 77 
+one class harboring exclusively dimers and the other class characterized by concentration - 78 
+dependent trimers (existing in solution in either a stable monomeric or trimer ic state, depending 79 
+on the protein concentration  [16,17,19] ). At the extreme densities of packing in the two - 80 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  5 dimensional trypanosome surface coat, it is possible  that all VSGs of this class will exist in the 81 
+trimeric state, although no high -resolution imaging of the parasite coat that could establish t his has 82 
+been reported.  83 
+The uniqueness of each VSG molecular surface led to the assumption that antigenic 84 
+variation occurred exclusively through amino acid sequence divergence. Recent structures and 85 
+mass spectrometric analys es of VSGs have shown that this i s not solely the case. Many VSGs can 86 
+be modified by post -translational O-linked glycosylation at the top of the molecule and this 87 
+modification has been shown to be potently immunomodulatory  [17]. Intriguingly, the same  class 88 
+that adopts the trimeric oligomerization is to -date the only class in wh ich such O-linked 89 
+glycosylation has been observed.  90 
+Thus, in the last few years, many notions regarding the VSGs have had to be reexamined. 91 
+Concurrently, the diversity space of the VSGs has been broadened dramatically, raising the 92 
+question of whether the th ousands of possible VSG proteins in the genome could be organized into 93 
+a coherent schema relating sequence, structure, and function. Along those lines, several groups 94 
+have undertaken bioinformatic analysis of the “VSG nome”  (the set of possible VSG proteins  from 95 
+the trypanosome genome) . Most prominent have been two papers that have used sequence 96 
+clustering algorithms to divide the VSGs into subclasses  [20,21] . While these papers differed in 97 
+aspects of method ology  and resultant classification, there was broad agreement on the 98 
+classification of  VSGs that appeared to be much m ore highly related to each other. However, none 99 
+of these efforts directly took protein architecture into account , likely due to the  paucity of 100 
+experimentally determined structures  available at the time  of the analys es. 101 
+To address this issue, we use here a collection of experimentally determined structures of 102 
+VSGs ( including many solved over the last few years by our group, with several unpublished 103 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  6 structures included  in this manuscript ) as well as hundreds of predicted structures generated by the 104 
+deep -learn ing system, AlphaFold , that has proven powerful at the creation of accurate three - 105 
+dimension protein models from amino acid sequence alone  [22,23] . The combined experimental 106 
+and predicted data establish a structure -based classification scheme for the VSG proteins that is 107 
+generally consistent with previous attempts t o classify the VSGs, but that also places classification 108 
+efforts on an architectural and functional foundation.   109 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  7 MATERIALS AND METHODS  110 
+ 111 
+Structural determination of VSG11  112 
+ Two constructs  of VSG11 NTD were used in the structural studies in this manuscript  (all 113 
+VSGs , unless otherwise noted, are  from the strain Lister 427 ). The first was the wild type sequence 114 
+(VSG11 WT) that (1) crystallized  as a monomer in the asymmetric unit  in sodium -potassium t artrate 115 
+with two structures determined: VSG11 WT-Iodine, a cryst al soaked in Na/K iodine diffracting to 116 
+1.27Å , and VSG11 WT-Oil, a crystal diffracting to 1.23 Å reso lution  cryo-cooled in oil , and (2) 117 
+crystallized as two monomers in the asymmetric unit  (not a dimer  – see Results below ) in 118 
+ammonium  sulfate (diffracting to  1.75 Å , denoted VSG11 WT-AS). The second construct of VSG11  119 
+was a chimeric form consisting of the VSG11 WT NTD  connected to the VSG2 CTD, denoted 120 
+VSG11 N2C. This construct  crystallized with 18 monomers of VSG11 N2C in an asymmetric unit 121 
+comprised of six trime ric assemblies  (denoted VSG11 N2C-18mer ). VSG11 WT-18mer  crystals  were 122 
+also obtained that diffracted to nearly 3Å resolution, but the best diffracting crystals were produced 123 
+by the VSG11 N2C construct (2.6 Å resolution) . Therefore, the presence of the VSG2 CT D was not 124 
+required for the formation of the 18mer form, and since in both cases the CTDs were not present 125 
+in the crystallized form, it is unlikely that the 18mer form is tied in any manner to the chimeric 126 
+form.  127 
+Plasmids used to generate VSG11 WT and VSG11 N2C were described in  [17]. Plasmids were 128 
+first linearized by EcoRV (New England Biolabs), and then transfected into VSG2 -expressing 129 
+cells (2T1) : 10ug of each plasmid were mixed with 1 00ul of cells ( at a concentration of between 130 
+2.5x107 and 3x107) in Tb -BSF buffer (90mM Na 2HPO 4, pH 7.3, 5mM KCl, 0.15mM CaCl 2, 50mM 131 
+HEPES, pH7.3), using an AMAXA nucleofector (Lonza) program X -001, as previously described 132 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  8 [24]. Blasticidin at a concentration of 100ug/ml was added after 6h and single -cell clones were 133 
+obtained by serial dilutions in 24 -well plates and collected after 5 days.  134 
+Clones initially screened with flow cytometry for VSG2 loss of expression using a 135 
+monoclonal VSG2 WT antib ody [25] and VSG11 gain of expression with anti -VSG11  antisera. To 136 
+determine the binding of antisera to live trypanosomes, 1 x 106 parasites were coll ected and 137 
+incubated with VSG2 WT antisera (1:4000) or VSG11 WT (1:1000) together with Fc block (1:200, 138 
+BD Pharmingen) in cold HMI -9 without FBS for 10 min at 4oC. Cells were washed once with cold 139 
+HMI -9 and resuspended in 200 µl cold HMI -9 with rat anti -mouse IgM-FITC (1:500, Biolegend). 140 
+After one wash with cold HMI -9, cells were resuspended in 150µ l HMI -9 and immediately 141 
+analyzed with FACSCalibur (BD Bioscences) and FlowJo software (v10).  For a second step, 142 
+clones were sequenced by isolating RNA using the RNea sy Mini Kit (Qiagen), followed by DNAse 143 
+treatment with the TURBO DNA -free kit (Invitrogen) and cDNA synthesis with ProtoScript II 144 
+First Strand cDNA Synthesis (New England Biolabs). The sequences were then amplified, using 145 
+Phusion High -Fidelity DNA Polymera se (New England Biolabs), a forward primer binding to the 146 
+spliced leader sequence and a reverse binding to the VSG 3´untranslated region. The final products 147 
+were purified by gel extraction from a 1% gel with the NucleoSpin Gel and PCR clean -up kit 148 
+(Machere y-Nagel) and sent for Sanger sequencing.   149 
+All VSG11 constructs were expressed in T. b. brucei  cultured at 37°C and 5% CO 2 in HMI - 150 
+9 media (PAN Biotech) supplemented with 10% fetal calf serum (Gibco), L -cysteine and ß - 151 
+mercaptoethanol. The cells from 3.6 lit er culture were pelleted and the VSG11 protein s purified  152 
+through modifications of previously published protocols  [26]. The cells were lysed with 40 ml 0.4 153 
+mM ZnCl 2, after centrifugation (10.000 g, 10 min) the pellet was resuspended in 30 ml 20 mM 154 
+Hepes/NaOH pH=8.0, 150 mM NaCl (42°C) and centrifuged (10.000 g, 10 min). The supernatant 155 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  9 was passed through a 25 ml Q -sepharose Fa st-flow column (GE Healthcare) equilibrated with 20 156 
+mM Hepes/NaOH pH=8.0, 150 mM NaCl. The flow through was collected and concentrated. T he 157 
+protein was further purified on a HiLoad 16/600 Superdex 200 pg column (GE Healthcare) 158 
+equilibrated in 10 mM H EPES /NaOH pH=8.0, 150 mM NaCl. The fractions containing the VSG 159 
+protein were pooled and concentrated.  160 
+VSG1 1WT crystals  containing only the N-terminal domain appeared after several days at 161 
+22°C using hanging drop method with 6 mg/ml VSG11  (full-length)  protein i n a 1:1 volume ratio  162 
+against 100 mM Tris/HCl pH=7.5 1.6 -1.75M sodium -potassium t artrate. CryoOil (MiTeGen) was 163 
+used as cryoprotectant and the VSG11 WT-Oil crystals flash -cooled  in liquid nitrogen . The loss of 164 
+the CTD is presumed to have occurred during the crystallization stage. VSG11 WT-Iodine  crystals 165 
+soaked in 200 mM KI, 100 mM Tris/HCl pH 8.0 and 1.7 M NaKTartrate were flash -cooled  directly 166 
+in liquid nitrogen .  167 
+VSG11 WT-AS crystals were grown at 22 °C by vapor diffusion using hanging drops with a 168 
+1:1 volume  ratio of 6mg/ml protein to an equilibration buffer consisting of 0.1M sodium acetate 169 
+pH 4.5 and 2M ammonium sulfate. For cryoprotection the crystals were transferred to the same 170 
+buffer as that used for equilibration but supplemented with 25% v/v glycerol and were flash -cooled  171 
+in liquid nitrogen.  172 
+For VSG11 N2C-18mer  the crystals were grown at 22°C by vapor diffusion using hanging 173 
+drop with a 1:1 volume ratio of 6 mg/ml protein to equilibration buffer containing 19 % (w/v) PEG 174 
+2000MME, 0.2 M NaCL 0.1 M MES pH  6.0. For cryoprotection the crystals were transferred to 175 
+the same buffer as used for the equ ilibration with 25 % (v/v) glycerol and were flash -cooled  in 176 
+liguid nitrogen .  177 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  10 Native VSG11 WT datasets were collected at a wavelength of 1.0 Å at the Paul Scherrer  Institut 178 
+Villingen. Iodine soaked crystals was collected at 1.54 Å on a Rigaku X -ray generator and detector . 179 
+The structure was solved from VSG11 WT-Iodine  by single wavelength anomalous diffraction  180 
+(SAD ) using SHELX  [27] and HKL3000 suite  [28]. The initial model was buil t using Arp/wARP 181 
+[29] with PHENIX  [30], COOT  [31] and PDB _REDO  [32] for model optimization  and refinement.  182 
+The structure s of VSG11 WT-Oil, VSG11 WT-AS, and VSG11 N2C-18mer  were solved by molecular 183 
+replacement using the refined VSG11 WT-Iodine  model with the PHASER package [33] of 184 
+PHENIX , and the model s optimized and refined with PHENIX -REFINE [30] and with cycles of 185 
+manual model building using COOT [31]. Final model statistics are shown in Supplementary Table 186 
+S1. 187 
+ 188 
+Struc tural determination of VSG615  189 
+T.b. brucei  expressing VSG615  [34] were cultured at 37°C and 5% CO 2 in HMI -9 media 190 
+(PAN Biotech) supplemented  with 10% fetal calf serum (Gibco), L -cysteine and ß - 191 
+mercaptoethanol. The cells from 4L culture were pelleted and the VSG615 protein purified through 192 
+modifications of previously published protocols [26]. The cells were lysed with 40 ml 0.2 mM 193 
+ZnCl 2, after centrifugation (10.000 g, 10 min) the pellet was resuspended in 30 ml 20 mM 194 
+HEPES/NaOH pH=7.5, 150 mM NaCl (42°C) and cen trifuged (10.000 g, 10 min). The supernatant 195 
+was passed through a 25 ml Q -sepharose Fast -flow column (GE Healthcare) equilibrated with 20 196 
+mM HEPES/NaOH pH=7.5, 150 mM NaCl. The flow -through was collected and concentrated to 197 
+final concentration 1 mg/ml.  198 
+To generate N -terminal domain (NTD) of VSG615, the concentrated protein was subjected to 199 
+limited proteolytic digestion using trypsin. The VSG at the concentration of 1 mg/ml was mixed 200 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  11 with trypsin (5 mg/ml) (Sigma Aldrich) at 1:50 trypsin:VSG ratio and incub ated for 3 hours on 201 
+ice. The reaction was terminated by adding PMSF to 1 mM final concentration. The protein was 202 
+further purified  (separating the NTD from the CTD)  by size exclusion chromatography on a 203 
+HiLoad 16/600 Superdex 200 pg column (GE Healthcare) e quilibrated in 20 mM HEPES/NaOH 204 
+pH=7.5, 150 mM NaCl.  The fractions containing the NTD of VSG615 from size exclusion 205 
+chromatography were concentrated to final concentration of 10 mg/ml in 500 µl of final volume. 206 
+The lysine residues on the protein were subse quently methylated by reductive alkylation  [35]. 10 207 
+µl of 1M borane dimethylamine complex (DMAB) and 20 µl of 1M formamide into the protein 208 
+solution and mixed gently. The mixture was incubated for 2 hours in the dark at 4 °C with rotation  209 
+and the entire process repeated. Prior to overnight in cubation, 5 µl of 1M DMAB was added. To 210 
+stop the reaction, 1M Tris pH 7.5  was added to bring the reaction to a final volume of 1 ml . The 211 
+buffer was exchange d to 20 mM HEPES pH 7.5, 150 mM NaCl by size exclusion chromatography 212 
+with Superdex 200 10/300 GL co lumn. The fractions containing the methylated protein was further 213 
+concentrated to 10 mg/ml for crystallization.  214 
+The methylated VSG615 protein was crystallized at 22 °C by vapour diffusion using hanging 215 
+drops formed from mixing a 1:1 volume ratio of the pr otein with an equilibration buffer consisting  216 
+of 23 % (w/v) PEG 4000, 100 mM sodium c acodylate pH=6.0, 10 mM ZnCl 2. For data collection, 217 
+crystals were  soaked in the same buffer augmented to 20 % glycerol , flash-cooled in liquid 218 
+nitrogen . A native dataset w as collected at the Paul Scherrer Institut , Villingen. The structure was 219 
+solved with molecular replacement using  a model of  a VSG615  trimer predicted by AlphaFold  220 
+using the PHENIX package  (loop regions with a pLDDT below 50 were removed  for the search 221 
+mode l).  222 
+ 223 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  12 Structural Determination of VSG558  224 
+VSG558 was amplified from genomic DNA of T. brucei brucei  strain L ister 427 VSG2 225 
+expressing cells. The plasmid used to generate VSG558 -expressing trypanosomes was a 226 
+modification of previous plasmids design ed for int egration into the trypanosome genome [25]. The 227 
+plasmid was first linearized by EcoRV (New England Biolabs), and then transfected into VSG2 - 228 
+expressing cells (2T1): 10ug of plasmid was mixed with 100ul of 4x107 cells in Tb -BSF buffer 229 
+(90mM Na 2HPO 4, pH 7.3, 5mM KCl, 0.15mM CaCl 2, 50mM HEPES, pH7.3), using an AMAXA 230 
+nucleofector (Lonza) program X -001, as previously described [24]. After 6h hygromycin was 231 
+added to a concentration of 25 ug/ml and single -cell clones were obtained by serial dilutions in 24 - 232 
+well plates and collected after 5 days.  233 
+Clones were initially screened with flow cytometry for VSG2 loss of expression using a 234 
+monoclonal VSG2 WT antibody [25]. To determine the binding of antisera to live trypanosomes, 2 235 
+x 106 parasites were collected and incubated with 200ul FITC conjugated VS G2WT antisera (FITC 236 
+conjugation kit, Abcam ab102884) (1:200) in cold HMI -9 without FBS for 10 min on ice. Cells 237 
+were washed twice with cold HMI -9, resuspended in 200µ l cold HMI -9 and immediately analyzed 238 
+with a Guava EasyCyte 4HT Flow Cytometer (Luminex). For a second step, negative clones were 239 
+sequenced by isolating RNA using the RNeasy Mini Kit with on -column DNAse digestion 240 
+(Qiagen) and cDNA synthesis with Superscript IV first strand synthesis system (Thermo Fisher). 241 
+The sequences were then amplified, us ing Phusion High -Fidelity DNA Polymerase (New England 242 
+Biolabs ), a forward primer binding to the spliced leader sequence and a reverse binding to the VSG 243 
+3´ untranslated region. The final products were purified by gel extraction from a 1% gel with the 244 
+Nucle oSpin Gel and PCR clean -up kit (Macherey -Nagel) and verified by  Sanger sequencing.  245 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  13 VSG558  was expressed  and purified  from  trypanosomes  in the same  manner  as VSG11.  After  246 
+purification  the full-length  protein  was concentrated  to 6.2 mg/ml  and was crystalliz ed at 23 °C by 247 
+vapour  diffusion  using  hanging  drops  formed  from  mixing  a 1:1 volume  ratio of the protein  with 248 
+an equilibration  buffer  consisting  of 100 mM Citric  acid/NAOH  pH=5.5  and 17.5%  PEG  3350.  249 
+The crystals  appeared  after 15 hours  and the same  conditi on supplemented  with 25% PEG  400 or 250 
+25% MPD  was used as a cryoprotectant  for crystals  flash -cooled  in liquid  nitrogen . Datasets  251 
+diffracting  to 1.96 Å were  collected  at a wavelength  of 1.0 Å at the Paul Scherrer  Institut  Villingen.  252 
+The structure  was solved  using  molecular  replacement  using  a model  of a dimer  predicted  with 253 
+Alphafold  [22]. After  model  building  and refinement  using PHENIX  and COOT , the final model  254 
+contains  2 dimers  in the asymmetric  unit with an R-free of 25 %. 255 
+ 256 
+Protein Structural Prediction with AlphaFold (ColabFold ) 257 
+VSG  sequences  that generated AlphaFold prediction s (generated using ColabFold [36]) 258 
+were obtained from Rock efeller Uni versity  (https://tryps.rockefeller.edu/ ). Structure prediction 259 
+was performed  for only the N-terminal domain sequence s (spanning approximately  350 amino - 260 
+acids , depending on the VSG ). The structure prediction process consisted of five steps: MSA 261 
+construction, template search, inference with five models, model ranking based on mean pLDDT 262 
+and const rained relaxation of the predicted structures. The LocalColabFold command line 263 
+interface was used with arguments to specify an input FASTA file, an output directory, and various 264 
+options to for structure predictions. MSA was generated by MMseq, which  search es sequences 265 
+with three iterations against the consensus sequences of the UniRef30  [37], a clustere d version of 266 
+the UniRef100  [38]. The number of final MSA hits was limited using the HHblits (v3.3.0) diversity 267 
+filtering algorithm [39] implemented in MMseqs2 in multiple stages (no cluster pair has a higher 268 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  14 maximum sequence identity than 95%;  enabled --qsc 0.8 threshold and disabled all other 269 
+thresholds; HHblits filt ering algorithm filtered within a given sequence identity bucket such that 270 
+it did not  eliminate redundancy across filter buckets). Template information was gathered while 271 
+AlphaFold searched via HHsearch through a clustered version of the PDB (PDB70, [39]) to find 272 
+the 20 top ranked templates. Improvement of the structural  models  was achieved through  recycling 273 
+three times ( the software default). At the end, AlphaFold created five models , ranked by pLDDT 274 
+scores.  275 
+  276 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  15 RESULTS  277 
+Additional Experimental Structures to Map VSG Diversity  278 
+Three novel VSG structures published  between  2018  and 202 1 — VSG3, VSG13, and 279 
+VSGsur  [17,18]  — have demonstrated that t here is far more diversity in the VSG  coat proteins in 280 
+fold, oligomerization, topology, and post -translational modification than was appreciated. To 281 
+further map the diversity space  of the VSG nome, we have undertaken X -ray crystallographic 282 
+studies of numero us VSGs. Guided by recent bioinformatic analysis  [20,21] , we sought to examine 283 
+VSGs from different clustering cl asses. In a separate paper  [16], we determined structures of three 284 
+metacyclic VSGs : VSG397, VSG531, and VSG1954 , representing three clustering classes . In this 285 
+paper w e present experimental structures of VSG11 , VSG615 , and VSG558 . 286 
+VSG11 and VSG615 are related to VSG3 (the topologically -similar  class of monomer/ trimers 287 
+with O-linked glycan PMTs ), denoted as class B  [40] or N4 [21] in the literature . These were 288 
+examined to confirm the fold and oligomerization of this class as well as the presence of O-linked 289 
+glycosylation. Previously determined s tructures of VSG3  [17] and VSG1954 [16] showed that 290 
+both possess highly similar trimers in the crystals. Furth er confirmation of the trimeric 291 
+oligomerization state of members of this class came from a biochemical analysis of several VSGs 292 
+that showed evidence of concentration dependent monomeric and trimeric forms of VSG9 in 293 
+solution  [19]. However, unlike VSG3, the structure of VSG1954 showed no evidence of O-linked 294 
+glycans , despite possessing a conserved glycosylation sequence [16,17] . Whether this  absence is 295 
+due to unknown regulator y processes yet to be identified,  to the sugar being labile and removed 296 
+during purification/crystallization as occurred for VSG3  [41], or to a difference between 297 
+meta cyclic and bloodstream VSGs, is unclear. Therefore, pursuing additional studies of related 298 
+VSGs could aid in determining how many VSGs are so modified.  299 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  16 NTD structure s of VSG11 and VSG615 were  solved to 1.23Å and 3.2Å resolution , 300 
+respectively  (Methods, Figu re 1A and 1B , Supplementary Figure 1 , Table S1 ). Both  reveal a fold 301 
+similar to VSG3 (Figure 1C) as well as the presence of O-linked glycans on the top surface of the 302 
+protein  – one observed on VSG11 and two on VSG615 , although with heterogeneity  on the latt er 303 
+(Figure 1, A and B ). Like VSG3, VSG11 and VSG615 presen t as monomer s in solution ( assessed 304 
+by size-exclusion chromatography, Supplementary Figure 1) . This crystal form of VSG11  305 
+(VSG11 WT-Oil, see Methods and Supplementary Table 1 ) crystallize s as a monom er in the 306 
+asymmetric unit of the crystal , but forms  a trimer along a crystallographic three -fold axis of 307 
+symmetry that is nearly identical to th e crystallographic trimer s seen  with VSG3 and VSG1954  308 
+(Figure 2A). Interestingly, VSG615 crystallized with two t rimers in the asymmetric unit, and these 309 
+trimers align well with those of VSG3, VSG11, and VSG1954 (Figure 2A), providing additional 310 
+support that class B trimer formation is not a crystallization artifact, but could represent the 311 
+relevant, biological assem bly. 312 
+An additional  crystal form of VSG11 show s non-crystallographic trimerization in the 313 
+asymmetric unit , while another form also raise s the possibility of an inherent flexibility that could 314 
+be present in the VSG proteins. In a second  crystal form  (VSG11 N2C-18mer , determined  to 2.6 Å 315 
+resolution , Methods and Table S1 ), the asymmetric unit contains six trimers of the same 316 
+arrangement as observed previously  for all class B VSGs , for a total of 18 independent molecules 317 
+(hence “18mer”, Figure 2B). In addition to  helping establish that this specific trimeric arrangement 318 
+is the preferred oligomerization of this class  (at least at higher concentrations) , the independent 319 
+monomers in this asymmetric unit display a range of alternative conformations, particularly in th e 320 
+bottom lobe of the protein and even in some limited regions of the three -helix bundle (Figure 3A). 321 
+An overall structural alignment of the monomers  to themselves  gives an  average  RMSD of 1.33 Å 322 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  17 (RaptorX), a somewhat high value for aligning a  protein to it self. Examination of the set of 323 
+alignments f rom the monomers of the 18mer show that it appears that the divergence primarily  324 
+occurs in the lower lobe (Fig ure 3A).  325 
+The third  crystal form (VSG11 WT-AS grown in ammonium sulfate  and solved to 1.75Å 326 
+resolution , Methods , Supplementary Table S1 ) contain s two molecules in the asymmetric unit  327 
+(Supplementary Figure 2A) . However, t hese two monomers are not arranged in a standard class A 328 
+type dimeric arrangement in which  the three -helix bundles, top , and bottom lobes a lign alongside  329 
+each other, but are instead “tail-to-tail” with the lower lobe of one monomer interacting with the 330 
+lower  lobe of the other  (Supplementary Figure 2 A). In contrast , the crystal packing  is characterized 331 
+by a three -fold trimer identical to those  seen in the all the class B protein  structures solved to date , 332 
+including the alternati ve crystal forms of VSG11  (Supplementary Figure 2 B). Therefore, the 333 
+assembly of VSG11 WT-AS is most accurately described as trimer ic and not dimer ic (and certainly 334 
+not di mers in the sense of those seen in class A  VSGs ), providing an interesting example in which 335 
+the contents of the asymmetric unit of the crystal do not present the likely biological assembly, 336 
+whereas the crystallographic arrangement does . Intriguingly, the se two independent monomers are 337 
+characterized by a significant conformation al change in bottom lobe of the protein . This change 338 
+consists of a 1 2-degree rotation of the bottom lobe from one monomer to the other  (Figure 3B).  339 
+In addition, alignments of the VSG 11WT-Iodine crystal form with the VSG11 WT-Oil form  340 
+(Methods and Supplementary Table S1)  show that the second  helix of the three -helix bundle 341 
+displays a significant  conformation al change in the region near the middle of the bundle , the helix 342 
+becoming disord ered and forming a random coil in one monomer while keeping helical structure 343 
+in the other (Supplementary Figure 2 C). Finally, w hen the different monomers of the 18mer are 344 
+compared with the other crystal forms  described , a wide variety of conformation al changes is seen, 345 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  18 although these changes are limited to the bottom lobe and lower  regions  of the bundle  346 
+(Supplementary Figure 3) . 347 
+These alternative conformations, seen in several crystal form s where the protein is not highly 348 
+constrained by the energetics of c rystal packing (non -crystallographic symmetry), suggests that 349 
+the VSGs on the membrane could potentially be characterized by a collection of conformers, each 350 
+with molecular surfaces that differ in these regions. It is possible that such differing conformer s 351 
+could present distinct antigenic surfaces and impact the immunogenicity of the VSG s, combining 352 
+with other forms of variability such as  surface protein features and post -translational modifications 353 
+to augment the diversity space of the coat . 354 
+Finally,  the structure  of the VSG558  NTD  was determined  to 1.96 Å resolution  (Figure  1, D- 355 
+F, Methods,  Supplementary  Figure  1, and Table  S1). It has a highly  similar  structure  to VSG13  356 
+[18] with a 2.54 Å RMSD  over 324 residues  (Figure  1F). This includes  a broad  and flat beta-sheet  357 
+top-lobe that forms  an intermolecular  beta-sandwich  in the dimeric  assembly,  a distribution  of 358 
+disulfides  throughout  the length  of the rod-like structure,  an N-terminus  located  in the “middle  359 
+lobe”  of the protein  (instea d of at the top, most  membrane  distal  face of the VSG ), and the presence  360 
+of N-linked  glycans  directly below  the top lobe.  A notable  difference  with all the previously  solved  361 
+VSG  NTD  structures  published  is the presence  of two N-linked  glycans  at the middle  lobe of the 362 
+VSG558  protein.  To date,  all VSG  structures  determined  have  been characterized  by a single  N- 363 
+linked  glycan  (or none , as seen in the case of ILTat1.24).  However,  it has been  established  364 
+biochemically  that some  VSGs  do possess  more  than one such sugar  in the NTD,  such as VSG5  365 
+[42]. The structure  of VSG558  confirms  the presence  of multiple  N-linked  glycans  for another  366 
+VSG . This shows  that not only are the locations  of the N-linked  glycans  variable  (found  in both 367 
+the bottom  and middle  lobes),  but that the number  of possible  such carbohydrates  is also variable.  368 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  19  369 
+Overall classification of the VSGs based on structures.  370 
+Altogether, as of the wri ting of this manuscript, there are  twelve  experimentally determined 371 
+protein structures of the VSG NTD from Trypanosoma brucei  in hand: VSG1, VSG2, VSG3, 372 
+VSG11, VSG13, mVSG397, mVSG531, VSG558, VSG615, mVSG1954, VSGsur, and IlTat1.24  373 
+(“m” before the name in dicat ing a metacyclic -stage expressed VSG) . These twelve  structures not 374 
+only map well to the previous bioinformatic clustering schemes published previously, but they 375 
+better discriminate between them and put the classification schemes on an architectural fo undation. 376 
+We have sought to take these structures, with an eye to the bioinformatics work, and create what 377 
+we conclude is a more explanatory organizational scheme for the VSG proteins  (Figure 4). To 378 
+provide continuity with the previous classification schem es of Hutchinson [15] and Cross  [40], we 379 
+have preserved the A/B desi gnation for classes . However, this has required a change in the 380 
+meaning of subdivisions within class A  to reflect insight from the protein stru ctures (discussed 381 
+below ). Finally, this schema was then tested  by modeling hundreds of VSG proteins with the deep 382 
+learning system AlphaFold and comparing the resultant folds to the classes we created.  383 
+To begin, there are two broad “super -families” of VSG structures based on the topological 384 
+arrangement of the bottom lobe in the primary sequence  (classes A and B, Figure 4, Supplementary 385 
+Figure 4). All VSG  NTD structures determined have a bottom lobe subdomain structure . In class 386 
+A the bottom lobe residues are present at the C -termi nal portion of the NTD sequence , directly  387 
+following the final helix  of the bundle. In contrast, in  class B the bottom lobe r esidues are present 388 
+at the N -terminal portion of the NTD sequence  between the amino acids that form the first and 389 
+second helices of the bundle  (Supplementary Figure 4). Further cementing this broad division into 390 
+two main super -families are two observations . The first is that all class A VSGs studied to -date 391 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  20 are found as dimers in solution and in protein crystals  (the latter either as n on-crystallographic 392 
+dimers in the asymmetric unit or as monomers in the asymmetric unit where a crystallographic 393 
+two-fold symmetry produces the dimer, [18,41,43] ), whereas all studied class B VSGs are 394 
+characterized by the same trimeric arrangement in the crystals (either through crystallographic or 395 
+non-crystallographic symmetry , with monomers or trimers in the asymmetric unit, respective ly), 396 
+with biochemical evidence of monomer to trimer transitions based on protein concentration  [19]. 397 
+The second fact is that many of the class B VSGs are post -translationally modified by O-linked 398 
+carbohydrates , whereas none of the class A VSGs have been found so modified. When comparing 399 
+with previous efforts to classify the VSGs, our class A would correspond to class “A” in Cross  400 
+[40], classes N1 -N3/N5 in Weirather [21], and the older class A of  Carrington  [44]. Class B would 401 
+correspond in these sources to classes B, N4, and B, respectively.  402 
+Within our class A superfamily are two large structural subclasses, A1 and A2 (Figure 4). In 403 
+class A2 are found all the VSG structures that were solved prior to 2018 (Iltat1.24, VSG1, and 404 
+VSG2), illustrating that the set of conclusions about VSG structure and function accepted for over 405 
+a quarter century  were based on a  very limited subset of VSGs containing  highly related  protein 406 
+folds. This s ubclass is characterized by a top lobe that contains all the cysteine disulfides in the 407 
+NTD, a top lobe fold that is a hodge -podge of alpha helices and beta -strands, and N -linked glycan 408 
+chains located in the bottom lobe of the NTD . In sharp contrast, subcl ass A1 VSGs are significantly 409 
+longer due to the presence of a large beta-sheet subdomain for the top lobe ( forming a beta - 410 
+sandwich  in the dimer ). Further distinguishing A1 from A2 is the distributed nature of the disulfide 411 
+bonds (present throughout the length of the VSG in A1), the presence of a “middle lobe” of 412 
+secondary structure straddling the beginning of the three -helix bundle,  and the location of the N - 413 
+linked sugar just below the beta -sandwich top lobe. This dramatically different arrangement in 414 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  21 struc tural elements is reflected by the differing po sitions of the N -terminus of the NTD, namely 415 
+toward the middle of the VSG fold in A1 but located at the very top of the fold in A2. Additionally , 416 
+the fold s of the A1 VSGs from experimental and predicted struct ures (see below)  suggest that this 417 
+subclass should  be further subdivided into three groups based on the size, conformation, and twist 418 
+of the top lobe beta -sheet and the width of the space between the three -helix bundles in the dimer.  419 
+These subclasses of A1  were in previous sequence clustering classification systems denoted as the 420 
+separate classes A1 and A3 [40] and N1, N3, and N5  [21]. However, all these subclasses are 421 
+structurally similar to  each other in the manners described above while differing markedly from 422 
+the A2/N2 classes. Therefore, we considered it better to combine A1/A3 and N1/N3/N5 into a 423 
+single class, A1 (a family contrasted to A2), and the n subdivide them within A1 : A1a, A1b, A 1c 424 
+(Figure 3).  425 
+Finally, Cross  et al.  [40] divide the class B VSGs into two subgroups , whereas Weirather et 426 
+al. [21] do not subdivide their equivalent class , N4. In contrast to the marked st ructural divergences 427 
+between classes A1 and A2, and even the differences within the  distinct  subclasses of A1, w e find 428 
+no broad  structural differences  within the  class B VSGs (examining features such as the protein 429 
+fold, disulfides, N - or O-linked glycans,  or oligomerization ). However, three  more  subtle 430 
+differences between members of the B class can be used to  divide them into two subgroups. For 431 
+example , two helical regions differ between the B1 and B2 subgroups. One helix that exists in the 432 
+top lobe of the  B2 class is not generally present in the B1 class  (Supplementary Figure 5A) . 433 
+Secondly, one of the bundle helices in class B1 is disordered in places relative to the same helix  in 434 
+many class B2  members  (Supplementary Figure 5B). Thirdly,  in class B2 severa l VSGs possess 435 
+an NTD  with more amino acids . In the AlphaFold predictions  discussed below , these additional 436 
+residues are predicted to form both an extended  loop in the disordered region of the helix  and also  437 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  22 longer  loops in the top lo be (Supplementary Figu re 5A) . Buttressing this  subdivision of class B, 438 
+when multiple B1 and B2 VSGs (from experimental and AlphaFold predicted models) are 439 
+analyzed by structure ( using the Dali Server [45]), these are divided into two classes consistent 440 
+with the B1 and B2 groupings produced by sequence analysis  (see the structural dendogram in 441 
+Supplementary Figure 5C). We have therefore denoted a split in Figure 4 between the B1 and B2 442 
+classes.  443 
+ 444 
+Mapping the VSG nome with AlphaFold  445 
+The AlphaFold deep learning artificial intelligence  system is software developed by  446 
+Alphabet/Google's DeepMind program  [22,23,36] . In 2020, AlphaFold established itself as a 447 
+breakthrough technology with robust accuracy in the prediction of p rotein structure from amino 448 
+acid sequence , leading many to suggest that the “protein folding  problem ” had been solved.  We 449 
+sought to utilize AlphaFold to quickly examine the sequences of hundreds of VSG proteins and 450 
+compare the structur al predictions both to experimentally determined VSGs as well as assess the 451 
+fit of our classification scheme to the VSG nome as a whole.  452 
+We began by assessing the accuracy of AlphaFold against known VSG structures that exist ed 453 
+in the PDB database  at the time of writing this man uscript , and which  would therefore be accessible 454 
+to AlphaFold as structural templates. In addition, as the VSGs are multimers  (dimers and trimers)  455 
+and AlphaFold can predict both isolated folds and folds as oligomers  [36], we generated models 456 
+for monomer VSG sequences as well as for the appropriate oligomer for a given VSG sequence. 457 
+Using ColabFold  (Methods)  and an in put sequence of these  VSGs in the database, we examined 458 
+five ranked models output by the software from which the rank 1 model (highest pLLDT score, 459 
+see Methods) was compared with experimentally solved structures. For both monomer and 460 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  23 multimer predictions, a LocalColabFold search found the same three VSG structures to use as 461 
+templates: VSG1, VSG2, and IlTat 1.24, after which the models were obtained using default 462 
+settings. All VSG structures predicted by AlphaFold were of high accuracy  (Figure 5A) , with 463 
+multimer predictions showing lower RMSD values compared to monomer predictions .  464 
+Next, we repeated this analysis  against structure s not yet available  in the protein database  at 465 
+the time of the analysis, namely VSG397, VSG531, and VSG1954 [16] and VSG11 and VSG615 466 
+from this manuscript. These recently determined structures  were well -predicted by AlphaFold , 467 
+although with slightly higher RMSD values  as compared to the predictions for VSG structures  468 
+already in the database  (Figure 5B). Typ ically in these models, t he three -helix bundle region 469 
+showed the most accurate alignment,  while discrepancies appeared mostly in loop regions 470 
+connecting secondary structure. The predicted location of disulfide bonds matches very closely 471 
+those observed in the experi mental structure s (Supplementary Figure 6). Finally, a s noted in the 472 
+Methods, the structures of VSG558 and VSG615 were solved  by molecular replacement using th e 473 
+AlphaFold model  of the se VSGs  as search model s, indicating a very close fit of the model to the 474 
+experimental data. These robust results from AlphaFold provide confidence that it can be used as 475 
+a tool to rapidly and robustly map the structural diversity of the VSG nome.  476 
+Focusing on  the Lister427 strain database  (Methods) , we examined 215 NTD sequences with 477 
+AlphaFold and compared these predictions to the existing structures known . Our results can be 478 
+summarized by stating that all of the predicted structures conform to our classification scheme and 479 
+no structure was predicted that conflicted with our schema  (Figure 6). We also  examined 83 480 
+sequences from a second Trypanosoma brucei  strain, T. brucei brucei  927. All VSGs examined 481 
+from Tb 927 were predicted to adopt structures fitting our classification scheme  (Supplementary 482 
+Figure 7). Extending our analysis to more distally related species and VSGs like T. vivax  showed 483 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  24 less confidence in the modeling (Supplementary Figure 8), and therefore it is likely that template 484 
+experimental structures  (which currently do not exist)  may be required on which the AlphaFold 485 
+system can train to produce more reliable models.  486 
+From this it can be concluded  that the space of protein structure for the T. brucei  VSGs  can 487 
+be well -described by the classes we have presented in this manuscript.  As an overarching 488 
+observation, both the experimental structures and the predicted AlphaFold models all display 489 
+unique mol ecular surfaces in terms of the distribution of chemical properties exposed to the 490 
+immune system (charge, hydrophobicity, topography, etc., Supplementary Figure 9). This is of 491 
+course consistent with the notion that the VSGs are each antigenically distinct,  presenting unique 492 
+faces to the immune system.  493 
+ 494 
+  495 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  25 DISCUSSION  496 
+A mechanistic u nderstanding of antigenic variation in the African trypanosome will require a 497 
+complicated mix ture of knowledge regarding the epitope space exposed to the host immune system 498 
+and how t he repertoires of antigen recognition in immune cells respond to this chemical space in 499 
+the dynamic process of coat switching and the adaptive immune response  [41]. At the most basic 500 
+level, such an understanding necessitates a th orough knowledge of VSG antigenic diversity. 501 
+Therefore, understanding the possibilities and constraints of VSG protein architecture is a critical 502 
+step in this direction.  503 
+We have presented in this manuscript and in  recently published work a collection of ne w 504 
+experimental VSG structures. Combined with those already known, we have developed a 505 
+structure -based classification scheme for the T. brucei VSGs that shows the breadth of possible 506 
+protein folds for the major coat protein of the African trypanosome as wel l as constraining the 507 
+underlying conformational possibilities inherent in the VSG nome. This classification scheme is 508 
+enriched by including hundreds of VSG structur al models  by predicting folds using the deep 509 
+learning system , AlphaFold. This revolutionary process  was first validate d on the VSG proteins 510 
+by predicting  the folds of experimentally determined VSGs in the database as well as several  novel 511 
+VSG structure s we have determined that ha d not be en published (and thus could not serve as 512 
+templates for Alpha Fold). AlphaFold predicted all with high accuracy , always performing better 513 
+(as determined by match to the experimental structures) when asked to predict an oligomer of the 514 
+right number for a given VSG (dimer or trimer ). Since protein folding can be partia lly dependent 515 
+on higher -order protein -protein associations, this suggest s that the deep learning training of the 516 
+AlphaFold algorithms has captured some aspect of the energetics of this dependency. Once we 517 
+were confident in the predictions of AlphaFold for the VSG proteins, we analyzed hundreds of 518 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  26 sequences  from T. brucei , establishing that all predicted structures fall into the groups of our 519 
+proposed classification system.  520 
+This provides  an architectural framework to understand the VSGs, integrating the  key 521 
+structural and biochemical  features of each class (protein fold and topology, oligomerization, 522 
+positions of disulfides and N -linked glycans, presence of surface O-linked glycosylation). The 523 
+importance of these constraints and the broadening of previous kno wledge can be seen in the 524 
+incorrect assumptions that were derived from the first three VSG structures determined over the 525 
+period of 1990 -2017 (VSG1, VSG2, and IlTat1.24). By happenchance, these three VSGs are not a 526 
+random sampling of the VSG nome, but are c lustered by structure into a single VSG class ( A2) 527 
+with specific oligomeric and structural properties that differ markedly from those  in the other VSG 528 
+classes. Our classification scheme and examination of hundreds of VSGs from multiple species 529 
+suggests tha t the greater diversity that we have mapped out is likely close to the full  space of 530 
+variability in structure  in T brucei , and likely also covers a substantial portion of the VSGs in 531 
+related genomes like T.b. strain 927. It is quite possible that the VSGs in even  distan tly related 532 
+species like T. vivax  will find substantial fit with most of the T. brucei  classifications , although 533 
+currently  some VSGs in T. vivax  do not model well  with AlphaFold , suggesting that the re could 534 
+exist novel structural classes  in this and other  species .  535 
+In this sense, while it was mistakenly assume d the “VSG -folding problem” was understood 536 
+decades ago, it is now likely that this is indeed beginning to be realized , and that further work 537 
+across the breadt h of trypanosome species will  be able to full y map the antigenic space of these 538 
+molecules . While  AlphaFold is clearly a primary choice for this structural mapping  (as perhaps are 539 
+newer systems like Meta AI, [46]), it has to be noted that the system currently has limitations. One 540 
+caveat is that only experimental structures  (or biochemical mapping)  can presently  establish  the 541 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  27 location s of post -translational modifications, modifications that have been shown to be 542 
+immunomodulatory. Additionally, as shown with attempts to model VSG sequences from T. vivax , 543 
+the low confidence scores of some of these predictions suggest that AlphaFold is more robust at 544 
+present when there exist s tructural templates of sequences in specific families, e.g., T. vivax  545 
+experimental structures are needed as templates rather than relying solely  on T. brucei  templates.  546 
+The next steps in understanding antigenic variation in the African trypanosome should  likely 547 
+now focus on  mapping immunogenic epitopes on the VSG surfaces combined with antibody -VSG 548 
+complex  structures. For the time being, this will likely rest in the realm of experimental structural 549 
+biology, as neither AlphaFold nor a ny other software has yet succeeded in robustly predicting the 550 
+structures of protein -protein interactions. Once many of these have been determined, efforts to 551 
+categorize the classes and natures of epitopes and the modes of interaction with antibodies will be 552 
+the final piece in th e puzzle to begin to develop a mechanistic framework for how this pathogen 553 
+can continuously evade even the most potent immune response s. 554 
+  555 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  28 REFERENCES  556 
+1.  Keating J, Yukich JO, Sutherland CS, Woods G, Tediosi F. Human African 557 
+trypanosomiasis prevention, treatment and control costs: A systematic review. Acta Trop. 558 
+2015;150: 4 –13. doi:10.1016/j.actatropica.2015.06.003  559 
+2.  Ponte -Sucre A. An Overview of Trypanosoma brucei Infections: An Intense Host –Parasite 560 
+Interaction. Front Microbiol. 2016;7. doi:10.3389/fmicb.2016.02126  561 
+3.  Matthews KR, McCulloch R, Morrison LJ. The within -host dynamics of African 562 
+trypanosome infections. Philos Trans R Soc Lond B Biol Sci. 2015;370. 563 
+doi:10.1098/rstb.2014.0288  564 
+4.  Burri C. Sleeping Sickness at the Crossroads. Trop Med Infect Dis. 2020;5: E57. 565 
+doi:10.3390/tropicalmed5020057  566 
+5.  Abro Z, Kassie M, Muriithi B, Okal M, Masiga D, Wanda G, et al. The potential economic 567 
+benefits of controlling trypanosomiasis using waterbuck repellent blend in sub -Saharan 568 
+Africa. Simuunza MC, editor. PLOS ONE. 2021;16: e0254558. 569 
+doi:10.1371/journal.pone.0254558  570 
+6.  Holt HR, Selby R, Mumba C, Napier GB, Guitian J. As sessment of animal African 571 
+trypanosomiasis (AAT) vulnerability in cattle -owning communities of sub -Saharan Africa. 572 
+Parasit Vectors. 2016;9: 53. doi:10.1186/s13071 -016-1336 -5 573 
+7.  Bangs JD. Evolution of Antigenic Variation in African Trypanosomes: Variant Su rface 574 
+Glycoprotein Expression, Structure, and Function. BioEssays. 2018;40: 1800181. 575 
+doi:10.1002/bies.201800181  576 
+8.  Horn D. Antigenic variation in African trypanosomes. Mol Biochem Parasitol. 2014;195: 577 
+123–9. doi:10.1016/j.molbiopara.2014.05.001  578 
+9.  Manna PT, Boehm C, Leung KF, Natesan SK, Field MC. Life and times: synthesis, 579 
+trafficking, and evolution of VSG. Trends Parasitol. 2014;30: 251 –258. 580 
+doi:10.1016/j.pt.2014.03.004  581 
+10.  Mugnier MR, Stebbins CE, Papavasiliou FN. Masters of Disguise: Antigenic Variat ion and 582 
+the VSG Coat in Trypanosoma brucei. PLOS Pathog. 2016;12: e1005784. 583 
+doi:10.1371/journal.ppat.1005784  584 
+11.  Aresta -Branco F, Erben E, Papavasiliou FN, Stebbins CE. Mechanistic Similarities between 585 
+Antigenic Variation and Antibody Diversification duri ng Trypanosoma brucei Infection. 586 
+Trends Parasitol. 2019;35: 302 –315. doi:10.1016/j.pt.2019.01.011  587 
+12.  Schwede A, Jones N, Engstler M, Carrington M. The VSG C -terminal domain is 588 
+inaccessible to antibodies on live trypanosomes. Mol Biochem Parasitol. 2011;1 75: 201 – 589 
+204. doi:10.1016/j.molbiopara.2010.11.004  590 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  29 13.  Hempelmann A, Hartleb L, van Straaten M, Hashemi H, Zeelen JP, Bongers K, et al. 591 
+Nanobody -mediated macromolecular crowding induces membrane fission and remodeling 592 
+in the African trypanosome. Cell Rep. 2021;37: 109923. doi:10.1016/j.celrep.2021.109923  593 
+14.  Berriman M, Ghedin E, Hertz -Fowler C, Blandin G, Renauld H, Bartholomeu DC, et al. 594 
+The genome of the African trypanosome Trypanosoma brucei. Science. 2005;309: 416 –22. 595 
+doi:10.1126/science.1112642  596 
+15.  Hutchinson OC, Smith W, Jones NG, Chattopadhyay A, Welburn SC, Carrington M. VSG 597 
+structure: similar N -terminal domains can form functional VSGs with different types of C - 598 
+terminal domain. Mol Biochem Parasitol. 2003;130: 127 –131. doi:10.1016/S0166 - 599 
+6851(03)0 0144 -0 600 
+16.  Chandra M, Đakovi ć S, Foti K, Zeelen J, van Straaten M, Aresta -Branco F, et al. Structural 601 
+Similarities Between the Metacyclic and Bloodstream Form Variant Surface Glycoproteins 602 
+of the African Trypanosome. PLOS Negl Trop Dis. In press. 603 
+17.  Pinger J, Ne šić D, Ali L, Aresta -Branco F, Lilic M, Chowdhury S, et al. African 604 
+trypanosomes evade immune clearance by O -glycosylation of the VSG surface coat. Nat 605 
+Microbiol. 2018;3: 932 –938. doi:10.1038/s41564 -018-0187 -6 606 
+18.  Zeelen J, van Straaten M, Verdi J, Hempel mann A, Hashemi H, Perez K, et al. Structure of 607 
+trypanosome coat protein VSGsur and function in suramin resistance. Nat Microbiol. 608 
+2021;6: 392 –400. doi:10.1038/s41564 -020-00844 -1 609 
+19.  Umaer K, Aresta -Branco F, Chandra M, van Straaten M, Zeelen J, Lapouge K , et al. 610 
+Dynamic, variable oligomerization and the trafficking of variant surface glycoproteins of 611 
+Trypanosoma brucei. Traffic Cph Den. 2021;22: 274 –283. doi:10.1111/tra.12806  612 
+20.  Cross GAM, Kim H -S, Wickstead B. Capturing the variant surface glycoprotein  repertoire 613 
+(the VSGnome) of Trypanosoma brucei Lister 427. Mol Biochem Parasitol. 2014;195: 59 – 614 
+73. doi:10.1016/j.molbiopara.2014.06.004  615 
+21.  Weirather JL, Wilson ME, Donelson JE. Mapping of VSG similarities in Trypanosoma 616 
+brucei. Mol Biochem Parasitol. 20 12;181: 141 –52. doi:10.1016/j.molbiopara.2011.10.011  617 
+22.  Jumper J, Evans R, Pritzel A, Green T, Figurnov M, Ronneberger O, et al. Highly accurate 618 
+protein structure prediction with AlphaFold. Nature. 2021;596: 583 –589. 619 
+doi:10.1038/s41586 -021-03819 -2 620 
+23.  Varadi M, Anyango S, Deshpande M, Nair S, Natassia C, Yordanova G, et al. AlphaFold 621 
+Protein Structure Database: massively expanding the structural coverage of protein - 622 
+sequence space with high -accuracy models. Nucleic Acids Res. 2022;50: D439 –D444. 623 
+doi:10.10 93/nar/gkab1061  624 
+24.  Burkard G, Fragoso CM, Roditi I. Highly efficient stable transformation of bloodstream 625 
+forms of Trypanosoma brucei. Mol Biochem Parasitol. 2007;153: 220 –3. 626 
+doi:10.1016/j.molbiopara.2007.02.008  627 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  30 25.  Pinger J, Chowdhury S, Papavasiliou F N. Variant surface glycoprotein density defines an 628 
+immune evasion threshold for African trypanosomes undergoing antigenic variation. Nat 629 
+Commun. 2017;8: 828. doi:10.1038/s41467 -017-00959 -w 630 
+26.  Cross GA. Release and purification of Trypanosoma brucei varia nt surface glycoprotein. J 631 
+Cell Biochem. 1984;24: 79 –90. doi:10.1002/jcb.240240107  632 
+27.  Sheldrick GM. A short history of SHELX. Acta Crystallogr A. 2008;64: 112 –22. 633 
+doi:10.1107/S0108767307043930  634 
+28.  Minor W, Cymborowski M, Otwinowski Z, Chruszcz M. HKL -3000: the integration of data 635 
+reduction and structure solution – from diffraction images to an initial model in minutes. 636 
+Acta Crystallogr D Biol Crystallogr. 2006;62: 859 –866. doi:10.1107/S0907444906019949  637 
+29.  Langer G, Cohen SX, Lamzin VS, Perrakis A. Auto mated macromolecular model building 638 
+for X -ray crystallography using ARP/wARP version 7. Nat Protoc. 2008;3: 1171 –9. 639 
+doi:10.1038/nprot.2008.91  640 
+30.  Adams PD, Afonine PV, Bunkoczi G, Chen VB, Davis IW, Echols N, et al. PHENIX: a 641 
+comprehensive Python -based sy stem for macromolecular structure solution. Acta 642 
+Crystallogr Biol Crystallogr. 2010;66: 213 –21. doi:10.1107/S0907444909052925  643 
+31.  Emsley P, Lohkamp B, Scott WG, Cowtan K. Features and development of Coot. Acta 644 
+Crystallogr D Biol Crystallogr. 2010;66: 486 –501. doi:10.1107/S0907444910007493  645 
+32.  Joosten RP, Long F, Murshudov GN, Perrakis A. The PDB_REDO server for 646 
+macromolecular structure model optimization. IUCrJ. 2014;1: 213 –220. 647 
+doi:10.1107/S2052252514009324  648 
+33.  McCoy AJ, Grosse -Kunstleve RW, Adams PD, W inn MD, Storoni LC, Read RJ. Phaser  649 
+crystallographic software. J Appl Crystallogr. 2007;40: 658 –674. 650 
+doi:10.1107/S0021889807021206  651 
+34.  Kim H -S, Cross GAM. TOPO3α  Influences Antigenic Variation by Monitoring Expression - 652 
+Site-Associated VSG Switching in Trypanosoma brucei. Mansfield JM, editor. PLoS 653 
+Pathog. 2010;6: e1000992. doi:10.1371/journal.ppat.1000992  654 
+35.  Rypniewski WR, Holden HM, Rayment I. Structural consequ ences of reductive methylation 655 
+of lysine residues in hen egg white lysozyme: An x -ray analysis at 1.8 -.ANG. resolution. 656 
+Biochemistry. 1993;32: 9851 –9858. doi:10.1021/bi00088a041  657 
+36.  Mirdita M, Schütze K, Moriwaki Y, Heo L, Ovchinnikov S, Steinegger M. Col abFold: 658 
+making protein folding accessible to all. Nat Methods. 2022;19: 679 –682. 659 
+doi:10.1038/s41592 -022-01488 -1 660 
+37.  Mirdita M, Steinegger M, Söding J. MMseqs2 desktop and local web server app for fast, 661 
+interactive sequence searches. Hancock J, editor. Bio informatics. 2019;35: 2856 –2858. 662 
+doi:10.1093/bioinformatics/bty1057  663 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  31 38.  Suzek BE, Wang Y, Huang H, McGarvey PB, Wu CH, UniProt Consortium. UniRef 664 
+clusters: a comprehensive and scalable alternative for improving sequence similarity 665 
+searches. Bioinforma Oxf  Engl. 2015;31: 926 –932. doi:10.1093/bioinformatics/btu739  666 
+39.  Steinegger M, Meier M, Mirdita M, Vöhringer H, Haunsberger SJ, Söding J. HH -suite3 for 667 
+fast remote homology detection and deep protein annotation. BMC Bioinformatics. 668 
+2019;20: 473. doi:10.1186 /s12859 -019-3019 -7 669 
+40.  Cross GA, Kim HS, Wickstead B. Capturing the variant surface glycoprotein repertoire (the 670 
+VSGnome) of Trypanosoma brucei Lister 427. Mol Biochem Parasitol. 2014;195: 59 –73. 671 
+doi:10.1016/j.molbiopara.2014.06.004  672 
+41.  Gkeka A, Aresta -Branco F, Triller G, Vlachou EP, Lilic M, Olinares PDB, et al. 673 
+Immunodominant surface epitopes power immune evasion in the African trypanosome. 674 
+Immunology; 2021 Jul. doi:10.1101/2021.07.20.453071  675 
+42.  Mehlert A, Bond CS, Ferguson MAJ. The glycoforms of a Tr ypanosoma brucei variant 676 
+surface glycoprotein and molecular modeling of a glycosylated surface coat. Glycobiology. 677 
+2002;12: 607 –612. doi:10.1093/glycob/cwf079  678 
+43.  Freymann DM, Metcalf P, Turner M, Wiley DC. 6 Å -Resolution X -ray structure of a 679 
+variable sur face glycoprotein from Trypanosoma brucei. Nature. 1984;311: 167 –169. 680 
+doi:10.1038/311167a0  681 
+44.  Carrington M, Miller N, Blum M, Roditi I, Wiley D, Turner M. Variant specific 682 
+glycoprotein of Trypanosoma brucei consists of two domains each having an independ ently 683 
+conserved pattern of cysteine residues. J Mol Biol. 1991;221: 823 –35.  684 
+45.  Holm L. Dali server: structural unification of protein families. Nucleic Acids Res. 2022;50: 685 
+W210 –W215. doi:10.1093/nar/gkac387  686 
+46.  Lin Z, Akin H, Rao R, Hie B, Zhu Z, Lu W,  et al. Evolutionary -scale prediction of atomic 687 
+level protein structure with a language model. Synthetic Biology; 2022 Jul. 688 
+doi:10.1101/2022.07.20.500902  689 
+47.  McNicholas S, Potterton E, Wilson KS, Noble MEM. Presenting your structures: the 690 
+CCP4mg molecular -graphics software. Acta Crystallogr D Biol Crystallogr. 2011;67: 386 – 691 
+394. doi:10.1107/S0907444911007281  692 
+ 693 
+ 694 
+ 695 
+ 696 
+ 697 
+ 698 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  32 SUPPLEMENTARY FIGURES AND TABLES  699 
+Figures 1 -9 700 
+Table s 1 701 
+ 702 
+ACKNOWLEDGEMENTS  703 
+     We acknowledge synchrotron  time at the at the Paul Scherrer Institut, Villingen, Switzerland 704 
+(SLS, beamline PX I and PX III).   705 
+ 706 
+AUTHOR CONTRIBUTIONS  707 
+M.C. purified and crystallized VSG615 and J.P.Z. solved the structure.  A.G. and P.V. cloned, 708 
+expressed, purified, and crystallized VSG11 WT-AS and VSG11 N/2C-18mer. J.P.Z. and K.F. solved 709 
+the structures of the VSG11 WT and VSG11 N/2C-18mer. VSG11 WT (for the VSG11 WT-Oil and  710 
+VSG11 WT-Iodine crystals) was purified and crystallized by J.P.Z from clones and initial conditions 711 
+produced by F.A.B . M.v.S. cloned VSG558 and J.P.Z. crystallized the VSG558 and solved its 712 
+structure. AlphaFold models were produced by J.P.Z. and S.D.. C.E.S. conceived of the projects, 713 
+aided in structural analysis, co -wrote the manuscript, and generated figures. All autho rs reviewed 714 
+the manuscript.   715 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  33  716 
+Figure. 1: (A) and (B) Structure s of the VSG11  and VSG615  NTD  monomers  shown as a ribbon 717 
+diagram colored light blue. The N -linked glycan s attached to the bottom lobe are shown in a space - 718 
+filling representation colored red. Di sulfide bonds  (labeled S -S bonds)  are shown in a space -filling 719 
+representation , colored cyan. The O-linked glycan s on the top of the molecule s are shown in a 720 
+space -filling representation colored purple  and green (for the second sugar in VSG615) . (C) 721 
+Alignme nt of four B -class VSG monomers (VSG3, VSG11, VSG615, and VSG1954 [16]) shown 722 
+as thin “worm” drawings with each separate protein colored as indicated in the figure labels . The 723 
+N- and O-linked sugars at the bottom and top of the molecules (respectively) are differentially 724 
+colored as noted in the figure.  (D) Structure o f the VSG558 dimer illustrated as in panel (A), which 725 
+each chain of the dimer colored differentl y. (E) Monomer of VSG558. (F) Alignment of monomers 726 
+of VSG13 and VSG558. Illustrations were produced with CCP4mg [47]. 727 
+  728 
+. CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  34  729 
+Figure 2:  Class -B VSG  Trimers . (A) Both crystallographic (VSG3 and VSG1954) and non - 730 
+crystallographic (VSG11 and VSG615) trimeric arrangements aligned and illustrated as ribbon 731 
+(gray, VSG3) or worm tracing of the mainchain  (other VSGs) . Two orientations are shown rotated 732 
+90 deg rees. The three -fold axis of symmetry is shown in red.  (B) The full asymm etric unit of the 733 
+VSG WT-18mer is shown on the left with the proteins drawn as ribbon diagrams and each set of 734 
+trimers colored differently. On the right is a single trimer isolated fro m the other six.  Figures 735 
+produced using CCP4mg.   736 
+. CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  35  737 
+Figure 3: Lower Lobe Conformational Variability Observed in VSG11 Structures . (A) 738 
+Alignment of the monomers in the asymmetric unit of  VSG WT-18mer, each monomer  given a 739 
+separate color , shown in two orientat ions related by a 90 -degree ro tation about the axis of the 740 
+helical bundle . (B) Alignment of the two monomers in the asymmetric unit of the VSG11 WT-AS 741 
+crystals . Two views are shown rotated by 90 degrees  and the rotation of the bottom lobes relative 742 
+to each other is indicated . Figure s produced using CCP4 mg. 743 
+  744 
+. CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  36  745 
+ 746 
+Figure 4: Structure -based VSG Classification Scheme. The two broad subclasses of VSG 747 
+protein discussed in the main text are denoted at the top of the figure (class A and class B). 748 
+Subclasses are shown  in different colors with a collection of stru ctures illustrating each class 749 
+contained in a color -coordinated box matching the subclass name. Structures are drawn as in 750 
+previous figures with the exception that O-linked glycans are colored red like N -linked  glycans.  751 
+Beneath each subclass name in gray are the clustering designations of the classes in previous 752 
+papers discussed in the main text. Cyan backgrounds indicate structures solved prior to 2017 and 753 
+orange  backgrounds indicate predicted models by the Alp haFold system.   754 
+. CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  37  755 
+Figure 5: (A) Alignment of experimentally determined structure s (blue) and AlphaFold model s 756 
+(gold) for structures whose coordinates were available at the time of the writing of this 757 
+manuscript for use by AlphaFold as a template. (B) Align ment of experimentally determined 758 
+structure (blue) and AlphaFold model (gold) for structures whose coordinates were not yet 759 
+available at the time of the writing of this manuscript for use by AlphaFold as a template.  RMSD 760 
+indicates the root -mean -square devi ation in the Ca positions between the two structures. 761 
+Alignments and illustrations produced by CCP4 mg. 762 
+. CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  38  763 
+. CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint  39 Figure 6: AlphaFold Models of Sequences from VSG Structural Classes. Structures are drawn 764 
+in different colors with a thin worm style. (A) Class A1a wit h models for the NTD sequences of 765 
+VSGsur, VSG478, VSG483, VSG485, VSG507, VSG520, VSG523, VSG529, VSG535, VSG537 766 
+(B) Class A1b with models for the NTD sequences of VSG13, VSG510, VSG650, VSG660, 767 
+VSG661, VSG662, VSG663, VSG671, VSG717, VSG719 (C) Class A1c with models for the 768 
+NTD sequences of VSG21, VSG391, VSG479, VSG493, VSG526, VSG545, VSG558, VSG584, 769 
+VSG612, VSG659 (D) Class A2 with models for the NTD sequences of VSG1, VSG472, VSG476, 770 
+VSG494, VSG495, VSG504, VSG514, VSG517, VSG525, VSG527, VSG536 (E) Class B with 771 
+models for the NTD sequences of VSG3, VSG473, VSG475, VSG480, VSG486, VSG491, 772 
+VSG506, VSG513, VSG516, VSG528, VSG534. Alignments generated and illustrated with 773 
+CCP4mg , each structure aligned in a different color  [47]. 774 . CC-BY-NC-ND 4.0 International license available under a(which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted February 4, 2023. ; https://doi.org/10.1101/2023.02.04.525354doi: bioRxiv preprint 

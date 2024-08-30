@@ -1,0 +1,305 @@
+BIOINFORMATICS ORIGINAL PAPERVol. 21 no. 4 2005, pages 456–463
+doi:10.1093/bioinformatics/bti191
+RAxML-III: a fast program for maximum
+likelihood-based inference of largephylogenetic trees
+A. Stamatakis1,∗, T. Ludwig2and H. Meier1
+1Department of Computer Science, Technical University of Munich, Boltzmannstrasse 3,
+D-85748 München, Germany and2Department of Computer Science, University of
+Heidelberg, Im Neuenheimer Feld 348, D-69120 Heidelberg, Germany
+Received on May 21, 2004; accepted on November 11, 2004
+Advance Access publication December 17, 2004
+ABSTRACT
+Motivation: Thecomputationoflargephylogenetictreeswith
+statistical models such as maximum likelihood or bayesianinference is computationally extremely intensive. It hasrepeatedly been demonstrated that these models are able torecover the true tree or a tree which is topologically closer tothetruetreemorefrequentlythanlesselaboratemethodssuchasparsimonyorneighborjoining.Duetothecombinatorialandcomputationalcomplexitythesizeoftreeswhichcanbecom-puted on a Biologist’s PC workstation within reasonable timeis limited to trees containing approximately 100 taxa.Results: In this paper we present the latest release of our
+program RAxML-III for rapid maximum likelihood-based infer-ence of large evolutionary trees which allows for computationof 1.000-taxon trees in less than 24 hours on a single PCprocessor. We compare RAxML-III to the currently fastestimplementations for maximum likelihood and bayesian infer-ence: PHYML and MrBayes. Whereas RAxML-III performsworse than PHYML and MrBayes on synthetic data it clearlyoutperforms both programs on all real data alignments usedin terms of speed and ﬁnal likelihood values.Availability Supplementary information: RAxML-III includ-
+ing all alignments and ﬁnal trees mentioned in this paper isfreely available as open source code at http://wwwbode.cs.tum/∼stamatak
+Contact: stamatak@cs.tum.edu
+INTRODUCTION
+In recent years there has been an astonishing accumulation
+of genetic information for many different organisms. Thisinformation can be used to infer evolutionary relationships(called aphylogenetic tree orphylogeny ) among a collection
+of species. There are a variety of techniques that are usedto compute these relationships, including the use of max-imum likelihood (Felsenstein, 1981) which among bayesian
+∗To whom correspondence should be addressed.methods is considered to represent one of the currently mostaccurate models. A useful review of traditional and bayesianapproachesisavailablefromHolderandLewis(2003).Unfor-tunately, the number of possible tree topologies grows expo-nentiallywiththenumberoftaxaandthecomputationalcostofthelikelihoodfunctionitselfishigh.Thus,theintroductionofheuristicstoreducethesearchspaceintermsofpotentialtreetopologies evaluated becomes inevitable for the computationof trees containing more than 15 to 20 organisms. However,heuristics for maximum likelihood-based phylogenetic treecalculations still remain computationally intensive, mainlydue to the high cost of the likelihood function, which isinvoked repeatedly for each analyzed tree topology.
+Thus, to date only relatively small maximum likelihood-
+based trees could be computed on parallel computers: a150-taxontreewithparallelfastDNAml(Stewart etal.,2001),
+anda228-taxontreeusingaparallelgeneticalgorithm(Braueretal.,2002).However,largedataalignmentscontainingvalu-
+able phylogenetic information are available for example inthe ARB (Ludwig et al., 2004) ssu rRNA (small subunit
+ribosomal RiboNucleic Acid) database which presently con-tainsmorethan30.000sequences.Recently,aGRID-enabledversion of fastDNAml has been used on a large alignmentto compete in the High Performance Computing Challengeat Supercomputing 2003 conference (see http://www.sc-conference.org/sc2003/tech_hpc.phpfordetails).Wehavehowevernotbeenabletoobtainthealignmentorinformationabout the size of the analysis.
+In previous work (Stamatakis et al., 2002) we have intro-
+duced Subtree Equality Vectors (SEVs) to signiﬁcantlyaccelerate the topology evaluation function of maximumlikelihood-based phylogeny programs. We implementedSEVs in PAxML (Parallel A(x)ccelerated Maximum Likeli-hood), which was derived from parallel fastDNAml (Stewartet al., 2001). PAxML shows run time improvements of
+approximately25%to 65%comparedtoparallelfastDNAmland yields exactly identical results at the same time.
+456 Published by Oxford University PressRAxML-III
+PAxMLshowsbestaccelerationsforlargealignments( ≥150
+sequences) on inexpensive PC processor architectures.
+OnemaingoalofcurrentworkonRAxML-III(Randomized
+A(x)ccelerated Maximum Likelihood) is to obtain equallygood or better likelihood values than PAxML and com-parable state-of-the-art sequential programs in less time bydeploymentofimprovedsearchspaceheuristics.Anotherkeyobjective is to enhance RAxML-III by a greater variety ofevolutionary models and maximum likelihood-based estima-tionofmodelparameters.Finally,theRAxML-IIIalgorithmisdesignedtoallowfortheimplementationofrelativelycoarse-grained distributed and parallel (Stamatakis et al., 2004b)
+versionswhichdonotrelyonexpensivehardwareplatforms.Theparallelimplementationoftheprecedingprogramversion(RAxML-II)hasbeenusedtoinfera10.000-taxonphylogenyon a medium size PC cluster (Stamatakis et al., 2004b).
+RELATED WORK
+A recent comparative survey (Williams and Moret, 2003)
+covers an important range of widely-used state-of-the-artstatistical phylogeny programs such as fastDNAml (Olsenet al., 1994), MrBayes (Huelsenbeck and Ronquist, 2001),
+PAUP* (Swofford, 1999), and treepuzzle (Strimmer andHaeseler,1996).ThemostimportantresultofthispaperisthatMrBayesoutperformsallotheranalyzedphylogenyprogramsin terms of speed and tree quality. MrBayes is a program forbayesiananalysisofphylogenetictrees.However,thissurveyis entirely based on synthetic (simulated) data. As the resultsof this paper show additional experiments with real data canlead to distinct conclusions and a more differentiated image.Furthermore, the largest alignments of this survey containedonly60sequences.Thus,theresultsdonotnecessarilyapplytoinferenceoflargetreesbasedonrealdatasets.Inaddition,this survey does not cover genetic algorithms (Lewis, 1998)whichgenerallyconvergefasterthanMrBayes(GuindonandGascuel, 2003).
+More recently, Guindon and Gascuel (2003) published a
+paper about their new program PHYML, which is very fastand outperforms other recent approaches including MrBayesand genetic algorithms such as MetaPIGA (Lemmon andMilinkovitch, 2002) which -to the best of our knowledge-currently represents the most efﬁcient genetic algorithm forphylogenetic analysis. Like RAxML-III, PHYML is a ‘tra-ditional’ maximum likelihood program which seeks to ﬁndthe optimal topology in respect to the likelihood value and isalso capable of optimizing model parameters. The PHYMLpublicationincludesacomparativesurveybasedontwolargereal world data sets comprising 218 and 500 taxa, as well ason 50 synthetic 100-taxon alignments.
+Thus,-tothebestofourknowledge-MrBayesandPHYML
+are currently the fastest and most accurate representativesof bayesian and ‘traditional’ approaches to phylogenetic treeinference using statistical models of nucleotide substitution.Therefore, the focus is on those two programs for assess-
+ing performance of RAxML-III within the context of thispaper. Comparative surveys which assess performance ofPHYML, MrBayes, and other common phylogeny programscan be found in the aforementioned survey (Williams andMoret,2003)andpaperaboutPHYML(GuindonandGascuel,2003).
+ALGORITHM
+The heuristics of RAxML-III belong to the class ofalgorithms, which optimize the likelihood of a start-ing tree already comprising all sequences. In contrast toother programs RAxML-III starts by building an initialparsimony tree with dnapars from Felsenstein’s PHYLIPpackage (http://evolution.genetics.washington.edu) for tworeasons:
+Firstly, parsimony is related to maximum likelihood under
+simple evolutionary models (Tufﬂey and Steel, 1997), suchthat one can expect to obtain a starting tree with a relativelygood likelihood value compared to random or neighbor join-ing starting trees. For example the 500_ZILLA parsimonystarting tree showed a better likelihood than the ﬁnal tree ofPHYML (see Table 3).
+Secondly, dnapars uses stepwise addition (Felsenstein,
+1981) for tree building and is relatively fast. The stepwiseaddition algorithm enables the construction of distinct start-ing trees by using a randomized input sequence order. Thus,RAxML-IIIcanbeexecutedseveraltimeswithdifferentstart-ingtreesandtherebycomputeasetofdistinctﬁnaltrees.Theset of ﬁnal trees can be used to build a consensus tree andaugment conﬁdence into the ﬁnal result since RAxML-IIIexplores the search space from different starting points. Tospeed up computations, some optimization steps have beenremoved from dnapars.
+The tree optimization process represents the second and
+most important part of the heuristics. RAxML-III performsstandard subtree rearrangements by subsequently remov-ing all possible subtrees from the currently best tree t
+best
+and re-inserting them into neighboring branches up to a
+speciﬁeddistanceofnodes.RAxML-IIIinheritedthisoptim-ization strategy from fastDNAml. One rearrangement step infastDNAml consists of moving all subtrees within the cur-rentlybesttreebytheminimumuptothemaximumdistanceof nodes speciﬁed (lower/upper rearrangement setting). Thisprocess is outlined for a single subtree (ST5) and a distanceof 1 in Figure 1 and for a distance of 2 in Figure 2 (notall possible moves are shown). In fastDNAml the likelihoodof each thereby generated topology is evaluated by exhaust-ive branch length optimizations. If one of those alternativetopologies improves the likelihood t
+bestis updated accord-
+ingly and once again all possible subtrees are rearrangedwithin t
+best. This process of rearrangement steps is repeated
+until no better topology is found.
+457A.Stamatakis et al.
+Fig. 1.Rearrangements traversing one node for subtree ST5,
+branches which are optimized by RAxML-III are indicated by boldlines.
+Fig. 2.Example rearrangements traversing two nodes for subtree
+ST5, branches which are optimized by RAxML-III are indicated bybold lines.
+The rearrangement process of RAxML-III differs in two
+major points: In fastDNAml after each insertion of a subtreeinto an alternative branch the branch lengths of the entiretree are optimized. As depicted in Figure 1 with bold linesRAxML-III only optimizes the three local branches adjacentto the insertion point either analytically or by the Newton-Raphsonmethodbeforecomputingitslikelihoodvalue.Sincethelikelihoodofthetreestronglydependsonthetopologypersethisfastpre-scoringcanbeusedtoestablishasmalllistofpotentialalternativetreeswhichareverylikelytoimprovethescoreof t
+best.RAxML-IIIusesalistofsize20tostorethebest
+20treesobtainedduringonerearrangementstep.Thislistsizeprovestobeapracticalvalueintermsofspeedandthorough-nessofthesearch.Aftercompletionofonerearrangementstepthealgorithmperformsglobalbranchlengthoptimizationsonthose20besttopologiesonly.DuetothecapabilitytoanalyzeFig.3.Exampleforsubsequentapplicationoftopologicalimprove-
+ments during one rearrangement step.
+signiﬁcantly more alternative and diverse topologies in less
+timeahigherupperrearrangementssettingcanbeusede.g.5or 10 which results in signiﬁcantly improved ﬁnal trees.
+Another important change especially for the initial optim-
+ization phase, i.e. the ﬁrst 3-4 rearrangement steps, consistsin the subsequent application of topological improvementsduring one rearrangement step. If during the insertion of onespeciﬁc subtree into an alternative branch a topology witha better likelihood is encountered this tree is kept immedi-atelyandallsubsequentsubtreerearrangementsofthecurrentstep are performed on the improved topology. The mech-anism is outlined in Figure 3 for a subsequent applicationof topological improvements via subtree rearrangements ofST5 and ST3 on the same initial tree. This enables rapid ini-tial optimization of random starting trees as depicted e.g. fortwo alignments containing 150 taxa in Figures 6 and 7. Theexact implementation of the RAxML-III algorithm is indic-atedintheC-likepseudocodebelow.Thealgorithmispassedthe user/parsimony starting tree t, the initial rearrangement
+setting rStart (default: 5) and the maximum rearrange-
+ment setting rMax(default: 21). Initially the rearrangement
+stepwidth ranges from r L=1 torU = rStart . Fast
+analytical local branch length optimization ais turned off
+when functions rearr(...) , which actually performs the
+rearrangements, and ptimizeList20() fail to yield an
+improved tree for the ﬁrst time. As long as the tree doesnot improve the lower and upper rearrangement parametersrL, rU are incremented by rStart. The program termin-
+ateswhentheupperrearrangementsettingisgreaterorequalto the maximum rearrangement setting, i.e. rU >= rMax .
+RAxML-III(tree t, int rStart, int rMax)
+{
+int rL, rU;boolea n a = TRUE;
+boolean impr = TRUE;while(TRUE)
+{
+458RAxML-III
+if(impr)
+{
+r L=1 ;rU = rStart;rearr(t, rL, rU, a);
+}
+else
+{
+if(!a)
+{
+a = FALSE;r L=1 ;rU = rStart;
+}
+else
+{
+rL += rStart;rU += rStart;
+}
+if(rU < rMax)
+rearr(t, rL, rU, a);
+else
+goto end;
+}
+impr = optimizeList20();
+}
+end:
+}
+RESULTS
+Test data and platforms
+Forconductingexperimentsalignmentscomprising150,200,
+250, 500, 1.000, and 2.025 taxa (150_ARB, ...,2025_ARB)
+have been extracted from the ARB small subunit ribosomalribonucleic acid (ssu rRNA) database. Those alignmentscontain organisms from the domains Eukarya, Bacteriaand Archaea. In addition, the 101 and 150 sequencedata sets (101_SC, 150_SC) which can be downloadedat http://www.indiana.edu/˜rac/hpc/fastDNAml were used.Those data sets have been used by C. Stewart et al. to con-
+ductperformanceanalysisofparallelfastDNAml.Thelarger101_SCand150_SCalignmentshaveprovedtobeveryhardto optimize, in terms of convergence to best-known likeli-hood values, especially for MrBayes with random startingtrees (see Figure 4). According to a personal communicationwith C. Stewart this is due to the fact that these two data setscontain several hard-to-classify fungi which randomly scat-ter throughout the ﬁnal trees. Furthermore, two well-knownrealdatasetscomprising218and500sequences(218_RDPII,500_ZILLA)wereincludedintothetestset.Thosetwoalign-ments are considered to be ‘classic’ real data benchmarks.In particular the 500_ZILLA alignment has been studiedextensivelyundertheparsimonycriterion(Chase etal.,1993).We also used 50 synthetic (simulated) 100-taxon alignments
+(100_SIM_1, ...,100_SIM_50) with a length of 500 base
+pairseach.Therespectivetruereferencetreesandalignmentsare available at http://www.lirmm.fr/w3ifa/MAAS and wereoriginally used to assess accuracy of PHYML (Guindon andGascuel, 2003). Details on the generation of those data setswhichcontaine.g.varyingsequencedivergenceratesarealsoavailableintherespectivepaper.Finally,wegenerated10syn-thetic 4000-taxon (4000_SIM_1, ...,4000_SIM_10) align-
+ments using the r8s program (Sanderson, 2003) to generatea random tree with the following command:
+begin rates;
+simulate diversemodel=bdback
+ntaxa=4000 seed=3049;
+simulate charevol=yes infinite=yes
+startrate=1 minrate=0.1 maxrate=2;
+changerate=0.5 model=NORMAL;describe plot=phylo_description;
+end;
+Furthermore, we invoked Seq-Gen (Rambaut and Grassly,
+1997)
+seq-gen -m HKY -l 2000 -s x -t 2.0with scaling factor xranging from 0.1 to 1.0 to obtain the
+respectivesyntheticalignments.ForsakeofcompletenessthenumberofbasepairsineachalignmentisprovidedinTable1.
+WecompiledMrBayes,PHYML,andRAxML-IIIwiththe
+nativeIntelcompiler icc -03 andexecutedtheprogramson
+aclusterofunloadedIntelXeon2.4GHzprocessorsequippedwith 4GB of main memory at our laboratory. Since PHYMLandRAxML-IIIaredirectlycomparableandbothsigniﬁcantlyfasterthanMrBayeswemainlyfocusonthosetwoprogramsforperformanceanalysisofcompute-intensivelargedatasetsand complex models of nucleotide substitution. We includedata from sequential executions of MrBayes to show thatthe MC
+3(Metropolis-Coupled Markov Chain Monte Carlo
+simulation)chaindoesgenerallynotattainstationaritywithinacceptabletimelimits,i.e.lessthan24hours,forrealdatasetscontainingmorethan250taxa.However,simplecomparisonof intermediate or ﬁnal likelihood values does certainly notrepresenttheonlycriterionforconductingafairperformanceassessment of maximum likelihood and bayesian inference.Our intention is to emphasize that coupling those methodsinduces substantial beneﬁts.
+Small simulated data
+For synthetic data we executed MrBayes for 100.000 gen-erations using 4 MC
+3chains and recommended random
+starting trees. We speciﬁed a sample and print frequencyof 500 and used the last 50 trees to build a majority-ruleconsensus tree. Those relatively fast settings for MrBayesprove to be sufﬁcient to obtain good accuracy values sinceanalyses for synthetic data converge much faster to a
+459A.Stamatakis et al.
+Table 1. Alignment lengths
+data #bp
+101_SC 1858
+150_SC 1269218_RDPII 4182500_ZILLA 759150_ARB 3188200_ARB 3270250_ARB 3638500_ARB 40301000_ARB 55472025_ARB 1517100_SIM 5004000_SIM 2000
+peak likelihood value or stationary chain than respective
+real data experiments. The average RF-rate (Robinsonand Foulds, 1979) on the 50 simulated 100-taxon trees(100_SIM_1-100)forPHYMLis0.0796,0.0808forRAxML-III, 0.0818 for RAxML-III with a less exhaustive searchsetting and 0.0741 for MrBayes. The average execution timeof RAxML-III was 131.05 seconds and 29.27 seconds forthe faster search. PHYML required an average of 35.21seconds and MrBayes 945.32 seconds. The experimentsillustrate that there seems to be no apparent differencebetween PHYML and RAxML-III for small synthetic data.
+Large simulated data
+In Table 2 we list the normalized Robinson-Foulds distanceand execution time in seconds of PHYML and RAxML-IIIfor 10 synthetic 4000-taxon alignments. For this test serieswe used the most recent linux binary version of PHYML(v2.1b1) since our source code version constantly exitedwith a segmentation fault. Performance results of PHYMLfor 4000_SIM_7 and 4000_SIM_10 are not available (n/a)because we encountered a tree parsing problem with therespectiveoutputtrees.Itisevident,thatPHYMLclearlyout-performsRAxML-IIIonlargesyntheticdataforbranchlengthscalingfactor x≥0.5,i.e.onthe4000_SIM_5-9alignments.
+However,treesscaledby x≤0.5appeartobemorerealisticin
+abiologicalcontext(Bininda-EmondsandSanderson,2001).
+Real data and ﬁxed model
+To facilitate testing we used the HKY85 (Hasegawa et al.,
+1985) model of sequence evolution and a ﬁxed transition/transversion (tr/tv) ratio for these experiments. All align-ments including the best topologies are available athttp://wwwbode.cs.tum.edu/˜stamatak.Sincethetr/tvratioisdeﬁneddifferentlyinPHYMLwescaleditaccordinglyforthetestruns.ThemanualforPAML(Yang,1997)whichisavail-ableathttp://bcr.musc.edu/manuals/pamlDOC.pdfcontainsanice description of differences in the tr/tv ratio deﬁnitionsamong various maximum likelihood programs on page 20.Table 2. Topological accuracy and execution times for PHYML &
+RAxML-III on simulated data
+data PHYML (RF) secs RAxML (RF) secs
+4000_SIM_1 0.065 18944 0.065 91524000_SIM_2 0.039 22273 0.037 506094000_SIM_3 0.033 24907 0.027 979624000_SIM_4 0.030 30870 0.031 850804000_SIM_5 0.028 24182 0.035 911784000_SIM_6 0.027 32614 0.031 1766864000_SIM_7 n/a n/a 0.028 1445194000_SIM_8 0.027 34750 0.032 1854544000_SIM_9 0.026 18828 0.036 780614000_SIM_10 n/a n/a 0.034 64690
+For real data sets MrBayes was executed over 2.000.000
+generations using 4 MC3chains and random starting trees.
+Furthermore, we used a sample and print frequency of5000. To enable a fair comparison we evaluated all 400 ofMrBayesoutputtreesaswellastheﬁnalPHYMLresultswithfastDNAml.ForMrBayeswereportthevalueofthetopologywith the best likelihood and the execution time at that point.The trees of this test series are evaluated with fastDNAmlandﬁxedtr/tvratios,duetotheavailabilityofreferencetreesobtained by large scale parallel analyses with PAxML.
+In Table 3 we summarize the ﬁnal likelihood values and
+execution times in seconds for PHYML, MrBayes, andRAxML-III. Since overall execution times of RAxML-IIImight appear long compared to to those of PHYML weindicate the likelihood and the time at which RAxML-IIIpassed the ﬁnal likelihood obtained by PHYML in columnR>PHY.Finally,inthelasttwocolumnswelisttheﬁnallike-
+lihood values and execution times in hours (!) obtained withPAxMLwhichisessentiallyequivalenttoparallelfastDNAml.The results were obtained from parallel runs on the HeLiCs(Heidelberg Linux Cluster System: http://helics.uni-hd.de)compute cluster and the highest feasible rearrangement set-ting,intermsofacceptablecomputationtimes.Theenormousimprovement of execution times illustrates the algorithmicprogress in the ﬁeld over the last two years. The long over-allexecutiontimesofRAxML-IIIincomparisontoPHYMLareduetotheasymptoticconvergenceoflikelihoodovertimewhich is typical for the tree optimization process. A particu-larly extreme case of slow asymptotic convergence has beenobserved for 500_ZILLA (Stamatakis et al., 2004a). There-
+fore, the comparatively small differences in ﬁnal likelihoodvalueswhichareusuallybelow1%shouldnotbeunderestim-ated, in terms of the computational effort required to obtainthose values. The application of the Kishino–Hasegawa like-lihood ratio test shows that all ﬁnal RAxML-III trees aresigniﬁcantly better than respective PHYML trees.
+Two examples which underline how bayesian analysis can
+beneﬁt from ‘traditional’ methods are outlined in Figures 4
+460RAxML-III
+Table 3. PHYML, MrBayes, RAxML-III execution times and likelihood values for real data sets
+data PHYML secs MrBayes secs RAxML secs R >PHY secs PAxML hrs
+101_SC −74097.6 153 −77191.5 40527 −73919.3 617 −74046.9 31 −73975.9 47
+150_SC −44298.1 158 −52028.4 49427 −44142.6 390 −44262.9 33 −44146.9 164
+150_ARB −77219.7 313 −77196.7 29383 −77189.7 178 −77197.6 67 −77189.8 300
+200_ARB −104826.5 477 −104856.4 156419 −104742.6 272 −104809.0 99 −104743.3 775
+250_ARB −131560.3 787 −133238.3 158418 −131468.0 1067 −131549.4 249 −131469.0 1947
+500_ARB −253354.2 2235 −263217.8 366496 −252499.4 26124 −252986.4 493 −252588.1 7372
+1000_ARB −402215.0 16594 −459392.4 509148 −400925.3 50729 −401571.9 1893 −402282.1 9898
+218_RDPII −157923.1 403 −158911.6 138453 −157526.0 6774 −157807.9 244 n/a n/a
+500_ZILLA −22186.8 2400 −22259.0 96557 −21033.9 29916 −22036.9 67 n/a n/a
+Fig.4.ConvergencebehaviorofMrBayesfor101_SCwithuserand
+random starting trees over 3.000.000 generations.
+Fig. 5.Convergence behavior of MrBayes for 500_ARB with user
+and random starting trees.
+and 5. In those ﬁgures we plot MrBayes likelihood values
+over generation numbers with RAxML- and random startingtrees for 101_SC and 500_ARB respectively. Furthermore,Figure 4 reveals one of the main problems of MC
+3analysisFig. 6.150_SC likelihood improvement over time of RAxML-III
+and MrBayes for the same random starting tree.
+(Huelsenbeck et al., 2002): When to stop the chain? In
+the example the run with the random starting tree seems tohave reached apparent stationarity, although the tree is farfrom optimal. Therefore, ‘good’ starting tree obtained by‘traditional’ methods can be useful to signiﬁcantly acceler-ate computations and serve as reference point. This justiﬁesthe work on fast ‘traditional’ maximum likelihood meth-ods despite the emergence and great impact of bayesianmethods (Huelsenbeck et al., 2001). Thus, we do not see
+RAxML-III as concurrence to MrBayes, but rather as use-fultooltoimprovebayesianinferenceandviceversa.Finally,in order to demonstrate the rapid tree optimization capabilit-ies of RAxML-III in Figures 6 and 7 we plot the likelihoodimprovement over time of RAxML-III and MrBayes for thesame random starting trees.
+Real data and estimated model
+In this series of real data tests we compare PHYML andRAxML-III performance on the HKY85 and General TimeReversible (GTR (Lanave et al., 1984)) model of nucleo-
+tide substitution. We let both programs estimate the tr/tv
+461A.Stamatakis et al.
+Fig.7.150_ARBlikelihoodimprovementovertimeofRAxML-III
+and MrBayes for the same random starting tree.
+Table 4. Performance of PHYML and RAxML-III for HKY85 and GTR
+models of evolution with model parameter optimization
+data PHYML secs RAxML secs R >PHY
+HKY85
+101_SC −74035 104 −73908 71 21
+150_SC −44315 85 −44219 64 26
+150_ARB −76881 190 −76863 94 49
+200_ARB −104316 282 −104270 185 120
+250_ARB −131013 405 −130926 342 116
+500_ARB −252224 1453 −251781 1049 420
+1000_ARB −400881 3908 −399732 3633 1666
+2025_ARB −372746 9749 −371472 8426 4779
+218_RDPII −156895 230 −156663 331 126
+GTR
+101_SC −73814 131 −73638 119 49
+150_SC −44139 132 −44043 157 60
+150_ARB −76500 235 −76490 203 144
+200_ARB −103789 714 −103758 352 262
+250_ARB −130518 526 −130353 416 218
+500_ARB −250858 1170 −250238 1516 688
+1000_ARB −398731 4727 −397612 5731 2469
+2025_ARB −370539 5299 −369197 10771 5558
+218_RDPII −155881 316 −155748 406 268
+ratio (HKY85) and the substitution rates (GTR) along with
+the tree topology. To save some CPU hours we used a ver-sion of RAxML-III which terminates immediately when thetree fails to improve for the ﬁrst time. To ensure a faircomparison we evaluated the likelihood of all ﬁnal treeswith PHYML. Typically ﬁnal likelihood values obtained bydifferentprogramsforthesametreeandmodelofnucleotidesubstitution differ due to numerical differences in imple-mentations. Results are summarized in the same style as inthe previous Section in Table 4 for the HKY85 and GTRmodels of sequence evolution respectively.DISCUSSION
+We have presented the most recent version of our pro-gram RAxML-III for maximum likelihood-based inferenceofphylogenetictrees.ThecodeincorporatestheHKY85andGTRmodelsofDNAsequenceevolutionandisabletooptim-ize all free model parameters. Furthermore, RAxML-III isable to perform a maximum likelihood estimate of per-siteevolutionary rates for HKY85. In order to accelerate com-putations the number of distinct evolutionary rates can becategorized into a user-speciﬁed amount of rate categories.The program performs worse than PHYML and MrBayes onsyntheticdata.However,onrealdataitoutperformsPHYML,MrBayes, and PAxML in terms of required execution timeand ﬁnal likelihood values. In addition, we provide fail-ure scenarios for MrBayes on real data sets and argue thattraditionalandbayesianinferenceshouldbecombinedtocir-cumvent intrinsic problems of either approach. Along withthe RAxML-III source code we provide a large real-databenchmarksetwhichincludesbest-knownreferencetreesandexecutiontimesonaspeciﬁcarchitecture/compilercombina-tion.Thisdatacollectionisintendedtoserveotherresearchersasreferencedatasettoassessperformanceofmaximumlike-lihoodprograms.TheadvantageofRAxML-IIIoverPHYMLconsist in a more exhaustive analysis of search space whichresultsinimprovedﬁnallikelihoodvaluesandintheabilitytogeneratedistinctrandomstartingtrees.Inaddition,theparal-lelizationofthealgorithmisstraight-forwardandRAxML-IIIhas signiﬁcantly lower memory requirements than MrBayesand PHYML (Stamatakis et al., 2004b). On the other hand
+RAxML-III provides signiﬁcantly less modeling ﬂexibilitythan MrBayes and PHYML, i.e. is not able to handle proteinsequencedataanddoesnotprovideestimationofthepropor-tion of invariable sites or the /Gamma1model of rate heterogeneity.
+An implementation of the missing model features is plannedin a future version of the program.
+Our results show that both RAxML-III (on real data) and
+PHYML(onsimulateddata)representveryfastandaccurateconventionalmaximumlikelihoodprograms,whichallowforsequentialinferenceoflargetreeswithinreasonabletimesonstandard PC architectures.
+ACKNOWLEDGEMENT
+We would especially like to thank Stephane Guindon for hishelp on PHYML.
+REFERENCES
+Bininda-Emonds,O.R.P. and Sanderson,M.J. (2001) An assessment
+of the accuracy of MRP supertree construction. Syst. Biol. ,50,
+565–579.
+Brauer,M.J., Holder,M.T., Dries,L.A., Zwickl,D.J., Lewis,P.O. and
+Hillis,D.M. (2002) Genetic algorithms and parallel processing inmaximum-likelihood phylogeny inference. Mol. Biol. Evol. ,19,
+1717–1726.
+462RAxML-III
+Chase,M.W., Soltis,D.E., Olmstead,R.G., Morgan,D., Les,D.H.,
+Mishler,B.D.,Duvall,M.R.,Price,R.A.,Hills,H.G.,Qiu,Y.L. etal.
+(1993) Phylogenetics of seed plants: an analysis of nucleotidesequencesfromtheplastidgene rbcL.Ann.MissouriBot.Garden ,
+80, 528–580.
+Felsenstein,J. (1981) Evolutionary trees from DNA sequences: a
+maximum likelihood approach. J. Mol. Evol. ,17, 368–376.
+Guindon,S. and Gascuel,O. (2003) A simple, fast, and accurate
+algorithmtoestimatelargephylogeniesbymaximumlikelihood.Syst. Biol. ,52, 696–704.
+Hasegawa,M.,Kishino,H.andYano,T.(1985)Datingofthehuman–
+apesplittingbyamolecularclockofmitochondrialDNA. J.Mol.
+Evol.,22, 160–174.
+Holder,M.T. and Lewis,P.O. (2003) Phylogeny estimation: tradi-
+tional and Bayesian approaches. Nat. Rev. Genet. ,4, 275–284.
+Huelsenbeck,J.P. and Ronquist,F. (2001) MRBAYES: Bayesian
+inference of phylogenetic trees. Bioinformatics ,17, 754–755.
+Huelsenbeck,J.P., Ronquist,F., Nielsen,R. and Bollback,J.P. (2001)
+Bayesian inference and its impact on evolutionary biology.Science,294, 2310–2314.
+Huelsenbeck,J.P., Larget,B., Miller,R.E. and Ronquist,F. (2002)
+PotentialapplicationsandpitfallsofBayesianinferenceofphylo-geny.Syst. Biol. ,51, 673–688.
+Lanave,C., Preparata,G., Saccone,C. and Serio,G. (1984) A new
+method for calculating evolutionary substitution rates. J. Mol.
+Evol.,20, 86–93.
+Lemmon,A. and Milinkovitch,M. (2002) The metapopulation
+genetic algorithm: an efﬁcient solution for the problem oflarge phylogeny estimation. Proc. Natl Acad. Sci. USA ,99,
+10516–10521.
+Lewis,P.(1998)Ageneticalgorithmformaximumlikelihoodphylo-
+geny inference using nucleotide sequence data. Mol. Biol. Evol. ,
+15, 277–283.
+Ludwig,W., Stunk,O., Westram,R., Richter,L., Meier,H.,
+Yadhukumar, Buchner,A., Lai,T., Steppi,S., Jobb,G. et al.
+(2004) ARB: a software environment for sequence data. Nucleic
+Acids Res. ,32, 1363–1371.
+Olsen,G., Matsuda,H., Hagstrom,R. and Overbeek,R. (1994)
+fastDNAmL:atoolforconstructionofphylogenetictreesofDNAsequencesusingmaximumlikelihood. Comput.Appl.Biosci. ,10,
+41–48.
+Rambaut,A. and Grassly,N.C. (1997) Seq-Gen: an applica-
+tion for the Monte Carlo simulation of DNA sequenceevolution along phylogenetic trees. Comput. Appl. Biosci. ,13,
+235–238.
+Robinson,D.andFoulds,L.(1979)Comparisonofweightedlabeled
+trees. In Horadam,A.F. and Wallis,W.D. (eds), Isomorphic
+Factorisations VI: Automorphisms, Combinatorial Mathemat-ics VI,Lecture Notes in Mathematics ,748, Springer, Berlin,
+pp. 119–126.
+Sanderson,M.J. (2003) r8s: inferring absolute rates of molecular
+evolution and divergence times in the absence of a molecularclock.Bioinformatics ,19, 301–302.
+Stamatakis,A., Ludwig,T., Meier,H. and Wolf,M.J. (2002) Acceler-
+atingparallelmaximumlikelihood-basedphylogenetictreecom-putations using subtree equality vectors. In Proceedings of 15th
+IEEE/ACM Supercomputing Conference (SC2002) , Baltimore,
+MD, November.
+Stamatakis,A., Ludwig,T. and Meier,H. (2004a) New fast and
+accurate heuristics for inference of large phylogenetic trees. InProceedings of 18th IEEE/ACM International Parallel and Dis-tributedProcessingSymposium (IPDPS’04 ),SantaFe,NM,April
+26–30.
+Stamatakis,A., Ludwig,T. and Meier,H. (2004b) Parallel inference
+of a 10.000-taxon phylogeny with maximum likelihood. In Pro-
+ceedings of Euro-Par 2004 , Pisa, Italy, August 31–September 3,
+(to be published).
+Stewart,C., Hart,D., Berry,D., Olsen,G., Wernert,E. and
+Fischer,W. (2001) Parallel implementation and performance offastDNAmL—a program for maximum likelihood phylogeneticinference. In Proceedings of 14th IEEE/ACM Supercomputing
+Conference (SC2001), Denver, CO, May 18.
+Strimmer,K.andHaeseler,A.V.(1996)Quartetpuzzling:amaximum
+likelihood method for reconstructing tree topologies. Mol. Biol.
+Evol.,13, 964–969.
+Swofford,D.(1999) PAUP*:PhylogeneticAnalysisUsingParsimony
+(*and Other Methods) . Sinauer Associates, Sunderland, MA.
+Tufﬂey,C. and Steel,M. (1997) Links between maximum likeli-
+hood and maximum parsimony under a simple model of sitesubstitution. Bull. Math. Biol. ,59, 581–607.
+Williams,T.L. and Moret,B.M.E. (2003) An investigation of phylo-
+genetic likelihood methods. In Proceedings of 3rd IEEE Inter-
+national Symposium on Bioinformatics and Bioengineering(BIBE’03) , Bethesda, MD, March 10–12.
+Yang,Y.(1997)PAML:aprogrampackageforphylogeneticanalysis
+by maximum likelihood. Comput. Appl. Biosci. ,13, 555–556.
+463

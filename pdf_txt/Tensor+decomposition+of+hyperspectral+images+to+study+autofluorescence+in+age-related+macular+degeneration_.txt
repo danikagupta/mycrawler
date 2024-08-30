@@ -1,0 +1,957 @@
+Tensor Decomposition of Hyperspectral Images to study Autoﬂuorescence in
+Age-related Macular Degeneration
+Neel Deya,, Sungmin Honga, Thomas Achb, Yiannis Koutalosc, Christine A. Curciod, R. Theodore
+Smithe, Guido Geriga
+aDepartment of Computer Science and Engineering, NYU Tandon School of Engineering, NY, USA.
+bDepartment of Ophthalmology, University Hospital Würzburg, Würzburg, Germany.
+cDepartment of Ophthalmology, Medical University of South Carolina, SC, USA.
+dDepartment of Ophthalmology and Visual Sciences, School of Medicine, University of Alabama at Birmingham, AL, USA.
+eDepartment of Ophthalmology, Icahn School of Medicine, Mount Sinai, NY, USA
+Abstract
+Autoﬂuorescence is the emission of light by naturally occurring tissue components on absorption of
+incident light. Autoﬂuorescence within the eye is associated with several disorders, such as Age-related
+Macular Degeneration (AMD) which is a leading cause of central vision loss. Its pathogenesis is incompletely
+understood, but endogenous ﬂuorophores in retinal tissue might play a role. Hyperspectral ﬂuorescence
+microscopy of ex-vivo retinal tissue can be used to determine the ﬂuorescence emission spectra of these
+ﬂuorophores. Comparisons of spectra in healthy and diseased tissues can provide important insights into the
+pathogenesis of AMD. However, the spectrum from each pixel of the hyperspectral image is a superposition
+of spectra from multiple overlapping tissue components. As spectra cannot be negative, there is a need for a
+non-negative blind source separation model to isolate individual spectra. We propose a tensor formulation
+by leveraging multiple excitation wavelengths to excite the tissue sample. Arranging images from diﬀerent
+excitation wavelengths as a tensor, a non-negative tensor decomposition can be performed to recover a
+provably unique low-rank model with factors representing emission and excitation spectra of these materials
+and corresponding abundance maps of autoﬂuorescent substances in the tissue sample. We iteratively
+impute missing values common in ﬂuorescence measurements using Expectation-Maximization, and use L2
+regularization to reduce ill-posedness. Further, we present a framework for performing group hypothesis
+testing on hyperspectral images, ﬁnding signiﬁcant diﬀerences in spectra between AMD and control groups
+in the peripheral macula. In the absence of ground truth, i.e. molecular identiﬁcation of ﬂuorophores, we
+provide a rigorous validation of chosen methods on both synthetic and real images where ﬂuorescence spectra
+areknown. Thesemethodologiescanbeappliedtothestudyofotherpathologiespresentingautoﬂuorescence
+that can be captured by hyperspectral imaging.
+Keywords: non-negative tensor decompositions, unsupervised machine learning, hyperspectral
+ﬂuorescence microscopy imaging, functional data analysis, age-related macular degeneration
+1. Introduction
+Tensor decompositions are a form of multi-linear algebra widely used in unsupervised machine learning
+(Anandkumar et al., 2014), signal processing (Cichocki et al., 2015), chemometrics (Smilde et al., 2005),
+psychometrics (Carroll & Chang, 1970), and have recently found applications in medical image analysis
+(Bharath et al., 2017; Schultz & Seidel, 2008; Cong et al., 2015; Li et al., 2017). While linear methods
+like Principal Component Analysis (Hotelling, 1933), Independent Component Analysis (Comon, 1994) and
+Non-negative Matrix Factorization (Paatero & Tapper, 1994; Lee & Seung, 1999) are common tools for
+Corresponding author: neel.dey@nyu.edu.
+Preprint submitted to Elsevier March 21, 2020unsupervised data analysis, they are limited when dealing with higher dimensional data. It is common to
+concatenate or average high dimensional data in order to apply these methods which may ignore covariance
+information across diﬀerent dimensions and impede the derivation of accurate and/or interpretable solutions.
+Tensor decompositions perform joint low-rank multi-linear approximations of higher dimensional data to
+extract distinct features for each dimension by accounting for covariance across all dimensions. Moreover,
+under mild conditions, they give unique solutions without strong constraints (Kruskal, 1989) often improving
+reliability and interpretability over linear methods. This makes tensor decompositions well suited to data
+analysis applications where multiple related datasets exist and interpretable features in each dimension are
+expected. However, computing the decomposition and determining the number of features without ground
+truth are NP-hard problems (Hillar & Lim, 2013) that require careful modeling and validation.
+As our driving application, microscopic images of human donor retina tissue samples were captured by
+hyperspectral cameras for a study of Age-related Macular Degeneration (AMD). AMD is a leading cause
+of legal blindness in the elderly (Bourne et al., 2013), with the projected worldwide prevalence of AMD
+reaching 288 million people in 2040 (Wong et al., 2014). Currently, there is no cure for the most common
+form of AMD and its pathogenesis is not well understood. Autoﬂuorescence imaging of the ocular fundus is
+an important diagnostic tool for ophthalmologists who care for patients with AMD. Our long-term objective
+in microscopic analysis of human donor eye tissue is to understand the biology underlying hyperspectral
+autoﬂuorescence imaging for in vivo early diagnosis.
+The ﬂuorescence spectrum of a ﬂuorescent compound (i.e., a ﬂuorophore) may provide information
+about both its molecular identity and cellular environment. In the case of AMD, analysis of retinal tissue
+autoﬂuorescence holds particular signiﬁcance, as endogenous ﬂuorophores may have important pathogenic
+roles (Sparrow & Boulton, 2005). The minute amount of these ﬂuorophores are a major challenge to their
+identiﬁcation, yet this important information can however be obtained by determining their ﬂuorescence
+spectra with hyperspectral imaging, in concert with molecular assays in parallel (e.g., mass spectrometry).
+Hyperspectral cameras can ﬁnely capture the intensity spectrum of a scene over multiple discrete wave-
+lengths. Using hyperspectral ﬂuorescence microscopy, multiple co-registered image stacks illuminated with
+varying excitation wavelength can be acquired. In this way, the spectra of retinal tissue ﬂuorophores at
+diﬀerent excitation wavelengths can be determined. Fluorescence is additive and the signal from each pixel
+of a hyperspectral image is mixed in nature, with each pixel signal being a superposition of multiple layers
+of ﬂuorescent tissue. This highlights the need for a blind source separation of multi-excitation ﬂuorescence
+images, whichisanaturalextensionoftensormethodology. Theemissionspectrumofaﬂuorophoretypically
+varies with excitation wavelength in intensity but not in shape (Lakowicz, 2006a). This introduces another
+dimension of variation contained in the magnitude of the emission spectrum across excitation wavelengths
+called the excitation spectrum of a ﬂuorophore. The emission and excitation spectra of a ﬂuorophore can
+thus both provide important information about its identity. However, a direct application of tensor decom-
+position is inapplicable due to the nature of ﬂuorescence measurements.
+In this paper, we present a regularized tensor decomposition and data imputation method to extract
+the spectral and spatial characteristics of autoﬂuorescent human eye tissue using hyperspectral images
+captured with varying excitation light sources. In the current absence of ground truth of retinal ﬂuorophore
+spectra, we thoroughly validate our methods against both synthetic and real hyperspectral images with
+known ﬂuorophore spectra and known tensor rank. To illustrate how the resulting tensor components can
+be utilized for distinguishing between groups, we present a hypothesis testing framework that considers the
+resulting emission spectra as functional data.
+1.1. Related Work
+Decompositions of hyperspectral images are widely used in geospatial image analysis (Keshava & Mus-
+tard, 2002; Bioucas-Dias et al., 2012; Dobigeon et al., 2016). They possess known spectra of earth-based
+substances useful for validation, with strong justiﬁcations for additivity constraints, pure pixel assumptions,
+and physical models of reﬂection. However, these methodologies do not easily translate to hyperspectral
+ﬂuorescence microscopy. In the context of blind source separation, Independent Component Analysis has
+been explored for feature extraction in hyperspectral images, with limited success due to statistical indepen-
+dence assumptions (Nascimento & Dias, 2005). A popular alternative is Non-negative Matrix Factorization
+2(NMF), in which where a data matrix is decomposed into a set of non-negative basis vectors and coeﬃcients.
+This non-negativity leads to better interpretation for some kinds of data analysis.
+NMF applied to hyperspectral images for spectral unmixing (Sajda et al., 2003; Dobigeon et al., 2016),
+results in basis vectors and coeﬃcients maps interpreted as spectral signatures and spatial distributions of
+spectralsources(alsoknownasabundanceimages),respectively. Withhyperspectralﬂuorescencemicroscopy
+of tissues, NMF has been used to extract ﬂuorescence emission spectra (Gobinet et al., 2004; Neher et al.,
+2009; Montcuquet et al., 2011) including applications to the human retina (Johri et al., 2014). Due to
+rotational ambiguity, NMF based approaches provide non-unique solutions and may be non-reproducible due
+to local minima and initialization sensitivity. To address these issues, multi-set concatenation methodologies
+have been developed in retinal hyperspectral ﬂuorescence microscopy in a series of papers (Smith et al., 2014;
+Amietal.,2016;Tongetal.,2016)inwhichatissuesampleisrepeatedlyilluminatedandimagedusingseveral
+diﬀerent excitation wavelengths. The corresponding hyperspectral image stacks are then concatenated and
+unmixed using NMF. However, multi-set concatenation approaches ignore covariances between the image
+stacks, and can lead to overﬁtting. As NMF-based approaches have a diverse set of possible solutions,
+hypothesis testing for diﬀerences between groups of interest becomes challenging. Morover, as they cannot
+directly account for diﬀering excitation wavelengths, they cannot obtain excitation spectra.
+Closely related work to our analysis lies in the ﬁeld of chemometrics. A ﬂuorescence unmixing in chemo-
+metrics typically involves measuring a ﬂuorescence emission signal from a mixture of diﬀerent ﬂuorophores
+in a test tube, measured across changing excitation wavelengths, from multiple test tubes containing the
+same compounds in diﬀerent ratios (Smilde et al., 2005). Analogously, our paper performs a similar experi-
+ment by considering every pixel of a hyperspectral image as virtual test tube in a ﬂuorescence experiment.
+However, in chemometric ﬂuorescence unmixing, there is no notion of spatial distribution and chemometri-
+cians typically measure excitations and emissions at very ﬁne spectral resolutions, which is not possible with
+ﬂuorescence microscopy at this time. Finally, Neher et al. (2009) consider an extension of an NMF-based
+approach to non-negative tensor decomposition for a ﬂuorescence microscopy case study. However, the de-
+rived updates are not guaranteed to converge (Lin, 2007) or maintain non-negativity, instead heuristically
+setting negative values to small positive values during the optimization.
+1.2. Proposed Approach
+For our driving application, a tissue sample is illuminated with diﬀerent excitation wavelengths and a
+hyperspectral image is captured for each excitation wavelength. As described above, multiple excitation
+wavelength hyperspectral ﬂuorescence microscopy of a tissue sample has intuitive extensions to tensor ap-
+proaches. Computing a non-negative tensor decomposition of multi-excitation hyperspectral images leads
+to recovery of the emission spectra and the spatial abundances of ﬂuorophores within the tissue sample and
+to our knowledge, the ﬁrst extraction of the excitation spectra of retinal ﬂuorophores from hyperspectral
+images. We adopt a ﬂexible alternating optimization approach towards computing the non-negative tensor
+decomposition, allowing for various cost functions, constraints, and regularity parameters (Huang et al.,
+2016).
+Further, multi-excitation ﬂuorescence measurements are prone to missing values being present across the
+dataset, which we iteratively impute during the tensor decomposition (Tomasi & Bro, 2005). To reduce the
+ill-posedness of retrieving both factor matrices and imputing missing values simultaneously, we employ L2
+regularization. Additionally, while the uniqueness of tensor decompositions makes them attractive for data
+mining applications, determining the number of components for the decomposition and avoiding overﬁtting
+is not straightforward. We thus present thorough validation of our results using metrics from chemometrics
+on synthetic and real ﬂuorescence experiments where the ground truth is known.
+To demonstrate the utility of tensor decomposition-derived emission spectra for our application, we
+present a novel perspective on performing group testing on spectral images by considering the spectra as
+discrete realizations of functions of wavelength. This allows the use of two-sample non-parametric functional
+hypothesis tests to detect group diﬀerences. As a preliminary result, we ﬁnd a statistically signiﬁcant
+diﬀerence in emission spectra in a small dataset of AMD and control group donors, that merits further
+validation with a larger sample size. While chemometrics has recently considered the usage of functional
+3Color Legend
+RPE
+Drusen
+Bruch's Membrane
+Bright ﬁeld Image Manual Segmentation Label Fluorescence ImageDonor at 16 years Donor at 81 yearsColor Legend
+RPE
+Drusen
+Bruch's MembraneFigure 1: A comparison of tissue samples from a young adult with a normal retina (top row) and an older adult with advanced
+AMD (bottom row). Shown are microscopic views of retinal tissue in the same orientation as it would be seen in clinical fundus
+autoﬂuorescence imaging but at higher magniﬁcation. Tissue from the 16-year-old male (top row) shows the hexagonal cells
+of the RPE layer and in the upper left corner, Bruch’s membrane bared by mechanical disruption of the RPE layer. Tissue
+from the 81-year-old male (bottom row) has two drusen (see description of drusen in Figure 3). Left column: Images of
+ex-vivo RPE tissue at 40 magniﬁcation. The distinct hexagonal structure of RPE cells in the top row is severely disrupted
+by age and disease in the bottom row, with the RPE cell layer disrupted by two large oval-shaped drusen deposits. Middle
+Column: Regions corresponding to diﬀerent tissues labelled manually. The Bruch’s membrane lies directly under the RPE
+and is present in the entire background of both samples. Right Column: RGB false colour composites of the ﬂuorescence
+emission of tissues shown in the left column excited with light at 436 nm wavelength. Drusen are hyperautoﬂuorescent relative
+to their surroundings at this excitation wavelength as pixel brightness corresponds to ﬂuorescence intensity.
+representations of spectra (Saeys et al., 2008; Möller et al., 2016), to our knowledge, this is the ﬁrst use of
+functional hypothesis tests to distinguish between groups of hyperspectral images.
+2. Methods
+2.1. Tensor Algebra
+2.1.1. Background
+A tensor represents a multidimensional array, i.e. data with nindices for each entry forms an n-
+dimensional tensor. We borrow notation from Kolda & Bader (2009) with vectors, matrices and tensors
+being denoted as x;X;andX, respectively. Vectors within tensors are referred to as ﬁbers, i.e. a mode- i
+ﬁber is a vector in the tensor formed by ﬁxing every index in the tensor except the ith index and letting
+the data vary along i. Re-arranging a tensor into a matrix is called matricizing. To matricize a tensor
+X2RI1I2:::Inin mode-iintoX(i), we take the mode- iﬁbers ofXand concatenate them as columns of
+X(i)2RIi(I1:::Ii 1Ii+1:::In)(Kolda, 2006).
+If ann-dimensional tensor can be expressed as the outer product of one set of nvectors, it is a rank-1
+tensorX=x(1)x(2):::x(n). The overall rank of a tensor is deﬁned as the minimum number of rank-1
+tensors that need to be summed in order to achieve perfect reconstruction (Hitchcock, 1927). A three-
+dimensional tensor Xof sizeIJKhas rank-RifRis the smallest number of sets of vectors a1i;b1j
+andc1kthat reconstruct the tensor as,
+xijk=RX
+r=1airbjrckrwherei2RI;j2RJ;k2RK:
+In terms of factor matrices, we can write the tensor decomposition of XasX=PR
+p=1papbpcpwhere
+pis a scalar absorbing all of the weights, and is the vector outer product. The tensor Xcan be matricized
+4≈ + + +...a1
+a2
+aRb1 b2 bR
+Figure 2: Visualizing the rank- RCanonical Polyadic Decomposition/Parallel Factorization of a three-dimensional tensor. The
+summation over the outer product of the set of ﬁbers, air,bir,cirfrom 1toRreconstructs a tensor of rank- R.
+in 3 diﬀerent modes as, X(1)=A(CB)T;X(2)=B(CA)T;andX(3)=C(AB)Twhereis
+the vector containing all p’s,is the matrix Khatri-Rao product and A,BandCare factor matrices
+containing all ap’s,bp’s and cp’s, respectively. [[A;B;C]]represents the tensor reconstructed by the factor
+matrices.
+2.1.2. Non-negative Tensor Decomposition
+To recover the individual rank-1 tensors, we use parallel factor analysis (PARAFAC) (Harshman, 1970),
+also referred to as Canonical Polyadic Decomposition (CPD). For the rest of this paper, unconstrained
+CPD/PARAFAC is referred to as CP and non-negative CPD/PARAFAC is referred to as NNCP. With
+real-world noisy data we often solve for the factors iteratively in an alternating optimization (AO) manner.
+We require all factors to be non-negative, and wish to introduce regularization on the factor matrices to
+reduce ill-posedness. To this end, we adopt and extend the Alternating Optimization-Alternating Direction
+Method of Multipliers (AO-ADMM) method for constrained tensor factorization (Huang et al., 2016) for
+our problem. AO-ADMM is a block coordinate update style algorithm. It alternates between solving the
+tensor factorization in each matricized form in its outer loop, and in the inner loop solves each individual
+constrained least squares problem in an ADMM fashion (Boyd et al., 2011) which allows for the usage of
+multiple constraints. As the updates made in the constrained sub-problems are element-wise, we implement
+the algorithm on graphics processing units (GPUs) for a 2 improvement in speed on the speciﬁc problems
+considered in this paper.
+Whenthetensorhasmissingvalues, thereareseveralapproachesinordertoﬁtaCPmodel(Kroonenberg,
+2007), mostcommonofwhichareweightedregressionwiththeweightsbeingcontainedinanindicatortensor
+Wwith entries of 0 and 1 for missing and not-missing, i.e, ﬁtting a model only to the available data. AO-
+ADMM can perform data imputation in its inner iterations, but in its original formulation cannot handle
+the case where entire ﬁbers of the tensor are systematically missing (as in our application). To solve this,
+we implement an Expectation-Maximization method to impute the missing values at each iteration from the
+current estimate of the CP model (Kroonenberg, 2007; Smilde et al., 2005, Section 6.9). We choose the EM
+model for its straightforward integration into the outer loop of the AO-ADMM procedure used. Further,
+weighted regression and EM imputation have been proven to be equivalent in CP models (Kiers, 1997).
+The entire procedure (including rank estimation in Section 2.2) is illustrated in Algorithm 1. Regular-
+ization is written as r(). Smoothness-promoting L2regularization is used here, although AO-ADMM can
+accomodate other regularizers as well. Consider the tensor Xwith missing values that we want to decom-
+pose, and the indicator tensor Wfrom earlier. In the middle loop of Algorithm 1, the missing values of X
+are iteratively updated as X!WX + (1 W)^Xwhere ^Xis the current estimate of the NNCP model
+andis the Hadamard (element-wise) product. As the NNCP model is initialized randomly in this paper,
+the initial estimates of the missing data are random values as well. In Section 4.2.1 we ﬁnd that the iterative
+imputation method works well in recovering the ground truth factor matrices in our data.
+2.2. Model Selection
+Despite the attractive properties of CP, determining the number of factors (rank) is an NP-hard problem
+(Håstad, 1990). Since prior knowledge of the number of spectral sources in autoﬂuorescent tissue is not
+available, an appropriate validation metric is required to verify the number of components. In chemometrics,
+5Algorithm 1: NNCP with unknown rank estimation and data imputation.
+Input:X2RIJK.
+Output: A;B;Cand.
+1Create indicator tensor W2RIJKwithwijk= 0ifxijkis missing and wijk= 1otherwise.
+2Initialize rank of decomposition as g= 1.
+3repeat
+4Initialize2Rgand Factor Matrices A2RIg;B2RJg;C2RKg.
+5Impute initial estimate of missing values in XasX!WX + (1 W)[[A;B;C]](all
+element-wise).
+6Deﬁne ^A;^B;^Cas^A=Adiag();^B=Bdiag();^C=Cdiag().
+7 repeat
+8 FixBandC, solvekX(1) ^A(CB)Tk2
+F+r(^A)for^As.t.^A0.
+9X!WX + (1 W)[[A;B;C]].
+10 FixAandC, solvekX(2) ^B(CA)Tk2
+F+r(^B)for^Bs.t.^B0.
+11X!WX + (1 W)[[A;B;C]].
+12 FixAandB, solvekX(3) ^C(BA)Tk2
+F+r(^C)for^Cs.t.^C0.
+13X!WX + (1 W)[[A;B;C]].
+14 untilconvergence.
+15 return;A;B;C.
+16Compute CORCONDIA between Xand[[A;B;C]].
+17g=g+ 1.
+18untilCORCONDIA decrease exceedsthreshold.
+19return;A;B;C.
+the core consistency diagnostic (CORCONDIA) metric is often used to decide on an appropriate rank (Bro
+& Kiers, 2003) by exploiting the relationship between CP and the Tucker3 model (Tucker, 1964).
+Brieﬂy, the Tucker3 model decomposes a tensor X2RIJKinto a smaller ‘core’ tensor Gmultiplied
+by a matrix along each mode as shown below,
+X=PX
+p=1QX
+q=1RX
+r=1gpqrapbqcr;
+where A2RIP;B2RJQ;C2RKRare factor matrices along each mode, and G2RPQRis the
+core tensor whose entries show the level of interaction between diﬀerent factors. Several diﬀerent CP models
+with increasing numbers of components may be appropriate and the model with the highest rank which is
+still appropriate is considered to be the most reasonable choice. For the CP model to be valid, the core
+tensorGshould be an identity tensor when the Tucker3 model is ﬁt with CP components.
+LetTbe anFFFidentity tensor. To assess the similarity between GandT, CORCONDIA is
+deﬁned as,
+CORCONDIA = 100 
+1 PF
+d=1PF
+e=1PF
+f=1(gdef tdef)2
+F!
+;
+wheregdefandtdefare thedef-th elements ofGandT, respectively. CORCONDIA close to 100%implies
+an appropriate model, with closeness to 100%understood relative to the changes compared with models of
+lower rank. Core consistency decreases gradually with increasing rank, until the maximum rank is exceeded
+and the decrease becomes dramatic. It is at this inﬂection point that the rank should be chosen.
+62.3. Group Testing with Spectral Images
+As shown in Section 4, NNCP can disentangle mixed emission and excitation spectra. However, the mul-
+tiple resulting spectra speciﬁc to each donor can be diﬃcult to interpret, especially across groups (AMD and
+non-AMD in this study). This highlights a need for a principled framework for detecting group diﬀerences
+in the results we obtain from NNCP. Parametric multivariate tests can be applied, but they would assume
+normality and treat adjacent channels as individual features and would not take into account their sequential
+nature. Further, the number of features would be larger than the sample size, precluding their straightfor-
+ward application. As the resulting emission spectra are discrete representations of continuous curves indexed
+by wavelength, they can be considered inﬁnite-dimensional functional data (Ramsay & Silverman, 2007).
+Functional data analysis has a rich history in ﬁber tract-based statistics in Diﬀusion Tensor Imaging (Geng
+et al., 2012; Zhu et al., 2011). Recently, Pomann et al. (2016) proposed a two-sample non-parametric test
+for ﬁber tract data which we adopt for our problem and brieﬂy describe below.
+After NNCP, each donor has a set of emission spectra Xi2Rmwheremis the number of image channels
+andi= 1;2;:::;kfor a rank-kdecomposition with individual vector corresponding to individual ﬂuorophores.
+The null hypothesis is that the curves from the two groups are equal in distribution,
+H0:X1()d=X2();
+where the superscript denotes group membership. The spectra corresponding to the same ﬂuorophore across
+mdonorsareconcatenatedintoamatrix Yk2Rmn. Repeatingthisacross kﬂuorophorescreates kmatrices
+of sizemn. Computing the functional principal components analysis (Hall et al., 2006) of each matrix Yk
+retrieves a set of functional basis vectors and projections , with the number of bases Uset by the fraction
+of variance explained (0.95 in this study). The null hypothesis above then becomes that the Uprojections
+of the curves from the two groups on the eigenbasis are equal in distribution,
+HU
+0:f1
+ugU
+u=1d=f2
+ugU
+u=1;
+where 1and2in the superscript of indicate group membership. Each of the Uhypotheses are tested by
+the two-sample non-parametric univariate Anderson-Darling test (Scholz & Stephens, 1987), which is similar
+to but more powerful than the Kolmogorov-Smirnov test (Stephens, 1974). Since there are Ucomparisons
+corresponding to Uhypotheses, we perform a Bonferroni multiple comparisons adjustment. Combining all
+of the above, the original null hypothesis is rejected if
+min
+1uUpu(=U);
+wherepuis theu-th p-value returned by the multiple Anderson-Darling tests and is the chosen level of
+signiﬁcance.
+3. Materials
+3.1. Data Acquisition
+Hyperspectralautoﬂuorescencemicroscopywasperformedex-vivoonhumandonorretinaltissue. Twenty
+m thick ﬂatmounts of Retinal Pigment Epithelium (RPE) cells attached to the underlying Bruch’s Mem-
+brane (BrM) close to the macula are imaged at 40 magniﬁcation using an upright microscope with a hy-
+perspectral camera (Nuance, Perkin-Elmer). The dataset includes ten donor samples with non-neovascular
+dry AMD (mean age 86.20 years with 3.46 years standard deviation) and ﬁve age-matched control donors
+(mean age 84.40 years with 2.19 years standard deviation). Four ﬁlter cubes corresponding to 436, 480,
+500, and 560 nm excitation wavelengths were used to ﬁlter the excitation light source from the microscope.
+The hyperspectral camera was used to capture autoﬂuorescence emission spectra from these tissues evenly
+at 10 nm intervals from 420 nm to 720 nm for each of the excitation wavelengths, leading to 31 channels
+per excitation wavelength. For further details on acquiring this dataset, see Tong et al. (2016). See Gao &
+Smith (2015) for image acquisition methodology and Ach et al. (2014) for details on tissue preparation.
+7436 nm 480 nm 500 nm 560 nmExcitation Wavelength470 nm 510 nm 550 nm 590 nm 630 nm 670 nm 710 nmEmission Wavelength
+Figure 3: Normalized hyperspectral images on a grid of emission vs. excitation wavelengths from a donor with AMD. Each
+column shows the sample illuminated with a diﬀerent excitation wavelength, with the rows indicating the corresponding
+emission. The blank spaces in the ﬁgure are unobservable emission channels. 7 out of 26 emission channels are displayed due to
+space constraints. Images show two drusen, the characteristic lipid-rich extracellular dome-shaped deposit of AMD, surrounded
+by retinal pigment epithelium (RPE), a layer of support cells for the light-sensing photoreceptors. In the lower right corner of
+each panel the RPE is absent, revealing Bruch’s membrane, an extracellular matrix and vessel wall that underlies the RPE.
+At shorter wavelength emissions, the druse contents and Bruch’s membrane are visible. At higher emission wavelengths, the
+RPE layer is not visible on the apex of the druse dome (which comes up out of the plane of the tissue). Instead the RPE is
+thickened around the drusen bases, forming two haloes.
+3.2. Data Pre-processing
+The hyperspectral images are pre-processed to remove variation due to intrinsic camera properties, ex-
+perimental design and acquisition parameters. The image stacks are ﬁrst recalibrated by the eﬃciency of
+the corresponding emission ﬁlter cube and then by the quantum eﬃciency of the camera detector. Addition-
+ally, the ﬂuorescence emission spectrum is positioned along the wavelength axis at longer wavelengths than
+the excitation wavelengths. Therefore, while the camera captures 31 channels of emission, only channels
+with wavelengths longer than the excitation wavelength can be measured, making the shorter wavelength
+channels missing values in the statistical sense. Further, emission ﬁlters which ﬁlter light from the sample
+before it reaches the detector attenuate several channels longer than the excitation wavelength. Therefore,
+the channels of the image stack at wavelengths shorter than the cutoﬀ of the emission ﬁlter used are also
+modeled as missing values.
+The intensity value of a pixel in a hyperspectral image is a total photon count. To have well exposed
+8images, the exposure time of the camera has to vary with the intensity of tissue autoﬂuorescence. The
+shorter the excitation wavelength, the shorter the exposure time needed to collect an adequate number of
+photons. The longer the excitation wavelength, the longer the exposure time. For example, in our study,
+an image stack corresponding to a 436 nm excitation wavelength may be exposed for 30-50 ms, whereas a
+560 nm excitation wavelength image stack may be exposed for 200-300 ms. Therefore, the image stacks are
+scaled by their exposure time in milliseconds with the intensity of a pixel representing photons detected per
+millisecond.
+3.3. Data Arrangement and Interpretation
+A hyperspectral image forms a three-dimensional cube of data with two spatial dimensions and one
+spectral dimension. A single hyperspectral image can be converted to a matrix via mode-3 matricization.
+The columns of this matrix correspond to the emission spectra of the pixels in the hyperspectral image. To
+createatensor, wetakehyperspectralimagesofthesametissuesampleundervaryingexcitationwavelengths.
+Hyperspectral images are captured at four excitation wavelengths and undergo mode-3 matricization and
+are inserted into a tensor as a frontal slice arranged in ascending order of excitation wavelength. In this
+arrangement, the magnitude scalings of the emission corresponding to a pixel, i.e. the excitation spectrum
+of a pixel is captured in a mode-3 ﬁber.
+We capture 31 channels of image size 10401392pixels over the visible spectrum, forming a 1040
+139231hyperspectral image. After mode-3 matricization, an image channel becomes a 1447680-length
+vector and the hyperspectral image forms a matrix of size 311447680. After capturing four hyperspectral
+images for each tissue sample, we insert the corresponding matrices as the frontal slices of a tensor of size
+3114476804. The ﬁrst ﬁve emission channels are discarded as there are no observed values in them with
+any of the excitation wavelengths. A series of hyperspectral images across excitation wavelength channels
+now forms a three-dimensional tensor X 2RIJK, where the number of emission wavelength channels
+I= 26, the number of pixels J= 1447680 , and the number of excitation wavelengths K= 4.Xcontains
+24:04%missing values because of the cut-oﬀ of the emission ﬁlter as explained in Section 3.2. Low-rank
+decomposition using NNCP on this tensor provides mode-1 factors representing the emission spectra of
+ﬂuorophores and mode-3 factors representing their excitation spectra, while mode-2 factors represent their
+spatial abundances.
+3.4. Brief Overview of AMD and Fluorescence Microscopy
+In this section, we introduce ophthalmological and chemical concepts required to interpret the results
+shown in Section 4. Over its lifespan, a single RPE cell ingests hundreds of thousands of photoreceptor
+outer segment tips and these segment tips ultimately give rise to ﬂuorescent lysosome-related intracellular
+organelles called Lipofuscin (LF) and Melanolipofuscin (ML) (Kennedy et al., 1995). LF/ML accumulation
+within the RPE cells is strongly correlated to aging within the eye (Sparrow & Boulton, 2005). RPE
+autoﬂuorescence is largely due to LF/ML accumulation. The RPE layer lies upon the weakly autoﬂuorescent
+Bruch’smembrane(BrM).LF/MLcanbethoughtofasRPEinclusionsanddrusen/BrMcanbethoughtofas
+Sub-RPE structures. To study AMD mechanisms, ﬁnding age or disease related changes in the ﬂuorescence
+spectra of RPE and adjacent tissues is of importance.
+The term ﬂuorophore generally refers to a single ﬂuorescent compound. However, as spectral ground
+truth is not available in this study, a spectrum recovered could be the spectrum of a single ﬂuorophore or a
+family of multiple ﬂuorescent compounds which are closely related in a spectral and spatial sense. Therefore,
+we use the term ﬂuorophore interchangeably between a single ﬂuorophore and a family of closely related
+ﬂuorophores. Fluorescence signals are strongly sensitive to ﬂuorophore environment (Lakowicz, 2006b).
+Therefore, how the tissue samples were prepared, the retinal location that they were harvested from, and
+age can all aﬀect the spectral and quantitative characteristics of the data.
+In ﬂuorescence spectroscopy, the same ﬂuorescence emission spectrum is generally observed irrespective
+of the excitation wavelength (Kasha, 1950) and the intensities of ﬂuorescence emission spectra are directly
+proportional to the concentration of the respective ﬂuorescing compounds in the test tube. In our formu-
+lation, we retrieve a weight vector which contains the weights of the individual components and can be
+thought of as an analogue for the amount of the respective ﬂuorophores in the donor sample.
+94. Experiments and Results
+4.1. Tissue Experiments
+In this section, quantitative and qualitative results are presented with the data acquired, pre-processed
+and arranged as per Sections 3.1, 3.2 and 3.3 respectively. An appropriate rank of factorization was deter-
+mined, NNCP was applied, and the two groups of AMD and non-AMD tissues underwent statistical testing
+to determine diﬀerences in emission spectra. The experiments were implemented in MATLAB R2018a using
+a Linux workstation with an Intel i7-5930K CPU and 32 GB RAM and a server virtual machine with an
+NVIDIA Tesla P100 for GPU accelerated tensor decomposition. Research toolboxes heavily utilized included
+the Tensor Toolbox v2.6 (Bader & Kolda, 2015), the N-Way Toolbox (Andersson & Bro, 2000), and the
+PACE toolbox for functional data analysis (Yao et al., 2003). All initializations for NNCP procedures were
+drawn uniformly at random with random number generator states set based on system time. All displayed
+spectra are normalized to unit L2norm, unless stated otherwise.
+4.1.1. Rank Selection
+1 2 3
+NNCP Rank020406080100 CORCONDIA
+1 2 3 4 5 6 7 8
+Core elements-0.200.20.40.60.811.2Core SizeRank-2  CORCONDIA = 99.96
+0 5 10 15 20 25 30-10-8-6-4-20246810Rank-3  CORCONDIA = 3.96
+Core elementsCore Size
+Figure 4: Left:Boxplot of CORCONDIA values on the entire dataset for NNCP using rank-1 to rank-3 factorizations. The
+sharp inﬂection after rank-2 suggests that NNCP is over-ﬁtting the data and that two components are appropriate. Center
+and Right: CORCONDIA plots of rank-2 and rank-3 NNCP models applied to a speciﬁc image. The red dots represent the
+values along the super-diagonal of the core tensor which should be close to one and the green dots represent the oﬀ-diagonal
+values which should be as close to zero as possible. The blue line represents ideal values. Increasing rank from two to three
+shows abrupt undesirable changes in core values.
+The diﬃculty in choosing an appropriate rank was detailed in Section 2.2. Performing a core consistency
+analysis of the NNCP model on this dataset ﬁnds that two components appropriately model the data
+as shown in Figure 4 and ensures that the factors are not too closely correlated with each other. The
+CORCONDIA results shown in Figure 4 were obtained on spatially downsampled images due to computation
+time. This approximation was veriﬁed to give similar CORCONDIA results to three test images analyzed
+at full resolution. For consensus, Bayesian rank estimation techniques for NNCP (Mørup & Hansen, 2009)
+and non-subjective versions of CORCONDIA which account for noisy data and reconstruction error (Liu
+et al., 2013b) determine the same rank as well.
+4.1.2. NNCP decomposition
+Rank-2 NNCP was performed on both groups with L2regularization applied on emission and excitation
+spectra. No regularization was applied on abundance images as they may not have smooth or sparse
+characteristics, although this can be applied if required. The algorithm was allowed to perform a maximum
+of30;000outer iterations with a convergence tolerance of 10 6, each initially performing 30inner ADMM
+iterations per sub-problem with a tolerance of 10 3, eventually increasing to 40inner ADMM iterations with
+tolerance 10 4after 4;000outer iterations. Qualitatively, the algorithm was found to give similar results
+with fewer outer iterations ( 4;000).
+1000.511.522.53non-AMD non-AMD AMDBrightfield
+ImageFluorescence
+ImageAbundance 1
+(RPE)Abundance 2
+(Sub-RPE)Emission
+Spectra
+Wavelength (nm)01234567
+RPE
+Sub-RPEComponentImage Fluorescence Intensity500 550 600 650 700×104
+Image Fluorescence Intensity
+RPE
+Sub-RPEComponent
+440 460 480 500 520 540560
+Wavelength (nm)00.20.40.60.81Normalized Intensity
+Normalized IntensityExcitation
+Spectra
+Wavelength (nm)500 550 600 650 700RPE
+Sub-RPEComponent×104
+440 460 480 500 520 540560
+Wavelength (nm)RPE
+Sub-RPEComponent
+00.20.40.60.81
+×104
+440 460 480 500 520 540560
+Wavelength (nm)Normalized Intensity00.20.40.60.810123456Image Fluorescence IntensityWavelength (nm)500 550 600 650 700RPE
+Sub-RPEComponent
+RPE
+Sub-RPEComponent01234×104AMDImage Fluorescence Intensity
+RPE
+Sub-RPEComponent
+440 460 480 500 520 540560
+Wavelength (nm)Wavelength (nm)500 550 600 650 700RPE
+Sub-RPEComponentNormalized Intensity00.20.40.60.81
+Figure 5: A collage of four tissue samples from donors with AMD and controls, and their corresponding NNCP decomposition.
+Readers are encouraged to zoom in for tissue details. In Row 1, by transmitted light, the RPE layer appears as a continuous
+sheet of hexagonal cells with brown pigment. In the non-AMD samples, the absence of RPE represents mechanical damage
+that reveals Bruch’s membrane. In the AMD samples are small drusen (third column) and ill-deﬁned deposits overlaying
+incompletely removed pigmented tissue (out of focus brown material; fourth column). In Row 2, the false color microscopic
+images were taken at an excitation wavelength of 436 nm. The yellow-brown hexagonal cells are the RPE layer. Green
+regions are underlying Sub-RPE tissues. In Row 3, the emission spectra are multiplied by the corresponding weights in the
+decomposition to give a relative ﬂuorescence intensity value of that signal across the entire image. The excitation spectra are
+linearly interpolated between the four available points for visualization purposes. In Rows 4 and 5, the abundance images
+give the spatial localization of RPE and Sub-RPE components, respectively. For example, in column 1 it can be clearly seen
+that the RPE layer overlays Sub-RPE tissue. In columns 2 and 4, sub-RPE autoﬂuorescence is less visible in RPE regions. In
+column 3 a bright green druse is hyper autoﬂuorescent compared to other sub-RPE regions.
+11Thedecompositionﬁndstwomajorcomponents,whichcanbeattributedtoRPEandSub-RPEstructures
+via their spatial distributions. Figure 5 shows results for four out of ﬁfteen donor samples. The brightﬁeld
+and ﬂuorescence images show strong heterogeneity of tissue morphology, whereas the spectra recovered are
+stable across donors. Subtle changes in the emission spectra between donor samples are observed. For
+example, the sub-RPE emission spectrum (red curve) in Column 3 of Figure 5 shows a noticeable blue-shift
+(peak shifting towards the left) in comparison to other donor samples. Large variations are noticed in the
+ﬂuorescence intensity, which is indicative of the amount of ﬂuorophores being diﬀerent across the tissue
+samples, as well as tissue preparation and experimental conditions. The excitation spectra are found to be
+largely consistent between diﬀerent donors. However, there are only four points available (corresponding to
+four excitation wavelengths) and there may be variation in between these points.
+4.1.3. Group testing
+5 10 15 20 25-0.2-0.100.10.2
+FPC1
+FPC2
+5 10 15 20 25-0.2-0.100.10.2
+FPC1
+FPC2BasesRPE Sub-RPE
+Bases
+Figure 6: Eigenbases/functional principal components (FPCs) of the NNCP derived emission spectra corresponding to RPE
+(left) and Sub-RPE (right) components from the entire dataset. Group testing is performed on the projections of the emission
+spectra onto these bases.
+On retrieving the emission spectra for all ﬁfteen donors, they are assigned to their respective groups
+(AMD or non-AMD) as per Section 3.1 and made to carry the weights of the NNCP decomposition. Func-
+tional hypothesis testing is performed using methodology presented in Section 2.3. The functional bases are
+determined with functional principal components analysis with a Gaussian kernel, with most other param-
+eters chosen via cross-validation in PACE with random eﬀects computed using numerical integration (Yao
+et al., 2003). The number of bases was chosen based on the fraction of variance explained, chosen to be
+0.95 in this study, ﬁnding two bases to be appropriate. Qualitatively, a higher fraction was found to return
+noise-like bases. A threshold for signiﬁcant diﬀerences between groups was chosen to be a 5% chance of
+a Type-I error. A two-sample univariate non-parametric Anderson Darling test is applied to each set of
+projections. As two comparisons are made corresponding to two sets of bases and projections, a Bonferroni
+correction is applied which reduces the threshold for signiﬁcance to p= 0:025.
+The bases are shown in Figure 6. We ﬁnd statistically signiﬁcant diﬀerences for both RPE (p = 0.0233
+< 0.025) and Sub-RPE (p = 0.0237 < 0.025) emission spectra in the near periphery (just outside the
+macula). It is important to contextualize these results and state limitations. First, the sample size (n = 15)
+is small and outliers can cause Type I errors. Second, donors within the AMD group are at various stages
+of the disease which could aﬀect these results. However, it should be highlighted that non-parametric tests
+have less statistical power than parametric tests, and especially so with small sample sizes. Further, the
+Bonferroni correction is a highly conservative adjustment. Additional validation will be performed in the
+future with a larger sample size and in tissues with better preserved central macula, where diﬀerences in
+sub-RPE structures between cases and controls are expected to be higher (Curcio et al., 2013).
+124.2. Validation
+Here we test the ability of NNCP to distinguish between ﬂuorophores spectrally and spatially with known
+ground truth available for validation. Section 4.2.1 presents ﬂuorescence reference standards captured under
+the same imaging framework. Additionally, it tests the applicability of additional constraints often employed
+in geospatial image analysis. Section 4.2.2 presents synthetic data and tests the advantages of the multi-
+linear approach over NMF-style approaches.
+4.2.1. Real Data: Fluorescent Beads
+Fluorescent beads (also known as microspheres) are used to calibrate ﬂuorescence microscopes as they
+have known emission and excitation spectra provided by the manufacturers. They are localized to speciﬁc
+regions on the imaged slide, which is ideal for testing both spectral and spatial capabilities of the NNCP
+framework. Four hyperspectral images of ﬂuorescent microspheres (Thermo Fisher Scientiﬁc) were captured
+using excitation wavelengths of 420, 450, 480, and 500 nm using the same imaging system used to acquire
+the tissue images. To account for instrumental variation, emission and excitation spectra were physically
+measured at those wavelengths independently prior to unmixing and are treated as ground truth shown
+in Figure 7A. The two ﬂuorophores in the image are highly similar in both emission spectra shape and
+peak wavelength. However, bead 2 is signiﬁcantly dimmer than bead 1. Additionally, the blank regions of
+the image have an intrinsic noise spectrum induced by the physics of the camera, referred to here as the
+background spectrum. These details combined create a challenging blind source separation problem.
+TheunmixingresultsforbeadsareshowninFigure7B1. Thereisaveryclosecorrespondencebetweenthe
+NNCP recovered emission and excitation spectra and the measured ground truth. Spatially, NNCP is able to
+localizetheﬂuorophorescorrectly. Interestingly, inAbundance3NNCPlocalizesthebackgroundunderneath
+bead 2 as well indicating that due to its low ﬂuorescence, the spectrum of bead 2 and the background are
+comparable in intensity. A minor limitation is noticed in our choice of the CORCONDIA metric which is
+58.7040 for the rank-3 decomposition here. CORCONDIA values in this range are acceptable in practice
+(Smilde et al., 2005), However, it should ideally be closer to 100, which highlights that the CORCONDIA
+heuristic is conservative for very correlated ﬂuorophores such as bead 1 and bead 2.
+In contrast to typical approaches in geospatial spectral unmixing, an additive sum to one constraint on
+the abundance images is not imposed in this work as the physics of multi-layered ﬂuorescence in tissue are
+unclear, and ground truth does not currently exist for these tissue spectra. Thus, reinforcing this constraint
+might cause approximation errors. To explore this, we perform a preliminary analysis with an additional
+sum to one constraint on the abundance images. Simultaneous non-negativity and sum to one constraints
+can be eﬃciently implemented in the AO-ADMM framework by replacing the abundance non-negative least
+squares sub-problem with a simplex projection introduced in Duchi et al. (2008); Wang & Carreira-Perpinán
+(2013).
+The sum to one results are shown in Figure 7B2. Qualitatively, we ﬁnd that using the sum to one
+constraint gives the abundance images stronger interpretability, with the background and beads correctly
+localized. However, signiﬁcant distortions are present in the bead 2 emission spectra shown in the red high-
+lighted region. As we are most interested in the emission characteristics of ﬂuorophores, limiting constraints
+to non-negativity only in this kind of data may be appropriate. Quantitatively, the CORCONDIA measure
+of trilinearity reduces from 58.7040 to 57.5242 with the addition of the sum to one constraint as well.
+4.2.2. Synthetic Data
+To verify whether the correct factors and rank are returned by NNCP, we can generate synthetic data
+with the required additive multi-excitation nature of the hyperspectral images of autoﬂuorescent tissue.
+Also, to evaluate the advantages of using multiple excitation wavelengths to recover emission spectra in an
+NNCP formulation instead of decomposing each image stack individually, we compare the results of NMF
+and NNCP. In order to let NMF and NNCP work with the same data, no data is assumed to be cutoﬀ by
+the simulated excitation, i.e. there is no missing data.
+To generate the tensor, 5 excitation wavelengths and 31 emission channels of size 500 500 are chosen.
+To simulate emission spectra, three Gaussian probability density functions are used to represent emission
+13500 550 600 650 700
+Wavelength (nm)00.20.40.60.81Normalized IntensityBead 1
+Bead 2
+BackgroundComponent
+420 430 440 450 460 470 480 490 500
+Wavelength (nm)0.10.20.30.40.50.60.70.8Normalized IntensityBead 1
+Bead 2
+BackgroundComponent500 550 600 650 700
+Wavelength (nm)00.20.40.60.81Normalized IntensityBead 1
+Bead 2
+BackgroundComponent
+500 550 600 650 700
+Wavelength (nm)00.20.40.60.81Normalized IntensityBead 1
+Bead 2
+BackgroundComponent
+420 430 440 450 460 470 480 490 500
+Wavelength (nm)0.10.20.30.40.50.60.70.8Normalized IntensityBead 1
+Bead 2
+BackgroundComponent
+420 430 440 450 460 470 480 490 500
+Wavelength (nm)0.10.20.30.40.50.60.70.8Normalized IntensityBead 1
+Bead 2
+BackgroundComponentGround Truth NNCP NNCP 
++ sum to oneEmission Spectra RGB False Color Excitation Spectra
+Emission Spectra Abundance 1 Excitation Spectra Abundance 2 Abundance 3A) B1)
+Bead 1Bead 2
+Figure 7: NNCP analysis of ﬂuorescent beads with known spectral properties on the same microscope used for tissue images.
+Column A. Ground truth emission and excitation spectra for the three beads shown in the false color image. Here, emission
+spectra are normalized with respect to the maximum intensity. The two beads shown in the blue bounding box are the same
+ﬂuorophore, the bead in the red bounding box is minutely shifted spectrally and dimmer in intensity. The dark regions possess
+a spectrum referred to here as the background. Column B. Results of NNCP decomposition both with ( B2) and without
+(B1) a sum to one constraint. Both approaches adequately recover spectral and spatial factors corresponding to the ground
+truth. Enforcing the sum to one constraint causes distortions (highlighted in red bounding box) in the recovered emission
+spectra.
+14+ + =Abundance 1 Abundance 2 Abundance 3 Mixture00.020.040.060.080.10.120.140.160.180.2
+Substance 1
+Substance 2
+Substance 3
+Additive EnvelopeSubstances
+5 10 15 20 25 301
+Simulated Emission Wavelength Simulated Excitation WavelengthSimulated Emission Spectra
+Simulated Excitation Spectra
+1 2 3 4 500.10.20.30.40.50.60.70.80.91
+Substance 1
+Substance 2
+Substance 3Substances
+Mixture + Noise
+⟶Figure 8: Synthetic spectra and their spatial distributions in a hyperspectral image used to generate ﬁve hyperspectral images.
+Three Gaussian probability density functions of mean 6, 18 and 24 with sigma 3, 3 and 4 were chosen to simulate emission
+spectra, while excitation spectra were chosen in order to simulate phantom ﬂuorescent substances either becoming more or less
+intensely ﬂuorescent with increasing excitation wavelength. The normalized 16th emission channel of the second hyperspectral
+image is displayed as the abundance images. All ﬁve hyperspectral images are corrupted with both Poisson and Gaussian noise.
+spectra of three diﬀerent phantom substances. A hyperspectral image is then constructed with spatial
+overlap of the three substances, with one substance placed on the left, one on the right and one present
+throughout the entire image causing each pixel to be a mixture of two to three substances. To simulate
+concentration diﬀerences of substances within each region, the signals are scaled spatially. The images are
+corrupted using both Poisson and Gaussian noise typical to ﬂuorescence microscopy (Waters, 2009). Five
+hyperspectral images are then constructed by using the excitation spectra shown in Figure 8 to scale the
+spectra of each component, with some components becoming brighter and some becoming dimmer with
+higher excitation wavelength. The ﬁve synthetic hyperspectral images are arranged as per Section 3.3, i.e.
+into a tensor of size 31 2500005.
+The results of NMF and NNCP are shown in Figure 9. The NNCP recovered emission and excitation
+spectra are in strong correspondence with ground truth, with abundance images showing clear spatial sepa-
+ration. We vary the rank of the NNCP decomposition of synthetic images and achieve CORCONDIA values
+of100;99:9763;99:5701, and 1:4732for rank 1 to 4. From these values, rank-3 is appropriate, which is
+consistent with ground truth and thus supports the usage of CORCONDIA to decide on a real-world rank.
+The NMF results were obtained using an alternating minimization strategy (Kim & Park, 2008) and are
+sub-optimal compared to NNCP in both emission spectral recovery and the separability and noise-robustness
+of the abundance images. Additionally, by deﬁnition, NMF does not return excitation spectra for the three
+substances. The results from the original multiplicative algorithm for NMF (Lee & Seung, 1999) are highly
+noisy.
+5. Discussion
+5.1. Improvements over Previous Work
+Tensor decompositions are unique under mild conditions, therefore the NNCP approach guarantees sta-
+ble recovery of ﬂuorophore signatures in a joint decomposition. In contrast, previous related work uses
+NMF-style approaches extensively which are in general non-unique. This leads to NMF approaches hav-
+ing several feasible solutions, which may make them unreliable for performing group hypothesis testing.
+155 10 15 20 25 30
+Simulated Emission Wavelength00.10.20.30.40.50.6Simulated Emission Spectra
+5 10 15 20 25 30
+Simulated Emission Wavelength00.050.10.150.20.250.30.350.40.45Simulated Emission Spectra 1 2 3 4 5
+Simulated Excitation Wavelength00.10.20.30.40.50.60.70.80.91Simulated Excitation SpectraN/AEmission Spectra Abundance 1 Abundance 2 Abundance 3 Excitation SpectraNMF Recovered NNCP RecoveredSubstance 1
+Substance 2
+Substance 3Substances
+Figure 9: Abundance images, emission and excitation spectra recovered using NMF and NNCP. NMF returned emission spectra
+suﬀer from poor reproducibility and are not able to adequately recover the ground truth. NNCP achieves a closer approximation
+to the ground truth and also returns the excitation spectra.
+Within the framework described, we notice subtle shifts in emission spectra across groups, which may be
+relevant to AMD biochemistry. Without a tensor approach, previous work mentioned in Section 1.1 utilized
+multi-excitation wavelength image stacks by concatenating the image stacks. Alternatively, they could also
+perform independent NMF analysis for each image stack. However, both of these approaches do not take
+the relationships between the image stacks into account when retrieving spectral factors and can lead to
+overﬁtting.
+Further, the tensor representation gives us the excitation spectra of these ﬂuorophores as well, which is
+not possible with matrix based approaches. This excitation information can be used clinically to determine
+an appropriate wavelength of light used for illuminating the retina in clinical imaging. Finally, to our
+knowledge, this is the ﬁrst work to perform functional group statistical testing on hyperspectral images.
+This novel perspective allows the testing of clinically relevant hypotheses, such as whether autoﬂuorescence
+properties change with disease.
+5.2. Limitations and Future Work
+The excitation wavelengths used to generate the dataset are unequally spaced on the wavelength axis,
+however, we implicitly assume equal separation. We could use tensor completion (Liu et al., 2013a; Zhang
+et al., 2014) from the sparse samples available and re-sample evenly. However, tensor completion requires
+the data to be missing randomly which is not the case here and cannot be reliably applied. In this study, we
+assume that there are no non-linearities and the data are well described by a multi-linear model. Non-linear
+models have been extensively explored in geospatial spectral unmixing (Heylen et al., 2014). However, the
+underlying physics of reﬂectance imaging in remote sensing is diﬀerent from that of ﬂuorescence microscopy
+and many assumptions do not translate. Ikoma et al. (2014) create NMF and NNCP model that handles
+attentuation-based nonlinearities in hyperspectral images. However, their method requires known reference
+spectra which are currently unavailable in our application. Future investigations should incorporate the
+physics of ﬂuorescence microscopy into a blind non-multilinear NNCP model or be purely data-driven.
+Futureworkwillalsoexploreincorporatingdomainknowledgeintothedecomposition. Forexample,semi-
+supervised NMF methods can incorporate domain knowledge into the matrix factorization by leveraging a
+smallsetoflabeledobservations(Leeetal.,2009). Forthisdataset,weﬁndtwocomponentstobeappropriate
+based on a data-driven analysis. However, a semi-supervised NNCP approach may allow the user to deﬁne
+rank in the case where strong domain knowledge is available and guide the decomposition.
+Controlling for environmental variation in the image acquisition is of importance as a change in environ-
+ment aﬀects the NNCP spectral unmixing. Additionally, some natural ﬂuorophores have emission spectra
+16that vary with excitation wavelength not just in magnitude, but also in shape (Lakowicz, 2006a). The
+proposed unmixing and statistical framework needs to be applied to a larger sample size. This would allow
+the quantiﬁcation of spectral changes and intensity changes, and would allow us to build statistical models
+based on other possible covariates such as stage of disease, gender and age. Ultimately, autoﬂuorescence
+spectral signatures should be utilized concurrently with other methodologies such as imaging mass spectrom-
+etry (Norris & Caprioli, 2013; Crouch et al., 2015), resonance Raman tissue imaging (Bhosale et al., 2009),
+and ﬂuorescence lifetime microscopy (Suhling et al., 2015) to form a consensus result for precise molecular
+identiﬁcation.
+5.3. Conclusion
+In this paper, we present a novel framework for the analysis of high-dimensional hyperspectral imaging
+of tissue autoﬂuorescence including the arrangement of images into a low rank tensor, determining the
+number of autoﬂuorescent substances and recovering their autoﬂuorescence spectra and spatial distribution
+in the presence of missing data and to our knowledge, the ﬁrst application of functional hypothesis tests to
+hyperspectral images. This includes the novel recovery of excitation spectra from hyperspectral ﬂuorescence
+microscopy images. From a clinical perspective, AMD is notoriously diﬃcult to detect early and treat in
+time. The extraction of ﬂuorescence spectra that are most associated with its progression can lead to future
+study of the biochemistry of the disease possibly leading to the development of new drugs and therapies.
+Better understanding of autoﬂuorescence sources will also improve the interpretation of clinical fundus
+autoﬂuorescence imaging, which is commonly used in the diagnosis and management of AMD.
+We simultaneously estimate spectral and spatial characteristics of autoﬂuorescent tissue within the eye.
+Further, we present a statistical framework for group testing between AMD and control donors which
+accounts for the functional nature of spectra. However, the methodology developed here is general and can
+be applied to the spectral imaging of any pathology. Previous studies have used methods like NMF for source
+separation extensively. For example, NMF has been used to recover spectral and spatial characteristics of
+structuresofinterestinmicroscopyimagesofaortatissue(Galeanoetal.,2015), breastcancercells(Puetal.,
+2011), and the colon (Roxbury et al., 2015). Additionally, in contrast to our current goals, autoﬂuorescence
+is a large source of noise for ﬂuorescent dye-based microscopy and its removal is highly desired. NMF-based
+procedures have been proposed for the detection and subsequent removal of cellular autoﬂuorescence to
+enhance ﬂuorescence imaging (Woolfe et al., 2011). Members of the medical image analysis community
+relying on linear non-negative methods for spectral analysis may beneﬁt by taking the high-dimensional
+multi-linear non-negative tensor decomposition approach proposed in this study.
+Acknowledgements
+For this study, the authors acknowledge support from NIH R01EY027948. Christine A. Curcio (CAC)
+and Roland Theodore Smith are additionally funded by NIH R01EY015520. CAC also acknowledges sup-
+port from the Macula Foundation, the EyeSight Foundation of Alabama, the International Retinal Research
+Foundation, and Research to Prevent Blindness. Thomas Ach acknowledges support from the Dr. Werner
+Jackstädt Foundation and IZKF Würzburg. We thank Martin Hammer and Zsolt Ablonczy for their helpful
+comments and advice while conducting this study. We thank Yuehong Tong and Jeﬀrey D. Messinger for
+preparing and capturing some of the images used in this study. We thank Kejun Huang for making avail-
+able the original implementation of AO-ADMM, and our reviewers for greatly improving the quality of our
+manuscript. Finally, we gratefully acknowledge NSF MRI-1229185 for HPC services and infrastructure and
+NIH R01EY006109 for tissue collection.
+Declarations of Interest: CAC receives research support from Heidelberg Engineering.
+Appendix A. List of Abbreviations
+AMDAge-related Macular Degeneration
+17AFAutoﬂuorescence
+BrMBruch’s Membrane
+CPCPD/PARAFAC
+CPDCanonical Polyadic Decomposition
+CORCONDIA Core Consistency Diagnostic
+LF/ML Lipofuscin/Melanolipofuscin
+PARAFAC Parallel Factor Analysis
+NMFNon-negative Matrix Factorization
+NNCP Non-negative CP
+RPERetinal Pigment Epithelium
+AOAlternating Optimization
+ADMM Alternating Direction Method of Multipliers
+References
+Ach, T., Huisingh, C., McGwin, G., Messinger, J. D., Zhang, T., Bentley, M. J., Gutierrez, D. B., Ablonczy, Z., Smith, R. T.,
+Sloan, K. R. et al. (2014). Quantitative Autoﬂuorescence and Cell Density Maps of the Human Retinal Pigment Epithelium
+Autoﬂuorescence and Cell Density. Investigative ophthalmology & visual science ,55, 4832–41.
+Ami, T. B., Tong, Y., Bhuiyan, A., Huisingh, C., Ablonczy, Z., Ach, T., Curcio, C. A., & Smith, R. T. (2016). Spatial and
+spectral characterization of human retinal pigment epithelium ﬂuorophore families by ex vivo hyperspectral autoﬂuorescence
+imaging. Translational vision science & technology ,5, 5–.
+Anandkumar, A., Ge, R., Hsu, D., Kakade, S. M., & Telgarsky, M. (2014). Tensor decompositions for learning latent variable
+models.Journal of Machine Learning Research ,15, 2773–832.
+Andersson, C. A., & Bro, R. (2000). The N-way toolbox for MATLAB. Chemometrics and intelligent laboratory systems ,52,
+1–4.
+Bader, B. W., & Kolda, T. G. (2015). Matlab tensor toolbox version 2.6. Available online. URL: http://www.sandia.gov/
+~tgkolda/TensorToolbox/ .
+Bharath, H., Sima, D., Sauwen, N., Himmelreich, U., De Lathauwer, L., & Van Huﬀel, S. (2017). Nonnegative canonical
+polyadic decomposition for tissue-type diﬀerentiation in gliomas. IEEE journal of biomedical and health informatics ,21,
+1124–32.
+Bhosale, P., Li, B., Sharifzadeh, M., Gellermann, W., Frederick, J. M., Tsuchida, K., & Bernstein, P. S. (2009). Puriﬁcation
+and partial characterization of a lutein-binding protein from human retina. Biochemistry ,48, 4798–807.
+Bioucas-Dias, J. M., Plaza, A., Dobigeon, N., Parente, M., Du, Q., Gader, P., & Chanussot, J. (2012). Hyperspectral unmixing
+overview: Geometrical, statistical, and sparse regression-based approaches. IEEE journal of selected topics in applied earth
+observations and remote sensing ,5, 354–79.
+Bourne, R. R. A., Stevens, G. A., White, R. A., Smith, J. L., Flaxman, S. R., Price, H., Jonas, J. B., Keeﬀe, J., Leasher, J.,
+Naidoo, K., Pesudovs, K., Resnikoﬀ, S., & Taylor, H. R. (2013). Causes of vision loss worldwide, 1990-2010: a systematic
+analysis. The Lancet Global Health ,1, e339 –49.
+Boyd, S., Parikh, N., Chu, E., Peleato, B., Eckstein, J. et al. (2011). Distributed optimization and statistical learning via the
+alternating direction method of multipliers. Foundations and Trends Rin Machine learning ,3, 1–122.
+Bro, R., & Kiers, H. A. L. (2003). A new eﬃcient method for determining the number of components in PARAFAC models.
+Journal of Chemometrics ,17, 274–86. URL: http://dx.doi.org/10.1002/cem.801 . doi: 10.1002/cem.801 .
+Carroll, J. D., & Chang, J.-J. (1970). Analysis of individual diﬀerences in multidimensional scaling via an N-way generalization
+of “Eckart-Young” decomposition. Psychometrika ,35, 283–319.
+Cichocki, A., Mandic, D., De Lathauwer, L., Zhou, G., Zhao, Q., Caiafa, C., & Phan, H. A. (2015). Tensor decompositions
+for signal processing applications: From two-way to multiway component analysis. IEEE Signal Processing Magazine ,32,
+145–63.
+Comon, P. (1994). Independent component analysis, a new concept? Signal processing ,36, 287–314.
+Cong, F., Lin, Q.-H., Kuang, L.-D., Gong, X.-F., Astikainen, P., & Ristaniemi, T. (2015). Tensor decomposition of EEG
+signals: a brief review. Journal of neuroscience methods ,248, 59–69.
+Crouch, R. K., Koutalos, Y., Kono, M., Schey, K., & Ablonczy, Z. (2015). A2e and lipofuscin. In J. F. Hejtmancik, & J. M.
+Nickerson (Eds.), Molecular Biology of Eye Disease (pp. 449 –63). Academic Press volume 134 of Progress in Molecular
+Biology and Translational Science .
+Curcio, C. A., Messinger, J. D., Sloan, K. R., McGwin, G., Medeiros, N. E., & Spaide, R. F. (2013). Subretinal drusenoid
+deposits in non-neovascular age-related macular degeneration: morphology, prevalence, topography, and biogenesis model.
+Retina (Philadelphia, Pa.) ,33.
+Dobigeon, N., Altmann, Y., Brun, N., & Moussaoui, S. (2016). Linear and Nonlinear Unmixing in Hyperspectral Imaging.
+Data Handling in Science and Technology ,30, 185 – 224.
+Duchi, J., Shalev-Shwartz, S., Singer, Y., & Chandra, T. (2008). Eﬃcient projections onto the l1-ball for learning in high
+dimensions. In Proceedings of the 25th international conference on Machine learning (pp. 272–9). ACM.
+Galeano, J., Perez, S., Montoya, Y., Botina, D., & Garzón, J. (2015). Blind source separation of ex-vivo aorta tissue multi-
+spectral images. Biomedical optics express ,6, 1589–98.
+18Gao, L., & Smith, R. T. (2015). Optical hyperspectral imaging in microscopy and spectroscopy âĂŞ a review of data acquisition.
+Journal of Biophotonics ,8, 441–56.
+Geng, X., Gouttard, S., Sharma, A., Gu, H., Styner, M., Lin, W., Gerig, G., & Gilmore, J. H. (2012). Quantitative tract-based
+white matter development from birth to age 2 years. Neuroimage ,61, 542–57.
+Gobinet, C., Perrin, E., & Huez, R. (2004). Application of non-negative matrix factorization to ﬂuorescence spectroscopy. In
+Signal Processing Conference, 2004 12th European (pp. 1095–8). IEEE.
+Hall, P., Müller, H.-G., & Wang, J.-L. (2006). Properties of principal component methods for functional and longitudinal data
+analysis. The annals of statistics , (pp. 1493–517).
+Harshman, R. (1970). Foundations of the PARAFAC procedure: Models and conditions for an" explanatory" multi-modal
+factor analysis.
+Håstad, J. (1990). Tensor rank is NP-complete. Journal of Algorithms ,11, 644–54.
+Heylen, R., Parente, M., & Gader, P. (2014). A review of nonlinear hyperspectral unmixing methods. IEEE Journal of Selected
+Topics in Applied Earth Observations and Remote Sensing ,7, 1844–68.
+Hillar, C. J., & Lim, L.-H. (2013). Most tensor problems are NP-hard. Journal of the ACM (JACM) ,60, 45.
+Hitchcock, F. L. (1927). The expression of a tensor or a polyadic as a sum of products. Studies in Applied Mathematics ,6,
+164–89.
+Hotelling, H. (1933). Analysis of a complex of statistical variables into principal components. Journal of educational psychology ,
+24, 417.
+Huang, K., Sidiropoulos, N. D., & Liavas, A. P. (2016). A ﬂexible and eﬃcient algorithmic framework for constrained matrix
+and tensor factorization. IEEE Transactions on Signal Processing ,64, 5052–65.
+Ikoma, H., Heshmat, B., Wetzstein, G., & Raskar, R. (2014). Attenuation-corrected ﬂuorescence spectra unmixing for spec-
+troscopy and microscopy. Optics express ,22, 19469–83.
+Johri, A., Post, R., Ganti, B., Fawzi, A. A., Sajda, P., Ach, T., Curcio, C. A., & Smith, T. (2014). Mathematical modeling of
+retinalpigmentepithelium(RPE)autoﬂuorescence(AF)withgaussianmixturemodelsandnon-negativematrixfactorization
+(NMF).Investigative Ophthalmology & Visual Science ,55, 3827–.
+Kasha, M. (1950). Characterization of electronic transitions in complex molecules. Discussions of the Faraday society ,9, 14–9.
+Kennedy, C. J., Rakoczy, P. E., & Constable, I. J. (1995). Lipofuscin of the retinal pigment epithelium: a review. Eye,9,
+763–71.
+Keshava, N., & Mustard, J. F. (2002). Spectral unmixing. IEEE signal processing magazine ,19, 44–57.
+Kiers, H. A. L. (1997). Weighted least squares ﬁtting using ordinary least squares algorithms. Psychometrika ,62, 251–66.
+URL: https://doi.org/10.1007/BF02295279 . doi: 10.1007/BF02295279 .
+Kim, H., & Park, H. (2008). Nonnegative matrix factorization based on alternating nonnegativity constrained least squares
+and active set method. SIAM journal on matrix analysis and applications ,30, 713–30.
+Kolda, T., & Bader, B. (2009). Tensor decompositions and applications. SIAM review ,51, 455–500.
+Kolda, T. G. (2006). Multilinear operators for higher-order decompositions.
+Kroonenberg, P. M. (2007). Missing data in multiway analysis. In Applied Multiway Data Analysis (pp. 143–74). John Wiley
+& Sons, Inc.
+Kruskal, J. (1989). Rank, Decomposition, and Uniqueness for 3-Way and N-Way Arrays . Elsevier Science. doi: 10.1002/bimj.
+4710330518 .
+Lakowicz, J. R. (2006a). Introduction to ﬂuorescence. In Principles of ﬂuorescence spectroscopy (pp. 1–26). Springer.
+Lakowicz, J. R. (2006b). Solvent and environmental eﬀects. In Principles of Fluorescence Spectroscopy (pp. 205–35). Springer.
+Lee, D. D., & Seung, H. S. (1999). Learning the parts of objects by non-negative matrix factorization. Nature,401, 788–91.
+Lee, H., Yoo, J., & Choi, S. (2009). Semi-supervised nonnegative matrix factorization. IEEE Signal Processing Letters ,17,
+4–7.
+Li, R., Wu, P., Yakushev, I., Wang, J., Ziegler, S. I., Förster, S., Huang, S.-C., Schwaiger, M., Navab, N., Zuo, C., & Shi, K.
+(2017). Pattern Visualization and Recognition using Tensor Factorization for Early Diﬀerential Diagnosis of Parkinsonism.
+InMedical Image Computing and Computer-Assisted Intervention âĹŠ MICCAI 2017: 20th International Conference,
+Quebec City, QC, Canada, September 11-13, 2017, Proceedings, Part III (pp. 125–33). Springer International Publishing.
+Lin, C.-J. (2007). On the convergence of multiplicative update algorithms for nonnegative matrix factorization. IEEE Trans-
+actions on Neural Networks ,18, 1589–96.
+Liu, J., Musialski, P., Wonka, P., & Ye, J. (2013a). Tensor completion for estimating missing values in visual data. IEEE
+Transactions on Pattern Analysis and Machine Intelligence ,35, 208–20.
+Liu, K., So, H.-C., da Costa, J. P. C., & Huang, L. (2013b). Core consistency diagnostic aided by reconstruction error for
+accurate enumeration of the number of components in PARAFAC models. In Acoustics, Speech and Signal Processing
+(ICASSP), 2013 IEEE International Conference on (pp. 6635–9). IEEE.
+Möller, A., Tutz, G., & Gertheiss, J. (2016). Random forests for functional covariates. Journal of Chemometrics ,30, 715–25.
+Montcuquet, A.-S., Herve, L., Navarro, F., Dinten, J.-M., & Mars, J. I. (2011). In vivo ﬂuorescence spectra unmixing and
+autoﬂuorescence removal by sparse nonnegative matrix factorization. IEEE Transactions on Biomedical Engineering ,58,
+2554–65.
+Mørup, M., & Hansen, L. K. (2009). Automatic relevance determination for multi-way models. Journal of Chemometrics ,23,
+352–63.
+Nascimento, J. M., & Dias, J. M. (2005). Does independent component analysis play a role in unmixing hyperspectral data?
+IEEE Transactions on Geoscience and Remote Sensing ,43, 175–87.
+Neher, R. A., Mitkovski, M., Kirchhoﬀ, F., Neher, E., Theis, F. J., & Zeug, A. (2009). Blind source separation techniques for
+the decomposition of multiply labeled ﬂuorescence images. Biophysical journal ,96, 3791–800.
+19Norris, J. L., & Caprioli, R. M. (2013). Analysis of tissue specimens by matrix-assisted laser desorption/ionization imaging
+mass spectrometry in biological and clinical research. Chemical reviews ,113, 2309–42.
+Paatero, P., & Tapper, U. (1994). Positive matrix factorization: A non-negative factor model with optimal utilization of error
+estimates of data values. Environmetrics ,5, 111–26.
+Pomann, G.-M., Staicu, A.-M., & Ghosh, S. (2016). A two-sample distribution-free test for functional data with application to
+a diﬀusion tensor imaging study of multiple sclerosis. Journal of the Royal Statistical Society: Series C (Applied Statistics) ,
+65, 395–414.
+Pu, Y., Tang, G. C., Wang, W. B., Savage, H. E., Schantz, S. P., & Alfano, R. R. (2011). Native Fluorescence Spectroscopic
+Evaluation of Chemotherapeutic Eﬀects on Malignant Cells using Nonnegative Matrix Factorization Analysis. Technology
+in Cancer Research & Treatment ,10, 113–20.
+Ramsay, J. O., & Silverman, B. W. (2007). Applied functional data analysis: methods and case studies . Springer.
+Roxbury, D., Jena, P. V., Williams, R. M., Enyedi, B., Niethammer, P., Marcet, S., Verhaegen, M., Blais-Ouellette, S., &
+Heller, D. A. (2015). Hyperspectral microscopy of near-infrared ﬂuorescence enables 17-chirality carbon nanotube imaging.
+Scientiﬁc reports ,5.
+Saeys, W., De Ketelaere, B., & Darius, P. (2008). Potential applications of functional data analysis in chemometrics. Journal
+of Chemometrics: A Journal of the Chemometrics Society ,22, 335–44.
+Sajda, P., Du, S., & Parra, L. C. (2003). Recovery of constituent spectra using non-negative matrix factorization. In Wavelets:
+Applications in Signal and Image Processing X (pp. 321–32). International Society for Optics and Photonics volume 5207.
+Scholz, F. W., & Stephens, M. A. (1987). K-sample Anderson–Darling tests. Journal of the American Statistical Association ,
+82, 918–24.
+Schultz, T., & Seidel, H.-P. (2008). Estimating crossing ﬁbers: A tensor decomposition approach. IEEE Transactions on
+Visualization and Computer Graphics ,14.
+Smilde, A., Bro, R., & Geladi, P. (2005). Multi-way analysis: applications in the chemical sciences . John Wiley & Sons.
+Smith, R. T., Post, R., Johri, A., Lee, M. D., Ablonczy, Z., Curcio, C. A., Ach, T., & Sajda, P. (2014). Simultaneous
+decompositionofmultiplehyperspectraldatasets: signalrecoveryofunknownﬂuorophoresintheretinalpigmentepithelium.
+Biomedical Optics Express ,5, 4171–85.
+Sparrow, J. R., & Boulton, M. (2005). RPE lipofuscin and its role in retinal pathobiology. Experimental eye research ,80,
+595–606.
+Stephens, M. A. (1974). EDF statistics for goodness of ﬁt and some comparisons. Journal of the American statistical Associ-
+ation,69, 730–7.
+Suhling, K., Hirvonen, L. M., Levitt, J. A., Chung, P.-H., Tregidgo, C., Marois, A. L., Rusakov, D. A., Zheng, K., Ameer-Beg,
+S., Poland, S., Coelho, S., Henderson, R., & Krstajic, N. (2015). Fluorescence lifetime imaging (ﬂim): Basic concepts and
+some recent developments. Medical Photonics ,27, 3 – 40. Fluorescence lifetime measurements in the biomedical sciences.
+Tomasi, G., & Bro, R. (2005). PARAFAC and missing values. Chemometrics and Intelligent Laboratory Systems ,75, 163 –80.
+Tong, Y., Ami, T. B., Hong, S., Heintzmann, R., Gerig, G., Ablonczy, Z., Curcio, C. A., Ach, T., & Smith, R. T. (2016).
+Hyperspectral Autoﬂuorescence Imaging of Drusen and Retinal Pigment Epithelium in Donor Eyes with Age-related Macular
+Degeneration. Retina,36, S127–36.
+Tucker, L. R. (1964). The extension of factor analysis to three-dimensional matrices. Contributions to mathematical psychology ,
+110119.
+Wang, W., & Carreira-Perpinán, M. A. (2013). Projection onto the probability simplex: An eﬃcient algorithm with a simple
+proof, and an application. arXiv preprint arXiv:1309.1541 , .
+Waters, J. C. (2009). Accuracy and precision in quantitative ﬂuorescence microscopy. The Journal of Cell Biology ,185,
+1135–48. doi: 10.1083/jcb.200903097 .
+Wong, W. L., Su, X., Li, X., Cheung, C. M. G., Klein, R., Cheng, C.-Y., & Wong, T. Y. (2014). Global prevalence of age-related
+macular degeneration and disease burden projection for 2020 and 2040: a systematic review and meta-analysis. The Lancet
+Global Health ,2, e106 –16.
+Woolfe, F., Gerdes, M., Bello, M., Tao, X., & Can, A. (2011). Autoﬂuorescence removal by non-negative matrix factorization.
+IEEE Transactions on image processing ,20, 1085–93.
+Yao, F., Müller, H.-G., Cliﬀord, A. J., Dueker, S. R., Follett, J., Lin, Y., Buchholz, B. A., & Vogel, J. S. (2003). Shrinkage
+estimation for functional principal component scores with application to the population kinetics of plasma folate. Biometrics ,
+59, 676–85.
+Zhang, Z., Ely, G., Aeron, S., Hao, N., & Kilmer, M. (2014). Novel methods for multilinear data completion and de-noising
+based on tensor-SVD. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (pp. 3842–9).
+Zhu, H., Kong, L., Li, R., Styner, M., Gerig, G., Lin, W., & Gilmore, J. H. (2011). Fadtts: functional analysis of diﬀusion
+tensor tract statistics. NeuroImage ,56, 1412–25.
+Vitae
+Neel Dey graduated with an M.S. in Electrical Engineering from New York University. He is currently a Ph.D.
+candidate in Computer Science at New York University, with research interests pertaining to statistical learning
+theory and applications in the context of medical image analysis.
+Sungmin Hong isaPh.D.candidateinComputerScienceatNewYorkUniversity. HehasB.S.andM.S.inElectrical
+Engineering and Computer Science from Seoul National University, Republic of Korea. His research interests include
+20longitudinal shape analysis, manifold statistics, and deformation analysis for medical image analysis.
+Thomas Ach , M.D., M.Sc., is a German board-certiﬁed retina specialist currently employed at the Department of
+Ophthalmology, University Hospital Würzburg, Germany. After residency, he spent >25 months as a research fellow
+in Dr. Christine Curcio’s lab at the University of Alabama at Birmingham, USA. During this time basic science of
+histologic and microscopic data regarding retinal pigment epithelium cell number and autoﬂuorescence was gained,
+both in normal aging and disease (i.e., age-related macular degeneration). He has published >40 papers in the ﬁeld
+of basic science and clinical retina and has been awarded several prizes for his research.
+Yiannis Koutalos has a degree in Physics from the University of Athens, Greece, a Ph.D. in Biophysics from
+the University of Illinois at Urbana-Champaign, and post-doctoral studies at Johns Hopkins University School of
+Medicine. He is Professor of Ophthalmology and Neurosciences at the Medical University of South Carolina. His
+research is on the metabolism of vitamin A in the retina with particular emphasis in the use of ﬂuorescence imaging
+techniques.
+Christine A. Curcio , Ph.D., is the White-McKee Endowed Professor of Ophthalmology and Vision Sciences at
+the University of Alabama at Birmingham. Trained in neuroanatomy, she has collaborated with eye banks for
+33 years in producing seminal observations of human retinal neurobiology, retinal aging and pathology, including
+description of major aspects of age-related macular degeneration and validation of clinical imaging techniques (optical
+coherence tomography, adaptive optics scanning laser ophthalmoscopy, and fundus autoﬂuorescence). Techniques
+include electron microscopy, morphometry, digital pathology, histochemistry, lipid proﬁling; collaborative studies
+have involved epidemiology, visual function testing, and transcriptomics.
+R. Theodore Smith , M.D., Ph.D., is Professor of Ophthalmology and Neuroscience in the Department of Oph-
+thalmology, Icahn School of Medicine at Mount Sinai, and Director, Biomolecular Retinal Imaging, at the New York
+Eye and Ear Inﬁrmary of Mount Sinai. He holds a B.A. in Mathematics from Rice University, a Ph.D. in Pure
+Mathematics from the University of Warwick, UK, and an M.D. from the Albert Einstein College of Medicine. He
+has held faculty positions in Mathematics at MIT and Columbia University, and in Ophthalmology at Columbia,
+NYU and Mount Sinai medical centers.
+Guido Gerig is Institute Professor in the Computer Science and Engineering Department of NYU’s Tandon School
+of Engineering. He holds M.S, Ph.D. and Venia Legendi degrees from ETH Zurich. He is a Fellow of AIMBE
+and MICCAI and a senior member of IEEE. His research supports a number of clinical imaging research studies
+with novel, innovative image analysis methodologies for segmentation, registration, atlas building, shape analysis,
+and image statistics. He was previously USTAR Professor of Computer Science at the University of Utah (2007-
+2015), Taylor Grandy Professor of Computer Science and Psychiatry at UNC Chapel Hill (1998-2007), and Assistant
+Professor at ETH Zurich (1993-1998).
+21

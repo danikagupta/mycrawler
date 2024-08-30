@@ -1,0 +1,1120 @@
+1 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+Investigating the effects of applied electricity  and ammonia concentration on the 
+performance and bi ogas production of anaerobic bacteria.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+A master thesis submitted for the degree MSc Energy  
+and Environmental Sciences  
+ 
+By: 
+Isabelle Fruehwirth  S3480925  
+ 
+EES -2021 -499 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+First examiner:  Gert-Jan Euverink                                         Date of submission:  13/08/2021  
+ 
+ 
+2 
+  
+Table of contents  
+ 
+1. ABSTRACT  3 
+ 
+ 
+2. INTRODUCTION  3 
+ 
+ 
+3. MATERIALS AND METHODS   9 
+ 
+A. NORMAL PRESSURE ANAEROBIC DIGESTION (NPAD)  REACTORS                       9 
+A.1.  REACTOR SET UP                                                                                                                                                    9 
+A.2.  EXPERIMENTAL SET UP                                                                                                                                   10 
+A.3.  EXPECTED GAS PRODUCTION                                                                                                                        10 
+A.4.  PHYSICAL AND CHEMICAL ANALYSIS                                                                                                          10 
+ 
+B. MICROBIAL ELECTROLYSIS CELL (MEC)  REACTORS                                               11 
+B.1.  REACTOR SET UP AND ANALYSIS                                                                                                                  11 
+B.2.  EXPECTED GAS PRODUCTION OF BATCH AND CONTINUOUS MEC S REACTORS                       14 
+ 
+4. RESULTS AND DISCUSSION  15 
+ 
+A. NORMAL PRESSURE ANAEROBIC DIGESTION (NPAD)  REACTORS                   15 
+A.1.  BIOGAS PRODUCTION & QUALITY                                                                                                              15 
+A.2.  PH,  ALKALINITY & VFA S                                                                                                                            18 
+ 
+B. MICROBIAL ELECTROLYSIS CELL (MEC)  REACTORS                                              21 
+B.1.  BATCH REACTORS                                                                                                                                             21 
+B.2.  CONTINUOUS REACTOR                                                                                                                                  24 
+  
+FUTURE PROSPECTS  25 
+ 
+A. NORMAL PRESSURE ANAEROBIC DIGESTION (NPAD)  REACTORS                                                  25 
+ 
+B. MICROBIAL ELECTROLYSIS CELL (MEC)  REACTORS                                                                           25 
+ 
+C. GENERAL ANALYSIS                                                                                                                                            26 
+ 
+5. CONCLUSION  26 
+ 
+ 
+ 
+ 3 
+  
+1. Abstract  
+ 
+Anaerobic digestion (AD) is a method which produces biogas through the treatment of bio -
+waste. However, there are limitations in the process such as low conversion to biogas and poor 
+quality of biogas (high CO 2 content ) which  limits the application of biogas. Multiple factors 
+play a role in  the operation of the AD process. Ammonia is necessary for microorganism 
+growth, but can inhibit methanogenesis in high quantities.  The first part o f this paper 
+investigates the effect of NH 4Cl concentration on the methanogenic activity.  Reactors with 10 
+g/L NH 4Cl performed the best for biogas production  at 59 ml/day, while reactors with 4 g/L 
+NH4Cl resulted in the best biogas quality, with 56.7 mol% CH 4, and 43.7 mol% CO 2. 
+ 
+Secondly, there have been recent studies which demonstrated the improvement of 
+methanogenic activity in AD systems through application of a milli -voltage, through a  
+microbial electrolysis cell (MEC) reactor set up. Two-chambered MECs reactors are difficult 
+and expensive to upscale. Thus, the second part of this paper investigates the effects of a single 
+chamber MECs on the performance and biogas production of anaerob ic bacteria . The data 
+suggests that the addition of a milli -voltage is advantageous in terms of the volume of biogas 
+production. Batch MEC experiments with 1.34 V / 0.006 A performs the best both in terms of 
+production rate and total gas production.  The ba tch MECs reactor is then set up as a continuous 
+system for further application.  
+ 
+2. Introduction  
+ 
+In the present, a rapid increase in the energy demand has exhausted fossil fuel reserves and 
+increased worries concerning climate change. As a result, there ha s been a shift in the focus 
+from a fossil fuel -based energy model, increasingly towards renewables. One of the main 
+sources of energy is natural gas, which is a hydrocarbon gas mixture mainly made up of 
+methane. Biogas is a promising green alternative to n atural gas, mainly composed of CH 4 (50-
+80 mol%) and CO 2 (20-50 mol%)  , and is made through a process called anaerobic digestion 
+(AD) [1][2]. The process involves many different groups of bacteria which carry out the 
+process in consecutive steps, namely hydrolysis, acidogenesis, acetogenesis, and 
+methanogenesis  (Figure 1.)  [3], [4] . Firstly, c omplex organic matter such as protein o r 
+polysaccharides are broken down by microorganisms in an oxygen -free environment into 
+smaller chemical components  through hydrolysis and acidogenesis . Methanogenesis, the last 
+step, is carried out by anaerobic methanogenic Archa ea which convert acetate, H 2, and CO 2 
+into methane. This happens through three different pathways: Reaction 1 ) acetotrophic 
+pathway, Reaction 2 ) hydrogenotrophic pathway, and Reaction 3 ) methylotrophic pathway [4], 
+[5] . Multiple factors play a role in determining the composition of biogas including the carbon 
+oxidation -reduction state of the organic material , operation conditions , and the type of AD 
+process [1]. 4 
+  
+Figure 1. Schematic overview of the consecutive steps in the anaerobic digestion process. This involves 
+hydrolysis of polymers to the formation of biogas through methanogenesis. [4][6] 
+ 
+ 
+1) 𝐴𝑐𝑒𝑡𝑜𝑡𝑟𝑜𝑝 ℎ𝑖𝑐 𝑝𝑎𝑡ℎ𝑤𝑎𝑦                   𝐶𝐻3𝐶𝑂𝑂𝐻  →𝐶𝑂2 +  𝐶𝐻4 
+       2) 𝐻𝑦𝑑𝑟𝑜𝑔𝑒𝑛𝑜𝑡𝑟𝑜𝑝 ℎ𝑖𝑐 𝑝𝑎𝑡ℎ𝑤𝑎𝑦           𝐶𝑂2 +4𝐻2 → 𝐶𝐻 4 + 2𝐻2𝑂 
+                        3) 𝑀𝑒𝑡 ℎ𝑦𝑙𝑜𝑡𝑟𝑜𝑝 ℎ𝑖𝑐 𝑝𝑎𝑡ℎ𝑤𝑎𝑦                 𝐶𝐻 3𝑂𝐻+ 𝐻2 → 𝐶𝐻 4+ 𝐻2𝑂 [6],[11] 
+ 
+ Overview of the  different methanogenic pathways. Reaction 1)  Acetotrophic pathway, 2) Hydrogenotrophic 
+pathway, and 3) Methylotrophic pathway .  
+AD can be used as a novel method for resource recovery through the combination of waste 
+treatment with the production of a high value product  [7]. Other than energy production, the 
+process also h as a wide range of environmental benefits as the process allows for odor reduction 
+of waste, conservation of nutrients, and a reduction in greenhouse gas emissions [8]. There are 
+many possibilities for differ ent wastes to be used  as the starting material,  such as municipal 
+sludge/wastewaters, animal manure, and industrial sludge, which allows for flexibility in the 
+application of the method . However, a problem found when using complex substrates such as 
+those in manure or municipal waste is that it contains traces of ammonia , produced through the 
+degradation of nitrogenous matter  [9]. Small amounts of ammonia are essential for the growth 
+of m icroorganisms, but can cause inhibition at larger concentrations.  The total ammonia 
+nitrogen (TAN) is the value which depicts the total amount of nitrogen in the forms of NH 3 
+and NH 4+ in water.  Ammonium chloride is added as the TAN source, of which corresp onds to 
+1/3 of the mass of NH 4Cl (NH 4+: 18.039 u, Cl-: 35.45 u) [10], [11] . A previous study showed 
+that initial inhibition of AD reactors occurred at 30 g/L of NH 4Cl, and 50% inhibition was 
+observed at 35 g/L of NH 4Cl [12]. The first part of this research paper is to investigate the 
+effect of NH 4Cl concentrations lower th an 30 g/L on the methanogenic activity of AD reactors.  
+There  are still many other problems surrounding th e replacement  of natural gas with biogas  as 
+conventional AD processes have low efficiency, with only 50 -60% of the starting material 
+5 
+ converted  into CH 4 [13].Furthermore, the produced biogas  typically contains a high fraction  of 
+CO 2 (20-50 mol%) , resulting in a low calorific value [13], [2]. Other contaminants such as H 2S 
+(0.01 -0.4 mol%)  and condensates of H 2O (0-12 mol%) causes corrosions of equipment within 
+the gas grid, while high concentrations of O 2  (~2%) is an explosion hazard  [14], [2]. Thus, the 
+use of biogas is currently limited to on -site heat, steam, and electricity generation. For a larger 
+application such as that of natural gas, biogas must reach high standards through cleaning and 
+upgrading , in order to reach  compositions of CH4 (95 -99 mol%),  CO 2 (1-5%), and no H2S  [1], 
+[15],[16]. There is a plethora of different upgrading methods of biogas of which may involve 
+water/organic solvent/amine scrubbing, membrane technology, etc. [5]. However, these tends 
+to be energy an d resource intensive, and further produces waste which limits their use [17]. 
+The ideal situation would be for the production process to be economically and 
+environmentally viable, without comprom ising the quality of biogas. This would mean that the 
+calorific value should be suitable for injection into the main gas grid with little to no energy 
+requirement. However, methane production in traditional AD processes is limited by energy 
+barriers, causi ng low electron transfer efficiency . A method to surpass these barriers could be 
+through the use of bio -electrochemical systems (BES) [18].    
+ 
+ 
+ 
+ 
+Figure 2. (a) Schematic diagram of the operating principles of a two-chamber microbial fuel cell (MFC). 
+The Anodic chamber is under anaerobic conditions while the Cathodic chamber is under aerobic conditions. 
+The bacterium in the anode compartment transfers electrons from an electron donor such as glucose to the 
+cathode, while the protons travel through the proton exch ange membrane  (PEM)1 . They then recombine 
+with oxygen, forming water [18], [19] . Picture sourced from: [19]. (b) Schematic diagram of the operating 
+principles of a two -chamber microbial electrolysis cell (MEC). Both chambers operate under anaerobic 
+conditions.  
+ 
+Bio-electrochemical  systems (BES) are emerging  novel configurations , utilizing bacteria as a 
+catalyst  for organic waste treatment and subsequent recovery of resources such as 
+bioelectricity, hydrogen, or biogas . This  consists mainly of two different categories [20]. 
+Firstly, microbial fuel cells (MFC)  utilizes electro chemically active  bacteria  called exo -
+electrogens  in order to  oxidize  organic waste within the anodic chamber , subsequently 
+releas ing electrons and protons  (see Figure 2. (a)) [21]. The protons flow through the proton 
+exchange membra ne to the cathodic chamber, while t he electr ons flow via an external  circuit  
+from anode to cathode , creating an electrical current which can then be utilized  [22]. The proton 
+exchange membrane ( PEM ) regulates ionic flux between both chambers, which could 
+otherwise affect the pH balance of the system, in turn affecting the performance of the 
+a) b) 6 
+ methanogens [23].  Finally, electrons in the cathodic chamber, which is kept under aerobic 
+conditions, combines with oxygen and protons to form water , although man y other electron 
+acceptors can be used  [19], [20], [22] . The achieve d working cell potential of this system has 
+been shown to be approximately 0.4V, but theoretically has a potential of up to 1.1 V under 
+neutral pH conditions [19], [21] . 
+ 
+A modified version of this, and the focus of this paper, is called a Microbial electrolysis cells 
+(MEC)  (see Figure 2. (b)) . It operates fully under anaerobic conditions, and requires an applied 
+voltage in order to  produce  biofuel s such as H 2 gas or further synthesize more complex, high 
+grade chemicals such as CH 4 from waste such as CO 2 [18], [20] . As a fuel, methane has an 
+advantage over H 2 as it can be easily stored or transported as opposed to H 2, so biogas is 
+prioritized as the desired product in this paper [21]. Similar  to MFCs, MECs operate using  
+electrochemically active microorganisms  attached to the electrodes as biofilms  in order to 
+anaerobically digest the substrate in  the anodic compartm ent. However, the voltage produced 
+at the anode is insufficient to drive the formation of H 2 (Ecell≅ -0.414 V, pH=7), or the 
+production of biomethane through the reduction of carbon dioxide  (theoretical Ecell≅ 0.244 V, 
+pH=7) [21], [24] . Applying a small voltage  of around 0.2 -0.8V, substantially lower than that 
+of conventional water electrolysis (1.23 V) , allows for a reduction in the thermodynamic 
+barrier , and  the process can be fine -tuned  depending on the applied voltage  [18].  
+ 
+ 
+𝐴𝑛𝑜𝑑𝑒           4)   𝐶2𝐻4𝑂2+2𝐻2𝑂→2𝐶𝑂2+8𝑒 −+8𝐻+ 
+ 
+                                𝐶𝑎𝑡ℎ𝑜𝑑𝑒      5)    8𝐻++8𝑒−→4𝐻2    
+ 
+              6) 𝐶𝑂2 +8𝐻++8𝑒−→𝐶𝐻4+2𝐻2𝑂  
+ 
+ 
+Overview of the half reactions occurring at the anode and cathode. Reaction 4)  Oxidation of acetate at 
+the anode, and the formation of H 2 or CH 4 at the cathode. [21][25] 
+ 
+ 
+Recent studies have shown that a significant amount of methane can be produced through 
+MECs (see table 1 ). This is achieved through different pathways, mainly from acetate via 
+acetoclastic methanogenesis , followed by H 2 and CO 2 via hydrogenotrophic methanogenesis  
+(see figure 1.). Furthermore, there is evidence in literature that suggests the possibility that 
+methanogens are able to receive direct electron transfer from the cathode for methanogenesis, 
+without the need for hydrogen evolution [26][27]. This could potentially make the process 
+more tolerant to t oxic compounds such as ammonia , which could otherwise limit the activity 
+of methanogens  [28].Furthermore, there is literature that suggests the possibility of reduced 
+nitrogen compounds such as ammonium as a source of electrons  [29]. It was shown that 
+ammonium oxidation can be coupled to H 2 production in MECs  at potentials between +550 to 
++150 mV (vs. standard hydrogen electrode), and further used to produce methane.  7 
+ The production of methane in MECs possesses multiple advantages over conventional AD 
+reactions, firstly being that it produces biogas with higher methane concentrations. 
+Furthermore, the process occurs at ambient temperatures and only requires mi lli-voltages in 
+order to drive the process.  However, there are still many difficulties with two-chambered MEC 
+systems, specifically with upgrading to large scale applications. Furthermore, membranes such 
+as PEM s can be  expensive and adds difficulty to the operation of the system.  It also affects the 
+rate of diffusion, causing accumulation of protons at the anode , affecting the microbial activity, 
+and increases internal resistance of the system [30]. As a result, single chambered MECs will 
+be explored in this paper  (see figure 3. ).  
+ 
+ 
+Figure 3. A schematic diagram of the operating principles of  (a) two -chamber MECs reactor and (b)  
+single -chamber  MEC reactor.  The main methanogens, along with the methanogenic pathway s are 
+depicted.  [31] 
+ 
+The aim of this research paper is to investigat e the effects of a microbial electrolysis  system 
+and ammonia concentration on the performance and biogas production of anaerobic bacteria. 
+The research was split into 2 main experiments : 1) investigate the sensitivity of methanogens 
+to different concentrations of ammonia  in an AD set up  in order to establish a baseline for 
+future experiments with MECs; 2) investigate the feasibility of producing biogas using single 
+chambered MECs in a continuous set up in order to increase the biogas production, quality, 
+and improve the application prospects of th is method. The second experiment was further 
+divided into three main stages: A) set up batch reactors until the activity of the methanogens 
+are stabilized  and find a baseline for future reactions ; B) apply electricity to the batch reactor 
+in order to see t he effect of a mi lli-voltage on the methanogenic activity ; and C) set up a 
+continuous microbial fuel cell  system . 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+8 
+ Table 1. Literature review on bio -electrochemical systems .  
+ 
+Reactor  Input  
+voltage  
+ (V vs.  
+ SHE)  Substrate  CH4 
+yield 
+(L/L.d)  Conclusion  Reference  
+Type  Electrode  Operation  Type  Concentration  
+(g/L)  
+Dual  
+chamber  
+Anode: 
+Graphitized 
+carbon brush  
+ 
+Cathode: 
+Graphite 
+drum/brush  Batch  +0.5 
+Organic 
+matter in 
+remnant 
+waste 
+water 
+sludge  NG - Ammonium oxidation 
+can be coupled to H2 
+production in microbial 
+electrolysis cell  
+[29] 
+Single  
+chamber  +0.55 to  
+– 0.15 ** 
+Drum:  
+3 mol 
+l-1d-1 
+ 
+Brush:  
+8 mol 
+l-1d-1 -N2 can be oxidized to 
+methane.  
+ 
+-Brush cathode produced 
+methane faster than 
+drums  
+Single  
+chamber  Carbon cloth  Batch  −0.8 Acetate  1 0.093  Methane production was 
+related to methanogen 
+development within 
+cathodic biofilm as 
+stratification  [32] 
+Single  
+chamber  Ni foam  
+(spiral 
+wound)  Batch  −1.3 Sodium 
+acetate  1 0.17 optimal applied voltage 
+of this system was about 
+0.95V  [33] 
+Single  
+chamber  Stainless 
+steel Batch,  
+Continuous 
+(HRT: 4, 8,  
+12, 24)  −1.0 Sodium 
+acetate  0.3 0.012  -Batch tests improved 
+organic matter 
+degradation and methane 
+production rate.  
+ 
+- Continuous tests more 
+favorable at high HRTs. 
+Anodic bacteria have a 
+competitive advantage 
+over acetoclastic 
+methanogens.  [34] 
+Single 
+chamber  Carbon fiber 
+brush   Batch  
+  
+-0.8 
+Dog food  15 0.775  hydrogenotrophic 
+methanogenic pathway 
+dominated.  [30] 
+Dual 
+chamber    0.658  primarily acetoclastic 
+methanogenic pathway  
+ 
+Notes:  *NG: Not given, **= different units, SHE: standard hydrogen electrode , HRT: hydraulic 
+retention time  
+ 
+ 
+ 
+ 
+ 9 
+ 3. Materials and Method s 
+ 
+      A. Normal pressure a naerobic digestion  (NPAD) reactors  
+ 
+3.A.1.  NPAD reactors : reactor set up  
+ 
+The NPAD reactors were set up in glass bottles with a volume of 500 ml, and the liquid phase 
+was controlled to approximately 2 50.0 ml (see figure 6 .). The bottle is securely sealed with a 
+rubber stopper. The stopper is equipped with a gas valve connected to a needle positioned at 
+the gas phase, and a valve for feeding and sampling, connected to a metal tube positioned to 
+the top part of the liquid phase. The  gas production was monitored with a water displacement 
+bottle connected to the gas valve . The reactors were incubated  in an incubator shaker  (New 
+Brunswick Scientific Co. inc. Incubator Shaker)  at 36.5oC, and a shaking speed of 150 rpm.  
+ 
+ 
+Figure 6.  A schematic diagram of the set -up of NPAD reactors . 
+ 
+    
+3.A.2. NPAD:  Experimental set up  
+ 
+Reactors were inoculated with anaerobic sludge collected from a n anaerobic digester treating 
+aerobic sludge from Garmerwolde  wastewater treatment facility located in the  Netherlands.  
+Synthetic wastewater  was prepared according to [35] as follows: K2HPO 4.3H 20 3.6 g/L, 
+KH 2PO4 2.8 g/L, NaHCO 3 5 g/L, glucose 6.8 g/L, trace element solution  1.0 ml/L , 1.0 ml/L 
+Wolfe’s vitamin solution, and 1.0 ml/L of a pre -prepared Cysteine sulfid e reducing agent  (L-
+Cysteine·HCl·H 2O and Na 2S·9H 2O) dissolved in deionized water. Different  concentrations of 
+NH 4Cl were added  in order to make  synthetic wastewater with  the following  concentrations : 
+2 g/L, 4 g/L, 6 g/L, 8 g/L, 10 g/L, 12 g/L.  Equal amounts (100  ml) of Synthetic wastewater 
+and anaerobic sludge were added into each reactor. The experiment was duplicated for each 
+variable  (see table 2 .). The NH 4Cl concentrations of the control reactors 1 & 2 were changed 
+from 2 g/L to 24 g/L starting from day  26 by changing the feed buffer  in order to investigate 
+the effect of higher NH 4Cl concentrations .  
+ 
+ 
+10 
+ Table 2. The  reactor s with their respective NH 4Cl concentration in g/L   
+ 
+Reactor number:  1 , 2  3,4 5,6 7,8 9,10  11,12  
+NH 4Cl 
+concentration  
+(g/L)  2 24 4 6 8 10 12 
+Total N  0.7 8 1.3 2 2.7 3.3 4 
+ 
+Gas samples of 10.0 ml were taken every other day  through the gas valve  for analysis  using 
+GC. Using a syringe, 15.0 ml liquid samples were taken daily from the reactors and the volume 
+was replaced with a fresh feed of synthetic wastewater with their respective NH 4Cl 
+concentrations. The hydraulic retention time ( HRT) of the reactors are 13.33 days. The water 
+displacement bottles were weighed daily in order to calculate the daily gas production . 
+ 
+3.A.3.  Expected g as production  
+ 
+𝐹𝑒𝑒𝑑   15 𝑚𝑙 /𝑑𝑎𝑦   
+𝐺𝑙𝑢𝑐𝑜𝑠𝑒  𝑐𝑜𝑛𝑐𝑒𝑛𝑡𝑟𝑎𝑡𝑖𝑜𝑛 :6.8𝑔
+𝐿 
+  
+𝑀𝑎𝑠𝑠  𝑜𝑓 𝑔𝑙𝑢𝑐𝑜𝑠𝑒  𝑖𝑛 𝑓𝑒𝑒𝑑 :   6.8𝑔
+𝐿 ×0.015𝐿
+𝑑𝑎𝑦=0.102𝑔
+𝑑𝑎𝑦  
+                                                     
+                                                     =0.102
+180 .156𝑔
+𝑔
+𝑚𝑜𝑙 
+                                              
+                                                     =0.566  𝑚𝑀  𝑜𝑓 𝑔𝑙𝑢𝑐𝑜𝑠𝑒  𝑖𝑛 𝑓𝑒𝑒𝑑  𝑑𝑎𝑖𝑙𝑦   
+ 
+     
+                               𝐶 6𝐻12𝑂6→3𝐶𝑂2+3𝐶𝐻4           ∴1 𝑚𝑜𝑙  𝑔𝑙𝑢𝑐𝑜𝑠𝑒 :6 𝑚𝑜𝑙  𝑏𝑖𝑜𝑔𝑎𝑠   
+ 
+                                                                1 𝑀 𝑔𝑎𝑠 =24 𝑑𝑚3  
+ 
+𝐼𝑓 100%  𝑐𝑜𝑛𝑣𝑒𝑟𝑠𝑖𝑜𝑛 : 0.566  𝑚𝑀  𝑔𝑙𝑢𝑐𝑜𝑠𝑒  × 6 
+                                          ≈3.4 𝑚𝑀  𝑏𝑖𝑜𝑔𝑎𝑠 × 24000  𝑚𝑙=81.6 𝑚𝑙 𝑏𝑖𝑜𝑔𝑎𝑠 /𝑑𝑎𝑦   
+ 
+3.A.4.  Physical and chemical analysis  
+ 
+The pH of the samples was analyzed using a digital pH meter (H160, Hach, Germany). The 
+samples were then centrifuged for 10 minutes at 1000 rpm. The supernatant was then analyzed 
+by titration using an auto -titrator (AT1000, Hach, Germany) with 0.1 M H 2SO 4 to the end 
+points of pH 5.0 and 4.4. This gave the results for the volatile fatty acids content (VFAs) and 
+total alkalinity (TA). The biogas compositions of the gas samples were analyzed using gas 
+chromatography (C2V -200 Micro GC,  Thermo Scientific). The machine was equipped with a 
+thermal conductivity detector and a GCC200 -U-BND cartridge. The injector and detector had 
+a temperature of 120oC, while the column was at 60oC. The carrier gas used was helium.  
+ 
+ 
+ 11 
+     B. Microbial electrolysis cell (MEC) reactors  
+ 
+3.B.1 MEC: Reactor  set up  and analysis    
+ 
+A potentiostat was aimed to be used to control the applied voltage in the electrical system. This 
+was set -up according to instructions mentioned in 
+https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0201353#sec002 , and 
+consists of a PSoC 5LP (part number CY8CKIT -059)  Cypress Semiconductor. The PSoC was 
+inserted into the computer through the USB programmer end (male end), and using the free 
+PSoC Programmer from Cypress Semiconductor (found at 
+:https://www.cypress.com/products/psoc -programming -solutions  ), the internal firmware was 
+firstly upgraded. Then the necessary file for the potentiostat was uploaded into the device 
+(found at: https://github.com/KyleLopin/PSoC -Potentiostat  ). Wi th the device removed, wires 
+for the working electrode and counter electrode were connected in the pins of their respective 
+places. The female end of the device was then connected through a USB cable into the 
+computer. The free program called Zadig (found at: https://zadig.akeo.ie  ) was used to install 
+a generic USB driver which allows communication with the device. The graphical user 
+interface for the potentiostat from Github (found at: 
+https://github.com/KyleLopin/Potentiostat_GUI/releases ) could then interact with the device. 
+In practice, this did not work, thus, a power supply with a constant voltage mode was used as 
+an alternative (Velleman PS300 5D).  
+ 
+ 
+Phase 1: Establish base line through batch experiments  
+ 
+A baseline for the reactors were first established by setting up the batch reactors without 
+electricity  (see figure 4 .). Two reactors were set up using the Eppendorf single use bioreactor 
+BioBlu®. Metal needle s were used to hold the carbon felt electrodes (~6.0 cm x 1.0 cm) within 
+the reactors, and the open -ended  hub was tightly sealed using a plastic cap in order to stop air 
+flow into the reactor. The metal needles were connected using wires to the power source. 
+However, during this phase no electricity was applied to the system. A sampl ing/feeding  tube 
+was connected to the outlet port, which is connected to a plastic tube  positioned within the 
+reactor at the top part of the liquid phase. A gas valve was used to connect Gas counters ( Ritter 
+MGC -1 V3.4 PMMA ) to the gas port, which is positioned to take samples from the gas phase. 
+The gas counters are connected to a raspberry  pi programmed to measure and log the results  in 
+order to constantly monitor the gas production. The reactors were inoculated with 
+approximately 1 15 ml of anaerobic sludge and 1 15 ml of synthetic wastewater as previously 
+mentioned in section 3.A.2 , making up a total volume of approximately 2 30 ml. No NH 4Cl was 
+added to the synthetic wastewater. The reactors were kept in a water bath at 39oC (Julabo D 
+7633, Germany), and stirred usi ng an electric motor (XINDA motor Co., LTD DX -3420) set 
+on low . Using a syringe, 10 ml of 30 g/L glucose solution was fed daily through the 
+feeding/sampling valve. The gas counters were disconnected during feeding as to not count the 
+gas flow due to the ad dition of the liquid to the system . No volume was removed until the gas 
+production reached a stable rate.  During th e operation of phase 1 , the reactor set ups were made 
+sure to be entirely air tight, and the gas counters were calibrated in order to show the correct 
+amount of gas production.  12 
+  
+ Figure 4. A schematic diagram of the set -up of batch MECs reactors . Electricity was not applied during 
+phase 1 . Electricity was supplied in later phases using an energy source (Velleman PS3005D).   
+ 
+Phase 2: Ap plication of electricity to operate MEC reactors  
+ 
+The batch experiments were operated for a total of 45 days. Initially, t he batch reactors  were 
+run for 24 days without applied electricity until it reached stable gas production. On day 24,  a 
+total of 100 ml of liquid was removed from the reactors, equivalent to the total amount of feed 
+fed since the beginning of the experiment.  A sample of 15 ml was kept for later analysis in -
+20oC. The gas counters were disconnected from the gas outlet and replaced with a syringe filled 
+with N 2 gas. This ensured anaerobic conditions. When liquid was withdrawn from the reactors, 
+N2 gas is drawn into the headspace instead. After the liquid was removed, the gas  counters 
+were re installed.  The reactors were left to run over night for one more day in order to remove 
+the N 2 gas in the headspace. The next day (day 25) gas bags were connected to the gas counters 
+in order to collect the gas produced from the reactors. Wires were used to connect the electrodes 
+of reactor 1 to the power supply (Velleman PS3005D).  The voltage was set to 10  V and the 
+maximum current to 0.01  A. The voltage is set higher than needed as to by -pass the limitations 
+of the power supply and operat e the machine in constant current mode. Once turned on, the 
+voltage is able to increase until it reaches the set value for the cur rent. The power supply records 
+a voltage of 1.34 V and a current at 0.006 A.  These conditions were operated for 4 days.  Reacto r 
+2 is the control. It contains electrodes but does not have a power supply . The reactors were 
+stirred using an electric motor as mentioned previously. Using a syringe, 10.0 ml samples were 
+taken daily ( aside  from weekends) through the sampling valve from each reactor, and kept in -
+20oC conditions for later analysis. The volume was then replaced with 10.0 ml of 30 g/L 
+glucose solution.  The hydraulic retention time (HRT) of the reactors is 23 days, and an organ ic 
+loading rate (OLR) of 1.3 g/L day. Gas samples of 10.0 ml were taken daily from the gas bag 
+using a syringe and analyzed using GC  as previously mentioned in 3.A.4.  The gas bag was 
+then emptied in order to collect new gas samples for the following day.  
+ 
+ 
+ 
+ 
+13 
+ On day 28,  the current on the power supply was shown as 0 A due to corrosion of the cathode , 
+which interrupted the circuit . As a result, the needle was replaced with a metal tube. The 
+opening was sealed with a rubber tube , tied at the end  so as not to allow air into the reactor. 
+The electrode material used was the same as previously mentioned. The voltage was set to 5 V 
+and the current at 0.05 A. Once turned on, the power supply records a voltage of 2.21 V  and 
+0.003 A. These conditions wer e operated for 3 days. On day 31 , the power supply was set to a 
+voltage of 0.6 V and a current at 0.05A. Once turned on, the power supply records a voltage of 
+0.6 V and a current at 0 A. The power supply does not seem to be sensitive enough to record 
+micro currents.  These conditions were operated for  14 days.  The GC  results signified that the 
+gas samples taken via the gas bags were being diluted. Thus, the gas bags were removed on 
+day 38 and samples were taken from the overhead chamber instead. During this p rocess, all 
+ports were closed with clamps, and the volume was replaced with N 2 gas via the gas port.  
+ 
+Phase 3: Making a continuous MEC  reactor  
+ 
+On day 45 , the batch experiments were stopped. Due to acidification of reactor 1, the contents 
+of the reactor were discarded. Reactor 2 was set up as a continuous BES reactor  (see figure 5 .). 
+The cathode  was replaced with a metal tube , following the same procedure as previously 
+mentioned in Phase 2  to avoid rapid corrosion. Wires were used to connect the electrodes of 
+reactor 2 to the power supply (Velleman PS3005D). The power supply was set to a voltage of 
+0.6 V and a current at 0.05  A. Once turned on, the power su pply records a voltage of 0.6 V and 
+a current at 0 A.  A syringe filled with 120.0 ml of 13 g/L glucose solution was connected via 
+a tube to the LA(O) port  for feeding , while an empty syringe was connected via a  tube to the 
+sampling valve  for sampling . Both syringes were placed within a syringe pump (INACCOM 
+instruments, NE -1000X) set at 0.96 ml/hour  in opposite directions .  The HRT of the reactors 
+is equal to that of the batch MEC reactors, at 20 days.  The contents of the sampling syring e 
+were emptied daily , of which 10.0 ml was taken for further analysis and kept under -20oC 
+conditions. T he syringe for feeding was re -filled every 5 days. The reactor was stirred using an 
+electric motor to ensure the reactor contents are homogenous ly mixed . Gas samples were taken 
+from the headspace following the procedure as mentioned in Phase 2 .  For analysis, the samples 
+kept under -20oC were thawed and centrifuged at 8000 rpm for 20 minutes. The pH of 
+supernatant was determined using  a digital pH meter (H160, Hach, Germany).  The VFAs in 
+the supernatant of the samples were determined using high -performance liquid 
+chromatography (Agilent Technologies 1200 series) which was equipped with a Bio -Rad 
+Aminex HPX -87H 300 x 7.8 mm column at 60oC and UV -detector at 210 nm. The eluent used 
+was 5 mM H 2SO 4 at a rate of 0.5 mL/min.  
+ 14 
+ Figure 5. A schematic diagram of the set -up of a continuous MEC reactor.  
+ 
+ 
+3.A.2.  Expected gas production of batch and continuous MECs reactors  
+ 
+Table 3. Calculations for the moles of glucose in feed for batch and continuous reactor  
+ Batch reactor   Continuous reactor  
+𝐹𝑒𝑒𝑑 : 10 𝑚𝑙 /𝑑𝑎𝑦  0.96𝑚𝑙
+ℎ𝑜𝑢𝑟× 24 ℎ𝑜𝑢𝑟𝑠  
+ 
+=23 𝑚𝑙 /𝑑𝑎𝑦 
+𝐺𝑙𝑢𝑐𝑜𝑠𝑒  𝑐𝑜𝑛𝑐𝑒𝑛𝑡𝑟𝑎𝑡𝑖𝑜𝑛 : 30𝑔
+𝐿  
+13𝑔
+𝐿 
+ 
+𝑀𝑎𝑠𝑠  𝑜𝑓 𝑔𝑙𝑢𝑐𝑜𝑠𝑒  𝑖𝑛 𝑓𝑒𝑒𝑑 : 30𝑔
+𝐿 ×0.010𝐿
+𝑑𝑎𝑦 
+ 
+                =0.3𝑔
+𝑑𝑎𝑦  
+ 13𝑔
+𝐿 ×0.023𝐿
+𝑑𝑎𝑦 
+ 
+=0.299𝑔
+𝑑𝑎𝑦≈0.3𝑔
+𝑑𝑎𝑦 
+ 
+𝑀𝑜𝑙𝑒𝑠  𝑜𝑓 𝑔𝑙𝑢𝑐𝑜𝑠𝑒  𝑖𝑛 𝑓𝑒𝑒𝑑 : 0.3
+180 .156𝑔
+𝑔
+𝑚𝑜𝑙=1.7 𝑚𝑀  𝑜𝑓 𝑔𝑙𝑢𝑐𝑜𝑠𝑒  𝑖𝑛 𝑓𝑒𝑒𝑑  𝑑𝑎𝑖𝑙𝑦   
+ 
+ 
+     
+                               𝐶 6𝐻12𝑂6→3𝐶𝑂2+3𝐶𝐻4           ∴1 𝑚𝑜𝑙  𝑔𝑙𝑢𝑐𝑜𝑠𝑒 :6 𝑚𝑜𝑙  𝑏𝑖𝑜𝑔𝑎𝑠   
+ 
+                                                                1 𝑀 𝑔𝑎𝑠 =24 𝑑𝑚3  
+ 
+𝐼𝑓 100%  𝑐𝑜𝑛𝑣𝑒𝑟𝑠𝑖𝑜𝑛 : 1.7 𝑚𝑀  𝑔𝑙𝑢𝑐𝑜𝑠𝑒  × 6 
+                                          ≈10 𝑚𝑀  𝑏𝑖𝑜𝑔𝑎𝑠 × 24000  𝑚𝑙=240  𝑚𝑙 𝑏𝑖𝑜𝑔𝑎𝑠  𝑝𝑒𝑟 𝑑𝑎𝑦 
+15 
+ 4. Results and discussion  
+ 
+4.A Normal pressure adiabatic (NPAD) reactors  
+ 
+4.A.1 NPAD reactors: Biogas production and quality  
+ 
+Figure 6. Daily g as production . A: Comparison of the daily average  gas production of NPAD reactors 
+with different NH 4Cl concentrations between 2 -24 g/L .  B: The daily average gas production of NPAD 
+reactors 1&2 at concentrations 2 and 24 g/L .  
+ 
+ 
+16 
+ Table 4. The total average gas production of reactors with different NH 4Cl concentrations after the 
+stabilization period (first 30 days) and the  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Looking at figure 6. (A), it can be seen that the gas production of all reactors follows a general 
+trend and fluctuates  around approximately 50 ml/day.  The oscillation is largely due to absence 
+during the weekends, where no feeding, sampling, or measurements were done.  The increas e 
+in the biogas production is due to the continued conversion of organic carbon within the 
+reactors to biogas during the weekend. This indicates that organic acid residues are present in 
+the liquid phase. The largest fluctuations in gas production can be s een in the first 30 days, 
+which is needed for stabilization of the reactors.  This is signified by the vertical black dashed 
+line.  In the second half of the experiments after this line, it can be seen that the gas production 
+is more stabilized.  
+ 
+The expec ted trend is that with an increase in NH 4Cl concentration, the performance of the 
+reactors will decrease. However, no significant trend could be observed in the first 30 days 
+during the stabilization period , and often reactors with higher NH 4Cl concentrations were 
+performing better . As a result, the concentration of NH 4Cl of the feed for the control reactor 
+was significantly increased from 2 g/L to 24 g/L in order to observe a larger change. Looking 
+at reactors 1 & 2 in figure 1 ( B) after the con centration of the feed was changed to 24 g/L, it 
+can be seen that the trend in the gas production does not significantly vary from previously and 
+performs similarly as reactors with NH 4Cl concentrations between 6 -10 g/L. The total average 
+gas production do es decrease slightly (See table 4). However, due to the stabilization period it 
+is hard to determine an accurate trend for the activity with 2 g/L, so an accurate comparison 
+cannot be made. Furthermore, the reactors have a retention time of 20 days so it w as not enough 
+time to see the full effect of the large increase in NH 4Cl concentration.  
+ 
+Overall, reactors with 4 g/L of NH 4Cl can be seen to reach the highest amounts  of gas 
+production , but overall reactors with 10 g/L had the highest total average gas production  (table 
+3.) at 59 ml/day, corresponding to 72%  efficiency . Reactors  with 12 g/L can be seen to perform 
+the worst , and also has the lowest total average gas production at 4 3 ml/da y, corresponding to 
+52% yield.  However, reactors with 4 g/L and 12 g/L had the highest  fluctuations , suggesting 
+that they are the least stable. Reactors with concentrations in between these values do not 
+follow a specific trend  in the gas production , but their activity is  more stable . Nitrogen is an 
+important nutrient for microorganism’s growth . The results  suggest  that AD systems can 
+tolerate small concentrations of NH 4Cl and may even aid in the stability of the reactors . 
+Concentrations of 2 g/L may not be  sufficient for microorganism growth while 24 g/L may be 
+too high, resulting in inhibition. Thus, the highest gas production was within this range, with NH 4Cl 
+concentration  
+(g/L)  Total average 
+gas production  
+(ml/day)   Standard 
+deviation   yield (%)  
+2  57 8 70 
+4  57 9 69 
+6  57 6 69 
+8  56 5 68 
+10  59 6 72 
+12  43 18 52 
+24  55 6 67 17 
+ results showing that 10 g/L of NH 4Cl being the best for gas production. However, a small 
+increase to 12 g/L of NH 4Cl can significantly affect the stability of the reactors and cause a 
+~20% decrease in the yield. More research is needed to see the full effects for larger 
+concentrations such as 24 g/L.  
+ 
+ 
+ 
+ 
+ 
+Figure. 7. Biogas quality . A: The average amount of methane ( mol %) in the biogas sample from 
+reactors of different NH 4Cl concentrations  between 2 -24 g/L . B: The average amount of carbon dioxide 
+(mol %) in the biogas sample from reactors of different NH 4Cl concentrations  between 2 -24 g/L 
+ 
+ 
+18 
+ Table 5. Average fractions of CH 4 and CO 2 in biogas produced from    
+reactors with different NH 4Cl concentrations  
+ 
+NH 4Cl (g/L)  CH 4  (mol %)  s.d CO 2 (mol %)  s.d 
+4 56.6 1.38  43.7 2.51  
+6 52.2 1.23  43.2 2.17  
+8 52.8  1.33  43.4  2.00  
+10 53.5 2.40  46.2  1.67  
+12 52.9  1.53  46.9 1.34  
+24 51.8  0.92  43.9  1.90  
+ 
+ 
+Looking at Figure 7. , it can be seen that the largest fluctuations in biogas quality for both the 
+CH 4 and CO 2 fractions can be seen in the first 30 days, which coincides with the stabilization 
+period seen in the biogas production  (Figure 6. ). Looking at Figure. 7 (a), it can be seen that 
+reactors with 4 g/L NH 4Cl has the largest CH 4 fraction, with an average of 56. 6 mol %, while 
+the reactors with 24 g/L NH 4Cl has the lowest average, at 51.8 mol % ( Table 5). Reactors with 
+10 & 12 g/L NH 4Cl have the highest CO 2 fraction at 46.2 and 46. 9 mol %. The results confirm 
+that with less NH 4Cl, there is an improvement in biogas quality, with an increase in CH 4 and a 
+decrease in C O2. However, there seems to be no obvious  trend with NH 4Cl concentrations 
+between 6 -10 g/L.  Reactors with 10 g/L NH 4Cl performs the best for biogas production, but is 
+less advantageous in biogas quality as it has the second highest mol% of CO 2 following reactors 
+with 12 g/L NH 4Cl. 
+ 
+4.A.2 NPAD reactors: pH, alkalinity, and volatile fatty acids (VFAs)   
+ 
+ 
+ 
+19 
+  
+20 
+ Figure 8. A: The average pH of reactors with different concentrations between 2 -24 g/L .  
+ B: The average VFAs concentration of reactors with different concentrations between 2 -24 g/L .  
+C: The average TAC of reactors with different concentrations between 2 -24 g/L .  
+D: The ratio VFA/TA of reactors with different concentrations between 2 -24 g/L  
+ 
+The optimal pH range for the activity of methanogens is between  6.8-7.8 [36][37]. The pH of 
+the reactors under the given conditions are within this range  (see f igure 8.A ). However, the 
+general trend shows that the reactor contents are acidified over time.  This is trend is also seen 
+in the behavior of the buffering capacity  (TAC)  (see figure 8.C ). The TAC value corresponds 
+to the buffer capacity of the s ystem  and is measured with respect to mg CaCO 3/L [38]. Once 
+the buffering capacity decreases, the acidity of the VFAs cannot be as efficiently neutralized, 
+resulting a continuous drop in the pH. As the TAC value continues to decrease , the pH is also 
+expected to  continue to decrease which is disadvantageous to the methanogenic activity for 
+longer reactor operations. Comparing the pH of different reactors following the initial 
+stabilization phase, it can be seen that with an increase in  NH 4Cl concentration, the reactors 
+become more acidic.  However, the pH of the reactors is still above the lower limit of the 
+optimal pH range (6.8), and thus in the range of optimal activity for methanogens.  
+ 
+Initially, the volatile fatty acids ( VFAs ) concentration of the reactors is high as a large amount 
+of VFAs are present in the sludge , which limits the biogas production  and coincides with the 
+initial 30 -day stabilization phase . This initial peak decreases as the methanogens metabolize 
+VFAs into methan e. There is no distinct trend between reactors with di fferent NH 4Cl 
+concentrations and VFAs concentration. The VFA/TAC ratio is an indicator for assessing the 
+fermentation process. The values for a well operated digester range  between 0.1 -0.35. The 
+VFA/TAC ratio of the different reactors throughout the experi ment is within this range, 
+indicating good fermentation activity and no significant  problems .  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 21 
+  B. Microbial electrolysis cell (MEC) reactors  
+ 
+4.B.1 MEC: batch reactors   
+ 
+gas production & quality  
+ 
+ 
+Figure 9. The average gas production of different reactors. A: the average gas production  of the control 
+reactor, split into three different time phases.  B: the average gas production  of the experimental reactor 
+during operation with different applied potentials, and the resulting current .  C: the results of the 
+average gas production of the control and experimental reactors overlaid. The control reactor is 
+portrayed as the total average, while the experimental reactor is shown during operation with different 
+appli ed potentials, and the resulting current.  
+ 
+ 
+22 
+ Looking at the average cumulative gas production in figure 9, it can be seen that there is a 
+general trend where the biggest increase in the gas production occurs within the first 10 hours 
+after feeding, and then level ing off.  The average gas production of the control group, can be 
+seen in  figure 9.A . Overall, the rate and total gas production increase s from days 9 -22 to days 
+37-44. However, the graph for days 24 -35 does not follow this trend, performing the most 
+poorly. The graph for this period is also the least uniform, indicating that the results may not 
+be reliable. This may be due to interruption in the stirring of the reactor , which effects the 
+digestion and activity of the methanogens, or problems with  the gas counter.  
+ 
+ 
+Figure 5. The biogas quality analysis results following GC technique of A: the control reactor  B: the 
+experimental reactor .  
+ 
+ 
+The average gas production of the experimental group, can be seen in figure 9.B . The addition 
+of electricity increases the rate of gas production compared to the initial runs without 
+electricity.  However, as it was shown in the control group , the rate of g as production should 
+increase with time, so this cannot  be entirely attributed to the addition of electricity. Comparing 
+the experimental runs with electricity, it can be seen that that with 1.34 V / 0.006 A performs 
+the best both in terms of production rate and total gas production. However, the voltage exceeds 
+the theoretical value at  which  water electrolysi s takes place ( 1.23 V). In practice, higher 
+voltages (1.8 V) are needed but some of  the increase in gas production may be due to the 
+production of oxygen and hydrogen  [39]. No reference electrode was used in the set up so it is 
+difficult to determine the real voltage of the system compared to the reference voltage.  
+Furthermore , due to problems with the gas bags, the gas samples during  this time were not 
+reliable so information on the gas composition is not possible. Hydrogen can be used in the 
+hydrogenotrophic and methylotrophic pathway, as a result, further gas production may have 
+been encouraged due to the increase in hydrogen. Howev er, oxygen limits the methanogenic 
+activity. The following experimental run was with 2.21 V / 0.003 A, which initially performed 
+at a rate similar to that of runs with conditions of 0.052 V / 0 A and 0.6V / 0 A, but the 
+production rate slowed after approxi mately 5 hours, resulting in the lowest gas production. The 
+voltage in this experiment was highest, which may disrupt the activity of the methanogens. 
+Furthermore, if oxygen was produced in the previous experiment, this may further limit 
+methanogenic activity. The experimental runs with 0.6 V / 0  A and 0.052  V/ 0 A behaved 
+similarly due to the similarity in the conditions. The total gas production for 0.052 V/ 0  A was 
+23 
+ slightly higher, which may indicate that smaller milli -voltages may be m ore advantageous to 
+methanogenic activity, although more research must be done in  order to confirm this. 
+Compared to the average gas production of reactor 2 with no electricity, it can be seen that 
+MECs with 1.34 V / 0.006 A overall performed the best both  in terms of production rate and 
+total gas production, while the remaining MECs have a slower production rate compared to 
+that of reactor 2. However, the total gas production of 0.6 V / 0 A and 0.052V/ 0 A was higher 
+than that of reactor 2, so the addition  of a milli-voltage may be advantageous in terms of the 
+volume of biogas production.  
+ 
+ 
+Figure 10. The VFAs analysis results of A: The control  group B: The experimen tal group.  
+HPr: propionic acid, HAc: Acetic acid  
+ 
+Looking at the VFA s analysis of the control group ( figure 10.A) it can be seen that there are 
+higher amounts of VFAs up until 28 days, which may coincide with the initial 30 -day 
+stabilization phase. After that, the amount of VFAs is low until it starts to increase once again 
+after day 35. However, the concentration of VFAs is in the typical range for a digester between 
+50 and 300 mg/L , which signifies that the digester is operating well. However, looking at the 
+experimental group, it can be seen that there is an increase in the accumulation of VFAs above 
+the optimal range which signifies that the r eactor is not well balanced. Firstly,  there is an 
+accumulation of acetic acid above the range from day 28, meaning that methanogenesis does 
+not optimally occur. The accumulation of acetic acid inhibits methanogenesis, which then also 
+inhibits fatty acid ox idation, resulting in  the further accumulation of propionic acid  [40]. This 
+can also be seen in the  acidification of the reactor. The results suggest that the addition of 
+electricity increases the conversion of glucose to acetic acid resulting in a high VFAs 
+concentration in the experimental group. However, the accumulation in acetic acid and low 
+methan e content in the biogas analysis suggests that the conversion of acetic acid to biogas is 
+not efficient.  During the reaction of the MECs reactor, the needle holding the electrode 
+degraded and remained in the reactor for the remainder of the experiment. It has been shown 
+in recent studies that heavy metals inhibit digestion at a soluble concentration of greater than 
+0.5 mg/L [41]. However, the needle is too small to have had a significant e ffect on the  
+methanogenic activity of this reactor.  
+24 
+ 4.B.2 MEC: continuous reactor   
+ 
+Figure 11. The cumulative biogas production  (A)  and quality (B) of the  continuous MEC reactor  
+ 
+The daily gas production of the contin uous MEC reactor is approximately 170 ml/day, which 
+corresponds to 7 1% yield . The activity is comparable to that of the batch MECs with the 
+condition of 1.34 V / 0.006 A , which is highest out of all MEC batch conditions . The average 
+fraction of methane in the biogas samples i s ~52 %, while that of CO 2 is at ~46 %. This is 
+comparable to that of the batch reactors, although slightly lower than that of the one without 
+electricity.  
+Figure 12. The VFAs analysis results of the continuous MEC reactor. I-Hbu: Isobutyric acid, HAc: 
+Acetic acid  
+ 
+The VFAs results of the continuous MEC reactor is much lower than that of the batch MEC 
+reactor , with most of the acetic and all of the propionic acid rem oved which indicates that the 
+activity is sufficiently high to consume all the substrates. However, the reactor also has some 
+accumulation of isobutyric acid, indicating that the performance is not optimal.  
+ 
+020406080100
+1 6 7 8mol (%)
+Time (days)B: Gas quality of continuous MEC reactor
+CO2
+Methane
+A: 25 
+ 5. Improvement  and future prospects  
+ 
+A. Normal pressure adiabatic (NPAD) reactors  
+ 
+A large factor in the fluctuation  of the NPAD results was due to absence during the weekend 
+where no feeding/sampling and analysis was done. Future improvements could be done by 
+setting up the NPAD reactors as co ntinuous systems so that feeding and sampling are taken 
+automatically.  This also eliminates a large fraction of human error, making the results more 
+reliable. Furthermore, the results indicate  that the reactors have a stabilization period of 
+approximately 30 days. As a result, reactors should be run for longer in order  to first stabilize 
+the reactors, then  collect a significant amount of  data in order to observe a reliable trend. This 
+experiment can then be combined with MEC reactors, as literature suggests  that the application 
+of a milli -voltage can aid in increasing the tolerance of the system to toxic compounds such as 
+ammonia.  
+ 
+B. Microbial electrolysis cell (MEC) reactors  
+ 
+Throughout the operation of the experiment, there were multiple problems with the  set up and 
+equipment which ha ve an effect on the operation of the reaction, and accuracy of the results.  
+Firstly, there are a limited number of accurate GC  results due to a fault in the gas bags used for 
+collecting the gas samples. Gas samples ta ken from the overhead compartment of the reactors 
+gave more accurate results, so this technique should be used in future experiments. Secondly, 
+the motor  system  for stirring  was unreliable , causing  interruptions in the mixing of reactor 
+contents. Mixing is  crucial as it ensures even distribution of the substrate throughout the 
+reactor, which enables microorganisms to have good nutrient supply. As a result, the 
+interruptions in mixing may have caused microorganisms to not be sufficiently in contact with 
+microorganisms,  having an  effect on the ir activity . Furthermore, the motor system was 
+interchanged with a new system later on into the experiment which does not allow for accurate 
+set up of the mixing rate at low rpms. As a result, the stirring rate could be t oo high, disrupting  
+microbial aggregates  especially important on the carbon felt electrodes, resulting in less 
+efficient degradation of the substrate. As a result, future experiments should ensure a fully 
+functional stirring system, with an accurate stirri ng set up in order to ensure stirring at optimum 
+speeds.  
+ 
+The energy source for the MEC reactors used was the Velleman PS3005D  
+power supply. However, in practice this device did not allow for precise set up and monitoring 
+of microcurrents. For future expe riments, a potentiostat should be used which would allow for 
+more accuracy and control, especially at such microcurrents, which has been shown in previous 
+papers to be more beneficial to the growth and activity of the bacteria. The voltage should be 
+kept t o below 1V in order to avoid water hydrolysis which produces oxygen. This interrupts 
+the anaerobic environment and limits the activity of methanogens , so should be avoided . 
+Furthermore, the biofilm formation can be monitored using cyclic voltammetry and op en 
+circuit voltage (OCV), which could be insightful information for monitoring the activity of the 
+bacteria.  
+ 
+For analysis, liquid samples should be taken for pH/VFA/TAC analysis before application of 
+electricity in order to have reference values, allowing for comparison of the activity before and 
+after application of electricity.  Furthermore, liquid samples shou ld be analyzed directly after 
+sampling in order to ensure accurate results .  26 
+  
+The data suggests that MECs systems operate well with glucose as the starting material. Future 
+research may potentially use food waste as the substrate in order to give the syste m a larger 
+variety and more complicated starting materials. This will aid in the applicability of the system. 
+Furthermore, experiments should be repeated with a larger number of reactors and run for 
+longer periods of time in order to increase the accuracy of the results. The continuous MECs 
+reactor should also be repeated with control reactors for comparison.  
+ 
+C. General analysis  
+ 
+Further types of analysis can aid in monitoring the evolution of the reactors. The microbial 
+community can be investigated using High -throughput 16s -rDNA gene sequencing and 
+analysis.  This can be useful to identify differences in the culture and see the effects of different 
+conditions (NH 4Cl concentration, voltages) on the growth and selectivity of different micro bial 
+cultures. Furthermore, gas samples  should be analyzed  for hydrogen  and oxygen  in order to 
+more accurately monitor biogas quality  and bacterial activity , giving information on which 
+anaerobic pathways are active and whether there is contamination withi n the reactors.  
+ 
+6. Conclusion  
+ 
+The research conducted in this paper suggests that AD systems can tolerate NH 4Cl 
+concentrations of  up to 12 g/L and may even aid in the stability of the reactors , but can be  toxic 
+in large r concentrations.  Reactors with 10 g/L NH 4Cl performed the best for biogas production  
+with 59 ml/day , but is less advantageous in biogas quality as it has the second highest mol% of 
+CO 2 following reactors with 12 g/L NH 4Cl.However, a small increase to 12 g/L of NH 4Cl can 
+significantly affec t the stability of the reactors and cause a ~20% decrease in the yield . Reactors 
+with 4 g/L NH 4Cl resulted in the best biogas quality, with 56.7 mol% CH 4, and 43.7 mol% 
+CO 2. More research is needed to see the full effects for larger concentrations such as 24 g/L. 
+Research may be more accurate if a continuous reactor is used, removing human error.  
+ 
+Batch MEC experiments with 1.34 V / 0.006 A performs the best both in terms of production 
+rate and total gas production . Reactors with  0.6 V / 0 A and 0.052V/ 0 A applied voltage 
+performed second best, and the gas production was higher than that of the control. The data 
+suggests that the addition of a mi lli voltage is advantageous in terms of the volume of biogas 
+production. However, the biogas quality slightly decreas es and overtime the reactor acidifies 
+which is detrimental to the methanogenic activity. The activity of the continuous MEC reactor 
+at 0.6 V / 0A has better behavior in terms of biogas yield and production rate compared to th e 
+batch MEC reactors with and without electricity . The biogas quality is comparable to those of 
+batch experiments  and no acidification is observed so far. Due to time constraints the operation 
+of the continuous MEC reactor was stopped early, but further re search is needed to draw 
+conclusive results on the reactor operation. Furthermore, a continuous system without voltage 
+should be set up as a control in order to accurately compare the two systems.   
+ 
+ 
+ 
+ 
+ 
+ 27 
+  
+References  
+ 
+[1] R. Mu ñoz, L. Meier, I. Diaz, and D. Jeison, “A review on the state -of-the-art of 
+physical/chemical and biological technologies for biogas upgrading, ” Rev. Environ. Sci. 
+Biotech nol., vol. 14, no. 4, pp. 727 –759, Dec. 2015, doi: 10.1007/s11157 -015-9379 -1. 
+[2] V. Schroeder, B. Schalau, and M. Molnarne, “Explosion Protection in Biogas and Hybrid 
+Power Plants, ” Procedia Eng. , vol. 84, Dec. 2014, doi: 10.1016/j.proeng.2014.10.433.  
+[3] M. L. U. Rehman, A. Iqbal, C. -C. Chang, W. Li, and M. Ju, “Anaerobic digestion, ” Water 
+Environ. Res. , vol. 91, no. 10, pp. 1253 –1271, 2019, doi: 
+https://doi.org/10.1002/wer.1219.  
+[4] Y. Li, “Exploring strategies to boost anaerobic digestion performance of  cow manure - 
+understanding the process with metagenomic and metatranscriptomic analysis, ” 
+University of Groningen, 2021. Accessed: Apr. 02, 2021. [Online]. Available: 
+http://hdl.handle.net/11370/9ebf90fc -5233 -490a -9aca -66d1330d856b  
+[5] R. Biswas, B. K. Ah ring, and H. Uellendahl, “Improving biogas yields using an innovative 
+concept for conversion of the fiber fraction of manure, ” Water Sci. Technol. , vol. 66, no. 
+8, pp. 1751 –1758, 2012.  
+[6] P. Bajpai, “Basics of Anaerobic Digestion Process, ” in Anaerobic Te chnology in Pulp and 
+Paper Industry , Singapore: Springer Singapore, 2017, pp. 7 –12. doi: 10.1007/978 -981-
+10-4130 -3_2.  
+[7] R. Kleerebezem, B. Joosse, R. Rozendal, and M. C. M. Van Loosdrecht, “Anaerobic 
+digestion without biogas?, ” Rev. Environ. Sci. Biotech nol., vol. 14, no. 4, pp. 787 –801, 
+Dec. 2015, doi: 10.1007/s11157 -015-9374 -6. 
+[8] A. C. Wilkie, “Anaerobic digestion: biology and benefits, ” Dairy Manure Manag. Treat. 
+Handl. Community Relat. , pp. 63–72, 2005.  
+[9] O. Yenig ün and B. Demirel, “Ammonia inhibi tion in anaerobic digestion: A review, ” 
+Process Biochem. , vol. 48, no. 5, pp. 901 –911, May 2013, doi: 
+10.1016/j.procbio.2013.04.012.  
+[10] “Chloride ion | Cl - - PubChem. ” 
+https://pubchem.ncbi.nlm.nih.gov/compound/Chloride -ion (accessed Aug. 14, 2021).  
+[11] PubChem, “Ammonium ion. ” https://pubchem.ncbi.nlm.nih.gov/compound/223 
+(accessed Aug. 14, 2021).  
+[12] L. A. De Baere, M. Devocht, P. Van Assche, and W. Verstraete, “Influence of high 
+NaCl and NH4Cl salt levels on methanogenic associations, ” Water Res. , vol. 18, no. 5, pp. 
+543–548, 1984.  
+[13] K. Hagos, C. Liu, and X. Lu, “Effect of endogenous hydrogen utilization on improved 
+methane production in an integrated microbial electrolysis cell and anaerobic digestion: 
+Employing catalyzed stainless steel mesh catho de,” Chin. J. Chem. Eng. , vol. 26, no. 3, 
+pp. 574–582, Mar. 2018, doi: 10.1016/j.cjche.2017.08.005.  
+[14] F. Bauer, T. Persson, C. Hulteberg, and D. Tamm, “Biogas upgrading – technology 
+overview, comparison and perspectives for the future, ” Biofuels Bioprod . Biorefining , 
+vol. 7, no. 5, pp. 499 –511, 2013, doi: https://doi.org/10.1002/bbb.1423.  
+[15] D. Andriani, A. Wresta, T. D. Atmaja, and A. Saepudin, “A Review on Optimization 
+Production and Upgrading Biogas Through CO2 Removal Using Various Techniques, ” 
+Appl. Biochem. Biotechnol. , vol. 172, no. 4, pp. 1909 –1928, Feb. 2014, doi: 
+10.1007/s12010 -013-0652 -x. 28 
+ [16] “Technologies for Biogas Upgrading to Biomethane: A Review - Google Scholar. ” 
+https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Technologies+for+ Biogas
++Upgrading+to+Biomethane%3A+A+Review&btnG= (accessed Aug. 11, 2021).  
+[17] S. Sarker, J. J. Lamb, D. R. Hjelme, and K. M. Lien, “Overview of recent progress 
+towards in -situ biogas upgradation techniques, ” Fuel . 2018. doi: 
+10.1016/j.fuel.2018.04.021.  
+[18] G. Zhen, X. Lu, G. Kumar, P. Bakonyi, K. Xu, and Y. Zhao, “Microbial electrolysis cell 
+platform for simultaneous waste biorefinery and clean electrofuels generation: Current 
+situation, challenges and future perspectives, ” Prog. Energy Combust. Sci. , vol. 63, pp. 
+119–145, 2017, doi: 10.1016/j.pecs.2017.07.003.  
+[19] B. E. Logan et al. , “Microbial Fuel Cells: Methodology and Technology, ” Environ. Sci. 
+Technol. , vol. 40, no. 17, pp. 5181 –5192, 2006.  
+[20] M. M. Ghangrekar and P. Chatterjee, “A Systematic Re view on Bioelectrochemical 
+Systems Research, ” Curr. Pollut. Rep. , vol. 3, no. 4, pp. 281 –288, 2017, doi: 
+10.1007/s40726 -017-0071 -7. 
+[21] S. Cheng, D. Xing, D. F. Call, and B. E. Logan, “Direct Biological Conversion of 
+Electrical Current into Methane by Ele ctromethanogenesis, ” Environ. Sci. Technol. , vol. 
+43, no. 10, pp. 3953 –3958, May 2009, doi: 10.1021/es803531g.  
+[22] M. Sun, L. -F. Zhai, W. -W. Li, and H. -Q. Yu, “Harvest and utilization of chemical energy 
+in wastes by microbial fuel cells, ” Chem. Soc. Rev. , vol. 45, no. 10, pp. 2847 –2870, 2016, 
+doi: 10.1039/C5CS00903K.  
+[23] R. A. Chac ón-Carrera, A. L ópez-Ortiz, V. Collins -Mart ínez, and V. H. Ramos, “10.3 
+Bioelectrochemical System with a Proton Exchange Membrane for Wastewater 
+Treatment, ” p. 12.  
+[24] S. Cheng  and B. E. Logan, “Sustainable and efficient biohydrogen production via 
+electrohydrogenesis, ” Proc. Natl. Acad. Sci. , vol. 104, no. 47, pp. 18871 –18873, Nov. 
+2007, doi: 10.1073/pnas.0706379104.  
+[25] H. Liu, S. Grot, and B. E. Logan, “Electrochemically Assi sted Microbial Production of 
+Hydrogen from Acetate, ” Environ. Sci. Technol. , vol. 39, no. 11, pp. 4317 –4320, Jun. 
+2005, doi: 10.1021/es050244p.  
+[26] P. Clauwaert et al. , “Combining biocatalyzed electrolysis with anaerobic digestion, ” 
+Water Sci. Technol. , vol. 57, no. 4, pp. 575 –579, Mar. 2008, doi: 10.2166/wst.2008.084.  
+[27] H. T. Dinh, J. Kuever, M. Mu ßmann, A. W. Hassel, M. Stratmann, and F. Widdel, “Iron 
+corrosion by novel anaerobic microorganisms, ” Nature , vol. 427, no. 6977, pp. 829 –832, 
+Feb. 2004, doi : 10.1038/nature02321.  
+[28] “Microbial electrolysis cells turning to be versatile technology: Recent advances and 
+future challenges, ” Water Res. , vol. 56, pp. 11 –25, Jun. 2014, doi: 
+10.1016/j.watres.2014.02.031.  
+[29] Michael Siegert and Allen Tan, “Electri c Stimulation of Ammonotrophic 
+Methanogenesis, ” Front. Energy Res. , 2019, doi: 10.3389/fenrg.2019.00017.  
+[30] H. Wang et al. , “Explore the difference between the single -chamber and dual -
+chamber microbial electrosynthesis for biogas production performance, ” 
+Bioelectrochemistry , vol. 138, p. 107726, Apr. 2021, doi: 
+10.1016/j.bioelechem.2020.107726.  
+[31] S.-G. Park et al. , “Methanogenesis stimulation and inhibition for the production of 
+different target electrobiofuels in microbial electrolysis cells through a n on -demand 29 
+ control strategy using the coenzyme M and 2 -bromoethanesulfonate, ” Environ. Int. , vol. 
+131, p. 105006, Oct. 2019, doi: 10.1016/j.envint.2019.105006.  
+[32] X. Li, C. Zeng, Y. Lu, G. Liu, H. Luo, and R. Zhang, “Development of methanogens 
+within ca thodic biofilm in the single -chamber microbial electrolysis cell, ” Bioresour. 
+Technol. , vol. 274, pp. 403 –409, Feb. 2019, doi: 10.1016/j.biortech.2018.12.002.  
+[33] Y. Hou et al. , “Microbial electrolysis cell with spiral wound electrode for wastewater 
+treat ment and methane production, ” Process Biochem. , vol. 50, no. 7, pp. 1103 –1109, 
+Jul. 2015, doi: 10.1016/j.procbio.2015.04.001.  
+[34] R. Moreno, M. I. San -Mart ín, A. Escapa, and A. Mor án, “Domestic wastewater 
+treatment in parallel with methane production in a  microbial electrolysis cell, ” Renew. 
+Energy , vol. 93, pp. 442 –448, Aug. 2016, doi: 10.1016/j.renene.2016.02.083.  
+[35] R. M. Atlas and R. M. Atlas, Handbook of Microbiological Media , 3rd ed. Boca Raton: 
+CRC Press, 2004. doi: 10.1201/9781420039726.  
+[36] “Effects of alkalinity sources on the stability of anaerobic digestion from food waste - 
+Shujun Chen, Jishi Zhang, Xikui Wang, 2015. ” 
+https://journals.sagepub.com/doi/full/10.1177/0734242X15602965 (accessed Jul. 09, 
+2021).  
+[37] J. Zhao, Y. Li, C. Marandola, J . Krooneman, and G. J. W. Euverink, “Comparison of the 
+microbial communities in anaerobic digesters treating high alkalinity synthetic 
+wastewater at atmospheric and high -pressure (11  bar),” Bioresour. Technol. , vol. 318, p. 
+124101, Dec. 2020, doi: 10.1016/ j.biortech.2020.124101.  
+[38] L. M ézes, G. Bir ó, E. Sulyok, M. Petis, J. Borbely, and J. Tamas, “Novel approach of 
+the basis of FOS/TAC method, ” Nov. 2011.  
+[39] X. Li et al. , “Water Splitting: From Electrode to Green Energy System, ” Nano -Micro 
+Lett. , vol. 1 2, no. 1, p. 131, Jun. 2020, doi: 10.1007/s40820 -020-00469 -3. 
+[40] A. Schn ürer, “Biogas Production: Microbiology and Technology, ” Berlin, Heidelberg: 
+Springer Berlin Heidelberg, 2016. doi: 10.1007/10_2016_5.  
+[41] K. Schnaars, “What every operator should kn ow about anaerobic digestion, ” p. 2.  
+ 

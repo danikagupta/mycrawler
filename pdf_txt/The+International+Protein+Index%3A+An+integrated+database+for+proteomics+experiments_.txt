@@ -1,0 +1,895 @@
+lumiRatAll.db
+April 2, 2013
+lumiRatAllACCNUM Map Manufacturer identiﬁers to Accession Numbers
+Description
+lumiRatAllACCNUM is an R object that contains mappings between a manufacturer’s identiﬁers
+and manufacturers accessions.
+Details
+For chip packages such as this, the ACCNUM mapping comes directly from the manufacturer. This
+is different from other mappings which are mapped onto the probes via an Entrez Gene identiﬁer.
+Each manufacturer identiﬁer maps to a vector containing a GenBank accession number.
+Mappings were based on data provided by: Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With
+a date stamp from the source of: 2012-Mar7
+Examples
+x <- lumiRatAllACCNUM
+# Get the probe identiﬁers that are mapped to an ACCNUM
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+if(length(xx) > 0) {
+# Get the ACCNUM for the ﬁrst ﬁve probes
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}
+12 lumiRatAll.db
+lumiRatAllALIAS2PROBE
+Map between Common Gene Symbol Identiﬁers and Manufacturer
+Identiﬁers
+Description
+lumiRatAllALIAS is an R object that provides mappings between common gene symbol identiﬁers
+and manufacturer identiﬁers.
+Details
+Each gene symbol is mapped to a named vector of manufacturer identiﬁers. The name represents
+the gene symbol and the vector contains all manufacturer identiﬁers that are found for that symbol.
+AnNAis reported for any gene symbol that cannot be mapped to any manufacturer identiﬁers.
+This mapping includes ALL gene symbols including those which are already listed in the SYMBOL
+map. The SYMBOL map is meant to only list ofﬁcial gene symbols, while the ALIAS maps are
+meant to store all used symbols.
+Mappings were based on data provided by: Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With
+a date stamp from the source of: 2012-Mar7
+Examples
+# Convert the object to a list
+xx <- as.list(lumiRatAllALIAS2PROBE)
+if(length(xx) > 0){
+# Get the probe identiﬁers for the ﬁrst two aliases
+xx[1:2]
+# Get the ﬁrst one
+xx[[1]]
+}
+lumiRatAll.db Bioconductor annotation data package
+Description
+Welcome to the lumiRatAll.db annotation Package. The purpose of this package is to provide
+detailed information about the lumiRatAll platform. This package is updated biannually.
+You can learn what objects this package supports with the following command:
+ls("package:lumiRatAll.db")
+Each of these objects has their own manual page detailing where relevant data was obtained along
+with some examples of how to use it.
+Examples
+ls("package:lumiRatAll.db")lumiRatAllCHRLENGTHS 3
+lumiRatAllCHRLENGTHS
+A named vector for the length of each of the chromosomes
+Description
+lumiRatAllCHRLENGTHS provides the length measured in base pairs for each of the chromo-
+somes.
+Details
+This is a named vector with chromosome numbers as the names and the corresponding lengths for
+chromosomes as the values.
+Total lengths of chromosomes were derived by calculating the number of base pairs on the sequence
+string for each chromosome.
+Examples
+tt <- lumiRatAllCHRLENGTHS
+# Length of chromosome 1
+tt["1"]
+lumiRatAllCHRLOC Map Manufacturer IDs to Chromosomal Location
+Description
+lumiRatAllCHRLOC is an R object that maps manufacturer identiﬁers to the starting position of
+the gene. The position of a gene is measured as the number of base pairs.
+The CHRLOCEND mapping is the same as the CHRLOC mapping except that it speciﬁes the
+ending base of a gene instead of the start.
+Details
+Each manufacturer identiﬁer maps to a named vector of chromosomal locations, where the name
+indicates the chromosome. Due to inconsistencies that may exist at the time the object was built,
+these vectors may contain more than one chromosome and/or location. If the chromosomal location
+is unknown, the vector will contain an NA.
+Chromosomal locations on both the sense and antisense strands are measured as the number of base
+pairs from the p (5’ end of the sense strand) to q (3’ end of the sense strand) arms. Chromosomal
+locations on the antisense strand have a leading "-" sign (e. g. -1234567).
+Since some genes have multiple start sites, this ﬁeld can map to multiple locations.
+Mappings were based on data provided by: UCSC Genome Bioinformatics (Rattus norvegicus)
+ftp://hgdownload.cse.ucsc.edu/goldenPath/rn4 With a date stamp from the source of: 2009-Jul54 lumiRatAllCHR
+Examples
+x <- lumiRatAllCHRLOC
+# Get the probe identiﬁers that are mapped to chromosome locations
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+if(length(xx) > 0) {
+# Get the CHRLOC for the ﬁrst ﬁve probes
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}
+lumiRatAllCHR Map Manufacturer IDs to Chromosomes
+Description
+lumiRatAllCHR is an R object that provides mappings between a manufacturer identiﬁer and the
+chromosome that contains the gene of interest.
+Details
+Each manufacturer identiﬁer maps to a vector of chromosomes. Due to inconsistencies that may
+exist at the time the object was built, the vector may contain more than one chromosome (e.g., the
+identiﬁer may map to more than one chromosome). If the chromosomal location is unknown, the
+vector will contain an NA.
+Mappings were based on data provided by: Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With
+a date stamp from the source of: 2012-Mar7
+Examples
+x <- lumiRatAllCHR
+# Get the probe identiﬁers that are mapped to a chromosome
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+if(length(xx) > 0) {
+# Get the CHR for the ﬁrst ﬁve probes
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}lumiRatAll_dbconn 5
+lumiRatAll_dbconn Collect information about the package annotation DB
+Description
+Some convenience functions for getting a connection object to (or collecting information about) the
+package annotation DB.
+Usage
+lumiRatAll_dbconn()
+lumiRatAll_dbﬁle()
+lumiRatAll_dbschema(ﬁle="", show.indices=FALSE)
+lumiRatAll_dbInfo()
+Arguments
+ﬁle A connection, or a character string naming the ﬁle to print to (see the ﬁleargu-
+ment of the catfunction for the details).
+show.indices The CREATE INDEX statements are not shown by default. Use show.indices=TRUE
+to get them.
+Details
+lumiRatAll_dbconn returns a connection object to the package annotation DB. IMPORTANT:
+Don’t call dbDisconnect on the connection object returned by lumiRatAll_dbconn or you will
+break all the AnnDbObj objects deﬁned in this package!
+lumiRatAll_dbﬁle returns the path (character string) to the package annotation DB (this is an
+SQLite ﬁle).
+lumiRatAll_dbschema prints the schema deﬁnition of the package annotation DB.
+lumiRatAll_dbInfo prints other information about the package annotation DB.
+Value
+lumiRatAll_dbconn : a DBIConnection object representing an open connection to the package
+annotation DB.
+lumiRatAll_dbﬁle : a character string with the path to the package annotation DB.
+lumiRatAll_dbschema : none (invisible NULL ).
+lumiRatAll_dbInfo : none (invisible NULL ).
+See Also
+dbGetQuery ,dbConnect ,dbconn ,dbﬁle ,dbschema ,dbInfo6 lumiRatAllENSEMBL
+Examples
+## Count the number of rows in the "probes" table:
+dbGetQuery(lumiRatAll_dbconn(), "SELECT COUNT(*) FROM probes")
+## The connection object returned by lumiRatAll_dbconn() was
+## created with:
+dbConnect(SQLite(), dbname=lumiRatAll_dbﬁle(), cache_size=64000,
+synchronous=0)
+lumiRatAll_dbschema()
+lumiRatAll_dbInfo()
+lumiRatAllENSEMBL Map Ensembl gene accession numbers with Entrez Gene identiﬁers
+Description
+lumiRatAllENSEMBL is an R object that contains mappings between Entrez Gene identiﬁers and
+Ensembl gene accession numbers.
+Details
+This object is a simple mapping of Entrez Gene identiﬁers http://www.ncbi.nlm.nih.gov/entrez/
+query.fcgi?db=gene to Ensembl gene Accession Numbers.
+Mappings were based on data provided by BOTH of these sources: http://www.ensembl.org/
+biomart/martview/ ftp://ftp.ncbi.nlm.nih.gov/gene/DATA
+This mapping is a combination of NCBI to ensembl IDs from BOTH NCBI and ensembl. Users
+who wish to only use mappings from NCBI are encouraged to see the ncbi2ensembl table in the
+appropriate organism package. Users who wish to only use mappings from ensembl are encouraged
+to see the ensembl2ncbi table which is also found in the appropriate organism packages. These
+mappings are based upon the ensembl table which is contains data from BOTH of these sources in
+an effort to maximize the chances that you will ﬁnd a match.
+Mappings were based on data provided by: Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With
+a date stamp from the source of: 2012-Mar7
+Examples
+x <- lumiRatAllENSEMBL
+# Get the entrez gene IDs that are mapped to an Ensembl ID
+mapped_genes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_genes])
+if(length(xx) > 0) {
+# Get the Ensembl gene IDs for the ﬁrst ﬁve genes
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}
+#For the reverse map ENSEMBL2PROBE:
+# Convert to a list
+xx <- as.list(lumiRatAllENSEMBL2PROBE)lumiRatAllENTREZID 7
+if(length(xx) > 0){
+# Gets the entrez gene IDs for the ﬁrst ﬁve Ensembl IDs
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}
+lumiRatAllENTREZID Map between Manufacturer Identiﬁers and Entrez Gene
+Description
+lumiRatAllENTREZID is an R object that provides mappings between manufacturer identiﬁers and
+Entrez Gene identiﬁers.
+Details
+Each manufacturer identiﬁer is mapped to a vector of Entrez Gene identiﬁers. An NAis assigned
+to those manufacturer identiﬁers that can not be mapped to an Entrez Gene identiﬁer at this time.
+If a given manufacturer identiﬁer can be mapped to different Entrez Gene identiﬁers from various
+sources, we attempt to select the common identiﬁers. If a concensus cannot be determined, we
+select the smallest identiﬁer.
+Mappings were based on data provided by: Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With
+a date stamp from the source of: 2012-Mar7
+References
+http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=gene
+Examples
+x <- lumiRatAllENTREZID
+# Get the probe identiﬁers that are mapped to an ENTREZ Gene ID
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+if(length(xx) > 0) {
+# Get the ENTREZID for the ﬁrst ﬁve probes
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}8 lumiRatAllENZYME2PROBE
+lumiRatAllENZYME2PROBE
+Map between Enzyme Commission Numbers and Manufacturer Iden-
+tiﬁers
+Description
+lumiRatAllENZYME2PROBE is an R object that maps Enzyme Commission (EC) numbers to
+manufacturer identiﬁers.
+Details
+Each EC number maps to a named vector containing all of the manufacturer identiﬁers that cor-
+respond to the gene that produces that enzyme. The name of the vector corresponds to the EC
+number.
+Enzyme Commission numbers are assigned by the Nomenclature Committee of the International
+Union of Biochemistry and Molecular Biology http://www.chem.qmw.ac.uk/iubmb/enzyme/
+to allow enzymes to be identiﬁed.
+An Enzyme Commission number is of the format EC x.y.z.w, where x, y, z, and w are numeric num-
+bers. In lumiRatAllENZYME2PROBE, EC is dropped from the Enzyme Commission numbers.
+Enzyme Commission numbers have corresponding names that describe the functions of enzymes
+in such a way that EC x is a more general description than EC x.y that in turn is a more general
+description than EC x.y.z. The top level EC numbers and names are listed below:
+EC 1 oxidoreductases
+EC 2 transferases
+EC 3 hydrolases
+EC 4 lyases
+EC 5 isomerases
+EC 6 ligases
+The EC name for a given EC number can be viewed at http://www.chem.qmul.ac.uk/iupac/
+jcbn/index.html#6
+Mappings were based on data provided by: KEGG GENOME ftp://ftp.genome.jp/pub/kegg/genomes
+With a date stamp from the source of: 2011-Mar15
+References
+ftp://ftp.genome.ad.jp/pub/kegg/pathways
+Examples
+# Convert to a list
+xx <- as.list(lumiRatAllENZYME2PROBE)
+if(length(xx) > 0){
+# Get the probe identiﬁers for the ﬁrst ﬁve enzyme
+#commission numbers
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}lumiRatAllENZYME 9
+lumiRatAllENZYME Map between Manufacturer IDs and Enzyme Commission (EC) Num-
+bers
+Description
+lumiRatAllENZYME is an R object that provides mappings between manufacturer identiﬁers and
+EC numbers.
+Details
+Each manufacturer identiﬁer maps to a named vector containing the EC number that corresponds
+to the enzyme produced by that gene. The name corresponds to the manufacturer identiﬁer. If this
+information is unknown, the vector will contain an NA.
+Enzyme Commission numbers are assigned by the Nomenclature Committee of the International
+Union of Biochemistry and Molecular Biology http://www.chem.qmw.ac.uk/iubmb/enzyme/
+to allow enzymes to be identiﬁed.
+An Enzyme Commission number is of the format EC x.y.z.w, where x, y, z, and w are numeric num-
+bers. In lumiRatAllENZYME2PROBE, EC is dropped from the Enzyme Commission numbers.
+Enzyme Commission numbers have corresponding names that describe the functions of enzymes
+in such a way that EC x is a more general description than EC x.y that in turn is a more general
+description than EC x.y.z. The top level EC numbers and names are listed below:
+EC 1 oxidoreductases
+EC 2 transferases
+EC 3 hydrolases
+EC 4 lyases
+EC 5 isomerases
+EC 6 ligases
+The EC name for a given EC number can be viewed at http://www.chem.qmul.ac.uk/iupac/
+jcbn/index.html#6
+Mappings between probe identiﬁers and enzyme identiﬁers were obtained using ﬁles provided by:
+KEGG GENOME ftp://ftp.genome.jp/pub/kegg/genomes With a date stamp from the source of:
+2011-Mar15
+References
+ftp://ftp.genome.ad.jp/pub/kegg/pathways
+Examples
+x <- lumiRatAllENZYME
+# Get the probe identiﬁers that are mapped to an EC number
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+if(length(xx) > 0) {
+# Get the ENZYME for the ﬁrst ﬁve probes
+xx[1:5]10 lumiRatAllGO2ALLPROBES
+# Get the ﬁrst one
+xx[[1]]
+}
+lumiRatAllGENENAME
+Map between Manufacturer IDs and Genes
+Description
+lumiRatAllGENENAME is an R object that maps manufacturer identiﬁers to the corresponding
+gene name.
+Details
+Each manufacturer identiﬁer maps to a named vector containing the gene name. The vector name
+corresponds to the manufacturer identiﬁer. If the gene name is unknown, the vector will contain an
+NA.
+Gene names currently include both the ofﬁcial (validated by a nomenclature committee) and pre-
+ferred names (interim selected for display) for genes. Efforts are being made to differentiate the
+two by adding a name to the vector.
+Mappings were based on data provided by: Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With
+a date stamp from the source of: 2012-Mar7
+Examples
+x <- lumiRatAllGENENAME
+# Get the probe identiﬁers that are mapped to a gene name
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+if(length(xx) > 0) {
+# Get the GENENAME for the ﬁrst ﬁve probes
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}
+lumiRatAllGO2ALLPROBES
+Map between Gene Ontology (GO) Identiﬁers and all Manufacturer
+Identiﬁers in the subtree
+Description
+lumiRatAllGO2ALLPROBES is an R object that provides mappings between a given GO identiﬁer
+and all manufactuerer identiﬁers annotated at that GO term or one of its children in the GO ontology.lumiRatAllGO2ALLPROBES 11
+Details
+GO consists of three ontologies—molecular function (MF), biological process (BP), and cellular
+component (CC). All ontologies are structured as directed acyclic graphs (DAGs). Each node in
+each DAG (tree) is a GO term (id) associated with a named vector of manufacturer identiﬁers.
+The name associated with each manufacturer id corresponds to the evidence code for that GO
+identiﬁer. This object lumiRatAllGO2ALLPROBES maps between a given GO identiﬁer and all
+manufactuerer identiﬁers annotated at that GO term or one of its children in the GO ontology.
+The evidence code indicates what kind of evidence supports the association between the GO and
+Entrez Gene identiﬁers. Evidence codes currently in use include:
+IMP - inferred from mutant phenotype
+IGI - inferred from genetic interaction
+IPI - inferred from physical interaction
+ISS - inferred from sequence similarity
+IDA - inferred from direct assay
+IEP - inferred from expression pattern
+IEA - inferred from electronic annotation
+TAS - traceable author statement
+NAS - non-traceable author statement
+ND - no biological data available
+IC - inferred by curator
+A GO identiﬁer may be mapped to the same manufacturer identiﬁer more than once but the evidence
+code can be different. Mappings between Gene Ontology identiﬁers and Gene Ontology terms and
+other information are available in a separate data package named GO.
+Mappings were based on data provided by:
+Gene Ontology ftp://ftp.geneontology.org/pub/go/godatabase/archive/latest-lite/ With a date stamp
+from the source of: 20120303 and Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With a date
+stamp from the source of: 2012-Mar7
+References
+ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/
+Examples
+# Convert to a list
+xx <- as.list(lumiRatAllGO2ALLPROBES)
+if(length(xx) > 0){
+# Get the probe identiﬁers for the top 2nd and 3nd GO identiﬁers
+goids <- xx[2:3]
+# Get all the probe identiﬁers for the ﬁrst element of goids
+goids[[1]]
+# Evidence code for the mappings
+names(goids[[1]])
+}12 lumiRatAllGO2PROBE
+lumiRatAllGO2PROBE Map between Gene Ontology (GO) and Manufacturer Identiﬁers
+Description
+lumiRatAllGO2PROBE is an R object that provides mappings between GO identiﬁers and manu-
+facturer identiﬁers.
+Details
+Each GO term maps to a named vector of manufacturer identiﬁers. The name associated with
+each manufacturer identiﬁer corresponds to the evidence code for that GO identiﬁer. The evidence
+code indicates what kind of evidence supports the association between the GO and Entrez Gene
+identiﬁers. Evidence codes currently in use include:
+IMP - inferred from mutant phenotype
+IGI - inferred from genetic interaction
+IPI - inferred from physical interaction
+ISS - inferred from sequence similarity
+IDA - inferred from direct assay
+IEP - inferred from expression pattern
+IEA - inferred from electronic annotation
+TAS - traceable author statement
+NAS - non-traceable author statement
+ND - no biological data available
+IC - inferred by curator
+A GO identiﬁer may be mapped to the same probe identiﬁer more than once but the evidence code
+can be different. Mappings between Gene Ontology identiﬁers an Gene Ontology terms and other
+information are available in a separate data package named GO.
+Mappings were based on data provided by:
+Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With a date stamp from the source of: 2012-
+Mar7
+References
+ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/
+Examples
+# Convert to a list
+xx <- as.list(lumiRatAllGO2PROBE)
+if(length(xx) > 0){
+# Get the probe identiﬁers for the top 2nd and 3nd GO identiﬁers
+goids <- xx[2:3]
+# Get the probe identiﬁers for the ﬁrst element of goids
+goids[[1]]
+# Evidence code for the mappings
+names(goids[[1]])
+}lumiRatAllGO 13
+lumiRatAllGO Map between Manufacturer IDs and Gene Ontology (GO)
+Description
+lumiRatAllGO is an R object that provides mappings between manufacturer identiﬁers and the GO
+identiﬁers that they are directly associated with.
+Details
+Each Entrez Gene identiﬁer is mapped to a list of lists. The names on the outer list are GO identi-
+ﬁers. Each inner list consists of three named elements: GOID, Ontology, and Evidence.
+The GOID element matches the GO identiﬁer named in the outer list and is included for convenience
+when processing the data using ’lapply’.
+The Ontology element indicates which of the three Gene Ontology categories this identiﬁer belongs
+to. The categories are biological process (BP), cellular component (CC), and molecular function
+(MF).
+The Evidence element contains a code indicating what kind of evidence supports the association of
+the GO identiﬁer to the Entrez Gene id. The evidence codes in use include:
+IMP: inferred from mutant phenotype
+IGI: inferred from genetic interaction
+IPI: inferred from physical interaction
+ISS: inferred from sequence similarity
+IDA: inferred from direct assay
+IEP: inferred from expression pattern
+IEA: inferred from electronic annotation
+TAS: traceable author statement
+NAS: non-traceable author statement
+ND: no biological data available
+IC: inferred by curator
+Mappings between probe identiﬁers and GO information were obtained through their mappings to
+Entrez Gene identiﬁers. NAs are assigned to probe identiﬁers that can not be mapped to any Gene
+Ontology information. Mappings between Gene Ontology identiﬁers an Gene Ontology terms and
+other information are available in a separate data package named GO.
+Mappings were based on data provided by: Gene Ontology ftp://ftp.geneontology.org/pub/go/godatabase/archive/latest-
+lite/ With a date stamp from the source of: 20120303
+Examples
+x <- lumiRatAllGO
+# Get the probe identiﬁers that are mapped to a GO ID
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+if(length(xx) > 0) {
+# Try the ﬁrest one14 lumiRatAllMAP
+got <- xx[[1]]
+got[[1]][["GOID"]]
+got[[1]][["Ontology"]]
+got[[1]][["Evidence"]]
+}
+lumiRatAllMAPCOUNTS
+Number of mapped keys for the maps in package lumiRatAll.db
+Description
+lumiRatAllMAPCOUNTS provides the "map count" (i.e. the count of mapped keys) for each map
+in package lumiRatAll.db.
+Details
+This "map count" information is precalculated and stored in the package annotation DB. This allows
+some quality control and is used by the checkMAPCOUNTS function deﬁned in AnnotationDbi
+to compare and validate different methods (like count.mappedkeys(x) orsum(!is.na(as.list(x))) )
+for getting the "map count" of a given map.
+See Also
+mappedkeys ,count.mappedkeys ,checkMAPCOUNTS
+Examples
+lumiRatAllMAPCOUNTS
+mapnames <- names(lumiRatAllMAPCOUNTS)
+lumiRatAllMAPCOUNTS[mapnames[1]]
+x <- get(mapnames[1])
+sum(!is.na(as.list(x)))
+count.mappedkeys(x) # much faster!
+## Check the "map count" of all the maps in package lumiRatAll.db
+checkMAPCOUNTS("lumiRatAll.db")
+lumiRatAllMAP Map between Manufacturer Identiﬁers and cytogenetic maps/bands
+Description
+lumiRatAllMAP is an R object that provides mappings between manufacturer identiﬁers and cyto-
+band locations.lumiRatAllORGANISM 15
+Details
+Each manufacturer identiﬁer is mapped to a vector of cytoband locations. The vector length may
+be one or longer, if there are multiple reported chromosomal locations for a given gene. An NAis
+reported for any manufacturer identiﬁers that cannot be mapped to a cytoband at this time.
+Mappings were based on data provided by: Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With
+a date stamp from the source of: 2012-Mar7
+References
+http://www.ncbi.nlm.nih.gov
+Examples
+x <- lumiRatAllMAP
+# Get the probe identiﬁers that are mapped to any cytoband
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+if(length(xx) > 0) {
+# Get the MAP for the ﬁrst ﬁve probes
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}
+lumiRatAllORGANISM The Organism information for lumiRatAll
+Description
+lumiRatAllORGANISM is an R object that contains a single item: a character string that names
+the organism for which lumiRatAll was built. lumiRatAllORGPKG is an R object that contains
+a chararcter vector with the name of the organism package that a chip package depends on for its
+gene-centric annotation.
+Details
+Although the package name is suggestive of the organism for which it was built, lumiRatAllOR-
+GANISM provides a simple way to programmatically extract the organism name. lumiRatAllORG-
+PKG provides a simple way to programmatically extract the name of the parent organism package.
+The parent organism package is a strict dependency for chip packages as this is where the gene
+cetric information is ultimately extracted from. The full package name will always be this string
+plus the extension ".db". But most programatic acces will not require this extension, so its more
+convenient to leave it out.
+Examples
+lumiRatAllORGANISM
+lumiRatAllORGPKG16 lumiRatAllPATH
+lumiRatAllPATH2PROBE
+Map between Kyoto Encyclopedia of Genes and Genomes (KEGG)
+pathway identiﬁers and Manufacturer Identiﬁers
+Description
+lumiRatAllPATH2PROBE is an R object that provides mappings between KEGG identiﬁers and
+manufacturer identiﬁers.
+Details
+Each KEGG identiﬁer is mapped to a named vector of manufacturer identiﬁers. The name rep-
+resents the KEGG identiﬁer and the vector contains all manufacturer identiﬁers that are found in
+that particular pathway. An NAis reported for any KEGG identiﬁer that cannot be mapped to any
+manufacturer identiﬁers.
+Pathway name for a given pathway identiﬁer can be obtained using the KEGG data package that can
+either be built using AnnBuilder or downloaded from Bioconductor http://www.bioconductor.
+org.
+Graphic presentations of pathways are searchable at http://www.genome.ad.jp/kegg/pathway.
+html using pathway identiﬁers as keys.
+Mappings were based on data provided by: KEGG GENOME ftp://ftp.genome.jp/pub/kegg/genomes
+With a date stamp from the source of: 2011-Mar15
+References
+http://www.genome.ad.jp/kegg/
+Examples
+# Convert the object to a list
+xx <- as.list(lumiRatAllPATH2PROBE)
+if(length(xx) > 0){
+# Get the probe identiﬁers for the ﬁrst two pathway identiﬁers
+xx[1:2]
+# Get the ﬁrst one
+xx[[1]]
+}
+lumiRatAllPATH Mappings between probe identiﬁers and KEGG pathway identiﬁers
+Description
+KEGG (Kyoto Encyclopedia of Genes and Genomes) maintains pathway data for various organ-
+isms. lumiRatAllPATH maps probe identiﬁers to the identiﬁers used by KEGG for pathways in
+which the genes represented by the probe identiﬁers are involvedlumiRatAllPFAM 17
+Details
+Each KEGG pathway has a name and identiﬁer. Pathway name for a given pathway identiﬁer can
+be obtained using the KEGG data package that can either be built using AnnBuilder or downloaded
+from Bioconductor http://www.bioconductor.org .
+Graphic presentations of pathways are searchable at url http://www.genome.ad.jp/kegg/pathway.html
+by using pathway identiﬁers as keys.
+Mappings were based on data provided by: KEGG GENOME ftp://ftp.genome.jp/pub/kegg/genomes
+With a date stamp from the source of: 2011-Mar15
+References
+http://www.genome.ad.jp/kegg/
+Examples
+x <- lumiRatAllPATH
+# Get the probe identiﬁers that are mapped to a KEGG pathway ID
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+if(length(xx) > 0) {
+# Get the PATH for the ﬁrst ﬁve probes
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}
+lumiRatAllPFAM Map Manufacturer IDs to Pfam IDs
+Description
+lumiRatAllPFAM is an R object that provides mappings between a manufacturer identiﬁer and the
+associated Pfam identiﬁers.
+Details
+Each manufacturer identiﬁer maps to a named vector of Pfam identiﬁers. The name for each Pfam
+identiﬁer is the IPI accession numbe where this Pfam identiﬁer is found.
+If the Pfam is a named NA, it means that the associated Entrez Gene id of this manufacturer identiﬁer
+is found in an IPI entry of the IPI database, but there is no Pfam identiﬁer in the entry.
+If the Pfam is a non-named NA, it means that the associated Entrez Gene id of this manufacturer
+identiﬁer is not found in any IPI entry of the IPI database.
+Mappings were based on data provided by: The International Protein Index ftp://ftp.ebi.ac.uk/pub/databases/IPI/current
+With a date stamp from the source of: 2011-Sep27
+References
+Kersey P. J., Duarte J., Williams A., Karavidopoulou Y ., Birney E., Apweiler R. The International
+Protein Index: An integrated database for proteomics experiments. Proteomics 4(7): 1985-1988
+(2004)http://www.ebi.ac.uk/IPI/IPIhelp.html18 lumiRatAllPMID2PROBE
+Examples
+x <- lumiRatAllPFAM
+# Get the probe identiﬁers that are mapped to any Pfam ID
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+# randomly display 10 probes
+sample(xx, 10)
+lumiRatAllPMID2PROBE
+Map between PubMed Identiﬁers and Manufacturer Identiﬁers
+Description
+lumiRatAllPMID2PROBE is an R object that provides mappings between PubMed identiﬁers and
+manufacturer identiﬁers.
+Details
+Each PubMed identiﬁer is mapped to a named vector of manufacturer identiﬁers. The name repre-
+sents the PubMed identiﬁer and the vector contains all manufacturer identiﬁers that are represented
+by that PubMed identiﬁer. The length of the vector may be one or longer, depending on how many
+manufacturer identiﬁers are mapped to a given PubMed identiﬁer.
+Titles, abstracts, and possibly full texts of articles can be obtained from PubMed by providing a
+valid PubMed identiﬁer. The pubmed function of annotate can also be used for the same purpose
+Mappings were based on data provided by: Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With
+a date stamp from the source of: 2012-Mar7
+Examples
+# Convert the object to a list
+xx <- as.list(lumiRatAllPMID2PROBE)
+if(length(xx) > 0){
+# Get the probe identiﬁers for the ﬁrst two PubMed identiﬁers
+xx[1:2]
+# Get the ﬁrst one
+xx[[1]]
+if(interactive() && require(annotate)){
+# Get article information as XML ﬁles for a PubMed id
+xmls <- pubmed(names(xx)[1], disp = "data")
+# View article information using a browser
+pubmed(names(xx)[1], disp = "browser")
+}
+}lumiRatAllPMID 19
+lumiRatAllPMID Map between Manufacturer Identiﬁers and PubMed Identiﬁers
+Description
+lumiRatAllPMID is an R object that provides mappings between manufacturer identiﬁers and PubMed
+identiﬁers.
+Details
+Each manufacturer identiﬁer is mapped to a named vector of PubMed identiﬁers. The name asso-
+ciated with each vector corresponds to the manufacturer identiﬁer. The length of the vector may
+be one or greater, depending on how many PubMed identiﬁers a given manufacturer identiﬁer is
+mapped to. An NAis reported for any manufacturer identiﬁer that cannot be mapped to a PubMed
+identiﬁer.
+Titles, abstracts, and possibly full texts of articles can be obtained from PubMed by providing a
+valid PubMed identiﬁer. The pubmed function of annotate can also be used for the same purpose.
+Mappings were based on data provided by: Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With
+a date stamp from the source of: 2012-Mar7
+References
+http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed
+Examples
+x <- lumiRatAllPMID
+# Get the probe identiﬁers that are mapped to any PubMed ID
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+if(length(xx) > 0){
+# Get the PubMed identiﬁers for the ﬁrst two probe identiﬁers
+xx[1:2]
+# Get the ﬁrst one
+xx[[1]]
+if(interactive() && !is.null(xx[[1]]) && !is.na(xx[[1]])
+&& require(annotate)){
+# Get article information as XML ﬁles
+xmls <- pubmed(xx[[1]], disp = "data")
+# View article information using a browser
+pubmed(xx[[1]], disp = "browser")
+}
+}20 lumiRatAllREFSEQ
+lumiRatAllPROSITE Map Manufacturer IDs to PROSITE ID
+Description
+lumiRatAllPROSITE is an R object that provides mappings between a manufacturer identiﬁer and
+the associated PROSITE identiﬁers.
+Details
+Each manufacturer identiﬁer maps to a named vector of PROSITE identiﬁers. The name for each
+PROSITE identiﬁer is the IPI accession numbe where this PROSITE identiﬁer is found.
+If the PROSITE is a named NA, it means that the associated Entrez Gene id of this manufacturer
+identiﬁer is found in an IPI entry of the IPI database, but there is no PROSITE identiﬁer in the entry.
+If the PROSITE is a non-named NA, it means that the associated Entrez Gene id of this manufacturer
+identiﬁer is not found in any IPI entry of the IPI database.
+Mappings were based on data provided by: The International Protein Index ftp://ftp.ebi.ac.uk/pub/databases/IPI/current
+With a date stamp from the source of: 2011-Sep27
+References
+Kersey P. J., Duarte J., Williams A., Karavidopoulou Y ., Birney E., Apweiler R. The International
+Protein Index: An integrated database for proteomics experiments. Proteomics 4(7): 1985-1988
+(2004)http://www.ebi.ac.uk/IPI/IPIhelp.html
+Examples
+x <- lumiRatAllPROSITE
+# Get the probe identiﬁers that are mapped to any PROSITE ID
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xxx <- as.list(x[mapped_probes])
+# randomly display 10 probes
+xxx[sample(1:length(xxx), 10)]
+lumiRatAllREFSEQ Map between Manufacturer Identiﬁers and RefSeq Identiﬁers
+Description
+lumiRatAllREFSEQ is an R object that provides mappings between manufacturer identiﬁers and
+RefSeq identiﬁers.lumiRatAllSYMBOL 21
+Details
+Each manufacturer identiﬁer is mapped to a named vector of RefSeq identiﬁers. The name repre-
+sents the manufacturer identiﬁer and the vector contains all RefSeq identiﬁers that can be mapped
+to that manufacturer identiﬁer. The length of the vector may be one or greater, depending on how
+many RefSeq identiﬁers a given manufacturer identiﬁer can be mapped to. An NAis reported for
+any manufacturer identiﬁer that cannot be mapped to a RefSeq identiﬁer at this time.
+RefSeq identiﬁers differ in format according to the type of record the identiﬁers are for as shown
+below:
+NG\_XXXXX: RefSeq accessions for genomic region (nucleotide) records
+NM\_XXXXX: RefSeq accessions for mRNA records
+NC\_XXXXX: RefSeq accessions for chromosome records
+NP\_XXXXX: RefSeq accessions for protein records
+XR\_XXXXX: RefSeq accessions for model RNAs that are not associated with protein products
+XM\_XXXXX: RefSeq accessions for model mRNA records
+XP\_XXXXX: RefSeq accessions for model protein records
+Where XXXXX is a sequence of integers.
+NCBIhttp://www.ncbi.nlm.nih.gov/RefSeq/ allows users to query the RefSeq database using
+RefSeq identiﬁers.
+Mappings were based on data provided by: Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With
+a date stamp from the source of: 2012-Mar7
+References
+http://www.ncbi.nlm.nih.gov http://www.ncbi.nlm.nih.gov/RefSeq/
+Examples
+x <- lumiRatAllREFSEQ
+# Get the probe identiﬁers that are mapped to any RefSeq ID
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+if(length(xx) > 0) {
+# Get the REFSEQ for the ﬁrst ﬁve probes
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}
+lumiRatAllSYMBOL Map between Manufacturer Identiﬁers and Gene Symbols
+Description
+lumiRatAllSYMBOL is an R object that provides mappings between manufacturer identiﬁers and
+gene abbreviations.22 lumiRatAllUNIGENE
+Details
+Each manufacturer identiﬁer is mapped to an abbreviation for the corresponding gene. An NAis
+reported if there is no known abbreviation for a given gene.
+Symbols typically consist of 3 letters that deﬁne either a single gene (ABC) or multiple genes
+(ABC1, ABC2, ABC3). Gene symbols can be used as key words to query public databases such as
+Entrez Gene.
+Mappings were based on data provided by: Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With
+a date stamp from the source of: 2012-Mar7
+References
+http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=gene
+Examples
+x <- lumiRatAllSYMBOL
+# Get the probe identiﬁers that are mapped to a gene symbol
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+if(length(xx) > 0) {
+# Get the SYMBOL for the ﬁrst ﬁve probes
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}
+lumiRatAllUNIGENE Map between Manufacturer Identiﬁers and UniGene cluster identiﬁers
+Description
+lumiRatAllUNIGENE is an R object that provides mappings between manufacturer identiﬁers and
+UniGene identiﬁers.
+Details
+Each manufacturer identiﬁer is mapped to a UniGene identiﬁer. An NAis reported if the manufac-
+turer identiﬁer cannot be mapped to UniGene at this time.
+A UniGene identiﬁer represents a cluster of sequences of a gene. Using UniGene identiﬁers one
+can query the UniGene database for information about the sequences or the Entrez Gene database
+for information about the genes.
+Mappings were based on data provided by: Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With
+a date stamp from the source of: 2012-Mar7
+References
+http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=genelumiRatAllUNIPROT 23
+Examples
+x <- lumiRatAllUNIGENE
+# Get the probe identiﬁers that are mapped to an UNIGENE ID
+mapped_probes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_probes])
+if(length(xx) > 0) {
+# Get the UNIGENE for the ﬁrst ﬁve probes
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}
+lumiRatAllUNIPROT Map Uniprot accession numbers with Entrez Gene identiﬁers
+Description
+lumiRatAllUNIPROT is an R object that contains mappings between Entrez Gene identiﬁers and
+Uniprot accession numbers.
+Details
+This object is a simple mapping of Entrez Gene identiﬁers http://www.ncbi.nlm.nih.gov/entrez/
+query.fcgi?db=gene to Uniprot Accessions.
+Mappings were based on data provided by: Entrez Gene ftp://ftp.ncbi.nlm.nih.gov/gene/DATA With
+a date stamp from the source of: 2012-Mar7
+Examples
+x <- lumiRatAllUNIPROT
+# Get the entrez gene IDs that are mapped to an Uniprot ID
+mapped_genes <- mappedkeys(x)
+# Convert to a list
+xx <- as.list(x[mapped_genes])
+if(length(xx) > 0) {
+# Get the Uniprot IDs for the ﬁrst ﬁve genes
+xx[1:5]
+# Get the ﬁrst one
+xx[[1]]
+}Index
+Topic datasets
+lumiRatAll.db , 2
+lumiRatAll_dbconn , 5
+lumiRatAllACCNUM , 1
+lumiRatAllALIAS2PROBE , 2
+lumiRatAllCHR , 4
+lumiRatAllCHRLENGTHS , 3
+lumiRatAllCHRLOC , 3
+lumiRatAllENSEMBL , 6
+lumiRatAllENTREZID , 7
+lumiRatAllENZYME , 9
+lumiRatAllENZYME2PROBE , 8
+lumiRatAllGENENAME , 10
+lumiRatAllGO , 13
+lumiRatAllGO2ALLPROBES , 10
+lumiRatAllGO2PROBE , 12
+lumiRatAllMAP , 14
+lumiRatAllMAPCOUNTS , 14
+lumiRatAllORGANISM , 15
+lumiRatAllPATH , 16
+lumiRatAllPATH2PROBE , 16
+lumiRatAllPFAM , 17
+lumiRatAllPMID , 19
+lumiRatAllPMID2PROBE , 18
+lumiRatAllPROSITE , 20
+lumiRatAllREFSEQ , 20
+lumiRatAllSYMBOL , 21
+lumiRatAllUNIGENE , 22
+lumiRatAllUNIPROT , 23
+Topic utilities
+lumiRatAll_dbconn , 5
+AnnDbObj ,5
+cat,5
+checkMAPCOUNTS ,14
+count.mappedkeys ,14
+dbconn ,5
+dbConnect ,5
+dbDisconnect ,5
+dbﬁle ,5
+dbGetQuery ,5
+dbInfo ,5dbschema ,5
+lumiRatAll (lumiRatAll.db ), 2
+lumiRatAll.db , 2
+lumiRatAll_dbconn , 5
+lumiRatAll_dbﬁle (lumiRatAll_dbconn ), 5
+lumiRatAll_dbInfo (lumiRatAll_dbconn ),
+5
+lumiRatAll_dbschema
+(lumiRatAll_dbconn ), 5
+lumiRatAllACCNUM , 1
+lumiRatAllALIAS2PROBE , 2
+lumiRatAllCHR , 4
+lumiRatAllCHRLENGTHS , 3
+lumiRatAllCHRLOC , 3
+lumiRatAllCHRLOCEND
+(lumiRatAllCHRLOC ), 3
+lumiRatAllENSEMBL , 6
+lumiRatAllENSEMBL2PROBE
+(lumiRatAllENSEMBL ), 6
+lumiRatAllENTREZID , 7
+lumiRatAllENZYME , 9
+lumiRatAllENZYME2PROBE , 8
+lumiRatAllGENENAME , 10
+lumiRatAllGO , 13
+lumiRatAllGO2ALLPROBES , 10
+lumiRatAllGO2PROBE , 12
+lumiRatAllLOCUSID
+(lumiRatAllENTREZID ), 7
+lumiRatAllMAP , 14
+lumiRatAllMAPCOUNTS , 14
+lumiRatAllORGANISM , 15
+lumiRatAllORGPKG
+(lumiRatAllORGANISM ), 15
+lumiRatAllPATH , 16
+lumiRatAllPATH2PROBE , 16
+lumiRatAllPFAM , 17
+lumiRatAllPMID , 19
+lumiRatAllPMID2PROBE , 18
+lumiRatAllPROSITE , 20
+lumiRatAllREFSEQ , 20
+lumiRatAllSYMBOL , 21
+lumiRatAllUNIGENE , 22
+lumiRatAllUNIPROT , 23
+24INDEX 25
+lumiRatAllUNIPROT2PROBE
+(lumiRatAllUNIPROT ), 23
+mappedkeys ,14

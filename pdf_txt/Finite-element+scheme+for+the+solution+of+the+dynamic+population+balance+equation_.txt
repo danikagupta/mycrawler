@@ -1,0 +1,226 @@
+17th European Symposium on Computer Aided Process Engineering – ESCAPE17 
+V. Plesu and P.S. Agachi (Editors)  
+© 2007 Elsevier B.V. All rights reserved.  1 
+ 
+Using Moving Finite Elements Method to solve 
+Population Balance Equation s comprising breakage 
+terms 
+Belmiro P.M Duartea, Cristina M.S.G. Baptistab 
+aDepartment of Chemical Engineering, Instituto Superior de Engenharia de Coimbra, 
+Rua Pedro Nunes, 3030-199 Coimbra, Portugal, bduarte@isec.pt  
+bDepartment of Chemical Engineering, Univers ity of Coimbra, Pólo II, Rua Sílvio Lima, 
+3030-790 Coimbra, Portugal, cristina@eq.uc.pt  
+Abstract 
+This paper introduces a Moving Finite Elements Method (MFEM) based on 
+cubic Hermite polynomial local approxim ations to handle Population Balance 
+Equations (PBE) modeling breakage phenomena. The adequacy and performance of the MFEM framework are tested in two case studies involving breakage: a benchmark problem with known analytical solution and the hydrolysis of starch. Both examples emphasize the stability and accuracy of 
+MFEM in handling PBE models, thus pr oving its suitability for this kind of 
+problem. 
+Keywords : Moving Finite Elements, Population Balance Equation, Breakage. 
+1. Introduction 
+Particulate and emulsion systems have al ways been present in nature and in 
+chemical and biological processes. Many  of the recently developed products 
+also correspond to good examples of dispersed multiphase systems and this led to a growing interest on the develo pment of models for these particulate 
+systems characterized by both a continuous and a dispersed phase. The population balance models (PBE), based on the extensity density balance 2  B.P.M. Duarte et al. 
+regarding the particles, enable to d escribe their behavior in a particular 
+surrounding environment. The numerical approaches employed to solve PBE models fall into two main 
+strategies: i. solution representation by global/local basis function approximations, encompassing all finite element schemes; ii. Discretized Population Balance (DPB) methods, based on the concept of pivot. For a detailed analysis of DPB methods see [1]. In recent years Finite Elements methods became quite appealing to ha ndle PBE models, since they provide a 
+general framework [2]. The literature on the application of adaptive grid 
+strategies to PBE models is scarce, although these schemes are remarkably 
+promising since some PBE models deve lop moving fronts and sharp dynamics 
+caused by the initial distribution. Most of the adaptive techniques applied to 
+PBE are based on DPB methods, exploiting the moving pivot concept introduced by Kumar and Ramkrishna [3] (see for instance the work of 
+Attarakih et al. [4]). Mahoney and Ramkrishna [5] presented an approach based 
+on the combination of a Galerkin-finite elements scheme with the method of 
+characteristics to capture the motion of pivots. Tsang and Rao [6] presented a Moving Finite Elements explicit appro ach based on linear approximations to 
+handle PBE models. In this work a gene ral Moving Finite Elements approach 
+based on cubic Hermite polynomial approximations and the Method of Lines to handle PBE models comprising breakage terms are used. 
+2. Moving Finite Elements Method formulation 
+The MFEM, firstly proposed by Miller and Miller [7], stands on the 
+minimization of the residuals all over the domain 
+Ω=[0, tf]Error! Objects 
+cannot be created from editing field codes. [0, V], where tf is the maximum 
+integration time and V the limit of the spatial domain. A general PBE model is 
+represented as: 
+ 
+() tv,,vn,nn,=nv t ∫d ℓ        ( 1 . a )  
+() ( ) tv,,vn,nn, =tnv∫d 0,β       ( 1 . b )  
+() ( ) vf=v,n0         ( 1 . c )  
+ 
+where n(v,t) represents the density of particles with v dimension at time  t, nt 
+stands for its time derivative, nv for its spatial derivative, ()•ℓ is an operator 
+comprising differential, integral and non-linear transformations of n(v,t), ()•β  
+is the boundary condition, and f(v) the initial particle size distribution (PSD). 
+The global residuals, ()•r, can be calculated by: 
+ 
+() ( )tv,,vn,nn, n=rv t ∫−• d ℓ       ( 2 )  
+ Using Moving Finite Elements Method to solve Population Balance Equations 
+comprising breakage terms  3 
+which are approximated by using a global polynomial approximation to 
+represent the particles density. In this  paper, cubic Hermite polynomials are 
+employed [8]:  
+ 
+() ()[] ∑∑N
+=k=ik i ik, thu,Hta =n
+14
+1      ( 3 )  
+ 
+where ak,i(t) stands for the time dependent coefficients, Hi[•] for the cubic 
+Hermite polynomials, u=(v-sk-1)/(sk-sk-1) for a scaled spatial variable, hk(t)=sk(t)-
+sk-1(t) for the size of kth finite element, sk(t) for kth node position and N for the 
+number of finite elements. The minimizati on of the square norm of the residuals 
+with respect to time derivatives of coefficients ak,i(t) and node velocities, here 
+represented as js, leads to the basic equations of the method, with 
+{} N, k"1,∈ : 
+{} 4 1,           0111
+1
+1, i = dhs
+aRR +dhs
+aRR+k+k
+ks ki,+k
++k kk
+ks ki,k
+k " ∈∂∂
+∂∂∫ ∫
+−  (4.a) 
+{} N, j = dhs
+sRR +dhs
+sRR+k+k
+ks j+k
++k kk
+ks jk
+k " 0,            0111
+1
+1∈∂∂
+∂∂∫ ∫
+−  (4.b) 
+ 
+where Rk stands for the approximation of ()•r in the kth finite element. To avoid 
+node coalescence a penalty term is adde d to the square residuals objective 
+function. Therefore, equation (4.b) is replaced by equation (5) with ε standing 
+for the internodal force: 
+ 
+()
+{} {} N, j,N, k= s s sε+ dhs
+sRR +dhs
+sRR+j j j +k+k
+ks j+k
++k kk
+ks jk
+k
+" " 
+0, 1,                                                             0 21 1 111
+1
+1
+∈ ∈−−∂∂
+∂∂
+−
+−∫ ∫ (5) 
+ 
+Equations (4.a) and (5) coupled with the relations arising from the discretization 
+of the boundary conditions lead to the Differential Algebraic Equations (DAE) 
+system to be solved. The solver used, which is based on BDF methods, enables 
+one to exploit the jacobian sparsity in order to increase the computational 
+efficiency. The structure of the differen tial component of the jacobian has the 
+form of a diagonal band matrix of width 9, and the algebraic component is an upper triangular full matrix due to integral terms that represent the breakage phenomena. Both components are computed numerically. In the solver the relative tolerance was set to 10
+-6 and the absolute tolerance to 10-9. The integral 4  B.P.M. Duarte et al. 
+terms involved in Equations (4.a) and (5) are calculated by Gaussian Quadrature 
+(GQ) based on 8 collocation points, two of them located at the nodes.  
+3. Application of MFEM to PBE models involving breakage terms 
+In this section the framework derived in  Section 2 is applied to PBE models 
+describing physical processes involving some extent of breakage – division of the particles into smaller size entities. Case  1 intends to evaluate the accuracy of 
+the approach in dealing with a benchm ark problem with analytical solution 
+available. Case 2 aims at submitting the method to a more challenging problem, 
+and handling simultaneously the model desc ribing the wheat starch hydrolysis, 
+of interest to the food industry.  
+3.1.
+ Case 1 – Ziff’s fragmentation model 
+This model was proposed by Ziff and McGrady [9], and is commonly used as a 
+benchmark problem for numerical strategies handling breakage terms, since its analytical solution is available: 
+ 
+()()( ) ( )( )( ) v'tvnv'Sv'v,ρ+tv,nvS=ttv,n+
+vd ,' ∫ −∂∂∞
+      (6.a) 
+() ( ) [][]                      20   ,5 10     ,'/25; t; v v,=vSv =v'v,ρ ∈ ∈−  (6.b) 
+() () v =v,n −exp0        ( 6 . c )  
+ 
+where ()tv,n  is the PSD, ()v'v,ρ  is the breakage function and ()vS the 
+breakage rate kernel. Figure 1 highli ghts the accuracy and stability of the 
+MFEM approach based on a non-regular initia l grid, particularly on the zones of 
+smaller particles. As time elapses, at the zones of larger particles the approach is 
+less accurate as a result of the approxim ation of the upper limit of the integral. 
+One may see that the nodes tend to move to the zone where the gradients of the solution are higher. However, due to the stabilization introduced by the integral 
+term and the smoothness of the soluti on, its motion is slow. The results, 
+particularly the numerical solution accuracy , allow us to state that the MFEM is 
+suitable for solving PBE models involving breakage terms.
+  
+3.2. Case 2 – Hydrolysis of wheat starch model 
+The model describing the hydrolysis of wheat starch was proposed by Chang et 
+al. [10] aiming at studying the effect of the hydrolysis phenomenon on the 
+Falling Number measurement. In this problem ()tv,n  represents the molecular  Using Moving Finite Elements Method to solve Population Balance Equations 
+comprising breakage terms  5 
+ 
+Figure 1 – Fragmentation model: comparison of analytical vs. numerical solution. 
+ 
+weight distribution (MWD) of starch, and v stands for the molecular weight, 
+yielding the model: 
+ 
+()() () ( ) () ( ) ∫ −∂∂∞+
+vv'tvntT,rv'v, +tv,ntT,r=ttv,nd ,' 2σ    (10.a)  
+() () [ ] ()() ()( ) [ ]tRTE k en RTE ktk C=tT,rd d a g / exp xp  / exp  exp10 0 0 −− − −−   (10.b) 
+()()n wn
+nz
+n nz
+M MM=z,Mzv
+Mv
+zΓMz=v,n−⎟⎟
+⎠⎞
+⎜⎜
+⎝⎛−
+⎟⎟
+⎠⎞
+⎜⎜
+⎝⎛
+⎥⎥
+⎦⎤
+⎢⎢
+⎣⎡
+  exp 0    (10.c) 
+() [ ][]3500   10 1.5104       ,'/17 2; t, ; v v=v'v,σ ∈××∈    (10.d) 
+ 
+where ()tT,r  is the temperature dependent de polymerization reaction rate and 
+()v'v,σ  the partition function that describes the probability of breaking starch 
+chain of mass fraction v’ into a mass fraction v, which is described in this case 
+by a uniform function. It was considered that the temperature remains constant, 
+T = 298.50 K, and the parameters are listed in the work of Chang et al. [10]. 
+One may see in Figure 2 that the star ch chain breaks as the time evolves 
+producing lower molecular weight chains. Such a behavior is remarkably fast 
+until the steady state is reached, around 350 s. However, MFEM presents stable 
+solutions for the all domain and captures the solution magnitudes quite accurately.  
+4. Conclusions 
+This paper presents a moving finite grid strategy for the solution of PBE 
+models, particularly those including br eakage terms. The numerical approach – 6  B.P.M. Duarte et al. 
+Moving Finite Elements Method – provides a general framework to deal with 
+evolutive Partial Differential Equa tions, from which PBE models are good 
+examples. The MFEM formulation presen ted is based on local cubic Hermite 
+polynomials and the Method of Lines. It s application to a benchmark problem 
+allowed us to evaluate its accuracy an d stability, which is indeed remarkable. 
+The ability of the numerical approach to  handle problems that involve changes 
+of large magnitude was successfully tested using an example from the food industry. Based on the results achieved,  MFEM is a good choice for handling 
+general PBE models because of the genera lity it provides and the ability to deal 
+with complex dynamics such as moving fronts, common when breakage phenomena are present or the initial distribution is complex.  
+ 
+Figure 2 – Numerical solution of the hydrolysis of  wheat starch model at particular instants. 
+References 
+1. D. Ramkrishna, Population Balances – Theory and Applications to Particulate  Systems 
+ in Engineering, Academic Press, San Diego, 2000. 
+2. S. Rigopoulos and A.G. Jones, AIChE Journal, 49 (2003) 1127-1139. 
+3. S. Kumar and D. Ramkrishna, Chem. Eng. Science, 51 (1996) 1333-1342. 
+4. M.M. Attarakih, H.-J. Bart , N.M. Faqir, Chem. Eng.  Science, 58 (2003) 1251-1269. 
+5. A.W. Mahoney and D. Ramkrishna, Chem . Eng. Science, 57 (2002) 1107-1119.  
+6. T.H. Tsang and A. Rao, Int. J. Nu m. Methods in Fluids, 10 (1990) 753-759. 
+7. K. Miller and R.N. Miller, SIAM J. of Num. Analysis,  18 (1981) 1019-1032. 
+8. B.P.M. Duarte, Method of Moving Finite El ements applied to the solution of front 
+ reaction models, PhD Thesis, Un iversidade de Coimbra, 1995. 
+9. R.M. Ziff and E.D. McGrady, J. Phys. A:  Mathematical Gen., 18 (1985) 3027-3037. 
+10. S.-Y. Chang, S. Delwiche, N.S. Wang,  Biotechnol. Bioeng., 79 (2002) 768-775. 

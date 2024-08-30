@@ -1,0 +1,1329 @@
+  
+Delft University of Technology
+Alleviating mass transfer limitations in industrial external-loop syngas-to-ethanol
+fermentation
+Puiman, Lars; Abrahamson, Britt; Lans, Rob G.J.M.van der; Haringa, Cees; Noorman, Henk J.; Picioreanu,
+Cristian
+DOI
+10.1016/j.ces.2022.117770
+Publication date
+2022
+Document Version
+Final published version
+Published in
+Chemical Engineering Science
+Citation (APA)
+Puiman, L., Abrahamson, B., Lans, R. G. J. M. V. D., Haringa, C., Noorman, H. J., & Picioreanu, C. (2022).
+Alleviating mass transfer limitations in industrial external-loop syngas-to-ethanol fermentation. Chemical 
+Engineering Science , 259, Article 117770. https://doi.org/10.1016/j.ces.2022.117770 
+Important note
+To cite this publication, please use the final published version (if applicable).
+Please check the document version above.
+Copyright
+Other than for strictly personal use, it is not permitted to download, forward or distribute the text or part of it, without the consent
+of the author(s) and/or copyright holder(s), unless the work is under an open content license such as Creative Commons.
+Takedown policy
+Please contact us and provide details if you believe this document breaches copyrights.
+We will remove access to the work immediately and investigate your claim.
+This work is downloaded from Delft University of Technology. 
+For technical reasons the number of authors shown on this cover page is limited to a maximum of 10. Alleviating mass transfer limitations in industrial external-loop
+syngas-to-ethanol fermentation
+Lars Puimana,⇑, Britt Abrahamsonb, Rob G.J.M. van der Lansa, Cees Haringaa, Henk J. Noormana,c,
+Cristian Picioreanud
+aDepartment of Biotechnology, Delft University of Technology, Delft, the Netherlands
+bDepartment of Civil and Environmental Engineering, University of Washington, Seattle, WA, USA
+cRoyal DSM, Delft, the Netherlands
+dBiological and Environmental Sciences and Engineering Division, King Abdullah University of Science and Technology, Thuwal, Saudi Arabia
+highlights
+/C15Detailed analysis on gas transfer rate
+in industrial syngas fermentation.
+/C15CFD reveals mass transfer limitationtopography in external-loop gas-liftreactors.
+/C15Bubbles smaller than 2 mm are key to
+reach required mass transfer
+capacities.
+/C15The produced ethanol minimizes
+bubble size and increases gas hold-
+up.
+/C15Transport limitations in air–water
+systems can be alleviated in syngas
+fermentation.graphical abstract
+article info
+Article history:
+Received 8 February 2022
+Received in revised form 13 May 2022
+Accepted 22 May 2022Available online 26 May 2022
+Keywords:
+Mass transferCFDAirlift bioreactorEthanolSyngas fermentationIndustrialabstract
+Mass transfer limitations in syngas fermentation processes are mostly attributed to poor solubility of CO
+and H 2in water. Despite these assumed limitations, a syngas fermentation process has recently been
+commercialized. Using large-sale external-loop gas-lift reactors (EL-GLR), CO-rich off-gases are converted
+into ethanol, with high mass transfer performance (7–8.5 g.L-1.h/C01). However, when applying established
+mass transfer correlations, a much poorer performance is predicted (0.3–2.7 g.L-1.h/C01). We developed a
+CFD model, validated on pilot-scale data, to provide detailed insights on hydrodynamics and mass trans-
+fer in a large-scale EL-GLR. As produced ethanol could increase gas hold-up (+30%) and decrease the bub-
+ble diameter ( /C202 mm) compared to air–water mixtures, we found with our model that a high volumetric
+mass transfer coefﬁcient (650–750 h/C01) and mass transfer capacity (7.5–8 g.L-1.h/C01) for CO are feasible.
+Thus, the typical mass transfer limitations encountered in air–water systems can be alleviated in the
+syngas-to-ethanol fermentation process./C2112022 The Authors. Published by Elsevier Ltd. This is an open access article under the CC BY license ( http://
+creativecommons.org/licenses/by/4.0/ ).
+1. Introduction
+The conversion of waste gases by synthesis gas (syngas) fer-
+mentation has advanced to industrial scale in the last decade. In
+this process, a gas mixture containing CO, CO 2and H 2can be
+https://doi.org/10.1016/j.ces.2022.117770
+0009-2509/ /C2112022 The Authors. Published by Elsevier Ltd.
+This is an open access article under the CC BY license ( http://creativecommons.org/licenses/by/4.0/ ).Abbreviations: EL, external-loop; ALR, airlift reactor; GLR, gas-lift reactor; MTC,
+mass transfer capacity.
+⇑Corresponding author at: Delft University of Technology, Faculty of Applied
+Sciences, Department of Biotechnology, Van der Maasweg 9, 2629 HZ, Delft, TheNetherlands.
+E-mail address: L.Puiman@tudelft.nl (L. Puiman).Chemical Engineering Science 259 (2022) 117770
+Contents lists available at ScienceDirect
+Chemical Engineering Science
+journal homepage: www.elsevier.com/locate/ces
+converted by microbes (predominantly Clostridium spp.) into a
+range of chemicals, e.g. acetic acid, ethanol, acetone and iso-
+propanol ( Teixeira et al., 2018 ). The company LanzaTech has been
+able to commercialize the process of converting CO-rich off-gases
+from steel-mills into ethanol. Currently they deploy ethanol pro-
+duction facilities in China, while expanding their manufacturing
+network to other countries ( Fackler et al., 2021; Köpke and
+Simpson, 2020; Teixeira et al., 2018 ).
+Details of the full-scale operation are unknown in the scientiﬁc
+literature due to the proprietary nature of this process. It is
+expected that syngas conversion takes place in a gas-lift reactor
+with an external circulation loop ( Li et al., 2017 ). This reactor con-
+ﬁguration, also known as the external loop gas-lift reactor (EL-GLR)
+is like a conventional air-lift loop reactor as applied in waste-water
+treatment and industrial bioprocesses. Compared to the more
+established bubble column reactors (BCRs), in external-loop airlift
+reactors (EL-ALRs) there is forced liquid recirculation (potentially
+but not necessarily via pump action) through the downcomer
+(the external-loop), causing high liquid velocities, a more deﬁned
+(plug)ﬂow pattern and a shorter mixing time ( Chisti and Moo-
+Young, 1987; Merchuk and Siegel, 1988 ). The external-loop might
+also be used for heat exchange, introduction of fresh feed and broth
+withdrawal ( Jakobsen, 2014 ).
+The increased liquid velocity in the riser is known to decrease
+the gas residence time and thus the gas hold-up ( eG) and the volu-
+metric mass transfer coefﬁcient ( kLa) compared to a bubble column
+(Verlaan et al., 1989b; Weiland and Onken, 1981 ). At the same
+time, gas–liquid mass transfer is generally known to be one of
+the limiting factors in syngas fermentation processes
+(Asimakopoulos et al., 2018, Bredwell et al., 1999, Elisiário et al.
+(2021), Klasson et al., 1991, Yasin et al., 2015 ). For industrial etha-nol production, it was determined that a kLaof at least 580 h/C01
+should be reached for commercial success ( Köpke et al., 2011 ).
+Our preliminary calculations, based on publicly available data
+reported by LanzaTech, show that a mass transfer capacity ( MTC)
+of 7 to 8.5 g.L-1.h/C01should be reached, which results in a kLa
+between 600 and 750 h/C01, based on a headspace pressure of
+1 bar and 50% CO in the inlet gas ( Figure S1 ).
+For estimation of kLain air–water systems, many relationships
+have been provided in the literature for different reactor types
+(Garcia-Ochoa and Gomez, 2009 ). With these relations the most
+likely kLawas estimated at industrial conditions and compared to
+thekLafrom our preliminary calculations ( Table 1 ), resulting into
+aMTC between 0.3 and 2.7 g.L-1.h/C01. A clear discrepancy between
+the kLaobtained by these relations and the supposed industrial
+performance was found, as all engineering correlations predict a
+substantially lower kLa. Although it is widely known that elec-
+trolytes, organic molecules (such as the produced ethanol), bio-
+mass, and the reactor geometry inﬂuence kLa(Garcia-Ochoa and
+Gomez, 2009, Heijnen and Van’t Riet (1984) ), the impact of these
+factors are not comprehensively considered with the correlations
+inTable 1 . Furthermore, empirical relations obtained for ALRs were
+derived at smaller scales and their validity for larger scales bears
+uncertainties. The non-standard reactor geometry and irregular
+ﬂow pattern in industrial reactors complicate the prediction of
+the mass transfer performance using common correlations, which
+are normally valid for a narrow range of conditions and were
+derived in shorter columns (inﬂuencing uG,s) while assuming ideal
+mixing. Spatio-temporal variations complicate the a priori estima-
+tion of eG,kLaand MTC as particular geometry conﬁgurations
+strongly inﬂuence the hydrodynamics in ALRs (e.g. riser width/
+height, separator dimensions and the particular connection of theNomenclature
+Latin
+a Speciﬁc surface area (m/C01)
+A Area (m2)
+c Concentration (kg.m/C03)
+D Diameter (m)
+Dax Axial dispersion (m2.s/C01)
+DL Diffusion coefﬁcient in liquid phase (m2.s/C01)
+d32 Sauter mean bubble diameter (m)
+db Bubble diameter (m)
+g Gravitational acceleration (m.s/C02)
+H Henry coefﬁcient (kg.m/C03.Pa/C01)
+h Height (m)
+I Turbulence intensity (%)
+k Turbulent kinetic energy (m2.s/C02)
+kL Liquid-side mass transfer coefﬁcient (m.s/C01)
+kLa Volumetric mass transfer coefﬁcient (h/C01)
+L Length (m)
+MTC Mass transfer capacity (g.L L-1.h/C01)
+p Pressure (Pa)
+P Power (W)
+r Radial position (m)
+R Radius (m)
+t Time (s)
+T Temperature (K)
+u Velocity (m.s/C01)
+u!Velocity magnitude (m.s/C01)
+V Volume (m3)
+vslip Slip velocity (m.s/C01)
+v1
+bBubble rise velocity (m.s/C01)
+y Mole fraction (mol.mol G-1)
+z Axial position (m)Greek
+e Energy dissipation rate (m2.s/C03)
+eG Gas hold-up (m G3.mD-3)
+eL Liquid hold-up (m L3.mD-3)
+g Dynamic viscosity (kg.m-1.s/C01)
+h Circulation time (s)
+m Kinematic viscosity (m2.s/C01)
+q Density (kg.m/C03)
+r Surface tension (N.m/C01)
+Sub- and superscripts
+* Saturation
+1 Final
+ax Axial
+b bubble
+c Circulation
+con Connector
+e exposure
+d Downcomer
+D Dispersion
+G Gas
+in Inlet
+L Liquid
+r Riser
+s Superﬁcial
+S Solid
+t TracerL. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+2downcomer). For example, while the liquid and gas velocities are
+expected to be high in the riser, these should decrease in the wider
+separator section in the top of the vessels and consequently
+increase the local eG(Hernández-Calderón et al., 2017 ).
+Several models have been developed to describe hydrodynam-
+ics of pilot- and full-scale airlift bioreactors. The model by Van
+der Lans (1985) predicted the axial mean values of liquid circula-
+tion velocity and gas fraction in a pilot-scale external-loop bioreac-
+tor well. Van Benthum et al. (1999) modelled three-phase
+hydrodynamics (liquid velocity, gas and solid hold-up) in a bioﬁlm
+airlift suspension extension reactor, wherein the liquid velocity in
+a gas-free downcomer is controlled independently from the gasﬂow velocity. While neglecting spatial variations of gas, liquid
+and solids concentrations in the internal regions, the model was
+well able to predict the pilot-scale hydrodynamics. Earlier,
+Heijnen et al. (1997) described the liquid circulation velocity and
+gas hold-up in an industrial-scale bioﬁlm internal-loop airlift sus-
+pension reactor, based on mass and momentum balances. This
+model is applicable to three hydrodynamic regimes: gas-free
+downcomer (regime 1), entrained gas in downcomer (regime 2)
+and gas back-circulation via downcomer (regime 3). We argue that
+in the LanzaTech case, operation in regime 1 or 2 may be preferred
+compared to regime 3 as the latter could reduce the CO partial
+pressure and thus its saturation concentration in the riser.
+Convection-dispersion and tanks-in-series (1D) models have
+been proposed to understand mixing and mass transfer phenom-ena in small-scale airlift reactors ( Znad et al., 2004 ), but it is
+unclear how the ﬂow pattern deviates from these simple mixing
+models for the large-scale EL-GLR. It is generally known that
+large-scale BCRs show high axial dispersion coefﬁcients ( Heijnen
+and Van’t Riet (1984) ) but that EL-ALRs studied at lab and pilot-
+scale display more plug-ﬂow behaviour ( Verlaan et al., 1989b ).
+As the axial dispersion behaviour is unclear in an industrial EL-
+GLR, the convection–dispersion models turned out to be unsuitable
+for the prediction of the large-scale ﬂow pattern and gas–liquid
+mass transfer rates. Furthermore, several relations have been
+developed to describe the mass transfer coefﬁcient k
+L, based on
+local conditions such as the slip velocity and the eddy dissipationrate ( Table 2 ). These relations require a high spatial resolution,
+which cannot be provided by the 0D and 1D models.
+With 3D computational ﬂuid dynamics (CFD) models a high
+spatio-temporal resolution can be obtained, albeit with a much
+greater computational effort than when applying simple mixing
+models. For EL-ALRs, several authors used CFD to study the hydro-
+dynamics and the mixing behaviour ( Karcz et al., 2013; Moudoud
+et al., 2018; Roy et al., 2006 ). Hydrodynamics and oxygen mass
+transfer in a lab-scale sectionalized EL-ALR has been studied
+recently; it was demonstrated that the k
+Lapredicted with Equa-
+tion 5 ( Table 2 ) matched the experimental data better than predic-
+tions from Equation 1 and 3 ( Teli and Mathpati, 2021 ). Similar
+work was done earlier, wherein it was observed that Equation 3
+strikingly showed a good agreement with experimental results
+Table 2
+The different relations that are used for predicting the liquid-side mass transfer coefﬁcient, kL.
+Number Reference Equation
+Bubble-based models
+(1) Higbie (1935)kL¼2ﬃﬃﬃﬃﬃﬃﬃﬃ
+DL;CO
+pteq
+¼2ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+DL;COvslip
+pdbqdb> 2 mm ( Heijnen and Van’t Riet (1984) )
+(2) Calderbank and Moo-Young (1961)kL¼0:42DqvLg
+qL/C16/C17 1
+3DL;COvL/C16/C17 1
+2 Non-rigid bubbles
+Eddy-based models
+(3) Kaštánek (1977)kL¼2ﬃﬃﬃﬃﬃﬃﬃﬃ
+DL;CO
+pteq
+¼1:13D1
+2
+L;COe=mLðÞ1
+4 Theoretical
+(4) Linek et al. (2005)kL¼0:45D1
+2
+L;COe=mLðÞ1
+4 Empirical
+(5) Lamont and Scott (1970)kL¼0:4D1
+2
+L;COe=mLðÞ1
+4 Empirical
+(6) Kawase and Moo-Young (1990)kL¼0:3D1
+2
+L;COe=mLðÞ1
+4 EmpiricalTable 1
+Relationships used for the prediction of kLain Newtonian media in a large-scale EL-GLR, as well as typical kLavalues for industrial operation. See Table S2 and Table S3 for the
+meaning, units and calculation of variables in these equations. The empirical correlations were developed for air–water systems, and would require a small correction (around 5%
+lower) for CO due to its lower diffusion coefﬁcient compared to oxygen ( Van Hecke et al., 2019 ).
+Reference Equation kLa(h/C01)
+LanzaTech estimation 600–750
+Empirical correlationsExternal-loop airliftBello et al. (1985)k
+La¼0:76/C11þAd
+Ar/C16/C17/C02
+/C1u0:8
+G;s/C24130
+Chisti et al. (1986)kLa¼eL1þAd
+Ar/C16/C17/C01
+u0:899
+G;s/C1ð0:349/C00:102cSÞ/C2440
+Chisti and Moo-Young (1987)kLa¼1:27/C110/C04/C1PG
+VD/C16/C170:925 /C2475
+Bubble column
+Deckwer et al. (1974) kLa¼0:5/C1u0:884
+G;s/C2480
+Deckwer et al. (1983) kLa¼0:467/C1u0:82
+G;s/C2490
+Jackson and Shen (1978) kLa¼0:53/C1u1:15
+G;s/C2430
+Heijnen and Van’t Riet (1984) kLa¼0:32/C1u0:7
+G;s/C11:024ðT/C0293Þ /C24140
+Dimensionless relations
+Akita and Yoshida (1973) ShðÞa/C1Dr¼0:6Eo0:62Ga0:3Sc0:5e1:1
+G/C24170
+Nakanoh and Yoshida (1980) ShðÞa/C1Dr¼0:09Eo0:75Ga0:4Sc0:5Fr1 /C24230
+Kawase et al. (1987) ShðÞa/C1Dr¼0:452Eo0:62Ga0:3Sc0:5Fr1Re1 /C2415
+Uchida et al. (1989) ShðÞa/C1Dr¼0:17Eo0:62Ga0:3Sc0:5e1:1
+G/C2450
+Vatai and Tekic ´(1989) ShðÞa/C1Dr¼0:031Eo0:75Ga0:4Sc0:5Fr1 /C2480
+Kawase and Hashiguchi (1996)ShðÞa/C1Dr¼0:142Eo0:6Sc0:5Fr0:075Re0:8751þAd
+Ar/C16/C17/C097=80 /C24170L. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+3(Dhanasekharan et al., 2005 ). Most of these models were devel-
+oped for lab and pilot-scale EL-ALRs, with riser diameters smaller
+than 0.14 m, where wall effects can be signiﬁcant ( Chisti and
+Moo-Young, 1987 ).
+A CFD model for syngas fermentation in a BCR with a population
+balance model for the gas phase was developed recently ( Siebler
+et al., 2019 ). Low kLavalues and thus low CO transfer rates, low dis-
+solved CO concentrations and low CO uptake rates were obtained
+as >50% of the bubbles had a relatively high bubble diameter ( db>8 -
+mm). Several one-dimensional (1D) models have been presented
+for syngas fermentation in large-scale BCRs as well. De Medeiros
+et al. (2020) developed such a model for the optimization of differ-
+ent process conditions. They determined that strategies needed to
+be obtained to enhance the kLawith at least a factor three, relative
+to air–water correlations, to decrease the minimum ethanol sellingprice to $0.7/L and reach high (70%) thermodynamic efﬁciency.
+Another BCR model was coupled with a black-box stoichiometric
+model for C. autoethanogenum based on thermodynamics in order
+to estimate the ethanol productivity in such a reactor. High pro-
+ductivities were obtained (4.25 g
+EtOH.L-1.h/C01), but this was at the
+expense of the gas utilization (only 17%) as high gas ﬂow rates
+were used ( Benalcázar et al., 2020 ). In another 1D model, with
+kinetics reported by LanzaTech, a genome-scale metabolic model
+for a proprietary C. autoethanogenum strain was coupled to bubble
+column hydrodynamics. In their model kLaand microbial CO
+uptake rate varied axially between 350 and 425 h/C01and 0 and
+7 g.L-1.h/C01, respectively, by assuming dbbelow 1.5 mm and con-
+stant kLof 1/C110-4m.s/C01(Li et al., 2019 ). However, detailed analyses
+how the low dband high MTC could be accomplished in industrial
+reactors are lacking.
+Thus far, no CFD model has been developed for describing the
+hydrodynamics and CO mass transfer in a large-scale external-
+loop gas-lift reactor, for studying the required conditions to mini-
+mize the gas–liquid mass transfer limitations in an industrial syn-
+gas fermentation process. Next to that, the results of such a model
+would provide information to be used for subsequent reactor
+design and optimization. The model that we have developed in this
+study for hydrodynamics and mass transfer in an EL-ALR was ﬁrst
+tested and validated by comparing local axial gas and liquid ﬂow
+velocities in the riser and the downcomer, gas hold-up, and turbu-
+lence intensity with pilot-scale results obtained by Young et al.
+(1991) . Then, using the same model equations, the large-scale
+EL-GLR hydrodynamics and gas transfer were simulated and com-
+pared with correlations and observations from literature. For vary-
+ing bubble diameters (between 1 and 7 mm), higher temperatures
+and gas hold-up, and a range of headspace pressures, kLaand MTC
+were determined using different relations ( Table 2 ), in order to
+establish the best operation window for high industrialperformance.
+2. Methods
+2.1. Reactor geometry and mesh
+In this work, two reactor geometries were considered: A pilot-
+scale geometry to compare CFD model predictions with experi-
+mental results and a full-scale reactor for the subsequent mass
+transfer study. The hydrodynamic CFD model was applied to data
+obtained by Young et al. (1991) for a pilot-scale external-loop reac-
+tor (2.95 m high, riser and downcomer diameter of 19 and 14 cm,
+260 L reactor volume, 160 L liquid volume). This reactor conﬁgura-
+tion was chosen as it was found that the gas hold-up was indepen-
+dent of the riser diameter when wider than 14 cm ( Chisti and Moo-
+Young, 1987 ). The 3D geometry was developed using ANSYS
+Design Modeller. A polyhedral mesh (400000 cells, 0.27 minimumorthogonal quality) with a higher resolution in the dispersed-phase
+domain was developed in ANSYS Meshing ( Figure S2 ).
+The dimensions of the industrial-scale reactor were estimated
+from openly available pictures of the Shougang-LanzaTech plant,
+and are schematically represented in Fig. 1 . The 3D geometry has
+been developed using cylindrical bodies, with a ring sparger
+(Young et al., 1991 ) mounted at 0.1 m above the reactor base.
+The total volume of the reactor equals 840 m
+3, with an ungassed
+liquid volume of 565 m3, which roughly corresponds to the
+500 m3volume presented by LanzaTech ( Fackler et al., 2021 ). A
+mesh with 370,000 polyhedral cells, 0.3 minimum orthogonal
+quality, 20 cm cell size and three reﬁned boundary layers near
+all walls (including sparger), was constructed in Fluent Meshing.
+A mesh reﬁnement study done using meshes with 1.6 and 1.9 mil-
+lion cells established that the 370000-cell mesh was sufﬁcient fordetermining k
+Laand MTC within 10% accuracy ( Figure S2 ,Table S3 ).
+2.2. Fluid dynamic model
+The transient gas–liquid ﬂow was computed within ANSYS Flu-
+ent 2020R1 with the Eulerian multiphase ﬂow model, with implicit
+volume fraction formulation, dispersed RNG k-eturbulence model,
+which is the recommended choice for bubble column modelling
+(Laborde-Boutet et al., 2009 ), and standard wall functions. The
+forces involved in the two-phase interaction were surface tension
+(continuum surface force), drag (Fluent’s universal-drag model)
+and gravity. A model with a similar set of forces was used before
+for syngas fermentation modelling in BCRs ( Siebler et al., 2019 ).
+In the pilot-scale ALR, mean air bubble diameters ranged from 4
+to 6 mm ( Young et al., 1991 ), therefore as dispersed phase 5 mm
+bubbles were modelled. For the large-scale reactor, the mean bub-
+ble diameter is unknown and could range between 1 and 7 mm,
+based on the liquid properties and operating conditions ( Heijnen
+and Van’t Riet (1984) ). Because coalescence inhibition can be
+expected due to the salt and ethanol-rich fermentation broth,
+3 mm bubbles were modelled in the large-scale hydrodynamic
+model, according to Krevelen and Hoftijzer (1950) , by assuming a
+sparger oriﬁce size of 0.75 mm.
+A mass-ﬂow inlet was used on the sparger surface at the bottom
+of the reactor, providing a ﬁxed mass ﬂow rate of gas ( Table 3 ). A
+pressure-outlet with gas backﬂow was assumed at the top of the
+column, with the headspace pressure of 101 kPa in both reactors.
+Sensitivity analyses were done with 304 kPa and 608 kPa head-
+space pressure for the large-scale reactor. Boundary conditions
+considered a turbulence intensity of 5% and the local vessel diam-
+eter. To all the walls standard no-slip conditions were assigned.
+As the precise liquid medium properties are unknown due to
+the presence of variable concentrations of cells and ethanol, theproperties of water at 25 /C176C were assumed for the liquid phase
+(Table 4 ). Gas density differences were accounted for using the
+ideal gas law. Both reactor models contained a gas headspace, by
+initializing the headspace gas fraction to be 1.
+2.3. Mass transfer
+The mass transfer studies in the large-scale bioreactor were
+performed after a statistically stationary (‘‘steady”) ﬂow ﬁeld was
+established (after 1000 s simulation time, using 3 mm bubbles).
+For an additional 200 s, dynamic ﬂow data was exported every sec-
+ond for time-averaging and processed in Tecplot 360 EX 2018 R1.
+Based on the computed ﬂow ﬁeld, k
+Laand MTC were calculated
+via six different relations for kL(Table 2 ). Spherical bubbles were
+assumed because of the small bubble diameter and bubble-
+stabilizing effects of dissolved solutes (Equation (7)) as well as a
+linear gradient in axial gas phase CO mole fraction yCO(considering
+90% CO conversion ( Figure S1 )) (Equation (8)). The impact of theL. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+4bubble size was studied in the 1–7 mm range. The inﬂuence of the
+operating temperature was considered as it affects the liquid vis-
+cosity, CO diffusion coefﬁcient and Henry constant ( Table 5 ). For
+the calculation of MTC, microbial CO uptake kinetics are not
+required, instead a dissolved CO concentration of 0 g.L-1was
+assumed in all grid cells.
+MTC¼kLa/C1c/C3
+L;CO¼kL/C16eG
+dbeL/C1HCOpyCO ð7Þ
+yCOðzÞ¼/C0ðyCO;in/C00:9yCO;inÞ
+hDzþyCO;in ð8Þ2.4. Model solution
+The transient models were solved using ANSYS Fluent 2020R1.
+For the pilot-scale models, a time step of 0.01 s was used with a
+maximum of 30 iterations per time step, wherein the residuals
+decreased to O(10/C03). The results presented here were obtained
+by storing ﬂow data at the positions mentioned by Young et al.
+(1991) every 0.01 s, starting at 50 s (when a steady ﬂow ﬁeld
+was reached) until 110 s ﬂow time.
+For the industrial reactor, the time step dtwas gradually
+increased from an initial 0.01 s until 0.65 s, dt= 0.025 s until 3 s,
+dt= 0.05 s until 5 s and dt= 0.1 s from 5 s on. This time-stepping
+strategy was required to keep solution convergence (residu-
+als < O(10/C03)) within 10–25 iterations per time step, and found
+to be crucial to achieving convergence near the mesh-reﬁned spar-
+ger location. The solution methods, spatial discretization and relax-
+ation factors for both reactor models are given in Table S4 .
+3. Results and discussion
+In this section, the ﬂow pattern predicted by the CFD model will
+ﬁrst be compared with the pilot-scale data obtained by Young et al.
+(1991) (section 3.1). After this, the results at the large-scale are dis-
+cussed (section 3.2) in terms of the gas hold-up, ﬂow pattern and
+hydrodynamic regime. Then, results on mass transfer and strate-
+gies for relieving the gas–liquid mass transfer limitations will be
+Fig. 1. Schematic representation of a) the industrial-scale external-loop gas-lift reactor and b) the sparger geometry. The wavy line represents the initi al (ungassed) liquid
+height. All dimensions are in meters.
+Table 3
+Values uses for the mass ﬂow inlet boundary condition in the various models. Thesuperﬁcial gas velocity was calculated by determining the gas ﬂow rate (m
+3.s/C01) using
+the local pressure at the sparger ( Table S1 ). For scale comparison, the gas mass ﬂow
+per volume liquid is provided.
+Superﬁcial gas-velocity(cm.s
+/C01)Mass ﬂow per volume liquid
+(kg.m L-3
+.s/C01)Mass ﬂow inlet
+(kg.s/C01)
+Pilot-scale reactor
+0.96 2.37 /C110-33.96/C110-4
+2.1 5.19 /C110-38.66/C110-4
+4.7 1.14 /C110-21.90/C110-3
+8.4 2.04 /C110-23.4/C110-3
+Industrial-scale reactor
+2.8 3.73 /C110-32.11L. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+5discussed (section 3.3), before we sketch the implications of this
+research in the outlook (section 3.4).
+3.1. Pilot-scale ﬂow pattern
+The computed liquid velocity in the riser was compared with
+the velocity proﬁles along the radius obtained experimentallybyYoung et al. (1991) (Fig. 2 ). The computed mean liquid velocity
+in the riser approximates the measured one with maximum devi-
+ations of 36% ( Table S5 ). However, the computed velocity gradi-
+ents along the column radius were consistently smaller (i.e.
+ﬂatter velocity proﬁles) than those measured (i.e. showing usually
+a sharp maximum at the axis at r/R= 0). The radial proﬁles of the
+turbulence intensities in both the riser and downcomer are quiteTable 4
+Parameters used in the CFD models.
+Symbol Description Pilot-scale Industrial-scale Unit
+g Gravitational acceleration /C09.81 /C09.81 m.s/C02
+T Temperature 293.15 310.15 K
+p0 Operating pressure 101,325 101,325 Pa
+db Bubble diameter 5 /C110-33/C110-3m
+r Surface tension 0.072 0.072 N.m/C01
+Gas phase air syngas
+qG Gas density Ideal gas law Ideal gas law kg.m/C03
+gG Gas viscosity 1.78 /C110-51.72/C110-5kg.m/C01.s/C01
+yCO;in Inlet mole fraction – 0.5 mol CO.mol G-1
+Liquid phase water water
+qL Water density 998 998 kg.m/C03
+gL Liquid viscosity 1.0 /C110-31.0/C110-3kg.m/C01.s/C01
+Table 5
+Parameters used for mass transfer calculations.
+Symbol Description 20 /C176C3 7 /C176C Unit Source
+mL Kinematic viscosity 1.018 /C110-67.121 /C110-7m2.s/C01Reid et al. (1987)
+DL;CO CO diffusion coefﬁcient 1.78 /C110-92.71/C110-9m2.s/C01Cussler (2011)
+HCO Henry coefﬁcient 2.93 /C110-72.29/C110-7kg.m/C03.Pa/C01Sander (2015)
+Fig. 2. Comparison of radial proﬁles obtained by experiments in a pilot-scale EL-ALR ( Young et al., 1991 ) (ﬁlled circles) and mean values of CFD results (open circles with
+dashed lines) for different uG,s(8.4 (blue), 4.7 (black), 2.1 (red) and 0.96 cm.s/C01(cyan). a) the axial liquid velocity in the riser ( uL,ax), b) the axial liquid velocity in the
+downcomer ( -uL,ax), c) the axial gas velocity in the riser ( uG,ax), d) the turbulence intensity in the liquid in the riser and e) downcomer, and f) the gas hold-up in the riser. Error
+bars: the standard deviation of the CFD results during 60 s simulation time (data stored every 0.01 s).L. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+6similar to the data, but the model underestimates the turbulence
+intensity in the riser, while overestimating in the downcomer.
+This is probably a result of the simpliﬁed set of forces considered
+in the model. Roy et al. (2006) were able to model the radial liq-
+uid velocity proﬁle by using the standard k-emodel and taking
+the turbulence dispersion and lift forces into account, together
+with a conveniently chosen bubble size. On the other hand, liquid
+velocity measurement errors up to 10% for the riser were noted
+from a liquid phase mass balance by Young et al. (1991) , which
+could possibly explain part of the deviation between model and
+measurements. The (gas-free) downcomer velocity proﬁle, how-
+ever, showed good correspondence, as well as the proﬁles pre-
+dicted for the gas hold-up and gas velocity. The trends for
+increasing superﬁcial gas velocities were modelled correctly for
+all variables.
+Furthermore, by simulated injection of a liquid tracer (with the
+same properties as water) just above the sparger, it was deter-
+mined that the model can predict the typical circulating liquid
+mixing behaviour as often shown in airlift reactors ( Chisti and
+Moo-Young, 1987; Voncken et al., 1964 ). The tracer concentration
+proﬁle over time ctextracted from the CFD simulations was nor-
+malized with the ﬁnal (steady state) concentration ct,1. This nor-
+malized tracer concentration over time ( t) was ﬁtted with
+Equation (9)(Chisti and Moo-Young, 1987 ) expressing the ﬂuctua-
+tions of concentration over a normalized time h(h=t/tc, with tcthe
+circulation time), as function of the Bodenstein number
+(Bo¼uL;axLc=Dax,with Lcthe circulation length and Daxthe axial
+dispersion coefﬁcient).
+ct
+ct;1¼Bo
+4ph/C18/C191=2X1
+n¼1exp/C0ðn/C0hÞ2Bo
+4h"#
+ð9Þ
+In this way, Boand tcfor the EL-ALR were determined at sev-
+eral locations in the reactor ( Fig. 3 ). The model predicted Boval-
+ues around 45, which are typical estimations for Boin an ALR
+(Verlaan et al., 1989c, Verlaan et al. 1989a ), indicating the dom-
+inance of the plug-ﬂow in the reactor. A mean circulation time
+of about 7.6 s resulted from the tracer model with a uG,sof
+8.4 cm.s/C01.
+Considering that most of the ﬂow parameters were determined
+to be within a 25% range of experimental values ( Table S5 ) and the
+good correspondence with mixing theory, we considered the
+model appropriate for engineering calculations. Furthermore, the
+most important variable concerning mass transfer, the gas hold-
+up, was reasonably well predicted. In order to be sure that the
+radial liquid velocity proﬁle is properly predicted it will be com-
+pared with theoretical predictions for this proﬁle in large-scale
+EL-ALRs in the upcoming section.3.2. Large-scale ﬂow pattern
+In this section, the results of the large-scale reactor CFD model
+are presented. First, its ability to predict the gas fraction is dis-
+cussed, since this is a key variable regarding mass transfer. Then
+the gas and liquid velocity-ﬁelds are analysed in detail. Lastly,
+the radial proﬁles of the liquid velocity in the riser and the
+observed time-variations are discussed.
+The simulated gas hold-up in the EL-GLR was on average 0.13 at
+a superﬁcial gas velocity of 2.8 cm.s/C01. This value was in good
+agreement with the values obtained from several correlations
+available in literature for BCRs and EL-ALRs ( Table 6 ).
+The local values of the instantaneous gas hold-up ( Fig. 4 a) were
+averaged in time over 200 s ( Fig. 4 c). The CFD simulations indicate
+that at the bottom of the reactor, the freshly sparged gas is stronglypushed towards the wall of the riser, which might result in bubble
+coalescence, by the liquid exiting the downcomer. This is also vis-
+ible in the liquid ﬂow patterns ( Fig. 4 b, d). When the gas is pushed
+towards the left side, the local liquid velocity increases, creating a
+circulation loop around the downcomer outlet. Similar behaviour
+has been observed experimentally for bottom-plate spargers
+(Chisti and Moo-Young, 1987 ) and also from CFD models devel-
+oped for different EL-ALRs ( Roy et al., 2006 ).
+Halfway the riser the instantaneous gas hold-up shows an
+asymmetric distribution ( Fig. 4 a), while the time-averaged gas
+hold-up ( Fig. 4 c) is more symmetrical with high values along the
+riser axis, indicating an oscillating gas plume. This is also apparent
+from the velocity plots, with liquid moving back and forth between
+the sides ( Fig. 4 b). Such oscillating behaviour has been observed
+experimentally in internal-loop airlift reactors ( Ziegenhein et al.,
+2016 ). However, by time-averaging these movements cancelled-
+out and a quasi-symmetric velocity proﬁle was obtained
+(Fig. 4 d). While the liquid mostly rises, the negative values
+observed near the riser wall indicate a certain degree of backmix-
+ing, which has also been observed experimentally in ALRs
+(Merchuk and Siegel, 1988; Zhang et al., 2019 ). This internal liquid
+recirculation contributes to the overall mixing in the riser and cre-
+ates axial and radial dispersion.
+Approaching the gas–liquid separator at the top of the riser, the
+gas hold-up tends to increase as gas expansion (decreasing hydro-
+static pressure) and the wider separator diameter (decreasing the
+local liquid velocity) increase the gas residence time. This particu-
+lar section of the reactor could become advantageous for mass
+transfer because the expected lower CO saturation concentration
+(due to the lower hydrostatic pressure and a lower CO fraction in
+the gas) can be compensated by the increase in gas hold-up.
+Just above and in the downcomer inlet, high gas hold-ups as
+well as high liquid ﬂow velocities were predicted. While the liquid
+Fig. 3. The normalized concentration of a tracer obtained from the CFD model (black lines) and concentration according to the axial dispersion model for ALR ( Eq.(9)) (red
+lines), compared at four locations in the pilot-scale reactor. For all locations, the Bodenstein number was /C2445 with the root-mean-square-error (RMSE) smaller than 0.1. The
+CFD data have been obtained at uG,sof 8.4 cm.s/C01.L. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+7ﬂow is directed horizontally and downwards, the bubbles dragged
+into the downcomer will rise. This causes a sharp separation
+between gas and liquid and consequently high gas hold-ups. Sim-
+ilar behaviour was found by modelling EL-ALRs with comparable
+geometry ( Dhanasekharan et al., 2005; Karcz et al., 2013;
+Moudoud et al., 2018 ). Degassing geometries might prevent the
+gas to ﬂow into the downcomer ( Heijnen et al., 1991 ). At the left
+side of the downcomer, the drag by the liquid and buoyancy of
+the gas bubbles are in equilibrium and therefore a stable gas
+hold-up is obtained over time ( Fig. 4 c). This corresponds to the sec-
+ond gas entrainment regime ( Heijnen et al., 1997 ), wherein the gas
+bubbles entrained in the downcomer do not reach the bottom andonly partially ﬁll the downcomer. Higher local gas hold-up in the
+downcomer close to the riser wall was also observed in internal-
+loop airlift reactors ( Choi and Lee, 1990 ).
+The question emerges on how high the recirculation through
+the downcomer is in the EL-GLR compared with the internal recir-
+culation in the riser. From the velocity ﬁeld it was determined that,
+in this particular reactor geometry, about 14% of the liquid goes
+down via the downcomer and ﬂows downwards near the riser
+walls. This indicates that axial mixing in the riser is signiﬁcant
+and plug-ﬂow behaviour cannot be assumed for the liquid phase.
+Although the downcomer appears to be poorly used for the liquid
+circulation in the studied operation regime, it clearly increases the
+liquid ﬂowrates in the riser compared to a bubble column (with
+zero net axial liquid velocity). Such results highlight the added
+value of CFD predictions as this behaviour could not be predicted
+with simpler (1D) models.
+In the pilot-scale model, a parabolic velocity proﬁle was not
+observed ( Fig. 2 ) and further radial liquid ﬂow was not determined,
+therefore the large-scale model needed to simulate local axial and
+radial velocity variations. At several heights in the riser, the proﬁle
+of axial liquid velocity along the whole riser diameter was calcu-
+lated over time, then compared with a parabolic proﬁle (Equation
+(10),Fig. 5 ) characteristic for BCRs and ALRs ( Menzel et al., 1985 ).
+Both parameters of the parabolic proﬁles, velocity at the riser axis
+u
+L,ax(r= 0) and superﬁcial liquid velocity uL,s,ax, were taken from
+time-averaged CFD results.
+uL;axðrÞ¼ uL;axðr¼0Þ/C0uL;s;ax ðÞ 1/C02r
+R/C16/C17 2/C18/C19
+þuL;s;ax ð10ÞAt the lower locations (5.1 m and 7.4 m) the liquid velocity pro-
+ﬁle is skewed towards the left side, due to the liquid entering from
+the downcomer. However, the liquid velocity proﬁle shifts towards
+the central axis at higher locations in the riser, where it matches
+the proposed parabolic proﬁle. It should be noted that there are
+large time-variations, which should be taken into account when
+analysing mass transfer in EL-GLRs, for example by time-
+averaging for 200 s ( Figure S3 ).
+Many phenomena found at pilot-scale were also predicted by
+the simulations to occur in the large-scale external-loop reactor.
+Moreover, the predicted overall gas hold-up and liquid ﬂow veloc-
+ities showed a good match with literature relations. From all these
+indicators it can be concluded that with a CFD model the large-
+scale behaviour can be described properly. With this hydrody-
+namic model, subsequent calculations on kLaand MTC will be per-
+formed and are discussed in the next section.
+3.3. Mass transfer
+Syngas fermentation processes are developed towards a multi-
+tude of products, e.g. acids (acetic acid), alcohols (ethanol, propa-
+nol, butanol), ketones (acetone), glycols (2,3-butanediol),
+aromatics, dienes, esters and terpenes ( Köpke and Simpson,
+2020 ). Although the literature is very scarce on their inﬂuence on
+mass transfer in fermentation broths, it is known that the hydro-
+philic products inhibit bubble coalescence in water, thereby
+decreasing the Sauter mean bubble diameter ( d32)(Keitel and
+Onken, 1982 ), and increasing kLa(Zlokarnik, 1980 ). In a pilot-
+scale bubble column (3 m high, 20 cm width), Keitel and Onken
+(1982) found decreases in d32from 4 to 1 mm and doubling of eG
+from 2 to 4%, for a variety of alcohols. By increasing hydrophobic
+chain length, stronger effects (i.e. occurring at lower concentra-
+tions) were reported, for d32,eG, and kLa(Keitel and Onken, 1982;
+Zlokarnik, 1980 ). Similar results (<1 mm bubbles and highly
+increased eG) in tall bubble columns were obtained with ethanol
+(Besagni et al., 2016; Jamialahmadi and Müller-Steinhagen, 1992;
+Oels et al., 1976; Rollbusch et al., 2015 ), while Krishna et al.
+(2000) found that the ethanol stabilizes the homogeneous ﬂow
+regime (i.e. bubbly ﬂow at higher uG,s). In ALRs, however, organics
+increased eGup to a modest 30% ( Azher et al., 2005; Kojic ´et al.,
+2015 ). The smaller inﬂuence of organics on eGin ALRs compared
+to BCRs was explained by, amongst others, the higher velocities
+of the axial liquid ﬂow ( Weiland and Onken, 1981 ). The expected
+ethanol concentration in the LanzaTech reactor (50 g.L-1)(Köpke
+et al., 2011 ) is much higher than the minimum concentrations
+for coalescence inhibition (1–10 g.L-1)(Keitel and Onken, 1982 ).
+Therefore, we can assume a low d32(optimistic scenario: about
+1 mm; pessimistic scenario: 3 mm) in the scenario with ethanol,whereas scale-independent d
+32between 5 and 7 mm are observed
+in BCRs with air–water mixtures ( Garcia-Ochoa and Gomez, 2009;
+Heijnen and Van’t Riet (1984); Maximiano Raimundo et al., 2019 ).
+Likewise, it may be assumed that the produced ethanol could
+increase the local gas hold-up by at least 30% compared to solu-
+tions without ethanol.
+Furthermore, temperature dependencies of the physical proper-
+ties show a signiﬁcant inﬂuence on the mass transfer. By operating
+at a temperature of 37 /C176C,kLais estimated to be around 1.44 times
+higher than at 20 /C176C(Heijnen and Van’t Riet (1984) ), mainly due to
+an increased CO diffusion coefﬁcient (+150%) and decreased liquid
+kinematic viscosity (-45%). However, the effect of this elevated
+temperature will be counteracted by a lower CO solubility through
+its Henry coefﬁcient (-28%), which in turn negatively inﬂuences the
+MTC. The net effect of a higher temperature, however, will still be
+positive.
+Thus, for different models describing kL(Table 2 ), the impact of
+the bubble diameter (varied between 1 and 7 mm) and the mutualTable 6
+The 200 s time- and volume-averaged gas hold-up determined by CFD in the EL-GLR,riser and downcomer, compared with values from established correlations. The values
+ofu
+G,s,rand uL,s,rused in the correlations were the averages of the time-averaged axial
+superﬁcial velocities computed in six horizontal planes across the riser.
+Study Reactor type Equation Gas
+hold-up
+This study EL-GLR 3D CFD model 0.126
+Zuber and
+Findlay
+(1965)
+1BCR eG;r¼uG;s;r
+1:08ðuG;s;rþuL;s;rÞþv1
+b0.137
+Heijnen
+andVan’tRiet(1984)
+1BCR(homogeneousﬂow regime) eG;r¼uG;sv1
+b0.112
+Chisti and
+Moo-
+Young,1987EL-ALR
+eG;r¼uG;s;r
+0:24þ1:35uG;s;rþuL;s;r ðÞ0:930.124
+Bello et al.
+(1985)EL-ALReG¼0:16uG;s;r
+uL;s;r/C16/C170:56
+1þAd
+Ar/C16/C17/C01 0.149
+Choi and
+Lee(1993)
+2EL-ALReG;r¼0:288u0:504
+G;s;rAd
+Ar/C16/C17/C00:098Lcon
+Ld/C16/C17/C00:094 0.112
+1:vb1= 0.25 m/s, 2: Lcon= 0.5 m and Ld= 19.5 m. Other parameters given in Table S1 .L. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+8Fig. 4. Surface plots in the zy-plane ( x= 0) of the EL-GLR ( uG,s= 0.028 m.s/C01). a), b) gas hold-up and liquid velocity magnitude at a certain moment in time after establishing
+the ﬂow ﬁeld ( t= 1100 s), with arrows indicating the velocity vectors. c), d) gas hold-up and axial liquid velocity averaged over 200 s.L. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+9impact of increased hold-up and temperature were examined
+(Fig. 6 ). It was found that with a bubble diameter of 3 mm, most
+correlations predicted kLaand MTC lower than those required by
+the process ( Figure S1 ), even with an increased hold-up and tem-
+perature. However, with 2 mm bubbles, sufﬁcient kLaand MTC
+were predicted using the relations from Higbie (1935) and
+Kaštánek (1977) . In addition, when including hold-up and temper-
+ature effects with 2 mm bubbles, also the relations from
+Calderbank and Moo-Young (1961) and Linek et al. (2005) led to
+adequate kLaand MTC. If the bubble diameter would be 5 to
+7 mm, which is expected for air–water mixtures in industrial BCRs
+(Garcia-Ochoa and Gomez, 2009; Heijnen and Van’t Riet (1984) ),
+then all correlations predict insufﬁcient kLaand MTC, causing mass
+transfer limitations. These values correspond with the values fromTable 1 , stressing the validity of these relations in air–water
+dispersions.
+From this sensitivity analysis we can conclude that industrial-
+scale syngas fermentation in the EL-GLR requires small bubble
+diameters ( /C202 mm), which should be obtained in combination
+with a high gas-hold up at 37 /C176C. Ethanol presence promotes these
+conditions, while in air–water conditions (5 to 7 mm bubbles) themass transfer limitations would not be alleviated. Therefore, our
+results indicate that in an industrial syngas fermentation process
+towards bubble-stabilizing products, e.g. ethanol, the typical mass
+transfer limitations that are present in air–water systems can sig-
+niﬁcantly be alleviated.
+It is noted that there are large differences among the k
+Lavalues
+predicted using the different kL-relations. The relations based on
+Fig. 5. Radial proﬁles for the axial liquid velocity in the EL-GLR ( uG,s= 0.028 m.s/C01). Open circles: 200 s time-averaged mean velocities; Error bars: time-variations observed
+via the standard deviation; Dashed lines: parabolic proﬁle calculated with Equation (10).
+Fig. 6. kLa(a, b) and mass transfer capacity MTC (c, d), calculated using different kL-relations (1 to 6 in Table 2 ) for varying bubble diameters, while considering the effect of
+produced ethanol on the gas hold-up and the higher temperature (b, d). Red: Higbie (1935) , cyan: Calderbank and Moo-Young (1961) , green: Kaštánek (1977) , blue: Linek
+et al. (2005) , magenta: Lamont and Scott (1970) , black: Kawase and Moo-Young (1990) , Equation 1–6 ( Table 2 ), respectively. Error bars: standard deviation during a 200 s
+period with statistically stationary ﬂow ﬁeld; Black dashed line: lower value of the estimated range of the industrial process.L. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+10eddy energy dissipation rate (4–6) predict lower values than the
+bubble-based relations (1–2). The deviations with relations 1 and
+2 could be due to underestimation of eby the k-eturbulence model
+(Gimbun et al., 2009 ). Accounting for this with a scaling factor,
+based on the overall minimum power input ( Kuschel and Takors,
+2020; Roels and Heijnen, 1980 ), would result in a 22% increase in
+kLa. Moreover, it has been noted that relation 3 has a too high pro-
+portionality constant ( Kawase and Moo-Young, 1990 ) compared to
+the similar relations 4–6. Generally, sensitivity analyses with dif-
+ferent kL-relations should be done in future modelling work on
+gas–liquid mass transfer. Experiments in EL-ALRs could determine
+which relation describes kLthe best in the speciﬁc reactor and how
+the produced ethanol and the higher temperature would inﬂuence
+thekLa.
+In some cases the kLawas predicted to be sufﬁcient, while the
+MTC was not (e.g. relations 4 and 5). This indicates that the
+ideal-mixing assumption ( Figure S1 ) may not hold and, instead,
+thelocal values of kLaand solubility should be taken into consider-
+ation when computing MTC. Although high kLavalues were
+obtained at certain locations (such as in the separator), the contri-
+bution of these volumes to the overall mass transfer rate was found
+to be low because of the decreased CO saturation concertation
+(Fig. 7 ). However, the high kLaat the reactor top could be beneﬁcial
+for CO depletion such that the off-gas only contains residual
+amounts of CO. As LanzaTech patented a method with the aim of,
+amongst others, increasing mass transfer in the headspace via a
+so-called ‘showerhead’ ( Li et al., 2017 ), it is expected that these
+local high kLavalues at the top of the reactor are indeed required
+for maximizing gas conversion. Although signiﬁcant CO mass
+transfer was predicted in the downcomer, when microbial con-
+sumption takes place, only marginal transfer is expected as the rel-
+ative volume of the downcomer is small and as the EL-GLR is
+operated in the second hydrodynamic regime.
+High pressure fermentation has been mentioned as a promising
+strategy to increase the mass transfer rate of poorly soluble gases
+(Van Hecke et al., 2019 ). Patents indicate that in lab experiments
+with higher operating pressures (304 and 608 kPa) increased etha-nol titre and productivity was obtained ( Gaddy et al., 2001;
+Simpson et al., 2008 ). However, in the scientiﬁc literature, no ben-
+eﬁcial effect was found on the productivity, while C. ljungdahlii ’s
+product spectrum shifted from acetate and ethanol towards for-
+mate at increased pressures ( Oswald et al., 2018 ). Inhibitory effects
+were observed for CO with an inhibition constant of 60 kPa
+(Mohammadi et al., 2014 ), so that increased pressures could
+decrease the CO consumption rate. The gas saturation concentra-
+tion increases proportionally with the pressure (Equation (7)),
+but the gas hold-up would decrease (ideal gas law) with a constant
+gas (mass) ﬂow rate. In order to study these opposing phenomena,
+the effect of increasing the headspace pressure on the kLaand MTC
+was investigated by running CFD simulations with 304 and
+608 kPa headspace pressure.
+It was observed that increased headspace pressures decrease
+the kLasigniﬁcantly ( Fig. 8 ). This is due to the decrease in gas
+hold-up, which decreased from 0.13 to 0.054 and 0.033, at 304
+and 608 kPa respectively. Similar values of MTC at increased pres-
+sure were observed when it was calculated using the relations of
+Higbie (1935) and Calderbank and Moo-Young (1961) , while a
+slight decrease was observed with the eddy-based equation. Thus,
+the decrease in gas hold-up was neutralized by the solubility-
+increase. One should note that the compressor power requirement
+(Van Hecke et al., 2019 ) increases sharply for increased headspace
+pressures.
+At elevated pressures, one could increase the gas mass ﬂow rate
+linearly with pressure to obtain a constant superﬁcial gas velocity
+and thus kLa, without changing the hydrodynamic regime. In our
+study, the mass ﬂow rate was assumed constant at 2.11 kg.s/C01,
+causing decreasing superﬁcial gas velocities and hold-up at ele-
+vated pressured. As is it expected that LanzaTech operates six reac-
+tors to produce in total 48 kt.a-1ethanol ( Figure S1 ), a higher gas
+mass ﬂow rate at higher pressures was not likely. If the gas ﬂow
+rate would be increased proportionally with pressure (to obtain
+constant kLa), a near-linear relationship between MTC and the
+compressor power requirement is obtained ( Figure S4 ), making
+operating at overpressures an economical choice. Moreover, con-
+Fig. 7. Surface plots on the yz-plane of the EL-GLR ( x= 0), showing 200 s time-averaged values for a) the CO saturation concentration in the liquid, b) the kLaas predicted
+using the Higbie relation (Eq. 1), c) the mass transfer capacity, assuming dbof 3 mm, a 30% increase in gas-hold up compared to water due to the presence of ethanol and a
+temperature of 37 /C176C.L. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+11sidering CO-uptake kinetics, with high afﬁnity and inhibiting effect
+at high dissolved CO concentrations ( de Medeiros et al., 2020 ), we
+would not recommend operation at higher pressures.
+3.4. Outlook
+The hydrodynamics and gas–liquid mass transfer in an
+industrial-scale reactor for the conversion of CO-rich steel-mill
+off-gases by syngas fermentation were studied by computational
+ﬂuid dynamics (CFD). Simulation results indicated that conditions
+could be reached for industrially-sufﬁcient speciﬁc mass transfer
+rates ( kLa) and mass transfer capacities ( MTC). High MTC was found
+possible when the operating temperature is 37 /C176C and by produc-
+ing ethanol, which inhibits bubble coalescence to maintain rela-
+tively small bubbles ( db/C202 mm), and increases riser gas hold-up
+(/C2430%). We recognize that other factors (e.g. particular medium
+components or process engineering strategies) might also be
+deployed to obtain such mass transfer capacities. Since most of
+thekLarelations from literature ( Table 1 ) were derived in air–wa-
+ter systems, without considering any enhancing effects, further
+research is needed on the development of mass transfer correla-
+tions representing real fermentation conditions. Especially, these
+relations should consider the presence of bubble-stabilizing com-
+pounds such as ethanol, acetone, and acetic acid, as well as thepresence of salts, antifoam agents and microbial biomass. The
+addition of ﬁne particles (e.g. kieselguhr, silica) can also increase
+k
+Lasubstantially ( Schumpe et al., 1987 ), possibly by minimizing
+bubble coalescence ( Vazirizadeh et al., 2016 ), and could be
+included in such relations, which are pertinent for the develop-
+ment of more realistic CFD and process models.
+The two-phase ﬂow pattern in the large-scale reactor was found
+to be very dynamic, with large variations in the movement of a gas
+plume. As the local values of the gas solubility and kLadetermine
+MTC, the high spatio-temporal resolution that can be obtained
+via CFD was necessary for predicting the reactor performance
+and for determination of the main factors inﬂuencing mass trans-
+fer. Since the main limitation of CFD is its high computational
+demand, further research should focus on the development of
+coarse-grained computational models (such as compartment mod-
+els) to determine kLaand MTC in a faster way and as function of
+several variables such as the gas ﬂow rate, media composition (en-
+hancement agents), pressure and reactor scale and geometry.The strong dynamics of the computed ﬂow patterns in the
+large-scale reactor will determine the trajectories of microorgan-
+isms performing the syngas conversion. Consequently, the
+microorganisms would experience peaks and valleys in dissolved
+CO concentrations in an irregular fashion. By implementing CO-
+uptake kinetics, CO concentration proﬁles can be obtained for thedifferent operating conditions. Euler-Lagrangian simulations can
+then reveal what conditions microbes experience over time (‘lifeli-
+nes’) and how that would inﬂuence their (dynamic) behaviour
+(Lapin et al., 2004 ). Coupling the ﬂow ﬁeld with a metabolic model
+ofC. autoethanogenum could reveal the inﬂuence of these dynamic
+conditions on the bioprocess performance and (by)product spec-
+trum and guide the development of scale-down simulators and
+optimized reactor geometries ( Haringa et al., 2018 ).
+To develop an optimal bioreactor, spatial homogenization of
+mass transfer is imperative ( Köpke et al., 2011 ), requiring high
+k
+Lain zones with lower solubility (e.g., separator section) and
+low kLain zones with high solubility (e.g., lower riser section). Con-
+trolling the liquid ﬂow rate in the riser, which determines the riser
+gas hold-up, could be done to ﬁne-tune the local mass transfer
+capacity. Reducing the liquid backmixing could for example be
+accomplished by adding internal surfaces, such as perforated
+plates ( Merchuk and Siegel, 1988 ), which would additionally pro-
+mote local bubble-break up ( Teli and Mathpati, 2021 ), or by
+increasing the resistance in the downcomer ( Merchuk and Stein,
+1981; Weiland and Onken, 1981 ) by decreasing its diameter or
+adding a pump, to force the ﬂow at the optimal rate. By decreasing
+the liquid ﬂow rate in the riser, the riser gas hold-up can be
+increased, possibly leading to an increased mass transfer capacity.
+As this may increase the mixing time ( Verlaan et al., 1989c ), one
+should balance the impact of the mass transfer time with the liquid
+mixing time when designing large-scale EL-GLRs. Using the down-
+comer, the liquid velocity and thus the gas velocity and hold-up
+can be adjusted, which cannot be done in a bubble column. The
+downcomer can also be used for product removal towards the dis-
+tillation section, inﬂow of fresh medium or nutrients, heat transfer,
+and as source for supplying the showerhead ( Li et al., 2017 ).
+Alternatively, by positioning the sparger above the downcomer
+inlet, the gas ﬂow could be better distributed in the riser ( Chisti
+and Moo-Young, 1987 ). In this case, less bubble coalescence is
+expected as the gas is less likely to be pushed towards the wall
+opposite to the downcomer. Although the CO solubility is larger
+in the riser bottom, the higher sparger position would lead to a
+Fig. 8. Volume-average values of a) kLaand b) MTC in the EL-GLR for different headspace pressures, calculated via different kL-relationships ( Table 2 ) assuming dbof 3 mm, a
+30% increase in gas-hold up compared to water due to the presence of ethanol and a temperature of 37 /C176C. Red: Higbie (1935) , blue: Calderbank and Moo-Young (1961) ,
+magenta: Lamont and Scott (1970) . Bars: standard deviation during a 200 s period with statistically stationary ﬂow ﬁeld.L. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+12CO-depleted zone below the sparger, which decreases the overall
+mass transfer capacity. CFD simulations with a sparger above the
+downcomer inlet conﬁrm a 4–6% decrease in MTC, due to the low
+gas hold-up below the sparger ( Figure S5 ,Table S6 ). Further
+research on the sparger position and how the downcomer (and
+its position) inﬂuence bubble coalescence in ethanol-rich media
+could be helpful for designing industrial-scale EL-GLRs with higher
+productivity.
+In this study, all the CO transferred to the liquid phase was
+assumed to be instantaneously consumed by the microbes. In prac-
+tice, there will be CO dissolved in the liquid phase, thus decreasing
+the driving force of the mass transfer. The dissolved CO concentra-
+tion is determined not only by the local ﬂow conditions and mass
+transfer rates, but also by the local microbial CO uptake rate, gov-
+erned by the uptake kinetics (especially the afﬁnity). The literatureis very scarce on studies of CO uptake kinetics by Clostridia (e.g.
+Mohammadi et al. (2014) ). Detailed CO uptake kinetics using dis-
+solved CO concentration measurements should be developed with
+priority.
+Many authors ( Elisiário et al., 2021; Klasson et al., 1991; Yasin
+et al., 2015 ) explain the low mass transfer capacity obtained in
+syngas fermentation partly by the low solubility of CO. Solubility
+can also be affected by the ethanol fraction in the solution, and this
+effect has been mostly studied for O
+2dissolution. Shchukarev and
+Tolmacheva (1968) determined little impact of ethanol on the O 2
+solubility in the water–ethanol mixture for ethanol mole fractions
+below 0.2. Therefore, it is not expected that the CO solubility would
+be affected by the produced ethanol in the studied reactor condi-
+tions (50 g.L-1ethanol or mole fraction /C240.02 ( Köpke et al.,
+2011 )). Since O 2and CO have comparable Henry coefﬁcients at
+37/C176C (9.6 /C110-6and 8.2 /C110-6mol.m/C03
+.Pa/C01, respectively ( Sander,
+2015 )) and the CO fraction in syngas is often higher than the O 2frac-
+tion in air, we argue that the challenges that have to be addressed in
+aeration processes should be faced in syngas fermentation as well.
+Instead of attributing the poor performance to the solubility,
+research should focus on ways to enhance kLain the bioreactor,
+e.g. by the presence of organic products.
+Promising processes for the conversion of syngas towards other
+products, such as fatty acids ( Diender et al., 2016 ), acetone, iso-
+propanol and 2,3-butanediol ( Köpke and Simpson, 2020 ) have been
+developed. For successful commercialization of such processes, one
+could beneﬁt a lot if the produced products are mass transfer-
+enhancing, like ethanol, or even better.
+4. Conclusion
+With a CFD model, which was validated using published data
+from a pilot-scale reactor, we investigated the hydrodynamics of
+a large-scale external-loop gas-lift reactor. With this model, the
+gas–liquid mass transfer was studied for an industrial CO-to-
+ethanol fermentation process. Several relations describing the
+mass transfer coefﬁcient were evaluated and kLaand mass transfer
+capacity were computed for varying process conditions.
+At an operating temperature of 37 /C176C, with increased gas hold-
+up compared to air–water and smaller bubbles ( /C202 mm instead of
+5 to 7 mm), most available mass transfer relations predicted sufﬁ-
+cient kLaand MTC for an industrially viable syngas fermentation
+process, in line with data published by LanzaTech. We argue that
+this is possible since the produced ethanol inhibits bubble coales-
+cence, causing smaller bubbles and increased gas hold-up. This
+indicates that typical mass transfer limitations encountered in
+air–water systems can be alleviated under industrial syngas fer-
+mentation conditions.
+In spite of being computationally intensive, CFD can also be
+used for determining high-resolution process conditions that couldnot be accurately computed using simpler models. The developed
+hydrodynamic and mass transfer model can be used to advance
+research into reactor design for industrial syngas fermentation,
+for determination of the microbial response in such reactors using
+Euler-Lagrange modelling, and the development of scale-down
+simulators operated in a representative window.
+CRediT authorship contribution statement
+Lars Puiman: Conceptualization, Methodology, Investigation,
+Software, Formal analysis, Writing – original draft, Writing –
+review & editing. Britt Abrahamson: Conceptualization, Method-
+ology, Software, Investigation, Formal analysis. Rob G.J.M. van
+der Lans: Conceptualization, Writing – review & editing. Cees Har-
+inga: Conceptualization, Methodology, Writing – review & editing,
+Supervision. Henk J. Noorman: Conceptualization, Writing –
+review & editing, Supervision. Cristian Picioreanu: Conceptualiza-
+tion, Resources, Writing – review & editing, Supervision.
+Declaration of Competing Interest
+The authors declare that they have no known competing ﬁnan-
+cial interests or personal relationships that could have appeared
+to inﬂuence the work reported in this paper.
+Acknowledgements
+This work is written as part of the MicroSynC research pro-
+gramme (project number P16-10/5) and is (partly) ﬁnanced by
+the Netherlands Organization for Scientiﬁc Research (NWO).
+Appendix A. Supplementary material
+Supplementary data to this article can be found online at
+https://doi.org/10.1016/j.ces.2022.117770 .
+References
+Akita, K., Yoshida, F., 1973. Gas Holdup and Volumetric Mass Transfer Coefﬁcient in
+Bubble Columns. Effects of Liquid Properties. Ind. Eng. Chem. Process Des. Dev.
+12, 76–80. https://doi.org/10.1021/i260045a015 .
+Asimakopoulos, K., Gavala, H.N., Skiadas, I.V., 2018. Reactor systems for syngas
+fermentation processes: A review. Chem. Eng. J. 348, 732–744. https://doi.org/
+10.1016/j.cej.2018.05.003 .
+Azher, N.E., Gourich, B., Vial, C., Soulami Bellhaj, M., Bouzidi, A., Barkaoui, M., Ziyad,
+M., 2005. Inﬂuence of alcohol addition on gas hold-up, liquid circulation
+velocity and mass transfer coefﬁcient in a split-rectangular airlift bioreactor.
+Biochem. Eng. J. 23, 161–167. https://doi.org/10.1016/j.bej.2004.12.003 .
+Bello, R.A., Robinson, C.W., Moo-Young, M., 1985. Gas holdup and overall volumetric
+oxygen transfer coefﬁcient in airlift contactors. Biotechnol. Bioeng. 27, 369–381. https://doi.org/10.1002/bit.260270323 .
+Benalcázar, A.E., Noorman, H., Maciel Filho, R., Posada, J.A., 2020. Modeling ethanol
+production through gas fermentation: a biothermodynamics and mass transfer-
+based hybrid model for microbial growth in a large-scale bubble column
+bioreactor. Biotechnol. Biofuels 13, 1–19. https://doi.org/10.1186/s13068-020-
+01695-y .
+Besagni, G., Inzoli, F., De Guido, G., Pellegrini, L.A., 2016. Experimental investigation
+on the inﬂuence of ethanol on bubble column hydrodynamics. Chem. Eng. Res.
+Des. 112, 1–15. https://doi.org/10.1016/j.cherd.2016.06.009 .
+Bredwell, M.D., Srivastava, P., Worden, R.M., 1999. Reactor Design Issues for
+Synthesis-Gas Fermentations. Biotechnol. Prog. 15, 834–844. https://doi.org/
+10.1021/bp990108m .
+Calderbank, P.H., Moo-Young, M.B., 1961. The continuous phase heat and mass-
+transfer properties of dispersions. Chem. Eng. Sci. 16, 39–54. https://doi.org/
+10.1016/0009-2509(61)87005-X .
+Chisti, M.Y., Fujimoto, K., Moo-Young, M., 1986. Hydrodynamic and oxygen mass
+transfer studies in bubble columns and airlift bioreactors, in: Paper 117a
+Presented at AIChE Annual Meeting. Miami Beach.
+Chisti, M.Y., Moo-Young, M., 1987. Airlift Reactors: Characteristics, Applications and
+Design Considerations. Chem. Eng. Commun. 60, 195–242. https://doi.org/
+10.1080/00986448708912017 .L. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+13Choi, K.H., Lee, W.K., 1993. Circulation liquid velocity, gas holdup and volumetric
+oxygen transfer coefﬁcient in external-loop airlift reactors. J. Chem. Technol.
+Biotechnol. 56, 51–58. https://doi.org/10.1002/jctb.280560110 .
+Choi, K.H., Lee, W.K., 1990. Recirculation and ﬂow structures of gas in downcomer
+section of a concentric cylindrical airlift reactor. J. Chem. Technol. Biotechnol.
+48, 81–95. https://doi.org/10.1002/jctb.280480108 .
+Cussler, E.L., 2011. Diffusion: mass transfer in ﬂuid systems. Cambridge University
+Press, Cambridge, New York .
+de Medeiros, E.M., Noorman, H., Maciel Filho, R., Posada, J.A., 2020. Production of
+ethanol fuel via syngas fermentation: Optimization of economic performance
+and energy efﬁciency. Chem. Eng. Sci. X 5,. https://doi.org/10.1016/j.
+cesx.2020.100056 100056.
+Deckwer, W.D., Burckhart, R., Zoll, G., 1974. Mixing and mass transfer in tall bubble
+columns. Chem. Eng. Sci. 29, 2177–2188. https://doi.org/10.1016/0009-2509
+(74)80025-4 .
+Deckwer, W.D., Nguyen-Tien, K., Kelkar, B.G., Shah, Y.T., 1983. Applicability of axial
+dispersion model to analyze mass transfer measurements in bubble columns.
+AIChE J. 29, 915–922. https://doi.org/10.1002/aic.690290607 .
+Dhanasekharan, K.M., Sanyal, J., Jain, A., Haidari, A., 2005. A generalized approach to
+model oxygen transfer in bioreactors using population balances and
+computational ﬂuid dynamics. Chem. Eng. Sci. 60, 213–218. https://doi.org/
+10.1016/j.ces.2004.07.118 .
+Diender, M., Stams, A.J.M., Sousa, D.Z., 2016. Production of medium-chain fatty
+acids and higher alcohols by a synthetic co-culture grown on carbon monoxide
+or syngas. Biotechnol. Biofuels 9, 1–11. https://doi.org/10.1186/s13068-016-
+0495-0 .
+Elisiário, M.P., De Wever, H., Van Hecke, W., Noorman, H., Straathof, A.J.J., 2021.
+Membrane bioreactors for syngas permeation and fermentation. Crit. Rev.Biotechnol. 42 (6), 856–872. https://doi.org/10.1080/07388551.2021.1965952 .
+Fackler, N., Heijstra, B.D., Rasor, B.J., Brown, H., Martin, J., Ni, Z., Shebek, K.M., Rosin,
+R.R., Simpson, S.D., Tyo, K.E., Giannone, R.J., Hettich, R.L., Tschaplinski, T.J.,
+Leang, C., Brown, S.D., Jewett, M.C., Köpke, M., 2021. Stepping on the Gas to a
+Circular Economy: Accelerating Development of Carbon-Negative Chemical
+Production from Gas Fermentation. Annu. Rev. Chem. Biomol. Eng. 12, 439–470.
+https://doi.org/10.1146/ANNUREV-CHEMBIOENG-120120-021122 .
+Gaddy, J.L., Arora, D.K., Ko, C.-W., Phillips, J.R., Basu, R., Wikstrom, C.V., Clausen, E.C.,
+2001. Methods for increasing the production of ethanol from microbial
+fermentation. WO2002008438A3.
+Garcia-Ochoa, F., Gomez, E., 2009. Bioreactor scale-up and oxygen transfer rate in
+microbial processes: An overview. Biotechnol. Adv. 27, 153–176. https://doi.
+org/10.1016/j.biotechadv.2008.10.006 .
+Gimbun, J., Rielly, C.D., Nagy, Z.K., 2009. Modelling of mass transfer in gas-liquid
+stirred tanks agitated by Rushton turbine and CD-6 impeller: A scale-up study.
+Chem. Eng. Res. Des. 87, 437–451. https://doi.org/10.1016/j.cherd.2008.12.017 .
+Haringa, C., Tang, W., Wang, G., Deshmukh, A.T., van Winden, W.A., Chu, J., van
+Gulik, W.M., Heijnen, J.J., Mudde, R.F., Noorman, H.J., 2018. Computational ﬂuid
+dynamics simulation of an industrial P. chrysogenum fermentation with acoupled 9-pool metabolic model: Towards rational scale-down and design
+optimization. Chem. Eng. Sci. 175, 12–24. https://doi.org/10.1016/j.
+ces.2017.09.020 .
+Heijnen, J.J., Hols, J., Van Der Lans, R.G.J.M., Van Leeuwen, H.L.J.M., Mulder, A.,
+Weltevrede, R., 1997. A simple hydrodynamic model for the liquid circulationvelocity in a full-scale two- and three-phase internal airlift reactor operating in
+the gas recirculation regime. Chem. Eng. Sci. 52, 2527–2540. https://doi.org/
+10.1016/S0009-2509(97)00070-5 .
+Heijnen, J.J., Mulder, A., Weltevrede, R., Hols, J., van Leeuwen, H.L.J.M., 1991. Large
+Scale Anaerobic-Aerobic Treatment of Complex Industrial Waste Water Using
+Bioﬁlm Reactors. Water Sci. Technol. 23, 1427–1436. https://doi.org/10.2166/
+WST.1991.0595 .
+Heijnen, J.J., Van’t Riet, K., 1984. Mass transfer, mixing and heat transfer phenomena
+in low viscosity bubble column reactors. Chem. Eng. J. 28 (2), B21–B42. https://
+doi.org/10.1016/0300-9467(84)85025-X .
+Hernández-Calderón, O.M., González-Llanes, M.D., Rios-Iribe, E.Y., Jiménez-Lam, S.
+A., Del Carmen Chavez-Parga, M., Escamilla-Silva, E.M., 2017. Hydrodynamicsand mass transfer simulation in airlift bioreactor with settler using
+computational ﬂuid dynamics. Int. J. Chem. React. Eng. 15. https://doi.org/
+10.1515/IJCRE-2016-0173 .
+Higbie, R., 1935. The Rate of Absorption of a Pure Gas into a Still Liquid during Short
+Periods of Exposure. Trans. AIChE 31, 365–389 .
+Jackson, M.L., Shen, C.-C., 1978. Aeration and mixing in deep tank fermentation
+systems. AIChE J. 24, 63–71. https://doi.org/10.1002/AIC.690240108 .
+Jakobsen, H.A., 2014. Bubble Column Reactors, Chemical Reactor Modeling.
+Springer, Cham, Cham. 10.1007/978-3-319-05092-8_8
+Jamialahmadi, M., Müller-Steinhagen, H., 1992. Effect of alcohol, organic acid and
+potassium chloride concentration on bubble size, bubble rise velocity and gas
+hold-up in bubble columns. Chem. Eng. J. 50, 47–56. https://doi.org/10.1016/
+0300-9467(92)80005-U .
+Karcz, J., Musiał, M., Bitenc, M., Doman ´ski, M., 2013. CFD Modelling of the Fluid Flow
+Characteristics in an External-Loop Air-Lift Reactor. Chem. Eng. Trans. 32, 1435–
+1440. https://doi.org/10.3303/CET1332240 .
+Kaštánek, F., 1977. The volume mass transfer coefﬁcient in a bubble bed column.
+Collect. Czechoslov. Chem. Commun. 42, 2491–2497. https://doi.org/10.1135/
+cccc19772491 .
+Kawase, Y., Halard, B., Moo-Young, M., 1987. Theoretical prediction of volumetric
+mass transfer coefﬁcients in bubble columns for Newtonian and non-Newtonian ﬂuids. Chem. Eng. Sci. 42, 1609–1617. https://doi.org/10.1016/
+0009-2509(87)80165-3 .
+Kawase, Y., Hashiguchi, N., 1996. Gas - Liquid mass transfer in external-loop airlift
+columns with newtonian and non-newtonian ﬂuids. Chem. Eng. J. Biochem. Eng.
+J. 62, 35–42. https://doi.org/10.1016/0923-0467(95)03049-2 .
+Kawase, Y., Moo-Young, M., 1990. Mathematical models for design of bioreactors:
+Applications of. Kolmogoroff’s theory of isotropic turbulence. Chem. Eng. J. 43,
+B19–B41. https://doi.org/10.1016/0300-9467(90)80048-H .
+Keitel, G., Onken, U., 1982. THE EFFECT OF SOLUTES ON BUBBLE SIZE IN AIR-WATER
+DISPERSIONS. Chem. Eng. Commun. 17, 85–98. https://doi.org/10.1080/
+00986448208911616 .
+Klasson, K.T., Ackerson, M.D., Clausen, E.C., Gaddy, J.L., 1991. Bioreactor design for
+synthesis gas fermentations. Fuel 70, 605–614. https://doi.org/10.1016/0016-
+2361(91)90174-9 .
+Kojic´, P.S., Tokic ´, M.S., Šijac ˇki, I.M., Lukic ´, N.L., Petrovic ´, D.L., Jovic ˇevic´, D.Z., Popovic ´,
+S.S., 2015. Inﬂuence of the Sparger Type and Added Alcohol on the Gas Holdup
+of an External-Loop Airlift Reactor. Chem. Eng. Technol. 38, 701–708. https://
+doi.org/10.1002/ceat.201400578 .
+Köpke, M., Mihalcea, C., Bromley, J.C., Simpson, S.D., 2011. Fermentative production
+of ethanol from carbon monoxide. Curr. Opin. Biotechnol. 22, 320–325. https://
+doi.org/10.1016/j.copbio.2011.01.005 .
+Köpke, M., Simpson, S.D., 2020. Pollution to products: recycling of ‘above ground’
+carbon by gas fermentation. Curr. Opin. Biotechnol. 65, 180–189. https://doi.
+org/10.1016/j.copbio.2020.02.017 .
+Krevelen, D.W., Hoftijzer, P.J., 1950. Studies on gas bubble formation - calculation of
+interfacial area in bubble contactors. Chem. Eng. Prog. 46, 19–35 .
+Krishna, R., Urseanu, M.I., Dreher, A.J., 2000. Gas hold-up in bubble columns:
+inﬂuence of alcohol addition versus operation at elevated pressures. Chem. Eng.Process. Process Intensif. 39, 371–378. https://doi.org/10.1016/S0255-2701(00)
+00093-3 .
+Kuschel, M., Takors, R., 2020. Simulated oxygen and glucose gradients as a
+prerequisite for predicting industrial scale performance a priori. Biotechnol.
+Bioeng. 117, 2760–2770. https://doi.org/10.1002/BIT.27457 .
+Laborde-Boutet, C., Larachi, F., Dromard, N., Delsart, O., Schweich, D., 2009. CFD
+simulation of bubble column ﬂows: Investigations on turbulence models inRANS approach. Chem. Eng. Sci. 64, 4399–4413. https://doi.org/10.1016/j.
+ces.2009.07.009 .
+Lamont, J.C., Scott, D.S., 1970. An eddy cell model of mass transfer into the surface of
+a turbulent liquid. AIChE J. 16, 513–519. https://doi.org/10.1002/aic.690160403 .
+Lapin, A., Müller, D., Reuss, M., 2004. Dynamic behavior of microbial populations in
+stirred bioreactors simulated with Euler-Lagrange methods: Traveling along the
+lifelines of single cells. Ind. Eng. Chem. Res. 43, 4647–4656. https://doi.org/
+10.1021/ie030786k .
+Li, X., Cossey, B.J., Trevethick, S.R., 2017. Fermentation of gaseous substrates.
+US9617509B2.
+Li, X., Grifﬁn, D., Li, X., Henson, M.A., 2019. Incorporating hydrodynamics into
+spatiotemporal metabolic models of bubble column gas fermentation.Biotechnol. Bioeng. 116, 28–40. https://doi.org/10.1002/bit.26848 .
+Linek, V., Kordac ˇ, M., Moucha, T., 2005. Mechanism of mass transfer from bubbles in
+dispersions part II: Mass transfer coefﬁcients in stirred gas-liquid reactor and
+bubble column. Chem. Eng. Process. Process Intensif. 44, 121–130. https://doi.
+org/10.1016/j.cep.2004.05.009 .
+Maximiano Raimundo, P., Cloupet, A., Cartellier, A., Beneventi, D., Augier, F., 2019.
+Hydrodynamics and scale-up of bubble columns in the heterogeneous regime:
+Comparison of bubble size, gas holdup and liquid velocity measured in 4 bubble
+columns from 0.15 m to 3 m in diameter. Chem. Eng. Sci. 198, 52–61. https://
+doi.org/10.1016/J.CES.2018.12.043 .
+Menzel, T., Kantorek, H.J., Franz, K., Buchholz, R., Onken, U., 1985. Zur
+Strömungsstruktur in Airlift-Schlaufenreaktoren. Chemie Ing. Tech. 57, 139–141. https://doi.org/10.1002/cite.330570209 .
+Merchuk, J.C., Siegel, M.H., 1988. Air-lift reactors in chemical and biological
+technology. J. Chem. Technol. Biotechnol. 41, 105–120. https://doi.org/10.1002/
+jctb.280410204 .
+Merchuk, J.C., Stein, Y., 1981. Local hold-up and liquid velocity in air-lift reactors.
+AIChE J. 27, 377–388. https://doi.org/10.1002/aic.690270307 .
+Mohammadi, M., Mohamed, A.R., Najafpour, G.D., Younesi, H., Uzir, M.H., 2014.
+Kinetic studies on fermentative production of biofuel from synthesis gas using
+clostridium ljungdahlii. Sci. World J. 2014, 1–8. https://doi.org/10.1155/2014/
+910590 .
+Moudoud, N., Rihani, R., Bentahar, F., Legrand, J., 2018. Global hydrodynamic of
+hybrid external loop airlift reactor: Experiments and CFD modelling. Chem. Eng.Process. - Process Intensif. 129, 118–130. https://doi.org/10.1016/
+j.cep.2018.05.005 .
+Nakanoh, M., Yoshida, F., 1980. Gas Absorption by Newtonian and Non-Newtonian
+Liquids in a Bubble Column. Ind. Eng. Chem. Process Des. Dev. 19, 190–195.
+https://doi.org/10.1021/i260073a033 .
+Oels, U., Schügerl, K., Todt, J., 1976. Gasanteil,
+Stofftransportgeschwindigkeitskoefﬁzient und speziﬁsche Phasengrenzﬂäche
+in Gleichstrom-Blasensäulen. Chemie Ing. Tech. 48. https://doi.org/10.1002/
+cite.330480121 .
+Oswald, F., Stoll, I.K., Zwick, M., Herbig, S., Sauer, J., Boukis, N., Neumann, A., 2018.
+Formic Acid Formation by Clostridium ljungdahlii at Elevated Pressures of
+Carbon Dioxide and Hydrogen. Front. Bioeng. Biotechnol. 6, 1–10. https://doi.
+org/10.3389/FBIOE.2018.00006 .
+Reid, R.C., Prausnitz, J.M., Poling, B.E., 1987. The properties of gases and liquids.
+McGraw-Hill, New York .L. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+14Roels, J.A., Heijnen, J.J., 1980. Power dissipation and heat production in bubble
+columns: Approach based on nonequilibrium thermodynamics. Biotechnol.
+Bioeng. 22, 2399–2404. https://doi.org/10.1002/BIT.260221115 .
+Rollbusch, P., Becker, M., Ludwig, M., Bieberle, A., Grünewald, M., Hampel, U.,
+Franke, R., 2015. Experimental investigation of the inﬂuence of column scale,
+gas density and liquid properties on gas holdup in bubble columns. Int. J.Multiph. Flow 75, 88–106. https://doi.org/10.1016/j.
+ijmultiphaseﬂow.2015.05.009 .
+Roy, S., Dhotre, M.T., Joshi, J.B., 2006. CFD simulation of ﬂow and axial dispersion in
+external loop airlift reactor. Chem. Eng. Res. Des. 84, 677–690. https://doi.org/
+10.1205/cherd.05178 .
+Sander, R., 2015. Compilation of Henry’s law constants (version 4.0) for water as
+solvent. Atmos. Chem. Phys 15, 4399–4981. https://doi.org/10.5194/acp-15-
+4399-2015 .
+Schumpe, A., Saxena, A.K., Fang, L.K., 1987. Gas/liquid mass transfer in a slurry
+bubble column. Chem. Eng. Sci. 42, 1787–1796. https://doi.org/10.1016/0009-
+2509(87)80183-5 .
+Shchukarev, S.A., Tolmacheva, T.A., 1968. Solubility of oxygen in ethanol - Water
+mixtures. J Struct Chem 9 (1), 16–21. https://doi.org/10.1007/BF00744018 .
+Siebler, F., Lapin, A., Hermann, M., Takors, R., 2019. The impact of CO gradients on C.
+ljungdahlii in a 125 m3 bubble column: Mass transfer, circulation time and
+lifeline analysis. Chem. Eng. Sci. 207, 410–423. https://doi.org/10.1016/j.
+ces.2019.06.018 .
+Simpson, S.D., Forster, R.L.S., Rowe, M.J., Tran, P.L., Collet, C., 2008. Alcohol
+production process. WO2008115080A1.
+Teixeira, L.V., Moutinho, L.F., Romão-Dumaresq, A.S., 2018. Gas fermentation of C1
+feedstocks: commercialization status and future prospects. Biofuels. Bioprod.
+Bioreﬁning 12, 1103–1117. https://doi.org/10.1002/bbb.1912 .
+Teli, S.M., Mathpati, C.S., 2021. Experimental and Numerical Study of Gas-Liquid
+Flow in a Sectionalized External-Loop Airlift Reactor. Chinese Journal of
+Chemical Engineering 32, 39–60. https://doi.org/10.1016/j.cjche.2020.10.023 .
+Uchida, S., Tsuyutani, S., Seno, T., 1989. Flow regimes and mass transfer in counter-
+current bubble columns. Can. J. Chem. Eng. 67, 866–869. https://doi.org/
+10.1002/cjce.5450670521 .
+Van Benthum, W.A.J., Van Den Hoogen, J.H.A., Van Der Lans, R.G.J.M., Van
+Loosdrecht, M.C.M., Heijnen, J.J., 1999. The bioﬁlm airlift suspension extension
+reactor. Part I: Design and two-phase hydrodynamics. Chem. Eng. Sci. 54, 1909–
+1924. https://doi.org/10.1016/S0009-2509(99)00034-2 .
+Van der Lans, R.G.J.M., 1985. Hydrodynamics of a bubble column loop reactor. Delft
+University of Technology, Delft .
+Van Hecke, W., Bockrath, R., De Wever, H., 2019. Effects of moderately elevated
+pressure on gas fermentation processes. Bioresour. Technol. 293, 122129.
+https://doi.org/10.1016/j.biortech.2019.122129 .Vatai, G.Y., Tekic ´, M.N., 1989. Gas hold-up and mass transfer in bubble columns
+with pseudoplastic liquids. Chem. Eng. Sci. 44, 2402–2407. https://doi.org/
+10.1016/0009-2509(89)85178-4 .
+Vazirizadeh, A., Bouchard, J., Chen, Y., 2016. Effect of particles on bubble size
+distribution and gas hold-up in column ﬂotation. Int. J. Miner. Process. 157,
+163–173. https://doi.org/10.1016/j.minpro.2016.10.005 .
+Verlaan, P., Van Eijs, A.M.M., Tramper, J., Riet, K.V., Luyben, K.C.A.M., 1989a.
+Estimation of axial dispersion in individual sections of an airlift-loop reactor.
+Chem. Eng. Sci. 44 (5), 1139–1146. https://doi.org/10.1016/0009-2509(89)
+87013-7 .
+Verlaan, P., Vos, J.C., Van, T., Riet, K., 1989b. Axial dispersion and oxygen transfer in
+the transition from bubble column to airlift-loop reactor. J. Chem. Technol.
+Biotechnol. 45 (3), 181–190. https://doi.org/10.1002/jctb.280450303 .
+Verlaan, P., Vos, J.C., Van, T., Riet, K., 1989c. Hydrodynamics of the ﬂow transition
+from a bubble column to an airlift-loop reactor. J. Chem. Technol. Biotechnol. 45
+(2), 109–121. https://doi.org/10.1002/jctb.280450204 .
+Voncken, R.M., Holmes, D.B., den Hartog, H.W., 1964. Fluid ﬂow in turbine-stirred,
+bafﬂed tanks-III. Dispersion during circulation. Chem. Eng. Sci. 19, 209–213.https://doi.org/10.1016/0009-2509(64)85031-4 .
+Weiland, P., Onken, U., 1981. Fluid dynamics and mass transfer in an airlift
+fermenter with external loop. Ger. Chem. Eng. 4, 42–50 .
+Yasin, M., Jeong, Y., Park, S., Jeong, J., Lee, E.Y., Lovitt, R.W., Kim, B.H., Lee, J., Chang, I.
+S., 2015. Microbial synthesis gas utilization and ways to resolve kinetic andmass-transfer limitations. Bioresour. Technol. 177, 361–374. https://doi.org/
+10.1016/j.biortech.2014.11.022 .
+Young, M.A., Carbonell, R.G., Ollis, D.F., 1991. Airlift bioreactors: Analysis of local
+two-phase hydrodynamics. AIChE J. 37, 403–428. https://doi.org/10.1002/
+aic.690370311 .
+Zhang, T., Wei, C., Feng, C., Ren, Y., Wu, H., Preis, S., 2019. Advances in characteristics
+analysis, measurement methods and modelling of ﬂow dynamics in airlift
+reactors. Chem. Eng. Process. - Process Intensif. 144, 107633. https://doi.org/
+10.1016/j.cep.2019.107633 .
+Ziegenhein, T., Zalucky, J., Rzehak, R., Lucas, D., 2016. On the hydrodynamics of
+airlift reactors, Part I: Experiments. Chem. Eng. Sci. 150, 54–65. https://doi.org/
+10.1016/j.ces.2016.04.039 .
+Zlokarnik, M., 1980. Koaleszenzphänomene im System gasförmig/ﬂüssig und deren
+Einﬂuß auf den O2-Eintrag bei der biologischen Abwasserreinigung.
+Korrespondenz Abwasser 27, 728–734 .
+Znad, H., Báleš, V., Markoš, J., Kawase, Y., 2004. Modeling and simulation of airlift
+bioreactors. Biochem. Eng. J. 21, 73–81. https://doi.org/10.1016/j.
+bej.2004.05.005 .
+Zuber, N., Findlay, J.A., 1965. Average volumetric concentration in two-phase ﬂow
+systems. J. Heat Transfer 87, 453–468. https://doi.org/10.1115/1.3689137 .L. Puiman, B. Abrahamson, Rob G.J.M. van der Lans et al. Chemical Engineering Science 259 (2022) 117770
+15

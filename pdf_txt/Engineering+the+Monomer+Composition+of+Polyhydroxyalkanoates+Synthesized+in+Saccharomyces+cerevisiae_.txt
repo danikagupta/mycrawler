@@ -1,0 +1,956 @@
+This document is downloaded from the
+VTT Research Information Portal
+https://cris.vtt.fi
+VTT
+https://www.vttresearch.com
+VTT Technical Research Centre of Finland Ltd
+P.O. box 1000
+FI-02044 VTT
+FinlandBy using VTT Research Information Portal you are bound by the following Terms &
+Conditions.
+I have read and I understand the following statement:
+This document is protected by copyright and other intellectual property rights, and
+duplication or sale of all or part of any of this document is not permitted, except duplication
+for research use or educational purposes in electronic or print form. You must obtain
+permission for any other use. Electronic or print copies may not be offered for sale.
+VTT Technical Research Centre of Finland
+Production of D-lactic acid containing polyhydroxyalkanoate polymers in
+yeast Saccharomyces cerevisiae
+Ylinen, Anna; Maaheimo, Hannu; Anghelescu-Hakala, Adina; Penttilä, Merja; Salusjärvi,
+Laura; Toivari, Mervi
+Published in:
+Journal of industrial microbiology and biotechnology
+DOI:
+10.1093/jimb/kuab028
+Published: 01/06/2021
+Document Version
+Publisher's final version
+License
+CC BY
+Link to publication
+Please cite the original version:
+Ylinen, A., Maaheimo, H., Anghelescu-Hakala, A., Penttilä, M., Salusjärvi, L., & Toivari, M. (2021). Production of
+D-lactic acid containing polyhydroxyalkanoate polymers in yeast Saccharomyces cerevisiae. Journal of industrial
+microbiology and biotechnology, 48(5-6), Article kuab028. https://doi.org/10.1093/jimb/kuab028
+Download date: 29. Aug. 2024Journal of Industrial Microbiology and Biotechnology ,2021,48,kuab028
+DOI: 10.1093/jimb/kuab028
+Advance access publication date: 26 April 2021
+Metabolic Engineering and Synthetic Biology – Original Paper
+Production of d-lactic acid containing
+polyhydroxyalkanoate polymers in yeast
+Saccharomyces cerevisiae
+Anna Ylinen1,Hannu Maaheimo1,Adina Anghelescu-Hakala1,Merja Penttilä1,2,Laura Salusjärvi1, Mervi Toivari1
+1VTT Technical Research Centre of Finland Ltd.,P.O.Box 1000,FI-02044 VTT,Espoo,Finland
+2Department of Bioproducts and Biosystems,School of Chemical Engineering,Aalto University,P.O.Box 11000,FI-00076 Aalto,Espoo,Finland
+Correspondence should be addressed to: Anna Ylinen,VTT,P.O.Box 1000,FI-02044 VTT,Finland.Phone: +358 505448534.E-mail: anna.ylinen@vtt.fi
+Abstract: Polyhydroxyalkanoates (PHAs) provide biodegradable and bio-based alternatives to conventional plastics. Incorporation
+of 2-hydroxy acid monomers into polymer, in addition to 3-hydroxy acids, offers possibility to tailor the polymer properties. In this
+study, poly(D-lactic acid) (PDLA) and copolymer P(LA-3HB) were produced and characterized for the first time in the yeast Saccha-
+romyces cerevisiae . Expression of engineered PHA synthase PhaC1437 Ps6–19, propionyl-CoA transferase Pct540Cp, acetyl-CoA acetyl-
+transferase PhaA, and acetoacetyl-CoA reductase PhaB1 resulted in accumulation of 3.6% P(LA-3HB) and expression of engineered
+enzymes PhaC1Pre and PctMe resulted in accumulation of 0.73% PDLA of the cell dry weight (CDW). According to NMR, P(LA-3HB)
+contained D-lactic acid repeating sequences. For reference, expression of PhaA, PhaB1, and PHA synthase PhaC1 resulted in accu-
+mulation 11% poly(hydroxybutyrate) (PHB) of the CDW. Weight average molecular weights of these polymers were comparable to
+similarpolymersproducedbybacterialstrains,24.6,6.3,and1130kDaforP(LA-3HB),PDLA,andPHB,respectively.Theresultssuggest
+thatyeast,asarobustandacidtolerantindustrialproductionorganism,couldbesuitableforproductionof2-hydroxyacidcontaining
+PHAsfromsugarsorfrom2-hydroxyacidcontainingrawmaterials.Moreover,thewidesubstratespecificityofPHAsynthaseenzymes
+employed increases the possibilities for modifying copolymer properties in yeast in the future.
+Keywords: Poly(D-lactic acid),PHB,Copolymer,Biopolymer, Saccharomyces cerevisiae
+Introduction
+Global problems related to greenhouse gas emissions and solid
+wastemanagementhaveincreasedinteresttoreplacepetroleum-
+based plastics with the biobased and microbially produced poly-
+hydroxyalkanoate (PHA) polymers. PHAs are biodegradable both
+in marine (Dilkes-Hoffman et al., 2019) and soil environments
+(Fernandes et al., 2020), which gives them unique advantage
+over other plastic materials.Over 150 different hydroxyalkanoate
+molecules are identified as possible PHA monomers (Koller, 2018;
+Rehm,2003). Physical properties of PHA polymers can be up-
+graded by designing controlled block and random copolymers
+(McChalicher & Srienc, 2007; Pederson et al., 2006; Yamada et al.,
+2009).ThesecarrynewfeaturesincomparisontonativePHApoly-
+mers and enable the use of PHA materials in even wider range of
+applications.
+The use of 2-hydroxy acids and bioproduction of poly(d-lactic
+acid) (PDLA) and copolymer P(LA-3HB) have so far been studied
+mainlyinengineeredbacterialstrains(Choietal., 2016;Jungetal.,
+2010;Taguchietal., 2008;Y angetal., 2010).Interesttowardsyeast
+as production host for PHA production has however steadily in-
+creased. PDLA production in yeast Yarrowia lipolytica was shown
+withd-lacticacidfedfromtheculturemedia(Lajusetal., 2020).In
+addition,production of poly(hydroxybutyrate) (PHB) and medium
+chain length (mcl) PHAs from sugars has been demonstrated in
+engineered yeasts including Saccharomyces cerevisiae ,Y. l i p o l y t i c a ,
+and Pichia pastoris (Gaoetal., 2015;Kocharinetal., 2013;Leafetal.,
+1996;Lietal., 2016;Poirieretal., 2002).Themetabolicengineering
+oftheseeukaryoticcellsandoptimizationoftheircultivationcon-ditions have already resulted in up to 30-fold increase in PHB and
+mcl-PHA production, reaching accumulation of 16–30% of poly-
+mers of their cell dry weight (CDW) (Carlson & Srienc, 2006;d e
+Las Heras et al., 2016; Portugal-Nunes et al., 2017; Rigouin et al.,
+2019; Vijayasankaran et al., 2005). Yeasts are attractive hosts for
+production of PHA polymers,because of their robustness and ca-
+pability to use cheap raw materials as carbon sources. They also
+tolerate high concentrations of sugars and organic acids. Yeast
+bioprocessesarealsonotpronetophageinfectionspresentinbac-
+terialfermentations.Thebiggercellsizeofyeastcouldpotentially
+enable accumulation of larger PHA granules. Yeast also contain
+membraneboundorganelles,andrecentlytargetingthePHAsyn-
+thase to peroxisomes increased the PDLA accumulation by over
+20-fold in Y. l i p o l y t i c a (Lajus et al., 2020).
+In the biosynthesis of PDLA, copolymer P(LA-3HB), and other
+2-hydroxyacid containing PHA polymers, two key enzymes are
+needed.Propionyl-CoA transferases (Pct) convert 2-hydroxyacids,
+including lactic acid, to 2-hydroxyacyl-CoAs, which are then fur-
+ther polymerized by engineered PHA synthases (PhaC) (Fig. 1).
+Native PHA synthases can polymerize efficiently only 3-, 4-, 5-,
+and 6-hydroxyacyl-CoA monomers (Choi et al., 2019). Class II
+PHA synthases from Pseudomonas species have been modified
+to accept also 2-hydroxyacyl-CoAs (Taguchi et al., 2008;Y a n g
+et al.,2010). Change in four amino acids at E130, S325, S477, and
+Q481enables in vivopolymerizationofd-lactyl-CoA,glycolyl-CoA,
+d-2-hydroxybutyryl-CoA,and even some aromatic hydroxyl acids
+(Lajusetal., 2020;Y angetal., 2018).Theabilityoftheseengineered
+PHA synthases to combine wide range of different monomers
+Received: January 26,2021. Accepted: April 13,2021.
+© The Author(s) 2021.Published by Oxford University Press on behalf of Society of Industrial Microbiology and Biotechnology.This is an Open Access a rticle
+distributed under the terms of the Creative Commons Attribution License ( http://creativecommons.org/licenses/by/4.0/ ),which permits unrestricted reuse,
+distribution,and reproduction in any medium,provided the original work is properly cited.Downloaded from https://academic.oup.com/jimb/article/48/5-6/kuab028/6253250 by VTT Information Service user on 22 July 2021
+2| Journal of Industrial Microbiology and Biotechnology ,2021,Vol.48,kuab028
+Fig. 1.Metabolic pathways for production of poly(hydroxybutyrate) (PHB) (Sandström et al., 2015),poly(d-lactic acid) (PDLA) ( Prabhu et al., 2012;Y a n g
+et al.,2010,2011),and their copolymer P(LA-3HB).d-Lactic acid is produced from pyruvate with a stereospecific d-lactate dehydrogenase (ldhA) from L.
+mesenteroides (Baek et al., 2016).
+provides the possibility to produce polymers with different prop-
+erties, potentially designed by modeling (Jiang et al., 2020). Since
+all PHA synthases are strictly stereospecific their polymerization
+is possible only for R-enantiomers. The production of intracellu-
+lar d-lactic acid has been enhanced, for example, by expressing
+a stereospecific d-lactate dehydrogenase (ldhA) and by deleting
+endogenous d-lactate dehydrogenase (Choi et al., 2016). Several
+Pct enzymes can convert d-lactic acid to d-lactyl-CoA, for exam-
+ple wild type PctMe from Megasphaera elsdenii (Prabhu et al., 2012;
+Taguchi et al., 2008),andengineeredPct540 Cpfrom Clostridium pro-
+pionicum (Yang et al., 2010). Pct540 Cpgene has one active muta-
+tion at V193A and three non-active mutations at T78C, T669C,
+and A1125G. For production of PHB, two acetyl-CoA molecules
+(CoA, Coenzyme A) are converted to acetoacetyl-CoA by acetyl-
+transferase (PhaA). Acetoacetyl-CoA is then further converted to
+3-hydroxybutyryl-CoA (3HB-CoA) by acetoacetyl-CoA reductase
+(PhaB1). Finally 3HB-CoA monomers are combined to long PHB
+chains by PHA synthase (PhaC1) (Fig. 1).
+Although PHA production has been studied extensively in bac-
+terial hosts during the past decades, production in yeast hosts
+has caught less attention. The main polymer produced has been
+PHB,andonlyonerecentpaperdescribestheuseof2-hydroxyacid
+monomers in yeast Y. l i p o l y t i c a (Lajus et al., 2020). We wanted to
+establish a robust S. cerevisiae platform that could potentially use
+a wide range of monomers.We engineered S. cerevisiae strains for
+productionofPDLA,PHB,andtheircopolymerP(LA-3HB)fromglu-
+cose.We demonstrated polymerization of 3-hydroxybutyrate and
+d-lacticacidforco-andhomopolymerswithwidesubstratespeci-
+ficity PHA synthases PhaC1437 Ps6–19and PhaC1Pre in S. cerevisiae .These enzymes were used since they have shown efficient lac-
+tic acid incorporation in P(LA-3HB) copolymer in recombinant E.
+coli(Yang et al., 2011).Formed polymers were extracted and their
+molecular properties were analyzed.This work paves the way for
+design and production of new homo- and copolymers in yeast in
+the future.
+Materials and Methods
+Genes, Plasmids, and Strains
+The genes and plasmids used in this study are listed in Table 1.
+ThesequencesofPhaA,PhaB1,andPhaC1weredownloadedfrom
+GenBank. Genes were codon optimized for expression in S. cere-
+visiae, ordered from Integrated DNA Technologies, and cloned
+into 2 μplasmids containing strong constitutive promoters by us-
+ing Gibson Assembly (E2611S, New England BioLabs) or modular
+cloningmethod(Leeetal., 2015).E. coliTOP10cellswereusedasa
+hostforallplasmidconstructions. E. colistrainswerecultivatedat
+37°CinLuria–Bertanimediumwitheitherkanamycin(50 μgml–1)
+or ampicillin (100 μgm l–1).
+The yeast strains are listed in Table 2. Plasmids were trans-
+formed by using lithium acetate method (Gietz & Schiestl, 2007).
+Strains H3900 (CEN.PK102-5B) and H3895 (CEN.PK113-5D), kindly
+provided by Dr. P. Kötter (Institut für Mikrobiologie, J.W. Goethe
+Universität Frankfurt, Germany), were used as parental strains.
+The d-lactate dehydrogenase gene ( DLD1) was deleted to increase
+availabilityofd-lacticacid in vivo(Baeketal., 2016)byintegration
+of stereospecific d-lactate dehydrogenase gene ( ldhA)f r o m Leu-
+conostoc mesenteroides under the TDH3promoter. PhaAand phaB1Downloaded from https://academic.oup.com/jimb/article/48/5-6/kuab028/6253250 by VTT Information Service user on 22 July 2021
+Ylinen et al. |3
+Table 1. Enzymes and Plasmids Used in the Study
+Name Description Reference
+Enzymes
+PhaC1437 Ps6–19 PHA synthase from Pseudomonas sp.MBEL 6–19 with amino acid substitutions
+E130D/S325T/S477G/Q481K,LR699171Yang et al. ( 2010)
+PhaC1Pre PHA synthase from Pseudomonas resinovorans ,with amino acid substitutions
+E130D/S325T/S477G/Q481K,LR699170Yang et al. ( 2011)
+Pct540Cp Propionyl-CoA transferase Pct540 from Clostridium propionicum ,with V193A and four
+silent nucleotide mutations T78C,T669C,A1125G,and T1158C,LR699168Yang et al. ( 2010)
+PctMe Propionyl-CoA transferase from Megasphaera elsdenii, LR699169 Prabhu et al.( 2012)
+PhaA Acetyl-CoA acetyltransferase from Cupriavidus necator ,KP681582 Sandström et al.( 2015)
+PhaB1 Acetoacetyl-CoA reductase from C. necator, KP681583 Sandström et al.( 2015)
+PhaC1 PHA synthase from C. necator ,KP681584 Sandström et al.( 2015)
+LdhA Stereospecific d-lactate dehydrogenase from Leuconostoc mesenteroides, LR699167 Baek et al.( 2016)
+Plasmids
+B9660 phaA, phaB and phaC1
+(pTEF1-phaA-tENO1-pTDH3-phaB-tSSA1-pPGK1-phaC1-tADH1-URA3)This article
+B9663 pctMeand phaC1437 Ps6–19(pTEF1-pctMe-tENO1-pTDH3-phaC1437 Ps6–19-SSA1-LEU2)T h i s a r t i c l e
+B9664 pctMeand phaC1Pre (pTEF1-pctMe-tENO1-pTDH3-phaC1Pre -tSSA1-LEU2)T h i s a r t i c l e
+B9665 pct540Cp and phaC1437 Ps6–19(pTEF1-pct540Cp -tENO1-pTDH3-phaC1437 Ps6–19-tSSA1-LEU2)T h i s a r t i c l e
+B9666 pct540Cp and phaC1Pre (pTEF1-pct540Cp -tENO1-pTDH3-phaC1Pre -tSSA1-LEU2)T h i s a r t i c l e
+B9667 phaand phaB(pTEF1-phaA-tENO1-pTDH3-phaB-tSSA1-URA3)T h i s a r t i c l e
+Table 2. Yeast Strains Used in the Study
+Name Description Product
+H3900 S. cerevisiae ,CEN.PK102–5B ( MATa his3- /Delta11 ura3–52 leu2–3 112 TRP1 MAL2–8c SUC2 )
+H3895 S. cerevisiae ,CEN.PK113–5D ( MATa HIS3 ura3–52 LEU2, TRP1 MAL2–8c SUC2 )
+H5513 H3900 with integration of ldhAinto DLD1locus ( MATa his3- /Delta11 ura3–52 leu2–3 112 TRP1 MAL2–8c SUC2,
+DLD1::ldhA )d-Lactic acid
+H5514 H5513 with integration of phaA, phaB and HIS3tohis3-/Delta11locus ( MATa HIS3 ura3–52 leu2–3112 TRP1
+MAL2–8c SUC2 ,DLD1::ldhA, PhaA, PhaB )d-Lactic acid,3-HB-CoA
+H5519 H5513 with B9663 PDLA
+H5520 H5513 with B9664 PDLA
+H5521 H5513 with B9665 PDLA
+H5522 H5513 with B9666 PDLA
+H5523 H5514 with B9665 P(LA-co-3HB)
+H5524 H5514 with B9666 P(LA-co-3HB)
+H5529 H3895 with B9660 PHB
+H5531 H3895 with B9667 3HB-CoA
+genes with TEF1and TDH3promoters, respectively, were inte-
+grated into the his3-/Delta11locus.
+Shake Flask Cultivations
+Yeaststrainswereculturedinsyntheticcomplete(SC)medialack-
+ing either leucine (strains H5519–H5524) or uracil (strains H5529
+andH5531).Controlstrainswithoutplasmids(H5513,H5514)were
+grown in SC medium. All cultivations were supplemented with
+20 g l–1glucose as a carbon source and carried out in 250 ml Er-
+lenmeyerflasksat30°Cwith220rpmshaking.Inoculaweregrown
+in same liquid media and washed twice with sterile distilled wa-
+terbeforestartingthecultivationsin50mloffreshgrowthmedia
+for 72 hr.In the first round,three different biological replicates of
+each strain were grown and analyzed for their PHA production.
+Cultivation and analysis of the best producing replicate of each
+strain was then repeated with three identical replicates, starting
+from OD 6005a n df r o mO D 6000.2.Cell Growth, pH, and Extracellular Metabolites
+The cell growth was monitored by measuring the optical den-
+sity (OD 600) of the cultures at 600 nm with VitroSpec 2100 Pro
+(AmershamBiosciences)andbymeasuringtheCDWfromfiltered
+samples.BeforetheCDWanalysis,glassmicrofiberfilters(55mm,
+GF/B Whatman) were dried over night at 100°C and weighted.For
+analysis,samples of 2 ml were filtered,washed three times,dried
+at 100°C overnight, and weighted. The CDW values of PHB pro-
+ducing strains were calculated based on conversion of measured
+OD600values to CDW,since these growth parameters showed lin-
+ear correlation with R2value of 0.98 in the OD 600range 0.99–
+21.35 (unpublished). The pH of the cultivation media was mea-
+sured with Innolab pH 720 instrument (WTW) and Sentix Mic
+electrode (WTW). Extracellular metabolites and media compo-
+nents (glucose, ethanol, acetate, glycerol, and lactic acid) were
+analyzed with high-performance liquid chromatography (HPLC)
+(Toivari et al., 2010) using 5 mM sulfuric acid as eluent.Downloaded from https://academic.oup.com/jimb/article/48/5-6/kuab028/6253250 by VTT Information Service user on 22 July 2021
+4| Journal of Industrial Microbiology and Biotechnology ,2021,Vol.48,kuab028
+Polymer Quantitation from Lyophilized Cells
+with GC–MS
+Gaschromatographymassspectrometry(GC–MS)wasusedtover-
+ify polymer compositions and to quantify the amount of poly-
+mer produced by each strain in relation to their CDW. Cells were
+collected by centrifugation at 4000 rpm for 6 min, washed three
+times with water, and lyophilized overnight. Ten milligrams of
+eachsampleweresubjectedtomethanolysisfor140minat100°C
+waterbathinasolutioncontaining1mlchloroform,20 μlinternal
+standard (3-hydroxybutyric acid), 150 μl sulfuric acid, and 830 μl
+methanol. Samples were cooled to room temperature and water-
+soluble particles were removed by addition of 0.5 ml of distilled
+water. Chloroform phase was analyzed by using gas chromatog-
+raphy system (7890, Agilent) and HP-FFAP column (19091F-102,
+Agilent). PLA, l-lactic acid, and 3-hydroxybutyric acid were used
+as standards.
+Polymer Extraction
+Polymers were extracted from 600 to 2000 mg of lyophilized cells
+withchloroform.Lyophilizedcellpelletsweregrindedwithmetal-
+lic spoon, divided into 140–300 mg aliquots, supplemented with
+5 ml of chloroform in 12 ml glass screw cap tubes, and boiled in
+95°C water bath for 3 hr. The solutions were stirred over night at
+roomtemperature,filteredwith0.45 μmPTFEfilters,andconcen-
+trated to 300 μl. Twenty-fold volume of ice-cold methanol was
+added to all samples and tubes were centrifuged at 3000 rpm
+for 20 min. Supernatants were removed. In addition to methanol
+washing, PDLA and P(LA-3HB) samples for size exclusion chro-
+matography (SEC) analysis were washed also with diethyl ether.
+PDLA and P(LA-3HB) were dissolved in 100 μl chloroform and 20-
+fold ice-cold diethyl ether was added to the samples, followed by
+centrifugationat3000rpmfor20minandremovalofsupernatant.
+Remaining precipitated polymers were dried and weighed.
+Analysis of the Purified Polymers
+Nuclear magnetic resonance (NMR) analysis was used to verify
+the monomer compositions and polymer structures. PDLA, PHB,
+and P(LA-3HB) polymers were dissolved to final concentration of
+830 mg l–1in 600 μl chloroform containing 0.03% (v/v) tetram-
+ethylsilane standard. Each polymer was analyzed in three repli-
+c a t e si n5m mN M Rt u b e s .T h eN M Rs p e c t r aw e r er e c o r d e dw i t h
+a 600 MHz NMR spectrometer (Avance III, Bruker) equipped with
+aninversedetectionQCIH-P/C/N-Dcryoprobe.Thepolymersam-
+plesweremeasuredat22°Cwithoutsolventsuppression.Therep-
+etition rate for the 1D1H was 4.6 s. The zero quantum filtered
+total correlation spectroscopy (TOCSY) spectra were recorded us-
+ing Bruker’s pulse program dipsi2gpphzs with 120 ms DIPSI2 spin-
+lock.Thephasesensitive,multiplicityeditedheteronuclearsingle
+quantumcorrelation(HSQC)spectrawererecordedusingBruker’s
+pulse program hsqcedetgpsisp2.2 , which uses Echo/Antiecho-TPPI
+selectionandshapedpulses(CHIRP)forall180°pulses.13Cdecou-
+pling during acquisition was achieved by adiabatic CHIRP decou-
+pling. The one-bond13C–1H coupling constant was set to 150 Hz
+(1/4J=1.6667ms)andtherelaxationdelaywas1s.ForTOCSYand
+HSQC experiments, a matrix of 2048 ×256 data points was col-
+lected, zero-filled once in F1 and a π/2 shifted squared sine-bell
+weighting function was applied in both dimensions prior to the
+Fourier transformation. The absolute value heteronuclear multi-
+ple bond correlation (HMBC) spectra were recorded without de-
+coupling using Bruker’s pulse program hmbcgpndqf .The one-bond
+13C–1H coupling constant was set to 150 Hz and the long-range
+13C–1H coupling constant was set to 8 Hz (1/2 J=3.3333 ms). Amatrix of 4096 ×256 points was collected, zero-filled with lin-
+ear prediction to 4096 ×1024 points and an unshifted sine-bell
+weighting function was applied in both dimensions prior to the
+Fouriertransformation.AllspectrawereprocessedonTopspin3.5
+pl 5 software (Bruker).
+The molecular weight measurements were performed with
+SEC. Three replicates of the PHB sample and a commercial PHB
+standard (363502, Sigma) were dissolved in 1,1,3,3,3-hexafluoro-
+2-propanol (HFIP) for 3 days. The PDLA and P(LA-3HB) samples,
+grown from starting OD 600of 0.2, and a commercial PHB stan-
+dard (363502, Sigma) were dissolved in chloroform and mixed in
+room temperature for 7 days. At the fourth day, chloroform sam-
+ples were heated to 80°C for 30 min to ensure complete dissolu-
+tion.All samples were filtrated with 0.45 μm syringe filters before
+the analysis. The HFIP eluent with 5 mM sodium trifluoroacetate
+was delivered at a rate of 0.5 ml min−1at 40°C and chloroform
+eluent at a rate of 0.6 ml min−1at 30°C. The HFIP system was
+equipped with Waters styragel HR-4E column and HR 5 column
+and the chloroform system with styragel HR 4 and 3 columns.
+All systems contained a pre-column and a refractive index de-
+tector (2414, Waters). The molecular weights were calculated ei-
+theragainst10polystyrenestandardsof1260–3,040,000gmol−1in
+chloroform or against nine poly(methyl methacrylate) standards
+of 2710–1,667,000 g mol−1(Agilent) in HFIP, using 3rd order fit
+(R2=0.998–0.999) and Waters Empower 3 software.
+Differential scanning calorimetry (DSC) analysis was used to
+determine the polymer melting temperatures. Differential scan-
+ning calorimeter (DSC2,Mettler Toledo) was equipped with intra-
+cooler (TC100MT, Huber) and run under nitrogen atmosphere.
+Samples of 3–6 mg were weighed into 40 μla l u m i n u mc r u c i b l e s ,
+lids were pricked, and crucibles were closed with cold-pressing.
+Samples were heated twice with heating rate 10°C min–1.I nt h e
+first scan,the samples were cooled down to −60°C and heated to
+75°C.Inthesecondscan,sampleswerecooleddownto −60°Cand
+heatedto250°C.ResultswereobtainedwithMettlerToledoSTARe
+software (version 13.0). The data were collected from the second
+heating scan.PHB samples were analyzed in two replicates.
+GC–MS analysis of the purified polymers was performed to
+complement the corresponding NMR results and GC–MS results
+from the lyophilized cells. Samples of 0.5 mg were subjected to
+methanolysis and analyzed in the same way as lyophilized cells.
+Each polymer was analyzed in three replicates.
+Results
+PDLA, P(LA-3HB), and PHB Producing
+S. cerevisiae Strains
+S. cerevisiae strains containing PDLA,P(LA-3HB),or PHB pathways,
+presented in Fig. 1, were constructed. To demonstrate the poly-
+mer production, three transformants from each strain (H5519–
+H5524, H5529) were grown on media with 20 g l–1glucose as a
+carbon source, starting from OD 6002. Cells were collected after
+72 hr, washed, lyophilized, and the polymer content was ana-
+lyzed with GC–MS method. All strains expressing ldhA, Pct, and
+PhaC (H5519–H5522) enzymes produced PDLA.The control strain
+(H5513) lacking the PHA synthase did not show any lactic acid in
+the GC–MS analysis, even though extracellular d-lactic acid con-
+centration at 72 hr was 7.44 ±0.86 g l–1. This indicates that ei-
+ther the intracellular concentration of free d-lactic acid was very
+low or that free d-lactic acids was efficiently removed from the
+cells during the washing prior to GC–MS analysis. Result demon-
+strates that free lactic acid was not distorting the polymer ac-
+cumulation results in GC–MS analysis. Polymer content of PDLADownloaded from https://academic.oup.com/jimb/article/48/5-6/kuab028/6253250 by VTT Information Service user on 22 July 2021
+Ylinen et al. |5
+Fig. 2.Results from shake flask experiment starting from OD 6005.(A–C) d-Lactic acid,ethanol,acetate,and glycerol concentrations (g l–1)i nt h e
+culture media.(D–F) Cell growth as OD 600.The lines represent average results from three replicates and the circles individual data points.Polymer
+strains are marked with continuous lines and their control strains with dashed lines.Strains: A: PDLA: strain producing poly(d-lactic acid) (H5520 ),
+d-LA: strain producing d-lactic acid (H5513); B: P(LA-3HB): strain producing copolymer of lactic and 3-hydroxybutyric acids (H5523),d-LA and
+3HB-CoA: strain with d-lactic acid and 3-hydroxybutyryl-CoA pathways (H5514); C: PHB: strain producing poly(hydroxybutyrate) (H5529),3HB-CoA:
+strain with 3-hydroxybutyryl-CoA pathway (H5531).PhaC: PHA synthase.
+producing strains varied between the different transformants.
+This variation was as high as variation between strains express-
+ing different PHA synthases. The highest achieved PDLA con-
+tent was 0.88% of CDW with strain H5520 expressing PctMe and
+PhaC1Pre. The P(LA-3HB) copolymer producing strains (H5523
+and H5524) were grown and analyzed similarly to the PDLA-
+producingstrains.Bothstrainsproducedthecopolymer,thepoly-
+mercontentbeinghigherinthestrainH5523expressingPct540Cp
+and PhaC1437 Ps6–19. The highest detected content was 3.07%
+polymer of CDW, containing 1.97% d-lactic acid and 1.12% 3-
+hydroxybutyric acid.As a comparison,the PHB producing strains
+(H5529)produced6.36–9.44%polymerofCDW.Thetransformants
+thataccumulatedthehighestpolymerquantitieswerechosenfor
+further analyses.
+Characterization of PDLA, P(LA-3HB), and PHB
+Produced in S. cerevisiae
+The transformants of best polymer producing strains (H5520,
+H5523, and H5529), and their corresponding control strains, were
+grown in three parallel cultivations starting from OD 6005( F i g .2).
+Inaddition,thePDLAandP(LA-3HB)producingstrainsweregrown
+in three parallel cultivations from starting OD 6000.2 to repeat the
+experiment and to produce PDLA and P(LA-3HB) for SEC analysis
+(Fig.3). Cell growth, extracellular metabolite production, carbon
+source consumption, and pH were measured every 24 hr. When
+cultivation started from OD 6005, glucose was entirely consumed
+in all cultivations during the first 24 hr. When cultivation started
+from OD 6000.2,small residual glucose concentrations of 0.06 and
+0.36 g l–1were measured from the media at 24 hr with PDLA
+and P(LA-3HB) strains, respectively. All control strains grew bet-
+ter than the polymer producing strains. Cultures did not grow orgrew onlyvery littleafter 24 hr whenglucosewas depleted.Culti-
+vationwashowevercontinuedforadditional48hrtoensurecom-
+plete polymerization of available monomers. Strains expressing
+ldhAgene produced 5.6–9.5 g l–1d-lactic acid and approximately
+50% less ethanol compared to strains without ldhA. Strains able
+toproducePHBandP(LA-3HB)producedlessacetatecomparedto
+strain producing PDLA. With d-lactic acid producing strains, the
+pHdecreasedfrom5.5to2.6( ±0.03)duringthefirst24hr,whereas
+the pH of strains with PHB and 3HB-CoA pathways (H5529 and
+H5531) decreased only to 3.24 ( ±0.10).
+GC–MSmethanolysismethodwasusedtodegradethepolymer
+structures and measure the monomer compositions and quanti-
+tiesinrelationtotheCDW.WhencultivationstartedfromOD 6005,
+thePDLAstrain(H5520)contained0.73 ±0.12%d-LA ofCDWand
+the P(LA-3HB) copolymer strain (H5523) 1.52 ±0.06% d-LA and
+2.13±0.04%3-HBofCDWat72hr.Totalcopolymerfractionofthe
+CDW was 3.65%.The PHB strain (H5529) contained 11.05 ±0.64%
+3HB of CDW (Fig. 4). Estimated biomass concentration of strain
+H5529 at 72 hr was approximately 3.4 g l–1and volumetric PHB
+yield 380 mg l–1. When PDLA and P(LA-3HB) strains were grown
+startingfromOD 6000.2,thePDLAandP(LA-3HB)polymerfractions
+ofthetotalCDWwere0.63%and2.54%,respectively(Fig. 3).P(LA-
+3HB) contained 65% d-LA-monomers and 35% 3HB monomers.
+The final biomasses at 72 hr were 1.48 ±0.09 and 1.15 ±0.05 g
+l–1for PDLA and copolymer strains, which yields in final poly-
+mer concentrations of 9.4 and 29 mg l–1, respectively. Control
+strain producing extracellular d-LA, or d-LA and 3HB monomers
+(H5513 and H5514) did not contain any d-LA or 3-HB in the GC–
+MSanalysisofcellbiomass.Tworeplicatesofcontrolstraincarry-
+ing only 3HB-CoA pathway (H5531) contained 0.028% and 0.024%
+3-hydroxybutyric acid of CDW, while the third replicate did not
+contain any 3HB.Downloaded from https://academic.oup.com/jimb/article/48/5-6/kuab028/6253250 by VTT Information Service user on 22 July 2021
+6| Journal of Industrial Microbiology and Biotechnology ,2021,Vol.48,kuab028
+Fig. 3.Results from cultivation of PDLA (H5520) and P(LA-3HB) (H5523) strains in shake flasks with starting OD 6000.2.(A,B) d-Lactic acid,ethanol,and
+acetate concentrations (g l–1) in the culture media.(C,D) Cell growth as OD 600.(E) Monomer composition of S. cerevisiae strains [% cell dry weight
+(CDW) of lyophilized cells].Data points from each replicate are marked with circles.
+Fig. 4.Monomer composition of S. cerevisiae strains [% cell dry weight (CDW) of lyophilized cells].Strains: PDLA: strain producing poly(d-lactic acid)
+(H5520),d-LA: strain producing d-lactic acid (H5513); P(LA-3HB): strain producing copolymer of d-lactic and 3-hydroxybutyric acids (H5523),d-L Aa n d
+3HB-CoA: strain with d-lactic acid and 3-hydroxybutyryl-CoA pathways (H5514),PHB: strain producing poly(hydroxybutyrate) (H5529),3HB-CoA: st rain
+with 3-hydroxybutyryl-CoA pathway (H5531).Data points from each replicate are marked with circles.
+Analysis of Polymer Properties
+Polymers were extracted from cells and analyzed with GC–MS,
+SEC,and NMR in order to verify their monomer compositions and
+structures. The NMR spectra are shown in Figs 5and6,a n dt h e
+monomer composition results are summarized in Table 3.T h e
+NMR results in Table 3are estimations of the signals from ex-
+tractedP(LA-3HB),sincetheirpreciseintegrationwasnotpossible
+due to the low concentration of polymers and background signal
+from impurities.
+The1H NMR peaks of commercial PLA and PHB polymers are
+shownasreferencesinthe1HNMRspectraofPDLAandPHBpoly-
+mers produced by yeast (Fig. 5A and C) to confirm the production
+of PDLA and PHB. An oligomeric PLA sample produced by acidic
+hydrolysis of commercial PLA (Ingeo 3251D, NatureWorks) con-
+taining dimer,trimer,tetramer,and pentamer units (Anghelescu-Hakala & Nyyssölä, 2020) was used for end group analysis. The
+samplewasanalyzedby1HNMRtoidentifythelocationoftheCH
+groups linked to the end hydroxyl group in the NMR spectra.The
+CH signals of the hydroxyl terminal were detected at 4.45 ppm in
+the oligomeric standard sample. Corresponding 4.45 ppm peaks
+from the PDLA produced by S. cerevisiae strains were just above
+the detection limit and much smaller than in the commercial
+PLA sample,indicating that the degree of polymerization of yeast
+PDLA sample was higher than that of the commercial PLA. Due
+to the low intensity of the end group signal from our sample,
+the accurate quantification was not possible. In addition, in the
+oligomeric PLA sample, scattering of the spectra was seen in 5.2
+and 1.6 ppm signals due to proximity of polymer ends. Similar
+scattering was not observed in PDLA produced in yeast nor in
+the commercial PLLA standard (95468-1G–F, Sigma-Aldrich with
+weight average molecular weight, Mw, of 259 kDa and numberDownloaded from https://academic.oup.com/jimb/article/48/5-6/kuab028/6253250 by VTT Information Service user on 22 July 2021
+Ylinen et al. |7
+Fig. 5.1H-NMR spectra of polymers extracted from S. cerevisiae .(A) Poly(d-lactic acid) (PDLA) from strain H5520,PLLA standard (95468-1G-F,
+Sigma-Aldrich,Mw 259 kDa,Mn 103 kDa) and oligomeric PLA standard produced by acidic hydrolysis of commercial PLA (Ingeo 3251D,NatureWorks)
+containing dimer,trimer,tetramer,and pentamer units.(B) Copolymer P(LA-3HB) from strain H5523.(C) Poly(hydroxybutyrate) (PHB) from strain
+H5529,PHB standard (363502,Sigma-Aldrich) tg: CH signal of the glycerol backbone of triglycerides.
+Table 3. Monomer Composition (mol%) of d-Lactic Acid and 3-Hydroxybutyric Acid (d-LA:3HB) in Polymer Samples
+Analysis PDLA P(LA-3HB) PHB PHB standard
+GC–MS from lyophilized cells 100:0 46:55 46:54 45:55 0:100 0:100
+GC–MS from extracted
+polymer100:0 34:66 55:45 46:54 0:100 0:100
+NMR from extracted polymer 100:0 20:80 40:60 40:60 0:100 0:100
+Note. Samples: PDLA: poly(d-lactic acid) from strain H5520, P(LA-3HB): three replicates of copolymer of lactic and 3-hydroxybutyric acids from strain H 5523, PHB:
+poly(hydroxybutyrate) from strain H5529,and PHB standard from Sigma (Product 363502).Molecular fractions are analyzed with GC–MS from lyophiliz ed cells and
+from extracted polymers,and with NMR from extracted polymers.
+averagemolecularweight,Mn,of103kDa) .The1HNMRspectrum
+of P(LA-3HB) copolymer shows, in addition to the signals seen in
+the PDLA and PHB spectra, some slightly shifted signals (1/prime/primein
+Fig.5B). The CH proton signals of 3HB units were severely over-
+lapped by the signal of the middle proton of glycerol backbone of
+triglyceridecontaminantsinextractedpolymersamples(tg).Also,
+the methyl signals were overlapped with the strong background
+signals. Therefore, the copolymer structures were analyzed also
+by 2D NMR. Fig. 6Bshows HSQC CH signals of P(LA-3HB) in blue
+and the overlaid spectra with PDLA and PHB in violet and green,
+respectively. The triad LA-LA-LA signal, (a) in Fig. 6B, is identical
+tothehomopolymerPDLA(violetsignal)andtriadsignal3H-3HB-
+3HB(b)isidenticaltoPHB(green).Inadditiontothehomopolymer
+CH signals, small signals with slightly different chemical shifts
+were observed (Fig. 6B): (d), (e), and (f). These signals were not
+present in the homopolymer spectra and thus indicate copoly-
+mericstructures.AccordingtotheTOCSYspectrum,thesesignals
+belongtolactatetypespinsystems(Fig. 6A).Theywereassignedto
+centrallactateunitsintriadsequences(c)3HB-LA-3HB,(d)and(e)
+either 3HB-LA-LA or LA-LA-3HB (Yamada et al., 2009).Integration
+of these LA HSQC signals gives approximate relative populations
+of the four structures: a (LA-LA-LA): 79%, c (3HB-LA-3HB): 5%, d
+or e (3HB-LA-LA or LA-LA-3HB): 16%. The HSQC also shows addi-
+tional CH signals for 3HB units, but due to the overlapping with
+triglyceride signal (tg) their interpretation is not possible. Like-
+wise, 3HB CH 2HSQC area also shows additional slightly shiftedTable 4. MolecularWeightsofPDLA,P(LA-3HB),andPHBPolymers
+Sample SEC system Mn (Da) Mw (Da) PDI
+PDLA Chloroform 5,290 6,250 1.18
+P(LA-3HB) Chloroform 19,150 24,640 1.29
+PHB (replicate 1) HFIP 336,170 1,089,630 3.24
+PHB (replicate 2) HFIP 336,650 1,193,400 3.54
+PHB (replicate 3) HFIP 334,900 1,108,270 3.31
+Commercial PHB HFIP 128,510 1,592,100 12.39
+Commercial PHB Chloroform 258,200 563,400 2.18
+Note. Mw, weight average molecular weight; Mn, number average molecular
+weight,PDI,polydispersity.
+signalsofthecopolymer(Fig. 6D)havingHMBCcorrelationstothe
+3HB CH signals (Fig. 6E). Both LA and 3HB homopolymer type CH
+protons also have HMBC correlation to the CO area at 169.55 and
+169.11 ppm,respectively (Fig. 6C).However,due the low amounts
+of copolymeric structures, similar correlations could not be ob-
+served for the copolymeric CH protons.
+SECresultsaresummarizedinTable 4andSECchromatograms
+are presented in Fig. 7. Successful SEC results from PDLA
+and P(LA-3HB) samples were obtained when extracted poly-
+mers were washed both with methanol and diethylether. Com-
+mercial PHB standard (363502, Sigma) gave over fivefold higher
+polydispersity with HFIP-based SEC system in comparison toDownloaded from https://academic.oup.com/jimb/article/48/5-6/kuab028/6253250 by VTT Information Service user on 22 July 2021
+8| Journal of Industrial Microbiology and Biotechnology ,2021,Vol.48,kuab028
+Fig. 6.Expansions of 2D total correlation spectroscopy (TOCSY),heteronuclear single quantum correlation (HSQC),and heteronuclear multiple bond
+correlation (HMBC) spectra of the copolymer P(LA-3HB).(A) Part of the methyl,and CH 2region of TOCSY showing the lactate type methyl correlations
+to the small CH signals observed in HSQC (panel B) and 3-hydroxybutyryl (3HB) CH 2and methyl groups.(B) HSQC CH signals of the polymers.Violet
+and green contours are overlaid spectra of the homopolymers poly(d-lactic acid) (PDLA) (a) and poly(hydroxybutyrate) (PHB) (b),respectively.Thr ee
+small slightly shifted PDLA type signals (c–e) with TOCSY correlations to methyl regions (panel A) are also observed.CH signal of the glycerol
+backbone of triglycerides (tg) is possibly overlapping with some of the 3HB signals.(C) HMBC correlations of PDLA and PHB CH protons to CO carbons.
+(D) HSQC CH 2signals of 3HB blocks showing also a small slightly shifted doublet.(E) HMBC correlations of the CH 2protons of 3HB blocks to the CH
+carbon of PHB.(F) HMBC correlations of PHB CH 2protons to a CO carbon.
+chloroform-based system. Commercial PHB showed poor sol-
+ubility in both solvents at room temperature. Solid particles
+were visible in the HFIP solvent even after dissolving the sam-
+ple for 3 days with mixing. Heating of commercial PHB in
+chloroform solvent, in addition to mixing at room tempera-
+ture for 7 days, resulted in clear solution. Similar solids par-
+ticles were not visible when yeast PHB was dissolved in HFIP
+and when yeast PDLA and copolymer were washed with di-
+ethyl ether before chloroform-based SEC analysis. Melting tem-
+perature of the PHB samples was 176.7 ±0.57ºC. Melting
+temperature of a commercial PHB standard was 174.5ºC, mea-
+sured from one sample. The DSC thermograms are presented in
+Fig.8.Discussion
+Polyhydroxyalkanoatesareinterestingfamilyofmicrobiallymade
+biodegradablepolymers.Theirstructuresaredefinedbytheavail-
+ability of suitable monomers and substrate specificity of the PHA
+synthase enzyme. In this study, we demonstrated for the first
+time that robust yeast S. cerevisiae can polymerize d-lactic acid
+alone, or together with 3-hydroxybutyrate, when PHA synthases
+with a broad substrate specificity are expressed. The engineered
+strains produced P(LA-3HB) and PDLA from glucose with accu-
+mulation of 3.6% and 0.73% of CDW, and with weight average
+molecular weights of 24.6 and 6.3 kDa, respectively. The key en-
+zymes,PHAsynthases,PhaC1PreandPhaC1437 Ps6–19,arereportedDownloaded from https://academic.oup.com/jimb/article/48/5-6/kuab028/6253250 by VTT Information Service user on 22 July 2021
+Ylinen et al. |9
+Fig. 7.SEC chromatograms of extracted polymer samples.(A) PDLA and P(LA-3HB) analyzed with chloroform system.(B) Three replicates of PHB from
+strain H5529 and a commercial PHB standard (363502,Sigma) analyzed with HFIP system.
+Fig. 8.Differential scanning calorimetry thermograms of the extracted poly(hydroxybutyrate) PHB samples (PHB1 and PHB2) and a commercial PHB
+sample (363502,Sigma).
+to polymerize also other 2-hydroxyacyl-CoAs, 3-hydroxylacyl-
+CoAs, monomers with aromatic side chains and mcl monomers
+(Choi et al., 2016; Jae et al., 2013; Solaiman, 2003;Y a n ge ta l . ,
+2011,2018). Functionality of these wide specificity enzymes in
+S. cerevisiae enables future tailoring of polymer properties in
+yeast.
+Thed-lacticacidfractioninthecopolymerP(LA-3HB)produced
+in this study varied from 46 to 65 mol %. Similar, approximately
+50% lactic acid fraction was reported also when PhaC1437 Ps6–19
+was expressed in recombinant E. coli(Yang et al., 2011).P(LA-3HB)
+copolymers with these d-lactic acid fractions have been reported
+to have lower melting temperatures and higher elasticities than
+t h o s eo fP D L Aa n dP H B( T a g u c h ie ta l . , 2008; Yamada et al., 2009,
+2011). According to our 2D NMR results of P(LA-3HB), the d-LA
+and 3HB monomers are covalently attached forming copolymers
+withrandomstructure.Majorityofd-LAmonomers,79%,werelo-
+cated between two other d-LA monomers,16% between d-LA and
+3HB monomers, and only 5% between two 3HB monomers. The
+result indicates that P(LA-3HB) copolymer produced in this study
+contained d-LA repeating sequences. Repeating d-LA sequencesin P(LA-3HB) copolymers have also been found in some bacte-
+rial studies (Ochi et al., 2013;T a j i m ae ta l . , 2012; Yamada et al.,
+2009). The repeating monomer sequences are interesting since
+they might enable crystallization of otherwise amorphous poly-
+mer and thus influence its thermal properties (Peacock & Cal-
+houn,2006). According to SEC analysis, the P(LA-3HB) polymer
+had molecular weights,Mn and Mw,of at least 19.2 and 24.6 kDa,
+respectively. These molecular weights are slightly smaller than
+molecular weights,Mn 22 kDa and Mw 39 kDa,reported for P(LA-
+3HB) with similar lactate fraction and produced by E. coliexpress-
+ing the same PHA synthase PhaC1437 Ps6–19(Yang et al., 2010).
+Therelativelylowmolecularweights,incomparisontomolecular
+weightofPHB,couldresultfromthehighlacticacidfractionof46–
+65 mol%. High lactic acid fractions in P(LA-3HB) copolymer have
+corresponded to low molecular weights of the polymer. Reasons
+for low molecular weights are discussedbelow also for PDLA.The
+SEC result from our study confirms the successful polymer pro-
+duction,isolation,and purification.Unimodal distribution of mo-
+lar masses and narrow polydispersity (PDI) indicate that purified
+polymersarefreeofsmallmolecularweightcontaminants.TheseDownloaded from https://academic.oup.com/jimb/article/48/5-6/kuab028/6253250 by VTT Information Service user on 22 July 2021
+10 | Journal of Industrial Microbiology and Biotechnology ,2021,Vol.48,kuab028
+shorter polymers could be suitable for applications like aqueous
+dispersion coatings for packaging materials.
+PDLAandP(LA-3HB)contentsinthisstudy,0.73%and3.6%,are
+similar to the lower range reported in bacterial hosts, the whole
+range varying from 0.5% to 75% (Jung et al., 2010;K a d o y ae ta l . ,
+2015;Y a n ge ta l . , 2011). Yeast strains produced approximately
+9gl–1extracellular d-LA indicating that the d-LA production rate
+exceeded the capability of cells to polymerize it. In addition, the
+PDLA and P(LA-3HB) producing strains grew remarkably slower
+compared to their control strains without the Pct and PhaC en-
+zymes. Possibly the use of acetyl-CoA for generation of d-lactyl-
+CoA affected their growth. Wild type Pct from C. propionicum has
+been reported to inhibit cell growth in E. coli(Selmer et al., 2003).
+Further optimization of ldhA, Pct, and PHA synthase expression
+levels and activities could thus improve cell growth, increase the
+polymer yield, and prevent excessive extracellular d-lactic acid
+accumulation. For example, in the recombinant Corynebacterium
+glutamicum PDLA yield has been increased fourfold by enhancing
+thePhaC1PsSTQKPHAsynthaseactivity(Matsumotoetal., 2014).
+The PLA content of the CDW in this study was 10-fold lower
+compared to that of PHB. This may be due to non-optimal avail-
+ability of d-lactyl-CoA as a precursor, lower activity of the engi-
+neered synthase enzymes towards d-lactyl-CoA, compared to 3-
+hydroxy butyryl-CoA, or physical properties of the formed poly-
+mer,as discussedbelow.Similar decrease hasbeen observed with
+engineered E. colistrains where the highest reported PHB yields
+(Aramvashetal., 2015;Zhangetal., 2018)havebeen10-foldhigher
+thanthehighestobtainedPDLAyields(Jungetal., 2010;Y angetal.,
+2011).Ithasbeenhypothesizedthatd-lactyl-CoAcouldoccasion-
+allyterminatethegrowthofthepolymerchain(Yangetal., 2011).
+Recent in vitrostudy, with PhaC1PsSTQK PHA synthase (carrying
+two amino acid changes, S325 and Q481), reports termination of
+PDLA polymerization when PDLA chains reach molecular weight
+of 3 kDa (Matsumoto et al., 2018). The reason for this relatively
+short molecular weight was suggested to be the high glass tran-
+sition temperature of PDLA homopolymers (60°C) that would de-
+crease polymer mobility notably at common reaction tempera-
+tures of 30–37°C. However, in vivostudies using PHA synthases
+with three or four active mutations in their active sites report
+production of 4- to 18-fold longer polymers. Following molecular
+weights of PDLA are reported in E. coli:2 3k D a( M n )a n d5 5k D a
+(Mw)withPhaC1PrecarryingaminoacidchangesE130,S325,S477,
+and Q481 (Yang et al., 2011) and 30 kDa (Mw) with PhaC1310 Ps6–19
+carryingaminoacidchangesE130D,S477F,andQ481K(Jungetal.,
+2010). In addition, molecular weights of 12.5 (Mn) and 50.5 (Mw)
+are reported in yeast Y. l i p o l y t i c a expressing PHA synthase from
+Pseudomonas aeruginosa with amino acid changes E130D, S325T,
+S477R, and Q481M (Lajus et al., 2020). In the present study,
+SEC analysis confirmed that for PDLA produced in S. cerevisiae
+molecular weights, Mw and Mn, are at least 6.3 and 5.3 kDa,
+respectively.
+The PHB yield of 11% of CDW in this study is comparable to
+otherstudiesofPHBproductionin S. cerevisiae (Breueretal., 2002;
+Carlson & Srienc, 2006). However, optimization of pathway en-
+zymes, carbon sources, aeration, and redox balances in the cell
+can increase the polymer yield in S. cerevisiae up to 16.4 % (de
+Las Heras et al., 2016;K o c h a r i ne ta l . , 2012; Portugal-Nunes et al.,
+2017).ThehighestreportedPHApercentagesperCDWinyeastare
+30% of PHB for P. pastoris (Vijayasankaran et al., 2005) and 30% of
+mcl PHAs for Y. l i p o l y t i c a (Rigouin et al., 2019). These values were
+measured as averages of the cell population. However, Carlson &
+Scrienc ( 2006) discuss,based on fluorescence microscopy images,
+that some S. cerevisiae cells could have accumulated up to 50%PHB of CDW while others seemed empty. Population heterogene-
+itywasseenalsoinfluorescencebasedflowcytometryanalysisof
+PHB producing S. cerevisiae (Kacmar et al., 2006). These observa-
+tions suggest that PHA production in yeast can still be increased
+both at individual cell level and by reducing the population het-
+erogeneity.
+The suitability of S. cerevisiae for PHA production is also sup-
+ported by SEC results of the extracted PHB in this study.The aver-
+age molecular weights, 336 kDa (Mn) and 1130 kDa (Mw), of PHB
+in this study are higher than average molecular weights,130 kDa
+(Mn) and 200 kDa (Mw),of PHB produced from acetate by Y. l i p o l y -
+ticaexpressing the same PHA synthase from C. necator (Li et al.,
+2016).Infact,molecularweightsinthisstudyaresimilartothere-
+ported molecular weights of PHB produced with the native bacte-
+rialproducer C. necator ,400kDa(Mn)and1136kDa(Mw)(Meixner
+et al.,2018), and 1400 kDa (Mw) (Fei et al., 2016). The melting
+temperature of the PHB produced by S. cerevisiae , 176.0°C, is also
+in accordance with results from literature for bacterial PHB (Lee,
+1996).Theseresultsindicatethatrecombinant S. cerevisiae strains
+canproducepolymerswithpropertiescomparabletothoseofthe
+polymers produced by the engineered or native PHA producing
+bacteria.
+The S. cerevisiae platform can be further developed for pro-
+duction of PHA polymers in non-buffered or low pH conditions
+(Fernandes et al., 2005; Mitsui et al., 2020; Rajkumar et al., 2016;
+Zhong et al. 2021), and for utilization of various industrial side
+streams as raw materials. In addition, the use of wide substrate
+specificity of the studied PHA synthases enables tailoring of the
+polymer properties in future.
+Abbreviations
+ldhA, stereospecific d-lactate dehydrogenase; Pct,
+propionyl-CoA transferase; PDLA, poly(d-lactic acid); PHA,
+poly(hydroxyalkanoate); PhaA, acetyltransferase from Cupri-
+avidus necator ; PHB, poly(hydroxybutyrate); PhaB1, acetoacetyl-
+CoA reductase from C. necator ; PhaC1, poly(hydroxyalkanoate)
+synthase from C. necator ; P(LA-3HB) copolymer of d-lactic and
+3-hydroxybutyric acids
+Acknowledgments
+We would like to thank Annemari Linnatsalo for helping with
+microbial cultures, Anna-Liisa Ruskeepää, Airi Hyrkäs, and Matti
+Hölttä for GC–MS analysis,Pia Willberg-Keyriläinen for DSC anal-
+ysis,and Atte Mikkelson for SEC analysis.
+Author Contributions
+All authors have made substantial contributions to the concept
+of the study. A.Y. carried out strain engineering, growth assays,
+metabolite analysis,polymer extraction,sample preparation,and
+visualizationofthedataanddraftedthemanuscript.H.M.carried
+out NMR analysis and wrote the NMR sections of the manuscript.
+A.A.-H.designed the polymer analysis.All authors have read and
+approved the final manuscript.
+Funding
+This work was supported by the Maj Ja Tor Nessling säätiö and
+Tor Nessling Foundation (grant numbers 201700259, 201800005)
+toA.Y.,AcademyofFinland(project310191)toM.T.,H.M.,A.A.-H.;
+VTT Technical Research Centre of Finland, and Centre for YoungDownloaded from https://academic.oup.com/jimb/article/48/5-6/kuab028/6253250 by VTT Information Service user on 22 July 2021
+Ylinen et al. |1 1
+SynbioScientists(CYSS)fundedbyJennyjaAnttiWihurinrahasto
+and Antti Wihuri Foundation to A.Y.
+Conflict of Interest
+T h ea u t h o r sd e c l a r en oc o n fl i c to fi n t e r e s t .
+Data Availability
+The datasets used and analyzed during the current study are
+available from the corresponding author on reasonable request.
+References
+Anghelescu-Hakala, A. & Nyyssölä, A. (2020). Methods for depoly-
+merisation of polylactic acid. Patent PC19083FI .
+Aramvash,A.,Akbari Shahabi,Z.,Dashti Aghjeh,S.,& Ghafari,M.D.
+(2015). Statistical physical and nutrient optimization of bioplas-
+tic polyhydroxybutyrate production by Cupriavidus necator .Inter-
+national Journal of Environmental Science and Technology ,12(7),2307–
+2316.
+Baek,S.H.,Kwon,E.Y.,Kim,Y.H.,&Hahn,J.S.(2016).Metabolicengi-
+neeringandadaptiveevolutionforefficientproductionofD-lactic
+acidin Saccharomyces cerevisiae .Applied Microbiology and Biotechnol-
+ogy,100(6),2737–2748.
+Breuer, U., Terentiev, Y., Kunze, G., & Babel, W. (2002). Yeasts
+as producers of polyhydroxyalkanoates: Genetic engineer-
+ing of Saccharomyces cerevisiae .Macromolecular Bioscience , 2(8),
+380–386.
+Carlson,R.&Srienc,F.(2006).Effectsofrecombinantprecursorpath-
+way variations on poly[(R)-3-hydroxybutyrate] synthesis in Sac-
+charomyces cerevisiae .Journal of Biotechnology ,124(3),561–573.
+C h o i ,S .Y . ,P a r k ,S .J . ,K i m ,W .J . ,Y a n g ,J .E . ,L e e ,H . ,S h i n ,J . ,&L e e ,
+S. Y. (2016). One-step fermentative production of poly(lactate- co-
+glycolate) from carbohydrates in Escherichia coli .Nature Biotechnol-
+ogy,34(4),435–440.
+Choi, S. Y., Rhie, M. N., Kim, H. T., Joo, J. C., Cho, I. J., Son, J., Jo,
+S. Y., Sohn, Y. J., Baritugo, K. A., Pyo, J., Lee, Y., Lee, S. Y., & Park,
+S. J. (2020). Metabolic engineering for the synthesis of polyesters:
+A 100-year journey from polyhydroxyalkanoates to non-natural
+microbial polyesters. Metabolic Engineering ,58:47–81.
+de Las Heras, A. M., Portugal-Nunes, D. J., Rizza, N., Sandström,
+A. G., & Gorwa-Grauslund, M. F. (2016). Anaerobic poly-3-D-
+hydroxybutyrate production from xylose in recombinant Saccha-
+romyces cerevisiae using a NADH-dependent acetoacetyl-CoA re-
+ductase. Microbial Cell Factories ,15(1),197.
+Dilkes-Hoffman, L. S., Lant, P. A., Laycock, B., & Pratt, S. (2019). The
+rate of biodegradation of PHA bioplastics in the marine environ-
+ment: A meta-study. Marine Pollution Bulletin ,142,15–24.
+Fei, T., Cazeneuve, S., Wen, Z., Wu, L., & Wang, T. (2016). Effective re-
+covery of poly- β-hydroxybutyrate (PHB) biopolymer from Cupri-
+avidus necator usinganovelandenvironmentallyfriendlysolvent
+system. Biotechnol Progress ,32,678–685.doi:10.1002/btpr.2247.
+Fernandes,A.R.,Mira,N.P.,Vargas,R.C.,Canelhas,I.,&Sá-Correia,I.
+(2005). Saccharomyces cerevisiae adaptation to weak acids involves
+the transcription factor Haa1p and Haa1p-regulated genes. Bio-
+chemical and Biophysical Research Communications ,337(1),95–103.
+Fernandes,M.,Salvador,A.,Alves,M.M.,& Vicente,A.A.(2020).Fac-
+torsaffectingpolyhydroxyalkanoatesbiodegradationinsoil. Poly-
+mer Degradation and Stability ,182,109408.
+Gao, C., Qi, Q., Madzak, C., & Lin, C. S. K. (2015). Exploring medium-
+chain-length polyhydroxyalkanoates production in the engi-
+neeredyeast Yarrowia lipolytica .Journal of Industrial Microbiology and
+Biotechnology ,42(9),1255–1262.Gietz,R.D.& Schiestl,R.H.(2007).High-efficiency yeast transforma-
+tion using the LiAc/SS carrier DNA/PEG method. Nature Protocols ,
+2(1),31.
+Jae, S., Jang, Y., Lee, H., Park, A., & Eun, J. (2013). Metabolic engineer-
+ing of Ralstonia eutropha for the biosynthesis of 2-hydroxyacid-
+containing polyhydroxyalkanoates. Metabolic Engineering , 20, 20–
+28.
+Jiang,Z.,Hu,J.,Marrone,B.L.,Pilania,G.,& Yu,X.(2020).A deep neu-
+ral network for accurate and robust prediction of the glass tran-
+sition temperature of polyhydroxyalkanoate homo- and copoly-
+mers. Materials ,13(24),1–15.
+Jung, Y. K., Kim, T. Y., Park, S. J., & Lee, S. Y. (2010). Metabolic
+engineering of Escherichia coli for the production of polylactic
+acid and its copolymers. Biotechnology and Bioengineering , 105(1),
+161–171.
+Kacmar, J., Carlson, R., Balogh, S. J., & Srienc, F. (2006). Staining and
+quantification of poly-3-hydroxybutyrate in Saccharomyces cere-
+visiaeand Cupriavidus necator cell populations using automated
+flow cytometry. Cytometry Part A ,69A(1),27–35.
+Kadoya, R., Kodama, Y., Matsumoto, K., & Taguchi, S. (2015). Indirect
+positive effects of a sigma factor RpoN deletion on the lactate-
+based polymer production in Escherichia coli .Bioengineered ,6 ( 5 ) ,
+307–311.
+Kocharin,K.,Chen,Y.,Siewers,V.,& Nielsen,J.(2012).Engineering of
+acetyl-CoA metabolism for the improved production of polyhy-
+droxybutyrate in Saccharomyces cerevisiae .AMB Express ,2(1),52.
+Kocharin, K., Siewers, V., & Nielsen, J. (2013). Improved polyhydrox-
+ybutyrate production by Saccharomyces cerevisiae through the use
+of the phosphoketolase pathway. Biotechnology and Bioengineering ,
+110(8),2216–2224.
+Koller,M.(2018).Chemical and biochemical engineering approaches
+in manufacturing polyhydroxyalkanoate (PHA) biopolyesters of
+tailored structure with focus on the diversity of building blocks.
+Chemical and Biochemical Engineering Quarterly ,32,413–438.
+Lajus, S., Dusséaux, S., Verbeke, J., Rigouin, C., Guo, Z., Fatarova, M.,
+Bellvert, F., Borsenberger, V., Bressy, M., Nicaud, J. M., Marty, A., &
+Bordes, F. (2020). Engineering the Yeast Yarrowia lipolytica for Pro-
+ductionofPolylacticAcidHomopolymer. Frontiers in Bioengineering
+and Biotechnology ,8.doi:10.3389/fbioe.2020.00954.
+Leaf,T.A.,Peterson,M.S.,Stoup,S.K.,Somers,D.,& Sriencl,F.(1996).
+Saccharomyces cerevisiae expressingbacterialpolyhydroxybutyrate
+synthaseproducespoly-3-hydroxybutyrate. Microbiology (Reading,
+England) ,142(5),1169–1180.
+Lee,M.E.,DeLoache,W.C.,Cervantes,B.,&Dueber,J.E.(2015).Ahighly
+characterized yeast toolkit for modular,multipart assembly. ACS
+Synthetic Biology ,4(9),975–986.
+Lee, S. Y. (1996). Bacterial polyhydroxyalkanoates. Biotechnology and
+Bioengineering ,49(1),1–14.
+Li, Z.-J., Qiao, K., Liu, N., & Stephanopoulos, G. (2016). Engineering
+Yarrowia lipolytica for poly-3-hydroxybutyrate production. Journal
+of Industrial Microbiology & Biotechnology ,44,1–8.
+Matsumoto, K., Iijima, M., Hori, C., Utsunomia, C., Ooi, T., & Taguchi,
+S. (2018). In vitro analysis of D-lactyl-CoA-polymerizing poly-
+hydroxyalkanoate synthase in polylactate and poly(lactate-
+co-3-hydroxybutyrate) syntheses. Biomacromolecules , 19(7),
+2889–2895.
+Matsumoto, K., Tobitani, K., Aoki, S., Song, Y., Ooi, T., & Taguchi,
+S. (2014). Improved production of poly(lactic acid)-like polyester
+based on metabolite analysis to address the rate-limiting step.
+AMB Express ,4(1),1–5.
+McChalicher, C. W. J. & Srienc, F. (2007). Investigating the structure-
+property relationship of bacterial PHA block copolymers. Journal
+of Biotechnology ,132(3),296–302.Downloaded from https://academic.oup.com/jimb/article/48/5-6/kuab028/6253250 by VTT Information Service user on 22 July 2021
+12 | Journal of Industrial Microbiology and Biotechnology ,2021,Vol.48,kuab028
+Meixner, K., Kovalcik, A., Sykacek, E., Gruber-Brunhumer, M.,
+Zeilinger, W., Markl, K., Haas, C., Fritz, I., Mundigler, N., Stelzer,
+F., Neureiter, M., Fuchs, W., & Drosg, B. (2018). Cyanobacteria
+biorefinery—Production of poly(3-hydroxybutyrate) with Syne-
+chocystis salina and utilisation of residual biomass. Journal of
+Biotechnology ,265,46–53.
+Mitsui, R., Yamada, R., Matsumoto, T., Yoshihara, S., Tokumoto,
+H., & Ogino, H. (2020). Construction of lactic acid-tolerant
+Saccharomyces cerevisiae by using CRISPR-Cas-mediated
+genome evolution for efficient D-lactic acid produc-
+tion. Applied Microbiology and Biotechnology , 104,(21),9147–
+9158.
+Ochi, A., Matsumoto, K., & Ooba, T. (2013). Engineering of class I
+lactate-polymerizing polyhydroxyalkanoate synthases from Ral-
+stonia eutropha that synthesize lactate-based polyester with a
+block nature. Applied Microbiology and Biotechnology , 97(8), 3441–
+3447.
+Peacock,A.J.& Calhoun,A.(2006).5.4.1.3 Block Copolymers.In Poly-
+mer Chemistry—Properties and Applications .Peacock,Andrew J.and
+Calhoun,Allison eds.Hanser Publishers.
+Pederson, E. N., Mcchalicher, C. W. J., & Srienc, F. (2006). Bacterial
+synthesis of PHA block copolymers. Biomacromolecules ,7(6),1904–
+1911.doi:10.1021/bm0510101.
+Poirier,Y.,Erard,N.,&Petétot,J.M.C.(2002).Synthesisofpolyhydrox-
+yalkanoate in the peroxisome of Pichia pastoris .FEMS Microbiology
+Letters,207(1),97–102.
+Portugal-Nunes, D. J., Pawar, S. S., Lidén, G., & Gorwa-Grauslund,
+M. F. (2017). Effect of nitrogen availability on the poly-3-D-
+hydroxybutyrateaccumulationbyengineered Saccharomyces cere-
+visiae.AMB Express ,7(1),35.
+Prabhu,R.,Altman,E.,&Eitemana,M.A.(2012).Lactateandacrylate
+metabolismby Megasphaera elsdenii underbatchandsteady-state
+conditions. Applied and Environmental Microbiology , 78(24), 8564–
+8570.
+Rajkumar, A. S., Liu, G., Bergenholm, D., Arsovska, D., Kristensen, M.,
+Nielsen,J.,Jensen,M.K.,&Keasling,J.D.(2016).Engineeringofsyn-
+thetic, stress-responsive yeast promoters. Nucleic Acids Research ,
+44(17),e136.
+Rehm,B.H.A.(2003).Polyestersynthases:Naturalcatalystsforplas-
+tics. Biochemical Journal ,376(1),15–33.
+Rigouin,C.,Lajus,S.,Ocando,C.,Borsenberger,V.,Nicaud,J.M.,Marty,
+A., Avérous, L., & Bordes, F. (2019). Production and characteriza-
+tion of two medium-chain-length polydroxyalkanoates by engi-
+neered strains of Yarrowia lipolytica .Microbial Cell Factories , 18(1),
+1–9.
+Sandström, A. G., Muñoz de las Heras, A., Portugal-Nunes, D., &
+Gorwa-Grauslund,M.F.(2015).Engineering of Saccharomyces cere-
+visiaefor the production of poly-3-D-hydroxybutyrate from xy-
+lose. AMB Express ,5(1),14.
+Selmer, T., Willanzheimer, A., & Hetzel, M. (2002). Propionate CoA-
+transferase from Clostridium propionicum .European Journal of Bio-
+chemistry ,269(1),372–380.Solaiman, D. K. Y. (2003). Biosynthesis of medium-chain-length
+poly(hydroxyalkanoates)withalteredcompositionbymutanthy-
+brid PHA synthases. Journal of Industrial Microbiology & Biotechnol-
+ogy,30(5),322–326.doi:10.1007/s10295-003-0059-8.
+Taguchi, S., Yamada, M., Matsumoto, K., Tajima, K., Satoh, Y.,
+M u n e k a t a ,M . ,O h n o ,K . ,K o h d a ,K . ,S h i m a m u r a ,T . ,K a m b e ,H . ,&
+Obata, S. (2008). A microbial factory for lactate-based polyesters
+using a lactate-polymerizing enzyme. Proceedings of the National
+Academy of Sciences of the USA ,105(45),17323–17327.
+Tajima, K., Han, X., Satoh, Y., Ishii, A., Araki, Y., Munekata, M., &
+Taguchi, S. (2012). In vitro synthesis of polyhydroxyalkanoate
+(PHA)incorporatinglactate(LA)withablocksequencebyusinga
+newly engineered thermostable PHA synthase from Pseudomonas
+sp.SG4502 with acquired LA-polymerizing activity. Applied Micro-
+biology and Biotechnology ,94(2),365–376.
+Toivari, M. H., Ruohonen, L., Richard, P., Penttilä, M., & Wiebe, M. G.
+(2010). Saccharomyces cerevisiae engineeredtoproduceD-xylonate.
+Applied Microbiology and Biotechnology ,88(3),751–760.
+Vijayasankaran, N., Carlson, R., & Srienc, F. (2005). Synthesis of
+poly[(R)-3-hydroxybutyric acid)inthecytoplasm of Pichia pastoris
+under oxygen limitation. Biomacromolecules ,6(2),604–611.
+Yamada, M., Matsumoto, K., Nakai, T., & Taguchi, S. (2009). Mi-
+crobial production of lactate-enriched poly[( R)-lactate- co-(R)-
+3-hydroxybutyrate] with novel thermal properties. Biomacro-
+molecules ,10(4),677–681.
+Yamada, M., Matsumoto, K., Uramoto, S., Motohashi, R., Abe, H., &
+Taguchi,S.(2011).Lactatefractiondependentmechanicalproper-
+ties of semitransparent poly(lactate- co-3-hydroxybutyrate)s pro-
+duced by control of lactyl-CoA monomer fluxes in recombinant
+Escherichia coli .Journal of Biotechnology ,154(4),255–260.
+Yang, J. E., Park, S. J., Kim, W. J., Kim, H. J., Kim, B. J., Lee, H., Shin, J.,
+& Lee,S.Y.(2018).One-step fermentative production of aromatic
+polyesters from glucose by metabolically engineered Escherichia
+colistrains. Nature Communications ,9(1),79.
+Y a n g ,T .H . ,J u n g ,Y .K . ,K a n g ,H .O . ,K i m ,T .W . ,P a r k ,S .J . ,&L e e ,S .Y .
+(2011).Tailor-madetypeIIPseudomonasPHAsynthasesandtheir
+use for the biosynthesis of polylactic acid and its copolymer in
+recombinant Escherichia coli .Applied Microbiology and Biotechnology ,
+90(2),603–614.
+Yang, T. H., Kim, T. W., Kang, H. O., Lee, S. H., Lee, E. J., Lim, S. C., Oh,
+S. O., Song, A. J., Park, S. J., & Lee, S. Y. (2010). Biosynthesis of
+polylactic acid and its copolymers using evolved propionate CoA
+transferase and PHA synthase. Biotechnology and Bioengineering ,
+105(1),150–160.
+Zhang, X., Guo, Y., Liu, X., Chen, X., Wu, Q., & Chen, G. (2018). Engi-
+neering cell wall synthesis mechanism for enhanced PHB accu-
+mulation in E. coli.Metabolic Engineering ,45,32–42.
+Zhong, W., Yang, M., Hao, X., Sharshar, M. M., Wang, Q., & Xing,
+J. (2021). Improvement of D-lactic acid production at low pH
+through expressing acid-resistant gene IoGAS1 in engineered
+Saccharomyces cerevisiae. J Chem Technol Biotechnol , 96, 732–742.
+https://doi.org/10.1002/jctb.6587 .Downloaded from https://academic.oup.com/jimb/article/48/5-6/kuab028/6253250 by VTT Information Service user on 22 July 2021

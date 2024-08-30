@@ -1,0 +1,518 @@
+Chemical Engineering Science 55 (2000) 1225 }1235
+Multivariate statistical process control of batch processes
+based on three-way models
+D. J. Louwerse, A. K. Smilde *
+Department of Chemical Engineering, Process Analysis and Chemometrics, Uni versity of Amsterdam, Nieuwe Achtergracht 166, 1018 WV Amsterdam,
+Netherlands
+Received 19 November 1998; accepted 7 May 1999
+Abstract
+The theory of batch MSPC control charts is extended and improved control charts are developed. Unfold-PCA, PARAFAC and
+Tucker3 models are discussed and used as a basis for these charts. The results of the di !erent models are compared and the
+performance of the control charts based on these models is investigated. It is found that this performance depends on the type of faultoccuring in the batch process. A strategy is provided to partition reference data describing the normal operating conditions, in orderto be able to monitor a new incomplete batch on-line. (1999 Elsevier Science Ltd. All rights reserved.
+Keywords: Batch MSPC; Tucker; PARAFAC; PCA; Control charts; Process monitoring
+1. Introduction
+Multivariate statistical process control (MSPC) for
+monitoring batch and semi-batch processes is still a rela-tively new technique. Conventional (univariate) statist-ical process control (SPC) techniques are already used inthe process industry. It is expected that batch MSPC willalso become more important since batch productionprocesses play an important role in chemical industry.Pharmaceuticals, biochemicals and a large number ofpolymers, for instance, are often produced batch wise.Batch MSPC can play an important role when it provesto be cost e !ective, or when a safe operation or a better
+insight in the process variability can be achieved. Due tothe non steady-state behaviour of batch processes, how-ever, batch MSPC is more complicated than MSPC ofcontinuous processes. Nevertheless, the number of ap-plications is rising. The "rst comprehensive paper in this
+"eld appeared by Nomikos and MacGregor (1994). Since
+then batch MSPC is getting more attention, see Nomikosand MacGregor (1995), Kourti and MacGregor (1995),Martin, Morris, Papazoglou and Kiparissides (1996),Dong and McAvoy (1996).
+*Corresponding author. Tel: #31-20-5255062; fax: #31-20-
+5256638.
+E-mail address: asmilde @anal.chem.uva.nl (A. K. Smilde)In MSPC of continuous processes the normal vari-
+ation of variables around their steady state is modelled,where in batch MSPC the normal variation of variablesaround an optimal time trajectory has to be modelled.An additional time dimension is present in batch processdata which makes it three dimensional in nature.
+Three-way batch data can be analysed with various
+methods. Up to now unfold principal component analy-sis (unfold-PCA), also referred to as multiway-PCA, isoften used for batch MSPC (Nomikos & MacGregor,1995). For unfold-PCA the three-way array is unfoldedto a two-way array. Then the data is modelled with PCAand"nally the result is folded back again to obtain
+a three-way representation of the model and themodelled data. Using unfold-PCA is straightforward be-cause PCA is a well-known and well understood tool foranalysing data. PCA can also be used for MSPC ofcontinuous processes.
+Due to the unfolding process, shown in the next sec-
+tion, the number of parameters of an unfold-PCA modelis very large. The number of parameters of a PARAFACand of a Tucker3 model is, compared to unfold-PCA,considerably reduced since the data is compressed inthree directions instead of one as in unfold-PCA. Hence itmight be expected that PARAFAC and Tucker3 modelsare more stable. For PARAFAC and Tucker3 models,batch MSPC charts are constructed and compared tothe presently used unfold-PCA control charts. For this
+0009-2509/00/$- see front matter (1999 Elsevier Science Ltd. All rights reserved.
+PII: S 0 0 0 9 - 2 5 0 9 ( 9 9 ) 0 0 4 0 8 - Xcomparison it is important to look at the model "t and
+the residuals, and especially to look at the detecting anddiagnostic power of the control charts in case of erro-neous batches. MSPC serves three goals: detecting, locat-ing and diagnosing erroneous variation. Hence, controlcharts should be judged in this perspective.
+The purpose of this paper is threefold. First it is shown
+how unfold-PCA, PARAFAC and Tucker3 models canbe used to model batch process data and also how a newbatch is projected on each model. Secondly, the theory ofbatch MSPC charts is described and improved. Resultsare compared to existing batch MSPC charts. Thirdly,a method for dealing with un "nished batches in on-line
+monitoring is introduced. Monitoring results of MSPCcharts based on unfold-PCA, PARAFAC and Tucker3models are presented and compared.
+2. Three-way data models
+Normal characters, including capitals, are scalars and
+refer to single data elements, or can have a special mean-ing as will be explained in the text. Bold lower casecharacters refer to vectors, bold capitals refer to two-wayarrays or matrices and bold underlined capitals refer tothree-way arrays. The superscript Tattached to a matrix,
+like in XT, refers to the transpose. Batch data,
+X
+(I]J]K) with Ibatches, Jvariables and Ktime
+points, will be used for illustration.
+For unfold-PCA, Xis"rst unfolded in a two-way array
+X. There are three possible ways to unfold X, leaving one
+mode intact and unfolding the other two modes into onecombined mode. In case of batch MSPC it is importantto determine di !erences between batches and to project
+new batches on the model. This is possible by maintain-ing the batch ( "rst) mode and unfolding the variable
+(second) and the time (third) modes in a newly formedsecond mode, here called the var }time mode. Fig. 1
+shows this process by taking frontal slices and placingthem next to each other. The number of variables in thenewly formed var }time mode is M"J]K. Columns of
+X(I]M) represent the batches for a single variable at
+a single point in time and rows represent all possiblecombinations of variable and time for a single batch.Using PCA Xcan be modelled with Rprincipal compo-
+nents
+xim"R+
+r/1airbmr#eim, (1)
+or in matrix notation
+X"ABT#E, (2)
+where xim,air,bmrandeim, respectively, are elements
+ofX(I]M),A(I]R),B(M]R) and E(I]M). Without
+changing the model, Bcan be made column-orthogonal.
+Fig. 1. Three-way data X, with modes `batcha,`variable aand`timea,
+unfolded to a two-way matrix Xwith mode `batchaand a combined
+mode`var}timea.
+Then BTB"Iand the explained variance of the data is
+accounted for in A. Vectors of Aare called score vectors.
+XK"ABTis the modelled part of X, and Eis the residual
+matrix. A three-dimensional model can be constructed byfolding back the two-dimensional model. The scorematrix Aremains unchanged, but XK,BandEare con-
+verted into their three-dimensional representationsXK
+,BandE. Fig. 2a visualises the unfold-PCA model, and
+the unfolding and back folding process.
+The PARAFAC model of Xwith Rcomponents
+(Harshman, 1970; Carroll & Chang, 1970) can be de-scribed as
+xijk"R+
+r/1airbjrckr#eijk, (3)
+where: i,jandkare running indices for the units of the
+three di !erent modes I,JandK;ris an index of the
+Rcomponents; xijk,air,bjr,ckrandeijkare elements of
+X
+(I]J]K),A(I]R),B(J]R),C(K]R)a n d E(I]J]
+K);x(ijk"+Rr/1airbjrckris the modelled part of xijk. Vec-
+tors of Aare called score vectors and vectors of Band
+Care called loading vectors. A two-way matrix repres-
+entation of the PARAFAC model is given by
+X"A(C"B)T#E, (4)
+where "indicates the Khatri }Rao product (Rao & Mitra,
+1971) of Cand Bpartitioned in columns (see appendix).
+Without changing the model, the vectors of BandCcan
+be normalised to unit length when simultaneously thematching vectors of Aare compensated. Fig. 2b visualises
+the PARAFAC model.
+The Tucker3 model of X
+, with R,Sand„components
+for the "rst, second and third mode, respectively (Tucker,
+1966; Kroonenberg & De Leeuw, 1980), can be describedas
+xijk"R+
+r/1S+
+s/1T+
+t/1airbjsckthrst#eijk, (5)1226 D. J. Louwerse, A. K. Smilde /Chemical Engineering Science 55 (2000) 1225 }1235Fig. 2. Three dimensional representation of (a) the unfold-PCA model, (b) the PARAFAC model and (c) the Tucker3 model.
+where: r,sandtare indices for the components for the
+di!erent modes; xijk,air,bjs,ckt,hrstandeijkare elements
+ofX(I]J]K),A(I]R),B(J]S),C(K]„),H(R]S]„)
+and E(I]J]K);x(ijk"+Rr/1r+Ss/1+Tt/1airbjsckthrstis the
+modelled part of xijk. Vectors of Aare called score vectors
+and vectors of Band Care called loading vectors. Ele-
+ments of Hare weights for all possible component inter-
+actions. A two-way matrix representation of the Tucker3model often is given by
+X"AH(C?B)T#E, (6)where ?indicates the Kronecker product and H(R]S„)
+is a two-way representation of H
+(R]S]„). Without
+changing the model the matrices A,BandCcan be made
+column-orthogonal.The variance described by the modelis then accounted for in H
+. Fig. 2c visualises the Tucker3
+model.
+It can be shown that for a given number of compo-
+nentsRthe unfold-PCA model always "ts better than the
+Tucker3 model, which in turn "ts always better than the
+PARAFAC model (Kiers, 1991). This can be explained bythe di!erence in the amount of parameters for eachD. J. Louwerse, A. K. Smilde /Chemical Engineering Science 55 (2000) 1225 }1235 1227model. The unfold-PCA model estimates for every com-
+ponent a parameter for each time point of every variable.The high number of parameters can describe a relativelarge amount of variation. The PARAFAC model onlyestimates a parameter for each time point over the vari-ables and a parameter for each variable over the timepoints. For the time mode the e !ect of the variables are
+averaged and vice versa. Due to this averaging there isless variation explained by the PARAFAC model com-pared to the unfold-PCA model. The PARAFAC modelonly allows interactions between the same component ofall modes. The Tucker3 model also allows interactionsbetween a particular component of a certain mode withall components of the other modes. For this reason, morevariation is explained by the Tucker3 model compared tothe PARAFAC model with a similar model size. Thereasoning above is comparable to the case that a rela-tionship between an xandycan increasingly be "tted
+better with higher-order polynomials (more complexmodels). The question is, of course, how complex themodel should be.
+3. Projecting a new batch on an existing model
+To construct MSPC charts it is necessary to model
+batch data representing the normal operating conditions(NOC) with unfold-PCA, PARAFAC or Tucker3. Thendata of new batches can be compared with the NOC databy projecting the new batches on one of the models.A data vector of a new batch, x/%8(M]1), can be projec-
+ted on either model to calculate a new score vector,a/%8(R]1) and a new residual vector e/%8(M]1). For
+unfold-PCA with column orthogonal B, Eq. (2) is rear-
+ranged and the score and residuals of the new batch are(Nomikos & MacGregor, 1994)
+a/%8"BTx/%8,
+e/%8"x/%8!Ba/%8. (7)
+For PARAFAC Eq. (4) is similarly rearranged and the
+score and residuals are
+a/%8"[(C"B)T(C"B)]~1(C"B)Tx/%8,
+e/%8"x/%8!(C"B)a/%8. (8)
+For Tucker3 rearranging Eq. (6) results ina/%8"(HHT)~1H[(C?B)T(C?B)]~1(C?B)Tx/%8,
+e/%8"x/%8!(C?B)HTa/%8. (9)
+MSPC charts can be used to compare the scores and
+residuals of the new batch with the scores and residuals ofthe NOC data.4. Batch MSPC charts
+Control charts that are used in batch MSPC generally
+are based on the Hotelling statistic ( D-chart) and on the
+residuals statistic ( Q-chart).
+4.1. Hotelling statistic: D-chart
+This statistic assesses the statistical signi "cance of the
+di!erence between two sets of samples, drawn from
+a multivariate normal distribution. The de "nition of the
+Hotelling statistic is explained in the appendix. If insteadofxiwithJvariables, a reduced (principal) component
+space with Rcomponents and PCA-, PARAFAC- or
+Tucker3 score vectors is used, the „2-statistic is then
+called the D-statistic (Nomikos & MacGregor, 1994) and
+becomes
+(a/%8!a6I)TS~1R(a/%8!a6I)I(I!R)
+R(I2!1)
+&F(R,I!R), (10)
+where a/%8is the score of the new batch, a6Ithe average
+score of the initial Ibatches and SRthe covariance matrix
+of the Iinitial scores with Rcomponents. The a6Icontain
+the column averages of A(I]R) and SRis calculated as
+(1/(I!1))ATcAcwhere Acis the column centered A. This is
+the approach often used in batch MSPC.
+The problem with this approach, however, is that the
+Iinitial scores of the reference set are constructed di !er-
+ently from the future scores of the new batches. Thefuture scores are not drawn from the same distribution asthe initial scores. The initial scores are maximised inorder to optimally model the variance of the data, where-as the future scores are calculated by "tting new data on
+this model.
+A better approach is schematically given hereafter:
+a. For all batches i"1,2,I.
+b. Model the data from all initial batches except batch
+i(1,2,i!1,i#1,2,I).
+c. Project batch ion the model, calculate the score vector
+aiand the residual vector ei.
+d. End i-loop.
+e. Calculate the average score vector a6
+Iand the
+covariance matrix of the projected scores SRas men-
+tioned above.
+f. Develop the D- and Q-charts.
+g. Calculate a model with all initial batches I, project
+a new batch on this model and calculate a/%8ande/%8.
+h. Use a/%8,a6IandSRto calculate the D-statistic with
+Eq. (10) and use e/%8to calculate the Q-statistic.
+In this way all initial and future scores are projected
+and can be assumed coming from the same distributionand Eq. (10) holds. A D-chart can be constructed based
+on the F-distribution and a desired error limit. A small
+error is made since the score of the future batch is1228 D. J. Louwerse, A. K. Smilde /Chemical Engineering Science 55 (2000) 1225 }1235projected on a model based on one extra batch compared
+to the score of the initial batches.
+4.2. Residuals statistic :Q-chart
+The sum of squared residuals of batch ican be cal-
+culated as
+Qi"J+
+j/1K+
+k/1e2ijk, (11)
+where eijkis the typical element of Ei(J]K), the matrix
+of residuals of the ith batch which is the back-folded
+ei(JK]1) vector (see Eqs. (7) }(9)). This Q*value should
+remain within certain limits. If the residuals are indepen-dent and normally distributed Qifollows a s2-distribu-
+tion (Nomikos & MacGregor, 1994,1995),
+Qi&gs2h, (12)
+withhdegrees of freedom and a weight gto account for
+the magnitude of Qi. The residuals, however, still can be
+partly correlated. Therefore, the hdegrees of freedom of
+Eq. (12) are not known in advance. However, it can stillbe assumed that the sum of squares, Qi(i"1,2,I), of
+the NOC batches follow this distribution, Qi&gs2h(Nomikos & MacGregor, 1995). The weight gand the
+degrees of freedom hof this distribution can be estimated
+with the "rst (kgs
+2h"g)h) and second ( p2gs2h"2g2)h) mo-
+ment of this distribution. Q-charts can be constructed for
+Qibased on this distribution and a desired error limit. An
+alternative procedure to "nd control limits for Qiis given
+by Jackson and Mudholkar (1979), which is similar to theapproach presented above.
+In traditional Q-charts the parameters gandh, and
+hence the upper 95% con "dence limit, Q95, is constant
+for the whole batch run (Nomikos & MacGregor, 1994).A new method is proposed in this paper, that uses severalmodels for on-line monitoring, this will be explainedlater. As a consequence, di !erent values of gandhare
+obtained, and consequently, the upper 95% con "dence
+limitQ95can vary as a function of time. This makes the
+interpretation more di $cult, a straight line upper limit is
+common practice and for operators easier to deal with.This problem can be avoided easily by plotting the ratioQ*/Q95orQ*/Q99, the upper limit line is then constant like
+in case of the D-chart.
+4.3. Detecting power
+Usually the upper limits of the charts are set on a 95 or
+99% signi "cance level. When the results of the D-charts
+andQ-charts have to be compared for several models and
+several sizes of the models, actually various distributionsare being compared. For instance the D-statistic value
+based on a model with R"2 is being compared with
+a value based on R"3, orQ-statistic values with severaldegrees of freedom hare being compared. In order to
+obtain comparable results, p-values will be reported. This
+p-value is the probability that a value at least as large as
+the statistic obtained comes from normal operating con-ditions. The 95 or 99% signi "cance level corresponds to
+p-values of 0.05 (5%) or 0.01 (1%). The D- andQ-statistic
+of an erroneous batch calculated with one of the models,ideally has a p-value much lower then 0.05 or 0.01. Stated
+otherwise, if a p-value lower than 0.05 or 0.01 is found,
+the control charts signals an error. By reporting thep-values, an idea is given of the average run length (ARL)
+of the control chart; that is, how long does it take fora control chart to detect an error. ARLs are performancemeasures of control charts; the longer it takes to detectan error (high ARL), the poorer the performance of thecontrol chart (Wetherill & Brown, 1991).
+5. On-line monitoring
+In order to be able to monitor a batch process on-line,
+the total run time Kof a batch process is subdivided in
+several time periods. One way to subdivide the total runtime of a batch is according to scheduling points, whendistinct stages are detectable due to the chemistry orphysics of the process, or for speci "c chemical or physical
+reasons. The total run time can be subdivided accord-ingly and for every stage, or for every time period be-tween two scheduling points, the corresponding NOCdata is modelled and a D- and Q-chart is constructed. If
+there are no speci "c scheduling points or distinct stages
+the run time can be subdivided in expanding time peri-ods, like 0- K/n, 0-2K/n,2,0 -Ktime points.
+It is also possible to use a more complex approach,
+introduced by Ra Knner, MacGregor and Wold (1998),
+based on a recursive multi-block PCA method. Thismethod processes data in a sequential and adaptive man-ner with a controlled rate of adaptation. Another alterna-tive is given by Nomikos and MacGregor (1994,1995).These approaches can also be used for PARAFAC andTucker3 models.
+TheD-chart measures the deviation between a new
+batch and the normal operating batches in terms ofvariation which can be handled by the model, whereastheQ-chart shows the variation which cannot be handled
+by the model. Hence, both charts are complementary(Nomikos & MacGregor, 1994; Nomikos & MacGregor,1995). When a new batch has a large D-statistic and
+a moderate Q-statistic, then it means that variation is
+present in this new batch which is already to some extentpresent in the training (NOC) data, but is extreme com-pared to the normal operating batches, e.g. a slow drift intemperatures and pressure might show such behavior.When a new batch has a large Q-statistic, then com-
+pletely new variation is encountered, not present in themodel, e.g. sudden upsets and sensor failure might showD. J. Louwerse, A. K. Smilde /Chemical Engineering Science 55 (2000) 1225 }1235 1229such behaviour. Hence, using the two types of control
+charts simultaneously is important from a chemical en-gineering point of view: they can both signal events, butthey have di !erent diagnostics values.
+When a chart signals an out-of-control situation, con-
+tribution plots can help in locating which variables causethe out-of-control situation and diagnose the possiblecause of the erroneous behaviour (Miller, Swanson& Heckler, 1998; Kourti, Nomikos & MacGregor, 1995;BoqueH& Smilde, 1999).
+6. Experimental
+The use of batch MSPC charts for the several men-
+tioned three-way models is illustrated with a benchmarkdata set of a simulated semi-batch emulsion polymeris-ation of styrene }butadiene (Broadhead, Hamielec and
+MacGregor, 1985). Meaningful disturbances like impu-rities in the initial charge of the organic phase and in thebutadiene feed to the reactor were added. Measurementswere taken from #ow rates, temperatures, density, esti-
+mates of the conversion and energy release. A detaileddescription can be found in literature (Nomikos & Mac-Gregor, 1994; Broadhead et al., 1985). Fifty batches weresimulated to construct the NOC data, by introducingtypical variations.
+Three additional batches were simulated, one with
+normal conditions and two with product that was out ofthe speci "cation region. One erroneous batch had an
+initial organic impurity contamination in the butadienefeed. The other erroneous batch had the same problem,but the contamination was higher and started halfwaythrough the batch operation.
+The NOC data is arranged in a three-way array
+X
+(I]J]K)o fI"50 batches, J"9 variables and
+K"200 time points. To describe the variation of the
+variables about their average trajectory, for every vari-able at each time point the 50 values were centred andscaled to unit variance. The three additional batches arescaled with the NOC parameters.
+On-line monitoring was achieved by subdividing the
+total run time Kin 10 time periods with 0 }20, 0}40, 0}60,
+2,0}200 time points. For every time period the corre-
+sponding NOC data is modelled, and a D-chart and
+Q-chart is constructed.
+6.1. PCA ,PARAFAC and Tucker3 batch MSPC charts
+Batch MSPC charts based on an unfold-PCA model
+with two and with three principal components were con-structed as described earlier. Results of using unfold-PCA for modelling the D- and Q-charts are presented
+with two methods. The method that uses the Hotellingstatistic for PCA as described in literature, called theuncorrected model; and the new approach presented inthis paper, called the corrected model. The new (correc-
+ted) approach is also used for charts based on thePARAFAC and the Tucker3 model. To compare theperformance of PARAFAC and unfold-PCA, batchMSPC charts based on the PARAFAC model are alsoconstructed with two and three components. Since it isthe aim to model di !erences between batches and also for
+computational convenience, the PARAFAC score vec-tors of the batch mode were constrained to be orthogonal(Harshman, 1970). For Tucker3, batch MSPC charts areconstructed based on a model with R"4,S"2,„"3
+components. R,Sand„, respectively, represent the num-
+ber of components for the batch, the variable and thetime mode. The choice of the Tucker3 model size isindicated by Tucker3 cross-validation results (Louwerse,Smilde & Kiers, 1998).
+Thep-values of the D- and Q-statistic for the three
+future batches are calculated for all models and all timeperiods. For instance, in case of the Tucker3 modelwithR"4,S"2 and„"3 components the D-statistic,
+according to Eq. (10), is compared with the F(4,45)-
+distribution to calculate a p-value. The four-degrees of
+freedom are from the number of components of the batchmode, and the 45 degrees of freedom are from the 50reference batch scores minus the four components andone lost degree because of the centring operation. TheQ-statistic is compared to the s2-distribution of Eq. (12)
+to calculate a p-value; gandhare calculated with the
+NOC values and are known when future batches areprojected.
+7. Results and discussion
+The results will be discussed keeping in mind the goals
+of MSPC: detecting, locating and diagnosing erroneousvariation. Hence, it is important that at least one of thecontrol charts gives an out-of-control signal (detecting),but it is also important which chart signals (locating anddiagnosing).
+Table 1 shows the amount of variance that is explained
+for all described models. Besides that models with morecomponents explain more variation, unfold-PCA ex-plains the largest part of the variation for a certainnumber of components, as already mentioned in thetheory section. The 4 ]2]3 component Tucker3 model
+explains more variation than the two component un-fold-PCA model. It seems that the Tucker3 model isconsiderably larger than the unfold-PCA model withrespect to the number of components. However, thenumber of estimated parameters for the NOC datamodelled with Tucker3 (4 ]50#2]9#3]200#4]
+2]3"842) is small when it is compared to the unfold-
+PCA model (2 ]50#2](9]200)"3700). The amount
+of variation explained by the models might seem low, butthis is not an exception in batch models (Nomikos1230 D. J. Louwerse, A. K. Smilde /Chemical Engineering Science 55 (2000) 1225 }1235Table 1
+Percentage explained variation of the NOC data as a function of the model size and the modelled time periods
+Model size PCA PARAFAC Tucker3
+Model time period 2323 4 ]2]3
+0}20 49.3 63.0 38.1 47.9 55.3
+0}40 36.3 49.6 25.1 34.2 40.9
+0}60 28.4 39.6 21.0 27.6 33.6
+0}80 25.7 35.2 19.7 25.4 29.6
+0}100 24.6 32.7 18.7 23.6 26.8
+0}120 24.2 31.5 17.8 22.5 25.9
+0}140 23.5 30.6 17.3 21.6 25.1
+0}160 23.4 30.0 17.8 21.6 24.9
+0}180 23.9 30.1 18.8 22.3 25.6
+0}200 24.0 29.9 19.1 22.4 25.6
+Table 2
+(a)D-statistic of a future batch, erroneous from the start
+Modelled time periods
+Model Comp. no. 0 }20 0 }40 0 }60 0 }80 0 }100 0 }120 0 }140 0 }160 0 }180 0 }200
+UNFOLD-PCA6/#2 14 2.4 0.049 0.024 0.038 0.030 0.019 0.007 0.005 0.004
+3 6.0 4.9 0.16 0.089 0.11 0.11 0.071 0.027 0.019 0.014
+UNFOLD-PCA#03321 0 0.70 0.001 0.001 0.002 0.003 0.002 (0.001(0.001(0.001
+3 7.3 1.8 0.004 0.005 (0.001 0.011 0.007 0.001 0.001 (0.001
+PARAFAC 2 6.1 0.12 0.010 0.026 0.008 0.003 0.004 0.002 (0.001 0.001
+31 6 0.43 0.048 0.062 0.004 0.014 0.007 0.004 0.004 0.002
+Tucker3 4, 2, 3 9.0 1.6 0.21 0.69 0.075 0.44 0.37 0.085 0.097 0.050
+P-values *100% are tabulated as a function of the model, the model size and the used time periods. The boldface numbers indicate a detection signal
+(a"0.01)
+(b)Q-statistic of a future batch, erroneous from the start
+Modelled time periods
+Model Comp. no. 0 }20 0 }40 0 }60 0 }80 0 }100 0 }120 0 }140 0 }160 0 }180 0 }200
+UNFOLD-PCA6/#2 0.23 0.007 3.1 19 2.7 4.4 6.8 0.028 0.073 0.24
+3 0.13 (0.001 0.34 8.7 0.85 1.4 1.3 (0.001 0.002 0.026
+UNFOLD-PCA#03322 . 5 0.31 7.5 35 7.7 10 17 0.13 0.30 1.2
+32 . 4 0.016 6.0 29 11 9.5 12 0.058 0.16 0.85
+PARAFAC 2 11 11 8.8 5.1 6.9 13 20 5.4 3.3 4.5
+3 2.4 4.2 3.5 3.3 12 14 24 3.8 3.2 4.8
+Tucker3 4, 2, 3 24 16 8.2 3.0 5.8 11 17 3.5 3.8 6.0
+P-values *100% are tabulated as a function of the model, the model size and the used time periods. The boldface numbers indicate a detection signal
+(a"0.01).
+& MacGregor, 1994,1995). Note that the variation not
+captured by the model is summarized in the Q-charts.
+Results of the D- and Q-statistic are shown in Tables
+2 and 3. The p-values of the erroneous future batches are
+tabulated as a function of the used models and themodelled time periods. The p-value of an erroneous
+batch ideally is as low as possible, at least below 0.05 (or5%), corresponding to a signi "cance level of 95%. For
+convenience all p-values lower than 0.01 (1%) are made
+bold in the tables; this represents cases where the controlD. J. Louwerse, A. K. Smilde /Chemical Engineering Science 55 (2000) 1225 }1235 1231Table 3
+(a)D-statistic of a future batch, erroneous from halfway
+Modelled time periods
+Model Comp. no. 0 }120 0 }140 0 }160 0 }180 0 }200
+UNFOLD-PCA6/#2 36 24 2.6 0.65 0.098
+3 55 42 5.4 1.9 0.33
+UNFOLD-PCA#0332 19 4.5 0.10 0.048 0.001
+33 1 1 0 0.23 0.17 0.005
+PARAFAC 2 0.87 0.37 (0.001 (0.001 (0.001
+3 1.2 9.0 (0.001 0.005 (0.001
+Tucker3 4, 2, 3 2.8 0.054 0.019 0.040 0.006
+P-values *100% are tabulated as a function of the model, the model size and the used time periods. The boldface numbers indicate a detection signal
+(a"0.01).
+(b)Q-statistic of a future batch, erroneous from halfway
+Modelled time periods
+Model Comp. no. 0 }120 0 }140 0 }160 0 }180 0 }200
+UNFOLD-PCA6/#2 0.060 (0.001 (0.001 (0.001 (0.001
+3 0.006 (0.001 (0.001 (0.001 (0.001
+UNFOLD-PCA#0332 0.27 (0.001 (0.001 (0.001 (0.001
+3 0.24 (0.001 (0.001 (0.001 (0.001
+PARAFAC 2 1.1 (0.001 (0.001 (0.001 (0.001
+3 0.39 (0.001 (0.001 (0.001 (0.001
+Tucker3 4, 2, 3 1.9 (0.001 (0.001 (0.001 (0.001
+P-values *100% are tabulated as a function of the model, the model size and the used time periods. The boldface numbers indicate a detection signal
+(a"0.01).
+chart clearly detects abnormal behaviour. All p-values of
+the normal behaving future batch were larger than 0.05(or 5%), corresponding to a signi "cance level below 95%,
+they are not individually reported.
+Thep-values of the future batch erroneous from
+halfway, are reported after the introduction of the error.Control charts of the PARAFAC model with two com-ponents are shown as an example in Fig. 3. The D- and
+Q-statistic is shown for all three future batches.
+The results will be discussed in three parts: (i) compar-
+ing corrected and uncorrected unfold-PCA, (ii) com-paring performance of the di !erent models in terms of
+detecting erroneous behaviour in either one of the charts
+and (iii) comparing performance of the di !erent models
+in terms of the separate D- and Q-charts.
+7.1. Corrected versus uncorrected unfold-PCA
+When the uncorrected unfold-PCA (unfold-PCA6/#)
+method is compared to the corrected unfold-PCA (un-fold-PCA#033) method there is a clear di !erence. When anerror is introduced in the operating conditions of a run-
+ning batch, the D-statistic signals earlier (see Table 2a
+and Table 3a) and the Q-statistic signals later (see Table
+2b and Table 3b) when using unfold-PCA#033. Stated
+otherwise, for a given signi "cance level a, theD-limits
+become smaller and the Q-limits become larger in the
+corrected approach.
+In chemical engineering practice, an aof 99% is chosen
+for the D-chart and an aof 99.9% is chosen for the
+Q-chart to avoid the pitfall of the uncorrected approach.
+In practice, choosing a 99% level for the Q-chart in the
+uncorrected approach leads to more false positive sig-nals, that is, an actual type I error larger than 1%(Nomikos, 1996). To reduce this actual type I error,a limit of 99.9% for the Q-chart is chosen in chemical
+engineering practice. Hence, using the corrected ap-proach, this problem is solved since the control limits arebetter approximates of the true limits. The results of thecorrected unfold-PCA support and motivate the chem-ical engineering practice. From now on, only the resultsof unfold-PCA#033will be considered.1232 D. J. Louwerse, A. K. Smilde /Chemical Engineering Science 55 (2000) 1225 }1235Fig. 3. (a) D-statistic of future batches as a function of the modelled time periods for a PARAFAC model with 2 components. (b) Quotient of the
+Q-statistic of future batches and the 95% upper limit as a function of the modelled time periods for a PARAFAC model with 2 components.
+7.2. Comparing performance of the di werent models in
+terms of detecting erroneous beha viour in either one of the
+charts
+For the batch erroneous from the start, both PARAF-
+AC and unfold-PCA#033give a signal after 40 time points.
+Tucker3 detects slightly later; at 60 time points. For thebatch which is erroneous halfway the batch run, thePARAFAC and Unfold-PCA#033charts detect this dir-
+ectly (time point 120). The Tucker3 charts lag againslightly behind (after 140 time points).
+Summarizing, in overall detecting capabilities the
+PARAFAC and unfold-PCA#033charts seem to performsimilarly. The Tucker3 based charts detect slightly later.
+The Tucker3 charts were not optimized in terms of num-ber of Tucker3 components. This might have improvedthe performance of the Tucker3 chart.
+7.3. Comparing performance of the di werent models in
+terms of the separate D- and Q-charts
+D-charts based on the PARAFAC model perform
+slightly better than the unfold-PCA#033ones, especially
+for the batch with an error halfway (Table 3a): thePARAFAC model with two components detects the er-ror in a very early stage. The unfold-PCA#033charts areD. J. Louwerse, A. K. Smilde /Chemical Engineering Science 55 (2000) 1225 }1235 1233comparable in performance to the Tucker3 based charts
+(see Table 2a and Table 3a), although the Tucker3 basedchart shows a slightly better performance for the batchwith an error halfway (Table 3a). It seems to be favour-able, both for PARAFAC and unfold-PCA#033, to have
+a parsimonious model, i.e., to use a low number of com-ponents. The performance of the Tucker3 model mightbe enhanced by lowering the number of components inthe batch mode. This was not pursued further.
+TheQ-chart based on unfold-PCA#033performs slightly
+better than the PARAFAC and Tucker3 based charts forthe batch with an error in the start (Table 2b). Note thatalso the unfold-PCA#033chart has problems in detecting
+this error once the batch has run for 60 time points ormore. Apparently this error is hard to detect in a Q-chart.
+The initial organic impurity in the feed at the start of thebatch causes extreme variation which can be modelled tosome extent, since D-charts detect the abnormality and
+theQ-charts do not show consistent high-residual errors.
+For the batch with an error halfway, the conclusions
+are less clear (Table 3b). The unfold-PCA#033and
+PARAFAC based Q-charts perform comparable. The
+Tucker3 based chart performs perhaps slightly worse, butit still gives a warning if a level of 5% is de "ned as
+warning limit.
+Summarizing, the PARAFAC and Tucker3 based
+charts seem to perform slightly better in the D-chart than
+unfold-PCA#033. In the Q-chart, unfold-PCA#033seems to
+perform slightly better. Hence, there is no king method.All depends on what types of faults are to be expectedand detected in the batch process being monitored.Chemical engineering experience has to show whatmethods are the most useful for a given application.
+8. Conclusions
+The correction of unfold-PCA proposed in this paper
+is theoretically justi "ed and improves the performance of
+theQ-chart based on unfold-PCA. The correction re-
+moves the necessity of using a too high limit for theQ-chart, which was the engineering solution of the prob-
+lem with the Q-chart.
+For overall detection, that is, receiving a signal from
+either the D-o rQ-chart, there is no king method.
+PARAFAC and unfold-PCA#033perform equally well.
+TheD-charts perform best for parsimonious models, i.e.
+PARAFAC models with a low number of components.Hence, errors like slow drift in the batch process tend tobe detected earlier with, e.g., a PARAFAC based D-chart.
+In the Q-chart, unfold-PCA#033seems to perform slightly
+better.
+The strategy of using a sequence of models, based on
+a growing number of time points seems to work satis-factory. Of course, it is possible to divide the trainingdata in a "ner grid resulting in, e.g., 200 models. Since allcalculations can be done o !-line, once these models are
+known they can be used on-line in a straightforwardmanner.
+Appendix A
+A.1. Khatri }Rao product
+If the matrices C(K]R) and B(J]R), are partitioned
+intoRcolumn vectors, C"[c1,2,cR],B"[b1,2,bR],
+then the Khatri }Rao product is
+C"B"[c1?b1,2,cR?bR],
+where ?is the Kronecker product.
+A.2. Hotelling statistic
+According to Seber (1984), „2is de"ned as
+„2"my@V~1ywith y&Nd(0,R),V&=d(m,R),
+(A.1)
+where y(d]1) is a multivariate observation; V(d]d) is the
+covariance matrix of mmultivariate observations;
+Ndand=ddenote the d-dimensional normal and
+Wishart distribution, respectively. The vector yand the
+matrix Vare statistically independent. For the true multi-
+variate population, the mean is zero and the covariancematrix is R. If this holds then „2follows an Fdistribution
+(m!d#1)
+d
+„2
+m&F(d,m!d#1). (A.2)
+Consider a set of initial multivariate observations
+x1,x2,2,xI, and a future observation x/%8all character-
+ised by Jvariables. For this case, Tracy, Young and
+Mason (1992) derived that if
+xi&NJ(k,R), (A.3)
+then
+x6I&NJ(k,R/I),
+(I!1)SI&=J(I!1,R), (A.4)
+where x6Iand SI, respectively, are the average vector and
+the covariance matrix of the initial observations. In thecase that x/%8,x6I, and SIare independent it follows that
+(x/%8!x6I)TS~1I(x/%8!x6I)I(I!J)
+J(I2!1)&F(J,I!J). (A.5)
+References
+BoqueH, R., & Smilde, A. K. (1999). Monitoring and diagnosing batch
+processes with multiway regression models, AIChE Journal ,
+45(7), 1504 }1520.1234 D. J. Louwerse, A. K. Smilde /Chemical Engineering Science 55 (2000) 1225 }1235Broadhead, T. O., Hamielec, A. E., & MacGregor, J. F. (1985). Dynamic
+modeling of the batch, semi-batch and continuous production of
+styrene-butadiene copolymers by emulsion polymerisation. Mak-
+romolekulare Chemie Supplement ,10, 105}128.
+Carroll, J. D., & Chang, J. J. (1970). Analysis of individual di !erences in
+multidimensional scaling via a n-way generalization of `Eckart-
+Young adecomposition. Psychometrika ,35, 283}319.
+Dong, D., & McAvoy, T. J. (1996). Batch tracking via nonlinear princi-
+pal component analysis. AIChE Journal ,42, 2199}2208.
+Harshman, R. A. (1970). Foundations of the PARAFAC procedure:
+model and conditions for an explanatory multi-mode factor analy-
+sis.UCLA Working Papers in Phonetics ,16,1}84.
+Jackson, J. E., & Mudholkar, G. S. (1979). Control procedures for
+residuals associated with principal component analysis. Technomet-
+rics,21, 341}349.
+Kiers, H. A. L. (1991). Hierarchical relations among three-way methods.
+Psychometrika ,56, 449}470.
+Kourti, T., & MacGregor, J. F. (1995). Process analysis, monitoring and
+diagnosis, using multivariate projection methods. Chemometrics and
+Intelligent Laboratory Systems ,28,3}21.
+Kourti, T., Nomikos, P., & MacGregor, J. F. (1995). Analysis, monitor-
+ing and fault diagnosis of batch processes using multiblock andmultiway PLS. Journal Proc. Control ,5, 277.
+Kroonenberg, P. M., & De Leeuw, J. (1980). Principal component
+analysis of three-mode data by means of alternating least squaresalgorithms. Psychometrika ,45,6 9}97.
+Louwerse, D. J., Smilde, A. K., & Kiers, H. A. L. (1998). Cross-
+validation of multiway component models, Journal of Chemometrics ,
+to appear.Martin, E. B., Morris, A. J., Papazoglou, M. C., & Kiparissides, C.
+(1996). Batch process monitoring for consistent production. Com-
+puters Chemical Engineering ,20, S599}S604.
+Miller, P., Swanson, R. E., & Heckler, C. E. (1998). Contribution plots:
+a missing link in multivariate quality control. Applied Mathematics
+and Computer Science ,8, 775}792.
+Nomikos, P. (1996). Detection and diagnosis of abnormal batch opera-
+tions based on multi-way principal component analysis. ISA Trans-
+actions ,35, 259}266.
+Nomikos, P., & MacGregor, J. F. (1994). Monitoring batch processes
+using multiway principal component analysis. AIChE Journal ,40,
+1361}1375.
+Nomikos, P., & MacGregor, J. F. (1995). Multivariate SPC charts for
+monitoring batch processes. Technometrics ,37,4 1}59.
+Rao, C. R., & Mitra, S. (1971). Generalized in verse of matrices and its
+applications (pp. 12 }13), New York: Wiley.
+RaKnner, S., MacGregor, J. F., & Wold, S. (1998). Adaptive batch
+monitoring using hierarchical PCA. Chemometrics and Intelligent
+Laboratory Systems ,41,7 3}81.
+Seber, G. A. F. (1984). Multivariate obser vations. New York: Wiley.
+Tracy, N. D., Young, J. C., & Mason, R. L. (1992). Multivariate control
+charts for individual observations. Journal of Quality Technology ,24,
+88}95.
+Tucker, L. R. (1966). Some mathematical notes on three-mode factor
+analysis. Psychometrika ,31, 279}311.
+Wetherill, G. B., & Brown, D. W. (1991). Statistical process control,
+theory and practice . London: Chapman & Hall.D. J. Louwerse, A. K. Smilde /Chemical Engineering Science 55 (2000) 1225 }1235 1235

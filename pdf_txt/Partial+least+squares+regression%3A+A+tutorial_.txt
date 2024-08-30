@@ -1,0 +1,111 @@
+https://www.statology.org/partial -least -squares -in-r/
+Analytica Chimica Acta
+Volume 185, 1986, Pages 1 -17
+Analytica Chimica Acta
+Partial least -squares regression: a tutorial
+PaulGeladi Bruce R.Kowalski
+https://doi.org/10.1016/0003 -2670(86)80028 -9
+Abstract
+A tutorial on the partial least -squares (PLS) regression method is provided. Weak 
+points in some other regression methods are outlined and PLS is developed as a 
+remedy for those weaknesses. An algorithm for a predictive PLS and some practical 
+hints for its use are given.
+Harald Wold (PLS statistics) + Svante Arrhenius (Chemistry) -> Svante Wold
+(Chemometrics)Partial Least Squares regression (PLS) is a regression method based on covariance. It is 
+recommended in cases of regression where the number of explanatory variables is high, 
+and where it is likely that there is multicollinearity among the variables, i.e. that the 
+explanatory variables are correlated.
+You can choose several response variables in one analysis, and different algorithms are 
+available (NIPALS and SVD).
+The Partial Least Squares regression (PLS) is a method which reduces the variables, used 
+to predict, to a smaller set of predictors. These predictors are then used to perfom a 
+regression.
+The idea behind the PLS regression is to create, starting from a table with n observations 
+described by p variables, a set of h components with the PLS 1 and PLS 2 algorithms
+Some programs differentiate PLS 1 from PLS 2. PLS 1 corresponds to the case where there 
+is only one dependent variable .PLS2corresponds to the case where there are several 
+dependent variables .Partial Least Squares regression model equations
+In the case of the Ordinary Least Squares and Principal Component 
+Regression methods, if models need to be computed for several dependent variables, 
+the computation of the models is simply a loop on the columns of the dependent 
+variables table Y . 
+In the case of PLS regression, the covariance structure of Y also influences the 
+computations.Ordinary Least Squares / Multiple Linear Regression
+PaulGeladi Bruce R.Kowalski Analytica Chimica Acta Volume 185, 1986, Pages 1-17
+Partial least -squares regression : a tutorial  https://doi.org/10.1016/0003 -2670(86)80028 -9
+Summary : MLR
+-For m > n, there is no unique solution 
+unless one deletes independent
+variables .
+-For m = n, there is one unique solution.
+-For m < n, a least -squares solution is 
+possible. For m = n and m < n, the
+matrix inversion can cause problems .
+-MLR is possible with more than one 
+dependent variable.PRINCIPAL COMPONENT REGRESSION (PCR)
+Y = TB + E
+The variables of X are replaced by 
+new ones that have better properties 
+(orthogonality) and also span the 
+multidimensional space of X.Summary : PCR
+-A data matrix can be represented by its score 
+matrix.
+-A regression of the score matrix against one or 
+several dependent variables
+is possible, provided that scores corresponding to 
+small eigenvalues are
+omitted .
+-This regression gives no matrix inversion 
+problems; it is well conditioned.https://www.youtube.com/watch?v=WKEGhyFx0Dghttps://www.youtube.com/watch?v=WKEGhyFx0Dghttps://www.youtube.com/watch?v=WKEGhyFx0Dghttps://www.youtube.com/watch?v=WKEGhyFx0DgPLShttps://www.youtube.com/watch?v=WKEGhyFx0DgAlgoritmo NIPALS (Nonlinear Iterative Partial Least Squares) 
+https://cran.r -project.org/web/packages/nipals/vignettes/nipals_algorithm.html
+Algoritmo SVD https://wires.onlinelibrary.wiley.com/doi/full/10.1002/wics.51https://www.youtube.com/watch?v=WKEGhyFx0Dghttps://www.youtube.com/watch?v=WKEGhyFx0DgQ2cum R2Ycum R2Xcum spiegarehttps://www.youtube.com/watch?v=WKEGhyFx0Dghttps://www.youtube.com/watch?v=WKEGhyFx0Dghttps://www.youtube.com/watch?v=WKEGhyFx0Dg
+https://www.youtube.com/watch?v=WKEGhyFx0Dg
+https://www.youtube.com/watch?v=WKEGhyFx0Dg
+https://www.youtube.com/watch?v=WKEGhyFx0Dghttps://www.youtube.com/watch?v=WKEGhyFx0DgGeneral remarks about PLS regression
+The three methods –Partial Least Squares regression (PLS), Principal Component 
+regression (PCR), which is based on Principal Component analysis (PCA),  and 
+Ordinary Least Squares regression (OLS), which is the regular linear regression,  -give 
+the same results if the number of components obtained from the Principal 
+Component analysis (PCA) in the PCR, or from the PLS regression is equal to the 
+number of explanatory variables.
+What is the difference between PCR and PLS regression?
+The components obtained from the PLS regression, which is based on covariance, are 
+built so that they explain as well as possible Y , while the components of the PCR are 
+built to describe X as well as possible. This explains why the PLS regression 
+outperforms PCR when the target is strongly correlated with a direction in the data 
+that have a low variance.
+https://www.xlstat.com/en/solutions/features/
+partial -least -squares -regressionRicapitolazione Programma 1
+1. Approcci statistici classici: indicatori e statistiche univariate . Descrizione di 
+descrittori numerici semplici delle raccolte di dati: statistiche descrittive 
+parametriche e non parametriche. Visualizzazione di statistiche uni -e bi-
+variate. Esempi pratici in ambiente R software.
+2. Visualizzazione di set di dati reali con diverse tecniche di rappresentazione 
+grafica, analisi dei risultati tramite esplorazione visiva, tecniche di 
+individuazione di dati anomali. Illustrazione del concetto di carta di controllo 
+dei dati. Esempi pratici in ambiente R software.
+3. Metodi di raggruppamento e classificazione: aspetti teorici ed applicativi 
+dell'analisi di raggruppamento gerarchico e non gerarchico e dei metodi di 
+classificazione supervisionata. Esempi pratici in ambiente R software.
+4. Analisi delle componenti principali e metodi fattoriali: aspetti teorici ed 
+applicativi dell'analisi delle componenti principali e dei metodi fattoriali per la 
+compressione ed interpretazione dell'informazione contenuta nei dati. Esempi 
+pratici in ambiente R software.
+5. Metodi di regressione: aspetti teorici ed applicativi del modellamento di dati 
+e predizione con metodi di regressione multilineare e, calibrazioni strumentali e 
+diagnostiche di regressione. Esempi pratici in ambiente R software.Ricapitolazione 2
+…
+6. Metodi di regressione delle componenti principali: aspetti teorici 
+ed applicativi del modellamento di dati e predizione con algoritmi 
+principal component regression (PCR) e partial -least square
+regression (PLS). Esempi pratici in ambiente R software.
+7. La progettazione degli esperimenti: aspetti teorici ed applicativi 
+di design fattoriale e screening, controllo di fattori e variabili 
+dipendenti, metodi avanzati. Esempi pratici in ambiente R software.
+8. Modelli di relazione quantitativa struttura -attività (QSAR -
+Quantitative Structure Activity Realtionship ): descrittori molecolari, 
+aspetti teorici ed applicativi di classificazione, regressione e 
+predizione. Esempi pratici in free software dedicati.
+9. Panoramica sui metodi di analisi di dati esplorativa e 
+supervisionata con reti neurali artificiali. Software dedicati ed 
+esempi di applicazione.

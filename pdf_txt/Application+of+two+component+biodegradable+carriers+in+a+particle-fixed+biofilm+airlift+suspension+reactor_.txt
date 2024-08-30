@@ -1,0 +1,1267 @@
+123
+International Journal of
+Environmental Science and
+Technology
+ 
+ISSN 1735-1472
+ 
+Int. J. Environ. Sci. Technol.
+DOI 10.1007/s13762-013-0256-6A wastewater treatment using a biofilm
+airlift suspension reactor with biomass
+attached to supports: a numerical model
+P. Viotti, A. Luciano, G. Mancini &
+V. Torretta
+123
+Your article is protected by copyright and
+all rights are held exclusively by Islamic
+Azad University (IAU). This e-offprint is for
+personal use only and shall not be self-
+archived in electronic repositories. If you wish
+to self-archive your article, please use the
+accepted manuscript version for posting on
+your own website. You may further deposit
+the accepted manuscript version in any
+repository, provided it is only made publicly
+available 12 months after official publication
+or later and provided acknowledgement is
+given to the original source of publication
+and a link is inserted to the published article
+on Springer's website. The link must be
+accompanied by the following text: "The final
+publication is available at link.springer.com”.ORIGINAL PAPER
+A wastewater treatment using a bioﬁlm airlift suspension reactor
+with biomass attached to supports: a numerical model
+P. Viotti •A. Luciano •G. Mancini •
+V. Torretta
+Received: 15 April 2012 / Revised: 12 February 2013 / Accepted: 9 March 2013
+/C211Islamic Azad University (IAU) 2013
+Abstract A mathematical model of the biological pro-
+cess occurring in a modiﬁed bioﬁlm airlift suspension
+reactor is presented. When compared with a traditional
+wastewater treatment plant, a bioﬁlm airlift suspension
+process has major advantages, such as higher oxygen levels
+in the bulk ﬂuid and lower space requirements. The limited
+volumes obtained with this technique generally do not
+allow to reach the high times of contact required for an
+efﬁcient removal of nitrogen that normally are character-
+ized by a slower kinetics than carbonaceous compounds.
+To avoid this problem, supports for attached biomass
+growth were inserted in the reactor. Both physical and
+biological aspects were incorporated into the presented
+model to simulate the removal processes of the substrates.
+A sensitivity analysis was performed, and the model was
+validated using experimental results obtained at a lab-scale
+plant. This model can accurately estimate the removal rate
+in different boundary conditions providing the details of
+the water quality proﬁles through the reactor and in theattached biomass. The model thus represents a valid aid for
+design purposes and for the management of treatment
+plants that use these uncommon reactors. The model also
+provides the required hydraulic retention time for a com-
+plete nitriﬁcation and the appropriate recirculation ratio.
+The results have shown the full-scale applicability of this
+treatment due to its efﬁciencies coupled to the advantages
+of its low impact, low space requirement and low sludge
+production.
+Keywords Modiﬁed bioﬁlm airlift suspension reactor /C1
+Attached biomass /C1Flux model /C1Bioﬁlm model /C1
+Sensitivity analysis /C1Simultaneous
+nitriﬁcation–denitriﬁcation
+Introduction
+Bioﬁlm reactors can be applied in conditions, where the
+reactor efﬁciency, obtained using only freely suspended
+organisms, is limited by the biomass concentration and by
+short hydraulic residence time. Cases can be encountered
+either for slow-growing organisms (e.g., nitriﬁers and
+de-nitriﬁers), whose growth in suspension requires long
+residence times, or diluted feed streams (a situation fre-
+quently found in domestic wastewater treatment pro-
+cesses), in which only very low biomass concentrations can
+be achieved without biomass retention (Nicolella et al.
+2000 ; De Feo 2007 ). In these cases, bioﬁlms can represent
+an effective solution to successfully retain biomass in the
+reactors and to improve the volumetric conversion capacity
+(Nicolella et al. 1998 ; Splendiani et al. 2006 ). Several
+technologies at low space requirement based on the bio-
+ﬁlms have been developed as alternatives to the traditional
+wastewater treatment (Nicolella et al. 2000 ; Akhbari et al.
+P. Viotti
+Department of Civil, Building and Environmental
+Engineering (DICEA), Sapienza University of Rome,
+Via Eudossiana 18, 00184 Rome, Italy
+A. Luciano ( &)
+ENEA, Italian National Agency for New Technologies,
+Energy and Sustainable Economic Development - RC Casaccia,
+Via Anguillarese 301, 00123 Rome, Italy
+e-mail: antonella.luciano@enea.it
+G. Mancini
+Department of Industrial and Mechanical Engineering,
+University of Catania, Via A Doria 6, 95125 Catania, Italy
+V. Torretta
+Department of Science and High Technology, Insubria
+University of Varese, Via G.B. Vico 46, 21100 Varese, Italy
+123Int. J. Environ. Sci. Technol.
+DOI 10.1007/s13762-013-0256-6
+Author's personal copy2012 ). In recent years, many of these technologies have
+been tested and applied, mainly for the industrial waste-
+water, to pilot and full-scale plants. The importance of
+developing new technologies also in the civil ﬁeld is linkedto the high space requirements of conventional treatment
+plants (mainly activated sludge systems) and to the related
+high impacts on populations in terms of noise and odoursproduction (Walter et al. 2005 ). Airlift technology reactors
+represent a potential solution, where the high oxygen levels
+in the stream assure both high efﬁciencies and low odour
+impact. However, the design and management of these less
+common treatment plants can require a numerical tool ableto analyze and control the different processes involved. At
+the beginning of the 1970s, several mathematical models
+were developed to link the substrate ﬂux into the bioﬁlm tothe fundamental mechanisms of substrate utilisation and
+mass transport (Harremoe ¨s1976 ; La Motta and Mulcahy
+1978 ; Williamson and Mc Carty 1976 ; Rittmann and
+McCarty 1980 ). The main goal (aim) of these ﬁrst-gener-
+ation mechanistic models was to describe the mass ﬂux into
+the bioﬁlm and the concentration proﬁle of one rate-lim-iting substrate within the bioﬁlm (Wanner et al. 2006 ).
+Later, the bioﬁlm models evolved from one-dimensional
+spatial models to multidimensional models, from singlespecies models to multispecies models, from steady-state
+models (Mudliar et al. 2008 ) to dynamical models (Russo
+et al. 2008 ), and from pure growth models to models
+involving biomass growth (Jiang et al. 2009 ; Rahman et al.
+2009 ) and bioﬁlm–ﬂuid interactions, etc. (Wang and Zhang
+2010 ). Empirical models for the evaluation of the overall
+reactor performance have been reconsidered in recent years
+(Wang et al. 2006 ; Piciorenau et al. 2004 ). Bioﬁlms are
+complex systems, therefore, a bioﬁlm model that attemptsto consider all the complexities should include: (i) mass
+balance equations for all of the processes occurring, for all
+components, in all compartments, (ii) continuity andmomentum equations for the ﬂuid in all compartments, and
+(iii) deﬁned conditions for all variables at all system
+boundaries. However, even the most complex bioﬁlmmodels existing today contain many simplifying assump-
+tions, because of the difﬁculties in applying this approach
+to all the system components. Actually, a model should beas simple as possible, and only as complex as needed
+(Wanner et al. 2006 ); especially, when it is not used to
+verify theoretical or experimental ﬁndings, but to makequalitative and quantitative predictions that might well
+serve as guidelines for several aspects of design (Wang and
+Zhang 2010 ). If the objective is then to describe the per-
+formance at the macro-scale, a detailed analysis at the
+micro-scale could be redundant (Wanner et al. 2006 ;
+Morgenroth et al. 2004 ). The use of a simple model for
+engineering purposes is also fundamental in the design of
+technologies that cannot be represented through a simplecompletely mixed reactor approach. This could signiﬁ-
+cantly enhance the use of numerical models for the design
+of more efﬁcient or innovative domestic sewages treat-
+ments (Noguera et al. 1999 ). The reactor here presented is
+designed on the basis of the traditional deep shaft tech-
+nology, but the addition of ﬁxed supports for the attached
+biomass growth is also considered to achieve higherremoval efﬁciency. The main objective of this work is to
+provide a tool for the design and management, on a full
+scale, of the combination of the two technologies (i.e.,
+bioﬁlm airlift suspension reactor (BAS) and attached bio-
+mass). A three substrate-limiting model is implemented.Simpliﬁcations and assumptions, supported by experi-
+mental observation were used as shown below (Noguera
+et al. 1999 , Wang and Zhang 2010 , Beyenal and Lewan-
+dowski 2005 ). The model has been developed through
+experiments performed on a plant at lab scale and also with
+a sensitivity analysis. The research was developed at theDepartment of Civil and Environmental Engineering of the
+University of Rome ‘‘La Sapienza’’ in 2009–2010.
+Materials and methods
+The technological scheme
+The modiﬁed BAS reactor here modelled originates from
+a typical deep shaft reactor (30–40 m deep, diameter
+B1 m) where an airlift is used to raise the wastewater up.
+The characteristic short residence times of these systemshave suggested the inclusion of an attached biomass sec-
+tion to increase the sludge retention time, ensuring that the
+slowest processes will occur (e.g., nitriﬁcation–denitriﬁ-cation). The core of the biological treatment is thus an
+attached biomass section, where biomass is allowed to
+grow on a support constituted of rough tubular pipes,while dedicated diffusers, at different depths, assure the
+needed oxygen distribution through insufﬂated air. The
+suspended biomass, mainly concentrated in the deepestsection of the reactor allows for a further carbonaceous
+substrate removal before the sludge is raised up and sep-
+arated in a ﬂotation section. This scheme thus, combinesthe advantages of the attached biomass systems with those
+derived from the adopted high pressure technique (i.e., the
+high dissolved oxygen concentrations that in many casesrepresents a limiting factor in conventional treatment
+processes). The solid separation by ﬂotation allows for a
+further increase in the efﬂuent quality. Finally, the pro-posed scheme allows a lower sludge production and a
+reduction of odours impacts as a consequence of the
+higher dissolved oxygen concentrations. A numericalmodel was implemented to simulate this modiﬁed BAS,
+whose layout is shown in Fig. 1.Int. J. Environ. Sci. Technol.
+123
+Author's personal copyExperimental set-up for model validation
+The validation of the proposed model was carried out using
+the experimental results derived from several experiments
+performed on a plant at lab scale (Fig. 5) that are explained
+in detail in Luciano et al. ( 2012 ). The main characteristics
+of the experimental scheme includes:
+a. a mixed homogenisation tank (DT);
+b. two attached-biomass aerated reactors in series (AB1
+and AB2), reproducing the upper part of the modiﬁed
+BAS system (working at 2 bar);
+c. a suspended biomass (SB) high-pressure reactor (able
+to work at 2–5 bar), equipped with air diffusers,
+reproducing the deeper part of the modiﬁed BAS (heresuspended biomasses are considered for completing
+the treatment) where the pressure effects on biomass
+was investigated;
+d. a ﬂotation tank for the solids separation of the reactor
+outﬂow (FT).
+The numerical model was validated by considering the
+results obtained in the AB1 and AB2 reactors which rep-
+resent the core of the treatment. Domestic wastewater
+derived from a treatment plant in Rome, collected after the
+grit removal section, was used as the feed
+(COD =590–610 mgL
+-1; BOD5 =328–340 mgL-1;
+TN=31–66 mgL-1; BOD 5/N=5–10). The entire
+experiment lasted 83 days for a total of 15 runs. The
+microbial consortium was withdrawn from a conventionalactivated sludge (CAS) process and slowly acclimatized to
+let it grow and develop on the rough pipes supports. pH and
+temperature were continuously monitored in the experi-ments. Variations of these two parameters were considerednot signiﬁcant as pH ranged between 7 and 8 while tem-
+perature in the lab experiments was maintained at room
+temperature (approximately 20 /C176C).
+Each run consisted of the following steps: (1) the feed
+stream was spiked with the substrate, (2) the system was
+run for a hydraulic retention time (HRT) of 4 h, and
+samples were collected every hour, (3) the system has beenemptied and re-ﬁlled for the following run. The bioﬁlm
+thickness was continuously measured with a microscope
+using removable supports inserted at different heights inthe reactor. The COD, N–NH
+4?,N O 3–,N O 2–, and SS were
+determined according to standard methods (Eaton et al.
+2005 ).
+The numerical framework
+The developed model was used to evaluate the overall
+removal efﬁciencies on the COD and nitrogen. Different
+authors have evidenced that sophisticated approaches areoften not useful for the scale-up of the processes investi-
+gated at lab scale (Pizarro et al. 2001 ; Beyenal and
+Lewandowski 2005 ). Beyenal and Lewandowski ( 2005 )
+reported that the use of a scheme based on a homoge-
+neous—bioﬁlm model ignores structural bioﬁlm effects,
+but can be veriﬁed experimentally, whereas, heterogeneousbioﬁlm models include the importance of bioﬁlm structure,
+but are difﬁcult to verify experimentally.
+The biological model here presented is substantially
+based on:
+– a ﬂux model in the reactor that considers that, under
+steady-state conditions, the transport of the substrate
+occurs thanks to the convective–diffusive phenomena;
+Fig. 1 Full-scale reactor
+schemeInt. J. Environ. Sci. Technol.
+123
+Author's personal copy– a bioﬁlm model that is able to evaluate the substrate
+utilisation rate (Saravanan and Sreekrishnan 2006 ),
+considering the transport resistances from the liquid
+phase to the liquid–bioﬁlm interface (external mass
+transport) and the transport from the interface to theactive sites of the bioﬁlm (internal mass transport).
+By integrating the set of partial differential equations, it
+is possible to obtain the substrates concentration proﬁleswithin the bioﬁlm and the substrate concentrations over the
+reactor depth. Furthermore, knowing the amount of dis-
+solved oxygen consumed and taking into consideration thediffusional resistances, the anoxic zone in the bioﬁlm
+structure can be identiﬁed. By determining the thickness of
+the anoxic zones, it is possible to assess the effects of thedenitriﬁcation process on the nitrates concentration. A ﬂow
+chart of the model is shown in Fig. 2.
+The model also takes into consideration the ratio
+between the microorganisms that use carbonaceous sub-
+strate ( X
+C) and the nitrifying microorganisms ( XN) at the
+different depths in the reactor by means of an empirical lawderived from literature data (Matsumoto et al. 2007 ; Pao-
+lini 1988 ). The composition of the substrate (e.g., the
+carbon concentration expressed by the C:N ratio) has aconsiderable inﬂuence on the nitriﬁcation (Walter et al.
+2005 ; Seixo et al. 2004 ).
+R¼CBOD
+CNHþ
+4;XN¼XC/C20:2065 R/C00:868ð1Þ
+The ﬁnite difference approach (FDT) here adopted is
+appropriate for the hypothesized homogeneous bioﬁlm.
+More complicated mechanisms do not provide additional
+advantages as report by Pizarro et al. ( 2001 ), who consider
+that cellular automata models (i.e., the most frequently
+used for modeling the evolution of bioﬁlm structure) do not
+have other signiﬁcant advantages over FDT models whenthe mass transport occurs perpendicular to the bioﬁlm. The
+choice of an implicit scheme guarantees fast convergent
+solutions. The numerical solution was based on the ﬂow
+chart reported in Fig. 2using an iterative process in which
+the initial substrates trends were hypothesized both in thebioﬁlm and along the reactor. The iterative process was
+interrupted when an error lower than 10
+-6was achieved.
+The ﬂux model
+The ﬂux model, applied to the whole reactor, is based on
+the following simplifying hypotheses (La Motta and
+Mulcahy 1978 ; Eramo et al. 1994 ; Viotti et al. 2002 ):
+1. The ﬂow in the reactor can be considered to be one-
+dimensional;
+2. The active processes in the reactor are the convective
+and dispersive processes;
+3. The substrates are considered to be dissolved and their
+concentrations do not interfere with the ﬂuid motion;
+4. The biomass is present only in the attached form;
+therefore, the further removal effect caused from the
+suspended biomass is not considered in the modelling(so remaining in safety conditions);
+5. The characteristics of the material in the supports are
+uniform in the reactor;
+6. Conditions are steady state;
+7. Head losses can be considered very low (negligible)
+due to the low velocity of the ﬂuid (few cm s
+-1). The
+pressure drops are, however, controlled by the air ﬂux
+in the airlift device that controls the ﬂow managing the
+mass balance of the liquid phase.
+Steady-state condition can be considered applicable if
+different time scales are observed for the different involved
+processes (Klapper and Dockery 2010 ); the biological
+processes here observed operate at larger time scales as
+compared to the time scales of the ﬂow. In fact, as reportedby Klapper and Dockery ( 2010 ), ‘‘the usual practice is to
+introduce equilibrium in the fast processes: bulk ﬂuid ﬂow,
+when considered, is assumed steady over a quasi-staticbioﬁlm, and then advection–reaction–diffusion processes
+First attempt substrates
+profile along the bed 
+First attempt substrates
+profile in the biofilm thickness  
+Yes/
+NoIntegration along the reactor 
+Integration along the biofilm 
+Comparison between assigned
+values and integration results
+for the substrates 
+outputCorrection of the
+substrates concentration
+along the reactor
+Fig. 2 Flow chartInt. J. Environ. Sci. Technol.
+123
+Author's personal copyare also assumed to be quasi-steady relative to the given
+ﬂuid velocity ﬁeld.’’ The mass balance equation, which is
+used to model the concentration variation of each substrate
+in the reactor ( Sb), can be written by assuming the scheme
+shown in Fig. 3, in which the zaxes is assumed to be
+positive in the downward direction. Because there are
+typically no radial gradients in the concentration, radialdispersion has no effect and can be neglected (Devinny and
+Ramesh 2005 ).
+udSb
+dz/C0Dzd2Sb
+dz2þRv¼0 ð2Þ
+The boundary conditions for the substrate mass balance
+equation are:
+Sd
+b=Si
+bperz¼0
+dSbdz= 0 per z¼Hrð3Þ
+Equation 2can be rewritten for each substrate involved in
+the process (COD, NH 4?,N O 2-,NO 3-and oxygen). In the
+present paper, however, the oxygen transport–dispersion
+equation along the reactor was neglected and replaced by adistribution derived by means of Henry’s law. The
+assumption was possible because of the high contributions
+of air from the diffusers located along the reactor and fromthe air lift which allowed neglecting the oxygen limiting
+conditions in the bulk ﬂuid. Furthermore, the nitrite equation
+is not reported in both of the models (ﬂux model along thereactor—bioﬁlm model), to simplify the manuscript. The
+substance is in fact considered as an intermediate product of
+ammonia oxidation/nitrate reduction.
+In the following paragraph, the equations are written for
+a generic substrate S
+b, while the speciﬁc equations are
+reported in Table 1for each of the considered substrates
+(COD, NH 4?,N O 3-). The complete set of parameters used
+in the model equation is reported in Table 2. The Eq. 2was
+adimentionalized by dividing the concentration by the inlet
+concentration Sbiand by dividing zbyHr.
+f¼Z
+Hrð4ÞB/C3¼Sb
+Si
+bð5Þ
+Posing:
+s¼Hr
+uð6Þ
+and introducing B0¼Dz
+ðuHrÞas the Bodestein number:
+dB/C3
+df/C0B0d2B/C3
+df2/C18/C19/C20/C21
+þRVs
+Si
+b¼0 ð7Þ
+With the modiﬁed boundary conditions:
+B/C3¼1 per f¼0 ð8Þ
+dB/C3
+df¼0 for f¼1
+The bioﬁlm model
+The utilization of a substrate by the microorganisms takes
+place through three different mechanisms (Viotti et al.2002 ; Saravanan and Sreekrishnan 2008 ): (1) external mass
+transport (substrate transport from the liquid phase to the
+liquid-bioﬁlm interface); (2) internal mass transfer (sub-strate transport from the interface to the inner part of the
+bioﬁlm) and (3) substrate utilization inside the bioﬁlm. The
+removal process of each substrate can be analyzed bywriting the mass balance equation for the reference volume
+with the following assumptions (La Motta and Mulcahy
+1978 ; Eramo et al. 1994 ; Viotti et al. 2002 ):
+1. The bioﬁlm is homogeneous and its thickness is
+uniform;
+2. In the mass balance equation the transport process is
+given only by the diffusive process based on Fick’s
+law, Dis the molecular diffusion coefﬁcient charac-
+teristic of each substrate;
+3. The removal kinetic reactions are based on a multi-
+substrate Michaelis–Menten’s law; the assumption ofremoval kinetics of ﬁrst-order for the carbonaceous
+substrate has been reported in the scientiﬁc literature
+Fig. 3 Reactor ( a) and bioﬁlm
+(b) reference systemsInt. J. Environ. Sci. Technol.
+123
+Author's personal copyand has been conﬁrmed by the experimental results
+reported in Luciano et al. ( 2012 ). For the nitriﬁcation
+process, a removal rate between the ﬁrst and the
+second order has been observed. By considering a
+multi-substrate limiting model, it is possible to takeinto consideration the non-linearity of the removal
+kinetics. This is also favoured from the different time-
+scales of the processes, so in the upper section of thereactor takes place mainly the removal of COD. The
+nitriﬁcation process is delayed by the slower kinetic
+and occurs at middle depths, where the DO is stillavailable. Nitrates here produced are then removed in
+the deeper part of the bioﬁlm, where small amounts of
+COD are still available and the DO penetration islimited both due to the high shear stresses at the
+liquid–bioﬁlm interface and to its biological
+consumption.
+4. The conditions are steady-state;
+5. The supports are cylindrical and the bioﬁlm growth
+occurs on both the inner and outer surfaces.
+With respect to the reference system chosen for the
+particle (Fig. 3b), the mass balance equation for the generic
+substrate ( S) applied on an inﬁnitesimal bioﬁlm thickness
+dr, can be written in terms of steady state conditions:
+Dsb
+rd
+drrdS
+dr/C18/C19
+/C0KqbsS
+KsþS¼0 ð9Þ
+Because the convective terms are negligible, the transport
+in the bioﬁlm structure is represented only by means of the
+diffusion term based on the Fick’s law.The S(r)distribution
+is determined by solving the above-mentioned equationonce the following boundary conditions are assigned:At the
+bioﬁlm–liquid bulk interface: r¼r
+eþrðr¼ri/C0rÞ
+(Horn and Hempel 2001 )
+Dsbds
+dr¼KMðSb/C0SÞð 10Þ
+At the bioﬁlm–support interface: r¼reðr¼riÞ
+ds
+dr¼0 ð11ÞThe second boundary condition states that there is no-ﬂow
+at the bioﬁlm–support interface due to impermeablecharacteristics of the support. The ﬁrst boundary
+condition takes into consideration the presence of an
+edge layer at the interface of the bulk liquid–bioﬁlm, wherethe decay of the substrate is considered linear. The
+expression ( 11) states the equality between the external
+ﬂux and the internal ﬂux. The external ﬂux is related to theconcentration gradient through the mass exchange
+coefﬁcient K
+M.KMcan be determined using the
+following expression:
+KM¼ShDL
+deþrð12Þ
+With the Shbeing the Sherwood number (Nicolella et al.
+2000 ):
+Sh¼2:0þCRenScmð13Þ
+The Schmidt number (Sc )is a function of the substrate
+molecular diffusion in the liquid ( DL), the density ( q) and
+the dynamic viscosity ( l) of the ﬂuid:
+Sc¼l
+DLqSchmidt number ð14Þ
+The Reynolds number ( Re) is deﬁned by means of the
+turbulence theory, which is often used to treat ﬂuidized bedreactors:
+Re¼ed4
+s
+t3Reynold number ð15Þ
+erepresents the energy dissipation rate evaluated as:
+e¼uGg ð16Þ
+where uGis the gas surface velocity obtained by dividing
+the air ﬂow rate by the transversal section of the reactor. In
+this work, the relation from Nicolella et al. ( 1998 ) is used:
+Sh¼2þ0:265Re0:241Sc1=3Sherwood number ð17Þ
+Thus,
+KM¼ShDL
+deþr¼2þ0:265Re0:241Sc1
+3DL
+deþrð18ÞTable 1 Complete set of dimensionless ﬂux equations
+Substrate Equation Eq. Boundary conditions
+Carbonaceous dB/C3
+df/C0B0d2B/C3
+df2þ2gcVb
+VInts
+CODi
+bKcqbcB/C3
+YcþB/C3¼0 A1 B/C3¼1 forf¼0
+dB/C3
+df¼0 forf¼1
+Ammonia dK/C3
+df/C0B0d2K/C3
+df2þ2gnVb
+VInts
+NHi
+4bKnqbnK/C3
+YnþK/C3¼0 A2 K/C3¼1 forf¼0dK/C3
+df¼0 forf¼1
+Nitrate dN/C3
+df/C0B0d2N/C3
+df2þ2gdVb
+VInts
+NOi
+3bKdqbdN/C3
+YdþN/C3¼0 A3 N/C3¼1 forf¼1dN/C3
+df¼0 forf¼1Int. J. Environ. Sci. Technol.
+123
+Author's personal copyTable 2 Complete set of parameters used in the equations
+Parameter Description
+B/C3¼Cb=Ci
+bCOD concentration in the liquid phase in dimensionless form
+Bo¼Dz=ðuHbÞ Bodenstein number (dimensionless)
+C COD concentration in the bioﬁlm (mg L-1)
+C/C3¼C=Cb COD concentration in the bioﬁlm in dimensionless form
+Cb COD concentration in the liquid phase (mg L-1)
+Cd
+bCOD concentration at the reactor (boundary cond.) (mg L-1)
+Ci
+bCOD concentration in the feed ﬂow (boundary cond.) (mg L-1)
+de External diameter of the support (m)
+ds Bioﬁlm thickness plus support diameter (m)
+nt Number of tubular supports
+D/C3NO 3-concentration in dimensionless form in the bioﬁlm
+DL Substrate diffusivity coefﬁcient in the liquid phase (m2s-1)
+Dsb Substrate diffusivity coefﬁcient (m2s-1)
+Dsbc COD diffusivity coefﬁcient in the bioﬁlm (m2s-1)
+Dsbn Ammonia–nitrogen diffusivity coefﬁcient in the bioﬁlm (m2s-1)
+Dsbo Oxygen diffusivity coefﬁcient in the bioﬁlm (m2s-1)
+Dz Axial dispersion coefﬁcient (m2s-1)
+Hr Height of the attached biomass section in the reactor/length of the supports (m)
+J Substrate ﬂux across the surface A (mg s-1)
+Kc COD maximum utilization rate (d-1)
+Kn Ammonia–nitrogen maximum utilization rate (d-1)
+KD Nitrate maximum utilization rate (d-1)
+ko1 Oxygen speciﬁc consumption in the bioﬁlm for COD degradation (kgO2 (kgCOD)-1)
+ko2 Oxygen speciﬁc consumption in the bioﬁlm for ammonia–nitrogen degradation (kgO2 (kgNH 4?)-1)
+Ks Half saturation constant (mg L-1)
+Ksc COD half-saturation constant (mg L-1)
+KSco Oxygen half-saturation constant for COD removal (mg L-1)
+KSn Ammonia–nitrogen half-saturation constant (mg L-1)
+KSno Oxygen half-saturation constant for the ammonia- nitrogen removal (mg L-1)
+KM Mass exchange coefﬁcient (m s-1)
+N Ammonia–nitrogen concentration in the bioﬁlm (mg L-1)
+K/C3¼Nb=Ni
+bAmmonia–nitrogen concentration in the reactor in dimensionless form
+N/C3¼N=Nb Ammonia–nitrogen concentration in the bioﬁlm in dimensionless form
+Nb Ammonia–nitrogen concentration in the liquid phase (mg L-1)
+Nd
+bAmmonia–nitrogen concentration in the reactor (boundary cond.)(mg L-1)
+Ni
+bAmmonia–nitrogen concentration in the feed ﬂow (boundary cond.)(mg L-1)
+O Oxygen concentration in the bioﬁlm (mg L-1)
+O*=O/O b Oxygen concentration in the bioﬁlm in dimensionless form
+Ob Oxygen concentration in the liquid phase (mg L-1)
+Oi
+bOxygen concentration in the feed ﬂow (mg L-1)
+Q Flow rate (m3s-1)
+r Spatial coordinate in the bioﬁlm (m)
+re External radius of the support (m)
+ri Internal radius of the support (m)
+rm Support medium radius (m)
+R COD/NH 4?in the bioﬁlm
+Re Reynolds numberInt. J. Environ. Sci. Technol.
+123
+Author's personal copyTable 2 continued
+RI Intrinsic reaction rate for unit volume of the bioﬁlm (kg m-1s-1)
+Ro Observed reaction rate for unit volume of the bioﬁlm (kg m-1s-1)
+Rv Observed reaction rate for unit volume of the bioﬁlm (kg m-1s-1)
+Rvc Observed reaction rate for unit volume of the bed for the COD (kg m-1s-1)
+Rvn Observed reaction rate for unit volume of the bed for ammonia–nitrogen (kg m-1s-1)
+S Generic substrate concentration inside the bioﬁlm (mg L-1)
+Sc Schmidt number
+Sb Generic substrate concentration in the liquid phase (mg L-1)
+Si
+bSubstrate concentration at the inlet section (boundary cond.) (mg L-1)
+Sd
+bSubstrate concentration inside the reactor (boundary cond.) (mg L-1)
+u¼Q=ðntAIÞ Fluid velocity (m s-1)
+uG Gas surface velocity (m s-1)
+e¼uGg Energy dissipation rate (m2s-3)
+Vb Bioﬁlm volume (m3)
+Vbi Internal bioﬁlm volume (m3)
+Vbe External bioﬁlm volume (m3)
+VI Volume of inﬂuence of a cylindrical support (m3)
+A Area of inﬂuence of a cylindrical support (m2)
+X (r-rm) /r;spatial coordinate in the bioﬁlm in dimensionless form
+Xn Nitrifying biomass concentration (mg L-1)
+Xc Carbonaceous biomass concentration (mg L-1)
+Yc Ksc/Cb
+Yco Ksco/Ob
+Yn Ksn/Nb
+Yno Ksno/Ob
+Z Spatial coordinate in the ﬁlter bed (m)/ Thiele modiﬁed module for a generic substrate
+/
+c2Kcqbdr2/(D sbcCb);Thiele modiﬁed module for the COD
+/co2Kcqbdr2/(D sboOb);Thiele modiﬁed module for the oxygen in the COD removal
+/n2Knqbdr2/(DsbnNb); Thiele modiﬁed module for the ammonia–nitrogen
+/no2Knqbdr2/(DsboOb); Thiele modiﬁed module for the oxygen in the ammonia–nitrogen removal
+c Ks/Sb
+cc Ksc/Cbi
+cco Ksco/Obi
+cn Ksn/Nbi
+cno Ksno/Obi
+g Efﬁciency factor
+gc Efﬁciency factor for the COD
+gn Efﬁciency factor for the ammonia–nitrogen
+l Dynamic viscosity of the liquid phase (kg m-1s-1)
+q Density of the liquid phase (kg m-3)
+qbd Mean biomass concentration in the bioﬁlm (kg m-3)
+r Bioﬁlm thickness (m)
+s Hb/u (s)
+n dm/2r
+f z/H b; spatial coordinate in the bed in dimensionless formInt. J. Environ. Sci. Technol.
+123
+Author's personal copyEquation 14must be adimentionalized and rewritten for
+each substrate. The radius is made dimensionless byintroducing the modiﬁed x-abscissa:
+x¼r/C0re
+r¼ri/C0r
+rð19Þ
+Therefore,
+r¼rxþre¼rxþde
+2r/C18/C19
+¼rðxþfÞð 20Þ
+The substrate concentration in the bioﬁlm is divided by the
+corresponding concentration in the liquid phase Sb,a tt h e
+level z:
+S/C3¼S
+Sbð21Þ
+yielding the following:
+DSb
+rxþnðÞd
+rdxrxþnðÞ SbdS/C3
+rdx/C20/C21
+/C0KqbS/C3
+KS
+SbþS/C3ð22Þ
+Posing:
+c¼KS
+Sbð23Þ
+it is obtained:
+DSb
+r2xþnðÞd
+dxxþnðÞdS/C3
+rdx/C20/C21
+/C0KqbS/C3
+KS
+SbþS/C3ð24Þ
+Dividing byDSbSb
+r2xþnðÞ.
+d
+xxþnðÞdS/C3
+rdx/C20/C21
+/C0Kqbr2
+DSbSbxþnðÞS/C3
+cþS/C3¼0 ð25Þ
+using:
+/2¼Kqb
+DSbSbr2Thiele modified module ð26Þ
+the ﬁnal equation assumes the form:
+d
+dxðxþfÞds/C3
+dx/C20/C21
+/C0/2ðxþfÞS/C3
+ceþS/C3¼0 ð27Þ
+The boundary conditions for x=0andx=1are:
+dS/C3
+dx¼Bc1/C0S/C3ðÞ forx¼1
+dS/C3
+dx¼0 for x¼0ð28Þ
+where
+Bc¼KMr
+DSb¼ShDL
+dmr
+DSbBiot modified number ð29Þ
+The denitriﬁcation process
+In the three substrates models, the transport and degrada-
+tion equation in the bioﬁlm is written for each substrate.The nitriﬁcation and the denitriﬁcation processes generally
+occur under opposite conditions (aerobic and anoxic con-
+ditions, respectively) (Hwang et al. 2005 ). In the waste-
+water treatment systems that use an attached biomass, thetotal balance of the nitrogen in the liquid phase is often not
+satisﬁed because anoxic conditions can occur in the deeper
+areas of the bioﬁlm, allowing for the denitriﬁcation even ifdissolved oxygen is still present in the liquid phase
+(Walters et al. 2009 ; Okabe et al. 1996 ; Satoh et al. 2004 ).
+In addition, Pochana and Keller ( 1999 ) and Puznava et al.
+(2001 ) show that the simultaneous nitriﬁcation and deni-
+triﬁcation (SND) could occur as a consequence of the DOconcentration gradients within microbial ﬂocs or bioﬁlms.
+Nitriﬁers will develop on the surface of the bioﬁlm where
+there are rather high DO levels, whereas denitriﬁers will bepresent inside the bioﬁlm due to the low levels or absence
+of oxygen. As a result, the effectiveness of SND is
+dependent on the size, density and distribution of the bio-ﬁlm thickness (Pochana and Keller 1999 ). Studies carried
+out using microelectrodes show that in the case of ﬂocs,
+when the diameters approach approximately1,000–3,000 lm, nitriﬁcation and denitriﬁcation will take
+place in different zones of the ﬂoc (Walters et al. 2009 ,
+Satoh et al. 2003 ; Hille et al. 2009 ). Several studies have
+evaluated the possible performance of other treatment
+systems of attached biomass (Rahimia et al. 2011 ). For the
+growth of heterotrophic bacteria in the bioﬁlm, two sub-strates are required, i.e., an electron acceptor (dissolved
+oxygen DO) and an electron donor (soluble organic mat-
+ter). Both substrates are essential for bacterial growth(Wang and Wang 2012 ) and, consequently, the whole
+process is inhibited when one of the two is not available
+(Rauch et al. 1999 ). Furthermore, nitriﬁcation is adversely
+affected at high COD:N ratios due to the direct competition
+for molecular oxygen between autotrophs (nitrifying
+microorganisms) and heterotrophs (carbonaceous substratebased microorganisms). If the COD:N ratio signiﬁcantly
+decreases, denitriﬁcation can be inhibited due to the deﬁ-
+ciency of an electron donor source (Walters et al. 2009 ). In
+developing the proposed model, the penetration depth of
+the oxygen in the bioﬁlm was considered by taking into
+consideration the amount of oxygen consumed by theremoval of carbonaceous substrates and by the nitriﬁcation
+process along the bioﬁlm thickness. The whole process also
+considers the resistances to transport from the externalsurface of the bioﬁlm to the active sites (internal transport).
+By evaluating the oxygen and carbonaceous substrate
+depth penetration, the numerical model allows for theevaluation of the nitrates removal along the thickness of the
+attached biomass system. Although the equation used is
+identical for all of the substrates, in the case of nitrate, twoadditional limiting factors were taken into consideration:
+the ﬁrst related to the concentration of the oxygen and theInt. J. Environ. Sci. Technol.
+123
+Author's personal copysecond to the concentration of COD. The biological
+removal factor was then multiplied by two parameters, a
+andb, which are deﬁned below (see Table 3).
+Both of these two factors vary with the depth, and with
+the bioﬁlm thickness. The assumed hypothesis is to
+describe the variations of the two parameters through a
+simple step function:
+a¼1i f O2/C201m gl/C01
+a¼0i f O2[1m gl/C01/C26
+ð30Þ
+b¼0 if COD \0;1m gl/C01
+b¼1 if COD /C210;1m gl/C01/C26
+ð31Þ
+In this way, nitrate removal can occur in the bioﬁlm
+layer under anoxic condition and at the same time, when
+the layer contains enough COD. The modiﬁed massbalance then assumes the form of equation A6 (Table 3).
+Concurrently, the complete equation, used to evaluate the
+total amount of consumed oxygen, is correlated to theamount of substrate consumption through the following
+equation:
+DSbo
+rd
+drrdO2
+dr/C18/C19
+/C0KO1KcqbcCOD
+KScþCODO2
+KScOþO2
+/C0KO2KnqbnNHþ
+4
+KSnþNHþ
+4O2
+KSnOþO2
+¼0
+ð32Þ
+The boundary conditions are
+O2b¼O2 forr¼reþr;r¼ri/C0r ð33Þ
+dO2
+dr¼0 for r¼re
+Substrate utilization rate
+The numerical integration of Eq. 27over the bioﬁlm
+thickness, for the three substrates, provides the concentra-
+tion trends of COD, NH 4and NO 3inside the bioﬁlm. By
+knowing the concentration proﬁles, it is possible to obtain
+the average rate of substrate utilization per unit volume of
+the bioﬁlm, Rothat represents the observed reaction rate:
+Considering a bioﬁlm that is external to the support, it
+is:
+Ro¼Rreþr
+reKqbdS
+KSþS2przdr
+Vbð34Þ
+Rois related to the intrinsic rate RIby means of an
+efﬁciency factor g(g\1).The efﬁciency factor is the ratio
+between the effective rate of substrate consumption and therate that would be observed if, in the whole bioﬁlm, the
+substrate concentration is equal to the liquid phase
+concentration: therefore, there is an absence of diffusionalresistances at the interface and in the bioﬁlm ( S
+b) (Eramo
+et al. 1994 ).
+Ro¼gRI ð35Þ
+where
+RI¼KqbSb
+KSþSbð36Þ
+The term Rvappears in the transport equation of the
+reactor. This term represents the reaction rate for the
+reactor unit volume. Rvit is obtained by multiplying Ro
+with the ratio of the bioﬁlm’s volume and the inﬂuence
+volume of the cylindrical support ( VI): where
+Vb=bioﬁlm’s volume (m3)ðVb¼VbiþVbeÞ
+Vbi¼pr2
+i/C0ðri/C0rÞ2hi
+Hrð37Þ
+Vbi¼pðreþrÞ/C0ð r2
+eÞ/C2/C3
+Hr
+Therefore, the total Rvwill be:
+Rt¼RoVb
+VInt ð38Þ
+Rt¼gRIVb
+VInt ð39Þ
+Substituting the expression obtained for Rv, the transport
+equation in the reactor becomes:
+udSb
+dz/C0Dzd2Sb
+dz2þgVb
+VIntKqbSb
+KsþSb¼0 ð40Þ
+For the generic substrate Sb,RIis always obtained from
+equation 36:
+By adimensionalization:
+RI¼KqbSb
+Si
+b
+KS
+SibþSb
+Sibð41Þ
+Thus ﬁnally for the COD
+RIC¼KCqbCB/C3
+YeþB/C3ð42Þ
+where
+YC¼KSC
+Cbð43Þ
+The COD transport equation then becomes:
+dB/C3
+df/C0BOd2B/C3
+df2þgSVb
+VInts
+SbiKSqbSB/C3
+YSþB/C3ð44Þ
+where s¼Hr
+u.
+andu¼Q=nt
+AI;Q
+nt=the ﬂow in the inﬂuence volume of a
+single supportInt. J. Environ. Sci. Technol.
+123
+Author's personal copyAn analogous treatment can be derived for the other
+involved substrates.
+Results and discussion
+Sensitivity tests analysisIn the following paragraphs are reported the sensitivity
+tests where are used typical inlet values of a wastewater of
+5,000 inhabitants (COD =252 mgL
+-1,N H 4?=TN=
+33 mgL-1,N O 3-=0 mgL-1,D O B1 mgL-1,Q =
+14 Ls-1, length of tubular support =15 m, nt =20,
+internal reactor diameter =0.86 m, total reactor length =
+30 m).
+Sensitivity tests were carried out to determine the
+inﬂuence of each parameter on the process. The sensitivity
+analysis was carried out by considering the typicaldimensions of a plant at full scale ( H
+r,D). Table 4reports
+the results for the different parameters studied in the sen-
+sitivity analysis.
+The results show that the diffusivity essentially does not
+inﬂuence the overall removal rate. The same conclusion
+can be drawn for the amounts of insufﬂate air (air lift andair for the biological reactions).
+Figure 4reports the numerical results of some of the
+simulations carried out in the sensitivity analysis withdifferent bioﬁlm thicknesses (being constant the thickness
+along all the tubular supports). Graphs of the substrates
+trend inside the bioﬁlm thickness at different reactor depthsare presented to evidence the effects of bioﬁlm stratiﬁca-
+tion, due to the contemporary partial penetration of the
+substrates (COD, DO, NH
+4?), and the fate of the secondary
+substrates (NO 3-in this case). The graphs are the results of
+the combined action of the processes (carbonaceous sub-
+strate oxidation, nitriﬁcation, denitriﬁcation and DO con-sumption) obtained from the numerical model.
+Reference conditionsThe considered reference conditions (ﬂow rate, inlet con-
+centrations and dimensions) were chosen to represent aplant at full-scale designed for 5,000 inhabitants (Table 5).
+Some of the operating parameters (bioﬁlm thickness, COD,
+NH
+4?utilization rate) were derived from experiments
+(Luciano et al. 2012 ). Other values are obtained from the
+results of several authors (Horn and Morgenroth 2006 ;
+Beccari et al. 1993 , Characklis and Marshall 1989 ; Metcalf
+and Eddy 2003 ). The results of the simulation using the
+reference conditions are shown in Fig. 4(r=1,000 lm).
+The ﬁgure shows the substrates proﬁles resulting from theintegration of the set of equations (COD, NH
+4,N O 3,N O 2)
+along the reactor (Fig. 4e–g) and along the bioﬁlmthickness (Fig. 4a–d) for three different reactor depths (5,
+10, 15 m) and for the different substrates. The sensitivity
+tests have been performed considering the absence of
+nitrates at the inlet; the nitrates are only generated from thenitriﬁcation process along the reactor while the mass bal-
+ance carried out on the total nitrogen (TN) shows the effect
+of the denitriﬁcation that occurs in the layered bioﬁlm. TheCOD removal percentage is high and equal to 94.4 %
+(252 mgL
+-1inlet–14.2 mgL-1outlet), ammonia was par-
+tially removed (56.7 %, 33 mgL-1inlet–14.29 mgL-1
+outlet), while the nitrates removal percentage is limited and
+equal to 26.7 % (33 mgL-1inlet–24.7 mgL-1outlet).
+Along the reactor (Fig. 4g), it is possible to observe the
+modelled nitrates production deriving from the nitriﬁcation
+process. The concentration of the dissolved oxygen in thebulk liquid is calculated by using Henry’s law. The oxygen
+consumption is related to the substrate’s degradation. From
+the results, it is observed that the oxygen penetration intothe bioﬁlm ( r=1,000 lm) in the ﬁrst part of the reactor
+(5 m depth) is 200 lm (Fig. 4d, 5 m); the remaining part of
+the bioﬁlm can then be considered to be under anoxicconditions. In the ﬁrst meters of the reactor, the oxygen
+consumption is higher due to the high concentrations of the
+substrates (COD and NH
+4). However, at depths of 10 m
+(penetration depth of 400 lm, Fig. 4d, 10 m) and 15 m
+(penetration depth of 800 lm, Fig. 4d, 15 m), the oxygen
+consumption is limited because the carbonaceous andnitrogen substrates are diminished. When the COD con-
+centration in the deeper part of the reactor can be consid-
+ered null (Fig. 4a, 15 m), and the oxygen penetration in the
+bioﬁlm is high (Fig. 4d, 15 m), the denitriﬁcation process
+does not occur (Fig. 4c, 15 m); therefore, the nitrates
+transformation takes place mainly in the higher region ofthe reactor (Fig. 4c, 5 and 10 m).
+Bioﬁlm thickness variationThree different values of bioﬁlm thickness were analyzed:
+–r=100lm
+–r=500lm
+–r=1 mm (reference condition)
+Forr=500lm and r=1 mm, the penetration of the
+COD substrate into the bioﬁlm in the upper region of thereactor is equivalent (500 and 510 lm, Fig. 4a) to a similar
+removal efﬁciency even if there is a signiﬁcant difference in
+the thickness (Fig. 4e). This behaviour is due to the depen-
+dence of the rate of substrate utilization per unit volume of
+the reactor with the efﬁciency factor, which diminishes with
+the thickness of the bioﬁlm because of an increase in thediffusional resistance. However, the efﬁciency factor also
+depends on the bioﬁlm volume, which increases with the
+thickness. Therefore, two mechanisms that can beInt. J. Environ. Sci. Technol.
+123
+Author's personal copyconsidered to oppose one another act on the removal rate: the
+efﬁciency factor and the bioﬁlm volume. When considering
+the ratio between the substrate utilization rates, when the
+bioﬁlm thickness is 500 lm and 1 mm, respectively, the
+efﬁciency factor is halved, but the bioﬁlm volume doubles,
+so the degree of removal is practically the same (Fig. 4e).
+When the thickness is larger than 1 mm, the efﬁciency factordecreases due to the high thickness of the bioﬁlm, but the
+volume increases so much that the net result is a higher
+removal. When the thickness of the bioﬁlm is small, the
+bioﬁlm is completely penetrated and the whole ﬁlm depth
+participates to the removal process. Due to the small volumeinvolved on the support, however, the overall efﬁciency is
+lower. For the dissolved oxygen trend with a larger bioﬁlm
+thickness, the presence of anoxic zones in the bioﬁlm can beobserved until a depth of 10 m (Fig. 4d, 5 and 15 m, thick-
+ness of 500 lm and 1 mm), whereas for a smaller bioﬁlm
+thickness (100 lm), the oxygen can completely penetrate the
+bioﬁlm depth, preventing the formation of anoxic layers
+along the whole reactor length and therefore practically
+inhibiting the nitrates removal process. As mentioned above,the COD proﬁle along the reactors for bioﬁlm thicknesses of
+500lm and 1,000 lm are practically identical due to the
+overall behaviour related to the bioﬁlm penetration. Moresigniﬁcant differences can be observed in the case of NH
+4,
+where, due to the slower rate of the nitrifying bacteria, the
+bioﬁlm thickness plays an important role. In the case of thegreater bioﬁlm thicknesses, in the inner bioﬁlm where COD
+is not penetrated the nitriﬁcation process mainly occurs, as it
+can also be observed from the higher value of nitrates gen-erated from the process (Fig. 4g). The balance of the TN
+evidences the effect of the denitriﬁcation process, which is
+limited to the higher bioﬁlm thicknesses and shallowerdepths in the reactor.
+COD inlet variationThe tests on the variation of the COD inlet concentration
+were carried out to verify the inﬂuence of this parameter onthe nitric nitrogen removal because, together with theanoxic condition, it is one of the limiting factors of the
+denitriﬁcation phase. In this case, the values assigned to the
+different tests were:
+– COD
+bi=252 mgL-1(reference condition)
+– COD bi=600 mgL-1
+– COD bi=100 mgL-1
+It is well known that the COD plays an important role in
+the denitriﬁcation process. With an inlet concentrationequal to 100 mgL
+-1at a reactor depth of 5 m, the COD
+concentration is equal to 15 mgL-1, and due to the pres-
+ence of the dissolved oxygen at this depth there are noanoxic zones. Thus, the denitriﬁcation is limited to the ﬁrst
+4.5 m of the reactor. If, however, the COD concentration at
+the inlet is equal to 600 mgL
+-1, at a depth of 5 m, the
+thickness of the anoxic zone is greater than that under the
+reference condition because the oxygen consumption is
+larger. In combination with high volumetric loading rates,high C:N ratios lead to a noticeable decrease in the nitri-
+ﬁcation rate. Therefore, the competition for the available
+oxygen shifts the balance within the bioﬁlm, favouring thedenitrifying bacteria (Walter et al. 2005 ); this result should
+be considered also when evaluating the recirculation ratio.
+Nitrogen inlet variation
+The tests were carried out with the following boundary
+conditions:
+–N H
+4i=33 mgL-1(reference condition)
+–N H 4i=60 mgL-1
+–N H 4i=15 mgL-1
+By varying the inlet concentration, it is possible to
+observe a small variation in the removal efﬁciency. This
+effect can be attributed to two superimposed phenomena:the ﬂow velocity (which deﬁnes the HRT); and the ratio
+between the autotrophic and heterotrophic biomasses.
+From the results, as evidenced in the next section, it can
+be deduced that the ﬂow velocity is the most inﬂuent
+parameter on the performances of the process.Table 3 Complete set of dimensionless transport equations along the bioﬁlm thickness
+Substrate Equation Eq Boundary condition
+COD d
+dxxþnðÞdC/C3
+dxhi
+/C0/2
+cxþnðÞC/C3
+ccþC/C3¼0A4dC/C3
+dx¼Bccð1/C0C/C3Þforx¼1dC/C3
+dx¼0 for x¼0
+NH 4?d
+dxxþnðÞdN/C3
+dxhi
+/C0/2
+nxþnðÞN/C3
+cnþN/C3¼0A5dN/C3
+dx¼Bcnð1/C0N/C3Þforx¼1dN/C3
+dx¼0 for x¼0
+NO 3-d
+dxxþnðÞdD/C3
+dxhi
+/C0ab/2
+dxþnðÞD/C3
+cdþD/C3¼0A6dD/C3
+dx¼Bcdð1/C0D/C3Þforx¼1dD/C3
+dx¼0 for x¼0
+O2 d
+dxxþnðÞdO/C3
+dx/C20/C21
+/C0Ko1/2
+coxþnðÞC/C3
+ccþC/C3O/C3
+ccoþO/C3
+/C0Ko2/2
+noxþnðÞN/C3
+cnþN/C3O/C3
+cnoþO/C3¼0A7 O/C3¼1 for x¼1dO/C3
+dx¼0 for x¼0Int. J. Environ. Sci. Technol.
+123
+Author's personal copyFlow variation
+Two further values of the ﬂow rate were evaluated to
+determine how the model would respond to the variation in
+such an important parameter. The ﬂow velocity surelyinﬂuences the HRT and the diffusional resistances at the
+bioﬁlm–bulk liquid interface (Vieira and Melo 1999 ).
+Generally, a high turbulence (high Reynolds number)favours the mass transfer at the interface between the
+bioﬁlm and bulk liquid, thereby allowing for a better
+penetration of the substrates, but at the same time the HRTdiminishes (obviously neglecting a possible recycle), and
+this cause the reduction in the overall degree of removal.
+Model validation
+The proposed model was validated by means of several
+simulations based on the experimental results derived from
+the lab-scale reactor described in ‘‘Experimental set-up for
+model validation’’. A detailed description of the experi-mental results is reported in Luciano et al. 2012 . The
+parameters used for the simulations are the same as those
+reported in Table 5, except for the reactor dimensions and
+bioﬁlm thickness. Figure 5shows the comparisons of three
+different experimental runs, for which different bioﬁlmthickness were considered. Samples during the experiments
+were collected in time in a re-circulating reactor (corre-
+sponding to a reactor with a length of 5 m). Due to thesteady state conditions of the tests, the samples can be
+considered distributed over the space (reactor length). In
+Fig. 5, space was added as a secondary abscissa (using the
+ﬂux velocity, 0.00034 ms
+-1,in the experiments as the
+conversion factor) to avoid any doubt. The model correctly
+predicts the experimental data, which showed an increasein the COD removal with an increase in bioﬁlm thickness(Fig. 5a, c). Thicker bioﬁlms (Fig. 5c, d) showed increases
+in removal efﬁciencies for both of the substrates, even if
+higher volumes of attached biomass reveal the effectscaused by the diffusional resistance inside the bioﬁlm that
+limited the COD and oxygen penetration. The results in
+terms of COD and NH
+4?trends in the reactor demonstrate
+the capability of the model to reproduce the experimental
+behaviour of the reactor in all the three tests with different
+bioﬁlms thicknesses.
+Conclusion
+The numerical model presented in this work is able to properly
+simulate the removal of the different substrates in a new andalternative wastewater treatment system with high efﬁcien-
+cies, low volumes requirement and low odour impact. The
+model can be considered an intermediate level between moresophisticated models (in terms of biomasses description) and
+simpler models, and can therefore represents a valid tool for
+plant design and optimal management strategy. In the case of aweak organic load in the wastewater, an exhaustive (in-depth)
+study on the biomasses does not really enhance the results with
+particular regard to the efﬁciencies values that represent, froma design perspective, the most important parameter for the
+optimal sizing of the treatment sections. The model demon-
+strates the inﬂuence of the hydrodynamic and biologicalprocesses on the substrate removal efﬁciency. The results
+indicate that the most important parameter in order to obtain
+an excellent treatment is the bioﬁlm thickness. A thickerbioﬁlm does not offer great advantages in terms of carbona-
+ceous substrate removal, but it may play an important role in
+nitrogen treatment. A large bioﬁlm thickness can allow for
+nitriﬁcation as well as denitriﬁcation in the deeper part of the
+bioﬁlm layers; the simultaneous nitriﬁcation/denitriﬁcationTable 4 Sensitivity analysis results (* Reference conditions)
+Parameter Parameter variation Removal efﬁciency (%) Sensitivity (%)
+COD NH 4 TN COD NH 4 TN
+Bioﬁlm r=100lm 54.3 5.9 0.2 -42.5 -89.6 -99.4
+r=500lm 94.2 29.3 13.9 -0.2 -48.4 -46.1
+r=1,000 lm (*) 94.4 56.7 25.7 0.0 0.0 0.0
+COD inlet 100 mg l-196.8 82.8 14.9 2.6 46.1 -41.9
+252 mg l-1(*) 94.4 56.7 25.7 0.0 0.0 0.0
+600 mg l-154.3 5.9 0.2 -42.5 -89.6 -99.4
+NH 4inlet 15 mg l-194.4 59.2 39.4 0.0 4.5 53.1
+33 mg l-1(*) 94.4 56.7 25.7 0.0 0.0 0.0
+60 mg l-194.4 53.7 15.2 0.0 5.2 -41.0
+Flowrate 7 l s-199.9 91.9 28.9 5.9 62.2 12.2
+14 l s-1(*) 94.4 56.7 25.7 0.0 0.0 0.0
+42 l s-153.4 19.4 8.0 -43.5 -65.8 -69.0Int. J. Environ. Sci. Technol.
+123
+Author's personal copyFig. 4 Results of simulation for the reference conditions and for different bioﬁlm thickness. a–dSubstrates proﬁles inside the bioﬁlm,
+e–gsubstrates proﬁles along the reactorInt. J. Environ. Sci. Technol.
+123
+Author's personal copyprocesses can also be regulated from the amount of available
+carbonaceous substrates and from the oxygen penetration intothe bioﬁlm. The diffusional resistances at the bioﬁlm/bulk
+liquid interface are important; an increment of the ﬂow
+velocity, improves the mass transfer between the bulk liquidand the internal bioﬁlm because of the increase of turbulencebut, at the same time, can induce a drastic reduction in the
+overall removal efﬁciency due to the reduction in thehydraulic residence time. It should be noted as the presented
+model was used for the design of treatment plant at a full-scale
+in deep shaft reactor currently operating in Italy (Abbadia SanSalvatore, SI).Table 5 Reference parameters used in the simulation
+Parameter Name Value Units Ref.
+Liquid density R 998 kg m-3Cost. Characklis and Marshall ( 1989 )
+Liquid dynamic viscosity M 1.005 910-3kg m-1s-1Cost. Characklis and Marshall ( 1989 )
+Reactor diameter D 0.844 M Cost.
+Reactor height H 15 M Cost.
+Support pipes (number) nt 20 Cost.
+Pipe external diameter De 0.090 M Cost.
+Pipe internal diameter Di 0.081 M Cost.
+Air-lift diameter 0.127 M Cost.Flow-rate Q 14 L s
+-1Var.
+COD inlet COD in 252 mg L-1Var.
+NH 4?inlet NH 4?
+in33 mg L-1Var.
+COD liquid diffusivity DSLC 1.28 910-9m2s-1Cost. Tucker and Nelken ( 1982 )
+NH 4?liquid diffusivita ` DSLN 1.7910-9m2s-1Cost. Characklis and Marshall ( 1989 )
+NO 2-liquid diffusivity DSLNO2 1.55/C110-9m2s-1Cost. Tucker and Nelken ( 1982 )
+NO 3-liquid diffusivity DSLNO3 1.55 910-9m2s-1Cost. Tucker and Nelken ( 1982 )
+Oxygen liquid diffusivity DSLO 2.44 910-9m2s-1Cost. Characklis and Marshall ( 1989 )
+COD diffusivity in the bioﬁlm DSBC 1.02 910-9m2s-1Var. Characklis and Marshall ( 1989 )
+NH 4?diffusivity in the bioﬁlm DSBN 1.30 910-9m2s-1Var. Characklis and Marshall ( 1989 )
+NO 2-diffusivity in the bioﬁlm DSBNO2 1.40 910-9m2s-1Var. Piciorenau et al. ( 2004 )
+NO 3-diffusivity in the bioﬁlm DSBNO3 1.40 910-9m2s-1Var. Piciorenau et al. ( 2004 )
+Oxygen diffusivity in the bioﬁlm DSBO 2.20 910-9m2s-1Var. Piciorenau et al. ( 2004 )
+COD maximum utilization rate kC 10.0 d-1Cost. Luciano et al. ( 2012 )
+NH 4?maximum utilization rate kN 4.8 d-1Cost. Luciano et al. ( 2012 )
+NO 2-maximum utilization rate kNO2 0.2 d-1Cost. Metcalf and Eddy ( 2003 )
+Half-saturation constant (COD) KSc 30 mgL-1Cost. Metcalf and Eddy ( 2003 )
+Half-saturation constant (NH 4?) KSn 1 mgL-1Cost. Metcalf and Eddy ( 2003 )
+Half-saturation constant (NO 2-) KSno2 0.1 mgL-1Cost. Metcalf and Eddy ( 2003 )
+Half-saturation constant (O 2/COD) KSco 4910-4kg m-3Cost. Borden and Bedient ( 1986 )
+Half-saturation constant (O 2/NH 4?) KSno 4910-4kg m-3Cost. van Haandel and van der Lubbe ( 2007 )
+Oxygen consumption for NH 4?ko3 4.57 kgO 2m-3Cost. Characklis and Marshall ( 1989 )
+Oxygen consumption for the COD removal ko4 1.07 kgO 2
+(kgCOD)-1Cost. Characklis and Marshall ( 1989 )
+Heterotrophic biomass density qbdh 60 kgVSS m-3Var. Beccari et al. ( 1993 )
+Autotrophic biomass density qbda 20 kgVSS m-3Var. Beccari et al. ( 1993 )
+Axial dispersion coefﬁcient Dz 1910-4m2s-1Cost. Characklis and Marshall ( 1989 )
+Temperature T 12 C Cost.
+pH 7.2 Cost.Tcorr. coef. for the max. utilization rate (COD) 1.035 Cost. Metcalf and Eddy ( 2003 )
+Tcorr. coef. for the max. utilization rate (NH
+4?) 1.123 Cost. Metcalf and Eddy ( 2003 )
+Tcorr. coef. for the max. utilization rate (NO 2-) 1.08 Cost. Metcalf and Eddy ( 2003 )
+pH corr. coef. for the max. utilization rate (NH 4) 0.833 Cost. Metcalf and Eddy ( 2003 )Int. J. Environ. Sci. Technol.
+123
+Author's personal copyAcknowledgments We gratefully acknowledge P&M Srl for pro-
+viding data information for the design at full scale.
+References
+Akhbari A, Zinatizadeh AAL, Mohammadi P, Mansouri Y, Irandoust
+M, Isa MH (2012) Kinetic modeling of carbon and nutrients
+removal in an integrated rotating biological contactor-activated
+sludge system. Int J Environ Sci Technol 9(2):371–378Beccari M, Passino R, Ramadori R, Vismara R (1993) Rimozione di
+Azoto e Fosforo dai Liquami. Hoepli, Italy
+Beyenal H, Lewandowski Z (2005) Modeling mass transport and
+microbial activity in stratiﬁed bioﬁlms. Chem Eng Sci
+60:4337–4348
+Borden RC, Bedient PB (1986) Transport OD dissolved hydrocarbons
+inﬂuenced by oxygen-limited biodegradation 1. Theoretical
+development. Water Res 22(13):1973–1982
+Characklis WG, Marshall KC (1989) Bioﬁlms. Wiley Interscience,
+New York
+Fig. 5 Observed and simulated COD and NH 4?concentration trend for different bioﬁlm thicknessInt. J. Environ. Sci. Technol.
+123
+Author's personal copyDevinny JS, Ramesh J (2005) A phenomenological review of bioﬁlter
+models. Chem Eng J 113:187–196
+Eaton AD, APHA, AWWA, WEF (2005) Standard methods for the
+examination of water and wastewater. 21st edn. American Public
+health Association, Washington, DC
+Eramo B, Gavasci R, Misiti A, Viotti P (1994) Validation of a
+multisubstrate mathematical model for the simulation of thedenitriﬁcation process in ﬂuidized bed bioﬁlm reactors. Water
+Sci Technol 29(10–11):401–408
+De Feo (2007) Carbon and nitrogen removal from low-strength
+domestic wastewater with a two-stage submerged biologicalﬁlter. J Environ Sci Health A Tox Hazard Subst Environ Eng
+42(5):641–647
+Harremoe ¨s P (1976) The signiﬁcance of pore diffusion to ﬁlter
+denitriﬁcation. J Water Pollut Con F 48:377–388
+Hille A, Mei HE, Ochmann C, Neu TR, Horn H (2009) Application of
+two component biodegradable carriers in a particle-ﬁxed bioﬁlm
+airlift suspension reactor: development and structure of bioﬁlms.Bioprocess Biosyst Eng 32:31–39
+Horn H, Hempel DC (2001) Simulation of substrate conversion
+and mass transport in bioﬁlm systems. Eng Life Sci1(6):225–228
+Horn H, Morgenroth E (2006) Transport of oxygen, sodium chloride,
+and sodium nitrate in bioﬁlms. Chem Eng Sci 61:1347–1356
+Hwang YW, Kim CG, Choo IJ (2005) Simultaneous nitriﬁcation/
+denitriﬁcation in a single reactor using ciliated columns packedwith granular sulfur. Water Qual Res J Can 40(1):91–96
+Jiang F, Leung DH-W, Li S, Chen G-H, Okabe S, van Loosdrecht
+MCM (2009) A bioﬁlm model for prediction of pollutanttransformation in sewers. Water Res 43:3187–3198
+Klapper I, Dockery J (2010) Mathematical description of microbial
+bioﬁlms. Siam review. Soc Ind Appl Math 52(2):221–246
+La Motta EJ, Mulcahy LT (1978) Mathematical model of the
+ﬂuidized bed bioﬁlm reactor. Department of Civil Engineering,
+University of Massachusetts, Amherst. Report No Env: E
+59–78
+Luciano A, Viotti P, Mancini G, Torretta V (2012) An integrated
+wastewater treatment system using a bas reactor with biomass
+attached to tubular supports. J Environ Manag 113:51–60
+Matsumoto S, Terada A, Tsuneda S (2007) Modeling of membrane-
+aerated bioﬁlm: effects of C/N ratio, bioﬁlm thickness andsurface loading of oxygen on feasibility of simultaneous
+nitriﬁcation and denitriﬁcation. Eng J 37:98–107
+Metcalf and Eddy 2003. Wastewater engineering: treatment and
+reuse. 4th edn, McGraw Hill, New York, pp 1819
+Morgenroth E, Eberl HJ, van Loosdrecht MCM, Noguera DR, Pizarro
+GE, Picioreanu C, Rittmann BE, Schwarz AO, Wanner O (2004)Comparing bioﬁlm models for a single species bioﬁlm system.Water Sci Technol 4:145–154
+Mudliar S, Banerjee S, Vaidya A, Devotta S (2008) Steady state model
+for evaluation of external and internal mass transfer effects in animmobilized bioﬁlm. Bioresour Technol 99:3468–3474
+Nicolella C, van Loosdrecht MCM, Heijnen JJ (1998) Mass transfer
+and reaction in a bioﬁlm airlift suspension reactor. Chem Eng Sci
+53(15):2743–2753
+Nicolella C, van Loosdrech MCM, Heijnene SJ (2000) Particle-based
+bioﬁlm reactor technology. Trends Biotechnol 18(7):312–320
+Noguera DR, Okabe S, Picioreanu C (1999) Bioﬁlm modeling:
+present status and future directions. Water Sci Technol39(7):273–278
+Okabe S, Hiratia K, Ozawa Y, Watanabe Y (1996) Spatial microbial
+distributions of nitriﬁers and heterotrophs in mixed-populationbioﬁlms. Biotechnol Bioeng 50:24–35
+Paolini AE (1988) Lezioni di trattamento degli efﬂuenti industriali.
+Ed. SidereaPiciorenau C, Kreft JU, van Loosdrecht MCM (2004) Particle-based
+multidimensional multispecies bioﬁlm model. Appl Environ
+Microbiol 70(5):3024–3040
+Pizarro G, Griffeath D, Noguera DR (2001) Quantitative cellular
+automaton model for bioﬁlm. J Environ Eng ASCE 127:782–889
+Pochana K, Keller J (1999) Study of factors affecting simultaneous
+nitriﬁcation and denitriﬁcation (SND). Water Sci Technol39(6):61–68
+Puznava N, Payraudeau M, Thornberg D (2001) Simultaneous
+nitriﬁcation and denitriﬁcation in bioﬁlters with real timeaeration control. Water Sci Technol 43(1):269–276
+Rahimia Y, Torabiana A, Mehrdadia N, Shahmoradib B (2011)
+Simultaneous nitriﬁcation–denitriﬁcation and phosphorus
+removal in a ﬁxed bed sequencing batch reactor (FBSBR).J Hazard Mater 185:852–857
+Rahman NK, Bakar MZA, Uzir MH, Kamaruddin AH (2009)
+Modelling on the effect of diffusive and convective substrate
+transport for bioﬁlm. Math Biosci 218:130–137
+Rauch WM, Vanhooren H, Vanrolleghem PA (1999) A simpliﬁed
+mixed-culture bioﬁlm model. Water Res 33(9):2148–2162
+Rittmann BE, McCarty PL (1980) Evaluation of steady-state-bioﬁlm
+kinetics. Biotechnol Bioeng 22(11):2359–2373
+Russo ME, Maffettone PL, Marzocchella A, Salatino P (2008)
+Bifurcational and dynamical analysis of a continuous bioﬁlm
+reactor. J Biotechnol 135:295–303
+Saravanan V, Sreekrishnan TR (2006) Modelling anaerobic bioﬁlm
+reactor—a review. J Environ Manag 81:1–18
+Saravanan V, Sreekrishnan T (2008) A mathematical model for a
+hybrid anaerobic reactor. J Environ Manag 88:136–146
+Satoh H, Nakamura Y, Ono H, Okabe S (2003) Effect of oxygen
+concentration on nitriﬁcation and denitriﬁcation in single
+activated sludge ﬂocs. Biotechnol Bioeng 83:604–607
+Satoh H, Onoa H, Rulinb B, Kamoc J, Okabed S, Fukushi KI (2004)
+Macroscale and microscale analyses of nitriﬁcation and denitri-
+ﬁcation in bioﬁlms attached on membrane aerated bioﬁlm
+reactors. Water Res 38:1633–1641
+Seixo J, Varela MH, Coutinho JAP, Coelho MAZ (2004) Inﬂuence of
+C/N ratio on autotrophic biomass development in a sequencing
+batch reactor. Biochem Eng J 21:131–139
+Splendiani A, Livingston AG, Nicolella C (2006) Control of
+membrane attached bioﬁlms in the presence of surfactants.Biotechnol Bioeng 94:15–23
+Tucker WA, Nelken LH (1982) Neural mechanisms underlying value-
+based decision making. In: Warren JL, William FR, David HR(eds) Handbook of chemical property estimation methods.
+American Chemical Society
+van Haandel A, van der Lubbe J (2007) Handbook biological
+wastewater treatment. Quist Publishing, Leidschendam
+Vieira MJ, Melo LF (1999) Intrinsic kinetics of bioﬁlms formed under
+turbulent ﬂow and low substrate concentration. Bioproc Eng
+20:369–375
+Viotti P, Eramo B, Boni MR, Carucci A, Leccese M, Sbaffoni S
+(2002) Development and calibration of a mathematical model for
+the simulation of the bioﬁltration process. Adv Environ Res
+7:11–33
+Walter B, Haase C, Rabiger N (2005) Combined nitriﬁcation/
+denitriﬁcation in a membrane reactor. Water Res 39:2781–2788
+Walters E, Hillea A, Hea M, Ochmannc C, Horna H (2009)
+Simultaneous nitriﬁcation/denitriﬁcation in a bioﬁlm airliftsuspension (BAS) reactor with biodegradable carrier material.
+Water Res 43:4461–4468
+Wang XM, Wang JL (2012) Denitriﬁcation of nitrate-contaminated
+groundwater using biodegradable snack ware as carbon sourceunder low temperature condition. Int J Env Sci Technol
+9(1):113–118Int. J. Environ. Sci. Technol.
+123
+Author's personal copyWang Q, Zhang T (2010) Review of mathematical models for
+bioﬁlms. Solid State Commun 150:1009–1022
+Wang C, Li J, Wang B, Zhang G (2006) Development of an empirical
+model for domestic wastewater treatment by biological aerated
+ﬁlter. Process Biochem 41:778–782
+Wanner O, Eberl H, Morgenroth E, Noguera D, Picioreanu C,
+Rittmann B, van Loosdrecht M, IWA Task Group on BioﬁlmModeling (2006) Mathematical modeling of bioﬁlms, Report 18.
+Task group members mathematical models of bioﬁlm. Scientiﬁc
+and Technical IWA Publishing, London
+Williamson K, Mc Carty PL (1976) A model of substrate utilization
+by bacterial ﬁlms. J Water Pollut Con F 48:9–24Int. J. Environ. Sci. Technol.
+123
+Author's personal copy

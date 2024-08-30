@@ -1,0 +1,897 @@
+Empirical Bayes Analysis of a Microarray Experiment 
+Bradley Efron ,Robert Tibshirani ,John D.Storey , and Virginia Tusher
+Microarrays are a novel technology that facilitates the simultaneous measurement of thousands of gene expression levels. A typi- 
+cal microarray experiment can produce millions of data points, raising serious problems of data reduction, and simultaneous infer- 
+ence. We consider one such experiment in which oligonucleotide arrays were employed to assess the genetic effects of ionizing 
+radiation on seven thousand human genes. A simple nonparametric empirical Bayes model is introduced, which is used to guide 
+the ef/bullet5 cient reduction of the data to a single summary statistic per gene, and also to make simultaneous inferences concern- 
+ing which genes were affected by the radiation. Although our focus is on one speci/bullet5 c experiment, the proposed methods can be 
+applied quite generally. The empirical Bayes inferences are closely related to the frequentist false discovery rate (FDR) criterion. 
+1. INTRODUCTION 
+Through the use of DNA microarrays, a novel technology, 
+it is now possible to obtain quantitative measurements for the 
+expression of thousands of genes present in a biological sam- 
+ple. DNA microarrays have been used to monitor changes in 
+gene expression during important biological processes (e.g., 
+cellular replication and the response to changes in the environ- 
+ment), and to study variation in gene expression across col- 
+lections of related samples (e.g., tumor samples from patients 
+with cancer). A major statistical task is to understand the struc- 
+ture of the data from such studies, which often consist of mea- 
+surements on thousands of genes in dozens of conditions. 
+This article concerns the use of microarrays in a compara- 
+tive experiment, where it is desired to compare gene expres- 
+sion under Treatment versus Control conditions. We wish to 
+identify which of several thousand candidate genes have had 
+their expression levels changed, either positively or negatively, 
+by the Treatment. Answering this question requires an ef/bullet5 cient 
+data reduction strategy, because microarrays deliver megabytes 
+of information, and also statistical inference techniques that 
+deal with the dif/bullet5 culties of simultaneous inference on thou- 
+sands of genes. We discuss both problems here, working in 
+the context of an experiment on radiation sensitivity discussed 
+later.
+The statistics literature for microarrays, still in its infancy 
+and with much of it unpublished, has tended to focus on 
+frequentist data-analytic devices such as cluster analysis, 
+bootstrapping, and linear models (see Li and Wong 2000; 
+Kerr and Churchill 2000; Black and Doerge 2000; Van del 
+Laan and Bryan 2000; Eisen, Spellman, Brown, and Botslein 
+1998). Parametric Bayesian modeling was featured in Newton, 
+Kendziorski, Richmond, Blatter, and Tsui (2000) and to a 
+less extent in Lee, Kuo, Whitmore, and Sklar (2000). Multi- 
+ple comparison techniques, designed to control error rates in 
+thousands of simultaneous hypotheses tests, were explored in 
+Dudoit, Yang, Callow , and Speed (2000). Tusher, Tibshirani, 
+Bradley Efron, Department of Statistics and Division of Biostatistics, 
+Stanford University, Stanford, CA 94305 (E-mail: brad@stat.stanford.edu ).
+Robert Tibshirani, Division of Biostatistics, Department of Health 
+Research and Policy and Department of Statistics, Stanford Uni- 
+versity, Stanford CA 94305 (E-mail: tibs@stat.stanford.edu ).John
+D. Storey, Department of Statistics, Stanford University, Stanford CA 
+94305 (E-mail: jstorey@stat.stanford.edu ). Virginia Tusher, Depart- 
+ment of Biochemistry, Stanford University, Stanford CA 94305 (E-mail: 
+tusher@cmgm.stanford.edu ). We are grateful to Dr. Gilbert Chu of the Stan- 
+ford Biochemistry Department for sharing his ideas and data with us, and 
+thank the Editor and Associate Editor for suggestions that improved the 
+manuscript. and Chu (2001) approached the simultaneity problem through 
+the method of false discovery rates (FDRs), as discussed later. 
+Our inferences here will be based on a simple nonpara- 
+metric empirical Bayes model. The model produces useful a
+posteriori probabilities of effect for the individual genes, with 
+a minimum of prior assumptions. It also connects well with 
+Benjamini and Hochberg’ s (1995) frequentist theory of FDRs, 
+as discussed in Section 5. Besides being useful in its own 
+right, the empirical Bayes model helps to select from among 
+competing data reduction schemes, a crucial point in dealing 
+with the massive datasets microarrays produce. 
+Here is some background on microarrays in general and the 
+speci/bullet5 c experiment analyzed in this article. Virtually all liv- 
+ing cells contain chromosomes, large pieces of DNA contain- 
+ing hundreds or thousands of genes, each of which speci/bullet5 es 
+the composition and structure of a protein (or sometimes sev- 
+eral related proteins). Protein polymers of amino acids are 
+the workhorse molecules of the cell, responsible, for exam- 
+ple, for cellular structure, producing energy and important 
+biomolecules like DNA and proteins, and for reproducing 
+the cell chromosomes. Every cell in an organism has nearly 
+the same set of chromosomes, and thus contains the same 
+repertoire of proteins. However, cells have remarkably distinct 
+properties, such as the differences between human eye cells, 
+hair cells and liver cells, distinctions that are the result of dif- 
+ferences in the abundance, distribution, and state of the cell 
+proteins. One of the seminal discoveries of molecular biology 
+was that these changes in protein abundance are determined 
+in part by changes in the levels of messenger RNA (mRNA), 
+small and relatively unstable nucleic acid polymers that shut- 
+tle information from chromosomes to the cellular machines 
+that synthesize new proteins. Thus, there is a logical connec- 
+tion between the state of a cell and the details of its protein 
+and mRNA composition. 
+Whereas it remains dif/bullet5 cult to measure the abundances of a 
+cell’ s proteins, the recently developed DNA microarray makes 
+it possible to quickly and ef/bullet5 ciently measure the relative rep- 
+resentation of each mRNA species in the total cellular mRNA 
+population, or in more familiar terms to measure gene expres- 
+sion levels. 
+There are two major kinds of microarrays. I n an oligonu- 
+cleotide array, the kind featured in this article, there are 20 
+probe pairs (pm, mm) for each gene. The perfect match (pm) 
+©2001 American Statistical Association 
+Journal of the American Statistical Association 
+December 2001, Vol. 96, No. 456, Applications and Case Studies 
+11511152 Journal of the American Statistical Association, December 2001 
+probe is designed to match a small subsequence of the gene 
+about 25 bases long. The mismatch (mm) probe is a control, 
+being identical to pm except with the middle base /bullet6 ipped to 
+its complement. An experimental sample is hybridized on the 
+microarray, and the RNA expression of the gene is estimated 
+by the difference in signal pm– mm averaged over the 20 probe 
+pairs. There is some concern that subtracting mismatch num- 
+bers may actually degrade the inferences, a question we con- 
+sider in this article. 
+In a spotted cDNA microarray, the other major variety, one 
+base sequence matching all or part of a gene is printed on a 
+glass slide. The experimental sample is labeled with red dye 
+and hybridized on the slide. As a control, a reference sample 
+is labeled with green dye and hybridized on the same slide. 
+Using a /bullet6 uorescent microscope, the log (red– green) intensi- 
+ties of RNA hybridization at each site are measured. The red–
+green microarray is featured in much of the recent literature, 
+see Newton et al. (2001), Dudoit et al. (2000), and Lee et al. 
+(2001). Our discussion, like that in Li and Wong (2000) cen- 
+ters in the Affymetrix oligonucleotide microarray, but similar 
+analysis problems arise for both types of array. However, our 
+Empirical Bayes procedure, summarized in Algorithm 1, can 
+be applied quite generally. An example extending the empiri- 
+cal Bayes analysis to a cDNA microarray experiment appears 
+in Remark D of Section 6, showing how our methods can be 
+applied to other experimental situations. 
+From either type of microarray, we obtain several thou- 
+sand expression values, one or many for each gene. Microar- 
+rays in current use measure anywhere from 1,000 to 25,000 
+genes; larger ones will soon be available. I n a typical study, a 
+number of experimental samples are each hybridized to a dif- 
+ferent microarray to learn about gene expression differences 
+across different conditions. For example Alizadeh et al. (2000) 
+studied gene expression patterns from tissue samples from a 
+number of lymphoma patients and related gene expression to 
+patient survival. Clustering methods (Eisen et al. 1998) were 
+the main tool used in that article, and in a number of other 
+similar studies. Here we will be interested in the more famil- 
+iar statistical task of comparing Treatment and Control arrays, 
+though carried out in a novel setting. 
+Our particular dataset comes from a set of eight oligonu- 
+cleotide microarrays in an experiment designed by Professor 
+Gilbert Chu of the Stanford Biochemistry Department to study 
+transcriptional responses to ionizing radiation. Some cancer 
+patents have severe life-threatening reactions to radiation treat- 
+ment. It is important to understand the genetic basis of this 
+sensitivity, so that such patients can be identi/bullet5 ed before the 
+treatment is given. The eight microarrays were labeled 
+4U1A1U1B1I1A1I1B1U2A1U2B1I2A1I2B51 (1.1)
+the labels indicating the following experimental design: RNA 
+was harvested from two wild-type human lymphoblastoid cell 
+lines, designated “ 1” and “ 2,” growing in an unirradiated 
+state “ U,” or in an irradiated state “ I.” RNA samples were 
+labeled and divided into two identical aliquots for independent 
+hybridizations, “ A” and “ B.” Each microarray provided expres- 
+sion estimates for 6,810 genes. Further experimental details 
+appear in Remark A of Section 6. Here is the article’ s plan: the data structure of the radiation 
+experiment is described in Section 2. This sets up the main 
+thrust of the article, the ef/bullet5 cient reduction of microarray data 
+(320 numbers per gene in this case) to a single summary statis- 
+tic“Zi” for each gene, followed by an appropriate simultane- 
+ous inference for the activity of each gene based on all the Z
+scores. Section 3 presents the simple nonparametric empirical 
+Bayes model used to make our simultaneous inferences. The 
+model is presented in algorithmic form, suggesting how it can 
+be applied to other microarray comparative experiments, both 
+oligoneucliotide and cDNA types. (Another such experiment 
+is brie/bullet6 y discussed in Section 6.) 
+Section 4 concerns the ef/bullet5 cient reduction of the data to 
+a single score Ziper gene. The reduction makes use of the 
+empirical Bayes model, essentially selecting mappings that 
+maximize the amount of Bayesian information preserved in 
+Zi. Frequentist justi/bullet5 cation of the empirical Bayes approach 
+appears in Section 5, where it is related to Benjamini and 
+Hochberg’ s (1995) theory of FDR. Section 6 closes with a 
+summary and some detailed remarks, including a comparison 
+of our analysis with a “ gold standard” assay of some of the 
+genes.
+2.THE DATA
+Microarray experiments produce enormous amounts of data, 
+more than two million feature numbers in the relatively small 
+experiment we are discussing here. The statistical task is to 
+ef/bullet5 ciently reduce these numbers to simple summaries of the 
+genes’ activities. One goal in this article is to provide a method 
+for comparing the statistical ef/bullet5 ciency of different data reduc- 
+tion strategies. 
+Here is a description of the data in the radiation experiment, 
+and the notation we will use to describe it. Expression levels 
+were recorded for 6,810 different genes, 
+genes: iD1121:::1nD618100 (2.1)
+(There were actually 7,129 genes, 319 of which had some 
+missing data. For convenience, this article considers only 
+the 6,810 genes having complete data. The various analyses 
+were also carried out on all 7,129 genes, with nearly identi- 
+cal results.) Each gene on each plate was represented by 20 
+oligonucleotide “ probes, ”
+probes: jD1121:::1JD200 (2.2)
+Finally there were eight plates, (the individual microarrays) 
+representing the eight experimental conditions of the exper- 
+iment described in section 1, (U1A, U1B, I1A, I1B, U2A, 
+U2B, I2A, I2B), 
+plates: kD1121:::1KD80 (2.3)
+Two features were recorded for each probe of each gene on 
+each plate, a “ perfect match number” pm ijkand a “ mismatch 
+number” mmijk, the latter referring to a deliberately distorted 
+version of the oligonucleotide included as a control. Table 1 
+shows the 20 pairs of numbers for gene iD21715onplate
+kD1.
+We will investigate three separate stages of data reduction: 
+“ probe reduction” , the mapping that takes the 20 probe pair Efron et al.: Bayes Analysis of Microarray 1153
+Table 1. The 20 Pairs of Perfect Match and Mismatch Feature Numbers for Gene iD2,715 onPlate kD1(U1A)
+Probe 1 2 3 4 5 6 7 8 9 10
+pm 11054 31242 11470 41050 11356 11476 561 606 11307 11057
+mm 793 21333 826 11912 561 558 942 526 699 11060
+Probe 11 12 13 14 15 16 17 18 19 20
+pm 974 11584 802 11399 11670 21514 21096 61592 51662 21244
+mm 829 11771 601 569 840 950 700 81717 11484 668
+numbers into a single expression value “Mik”forgene ion
+plate k,
+probe reduction: 84pmijk1mmijk51jD1121:::1209!Mik1
+(2.4)
+“ gene reduction, ” the mapping that takes the KD8 expression 
+values Mikforgene iinto a single expression score “Zi,”
+gene reduction: 8Mik1kD1121:::189!Zi1 (2.5)
+and /bullet5 nally an inference mapping that re-expresses Ziinterms
+of a statistical inference concerning iactivity of gene. The 
+nonparametric empirical Bayes analysis of Section 3 will pro- 
+vide inferences of the form Prob 8Eventi—Zi9, where Event iis
+an event of interest such as “ gene i’ s activity was affected by 
+radiation.” Section 5 connects these probabilities with the fre- 
+quentist FDR criteria of Benjamini and Hochberg (1995). 
+There are of course an unlimited selection of possible data 
+reductions from the original data, 320 numbers per gene in the 
+radiation experiment, to the expression scores Zi. For reasons 
+explained in Section 4, the empirical Bayes analysis will lead 
+us to prefer the following choices: For the probe reduction let 
+MikDmean 8log4pmijk5ƒ05¢log4mmijk51jD1121:::12090
+(2.6)
+For the gene reduction, /bullet5 rst compute the four differences 
+4Di11Di21Di31Di45between the irradiated and unirradiated 
+values within the same wild-type sample and aliquot, for 
+example
+Di1DMi3ƒMi11 (2.7)
+the difference between the I1A and U1A values Mik.Then
+take
+ZiDSDi=4a0CSi51 (2.8)
+whereSDiis the average of the four differences, Siistheir
+sample standard deviation, and a0is the 90th percentile of the 
+6,810 Svalues. Speci/bullet5 cations (2.6)– (2.8) will be used as a 
+comparison point in all of our numerical examples. They will 
+be compared with other choices in Section 4, including the 
+current one included in the Affymetrix software. 
+3. EMPIRICAL BAYES INFERENCES 
+Besides analyzing the radiation data, our goal here is to pro- 
+vide data analytic techniques useful in a variety of microarray 
+situations. With generality in mind we will avoid highly spec- 
+i/bullet5 ed models, relying instead on a simple inference model that is likely to apply to most comparative experiments: that a gene 
+is either affected on unaffected by the treatment of interest, 
+radiation in our case, giving two possible distributions for the 
+expression score “Z,” (2.5). Lee et al. (2000) used a normal 
+theory version of this idea, as, less directly, did Li and Wong 
+(2000). Newton et al. (2000) focused on Gamma models. Here 
+we will avoid parametric assumptions. The resulting nonpara- 
+metric empirical Bayes analysis, which provides a posteriori 
+probabilities of effect for the various genes, is further justi/bullet5 ed 
+in Sections 4– 6. 
+Let
+p1Dprobability that a gene is affected 1
+p0D1ƒp1Dprobability unaffected 1 (3.1)
+and
+f14z5Dthe density of Zfor affected genes 
+f04z5Dthe density of Zfor unaffected genes 0(3.2)
+Then
+f4z5Dp0f04z5Cp1f14z5 (3.3)
+is the mixture density of the two populations. In our situation, 
+we can estimate f4z5directly from the 6,810 expression scores 
+Ziobtained from the data reduction (2.4) and (2.5). 
+In the absence of strong parametric assumptions such as 
+normality, model (3.3) is useless without an estimate of the 
+“ null density” f04z5. Fortunately, it is easy to obtain such esti- 
+mates. What follows is the method we used to estimate f04z5
+in the radiation experiment. Section 6 discusses variants of 
+this method that are applicable more generally. 
+The 61810/bullet28matrix Mof expression values (2.4), one 
+value for each gene on each plate, gives a 6 1810/bullet24matrix D
+of differences between the irradiated and unirradiated expres- 
+sion values, as in (2.7). Let Mkindicate the kthcolumn ofM,
+a 6,810 vector. With the plates ordered as before, (U1A, U1B, 
+I1A, I1B, U2A, U2B, I2A, I2B), the “ difference matrix” Dis
+DD4M3ƒM11M4ƒM21M7ƒM51M8ƒM650 (3.4)
+Symbolically, the vector Zof expression scores (2.5) is 
+obtained via 
+[original data] ! M ! D !Z0
+61810/bullet220/bullet22/bullet28 61810/bullet28 61810/bullet24 61810(3.5)1154 Journal of the American Statistical Association, December 2001 
+Now let the “ null difference matrix” dbethe61810/bullet24
+matrix obtained by differencing within the aliquot splits, 
+dD4M2ƒM11M4ƒM31M6ƒM51M8ƒM751 (3.6)
+so for example the /bullet5 rst column of drecords differences 
+between the B and A splits of the unirradiated wild-type 1 
+experiments. We de/bullet5 ne “ null scores” zD4z11z21:::1z6181050
+by
+[original data] !M!d!z1 (3.7)
+with the understanding that except for the substitution of dfor
+D, the arrows in (3.7) indicate the same mappings as in (3.5). 
+We will use the empirical distribution of the null scores 8zi9
+to estimate the null density f04z5in (3.3). One could just as 
+well takeM1ƒM2asM2ƒM1in (3.6), etc., and in fact our 
+numerical algorithm employs random sign permutations of the 
+columns ofdto improve the estimation of f0. The basic idea 
+here, that we can recover the “ null hypothesis” from differ- 
+ences that negate treatment effects, shows up in one form or 
+another in many of the microarray references, being essentially 
+unavoidable in a comparative experiment. Further discussion 
+appears in Section 6, which describes strategies that might be 
+used for estimating f0in situations less intricate than the radi- 
+ation experiment. 
+An application of Bayes’ rule to the mixture model (3.3) 
+gives the a posteriori probabilities p14Z5andp04Z5thatagene
+with score Zwas affected or unaffected by the treatment: 
+Bayes’ Rule: p14Z5D1ƒp0f04Z5=f 4Z5
+and
+p04Z5Dp0f04Z5=f 4Z50 (3.8)
+The ratio f04Z5=f 4Z5 can be estimated directly from the 
+8Zi9and 8zi9empirical distributions. The probabilities p0
+andp1D1ƒp0are unidenti/bullet5 able without strong parametric 
+assumptions, but this will turn out to be less problematic than 
+it might seem. The constraint that p14Z5be nonnegative for 
+Figure 1. Solid curve: Bayesian Inference Mapping Prob {Eventi—Zi}From Data Reductions (2.6), (2.8); Event iis“Gene iAffected by Radiation.”
+Symbols show Zvalues for 18 genes separately analyzed by Northern Blot: “+” positively affected; “-” negatively affected” ; “ o” not affected. 
+Dotted curve is lower bound (3.10). allZdoes restrict p0andp1,
+p1¶1ƒmin
+Z8f4Z5=f04Z59
+and
+p0µmin
+Z8f4Z5=f04Z59 (3.9)
+A more stable bound for p1andpois given in Remark F of 
+Section 6.
+Figure 1 displays the Bayesian inference curve p14Z5D
+Prob8Event —Z9obtained from the probe and gene data reduc- 
+tions (2.6), (2.8). It was constructed as follows (skipping some 
+technical details that appear in Section 6): 
+Algorithm 1: Empirical Bayes analysis for microarrays 
+(a) Compute the scores 8Zi9according to (3.5), using probe 
+reduction (2.6) and gene reduction (2.8). 
+(b) Compute the null scores 8zi9in the same way, beginning 
+with (3.7). Generate 20 versions of the 8zi9,based on
+20 independent row-wise sign permutations of d(see
+Remark D).
+(c) Use logistic regression to estimate the ratio f04z5=f 4z5
+based on the relative densities of the 8Zi9tothe8zi9
+(see Remark C). 
+(d) Use relationship (3.9) to obtain an estimated upper 
+bound forp0:here p0D0811 (See Remark F.) 
+(e) For each gene compute Prob 8Event —Z9from (3.8), with 
+f0=festimated from the logistic regression, and p0
+equaling its estimated maximum value (or more conser- 
+vatively with p0D1.)
+We have focussed on our particular experimental setup, but 
+Algorithm 1 is quite general. It can be applied to any two- 
+class situation, for example two sets of unpaired samples. All 
+that changes is the generation of null scores ziinstep (b).
+For instance, for unpaired samples the values of ziwould be
+generated by random permutations of the column labels “ 1”
+and “ 2.” Remark E of Section 6 gives another example. 
+Our Bayesian analysis is actually “ empirical Bayes” in the 
+sense that the crucial ratio f04Z5=f 4Z5in (3.8) is estimated Efron et al.: Bayes Analysis of Microarray 1155
+from the data rather than from apriori assumptions. Newton 
+et al. (2000) carried out a similar analysis, but using speci/bullet5 c 
+Bayesian modeling assumptions beyond (3.1)– (3.3). 
+In Figure 1, the a posteriori probability of being affected 
+is seen to increase as ZorƒZgrows large. The positive end 
+oftheZ-axis corresponds to genes turned onby the radiation, 
+with their expression values increased, while negative values 
+ofZindicate decreased expression under radiation. Out of the 
+6,810 genes 127 genes had p14Z5exceeding .90, more on the 
+negative than positive end of the Zscales.
+Eighteen of the 6,810 genes were independently assessed 
+by a Northern Blot analysis, a pre microarray assay that serves 
+here as a gold standard for gene expression. Seven of these, 
+indicated by “C” in Figure 1, were deemed “ affected posi- 
+tively by radiation, ” /bullet5 ve indicated by “ƒ” were “ affected neg- 
+atively,” and six indicated by “ o” were “ not affected. ” There is 
+good agreement between the Northern Blot assessments and 
+the probabilities assigned in Figure 1. The full results, given 
+in Section 6, show a high correlation between the gold stan- 
+dard and our results. 
+In comparing different data reductions, it is convenient to 
+always have the same marginal distribution for Z.Tothis
+end, the raw scores 8Zi9from (2.8) were monotonically trans- 
+formed to have a nearly perfect N40115distribution, say by 
+transformation m4Z5 , and then the null scores were trans- 
+formed according to the same m4z5 . Notice that the crucial 
+ratio f04z5=f 4z5remains the same under such transformations, 
+sothatp14Z5andpo4Z5in (3.8) are transformation invariant. 
+We will always make the empirical distribution of the 8Zi9
+almost perfectly N40115, using a normal scores transforma- 
+tion, implying for example that 42 D61810 ¢41ƒê420555of
+the 6,810 genes have Zi>205,with êthe standard normal 
+cumulative distribution function. 
+Figure 2 shows the estimates of f01f11andfcontributing to 
+Figure 1;f4Z5is a standard N40115density, by construction, 
+while f04z5is a less dispersed density. This is what we hoped 
+for of course: the values of Zshould be more dispersed than 
+the values of zbecause they re/bullet6 ect the disturbing effects of the 
+radiation treatment. The large values of Prob 8Event —Z9inthe
+tails of Figure 1 come from (3.8), and the small ratio of f04z5
+tof4Z5. A good choice of data reductions makes f04z5=f 4z5
+small for—z—large, and we will use this criterion to guide our 
+choices of the probe and gene reductions in Section 4. 
+Looking again at (3.8), 
+p14Z5¶1ƒf04Z5=f 4Z51 (3.10)
+Figure 2. Estimates of f(¢),f0(¢)and f1(¢)for the Situation of 
+Figure 1, Model (3.1)– (3.3); p0D.811, its Estimated Maximum From 
+(3.9), Used in the Construction of f1.because this corresponds to p0D1, the largest possible value. 
+The dotted curve in Figure 1 is 1 ƒf04Z5=f 4Z5.This isnot
+much less than the solid curve for large values of —Z—,giving
+106 genes with p14Z5¶090.
+4. EFFICIENT DATA REDUCTIONS FOR 
+MICROARRAY EXPERIMENTS 
+The empirical Bayes analysis of Section 3 depends on a 
+drastic data reduction: from the full vector viof data for gene 
+i, a 320-vector in the radiation experiment, to a single number 
+Zi(and its null counterpart zi.) I nformation is bound to be 
+lost in the mapping from vitoZi, but the less we lose the 
+more powerful will be the analysis, and better our chance of 
+detecting genuinely affected genes. 
+To state things more exactly, we can imagine applying 
+model (3.1)– (3.2) to the 320-dimensional densities of v,
+fv
+14v5Ddensity ofvfor affected genes, (4.1)
+fv
+04v5Ddensity ofvfor unaffected genes 1
+and
+fv4v5Dp0fv
+04v5Cp1fv
+14v51 (4.2)
+the mixture density; p0andp1have the same meaning here 
+as in (3.1). De/bullet5 ning the likelihood ratio statistic Rv4v5D
+fv4v5=fv
+04v5, Bayes theorem gives 
+pv
+14vi5D1ƒp0=Rv4vi5DProb8gene iaffected —vi91 (4.3)
+compared top14Zi5D1ƒp0=R4Zi5in (3.8), where R4Zi5D
+f4Zi5=f04Zi5.
+In our situation it is not practical to estimate the high- 
+dimensional densities fv4v5andfv
+04v5, at least not without 
+extensive modeling. However, we can easily estimate the cor- 
+responding densities f4Z5andf04Z5for a one-dimensional 
+statistic Z. The goal is to choose a mapping ZDs4v5that
+does not lose much information. I nformation loss manifests 
+itself by reductions in the likelihood ratio R4Zi5, compared to 
+Rv4vi5, which reduces the number of genes having convinc- 
+ingly large values at p14Zi5.
+4.1 Estimation of a0
+With this background in mind we searched for mappings 
+ZDs4v5that produced large values of R4Z5 , i.e., good sep- 
+aration between f4Z5 andf04Z5 as in Figure 2. Figure 3 
+shows the part of the search relating to the choice of a0in
+the denominator of (2.8). The curve marked “ 90” is equiv- 
+alent to the dashed curve in Figure 1, the difference here 
+being that the vertical axis is plotted on the logit scale, 
+logp14Z5=4 1ƒp14Z55, to emphasize differences in the tails. 
+Keeping probe reduction (2.6) /bullet5 xed, Figure 3 compares /bullet5 ve 
+different choices of a0in the gene reduction (2.8): a0equal to
+the 90th percentile of the 6,810 Sivalues; the 50th percentile; 
+the 5th percentile; a0D0;anda0!ˆ.The choice a0D0
+makes Ziin (2.8) proportional to the one-sample t-statistic
+for the four differences 4Di11Di21Di31Di45,whereas a0!ˆ
+makes Ziequivalent to the numerator SDi. The plotted curves 1156 Journal of the American Statistical Association, December 2001 
+Figure 3. Choice of a0in the Gene Mapping ZiDSDi=(a0+Si),(2.8);
+Vertical Axis is Logit of Prob {Event —Z}, Estimated as in (3.8) With p0D
+1; “ 90” Indicates a0Equaling 90th Percentile of the 6,810 SiValues,
+etc.; “ inf” is Limit as a0!ˆ. We see that 90 is the best choice in 
+terms of maximizing Prob {Event —Z}forlarge —Z—;a0D0 is worst. All 
+choices used probe reduction (2.6). The vertical axis is truncated at 
+lower bound Prob {Event —Z}D.20.N90 is the number genes having 
+Prob {Event —Z}¶.90.
+are the logits of (3.10), the conservative lower bound for 
+p14Z5,(taking p0D1in(3.8).)
+Figure 3 shows that the best choice for a0istheonewe
+used before, a0the 90th percentile. This manifests itself as 
+higher values of Prob 8Event —Z9at both ends of the Zscale.
+The density f04z5in Figure 2 is more concentrated around 
+zero than it is say for the disastrous choice a0D0,raising
+f4Z5=f04Z5in the tails and thus p14Z5, (3.10). The numbers 
+N90 in Figure 3 indicate the number of genes having lower 
+bound (3.10) for p14Zi5greater than .90. These range down- 
+ward from 106 for a0D90to0fora0D0. Larger values of 
+N90 indicate less information loss in going from the full data 
+vector vito the summary statistic Zi. (Efron, Tibshirani, Goss, 
+and Chu (2001) also use Kulback– Liebler distance to measure 
+information loss.) 
+Figure 4. Comparison of Various Probe Reductions (gene reduction ’ xed as in (2.8), a0D90th percentile). The solid curve in both panels 
+is the choice (2.6) used previously; constant “c” is multiple of mm level subtracted from pm level, for example. “cD1 no logs” uses MikD
+mean {pmijk-mmijk}. “ Affy” based on the probe reduction software provided with the Affymetrix Genechip. 4.2 Choosing the Probe Reduction 
+The GeneChip software distributed by Affymetrix uses a 
+simple average difference, (with some outlier rejection) to 
+estimate what we called the probe reduction in (2.4), the 
+expression for gene ionplate k2MikDmeanj8pmijkƒmmijk9.
+However, this choice is controversial, and some researchers 
+have suggested that ignoring the mismatch entirely might pro- 
+duce better expression estimates. We investigate the issue here. 
+Keeping the gene reduction /bullet5 xed as in (2.6), a0D090,
+Figure 4 compares probe reductions of the form 
+MikDmeanj8s4pmijk5ƒc¢s4mmijk591 (4.4)
+with seither the log function or the identity function. For 
+example curve 2 in the left panel uses MikDmeanj8pmijkƒ
+mmijk9whereas the dotted curve in the right panel uses 
+MikDmeanj8log4pmijk59. Our preferred choice (2.6)– (2.8) is 
+curve 1,“cD05 & logs.” The “ Affy” curve in the left panel 
+was based on the algorithm provided by Affymetrix, which is 
+similar to the “cD1 no logs” choice, but with a provision for 
+removing apparent outliers among the 20 pm ijkƒmmijkdif-
+ferences before averaging. 
+Figure 4 indicates a substantial advantage to taking logs, 
+and a mild advantage to using cD05 rather than cD1orcD0.
+The comparison between cD05andcD1 is close on the log 
+scale, but other comparisons, reported in Efron et al. (2000), 
+reinforce the superiority of cD05. We also tried using various 
+L-estimators in (4.7), including trimmed means. When applied 
+on the log scale, this form of robusti/bullet5 cation made almost no 
+difference to our results. 
+Some comments are in order, which apply to the whole 
+section:
+¡There is no claim that the mapping ZDs4v5described by 
+(2.6), (2.8) is “ correct,” only that it is relatively ef/bullet5 cient 
+in preserving the information in v. The estimated curve Efron et al.: Bayes Analysis of Microarray 1157
+p14Z5still is meaningful as the a posteriori probability 
+of effect given the insuf/bullet5 cient statistic Z, and also has 
+the FDR interpretation of Section 5. (Efron et al. (2000) 
+showed that in fact a better “s4v5” can be obtained in the 
+radiation experiment by removing plates U1A and I1A 
+from the dataset (1.1); a processing error appears to have 
+degraded the results from I1A.) Our tactic of choosing 
+theZmapping to maximize p14Z5is nearly equivalent to 
+minimizing FDR, which was the approach taken in Tusher 
+et al. (2000). 
+¡There is also no claim that mappings (2.6) and (2.8) 
+enjoy general superiority. The equivalent of Figures 3 and 
+4 might point to a different choice of s4v5inanother
+dataset. Section 6 discusses how our methodology can be 
+applied to other comparative microarray experiments. 
+¡Over/bullet5 tting is not a threat in a genuine Bayesian frame- 
+work, where results like those from Figures 3 and 4 can be 
+thought of as just computer-based attempts to numerically 
+solve a probabilistic maximization problem. However, in 
+our empirical Bayes framework, too much data-based 
+maximization could in fact lead to over/bullet5 tting. Two forms 
+of bootstrapping were employed as a check on our results: 
+“ gene resampling,” in which the rows of the 6 1810/bullet28
+matrix Mwere resampled to give Mü; and “ row resam- 
+pling” in which row iofMüwas obtained as the average 
+of 20 resampled rows from the 20 /bullet28matrix xihaving
+entries
+xijkDlog4pmijk5ƒ05¢log4mmijk50 (4.5)
+The bootstrap results indicated that the differences seen 
+in Figures 3 and 4 were much greater than the standard 
+errors of the curves, so that over/bullet5 tting was not a threat. 
+For example, row resampling showed that the difference 
+between thea0D090anda0D050curves atZDƒ3,
+which looks suspiciously small in Figure 3, had point esti- 
+mate and standard error 068
+ 013.
+Figure 5. Simulations Comparing Empirical Bayes Formula fdr, (5.1) With Actual FDR, as Explained in Text. Left panel: a0D.90 in mapping 
+(2.8). Right panel: a0!ˆ.5. FALSE DISCOVERY RATES 
+The empirical Bayes analysis of Section 3 is closely related 
+to Benjamini and Hochberg’ s FDR criterion. For a collection 
+of simultaneous hypothesis tests, FDR is the expected propor- 
+tion of type I errors made using a given rejection rule. De/bullet5 ne 
+thelocal false discovery rate tobe
+fdr4Z5Dp0f04Z5=f 4Z51 (5.1)
+sofdr4Z5isthea posteriori probability p04Z5, (3.8), that a 
+gene with score Zis unaffected. It will be shown that (6.1) 
+has a natural FDR interpretation. We begin with a numerical 
+example.
+In the calculations for Figure 1, ND74 of the 6810 
+genes hadZscores in the interval Z2610912017, whereas the 
+twenty permuted null score datasets 8zi9had 676 falling into 
+610912017, an average of 33 08D676=20 per set. Taking p0to
+be its estimated maximum .811, this suggests that among the 
+ND74binned Zvalues, the expected number of “ unaffect- 
+eds” is2704D0811 ¢3308. If we now declare all genes with Z
+in610912017to be affected, our expected proportion of false 
+discoveries is 
+2704
+74D37%0 (5.2)
+Notice that (5.2) is an obvious estimator of (5.1) for ZD2,
+cfdr425DOp0Of0425=Of425
+h
+Op0D08111Of0425D3308
+68101Of425D74
+6810i
+0(5.3)
+In general, if we bin the genes into small intervals on the 
+Zscale, then a bin declared “ affected” will have a FDR of 
+about fdr4Z5, (5.1), the equality becoming exact as the num- 
+ber of genes goes to in/bullet5 nity. This last statement can be rigor- 
+ously veri/bullet5 ed under modest ergodic conditions that preclude 
+extremely high correlations among the values fo Zorthez.
+Figure 5 reports on a simulation experiment used to check 
+the accuracy of fdr 4Z5as an estimate of FDR. A 6810 /bullet281158 Journal of the American Statistical Association, December 2001 
+matrix Mwas constructed in a way that mimicked the radia- 
+tion experiment, 
+MikDˆitkC…ik6…ikind
+N4012571 (5.4)
+4t11t21:::1t85D40101111101011115; 681 of the “ gene 
+effects” ˆiwere chosen from an N4ƒ105115distribution, 681 
+from N4105115, and the remaining 5448 set at zero. In other 
+words 80% of the genes were unaffected and 20% were 
+affected, 10% in each direction. 
+Thematrix Mwas processed into a Zvector according to 
+(3.5), and also into twenty zvectors according to (3.7), using 
+(2.8) for the mappings from D!Zandd!z. Following the 
+same algorithm that lead to Figure 1, these gave an estimated 
+fdr4Z5curve, (5.1), that in fact looked much like the one for 
+the actual experiment. 
+Figure 5 reports on two different choices of a0in(2.8),
+a0D090 in the left panel and a0!ˆon the right. There are 
+100 points in each panel, corresponding to a binning of the 
+fdr axis in units of .01 from 0 to 1, with the jth point plotted 
+atfdrjDj=100and
+FDRjDproportion of jthbinwith ˆiD01 (5.5)
+the empirical FDR for that bin. The FDR jvalues are averages 
+over 50 simulations, each of the individual simulations being 
+noisy versions of the same picture. If formula (5.1) is actually 
+the local fdr, then the points should lie near the main diagonal 
+FDR Dfdr as they do. The slight conservative bias FDR jµ
+fdrj, came from the fact that the upper bound for p0used in
+(5.1) (calculated as in Remark F of Section 6) substantially 
+overestimated the true value p0D080.
+In the arti/bullet5 cial situation (5.4), taking a0!ˆin (2.8) gives 
+a more ef/bullet5 cient choice of Zithan a0D090, doubling N90.
+Nevertheless, the inef/bullet5 cient choice a0D090 is still accurately 
+calibrated: FDR jPDfdrj.
+FDRs are usually de/bullet5 ned for an entire rejection region, for 
+example for
+²D8Z2R4Z5¶r096R4Z5 Df4Z5=f04Z57 (5.6)
+rather than locally as in (5.1). We can think of this as replacing 
+our original choice of summary statistic ZDs(v)with
+1 Z2²1
+eZD if
+0 Z62²(5.7)
+Assuming that genes having eZD1 are declared affected, 
+the empirical Bayes formula (5.1) now becomes 
+ffdr415Dp0Qf0415=Qf4151 (5.8)
+with straightforward estimate 
+Op0proportion 8zi2²9
+proportion 8Zi2²90 (5.9)
+The heuristic argument proceeding (5.2) is more obvious here: 
+(5.9) estimates the proportion of genes in the “ affected” region 
+², which is actually unaffected, and in this sense estimates Benjamini and Hochberg’ s FDR. (Current work by the authors 
+strengthens this connection: choosing ²in (5.6) as large 
+as possible subject to keeping (5.9) below some /bullet5 xed limit 
+exactly matches the Benjamini– Hochberg choice of rejection 
+region.)
+The global de/bullet5 nition of FDR has the advantage of being 
+easier to estimate. We can use the totally nonparametric esti- 
+mator (5.9) rather than having to estimate the local ratio 
+f04Z5=f 4Z5in (5.1). On the other hand (5.8) is a composite 
+measure that assigns the same FDR to all the genes in ²even
+though some of them have Prob 8Event —Z9much greater than 
+others. Comparing (5.1) with (5.8) it is easy to see that ffdr415
+is the conditional expectation of fdr 4Z5given Z2²,
+ffdr415DEf8fdr4Z5—²9 (5.10)
+sothatfdr4Z5is more precise than ffdr415. More on the con- 
+nection between FDR and fdr appears in Storey (2001). 
+6. SUMMARY AND REMARKS 
+The Empirical Bayes procedure described in this article pro- 
+vides an effective framework for studying the relative changes 
+in gene expression for a large number of genes. It uses a 
+simple nonparametric mixture prior to model the population 
+of affected and unaffected genes, thereby avoiding parametric 
+assumptions about gene expression. We establish a close con- 
+nection between the estimated posterior probabilities and a 
+local version of the FDR, thereby allowing for the analyst to 
+handle multiple testing issues that arise when dealing with a 
+large number of simultaneous tests. As we have detailed in 
+Algorithm 1 and Remark D, the proposed procedure can be 
+applied quiet generally to other kinds of comparative microar- 
+ray experiments. 
+We conclude with a number of remarks, giving important 
+practical details for the proposed methods. 
+(A) The Experiment. Lymphoblastoid cell lines GM14660 
+and GM08925, (Coriell Cell Repositories, Camden, 
+New Jersey) were seeded at 2 05/bullet2105 cells/ ml. The treat- 
+ment consisted of 5 Gy of ionizing radiation. After 24 hours, 
+RNA was isolated, labeled, and divided into two aliquots that 
+were independently hybridized to the HuGeneFL Genechip 
+microarray, Affymetrix Corporation. 
+(B) Northern Blot Analysis. Northern Blot Analysis pro- 
+duced a quantitative score “Gi” for each of the 18 genes 
+indicated in Figure 1, Gstanding for gold standard. Fol- 
+lowing previous biomedical convention, Gscores exceeding 
+1.30 were taken to indicate a positive effect of radiation on 
+gene activity, the “C” symbols in Figure 1; likewise “ƒ”for
+Gi<070and“o”for070µGiµ1030. Figure 6 compares the 
+Ziscores from Figure 1 with log Gifor the 18 test genes. We 
+see a strong monotone relationship, correlation .87. 
+The agreement in Figure 6 is impressive, especially con- 
+sidering the magnitude of the sampling errors in the individ- 
+ual expression values. Our gold standard, the Northern Blot 
+score, is not pure gold, itself being subject to experimental 
+error. There is only one /bullet6 agrant disagreement in Figure 6, the 
+“ƒ”gene atZiDƒ031. The vector of differences (3.4) was 
+DiD4ƒ1059105511881ƒ0835for this gene, so that both wild 
+types yielded aliquots of opposing signs. I n contrast the “o”Efron et al.: Bayes Analysis of Microarray 1159
+Figure 6. Comparison of ZScores From the Analysis in Figure 1 
+With the Logarithm of the Northern Blot Results. Correlation .87. Zval-
+ues outside the two vertical lines have Prob {Eventi—Zi}¶.90.
+point atZiD2051, lying just below the “C” cutoff value GD
+1030, was consistently positive, DiD440541208111064120655,
+strengthening our belief that this gene was positively affected 
+by the radiation. 
+(C) Debrightening and Desumming. Some microarray plates 
+are “ brighter” than others in that they produce systematically 
+larger expression levels. Following probe reduction (2.4) we 
+debrightened the data by separately standardizing the columns 
+ofM. That is, each column of Mwas linearly transformed to 
+have mean 0 and empirical standard deviation 1. 
+“ Desumming” corrects for another type of data inhomo- 
+geneity. Corresponding to D(3.4), let
+SD4M3CM11M4CM21M7CM51M8CM650 (6.1)
+A gene with larger Svalues tended to have larger values of 
+D, which undercut the exchangeability across genes implicit 
+in our empirical Bayes analyses. (Newton et al. 2001 adjusted 
+their data for a similar problem.) After debrightening, the indi- 
+vidual columns of Dwere desummed as follows: a linear 
+regression —Dik—Da0Ca1—Sik—Cerror was /bullet5 t individually to 
+each column, and then each Dikwas transformed to 
+Dik=4Oa0COa1—Sik—50 (6.2)
+Similar transformations were made on the columns of d,
+(3.6). It was the transformed Danddmatrices that were 
+used to compute the scores Zandzvia (2.8). Desumming 
+made almost no difference to the results in Figure 1, but the 
+exchangeability issue is an important general point of concern 
+for the empirical Bayes analysis, see Remark F. 
+(D) Logistic Regression Estimate of f04z5=f 4z5.The ratio
+f04z5=f 4z5in (3.8) was estimated by logistic regression. Given 
+BD20 replications of z,alln¢41CB5D61810 ¢21scores Ziandziwere plotted on a line, with values of Ziconsidered
+as “ successes” and values of z1as “ failures” . The probability 
+/bullet64z5of a success at point zis given in terms of the densities 
+(3.2),
+/bullet64z5Df4z5=4f 4z5CBf04z551 (6.3)
+so that (3.8) becomes 
+p14Z5D1ƒp01ƒ/bullet64Z5
+B/bullet64Z50 (6.4)
+With nD61810 genes, the normal scores transformation 
+resulted in max 8Zi9Dƒmin8Zi9D3080, whereas the null 
+scores 8zi9were con/bullet5 ned to a smaller range, as in Figure 2. 
+Our algorithm divided the range 6ƒ4147into 139 equal inter- 
+vals, counted the number of values of Ziandziin each inter- 
+val, and estimated /bullet64z5by logistic regression, for use in (6.4). 
+The regression function was a natural spline with 5 degrees 
+of freedom, called by the Splus command ns4x1 dfD55,x
+being the 139 center points of the intervals. The choice of 
+BD20zreplications was based on an analysis like that 
+in Figure 3, which showed considerable improvement for B
+increasing from 1 to 10, but little gain past 20. Other methods 
+of estimating f04z5=f 4z5are possible, and in fact the details 
+of the logistic regression method made little difference to our 
+results. The “ global” estimate (5.9) avoids regression entirely, 
+at the expense of providing less-speci/bullet5 c results. 
+(E) Estimating the Null Distribution. The null density f04z5
+is supposed to describe the distribution of expression scores 
+for genes unaffected by the treatment of interest. Basing f0on
+din (3.6) seems natural for the radiation experiment, but other 
+choices are possible and may be necessary for other exper- 
+imental designs. Table 2 shows a small portion (5 of 2,638 
+genes) of the data from a microarray study comparing two 
+different types of liver cancer, 36 Type I patients versus 36 
+Type II, with Type II having worse prognosis. Spotted cDNA 
+arrays were used, the “ red– green” variety, the tabled values 
+being 103¢log (red/green) intensity ratio. The full table cor- 
+responds to matrix Min (3.5), now 2 1638/bullet272. Probe reduc- 
+tion (2.8) is very simple here, (red, green) !log(red/ green), 
+though more ef/bullet5 cient reductions may be possible as shown 
+in Dudoit et al. (2000). The analog of Figure 3 indicated a 
+preference for a0D0, i.e. for taking Zto be the two-sample 
+t-statistic between the Types. 
+We obtained the null scores ziand the null density f04z5
+by randomly splitting the Type I patients into two groups of 
+18 each, say “ A” and “ B,” and likewise “ C” and “ D” for the 
+Type II patients, and de/bullet5 ning the values of zast-statistics 
+between groups A [Cversus B[D. In other words, we used 
+balanced permutations that put equal numbers of those of Type 
+I and Type II into each of the two permuted groups; using 
+unbalanced permutations would add an unwanted component 
+of variance to the null scores. The empirical Bayes analysis 
+produced results similar to those in Figure 2, with Type II 
+playing the role of the Treatment group. 
+As a simple, but informative, model for the radiation exper- 
+iment, suppose that Mikin (3.5) can be expressed as 
+MikDŒiC/bullet3iwkCˆitkC…ik1 (6.5)1160 Journal of the American Statistical Association, December 2001 
+Table 2. Some Data From a Microarray Study Comparing two Types of Liver Cancer 
+TYPE I TYPE II
+pat1 pat2 pat3 pat4 pat5 ::: pat37 pat38 pat39 pat40 pat41 
+GENE1 230 00ƒ11350 ƒ11580 00ƒ400 ƒ760 ::: 970 110 ƒ50 ƒ190 00 ƒ200
+GENE2 470 00 ƒ850 ƒ08ƒ280 120 ::: 390 ƒ11730 ƒ11360 ƒ08 ƒ330
+GENE3 ƒ920 00ƒ11070 11360 00ƒ510 ƒ11120 ::: 70 ƒ11150 340 ƒ400 00 580
+GENE4 01 380 730 00 180 ƒ90 ::: 11040 180 11070 250 00 1880
+GENE5 390 00ƒ11960 ƒ210 00 200 230 ::: 530 ƒ11170 670 07 890
+where t0D40101111101011115,w0D4ƒ11ƒ11ƒ11ƒ111111
+1115,and…ikis an independent noise term. Here ˆirepresents
+the treatment effect whereas /bullet3iis the differential response for 
+gene ibetween the /bullet5 rst and second wild types. Then Ziin
+(2.8) is
+ZiD4ˆiCei5=4a0CSi51SiD"
+4X
+`D14ei`ƒei52=3#1=2
+1(6.6)
+where each ei`is the difference of two values of …ikandeiis
+the average of the four values of ei`. The values of zihave the
+same expression except that ˆiD0 in (6.6). We can see that 
+f04z5is a legitimate null hypothesis comparator for f4Z5.
+Suppose we had de/bullet5 ned null scores by differencing across 
+wild types instead of across aliquots: dD4M5ƒM11M6ƒ
+M21M7ƒM31M8ƒM45replacing (3.6). Then ziwould pick
+up an additional term due to the gene/ wild-type interaction 
+/bullet3iin (6.5), adding a component of variance to f04z5,and
+decreasing the likelihood ratio f4z5=f04z5. Models like (6.5) 
+are helpful in guiding the choice of the Zandzmappings,
+even if we do not need them for the data-based estimation of 
+fandf0.
+The additive model (6.5) gives every column of dthesame
+distribution, but we might not trust the Treatment differences 
+to really have the same distribution as the Control, I2B– I2A 
+compared to U2B– U2A for example. Empirically this turned 
+out not to be a problem for the radiation experiment, but if it 
+had we might have used only the /bullet5 rst and third columns of d
+in(3.6).
+(F) Better Upper Bound Estimates for “p0.”The upper
+bound (3.9), p0µmin8f4Z5=f04Z59, can be poorly estimated 
+by the choice min 8Of4Z5=Of04Z59 used in Figure 1. More sta- 
+ble upper bounds can be constructed by integrating over an 
+interval “¡”near ZD0,
+p0µR
+¡6f4Z5=f04Z57f04Z5R
+¡f04Z5DR
+¡f4Z5R
+¡f04Z50 (6.7)
+Simulation showed that the choice ¡D6ƒ051057performed
+better than min 8f4Z5=f04Z59, particularly when the true p0
+was near 1. The upper bound (6.7) is directly estimated by 
+proportion 8values ofZiin¡9=proportion 8values ofziin¡9,avoiding the logistic regression estimate for f4Z5=f04Z5.This
+gave p0µ0825 in the context of Figure 1, not much different 
+than the previous estimate p0µ0811. [Received 8 November , 
+2000. Revised 4 September 2001.] 
+REFERENCES
+Alizadeh, A., Eisen, M., Davis, R. E., Ma, C., Lossos, I., Rosenwal, A., 
+Boldrick, J., Sabet, H., Tran, T., Yu, X. J. P., Marti, G., Moore, T., Hudsom, 
+J., Lu, L., Lewis, D., Tibshirani, R., Sherlock, G., Chan, W., Greiner, T., 
+Weisenburger, D., Armitage, K., Levy, R., Wilson, W., Greve, M., Byrd, J., 
+Botstein, D., Brown, P., and Staudt, L. (2000), “ Identi/bullet5 cation of Molecu- 
+larly and Clinically Distinct Substypes of Diffuse Large b Cell Lymphoma 
+by Gene Expression Pro/bullet5 ling,” Nature , 403, 503– 511. 
+Benjamini, Y., and Hochberg, Y. (1995), “ Controlling the False Discovery 
+Rate: A Practical and Powerful Approach to Multiple Testing,” Journal of
+The Royal Statistical Society , Ser. B 57, 289– 300. 
+Black, M., and Doerge, R. (2000), “ Calculation of the Minimum Number of 
+Replicate Spots Required for Detection of Signi/bullet5 cant Gene Expression Fold 
+Change for cDNA Microarrays,” Purdue University, Dept. of Statistics. 
+Dudoit, S., Yang, Y., Callow, M., and Speed, T. (2000), “ Statistical Meth- 
+ods for Identifying Differentially Expressed Genes in Replicated cDNA 
+Microarray Experiments,” Technical Report, University of California, 
+Berkeley, Dept. Statistics. 
+Efron, B., Tibshirani, R., Goss, V ., and Chu, G. (2000), “ Microarrays and 
+Their use in a Comparative Experiment,” Stanford Technical Report 213. 
+Eisen, M., Spellman, P., Brown, P., and Botstein, D. (1998), “ Cluster Anal- 
+ysis and Display of Genomewide Expression Patterns,” Proceedings of the 
+National Academy of Science , 95, 14863– 14868. 
+Kerr, K., and Churchill, G. (2000), “ Bootstrapping Cluster Analysis: Assess- 
+ing the Reliability of Conclusions From Microarray Experiments,” Proceed-
+ings of the National of Academy of Science ,toappear.
+Lee, M., Kuo, F., Whitmore, G., and Sklar, J. (2000), “ Importance of Repli- 
+cation in Microarray Gene Expression Studies: Statistical Methods and 
+Evidence from a Single cDNA Array Experiment,” Proceedings National 
+Academy of Science , 97, 9834– 9. 
+Li, C., and Wong, W. H. (2000), “ Model-based Analysis of Oligonucleotide 
+Arrays: Expression Index Computation and Outlier Detection,” unpub- 
+lished.
+Newton, M., Kendziorski, C., Richmond, C., Blatter, F., and Tsui, K. (2001), 
+“ On Differential Variability of Expression Ratios: Improving Statistical 
+Inference About Gene Expression Changes From Microarray Data,” Jour-
+nal of Computational Biology ,8,37–52.
+Storey, J. (2001), “ The False Discovery Rate: A Bayesian Interpre- 
+tation and the q-value.” Stanford Technical Report. Available at 
+jstorey@stat.stanford.edu. 
+Tusher, V., Tibshirani, R., and Chu, C. (2001), “ Signi/bullet5 cance Analysis of 
+Microarrays Applied to Transcriptional Responses to Ionizing Radiation,”
+Proceedings National Academy Science , 98, 5116– 21. 
+Van del Laan, M., and Bryan, J. (2000), “ Gene Expression Analysis With 
+the Parametric Bootstrap,” Report #81, University of California, Berkeley, 
+Biostatistics Group. 

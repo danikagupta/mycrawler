@@ -1,0 +1,305 @@
+An Introduction' to  Computing 
+with Neural Nets 
+Richard P. Lippmann 
+Abstract using massively parallel nets composed of many computa- 
+4 IEEE  ASSP  MAGAZINE  APRIL 1987 0740-7467/87/0400-0004/$01 .OO 01987 IEEE problems  and  studying  real  biological  nets may  also 
+change the way we  think  about  problems  and  lead  to  new 
+insights  and  algorithmic  improvements. 
+Work  on  artificial  neural  net  models has a long history. 
+Development  of  detailed  mathematical  models  began 
+more  than 40 years  ago with.the  work  of  McCulloch  and 
+Pitts [30], Hebb [17], Rosenblatt [39], Widrow [471 and 
+others [381.. More recent work  by  Hopfield [18,19,201., 
+Rumelhart  and  McClelland [40], Sejnowski [431, Feldman 
+191, Grossberg [151, and  others has led  to  a  new  resurgence 
+of  the  field. This new  interest is due  to  the  development 
+of  new  net  topologies  and  algorithms [18,19,20,41,91, 
+new  analog VLSl implementation  techniques [31], and 
+some intriguing  demonstrations [43,  201  as well as by  a 
+growing  fascination  with  the  functioning  of  the  human 
+brain. Recent interest is also driven  by  the  realization  that 
+human-like  performance  in  the areas of  speech and image 
+recognition  will  require  enormous  amounts of processing. 
+Neural  nets  provide  one  technique  for  obtaining  the  re- 
+quired  processing capacity  using  large numbers.of  simple 
+processing  elements  operating  in  parallel. 
+This paper  provides an introduction  to  the  field  of 
+neural  nets  by  reviewing six important  neural  net  models 
+that can be  used  for  pattern  classification. These,massively 
+parallel  nets  are  important  building  blocks  which'can  be 
+used to  construct  more  complex systems. The  main  pur- 
+pose  of  this  review is to describe the  purpose  and  design 
+of each net  in detail, to relate each net  to existing  pattern 
+classification  and  clustering  algorithms  that are normally 
+implemented  on sequential  von  Neumann  computers, 
+and  to  illustrate  design  principles used to  obtain  parallel- 
+ism  using  neural-like  processing  elements. 
+Neural net and  traditional classifiers 
+Block  diagrams of  traditional  and  neural  net classifiers 
+are presented in Fig. 2. Both  types  of classifiers determine 
+which  of M classes is most  representative  of an unknown static input  pattern  containing 'N input elements. In  a 
+speech .recognizer  the  inputs  might  be  the  output  en-' 
+velopevalues  from  a  filter  bank  spectral analyzer  sampled 
+at one  time  instant  and  the classes might  represent  differ: 
+ent  vowels. In an image  classifier  the  inputs  might  be  the 
+gray scale level  of each pixel  for  a  picture  and  the classes 
+might  represent  different  objects. 
+The traditional  classifier in  the  top  of Fig. 2 contains two 
+stages. The  first  computes  matching scores for each  class 
+and the  second selects the class with  the  maximum score. 
+Inputs  to  the  first stage are symbols  representing values of 
+the N input elements. These symbols Are entered sequen- 
+tially  and  decoded  from  the  external  symbolic  form  into 
+an internal  representation  useful  for  performing  ,arith- 
+metic  and  symbolic  operations.  An  algorithm  computes a 
+matching score for each of  the M classes which  indicates 
+how closely  the  input matches the  exemplar  pattern  for 
+each class. This exemplar  pattern is that  pattern  which is 
+most  representative  of each class. In many  situations  a 
+probabilistic  model is used to  model  the generation  of 
+input patterns from exemplars and  the  matching score 
+represents  the  likelihood  or  probability  that  the  input 
+pattern was generated  from each of  the M possible  exem- 
+plars. In  those cases, strong  assumptions are typically 
+made concerning  underlying  distributions  of  the  input 
+elements. Parameters of  distributibns can then  be esti- 
+mated  using  a  training  data,as  shown  in Fig.  2. Multi- 
+variate Gaussian distributions  are  often used  leading to 
+relatively  simple  algorithms  for  computing  matching 
+scores [7].  Matching scores are coded  into  symbolic  repre- 
+sentations  and passed sequentially to  the second stage of 
+PARAMETERS ESTIMATED 
+FROM TRAINING DATA 
+I 
+lNPUT 
+SVMSOLS 
+AI TRADITIONAL CLASSIFIER 
+ANALOG INPUT OUTPUT FOR 
+ONLV ONE 
+Figure 2. Block diagrams of traditional (AI and  neure 
+net (81 classifier's.  Inputs and outputs of the traditione 
+classifier  are passed serially and internal computations 
+are performed sequentially. In addition, parameters are 
+typically estimated  from  training  data and then tield con. 
+stant.  Inputs and outputs to the neural net  classifier are 
+in parallel and internal  computations  are performed ir 
+parallel. Internal  parameters or weights  are  typicall\ 
+adapted or trained during use using  the  output values anc 
+labels specifying , I. - the  correct class. 
+,, 
+APRIL 1987 IEEE ASSP MAOAZINE 5 based pre-processors  modeled  after  human sensory sys- 
+tems. A;. pre-processor for  image class.ification modeled 
+after theretina  and  designed  using  analog VLSl circuitry is 
+described in [311. Pre-processor filter banks for speech 
+recognition  that are crude analogs of  the  cochlea have also 
+been  constructed [34, '291. More  .recent  physiologically- ber  of  nodes available in  the  first stage. 
+6 IEEE ASSP 'MAGAZINE APRIL ,987 the  matching  score  outputs  of  the  lower  subnet  to settle 
+and  initialize  the  output values of the MAXNET.  The input 
+is then  removed  and  the MAXNET iterates  until  the  output 
+of only one  node is positive.  Classification is then com; 
+plete  and  the  selected class is that  corresponding to the 
+node  wit,h a positive  output. 
+The behavior of the  Hamming  net is illustrated  in Fig. 7. 
+APRIL 1987 IEEE ASSP  MAGAZINE 9 .Figure 7. ' Node outputs  for a Hamming net  with 1,000 
+binary inputs and 100 output nodes or classe,s. Output 
+values of all 100 nodes are presented at time zero and 
+after 3, 6, and 9. iterations. The input was the exemplar 
+pattern corresponding to output node 50. ,, 
+only 1,100 connections  while  the  Hopfield  net  requires  maximum  of M inputs. A net  that uses these subnet.s to 
+almost 10,000. Furthermore,  the  difference  in  number  of  pick  the  maximum of 8 inputs is presented  in Fig. 9. 
+connections  required increases as the  number  of  inputs 
+increases, because the  number  of  connections in the  Hop- 
+x() x, xp xg x4 x5 xg x b, ,'. 
+Figure 9. A feed-forward  net  that determines which of: 
+eight inputs  is maximum using a binary tree and comparaj. 
+tor subnets from Fig. 8. After an input vector  is applied;', 
+only that  output corresponding to  the maximum input elei 
+ment will be 'high. Internal thresholds on threshold-logic 
+nodes  [open circles1 and  on hard limiting nodes [filled cir- 
+cles) are zero except for  the  output nodes. Thresholds in 
+the  output nodes are 2.5. Weights for  the comparator 
+subnets are as in Fig. 8 and  all other weights  are 1. APRIL 1987 IEEE ASSP MAGAZINE 1 1 1 2 ' IEEE ASSP  MAGAZINE  APRIL 1987 APRIL 1987 IEEE.  ASSP  MAGAZINE 13 14 IEEE  ASSP  MAGAZINE  APRIL 1987 variant  of  the  perceptron  convergence  procedure  to  apply 
+for M classes. This  requires a structure  identical  to  the 
+Hamming  Net  and  a  classification  rule  that selects .th.e 
+class corresponding  to  the  node  with  the  maximum  out- 
+put.  During adaptation  the  desired  output values can be 
+set to 1 for  the  correct class and 0 for  all  others. 
+The perceptron  structure can be used to  implement 
+either  a Gaussian maximum  likelihood  classifier  or clas- 
+sifiers  which use the  perceptron  training  algorithm  or  one 
+of  its variants. The choice  depends  on  the  application.  The 
+perceptron  training  algorithm’makes  no assumptions con- 
+cerning  the shape of  underlying  distributions  but focuses 
+on  errors  that  occur  where  distributions  overlap. It may 
+thus  be  more  robust  than classical techniques  and  work 
+well  when  inputs are generated  by  nonlinear processes and are  heavily  skewed  and  non-Gaussian. The Gaussian 
+classifier makes strong  assumptions  concerning  under- 
+1yin.g distributions  and is more  appropriate  when  distribu- 
+tions~’are  known  and  match  the Gaussian assumption. The 
+adaptation  algorithm  defined  by  the  perceptron  con- 
+vergence  procedure is simple  to  implement  and  doesn’t 
+require  storing any more  information  than is present in 
+the  weights  and  the  threshold.  The Gaussian classifier can 
+be  made  adaptive [24], but extra  information  must  be 
+stored  and  the  computations  required are more  complex. 
+Neither  the  perceptron  convergence  procedure  nor  the 
+Gaussian classifier is appropriate  when classes cannot  be 
+separated  by  a  hyperplane.  Two  such  situations  are 
+presented in the  upper  section  of Fig.  14. The  smooth 
+closed  contours  labeled A and B in this figure are the  input 
+distributions  for  the two classes when  there are two  con- 
+tinuous  valued  inputs  to  the  different nets. The shaded 
+areas are the  decision  regions  created  by a single-layer 
+perceptron  and  other  feed-forward nets. Distributions  for 
+the two classes for  the  exclusive OR problem are disjoint 
+and  cannot  be separated by  a  single  straight  lirle. This 
+problem was used  to  illustrate  the weakness of  the  per- 
+ceptron  by  Minsky  and  Papert  [32].  If  the  lower  left 
+B cluster is taken to  be at the  origin  of  this two dimen- 
+sional space then  the  output  of  the  classifier  must  be 
+“high’’ only if one  but  not  both  of  the  inputs is “high”. 
+One possible  decision  region  for clasS A which a percep- 
+tron  might  create is illustrated  by  the shaded region  in 
+the  first  row  of Fig. 14. Input  distributions  for  the second 
+problem  shown  in  this  figure are meshed  and also can not 
+be separated by a single  straight  line.  Situations  similar to 
+these may occur  when  parameters such as formant  fre- 
+quencies are used  for speech recognition. 1 6 NEE AS'GP MAGAZINE APRIL 1987 APRIL 1987 IEEE ASSP MAGAZINE 1 7 18 IEEE ASSP MAGAZINE APRIL 1987 topic  organization  in  the  auditory  pathway extends up  to 
+the  auditory  cortex [33,’211. Although  much  of  the  low- 
+level  organization is genetically  pre-determined, it is likely 
+that  some of  the  organization at highe.r levels is created 
+during  learning  by  algorithms  which  promote  self- 
+organization.  Kohonen [22] presents  one such algorithm 
+which  produces  what he  calls  self-organizing  feature maps 
+similar to  those  that  occur  in  the  brain. 
+Kohonen’s  algorithm  creates a vector  quantizer  by 
+adjusting  weights from  common  input  nodes  to M output 
+nodes  arranged  in  a  two  dimensional  grid as shown  in 
+Fig.  17. Output  nodes are  extensively  interconnected  with 
+many  local  connections.  Continuous-valued  input  vectors 
+are presented  sequentially  in  time without specifying  the 
+desired  output.  After  enough  input  vectors have been 
+presented,  weights will specify  cluster  or  vector  centers 
+that  sample the  input space such  that the  point  density 
+function  of  the  vector  centers  tends  to  approximate  the 
+probability  density  function of the  input  vectors [221. In 
+addition,  the  weights  will  be  organized such  that topo- 
+logically  close  nodes  are  sensitive to  inputs  that are physi- 
+cally  similar. Output nodes  will  thus  be  ordered  in a 
+natural  manner;  This may be  important  in  complex sys- 
+tems with  many layers of  processing because it can reduce 
+lengths  of  inter-layer  connections. 
+The algorithm  that  forms  feature maps requires  a  neigh- 
+borhood  to  be  defined  around each node as shown  in 
+Fig.  18. This neighborhood  slowly decreases in size with 
+time as shown. Kohonen’s algorithm is described in Box 7. 
+Weights  between  input  and  output  nodes are initially set 
+to small random values and an input is presented. The 
+distance  between  the  input  and  all  nodes is computed as 
+shown.  If  the  weight  vectors are normalized  to have con- 
+stant length  (the sum of  the  squared  weights  from all in- puts to each output are identical)  then  the  node  with  the 
+minimum  Euclidean  distance can be  found  by  using 
+the  net  of Fig.  17 to  form the dot  product  of  the  input 
+and the  weights.  The  selection  required  in step 4 then 
+turns into  a  problem  of  finding  the  node  with a maximum 
+value. This node can be  selected  using  extensive  lateral 
+inhibition as in  the MAXNET in  the  top  of Fig. 6. Once  this 
+node is selected, weights  to it and  to  other nodes in its 
+neighborhood are modified  to make these  nodes more 
+responsive to  the  current  input. This  process is repeated 
+for  further  inputs.  Weights  eventually  converge and are 
+fixed  after  the  gain  term  in step 5 is reduced  to  zero. 
+An  example  of  the  behavior’  of  this  algorithm is 
+presented  in Fig. 19. The weights  for 100 output nodes are 
+plotted  in  these six subplots  when  there are two  random 
+independent  inputs  uniformly  distributed over the  region 
+enclosed  by  the  boxed areas. Line  intersections in these 
+plots  specify  weights  for  one  output  node.  Weights  from 
+APRIL 1987 IEEE  ASSP  MAGAZINE -1 3 ACKNOWLEDGMENTS 
+l.have constantly  benefited from discussions with Ben 
+Gold and  Joe Tierney. I would also like  to thank Don  John- 
+son for his  encouragethent,  Bill  Huang for his  simulation 
+studies, and  Carolyn for her  patience. 
+REFERENCES 
+[I] Y. S. Abu-Mostafa  and D. Pslatis, “Optical  Neural 
+Computers,”  Scientific American, 256, 88-95, March 
+1987. 
+[21 E. B. Baum, J. Moody,  and F. Wilczek,  “Internal Repre- 
+sentations  for  Associative  Memory,” NSF-ITP-86- 
+138 Institute  for  Theoretical Physics, University  of 
+California, Santa Barbara, California, 1986. 
+[31 G.  A. Carpenter,  and S. Grossberg, “Neural Dynamics 
+of Category  Learning  and  Recognition:  Attention, 
+Memory Consolidation,  and Amnesia,‘’ in J. Davis, 
+R. Newburgh,  and E. Wegman (Eds.). Brain  Struc- 
+ture,  Learning, and Memory, AAAS Symposium 
+Series, 1986. 
+M. A. Cohen,  and S. Grossberg, “Absolute  Stability  of 
+Global Pattern Formation  and Parallel Memory Stor- 
+age by  Competitive  Neural  Networks,” I€€€ Trans. 
+Syst. Man Cybern. SMC-13, 815-826, 1983., 
+B. Delgutte, “Speech-Coding  in  the  Audiiory Nerve: 
+11. .Processing Schemes for Vowel-Like Sounds,’’ ). 
+Acoust. Soc. Am. 75, 879-886,1984. 
+J. S. Denker,  AIP  Conference Proceedings 151, Neural 
+Networks  for  Computing, Snowbird Utah, AIP; 1986. 
+R. 0. Duda  and P. E. Hart, Pattern Classificafion and 
+Scene  Analysis, John  Wiley & Sons, New Yorc’(1973). 
+J. L. Elman and  D.  Zipser,  “Learning  the Hidden Struc- 
+ture of Speech,” Institute  for Cognitive Science, Uni- 
+versity  of  California at San Diego, ICs Report 8701, 
+Feb. 1987. 
+J. A. ‘Feldman’and  D. H. Ballard, “Connectionist Mod- 
+els and Their Properties,’’ Cognitive Science, Vol. 6, 
+R. G.  Gallager, Information Theory and Reliable Com- 
+munication, John  Wiley & Sons, New York (1968). 
+0. Ghitza, ”Robustness Against Noise: The  Role of 
+Timing-Synchrony  Measurement,”  in Proceedings 
+International  Conference on Acoustics Speech and 
+Signal Processing, ICASSP-87, Dallas, Texas, April 
+1987. 
+B. Gold,  “Hopfield  Model  Applied  to Vowel  and 
+Consonant  Discrimination,” MIT Lincoln Laboratory 
+Technical Report, TR-747,  AD-A169742, June 1986. 
+H. P. Graf, L. D. Jackel, R. E. Howard, B. Straughn, J. S. 
+Denker, W. Hubbard,  D. M. Tennant, and D. Schwartz, 
+“VLSI Implementation  of a Neural, Network  Memory 
+With Several Hundreds of  Neurons,” in J.S. Denker 
+(Ed.) AIP Conference Proceedings 157, Neural Net- 
+works for  Computing, Snowbird Utah, AIP, 1986. 
+P.M. Grant  and J. P. Sage, “A  Comparison  of  Neural 
+Network and Matched Filter Processing fRr Detecting 
+Lines in Images,” in J. S. Denker (Ed.) AIP Conference 205-254, 1982;- , , Proceedings 151, Neural  Networks  for Computing, 
+Snowbird Utah, AIR 1986. 
+[I51 S. Grossberg, The Adaptive Brain I: Cognition, Learn- 
+ing, Reinforcement, and Rhythm, and The Adaptive 
+Brain I/: Vision,  Speech,  Language, and Motor Con- 
+trol, Elsevier/NorthiHolland, Amsterdam (1986). 
+[I61 J.A.  Hartigan,  Clustering Algorithms, John Wiley & 
+Sons, New York (1975). 
+[I71 D. 0. Hebb, The Organization of Behavior, John 
+Wiley & Sons, New York (1949). 
+[I81 J. J. Hopfield,  “Neural  Networks  and Ptiysical  Systems 
+with Emergent Collective  Computational Abilities,’’ 
+Proc. Natl. Acad. Sci. USA, Vol. 79, 2554-2558, 
+1191 J.  J. Hopfield,  “Neurons with Grade,d  Response  Have 
+Collective Computational Properties  Like Those of 
+Two-State Neurons,” Proc. Natl. Acad.  Sci.  USA, Vol. I April 1982. 
+APRIL 1987 IEEE ASSP  MAGAZINE 2 1 Univ. Technical Report JHUIEECS-86I01,  ‘1986. 
+[441 S. Seneff, “A Computational Model  for  the Peripheral 
+Auditory System: Application to Speech Recognition 
+‘Research,” in Proceedings International  Conference 
+on Acoustics  Speech‘and  Signal Processing,  ICASSP- 
+[451 D. W. Tank and J, 1. Hopfield,  “Simple  ‘Neural,’ 
+Optimization  Networks:  An A/D Converter, Signal 
+Decision  Circuit,  and a Linear ProgrammingCircuit,” 
+IEEE  Trans. Circuits Systems CAS-33,  533-541,  1986. 
+[461 D. 1. Wallace, “Memory  and Learning iri’?a  Class of 
+hpral Models,” in B. Bunk and K. H. Mufter,(Eds..’) 
+Proceedings of the  Workshop  on  Lattice  Cmge 
+Theory,  Wuppertal, 1985, Plenum (1986). 
+[471  B. Widrow,  and M. E. Hoff, “Adaptive  Switching Cir- 
+cuits,” 1960  IRE  WESCON Conv. Record, Part 4, 
+[481 B. Widrow and S. D. Stearns, Adaptive  Signal Process- 86, 4,  37.8.1-37.8.4,  1986. 
+96-104, August 1960. 
+ing, Prentice-Hall, New Jersey (1985). 

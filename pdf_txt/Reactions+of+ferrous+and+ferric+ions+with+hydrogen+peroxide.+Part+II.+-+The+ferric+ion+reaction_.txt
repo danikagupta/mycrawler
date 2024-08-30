@@ -1,0 +1,1360 @@
+ 
+ 
+ 
+ 
+ 
+ 
+ 1  
+ 
+ 
+Oxidation of hexacyanoferrate(II) ion by hydrogen 
+peroxide: evidences of free radical intermediacy  
+ 
+ 
+Joaqui n F. Perez -Benito iD · Josep  Pages -Rebull  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Joaquin F. Perez -Benito  
+jfperezdebenito@ub.edu  
+ORC ID iD 
+J. F. Perez -Benito : 0000 -0001 -8407 -3458  
+ 
+Departamento de Ciencia de Materiales y Quimica Fisica, Seccion de Quimica Fisica, 
+Facultad de Quimica, Universidad  de Barcelona, Marti i Franques  1, 08028 Barcelona, Spain   
+ 
+ 
+ 
+ 
+ 
+ 2 Abstract    
+The redox reaction betwee n hexacyanoferrate(II) ion as the  reducing  agent and hydrogen 
+peroxide as the oxidizing one, in slightly acid (pH 4.36
+− 6.65) aqueous solutions containing 
+phosphate ions, has been studied by means of an  UV-Vis spectrophotometer mon itoring the 
+formation of Fe(III) at 420 nm. The initial hydrolysis of the Fe(II) -cyanide complex reactant 
+to yield a pentacyanoaquaferrate(II) intermediate, as well as an increase in the solution pH 
+(acid catalysis), had both a positive effect on the react ion rate, whereas an increase in the 
+concentrations of Fe(III), phosphate and chloride ions, and D -mannitol had a negative effect 
+(inhibition). A computer program, specifically designed for this purpose, allowed arriving at a 
+complex eight -coefficient expe rimental rate law by application of the initial rate method, 
+accounting for the dependences of the reaction rate on the concentrations of Fe(II), H 2O2 and 
+Fe(III). The reaction was characterized by a low value of the apparent activation energy ( 28.9 
+± 2.7 kJ mol-1) and a very negative value of the activation entropy (
+− 165 ± 9 J K-1 mol-1). 
+Finally, a multi -step reaction mechanism , involving the participation of a penta -coordinated 
+Fe(II) complex and three free radicals (hydroperoxyl , superoxide and hydroxyl) as 
+intermediates, has been proposed. This mechanism was supported by the available 
+experimental information and confirmed by numerical simulations performed via the fourth -
+order Runge -Kutta integration method.  
+ 
+Keywords  Free radi cal intermediates  · Hexacyanoferrate(II) io n · Hydrogen peroxide  · 
+Inhibition · Kinetics · Mechanism  
+,   
+ 
+ 
+ 
+ 
+ 
+ 3 Introduction  
+ 
+According to the free radical theory of aging  [1], a plausible mechanism for this phenomenon 
+involves the participation of oxygen -containi ng free radicals in the formation of deleterious 
+defects that would progressively accumulate inside the cells of aerobic organisms. Other non -
+radical reactive oxygen species generated in the normal metabolism would include hydrogen 
+peroxide.  
+The reduction  of molecular oxygen to water follows the well -known half reaction:  
+ 
+ 
+22+O  +  4H + 4e 2H O           −⎯⎯ →      (1) 
+ 
+However, it is estimated that around 2% of the oxygen consumed suffers a monoelectronic 
+reduction instead  [2
+−4], thus initi ating the s equence:  
+ 
+ 
+ 
+  
+2 2 2 2 2 ++2H 2He e e eO O H O HO + HO 2H O               . .− − − −−−⎯⎯ → ⎯⎯⎯ → ⎯⎯ → ⎯⎯⎯ →    (2) 
+ 
+and leading to the formation of three potentially damaging reactive oxygen species: 
+superoxide ion, hydrogen peroxide and hydroxyl radical  [5]. Among them, the latter, because 
+of its role as an initi ator of a cascade of deleterious chain reactions  [6], is indeed the most 
+harmful metabolite for aerobes, especially as far as DNA alteration is concerned  [7, 8] , and it 
+may be implicated in aging, carcinogenesis and other degenerative diseases  [9, 10] . 
+Although the main chemical agents able to reduce hydrogen peroxide to hydroxyl radical 
+under physiological conditions are thought to be transition -metal ions in their lower oxidation  
+ 
+ 
+ 
+ 
+ 
+ 4 states  [11], especially Fe(II) and Cu(I) in their protein -bounded forms  [12
+− 14], some authors 
+(belonging to the field of chemistry rather than to that of biology) have openly opposed this 
+interpretation, favoring either an Fe(IV) or a Cu(III) non -radical mechanism instead  [15
+− 26]. 
+This has resulted in a certain polemic, since other authors favor the hydroxyl -based 
+mechanism  [27
+− 33]. The resolution of this question is indeed of some importance because, 
+on the contrary, the very own free radical theory of a ging would be under jeopardy.  
+Given that iron(II) and iron(III) salts are water insoluble in neutral media due to the 
+precipitation of the corresponding hydroxides, the kinetic study of their reactions with 
+hydrogen peroxide under biologically relevant con ditions makes mandatory the use of 
+adequate metal -ligand complexes as an alternative  [34
+− 38]. In particular, the oxidation of 
+hexacyanoferrate(II) ion by hydrogen peroxide has previously received some attention, the 
+analysis of it s kinetic behavior having been reported to be considerably hampered by 
+reproducibility problems  [39]. Other authors have found a simple first -order dependence on 
+the concentration of the reducing agent and a more complex (Michaelis -Menten -like) 
+dependence on that of the oxidizing agent, as well as acid catalysis  [40]. The finding that the 
+hexacyanoferrate(II) -hydrogen peroxide mixtures cause the hydroxylation of the naturally -
+occurring aromatic oil guaiacol ( o-methoxyphenol) seems to suggest the participati on of 
+hydroxyl radicals as reaction intermediates  [41]. On the other hand, the reaction object of the 
+present research has been reported to be complex enough to produce pH oscillations when 
+carried out in water -acetonitrile mixtures under closed -system con ditions  [42], making the 
+study of its kinetics particularly attractive.  
+ 
+   
+ 
+ 
+ 
+ 
+ 
+ 5 Experimental   
+ 
+Materials and methods  
+ 
+All the experiments were done using as solvent water previously purified by deionization 
+followed by treatment with a  Millipore Synergy UV sys tem (milli -Q quality,  = 0.05 S/cm 
+at 25.0 ºC). The reactants r equired to carry out the redox reaction were potassium 
+hexacyanoferrate(II) trihydrate,  K4 [Fe(CN) 6]·3H2O (Merck) , as reducing agent and hydrogen 
+peroxide, H 2O2  (Sigma -Aldrich) , as oxidizing  agent. Other chemicals used were potassium 
+hexacyanoferrate(III),  K3 [Fe(CN) 6] (Merck) , to study the autoinhibition caused by one of the 
+reaction products, potassium dihydrogenphosphate, KH 2PO 4, and dipotassium 
+hydrogenphosphate trihydrate, K 2HPO 4·3H2O (both Merck), to control the medium pH, 
+potassium chloride, KCl (Merck), as an inert electrolyte to determine a potential ionic strength 
+effect, and 1,2,3,4,5,6 -hexanehexol, CH 2OH-(CHOH) 4-CH 2OH (D -mannitol, Sigma -Aldrich), 
+as a hydroxyl radical scavenger.  
+ 
+Instrumentation  
+ 
+The pH measurements were done by means of a Wave pH -meter, provided with a digital 
+presentation until the second decimal figure (± 0.01 pH) and a combination electrode, 
+calibrated with the aid of commercial buffers of known pH (4.00 and 7.0 0, Sigma -Aldrich). 
+The temperature was kept constant by means of a thermostatic bath provided with a digital 
+reading (± 0.1 ºC). The kinetic runs were followed measuring periodically the absorbances at 
+420 nm with a Shimadzu 160 A UV -Vis spectrophotometer (± 0.001 A), using glass cells of 1  
+ 
+ 
+ 
+ 
+ 
+ 6 cm optical path length. At that wavelength the electronic spectrum of one of the reaction 
+products, [Fe(CN) 6]3-, shows a maximum absorption peak (   = 1015 M-1 cm-1) [43].  
+ 
+Kinetic experiments  
+ 
+The total volume of the r eaction mixtures was fixed at a constant value in all the experiments 
+(25 mL). The last reactant to be added (1 mL of the desired concentration) to a thermostated 
+aqueous solution containing all the other required chemicals (24 mL) was the reducing agent, 
+Fe(II). In order to minimize the experimental errors associated with the kinetic data, the 
+wavelength used to monitor the reaction (420 nm) was chosen as that leading to a higher 
+increment of the solution absorbance between the initial and final points. Th e absorbances 
+were periodically measured (time interval: 10 s) during at least 16 minutes. In total, 143 
+kinetic runs were performed.  
+ 
+Resolving the reproducibility problems  
+ 
+The reaction between hexacyanoferrate(II) ion and hydrogen peroxide g ave unusual  problems 
+of irreproducibility , situation that was clearly related to the hydrolysis of the initial complex  
+[44], given that the initial rate depend ed on the time elapsed after preparation of its aqueous 
+solution, as well as on the laboratory illumination conditions.  This difficulty was resolved by 
+preparing the Fe(II) aqueous solution right before its use in each kinetic run, employing to 
+that end already thermostated pure water as solvent , and no artificial light was used in the 
+room during that procedure . Moreover, the time required for the preparation was reduced (and 
+systematized from one experiment to another) as much as possible. In this way, a typical 
+experiment repeated three times led to a standard deviation for the initial rate of ± 2.9 %.   
+ 
+ 
+ 
+ 
+ 
+ 7 Results  and discussion  
+ 
+Initial rate method  
+ 
+A striking observation was the unusual complexity of the absorbance -time plots for the 
+hexacyanoferrate(II) ion -hydrogen peroxide reaction, where a dramatic slowing down was 
+found right from the beginning of the proces s, more intense than would be expected for a 
+pseudo -first order reac tion and even more  than for a pseudo -second order one , in spite of 
+H2O2 being in larg e excess with respect to Fe(II) .   
+Thus, the initial rate method was the preferred way for obtaining th e kinetic data. In our 
+case, a fourth degree polynomial fitting the absorbance data corresponding to the first 240 s of 
+each kinetic run yielded good enough results,  the magnitudes directly measured in the 
+laboratory  (absorbance -time data couples)  being  fitted to a polynomial function of the type:  
+ 
+ 
+    2 3 4
+1 2 3 4 o (420)   =    +    +   +   +  A a a t a t a t a t  (3) 
+ 
+and leading to the following expression for the initial rate:  
+ 
+ 
+  
+    1
+o
+= 0= 0  Fe(III)  1 (420)  =     =     =         
+ttd a dAvdt l dt l        (4) 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 8 Hydrolysis of hexacyanoferrate(II) ion  
+ 
+The initial rate of the hexacyanoferrat e(II)-peroxide reaction showed a strong dependence on 
+the time elapsed after the preparation of the K 4[Fe(CN) 6] stock solution, with a rapid increase 
+at the beginning followed by a slow  decrease afterwards (Fig. 1 ).  
+This finding is consistent with the inv olvement of two competitive reactions in the absence 
+of H 2O2. One of them is the hydrolysis of hexacyanoferrate(II) ion, [Fe(CN) 6]4-, to yield 
+pentacyanoaquaferrate(II) ion, [Fe(CN) 5(H2O)]3-. Provided that the latter is the actual active 
+reducing agent for  H2O2, this would explain the increase in the initial rate. The other is the 
+oxidation of [Fe(CN) 6]4- by dissolved O 2 to yield [Fe(CN) 6]3- (a potential inhibitor of the 
+[Fe(CN) 6]4- + H 2O2 reaction), which  would explain the decrease in the initial rate aft er the 
+maximum. Extrapolation of the initial rate at time zero, corresponding to the instant at which 
+the stock Fe(II) aqueous solution was prepared, led to the value  vo / [Fe(CN) 64-]o[H2O2]o = (5.3 
+± 1.7)  10-3 M-1 s-1 for the reaction of H 2O2 with fresh, non -hydrolyzed [Fe(CN) 6]4- at 25.0 
+ºC (Fig. 1 , inset). At the maximum of the initial rate vs. time plot the value of that ratio had 
+increased by a factor of 20, meaning that the hydrolyzed complex reacts with hydrogen 
+peroxide much faster than the non -hydrolyzed one.  
+The reversible hydrolysis of [Fe(CN) 6]4- follows the overall stoichiometry:  
+ 
+ 
+  II 4 + II 3
+6 3 5 21
+1[Fe (CN) ]  +  H O         [Fe (CN) (H O)]  +  HC Nk
+k−−− ⎯⎯ ⎯ →⎯⎯ ⎯  (5) 
+ 
+and its most probable mechanism consists of a three -step s equence of elementary r eactions:   
+ 
+ 
+ 
+ 
+ 
+ 9  
+  II 4 + II 3
+652
+2[Fe (CN) ]  +  H          [Fe (CN) (HCN)]k
+k−−− ⎯⎯ ⎯ →⎯⎯ ⎯  (6) 
+  
+  II 3 II 3
+553
+3[Fe (CN) (HCN)]         [Fe (CN) ]  +  HCN  k
+k−−−⎯⎯ ⎯ →⎯⎯ ⎯  (7) 
+  
+  II 3 II 3
+5 2 5 24
+4[Fe (CN) ]  +  H O         [Fe (CN) (H O)]  k
+k−−− ⎯⎯ ⎯ →⎯⎯ ⎯  (8) 
+ 
+This mechanism is coherent with the well -known property of hexacyanoferrates to release 
+toxic hydrogen cyanide in strongly acidic media  [45]. The reason should be looked for in the 
+property of neutral molecules (such as HCN or H 2O) to be released from the cationic metal 
+center of a complex more easily than anionic ligands (such as CN  -) do. Further, this can also 
+explain why the hydrolyzed complex , pentacyanoaquaferrate(II) ion, reacts with H 2O2 better 
+than the non -hydrolyzed one, suggesting that the penta -coordinated ion formed in Eq. 7 has an 
+important role as an intermediate, not only in the hydrolysis reaction, but also in the oxidation 
+by hydr ogen peroxide. This behavior is analogous to that observed in the complexation of the 
+anti-tumor drug cisplatin with biological thiols, where replacement of a chloride ligand by 
+water dramatically increases the reaction rate  [46].  
+The corresponding rate l aw may be obtained by application of the quasi -equilibrium 
+approximation to Eq. 6 (considered as a very fast reversible step) and that of the steady state 
+to pentacyanoferrate(II) ion (considered as a very reactive intermediate present in minute 
+concentrat ion). This is equivalent to accept that the slow step is Eq. 7 in its forward direction, 
+leading to the mathematical equation:  
+ 
+ 
+4- 3-
+1 6 1 5 2       [Fe(CN) ]   [Fe(CN) (H O) ]  [HCN]t t t tv k k− =−  (9)  
+ 
+ 
+ 
+ 
+ 
+ 10 where the rate constants for the forward and backward reactions in Eq. 5 are given by:  
+ 
+ 
+ 
+   
+  +
+2 3 4 3
+1
+3 4 2 
+  H O       [HCN] + [H O][]
+ tK k kkkk−=  (10) 
+ 
+ 
+    34
+1
+3 4 2 
+        [HCN] + [H O]  tkkkkk−−
+−
+−=  (11) 
+ 
+As an approximation, since the concentration of HCN  is indeed much smaller than that of 
+water (997 g L-1/18.015 g mol-1 = 55.3 M), it can be assumed that
+   3 4 2[HCN] << [H O]   t kk− , the 
+integra tion leading then to the result  [47]: 
+ 
+ 
+o e o e o e e
+1
+o e o e    +  (  )    (2  )  ln          (  )    t
+tc x c x x c x xktc x x c x−−−=−−  (12) 
+ 
+where 
+oc  is the initial concentration of [Fe(CN) 6]4-, whereas  
+tx  and 
+ex  are the 
+concentrations of [Fe(CN) 5(H2O)]3- (as well as of HCN) at time t and once the equilibrium is 
+reached, respectively. Equation 1 2 was applied by assuming that the values of 
+tx   and 
+ex  
+were directly proportional to the initial rates of  the [Fe(CN) 6]4- + H 2O2 reaction (after addition 
+of hydrogen peroxide) at time t (vo,t) and at the maximum of the initial ra te vs. time plot given 
+in Fig.  1 (vo,max), respectively, which is equivalent to accept that the [Fe(CN) 6]4- + H 2O2 redox 
+reaction is  of first order in the intermediate [Fe(CN) 5(H2O)]3- formed in the hydrolysis 
+reaction:   
+ 
+ 
+ 
+ 
+ 
+ 11  
+o, e o,max                 ;                 ttx C v x C v==  (13) 
+ 
+where C is the proportionality constant req uired to replace the x values by those of vo. From 
+Eqs. 12 and 1 3 we infer:  
+  
+ 
+ o o,max o e o, o e e
+1
+o o,max o, o e   +  (  )    (2  )  ln         (  )    t
+tc v c x v c x xktc v v c x−− −=−−  (14) 
+ 
+Of the magnitudes appearing in the left -hand side of Eq. 14 the only one that is not directly 
+available from the experimental data is  
+ex. The value of this magnitude was optimized so that 
+the linearity of the  ln {[
+o o,max o e o, + (  ) t c v c x v − ] / [
+o o,max o,(  )t c v v − ]} vs. t plot was maximum.   
+From the slope of the c orresponding linear plot (Fig. 2 ) and the value of 
+ex  reached by 
+optimization, the resulting rate constants for the  hydrolysis reaction were 
+ 1k  = (1.3 ± 0.2) 
+ 10-4 s-1 and 
+1k− = 0.21 ± 0.04 M-1 s-1, yielding the equilibrium constant 
+ 
+ +
+1 1 1 3 =  / [H O ]K k k−
+ = (6.2 ± 2.1)  103 (at 25.0 ºC) and a maximum value for the hydrolysis 
+degree of 29.7 %. The values so obtained were subject to a certain experimental error caused 
+by the side reaction of oxidation of Fe(II) to Fe(III) with dissolved O 2. However, this error is 
+probably of minor importance considering that the absol ute value of the slo pe of the plot 
+shown in Fig. 1  after the maximum is much lower than the slope before that maximum, when 
+calculated at instants symmetrical with respect to that maximum. This means that the O 2–
+driven oxidation process happens at a rate m uch lower than the hydrolysis reaction.   
+ 
+ 
+ 
+ 
+ 
+ 12 The hydrolysis of hexacyanoferrate(II) ion is definitely a photochemical reaction  [48], as 
+made evident by the finding that, when the K 4[Fe(CN) 6] stock solution was prepared and 
+thermostated under ordinary laboratory -illumination conditions, its oxidation by H 2O2 was 
+much faster than when it was prepared and thermostated under semi -darkness conditions (Fig.  
+3). This feature is common with that presented by the photosensitive hydrolysis of 
+hexacyanoferrate(III) ion  [49, 50]. 
+ 
+Kinetic data of the redox reaction  
+ 
+Five series of kinetic runs were performed at various initial concentrations of hydrogen 
+peroxide, each of them consisting of five experiments differing in the initial concentration of 
+hexacyanoferrate(II) ion, t he other conditions remaining unchanged. The corresponding plots 
+showed a downward -concave curvature at low [H 2O2]o that slowly seemed to fade away as 
+that concentration increased  (Fig. 4, top ). The same experiments allowed an analysis of the vo 
+vs. [H 2O2]o dependence at different values of [Fe(II)] o, leading to downward -concave cu rves 
+in all five cases (Fig, 4, bottom ).  
+In the presence of hexacyanoferrate(III) ion, the vo vs. [Fe(II)] o plots showed first an 
+upward -concave curvature followed by a do wnward -concave stretch (Fig. 5, top ). On the 
+other hand, the vo vs. [Fe(III)] o plots showed a decreasing upward -concave pattern, indicating 
+the existence of an autoinhibition effect caused by the oxidized complex forme d as reaction 
+product (Fig. 5, bottom ). 
+As th e concentration of KH 2PO 4 increased (the pH decreased) the initial rate first 
+increased, passed through a maxim um and then decreased (Fig . 6). These results should be  
+ 
+ 
+ 
+ 
+ 
+ 13 interpreted in terms of a combination of both acid catalysis (predominant a high pH value s) 
+and inhibition by phosphate ions (predominant a low pH values).  
+The Fe(II) -H2O2 reaction was also inhibited by both the apparently inert electrolyte 
+potassium chloride (Fig .7, top ) and the well -known hydroxyl radica l scavenger D -mannitol 
+(Fig. 7, bottom ). The inhibition by KCl seemed to be too strong to be simply ascribed to an 
+ionic strength effect.  
+The experimental kinetic data were coherent wi th both the Arrhenius (Fig. 8 ) and Eyring 
+equations, leading to the values of the activation parameters listed  in Table 1: the pre -
+exponential factor ( A) and activation energy ( Ea) from the Arrhenius model, and the entropy 
+(
+oS ) and enthalpy (
+oH ) of activation from the Eyring model.  
+ 
+Experimental rate law  
+ 
+The laborat ory results concerning the initial rate values obtained under different experimental 
+conditions clearly pointed out to a rather complex kinetic equation. In order to get it, many 
+trial mathematical functions were handled, and with each of them the percent error between 
+the theoretical and measured values of the initial rate was obtained for 45 kinetic experiments, 
+including different combinations of [Fe(II)] o, [H 2O2]o and [Fe(III)] o. As a general rule, the 
+calculations indicated that the higher the number o f involved parameters ( N ), the lower the 
+associated error, approaching asymptotically a minimum when N = 8 (Fig . 9). 
+A flow chart summarizing some of the trial equations is shown in Scheme 1. For the sake 
+of simplicity, the best option leading to the lowe st error has been chosen for each number of  
+ 
+ 
+ 
+ 
+ 
+ 14 parameters involved in the rate law. Finally, we arrived to what can be considered as the 
+closest to reality kinetic equation, approaching as much as possible to the experimental data:  
+ 
+  
+( )
+( )( )           
+        II II II 2
+I II 2 2 o III o o 2 2 o IV o
+oII III II
+V o VI o VII o VIII 2 2 o [H O ] [Fe ] [Fe ] [H O ] [Fe ]
+ 
+ 1 [Fe ] [Fe ] 1 [Fe ] [H O ]  k k k k
+v
+k k k k+ + +
+=
++ + + +  (15) 
+ 
+The coefficients involved in all the tentative rate laws were optimized by means of a 
+computer program, starting with some trial values and changing them systematically until the 
+minimum error between the theoretical and experimental values of th e initial rate was 
+reached. For instance, in the case of the best 8 -parameter law ( Eq. 15) 1.21   108 different 
+numerical combinations were required. The final values obtained for those coefficients, as 
+well as their corresponding units, are compiled in Table 2.  
+ 
+Reaction mechanism  
+ 
+Given the complexity of the rate law obtained experimentally, it ca n be anticipated that a 
+many -step mechanism will be required to explain it, probably involving the participation of 
+free radicals as reaction intermediates. According to the available kinetic data, the best 
+proposal we can offer is as follows:  
+ 
+ 
+  II 3 II 3
+5 2 5 25
+5[Fe (CN) (H O)]          [Fe (CN) ]  +  H Ok
+k−−
+−⎯⎯ ⎯ →⎯⎯ ⎯  (16) 
+ 
+   II 3 II 4 6
+56 [Fe (CN) ]  +  CN          [Fe (CN) ]k − − −⎯⎯ →  (17) 
+ 
+  II 3 II 3 7
+5 2 2 5 2 2 [Fe (CN) ]  +  H O          [Fe (CN) (H O )]k −−⎯⎯ →  (18)  
+ 
+ 
+ 
+ 
+ 
+ 15  
+  II 3 II 3 8
+5 2 5 2 [Fe (CN) ]  +  O          [Fe (CN) (O )]k −−⎯⎯ →  (19) 
+ 
+  
+ II 3 III 3 9
+5 2 2 4 [Fe (CN) (H O )]          [Fe (CN) (C (OH)N)(OH) ] . k −−⎯⎯ →  (20) 
+  
+ III 3 III 3 10
+4 2 2 5 2 2 [Fe (CN) (C (OH)N)(OH)] +  H O      [Fe (CN) (OH )] +  H O  +  HO     .. k −−⎯⎯→
+ (21) 
+ 
+ 
+2211 +HO          H  +  O.. K− ⎯⎯⎯ →⎯⎯ ⎯  (22) 
+ 
+    II 3 III 3 12
+5 2 6 2 [Fe (CN) (O )]  +  CN          [Fe (CN) ]  +  O . k − − − −⎯⎯→  (23) 
+ 
+  II 4 III 3 13
+2 6 2 2 6 +HHO  +  [Fe (CN) ]          H O  +  [Fe (CN) ]. k −−⎯⎯ ⎯ →  (24) 
+ 
+   III 3 II 4 14
+2 6 2 6O  +  [Fe (CN) ]          O  +  [Fe (CN) ]. k − −−⎯⎯→  (25) 
+ 
+ 15
+2 2 2 2 2HO   +  H O          O  +  H O  +  HO.. k⎯⎯→  (26) 
+ 
+ 
+   II 4 III 3 16
+66 HO  +  [Fe (CN) ]          HO  +  [Fe (CN) ]. k −− −⎯⎯→  (27) 
+ 
+ 17
+2O          wall. k −⎯⎯ ⎯ →  (28) 
+ 
+The proposed mechanism starts with the hydrolyzed form of the reducing complex wh ose 
+formation ha s been previously described in E qs. 6-8. The loss of the water ligand from that 
+high stability hexa -coordinated complex leads to a low stability, very reactive penta -
+coordinated complex (forward sense in Eq. 16), with a tendency to capture either a neutral 
+molecule (such as H 2O, H 2O2 or dissolved O 2) or a cyanide ion (coming  from the complex 
+hydrolysis, Eq.  7) as a sixth ligand  (backward sense in Eq.  16 and Eqs. 17-19).  
+The capture of hydrogen peroxide as a ligand leads to the first redox s tep, where the 
+transference of an electron from Fe(II) to the ligand results in the formation of Fe(III) and the 
+lysis of the peroxide molecule into a hydroxide ion (that, because of its nature as a poor  
+ 
+ 
+ 
+ 
+ 
+ 16 leaving group  [51], will remain bonded to the centra l metal ion) and a hydroxyl radical. Given 
+that the experimentally observed activation energy (28.9 ± 2.7 kJ mol-1, Table 1) was rather 
+low for a reaction yielding hydroxyl radicals, we have opted for a concerted mechanism in 
+which the electron transfer ta kes place simultaneously with the electrophilic addition of the 
+emerging hydroxyl radical to a cyanide ligand to yield an organic free radical ( Eq. 20). In fact, 
+the addition reaction between free cyanide ion and the hydroxyl radical has previously been 
+reported  [52]. Moreover, an enhancement of the stability of the associated activated complex 
+is expected by the electron -donating effect of the cyanide ligands. For instance, addition of L -
+cysteine decreases dramatically the activation energy of the Fe2+/H2O2 Fenton reaction from 
+95.9 to 47.9 kJ mol-1 [53]. The organic free radical so formed may react with a second 
+hydrogen peroxide molecule to give a hydroperoxyl  radical (E q. 21), and by a posterior 
+dissociation a superoxide radical ( Eq. 22). The correspondi ng acidity equilibrium constant is 
+well known (p K11 = 4.69 at 25.0 ºC)  [54]. 
+On the other hand, the complex resulting from the replacement of a water molecule ligand 
+by dissolved oxygen is unstable enough to yield (via an internal redox process) more Fe(II I) 
+and a superoxide ion radical  (Eq. 23).  
+This intermediate may be found either in its protonated form (hydroperoxyl radical) or in 
+its deprotonated one (superoxide ion) and, since the pH range of the present work was rather 
+close to the p Ka of the former , both of them were present in similar concentrations. In 
+addition, due to the differences in electron density, the electron -poor 
+2HO.  behaves as an 
+oxidant in a n Fe(II)   → Fe(III) process (Eq.  24) and the electron -rich 
+ 
+2O.−  as a reductant in 
+the opposite  Fe(III) → Fe(II) process (Eq. 25 ), the latter thus explaining the autoinhibition 
+provoked by the hexacyanoferrate(III) ion formed as reaction product.   
+ 
+ 
+ 
+ 
+ 
+ 17 Hydroperoxyl radical, as well as its deprotonated form (sup eroxide ion), may react with 
+hydrogen peroxide t o give a hydroxyl radical (Eq. 26 ). Although the existence of these 
+reactions has often been put into question  [55, 56], small but appreciable values (0.50 ± 0.09 
+M-1 s-1 for hydroperoxyl radical and 0.13 ± 0 .07 M-1 s-1 for superoxide ion at 23.5 ºC) have 
+been reported for their rate constants  [57, 58]. The hydroxyl radical so formed is expected to 
+react mainly with Fe(II) to yield more Fe(III) (Eq. 27 ).  
+Finally, it has been proposed that some of the hydroper oxyl/superoxide radicals may arrive 
+at the reactor walls to disproportionate into O 2 and H 2O2 on their surface (Eq. 28 ). Actually, 
+an inhibiting surface effect has been reported for the Cu(II)/H 2O2 reaction and explained in 
+the same way  [30]. 
+ 
+Theoretical rate law  
+ 
+In order to compare the microscopic information contained in the mechanism with the 
+macroscopic one gathered in the laboratory, it is necessary to deduce the theoretical rate law. 
+For this purpose, the application of two different approximations,  steady state and quasi -
+equilibrium  [59, 60], was required. The first approximation can be applied only to short -lived, 
+very reactive intermediates and was used to obtain the concentrations of the penta -coordinated 
+complex ( formed in Eq. 16 ), the Fe(II) -H2O2 complex ( formed in Eq. 18 ), the Fe(II) -O2 
+complex (formed in Eq. 19 ), the organic free radical (formed in Eq. 20 ), the hydroperoxyl 
+radical (formed in Eq. 21 ), the superoxide ion radical (formed in Eqs. 22 and 23 ) and the 
+hydroxyl radical (formed in Eq. 26). The second approximation can be applied only to very 
+fast, reversible reactions, and this requirement was indeed fulfilled in the case of Eq. 22 .  
+ 
+ 
+ 
+ 
+ 
+ 18 The theoretical rate law so deduced is consistent with the experimental one ( Eq. 15 ), the 
+macroscopic -microscopic relationships being those given in Table 3. Moreover, it can explain 
+the observation of acid catalysis (increasing stretch in Fig. 6 ), since protonation of the 
+superoxide ion radical favors the reaction (FeII → FeIII, Eq. 24 ) whereas deprotonation of the 
+hydroperoxyl radical has the opposite effect (FeIII → FeII, Eq. 25 ). Notwithstanding, there is 
+also an additional cause for the observed acid catalysis, given that a decrease of the pH results 
+in a higher degr ee of hydrolysis of the initial Fe(II) complex ( Eq. 5 ). 
+On the other hand, the inhibition by phosphate ions (decreasing stretch in Fig. 6 ), as well 
+as that by chloride ion ( Fig. 7, top ), can be explained by a competition between either H 2PO 4- 
+or Cl - and H 2O2 to fill the vacant position in the penta -coordinated Fe(II) complex formed in 
+Eq. 16 , although minor contributions due to ionic strength effects and reactions of those ions 
+with the hydroxyl radical formed in Eq. 26  cannot be discarded (the reactions o f both 
+phosphate  [61] and chloride  [62] ions with that radical are well documented).  
+The initial rate decreased in the presence of the polyalcohol D -mannitol (Fig . 7, bottom ). 
+Since this natural sweetener of vegetable origin is a well -known specific hydro xyl radical 
+scavenger  [63, 64], its inhibitory effect may be taken as an experimental proof of the 
+participation of that strongly oxidizing radical as a reaction intermediate.  
+ 
+Numerical simulations  
+ 
+The proposed mechanism has been obtained from laborator y measurements extrapolated to t 
+= 0. In order to check its validity at other instants during the course of the reaction, the 
+experimental rate law ( Eq. 15) was integrated by an approximate numerical procedure known  
+ 
+ 
+ 
+ 
+ 
+ 19 as the fourth -order  Runge -Kutta method [ 65], using to that end the coefficients appearing in 
+Table 2.  
+The resulting absorbance -time plots corresponding to a couple of kinetic runs performed 
+one in the initial absence of the autoinhibitor Fe(III) (Fig.  10, top) and the other in its presence 
+(Fig. 10, bottom ), all the other experimental conditions being the same, are shown. As can be 
+observed, the simulations indicated that a reasonably good agreement between theory and 
+experiment was reached also at t > 0.  
+Thus, it can be concluded that the experi mental rate law obtained by application of the 
+initial rate method, as well as the mechanism proposed to explain it, are both close 
+approximations to the reality of this indeed complex free radical reaction.  
+  
+ 
+References  
+ 
+  1.  Harman  D (2006)  Free radica l theory of aging: an u pdate  increasing the functional 
+lifespan. Ann N Y Acad  Sci 1067: 10
+−21 
+  2. Boveris A ( 1998 )  Biochemistry of free radicals: from electrons to tissues. Medicina (B. 
+Aires) 58:350
+− 356  
+  3. Valdez LB , Lores Arnaiz S, Bustamante J, Alvarez S, Costa LE, Boveris  A (2000 )  Free 
+radical chemistry in biological systems. Biol Res  3:65
+−70 
+  4. Chan P H (2001)  Reactive oxygen radicals in signaling and damage in the ischemic 
+brain. J Cereb Blood Flow Metab  21:2
+−14  
+ 
+ 
+ 
+ 
+ 
+ 20   5. Perez -Benito J F (2006 ) A study of the cytochrome c -hydrogen peroxide reaction. 
+Collect Czech Chem Commun  71:1588
+− 1610  
+  6. Sohal RS, Weindruch  R (1996)  Oxidative stress, caloric restriction, and aging. Science 
+273:59
+−63 
+  7. Halliwell B, Gutteridge JMC (2015) Free radicals in biology and medicine. Oxf ord 
+University Press, Oxford, p 440   
+  8. Kwak MS, Rhee WJ, Lee YJ, Kim HS, Kim  YH, Kwon MK, Shin JS ( 2021 ) Reactive  
+oxygen species induce Cys106 -mediated anti -parallel HMGB1 dimerization that 
+protects against  DNA damage . Redox Biol  40:10185 8 
+  9. Ames B N (1983)  Dietary carcinogens and anticarcinogens - Oxygen radicals and 
+degenerati ve diseases. Science 221:1256
+− 1264  
+10. Cortopassi G, Wang  E (1995)  Modeling the effects of age-related mtDNA mutation 
+accumulation; complex I deficiency, superoxide and cell death. Biochim  Biophys  Acta  
+1271: 171
+− 176 
+11. Al-Ajlouni AM, Espenson JH,  Bakac A  (1993 ) Reaction of hydrogen peroxide with the 
+oxochromium(IV) ion by hydride  transfer. Inorg Chem 32: 3162
+− 3165  
+12. Winterbourn  CC (2013 ) The biological chemistry of hydrogen peroxide . Methods 
+Enzymol  528:3
+−25 
+13. Illes E, Patra S G, Marks  V, Mizrahi  A, Meyerstein  D (2020 ) The FeII(citrate) Fenton 
+reaction u nder physiological conditions . J Inorg Biochem  206:111018  
+14. Yu Z, Thompson  Z, Behnke S L, Fenk K D, Huang  D, Shafaat H S, Cowan J A (2020 ) 
+Metalloglycosidase mimics: oxidative cleavage of s accharid es promoted by 
+multinuclear copper complexes under physiological conditions. Inorg  Chem  
+59:11218
+− 11222   
+ 
+ 
+ 
+ 
+ 
+ 21 15. Rush J D, Koppenol W H (1986 ) Oxidizing intermediates in the reaction of ferrous 
+EDTA with hydrogen peroxide . J Biol Chem  261:6730
+− 6733  
+16. Rush J D, Koppenol W H (1987)  The reaction between ferrous polyaminocarboxylate 
+complexes and hydrogen peroxide: an investigation of the reaction intermediates by 
+stopped flow spectrophotometry. J Inorg Biochem  29:199
+− 215 
+17. Rahhal  S, Richter H W (1988)  Reduction of hydrogen peroxide by the ferrous iron 
+chelate of diethylenetriamine -N,N,N',N",N" -pentaacetate. J Am Chem Soc  
+110:3126
+− 3133  
+18. Masarwa  M, Cohen  H, Meyerstein  D, Hickman D L, Bakac  A, Espenson J H (1988)  
+Reactions of low-valent transition -metal complexes with hydrogen peroxide. Are they 
+"Fenton -like" or not? 1. The case of Cu+aq and Cr2+aq. J Am Chem Soc  110:4293
+− 4297  
+19. Yamazaki  I, Piette L H (1991)  EPR spin-trapping study on the oxidizing species formed 
+in the reaction of the ferrous ion with hydrogen peroxide. J Am Chem Soc  113:7588 -
+7593  
+20. Sawyer D T, Kang  C, Llobet  A, Redman  C (1993)  Fenton reagents (1:1 FeIILx/HOOH) 
+react via [L xFeIIOOH(BH+)] as hydroxylases (RH → ROH), not as generators of free 
+hydroxyl radicals (
+ HO. ). J Am Chem Soc  115:5817
+− 5818  
+21. Hage J P, Llobet  A, Sawyer D T (1995)  Aromatic hydroxylation by Fenton reagents 
+{reactive i ntermediat e [Lx+FeIIIOOH(BH+)], not free hydroxyl radical (
+ HO. )}. Bioorg 
+Med Chem  3:1383
+− 1388  
+22. Sawyer D T, Sobkowiak  A, Matsushita  T (1996)  Metal [ML x; M = Fe, Cu, Co, 
+Mn]/ hydroperoxide -induced activation of dioxyg en for the oxygenation of 
+hydrocarbons:  oxygenated Fenton chemistry. Acc Chem Res  29:409
+− 416  
+ 
+ 
+ 
+ 
+ 
+ 22 23. Kremer M L (1999)  Mechanism of the Fenton reaction. Evidence for a new 
+intermediate. Phys  Chem Chem Phys  1:3595 -
+−3605  
+24. Kremer M L (2003)  The Fent on reaction. Dependence of the rate on pH. J Phys Chem A  
+107:1734
+− 1741  
+25. Rachmilovich -Calis  S, Masarwa  A, Meyerstein  N, Meyerstein  D (2005 ) The Fenton 
+reaction in aerated aqueous solutions revisited. Eur J  Inorg Chem  2875
+− 2880  
+26. Kremer  ML (2017)  Strong inhibition of the Fe3+ + H 2O2 reaction by ethanol: evidence 
+against the free radical theory . Prog React Kinet Mech  42:397
+− 413 
+27. Walling  C (1998)   Intermediates in the reaction s of Fenton type reagents. Acc Chem 
+Res 31:155
+− 157 
+28. Marusawa  H, Ichikawa  K, Narita  N, Murakami  H, Ito K, Tezuka  T (2002)  Hydroxyl 
+radical as a strong electrophilic species.  Bioorg Med  Chem 10:2283
+− 2290  
+29. Perez -Benito J F (2004 ) Iron(III) -hydrogen peroxide reaction: kinetic evidence of a 
+hydroxyl -mediated chain mechanism. J Phys Chem  A  108:4853
+− 4858  
+30. Perez -Benito J F (2004 ) Reaction pathways in the decomposition of hydrogen peroxide 
+catalyzed by copper(II).   Inorg Biochem  98:430
+− 438 
+31. Zeng  Q, Wang  X, Liu X, Huang  L, Hu J, Chu R, Tolic  N, Dong  H (2020)  Mutual 
+interactions between reduced Fe -bearing clay minerals and humic acids under dark, 
+oxygenate d conditions: hydroxyl radical generation and humic acid transformation.  
+Environ Sci Technol   54:15013
+− 15023  
+32. Sun X, Gu X, Lyu, S  (2021)  The performance of chlorobenzene degradation in 
+groundwater: comparison of hydrogen peroxi de, nanoscale calcium peroxide and 
+sodium percarbonate activated with ferrous iron. Water Sci  Technol 83:344
+− 357  
+ 
+ 
+ 
+ 
+ 
+ 23 33. Chen  H, Fang  C, Gao X, Jiang  G, Wang  X, Sun S, Wu W, Wu Z ( 2021 ) Sintering - and 
+oxidation -resistant ultrasmall Cu (I)/(II) oxides supported on defect -rich mesoporous 
+alumina microspheres boosting catalytic ozonation.  J Colloid Interface Sci  
+581:964
+− 978 
+34. Barb W G, Baxendale J H, George  P, Hargrave K R (1955)  Reactions of ferrous and 
+ferric ions with hydrogen peroxide. III. Reactions in the presence of 2,2’ -bipyridine. 
+Trans Faraday Soc  51:935
+− 946 
+35. Walling  C, Kurz  M, Schugar H J (1970)  The iron(III) -ethylenediaminetetraacetic acid-
+peroxide system. Inor g Chem  9:931
+− 937 
+36. Walling  C, Partch R E, Weil  T (1975)  Kinetics of the descomposition of hydrogen 
+peroxide catalyzed by ferric ethylenediaminetetraacetate complex. Proc Nat Acad Sci  
+72:140
+− 142 
+37. Francis K C, Cummins  D, Oakes J (1985)  Kinetic and structural investigations of 
+[FeIII(EDTA)] -[EDTA=Ethylenediaminetetra -acetate(4 -) catalysed decomposition o f 
+hydrogen peroxide. J Chem Soc Dalton Trans  493
+− 501 
+38. Amina, Si  X, Wu K, Si Y, Yousaf  B (2018) Synergistic effects and mechanisms of 
+hydroxyl radical -mediated oxidative degradation of sulfamethoxazole by Fe(II) -EDTA 
+catalyzed calcium peroxide: implications for remediation of antibiotic -contaminated 
+water. Chem  Eng J 353: 80
+−91 
+39. Bray D G, Thompson R C (1994 ) Trace metal ion catalysis in the oxidation of Fe(CN) 64- 
+by H 2O2. Inorg Chem  33:905
+− 909 
+40. Karunakaran  C, Muthukumaran  B (1996) Kinetic evidence for peroxo complex 
+formation in perborate or hydrogen peroxide oxidation of hexacyanoferrate(II). Pol J  
+Chem   70:79
+−82  
+ 
+ 
+ 
+ 
+ 
+ 24 41. Kislenko V N, Oliinyk L P (2003)  Kinetics of hydrogen peroxide decomposition in 
+guaiacol solution, catalyzed by hexacyanoferrate(II). Russ J Gen Chem  73:114
+−118 
+42. Rabai  G (1991)  pH oscillation in the closed system of H 2O2-[Fe(CN) 6]4--acetonitrile 
+water. J Chem Soc, Chem Commun 1083
+− 1084  
+43. Katafias  A, Impert  O, Kita P (2008)  Hydrogen peroxide as a reduct ant of 
+hexacyanoferrate(III) in alkaline solutions: kinetic studies. Transition Met Chem  
+33:1041
+− 1046  
+44. Baxendale JH (1952) Decomposition of hydrogen peroxide by catalysts in 
+homogeneous aqueous solution. Adv Catal 4:31
+− 86 
+45. Domingo  PI, Garcia  B, Leal J M (1989 ) Acid -base behaviour of the ferricyanide ion in 
+perchloric acid media. Spectrophotometric and kinetic study. Can J Chem  68:228
+− 235 
+46. Perez -Benito J F, Arias C, Amat  E (1995 ) A kinetic study of the reactions of cisplatin 
+with biological thiols. New J Chem   19:1089
+− 1094  
+47. Laidler K J (1987)  Chemical kinetics. Harper Collins,  New York, p 30 
+48. Kuhn D D, Young T C (2005)  Photolytic degradation of hexacyanoferrate(II) in aqueous 
+media: the determination of the degradation kinetics. Chemosphere 60:1222
+− 1230  
+49. Bell S, Foster  G, Fuller M W,  Hughes  D, Le Brocq KM F, Leslie  E, Wilson I R (1986 ) 
+Spectrophotometric measurement of rates of hexacyanoferrate(III) reactions.  Int J 
+Chem Kinet  18:651
+− 653 
+50. Perez -Benito J F, Arias  C, Brillas  E (1990 ) Comment on monitoring of 
+hexacyanoferrate(III) reactions by spectrophotometric methods. Int J Chem Kinet  
+22:95
+−97 
+51. Bruice   PY (2016) Organic chemistry . Pearson , Upper Saddle River, New Jersey , p 404  
+ 
+ 
+ 
+ 
+ 
+ 25 52.  Behar  D (1974)  Pulse radiolysis study of aqueous hydrogen cyanide and cyanide 
+solutions.  J Phys Chem  78:2660
+− 2663 
+53. Luo L, Yao Y, Gong  F, Huang Z F, Lu W Y, Chen W X, Zhang  L (2016)  Drastic 
+enhancement on Fenton ox idation of organic contaminants by accelerating 
+Fe(II)/Fe(III) cycle with L -cysteine. RSC Adv  6:47661
+− 47668  
+54. Sawyer D T, Valent ine J S (1981)  How super is superoxide?. Acc  Chem Res  
+14:393
+− 400 
+55. Barb W G, Baxendale  JH, George P , Hargrave K R (1951)  Reactions of ferrous and ferric 
+ions with hydrogen peroxide. Part I: The ferrous ion reaction.  Trans Faraday S oc 
+47:462
+− 500 
+56. Barb WG, Baxendale JH, George P, Hargrave KR (1951) Reactions of ferrous and ferric 
+ions with hydrogen peroxide.  Part II: The ferric ion reaction.  Trans Faraday Soc 
+47:591
+− 616 
+57. Weinst ein J, Bielski BH J (1979 ) Kinetics of the interaction of HO 2 and O 2- radicals 
+with hydrogen peroxide. The Haber -Weiss reaction.  J Am Chem  Soc 101:58
+−62 
+58. Rush J D, Bielski BH J (1985 ) Pulse radiolytic studies of the reaction of 
+perhydroxyl/ superoxide HO 2/O2- with Fe(II)/Fe(III) ions. The reactivity of HO 2/O2- with 
+ferric ions and its implication on the occurrence of the Haber -Weiss reaction. J Phys  
+Chem 89 :5062
+− 5066  
+59. Wilkinson F (1980) Chemical kinetics  and reaction mechanisms. Van Nostrand 
+Reinhold, New York, pp 42
+−44 
+60. Perez -Benito J F (2017 ) Some considerations on the fundamentals of chemical kinetics: 
+steady state, quasi-equilibrium, and transition state theory.  J Chem  Educ  94:1238
+− 1246   
+ 
+ 
+ 
+ 
+ 
+ 26 61. Wang  J, Wang  S (2021 ) Effect of inorganic anions on the performance of advanced 
+oxidation processes for degradation of organic contaminants. Chem  Eng J 411 :128392  
+62. Han M , Jafarikojour M , Hamachi M , Mohseni M  (2021 ) The impact of chloride and 
+chlorine radical on nitrite formation during vacuum photolysis of water. Sci Total 
+Environ 760 :143325  
+63. Xu HB , Zhu YP , Cui DJ , Du MR , Wang JQ , Ma RN , Jiao Z  (2019 ) Evaluating the roles 
+of OH radicals, H 2O2, ORP and pH in the inactivation of yeast on a tissue model by 
+surface micro-discharge plasma. J Phys D  52:395201  
+64. Krewing M , Schubert B , Bandow JE  (2020 ) A dielectric barrier discharge plasma 
+degrades proteins to peptides by cleaving the peptide bond. Plasma Chem Plas ma 
+Process 40 :685-696 
+65. Espenson JH (1995) Chemical kinetics and reaction mechanisms. McGraw -Hill, New 
+York, p 113
+− 115  
+ 
+  
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 27 Table 1  Arrhenius and Eyring activation parametersa 
+_____________________________________________ __________________  
+ 
+ Activation parameter   Experimental value           
+_______________________________________________________________  
+ 
+ ln (A/s-1) b    10.6 ± 1.1   
+ Ea / kJ mol-1
+ c   28.9 ± 2.7    
+ H    o
+‡ / kJ mol-1
+ d   26.4 ± 2.7    
+ S   o
+‡ / J K-1 mol-1
+ e  
+−  165 ± 9   
+_______________________________________________________________  
+ 
+a [K4Fe(CN) 6]o = 1.97   10-4 M, [H2O2]o = 1.57   10-2 M, [KH 2PO 4] = 7.20   10-2 M, pH 
+4.56,  15.0
+− 35.0 oC  
+ 
+b Arrhenius pre -exponential factor (logarithmic form)  
+ 
+c Activation energy    
+ 
+d Activation enthalpy  
+ 
+e Activation entropy  
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 28 Table 2  Experimental values of the rate law parametersa 
+________________________________ _______________________________  
+ 
+ Rate law parameter    Experimental value  Units          
+_______________________________________________________________  
+ 
+ kI    0.276 M-1 s-1    
+ kII   13.9 M-2 s-1  
+ kIII   9.79  103 M-2 s-1   
+ kIV   84.2 M-1 s-1  
+ kV   1.83  104 M-1 
+ kVI   3.87  104 M-1 
+ kVII   1.36  103 M-1 
+ kVIII   64.4 M-1 
+_______________________________________________________________  
+ 
+a
+ [Fe(II)]o = (1.97
+− 9.85)   10-4 M, [H2O2]o = (0.78
+− 3.92)   10-2 M, [Fe(III)] o = 
+(0.00
+− 7.87)  10-4 M, [KH 2PO 4] = 7.20   10-2 M, pH 4.56, 25.0 oC  
+  
+ 
+ 
+ 
+ 
+ 
+ 29 Table 3  Mathematical identities for the parameters involved in the experimental rate law as 
+infer red from the proposed mechanism  ( h is the hydrolysis degree , 0 <  h < 1). 
+_______________________________________________________________  
+ 
+ Rate law parameter    Mechanism parameters           
+______________________________________________________________ _ 
+  
+ kI    
+( )
+( )      
+   +oo 57 11 17 8 15 2
+oo -5 11 17 2 8 2h  2 [H ] [O ]  
+ [H O]  [O ]   +
++k k K k k k
+K k k k     
+ kII   
+( )     
+    o 57 15
+oo -5 11 17 2 8 2+
+h  2 [H ]
+ [H O] [O ]  
++k k k
+K k k k   
+ kIII   
+( )     
+    o 57 13
+oo -5 11 17 2 8 2+
+h  2 [H ]
+ [H O] [O ]  
++k k k
+K k k k    
+ kIV   
+( )      
+    oo 58 13 2
+oo -5 11 17 2 8 2+
+h  2 [H ] [O ]
+ [H O] [O ]  
++k k k
+K k k k   
+ kV   
+  
+ o 13
+11 17+ [H ]
+  k
+Kk  
+ kVI   
+14
+17  
+  k
+k   
+ kVII   
+  
+    6
+oo -5 2 8 2h 
+ [H O] [O ]
++k
+kk  
+ kVIII   
+ 
+    7
+oo -5 2 8 2 
+ [H O] [O ]k
+kk +  
+_________________________ ____________________________________ ___ 
+ 
+ 
+ 
+ 
+ 
+ 30 
+0.02.14.2
+0 38 76 114 152 190/ 10-7 M s-1vo
+Time / min0.00.51.01.52.02.5
+0 5 10 15 20 25
+Time / min/ 10-7 M s-1vo 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fig. 1  Dependence of the initial rate on the time elapsed after preparation of the Fe(II) stock 
+solution (4.94  10-3 M). Inset: detail showing the extrapolation at t = 0. [K4Fe(CN) 6]o = 3.95 
+ 10-4 M, [H 2O2]o =  9.79  10-3 M, [KH 2PO 4]o = [K 2HPO 4]o = 7.20  10-2 M, pH 6.79, 25.0 
+ºC. The dashed lines are th e best fits to show t he experimental trends.  
+ 
+ 
+ 
+ 
+ 
+ 31  
+ 
+ 
+ 
+0.00.51.01.5
+0 17 34
+Time / mino e e eo o t t ln {[c  x  + (  c  - x  ) x ] / [  c  ( x  - x  )]}
+ 
+ 
+ 
+ 
+ 
+Fig. 2  Kinetic plot ( r = 0.9967) corresponding to  the integrated rate law for the hydrolysis of 
+K4[Fe(C N)6] (4.94  10-3 M) in the absence of additives at 25.0 º C  
+ 
+ 
+ 
+ 
+ 
+ 32 
+0.01.53.04.5
+0.0 0.7 1.4 2.1v   / 10-6 M s-1
+o
+[Fe(CN) 4-]   / 10-3 M o6 
+ 
+ 
+ 
+ 
+Fig. 3  Dependences of the initial rate on the initial concentration of hexacyanoferrate(II) ion 
+at [H 2O2] = 3.13   10-3 M, [KH 2PO 4] = [K 2HPO 4] = 7.20  10-2 M, pH 6.7 9  0.02 and 25.0 
+ºC when the K 4[Fe(CN) 6] stock solution was prepared and thermostated under either ordinary 
+laboratory -illumination conditions (empty circles) or semi -darkn ess conditions (filled circle s) 
+  
+ 
+ 
+ 
+ 
+ 
+ 33 
+0246
+0.0 0.2 0.4 0.6 0.8 1.0v   / 10-6 M s-1
+o
+[Fe(CN) 4-]   / 10-3 M o6
+0.32.24.16.0
+0.4 1.7 3.0 4.3v   / 10-6 M s-1
+o
+o 22 [H  O  ]   / 10-2 M 
+ 
+ 
+ 
+ 
+Fig. 4  Initial rate of the oxidation of hexacyanoferrate(II) ion by hydrogen peroxide as a 
+function of  the initial concentration s of either  Fe(II)  (top) or H2O2 (bottom)  in the presence of 
+KH 2PO 4 (7.20  10-2 M) at pH 4.56 and 25.0 oC. Top: [H2O2]o = 0.78, 1.57, 2.35, 3.13 and 
+3.92  10-2 M (in ascending order) . Botom:  [Fe(II)] o = 1.97, 3.94, 5.91, 7.88 and 9.85  10-4 
+M (in ascending order)   
+ 
+ 
+ 
+ 
+ 
+ 34  
+0123
+0.0 0.2 0.4 0.6 0.8 1.0
+[Fe(CN) 4-]   / 10-3 Mv   / 10-6 M s-1
+o
+o6
+0123
+0 2 4 6 8
+[Fe(CN) 3-]   / 10-4 Mv   / 10-6 M s-1
+o
+o6
+ 
+ 
+ 
+ 
+Fig. 5  Initial rate of the oxidation of hexacyanofer rate(II) ion by hydrogen peroxide 
+(7.83  10-3 M) as a  function of the initial concentrations of either Fe(II) (top) or Fe(III)  
+(bottom)  in the presence of KH 2PO 4 (7.20   10-2 M) at pH 4.56 and 25.0 oC. Top: [Fe(III)]o = 
+0.00, 1.97, 3.94, 5.90 and 7.87   10-4 M (in descending order) . Bottom: [Fe(II)] o = 1.97,  3.94, 
+5.91, 7.88 and 9.85  10-4 M (in ascending order )  
+ 
+ 
+ 
+ 
+ 
+ 35 
+0.00.40.81.2
+0.00 0.07 0.14 0.21
+[KH  PO  ]    / Mv   / 10-6 M s-1
+o
+o4 2 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fig. 6   Initial rate of the oxidation of hexacyanoferrate(II) ion (1.97  10-4 M) by hydrogen 
+peroxide (7.83  10-3 M) as a function of the KH 2PO 4 initial concentratio n at pH 4.36
+− 6.65 
+and 25.0 º C  
+ 
+ 
+ 
+ 
+ 
+ 36 
+0.40.81.2
+0.0 0.2 0.4 0.6
+[KCl]   / Mv   / 10-6 M s-1
+o
+o
+0.900.951.001.051.101.15
+0.00 0.65 1.30v   / 10-6 M s-1
+[D-mannitol]   / 10-2 Mo
+o 
+ 
+ 
+ 
+ 
+ 
+Fig. 7  Initial rate of the oxidation of hexacyanoferrate(II) ion ( 1.97  10-4 M) by hydrogen 
+peroxide ( 1.57  10-2 M) as a function of  the initial concentrations of eithe r potassium 
+chloride  (top)  or D-mannitol (bottom) in the presence of KH 2PO 4 (7.20  10-2 M) at pH 4.56 
+and 25.0 oC  
+ 
+ 
+ 
+ 
+ 
+ 37 
+-14.2-14.0-13.8-13.6-13.4-13.2
+3.20 3.30 3.40 3.50
+(1 / T ) /10-3 K-1ln (v   / M s-1)o 
+ 
+ 
+ 
+ 
+ 
+Fig. 8  Arrhenius plot (r = 0.9867)  for the oxidation of hexacyanoferrate(II) ion ( 1.97  10-4 
+M) by hydrogen p eroxide ( 1.57  10-2 M) in the presence of KH 2PO 4 (7.20  10-2 M) at pH 
+4.56 and  15.0
+− 35.0 oC  
+ 
+ 
+ 
+ 
+ 
+ 38 
+0510152025
+1 3 5 7 9Error (%)
+Number of parameters 
+ 
+ 
+ 
+ 
+Fig. 9   Percent error of the predictions based on a t rial rate law as compared with 45 values of 
+the initia l rate for the oxidation of hexacyanoferrate(II) ion by hydrogen peroxide as a 
+function of the number of parameters involved in the law. Variable experimental conditions: 
+[Fe(II)] o = (1.97
+− 9.85)  10-4 M, [H 2O2]o = (0.78
+− 3.92)  10-2 M and [Fe(III)] o = 0.00
+− 7.87 
+ 10-4 M. Constant experimental conditions: [KH 2PO 4]o = 7.20  10-2 M, pH 4.56 and 25.0 ºC   
+ 
+ 
+ 
+ 
+ 
+ 39 
+0.060.240.420.60
+0 255 510 765 1020
+Time / sAbsorbance  (420)
+0.780.880.981.081.18
+0 255 510 765 1020
+Time / sAbsorbance  (420) 
+ 
+ 
+ 
+ 
+ 
+Fig. 10   Absorbance at 420 nm as a function of time a t [Fe(III)] o = 0 (left, average deviation: 
+ A = ± 0.0037) and 7.87  10-4 M (right, average deviation:  A = ± 0.0016), showing the 
+experimental (filled circles) and simulated (empty circles) values. [K4Fe(CN) 6]o = 9.85  10-4 
+M, [H 2O2]o =  7.83  10-3 M, [KH 2PO 4]o = 7.20  10-2 M, pH 4.56, 25.0 ºC   
+ 
+ 
+ 
+ 
+ 
+ 40 
+   
+   II 2
+oo I 22
+o II III
+oo II[Fe ] [H O ]      [Fe ] [Fe ]kvk=+ 
+ 
+  
+( ) 
+    
+  II II
+o o o I II 22
+o II III
+oo III [H O ]  [Fe ]  [Fe ]
+      [Fe ] [Fe ]  kk
+vk+
+=+
+ 
+ 
+  
+( )
+( )( )  
+ II II
+o o o I II 22
+oII III
+o o o III IV 22   [Fe ]  [Fe ]  [H O ]  
+     
+ [Fe ]   [Fe ] 1   [H O ]  kk
+v
+kk+
+=
+++
+ 
+ 
+  
+( )
+( )( ) 
+   II II
+o o o o I II 2 2 2 2
+oII III
+o o o o III IV V 2 2 2 2  [H O ]   [Fe ]  [Fe ]  [H O ]  
+     
+ [Fe ]   [Fe ]   [H O ] 1   [H O ]  kk
+v
+k k k+
+=
++ + +
+ 
+ 
+  
+( )
+( )( ) 
+    II II
+o o o o I II 2 2 2 2
+oII III II
+o o o o III IV V VI 22  [H O ]   [Fe ]  [Fe ]  [H O ]  
+     
+ 1   [Fe ]   [Fe ] 1   [Fe ]   [H O ]  kk
+v
+k k k k+
+=
++ + + +
+ 
+ 
+  
+( )
+( )( ) 
+   
+  II II II 2
+o o o o I II III 22
+oII III II
+o o o o IV V VI VII 22   [Fe ]  [Fe ]  [H O ]   [Fe ]  
+     
+ 1   [Fe ]   [Fe ] 1   [Fe ]   [H O ]k k k
+v
+k k k k++
+=
++ + + +
+ 
+ 
+  
+( )
+( )( )  
+   
+  II II II 2
+o o o o o I II III IV 2 2 2 2
+oII III II
+o o o o V VI VII VIII 22   [H O ]   [Fe ]  [Fe ]  [H O ]   [Fe ]  
+     
+ 1   [Fe ]   [Fe ] 1   [Fe ]   [H O ]  k k k k
+v
+k k k k+ + +
+=
++ + + +
+ 
+  
+ 
+ 
+Scheme 1    Flow chart with the best trial rate law for each number of parameters ( N  ) 
+indicating the corresponding percent error with respect to the initial rate experimen tal values  N = 2 
+  Error =   23.26 %  
+N = 3 
+  Error =   10.51 %  
+N = 4 
+  Error =   6.32 %  
+N = 5 
+  Error =   5.15 %  
+N = 6 
+  Error =   4.31 %  
+N = 7 
+  Error =   4.01 %  
+ Error =   4.00 %  N = 8 
+ 

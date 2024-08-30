@@ -1,0 +1,2132 @@
+Statistical Science
+2003, Vol. 18, No. 1, 71–103© Institute of Mathematical Statistics, 2003
+Multiple Hypothesis Testing in
+Microarray Experiments
+Sandrine Dudoit, Juliet Popper Shaffer and Jennifer C. Boldrick
+Abstract. DNA microarrays are part of a new and promising class of
+biotechnologies that allow the monitoring of expression levels in cells forthousands of genes simultaneously. An important and common question inDNA microarray experiments is the identiﬁcation of differentially expressedgenes, that is, genes whose expression levels are associated with a responseor covariate of interest. The biological question of differential expression canbe restated as a problem in multiple hypothesis testing: the simultaneous testfor each gene of the null hypothesis of no association between the expressionlevels and the responses or covariates. As a typical microarray experimentmeasures expression levels for thousands of genes simultaneously, large mul-tiplicity problems are generated. This article discusses different approaches
+to multiple hypothesis testing in the context of DNA microarray experiments
+and compares the procedures on microarray and simulated data sets.
+Key words and phrases: Multiple hypothesis testing, adjusted p-value,
+family-wise Type I error rate, false discovery rate, permutation, DNA
+microarray.
+1. INTRODUCTION
+The burgeoning ﬁeld of genomics has revived in-
+terest in multiple testing procedures by raising new
+methodological and computational challenges. For ex-
+ample, DNA microarray experiments generate largemultiplicity problems in which thousands of hypothe-ses are tested simultaneously. DNA microarrays arehigh-throughput biological assays that can measureDNA or RNA abundance in cells for thousands of
+genes simultaneously. Microarrays are being applied
+increasingly in biological and medical research to ad-
+Sandrine Dudoit is Assistant Professor, Division of
+Biostatistics, School of Public Health, University ofCalifornia, Berkeley, California 94720-7360 (e-mail:sandrine@stat.berkeley.edu). Juliet Popper Shaffer isSenior Lecturer Emerita, Department of Statistics,University of California, Berkeley, California 94720-
+3860 (e-mail: shaffer@stat.berkeley.edu). Jennifer C.
+Boldrick is a graduate student, Department of Microbi-ology and Immunology, Stanford University, Stanford,California 94305-5124 (e-mail: boldrick@stanford.edu).dress a wide range of problems, such as the classi-
+ﬁcation of tumors or the study of host genomic re-sponses to bacterial infections (Alizadeh et al., 2000;Alon et al., 1999; Boldrick et al., 2002; Golub et al.,1999; Perou et al., 1999; Pollack et al., 1999; Rosset al., 2000). An important and common question inDNA microarray experiments is the identiﬁcation ofdifferentially expressed genes, that is, genes whose ex-pression levels are associated with a response or co-variate of interest. The covariates could be either poly-tomous (e.g., treatment/control status, cell type, drugtype) or continuous (e.g., dose of a drug, time), andthe responses could be, for example, censored survivaltimes or other clinical outcomes. The biological ques-
+tion of differential expression can be restated as a prob-
+lem in multiple hypothesis testing: the simultaneoustest for each gene of the null hypothesis of no associ-ation between the expression levels and the responsesor covariates. As a typical microarray experiment mea-sures expression levels for thousands of genes simulta-neously, large multiplicity problems are generated. Inany testing situation, two types of errors can be com-mitted: a false positive, or Type I error, is committed bydeclaring that a gene is differentially expressed when it
+7172 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+is not, and a false negative, or Type II error, is commit-
+ted when the test fails to identify a truly differentiallyexpressed gene. When many hypotheses are tested and
+each test has a speciﬁed Type I error probability, the
+chance of committing some Type I errors increases,often sharply, with the number of hypotheses. In par-
+ticular, ap-value of 0.01 for one gene among a list
+of several thousands no longer corresponds to a sig-niﬁcant ﬁnding, as it is very likely that such a small
+p-value will occur by chance under the null hypoth-
+esis when considering a large enough set of genes.Special problems that arise from the multiplicity as-
+pect include deﬁning an appropriate Type I error rate
+and devising powerful multiple testing procedures thatcontrol this error rate and account for the joint distribu-
+tion of the test statistics. A number of recent articles
+have addressed the question of multiple testing in DNAmicroarray experiments. However, the proposed solu-
+tions have not always been cast in the standard statisti-
+cal framework (Dudoit et al., 2002; Efron et al., 2000;Golub et al., 1999; Kerr, Martin and Churchill, 2000;
+Manduchi et al., 2000; Pollard and van der Laan, 2003;
+Tusher, Tibshirani and Chu, 2001; Westfall, Zaykin and
+Young, 2001).
+The present article discusses different approaches
+to multiple hypothesis testing in the context of DNA
+microarray experiments and compares the procedures
+on microarray and simulated data sets. Section 2reviews basic notions and procedures for multiple
+testing, and discusses the recent proposals of Golub
+et al. (1999) and Tusher, Tibshirani and Chu (2001)within this framework. The microarray data sets and
+simulation models which are used to evaluate the
+different multiple testing procedures are described inSection 3, and the results of the comparison study are
+presented in Section 4. Finally, Section 5summarizes
+our ﬁndings and outlines open questions. Although thefocus is on the identiﬁcation of differentially expressed
+genes in DNA microarray experiments, some of the
+methods described in this article are applicable to anylarge-scale multiple testing problem.
+2. METHODS
+2.1 Multiple Testing in DNA Microarray
+Experiments
+Consider a DNA microarray experiment which pro-
+duces expression data on mgenes (i.e., variables or
+features) fornmRNA samples (i.e., observations), and
+further suppose that a response or covariate of inter-est is recorded for each sample. Such data may arise,
+for example, from a study of gene expression in tu-mor biopsy specimens from leukemia patients (Golub
+et al., 1999): in this case, the response is the tumor type
+and the goal is to identify genes that are differentially
+expressed in the different types of tumors. The data
+for sampleiconsist of a response or covariate y
+iand
+a gene expression proﬁle xi=(x1i,...,xmi),w h e r e
+xjidenotes the expression measure of gene jin sam-
+plei,i=1,...,n ,j=1,...,m . The expression levels
+xjimight be either absolute [e.g., Affymetrix oligonu-
+cleotide chips discussed in Lipshutz et al. (1999)] orrelative with respect to the expression levels of a suit-
+ably deﬁned common reference sample [e.g., Stan-
+ford two-color spotted cDNA microarrays discussed in
+Brown and Botstein (1999)]. Note that the expression
+measuresx
+jiare in general highly processed data. The
+raw data in a microarray experiment consist of image
+ﬁles, and important preprocessing steps include image
+analysis of these scanned images and normalization
+(Yang et al., 2001, 2002). The gene expression data are
+conventionally stored in an m×nmatrixX=(xji),
+with rows corresponding to genes and columns corre-
+sponding to individual mRNA samples. In a typical ex-periment, the total number nof samples is anywhere
+between around 10 and a few hundreds, and the num-
+bermof genes is several thousands. The gene expres-
+sion measures, x, are generally continuous variables,
+while the responses or covariates, y, can be either poly-
+tomous or continuous, and possibly censored, as de-
+scribed above.
+The pairs {(x
+i,yi)}i=1,...,n, formed by the expression
+proﬁles xiand responses or covariates yi,a r ev i e w e d
+as a random sample from a population of interest. Thepopulation and sampling mechanism will depend on
+the particular application (e.g., designed factorial ex-
+periment in yeast, retrospective study of human tumor
+gene expression). Let X
+jandYdenote, respectively,
+the random variables that correspond to the expres-sion measure for gene j,j=1,...,m ,a n dt h er e -
+sponse or covariate. The goal is to use the sample data
+{(x
+i,yi)}i=1,...,n to make inference about the popula-
+tion of interest, speciﬁcally, test hypotheses concern-
+ing the joint distribution of the expression measuresX=(X
+1,...,Xm)and response or covariate Y.
+The biological question of differential expression
+can be restated as a problem in multiple hypothesis
+testing: the simultaneous test for each gene jof the
+null hypothesis H jof no association between the ex-
+pression measure Xjand the response or covariate Y.
+(In some cases, more speciﬁc null hypotheses may beMULTIPLE HYPOTHESIS TESTING 73
+of interest, for example, the null hypothesis of equal
+mean expression levels in two populations of cellsas opposed to identical distributions.) A standard ap-
+proach to the multiple testing problem consists of two
+aspects:
+(1) computing a test statistic T
+jfor each genej,a n d
+(2) applying a multiple testing procedure to determine
+which hypotheses to reject while controlling a
+suitably deﬁned Type I error rate (Dudoit et al.,
+2002; Efron et al., 2000; Golub et al., 1999;Kerr, Martin and Churchill, 2000; Manduchi et al.,2000; Pollard and van der Laan, 2003; Tusher,
+Tibshirani and Chu, 2001; Westfall, Zaykin and
+Young, 2001).
+The univariate problem 1 has been studied exten-
+sively in the statistical literature (Lehmann, 1986). Ingeneral, the appropriate test statistic will depend on the
+experimental design and the type of response or co-
+variate. For example, for binary covariates, one mightconsider at-statistic or a Mann–Whitney statistic; for
+polytomous responses, one might use an F-statistic;
+and for survival data one might rely on the score sta-tistic for the Cox proportional hazards model. We will
+not discuss the choice of statistic any further here, ex-
+cept to say that for each gene j, the null hypothesis
+H
+jis tested based on a statistic Tjwhich is a function
+ofXjandY. The lower case tjdenotes a realization of
+the random variable Tj. To simplify matters, and unless
+speciﬁed otherwise, we further assume that the null H j
+is rejected for large values of |Tj|(two-sided hypothe-
+ses). Question 2 is the subject of the present article. Al-
+though multiple testing is by no means a new subject inthe statistical literature, DNA microarray experiments
+present a new and challenging area of application for
+multiple testing procedures because of the sheer num-ber of tests. In the remainder of this section, we review
+basic notions and approaches to multiple testing and
+discuss recent proposals for dealing with the multiplic-ity problem in microarray experiments.
+2.2 Type I and Type II Error Rates
+Set-up. Consider the problem of testing simultane-
+ouslymnull hypotheses H j,j=1,...,m , and denote
+byRthe number of rejected hypotheses. In the fre-
+quentist setting, the situation can be summarized byTable 1 (Benjamini and Hochberg, 1995). The speciﬁc
+mhypotheses are assumed to be known in advance, the
+numbersm
+0andm1=m−m0of true and false nullTABLE 1
+Number Number
+Number of not rejected rejected
+True null hypotheses UV m 0
+Non-true null hypotheses TS m 1
+m−RR m
+hypotheses are unknown parameters, Ris an observ-
+able random variable and S,T,UandVare unob-
+servable random variables. In the microarray context,
+there is a null hypothesis H jfor each genejand re-
+jection of H jcorresponds to declaring that gene jis
+differentially expressed. Ideally, one would like to min-
+imize the number Voffalse positives ,o rType I errors ,
+and the number Toffalse negatives ,o rType II errors .
+A standard approach in the univariate setting is to pre-
+specify an acceptable level αfor the Type I error rate
+and seek tests which minimize the Type II error rate,
+that is, maximize power , within the class of tests with
+Type I error rate at most α.
+Type I error rates. When testing a single hypothesis,
+H1, say, the probability of a Type I error, that is,
+of rejecting the null hypothesis when it is true, is
+usually controlled at some designated level α.T h i s
+can be achieved by choosing a critical value cαsuch
+that Pr(|T1|≥cα|H1)≤αand rejecting H 1when
+|T1|≥cα. A variety of generalizations to the multiple
+testing situation are possible: the Type I error rates
+described next are the most standard (Shaffer, 1995).
+•The per-comparison error rate (PCER) is deﬁned
+as the expected value of the number of Type I
+errors divided by the number of hypotheses, that is,
+PCER =E(V)/m .
+•T h ep e r - f a m i l ye r r o rr a t e (PFER) is deﬁned as the
+expected number of Type I errors, that is, PFER =
+E(V) .
+•The family-wise error rate (FWER) is deﬁned as
+the probability of at least one Type I error, that is,
+FWER =Pr(V≥1).
+•The false discovery rate ( F D R )o fB e n j a m i n ia n d
+Hochberg (1995) is the expected proportion of
+Type I errors among the rejected hypotheses, that
+is, FDR =E(Q) , where, by deﬁnition, Q=V/R if
+R> 0a n d0i fR=0.
+A multiple testing procedure is said to control a
+particular Type I error rate at levelα, if this error rate
+is less than or equal to αwhen the given procedure
+is applied to produce a list of Rrejected hypotheses.
+For instance, the FWER is controlled at level αby74 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+a particular multiple testing procedure if FWER ≤α
+(similarly, for the other deﬁnitions of Type I error
+rates).
+Strong versus weak control. It is important to note
+that the error rates above are deﬁned under the true
+and typically unknown data generating distribution forX=(X
+1,...,Xm)andY. In particular, they depend
+upon which speciﬁc subset NLambda10⊆{1,...,m }of null hy-
+potheses is true for this distribution. That is, the family-
+wise error rate is FWER =Pr(V≥1|/intersectiontext
+j∈NLambda10Hj)=
+Pr(Reject at least one H j,j∈NLambda10|/intersectiontext
+j∈NLambda10Hj),w h e r e/intersectiontext
+j∈NLambda10Hjrefers to the subset of true null hypotheses
+for the data generating joint distribution. A fundamen-tal, yet often ignored distinction, is that between strong
+and weak control of a Type I error rate (Westfall and
+Young, 1993, page 10). Strong control refers to con-
+trol of the Type I error rate under any combinationof true and false null hypotheses, i.e., for any subsetNLambda1
+0⊆{1,...,m }of true null hypotheses. In contrast,
+weak control refers to control of the Type I error rate
+only when all the null hypotheses are true, i.e., under anull distribution satisfying the complete null hypothe-
+sisH
+C
+0=/intersectiontextm
+j=1Hjwithm0=m. In general, the com-
+plete null hypothesis HC
+0is not realistic and weak con-
+trol is unsatisfactory. In reality, some null hypothesesNLambda1
+0may be true and others false, but the subset NLambda10is
+unknown. Strong control ensures that the Type I errorrate is controlled under the true and unknown data gen-
+erating distribution. In the microarray setting, where
+it is very unlikely that no genes are differentially ex-pressed, it seems particularly important to have strongcontrol of the Type I error rate. Note that the concept ofstrong and weak control applies to each of the Type I
+error rates deﬁned above, PCER, PFER, FWER and
+FDR. The reader is referred to Pollard and van derLaan (2003) for a discussion of multivariate null dis-tributions and proposals for specifying such joint dis-tributions based on projections of the data generating
+distribution or of the joint distribution of the test sta-
+tistics on submodels satisfying the null hypotheses. Inthe remainder of this article, unless speciﬁed other-wise, probabilities and expectations are computed forthe combination of true and false null hypotheses cor-
+responding to the true data generating distribution, that
+is, under the composite null hypothesis
+/intersectiontext
+j∈NLambda10Hjcor-
+responding to the data generating distribution, whereNLambda1
+0⊆{1,...,m }is of sizem0.
+Power. Within the class of multiple testing proce-
+dures that control a given Type I error rate at an ac-ceptable levelα, one seeks procedures that maximizepower , that is, minimize a suitably deﬁned Type II error
+rate. As with Type I error rates, the concept of power
+can be generalized in various ways when moving fromsingle to multiple hypothesis testing. Three commondeﬁnitions of power are (1) the probability of rejectingat least one false null hypothesis, Pr (S≥1)=Pr(T≤
+m
+1−1), (2) the average probability of rejecting the
+false null hypotheses, E(S)/m 1,o raverage power ,a n d
+(3) the probability of rejecting all false null hypothe-ses, Pr(S=m
+1)=Pr(T=0)(Shaffer, 1995). When
+the family of tests consists of pairwise mean compar-
+isons, these quantities have been called any-pair power,
+per-pair power and all-pairs power (Ramsey, 1978).In a spirit analogous to the FDR, one could also de-ﬁne power as E(S/R |R> 0)Pr(R> 0)=Pr(R>
+0)−FDR; whenm=m
+1, this is the any-pair power
+Pr(S≥1). One should note again that probabilities de-
+pend upon which particular subset NLambda10⊆{1,...,m }of
+null hypotheses is true.
+Comparison of Type I error rates. In general, for a
+given multiple testing procedure, PCER ≤FWER ≤
+PFER. Thus, for a ﬁxed criterion αfor controlling the
+Type I error rates, the order reverses for the numberof rejectionsR: procedures that control the PFER are
+generally more conservative , that is, lead to fewer
+rejections, than those that control either the FWER orthe PCER, and procedures that control the FWER aremore conservative than those that control the PCER.To illustrate the properties of the different Type I error
+rates, suppose each hypothesis H
+jis tested individually
+at levelαjand the decision to reject or not reject
+this hypothesis is based solely on that test. Underthe complete null hypothesis, the PCER is simply theaverage of the α
+jand the PFER is the sum of the αj.
+In contrast, the FWER is a function not of the test sizes
+αjalone, but also involves the joint distribution of the
+test statisticsTj:
+PCER =α1+···+αm
+m≤max(α1,...,αm)
+≤FWER ≤PFER =α1+···+αm.
+The FDR also depends on the joint distribution of
+the test statistics and, for a ﬁxed procedure, FDR ≤
+FWER, with FDR =FWER under the complete null
+(Benjamini and Hochberg, 1995). The classical ap-proach to multiple testing calls for strong control of the
+FWER (cf. Bonferroni procedure). The recent proposal
+of Benjamini and Hochberg (1995) controls the FWERin the weak sense (since FDR =FWER under the com-
+plete null) and can be less conservative than FWERMULTIPLE HYPOTHESIS TESTING 75
+otherwise. Procedures that control the PCER are gen-
+erally less conservative than those that control eitherthe FDR or FWER, but tend to ignore the multiplicityproblem altogether. The following simple example de-scribes the behavior of the various Type I error rates asthe total number of hypotheses mand the proportion of
+true hypotheses m
+0/mvary.
+A simple example. Consider Gaussian random m-
+vectors, with mean µ=(µ1,...,µm)and identity co-
+variance matrix Im. Suppose we wish to test simul-
+taneously themnull hypotheses H j:µj=0a g a i n s t
+the two-sided alternatives H/prime
+j:µj/negationslash=0. Given a random
+sample ofnm-vectors from this distribution, a sim-
+ple multiple testing procedure would be to reject H j
+if|¯Xj|≥zα/2/√
+n,w h e r e ¯Xjis the average of the
+jth coordinate for the nm-vectors,zα/2is such that
+NPhi1(zα/2)=1−α/2a n dNPhi1(·)is the standard normal
+cumulative distribution function. Let Rj=I(|¯Xj|≥
+zα/2/√
+n),w h e r eI(·)is the indicator function, which
+equals 1 if the condition in parentheses is true and 0otherwise. Assume without loss of generality that them
+0true null hypotheses are H 1,..., Hm0,t h a ti s ,NLambda10=
+{1,...,m 0}.T h e nV=/summationtextm0
+j=1RjandR=/summationtextm
+j=1Rj.
+Analytical formulae for the Type I error rates can easilybe derived as PFER =/summationtextm0
+j=1γj,P C E R =/summationtextm0
+j=1γj/m,
+FWER =1−/producttextm0
+j=1(1−γj)and
+FDR=1/summationdisplay
+r1=0...1/summationdisplay
+rm=0/summationtextm0
+j=1rj
+/summationtextm
+j=1rjm/productdisplay
+j=1γrj
+j(1−γj)1−rj
+with the FDR convention that 0 /0=0a n dγj=
+E(Rj)=Pr(Rj=1)=1−NPhi1(zα/2−µj√
+n)+
+NPhi1(−zα/2−µj√
+n)denoting the chance of rejecting
+hypothesis H j. In our simple example, γj=αforj=
+1,...,m 0and if we further assume that µj=d/√
+n
+forj=m0+1,...,m , then the expressions for the er-
+ror rates simplify to PFER =m0α,P C E R =m0α/m ,
+FWER =1−(1−α)m0and
+FDR=m1/summationdisplay
+s=0m0/summationdisplay
+v=1v
+v+s/parenleftBigg
+m0
+v/parenrightBigg
+αv(1−α)m0−v
+×/parenleftBigg
+m1
+s/parenrightBigg
+βs(1−β)m1−s,
+whereβ=1−NPhi1(zα/2−d)+NPhi1(−zα/2−d).N o t e
+that unlike the PCER, PFER or FWER, the FDRdepends on the distribution of the test statistics underthe alternative hypotheses H
+/prime
+j,f o rj=m0+1,...,m ,
+through the random variable S(here, the FDR is
+a function of β, the rejection probability under thealternative hypotheses). In general, the FDR is thus
+more difﬁcult to work with than the other threeerror rates discussed so far. Figure 1 displays plots
+of the FWER, PCER and FDR versus the number
+of hypotheses m, for different proportions m
+0/m=
+1,0.9,0.5,0.1 of true null hypotheses and for α=0.05
+andd=1. In general, the FWER and PFER increase
+sharply with the number of hypotheses m, while the
+PCER remains constant (the PFER is not shown in the
+ﬁgure because it is on a different scale, that is, it isnot restricted to belong to the interval [0,1]). Under
+the complete null ( m=m
+0), the FDR is equal to the
+FWER and both increase sharply with m.H o w e v e r ,a s
+the proportion of true null hypotheses m0/mdecreases,
+the FDR remains relatively stable as a function of m
+and approaches the PCER. We plotted the error rates
+for values ofmbetween 1 and 100 only to provide
+more detail in regions where there are sharp changes
+in these error rates. For larger m’s, in the thousands
+as in DNA microarray experiments, the error ratestend to reach a plateau. Figure 2 displays plots of
+the FWER, PCER and FDR versus individual test
+sizeαfor different proportions m
+0/mof true null
+hypotheses and for m=100 andd=1. The FWER
+is generally much larger than the PCER, the largest
+difference being under the complete null ( m=m0).
+As the proportion of true null hypotheses decreases,
+the FDR again becomes closer to the PCER. The errorrates display similar behavior for larger values of the
+number of hypotheses m, with a sharper increase of
+the FWER asαincreases.
+2.3p-values
+Unadjustedp-values. Consider ﬁrst a single hy-
+pothesis H 1, say, and a family of tests of H 1with level-
+αnested rejection regions Sαsuch that (1) Pr (T1∈
+Sα|H1)=αfor allα∈[0,1]which are achievable
+under the distribution of T1and (2)Sα/prime=/intersectiontext
+α≥α/primeSα
+for allαandα/primefor which these regions are deﬁned
+in (1). Rather than simply reporting rejection or non-
+rejection of the hypothesis H 1,ap-value connected
+with the test can be deﬁned as p1=inf{α:t1∈Sα}
+(adapted from Lehmann, 1986, page 170, to include
+discrete test statistics). The p-value can be thought
+of as the level of the test at which the hypothe-
+sis H 1would just be rejected, given t1. The smaller the
+p-valuep1, the stronger the evidence against the null
+hypothesis H 1. Rejecting H 1whenp1≤αprovides
+control of the Type I error rate at level α. In our con-
+text, thep-value can be restated as the probability of
+observing a test statistic as extreme or more extreme in76 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+FIG.1 . Type I error rates, simple example. Plot of Type I error rates versus number of hypotheses mfor different proportions of true
+null hypotheses, m0/m=1,0.9,0.5,0.1. The model and multiple testing procedures are described in Section 2.2. The individual test size
+isα=0.05and the parameter dwas set to 1. The nonsmooth behavior for small mis due to the fact that it is not always possible to have
+exactly 90, 50 ,o r10% of true null hypotheses and rounding to the nearest integer is necessary. FWER: red curve; FDR: blue curve; PCER:
+green curve.
+the direction of rejection as the observed one, that is,
+p1=Pr(|T1|≥|t1||H1). Extending the concept of p-
+value to the multiple testing situation leads to the veryuseful deﬁnition of adjusted p-value.
+Adjustedp-values. Lett
+jandpj=Pr(|Tj|≥|tj||
+Hj)denote, respectively, the test statistic and unad-
+justed orrawp-value for hypothesis H j(genej),
+j=1,...,m . Just as in the single hypothesis case,
+a multiple testing procedure may be deﬁned in terms ofcritical values for the test statistics or p-values of indi-
+vidual hypotheses: for example, reject H jif|tj|≥cj
+or ifpj≤αj, where the critical values cjandαjare
+chosen to control a given Type I error rate (FWER,
+PCER, PFER or FDR) at a prespeciﬁed level α.A l -
+ternatively, the multiple testing procedure may be de-
+scribed in terms of adjusted p-values. Given any test
+procedure, the adjustedp-value that corresponds to the
+test of a single hypothesis H jcan be deﬁned as the
+nominal level of the entire test procedure at which H jMULTIPLE HYPOTHESIS TESTING 77
+FIG.2 . Type I error rates, simple example. Plot of Type I error rates versus individual test size α, for different proportions of true null
+hypotheses,m0/m=1,0.9,0.5,0.1. The model and multiple testing procedures are described in Section 2.2. The number of hypotheses is
+m=100and the parameter dwas set to 1.FWER: red curve; FDR: blue curve; PCER: green curve.
+would just be rejected, given the values of all test sta-
+tistics involved (Hommel and Bernhard, 1999; Shaffer,1995; Westfall and Young, 1993; Wright, 1992; Yeku-tieli and Benjamini, 1999). If interest is in controllingthe FWER, the adjusted p-value for hypothesis H
+j,
+given a speciﬁed multiple testing procedure, is ˜pj=
+inf{α∈[0,1]:Hjis rejected at nominal FWER =α},
+where the nominal FWER is theα-level at which the
+speciﬁed procedure is performed. The correspondingrandom variables for unadjusted and adjusted p-values
+are denoted by P
+jand˜Pj, respectively. Hypothesis H j
+is then rejected, that is, gene jis declared differen-
+tially expressed at nominal FWER αif˜pj≤α.N o t ethat for many procedures, such as the Bonferroni pro-
+cedure described in Section 2.4.1, the nominal level is
+usually larger than the actual level, thus resulting in
+a conservative test. Adjusted p-values for procedures
+controlling other types of error rates are deﬁned sim-ilarly, that is, for FDR controlling procedures, ˜p
+j=
+inf{α∈[0,1]:Hjis rejected at nominal FDR =α}
+(Yekutieli and Benjamini, 1999). As in the singlehypothesis case, an advantage of reporting adjusted
+p-values, as opposed to only rejection or not of the hy-
+potheses, is that the level of the test does not need tobe determined in advance. Some multiple testing pro-cedures are also most conveniently described in terms78 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+of their adjusted p-values, and these can in turn be es-
+timated by resampling methods (Westfall and Young,1993).
+Stepwise procedures. One usually distinguishes
+among three types of multiple testing procedures:
+single-step, step-down and step-up procedures. Insingle-step procedures, equivalent multiplicity adjust-
+ments are performed for all hypotheses, regardlessof the ordering of the test statistics or unadjusted
+p-values; that is, each hypothesis is evaluated using a
+critical value that is independent of the results of tests
+of other hypotheses. Improvement in power, while pre-serving Type I error rate control, may be achieved bystepwise procedures , in which rejection of a particular
+hypothesis is based not only on the total number of hy-
+potheses, but also on the outcome of the tests of other
+hypotheses. In step-down procedures, the hypotheses
+that correspond to the most signiﬁcant test statistics
+(i.e., smallest unadjusted p-values or largest absolute
+test statistics) are considered successively, with fur-ther tests dependent on the outcomes of earlier ones.
+As soon as one fails to reject a null hypothesis, no
+further hypotheses are rejected. In contrast, for step-
+upprocedures, the hypotheses that correspond to the
+least signiﬁcant test statistics are considered succes-
+sively, again with further tests dependent on the out-
+comes of earlier ones. As soon as one hypothesis is re-
+jected, all remaining hypotheses are rejected. The nextsection discusses single-step and stepwise proceduresfor control of the FWER.
+2.4 Control of the Family-wise Error Rate
+2.4.1 Single-step procedures. For strong control of
+the FWER at level α, the Bonferroni procedure, per-
+haps the best known in multiple testing, rejects any hy-pothesis H
+jwith unadjusted p-value less than or equal
+toα/m . The corresponding single-step Bonferroni ad-
+justedp-values are thus given by
+˜pj=min(mpj,1). (1)
+Control of the FWER in the strong sense follows from
+Boole’s inequality. Assume without loss of generality
+that the true null hypotheses are H j,f o rj=1,...,m 0.
+Then
+FWER =Pr(V≥1)
+=Pr/parenleftBiggm0/uniondisplay
+j=1{˜Pj≤α}/parenrightBigg
+≤m0/summationdisplay
+j=1Pr(˜Pj≤α)
+≤m0/summationdisplay
+j=1Pr/parenleftbigg
+Pj≤α
+m/parenrightbigg
+≤m0α
+m,where the last inequality follows from Pr (Pj≤x|
+Hj)≤x,f o ra n yx∈[0,1].
+Closely related to the Bonferroni procedure is the
+Šidák procedure. It is exact for protecting the FWERunder the complete null, when the unadjusted p-values
+are independently distributed as U[0,1].T h e single-
+step Šidák adjusted p-values are given by
+˜p
+j=1−(1−pj)m. (2)
+However, in many situations, the test statistics, and
+hence the unadjusted p-values, are dependent. This
+is the case in DNA microarray experiments, wheregroups of genes tend to have highly correlated ex-pression measures due, for example, to co-regulation.Westfall and Young (1993) proposed adjusted p-values
+for less conservative multiple testing procedures which
+take into account the dependence structure among teststatistics. The single-step min Padjustedp-values are
+deﬁned by
+˜p
+j=Pr/parenleftbigg
+min
+1≤l≤mPl≤pj/vextendsingle/vextendsingleHC
+0/parenrightbigg
+, (3)
+where HC
+0denotes the complete null hypothesis and
+Pldenotes the random variable for the unadjusted
+p-value of thelth hypothesis. Alternatively, one may
+consider procedures based on the single-step max T
+adjustedp-values , which are deﬁned in terms of the
+test statisticsTjthemselves:
+˜pj=Pr/parenleftbigg
+max
+1≤l≤m|Tl|≥|tj|/vextendsingle/vextendsingleHC
+0/parenrightbigg
+. (4)
+The following points should be noted regarding the
+four procedures introduced above.
+1. If the unadjusted p-values(P1,...,Pm)are inde-
+pendent andPjhas aU[0,1]distribution under H j,
+the minPadjustedp-values are the same as the
+Šidák adjusted p-values.
+2. The Šidák procedure does not guarantee control
+of the FWER for arbitrary distributions of thetest statistics. However, it controls the FWER fortest statistics that satisfy an inequality known asŠidák’s inequality: Pr (|T
+1|≤c1,...,|Tm|≤cm)≥/producttextm
+j=1Pr(|Tj|≤cj). This inequality, also known as
+thepositive orthant dependence property ,w a si n i -
+tially derived by Dunn (1958) for (T1,...,Tm)that
+have a multivariate normal distribution with meanzero and certain types of covariance matrices. Šidák(1967) extended the result to arbitrary covariancematrices and Jogdeo (1977) showed that the in-
+equality holds for a larger class of distributions, in-
+cluding some multivariate t-a n dF-distributions.MULTIPLE HYPOTHESIS TESTING 79
+When the Šidák inequality holds, the min Pad-
+justedp-values are less than or equal to the Šidák
+adjustedp-values.
+3. Computing the quantities in (3) using the upper
+bound provided by Boole’s inequality yields theBonferronip-values. In other words, procedures
+based on the min Padjustedp-values are less
+conservative than the Bonferroni or Šidák (under
+the Šidák inequality) procedures. In the case ofindependent test statistics, the Šidák and min P
+adjustments are equivalent as discussed in item 1,above.
+4. Procedures based on the max Tand minPadjusted
+p-values provide weak control of the FWER. Strong
+control of the FWER holds under the assumption
+of subset pivotality (Westfall and Young, 1993,page 42). The distribution of unadjusted p-values
+(P
+1,...,Pm)is said to have the subset pivotality
+property, if the joint distribution of the random vec-tor{P
+j:j∈NLambda10}is identical for distributions satis-
+fying the composite null hypotheses/intersectiontext
+j∈NLambda10Hjand
+HC
+0=/intersectiontextmj=1Hj, for all subsets NLambda10of{1,...,m }.
+Here, composite hypotheses of the form/intersectiontext
+j∈NLambda10Hj
+refer to the joint distribution of test statistics Tj
+orp-valuesPjfor testing hypotheses H j,j∈NLambda10.
+Without subset pivotality, multiplicity adjustment ismore complex, as one would need to consider thedistribution of the test statistics under partial nullhypotheses
+/intersectiontext
+j∈NLambda10Hj, rather than the complete null
+hypothesis HC
+0. In the microarray context consid-
+ered in this article, each null hypothesis refers to asingle genejand each test statistic T
+jis a function
+of the response/covariate Yand expression mea-
+sureXjonly. The composite hypothesis/intersectiontext
+j∈NLambda10Hj
+refers to the joint distribution of variables Yand
+{Xj:j∈NLambda10}and speciﬁes that the random subvec-
+tor of expression measures {Xj:j∈NLambda10}is inde-
+pendent of the response/covariate Y, i.e., that the
+joint distribution of {Xj:j∈NLambda10}is identical for all
+levels ofY. The pivotality property holds given the
+assumption that test statistics for genes in the null
+subsetNLambda10have the same joint distribution regard-
+less of the truth or falsity of the hypotheses in thecomplement of NLambda1
+0. For a discussion of subset piv-
+otality and examples of testing problems in whichthe condition holds and does not hold, see Westfalland Young (1993).
+5. The maxTadjustedp-values are easier to compute
+than the minPp-values and are equal to the min P
+p-values when the test statistics T
+jare identically
+distributed. However, the two procedures generallyproduce different adjusted p-values, and consider-
+ations of balance, power and computational feasi-
+bility should dictate the choice between the two ap-proaches. In the case of non-identically distributed
+test statisticsT
+j(e.g.,t-statistics with different de-
+grees of freedom), not all tests contribute equally
+to the maxTadjustedp-values and this can lead to
+unbalanced adjustments (Beran, 1988; Westfall andYoung, 1993, page 50). When adjusted p-values are
+estimated by permutation (Section 2.6) and a large
+number of hypotheses are tested, procedures basedon the minPp -values tend to be more sensitive
+to the number of permutations and more conserv-
+ative than those based on the max Tp-values. Also,
+the minPprocedure requires more computations
+than the maxTprocedure, because the unadjusted
+p-values must be estimated before considering the
+distribution of their successive minima (Ge, Dudoit
+and Speed, 2003).
+2.4.2 Step-down procedures. While single-step pro-
+cedures are simple to implement, they tend to be con-
+servative for control of the FWER. Improvement inpower, while preserving strong control of the FWER,
+may be achieved by step-down procedures. Below
+are the step-down analogs, in terms of their adjusted
+p-values, of the four procedures described in the
+previous section. Let p
+r1≤pr2≤ ··· ≤prmdenote
+theobserved ordered unadjusted p-values and let
+Hr1,Hr2,..., Hrmdenote the corresponding null hy-
+potheses. For strong control of the FWER at levelα, the Holm (1979) procedure proceeds as follows.
+Deﬁnej
+∗=min{j:prj>α/(m −j+1)}and reject
+hypotheses H rj,f o rj=1,...,j∗−1. If no suchj∗
+exists, reject all hypotheses. The step-down Holm ad-
+justedp-values are thus given by
+˜prj=max
+k=1,...,j/braceleftbigmin/parenleftbig(m−k+1)prk,1/parenrightbig/bracerightbig. (5)
+Holm’s procedure is less conservative than the stan-
+dard Bonferroni procedure which would multiply the
+unadjustedp-values bymat each step. Note that tak-
+ing successive maxima of the quantities min ((m−
+k+1)prk,1)enforces monotonicity of the adjusted
+p-values. That is, ˜pr1≤˜pr2≤···≤ ˜prm, and one can
+reject a particular hypothesis only if all hypotheses
+with smaller unadjusted p-values were rejected before-
+hand. Similarly, the step-down Šidák adjusted p-values
+are deﬁned as
+˜prj=max
+k=1,...,j/braceleftbig1−(1−prk)(m−k+1)/bracerightbig. (6)80 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+The Westfall and Young (1993) step-down min P
+adjustedp-values are deﬁned by
+˜prj=max
+k=1,...,j/braceleftbigg
+Pr/parenleftbigg
+min
+l∈{rk,...,rm}Pl≤prk/vextendsingle/vextendsingleHC
+0/parenrightbigg/bracerightbigg
+(7)
+and the step-down max Tadjustedp-values are deﬁned
+by
+˜prj=max
+k=1,...,j/braceleftbigg
+Pr/parenleftbigg
+max
+l∈{rk,...,rm}|Tl|≥|trk|/vextendsingle/vextendsingleHC
+0/parenrightbigg/bracerightbigg
+, (8)
+where |tr1|≥|tr2| ≥ ··· ≥ |trm|denote the observed
+ordered test statistics . Note that applying Boole’s in-
+equality to the quantities in (7) yields Holm’s p-values.
+A procedure based on the step-down min Padjusted
+p-values is thus less conservative than Holm’s proce-
+dure. For a proof of the strong control of the FWER forthe maxTand minPprocedures the reader is referred
+to Westfall and Young (1993, Section 2.8). Step-downprocedures such as the Holm procedure may be furtherimproved by taking into account logically related hy-potheses as described in Shaffer (1986).
+2.4.3 Step-up procedures. In contrast to step-down
+procedures, step-up procedures begin with the leastsigniﬁcantp-value,p
+rm, and are usually based on the
+following probability result of Simes (1986). Under
+the complete null hypothesis HC
+0and for independent
+test statistics, the ordered unadjusted p-valuesP(1)≤
+P(2)≤···≤P(m)satisfy
+Pr/parenleftbigg
+P(j)>αj
+m,∀j=1,...,m/vextendsingle/vextendsingleHC
+0/parenrightbigg
+≥1−α
+with equality in the continuous case. This inequality
+is known as the Simes inequality . In important cases
+of dependent test statistics, Simes showed that theprobability was larger than 1 −α; however, this does
+not hold generally for all joint distributions.
+Hochberg (1988) used the Simes inequality to derive
+the following FWER controlling procedure. For con-trol of the FWER at level α,l e tj
+∗=max{j:prj≤
+α/(m −j+1)}and reject hypotheses H rj,f o rj=
+1,...,j∗.I fn os u c hj∗exists, reject no hypothesis.
+Thestep-up Hochberg adjusted p-values are thus given
+by
+˜prj=min
+k=j,...,m/braceleftbigmin/parenleftbig(m−k+1)prk,1/parenrightbig/bracerightbig. (9)
+The Hochberg (1988) procedure can be viewed as
+the step-up analog of Holm’s step-down procedure,since the ordered unadjusted p-values are compared
+to the same critical values in both procedures, namely,α/(m −j+1). Related procedures include those ofHommel (1988) and Rom (1990). Step-up procedures
+often have been found to be more powerful than theirstep-down counterparts; however, it is important tokeep in mind that all procedures based on the Simes
+inequality rely on the assumption that the result proved
+under independence yields a conservative procedurefor dependent tests. More research is needed to de-termine circumstances in which such methods are ap-
+plicable and, in particular, whether they are applica-
+ble for the types of correlation structures encounteredin DNA microarray experiments. Troendle (1996) pro-posed a permutation-based step-up multiple testingprocedure which takes into account the dependence
+structure among the test statistics and is related to the
+Westfall and Young (1993) step-down max Tproce-
+dure.
+2.5 Control of the False Discovery Rate
+A different approach to multiple testing was pro-
+posed in 1995 by Benjamini and Hochberg. These au-
+thors argued that, in many situations, control of theFWER can lead to unduly conservative procedures andone may be prepared to tolerate some Type I errors,
+provided their number is small in comparison to the
+number of rejected hypotheses. These considerationsled to a less conservative approach which calls forcontrolling the expected proportion of Type I errorsamong the rejected hypotheses—the false discovery
+rate, FDR. Speciﬁcally, the FDR is deﬁned as FDR =
+E(Q) ,w h e r eQ=V/R ifR> 0a n d0i fR=0, that
+is, FDR =E(V/R |R> 0)Pr(R> 0). Under the com-
+plete null, given the deﬁnition of 0 /0=0w h e nR=0,
+the FDR is equal to the FWER; procedures that control
+the FDR thus also control the FWER in the weak sense.Note that earlier references to the FDR can be found inSeeger (1968) and Sori ´c (1989).
+Benjamini and Hochberg (1995) derived the fol-
+lowing step-up procedure for (strong) control of theFDR for independent test statistics. Let p
+r1≤pr2≤
+··· ≤prmdenote the observed ordered unadjusted
+p-values. For control of the FDR at level αdeﬁne
+j∗=max{j:prj≤(j/m)α }and reject hypotheses H rj
+forj=1,...,j∗.I fn os u c hj∗exists, reject no hy-
+pothesis. Corresponding adjusted p-values are
+˜prj=min
+k=j,...,m/braceleftbigg
+min/parenleftbiggm
+kprk,1/parenrightbigg/bracerightbigg
+. (10)
+Benjamini and Yekutieli (2001) proved that this proce-
+dure controls the FDR under certain dependence struc-
+tures (for example, positive regression dependence).
+They also proposed a simple conservative modiﬁcationMULTIPLE HYPOTHESIS TESTING 81
+of the procedure which controls the false discovery rate
+for arbitrary dependence structures. Adjusted p-values
+for the modiﬁed step-up procedure are
+˜prj=min
+k=j,...,m/braceleftbigg
+min/parenleftbiggm/summationtextm
+j=11/j
+kprk,1/parenrightbigg/bracerightbigg
+. (11)
+The above two step-up procedures differ only in their
+penalty for multiplicity, that is, in the multiplier applied
+to the unadjusted p-values. For the standard Benjamini
+and Hochberg (1995) procedure, the penalty is m/k
+[Equation (10)], while for the conservative Benjamini
+and Yekutieli (2001) procedure it is (m/summationtextm
+j=11/j)/k
+[Equation (11)]. For a large number mof hypothe-
+ses, the penalties differ by a factor of about log m.
+Note that the Benjamini and Hochberg procedure can
+be conservative even in the independence case, as it
+was shown that for this step-up procedure E(Q) ≤
+(m0/m)α ≤α. Until recently, most FDR controlling
+procedures were either designed for independent test
+statistics or did not make use of the dependence
+structure among the test statistics. In the spirit ofthe Westfall and Young (1993) resampling proceduresfor FWER control, Yekutieli and Benjamini (1999)
+proposed new FDR controlling procedures that use
+resampling-based adjusted p-values to incorporate cer-
+tain types of dependence structures among the test sta-tistics (the procedures assume, among other things, that
+the unadjusted p-values for the true null hypotheses are
+independent of the p-values for the false null hypothe-
+ses). Other recent work on FDR controlling procedurescan be found in Genovese and Wasserman (2001),
+Storey (2002), and Storey and Tibshirani (2001).
+In the microarray setting, where thousands of tests
+are performed simultaneously and a fairly large num-ber of genes are expected to be differentially expressed,
+FDR controlling procedures present a promising al-
+ternative to FWER approaches. In this context, onemay be willing to bear a few false positives as longas their number is small in comparison to the number
+of rejected hypotheses. The problematic deﬁnition of
+0/0=0 is also not as important in this case.
+2.6 Resampling
+In many situations, the joint (and even marginal) dis-
+tribution of the test statistics is unknown. Resamplingmethods (e.g., bootstrap, permutation) can be usedto estimate unadjusted and adjusted p-values while
+avoiding parametric assumptions about the joint dis-
+tribution of the test statistics. Here, we consider nullhypotheses H
+jof no association between variable Xjand a response or covariate Y,j=1,...,m .I nt h em i -
+croarray setting and for this type of null hypothesis,
+the joint distribution of the test statistics (T1,...,Tm)
+under the complete null hypothesis can be estimatedby permuting the columns of the gene expression datamatrixX(see Box 1). Permuting entire columns of
+this matrix creates a situation in which the response
+or covariateYis independent of the gene expression
+measures, while attempting to preserve the correlationstructure and distributional characteristics of the gene
+expression measures. Depending on the sample size
+n, it may be infeasible to consider all possible per-
+mutations; for large n, a random subset of Bpermu-
+tations (including the observed) may be considered.
+The manner in which the responses/covariates are per-
+muted should reﬂect the experimental design. For ex-ample, for a two-factor design, one should permute thelevels of the factor of interest within the levels of theother factor [see Section 9.3 in Scheffé (1959) and Sec-
+tion 3.1.2 in the present article].
+Note that while permutation is appropriate for the
+types of null hypotheses considered in this article, per-mutation procedures are not advisable for certain other
+types of hypotheses. For instance, consider the sim-
+ple case of a binary variable Y∈{1,2}and suppose
+that the null hypothesis H
+jis that the conditional dis-
+tributions ofXjgivenY=1 and ofXjgivenY=2
+have equal means, but possibly different variances.
+A permutation null distribution enforces equal distri-
+butions in the two groups, which is clearly stronger
+Box 1. Permutation algorithm for unadjusted
+p-values.
+For thebth permutation, b=1,...,B :
+1. Permute the ncolumns of the data matrix X.
+2. Compute test statistics t1,b,...,tm,bfor each hy-
+pothesis (i.e., gene).
+The permutation distribution of the test statistic Tj
+for hypothesis H j,j=1,...,m ,i sg i v e nb yt h e
+empirical distribution of tj,1,...,tj,B. For two-sided
+alternative hypotheses, the permutation p-value for
+hypothesis H jis
+p∗
+j=/summationtextB
+b=1I(|tj,b|≥|tj|)
+B,
+whereI(·)is the indicator function, which equals 1 if
+the condition in parentheses is true and 0 otherwise.
+82 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+than simply equal means. As a result, a null hypoth-
+esis Hjmay be rejected for reasons other than a dif-
+ference in means (e.g., difference in a nuisance para-meter). Bootstrap resampling is more appropriate forthis type of hypotheses, as it preserves the covariancestructure present in the original data. The reader is re-
+ferred to Pollard and van der Laan (2003) for a dis-
+cussion of resampling-based methods in multiple test-ing.
+Permutation adjusted p-values for the Bonferroni,
+Šidák, Holm and Hochberg procedures can be obtainedby replacingp
+jbyp∗
+j(see Box 1) in Equations (1), (2),
+(5), (6) and (9). The permutation unadjusted p-values
+can also be used for the FDR controlling proceduresdescribed in Section 2.5. For the step-down max T
+adjustedp-values (see Box 2) of Westfall and Young
+(1993), the complete null distribution of successivemaxima max
+l∈{rj,...,rm}|Tl|of the test statistics needs
+to be estimated. (The single-step case is simpler and
+is omitted here; in that case, one needs only thedistribution of the maximum max
+1≤l≤m|Tl|.)
+The reader is referred to Ge, Dudoit and Speed
+(2003) for a fast permutation algorithm for estimatingminPadjustedp-values.
+Box 2. Permutation algorithm for step-down
+maxTadjusted p-values based on Algorithms 2.8
+and 4.1 in Westfall and Young (1993).
+For thebth permutation, b=1,...,B :
+1. Permute the ncolumns of the data matrix X.
+2. Compute test statistics t1,b,...,tm,bfor each hy-
+pothesis (i.e., gene).
+3. Next, compute successive maxima of the test
+statistics
+um,b=|trm,b|,
+uj,b=max(uj+1,b,|trj,b|)forj=m−1,..., 1,
+whererjare such that |tr1|≥|tr2|≥···≥|trm|for
+theoriginal data.
+The permutation adjusted p-values are
+˜p∗
+rj=/summationtextBb=1I(uj,b≥|trj|)
+B,
+with the monotonicity constraints enforced by setting
+˜p∗
+r1←˜p∗
+r1,˜p∗
+rj←max(˜p∗
+rj,˜p∗
+rj−1)
+forj=2,...,m.
+2.7 Recent Proposals for DNA Microarray
+Experiments
+Efron et al. (2000), Golub et al. (1999), and Tusher,
+Tibshirani and Chu (2001) have recently proposed re-
+sampling algorithms for multiple testing in DNA mi-croarray experiments. However, these oft-cited proce-dures were not presented within the standard statisticalframework for multiple testing. In particular, the Type Ierror rates considered were rather loosely deﬁned, thusmaking it difﬁcult to assess the properties of the mul-tiple testing procedures. These recent proposals are re-viewed next, within the framework introduced in Sec-tions 2.2 and 2.3.
+2.7.1 Neighborhood analysis of Golub et al. Golub
+et al. (1999) were interested in identifying genes
+that are differentially expressed in patients with twotypes of leukemias: acute lymphoblastic leukemia(ALL, class 1) and acute myeloid leukemia (AML,class 2). (The study is described in greater detailin Section 3.1.3.) In their so-called neighborhood
+analysis , the authors computed a test statistic t
+jfor
+each gene [P(g,c) in their notation],
+tj=¯x1j−¯x2j
+s1j+s2j,
+where ¯xkjandskjdenote, respectively, the average and
+standard deviation of the expression measures of genejin the classk=1,2 samples. The Golub et al. statis-
+tic is based on an ad hoc deﬁnition of correlation andresembles at-statistic with an unusual standard error
+calculation (note 16 in Golub et al., 1999). It is not piv-
+otal, even in the Gaussian case or asymptotically, anda standard two-sample t-statistic should be preferred.
+(Note that this deﬁnition of pivotality is different fromsubset pivotality in Section 2.4: here, the statistic issaid to be pivotal if its null distribution does not dependon parameters of the distribution which generated thedata.) Statistics such as the Golub et al. statistic abovehave been used in meta-analysis to measure effect sizes(National Reading Panel, 1999).
+Golub et al. used the term neighborhood to refer to
+sets of genes with test statistics T
+jgreater in absolute
+value than a given critical value c>0, that is, sets of
+rejected hypotheses {j:Tj≥c}or{j:Tj≤−c}[these
+sets are denoted by N1(c,r) andN2(c,r) , respectively,
+in note 16 of Golub et al., 1999]. The ALL/AMLlabels were permuted B=400 times to estimate the
+complete null distribution of the numbers R(c) =
+V(c) =/summationtextm
+j=1I(Tj≥c)of false positives for different
+critical values c(similarly for the other tail, with
+Tj≤−c). Figure 2 in Golub et al. (1999) contains plotsMULTIPLE HYPOTHESIS TESTING 83
+of the observed R(c)=r(c) and permutation quantiles
+ofR(c) against critical values cfor one-sided tests.
+[We are aware that our notation can lead to confusion
+when compared with that of Golub et al. We chose to
+follow the notation of Sections 2.2 and 2.3 to alloweasy comparison with other multiple testing procedures
+described in the present article. For the Golub et al.
+method note that we use T
+jto denoteP(g,c) ,cto
+denoterandr(c) to denote a realization of R(c) ,t h a t
+is,|N1(c,r)|+|N2(c,r)|.] A critical value cis then
+chosen so that the chance of exceeding the observedr(c) under the complete null is equal to a prespeciﬁed
+levelα,t h a ti s ,G(c) =Pr(R(c) ≥r(c)|H
+C
+0)=α.
+Golub et al. provided no further guidelines for se-
+lecting the critical value cor discussion of the Type I
+error control of their procedure. Like some PFER,
+PCER or FWER controlling procedures, the neighbor-hood analysis considers the complete null distribution
+of the number of Type I errors V(c) =R(c) .H o w -
+ever, instead of controlling E(V(c)) ,E(V(c))/m or
+Pr(V(c) ≥1), it seeks to control a different quantity,
+G(c) =Pr(R(c) ≥r(c)|H
+C
+0).G(c) can be thought of
+as ap-value under HC
+0for the number of rejected hy-
+pothesesR(c) and is thus a random variable. Dudoit,
+Shaffer and Boldrick (2002) show that conditional on
+the observed ordered absolute test statistics, |t|(1)≥
+···≥|t|(m), the functionG(c) is left-continuous with
+discontinuities at |t|(j),j=1,...,m . AlthoughG(c)
+is decreasing in cwithin intervals (|t|(j+1),|t|(j)],i t
+is not, in general, decreasing overall and there may beseveral values of cwithG(c) =α. Hence, one must
+decide on an appropriate procedure for selecting the
+critical valuec. Two natural choices are given by the
+step-down and step-up procedures described in Dudoit,
+Shaffer and Boldrick (2002). It turns out that neither
+version provides strong control of any Type I errorrate. The step-down version does, however, control the
+FWER weakly. Finally, note that the number of permu-
+tationsB=400 used in Golub et al. (1999) is probably
+not large enough for reporting 99th quantiles in Fig-
+ure 2. A better plot for Figure 2 of Golub et al. might be
+of the error rate G(c) =Pr(R(c) ≥r(c)|H
+C
+0)versus
+the critical values c, because this does not require a pre-
+speciﬁed levelα. A more detailed discussion of the sta-
+tistical properties of neighborhood analysis and relatedﬁgures can be found in Dudoit, Shaffer and Boldrick
+(2002).
+2.7.2 Signiﬁcance Analysis of Microarrays. We con-
+sider the signiﬁcance analysis of microarrays (SAM)multiple testing procedure described in Tusher, Tibshi-
+rani and Chu (2001) and Chu et al. (2000). An ear-
+lier version of SAM (Efron et al., 2000) is discussed
+in detail in the technical report by Dudoit, Shaffer and
+Boldrick (2002).
+∗Note that the SAM articles also ad-
+dress the question of choosing appropriate test statis-
+tics for different types of responses and covariates.
+Here, we focus only on the proposed methods for deal-
+ing with the multiple testing problem and assume that
+a suitable test statistic is computed for each gene.
+SAM procedure from Tusher, Tibshirani and Chu
+(2001).
+1. Compute a test statistic tjfor each genejand deﬁne
+order statistics t(j)such thatt(1)≥t(2)≥ ··· ≥
+t(m). [The notation for the ordered test statistics
+is different here than in Tusher, Tibshirani and
+Chu (2001) to be consistent with previous notation
+whereby we set t(1)≥t(2)≥···≥t(m)andp(1)≤
+p(2)≤···≤p(m).]
+2. PerformBpermutations of the responses/covariates
+y1,...,yn. For each permutation bcompute the test
+statisticstj,band the corresponding order statistics
+t(1),b≥t(2),b≥···≥t(m),b. Note thatt(j),b may cor-
+respond to a different gene than the observed t(j).
+3. From theBpermutations, estimate the expected
+value (under the complete null) of the order statis-
+tics by ¯t(j)=(1/B)/summationtext
+bt(j),b.
+4. Form a quantile–quantile (Q–Q) plot (so-called
+SAM plot) of the observed t(j)versus the ex-
+pected ¯t(j).
+5. For a ﬁxed threshold NDelta1,l e tj0=max{j:¯t(j)≥0},
+j1=max{j≤j0:t(j)−¯t(j)≥NDelta1}andj2=min{j>
+j0:t(j)−¯t(j)≤−NDelta1}. [This is our interpretation of
+the description in the SAM manual (Chu et al.,
+2000): “For a ﬁxed threshold NDelta1, starting at the ori-
+gin, and moving up to the right ﬁnd the ﬁrst i=i1
+such thatd(i)−¯d(i)≥NDelta1.” That is, we take the “ori-
+gin” to be given by the index j0.] All genes with j≤
+j1are called signiﬁcant positive and all genes with
+j≥j2are called signiﬁcant negative . Deﬁne the up-
+per cut point, cut up(NDelta1)=min{t(j):j≤j1}=t(j1),
+and the lower cut point, cut low(NDelta1)=max{t(j):j≥
+j2}=t(j2).I fn os u c hj1(j2) exists, set cut up(NDelta1)=
+∞(cut low(NDelta1)=− ∞ ).
+6. For a given threshold NDelta1, the expected number of
+false positives, PFER, is estimated by computingfor each of the Bpermutations the number of genes
+witht
+j,babove cut up(NDelta1) or below cut low(NDelta1),a n d
+averaging this number over permutations.
+∗See “Note Added in Proof” on p. 101.84 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+7. A threshold NDelta1is chosen to control the expected
+number of false positives, PFER, under the com-plete null, at an acceptable nominal level.
+Thus, the SAM procedure in Tusher, Tibshirani and
+Chu (2001) uses ordered test statistics from the original
+data only for the purpose of obtaining global cutoffs
+for the test statistics. In the permutation, the cutoffs
+are kept ﬁxed and the PFER is estimated by countingthe number of genes with test statistics above/below
+these global cutoffs. Note that the cutoffs are actually
+random variables, because they depend on the observed
+test statistics.
+The reader is referred to Dudoit, Shaffer and Bold-
+rick (2002) for a more detailed discussion and com-
+parison of the statistical properties of the SAM pro-
+cedures in Efron et al. (2000) and Tusher, Tibshiraniand Chu (2001), including a derivation of the corre-
+sponding adjusted p-values and an extension which
+accounts for differences in variances among the or-
+der statistics. There, it is shown that both SAM pro-
+cedures aim to control the PFER (or PCER), but theEfron et al. (2000) procedure controls this error rate
+only in the weak sense. The only difference between
+the Tusher, Tibshirani and Chu (2001) version of SAM
+and standard procedures which reject the null H
+jfor
+|tj|≥cis in the use of asymmetric critical values cho-
+sen from the quantile–quantile plot (a discussion of
+asymmetric critical values is found in Braver, 1975).
+Otherwise, SAM does not provide any new deﬁnitionof Type I error rate nor any new procedure for control-
+ling this error rate. In summary, the SAM procedure
+in Efron et al. (2000) amounts to rejecting H
+(j)when-
+ever|t(j)−¯t(j)|≥NDelta1,w h e r eNDelta1is chosen to control the
+PFER weakly at a given level. By contrast, the SAMprocedure in Tusher, Tibshirani and Chu (2001) rejects
+H
+jwhenevertj≥cutup(NDelta1) ortj≤cutlow(NDelta1),w h e r e
+cutlow(NDelta1)and cut up(NDelta1)are chosen from the permuta-
+tion quantile–quantile plot and such that the PFER is
+controlled strongly at a given level.
+SAM control of the FDR. T h et e r m“ f a l s ed i s c o v -
+ery rate” is misleading, as the deﬁnition in SAM is
+different than the standard deﬁnition of Benjamini
+and Hochberg (1995): the SAM FDR is estimatingE(V |H
+C
+0)/R and notE(V/R) as in Benjamini and
+Hochberg. Furthermore, the FDR in SAM can be
+greater than 1 (cf. Table 3 in Chu et al., 2000, page 16).
+The issue of strong versus weak control is only men-
+tioned brieﬂy in Tusher, Tibshirani and Chu (2001) andthe authors claim that “SAM provides a reasonably ac-
+curate estimate for the true FDR.”2.8 Reporting the Results of Multiple Testing
+Procedures
+We have described a number of multiple testing pro-
+cedures for controlling different Type I error rates, in-
+cluding the FWER and the FDR. Table 2 summarizes
+these methods in terms of their main properties: deﬁ-
+nition of the Type I error rate, type of control of this
+error rate (strong versus weak), stepwise nature of theprocedure, distributional assumptions.
+For each procedure, adjusted p-values were derived
+as convenient and ﬂexible summaries of the strength ofthe evidence against each null hypothesis. The follow-
+ing types of plots of adjusted p-values are particularly
+useful in summarizing the results of different multiple
+testing procedures applied to a large number of genes.
+The plots allow biologists to examine various false pos-itive rates (FWER, FDR, or PCER) associated with dif-
+ferent gene lists. They do not require researchers to
+preselect a particular deﬁnition of Type I error rate orα-level, but rather provide them with tools to decide
+on an appropriate combination of number of genes and
+tolerable false positive rate for a particular experiment
+and available resources.
+Plot of ordered adjusted p-values ( ˜p
+(j)versusj).
+For a given number of genes r, say, this representa-
+tion provides the nominal Type I error rate for a given
+procedure when the rgenes with the smallest adjusted
+p-values for that procedure are declared to be differen-
+tially expressed [see panels (a) and (b) in Figures 3–5].
+Therefore, rather than choosing a speciﬁc type of er-ror control and α-level, biologists might ﬁrst select a
+numberrof genes which they feel comfortable follow-
+ing up. The nominal false positive rates (or adjusted p-
+values, ˜p
+(r)) corresponding to this number under var-
+ious types of error control and procedures can then
+be read from the plot. For instance, for r=10 genes,
+the nominal FWER from Holm’s step-down procedure
+might be 0.1 and the nominal FDR from the Ben-jamini and Hochberg (1995) step-up procedure might
+be 0.07.
+Plot of number of genes declared to be differentially
+expressed versus nominal Type I error rate ( rver-
+susα).This type of plot is the “transpose” of the pre-
+vious plot and can be used as follows. For a given nom-inal levelα, ﬁnd the number rof genes that would be
+declared to be differentially expressed under one pro-
+cedure, and read the level required to achieve that num-ber under other methods. Alternatively, ﬁnd the num-
+ber of genes that would be identiﬁed using a procedureMULTIPLE HYPOTHESIS TESTING 85
+TABLE 2
+Properties of multiple testing procedures
+Type I Strong or Stepwise Dependence
+Procedure error rate weak control structure structure
+Bonferroni FWER Strong Single General/ignore
+Šidák FWER Strong Single Positive orthant dependence
+minP FWER Strong Single Subset pivotality
+maxT FWER Strong Single Subset pivotality
+Holm (1979) FWER Strong Down General/ignore
+Step-down Šidák FWER Strong Down Positive orthant dependence
+Step-down min P FWER Strong Down Subset pivotality
+Step-down max T FWER Strong Down Subset pivotality
+Hochberg (1988) FWER Strong Up Some dependence (Simes)
+Troendle (1996) FWER Strong Up Some dependence
+Benjamini and Hochberg (1995) FDR Strong Up Positive regression dependenceBenjamini and Yekutieli (2001) FDR Strong Up General/ignore
+Yekutieli and Benjamini (1999) FDR Strong Up Some dependence
+Unadjustedp-values PCER Strong Single General/ignore
+SAM, Tusher, Tibshirani and Chu (2001) PFER (PCER) Strong Single General/hybrid
+SAM, Efron et al. (2000) PFER (PCER) Weak Single General
+Golub et al. (1999), step-down Pr (R≥r|H
+C
+0)(FWER) Weak Down General
+Golub et al. (1999), step-up Pr (R≥r|HC
+0) Weak Up General
+Notes . By “General/ignore,” we mean that a procedure controls the claimed Type I error rate for general dependence structures, but does
+not explicitly take into account the joint distribution of the test statistics. For the Tusher, Tibshirani and Chu (2001) SAM version, the term“General/hybrid” refers to the fact that only the marginal distribution of the test statistics is considered when computing the PFER. The test
+statistics are considered jointly only to determine the cutoffs cut
+up(NDelta1)and cut low(NDelta1)from the quantile–quantile plot.
+controlling the FWER at a ﬁxed nominal level α,a n d
+then identify how many others would be identiﬁed us-ing procedures controlling the FDR and PCER at that
+level.
+The multiple testing procedures considered in this
+article can be divided into the following two broad
+categories: those for which adjusted p-values are
+monotone in the test statistics, t
+j, and those for which
+adjustedp-values are monotone in the unadjusted
+p-values,pj. In general, the ordering of genes based
+on test statistics tjwill differ from that based on un-
+adjustedp-valuespj, as the test statistics of differ-
+ent genes may have different distributions. Within eachof these two classes, procedures will, however, pro-
+duce the same orderings of genes, whether they are
+designed to control the FWER, FDR or PCER. Theywill differ only in the cutoffs for signiﬁcance. That
+is, for a given nominal level α, an FWER control-
+ling procedure such as Bonferroni’s might identifyonly the ﬁrst 20 genes with the smallest unadjusted
+p-values, while an FDR controlling procedure such as
+Benjamini and Hochberg’s (1995) might retain an ad-ditional 15 genes with the next 15 smallest unadjusted
+p-values.3. DATA
+3.1 Microarray Data
+3.1.1 Apolipoprotein AI experiment of Callow et al.
+The apolipoprotein AI (apo AI) experiment was car-ried out as part of a study of lipid metabolism andartherosclerosis susceptibility in mice (Callow et al.,
+2000). Apolipoprotein AI is a gene known to play a
+pivotal role in high density lipoprotein (HDL) meta-bolism and mice with the apo AI gene knocked outhave very low HDL cholesterol levels. The goal of theexperiment was to identify genes with altered expres-sion in the livers of apo AI knock out mice comparedto inbred control mice. The treatment group consistedof eight inbred C57Bl/6 mice with the apo AI geneknocked out and the control group consisted of eightcontrol C57Bl/6 mice. For each of these 16 mice, targetcDNA was obtained from mRNA by reverse transcrip-
+tion and labeled using a red-ﬂuorescent dye, Cy5. The
+reference sample used in all hybridizations was pre-pared by pooling cDNA from the eight control miceand was labeled with a green-ﬂuorescent dye, Cy3.Target cDNA was hybridized to microarrays contain-ing 6,356 cDNA probes, including 257 related to lipidmetabolism. Each of the 16 hybridizations produced a86 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+(a) (b)
+(c) (d)
+FIG.3 . Apo AI experiment. (a)and(b)Plot of sorted permutation adjusted p-values, ˜p∗
+(j)versusj. Panel (b)is an enlargement of panel (a)for the 50genes with the largest absolute
+t-statistics |tj|. Adjustedp-values for procedures controlling the FWER ,FDR andPCER are plotted using solid, dashed and dotted lines, respectively. (c)Plot of adjusted p-values,
+−log10˜p∗
+jversust-statisticstj.(d)Quantile–quantile plot of t-statistics ;the dotted line is the identity line and the dashed line passes through the ﬁrst and third quartiles. Adjusted
+p-values were estimated based on all Bperm=/parenleftbig16
+8/parenrightbig=12,870permutations of the treatment/control labels, except for the SAM procedure for which Bsam=1000 random permutations
+were used. Note that the results for the Bonferroni, Holm, and Hochberg procedures are virtually identical ;similarly for the unadjusted p-value(rawp)and SAM Tusher procedures.MULTIPLE HYPOTHESIS TESTING 87
+(a) (b)
+(c) (d)
+FIG.4 . Bacteria experiment. (a)and(b)Plot of sorted permutation adjusted p-values, ˜p∗
+(j)versusj. Panel (b)is an enlargement of panel (a)for the 100genes with the largest
+absolutet-statistics |tj|. Adjustedp-values for procedures controlling the FWER ,FDR andPCER are plotted using solid, dashed and dotted lines, respectively. (c)Plot of adjusted
+p-values, −log10˜p∗
+jversust-statisticstj.(d)Quantile–quantile plot of t-statistics ;the dotted line is the identity line and the dashed line passes through the ﬁrst and third quartiles.
+Adjustedp-values were estimated based on all Bperm=222permutations of the Gram-positive/Gram-negative labels within the 22dose×time blocks, except for the SAM procedure
+for whichBsam=1000 random permutations were used. Note that the results for the Bonferroni, Holm, and Hochberg procedures are virtually identical, similarly for the un adjusted
+p-value(rawp)and SAM Tusher procedures.88 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+(a) (b)
+(c) (d)
+FIG.5 . Leukemia study. (a)and(b)Plot of sorted permutation adjusted p-values, ˜p∗
+(j)versusj. Panel (b)is an enlargement of panel (a)for the 100genes with the largest absolute
+t-statistics |tj|. Adjustedp-values for procedures controlling the FWER, FDR andPCER are plotted using solid, dashed and dotted lines, respectively. (c)Plot of adjusted p-values,
+−log10˜p∗
+jversust-statisticstj.(d)Quantile–quantile plot of t-statistics; the dotted line is the identity line and the dashed line passes through the ﬁrst and third quartiles. Adjusted
+p-values were estimated based on Bperm=500,000random permutations of the ALL/AML labels, except for the SAM procedure for which Bsam=1000 random permutations were
+used. Note that the results for the Bonferroni, Holm and Hochberg procedures are virtually identical, similarly for the unadjusted p-value(rawp)and SAM Tusher procedures.MULTIPLE HYPOTHESIS TESTING 89
+pair of 16-bit images which were processed using the
+software package Spot (Buckley, 2000). The resulting
+ﬂuorescence intensities were normalized as describedin Dudoit et al. (2002). Let x
+jidenote the base 2 loga-
+rithm of the Cy5/Cy3 ﬂuorescence intensity ratio forprobejin arrayi,i=1,..., 16,j=1,..., 6,356.
+Thenx
+jirepresents the expression response of gene
+jin either a control ( i=1,..., 8) or a treatment ( i=
+9,..., 16) mouse.
+Differentially expressed genes were identiﬁed by
+computing two-sample Welch t-statistics for each
+genej,
+tj=¯x2j−¯x1j
+/radicalBig
+s2
+1j/n1+s2
+2j/n2,
+where ¯x1jand¯x2jdenote the average expression
+measure of gene jin then1=8 control andn2=8
+treatment hybridizations, respectively. Similarly, s2
+1j
+ands2
+2jdenote the variance of gene j’s expression
+measure in the control and treatment hybridizations,
+respectively. Large absolute t-statistics suggest that the
+corresponding genes have different expression levelsin the control and treatment groups. To assess thestatistical signiﬁcance of the results, we considered themultiple testing procedures of Section 2 and estimatedunadjusted and adjusted p-values based on all possible
+/parenleftbig16
+8/parenrightbig=12,870 permutations of the treatment/control
+labels.
+3.1.2 Bacteria experiment of Boldrick et al. Boldrick
+et al. (2002) performed an in vitro study of the gene ex-pression response of human peripheral blood mononu-clear cells (PBMCs) to treatment with pathogenic
+bacterial components. The ability of an organism to
+combat microbial infection is crucial to survival. Hu-mans, along with other higher organisms, possess twoparallel, yet interacting, systems of defense against mi-crobial invasion, referred to as the innate and adaptiveimmune systems. It has recently been discovered thatcells of the innate immune system possess receptors
+which enable them to differentiate between the cellular
+components of different pathogens, including Gram-positive and Gram-negative bacteria, which differ intheir cell wall structure, fungi, and viruses. Boldricket al. sought to determine if, given the presence ofspeciﬁc receptors, cells of the innate immune system
+would have differing genomic responses to diverse
+pathogenic components. One important question thatwas addressed involved the response of these innateimmune cells (PBMCs) to different doses of bacter-ial components. Although one can experimentally treatcells with the same amount of two types of bacteria,
+because the bacteria may differ in size or composition,one cannot be sure that this nominally equivalent treat-ment is truly equivalent, in the sense that the strength
+of the stimulation is equivalent. To make a statement
+that the response of PBMCs to a certain bacterium is
+truly speciﬁc to that bacterium, one must therefore per-form a dose–response analysis to ensure that one is notsimply sampling from two different points on the same
+dose–response curve.
+Boldrick et al. performed a set of experiments (dose–
+response data set) that monitored the effect of threefactors on the expression response of PBMCs: bacte-ria type, dose of the bacterial component and time af-
+ter treatment. Two types of bacteria were considered:
+the Gram-negative B. pertussis and the Gram-positive
+S. aureus . Four doses of the pathogenic components
+were administered based on a standard dose: 1 X,1 0X,
+100X, 1000X,w h e r eXrepresents the number of bac-
+terial particles per human cell ( X=0.002 for the Gram
+positive andX=0.004 for the Gram negative). The
+gene expression response was measured at ﬁve timepoints after treatment: 0.5, 2, 4, 6 and 12 hours (extratime points at 1 and 24 hours were recorded for dose
+100X). A total of 44 hybridizations (2 ×4×5p l u s1
+and 24 hour measurements for dose 100 X) were per-
+formed using the Lymphochip, a specialized microar-ray comprising 18,432 elements enriched in genes thatare preferentially expressed in immune cells or which
+are of known immunologic importance. In each hy-
+bridization, ﬂuorescent cDNA targets were preparedfrom PBMC mRNA (red-ﬂuorescent dye, Cy5) and areference sample derived from a pool of mRNA fromsix immune cell lines (green-ﬂuorescent dye, Cy3).
+The microarray scanned images were analyzed using
+the GenePix package and the resulting intensities werepreprocessed as described in Boldrick et al. (2002). Foreach microarray i,i=1,..., 44, the base 2 logarithm
+of the Cy5/Cy3 ﬂuorescence intensity ratio for gene
+jrepresents the expression response x
+jiof that gene
+in PBMCs infected by the Gram-positive or Gram-negative bacteria for one of the 22 dose ×time com-
+binations (4 doses ×5 time points plus 2 extra time
+points for dose 100 X). The analysis below is based
+on a subset of 2,562 genes that were well measured inboth the dose–response and the diversity data sets (seeBoldrick et al., 2002, for details on the preselection ofthe genes).
+One of the goals of this experiment was to iden-
+tify genes that have a different expression response to90 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+treatment by Gram-positive and Gram-negative bacter-
+ial components. As there are clearly dose and time ef-fects on the expression response, the null hypothesisof no bacteria effect was tested for each gene based
+on a pairedt-statistic . For any given gene, let d
+hde-
+note the difference in the expression response to in-fection by the Gram-negative and Gram-positive bac-teria for thehth dose ×time block,h=1,..., 22. The
+pairedt-statistic is deﬁned as t=¯d/
+/radicalBig
+s2
+d/nd,w h e r e ¯d
+is the average of the nd=22 differences dhands2
+dis
+the variance of these 22 differences. To assess the sta-tistical signiﬁcance of the results, we considered themultiple testing procedures of Section 2 and estimated
+unadjusted and adjusted p-values based on all possible
+2
+22=4,194,304 permutations of the expression pro-
+ﬁles within the 22 dose ×time blocks (i.e., all permu-
+tations of the Gram-positive and Gram-negative labels
+within dose ×time blocks).
+3.1.3 Leukemia study of Golub et al. Correct diag-
+nosis of neoplasia is necessary for proper treatment.
+The traditional means of identiﬁcation and classiﬁca-tion of malignancies has been based upon histologyand immunohistologic staining of pathologic speci-
+mens. However, it is apparent, based upon the variabil-
+ity of response to treatment and length of survival aftertherapy, that there is variability within the current sys-tem of classiﬁcation. Genomic technologies may pro-vide the means by which neoplasms can be more accu-
+rately characterized and classiﬁed, thus leading to more
+effective diagnosis and treatment.
+As a demonstration of such capabilities, Golub
+et al. (1999) studied two hematologic malignancies:
+acute lymphoblastic leukemia (ALL, class 1) and
+acute myeloid leukemia (AML, class 2), which arereadily classiﬁable by traditional pathologic meth-ods. They sought to show that these two malig-
+nant entities could be identiﬁed and distinguished
+based on microarray gene expression measures alone.Therefore, one of the goals of the statistical analy-sis was to identify genes that differed most signif-
+icantly between the two diseases. Gene expression
+levels were measured using Affymetrix high-densityoligonucleotide chips containing p=6,817 human
+genes. The learning set comprises n=38 samples,
+27 ALL cases and 11 AML cases (data available
+at www.genome.wi.mit.edu/MPR). Following Golubet al. (Pablo Tamayo, personal communication), threepreprocessing steps were applied to the normalized
+matrix of intensity values available on the website:
+(1) thresholding—ﬂoor of 100 and ceiling of 16,000;(2) ﬁltering—exclusion of genes with max /min≤5o r
+(max−min)≤500, where max and min refer, respec-
+tively, to the maximum and minimum intensities for
+a particular gene across mRNA samples; (3) base 10
+logarithmic transformation. Box plots of the expressionmeasures for each of the 38 samples revealed the need
+to standardize the expression measures within arrays
+before combining data across samples. The data werethen summarized by a 3 ,051×38 matrixX=(x
+ji),
+wherexjidenotes the expression measure for gene j
+in mRNA sample i.
+Differentially expressed genes in ALL and AML
+patients were identiﬁed by computing two-sample
+Welcht-statistics for each gene jas in Section 3.1.1.
+To assess the statistical signiﬁcance of the results, we
+considered the multiple testing procedures of Section 2
+and estimated unadjusted and adjusted p-values based
+on 500,000 random permutations of the ALL/AML
+labels.
+3.2 Simulated Data
+While it is informative to examine the behavior of
+different multiple testing procedures on the microar-ray data sets described above, the genes cannot be un-
+ambiguously classiﬁed as differentially expressed or
+not. As a result, there is no “gold standard” for assess-ing Type I and Type II errors. Simulation studies are
+thus needed to evaluate the Type I error rate and power
+properties of each of the procedures. Artiﬁcial gene ex-pression proﬁles xand binary responses ywere gener-
+ated as in Box 3 for m=500 genes.
+The 17 multiple testing procedures described in
+Table 3 were applied to each of the simulated data
+sets. Unadjusted p-values for each of the genes were
+computed in two ways: by permutation of the n=
+n
+1+n2responses and from the t-distribution with
+n1+n2−2 degrees of freedom. Table 4 lists the
+different parameters used in the simulation.
+4. RESULTS
+4.1 Microarray Data
+The multiple testing procedures of Section 2 were
+applied to the three microarray data sets described in
+Section 3.1, using permutation to estimate unadjusted
+and adjustedp-values. For a given procedure, genes
+with permutation adjusted p-values ˜p∗
+j≤αwere de-
+clared to be differentially expressed at nominal level α
+for the Type I error rate controlled by the procedure un-der consideration. For each data set, ordered adjusted
+p-values were plotted for each procedure in panels (a)MULTIPLE HYPOTHESIS TESTING 91
+Box 3. Type I error rate and power calculations
+for simulated data.
+1. For theith response group, i=1,2, generateni
+independentm-vectors, or “artiﬁcial gene expres-
+sion proﬁles,” xfrom the Gaussian distribution
+with meanµiand covariance matrix NSigma1.T h em0
+“genes” for which µ1=µ2are not differentially
+expressed and correspond to the true null hypothe-ses. Model parameters used in the simulation arelisted in Table 4.
+2. For each of the mgenes, compute a two-sample
+t-statistic (with equal variances in the two re-
+sponse groups) comparing the gene expressionmeasures in the two response groups. Apply themultiple testing procedures of Section 2 to deter-mine which genes are differentially expressed forprespeciﬁed Type I error rates α. A summary of
+the multiple testing procedures applied in the sim-
+ulation study is given in Table 3.
+3. For each procedure, record the number R
+bof
+genes declared to be differentially expressed, thenumbersV
+bandTbof Type I and II errors,
+respectively, and the false discovery rate Qb,
+whereQb=Vb/RbifRb>0a n dQb=0i f
+Rb=0.
+Repeat Steps 1–3 Btimes and estimate the Type I er-
+ror rates and average power for each of the proceduresas follows:
+PCER =/summationtext
+bVb/m
+B,
+FWER =/summationtext
+bI(Vb≥1)
+B,
+FDR=/summationtext
+bQb
+B,
+Average power =1−/summationtext
+bTb/(m−m0)
+B.
+and (b) of Figures 3–5 (see Section 2.8 for guidelines
+on interpreting the ﬁgures). Different line types are
+used for different Type I error rate deﬁnitions: solid,dashed, and dotted lines are used for FWER, FDR andPCER controlling procedures, respectively. Panels (c)of Figures 3–5 display plots of adjusted p-values (on a
+log scale) versus t-statistics. Finally, panels (d) of Fig-
+ures 3–5 display permutation quantile–quantile plots
+of thet-statistics. Results for the Golub et al. (1999)neighborhood analysis were not plotted in these ﬁg-
+ures, because it led to rejection of virtually all hypothe-ses for two-sided alternatives (i.e., for tests based onabsolutet-statistics). As expected, for a given nominal
+α-level, the number of genes declared to be differen-
+tially expressed was the greatest for procedures con-trolling the PCER and the smallest for procedures that
+control the FWER. Indeed, adjusted p-values are the
+smallest for procedures that control the PCER (dottedcurves in panels (a) and (b) of Figures 3–5 for SAMTusher and for the procedure based on unadjusted
+p-values, rawp) and the largest for procedures that con-
+trol the FWER (solid curves for Bonferroni, Holm,Hochberg and maxT procedures). Also as expected, the
+SAM Tusher procedure and the standard unadjusted
+p-value procedure (rawp) for controlling the PCER
+produced very similar results (overlap of the brown andgoldenrod dotted curves for rawp and SAM Tusher inpanels (a) and (b) of the three ﬁgures). As in the simu-lation study, the Benjamini and Yekutieli (2001) FDRprocedure was much more conservative than the stan-
+dard Benjamini and Hochberg (1995) procedure (ma-
+genta and cyan dashed curves in panels (a) and (b)of Figures 3–5 for BY and BH, respectively). Forcontrol of the FWER, procedures based on the step-down maxTadjustedp-values generally provided a
+less conservative test than either the Bonferroni, Holmor Hochberg procedures. The Bonferroni procedure
+yielded similar results as its step-down (Holm) and
+step-up (Hochberg) analogs (solid curves in panels (a)and (b) of Figures 3–5 for the four procedures that con-trol the FWER).
+The different multiple testing procedures behaved
+similarly for the leukemia and bacteria data sets; how-ever, their behavior on the apo AI data set was quitedifferent due to the smaller sample sizes. Aside from
+the PCER procedures, only the max Tand standard
+Benjamini and Hochberg (1995) procedures rejectedany hypothesis at nominal levels α≤20%. With sam-
+ple sizesn
+1=n2=8, the total number of permuta-
+tions is only/parenleftbig16
+8/parenrightbig=12,870, and hence the two-sided
+unadjustedp-values must be at least 2 /12,870. As a
+result, the Bonferroni adjusted p-values must be at
+least 6,356×2/12,870≈1. This data set clearly high-
+lights the power of the max Tprocedure over standard
+Bonferroni-like procedures or even some proceduresthat control the FDR.
+Apo AI experiment. In this experiment, eight spotted
+probe sequences clearly stood out from the remaining
+sequences: they had the largest absolute t-statistics and
+the smallest adjusted p-values for all procedures (see92 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+TABLE 3
+Multiple testing procedures applied in the simulation study
+Name Description
+Bonf t Bonferroni procedure, reject H jif˜pj≤α[Equation (1)], pjcomputed from t-distribution with n1+n2−2d f
+Bonf perm Bonferroni procedure, reject H jif˜p∗
+j≤α[Equation (1)], p∗
+jcomputed by permutation as in Box 1
+Holm t Holm procedure, reject H rjif˜prj≤α[Equation (5)], pjcomputed from t-distribution with n1+n2−2d f
+Holm perm Holm procedure, reject H rjif˜p∗rj≤α[Equation (5)], p∗
+jcomputed by permutation as in Box 1
+Hoch t Hochberg procedure, reject H rjif˜prj≤α[Equation (9)], pjcomputed from t-distribution with n1+n2−2d f
+Hoch perm Hochberg procedure, reject H rjif˜p∗rj≤α[Equation (9)], p∗
+jcomputed by permutation as in Box 1
+maxT ss Single-step max Tprocedure, reject H jif˜p∗
+j≤α[Equation (4)]
+maxT sd Step-down max Tprocedure, reject H rjif˜p∗rj≤α[Equation (8), Box 2]
+FDR BH t Benjamini and Hochberg (1995) procedure, reject H rjif˜prj≤α[Equation (10)],
+pjcomputed from t-distribution with n1+n2−2d f
+FDR BH perm Benjamini and Hochberg (1995) procedure, reject H rjif˜p∗rj≤α[Equation (10)],
+p∗
+jcomputed by permutation as in Box 1
+FDR BY t Benjamini and Yekutieli (2001) procedure, reject H rjif˜prj≤α[Equation (11)],
+pjcomputed from t-distribution with n1+n2−2d f
+FDR BY perm Benjamini and Yekutieli (2001) procedure, reject H rjif˜p∗rj≤α[Equation (11)], p∗
+jcomputed by permutation as in Box 1
+PCER ss t Reject H jifpj≤α;pjcomputed from t-distribution with n1+n2−2d f
+PCER ss perm Reject H jifp∗
+j≤α;p∗
+jcomputed by permutation as in Box 1
+SAM tusher Tusher, Tibshirani and Chu (2001) SAM procedure (Section 2.7.2), reject H (j)if˜p∗
+(j)≤α, estimated by permutation
+Golub sd Golub et al. (1999) neighborhood analysis, step-down version (Section 2.7.1), reject H (j)if˜p∗
+(j)≤α, estimated by
+permutation
+Golub su Golub et al. (1999) neighborhood analysis, step-up version (Section 2.7.1), reject H (j)if˜p∗
+(j)≤α, estimated by
+permutation
+Note . The reader is referred to the technical report by Dudoit, Shaffer and Boldrick (2002) for details on adjusted p-value calculations for
+SAM and for the step-down and step-up versions of Golub et al.’s (1999) neighborhood analysis.
+TABLE 4
+Simulation parameters
+Parameter Simulation A Simulation B Simulation C Simulation D
+Number of genes, m 500 500 500 500
+Mean vectors
+µ1 0m 0m 0m 0m
+µ2 0m 0m [bm·0.1,−bm·0.1,0m·0.8][bm·0.1,−bm·0.1,0m·0.8]
+Covariance matrix, NSigma1S m Sm Sm Sm
+Sample sizes
+n1 25 5 25 5
+n2 25 5 25 5
+Number of simulations, B 500 500 500 500
+Number of permutations for SAM, Bsam 1000/parenleftbign1+n2n1/parenrightbig1000/parenleftbign1+n2n1/parenrightbig
+Number of permutations for
+neighborhood analysis, Bnbd1000/parenleftbign1+n2n1/parenrightbig1000/parenleftbign1+n2n1/parenrightbig
+Number of permutations for
+unadjustedp-values,Bperm25,000/parenleftbign1+n2n1/parenrightbig25,000/parenleftbign1+n2n1/parenrightbig
+Nominal Type I error rate, α 0.05 0.05 0.05 0.05
+(PCER, FWER or FDR)
+Note . Here, 0ndenotes ann-vector with entries equal to 0 and bndenotes then-vector 1.5·(1,2,...,n)/n .Smis them×mcovariance
+matrix for a random subset of mgenes in the Boldrick et al. (2002) experiment described in Section 3.1.2.MULTIPLE HYPOTHESIS TESTING 93
+drop for the smallest eight t-statistics in the Q–Q plot
+of Figure 3, panel (d)). In particular, all eight max T
+adjustedp-values were less than 0.05. The negative
+t-statistics suggest that the genes are under-expressed
+in the apo AI knock out mice compared to the controlmice. The eight probe sequences actually correspond to
+only four distinct genes: apo AI (three copies), apo CIII
+(two copies), sterol C5 desaturase (two copies), and anovel EST (one copy). All changes were conﬁrmed by
+real-time quantitative PCR (RT-PCR) as described in
+Callow et al. (2000). The presence of apo AI amongthe differentially expressed genes is to be expected,
+because this is the gene that was knocked out in the
+treatment mice. The apo CIII gene, also associated withlipoprotein metabolism, is located very close to the apo
+AI locus. Callow et al. (2000) showed that the down-
+regulation of apo CIII was actually due to geneticpolymorphism rather than lack of apo AI. The presence
+of apo AI and apo CIII among the differentially
+expressed genes thus provides a check of the statisticalmethod, if not a biologically interesting ﬁnding. Sterol
+C5 desaturase is an enzyme which catalyzes one of
+the terminal steps in cholesterol synthesis and thenovel EST shares sequence similarity to a family of
+ATPases.
+Bacteria experiment. In this experiment, 66 spot-
+ted DNA sequences had max Tadjustedp-values less
+than 0.05 and several of these sequences actually repre-
+sented different clones of the same genes: CD64 (three
+copies), IκB alpha (ﬁve copies), SHP-1 (two copies)
+and plasma gelsolin (two copies) (see gene list in Ap-
+pendix A of Dudoit, Shaffer and Boldrick (2002)). In
+contrast to the apo AI experiment, the genes exhib-ited a continuum of change in expression and we could
+not identify a group of genes that clearly stood out
+from the rest. This is likely due in part to the biolog-ical nature of the experiment, in which the two bac-
+terial treatments were very similar in their stimulatory
+effect and extreme differences in gene expression arenot present. As discussed in Section 2.8 and illustrated
+in panel (c) of Figure 4, the multiple testing proce-
+dures fall into two main categories: those for whichadjustedp-values are monotone in the test statistics
+(maxT and SAM Tusher, i.e., purple and goldenrod
+plotting symbols in panel (c), respectively), and thosefor which adjusted p-values are monotone in the un-
+adjustedp-values (all other procedures). Within each
+of these classes, the procedures produce the same geneorderings and differ only in the cutoffs for signiﬁcance.
+Figure 6 displays a comparison of the gene orderingsbased on absolute t-statistics, |t
+j|, and permutation un-
+adjustedp-values,p∗
+j. It is a plot, for each number of
+genesG, of the proportion of genes having both the G
+largest absolute t-statistics and the Gsmallest permu-
+tation unadjusted p-values, that is, a plot of |{1≤j≤
+m:p∗
+j≤p∗
+(G)and|tj|≥|t|(G)}|/GversusG.T h e r e
+are some discrepancies between the two orderings, es-
+pecially among the 10 most signiﬁcant genes found by
+each criterion. The overlap proportion can be as low as
+25% forG=4; forG=100 onward, the agreement
+exceeds 80%. Discrepancies arise because the test sta-tisticsT
+jof different genes have different permutation
+distributions. A detailed discussion of the biological
+ﬁndings can be found in Boldrick et al. (2002).
+Leukemia study. For this data set, 92 genes had
+maxTadjustedp-values less than 0.05 [see gene
+list in Appendix B of Dudoit, Shaffer and Boldrick
+(2002)]. There is signiﬁcant overlap between this list
+and the gene list in Golub et al. (1999, page 533 and
+Figure 3B). Refer to Golub et al. for a description of
+the genes and their involvement in ALL and AML.
+Additional ﬁgures and detailed discussions of the
+results for SAM and neighborhood analysis are given
+in the technical report by Dudoit, Shaffer and Boldrick
+(2002). As with the bacteria experiment, the genesexhibited a continuum of change in expression and we
+could not identify a group of genes that stood out from
+the rest.
+Several biological factors likely underlie the dis-
+parity between the three data sets. Whereas the apo
+AI experiment compares a relatively pure cell pop-
+ulation (hepatocytes) from wild-type and knock outmice with an otherwise identical genetic background,
+the bacteria experiment and the leukemia study fo-
+cus on comparisons of samples composed of a vari-
+ety of cell types from genetically diverse individuals.
+In both of the latter cases, because of the nature of
+the complex samples studied, RNA may have been
+isolated from cell populations that were not affected
+by the variables being compared. For instance, within
+the leukemia study, one would anticipate that genesexhibiting strong differences between AML and ALL
+specimens would be myeloid- or lymphoid-speciﬁc, re-
+spectively. As the specimens studied invariably include
+some non-leukemic (i.e., normal) cells of myeloid or
+lymphoid origin, the contribution of gene expression
+from these cells likely buffers the tumor-speciﬁc ex-
+pression signatures. In the bacterial study, the dynamicnature of the experimental design (i.e., with variation
+in time and dose of bacteria), and the presence of cell
+types unaffected by the bacterial treatment, similarly
+confounds such analysis.94 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+FIG.6 . Bacteria experiment. The proportion of genes having both the Glargest absolute t-statistics and the Gsmallest permutation
+unadjustedp-values is plotted versus G:|{1≤j≤m:p∗
+j≤p∗
+(G)and|tj|≥|t|(G)}|/GversusG. The bottom panel is an enlargement of
+the top panel for G≤100. The plots provide a comparison of the gene lists produced by the two main types of procedures described in
+Section 2.8.
+4.2 Simulated Data
+Figures 7–9 display plots of Type I error rates and
+power for different multiple testing procedures in thesimulation study (see Box 3 and Tables 3 and 4 fora description of the procedures and parameters forsimulation models A–D). For each procedure, adjustedp-values were computed as detailed in Section 2,
+using both at-distribution and permutation to obtain
+unadjustedp-values. Null hypotheses were rejected
+whenever the corresponding adjusted p-values were
+less than a prespeciﬁed level α. Procedures designed
+to control the FWER, FDR and PCER are labeledin purple, green and orange, respectively. For eachdeﬁnition of Type I error rate, red plotting symbolsare used for the procedures which are supposed tocontrol this error rate. With the exception of Golubsd and Golub su, all procedures controlled the claimedType I error rate in the strong sense (see, for example,the PCER panels in Figures 8 and 9, where theGolub sd and Golub su actual PCER are much greaterthan the nominal 0.05 level). As expected, procedures
+that control the FWER were the most conservative,followed by procedures that control the FDR (power
+comparison in the bottom right panels of Figures 8
+and 9).
+Procedures that control the FWER. The simulation
+study allowed us to compare the performance of single-step versus stepwise procedures (i.e., Bonferroni ver-sus Holm and Hochberg procedures, and single-step
+maxTversus step-down max Tprocedures). Although
+stepwise procedures are generally less conservativethan single-step procedures, we found that the differ-ence was minute in our applications. This is to be
+expected in testing problems with a large number of
+null hypotheses m, most of which are true. In such
+cases, the correction (m−k+1)used in the Holm
+and Hochberg procedures is very close to the Bonfer-roni correction mfor moderatek[see Equations (5)
+and (9), where krefers to thekhypotheses with the
+smallest unadjusted p-values]. In contrast, incorporat-
+ing the dependence structure among the genes, as inMULTIPLE HYPOTHESIS TESTING 95
+Simulation A Simulation B
+FIG.7 . Simulations A and B—complete null. PCER, FWER and FDR for different multiple testing procedures in Simulation A (left)
+and Simulation B (right). The top panels display PCER =/summationtext
+bRb/mB and simulation standard errors (2 SE) ; the bottom panels display
+FWER =FDR=/summationtext
+bI(Rb≥1)/Band simulation standard errors (2 SE) . For each deﬁnition of the Type I error rate, the procedures which
+are designed to control this error rate are highlighted in red. The blue line corresponds to a nominal Type I error rate of α=5%.I nt h eF D R
+panels, the simulation average of the nominal SAM FDR is plotted in blue. Details on each of the multiple testing procedures and simulationparameters are given in Tables 3and4, respectively.
+the maxTprocedures, led in some situations to sub-
+stantial gains in power over the Bonferroni, Holm andHochberg procedures. The largest gains in power wereachieved for small sample sizes when the unadjusted
+p-values used in the Bonferroni, Holm and Hochberg
+procedures were estimated by permutation (for exam-ple, in the bottom right panel of Figure 9 for simula-tion model D, Bonf perm, Holm perm and Hoch permhave power around 0, while maxT ss and maxT sd have
+power around 8%).
+Procedures that control the FDR. As expected, for a
+ﬁxed nominal level α=0.05, the two FDR procedures
+provided substantial increases in power compared tothe more conservative FWER procedures, but were ingeneral less powerful than procedures that control thePCER (for example, in the bottom right panel of Fig-96 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+FIG.8 . Simulation C— 20% false nulls(m0/m=0.8).PCER ,FWER ,FDR and average power for different multiple testing
+procedures. The top left panel displays PCER =/summationtext
+bVb/mB and simulation standard errors (2 SE) ; the top right panel displays
+FWER =/summationtext
+bI(Vb≥1)/Band simulation standard errors (2 SE) ; the bottom left panel displays FDR=/summationtext
+bQb/Band simulation standard
+errors (2 SE) ; the bottom right panel displays average power =1−/summationtext
+bTb/(m−m0)Band simulation standard errors (2 SE) .F o re a c h
+deﬁnition of the Type I error rate, the procedures which are designed to control this error rate are highlighted in red. The blue line correspondsto a nominal Type I error rate of α=5%.I nt h e FDR panel, the simulation average of the nominal SAM FDR is plotted in blue. Details on
+each of the multiple testing procedures and simulation parameters are given in Tables 3and4, respectively.
+ure 8, the power of FDR BH perm is about 81% com-
+pared to about 70% for maxT sd and about 87% for
+PCER ss perm). Also as expected, the Benjamini andYekutieli (2001) FDR procedure was more conserva-
+tive than the Benjamini and Hochberg (1995) proce-
+dure (up to a 30% difference in power in Figure 9 for
+FDR BH t and FDR BY t) and controlled the FDR
+much below the nominal 5% level (the actual FDRwas usually less than 1%). For the simulation models,
+the standard Benjamini and Hochberg procedure con-trolled the FDR at the nominal 5% level, in spite of thecorrelations among the test statistics.
+SAM procedures. A detailed discussion and com-
+parison of the SAM procedures in Efron et al. (2000)
+and Tusher, Tibshirani and Chu (2001), including thederivation of adjusted p-values, are found in Dudoit,MULTIPLE HYPOTHESIS TESTING 97
+FIG.9 . Simulation D— 20% false nulls(m0/m=0.8).PCER, FWER, FDR and average power for different multiple testing
+procedures. The top left panel displays PCER =/summationtext
+bVb/mB and simulation standard errors (2 SE); the top right panel displays
+FWER =/summationtext
+bI(Vb≥1)/Band simulation standard errors (2 SE) ; the bottom left panel displays FDR=/summationtext
+bQb/Band simulation standard
+errors (2 SE) ; the bottom right panel displays average power =1−/summationtext
+bTb/(m−m0)Band simulation standard errors (2 SE) .F o re a c h
+deﬁnition of the Type I error rate, the procedures which are designed to control this error rate are highlighted in red. The blue line corresponds
+to a nominal Type I error rate of α=5%. In the FDR panel, the simulation average of the nominal SAM FDR is plotted in blue. Details on
+each of the multiple testing procedures and simulation parameters are given in Tables 3and4, respectively.
+Shaffer and Boldrick (2002). In contrast to the earlier
+version of SAM in Efron et al. (2000), the SAM pro-cedure in Tusher, Tibshirani and Chu (2001) is not en-tirely based on the permutation distribution of the or-der statistics and controls the PCER in the strong sense.The FDR panels of Figures 7–9 display the average of
+thenominal SAM FDR (
+/hatwidestFDR0
+b=/hatwiderPFER0
+b/Rb,w h e r e/hatwiderPFER0
+bis the SAM estimate of the PFER for the bth
+simulation), as well as the average of the actual SAM
+FDR,Qb, over theBsimulations. In some of the simu-
+lations, the nominal SAM FDR was much smaller than
+the actual FDR; in other instances, the nominal SAM
+FDR was actually greater than 1. SAM is very similar
+in power to standard procedures that control the PCER
+in the strong sense (compare the power for SAM tusher98 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+to the power for PCER ss t and PCER ss perm in the
+bottom right panels of Figures 8 and 9).
+Neighborhood analysis. As shown in Figures 7–9,
+the step-down version of neighborhood analysis con-
+trols the FWER under the complete null (weak con-
+trol), but fails to do so when there are false null hy-
+potheses. The step-up version of neighborhood analy-sis does not control any known type of error rate, not
+even the PCER, and can lead to very high Type I er-
+ror rates (see the PCER, FDR and FWER panels for
+Golub sd and Golub su in Figures 8 and 9). A detailed
+discussion of neighborhood analysis is given in Dudoit,
+Shaffer and Boldrick (2002).
+Nominalt-distribution versus permutation p-values.
+Because the gene expression measures were simu-
+lated as Gaussian random variables, the two-sample
+t-statistics should have a t-distribution with n
+1+n2−
+2 degrees of freedom. The simulation results con-
+ﬁrm that, in this case, procedures based on permu-tationp-values can be much more conservative than
+procedures based on the nominal p-values from the
+t-distribution, the largest differences being for small
+sample sizes (n
+1=n2=5, for Simulation B in Fig-
+ure 7, right panel, and Simulation D in Figure 9). The
+smaller the sample sizes n1andn2, the smaller the
+total number of possible permutations, B=/parenleftbign1+n2
+n1/parenrightbig,
+and hence the larger the smallest possible unadjusted
+p-value, 2/B. Procedures most affected by the dis-
+creteness of the permutation unadjusted p-values were
+the FDR step-up procedures and the Bonferroni, Holm
+and Hochberg procedures. Procedures based on the
+maxTadjustedp-values, which involve the test statis-
+tics rather than the unadjusted p-values, did not suffer
+from this problem.
+5. DISCUSSION
+In this article, we have discussed different ap-
+proaches to large-scale multiple hypothesis testing inthe context of DNA microarray experiments. Standard
+multiple testing procedures, as well as recent and oft-
+cited proposals for microarray experiments, were com-
+pared in terms of their Type I error rate control and
+power properties, using actual gene expression data
+sets and by simulation.
+The comparison study highlighted ﬁve desirable fea-
+tures of multiple testing procedures for large multiplic-
+ity problems such as those arising in microarray ex-
+periments: (1) control of an appropriate and precisely
+deﬁned Type I error rate ;( 2 ) strong control of theType I error rate, that is, control of this error rate un-
+der any combination of true and false null hypothesescorresponding to the true data generating distribution;(3) accounting for the joint distribution of the test sta-
+tistics; (4) reporting the results in terms of adjusted
+p-values ; (5) availability of efﬁcient resampling algo-
+rithms for nonparametric procedures.
+A number of recent articles have addressed the ques-
+tion of multiple testing in the context of microarray
+experiments (Dudoit et al., 2002; Efron et al., 2000;
+Golub et al., 1999; Kerr, Martin and Churchill, 2000;Manduchi et al., 2000; Pollard and van der Laan, 2003;Tusher, Tibshirani and Chu, 2001; Westfall, Zaykinand Young, 2001). However, not all proposed solutions
+were cast within a standard statistical framework and
+some fail to provide adequate Type I error rate con-trol. In particular, the Type I error rates consideredin some of these articles were rather loosely deﬁned,thus making it difﬁcult to assess the properties of the
+multiple testing procedures. Regarding item (1), con-
+trol of the per-comparison error rate is often not ade-quate, as it does not really deal with the multiplicityproblem. Although not stated explicitly in Efron et al.(2000) and Tusher, Tibshirani and Chu (2001), both
+SAM procedures are based on control of the PFER,
+a constant multiple of the PCER. Given the informa-tion provided in Golub et al. (1999), we determinedthat the Type I error rate in neighborhood analysis isG(c) =Pr(R(c) ≥r(c)|H
+C
+0),t h a ti s ,a sa p-value
+for the number of rejected hypotheses under the com-
+plete null [in this case, the number of Type I errors,V(c) ]. This is a rather unusual deﬁnition and a more
+detailed discussion of the procedure and its limitationsis given below and in the technical report by Dudoit,
+Shaffer and Boldrick (2002). In the microarray setting,
+where it is very unlikely that no genes are differen-tially expressed, property (2) of strong control of theType I error rate is essential, whether it be the FWER,
+PCER or FDR. The simulation study demonstrated that
+some of the procedures did not provide strong con-trol of the Type I error rate, that is, the Type I er-ror rate was no longer controlled at the nominal levelwhen a subset of null hypotheses was allowed to be
+false. The Efron et al. (2000) version of SAM and
+the neighborhood analysis of Golub et al. (1999) bothrely on the distribution of ordered test statistics un-
+der the complete null hypothesis, and therefore provideonly weak control of the Type I error rate. Regarding
+point (3), the comparison study highlighted the gains
+in power that can be achieved by taking into accountMULTIPLE HYPOTHESIS TESTING 99
+the joint distribution of the test statistics when assess-
+ing statistical signiﬁcance (max Tprocedures versus
+Bonferroni, Holm and Hochberg procedures). Rather
+than simply reporting rejection or not of the null hy-
+pothesis of no differential expression for a given gene,
+we have found adjusted p-values (point 4) to be par-
+ticularly useful and ﬂexible summaries of the strengthof the evidence against the null. The adjusted p-value
+for a particular gene reﬂects the nominal false posi-
+tive rate for the entire experiment when genes withsmallerp-values are declared to be differentially ex-
+pressed. Adjusted p-values may also be used to sum-
+marize and compare the results from different mul-
+tiple testing procedures as described in Section 2.8.
+Finally, as mentioned in item 5, efﬁcient resampling-based nonparametric multiple testing procedures are
+needed to take into account the complex and unknown
+dependence structures among the expression measures
+of different genes. Resampling procedures were pro-
+posed in Westfall and Young (1993) for FWER control;however, due to the large-scale nature of microarray
+experiments, computational issues remain to be ad-
+dressed in addition to methodological ones (Ge, Dudoitand Speed, 2003).
+Procedures that control the FWER. Results on both
+simulated and microarray data sets suggest that theWestfall and Young (1993) step-down max Tproce-
+dure is well-adapted for DNA microarray experiments.
+Like the classical Bonferroni procedure, it providesstrong control of the FWER. However, it can be sub-
+stantially more powerful than the Bonferroni, Holm
+and Hochberg procedures, because it takes into ac-
+count the dependence structure among the test statistics
+of different genes. In addition, the max Tprocedure
+performed very well compared to other procedures
+(including some FDR procedures), when adjusted
+p-values were estimated by permutation. Because the
+maxTadjustedp-values are based on the test statistics
+rather than the unadjusted p-values, the procedure does
+not suffer as much as others from the small number
+of possible permutations associated with small sample
+sizes.
+Procedures that control the FDR. In the microarray
+setting, where thousands of tests are performed simul-
+taneously and a fairly large number of genes are ex-
+pected to be differentially expressed, procedures that
+control the FDR present a promising alternative to ap-
+proaches that control the FWER. In this context, onemay be willing to bear a few false positives as long as
+their number is small in comparison to the number ofrejected hypotheses. Most FDR controlling procedures
+proposed thus far either control the FDR under restric-tive dependence structures (e.g., independence or pos-
+itive regression dependence) or do not exploit the joint
+distribution of the test statistics. It would thus be usefulto develop procedures, in the spirit of the Westfall and
+Young (1993) min Pand maxTprocedures for FWER
+control, that strongly control the FDR and take into ac-count the dependence structure between test statistics.
+Such procedures could lead to increased power, as in
+the case of FWER control. Initial work in this directioncan be found in Yekutieli and Benjamini (1999), as-
+suming unadjusted p-values for the true null hypothe-
+ses are independent of the p-values for the false null
+hypotheses. Reiner, Yekutieli and Benjamini (2001)
+applied different FDR controlling procedures to the
+apo AI data set.
+SAM procedures. The Efron et al. (2000) and
+Tusher, Tibshirani and Chu (2001) versions of SAM
+seem very similar at ﬁrst glance. A fundamental dif-
+ference exists, however, in the estimation of the ex-pected number of Type I errors, E(V |H
+C
+0), leading
+to the choice of the threshold NDelta1. The difference lies in
+the use of ordered test statistics in Efron et al. (2000)to estimate this error rate under the complete null hy-
+pothesis. In the Efron et al. (2000) version, the PFER
+is thus only weakly controlled, while in the Tusher,
+Tibshirani and Chu (2001) version it is strongly con-
+trolled. The only difference between the latter version
+of SAM and standard procedures which reject the nullH
+jfor|tj|≥cis in the use of asymmetric critical val-
+ues chosen from a quantile–quantile plot. Otherwise,
+SAM does not provide any new deﬁnition of Type I er-ror rate nor any new procedure for controlling this error
+rate. There are a number of practical problems linked
+to the implementation of the Tusher, Tibshirani andChu (2001) SAM procedure (software package www-
+stat.stanford.edu/ ∼tibs/SAM/index.html). The user
+does not choose a signiﬁcance level ahead of time;rather, the PFER is estimated for a ﬁxed set of thresh-
+oldsNDelta1. In some cases, it can be hard to select NDelta1for
+a prespeciﬁed PFER. The use of adjusted p-values,
+derived in Dudoit, Shaffer and Boldrick (2002), pro-
+vides a more ﬂexible implementation of the proce-
+dure. As part of the SAM method, Efron et al. (2000)and Tusher, Tibshirani and Chu (2001) suggest test
+statistics for identifying differentially expressed genes
+for different types of responses and covariates. Thesetest statistics are based on standard t-o rF-statistics,
+with a “fudge” factor in the denominator to deal with100 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+the small variance problem encountered in microar-
+ray experiments (Lönnstedt and Speed, 2002). The“shrunken” statistics were not used in the compari-
+son study in Section 4, because we wanted to focus
+on Type I error rate control for a given choice of test
+statistics.
+Neighborhood analysis. Although not stated explic-
+itly in Golub et al. (1999), the error rate controlled bythe neighborhood analysis is a p-value for the num-
+ber of rejected hypotheses under the complete null,
+that is,G(c) =Pr(R(c) ≥r(c)|H
+C
+0). A critical value
+cis then chosen to control this unusual error rate at
+a prespeciﬁed nominal level α. Dudoit, Shaffer and
+Boldrick (2002) considered a step-down and a step-
+up version of neighborhood analysis to deal with the
+nonmonotonicity of G(c) and derived corresponding
+adjustedp-values. Because neighborhood analysis is
+based on the distribution of order statistics under the
+complete null, only weak control of the Type I errorrate can be achieved. In turns out that the step-down
+version controls the FWER weakly, while the step-up
+version does not control any standard error rate, not
+even the PCER. Application of neighborhood analysis
+to the three microarray data sets of Section 3 resultedin unreasonably long lists of genes declared differen-
+tially expressed, especially for two-sided hypotheses.
+This can be seen also in Figure 2 of Golub et al. (1999),
+where a critical value near zero is used for the test sta-
+tistics and thousands of genes are declared to be dif-ferentially expressed. Golub et al. applied the neigh-
+borhood analysis separately for each type of one-sided
+hypothesis (overexpression in AML compared to ALLand vice versa); it is not clear how an overall Type I
+error rate can be obtained.
+5.1 Open Questions
+In many situations, DNA microarray experiments
+are used as a ﬁrst exploratory step in the process
+of identifying subsets of genes involved in important
+biological processes. Genes identiﬁed by microarrayanalysis are typically followed up using other assays
+such as RT-PCR or in situ hybridization. In this
+exploratory context, one may be more interested in
+minimizing the Type II error (i.e., maximizing power)
+rather than minimizing the Type I error, that is, onemay be willing to tolerate a larger number of false
+positives in order to capture as many “interesting”
+genes as possible. Contrary to common belief, multipletesting approaches are actually very relevant to such
+exploratory analyses. The reporting methods describedin Section 2.8 can be used gainfully in an exploratory
+setting by allowing researchers to select an appropriatecombination of number of genes and tolerable false
+positive rate for a particular experiment and available
+resources. Receiver Operating Characteristic (ROC)
+curves provide useful tools for examining Type I and
+Type II error properties (Pepe et al., 2003). While testoptimality (in terms of power) is a well-established
+subject in univariate hypothesis testing (e.g., uniformly
+most powerful tests), very few optimality results are
+available in the multivariate setting (Hochberg and
+Tamhane, 1987). Given suitable deﬁnitions of Type Iand Type II error rates, very little is known about
+procedures which minimize the Type II error rate for
+a given level of Type I error. Optimality of multiple
+tests is an interesting research avenue to pursue from
+both a theoretical and practical point of view.
+Gene prescreening is a common issue in expression
+and other large-scale biological experiments. By re-
+ducing the number of tests, prescreening is often seen
+as a means of increasing power. In microarray experi-
+ments, preliminary screening of the genes is generally
+done based on data quality criteria, such as signal to
+background intensity and proportion of missing values.A natural question, then, is whether the Type I error
+rate is controlled at the claimed level. The answer de-
+pends on the screening criterion. Control is achieved in
+the following cases: (1) a gene subset is selected based
+on subject matter knowledge before looking at the data
+and (2) the statistics used for screening are independent
+of the test statistics under the null hypotheses. Other
+situations still need to be better understood.
+In the comparison study of Section 4, only two-sided
+tests were considered. In practice, however, researchersare interested in determining the direction of rejection
+for the null hypotheses, that is, in determining whether
+genes are over- or under-expressed in, say, treated
+cells compared to untreated cells. This raises the issue
+of Type III error rate control, where Type III error
+refers to correctly declaring that a gene is differentially
+expressed, but incorrectly deciding that it is over-
+expressed when in fact it is really under-expressed, or
+vice versa. Control of these errors, in addition to Type I
+errors, brings in additional complexities (Finner, 1999;Shaffer, 2002) and was not considered here.
+We have considered thus far only one null hypothesis
+per gene. When comparing several treatments or in
+the context of factorial experiments (Section 3.1.2),
+one may be interested in testing several hypothesessimultaneously for each gene. For example, when
+monitoring the gene expression response of a particularMULTIPLE HYPOTHESIS TESTING 101
+type of cells to Ktreatments, one may wish to consider
+allK(K −1)/2 pairwise treatment comparisons and
+determine which correspond to signiﬁcant treatmentdifferences. A number of procedures are available todeal with such testing situations one gene at a time(e.g., procedures of Tukey and Scheffé). An openproblem is the extension of these methods to the two-dimensional testing problem where several hypotheses
+are tested simultaneously for each of thousands of
+genes [see Gabriel (1975), Krishnaiah and Reising(1985), Morrison (1990), and Westfall and Young(1993) for background on multivariate multiple testingmethods].
+A related issue is the development of resampling
+methods for multiple testing in the context of facto-rial or time course experiments which impose somestructure on the columns of the gene expression datamatrix. For the three-factor bacteria experiment, Gram-
+positive and Gram-negative labels were permuted
+within the 22 dose ×time blocks, to respect the block-
+ing structure of the experiment and allow the possi-bility of dose and time effects on the expression re-sponse of PBMCs. Permutation is only one of severalresampling approaches that can be used to estimateunadjusted and adjusted p-values (Westfall and Young,
+1993). Bootstrap procedures, both parametric and non-parametric, should also be investigated, because they
+allow consideration of more speciﬁc null hypothe-
+ses (for example, equal mean gene expression levels
+for two types of cell populations, as opposed to thestronger null hypothesis of identical distributions im-
+posed by permutation procedures) and may lead to in-creased power (Pollard and van der Laan, 2003).
+The methods described above concern hypotheses
+about individual genes. However, it is well knownthat genes are expressed in a coordinated manner,
+for example, through pathways or the sharing of the
+same transcription factors. It would be interesting todevelop multiple testing procedures for identifyinggroups of differentially expressed genes, where the
+groups may be deﬁned a priori, from the knowledgeof pathways, say, or by cluster analysis. Initial workin this area can be found in Tibshirani et al. (2002).Gene subset selection procedures based on resamplingare described in van der Laan and Bryan (2001).
+Other approaches. The present article focused on
+frequentist approaches to multiple testing. In particu-lar, we did not consider Bayesian procedures, which
+constitute an important class of methods for the iden-
+tiﬁcation of differentially expressed genes and whosethorough treatment would require a separate article.Applications of Bayesian procedures in microarray
+data analysis can be found in Efron, Storey and Tib-
+shirani (2001), Efron et al. (2001), Manduchi et al.(2000), and Newton et al. (2001). In such methods, thecriterion for identifying differentially expressed genes
+is based on the posterior probability of differential ex-
+pression, that is, the probability that a particular geneis differentially expressed given the data for all genes.
+This is in contrast to frequentist methods, which arebased on adjusted p-values, that is, on the joint distrib-
+ution of the test statistics given suitably deﬁned null
+hypotheses. It would be interesting to compare and,when possible, reconcile these two approaches. Efronet al. (2001) and Storey (2001) discussed Bayesian in-
+terpretations of the FDR. An interesting philosophical
+approach to statistical inference is found in the recentwork of Mayo and Spanos (2002). These authors pro-vided a post-data or posterior interpretation of frequen-
+tist tests based on a severity principle.
+SOFTWARE
+Most of the multiple testing procedures considered
+in this article were implemented in an R package (Ihaka
+and Gentleman, 1996), multtest, which may be down-loaded from http://www.bioconductor.org. The pack-age includes procedures for controlling the family-
+wise error rate (FWER): Bonferroni, Hochberg (1988),
+Holm (1979), Šidák, Westfall and Young (1993) min P
+and maxT. It also includes procedures for control-
+ling the false discovery rate (FDR): Benjamini andHochberg (1995) and Benjamini and Yekutieli (2001)
+step-up procedures. The procedures are implemented
+for tests based on t-a n dF-statistics for one- and
+two-factor designs. Permutation procedures are avail-able to estimate unadjusted and adjusted p-values. The
+website http://www.math.tau.ac.il/ ∼roee/index.htm
+provides references and software related to FDR con-trolling procedures.
+Note Added in Proof. A previous version of this
+article contained a review of an earlier SAM procedure
+that appeared in the technical report by Efron et al.(2000). However, these authors no longer endorse thatprocedure and it was decided to eliminate it from
+the ﬁnal version of the present article. A detailed
+discussion and comparison of both SAM proceduresis given in the technical report by Dudoit, Shaffer andBoldrick (2002).
+ACKNOWLEDGMENTS
+The authors are most grateful to Warren Ewens,
+Yongchao Ge, Gregory Grant, Mark van der Laan,102 S. DUDOIT, J. P. SHAFFER AND J. C. BOLDRICK
+Erich Lehmann and Peter Westfall for insightful dis-
+cussions on multiple testing. They would also like toacknowledge the editors and two referees for their
+constructive comments on an earlier version of the
+article.
+REFERENCES
+ALIZADEH ,A .A . ,E ISEN ,M .B . ,D AV I S ,R .E . ,M A,C . ,
+LOSSOS ,I .S . ,R OSENW ALD ,A . ,B OLDRICK ,J .C . ,S ABET ,
+H., T RAN,T . ,Y U,X . ,P OWELL ,J .I . ,Y ANG ,L . ,M ARTI ,
+G. E., M OORE ,T . ,H UDSON JR., J., L U,L . ,L EWIS ,D .B . ,
+TIBSHIRANI ,R . ,S HERLOCK ,G . ,C HAN ,W .C . ,G REINER ,
+T. C., W EISENBURGER ,D .D . ,A RMITAGE ,J .O . ,W ARNKE ,
+R., L EVY,R . ,W ILSON ,W . ,G REVER ,M .R . ,B YRD,J .C . ,
+BOTSTEIN ,D . ,B ROWN ,P .O .a n dS TAUDT , L. M. (2000).
+Distinct types of diffuse large B-cell lymphoma identiﬁed bygene expression proﬁling. Nature 403503–511.
+A
+LON,U . ,B ARKAI ,N . ,N OTTERMAN ,D .A . ,G ISH,K . ,
+YBARRA ,S . ,M ACK,D .a n dL EVINE , A. J. (1999). Broad
+patterns of gene expression revealed by clustering analysis oftumor and normal colon tissues probed by oligonucleotide ar-rays. Proc. Natl. Acad. Sci. U.S.A. 966745–6750.
+B
+ENJAMINI ,Y .a n dH OCHBERG , Y . (1995). Controlling the false
+discovery rate: A practical and powerful approach to multipletesting. J. Roy. Statist. Soc. Ser. B 57289–300.
+B
+ENJAMINI ,Y .a n dY EKUTIELI , D. (2001). The control of the
+false discovery rate in multiple testing under dependency. Ann.
+Statist. 291165–1188.
+BERAN , R. (1988). Balanced simultaneous conﬁdence sets.
+J. Amer. Statist. Assoc. 83679–686.
+BOLDRICK ,J .C . ,A LIZADEH ,A .A . ,D IEHN ,M . ,D UDOIT ,
+S., L IU,C .L . ,B ELCHER ,C .E . ,B OTSTEIN ,D . ,S TAUDT ,
+L. M., B ROWN ,P .O .a n dR ELMAN , D. A. (2002). Stereo-
+typed and speciﬁc gene expression programs in human innateimmune responses to bacteria. Proc. Natl. Acad. Sci. U.S.A. 99
+972–977.
+B
+RA VER , S. L. (1975). On splitting the tails unequally: A new
+perspective on one- versus two-tailed tests. Educational and
+Psychological Measurement 35283–301.
+BROWN ,P .O .a n dB OTSTEIN , D. (1999). Exploring the new world
+of the genome with DNA microarrays. Nature Genetics 2133–
+37.
+BUCKLEY , M. J. (2000). The Spot User’s Guide .C S I R OM a t h -
+ematical and Information Sciences, North Ryde, NSW,Australia. Available at http://www.cmis.csiro.au/IAP/Spot/spotmanual.htm.
+C
+ALLOW ,M .J . ,D UDOIT ,S . ,G ONG ,E .L . ,S PEED ,T .P .
+and R UBIN , E. M. (2000). Microarray expression proﬁling
+identiﬁes genes with altered expression in HDL-deﬁcient mice.Genome Research 102022–2029.
+C
+HU,G . ,G OSS,V . ,N ARASIMHAN ,B .a n dT IBSHIRANI ,R .
+(2000). SAM (Signiﬁcance Analysis of Microarrays)—Usersguide and technical document. Technical report, StanfordUniv.
+D
+UDOIT ,S . ,S HAFFER ,J .P .a n dB OLDRICK , J. C. (2002). Mul-
+tiple hypothesis testing in microarray experiments. Techni-cal Report 110, Division of Biostatistics, Univ. California,Berkeley. Available at http://www.bepress.com/ucbbiostat/
+paper110/.
+D
+UDOIT ,S . ,Y ANG ,Y .H . ,C ALLOW ,M .J .a n dS PEED ,T .P .
+(2002). Statistical methods for identifying differentially ex-pressed genes in replicated cDNA microarray experiments.Statist. Sinica 12111–139.
+D
+UNN, O. J. (1958). Estimation of the means of dependent
+variables. Ann. Math. Statist. 291095–1111.
+EFRON ,B . ,S TOREY ,J .D .a n dT IBSHIRANI , R. (2001). Microar-
+rays, empirical Bayes methods, and false discovery rates. Tech-nical Report 2001-23B/217, Dept. Statistics, Stanford Univ.
+E
+FRON ,B . ,T IBSHIRANI ,R . ,G OSS,V .a n dC HU, G. (2000). Mi-
+croarrays and their use in a comparative experiment. TechnicalReport 2000-37B/213, Dept. Statistics, Stanford Univ.
+E
+FRON ,B . ,T IBSHIRANI ,R . ,S TOREY ,J .D .a n dT USHER ,V .
+(2001). Empirical Bayes analysis of a microarray experiment.J. Amer. Statist. Assoc. 961151–1160.
+F
+INNER , H. (1999). Stepwise multiple test procedures and control
+of directional errors. Ann. Statist. 27274–289.
+GABRIEL , K. R. (1975). A comparison of some methods of si-
+multaneous inference in MANOV A. In Multivariate Statisti-
+cal Methods: Among-Groups Covariation (W. R. Atchley and
+E. H. Bryant, eds.) 61–80. Dowden, Hutchinson and Ross,Stroudsburg, PA.
+G
+E,Y . ,D UDOIT ,S .a n dS PEED , T. P. (2003). Resampling-based
+multiple testing for microarray data analysis. TEST . To appear.
+GENOVESE ,C .a n dW ASSERMAN , L. (2001). Operating character-
+istics and extensions of the FDR procedure. Technical Report737, Dept. Statistics, Carnegie Mellon Univ.
+G
+OLUB ,T .R . ,S LONIM ,D .K . ,T AMAYO ,P . ,H UARD ,C . ,
+GAASENBEEK ,M . ,M ESIROV ,J .P . ,C OLLER ,H . ,L OH,M . ,
+DOWNING ,J .R . ,C ALIGIURI ,M .A . ,B LOOMFIELD ,C .D .
+and L ANDER , E. S. (1999). Molecular classiﬁcation of cancer:
+Class discovery and class prediction by gene expressionmonitoring. Science 286531–537.
+H
+OCHBERG , Y . (1988). A sharper Bonferroni procedure for multi-
+ple tests of signiﬁcance. Biometrika 75800–802.
+HOCHBERG ,Y .a n dT AMHANE , A. C. (1987). Multiple Compari-
+son Procedures . Wiley, New York.
+HOLM , S. (1979). A simple sequentially rejective multiple test
+procedure. Scand. J. Statist. 665–70.
+HOMMEL , G. (1988). A stagewise rejective multiple test procedure
+based on a modiﬁed Bonferroni test. Biometrika 75383–386.
+HOMMEL ,G .a n dB ERNHARD , G. (1999). Bonferroni procedures
+for logically related hypotheses. J. Statist. Plann. Inference 82
+119–128.
+IHAKA ,R .a n dG ENTLEMAN , R. (1996). R: A language for data
+analysis and graphics. J. Comput. Graph. Statist. 5299–314.
+JOGDEO , K. (1977). Association and probability inequalities. Ann.
+Statist. 5495–504.
+KERR,M .K . ,M ARTIN ,M .a n dC HURCHILL , G. A. (2000).
+Analysis of variance for gene expression microarray data.Journal of Computational Biology 7819–837.
+K
+RISHNAIAH ,P .R .a n dR EISING , J. M. (1985). Multivariate
+multiple comparisons. Encyclopedia of Statistical Sciences 6
+88–95. Wiley, New York.
+LEHMANN , E. L. (1986). Testing Statistical Hypotheses , 2nd ed.
+Wiley, New York.MULTIPLE HYPOTHESIS TESTING 103
+LIPSHUTZ ,R .J . ,F ODOR ,S . ,G INGERAS ,T .R .a n dL OCKHART ,
+D. J. (1999). High density synthetic oligonucleotide arrays.
+Nature Genetics 2120–24.
+LÖNNSTEDT ,I .a n dS PEED , T. P. (2002). Replicated microarray
+data. Statist. Sinica 1231–46.
+MANDUCHI ,E . ,G RANT ,G .R . ,M CKENZIE ,S .E . ,O VERTON ,
+G. C., S URREY ,S .a n dS TOECKERT JR., C. J. (2000).
+Generation of patterns from gene expression data by assigning
+conﬁdence to differentially expressed genes. Bioinformatics 16
+685–698.
+MAYO,D .a n dS PANOS , A. (2002). A severe testing interpretation
+of Neyman–Pearson tests. Unpublished.
+MORRISON , D. F. (1990). Multivariate Statistical Methods ,3 r de d .
+McGraw-Hill, New York.
+NAT IONAL READING PANEL (1999). Teaching children to read.
+Report, National Institute of Child Health and Human Devel-
+opment, National Institutes of Health.
+NEWTON ,M .A . ,K ENDZIORSKI ,C .M . ,R ICHMOND ,C .S . ,
+BLA TTNER ,F .R .a n dT SUI, K. W. (2001). On differential
+variability of expression ratios: Improving statistical inference
+about gene expression changes from microarray data. Journal
+of Computational Biology 837–52.
+PEPE,M .S . ,L ONGTON ,G . ,A NDERSON ,G .L .a n dS CHUMMER ,
+M. (2003). Selecting differentially expressed genes from
+microarray experiments. Biometrics 59. To appear.
+PEROU ,C .M . ,J EFFREY ,S .S . , VA N D E RIJN,M . ,R EES,
+C. A., E ISEN ,M .B . ,R OSS,D .T . ,P ERGAMENSCHIKOV ,A . ,
+WILLIAMS ,C .F . ,Z HU,S .X . ,L EE,J .C .F . ,L ASHKARI ,
+D., S HALON ,D . ,B ROWN ,P .O .a n dB OTSTEIN , D. (1999).
+Distinctive gene expression patterns in human mammary
+epithelial cells and breast cancers. Proc. Natl. Acad. Sci. 96
+9212–9217.
+POLLACK ,J .R . ,P EROU ,C .M . ,A LIZADEH ,A .A . ,E ISEN ,
+M. B., P ERGAMENSCHIKOV ,A . ,W ILLIAMS ,C .F . ,J EF-
+FREY ,S .S . ,B OTSTEIN ,D .a n dB ROWN , P. O. (1999).
+Genome-wide analysis of DNA copy-number changes using
+cDNA microarrays. Nature Genetics 2341–46.
+POLLARD ,K .S .a n d VA N D E R LAAN, M. J. (2003). Resampling-
+based multiple testing with asymptotic strong control of type I
+error. Submitted.
+RAMSEY , P. H. (1978). Power differences between pairwise multi-
+ple comparisons. J. Amer. Statist. Assoc. 73479–485.
+REINER ,A . ,Y EKUTIELI ,D .a n dB ENJAMINI , Y . (2001). Using
+resampling-based FDR controlling multiple test procedures for
+analyzing microarray gene expression data. Unpublished.
+ROM, D. M. (1990). A sequentially rejective test procedure based
+on a modiﬁed Bonferroni inequality. Biometrika 77663–665.
+ROSS,D .T . ,S CHERF ,U . ,E ISEN ,M .B . ,P EROU ,C .M . ,
+REES,C . ,S PELLMAN ,P . ,I YER,V . ,J EFFREY ,S .S . , VA N
+DERIJN,M . ,W ALTHAM ,M . ,P ERGAMENSCHIKOV ,A . ,
+LEE,J .C .F . ,L ASHKARI ,D . ,S HALON ,D . ,M YERS ,T .G . ,
+WEINSTEIN ,J .N . ,B OTSTEIN ,D .a n dB ROWN , P. O. (2000).
+Systematic variation in gene expression patterns in human
+cancer cell lines. Nature Genetics 24227–234.
+SCHEFFÉ , H. (1959). The Analysis of Variance . Wiley, New York.
+SEEGER , P. (1968). A note on a method for the analysis of
+signiﬁcances en masse. Technometrics 10586–593.SHAFFER , J. P. (1986). Modiﬁed sequentially rejective multiple test
+procedures. J. Amer. Statist. Assoc. 81826–831.
+SHAFFER , J. P. (1995). Multiple hypothesis testing: A review.
+Annual Review of Psychology 46561–584.
+SHAFFER , J. P. (2002). Multiplicity, directional (Type III) errors,
+and the null hypothesis. Psychological Methods 7356–369.
+ŠIDÁK , Z. (1967). Rectangular conﬁdence regions for the means
+of multivariate normal distributions. J. Amer. Statist. Assoc. 62
+626–633.
+SIMES , R. J. (1986). An improved Bonferroni procedure for
+multiple tests of signiﬁcance. Biometrika 73751–754.
+SORI ´C, B. (1989). Statistical “discoveries” and effect-size estima-
+tion. J. Amer. Statist. Assoc. 84608–610.
+STOREY , J. D. (2001). The false discovery rate: A Bayesian
+interpretation and the q-value. Technical Report 2001-12,
+Dept. Statistics, Stanford Univ.
+STOREY , J. D. (2002). A direct approach to false discovery rates.
+J. R. Stat. Soc. Ser. B Stat. Methodol. 64479–498.
+STOREY ,J .D .a n dT IBSHIRANI , R. (2001). Estimating the positive
+false discovery rate under dependence, with applications to
+DNA microarrays. Technical Report 2001-28, Dept. Statistics,
+Stanford Univ.
+TIBSHIRANI ,R . ,H ASTIE ,T . ,N ARASIMHAN ,B . ,E ISEN ,M . ,
+SHERLOCK ,G . ,B ROWN ,P .a n dB OTSTEIN , D. (2002).
+Exploratory screening of genes and clusters from microarray
+experiments. Statist. Sinica 1247–59.
+TROENDLE , J. F. (1996). A permutational step-up method of
+testing multiple outcomes. Biometrics 52846–859.
+TUSHER ,V .G . ,T IBSHIRANI ,R .a n dC HU, G. (2001). Signiﬁ-
+cance analysis of microarrays applied to the ionizing radiationresponse. Proc. Natl. Acad. Sci. U.S.A. 985116–5121.
+VA N D E R LAAN ,M .J .a n dB RYAN , J. (2001). Gene expression
+analysis with the parametric bootstrap. Biostatistics 2445–
+461.
+WESTFALL ,P .H .a n dY OUNG , S. S. (1993). Resampling-Based
+Multiple Testing: Examples and Methods for p-Value Adjust-
+ment . Wiley, New York.
+WESTFALL ,P .H . ,Z AYKIN ,D .V .a n dY OUNG , S. S. (2001).
+Multiple tests for genetic effects in association studies. In
+Biostatistical Methods (S. Looney, ed.) 143–168. Humana,
+Totowa, NJ.
+WRIGHT , S. P. (1992). Adjusted p-values for simultaneous infer-
+ence. Biometrics 481005–1013.
+YANG ,Y .H . ,B UCKLEY ,M .J . ,D UDOIT ,S .a n dS PEED ,T .P .
+(2002). Comparison of methods for image analysis on cDNA
+microarray data. J. Comput. Graph. Statist. 11108–136.
+YANG ,Y .H . ,D UDOIT ,S . ,L UU,P .a n dS PEED , T. P. (2001).
+Normalization for cDNA microarray data. In Microarrays:
+Optical Technologies and Informatics (M. L. Bittner, Y . Chen,
+A. N. Dorsel and E. R. Dougherty, eds.) 141–152. SPIE,
+Bellingham, WA.
+YEKUTIELI ,D .a n dB ENJAMINI , Y . (1999). Resampling-based
+false discovery rate controlling multiple test procedures forcorrelated test statistics. J. Statist. Plann. Inference 82171–
+196.

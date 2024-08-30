@@ -1,0 +1,1211 @@
+1
+Minoru Kanehisa
+Bioinformatics Center, Institute for Chemical Research,
+Kyoto University
+Human Genome Center, Institute of Medical Science,
+University of TokyoKEGG: Kyoto Encyclopedia of
+Genes and Genomes
+June 2009
+Background
+•Integration of life science databases
+•Reconstruction of biological systems21971 Medline
+1988 NCBI1979 Los Alamos
+1982 GenBank 1982 EMBL
+1984 DDBJ1971 PDB (BNL)
+1997 PubMed1992 GenBank1968 Dayhoff Atlas
+1980 NBRF
+1984 PIR
+1992 GenomeNet
+1995 KEGG
+2003 UniProt1999 PDB (RCSB)1994 EBI1965 Registry1907 CAS
+1964 Medlars1879 Index Medicus
+1986 SwissProtLiterature Compounds
+DNA SequencesProtein Sequences 3D Structures
+Biological Systems
+(IDEAS)
+BRITEA History of Life Science Databases
+2004 PubChem
+IDEAS
+Integrated Database and Extended Analysis System
+for nucleic acids and proteins
+Compiled from:
+  1980-1983 Los Alamos sequence analysis system
+  1983-1986 IDEAS system at the National Institutes of Health
+  1986-1992 IDEAS system at Kyoto University
+  1992- DBGET system in GenomeNet database service
+More details at:  http://www.genome.jp/en/db_growth.html•Originally developed in 1980 as part of
+the pre-GenBank project (Los Alamos
+Sequence Library)
+•GenBank awarded to Los Alamos in
+September 1982
+•Package rewritten at NIH in 1983 for
+integration of sequence and 3D
+structure databases
+•Relational database named “Cell”Growth of sequence and 3D structure databases3DBGET
+Integrated Database Retrieval System
+for the Web of Molecular Biology Data
+32 databases in September 2004
+ 15 databases in September 1994
+1.  KEGG databases in DBGET yes yes yes yes 20
+2.  Other DBGET databases yes yes yes  no 19
+3.  Searchable databases on the web  no yes yes  no 17
+4.  Link-only databases on the web  no  no yes  no 94
+5.  PubMed database yes  no yes  no   1Category bget bfind blink brite #DB
+151 databases in June 2009Link-based integration
+Identifier database:entry
+Relation database 1:entry1 ˠdatabase2:entry2
+GenomeNet
+http://www.genome.jp/
+Original Services
+KEGG
+DBGET
+MOTIF
+KAAS
+SIMCOMP / SUBCOMP
+KCaM
+Other Services
+BLAST / FASTA
+CLUSTALW / MAFFT / PRRN
+CYORF / BSORF
+•Originally supported by Japanese Human Genome Project
+•GenomeNet e-mail service launched in September 1992
+•GenomeNet web service launched in July 1994
+•Developed by Kanehisa Laboratories
+•Operated by Kyoto University Bioinformatics Center
+•Release history at:  http://www.genome.jp/en/release.html4
+KEGG
+http://www.genome.jp/kegg/
+http://www.kegg.jp/
+•Collect only completely sequenced
+genomes for computer representation
+of cell/organism functions
+•Organize higher-level biological and
+chemical knowledge to complement
+with the existing databases
+•Depend on internal team members to
+develop high-quality databases (accept
+feedbacks, but no submissions)
+•Develop associated research programs
+that utilize the new databases and
+demonstrate their utility
+•Supported by multiple research grants to
+Minoru Kanehisa
+•Project initiated in May 1995
+•First release in December 1995Organisms viewed as databases
+Identifier organism:gene
+Relation organism 1:gene1 ˠorganism2:gene2
+NCBI KEGG
+Database
+Content
+Integration
+Implementation
+Main useInformation
+infrastructure
+Comprehensive
+repositories
+Linking
+Entrez
+Individual data
+retrievalComputer representation
+of biological systems
+Building blocks and
+wiring-diagrams
+Reconstruction
+KEGG
+Pathway mapping and
+Brite mappingWhat is Database?5
+Overview of KEGG
+•From building blocks to biological systems
+•Integration of genomics and chemistry
+An ultimate goal of bioinformatics  is a complete computer
+representation of the cell and the organism , which will
+enable computational prediction of higher-level complexity ,
+such as
+from genomic information .•molecular interaction networks involving various
+cellular processes and
+•phenotypes (morphological, physiological, and
+behavioral aspects) of entire organismsGoal
+Kanehisa, M. and Bork, P.;  Bioinformatics in the post-sequence era. Nat. Genet.  33, 305-310 (2003).6
+DNA RNA ProteinBuilding Blocks of Life
+Genomic and Chemical Spaces
+DNA (Gene) Genome
+RNA Transcriptome
+Protein ProteomeReplication
+Transcription
+Translation
+Metabolite Metabolome
+Glycan Glycome
+Lipid LipidomeBiosynthesis
+Biodegradation
+TransportChemical SpaceGenomic Space
+Compound Chemical genome(Endogenous)
+(Exogenous)
+Genomic and Chemical Spaces
+Chemical SpaceGenomic Space
+•Contains genetic building blocks of life, i.e., DNA, RNA, and
+proteins
+•Represents all possible sequences
+•Uncovered by genomics, transcriptomics, and proteomics
+•Contains chemical building blocks of life, e.g., small molecules,
+glycans, and lipids
+•Represents all possible chemical structures
+•Uncovered by metabolomics, glycomics, lipidomics, etc. for
+endogenous molecules
+•Uncovered by chemical genomics for exogenous molecules7Genomic space Chemical space
+Repertoire of genes in the biosphere
+(metagenomics)Repertoire of genes and proteins
+(genomics, proteomics, etc.)Repertoire of endogenous molecules
+(metabolomics, glycomics, etc.)
+Glycan structures
+Lipids, secondary metabolites, etc.
+Repertoire of exogenous molecules
+(chemical genomics)Glycosyltransferase genes
+Other enzyme gene groups
+Genetic factors of diseases
+Drug targetsEnvironmental factors of diseases
+Drug leads
+Human gutHuman Vector Pathogen
+Microbial communityIntegration of Genomic and Chemical Spaces
+ Genomic space  Chemical space
+Genetic factors Environmental factors
+Drug targets Drug leadsDiseases viewed as perturbed states of molecular systems
+Drugs viewed as perturbants to molecular systemsIntegration of Genomic and Chemical Spaces
+Medical and Pharmaceutical Implications
+Single-gene
+disordersMultifactorial
+disorders
+Drug Drug target Perturbants Perturbed system8Molecule Genome   Transcriptome   Proteome
+Metabolome
+Chemical genomeChemical SpaceGenomic SpaceSystems SpaceBiosphere
+Metagenome
+Glycome•From building blocks to biological systems
+•From biological systems to the environmentCell & OrganismIntegration of Genomic and Chemical Spaces
+Bioinformatics Approaches to the Systems Space
+Molecular network
+Kanehisa, M. et al.;  From genomics to chemical genomics: new developments in KEGG. Nucl. Acids Res.
+34, D354-D357 (2006).
+Disease genes,
+Drug targets, etc.Imaging probes,
+Drug leads, etc.Basic principles linking
+biological world and natural world
+Chemical space
+(Metabolome, Glycome, Chemical genome)Genomic space
+(Genome, Transcriptome, Proteome)Screening ScreeningKEGG: Computer representation of biological systems
+http://www.genome.jp/kegg/GENES / KO
+Genomic informationLIGAND
+Chemical informationPATHWAY / BRITE
+Systems informationSystems analysis, modeling & simulation
+Virtual cells and organisms9KEGG Databases
+As of June 12, 2009330 (95,271)
+61 (21,684)
+692
+104
+12,178
+4,553,978
+151,662
+2,919,245
+1,008 + 67
+-
+15,477
+8,912
+10,969
+5,061
+7,915
+11,356
+496Pathway maps
+Functional hierarchies and ontologies
+Pathway modules and complexes
+Diseases
+KEGG Orthology (KO) groups
+Genes in high-quality genomes
+Genes in draft genomes
+Genes as EST contigs
+Organisms
+Sequence similarities and best hit relations
+Metabolites and other small molecules
+Drugs
+Glycans
+Enzyme nomenclature
+Biochemical reactions
+Reactant pair chemical transformations
+Drug pair chemical transformationsKEGG PATHWAY
+KEGG BRITE
+KEGG MODULE
+KEGG DISEASE
+KEGG ORTHOLOGY
+KEGG GENES
+KEGG DGENES
+KEGG EGENES
+KEGG GENOME
+KEGG SSDB
+KEGG COMPOUND
+KEGG DRUG
+KEGG GLYCAN
+KEGG ENZYME
+KEGG REACTION
+KEGG RPAIR
+KEGG DPAIRData size Objects Database
+KEGG ORTHOLOGY
+KEGG COMPOUND
+KEGG DRUG
+KEGG GLYCAN
+KEGG REACTION
+KEGG RPAIR
+KEGG PATHWAY
+KEGG BRITE
+KEGG MODULE
+KEGG DISEASEDatabase
+Ortholog group
+Chemical compound
+Drug
+Glycan
+Reaction
+Reactant pair
+Pathway map
+Brite hierarchy
+Pathway module
+Human diseaseContent Example Prefix
+K04527 for insulin receptor
+C00031 for D-glucose
+D01441 for Gleevec
+G00109 for GM2
+R0025 9 for EC 2.3.1.1
+RP04458 for C00025_C00624
+hsa04930 for type II diabetes
+ko01003 for glycosyltransfer ases
+M00008 for Entner-Doudoroff pathway
+H00004 f or Chronic myeloid leukemiaK
+C
+D
+G
+R
+RP
+map/ko/ec/rn/(org)
+br/jp/ko/(org)
+M
+HKEGG Object Identifiers
+Prefix + 5-digit number
+org -KEGG GENOME
+KEGG GENES
+Any databaseDatabase
+KEGG organism code
+•Three letter code
+•Prefix d for draft genome
+•Prefix e for EST contig
+Gene entry
+Database entryContent Example Identifier
+hsa for Homo sapiens
+hsa:3643 for human insulin receptor
+gn:hsa for Homo sapiens
+up:P06213 for UniProt insulin receptororg
+org:gene
+db:entryOther identifiers
+Try these examples by entering them in the search box of the KEGG top page.10
+KEGG PATHWAY map for type II diabetes mellitus
+hsa04930hsa:3643
+C00031
+The KEGG Orthology (KO) System
+KO (K number) entry for insulin receptor
+KO identifiers (K numbers) represent manually defined
+ortholog groups corresponding to the KEGG pathway
+nodes and the BRITE hierarchy nodes (bottom leaves)K04527Metabolism
+Genetic Information Processing
+Environmental Information Processing
+Cellular Processes
+········
+Cell Communication
+········
+Endocrine System
+········
+Human Diseases
+········
+Neurodegenerative Diseases
+Metabolic Disorders
+········KEGG Orthology (ko00001)
+Serine/threonine protein kinases: AGC group
+········
+Tyrosine protein kinases
+········
+InsR family
+········
+Histidine protein kinasesProtein Kinases (ko01001)
+G-Protein Coupled Receptors
+1 TM Signaling Receptors
+Receptor tyrosine kinase
+········
+RTK class II
+········
+Nuclear Receptors
+Ion Channels
+Other ChannelsReceptors and Channels (ko04000)
+CD molecules
+Non-CD moleculesCellular antigens (ko04090)11
+KegSketch
+(internal only)
+KegHier
+ KegArrayKegDraw
+GenomeNet, DBGET,
+BLAST / FASTA, MOTIF, ALIGN
+SIMCOMP / SUBCOMP, KCaM
+PATHWAY / BRITE
+GENES LIGAND
+ORTHOLOGY
+DISEASE, DRUG, GLYCAN,
+COMPOUND, REACTION, PLANTColor Coding and Icons
+Genes DB
+Gene annotationLigand DB
+Chemical annotationReference DB
+Genome, Pathway, Brite,
+Module, Disease, KOKEGG Oracle Database
+(internal database)
+Java / Cocoa ApplicationsKEGG Web Service
+Web Page Organization
+DBGET
+BLAST / FASTA
+SIMCOMP / SUBCOMP
+KCaMPATHWAY / BRITE GENES LIGAND ORTHOLOGY
+DISEASE, DRUG,
+GLYCAN, COMPOUND,
+REACTION, PLANTTop page (KEGG)
+Table of Contents (KEGG2)
+This icon will
+bring back to the
+KEGG top page.These icons will bring
+back to the KEGG2 page.
+This icon will bring back to
+the GenomeNet top page.This search box accepts both
+keywords and KEGG identifiersThis search box accepts
+keywords only12
+KEGG GENES
+and ortholog annotation
+Eukaryotes (101 + 11 + 67)
+As of June 12, 2009KEGG Organisms
+Animals (48 + 4 + 4)
+Plants (10 + 1 + 63)
+Fungi (32 + 5)
+Protists (22 + 1)
+Bacteria (835)
+Archaea (62)Prokaryotes (897)
+998 organisms in GENES - High-quality genomes with manual (koala) annotation
+11 organisms in DGENES - Draft genomes with automatic (kaas) annotation
+67 organisms in EGENES - EST contigs with automatic (kaas) annotation
+Total number of genes/proteins in GENES 4,553,978
+Total number of proteins in UniProt 8,385,695 (468,851 in SwissProt)
+Fraction of UniProt covered by GENES about 90% (in terms of protein families)
+KEGG GENES already covers most of the known protein universe13Orthologs and Paralogs
+•Sequence similarity between two genes (or proteins)
+may imply ortholog or paralog relationship.
+•Orthologs are genes in different species evolved
+from a common ancestral gene by speciation and
+tend to have the same function.
+•Paralogs are generated by gene duplication within a
+species and often represent diversified functions in a
+broader functional category.
+•Identification of ortholog relationships is the basis for
+genome annotation (assigning gene functions), and
+it requires distinction from paralog relationships.Human MouseCommon
+ancestor
+A
+B C
+A
+A1 A2
+B1 C1 B2
+C2 C3Orthologs: B –C, B1 –C1
+Co-orthologs: B2 –(C2,C3)
+Inparalogs: C2 –C3
+Outparalogs: B1 –B2, B1 –(C2,C3), B2 –C1Human Mouse Human MouseCommon
+ancestor
+Computational Identification of Orthologs
+Between two species
+  Bi-directional best hit (BBH)
+  (Reciprocal best hit)
+Among multiple species
+1. COG
+Triangle of BBH relationships among three species
+2. KEGG OC
+p-Quasi clique among multiple speciesA
+BC
+D
+Clique
+(completely connected subgraph)p-Quasi clique is an almost
+complete subgraph, where
+the degree of completeness
+is represented by p.Superposition of
+ABC and ABD14KEGG GENES
+•Gene information for completely sequenced
+genomes
+•Computationally generated from RefSeq and
+other public resources
+•Manual annotation with KOALA and GFIT tools
+•Automatic annotation by KAAS for draft genomesGenome annotation in KEGG:
+KO (K number) assignment
+KEGG SSDB
+•Sequence similarity scores and best hit relations
+•Computationally generated from GENES by pairwise
+genome comparisons using SSEARCHKEGG ORTHOLOGY (KO)
+•Manually defined ortholog groups that correspond to
+KEGG pathway nodes and BRITE hierarchy nodes
+•Identified by K numbers
+KEGG OC
+•Ortholog clusters
+•Computationally generated from SSDB by a quasi-clique finding algorithm
+Bidirectional best hitAs of June 12, 2009997
+4,553,977
+1,504,505
+33%Genomes
+Genes
+Genes with KO
+KO assignmentKEGG GENES in Oracle
+GFIT: Gene Function Identification Tool
+Color coding of BBH: red for
+the alignment with 80% or
+more overlap; yellow otherwise
+•GFIT table is a summary of best hit relations for individual genes in a genome generated from the
+KEGG SSDB database. It has been used to manually assign K numbers (KO identifiers).
+•KOALA processes this table and automatically assigns K numbers when considered safe to do so.15
+KOALA: KEGG Orthology And Links Annotation
+Genome 1 Genome 2 Genome 3
+Map-based
+annotation
+Genome-based
+annotationMap 1
+Map 2……
+……
+KOALA ’s
+suggestionCurrent
+assignmentGFIT link OC linksAnnotation of K numbers
+and links through K
+numbers (EC numbers,
+GO terms, etc.)
+Public version of KEGG annotation tools
+Read-only version
+of KOALARead-only version
+of GFITSSDB query for orthologs and paralogs
+Conserved gene cluster search
+(useful for bacterial genomes)
+DB search against
+UniProt, etc. may
+be done on the fly16KAAS: KEGG Automatic Annotation Server
+http://www.genome.jp/kegg/kaas/
+Query genomeSet of
+aa seq
+Annotated genomes in KEGGPairwise genome comparison
+BLAST search
+in both directions
+BLAST result screening by bi-directional best hit rate ( BHR )
+BHR  = Rf x Rr       > 0.95
+Moriya, Y., Itoh, M., Okuda, S., Yoshizawa, A.C., and Kanehisa, M.; KAAS: an automatic genome annotation
+and pathway reconstruction server.  Nucl. Acids Res. 35, W182-W185  (2007).K number assignment by a heuristic scoring
+! SKO=Sh"log2(mn)"log2 xCkpk1"p( )x"k
+k=Nx
+#$ 
+% & ' 
+( ) 
+Bidirectional best hit
+Genome Map Tools
+Conserved gene clusterGenome page:
+•Summary information
+•Organism-specific pathway maps
+•Organism-specific brite hierarchies
+•Genome map browser17
+KEGG PATHWAY and BRITE:
+Reference knowledge base
+Data objects for computer representation
+of molecular systems
+Element
+gene, protein, small molecule, etc.
+Pair (binary relation)
+protein-protein interaction, drug-target relationship, etc.
+Graph (wiring diagram)
+pathway, complex, etc.
+Simple list (membership)
+pathway, complex, etc.
+Hierarchical list
+hierarchical classification, ontology, etc.18Knowledge Representation of Systemic Functions
+KEGG PATHWAY KEGG BRITE
+Data source: textbooks, review articles, other publications, specialists ’ websitesGraph (pathway map)
+Simple list (membership)Hierarchical list (ontology)
+KEGG MODULE
+ KEGG DISEASE
+List of molecules that
+constitute a pathway,
+a complex, etc.List of disease genes,
+environmental factors,
+markers, drugs, etc.
+Global Map
+Metabolism Map (1)
+Metabolism
+Carbohydrate Metabolism (16)
+Energy Metabolism (8)
+Lipid Metabolism (16)
+Nucleotide Metabolism (2)
+Amino Acid Metabolism (16)
+Metabolism of Other Amino Acids (9)
+Glycan Biosynthesis and Metabolism (15)
+Biosynthesis of Polyketides and Nonribosomal Peptides (9)
+Metabolism of Cofactors and Vitamins (12)
+Biosynthesis of Secondary Metabolites (27)
+Xenobiotics Biodegradation and Metabolism (26)
+Overview (9)
+Genetic Information Processing
+Transcription (2)
+Translation (2)
+Folding, Sorting and Degradation (8)
+Replication and Repair (6)
+Environmental Information Processing
+Membrane Transport (2)
+Signal Transduction (14)
+Signaling Molecules and Interaction (4)KEGG PATHWAY Database
+Collection of KEGG pathway maps
+Cellular Processes
+Cell Motility (3)
+Cell Growth and Death (4)
+Cell Communication (5)
+Circulatory System (2)
+Endocrine System (7)
+Immune System (9)
+Nervous System (2)
+Sensory System (2)
+Development (2)
+Behavior (3)
+Human Diseases
+Cancers (15)
+Immune Disorders (6)
+Neurodegenerative Diseases (4)
+Metabolic Disorders (3)
+Infectious Diseases (4)
+Drug Development
+Chronology: Antibiotics (8)
+Chronology: Antineoplastics (5)
+Chronology: Nervous System Agents (9)
+Chronology: Other Drugs (12)
+Target Based Structure Classification (12)
+Skeleton Based Structure Classification (8)
+http://www.genome.jp/kegg/pathway.html http://www.genome.jp/kegg-bin/get_htext?br08901.keg19Genes and Proteins
+Network hierarchy (4)
+Protein families: metabolism (7)
+Protein families: genetic information processing (9)
+Protein families: environmental information processing (5)
+Protein families: cellular processes (7)KEGG BRITE Database
+Collection of BRITE functional hierarchies
+Compounds and Reactions
+Compounds (5)
+Reactions (3)
+Compound interactions (6)
+ Drugs and Diseases
+Drugs (15)
+Diseases (5)
+ Cells and Organisms
+Organisms (4)
+KegHier browser
+http://www.genome.jp/kegg/brite.html http://www.genome.jp/kegg-bin/get_htext?br08902.keg
+Protein families
+Enzymes
+Transporters
+Receptors and channels
+Ion channels
+G protein-coupled receptors
+1TM signaling receptors
+Nuclear receptors
+Cytochrome P450Compound interactions
+Enzyme ligands
+Transporter substrates
+Ion channel ligands
+GPCR ligands
+Nuclear receptor ligands
+Cytochrome P450 substrates
+Drugs
+Therapeutic category of drugs
+ATC classification
+Crude drugsNetwork hierarchy
+KO system
+Target informationInteraction/relation data linking BRITE hierarchies
+Organisms
+Plants20Gene KO
+10000 K04456
+10003 K01301
+10004 K01301
+10005 K01068
+10007 K02564
+10008 K04897
+10020 K00885
+10020 K01791
+10021 K04957
+10023 K03069
+10026 K05290
+10038 K00774
+10039 K00774
+10050 K08193
+10051 K06675
+10052 K07616
+10056 K01890
+10057 K05668
+10058 K05661
+10059 K01528
+…………
+Linking genomes to biological systems and the environment
+Disease pathwayPathway mapping and BRITE mapping
+KO assignmentKEGG pathway mapping
+BRITE hierarchy mapping
+Genes to K numbers
+K numbers to C/D/G/R numbers(proteins) (drugs)
+Convention of map number prefix
+map ko / ec / rn org
+Blue boxes represent selection
+of K numbers, EC numbers, or
+R numbersEach box is manually
+associated with KO identifier
+(K number), EC number, and
+reaction identifier (R number)Green boxes correspond to gene
+identifiers in an organism that are
+computationally converted from K
+numbersmap00010 ko00010 hsa0001021Global metabolism map - Reference pathway
+Global metabolism map - Homo sapiens
+22Global metabolism map - Escherichia coli
+Pathway Entry
+Text-based representation of KEGG pathway maps
+Pathway MODULE
+Tighter functional units in KEGG pathway maps
+NCBI
+RefSeq (Gene)
+BioSystems
+PubChem
+PubChemKEGG
+GENES
+PATHWAY
+COMPOUND
+DRUGKEGG-NCBI Collaboration23
+KEGG LIGAND
+and chemical  bioinformatics
+1.Chemical structure similarity
+•Comparison of bit-represented vectors (fingerprints)
+•Comparison of graph objects
+2.Chemical building blocks
+•Conserved substructures as building blocks of compounds/drugs
+•Variable substructures as building blocks of reactivity/efficacy
+3.Network modules
+•Genomic module, e.g. operon
+•Chemical module, e.g. overall reaction
+4.Predictive methods
+•Interaction prediction, e.g. toxicity
+•Reaction prediction, e.g. metabolic fate
+5.Examples
+•Plant/fungi/bacterial genomes and secondary metabolites via
+biosynthetic pathways
+•Bacterial genomes and environmental compounds via biodegradation
+pathwaysBioinformatics for Small Molecules24KO assignment
+Glycosyltransferases
+PK/NRP  synthases
+Fatty acid
+desaturases/elongasesEnzyme repertoire
+Glycans
+Polyketides /
+nonribosomal peptides
+Polyunsaturated
+fatty acidsChemical repertoire
+…………Chemical structure prediction
+Linking genomes to small molecules
+Gene KO
+10000 K04456
+10003 K01301
+10004 K01301
+10005 K01068
+10007 K02564
+10008 K04897
+10020 K00885
+10020 K01791
+10021 K04957
+10023 K03069
+10026 K05290
+10038 K00774
+10039 K00774
+10050 K08193
+10051 K06675
+10052 K07616
+10056 K01890
+10057 K05668
+10058 K05661
+10059 K01528
+…………
+Genes to K numbers for
+specific enzyme groupsKnowledge on
+biosynthetic pathways
+GenomeBiosynthetic
+pathwaysNatural
+productsDrugs
+GenomeBiodegradation
+pathwaysEnvironmental
+compoundsEnzyme-catalyzed
+chemical transformationsHuman-made
+chemical transformations
+Linking genomes to chemical structures
+Glycans
+•Hashimoto, K., Goto, S., Kawano, S., Aoki-Kinoshita, K.F., Ueda, N., Hamajima, M., Kawasaki, T.,
+and Kanehisa, M.; KEGG as a glycome informatics resource. Glycobiology  16, 63R-70R (2006).
+•Kawano, S., Hashimoto, K., Miyama, T., Goto, S., and Kanehisa, M.; Prediction of glycan structures
+from gene expression data based on glycosyltransferase reactions. Bioinformatics  21, 3976-3982
+(2005).
+•Hashimoto, K., Tokimatsu, T., Kawano, S., Yoshizawa, A.C., Okuda, S., Goto, S., and Kanehisa, M.;
+Comprehensive  analysis of glycosyltransferases in eukaryotic genomes for structural and functional
+characterization of glycans. Carbohydrate Res . 344, 881-887 (2009).
+Polyketides & nonribosomal peptides
+•Minowa, Y., Araki, M., and Kanehisa, M.; Comprehensive analysis of distinctive polyketide and
+nonribosomal peptide structural motifs encoded in microbial genomes. J. Mol. Biol.  368, 1500-1517
+(2007).
+Polyunsaturated fatty acids
+•Hashimoto, K., Yoshizawa, A.C., Okuda, S.,  Kuma, K., Goto, S., and Kanehisa, M.; The repertoire
+of desaturases and elongases reveals fatty acid variations in 56 eukaryotic genomes . J. Lipid Res.
+49, 183-191 (2008).
+Environmental compounds
+•Oh, M., Yamada, T., Hattori, M., Goto, S., and Kanehisa, M.; Systematic analysis of enzyme-
+catalyzed reaction patterns and prediction of microbial biodegradation pathways.  J. Chem. Info.
+Model. 47, 1702-1712  (2007).25PP-Dol GlcNAc GlcNAc !1 4 "1 4 Man !136
+Man "1Man "16Man
+"1 Man Man "1 23"1 Man "1 2
+2Man "1 2 Man "1 2Glc "1 3 Glc "1 Glc "1 32.7.8.15ALG7
+2.4.1.1412.4.1.142
+2.4.1.132
+2.4.1.- 2.4.1.-2.4.1.-
+ALG13
+ALG14ALG1
+ALG22.4.1.-
+ALG11ALG3 2.4.1.-ALG92.4.1.-ALG12 2.4.1.-
+ALG6 ALG8 ALG10
+2.4.1.- 2.4.1.- 2.4.1.-ALG11
+PP-Dol GlcNAc GlcNAc !1 4 "1 4 Man !136
+Man "1Man "16Man
+"1 Man Man "1 23"1 Man "1 2
+2Man "1 2 Man "1 2Glc "1 3 Glc "1 Glc "1 3R05969K01001
+R05970R05972
+R05973
+R06127 R06264R06238
+K07432
+K07441K03842
+K03843R06258
+K03844K03845 R06259K03846R06260K03847R06261
+K03848 K03849 K03850
+R06263 R06262 R06128K03844K03843K03864ALG9N-Glycan Precursor Structure
+ALG2
+2.4.1.83DPM1
+ALG5
+2.4.1.117
+R01009K00721
+K00729
+R01005
+Truncated glycan structures in parasitic protists
+and algae predicted from genomic information
+EntamoebaGreen algae
+TrypanosomaDiatoms
+Hashimoto, K., Tokimatsu, T., Kawano, S., Yoshizawa, A.C., Okuda, S., Goto, S., and Kanehisa, M.;
+Comprehensive  analysis of glycosyltransferases in eukaryotic genomes for structural and functional
+characterization of glycans. Carbohydrate Res . 344, 881-887 (2009).263-Oxopropanoate
+OC
+CC
+OO
+OC
+CC
+OO3-Hydroxypropanoate
+O6a
+O6aC6a
+C1bC1b
+O1a
+Common (i)
+Common (ii)O6a
+O6aC6a
+C1bC4a
+O4aChemical structure comparison based on atom typing
+Hattori, M., Okuno, Y., Goto, S., and Kanehisa, M.; Development of a chemical structure comparison method
+for integrated analysis of chemical and genomic information in the metabolic pathways.  J. Am. Chem. Soc.
+125, 11853-11865 (2003).
+Carbon 23 types Nitrogen 16 types
+Alkane C1a R-CH3 
+ C1b R-CH2-R 
+ C1c R-CH(-R)-R 
+ C1d R-C(-R)2-R 
+Cyclic alkane C1x ring-CH2-ring 
+ C1y ring-CH(-R)- ring 
+ C1z ring-CH(-R)2- ring 
+Alkene C2a R=CH2 
+ C2b R=CH-R 
+ C2c R=C(-R)2 
+Cyclic alkene C2x ring-CH=ring 
+ C2y ring-C(-R)=ring 
+ring-C(=R)-ring 
+Alkyne C3a R!CH 
+ C3b R!C-R 
+Aldehyde C4a R-CH=O 
+Ketone C5a R-C(=O)-R 
+Cyclic ketone C5x ring-C(=O)-r ing 
+Carboxylic acid C6a R-C(=O)-OH 
+Carboxylic ester C7a R-C(=O)-O-R 
+ C7x ring-C(=O)-O- ring 
+Aromatic ring C8x ring-CH=ring 
+ C8y ring-C(-R)=ring 
+Undefined C C0  
+ Amine N1a R-NH2 
+ N1b R-NH-R 
+ N1c R-N(-R)2 
+ N1d R-N(-R)3+ 
+Cyclic amine N1x ring-NH-ring 
+ N1y ring-N(-R) -ring 
+Imine N2a R=N-H 
+ N2b R=N-R 
+Cyclic imine N2x ring-N=ring 
+ N2y ring-N(-R)+=ring 
+Cyan N3a R!N 
+Aromatic ring N4x ring-NH-ring 
+ N4y ring-N(-R) -ring 
+ N5x ring-N=ring 
+ N5y ring-N(-R)+=ring 
+Undefined N N0  
+ Oxygen 18 types
+Hydroxy O1a R-OH 
+ O1b N-OH 
+ O1c P-OH 
+ O1d S-OH 
+Ether O2a R-O-R 
+ O2b P-O-R 
+ O2c P-O-P 
+ O2x ring-O-ring 
+Oxo O3a N=O 
+ O3b P=O 
+ O3c S=O 
+Aldehyde O4a R-CH=O 
+Ketone O5a R-C(=O)-R 
+ O5x ring-C(=O)-r ing 
+Carboxylic acid O6a R-C(=0)-OH 
+Ester O7a R-C(=O)-O-R 
+ O7x ring-C(=O)-O- ring 
+Undefined O O0  
+ 
+Sulfur 7 types
+Thiol S1a R-SH 
+Thioether S2a R-S-R 
+ S2x ring-S- ring 
+Disulfide S3a R-S-S-R 
+ S3x ring-S-S -ring 
+Sulfate S4a R-SO3 
+Undefined S S0  
+ KEGG atom types
+Attatched to other  elements P1a P-R 
+Attatched to oxygen P1b P-O 
+ 
+Halogens X F, Cl, Br, I 
+Others Z  
+ Phosphorus 2 types
+Other elements 2 types27Reactant pairs extracted from enzymatic reactions
+EC (Enzyme Commission) number
+•EC numbers represent classification of
+enzymatic reactions (and enzymes)
+•Manually assigned by IUBMB-IUPAC
+Biochemical Nomenclature Committee
+•Published experimental evidence on the
+enzyme and the reaction is required
+•Four numbers separated by periods,
+representing reaction specificity (class,
+sub-class, and sub-subclass numbers)
+and substrate specificity (serial number).A.red + C.ox
+AB + CA.ox + C.red
+A + BC
+AB + H2O
+ABAH + BOH
+A + B
+A
+A + B + ATPA’
+AB + AMP + PPiEC1. Oxidoreductases
+EC2. Transferases
+EC3. Hydrolases
+EC4. Lyases
+EC5. Isomerases
+EC6. Ligases
+L-glutamate N-acetyl-L-glutamate
+R
+D
+MReaction center N1a -- N1b
+Difference atom (H) -- C5a
+Matched atom C1c -- C1c
+Kotera, M., Okuno, Y., Hattori, M., Goto, S., and Kanehisa, M.; Computational assignment of the EC numbers
+for genomic-scale analysis of enzymatic reactions.  J. Am. Chem. Soc. 126, 16487-16498  (2004).RDM patternReactant pair transformation patterns (RDM patterns)
+R00259 C00024 + C00025 <=> C00010 + C00624  [EC:2.3.1.1]
+Acetyl-CoA + L-Glutamate <=> CoA + N-Acetyl-L-glutamate
+RP0445828
+RDM patternsRDM patterns for xenobiotics
+biodegradation pathwaysPrediction of xenobiotics degradation pathways
+Predicted pathways for
+1,2,3,4-tetrachlorobenzene
+Carbohydrate
+Energy
+Lipid
+Nucleotide
+Amino Acid
+Other aa
+Glycan
+PK/NRP
+Cofactors
+Sec.metab.
+Xenobiotics
+Chemical structure transformation
+patterns in known enzymatic reactions
+Oh, M., Yamada, T., Hattori, M., Goto, S., and Kanehisa, M.; Systematic analysis of enzyme-catalyzed reaction
+patterns and prediction of microbial biodegradation pathways.  J. Chem. Info. Model. 47, 1702-1712  (2007).
+Structural Similarity Search
+SIMCOMP for
+chemical structures
+of small moleculesKCaM for
+glycan
+structures29
+KEGG DISEASE and DRUG:
+An ultimate knowledge base
+Disease and Drug Information in KEGG
+Drug classifications including:
+Therapeutic category of drugs (Japan)
+USP drug class ification (USA)
+ATC classification (WHO)
+TCM (Traditional Chinese Medicine)
+drugs in Japan
+Crude drugsDisease classifications including:
+Pathogens and infectious diseases
+Human diseases
+ICD-10 disease classificationBRITE
+hierarchyKEGG DRUG structure maps for drug
+developmentKEGG pathway maps for human
+diseases: cancers, immune disorders,
+neurodegenerative diseases,
+metabolic disorders, and infectious
+diseasesPathwayChemical structure based collection of
+all approved drugs in Japan, USA, and
+EuropeLists of disease genes and molecular
+factorsContenthttp://www.genome.jp/kegg/drug/ http://www.genome.jp/kegg/disease/ URLKEGG DRUG KEGG DISEASE30
+Colorectal cancer
+Colorectal cancer in the global cancer map31
+Gleevec (TN)
+Glivec (TN)
+…………Imatinib mesilate (JAN)
+Imatinib mesylate (NF)D01441Chemical structure
+Generic name
+Trade name
+Target information as a
+context of KEGG pathwaysKEGG DRUG
+Efficacy
+Therapeutic categories as
+BRITE hierarchies
+Target
+Chemical modifications
+in drug developmentDrug structure mapKEGG DISEASE
+H00004
+Chronic myeloid leukemia (CML)
+Disease gene
+BCR-ABL (translocation)
+EVI1 (overexpression)
+AML1 (translocation)
+p16/INK4A (mutation)
+p53 (mutation)
+RB1 (mutation)
+Carcinogen
+1,3-Butadiene
+Rubber industry
+Marker
+BCR-ABL (translocation)
+WT1
+Imatinib mesylate (Gleevec)
+Hydroxyurea
+Interferon-alphaDrug KEGG PATHWAY55 DISEASE entries
+14 pathway maps
+1 global mapCancers
+Chemical structure
+Generic names
+Trade names
+Aspirin Bayer (TN)
+…………Aspirin (JP15/USP)
+Research communityCAS: 50-78-2
+PubChem: 4594
+ChEBI: 15365D00109
+Approval number
+21700AMY00243
+…………JAN code (barcode)
+4987222735865
+…………
+Regulatory agency Industry00051357
+…………JAPIC code
+JAPIC
+Doctors
+PharmacistsPackage insert information,
+including side effects,
+drug interactions, etc.
+Efficacy,
+Target information,
+Drug classification,
+History of drug
+  development,
+…………Chemical structure based information resource  for all approved drugs
+YJ code
+1143001X1228
+…………
+Patients
+Consumers KEGG DRUGKEGG DRUG
+8,912
+263
+229
+12,763
+12,080KEGG DRUG:
+   Crude drugs
+   TCM formulas:
+JAPIC:
+JAPIC-OTC:
+(As of June 12, 2009)Number of entries32
+Herbal Medicine in KEGG
+Formula: combination of crude drugs
+KakkontoCrud drug: combination of compounds
+Kakkon (Pueraria root)
+Plant genomesBiosynthetic pathways
+KEGG pathway mapping of chemical components
+in herbal medicine
+33
+KEGG DRUG structure maps
+for the history of drug development 
+Calcineurin inhibitor
+Immunosuppressant
+Ciclosporin
+Tolypocladium inflatum
+1972 Sandoz
+Tacrolimus
+Streptomyces tsukubaensis
+1984 Fujisawa
+Chemical modification patterns in drug development
+Towards understanding chemical architecture of marketed drugs
+3,745 drugs from KEGG DRUG
+236 core structures
+506 peripheral fragments
+255 drug pairs from 28 maps
+204 modification patterns
+Shigemizu, D., Araki, M., Okuda, S., Goto, S., and Kanehisa, M.; Extraction and analysis of chemical
+modification patterns in drug development . J. Chem. Info. Model. 49, 1122-1129  (2009).
+Reconstructed drug structure map34
+Summary
+PATHWAY GENES LIGAND BRITEOrganisms (Human, etc.)DRUG
+PLANTGLYCAN
+DISEASE
+KegArray KegDraw KegHierWeb server
+FTP server API server
+iKegKegSketch
+Atlas
+SOAP http://www.genome. jp/kegg/soap/
+REST http://www.kegg.jp/entry/ keggid
+http://www.kegg.jp/pathway/ keggid
+http://www.kegg.jp/brite/ keggidWeb http://www.genome.jp/kegg/
+http://www.kegg.jp/
+FTP http://www.genome.jp/kegg/download/ORTHOLOGY
+KEGG top page
+KEGG2 page
+A new XML version of KEGG pathway maps will be
+available in both KGML and BioPAX Level 2 formats.KEGG Services35Object identifier Database Release
+map number
+locus_tag / GeneID
+EC number
+C number
+organism code
+R number
+K number
+G number
+RP number
+br number
+D number
+M number
+H number
+DP numberKEGG PATHWAY
+KEGG GENES
+KEGG ENZYME
+KEGG COMPOUND
+KEGG GENOME
+KEGG REACTION
+KEGG ORTHOLOGY
+KEGG GLYCAN
+KEGG RPAIR
+KEGG BRITE
+KEGG DRUG
+KEGG MODULE
+KEGG DISEASE
+KEGG DPAIR1995
+2000
+2001
+2002
+2003
+2004
+2005
+2007
+2009Namespace for KEGG objects
+Biological system
+Life science databases
+Web•KEGG is a computer representation of the
+biological systems.
+•KEGG objects (database entries) are
+highly integrated.
+•KEGG objects are linked to/from major life
+science databases.
+•KEGG objects are part of the Web; they
+can be found by Web search engines.
+KEGG Integrated with Other Resources
+KEGG for biological interpretation of large-scale datasets
+KEGG PATHWAY
+Pathway maps
+Global maps
+Structure maps Pathway mapping
+BRITE mapping
+Structure mappingKEGG BRITE
+ Functional hierarchies
+KEGG DISEASE
+Gene/molecule listsKEGG MODULE
+ Gene/molecule listsIdentical K numbers
+Identical C/D/G numbers
+Structural similarity
+Large-scale data setsGenome sequences
+Metagenomics data
+EST data
+Gene expression data
+etc.Genes and proteins
+Metabolomics data
+Glycomics data
+etc.Chemical substances
+Reference knowledge base
+of systemic biological functionsMapping as a set operation
+KEGG PATHWAY
+Pathway maps
+Global mapsProtein-protein interactions
+Protein-small molecule  interactions
+etc.Extended
+interaction
+network+Binary relations36Changing roles of bioinformatics:
+molecules to molecular systems
+More divergent datasets
+•Biopolymers: DNA, RNA, protein , glycan, lipid, polyketide,
+nonribosomal peptide, etc.
+•Small molecules: metabolite, environmental compound, drug, etc.
+•Molecular systems: pathway, complex, ontology, etc.
+More complex data types
+•Biopolymers: linear sequence, circular sequence, tree structure,
+3D structure
+•Small molecules: chemical structure, 3D structure
+•Molecular systems: graph, tree, list, etc.
+Hierarchy of data
+•atom - molecule - molecular system
+•monomer - biopolymer
+•molecule - molecular interaction - molecular system
+•cell - cellular interaction - cellular system
+Changing roles of bioinformatics:
+basic research to practical values
+Diseases viewed as perturbed states of molecular systems
+•Capturing knowledge on molecular systems
+both in normal and perturbed states
+•Capturing knowledge on drugs as
+perturbants to molecular systems
+•Capturing knowledge on natural product
+biosynthetic pathways and human-made
+chemical structure transformations
+•Generating knowledge from genome
+sequencing and other high-throughput dataKEGG PATHWAY
+KEGG DISEASE
+KEGG DRUG
+KEGG ORTHOLOGYKEGG RPAIR
+KEGG DPAIR
+•Knowledge based analysis of human diseases
+•Drug discovery from the genomes of plants and microorganisms
