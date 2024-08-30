@@ -1,0 +1,737 @@
+Gut Microbiome –Wide Search for Bacterial Azoreductases Reveals
+Potentially Uncharacterized Azoreductases Encoded in the Human
+Gut MicrobiomeS
+Domenick J. Braccia, Glory Minabou Ndjite, Ashley Weiss, Sophia Levy,
+Stephenie Abeysinghe, Xiaofang Jiang, Mihai Pop, and Brantley Hall
+Center for Bioinformatics and Computational Biology (D.B., M.P., B.H.) and Departments of Cell Biology and Molecular Genetics
+(G.M.N., A.W., S.L., S.A., B.H.) and Computer Science (M.P.), University of Maryland, College Park, Maryland; and National
+Library of Medicine, National Institutes of Health, Bethesda, Maryland (X.J.)
+Received March 14, 2022; accepted August 18, 2022
+ABSTRACT
+The human gut is home to trillions of microorganisms that are re-
+sponsible for the modification of many orally administered drugs,leading to a wide range of therapeutic outcomes. Prodrugs bearingan azo bond are designed to treat inflammatory bowel disease and
+colorectal cancer via microbial azo reduction, allowing for topical
+application of therapeutic moieties to the diseased tissue in the in-testines. Despite the inextricable link between microbial azo reduc-
+tion and the efficacy of azo prodrugs, the prevalence, abundance,
+and distribution of azoreductases have not been systematically ex-amined across the gut microbiome. Here, we curated and clustered
+amino acid sequences of experimentally confirmed bacterial azore-
+ductases and conducted a hidden Markov model –driven homolog
+search for these enzymes across 4644 genome sequences present
+in the representative Unified Human Gastrointestinal Genomes col-
+lection. We identified 1958 putative azo-reducing species, corroborat-
+ing previous findings that azo reduction appears to be a ubiquitousfunction of the gut microbiome. However, through a systematiccomparison of predicted and confirmed azo-reducing strains, we hy-pothesize the presence of uncharacterized azoreductases in 25 promi-nent strains of the human gut microbiome. Finally, we confirmed theazo reduction of Acid Orange 7 by multiple strains of Fusobacterium
+nucleatum, Bacteroides fragilis ,a n d Clostridium clostridioforme .T o -
+gether, these results suggest the presence and activity of many un-characterized azoreductases in the human gut microbiome and
+motivate future studies aimed at characterizing azoreductase genes in
+prominent members of the human gut microbiome.
+SIGNIFICANCE STATEMENT
+This work systematically examined the prevalence, abundance,
+and distribution of azoreductases across the healthy and inflam-
+matory bowel disease human gut microbiome, revealing potentially
+uncharacterized azoreductase genes. It also confirmed the reduc-tion of Acid Orange 7 by strains of Fusobacterium nucleatum,
+Bacteroides fragilis , and Clostridium clostridioforme .
+Introduction
+Orally administered drugs are an attractive, noninvasive mode of de-
+livery of pharmaceuticals to the intestines. The human gut microbiome
+plays an important role in drug metabolism (Spanogiannopoulos et al.,
+2016) and is capable of activating (Peppercorn and Goldman, 1972;
+Morrison et al., 2012; Sousa et al., 2014), inactivating (Peters, 1978;Saha et al., 1983; Haiser et al., 2013), and even toxifying (Wallace
+et al., 2010) pharmaceutical drugs. Prodrugs containing an azo bond ac-tually require bacterial azoreductase activity to release biologically ac-tive compounds (Peppercorn and Goldman, 1972). For conditions suchas inﬂammatory bowel disease (IBD) and colorectal cancer (CRC), bac-
+terial azoreductases have been used to deliver therapeutics such as
+5-aminosalicylic acid (5-ASA), prednisolone (Ruiz et al., 2011), and cel-
+ecoxib (Ruiz et al., 2011) topically to diseased intestinal tissues (Fig. 1).Following oral administration of sulfasalazine, bacterial azoreductases inthe gut reduce azo bonds, liberating 5-ASA and allowing it to confer itsanti-in ﬂammatory properties (Mahida et al., 1991; Rachmilewitz et al.,
+1992; Weber et al., 2000) topically on inﬂ amed intestinal tissue. Direct oral
+administration of 5-ASA is nonoptimal because the majority of the drug isabsorbed in the small intestine and is sent through systemic circulation(Peppercorn and Goldman, 1973; Tozaki et al., 2002; Friend, 2005;Perrotta et al., 2015; Foppoli et al., 2019). Other examples of azo-bondedprodrugs are OPN501 and celecoxib-5-ASA. OPN501 is made of up pred-nisolone, 5-ASA, and an inert cyclization product, dihydroquinolone
+D.B. was supported in part by the National Science Foundation [DGE-
+1632976] and in part by B.H. startup funding from the University of Maryland.
+X.J. was supported in part by the Intramural Research Program of National Insti-
+tutes of Health National Library of Medicine. M.P. was supported by National In-stitutes of Health [Grant R01-AI-100947]. B.H., G.M.N., A.W., S.L., and S.A.were supported by startup funding from the University of Maryland.
+No author has an actual or perceived con ﬂict of interest with the contents of
+this article.
+dx.doi.org/10.1124/dmd.122.000898.
+SThis article has supplemental material available at dmd.aspetjournals.org.
+ABBREVIATIONS: 5-ASA, 5-aminosalicylic acid; BHI, Brain Heart Infusion; CD, Crohn disease; CRC, colorectal cancer; DHQ, dihydroquino-
+lone; EFI-EST, Enzyme Function Initiative-Enzyme Similarity Tool; FDR, false discover rate; FMN, ﬂavin mononucleotide; FN, false negative;
+FP, false positive; HMM, hidden Markov model; HMP2, Integrative Human Microbiome Project; HPFS, Health Professionals Follow-Up Study;
+IBD, in ﬂammatory bowel disease; PR, predicted reducer; PRISM, Prospective Registry of IBD Patients at MGH; SR, sulfasalazine reducing;
+TN, true negative; TP, true positive; UC, ulcerative colitis; UHGG, Uni ﬁed Human Gastrointestinal Genomes; YCFA, Yeast Casitone Fatty Acid.
+1421521-009X/51/1/142 –153$35.00 dx.doi.org/10.1124/dmd.122.000898
+DRUGMETABOLISM AND DISPOSITION Drug Metab Dispos 51:142 –153, Month 2022
+U.S. Government work not protected by U.S. copyrighthttp://dmd.aspetjournals.org/content/suppl/2022/09/18/dmd.122.000898.DC1Supplemental material to this article can be found at:  at ASPET Journals on August 28, 2024 dmd.aspetjournals.org Downloaded from 
+(DHQ). Upon azo reduction, 5-ASA is released and is able to act topically
+upon the target tissue. Following a spontaneous cyclization reaction, pred-nisolone and DHQ are released where prednisolone can act upon the targettissue (Ruiz et al., 2011). Celecoxib-5-ASA is made up of celecoxib,5-ASA, and DHQ, which are all released upon azo reduction and cycliza-tion in a similar mechanistic fashion to OPN501 (Ruiz et al., 2011).
+A recent review article by Suzuki (2019) collected and curated exper-
+imentally conﬁ rmed azoreductases and described their preferred ﬂavin
+cofactors and electron donors. They found that bacterial azoreductasesqualitatively cluster into four main clades, which harbor a preferencefor either ﬂavin mononucleotide (FMN) or ﬂavin adenine dinucleotide
+as the ﬂavin cofactor and either NADH or NADPH as the preferredelectron donor. Clades I, II, and III are ﬂavoproteins, whereas clade IV
+proteins are ﬂavin free. Clade I azoreductases prefer NADPH as the
+electron donor, clade II prefers NADH as its electron donor, and clades
+III and IV generally use both. Of the 37 enzymes examined by Suzuki(2019), eight enzymes formed no distinct phylogenetic clade and fea-
+tured differences in primary sequence length, ﬂavin cofactor, and pre-
+ferred electron donor. In addition to their relevance in drug delivery and
+efﬁcacy, azoreductases are involved in nitroreduction (Brown 1981;
+Raﬁi et al., 1990; Ra ﬁi and Cerniglia, 1995; Liu et al., 2007; Mercier
+et al., 2013; Chalansonnet et al., 2017), quinone oxidoreduction (Liu
+et al., 2008; Leelakriangsak et al., 2008; Ryan et al., 2010a; Ryan et al.,
+2010b; Ryan et al., 2014), and azo dye reduction. Azo dyes such as Allura
+Fig. 1. Azo reduction by gut microbiota. (A) Pathways of azo-bonded drug activation by bacterial azoreductase activity. DHQ is produced via cyclization of an inter-
+mediate of OPN501 and celecoxib-5-ASA prodrug following intramolecular lactamization (Ruiz et al., 2011). (B) Description of downstream metabolites of bacterial
+azo reduction and the mechanisms of action in IBD and CRC. References for each molecular function described in this subfigure: 5-ASA (Mahida et al., 1991;Cominelli et al., 1992; Rachmilewitz et al., 1992), prednisolone (Cohen et al., 2000), celecoxib (Wu et al., 2003, ; Wu et al., 2010; Gustafsson et al., 2010), sulfapyri-
+dine (Nielsen, 1982), and DHQ (Ruiz et al., 2011). (C) Presence of azoreductase-containing bacteria is required for prodrug activation in the IBD gut and CRC gut
+(left). Many azo-reducing bacteria have been characterized; however, some species have shown experimental evidence of azo-reduction without the full characteriza-
+tion of the genes responsible for azo reduction (right).Prediction of Uncharacterized Azo Reduction by the Gut Microbiome 143 at ASPET Journals on August 28, 2024 dmd.aspetjournals.org Downloaded from Red and Brilliant Black are commonly used in the food and textile indus-
+tries, and waste from their production and usage pollutes the environment.
+This has led to a plethora of manuscripts characterizing the activity ofazoreductases across the bacterial kingdom (Cerniglia et al., 1982; Zim-
+mermann et al., 1982; Nakanishi et al., 2001; Suzuki et al., 2001; Bl €umel
+et al., 2002; Bl €umel and Stolz, 2003; Chen et al., 2004; Chen et al., 2005;
+Nachiyar and
+Rajakumar, 2005; Ooi et al., 2007; Matsumoto et al., 2010; Misal et al.,
+2011; Feng et al., 2012; Gonc ¸alves et al., 2013; Lang et al., 2013; Misal
+et al., 2014; Eslami et al., 2016; Zhang et al., 2016), many of which ex-
+hibit nonnegligible sequence similarity to gut microbial azoreductases
+(Suzuki 2019).
+There is a growing body of literature suggesting that azo reduction is
+a ubiquitous function of the human gut microbiome (Javdan et al.,
+2020), with many prominent bacterial strains showing signi ﬁcant reduc-
+tion of sulfasalazine in vitro (Zimmermann et al., 2019). Javdan et al.(2020) showed that among 20 different individuals, sulfasalazine reduc-
+tion was one of the only ubiquitous functions of the gut microbiome.
+Zimmermann et al. (2019) tested the reduction of sulfasalazine by
+76 prominent strains of the gut microbiome and reported a signi ﬁcant
+[false discover rate (FDR) adjusted Pvalue < 0.05] reduction of sulfasa-
+lazine by 62 of these strains. Interestingly, some of these experimentallyconﬁrmed azo-reducing strains reported by Zimmermann et al. (2019)
+have no prior evidence of azo-reduction and, thus, may encode novel oruncharacterized azoreductase genes (Fig. 1C). Identi ﬁcation of known
+azoreductases in newly reported sulfasalazine-reducing species can helpnarrow down strains to target for identi ﬁcation of uncharacterized
+azoreductases.
+The prevalence, abundance, expression, and distribution of azoreduc-
+tase enzymes in the human gut microbiome have implications for theefﬁcacy of existing pr odrugs mentioned above, as well as for the devel-
+opment of future azo prodrugs. Although azoreductases have been iden-tiﬁed and characterized in many gut bacteria (Supplemental Table 1),
+the distribution of azoreductases has not been systematically exploredacross current gut bacterial reference genomes. To address this gap, we
+conducted a homolog search of known azoreductases across the Uni ﬁed
+Human Gastrointestinal Genomes (UHGG) collection (Almeida et al.,
+2020) to identify putative azoreductases and azo-reducing species in the
+human gut microbiome. We then assessed the relative abundance and
+expression of known azoreductases in healthy, ulcerative colitis (UC),
+and Crohn disease (CD) participants of the Integrative Human Micro-
+biome Project (HMP2) (Proctor and Huttenhower, 2019), the Prospec-
+tive Registry of IBD Patients at MGH (PRISM) (Franzosa et al., 2019),
+and the Health Professionals Follow-Up Study (HPFS) (Abu-Ali et al.,
+2018). Finally, we tested the in vitro azo reduction of Acid
+Orange 7 by three strains of Fusobacterium nucleatum along with
+two strains of Bacteroides fragilis and two strains of Clostridium
+clostridioforme .
+Materials and Methods
+Description of Publicly Available Shotgun Metagenomic Sequencing
+Data. Shotgun metagenomic sequencing data obtained from the HMP2 [N (sam-
+ples)5703, N (individuals) 5103] (Proctor and Huttenhower, 2019), the
+PRISM [N (samples) 5218, N (individuals) 5218] (Franzosa et al., 2019), and
+the HPFS [N (samples) 5220, N (individuals) 5220] (Abu-Ali et al., 2018) are
+used throughout this work. Note that all samples referred to throughout this work
+are human stool samples.
+Curation of Hidden Markov Models Representing Azoreductase
+Enzymes. We searched the literature for known and experimentally validated
+species of bacteria that have azoreductase activity. The list of gene sequencescollected, along with the relevant metadata (organism, functional annotation,length, etc.) is available in Supplemental Table 1. Preliminary evidence forazoreductase gene sequence clustering is shown in Suzuki (2019), where sequen-ces were aligned and phylogenetically compared. Next, after collecting 40 se-
+quences of experimentally validated azoreductases, we generated a sequencesimilarity network using the Enzyme Function Initiative-Enzyme Similarity Tool(EFI-EST) (Gerlt et al., 2015) at a 35% amino acid sequence iden tity threshold for
+identifying similar clusters of azoreductase genes. This threshold corroborates the
+preliminary evidence for a diversity of azoreductase sequences put forth by Suzuki
+(2019). With the exception of clade IVb sequences, which reached 31% sequenceidentity, all other clusters of genes had at least 35% sequence identity. The groupss h o w ni nF i g .2w e r ep r e s s e di n t op r o ﬁle hidden Markov models (HMMs) using
+HMMER v [N/A][N/A]ersion 3.1b2 (Finn et al., 2015 ). Other genes that did not
+fall into the clade I–clade IV clusters ( arsH ,yieF,mdaB ,azo1, azoR ,e t c . )w e r e
+pressed into singular HMMs and included in the homolog search.
+Search for Azoreductase Genes across Human Gut Microbial
+Genomes. We searched HMMs of known, experimentally validated azoreduc-
+tases across 4644 nonredundant genomes contained in the UHGG collection(Almeida et al., 2020) using HMMER v3.1b2 (Finn et al., 2015). Alignments to
+q u e r i e dH M M sw i t hE - v a l u e<1×1 0
+/C010and 60% coverage of the query
+sequence were labeled as putative azoreductase gene sequences. Putative azo-
+reducing bacterial species with experimentally con ﬁrmed azoreductase activity
+(Supplemental Table 2) were then labeled as “known ”azo-reducing species
+and classi ﬁed separately from the putative azo-reducing species. Putative azo-
+reducing species across the bacterial taxonomy were visualized using the iTOL
+web interface (Letunic and Bork, 2019), and prominent phyla of the gut micro-biome were subsetted and presented in Fig. 3.
+Relative Abundance and Azoreductase Gene Abundance and Expres-
+sion Estimation. Raw sequencing reads for samples from HMP2 (Proctor and
+Huttenhower, 2019), PRISM (Franzosa et al., 2019), and HPFS (Abu-Ali et al.,2018) were downloaded and extracted with the National Center for Biotechnol-ogy Information’ s SRA toolkit v2.10.9 (http://ncbi.github.io/sra-tools/). Quality
+control and adapter trimming of the fastq sequence ﬁles were done with the
+Trim Galore wrapper v0.6.6 (https://www.bioinformatics.babraham.ac.uk/projects/
+trim_galore/). To remove potential human contaminants, quality trimmed reads
+were screened against the human genome (hg19) with Bowtie2 v2.4.2 (Langmeadand Salzberg, 2012). Putative azoreductase sequences were extracted from UHGGgenomes via custom shell and python scripts. Putative azoreductase gene sequen-
+ces (HMP2, PRISM) and expression levels (HPFS) were quantiﬁ ed using salmon
+v1.4.0 (Patro et al., 2017) and were normalized and aggregated in R v4.1.1 and
+were subsequently visualized using the R package ggplot2 (Wickham, 2011) (Fig.4). Taxonomy proﬁ ling of the cleaned metagenomic reads from HMP2 samples
+was performed using Kraken 2 v2.0.8-beta (Wood et al., 2019) to estimate the rela-
+tive abundance of bacterial species present in each data set. These relative abundan-
+ces were then processed in R v4.1.1 and plotted using ggplot2 (Fig. 5). All
+computational and bioinformatic procedures are open source and are provided athttps://github.com/dombr accia/Azoreductases.
+Statistical Analysis of Relative Metagenomic Sequence Data from
+HMP2 and PRISM Datasets. Statistical analyses described in Fig. 4 were per-
+formed in R 4.1.1 with the Wilcoxon test method using default parameterization.Next, we compared the relative abundances of known and putative azo-reducingspecies for HMP2 subjects with 20 or more stool samples taken over the courseof the study (Fig. 5). A linear mixed-effects model ANOVA was performed on
+this subset of HMP2 data to determine any statistically signiﬁ cant differences in
+relative abundance values across non-IBD, UC, and CD subjects. The R package
+lme4 (Bates et al., 2014) was used to ﬁt the model to the data, and the package
+lmerTest (Kuznetsova et al., 2017) was used to perform the ANOVA on themodel. All statistical analyses were performed in R version 4.1.1 and are pro-
+vided at https://github.com/dombraccia/Azoreductases.
+Acid Orange 7 Azo Reduction Assay. Biologic triplicates were grown in a
+10 ml tube containing 10 ml of Yeast Casitone Fatty Acids (YCFA) broth for B.
+fragilis andC. clostridioforme strains and 10 ml of Brain Heart Infusion (BHI)
+broth for F. nucleatum strains. Each tube was inoculated with 10 mLo fb a c t e r i a
+from glycerol stocks. The ﬁnal concentrations of each substrate in the bacterial
+cultures were 50 mg/ml of FMN, 50 mg/ml of NADH, and 50 mmol/ml of Acid
+Orange 7. The bacterial cultures were left to grow in an anaerobic chamber for
+72 hours, and Acid Orange 7 decolorization was measured once every 24 hourssince inoculation. The decolorization of Acid Orange 7 was measured by aliquot-ing triplicates of 200 mL media aliquants to a 96-well plate for each bacterial cul-
+ture, and absorbance of 550 nm light was measured using a spectrophotometer.144 Braccia et al. at ASPET Journals on August 28, 2024 dmd.aspetjournals.org Downloaded from The raw absorbance values for each biologic and technical replicate are reported
+in Supplemental Table 5.
+Results
+Primary Amino Acid Sequences of Bacterial Azoreductases
+Group by Mechanistic Preferences. To begin identifying putative
+azo-reducing species of the gut microbiome, we searched the literature
+for experimentally veri ﬁed azoreductase enzymes, collected amino acid
+sequences, and metadata for these azoreductases (Supplemental Table 1)and compared their primary sequences using the EFI-EST (Gerlt et al.,2015). The resulting sequence similarity network captured mechanisticpreferences such as ﬂavin dependence and electron donor preference for
+each azoreductase reported by Suzuki (2019). We saw near-complete con-cordance between the clade I –IV azoreductases and the sequence similarity
+clusters at a 35% amino acid identity edge threshold, with the exceptionof clade IV, which was split into two separate clusters (Fig. 2). The gene
+families labeled arsH, mdaB, yieF, and azo1 clustered separately from
+clade I –IV azoreductases, and we consider each of these clusters as sepa-
+rate subfamilies of azoreductases. Multiple sequence alignments were gen-erated for each cluster shown in Fig. 2 (with the exception of the “Other
+Azoreductases ”group) using MUSCLE v3.8.425 (Edgar, 2004). HMMs
+were then trained on the multiple sequence alignments from the previousstep using the HMMER v3.1b2 method hmmpress (Finn et al., 2015) and
+were queried against the UHGG collection (Almeida et al., 2020).
+Homolog Search for Azoreductases Supports Evidence for
+Ubiquity of Azo Reduction by the Human Gut Microbiome. We
+searched for homologs of azoreductases across 4644 representative ge-nomes in the UHGG collection (Almeida et al., 2020) using HMMsgenerated from sequences of experimentally validated azoreductase en-zymes (Fig. 3). This collection contains 204,938 genome sequences ofbacteria known to inhabit the human gut, of which 4644 are included inthe representative collection (Supplemental Table 4). For the remainderof this work, we refer to species receiving statistically signi ﬁcant
+( E - v a l u e<1×1 0
+/C010) hits to azoreductase genes as “putative azo-reducing
+species ”or“putative azo-reducing bacteria. ”Of the 4644 genomes in the
+UHGG collection, there are 1443 (31.1%) with one putative azoreductasegene, 343 (7.4%) with two or more putative azoreductases, and 372(8.0%) with three or more putative azoreductases, indicating the extensive
+potential of the gut microbiome to reduce azo bonds. Most notably, 364
+genomes contain hits to the clade I pro ﬁle, 452 contain hits to the clade II
+proﬁle, 793 genomes contain hits to the clade III proﬁ le, 568 contain hits
+to the clade IVa pro ﬁle, 410 contain hits to the clade IVb proﬁ le, 285
+contain hits to the mdaB proﬁle, and 477 contain hits to the yieF proﬁle.
+Prominent phyla of the gut microbiome, such as Proteobacteria and
+Firmicutes , appear particularly rich with clade I, clade II, clade III, clade
+Fig. 2. Bacterial azoreductases cluster by cofactor and electron donor preferences. Following an extensive literature search for experimentally confirmed bacterial azor-
+eductases, amino acid sequences of 40 azoreductase enzymes were collected and clustered with EFI-EST (Gerlt et al., 2015) at 35% sequence identity. Each node in
+the figure above is a single azoreductase gene, and the edges between nodes indicate at least 35% sequence identity between the two amino acid sequences. The col-
+ored clusters, clade I through clade IVa and IVb, are groups of azoreductases previously described by Suzuki (2019) as mechanistically similar groups based on cofac-
+tor and electron donor preferences. Clusters labeled with gene names ( mdaB ,yieF, etc.) represent homologous gene sequences found in two or more organisms. Each
+mechanistically characterized group of azoreductases were subsequently pressed into profile HMMs using HMMER v3.1b2 (Finn et al., 2015), which formed the basis
+of the homolog search. The group labeled “other azoreductases ”contains sequences that did not fall into any cluster at the 35% identity threshold and were pressed
+into singular HMMs prior to the homolog search.Prediction of Uncharacterized Azo Reduction by the Gut Microbiome 145 at ASPET Journals on August 28, 2024 dmd.aspetjournals.org Downloaded from IVab, and ﬂavin adenine dinucleotide utilizing azoreductases (purple col-
+umns in Fig. 3).
+Systematic Evaluation of Predicted Azo-Reducing Species. We
+next sought to evaluate the results of our azoreductase homolog search
+with recent ﬁndings by Zimmermann et al. (2019) regarding sulfasalazine
+reduction. Zimmermann et al. (2019) tested the degradation of sulfasala-zine by 76 prominent gut bacterial strains, 67 of which had correspondingreference genomes present in the UHGG collection. This provided an ex-cellent source of data to compare our bioinformatic predictions against.We determined the sulfasalazine-reducing status as either sulfasalazine re-ducing (SR) or non –sulfasalazine reducing for each of the 67 strains
+b a s e do nt h es i g n i ﬁcant (FDR adjusted Pvalue < 0.05) reduction ofsulfasalazine in vitro reported by Zimmermann et al. (2019) (Table 1).We also determined the predicted reducing status as either a predicted re-ducer (PR) or a non –predicted reducer (Non-PR) for each strain based on
+the presence of a putative azoreductase identiﬁ ed from the homolog
+search step. For each strain, the sulfasalazine-reducing status and pre-dicted reducing status were systematically compared to validate the re-sults of the azoreductase homolog search (Table 1, columns 7 –9). We
+correctly predicted the sulfasalazine-reducing status for 47.8% (32/67) ofstrains and we incorrectly predicted the sulfasalazine reducing status for52.2% (35/67) of strains (Table 2). The vast majority (77.1%, 27/35) ofincorrectly predicted strains are false negatives, meaning the strain doesreduce sulfasalazine in vitro, but we did not identify an azoreductase in
+Fig. 3. Azoreductases are widely distributed across gut bacterial taxonomy. Presence/absence of azoreductases across prominent phyla of the human gut microbiome.
+The taxonomic tree is obtained from the UHGG (Almeida et al., 2020) which is built on the Genome Taxonomy Database (Chaumeil et al., 2019). Phyla names are
+annotated on the left side. Phyla names followed by a capital letter, e.g., Firmicutes (A), indicate a novel phylum classified by the Genome Taxonomy Database tool-
+kit. The bar chart in the center indicates the number of species contained in each genus shown in the tree. The size of the circles indicates the number of species that
+contain hits to the azoreductase genes specified. The color of the circles indicates the cofactor and preferred electron ( e-) donor of the enzyme.146 Braccia et al. at ASPET Journals on August 28, 2024 dmd.aspetjournals.org Downloaded from the homolog search step (Table 2). Interestingly, the majority of false
+positives (75%, 6/8) are members of the Proteobacteria phylum, whichwe previously noted to be particularly rich in azoreductase gene sequen-
+ces (Fig. 3).
+Exploratory Analysis of Azoreductase Abundance and Ex-
+pression Levels in the Human Gut Microbiome. After identifying
+putative azo-reducing species of the human gut microbiome, we next
+sought to examine the abundance and expression of putative azoreduc-tases using publicly available metagenomic and metatranscriptomicdatasets. We used shotgun metagenomic sequence data from the HMP2
+(Proctor and Huttenhower, 2019) and the PRISM (Franzosa et al.,
+2019) to quantify azoreductase gene abundance. We also used high-throughput metatranscriptomic sequence data from the HPFS (Abu-Ali
+et al., 2018) to quantify the expression of azoreductases by the human
+gut microbiota (Fig. 4, A– C). Brie ﬂy, raw genomic and transcriptomic
+reads were ﬁltered and processed using fastp (Chen et al., 2018), andazoreductases were quanti ﬁed using salmon v1.4.0 (Patro et al., 2017).
+Please see Materials and Methods for more details on the computational
+and statistical procedures used.
+Signiﬁcant differences in azoreductase gene abundances between dis-
+ease conditions are displayed in Fig. 4, A and B with asterisks. We ﬁnd
+that clade I, clade II, clade III, clade IVa, clade IVb, mdaB, and yieF
+genes are considerably higher in abundance than ferB, azoR1_cperf,
+arsH, azoR_ropacus, azo1, and azoR1_llentus within all three diseaseconditions for both HMP2 (all FDR adjusted P<2 . 2×1 0
+/C016)a n d
+PRISM (all FDR adjusted P<2 . 6×1 0/C07) (Fig. 4, A and B). Clade IVa
+is higher in abundance than all other azoreductases across healthy, UC,and CD cohorts from HMP2 (Fig. 4A), but the same statistically signi ﬁ-
+cant difference was not observed in the PRISM study (Fig. 4B).
+The expression of clade I, clade II, clade III, clade IVa, mdaB, and yieF
+azoreductases are signi ﬁcantly higher than those of clade IVb, ferB,
+azoR1_cperf, arsH, azoR_ropacus, azo1, and azoR1_llentus azoreductases
+Fig. 4. Abundance and expression of azoreductase genes by human gut microbiota. (A and B) Visualization of shotgun metagenomic sequencing data from the Human
+Microbiome Project 2, also known as the HMP2 and the PRISM. We used salmon 1.4.0 (Patro et al., 2017) to quantify the abundance of azoreductase genes fro mh u n -
+dreds of stool samples across healthy controls (non-IBD), UC, and CD participant cohorts. Raw DNA read alignment counts were normalized to counts per million
+(CPM), analogous to transcripts-per-million (TPM) normalization. Asterisks above each boxplot indicate statistical significance ( *P< 0.05; **P< 0.01; ***P< 0.001,
+Wilcoxon rank sum test, all FDR adjusted using Benjamini-Hochberg method). (C) Visualization of high-throughput metatranscriptomic data obtained from the HPFS.
+We quantified the expression of bacterial azoreductases using salmon v1.4.1 (Patro et al., 2017) and normalized the raw read alignment statistics to transcripts per mil-
+lion (TPM). Please see Materials and Methods for a more detailed description of the computational and statistical methods employed.Prediction of Uncharacterized Azo Reduction by the Gut Microbiome 147 at ASPET Journals on August 28, 2024 dmd.aspetjournals.org Downloaded from in healthy individuals (minimum FDR adjusted Pvalue < 1 × 10/C07between
+mdaB and azoR1_cperf) (Fig. 4C). Although clade IVb abundance levels
+are comparable to those of clades I, II, III, and IVa, the expression levels of
+clade IVb azoreductases are signi ﬁcantly lower in vivo than the expression
+clade I, II, III, and IVa azoreductases (all FDR adjusted P<2 . 2×1 0/C016).
+The Relative Abundance of Putative Azo-Reducing Species
+Fluctuates over Time. We next sought to examine whether relative
+abundance levels of combined known and putative azo-reducing species
+are stable or ﬂuctuate over time. The HMP2 dataset provides a unique
+opportunity to examine the stability of individuals ’gut microbiomes over
+time as there are 18 individuals across healthy, UC, and CD cohorts, withat least 20 stool samples taken once every 2 weeks over a 6-month pe-
+riod. To examine the stability of azo reduction in the human gut, we com-pared the relative abundance of known and putative azo-reducing speciesfrom these participants (Fig. 5). The median relative abundance of com-
+bined azo-reducing species ranges from 20.3 ± 3.58% to 33.9 ± 19.2%
+for non-IBD, 21.7 ± 7.6% to 49.0 ± 15.0% for UC, and 34.9 ± 6.39 to62.3 ± 18.8 for CD subjects. Using linear mixed-effects model ANOVA,
+we found that combined azo-reducing species are signi ﬁcantly more
+abundant in CD subjects than in non-IBD subjects ( P50.002) and are
+not signi ﬁcantly more abundant in UC subjects than in non-IBD subjects
+(P50.064) (Fig. 5A). Note that Fig. 5B shows the same relative abun-
+dance values displayed in Fig. 5A but over the course of the study, from
+collection 1 to collection 24.Multiple Strains of F. Nucleatum ,B. Fragilis , and C. Clostri-
+dioforme Reduce Acid Orange 7 in Vitro. Finally, we sought to test
+the azo reduction of Acid Orange 7 by three strains of the health-rele-
+vant (Castellarin et al., 2012; Kostic et al., 2012; Bashir et al., 2015;Abed et al., 2016) microbe F. nucleatum . As well, we tested the azo re-
+duction of Acid Orange 7 by two positive control species, B. fragilis
+andC. clostridioforme . Acid Orange 7 is an azo-bonded dye commonly
+used in the food and textile industries (Bay et al., 2014), and the decol-
+orization of azo-bonded dyes is commonly used to test azo reduction by
+bacteria in vitro (Feng et al., 2012). F. nucleatum CTI-06, F. nucleatum
+subsp. animalis D11, and F. nucleatum subsp. polymorphum were
+g r o w ni nB H Im e d i a ,a n dA c i dO r a n g e7w a sa d d e dt ot h ec u l t u r eafter 4 days of growth ( Materials and Methods ). We also tested the
+azo reduction of Acid Orange 7 by the known azo-reducing speciesB. fragilis andClostridium clostridiforme .B. fragilis strains 3_1_12 and
+CL07T00C01 and C. clostridioforme strains 2_1_49_FAA and WAL-
+7855 were grown in YCFA broth and served as positive controls. Wefound that all strains examined in this assay signi ﬁcantly decolorized
+Acid Orange 7 in vitro (Fig. 6). To our knowledge, this is the ﬁrst re-
+porting of azo reduction by F. nucleatum CTI-06, F. nucleatum subsp.
+animalis D11, and F. nucleatum subsp. polymorphum.
+Discussion
+The presence of azo-reducing bacteria in the human gut is necessary
+for the effective delivery and activation of azo-bonded prodrugs.
+Fig. 5. Known and putative azo-reducing species are more abundant in the IBD gut. Relative abundance of known and putative azo-reducing species in HMP2 subje cts with
+more than 20 total stool collections. (A) Relative abundance of known and putative azo-reducing species for qualifying participants across non-IBD, UC, and CD populations.
+Subjects with CD have significantly higher relative abundances of known 1putative azo-reducing species than healthy subjects (non-IBD) per linear mixed-effects model AN-
+OVA, F(1,10) 517.09, P< 0.003. (B) Relative abundance of putative azo-reducing species over time for healthy (non-IBD), UC, and CD participants. Each line represents a
+single participant, and each point is the summed relative abundance of known 1putative azo-reducing species at that collection point. The key on the right links relative abun-
+dance distributions for each subject with the same data point shown over collection numbers. Collections were taken approximately every 14 days.148 Braccia et al. at ASPET Journals on August 28, 2024 dmd.aspetjournals.org Downloaded from TABLE 1
+Systematic comparison with Zimmermann et al. (2019) sulfasalazine consumption results
+Complete results from the systematic comparison of predicted sulfasalazine-reducing bacteria to actual sulfasalazine-reducing bacteria. The co lumns labeled FC (fold change),
+FC_STD (standard deviation in fold change), P_FDR (FDR adjusted P value), Pct_Consumed (percent consumed), and Pct_Consumed_STD (standard deviat i o no ft h ep e r c e n t
+consumed) were all obtained directly from Zimmermann et al. (2019) (Supplemental Table 3). The SR_Status column contains values SR and non-SR, which were determined
+based on significant (p_FDR < 0.05) or nonsignificant (p_FDR $0.05) sulfasalazine reduction. The PR_Status column contains the values PR and non-PR, which were deter-
+mined based on the presence or absence of one or more azoreductase homologs determined from the homolog search step. The final column, Result, contain s the values TP
+(true positive), TN (true negative), FP (false positive), and FN (false negative). Correctly predicted SR strains have a result of TP and correctly predicted Non-SR strains have a
+result of TN whereas incorrectly predicted SR strains have a result of FP and incorrectly predicted Non-SR strains have a result of FN.
+Strain_Name FC FC_STD p_FDR Pct_Consumed Pct_Consumed_STD SR_Status PR_Status Result
+Akkermansia muciniphila ATCCBAA-835 /C00.419 0.361 0.19 25.222 18.707 Non-SR Non-PR TN
+Alistipes indistinctus DSM 22520 /C09.01 0.11 0.003 99.806 0.015 SR PR TP
+Anaerococcus hydrogenalis DSM7454 /C08.826 0.198 0.008 99.78 0.03 SR Non-PR FN
+Anaerotruncus colihominis DSM17241 /C08.088 1.575 0.016 99.633 0.401 SR Non-PR FN
+Bacteroides caccae ATCC43185 /C09.247 0.262 0.008 99.835 0.03 SR PR TP
+Bacteroides cellulosilyticus DSM14838 /C01.502 0.308 0.002 64.691 7.532 SR PR TP
+Bacteroides coprophilus DSM18228 /C00.006 0.216 0.991 0.386 14.918 Non-SR Non-PR TN
+Bacteroides dorei DSM17855 /C04.631 0.748 0.013 95.965 2.091 SR Non-PR FN
+Bacteroides eggerthii DSM20697 /C09.59 0.104 0.002 99.87 0.009 SR Non-PR FN
+Bacteroides finegoldii DSM17565 /C00.79 0.296 0.042 42.176 11.877 SR Non-PR FN
+B. fragilis 3397 T10 /C00.974 0.348 0.009 49.084 12.282 SR PR TP
+B. fragilis ATCC43859 /C010.576 0.088 0.003 99.934 0.004 SR PR TP
+B. fragilis DS-208 /C09.327 0.57 0.006 99.844 0.062 SR PR TP
+B. fragilis HMW610 /C010.522 0.159 0.004 99.932 0.007 SR PR TP
+B. fragilis HMW615 /C010.398 0.256 0.013 99.926 0.013 SR PR TP
+B. fragilis NCTC9343 /C06.184 0.835 0.006 98.625 0.796 SR PR TP
+B. fragilis T(B)9 /C09.252 0.144 0.005 99.836 0.016 SR PR TP
+Bacteroides intestinalis DSM17393 /C01.296 0.398 0.005 59.267 11.246 SR PR TP
+Bacteroides ovatus ATCC8483 /C00.285 0.473 0.546 17.951 26.915 Non-SR PR FP
+Bacteroides pectinophilus ATCC43243 /C00.249 0.241 0.268 15.832 14.042 Non-SR Non-PR TN
+Bacteroides stercoris ATCC43183 /C00.588 0.326 0.053 33.46 15.033 Non-SR Non-PR TN
+Bacteroides thetaiotaomicron 3731 /C01.303 0.248 0.005 59.461 6.961 SR PR TP
+Bacteroides thetaiotaomicron 7330 /C01.032 0.237 0.003 51.082 8.044 SR PR TP
+Bacteroides thetaiotaomicron VPI-5482 /C01.252 0.155 0.006 58.006 4.511 SR PR TP
+Bacteroides uniformis ATCC8492 /C02.605 0.389 0.001 83.558 4.436 SR Non-PR FN
+Bacteroides xylanisolvens DSM18836 /C09.663 0.115 0.002 99.877 0.01 SR PR TP
+Bifidobacterium adolescentis ATCC15703 /C00.7 0.271 0.014 38.442 11.584 SR Non-PR FN
+Bifidobacterium breve DSM20213 /C09.241 0.182 0.008 99.835 0.021 SR Non-PR FN
+Blautia hansenii DSM20583 /C09.234 0.155 0.005 99.834 0.018 SR Non-PR FN
+Bryantia formatexigens DSM14469 /C00.722 0.432 0.113 39.359 18.171 Non-SR PR FP
+Clostridium asparagiforme DSM15981 /C09.184 0.203 0.01 99.828 0.024 SR Non-PR FN
+Clostridium bolteae ATCCBAA-613 /C07.113 0.611 0.005 99.277 0.306 SR Non-PR FN
+Clostridium difficile 120 /C06.039 0.703 0.013 98.479 0.741 SR PR TP
+Clostridium ramosum DSM1402 /C09.046 0.169 0.006 99.811 0.022 SR PR TP
+Clostridium scindens ATCC35704 /C09.064 0.324 0.004 99.813 0.042 SR Non-PR FN
+Clostridium spiroforme DSM1552 /C02.478 0.572 0.001 82.055 7.119 SR Non-PR FN
+Clostridium sporogenes ATCC15579 /C09.072 0.158 0.006 99.814 0.02 SR PR TP
+Clostridium symbiosum ATCC14940 /C09.256 0.209 0.009 99.836 0.024 SR Non-PR FN
+Collinsella aerofaciens ATCC25986 /C06.629 0.628 0.046 98.99 0.44 SR PR TP
+Collinsella intestinalis DSM13280 /C08.916 0.118 0.003 99.793 0.017 SR Non-PR FN
+Coprococcus comes ATCC27758 /C09.182 0.199 0.009 99.828 0.024 SR Non-PR FN
+Dorea formicigenerans ATCC27755 /C04.071 0.57 0.015 94.051 2.351 SR Non-PR FN
+Edwardsiella tarda ATCC23685 /C00.107 0.287 0.722 7.125 18.483 Non-SR PR FP
+Eggerthella lenta ATCC25559 /C00.435 0.217 0.038 26.042 11.107 SR PR TP
+Enterobacter cancerogenus ATCC35316 /C00.853 0.579 0.076 44.621 22.214 Non-SR PR FP
+Enterococcus faecalis V583 /C08.61 0.228 0.01 99.744 0.04 SR PR TP
+Escherichia coli K-12 /C00.714 0.331 0.038 39.057 13.995 SR PR TP
+Eubacterium biforme DSM3989 /C08.927 0.098 0.008 99.795 0.014 SR Non-PR FN
+Eubacterium hallii DSM3353 /C09.031 0.381 0.028 99.809 0.05 SR Non-PR FN
+Eubacterium rectale ATCC33656 /C09.002 0.322 0.022 99.805 0.044 SR PR TP
+Eubacterium ventriosum ATCC27560 /C04.653 0.827 0.051 96.024 2.278 Non-SR Non-PR TN
+Odoribacter splanchnius /C07.892 0.744 0.004 99.579 0.217 SR PR TP
+Parabacteroides distasonis ATCC8503 /C01.007 0.298 0.022 50.253 10.272 SR Non-PR FN
+Parabacteroides johnsonii DSM18315 /C00.529 0.281 0.123 30.702 13.51 Non-SR Non-PR TN
+Parabacteroides merdae ATCC43184 /C00.749 0.208 0.006 40.508 8.593 SR Non-PR FN
+Pretovella copri DSM18205 /C08.693 0.41 0.015 99.758 0.069 SR Non-PR FN
+Proteus penneri ATCC35198 /C01.657 0.313 0.009 68.289 6.884 SR PR TP
+Providencia alcalifaciens DSM30120 /C00.379 0.247 0.108 23.094 13.183 Non-SR PR FP
+Providencia rettgeri DSM1131 /C00.205 0.204 0.25 13.245 12.273 Non-SR PR FP
+Providencia stuartii ATCC25827 /C00.072 0.246 0.807 4.854 16.212 Non-SR PR FP
+Roseburia intestinalis L1-82 /C08.876 0.156 0.006 99.787 0.023 SR Non-PR FN
+Ruminococcus gnavus ATCC29149 /C08.639 0.045 0 99.749 0.008 SR Non-PR FN
+Ruminococcus lactaris ATCC29176 /C09.522 0.145 0.005 99.864 0.014 SR Non-PR FN
+Ruminococcus torques ATCC27756 /C02.384 0.298 0.016 80.841 3.961 SR PR TP
+Salmonella Typhimurium LT2 /C00.673 0.712 0.252 37.287 30.936 Non-SR PR FP
+Subdoligranulum variabile DSM15176 /C08.854 0.189 0.008 99.784 0.028 SR Non-PR FN
+Victivallis vadensis ATCC BAA-548 /C01.844 0.392 0.004 72.146 7.574 SR Non-PR FNPrediction of Uncharacterized Azo Reduction by the Gut Microbiome 149 at ASPET Journals on August 28, 2024 dmd.aspetjournals.org Downloaded from Although azoreductase activity has been identi ﬁed in several prominent
+phyla of the human gut microbiota (Zimmermann et al., 2019) and ap-
+pears to be ubiquitous across healthy individuals (Javdan et al., 2020),the prevalence, abundance, and distribution of azoreductases have notbeen systematically examined in the human gut microbiome of healthy
+individuals nor in individuals living with IBD. In this work, we curated
+and compiled known azoreductase genes (Fig. 2), searched for azore-ductase gene families across a nonr edundant set of 4644 human gut bac-
+terial genomes (Almeida et al., 2020), and identi ﬁed 1958 putative
+azo-reducing species (Fig. 3). The systematic comparison of our searchresults to recent experimental evidence of sulfasalazine reduction byprominent gut bacteria (Table 1, Table 2) indicates a disconnect be-
+tween the current state of azoreductase annotation and experimental
+evidence of sulfasalazine reduction. Interestingly, the majority (77.1%,
+27/35) of incorrectly predicted sulfasalazine-reducing strains are falsenegatives, meaning these strains did not return a signi ﬁcant hit to an
+azoreductase gene from the homolog search step but do, in fact, reduce
+sulfasalazine in vitro. This inconsistency between annotated azoreduc-
+tases and experimental evidence of azo reduction suggests that manyprominent bacterial strains of the human gut microbiome may encodeand express previously uncharacterized azoreductase genes. These genes
+likely serve other endogenous roles such as nitro reduction (Liu et al.,
+2007; Chalansonnet et al., 2017) and quinone oxidoreduction (Leelak-riangsak et al., 2008; Liu et al., 2008; Ryan et al., 2010a; Ryan et al.2010b; Ryan et al., 2014), with the azo reduction being a side mecha-nism that these
+enzymes crossfunctionally participate in.
+We next sought to report the relative abundance and expression of
+azoreductases in the human gut microbiome for healthy controls and
+IBD patients. Our analysis of 1558 metagenomic samples from 326 in-dividuals across healthy, UC, and CD patient cohorts showed that cladeI ,I I ,I I I ,I V a ,I V b ,m d a B ,a n dy i e Fa z o r e d u c t a s e sa r es i g n i ﬁcantly more
+abundant in the gut microbiome compared with the other azoreductases
+examined in this study (Fig. 4, A and B). We also examined theTABLE 2
+Summarized results of systematic Zimmermann et al. (2019) comparison
+This table displays the summarized results of the systematic comparison of pre-
+dicted sulfasalazine reducers to experimentally confirmed sulfasalazine reducers
+reported by Zimmermann et al. (2019 ).
+PR Non-PR
+SR 38.8% (26/67)a40.3% (27/67)b
+Non-SR 11.9% (8/67)c9.0% (6/67)d
+aThe number of true positives.
+bThe number of false negatives.
+cThe number of true false positives.
+dThe number of true negatives.
+Fig. 6. Three putative azo-reducing strains of F. nucleatum degrade Acid Orange 7 in vitro. The absorbance of light at 550 nm (corresponding to the absorbance spec-
+tra of Acid Orange 7) was measured in cultures of F. nucleatum, B. fragilis , and C. clostridiforme isolate cultures. F. nucleatum strains were grown in BHI media and
+were compared with BHI-blank control mixture, whereas B. fragilis andC. clostridiforme strains were grown in YCFA media and were thus compared with a YCFA-
+blank. Each strain was grown and tested in biologic and technical triplicates. Each data point on the plot above is the average of three technical replicates from a sin-
+gle biologic replicate per strain. Please see Materials and Methods for more details regarding our experimental methodology. Asterisks indicate statistical significance
+calculated via two-sided ttests ( *P< 0.05; **P< 0.01; ***P< 0.001).150 Braccia et al. at ASPET Journals on August 28, 2024 dmd.aspetjournals.org Downloaded from expression of azoreductases by the human gut microbiota and found
+that, with the exception of clade IVb, expression levels of azoreductases
+roughly match with their corresponding genomic abundance (Fig. 4C).
+The incongruence of clade IVb abundance and expression levels sug-gests that, when feasible, shotgun metagenomic sequencing of stool
+samples should be performed in parallel with metatranscriptomic se-
+quencing to better understand the functional landscape of the gut micro-biome and the relative contributions of different azoreductases to
+overall azo reduction. We also sought to examine the relative abundance
+of known and putative azo-reducing bacteria in healthy, UC, and CDpatients over time. We found that the relative abundance of known and
+putative azo-reducing bacteria is signi ﬁcantly ( P50.002) higher in in-
+dividuals with CD and is modestly ( P50.06) higher in individuals
+with UC compared with healthy controls (Fig. 5). This bodes well for
+the future of azo-bonded prodrug development because these therapies
+are intended to treat individuals af ﬂicted with UC and CD. However,
+the cumulative relative abundance of known and putative azo-reducing
+bacteria ﬂuctuates over time (Fig. 5B), and future studies should explore
+whether there exists some minimu m necessary abundance of a zo-reduc-
+ing species for adequate prodrug metabolism and activation.
+Finally, we tested the reduction of the azo-bonded dye Acid Orange
+7b yt h r e es t r a i n so f F. nucleatum alongside positive control strains of
+B. fragilis andC. clostridioforme (Fig. 6). F. nucleatum is positively
+correlated with colorectal cancer (Marchesi et al., 2011; Kostic et al.,
+2012), is present in and on cancerous tissue (Castellarin et al., 2012),and possibly contributes to the etiology of the disease (McCoy et al.,
+2013; Rubinstein et al., 2013; Han, 2015). We found that F. nucleatum
+CTI-06, F. nucleatum subsp. animalis D11, and F. nucleatum subsp.
+polymorphum all signi ﬁcantly reduce Acid Orange 7 in vitro, indicating
+the encoding and activity of azoreductases in these strains of F. nucleatum.
+TheF. nucleatum reference strain present in UHGG received signi ﬁcant
+hits to the mdaB (E-value 54.20 × 10
+/C013) and yieF (E-value 51.40 ×
+10/C023) HMMs and, thus, represents an accurately predicted azo-reducing
+bacteria (Supplemental Table 3). The identi ﬁcation and characterization of
+these, and possibly other, F. nucleatum azoreductases could lead to the
+eventual development of an azo-bonded colorectal cancer therapeutic
+designed speci ﬁcally to activate in the presence of F. nucleatum on the
+surface of colonic tumors.
+B. fragilis is a known reducer of azo dyes including Acid Orange 7
+(this study), Amaranth, Orange II, and Tartrazine (Bragger et al., 1997),
+as well as of the quinone menadione (Ito et al., 2020). Additionally,
+many B. fragilis strains have been shown to be potent reducers of sulfa-
+salazine in vitro (Zimmermann et al., 2019). Although we did identify a
+signiﬁcant (E-value < 1 × 10/C045) hit to the clade IVa HMM in the two
+B. fragilis reference strains present in UHGG (Supplemental Table 3),
+there may be other B. fragilis genes or operons that exhibit azoreductase
+activity. Ito et al. (2020) described two NADH:quinone oxidoreductase
+operons, NQR and NUO, and one NADH:qui none oxidoreductase
+gene, ndh2, capable of reducing the quinone menadione. Recall that
+bacterial quinone oxidoreductases are often crossreactive with azo com-
+pounds and have even been proposed to be a part of the same FMN-dependent superfamily of NAD(P)H utilizing oxidoreductase enzymes
+(Ryan et al., 2014). Future studies are required to con ﬁrm or deny that
+NQR, NUO, and ndh2 are hitherto uncharacterized azoreductases con-
+tributing to the complete azo reduction of sulfasalazine by B. fragilis
+shown in Zimmerman et al. (2019).
+Of the seven bacterial strains tested for reduction of Acid Orange 7,
+the two C. clostridioforme strains exhibited by far the most effective re-
+duction of Acid Orange 7 (Fig. 6). Although C. clostridioforme is a
+known azo dye reducer (Raf ﬁand Cerniglia, 1990; Nakamura et al.,
+2002; Xu et al., 2010), neither of the two reference strains present in
+UHGG recruited signi ﬁcant alignments to known azoreductase genefamilies curated in the homolog search step of this work (Supplemental
+Table 3). This could be the result of either 1) strain-level variation be-tween the reference strains and those tested with Acid Orange 7 in thisstudy or 2) the presence and activity of one or more uncharacterizedazoreductases in C. clostridioforme . In either case, further research in-
+cluding a comparative genomics analysis and gene knockout experimenton various strains of C. clostridioforme could lead to an improved un-
+derstanding of gut microbial azo reduction.
+This study has two primary limitations. 1) The E-value and percent
+of alignment thresholds for determining a putative azoreductase in thehomolog search step are not absolute but rather are designed to strike abalance between identifying spurious homologs and missing the identi ﬁ-
+cation of true azoreductase homologs. This is an inherent limitation ofstudies requiring hard cutoffs for homolog classi ﬁcation and, thus, is
+very dif ﬁcult to avoid. 2) Bacterial azoreductases exhibit different sub-
+strate speci ﬁcities (Bin et al., 2004; Deller et al., 2006; Sugiura et al.,
+2006; Joshi et al., 2008; Ryan et al., 2010a, ; Mendes et al., 2011; Langet al., 2013) and, thus, have varying af ﬁnities for different azo prodrugs
+as well as azo dyes. Though we show a signi ﬁcant reduction of Acid
+Orange 7 by three strains of F. nucleatum in this work, future experi-
+ments showing the reduction of azo drugs such as sulfasalazine wouldfurther bolster the hypothesis that F. nucleatum encodes and expresses
+one or more uncharacterized azoreductases.
+In conclusion, we show that known azoreductases are widely distrib-
+uted in the human gut microbiome and that there are likely many more
+uncharacterized azoreductases encoded and expressed in the human gut
+microbiome. These results both 1) bolster previous ﬁndings suggesting
+the ubiquity of azo-reduction in the gut microbiome (Javdan et al.,2020) and 2) suggest the presence and activity of many hitherto unchar-acterized azoreductases in the human gut microbiome. The list of falsenegative strains identi ﬁed in our systematic comparison analysis can
+serve as a resource for future studies focused on identifying azoreduc-tases encoded by the human gut microbiome (Table 1). Overall, thiswork describes the abundance and distribution of known azoreductasesin the human gut microbiome and motivates the need for future studiesfocused on annotating hitherto uncharacterized azoreductases encoded
+in the human gut microbiome. Further validation and annotation of pu-
+tative azoreductases encoded by prominent members of the gut ﬂora
+such as B. fragilis, F. nucleatum, andC. clostridioforme , are important
+for functional characterization of azo reduction by the human gut micro-biome and for the future of azo prodrug development.
+Authorship Contributions
+Participated in research design : Braccia, Minabou Ndjite, Jiang, Pop, Hall.
+Conducted experiments: Minabou Ndjite, Weiss, Levy, Abeysinghe.
+Performed data analysis : Braccia, Minabou Ndjite.
+Wrote or contributed to the writing of the manuscript :B r a c c i a ,M i n a b o u
+Ndjite, Weiss, Levy, Abeysinghe, Jiang, Pop, Hall.
+References
+Abed J, Emgård JEM, Zamir G, Faroja M, Almogy G, Grenov A, Sol A, Naor R, Pikarsky E, At-
+lan KA, et al. (2016) Fap2 Mediates Fusobacterium nucleatum Colorectal Adenocarcinoma En-
+richment by Binding to Tumor-Expressed Gal-GalNAc. Cell Host Microbe 20:215 –225.
+Abu-Ali GS, Mehta RS, Lloyd-Price J, Mallick H, Branck T, Ivey KL, Drew DA, DuLong C,
+Rimm E, Izard J, et al. (2018) Metatranscriptome of human faecal microbial communities in a
+cohort of adult men. Nat Microbiol 3:356 –366.
+Almeida A, Nayfach S, Boland M, Strozzi F, Beracochea M, Shi ZJ, Pollard KS, Sakharova E,
+Parks DH, Hugenholtz P, et al. (2021) A unified catalog of 204,938 reference genomes from the
+human gut microbiome. Nat Biotechnol 39:105 –114.
+Bashir A, Miskeen AY, Bhat A, Fazili KM, and Ganai BA (2015) Fusobacterium nucleatum: an
+emerging bug in colorectal tumorigenesis. Eur J Cancer Prev 24:373 –385.
+Bates D, M €achler M, Bolker B, and Walker S (2014) Fitting Linear Mixed-Effects Models Using
+Lme4. J Stat Softw 67:1–48. DOI: http://arxiv.org/abs/1406.5823.
+Bay HH, Lim CK, Kee TC, Ware I, Chan GF, Shahir S, and Ibrahim Z (2014) Decolourisation of
+Acid Orange 7 recalcitrant auto-oxidation coloured by-products using an acclimatised mixedbacterial culture. Environ Sci Pollut Res Int 21:3891 –3906.Prediction of Uncharacterized Azo Reduction by the Gut Microbiome 151 at ASPET Journals on August 28, 2024 dmd.aspetjournals.org Downloaded from Bin Y, Jiti Z, Jing W, Cuihong D, Hongman H, Zhiyong S, and Yongming B (2004) Expression
+and characteristics of the gene encoding azoreductase from Rhodobacter sphaeroides AS1.1737.
+FEMS Microbiol Lett 236:129 –136.
+Bl€umel S and Stolz A (2003) Cloning and characterization of the gene coding for the aerobic azor-
+eductase from Pigmentiphaga kullae K24. Appl Microbiol Biotechnol 62:186 –190.
+Bl€umel S, Knackmuss H-J, and Stolz A (2002) Molecular cloning and characterization of the gene
+coding for the aerobic azoreductase from Xenophilus azovorans KF46F. Appl Environ Microbiol
+68:3948 –3955.
+Bragger JL, Lloyd AW, Soozandehfar SH, Bloomfield SF, Marriott C, and Martin GP (1997) In-
+vestigations into the Azo Reducing Activity of a Common Colonic Microorganism. Int J Pharm
+157:61–71 DOI: 10.1016/S0378-5173(97)00214-7.
+Brown JP (1981) Reduction of polymeric azo and nitro dyes by intestinal bacteria. Appl Environ
+Microbiol 41:1283 –1286.
+Castellarin M, Warren RL, Freeman JD, Dreolini L, Krzywinski M, Strauss J, Barnes R, Watson
+P, Allen-Vercoe E, Moore RA, et al. (2012) Fusobacterium nucleatum infection is prevalent in
+human colorectal carcinoma. Genome Res 22:299 –306.
+Cerniglia CE, Freeman JP, Franklin W, and Pack LD (1982) Metabolism of azo dyes derived from
+benzidine, 3,30-dimethyl-benzidine and 3,30-dimethoxybenzidine to potentially carcinogenic aro-
+matic amines by intestinal bacteria. Carcinogenesis 3:1255 –1260.
+Chalansonnet V, Mercier C, Orenga S, and Gilbert C (2017) Identification of Enterococcus faecalis
+enzymes with azoreductases and/or nitroreductase activity. BMC Microbiol 17:126.
+Chaumeil PA, Mussig AJ, Hugenholtz P, and Parks DH (2019) GTDB-Tk: a toolkit to classify ge-
+nomes with the Genome Taxonomy Database. Bioinformatics 36:1925 –1927.
+Chen H, Hopper SL, and Cerniglia CE (2005) Biochemical and molecular characterization of an
+azoreductase from Staphylococcus aureus, a tetrameric NADPH-dependent flavoprotein. Micro-
+biology (Reading) 151:1433 –1441.
+Chen H, Wang RF, and Cerniglia CE (2004) Molecular cloning, overexpression, purification, and
+characterization of an aerobic FMN-dependent azoreductase from Enterococcus faecalis. Protein
+Expr Purif 34:302 –310.
+Chen S, Zhou Y, Chen Y, and Gu J (2018) fastp: an ultra-fast all-in-one FASTQ preprocessor.
+Bioinformatics 34:i884 –i890.
+Cohen RD, Woseth DM, Thisted RA, and Hanauer SB (2000) A meta-analysis and overview of
+the literature on treatment options for left-sided ulcerative colitis and ulcerative proctitis. Am J
+Gastroenterol 95:1263 –1276.
+Cominelli F, Nast CC, Duchini A, and Lee M (1992) Recombinant interleukin-1 receptor antago-
+nist blocks the proinflammatory activity of endogenous interleukin-1 in rabbit immune colitis.Gastroenterology 103:65–71.
+Deller S, Sollner S, Trenker-El-Toukhy R, Jelesarov I, G €ubitz GM, and Macheroux P (2006) Char-
+acterization of a thermostable NADPH:FMN oxidoreductase from the mesophilic bacterium Ba-
+cillus subtilis. Biochemistry 45:7083 –7091.
+Saha JR, Butler Jr VP, Neu HC, and Lindenbaum J (1983) Digoxin-inactivating bacteria: identifi-
+cation in human gut flora. Science 220:325 –327.
+Edgar RC (2004) MUSCLE: multiple sequence alignment with high accuracy and high throughput.
+Nucleic Acids Res 32:1792 –1797.
+Eslami M, Amoozegar MA, and Asad S (2016) Isolation, cloning and characterization of an azore-
+ductase from the halophilic bacterium Halomonas elongata. Int J Biol Macromol 85:111 –116.
+Feng J, Cerniglia CE, and Chen H (2012) Toxicological significance of azo dye metabolism by hu-
+man intestinal microbiota. Front Biosci (Elite Ed) 4:568 –586.
+Finn RD, Clements J, Arndt W, Miller BL, Wheeler TJ, Schreiber F, Bateman A, and Eddy SR
+(2015) HMMER web server: 2015 update. Nucleic Acids Res 43(W1):W30 –W38.
+Foppoli A, Maroni A, Moutaharrik S, Melocchi A, Zema L, Palugan L, Cerea M, and Gazzaniga
+A (2019) In vitro and human pharmacoscintigraphic evaluation of an oral 5-ASA delivery sys-
+te
+m for colonic release. Int J Pharm 572:118723.
+Franzosa EA, Sirota-Madi A, Avila-Pacheco J, Fornelos N, Haiser HJ, Reinker S, Vatanen T, Hall
+AB, Mallick H, McIver LJ, et al. (2019) Gut microbiome structure and metabolic activity in in-flammatory bowel disease. Nat Microbiol 4:293 –305.
+Friend DR (2005) New oral delivery systems for treatment of inflammatory bowel disease. Adv
+Drug Deliv Rev 57:247 –265.
+Gerlt JA, Bouvier JT, Davidson DB, Imker HJ, Sadkhin B, Slater DR, and Whalen KL (2015) En-
+zyme Function Initiative-Enzyme Similarity Tool (EFI-EST): A web tool for generating proteinsequence similarity networks. Biochim Biophys Acta 1854:1019 –1037.
+Gonc¸alves AMD, Mendes S, de Sanctis D, Martins LO, and Bento I (2013) The crystal structure
+of Pseudomonas putida azoreductase - the active site revisited. FEBS J 280:6643 –6657.
+Gustafsson A, Andersson M, Lagerstedt K, L €onnroth C, Nordgren S, and Lundholm K (2010) Re-
+ceptor and enzyme expression for prostanoid metabolism in colorectal cancer related to tumor
+tissue PGE2. Int J Oncol 36:469 –478.
+Haiser HJ, Gootenberg DB, Chatman K, Sirasani G, Balskus EP, and Turnbaugh PJ (2013) Pre-
+dicting and manipulating cardiac drug inactivation by the human gut bacterium Eggerthella
+lenta. Science 341:295 –298.
+Han, YW (2015) Fusobacterium nucleatum: a commensal-turned pathogen. Curr Opin Microbiol
+23:141 –147. DOI: 10.1016/j.mib.2014.11.013.
+Ito T, Gallegos R, Matano LM, Butler NL, Hantman N, Kaili M, Coyne MJ, Comstock LE,
+Malamy MH, and Barquera B (2020) Genetic and Biochemical Analysis of Anaerobic Respirationin Bacteroides Fragilis and Its Importance In Vivo. mBio 11:e03238– 19. DOI: 10.1128/
+mBio.03238-19.
+Javdan B, Lopez JG, Chankhamjon P, Lee YJ, Hull R, Wu Q, Wang X, Chatterjee S, and Donia
+MS (2020) Personalized Mapping of Drug Metabolism by the Human Gut Microbiome. Cell
+181:1661 –1679.e22.
+Joshi T, Iyengar L, Singh K, and Garg S (2008) Isolation, identification and application of novel
+bacterial consortium TJ-1 for the decolourization of structurally different azo dyes. Bioresour
+Technol 99:7115 –7121.
+Peters U, Falk LC, and Kalman SM (1978) Digoxin metabolism in patients. Arch Intern Med
+137:1074 –1076.
+Kostic AD, Gevers D, Pedamallu CS, Michaud M, Duke F, Earl AM, Ojesina AI, Jung J, Bass AJ,
+Tabernero J, et al. (2012) Genomic analysis identifies association of Fusobacterium with colo-
+rectal carcinoma. Genome Res 22:292 –298.
+Kuznetsova A, Brockhoff PB, and Christensen RHB (2017) LmerTest Package: Tests in Linear
+Mixed Effects Models. JS t a tS o f t w 82:1–26
+DOI: 10.18637/jss.v082.i13.
+Lang W, Sirisansaneeyakul S, Ngiwsara L, Mendes S, Martins LO, Okuyama M, and Kimura A
+(2013) Characterization of a new oxygen-insensitive azoreductase from Brevibacilluslaterosporus TISTR1911: toward dye decolorization using a packed-bed metal affinity reactor.
+Bioresour Technol 150:298 –306.
+Langmead B and Salzberg SL (2012) Fast gapped-read alignment with bowtie 2. Nat Methods
+9:357 –359. DOI: 10.1038/nmeth.1923.
+Leelakriangsak M, Huyen NT, T €owe S, van Duy N, Becher D, Hecker M, Antelmann H, and
+Zuber P (2008) Regulation of quinone detoxification by the thiol stress sensing DUF24/MarR-
+like repressor, YodB in Bacillus subtilis. Mol Microbiol 67:1108 –1124.
+Letunic I and Bork P (2019) Interactive Tree Of Life (iTOL) v4: recent updates and new develop-
+ments. Nucleic Acids Res 47(W1):W256 –W259.
+Liu G, Zhou J, Jin R, Zhou M, Wang J, Lu H, and Qu Y (2008) Enhancing survival of Escherichia
+coli by expression of azoreductase AZR possessing quinone reductase activity. Appl Microbiol
+Biotechnol 80:409 –416.
+Liu G, Zhou J, Lv H, Xiang X, Wang J, Zhou M, and Qv Y (2007) Azoreductase from Rhodo-
+bacter sphaeroides AS1.1737 is a flavodoxin that also functions as nitroreductase and flavin
+mononucleotide reductase. Appl Microbiol Biotechnol 76:1271 –1279.
+Mahida YR, Lamming CE, Gallagher A, Hawthorne AB, and Hawkey CJ (1991) 5-Aminosalicylic
+acid is a potent inhibitor of interleukin 1 beta production in organ culture of colonic biopsy
+specimens from patients with inflammatory bowel disease. Gut32:50–54.
+Marchesi JR, Dutilh BE, Hall N, Peters WHM, Roelofs R, Boleij A, and Tjalsma H (2011) To-
+wards the human colorectal cancer microbiome. PLoS One 6:e20447.
+Ruiz JFM, Kedziora K, Keogh B, Maguire J, Reilly M, Windle H, Kelleher DP, and Gilmer JF
+(2011) A double prodrug system for colon targeting of benzenesulfonamide COX-2 inhibitors.Bioorg Med Chem Lett 21:6636 –6640.
+Matsumoto K, Mukai Y, Ogata D, Shozui F, Nduko JM, Taguchi S, and Ooi T (2010) Characteri-
+zation of thermostable FMN-dependent NADH azoreductase from the moderate thermophileGeobacillus stearothermophilus. Appl Microbiol Biotechnol 86:1431 –1438. DOI: 10.1007/
+s00253-009-2351-7.
+McCoy AN, Ara /C19ujo-P /C19erez F, Azc /C19arate-Peril A, Yeh JJ, Sandler RS, and Keku TO (2013) Fusobac-
+terium is associated with colorectal adenomas. PLoS One 8:e53653.
+Mendes S, Pereira L, Batista C, and Martins LO (2011) Molecular determinants of azo reduction
+activity in the strain Pseudomonas putida MET94. Appl Microbiol Biotechnol 92:393 –405.
+Mercier C, Chalansonnet V, Orenga S, and Gilbert C (2013) Characteristics of major Escherichia
+coli reductases involved in aerobic nitro and azo reduction. JA p p lM i c r o b i o l115 :1012 –10
+22.
+Misal SA, Lingojwar DP, Lokhande MN, Lokhande PD, and Gawai KR (2014) Enzymatic trans-
+formation of nitro-aromatic compounds by a flavin-free NADH azoreductase from Lysinibacil-
+lus sphaericus. Biotechnol Lett 36:127 –131.
+Misal SA, Lingojwar DP, Shinde RM, and Gawai KR (2011) Purification and characterization of
+azoreductase from alkaliphilic strain Bacillus badius. Process Biochem 46:1264 –1269. DOI:
+10.1016/j.procbio.2011.02.013.
+Morrison JM, Wright CM, and John GH (2012) Identification, Isolation and Characterization of a
+Novel Azoreductase from Clostridium Perfringens. Anaerobe 18:229 –234. DOI: 10.1016/j.
+anaerobe.2011.12.006.
+Nachiyar CV and Rajakumar GS (2005) Purification and Characterization of an Oxygen Insensi-
+tive Azoreductase from Pseudomonas Aeruginosa. Enzyme Microb Technol 36:503 –509 DOI:
+10.1016/j.enzmictec.2004.11.015.
+Nakamura J, Kubota Y, Miyaoka M, Saitoh T, Mizuno F, and Benno Y (2002) Comparison of
+four microbial enzymes in Clostridia and Bacteroides isolated from human feces. Microbiol Im-
+munol 46:487 –490.
+Nakanishi M, Yatome C, Ishida N, and Kitade Y (2001) Putative ACP phosphodiesterase gene
+(acpD) encodes an azoreductase. JB i o lC h e m 276:46394 –46399.
+Nielsen OH (1982) Sulfasalazine intolerance. A retrospective survey of the reasons for discontinu-
+ing treatment with sulfasalazine in patients with chronic inflammatory bowel disease. Scand J
+Gastroenterol 17:389 –393.
+Ooi T, Shibata T, Sato R, Ohno H, Kinoshita S, Thuoc TL, and Taguchi S (2007) An azoreduc-
+tase, aerobic NADH-dependent flavoprotein discovered from Bacillus sp.: functional expression
+and enzymatic characterization. Appl Microbiol Biotechnol 75:377 –386.
+Patro R, Duggal G, Love MI, Irizarry RA, and Kingsford C (2017) Salmon provides fast and bias-
+aware quantification of transcript expression. Nat Methods 14:417 –419.
+Peppercorn MA and Goldman P (1972) The role of intestinal bacteria in the metabolism of salicy-
+lazosulfapyridine. JP h a r m a c o lE x pT h e r 181:555 –562.
+Peppercorn MA and Goldman P (1973) Distribution studies of salicylazosulfapyridine and its me-
+tabolites. Gastroenterology 64:240 –245.
+Perrotta C, Pellegrino P, Moroni E, De Palma C, Cervia D, Danelli P, and Clementi E (2015)
+Five-aminosalicylic Acid: an update for the reappraisal of an old drug. Gastroenterol Res Pract
+2015:456895.
+Proctor L and Huttenhower C; Integrative HMP (iHMP) Research Network Consortium (2019)
+The Integrative Human Microbiome Project. Nature 569:641 –648.
+Rachmilewitz D, Karmeli F, Schwartz LW, and Simon PL (1992) Effect of aminophenols (5-ASA
+and 4-ASA) on colonic interleukin-1 generation. Gut33:9 29 –932.
+Raffi F and Cerniglia CE (1990) An Anaerobic Nondenaturing Gel Assay for the Detection of
+Azoreductase from Anaerobic Bacteria. J Microbiol Methods 12:139 –148. DOI: 10.1016/
+0167-7012(90)90024-Z.
+Rafii F and Cerniglia CE (1995) Reduction of azo dyes and nitroaromatic compounds by bacterial
+enzymes from the human intestinal tract. Environ Health Perspect 103(Suppl 5):17 –19.
+Rafii F, Franklin W, and Cerniglia CE (1990) Azoreductase activity of anaerobic bacteria isolated
+from human intestinal microflora. Appl Environ Microbiol 56:2146 –2151.
+Rubinstein MR, Wang X, Liu W, Hao Y, Cai G, and Han YW (2013) Fusobacterium nucleatum
+promotes colorectal carcinogenesis by modulating E-cadherin/ b-catenin signaling via its FadA
+adhesin. Cell Host Microbe 14:195 –206.
+Ruiz JFM, Kedziora K, Windle H, Kelleher DP, and Gilmer JF (2011) Investigation into drug re-
+lease from colon-specific azoreductase-activated steroid prodrugs using in-vitro models. J
+Pharm Pharmacol 63:806 –816. DOI: 10.1111/j.2042-7158.2011.01289.x.
+Ryan A, Kaplan E, Nebel J-C, Polycarpou E, Crescente V, Lowe E, Preston GM, and Sim E
+(2014) Identification of NAD(P)H quinone oxidoreductase activity in azoreductases from P. aer-
+uginosa: azoreductases and NAD(P)H quinone oxidoreductases belong to the same FMN-depen-dent superfamily of enzymes. PLoS One 9:e98551.
+Ryan A, Laurieri N, Westwood I, Wang C-J, Lowe E, and Sim E (2010a) A novel mechanism for
+azoreduction. J Mol Biol 400:24–37.
+Ryan A, Wang C-J, Laurieri N, Westwood I, and Sim E (2010b) Reaction mechanism of azoreduc-
+tases suggests convergent evolution with quinone oxidoreductases. Protein Cell 1:780 –790.152 Braccia et al. at ASPET Journals on August 28, 2024 dmd.aspetjournals.org Downloaded from Sousa T, Yadav V, Zann V, Borde A, Abrahamsson B, and Basit AW (2014) On the colonic bac-
+terial metabolism of azo-bonded prodrugsof 5-aminosalicylic acid. J Pharm Sci 103:3171 –3175.
+Spanogiannopoulos P, Bess EN, Carmody RN, and Turnbaugh PJ (2016) The microbial pharma-
+cists within us: a metagenomic view of xenobiotic metabolism. Nat Rev Microbiol 14:273 –287.
+Sugiura W, Yoda T, Matsuba T, Tanaka Y, and Suzuki Y (2006) Expression and characterization
+of the genes encoding azoreductases from Bacillus subtilis and Geobacillus stearothermophilus.
+Biosci Biotechnol Biochem 70:1655 –1665.
+Suzuki H (2019) Remarkable diversification of bacterial azoreductases: primary sequences, struc-
+tures, substrates, physiological roles, and biotechnological applications. Appl Microbiol Biotech-
+nol103:3965 –3978.
+Suzuki Y, Yoda T, Ruhul A, and Sugiura W (2001) Molecular cloning and characterization of the gene
+coding for azoreductase from Bacillus sp. OY1-2 isolated from soil. JB i o lC h e m 276:9059 –9065.
+Tozaki H, Odoriba T, Okada N, Fujita T, Terabe A, Suzuki T, Okabe S, Muranishi S, and Yama-
+moto A (2002) Chitosan capsules for colon-specific drug delivery: enhanced localization of 5-
+aminosalicylic acid in the large intestine accelerates healing of TNBS-induced colitis in rats. J
+Control Release 82:51–61.
+Wallace BD, Wang H, Lane KT, Scott JE, Orans J, Koo JS, Venkatesh M, et al. (2010) Alleviating
+cancer drug toxicity by inhibiting a bacterial enzyme. Science 330:831 –835. DOI: 10.1126/
+science.1191175.
+Weber CK, Liptay S, Wirth T, Adler G, and Schmid RM (2000) Suppression of NF-kappaB activ-
+ity by sulfasalazine is mediated by direct inhibition of IkappaB kinases aandb.Gastroenterol-
+ogy119:1209 –1218.
+Wickham H (2011) Ggplot2. Wiley Interdiscip Rev Comput Stat 3:180 –185 DOI: 10.1002/wics.147.Wood DE, Lu J, and Langmead B (2019) Improved metagenomic analysis with Kraken 2. Genome
+Biol20:257.
+Wu A-W, Gu J, Ji J-F, Li Z-F, and Xu G-W (2003) Role of COX-2 in carcinogenesis of colorectal
+cancer and its relationship with tumor biological characteristics and patients ’prognosis. World J
+Gastroenterol 9:1990 –1994.
+Wu WKK, Sung JJ, Lee CW, Yu J, and Cho CH (2010) Cyclooxygenase-2 in tumorigenesis of
+gastrointestinal cancers: an update on the molecular mechanisms. Cancer Lett 295:7–16.
+Xu H, Heinze TM, Paine DD, Cerniglia CE, and Chen H (2010) Sudan azo dyes and Para Red
+degradation by prevalent bacteria of the human gastrointestinal tract. Anaerobe 16:114 –119.
+Zhang X, Ng IS, and Chang JS (2016) Cloning and characterization of a robust recombinant azore-
+ductase from Shewanella xiamenensis BC01. JT a i w a nI n s tC h e mE n g 61:9 7–105. DOI:
+10.1016/j.jtice.2016.01.002.
+Zimmermann M, Zimmermann-Kogadeeva M, Wegmann R, and Goodman AL (2019) Mapping
+human microbiome drug metabolism by gut bacteria and their genes. Nature 570:462 –467.
+Zimmermann T, Kulla HG, and Leisinger T (1982) Properties of purified Orange II azoreductase,
+the enzyme initiating azo dye degradation by Pseudomonas KF46. Eur J Biochem 129:197 –203.
+Address correspondence to: Dr. Brantley Hall, Bioscience Research Building,
+Room 3219, 3126 Campus Drive, College Park, MD 20742. E-mail: brantley@
+umd.eduPrediction of Uncharacterized Azo Reduction by the Gut Microbiome 153 at ASPET Journals on August 28, 2024 dmd.aspetjournals.org Downloaded from 
