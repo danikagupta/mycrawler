@@ -35,11 +35,16 @@ def main():
         #st.Page("ui/3_qna.py", title="Q & A", icon="🌎"),
     ]
 
+    classify_pages=[
+        st.Page("ui/process_classify.py", title="Ref", icon="2️⃣"),
+    ]
+
     pages={
         "Upload": upload_pages,
         "Process pdf": pdf_pages,
         "Process reference": ref_pages,
         "Statistics": stat_pages,
+        "Classify": classify_pages
     }
     pg = st.navigation(pages)
     pg.run()
