@@ -152,6 +152,8 @@ def process_random_file(df):
 df_txt=pd.DataFrame(columns=["filename","status","result","created","updated"])
 if os.path.exists(DF_FILE):
     df_txt=pd.read_csv(DF_FILE)
+    # Needed one-time as clean-up for prior runs without separate score field.
+    # df_txt.loc[df_txt['score'].isnull(), 'status'] = 'new' 
     
 if st.button("Initialize"):
     df_txt=process_filenames_from_directory(DIR_PATH, df_txt)
