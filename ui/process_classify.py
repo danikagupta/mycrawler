@@ -163,11 +163,16 @@ filecount=st.number_input("Number of files", value=10)
 progress_bar=st.progress(0)
 progress_text = st.empty()
 if st.button("Process files"):
+    start_time = datetime.now()
     for i in range(filecount):
         progress_bar.progress(i/filecount)
         process_random_file(df_txt)
         df_txt.to_csv(DF_FILE,index=False)
-        progress_text.text(f"Processed {i + 1} of {filecount} files")
+
+        elapsed_time = datetime.now() - start_time
+        elapsed_seconds = int(elapsed_time.total_seconds())
+        minutes, seconds = divmod(elapsed_seconds, 60)
+        progress_text.text(f"Processed {i + 1} of {filecount} files | Time elapsed: {minutes}m {seconds}s")
 progress_bar.progress(1)
 st.title("Completed one run")
     
