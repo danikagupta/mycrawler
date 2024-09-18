@@ -160,9 +160,14 @@ if st.button("Initialize"):
 
 st.divider()
 filecount=st.number_input("Number of files", value=10)
+progress_bar=st.progress(0)
+progress_text = st.empty()
 if st.button("Process files"):
     for i in range(filecount):
+        progress_bar.progress(i/filecount)
         process_random_file(df_txt)
         df_txt.to_csv(DF_FILE,index=False)
+        progress_text.text(f"Processed {i + 1} of {filecount} files")
+progress_bar.progress(1)
 st.title("Completed one run")
     
