@@ -3,45 +3,58 @@ import pandas as pd
 import os
 from datetime import datetime
 
-from langchain_community.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
+
+from typing import TypedDict, Annotated, List, Dict
+from pydantic import BaseModel
 
 
 SRC_DIR="pdf_pages"
 DF_FILE="pdf_text.csv"
 DIR_PATH="pdf_txt"
-MAX_INPUT_LENGTH=400000
+MAX_INPUT_LENGTH=100000
+
+class PaperScore(BaseModel):
+    score: int
+    reason: str
+
+from langchain_openai import ChatOpenAI
+from langchain.output_parsers import PydanticOutputParser
+from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate
 
 def one_llm_classify_relevance(text_content):
+    llmModel = ChatOpenAI(model_name="gpt-4o-mini", max_tokens=3000)
+    
+    parser = PydanticOutputParser(pydantic_object=PaperScore)
 
-    default_question="""
-    Please review this paper
+    system_template = """You are an AI assistant capable of categorizing the text as being relevant to a domain.
+    Please review the user's paper and return - on a scale of 1-10 whether the paper is relevant to mycoremediation.
+    Score should be 1 if the paper is not relevant at all.
+    Score should be 10 if the paper is primarily about mycoremediation.
+    Also return the Reason for the score.
+    
+    {format_instructions}
     """
-    question=default_question
+    human_template = "{text}"
 
-    #st.write("You asked: ", question)
-    chat = ChatOpenAI(model_name="gpt-4o-mini", max_tokens=3000)
+    chat_prompt = ChatPromptTemplate(
+        messages=[
+            SystemMessagePromptTemplate.from_template(system_template),
+            HumanMessagePromptTemplate.from_template(human_template)
+        ],
+        input_variables=["text"],
+        partial_variables={"format_instructions": parser.get_format_instructions()}
+    )
 
-    messages = [
-        SystemMessage(content="""You are an AI assistant capable of categorizing the text as being relevant to a domain.
-        Please reivew the user's paper and return - on a scale of 1-10 whether the paper is relevant to mycoremediation.
-        Score should be 1 if the paper is not relevant at all.
-        Score should be 10 if the paper is primarily about mycoremediation.
-        """),
-        HumanMessage(content=[
-            {
-                "type": "text",
-                "text": f"{text_content}"
-            }
-        ])
-    ]
+    _input = chat_prompt.format_prompt(text=text_content[:MAX_INPUT_LENGTH])
+    output = llmModel(_input.to_messages())
+    resp = parser.parse(output.content)
 
-    response = chat(messages)
-    print(f"\n\n* * * * *\nResponse: \n\n{response}\n\n*********\n")
-    #st.write(response)
+    print(f"\n\n* * * * *\nResponse: \n\n{resp}\n\n*********\n")
     st.subheader("Analysis Result:")
-    st.write(response.content)
-    return response.content
+    st.write(f"Score: {resp.score}\n Reason: {resp.reason}")
+    return resp.score, resp.reason
 
 
 def process_filenames_from_directory(directory_path, df):
@@ -101,9 +114,9 @@ def process_file(filename):
     st.write(f"Processing file {filename}")
     with open(os.path.join(DIR_PATH,filename),'r') as f:
         text_content=f.read()
-    rsp = one_llm_classify_relevance(text_content)
+    score,reason = one_llm_classify_relevance(text_content)
     print(f"Processing file {filename}")
-    return rsp
+    return score,reason
 
 def process_random_file(df):
     # Filter rows where status is 'new'
@@ -124,10 +137,11 @@ def process_random_file(df):
     filename = random_row['filename'].values[0]
     
     # Call the process_file function on the filename
-    result = process_file(filename)
+    score,reason = process_file(filename)
     
     # Update the row with the return value from the function and update the 'updated' time
-    df.at[index, 'comments'] = result
+    df.at[index, 'comments'] = reason
+    df.at[index, 'score'] = score
     df.at[index, 'status'] = 'processed'
     df.at[index, 'updated'] = pd.Timestamp.now()
     
@@ -150,4 +164,5 @@ if st.button("Process files"):
     for i in range(filecount):
         process_random_file(df_txt)
         df_txt.to_csv(DF_FILE,index=False)
+st.title("Completed one run")
     
