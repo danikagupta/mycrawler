@@ -36,7 +36,8 @@ def main():
     ]
 
     classify_pages=[
-        st.Page("ui/process_classify.py", title="Ref", icon="2️⃣"),
+        st.Page("ui/process_classify.py", title="Classify 1", icon="1️⃣"),
+        st.Page("ui/process_classify2.py", title="Classify 2", icon="2️⃣"),
     ]
 
     pages={

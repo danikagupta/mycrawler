@@ -16,3 +16,6 @@ Overall structure:
    a. Try to find the PDF file on the web.
    b. If successful, add to "raw" directory.
    c. Move reference to "download-success" or "download-fail" directories
+5. Classification
+   a. Each PDF-Txt is classified using two different prompts.
+   b. 
