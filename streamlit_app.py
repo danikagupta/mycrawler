@@ -48,6 +48,7 @@ def main():
 
     extract_pages=[
         st.Page("ui/process_extract1.py", title="Extract 1", icon="1️⃣"),
+        st.Page("ui/process_extract2.py", title="Extract 2", icon="1️⃣"),
     ]
 
     pages={
