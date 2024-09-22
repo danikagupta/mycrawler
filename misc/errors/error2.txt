@@ -1,0 +1,120 @@
+experiments=[{'type of dye': 'Ambifix Blue H3R', 'type of fungi': 'Polyporus pseudobetulinus', 'concentration of dye': '200 mg/L', 'concentration of fungi': 'Not specified', 'method of agitation': 'shaking', 'temperature': '25°C', 'duration': '8 days', 'pH': 'Not specified', 'decolorization result': '98%', 'any additional information': 'The decolorization was observed over 8 days.'}, {'type of dye': 'Ambifix Yellow H3R', 'type of fungi': 'Polyporus pseudobetulinus', 'concentration of dye': '200 mg/L', 'concentration of fungi': 'Not specified', 'method of agitation': 'shaking', 'temperature': '25°C', 'duration': '10 days', 'pH': 'Not specified', 'decolorization result': '24%', 'any additional information': 'Very slowly processed; reached 24% removal at 10 days.'}, {'type of dye': 'Ambifix Red HE3B', 'type of fungi': 'Polyporus pseudobetulinus', 'concentration of dye': '200 mg/L', 'concentration of fungi': 'Not specified', 'method of agitation': 'shaking', 'temperature': '25°C', 'duration': '18 days', 'pH': 'Not specified', 'decolorization result': '50%', 'any additional information': 'Reached 50% at 18 days.'}, {'type of dye': 'Malachite Green', 'type of fungi': 'Polyporus pseudobetulinus', 'concentration of dye': '100 mg/L', 'concentration of fungi': 'Not specified', 'method of agitation': 'shaking', 'temperature': '25°C', 'duration': '24 hours', 'pH': '5.0', 'decolorization result': '80%', 'any additional information': 'Crude laccase (5 U/ml) exhibited good ability in decolorizing.'}, {'type of dye': 'Ambifix Blue H3R', 'type of fungi': 'Laccase', 'concentration of dye': '100 mg/L', 'concentration of fungi': 'Not specified', 'method of agitation': 'shaking', 'temperature': '25°C', 'duration': '15 minutes', 'pH': '5.0', 'decolorization result': '65%', 'any additional information': 'Crude laccase (5 U/ml) could decolorize Ambifix Blue H3R.'}]
+
+*********
+
+Processing file Decolouration+of+textile+dyes+by+fungal+pellets_.txt: Got 38669.0 bytes, 5721.0 words, 11670.0 tokens
+2024-09-22 19:38:17.403 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/vscode/.local/lib/python3.11/site-packages/langchain_core/output_parsers/pydantic.py", line 28, in _parse_obj
+    return self.pydantic_object.model_validate(obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vscode/.local/lib/python3.11/site-packages/pydantic/main.py", line 596, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 11 validation errors for ExperimentTable
+experiments.0.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.1.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.2.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.3.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.4.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.5.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.6.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.7.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.8.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.9.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.10.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vscode/.local/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+             ^^^^^^
+  File "/home/vscode/.local/lib/python3.11/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 590, in code_to_exec
+    exec(code, module.__dict__)
+  File "/workspaces/mycrawler/streamlit_app.py", line 66, in <module>
+    main()
+  File "/workspaces/mycrawler/streamlit_app.py", line 62, in main
+    pg.run()
+  File "/home/vscode/.local/lib/python3.11/site-packages/streamlit/navigation/page.py", line 291, in run
+    exec(code, module.__dict__)
+  File "/workspaces/mycrawler/ui/process_extract1.py", line 132, in <module>
+    process_random_file(df_txt)
+  File "/workspaces/mycrawler/ui/process_extract1.py", line 112, in process_random_file
+    table_response = process_file(filename,num_bytes,num_words,num_tokens)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/mycrawler/ui/process_extract1.py", line 76, in process_file
+    table_response=one_llm_extract_table(text_content)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/mycrawler/ui/process_extract1.py", line 59, in one_llm_extract_table
+    resp = parser.parse(output.content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vscode/.local/lib/python3.11/site-packages/langchain_core/output_parsers/pydantic.py", line 84, in parse
+    return super().parse(text)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/vscode/.local/lib/python3.11/site-packages/langchain_core/output_parsers/json.py", line 100, in parse
+    return self.parse_result([Generation(text=text)])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vscode/.local/lib/python3.11/site-packages/langchain_core/output_parsers/pydantic.py", line 73, in parse_result
+    raise e
+  File "/home/vscode/.local/lib/python3.11/site-packages/langchain_core/output_parsers/pydantic.py", line 69, in parse_result
+    return self._parse_obj(json_object)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vscode/.local/lib/python3.11/site-packages/langchain_core/output_parsers/pydantic.py", line 37, in _parse_obj
+    raise self._parser_exception(e, obj) from e
+langchain_core.exceptions.OutputParserException: Failed to parse ExperimentTable from completion {"experiments": [{"type of dye": "Neolane yellow", "type of fungi": "Trametes trogii", "concentration of dye": "50 mg l\u22121", "concentration of fungi": null, "method of agitation": "static", "temperature": "30\u00b0C", "duration": "1 day", "pH": "5.5", "decolorization result": "18%", "any additional information": "Crude enzyme"}, {"type of dye": "Neolane yellow", "type of fungi": "Trametes trogii", "concentration of dye": "50 mg l\u22121", "concentration of fungi": null, "method of agitation": "static", "temperature": "30\u00b0C", "duration": "4 days", "pH": "5.5", "decolorization result": "39.6%", "any additional information": "Crude enzyme"}, {"type of dye": "Maxillon blue", "type of fungi": "Trametes trogii", "concentration of dye": "50 mg l\u22121", "concentration of fungi": null, "method of agitation": "static", "temperature": "30\u00b0C", "duration": "1 day", "pH": "5.5", "decolorization result": "0%", "any additional information": "Crude enzyme"}, {"type of dye": "Maxillon blue", "type of fungi": "Trametes trogii", "concentration of dye": "50 mg l\u22121", "concentration of fungi": null, "method of agitation": "static", "temperature": "30\u00b0C", "duration": "4 days", "pH": "5.5", "decolorization result": "0%", "any additional information": "Crude enzyme"}, {"type of dye": "Neolane pink", "type of fungi": "Trametes trogii", "concentration of dye": "50 mg l\u22121", "concentration of fungi": null, "method of agitation": "static", "temperature": "30\u00b0C", "duration": "1 day", "pH": "5.5", "decolorization result": "63.6%", "any additional information": "Crude enzyme"}, {"type of dye": "Neolane pink", "type of fungi": "Trametes trogii", "concentration of dye": "50 mg l\u22121", "concentration of fungi": null, "method of agitation": "static", "temperature": "30\u00b0C", "duration": "4 days", "pH": "5.5", "decolorization result": "86.4%", "any additional information": "Crude enzyme"}, {"type of dye": "Bezaktiv S-BF turquoise", "type of fungi": "Trametes trogii", "concentration of dye": "50 mg l\u22121", "concentration of fungi": null, "method of agitation": "static", "temperature": "30\u00b0C", "duration": "1 day", "pH": "5.5", "decolorization result": "54%", "any additional information": "Crude enzyme"}, {"type of dye": "Bezaktiv S-BF turquoise", "type of fungi": "Trametes trogii", "concentration of dye": "50 mg l\u22121", "concentration of fungi": null, "method of agitation": "static", "temperature": "30\u00b0C", "duration": "4 days", "pH": "5.5", "decolorization result": "71%", "any additional information": "Crude enzyme"}, {"type of dye": "Neolane yellow", "type of fungi": "Trametes trogii", "concentration of dye": "50 mg l\u22121", "concentration of fungi": null, "method of agitation": "static", "temperature": "30\u00b0C", "duration": "1 day", "pH": "5.5", "decolorization result": "100%", "any additional information": "With HBT"}, {"type of dye": "Neolane yellow", "type of fungi": "Trametes trogii", "concentration of dye": "50 mg l\u22121", "concentration of fungi": null, "method of agitation": "static", "temperature": "30\u00b0C", "duration": "4 days", "pH": "5.5", "decolorization result": "100%", "any additional information": "With HBT"}, {"type of dye": "Maxillon blue", "type of fungi": "Trametes trogii", "concentration of dye": "50 mg l\u22121", "concentration of fungi": null, "method of agitation": "static", "temperature": "30\u00b0C", "duration": "4 days", "pH": "5.5", "decolorization result": "35.3%", "any additional information": "With HBT"}]}. Got: 11 validation errors for ExperimentTable
+experiments.0.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.1.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.2.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.3.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.4.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.5.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.6.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.7.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.8.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.9.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
+experiments.10.concentration of fungi
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.9/v/string_type
