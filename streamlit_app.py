@@ -46,12 +46,17 @@ def main():
         st.Page("ui/process_data6.py", title="Data 6", icon="🌎"),
     ]
 
+    extract_pages=[
+        st.Page("ui/process_extract1.py", title="Extract 1", icon="1️⃣"),
+    ]
+
     pages={
         "Upload": upload_pages,
         "Process pdf": pdf_pages,
         "Process reference": ref_pages,
         "Statistics": stat_pages,
-        "Classify": classify_pages
+        "Classify": classify_pages,
+        "Extract": extract_pages,
     }
     pg = st.navigation(pages)
     pg.run()
