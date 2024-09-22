@@ -2,11 +2,11 @@ import streamlit as st
 import os
 
 def main():
-    os.environ["LANGCHAIN_TRACING_V2"]="true"
-    os.environ["LANGCHAIN_API_KEY"]=st.secrets['LANGCHAIN_API_KEY']
-    os.environ["LANGSMITH_API_KEY"]=st.secrets['LANGCHAIN_API_KEY']
-    os.environ['LANGCHAIN_ENDPOINT']="https://api.smith.langchain.com"
-    os.environ['LANGCHAIN_PROJECT']="yt-review"
+    #os.environ["LANGCHAIN_TRACING_V2"]="true"
+    #os.environ["LANGCHAIN_API_KEY"]=st.secrets['LANGCHAIN_API_KEY']
+    #os.environ["LANGSMITH_API_KEY"]=st.secrets['LANGCHAIN_API_KEY']
+    #os.environ['LANGCHAIN_ENDPOINT']="https://api.smith.langchain.com"
+    #os.environ['LANGCHAIN_PROJECT']="yt-review"
 
     upload_pages=[
         st.Page("streamlit_app.py", title="Home", icon="🏠"),
@@ -38,6 +38,8 @@ def main():
     classify_pages=[
         st.Page("ui/process_classify.py", title="Classify 1", icon="1️⃣"),
         st.Page("ui/process_classify2.py", title="Classify 2", icon="2️⃣"),
+        st.Page("ui/process_classify3.py", title="Classify 3", icon="🌎"),
+        st.Page("ui/process_data4.py", title="Data 4", icon="🌎"),
     ]
 
     pages={
