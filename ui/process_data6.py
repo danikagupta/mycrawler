@@ -76,7 +76,11 @@ if st.button("Process files : Stage 6"):
 
         elapsed_time = datetime.now() - start_time
         elapsed_seconds = int(elapsed_time.total_seconds())
+        remaining_seconds=int((elapsed_seconds*(filecount-i))/(i+1))
+        total_seconds=elapsed_seconds+remaining_seconds
         minutes, seconds = divmod(elapsed_seconds, 60)
-        progress_text.text(f"Processed {i + 1} of {filecount} files | Time elapsed: {minutes}m {seconds}s")
+        rem_min, rem_sec = divmod(remaining_seconds, 60)
+        tot_min, tot_sec = divmod(total_seconds,60)
+        progress_text.text(f"Processed {i + 1} of {filecount} files | Time elapsed: {minutes}m {seconds}s ; remaining {rem_min}m {rem_sec}s ; total {tot_min}m {tot_sec}s")
 progress_bar.progress(1)
 st.title("Completed one run")
